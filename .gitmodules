@@ -1,0 +1,9 @@
+[submodule "cli/src/didcomm-v2"]
+	path = cli/src/didcomm-v2
+	url = https://github.com/trinsic-id/didcomm-v2.git
+[submodule "cli/didcomm-v2"]
+	path = cli/didcomm-v2
+	url = https://github.com/trinsic-id/didcomm-v2.git
+[submodule "didcomm-v2"]
+	path = didcomm-v2
+	url = https://github.com/trinsic-id/didcomm-v2.git

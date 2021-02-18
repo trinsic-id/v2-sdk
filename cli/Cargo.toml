@@ -1,0 +1,17 @@
+[package]
+name = "cli"
+version = "0.1.0"
+authors = ["Jace Kandare <jace.kandare@yahoo.com>"]
+edition = "2018"
+
+[dependencies]
+tonic = "0.4"
+prost = "0.7"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+didcomm-grpc = { path = "../../didcomm-v2/native" }
+clap = {version = "~2.27.0", features = ["yaml"]}
+serde = "1.0.119"
+serde_json = "1.0.60"
+
+[build-dependencies]
+tonic-build = "0.4"
