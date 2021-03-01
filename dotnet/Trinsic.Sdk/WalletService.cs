@@ -12,8 +12,13 @@ namespace Trinsic.Sdk
     public class WalletService
     {
         public WalletService(string serviceAddress = "http://localhost:5000")
+            : this(GrpcChannel.ForAddress(serviceAddress))
         {
-            Channel = GrpcChannel.ForAddress(serviceAddress);
+        }
+
+        public WalletService(GrpcChannel channel)
+        {
+            Channel = channel;
             Client = new Wallet.WalletClient(Channel);
         }
 

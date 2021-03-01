@@ -1,19 +1,24 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Net.Client;
+using Trinsic.Identity.Server.Tests;
 using Trinsic.Services;
 using Xunit;
 
 namespace Trinsic.Sdk.Tests
 {
+    [Collection(HostFixture.CollectionDefinitionName)]
     public class WalletTests
     {
         private readonly WalletService service;
+        private readonly HostFixture hostFixture;
 
-        public WalletTests()
+        public WalletTests(HostFixture hostFixture)
         {
-            service = new WalletService();
+            service = new WalletService(hostFixture.Channel);
+            this.hostFixture = hostFixture;
         }
 
         [Fact]
@@ -21,7 +26,7 @@ namespace Trinsic.Sdk.Tests
         {
             var profile = await service.CreateWallet();
 
-            System.IO.File.WriteAllBytes("~/.trinsic/profile.bin", profile.ToByteArray());
+            File.WriteAllBytes("~/.trinsic/profile.bin", profile.ToByteArray());
 
             Assert.NotNull(profile);
         }

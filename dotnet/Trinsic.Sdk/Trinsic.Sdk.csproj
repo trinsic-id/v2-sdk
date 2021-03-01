@@ -9,10 +9,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\didcomm-v2\dotnet\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj" />
-    <ProjectReference Include="..\..\..\Source\Trinsic.Identity.Protobuf\Trinsic.Identity.Protobuf.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs.Zcaps\LinkedDataProofs.Zcaps.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs\LinkedDataProofs.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\DidCore\DidCore.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs.SecurityVocabulary\LinkedDataProofs.SecurityVocabulary.csproj" />
+    <ProjectReference Include="..\..\..\Source\Trinsic.Identity.Protobuf\Trinsic.Protobuf.csproj" />
   </ItemGroup>
 </Project>

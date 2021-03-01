@@ -21,5 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Trinsic.Sdk\Trinsic.Sdk.csproj" />
+    <ProjectReference Include="..\..\..\Source\Trinsic.Identity.Server.Tests\Trinsic.Server.Tests.csproj" />
   </ItemGroup>
 </Project>
