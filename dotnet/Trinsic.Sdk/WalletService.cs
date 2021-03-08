@@ -6,11 +6,19 @@ using Trinsic.Services;
 using DIDComm.Messaging;
 using DComm = DIDComm.Messaging.DIDComm;
 using Google.Protobuf;
+using Grpc.Core;
+using Newtonsoft.Json.Linq;
+using W3C.CCG.SecurityVocabulary;
+using Google.Protobuf.WellKnownTypes;
+using W3C.CCG.DidCore;
+using System.Text;
 
 namespace Trinsic.Sdk
 {
     public class WalletService
     {
+        public string CapInvocation;
+
         public WalletService(string serviceAddress = "http://localhost:5000")
             : this(GrpcChannel.ForAddress(serviceAddress))
         {
@@ -27,32 +35,108 @@ namespace Trinsic.Sdk
 
         public async Task<WalletProfile> CreateWallet()
         {
+            // Fetch Server Configuration and find key to use
+            // for generating shared secret for authenticated encryption
+            var configuration = await Client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
+            var resolveResponse = DIDKey.Resolve(new ResolveRequest { Did = configuration.KeyAgreementKeyId });
+            var providerExchangeKey = resolveResponse.Keys.FirstOrDefault(x => x.Kid == configuration.KeyAgreementKeyId)
+                ?? throw new Exception("Key agreement key not found");
+
             // Generate new DID used by the current device
-            var key = DIDKey.Generate(new GenerateKeyRequest
+            var myKey = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
+            var myExchangeKey = myKey.Key.FirstOrDefault(x => x.Crv == "X25519") ?? throw new Exception("Key agreement key not found");
+            var myDidDocument = new DidDocument(myKey.DidDocument.ToJObject());
+
+            // Create an encrypted message
+            var packedMessage = DComm.Pack(new PackRequest
             {
-                KeyType = KeyType.Ed25519
+                SenderKey = myExchangeKey,
+                ReceiverKey = providerExchangeKey,
+                Plaintext = new CreateWalletRequest
+                {
+                    Description = "My Cloud Wallet",
+                    Controller = myDidDocument.Id
+                }.ToByteString()
             });
 
-            // Sign something to prove ownership
-            var signed = DComm.Sign(new SignRequest
-            {
-                Key = key.Key.First(),
-                Payload = key.DidDocument.ToByteString()
-            });
+            // Invoke create wallet using encrypted message
+            // Call the server endpoint with encrypted message
+            var response = await Client.CreateWalletEncryptedAsync(packedMessage.Message.As<Pbmse.EncryptedMessage>());
 
-            // Invoke create wallet
-            var response = await Client.CreateWalletAsync(new CreateWalletRequest
+            var decryptedResponse = DComm.Unpack(new UnpackRequest
             {
-                Description = "My Cloud Wallet"
+                Message = response.As<EncryptedMessage>(),
+                ReceiverKey = myExchangeKey,
+                SenderKey = providerExchangeKey
             });
+            var createWalletResponse = CreateWalletResponse.Parser.ParseFrom(decryptedResponse.Plaintext);
 
             // This profile should be stored and supplied later
             return new WalletProfile
             {
-                WalletId = response.WalletId,
-                DidDocument = key.DidDocument,
-                Invoker = key.Key.First().Kid
+                WalletId = createWalletResponse.WalletId,
+                Capability = createWalletResponse.Capability,
+                DidDocument = myKey.DidDocument,
+                Invoker = createWalletResponse.Invoker,
+                InvokerJwk = myKey.Key.First().ToByteString()
             };
         }
+
+        /// <summary>
+        /// Set the profile that will be used for authenticated requests
+        /// </summary>
+        /// <param name="profile">The profile data</param>
+        public void SetProfile(WalletProfile profile)
+        {
+            // Create new capability invocation for this session, that
+            // will be used as authenticated header
+            var capabilityDocument = new JObject
+            {
+                { "@context", Constants.SECURITY_CONTEXT_V2_URL },
+                { "target", profile.WalletId },
+                { "proof", new JObject
+                    {
+                        { "proofPurpose", "capabilityInvocation" },
+                        { "created", DateTimeOffset.UtcNow.ToString("s") },
+                        { "capability", profile.WalletId }
+                    }
+                }
+            };
+
+            var proofResponse = LDProofs.CreateProof(new CreateProofRequest
+            {
+                Key = JsonWebKey.Parser.ParseFrom(profile.InvokerJwk),
+                Document = capabilityDocument.ToStruct(),
+                Suite = LdSuite.JcsEd25519Signature2020
+            });
+
+            // Set the auth field to the signed document by converting it back
+            // to JSON and encoding it in base64
+            CapInvocation = Convert.ToBase64String(Encoding.UTF8.GetBytes(
+                    proofResponse.SignedDocument.ToJObject().ToString()));
+        }
+
+        /// <summary>
+        /// Search the wallet for records matching the specified critetia
+        /// </summary>
+        /// <param name="query">The SQL query</param>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select 
+        /// </remarks>
+        /// <returns></returns>
+        public async Task<SearchResponse> Search(string query = "SELECT * from c")
+        {
+            var response = await Client.SearchAsync(new SearchRequest { Query = query }, GetMetadata());
+            return response;
+        }
+
+        /// <summary>
+        /// Create call metadata by setting the required authentication headers
+        /// </summary>
+        /// <returns></returns>
+        private Metadata GetMetadata() => new Metadata
+        {
+            { "Capability-Invocation", CapInvocation ?? throw new Exception("Profile not set.") }
+        };
     }
 }

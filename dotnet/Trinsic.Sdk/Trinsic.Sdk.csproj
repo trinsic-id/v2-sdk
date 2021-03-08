@@ -13,6 +13,6 @@
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs\LinkedDataProofs.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\DidCore\DidCore.csproj" />
     <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs.SecurityVocabulary\LinkedDataProofs.SecurityVocabulary.csproj" />
-    <ProjectReference Include="..\..\..\Source\Trinsic.Identity.Protobuf\Trinsic.Protobuf.csproj" />
+    <ProjectReference Include="..\..\..\server\Trinsic.Identity.Protobuf\Trinsic.Protobuf.csproj" />
   </ItemGroup>
 </Project>

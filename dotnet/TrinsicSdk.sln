@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedDataProofs.SecurityVo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedDataProofs.Zcaps", "..\..\ld-proofs-dotnet\Library\LinkedDataProofs.Zcaps\LinkedDataProofs.Zcaps.csproj", "{266F1E27-87A6-4EB7-B567-B387CC2F45B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Identity.Protobuf", "..\..\Source\Trinsic.Identity.Protobuf\Trinsic.Identity.Protobuf.csproj", "{CE8AA731-CC05-4DAE-B3AB-9F3866D189F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Identity.Protobuf", "..\..\server\Trinsic.Identity.Protobuf\Trinsic.Identity.Protobuf.csproj", "{CE8AA731-CC05-4DAE-B3AB-9F3866D189F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Sdk.Tests", "Trinsic.Sdk.Tests\Trinsic.Sdk.Tests.csproj", "{C9FA8D60-CF98-44E0-86CC-9394600B5281}"
 EndProject

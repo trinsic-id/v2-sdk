@@ -17,10 +17,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Trinsic.Sdk\Trinsic.Sdk.csproj" />
-    <ProjectReference Include="..\..\..\Source\Trinsic.Identity.Server.Tests\Trinsic.Server.Tests.csproj" />
+    <ProjectReference Include="..\..\..\ld-proofs-dotnet\Library\LinkedDataProofs.SecurityVocabulary\LinkedDataProofs.SecurityVocabulary.csproj" />
+    <ProjectReference Include="..\..\..\server\Trinsic.Identity.Server\Trinsic.Server.csproj" />
   </ItemGroup>
 </Project>
