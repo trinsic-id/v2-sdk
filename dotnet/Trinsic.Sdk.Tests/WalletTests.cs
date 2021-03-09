@@ -43,8 +43,7 @@ namespace Trinsic.Sdk.Tests
         [Fact]
         public async Task CanGetProviderConfiguration()
         {
-            var channel = GrpcChannel.ForAddress("http://localhost:5000/");
-            var client = new Wallet.WalletClient(channel);
+            var client = new Wallet.WalletClient(hostFixture.Channel);
 
             var configuration = await client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
 
@@ -83,7 +82,7 @@ namespace Trinsic.Sdk.Tests
             proofResponse.SignedDocument.Should().NotBeNull();
         }
 
-        [Fact(DisplayName = "Demo: create wallet, set profile, search records")]
+        [Fact(DisplayName = "Demo: create wallet, set profile, search records, issue credential")]
         public async Task Demo_CreateWallet_SetProfile_SearchRecords()
         {
             // Create new wallet
@@ -94,6 +93,15 @@ namespace Trinsic.Sdk.Tests
 
             // Search record responses
             var items = await service.Search();
+
+            // Issue credential
+            var unsignedDocument = new JObject
+            {
+                { "@context", "https://w3id.org/security/v3-unstable" },
+                { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
+            };
+
+            var signedDocument = await service.IssueCredential(unsignedDocument);
         }
     }
 }

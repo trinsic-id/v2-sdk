@@ -20,7 +20,7 @@ namespace Trinsic.Sdk
         public string CapInvocation;
 
         public WalletService(string serviceAddress = "http://localhost:5000")
-            : this(GrpcChannel.ForAddress(serviceAddress))
+            : this(GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions()))
         {
         }
 
@@ -28,10 +28,12 @@ namespace Trinsic.Sdk
         {
             Channel = channel;
             Client = new Wallet.WalletClient(Channel);
+            CredentialClient = new Credential.CredentialClient(Channel);
         }
 
         public GrpcChannel Channel { get; }
         public Wallet.WalletClient Client { get; }
+        public Credential.CredentialClient CredentialClient { get; }
 
         public async Task<WalletProfile> CreateWallet()
         {
@@ -114,6 +116,25 @@ namespace Trinsic.Sdk
             // to JSON and encoding it in base64
             CapInvocation = Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     proofResponse.SignedDocument.ToJObject().ToString()));
+        }
+
+        /// <summary>
+        /// Signs an input credential
+        /// </summary>
+        /// <param name="document"></param>
+        /// <returns></returns>
+        public async Task<JObject> IssueCredential(JObject document)
+        {
+            try
+            {
+                var response = await CredentialClient.IssueAsync(new IssueRequest { Document = document.ToStruct() }, GetMetadata());
+                return response.Document.ToJObject();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         /// <summary>
