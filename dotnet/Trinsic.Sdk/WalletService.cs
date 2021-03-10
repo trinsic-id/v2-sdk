@@ -152,6 +152,17 @@ namespace Trinsic.Sdk
         }
 
         /// <summary>
+        /// Insert an item into the personal wallet
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public async Task<JObject> InsertItem(JObject item)
+        {
+            var response = await Client.InsertItemAsync(new InsertItemRequest { Item = item.ToStruct() }, GetMetadata());
+            return response.Item.ToJObject();
+        }
+
+        /// <summary>
         /// Create call metadata by setting the required authentication headers
         /// </summary>
         /// <returns></returns>

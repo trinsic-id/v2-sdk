@@ -101,7 +101,10 @@ namespace Trinsic.Sdk.Tests
                 { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
             };
 
-            var signedDocument = await service.IssueCredential(unsignedDocument);
+            var issueResponse = await service.IssueCredential(unsignedDocument);
+
+            // Insert document to personal wallet
+            var insertResponse = await service.InsertItem(issueResponse);
         }
     }
 }
