@@ -105,7 +105,7 @@ namespace Trinsic.Sdk
                 }
             };
 
-            var proofResponse = LDProofs.CreateProof(new CreateProofRequest
+            var proofResponse = LDProofs.CreateProof(new DIDComm.Messaging.CreateProofRequest
             {
                 Key = JsonWebKey.Parser.ParseFrom(profile.InvokerJwk),
                 Document = capabilityDocument.ToStruct(),
@@ -156,10 +156,30 @@ namespace Trinsic.Sdk
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public async Task<JObject> InsertItem(JObject item)
+        public async Task<string> InsertItem(JObject item)
         {
             var response = await Client.InsertItemAsync(new InsertItemRequest { Item = item.ToStruct() }, GetMetadata());
-            return response.Item.ToJObject();
+            return response.ItemId;
+        }
+
+        /// <summary>
+        /// Derive a proof from an existing document in the wallet using
+        /// an input reveal document frame
+        /// </summary>
+        /// <param name="documentId"></param>
+        /// <param name="revealDocument"></param>
+        /// <returns></returns>
+        public async Task<JObject> CreateProof(string documentId, JObject revealDocument)
+        {
+            var response = await CredentialClient.CreateProofAsync(
+                request: new Services.CreateProofRequest
+                {
+                    DocumentId = documentId,
+                    RevealDocument = revealDocument.ToStruct()
+                },
+            headers: GetMetadata());
+
+            return response.ProofDocument.ToJObject();
         }
 
         /// <summary>

@@ -12,6 +12,8 @@ using DIDComm.Messaging;
 using System.Linq;
 using FluentAssertions;
 using Google.Protobuf.WellKnownTypes;
+using Microsoft.Extensions.DependencyInjection;
+using LinkedDataProofs;
 
 namespace Trinsic.Sdk.Tests
 {
@@ -71,7 +73,7 @@ namespace Trinsic.Sdk.Tests
             var key = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
             var signingKey = key.Key.First(x => x.Crv == "Ed25519");
 
-            var proofResponse = LDProofs.CreateProof(new CreateProofRequest
+            var proofResponse = LDProofs.CreateProof(new DIDComm.Messaging.CreateProofRequest
             {
                 Key = signingKey,
                 Document = capabilityDocument.ToStruct(),
@@ -104,7 +106,10 @@ namespace Trinsic.Sdk.Tests
             var issueResponse = await service.IssueCredential(unsignedDocument);
 
             // Insert document to personal wallet
-            var insertResponse = await service.InsertItem(issueResponse);
+            var itemId = await service.InsertItem(issueResponse);
+
+            // Derive proof revaling all
+            //var proof = await service.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
         }
     }
 }
