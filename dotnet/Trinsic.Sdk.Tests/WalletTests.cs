@@ -90,11 +90,10 @@ namespace Trinsic.Sdk.Tests
             // Create new wallet
             var profile = await service.CreateWallet();
 
+            profile.Should().NotBeNull();
+
             // Set the profile for the current service
             service.SetProfile(profile);
-
-            // Search record responses
-            var items = await service.Search();
 
             // Issue credential
             var unsignedDocument = new JObject
@@ -108,8 +107,23 @@ namespace Trinsic.Sdk.Tests
             // Insert document to personal wallet
             var itemId = await service.InsertItem(issueResponse);
 
+            itemId.Should().NotBeNullOrWhiteSpace();
+
+            // Search record responses
+            var items = await service.Search();
+
+            items.Should().NotBeNull();
+            items.Items.Should().HaveCountGreaterThan(0);
+
             // Derive proof revaling all
-            //var proof = await service.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
+            var proof = await service.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
+
+            proof.Should().NotBeNull();
+
+            // Verify proof document
+            var valid = await service.VerifyProof(proof);
+
+            valid.Should().BeTrue();
         }
     }
 }

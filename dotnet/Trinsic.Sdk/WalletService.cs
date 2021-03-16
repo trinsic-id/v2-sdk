@@ -183,6 +183,23 @@ namespace Trinsic.Sdk
         }
 
         /// <summary>
+        /// Verifies a proof document
+        /// </summary>
+        /// <param name="proofDocument"></param>
+        /// <returns></returns>
+        public async Task<bool> VerifyProof(JObject proofDocument)
+        {
+            var response = await CredentialClient.VerifyProofAsync(
+                request: new Services.VerifyProofRequest
+                {
+                    ProofDocument = proofDocument.ToStruct()
+                },
+                headers: GetMetadata());
+
+            return response.Valid;
+        }
+
+        /// <summary>
         /// Create call metadata by setting the required authentication headers
         /// </summary>
         /// <returns></returns>
