@@ -102,11 +102,11 @@ namespace Trinsic.Sdk
         }
 
         /// <summary>
-        /// Search the wallet for records matching the specified critetia
+        /// Search the wallet for records matching the specified criteria
         /// </summary>
         /// <param name="query">The SQL query</param>
         /// <remarks>
-        /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select 
+        /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
         /// </remarks>
         /// <returns></returns>
         public async Task<SearchResponse> Search(string query = "SELECT * from c")
