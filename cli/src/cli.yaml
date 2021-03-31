@@ -122,15 +122,6 @@ subcommands:
                     value_name: FILE
                     help: output file for your packed message
 
-  - greet:
-      about: Send greet to a server
-      version: "0.1"
-      args:
-        - message:
-            value_name: STRING
-            help: Greeting to be sent
-            takes_value: true
-
   - wallet:
       about: Wallet Service
       subcommands:

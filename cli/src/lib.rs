@@ -26,13 +26,6 @@ where
     }
 }
 
-pub static SERVER_URL: &str = "http://localhost:5000";
-pub static SECURITY_CONTEXT_V1_URL: &str = "https://w3id.org/security/v1";
-pub static SECURITY_CONTEXT_V2_URL: &str = "https://w3id.org/security/v2";
-pub static SECURITY_CONTEXT_V3_URL: &str = "https://w3id.org/security/v3-unstable";
-pub static SECURITY_PROOF_URL: &str = "https://w3id.org/security#proof";
-pub static DID_V1_URL: &str = "https://www.w3.org/ns/did/v1";
-
 pub mod utils;
 pub mod proto;
 pub use proto::pbmse as pbmse;

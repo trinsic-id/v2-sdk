@@ -1,29 +1,20 @@
-use clap::*;
 use std::fs::OpenOptions;
 use std::io::{Read, Write, BufRead, stdin, stdout};
 
+use super::super::parser::didcomm::*;
 use didcommgrpc::*;
 
-pub fn didcomm(args: &ArgMatches<'_>) {
-    if args.is_present("pack") {
-        pack(&args.subcommand_matches("pack").expect("Error packing"));
-    }
-
-    else if args.is_present("unpack") {
-        unpack(&args.subcommand_matches("unpack").expect("Error unpacking"));
-    }
-
-    else if args.is_present("sign") {
-        sign(&args.subcommand_matches("sign").expect("Error signing"));
-    }
-
-    else if args.is_present("verify") {
-        verify(&args.subcommand_matches("verify").expect("Error verifying"));
+pub fn execute(args: &Command) {
+    match args {
+        Command::Pack(args) => pack(args),
+        Command::Unpack(args) => unpack(args),
+        Command::Sign(args) => sign(args),
+        Command::Verify(args) => verify(args),
     }
 }
 
-fn pack(args: &ArgMatches<'_>) {
-    let sender_key : JsonWebKey = match args.value_of("sender_key") {
+fn pack(args: &PackArgs) {
+    let sender_key : JsonWebKey = match args.sender_key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open sender_key file");
             let mut key = String::new();
@@ -33,7 +24,7 @@ fn pack(args: &ArgMatches<'_>) {
         None => panic!("No sender key provided"), // should be unreachable statement
     };
 
-    let receiver_key : JsonWebKey = match args.value_of("receiver_key") {
+    let receiver_key : JsonWebKey = match args.receiver_key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open receiver_key file");
             let mut key = String::new();
@@ -43,7 +34,7 @@ fn pack(args: &ArgMatches<'_>) {
         None => panic!("No receiver key provided"), // should be unreachable statement
     };
 
-    let associated_data = match args.value_of("associated_data") {
+    let associated_data = match args.associated_data {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open associated_data file");
             let mut buffer = Vec::new();
@@ -53,7 +44,7 @@ fn pack(args: &ArgMatches<'_>) {
         None => vec![],
     };
 
-    let plaintext = match args.value_of("plaintext") {
+    let plaintext = match args.plaintext {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open plaintext file");
             let mut key = String::new();
@@ -69,7 +60,7 @@ fn pack(args: &ArgMatches<'_>) {
         }
     };
 
-    let encryption_mode = match args.value_of("encryption_mode") {
+    let encryption_mode = match args.encryption_mode {
         Some(mode) => match mode {
             "direct" => 0,
             "content_encryption_key" => 1,
@@ -78,7 +69,7 @@ fn pack(args: &ArgMatches<'_>) {
         None => 0,
     };
 
-    let encryption_algorithm = match args.value_of("encryption_algorithm") {
+    let encryption_algorithm = match args.encryption_algorithm {
         Some(alg) => match alg {
             "xchacha20poly1305" => 0,
             "aes_gcm" => 1,
@@ -98,7 +89,7 @@ fn pack(args: &ArgMatches<'_>) {
 
     let res = DIDComm::pack(&req).expect("Error packing message");
 
-    match args.value_of("out") {
+    match args.out {
         Some(out) => {
             let mut file = OpenOptions::new().write(true).create(true).open(out).expect("Unable to open output file for writing");
             file.write_all(&res.message.expect("Malformed pack response").to_vec()).expect("Unable to write to output file");
@@ -107,8 +98,8 @@ fn pack(args: &ArgMatches<'_>) {
     };
 }
 
-fn unpack(args: &ArgMatches<'_>) {
-    let sender_key : JsonWebKey = match args.value_of("sender_key") {
+fn unpack(args: &UnpackArgs) {
+    let sender_key : JsonWebKey = match args.sender_key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open sender_key file");
             let mut key = String::new();
@@ -118,7 +109,7 @@ fn unpack(args: &ArgMatches<'_>) {
         None => panic!("No sender key provided"), // should be unreachable statement
     };
 
-    let receiver_key : JsonWebKey = match args.value_of("receiver_key") {
+    let receiver_key : JsonWebKey = match args.receiver_key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open receiver_key file");
             let mut key = String::new();
@@ -128,7 +119,7 @@ fn unpack(args: &ArgMatches<'_>) {
         None => panic!("No receiver key provided"), // should be unreachable statement
     };
 
-    let encrypted_message : EncryptedMessage = match args.value_of("encrypted_message") {
+    let encrypted_message : EncryptedMessage = match args.encrypted_message {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open encrypted_message file");
             let mut message : Vec::<u8> = Vec::new();
@@ -153,8 +144,8 @@ fn unpack(args: &ArgMatches<'_>) {
     println!("{}", message);
 }
 
-fn sign(args: &ArgMatches<'_>) {
-    let key : JsonWebKey = match args.value_of("key") {
+fn sign(args: &SignArgs) {
+    let key : JsonWebKey = match args.key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("unable to open key file");
             let mut key = String::new();
@@ -164,7 +155,7 @@ fn sign(args: &ArgMatches<'_>) {
         None => panic!("No sender key provided"), // should be unreachable statement
     };
 
-    let payload = match args.value_of("payload") {
+    let payload = match args.payload {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open payload file");
             let mut payload = String::new();
@@ -186,7 +177,7 @@ fn sign(args: &ArgMatches<'_>) {
 
     let res = DIDComm::sign(&req).expect("Unable to sign message");
 
-    match args.value_of("out") {
+    match args.out {
         Some(out) => {
             let mut file = OpenOptions::new().write(true).create(true).open(out).expect("Unable to open output file");
             file.write_all(&res.message.expect("Malformed response").to_vec()).expect("Unable to write to output file");
@@ -195,8 +186,8 @@ fn sign(args: &ArgMatches<'_>) {
     };
 }
 
-fn verify(args: &ArgMatches<'_>) {
-    let key : JsonWebKey = match args.value_of("key") {
+fn verify(args: &VerifyArgs) {
+    let key : JsonWebKey = match args.key {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open key file");
             let mut key = String::new();
@@ -206,7 +197,7 @@ fn verify(args: &ArgMatches<'_>) {
         None => panic!("No key provided"), // should be unreachable statement
     };
 
-    let signed_message : SignedMessage = match args.value_of("signed_message") {
+    let signed_message : SignedMessage = match args.signed_message {
         Some(input) => {
             let mut file = OpenOptions::new().read(true).open(input).expect("Unable to open signed message file");
             let mut message : Vec::<u8> = Vec::new();

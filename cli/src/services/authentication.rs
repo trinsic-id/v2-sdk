@@ -1,4 +1,4 @@
-use clap::ArgMatches;
+/*use clap::ArgMatches;
 
 pub fn authentication(args: &ArgMatches<'_>) {
     if args.is_present("acquire_token") {
@@ -9,4 +9,4 @@ pub fn authentication(args: &ArgMatches<'_>) {
 #[tokio::main]
 async fn acquire_token(_args: &ArgMatches<'_>) {
     println!("Not yet implemented");
-}
+}*/

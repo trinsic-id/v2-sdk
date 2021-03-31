@@ -1,42 +1,27 @@
-use clap::ArgMatches;
 use cli::proto::trinsic_services::{wallet_client::WalletClient, CreateWalletRequest, WalletProfile, GetProviderConfigurationRequest, SearchRequest, InsertItemRequest};
-use cli::SERVER_URL;
-use serde_json::json;
-use chrono::{DateTime, Local, Utc};
-use cli::utils::{read_file, read_file_as_string, write_file};
+use cli::utils::{read_file, read_file_as_string, write_file, SERVER_URL, get_capability_document};
 use tonic::{Request, transport::Channel};
 use cli::proto::google_protobuf::Struct;
 
 use std::io::{stdin, stdout};
 
 use didcommgrpc::*;
+use super::super::parser::wallet::*;
 
-pub fn wallet(args: &ArgMatches<'_>) {
-    if args.is_present("get_provider_configuration") {
-        get_provider_configuration(&args.subcommand_matches("get_provider_configuration").expect("Unable to get provider configuration"));
+pub fn execute(args: &Command) {
+    match args {
+        Command::Create(args) => create(args),
+        Command::Search(args) => search(args),
+        Command::InsertItem(args) => insert_item(args),
+        Command::SetProfile(args) => set_profile(args),
+        Command::GetProviderConfiguration => get_provider_configuration(),
+        _ => panic!("not implemented"),
     }
-    else if args.is_present("create") {
-        create(&args.subcommand_matches("create").expect("Unable to create wallet"));
-    }
-    else if args.is_present("search") {
-        search(&args.subcommand_matches("search").expect("Unable to search"));
-    }
-    else if args.is_present("insert_item") {
-        insert_item(&args.subcommand_matches("insert_item").expect("Unable to insert item"));
-    }
-    else if args.is_present("grant_access") {
-        grant_access(&args.subcommand_matches("grant_access").expect("Unable to grant access"));
-    }
-    else if args.is_present("revoke_access") {
-        revoke_access(&args.subcommand_matches("revoke_access").expect("Unable to revoke access"));
-    }
-    else if args.is_present("set_profile") {
-        set_profile(&args.subcommand_matches("set_profile").expect("Unable to set profile"));
-    }
+    println!("Wallet")
 }
 
 #[tokio::main]
-async fn get_provider_configuration(_args: &ArgMatches<'_>) {
+async fn get_provider_configuration() {
     let mut client = WalletClient::connect(SERVER_URL).await.expect("Unable to connect to server");
     let request = tonic::Request::new(GetProviderConfigurationRequest {});
     let response = client.get_provider_configuration(request).await.expect("Get Provider Configuration failed");
@@ -44,20 +29,18 @@ async fn get_provider_configuration(_args: &ArgMatches<'_>) {
 }
 
 #[tokio::main]
-async fn create(args: &ArgMatches<'_>) {
-    let key = match args.value_of("key") {
+async fn create(args: &CreateArgs) {
+    let key = match &args.key {
         Some(filename) => serde_json::from_str(&read_file_as_string(Some(filename))).expect("Unable to parse key"),
-        None => {
-            DIDKey::generate(&GenerateKeyRequest {
+        None => DIDKey::generate(&GenerateKeyRequest {
                 seed: vec![],
                 key_type: 0,
-            }).unwrap()
-        },
+            }).unwrap(),
     };
 
     let did_doc_bytes = &key.did_document.unwrap().to_vec();
 
-    let description = match args.value_of("description") {
+    let description = match &args.description {
         Some(desc) => desc.to_string(),
         None => "My Cloud Wallet".to_string(),
     };
@@ -79,13 +62,12 @@ async fn create(args: &ArgMatches<'_>) {
     };
 
     use cli::MessageFormatter;
-
-    write_file(args.value_of("out"), &profile.to_vec());
+    write_file(args.out, &profile.to_vec());
 }
 
 #[tokio::main]
-async fn search(args: &ArgMatches<'_>) {
-    let query = match args.value_of("query") {
+async fn search(args: &SearchArgs) {
+    let query = match args.query {
         Some(query) => query.to_string(),
         None => {
             let mut query = String::new();
@@ -103,17 +85,22 @@ async fn search(args: &ArgMatches<'_>) {
         req.metadata_mut().insert("capability-invocation", capability_invocation.parse().unwrap());
         Ok(req)
     });
+
     let request = tonic::Request::new(SearchRequest {
         query,
     });
+
     let response = client.search(request).await.expect("Get Provider Configuration failed").into_inner();
     println!("{}", &serde_json::to_string_pretty(&response.items).unwrap());
 }
 
 #[tokio::main]
-async fn insert_item(args: &ArgMatches<'_>) {
-    let item_type = args.value_of("type").expect("Please include item type").to_string();
-    let item: didcommgrpc::proto::google_protobuf::Struct = serde_json::from_str(&read_file_as_string(args.value_of("item"))).expect("Unable to parse Item");
+async fn insert_item(args: &InsertItemArgs) {
+    let item_type = match args.item_type {
+        Some(it) => it,
+        None => panic!("Please include item type")
+    };
+    let item: didcommgrpc::proto::google_protobuf::Struct = serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 
     use cli::MessageFormatter;
@@ -126,51 +113,36 @@ async fn insert_item(args: &ArgMatches<'_>) {
         req.metadata_mut().insert("capability-invocation", capability_invocation.parse().unwrap());
         Ok(req)
     });
-
-    let request = InsertItemRequest {
-        item: Some(item),
-        item_type,
-    };
     
-
-    let response = client.insert_item(request).await.expect("Insert item failed").into_inner();
+    let response = client.insert_item(InsertItemRequest {
+        item: Some(item),
+        item_type: item_type.to_string(),
+    }).await.expect("Insert item failed").into_inner();
 
     println!("{:?}", response);
 }
 
 #[tokio::main]
-async fn grant_access(_args: &ArgMatches<'_>) {
+async fn grant_access() {
     println!("Not yet implemented");
 }
 
 #[tokio::main]
-async fn revoke_access(_args: &ArgMatches<'_>) {
+async fn revoke_access() {
     println!("Not yet implemented");
 }
 
-fn set_profile(args: &ArgMatches<'_>) {
-
+fn set_profile(args: &SetProfileArgs) {
     use cli::MessageFormatter;
-
-    let wallet_profile: WalletProfile = WalletProfile::from_vec(&read_file(args.value_of("profile"))).expect("Invalid wallet profile");
-
-    let capability_document = json!({
-        "@context" : cli::SECURITY_CONTEXT_V2_URL,
-        "target" : wallet_profile.wallet_id,
-        "proof" : {
-            "proofPurpose" : "capabilityInvocation",
-            "created" : DateTime::<Utc>::from_utc(Local::now().naive_utc(), Utc).format("%Y-%m-%dT%H:%M:%S").to_string(),
-            "capability" : wallet_profile.wallet_id
-        }
-    });
+    let wallet_profile: WalletProfile = WalletProfile::from_vec(&read_file(args.profile)).expect("Invalid wallet profile");
+    let capability_document = get_capability_document(&wallet_profile.wallet_id);
 
     let res = LdProofs::create_proof(&CreateProofRequest {
         key: Some(JsonWebKey::from_vec(&wallet_profile.invoker_jwk).expect("Invalid key")),
-        document: Some(serde_json::from_str(&capability_document.to_string()).expect("Invalid capability document")),
+        document: Some(serde_json::from_str(&capability_document).expect("Invalid capability document")),
         suite: LdSuite::JcsEd25519Signature2020 as i32,
     }).expect("Error creating proof");
 
     let cap_invocation = base64::encode(serde_json::to_string(&res.signed_document).expect("Unable to serialize signed document as json"));
-
-    write_file(args.value_of("out"), &cap_invocation.as_bytes().to_vec());
+    write_file(args.out, &cap_invocation.as_bytes().to_vec());
 }
