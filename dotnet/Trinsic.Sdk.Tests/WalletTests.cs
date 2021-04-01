@@ -20,19 +20,21 @@ namespace Trinsic.Sdk.Tests
     [Collection(HostFixture.CollectionDefinitionName)]
     public class WalletTests
     {
-        private readonly WalletService service;
+        private readonly WalletService walletService;
+        private readonly ProviderService providerService;
         private readonly HostFixture hostFixture;
 
         public WalletTests(HostFixture hostFixture)
         {
-            service = new WalletService(hostFixture.Channel);
+            walletService = new WalletService(hostFixture.Channel);
+            providerService = new ProviderService(hostFixture.Channel);
             this.hostFixture = hostFixture;
         }
 
         [Fact]
         public async Task CreateWalletProfile()
         {
-            var profile = await service.CreateWallet();
+            var profile = await walletService.CreateWallet();
 
             var homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             Directory.CreateDirectory(Path.Combine(homePath, ".trinsic"));
@@ -88,12 +90,12 @@ namespace Trinsic.Sdk.Tests
         public async Task Demo_CreateWallet_SetProfile_SearchRecords()
         {
             // Create new wallet
-            var profile = await service.CreateWallet();
+            var profile = await walletService.CreateWallet();
 
             profile.Should().NotBeNull();
 
             // Set the profile for the current service
-            service.SetProfile(profile);
+            walletService.SetProfile(profile);
 
             // Issue credential
             var unsignedDocument = new JObject
@@ -102,28 +104,52 @@ namespace Trinsic.Sdk.Tests
                 { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
             };
 
-            var issueResponse = await service.IssueCredential(unsignedDocument);
+            var issueResponse = await walletService.IssueCredential(unsignedDocument);
 
             // Insert document to personal wallet
-            var itemId = await service.InsertItem(issueResponse);
+            var itemId = await walletService.InsertItem(issueResponse);
 
             itemId.Should().NotBeNullOrWhiteSpace();
 
             // Search record responses
-            var items = await service.Search();
+            var items = await walletService.Search();
 
             items.Should().NotBeNull();
             items.Items.Should().HaveCountGreaterThan(0);
 
             // Derive proof revaling all
-            var proof = await service.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
+            var proof = await walletService.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
 
             proof.Should().NotBeNull();
 
             // Verify proof document
-            var valid = await service.VerifyProof(proof);
+            var valid = await walletService.VerifyProof(proof);
 
             valid.Should().BeTrue();
+        }
+
+        [Fact(DisplayName = "Create wallet with provider invitation")]
+        public async Task CreateWalletWithInvite()
+        {
+            var providerProfile = await walletService.CreateWallet();
+            providerService.SetProfile(providerProfile);
+
+            // Provider creates initial wallet for Alice
+            var invitationResponse = await providerService.InviteParticipant(new InviteRequest
+            {
+                Description = "Alice's Wallet",
+                Email = "alice@example.com"
+            });
+
+            // Alice accepts the invitation and creates the wallet
+            var createResponse = await walletService.CreateWallet(invitationResponse.InvitationId);
+            walletService.SetProfile(createResponse);
+
+            // Alice's searches for wallet records
+            var search = await walletService.Search();
+
+            search.Should().NotBeNull();
+            search.Items.Should().BeEmpty();
         }
     }
 }

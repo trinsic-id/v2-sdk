@@ -27,16 +27,16 @@ namespace Trinsic.Sdk
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<OnboardResponse> Onboard(OnboardRequest request)
+        public async Task<InviteResponse> InviteParticipant(InviteRequest request)
         {
-            if (request.ContactMethodCase == OnboardRequest.ContactMethodOneofCase.None)
+            if (request.ContactMethodCase == InviteRequest.ContactMethodOneofCase.None)
             {
                 throw new Exception("Contact method must be set.");
             }
 
             try
             {
-                var response = await ProviderClient.OnboardAsync(request, GetMetadata());
+                var response = await ProviderClient.InviteAsync(request, GetMetadata());
                 return response;
             }
             catch (Exception e)
@@ -47,20 +47,20 @@ namespace Trinsic.Sdk
         }
 
         /// <summary>
-        /// Gets the status of the onboarding for a given reference ID
+        /// Gets the status of the onboarding invitation for a given invitation ID
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<OnboardStatusResponse> OnboardStatus(OnboardStatusRequest request)
+        public async Task<InvitationStatusResponse> InvitationStatus(InvitationStatusRequest request)
         {
-            if (string.IsNullOrWhiteSpace(request.OnboardingReferenceId))
+            if (string.IsNullOrWhiteSpace(request.InvitationId))
             {
                 throw new Exception("Onboarding reference ID must be set.");
             }
 
             try
             {
-                var response = await ProviderClient.OnboardStatusAsync(request, GetMetadata());
+                var response = await ProviderClient.InvitationStatusAsync(request, GetMetadata());
                 return response;
             }
             catch (Exception e)

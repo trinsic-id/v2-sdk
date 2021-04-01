@@ -33,7 +33,7 @@ namespace Trinsic.Sdk
         public Wallet.WalletClient Client { get; }
         public Credential.CredentialClient CredentialClient { get; }
 
-        public async Task<WalletProfile> CreateWallet()
+        public async Task<WalletProfile> CreateWallet(string invitationId = null)
         {
             // Fetch Server Configuration and find key to use
             // for generating shared secret for authenticated encryption
@@ -55,7 +55,8 @@ namespace Trinsic.Sdk
                 Plaintext = new CreateWalletRequest
                 {
                     Description = "My Cloud Wallet",
-                    Controller = myDidDocument.Id
+                    Controller = myDidDocument.Id,
+                    InvitationId = invitationId ?? string.Empty
                 }.ToByteString()
             });
 
