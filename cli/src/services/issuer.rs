@@ -1,6 +1,6 @@
 /*use clap::ArgMatches;
-use cli::proto::trinsic_services::{credential_client::CredentialClient};
-use cli::SERVER_URL;
+use okapi::proto::trinsic_services::{credential_client::CredentialClient};
+use okapi::SERVER_URL;
 use std::fs::OpenOptions;
 use std::io::{Read, Write, stdin, stdout};
 

@@ -2,22 +2,30 @@ use clap::ArgMatches;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("pack") {
-        return pack(&args.subcommand_matches("pack").expect("Error parsing request"));
-    }
-
-    else if args.is_present("unpack") {
-        return unpack(&args.subcommand_matches("unpack").expect("Error parsing request"));
-    }
-
-    else if args.is_present("sign") {
-        return sign(&args.subcommand_matches("sign").expect("Error parsing request"));
-    }
-
-    else if args.is_present("verify") {
-        return verify(&args.subcommand_matches("verify").expect("Error parsing request"));
-    }
-
-    else {
+        return pack(
+            &args
+                .subcommand_matches("pack")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("unpack") {
+        return unpack(
+            &args
+                .subcommand_matches("unpack")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("sign") {
+        return sign(
+            &args
+                .subcommand_matches("sign")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("verify") {
+        return verify(
+            &args
+                .subcommand_matches("verify")
+                .expect("Error parsing request"),
+        );
+    } else {
         panic!("Unrecognized command");
     }
 }
@@ -93,6 +101,5 @@ pub struct SignArgs<'a> {
 #[derive(Debug)]
 pub struct VerifyArgs<'a> {
     pub key: Option<&'a str>,
-    pub signed_message: Option<&'a str>
+    pub signed_message: Option<&'a str>,
 }
-

@@ -26,9 +26,9 @@ where
     }
 }
 
-pub mod utils;
 pub mod proto;
-pub use proto::pbmse as pbmse;
+pub mod utils;
+pub use proto::pbmse;
 
 pub mod google {
     pub mod protobuf {

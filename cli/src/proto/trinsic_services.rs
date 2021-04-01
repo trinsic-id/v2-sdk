@@ -289,6 +289,10 @@ pub struct CreateWalletRequest {
     pub controller: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
+    /// (Optional) Supply an invitation id to associate this caller profile
+    /// to an existing cloud wallet.
+    #[prost(string, tag = "3")]
+    pub invitation_id: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateWalletResponse {

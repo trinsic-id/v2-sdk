@@ -1,5 +1,5 @@
-// JWS
-
+/// JWS
+/// Protocol buffer message signing and encryption
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignedMessage {
     #[prost(bytes = "vec", tag = "1")]

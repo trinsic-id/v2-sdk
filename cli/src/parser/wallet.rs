@@ -2,27 +2,48 @@ use clap::ArgMatches;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("get_provider_configuration") {
-        return get_provider_configuration(&args.subcommand_matches("get_provider_configuration").expect("Error parsing request"));
-    }
-    else if args.is_present("create") {
-        return create(&args.subcommand_matches("create").expect("Error parsing request"));
-    }
-    else if args.is_present("search") {
-        return search(&args.subcommand_matches("search").expect("Error parsing request"));
-    }
-    else if args.is_present("insert_item") {
-        return insert_item(&args.subcommand_matches("insert_item").expect("Error parsing request"));
-    }
-    else if args.is_present("grant_access") {
-        return grant_access(&args.subcommand_matches("grant_access").expect("Error parsing request"));
-    }
-    else if args.is_present("revoke_access") {
-        return revoke_access(&args.subcommand_matches("revoke_access").expect("Error parsing request"));
-    }
-    else if args.is_present("set_profile") {
-        return set_profile(&args.subcommand_matches("set_profile").expect("Error parsing request"));
-    }
-    else {
+        return get_provider_configuration(
+            &args
+                .subcommand_matches("get_provider_configuration")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("create") {
+        return create(
+            &args
+                .subcommand_matches("create")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("search") {
+        return search(
+            &args
+                .subcommand_matches("search")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("insert_item") {
+        return insert_item(
+            &args
+                .subcommand_matches("insert_item")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("grant_access") {
+        return grant_access(
+            &args
+                .subcommand_matches("grant_access")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("revoke_access") {
+        return revoke_access(
+            &args
+                .subcommand_matches("revoke_access")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("set_profile") {
+        return set_profile(
+            &args
+                .subcommand_matches("set_profile")
+                .expect("Error parsing request"),
+        );
+    } else {
         panic!("Unrecognized command")
     }
 }
@@ -35,13 +56,13 @@ fn create<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
             Some(_) => true,
             None => false,
         },
-        key: args.value_of("key")
+        key: args.value_of("key"),
     })
 }
 
 fn search<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Search(SearchArgs {
-        query: args.value_of("query")
+        query: args.value_of("query"),
     })
 }
 
@@ -87,7 +108,7 @@ pub struct CreateArgs<'a> {
     pub description: Option<&'a str>,
     pub out: Option<&'a str>,
     pub encrypted: bool,
-    pub key: Option<&'a str>
+    pub key: Option<&'a str>,
 }
 
 #[derive(Debug)]

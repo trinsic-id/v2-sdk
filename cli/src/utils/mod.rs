@@ -1,8 +1,8 @@
-use std::fs::OpenOptions;
-use std::io::{Read, Write, stdin, stdout};
-use std::str;
-use serde_json::json;
 use chrono::{DateTime, Local, Utc};
+use serde_json::json;
+use std::fs::OpenOptions;
+use std::io::{stdin, stdout, Read, Write};
+use std::str;
 
 pub static SERVER_URL: &str = "http://localhost:5000";
 pub static SECURITY_CONTEXT_V1_URL: &str = "https://w3id.org/security/v1";
@@ -13,33 +13,42 @@ pub static DID_V1_URL: &str = "https://www.w3.org/ns/did/v1";
 
 pub fn read_file(filename: Option<&str>) -> Vec<u8> {
     match filename {
-        Some(path) =>  {
-            let mut file = OpenOptions::new().read(true).open(path).expect("Unable to open file");
-            let mut data : Vec::<u8> = Vec::new();
+        Some(path) => {
+            let mut file = OpenOptions::new()
+                .read(true)
+                .open(path)
+                .expect("Unable to open file");
+            let mut data: Vec<u8> = Vec::new();
             file.read_to_end(&mut data).expect("Unable to read file");
             data
-        },
+        }
         None => {
-            let mut data : Vec::<u8> = Vec::new();
+            let mut data: Vec<u8> = Vec::new();
             stdin().read_to_end(&mut data).expect("Unable to read file");
             data
-        },
+        }
     }
 }
 
 pub fn read_file_as_string(filename: Option<&str>) -> String {
-    str::from_utf8(&read_file(filename)).expect("Unable to read file as utf 8").to_string()
+    str::from_utf8(&read_file(filename))
+        .expect("Unable to read file as utf 8")
+        .to_string()
 }
 
 pub fn write_file(filename: Option<&str>, data: &Vec<u8>) {
     match filename {
         Some(out) => {
-            let mut file = OpenOptions::new().write(true).create(true).open(out).expect("Unable to open file");
+            let mut file = OpenOptions::new()
+                .write(true)
+                .create(true)
+                .open(out)
+                .expect("Unable to open file");
             file.write_all(&data).expect("Unable to write to file");
-        },
+        }
         None => {
             stdout().write_all(&data).expect("Unable to write to file");
-        },
+        }
     };
 }
 

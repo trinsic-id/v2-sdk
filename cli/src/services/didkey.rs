@@ -1,7 +1,7 @@
-use cli::utils::write_file;
-use didcommgrpc::DIDKey;
-use didcommgrpc::proto::didcomm_messaging::{GenerateKeyRequest, ResolveRequest};
 use super::super::parser::didkey::*;
+use didcommgrpc::proto::didcomm_messaging::{GenerateKeyRequest, ResolveRequest};
+use didcommgrpc::DIDKey;
+use okapi::utils::write_file;
 
 pub fn execute(args: &Command) {
     match args {
@@ -26,8 +26,11 @@ fn generate_key(args: &GenerateArgs) {
     let res = DIDKey::generate(&GenerateKeyRequest {
         seed: vec![],
         key_type: key_type,
-    }).expect("Error Generating DIDKey");
-    let key = serde_json::to_string_pretty(&res.key[0]).expect("Error serializing DIDKey response to JSON") + "\n";
+    })
+    .expect("Error Generating DIDKey");
+    let key = serde_json::to_string_pretty(&res.key[0])
+        .expect("Error serializing DIDKey response to JSON")
+        + "\n";
 
     write_file(args.out, &key.as_bytes().to_vec());
 }
@@ -35,7 +38,7 @@ fn generate_key(args: &GenerateArgs) {
 fn resolve(args: &ResolveArgs) {
     let uri = match args.uri {
         Some(uri) => uri,
-        None => panic!("No uri provided")
+        None => panic!("No uri provided"),
     };
 
     let req = ResolveRequest {
@@ -44,7 +47,13 @@ fn resolve(args: &ResolveArgs) {
 
     let res = DIDKey::resolve(&req).expect("Error resolving DID");
 
-    println!("{}", serde_json::to_string_pretty(&res.did_document).expect("Error serializing DID document to JSON"));
-    println!("{}", serde_json::to_string_pretty(&res.keys[0]).expect("Error serializing key to JSON"));
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&res.did_document)
+            .expect("Error serializing DID document to JSON")
+    );
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&res.keys[0]).expect("Error serializing key to JSON")
+    );
 }
-

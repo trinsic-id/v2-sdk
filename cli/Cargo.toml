@@ -1,5 +1,5 @@
 [package]
-name = "cli"
+name = "okapi"
 version = "0.1.0"
 authors = ["Jace Kandare <jace.kandare@yahoo.com>"]
 edition = "2018"
@@ -19,3 +19,11 @@ base64 = "0.13.0"
 [build-dependencies]
 tonic-build = "0.4"
 prost-build = "0.7"
+
+[[bin]]
+name = "okapi"
+path = "src/main.rs"
+
+[lib]
+name = "okapi"
+path = "src/lib.rs"

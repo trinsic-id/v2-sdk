@@ -1,6 +1,6 @@
 use clap::ArgMatches;
-use cli::proto::greet::{HelloRequest, greeter_client::GreeterClient};
-use cli::SERVER_URL;
+use okapi::proto::greet::{HelloRequest, greeter_client::GreeterClient};
+use okapi::SERVER_URL;
 
 #[tokio::main]
 pub async fn greet(_args: &ArgMatches<'_>) {

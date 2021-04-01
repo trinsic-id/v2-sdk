@@ -2,14 +2,18 @@ use clap::ArgMatches;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("generate") {
-        return generate_key(&args.subcommand_matches("generate").expect("Error parsing request"));
-    }
-
-    else if args.is_present("resolve") {
-        return resolve(&args.subcommand_matches("resolve").expect("Error parsing request"));
-    }
-    
-    else {
+        return generate_key(
+            &args
+                .subcommand_matches("generate")
+                .expect("Error parsing request"),
+        );
+    } else if args.is_present("resolve") {
+        return resolve(
+            &args
+                .subcommand_matches("resolve")
+                .expect("Error parsing request"),
+        );
+    } else {
         panic!("Unrecognized command");
     }
 }
@@ -36,10 +40,10 @@ pub enum Command<'a> {
 #[derive(Debug)]
 pub struct GenerateArgs<'a> {
     pub out: Option<&'a str>,
-    pub kty: Option<&'a str>
+    pub kty: Option<&'a str>,
 }
 
 #[derive(Debug)]
 pub struct ResolveArgs<'a> {
-    pub uri: Option<&'a str>
+    pub uri: Option<&'a str>,
 }

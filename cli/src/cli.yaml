@@ -1,7 +1,7 @@
-name: cli-sdk
+name: okapi
 version: "1.0"
 author: Jace K. <Jace@trinsic.id>
-about: Run basic sdk commands from command line
+about: Command line interface for Okapi Core
 subcommands:
   - didkey:
       about: didkey commands
@@ -198,7 +198,7 @@ subcommands:
       subcommands:
         - issue:
             about: Issue a credential
-            version: "0.1" 
+            version: "0.1"
         - create_proof:
             about: Create a proof
             version: "0.1"
