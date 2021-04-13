@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
@@ -114,6 +114,7 @@ namespace Trinsic.Sdk
         {
             var response = await Client.SearchAsync(new SearchRequest { Query = query }, GetMetadata());
             return response;
+            
         }
 
         /// <summary>
