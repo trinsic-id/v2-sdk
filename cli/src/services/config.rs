@@ -8,6 +8,10 @@ use tonic::{Interceptor, Request};
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
 pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "http://localhost:5000/";
+#[cfg(not(test))]
+pub static CONFIG_FILENAME: &str = "okapi.yaml";
+#[cfg(test)]
+pub static CONFIG_FILENAME: &str = "okapi.test.yaml";
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct Config {
@@ -77,7 +81,7 @@ impl Config {
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
         // Use the user's home directory to store configuration files and profile data
-        let config_file = data_path().join("okapi.yaml");
+        let config_file = data_path().join(CONFIG_FILENAME);
 
         // If a default file is not found, create one with default configuration
         if !Path::new(&config_file).exists() {
@@ -93,7 +97,7 @@ impl Config {
     }
 
     pub fn save(&self) -> Result<(), Error> {
-        let config_file = data_path().join("okapi.yaml");
+        let config_file = data_path().join(CONFIG_FILENAME);
 
         update_file(&config_file, self)
     }

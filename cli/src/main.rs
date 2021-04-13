@@ -28,12 +28,17 @@ fn process(yaml: &Yaml, matches: ArgMatches) {
     }
 }
 
-#[test]
-fn run_custom_command() {
-    let yaml = load_yaml!("cli.yaml");
-    let matches = App::from_yaml(yaml)
-        .get_matches_from_safe(vec!["okapi", "config", "--server-address", "example.com"])
-        .unwrap();
+#[cfg(test)]
+mod test {
+    use super::*;
 
-    process(yaml, matches)
+    #[test]
+    fn run_custom_command() {
+        let yaml = load_yaml!("cli.yaml");
+        let matches = App::from_yaml(yaml)
+            .get_matches_from_safe(vec!["okapi", "config", "--server-address", "example.com"])
+            .unwrap();
+
+        process(yaml, matches)
+    }
 }
