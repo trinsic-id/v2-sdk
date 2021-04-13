@@ -52,10 +52,7 @@ fn create<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Create(CreateArgs {
         description: args.value_of("description"),
         out: args.value_of("out"),
-        encrypted: match args.value_of("encrypted") {
-            Some(_) => true,
-            None => false,
-        },
+        encrypted: args.value_of("encrypted").is_some(),
         key: args.value_of("key"),
     })
 }
@@ -92,7 +89,7 @@ fn get_provider_configuration<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::GetProviderConfiguration
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Command<'a> {
     Create(CreateArgs<'a>),
     Search(SearchArgs<'a>),
@@ -103,7 +100,7 @@ pub enum Command<'a> {
     GetProviderConfiguration,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct CreateArgs<'a> {
     pub description: Option<&'a str>,
     pub out: Option<&'a str>,
@@ -111,18 +108,18 @@ pub struct CreateArgs<'a> {
     pub key: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct SearchArgs<'a> {
     pub query: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct InsertItemArgs<'a> {
     pub item_type: Option<&'a str>,
     pub item: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct SetProfileArgs<'a> {
     pub out: Option<&'a str>,
     pub profile: Option<&'a str>,

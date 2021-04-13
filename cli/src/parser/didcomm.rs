@@ -65,7 +65,7 @@ fn verify<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Command<'a> {
     Pack(PackArgs<'a>),
     Unpack(UnpackArgs<'a>),
@@ -73,7 +73,7 @@ pub enum Command<'a> {
     Verify(VerifyArgs<'a>),
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct PackArgs<'a> {
     pub sender_key: Option<&'a str>,
     pub receiver_key: Option<&'a str>,
@@ -84,21 +84,21 @@ pub struct PackArgs<'a> {
     pub out: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct UnpackArgs<'a> {
     pub sender_key: Option<&'a str>,
     pub receiver_key: Option<&'a str>,
     pub encrypted_message: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct SignArgs<'a> {
     pub key: Option<&'a str>,
     pub payload: Option<&'a str>,
     pub out: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct VerifyArgs<'a> {
     pub key: Option<&'a str>,
     pub signed_message: Option<&'a str>,

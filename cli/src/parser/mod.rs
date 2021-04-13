@@ -1,42 +1,51 @@
 use clap::ArgMatches;
 
+pub mod config;
 pub mod didcomm;
 pub mod didkey;
 pub mod wallet;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
     if args.is_present("didkey") {
-        return Service::DIDKey(didkey::parse(
+        Service::DIDKey(didkey::parse(
             &args
                 .subcommand_matches("didkey")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("didcomm") {
-        return Service::DIDComm(didcomm::parse(
+        Service::DIDComm(didcomm::parse(
             &args
                 .subcommand_matches("didcomm")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("wallet") {
-        return Service::Wallet(wallet::parse(
+        Service::Wallet(wallet::parse(
             &args
                 .subcommand_matches("wallet")
                 .expect("Error parsing request"),
-        ));
+        ))
+    } else if args.is_present("config") {
+        Service::Config(config::parse(
+            &args
+                .subcommand_matches("config")
+                .expect("Error parsing request"),
+        ))
     } else if args.is_present("issuer") {
-        return Service::Issuer;
+        Service::Issuer
     } else if args.is_present("authentication") {
-        return Service::Authentication;
+        Service::Authentication
     } else {
-        panic!("Unrecognized Command")
+        Service::Unknown
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Service<'a> {
     DIDComm(didcomm::Command<'a>),
     DIDKey(didkey::Command<'a>),
     Wallet(wallet::Command<'a>),
+    Config(config::Command<'a>),
     Issuer,
     Authentication,
+    Unknown,
 }

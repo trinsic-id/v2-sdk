@@ -31,19 +31,19 @@ fn resolve<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Command<'a> {
     Generate(GenerateArgs<'a>),
     Resolve(ResolveArgs<'a>),
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct GenerateArgs<'a> {
     pub out: Option<&'a str>,
     pub kty: Option<&'a str>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct ResolveArgs<'a> {
     pub uri: Option<&'a str>,
 }

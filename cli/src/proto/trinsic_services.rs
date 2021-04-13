@@ -452,6 +452,22 @@ pub mod wallet_client {
                 http::uri::PathAndQuery::from_static("/trinsic.services.Wallet/CreateWallet");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        pub async fn create_wallet_with_workflow(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateWalletRequest>,
+        ) -> Result<tonic::Response<super::CreateWalletResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Wallet/CreateWalletWithWorkflow",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
         pub async fn create_wallet_encrypted(
             &mut self,
             request: impl tonic::IntoRequest<super::super::super::pbmse::EncryptedMessage>,

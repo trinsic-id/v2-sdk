@@ -3,20 +3,19 @@ use okapi::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
-use okapi::utils::{
-    get_capability_document, read_file, read_file_as_string, write_file, SERVER_URL,
-};
-use tonic::{transport::Channel, Request};
+use okapi::utils::{get_capability_document, read_file, read_file_as_string, write_file};
+use tonic::transport::Channel;
 
-use std::io::{stdin, stdout};
+use std::io::stdin;
 
 use super::super::parser::wallet::*;
+use crate::services::config::*;
 use didcommgrpc::*;
 
-pub fn execute(args: &Command) {
+pub(crate) fn execute(args: &Command, config: Config) {
     match args {
         Command::Create(args) => create(args),
-        Command::Search(args) => search(args),
+        Command::Search(args) => search(args, config),
         Command::InsertItem(args) => insert_item(args),
         Command::SetProfile(args) => set_profile(args),
         Command::GetProviderConfiguration => get_provider_configuration(),
@@ -27,7 +26,9 @@ pub fn execute(args: &Command) {
 
 #[tokio::main]
 async fn get_provider_configuration() {
-    let mut client = WalletClient::connect(SERVER_URL)
+    let config = Config::init().expect("Unable to read default configuration");
+
+    let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
     let request = tonic::Request::new(GetProviderConfigurationRequest {});
@@ -58,7 +59,9 @@ async fn create(args: &CreateArgs) {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let mut client = WalletClient::connect(SERVER_URL)
+    let config = Config::init().expect("Unable to read default configuration");
+
+    let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
     let request = tonic::Request::new(CreateWalletRequest {
@@ -86,7 +89,7 @@ async fn create(args: &CreateArgs) {
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs) {
+async fn search(args: &SearchArgs, config: Config) {
     let query = match args.query {
         Some(query) => query.to_string(),
         None => {
@@ -100,19 +103,13 @@ async fn search(args: &SearchArgs) {
         }
     };
 
-    let channel = Channel::from_static(SERVER_URL)
+    let channel = Channel::from_shared(config.server.address.to_string())
+        .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletClient::with_interceptor(channel, move |mut req: Request<()>| {
-        let capability_invocation = read_file_as_string(Some("capability_invocation.bin"));
-        req.metadata_mut().insert(
-            "capability-invocation",
-            capability_invocation.parse().unwrap(),
-        );
-        Ok(req)
-    });
+    let mut client = WalletClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(SearchRequest { query });
 
@@ -140,19 +137,15 @@ async fn insert_item(args: &InsertItemArgs) {
     use okapi::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
-    let channel = Channel::from_static(SERVER_URL)
+    let config = Config::init().unwrap();
+
+    let channel = Channel::from_shared(config.server.address.to_string())
+        .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletClient::with_interceptor(channel, move |mut req: Request<()>| {
-        let capability_invocation = read_file_as_string(Some("capability_invocation.bin"));
-        req.metadata_mut().insert(
-            "capability-invocation",
-            capability_invocation.parse().unwrap(),
-        );
-        Ok(req)
-    });
+    let mut client = WalletClient::with_interceptor(channel, config);
 
     let response = client
         .insert_item(InsertItemRequest {
