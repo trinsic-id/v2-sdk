@@ -16,7 +16,7 @@ okapi --help
 
 ## CLI Configuration
 
-All settings regarding the CLI are stored in `~/.trinsic/okapi.yaml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
+All settings regarding the CLI are stored in `~/.trinsic/okapi.toml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
 
 ### Setting Configuration Variables
 

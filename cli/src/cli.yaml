@@ -140,7 +140,7 @@ subcommands:
       args:
         - server-address:
             value_name: HOST_ADDRESS
-            help: 'Address of the server host. (default: http://localhost:5000/)'
+            help: '(Optional) Address of the server host. (default: http://localhost:5000/)'
             takes_value: true
             required: false
             long: server-address
@@ -148,7 +148,7 @@ subcommands:
         - profile-default:
             long: profile-default
             value_name: NAME
-            help: Name of the profile to set as default
+            help: (Optional) Name of the profile to set as default
             takes_value: true
             required: false
 
@@ -165,8 +165,9 @@ subcommands:
               - description:
                   long: description
                   value_name: STRING
-                  help: Description for new cloud wallet
+                  help: (Required) Description for new cloud wallet
                   takes_value: true
+                  required: true
               - out:
                   long: out
                   value_name: FILE

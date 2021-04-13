@@ -9,9 +9,9 @@ use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
 pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "http://localhost:5000/";
 #[cfg(not(test))]
-pub static CONFIG_FILENAME: &str = "okapi.yaml";
+pub static CONFIG_FILENAME: &str = "okapi.toml";
 #[cfg(test)]
-pub static CONFIG_FILENAME: &str = "okapi.test.yaml";
+pub static CONFIG_FILENAME: &str = "okapi.test.toml";
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct Config {
