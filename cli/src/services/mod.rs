@@ -12,6 +12,7 @@ pub(crate) fn execute(args: &Service, config: Config) {
         Service::Wallet(args) => wallet::execute(&args, config).unwrap(),
         Service::DIDKey(args) => didkey::execute(&args),
         Service::DIDComm(args) => didcomm::execute(&args),
+        Service::Issuer(args) => issuer::execute(&args),
         Service::Config(args) => config::execute(&args),
         _ => println!("Not yet implemented"),
     }

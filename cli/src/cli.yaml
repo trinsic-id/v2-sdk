@@ -243,12 +243,45 @@ subcommands:
         - issue:
             about: Issue a credential
             version: "0.1"
+            args:
+                - document:
+                    long: document
+                    value_name: FILE
+                    help: Json document to sign
+                    takes_value: true
+                - out:
+                    long: out
+                    value_name: FILE
+                    help: output location for issue response
+                    takes_value: true
         - create_proof:
             about: Create a proof
             version: "0.1"
+            args:
+                - reveal_document:
+                    long: reveal_document
+                    value_name: STRING
+                    help: Document
+                    takes_value: true
+                - document_id:
+                    long: document_id
+                    value_name: STRING
+                    help: Document id
+                    takes_value: true
+                - out:
+                    long: out
+                    value_name: FILE
+                    help: output location for created_proof
+                    takes_value: true
         - verify_proof:
             about: Verify a proof
             version: "0.1"
+            args:
+                - proof_document:
+                    long: proof_document
+                    value_name: STRING
+                    help: Document
+                    takes_value: true
   - authentication:
       about: Authentication service
       version: "0.1"

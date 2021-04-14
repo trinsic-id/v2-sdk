@@ -3,6 +3,7 @@ use clap::ArgMatches;
 pub mod config;
 pub mod didcomm;
 pub mod didkey;
+pub mod issuer;
 pub mod wallet;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
@@ -31,7 +32,11 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .expect("Error parsing request"),
         ))
     } else if args.is_present("issuer") {
-        Service::Issuer
+        return Service::Issuer(issuer::parse(
+            &args
+                .subcommand_matches("issuer")
+                .expect("Error parsing request"),
+        ));
     } else if args.is_present("authentication") {
         Service::Authentication
     } else {
@@ -44,8 +49,8 @@ pub enum Service<'a> {
     DIDComm(didcomm::Command<'a>),
     DIDKey(didkey::Command<'a>),
     Wallet(wallet::Command<'a>),
+    Issuer(issuer::Command<'a>),
     Config(config::Command<'a>),
-    Issuer,
     Authentication,
     Unknown,
 }

@@ -55,7 +55,7 @@ pub fn write_file(filename: Option<&str>, data: &Vec<u8>) {
 pub fn get_capability_document(wallet_id: &str) -> String {
     json!({
         "@context" : SECURITY_CONTEXT_V2_URL,
-        "target" : wallet_id,
+        "invocationTarget" : wallet_id,
         "proof" : {
             "proofPurpose" : "capabilityInvocation",
             "created" : DateTime::<Utc>::from_utc(Local::now().naive_utc(), Utc).format("%Y-%m-%dT%H:%M:%S").to_string(),
