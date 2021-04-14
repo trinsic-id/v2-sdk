@@ -9,7 +9,7 @@ use super::parser::Service;
 
 pub(crate) fn execute(args: &Service, config: Config) {
     match args {
-        Service::Wallet(args) => wallet::execute(&args, config),
+        Service::Wallet(args) => wallet::execute(&args, config).unwrap(),
         Service::DIDKey(args) => didkey::execute(&args),
         Service::DIDComm(args) => didcomm::execute(&args),
         Service::Config(args) => config::execute(&args),

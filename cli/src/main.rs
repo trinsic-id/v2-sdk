@@ -18,7 +18,6 @@ fn main() {
 
 fn process(yaml: &Yaml, matches: ArgMatches) {
     let config = Config::from(&matches);
-
     let service = parser::parse(&matches);
 
     if service == Service::Unknown {

@@ -18,9 +18,17 @@ okapi --help
 
 All settings regarding the CLI are stored in `~/.trinsic/okapi.toml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
 
+### Display configuration
+
+To print the current configuration file in the terminal use:
+
+```bash
+okapi config --show
+```
+
 ### Setting Configuration Variables
 
-#### Subcommand `config`
+#### `config` subcommand
 
 To change the default server the CLI communicates, set the `server-address` attribute
 
@@ -28,6 +36,26 @@ To change the default server the CLI communicates, set the `server-address` attr
 okapi config --server-address https://example.com/
 ```
 
-#### Subcommand `profile`
+#### `profile` subcommand
 
-TODO
+```bash
+okapi config --profile-default alice
+```
+
+## Wallet Commands
+
+### `create` subcommand
+
+This subcommand creates a new wallet and stores the profile with the given name. If the profile name exists, it will be overwritten.
+
+```bash
+okapi wallet create --name alice --description "Alice's Cloud Wallet" --default
+```
+
+The flag `--default` is optional. If specified, it will also set the configuration to use this profile as default. The first profile created, will be set as default, regardless of the flag.
+
+To see all available flags and options for this subcommand
+
+```bash
+okapi wallet create --help
+```

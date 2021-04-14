@@ -51,9 +51,10 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 fn create<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Create(CreateArgs {
         description: args.value_of("description"),
-        out: args.value_of("out"),
+        profile_name: args.value_of("name"),
         encrypted: args.value_of("encrypted").is_some(),
         key: args.value_of("key"),
+        set_default: args.is_present("default"),
     })
 }
 
@@ -103,9 +104,10 @@ pub enum Command<'a> {
 #[derive(Debug, PartialEq)]
 pub struct CreateArgs<'a> {
     pub description: Option<&'a str>,
-    pub out: Option<&'a str>,
+    pub profile_name: Option<&'a str>,
     pub encrypted: bool,
     pub key: Option<&'a str>,
+    pub set_default: bool,
 }
 
 #[derive(Debug, PartialEq)]

@@ -1,5 +1,7 @@
 use clap::ArgMatches;
-use serde::{Deserialize, Serialize};
+use okapi::MessageFormatter;
+use okapi::WalletProfile;
+use serde::{ser::Impossible, Deserialize, Serialize};
 use std::io::prelude::*;
 use std::path::Path;
 use std::{fs::OpenOptions, path::PathBuf};
@@ -26,7 +28,7 @@ pub(crate) struct ConfigServer {
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct ConfigProfile {
-    default: String,
+    pub default: String,
 }
 
 impl Default for ConfigServer {
@@ -41,6 +43,7 @@ impl Default for ConfigServer {
 pub enum Error {
     IOError,
     SerializationError,
+    UnknownCommand,
 }
 
 impl From<toml::ser::Error> for Error {
@@ -58,6 +61,12 @@ impl From<toml::de::Error> for Error {
 impl From<std::io::Error> for Error {
     fn from(_: std::io::Error) -> Self {
         Error::IOError
+    }
+}
+
+impl From<prost::DecodeError> for Error {
+    fn from(_: prost::DecodeError) -> Self {
+        Error::SerializationError
     }
 }
 
@@ -96,13 +105,71 @@ impl Config {
         Ok(config)
     }
 
-    pub fn save(&self) -> Result<(), Error> {
+    pub fn save_config(&self) -> Result<(), Error> {
         let config_file = data_path().join(CONFIG_FILENAME);
 
         update_file(&config_file, self)
     }
+
+    pub fn read_profile<T>(&self) -> Result<T, Error>
+    where
+        T: okapi::MessageFormatter + prost::Message + Default,
+    {
+        let filename = data_path().join(format!("{}.bin", self.profile.as_ref().unwrap().default));
+        let mut file = OpenOptions::new().read(true).open(filename)?;
+
+        let mut buffer: Vec<u8> = vec![];
+        file.read_to_end(&mut buffer)?;
+
+        T::from_vec(&buffer).map_err(|_| Error::SerializationError)
+    }
+
+    pub fn save_profile<T>(&mut self, profile: T, name: &str, default: bool) -> Result<(), Error>
+    where
+        T: okapi::MessageFormatter,
+    {
+        let filename = data_path().join(format!("{}.bin", name));
+        let mut file = OpenOptions::new()
+            .create(true)
+            .write(true)
+            .truncate(true)
+            .open(filename)?;
+
+        file.write_all(&profile.to_vec())?;
+
+        // If default is `true`, set this profile as default in the
+        // main configuration file
+        if default || self.profile.is_none() {
+            self.profile = Some(match self.profile.as_ref() {
+                Some(profile) => ConfigProfile {
+                    default: name.to_string(),
+                    ..*profile
+                },
+                None => ConfigProfile {
+                    default: name.to_string(),
+                    ..Default::default()
+                },
+            });
+        }
+        self.save_config()
+    }
+
+    pub fn print(&self) -> Result<(), Error> {
+        let config_file = data_path().join(CONFIG_FILENAME);
+        let mut file = OpenOptions::new().read(true).open(config_file.clone())?;
+
+        let mut buffer: String = String::new();
+        file.read_to_string(&mut buffer)?;
+
+        use colored::*;
+        println!("{}", config_file.to_string_lossy().cyan());
+        println!("{}", buffer.yellow());
+
+        Ok(())
+    }
 }
 
+#[allow(clippy::from_over_into)]
 impl Into<Interceptor> for Config {
     fn into(self) -> Interceptor {
         Interceptor::new(move |mut req: Request<()>| {
@@ -141,14 +208,14 @@ fn set_server_attr(args: &ServerArgs) {
         config.server.address = args.address.unwrap().to_string();
     }
 
-    config.save().unwrap()
+    config.save_config().unwrap()
 }
 
 fn data_path() -> PathBuf {
     dirs::home_dir().unwrap().join(".trinsic")
 }
 
-fn create_file(config_dir: &PathBuf, config: &Config) -> Result<(), Error> {
+fn create_file(config_dir: &Path, config: &Config) -> Result<(), Error> {
     let mut file = OpenOptions::new()
         .create_new(true)
         .read(true)
@@ -163,7 +230,7 @@ fn create_file(config_dir: &PathBuf, config: &Config) -> Result<(), Error> {
     Ok(())
 }
 
-fn update_file(config_dir: &PathBuf, config: &Config) -> Result<(), Error> {
+fn update_file(config_dir: &Path, config: &Config) -> Result<(), Error> {
     let mut file = OpenOptions::new()
         .truncate(true)
         .read(true)

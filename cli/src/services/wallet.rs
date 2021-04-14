@@ -12,16 +12,16 @@ use super::super::parser::wallet::*;
 use crate::services::config::*;
 use didcommgrpc::*;
 
-pub(crate) fn execute(args: &Command, config: Config) {
+#[allow(clippy::unit_arg)]
+pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
     match args {
-        Command::Create(args) => create(args),
-        Command::Search(args) => search(args, config),
-        Command::InsertItem(args) => insert_item(args),
-        Command::SetProfile(args) => set_profile(args),
-        Command::GetProviderConfiguration => get_provider_configuration(),
-        _ => panic!("not implemented"),
+        Command::Create(args) => create(args, config),
+        Command::Search(args) => Ok(search(args, config)),
+        Command::InsertItem(args) => Ok(insert_item(args)),
+        Command::SetProfile(args) => Ok(set_profile(args)),
+        Command::GetProviderConfiguration => Ok(get_provider_configuration()),
+        _ => Err(Error::UnknownCommand),
     }
-    println!("Wallet")
 }
 
 #[tokio::main]
@@ -40,7 +40,9 @@ async fn get_provider_configuration() {
 }
 
 #[tokio::main]
-async fn create(args: &CreateArgs) {
+async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
+    let mut new_config = config.clone();
+
     let key = match &args.key {
         Some(filename) => {
             serde_json::from_str(&read_file_as_string(Some(filename))).expect("Unable to parse key")
@@ -59,8 +61,6 @@ async fn create(args: &CreateArgs) {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let config = Config::init().expect("Unable to read default configuration");
-
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
@@ -76,6 +76,7 @@ async fn create(args: &CreateArgs) {
         .expect("Create Wallet failed")
         .into_inner();
 
+    use okapi::MessageFormatter;
     let profile = WalletProfile {
         wallet_id: response.wallet_id,
         did_document: Some(Struct::from_vec(&did_doc_bytes).unwrap()),
@@ -84,8 +85,7 @@ async fn create(args: &CreateArgs) {
         capability: response.capability,
     };
 
-    use okapi::MessageFormatter;
-    write_file(args.out, &profile.to_vec());
+    new_config.save_profile(profile, args.profile_name.unwrap(), args.set_default)
 }
 
 #[tokio::main]

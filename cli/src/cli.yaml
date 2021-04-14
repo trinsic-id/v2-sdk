@@ -151,6 +151,11 @@ subcommands:
             help: (Optional) Name of the profile to set as default
             takes_value: true
             required: false
+        - show:
+            long: show
+            takes_value: false
+            required: false
+            help: Show the current configuration file
 
   - wallet:
       about: Wallet Service
@@ -165,14 +170,15 @@ subcommands:
               - description:
                   long: description
                   value_name: STRING
-                  help: (Required) Description for new cloud wallet
+                  help: (Optional) Description for new cloud wallet
+                  takes_value: true
+                  required: false
+              - name:
+                  long: name
+                  value_name: PROFILE_NAME
+                  help: (Required) Name of the local profile to use to store the response
                   takes_value: true
                   required: true
-              - out:
-                  long: out
-                  value_name: FILE
-                  help: output location for wallet profile
-                  takes_value: true
               - encrypted:
                   long: encrypted
                   help: create wallet encrypted
@@ -183,6 +189,10 @@ subcommands:
                     Optional key to be used. If not specified, key will be
                     generated.
                   takes_value: true
+              - default:
+                  long: default
+                  takes_value: false
+                  help: Set this profile as default
         - set_profile:
             about: Set profile header
             version: "0.1"
@@ -197,13 +207,14 @@ subcommands:
                   value_name: FILE
                   help: Location of wallet profile to set as profile
         - search:
-            about: Search in wallet
-            version: "0.1"
+            about: Search the wallet using SQL queries
             args:
               - query:
                   long: query
-                  value_name: STRING
-                  help: Search query
+                  value_name: SQL_QUERY
+                  help: >-
+                    (Optional) Search query to execute (Default is "SELECT * FROM c").
+                    To see all available query options, please check https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
                   takes_value: true
         - insert_item:
             about: Insert item into the wallet
@@ -250,6 +261,7 @@ args:
       long: profile
       short: p
       value_name: NAME
-      help: Name of the profile to use with this command
+      help: >-
+        (Optional) Name of the profile to use with this command. If not set, it will use the default configured.
       takes_value: true
       required: false
