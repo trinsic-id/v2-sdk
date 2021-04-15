@@ -1,24 +1,24 @@
 use okapi::proto::trinsic_services::{
     credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
-use okapi::utils::{read_file_as_string, write_file, SERVER_URL};
+use okapi::utils::{read_file_as_string, write_file};
 
-use super::super::parser::issuer::*;
+use super::{super::parser::issuer::*, config::Config};
 use didcommgrpc::*;
-use std::fs::OpenOptions;
-use tonic::{transport::Channel, Request};
+use tonic::transport::Channel;
 
-pub fn execute(args: &Command) {
+pub(crate) fn execute(args: &Command, config: Config) {
     match args {
-        Command::Issue(args) => issue(args),
-        Command::CreateProof(args) => create_proof(args),
-        Command::VerifyProof(args) => verify_proof(args),
+        Command::Issue(args) => issue(args, config),
+        Command::CreateProof(args) => create_proof(args, config),
+        Command::VerifyProof(args) => verify_proof(args, config),
     }
 }
 
 #[tokio::main]
-async fn issue(args: &IssueArgs) {
-    let channel = Channel::from_static(SERVER_URL)
+async fn issue(args: &IssueArgs, config: Config) {
+    let channel = Channel::from_shared(config.server.address.clone())
+        .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
@@ -30,14 +30,7 @@ async fn issue(args: &IssueArgs) {
     let document: okapi::proto::google_protobuf::Struct =
         okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = CredentialClient::with_interceptor(channel, move |mut req: Request<()>| {
-        let capability_invocation = read_file_as_string(Some("capability_invocation.bin"));
-        req.metadata_mut().insert(
-            "capability-invocation",
-            capability_invocation.parse().unwrap(),
-        );
-        Ok(req)
-    });
+    let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(IssueRequest {
         document: Some(document),
@@ -58,8 +51,9 @@ async fn issue(args: &IssueArgs) {
 }
 
 #[tokio::main]
-async fn create_proof(args: &CreateProofArgs) {
-    let channel = Channel::from_static(SERVER_URL)
+async fn create_proof(args: &CreateProofArgs, config: Config) {
+    let channel = Channel::from_shared(config.server.address.clone())
+        .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
@@ -76,14 +70,7 @@ async fn create_proof(args: &CreateProofArgs) {
     let document: okapi::proto::google_protobuf::Struct =
         okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = CredentialClient::with_interceptor(channel, move |mut req: Request<()>| {
-        let capability_invocation = read_file_as_string(Some("capability_invocation.bin"));
-        req.metadata_mut().insert(
-            "capability-invocation",
-            capability_invocation.parse().unwrap(),
-        );
-        Ok(req)
-    });
+    let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(CreateProofRequest {
         reveal_document: Some(document),
@@ -105,8 +92,9 @@ async fn create_proof(args: &CreateProofArgs) {
 }
 
 #[tokio::main]
-async fn verify_proof(args: &VerifyProofArgs) {
-    let channel = Channel::from_static(SERVER_URL)
+async fn verify_proof(args: &VerifyProofArgs, config: Config) {
+    let channel = Channel::from_shared(config.server.address.clone())
+        .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
@@ -119,14 +107,7 @@ async fn verify_proof(args: &VerifyProofArgs) {
     let document: okapi::proto::google_protobuf::Struct =
         okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = CredentialClient::with_interceptor(channel, move |mut req: Request<()>| {
-        let capability_invocation = read_file_as_string(Some("capability_invocation.bin"));
-        req.metadata_mut().insert(
-            "capability-invocation",
-            capability_invocation.parse().unwrap(),
-        );
-        Ok(req)
-    });
+    let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(VerifyProofRequest {
         proof_document: Some(document),

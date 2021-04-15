@@ -1,33 +1,27 @@
+use super::super::parser::wallet::*;
+use crate::services::config::*;
+use didcommgrpc::*;
 use okapi::proto::google_protobuf::Struct;
 use okapi::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
-use okapi::utils::{get_capability_document, read_file, read_file_as_string, write_file};
+use okapi::utils::read_file_as_string;
 use tonic::transport::Channel;
-
-use std::io::stdin;
-
-use super::super::parser::wallet::*;
-use crate::services::config::*;
-use didcommgrpc::*;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
     match args {
         Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
-        Command::InsertItem(args) => Ok(insert_item(args)),
-        Command::SetProfile(args) => Ok(set_profile(args)),
-        Command::GetProviderConfiguration => Ok(get_provider_configuration()),
+        Command::InsertItem(args) => Ok(insert_item(args, config)),
+        Command::GetProviderConfiguration => Ok(get_provider_configuration(config)),
         _ => Err(Error::UnknownCommand),
     }
 }
 
 #[tokio::main]
-async fn get_provider_configuration() {
-    let config = Config::init().expect("Unable to read default configuration");
-
+async fn get_provider_configuration(config: Config) {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
@@ -36,7 +30,8 @@ async fn get_provider_configuration() {
         .get_provider_configuration(request)
         .await
         .expect("Get Provider Configuration failed");
-    println!("Received Response: {:?}", &response);
+
+    println!("Received Response: {:?}", response);
 }
 
 #[tokio::main]
@@ -90,18 +85,9 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
 
 #[tokio::main]
 async fn search(args: &SearchArgs, config: Config) {
-    let query = match args.query {
-        Some(query) => query.to_string(),
-        None => {
-            let mut query = String::new();
-            print!("Enter a query to be searched: ");
-            //stdout().flush().expect("Unable to flush stdout");
-            stdin()
-                .read_line(&mut query)
-                .expect("Unable to read from stdin");
-            query
-        }
-    };
+    let query = args
+        .query
+        .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
 
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()
@@ -111,21 +97,27 @@ async fn search(args: &SearchArgs, config: Config) {
 
     let mut client = WalletClient::with_interceptor(channel, config);
 
-    let request = tonic::Request::new(SearchRequest { query });
+    let request = tonic::Request::new(SearchRequest {
+        query: query.clone(),
+    });
 
     let response = client
         .search(request)
         .await
         .expect("Get Provider Configuration failed")
         .into_inner();
+    use colored::*;
+    println!("Search results for query '{}'", query.cyan().bold());
     println!(
         "{}",
-        &serde_json::to_string_pretty(&response.items).unwrap()
+        &serde_json::to_string_pretty(&response.items)
+            .unwrap()
+            .yellow()
     );
 }
 
 #[tokio::main]
-async fn insert_item(args: &InsertItemArgs) {
+async fn insert_item(args: &InsertItemArgs, config: Config) {
     let item_type = match args.item_type {
         Some(it) => it,
         None => panic!("Please include item type"),
@@ -136,8 +128,6 @@ async fn insert_item(args: &InsertItemArgs) {
 
     use okapi::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
-
-    let config = Config::init().unwrap();
 
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()
@@ -157,36 +147,4 @@ async fn insert_item(args: &InsertItemArgs) {
         .into_inner();
 
     println!("{:?}", response);
-}
-
-#[tokio::main]
-async fn grant_access() {
-    println!("Not yet implemented");
-}
-
-#[tokio::main]
-async fn revoke_access() {
-    println!("Not yet implemented");
-}
-
-fn set_profile(args: &SetProfileArgs) {
-    use okapi::MessageFormatter;
-    let wallet_profile: WalletProfile =
-        WalletProfile::from_vec(&read_file(args.profile)).expect("Invalid wallet profile");
-    let capability_document = get_capability_document(&wallet_profile.wallet_id);
-
-    let res = LdProofs::create_proof(&CreateProofRequest {
-        key: Some(JsonWebKey::from_vec(&wallet_profile.invoker_jwk).expect("Invalid key")),
-        document: Some(
-            serde_json::from_str(&capability_document).expect("Invalid capability document"),
-        ),
-        suite: LdSuite::JcsEd25519Signature2020 as i32,
-    })
-    .expect("Error creating proof");
-
-    let cap_invocation = base64::encode(
-        serde_json::to_string(&res.signed_document)
-            .expect("Unable to serialize signed document as json"),
-    );
-    write_file(args.out, &cap_invocation.as_bytes().to_vec());
 }

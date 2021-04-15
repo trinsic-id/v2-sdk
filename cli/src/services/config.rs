@@ -2,8 +2,9 @@ use clap::ArgMatches;
 use okapi::MessageFormatter;
 use okapi::WalletProfile;
 use serde::{ser::Impossible, Deserialize, Serialize};
-use std::io::prelude::*;
+use serde_json::json;
 use std::path::Path;
+use std::{fs, io::prelude::*, thread::panicking};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::{Interceptor, Request};
 
@@ -124,18 +125,31 @@ impl Config {
         T::from_vec(&buffer).map_err(|_| Error::SerializationError)
     }
 
-    pub fn save_profile<T>(&mut self, profile: T, name: &str, default: bool) -> Result<(), Error>
-    where
-        T: okapi::MessageFormatter,
-    {
-        let filename = data_path().join(format!("{}.bin", name));
-        let mut file = OpenOptions::new()
+    pub fn read_capability(&self) -> Result<String, Error> {
+        let filename = data_path().join(format!("{}.json", self.profile.as_ref().unwrap().default));
+        let mut file = OpenOptions::new().read(true).open(filename)?;
+
+        let mut buffer: String = String::new();
+        file.read_to_string(&mut buffer)?;
+
+        Ok(buffer)
+    }
+
+    pub fn save_profile(
+        &mut self,
+        profile: WalletProfile,
+        name: &str,
+        default: bool,
+    ) -> Result<(), Error> {
+        let profile_filename = data_path().join(format!("{}.bin", name));
+        let mut profile_file = OpenOptions::new()
             .create(true)
             .write(true)
             .truncate(true)
-            .open(filename)?;
+            .open(profile_filename)?;
 
-        file.write_all(&profile.to_vec())?;
+        profile_file.write_all(&profile.to_vec())?;
+        profile_file.flush()?;
 
         // If default is `true`, set this profile as default in the
         // main configuration file
@@ -151,7 +165,43 @@ impl Config {
                 },
             });
         }
-        self.save_config()
+
+        self.save_config()?;
+        self.save_capability(&profile, name)?;
+
+        Ok(())
+    }
+
+    fn save_capability(&self, profile: &WalletProfile, name: &str) -> Result<(), Error> {
+        // Save capability invocation generated from the input profile
+        use didcommgrpc::*;
+        use okapi::utils::*;
+        let capability_filename = data_path().join(format!("{}.json", name));
+        let capability_document = get_capability_document(&profile.wallet_id);
+
+        let res = LdProofs::create_proof(&CreateProofRequest {
+            key: Some(JsonWebKey::from_vec(&profile.invoker_jwk).expect("Invalid key")),
+            document: Some(
+                serde_json::from_str(&capability_document).expect("Invalid capability document"),
+            ),
+            suite: LdSuite::JcsEd25519Signature2020 as i32,
+        })
+        .expect("Error creating proof");
+
+        let cap_invocation = base64::encode(
+            serde_json::to_string(&res.signed_document)
+                .expect("Unable to serialize signed document as json"),
+        );
+        let mut caps_file = OpenOptions::new()
+            .create(true)
+            .write(true)
+            .truncate(true)
+            .open(capability_filename)?;
+
+        caps_file.write_all(&cap_invocation.as_bytes().to_vec())?;
+        caps_file.flush()?;
+
+        Ok(())
     }
 
     pub fn print(&self) -> Result<(), Error> {
@@ -173,22 +223,12 @@ impl Config {
 impl Into<Interceptor> for Config {
     fn into(self) -> Interceptor {
         Interceptor::new(move |mut req: Request<()>| {
-            let profile = match self.profile.as_ref() {
-                Some(profile) => format!("{}.json", profile.default),
-                None => panic!("Default profile not set"),
-            };
-            let filename = data_path().join(profile);
-            let mut file = OpenOptions::new()
-                .read(true)
-                .open(filename)
-                .expect("Unable to open file");
-
-            let mut capability_invocation = String::new();
-            file.read_to_string(&mut capability_invocation).unwrap();
-
             req.metadata_mut().insert(
                 "capability-invocation",
-                capability_invocation.parse().unwrap(),
+                self.read_capability()
+                    .expect("couldn't read capability document")
+                    .parse()
+                    .expect("error parsing capability"),
             );
             Ok(req)
         })
@@ -212,7 +252,11 @@ fn set_server_attr(args: &ServerArgs) {
 }
 
 fn data_path() -> PathBuf {
-    dirs::home_dir().unwrap().join(".trinsic")
+    let path = dirs::home_dir().unwrap().join(".trinsic");
+    if !path.exists() {
+        fs::create_dir_all(path.clone()).unwrap();
+    }
+    path
 }
 
 fn create_file(config_dir: &Path, config: &Config) -> Result<(), Error> {

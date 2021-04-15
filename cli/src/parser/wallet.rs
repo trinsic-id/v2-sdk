@@ -25,24 +25,6 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .subcommand_matches("insert_item")
                 .expect("Error parsing request"),
         );
-    } else if args.is_present("grant_access") {
-        return grant_access(
-            &args
-                .subcommand_matches("grant_access")
-                .expect("Error parsing request"),
-        );
-    } else if args.is_present("revoke_access") {
-        return revoke_access(
-            &args
-                .subcommand_matches("revoke_access")
-                .expect("Error parsing request"),
-        );
-    } else if args.is_present("set_profile") {
-        return set_profile(
-            &args
-                .subcommand_matches("set_profile")
-                .expect("Error parsing request"),
-        );
     } else {
         panic!("Unrecognized command")
     }
@@ -71,21 +53,6 @@ fn insert_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
-fn grant_access<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::GrantAccess
-}
-
-fn revoke_access<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::RevokeAccess
-}
-
-fn set_profile<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::SetProfile(SetProfileArgs {
-        out: args.value_of("out"),
-        profile: args.value_of("profile"),
-    })
-}
-
 fn get_provider_configuration<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::GetProviderConfiguration
 }
@@ -97,7 +64,6 @@ pub enum Command<'a> {
     InsertItem(InsertItemArgs<'a>),
     GrantAccess,
     RevokeAccess,
-    SetProfile(SetProfileArgs<'a>),
     GetProviderConfiguration,
 }
 

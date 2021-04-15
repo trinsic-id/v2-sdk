@@ -1,7 +1,29 @@
 name: okapi
 version: "1.0"
 author: Jace K. <Jace@trinsic.id>
-about: Command line interface for Okapi Core
+about: >-
+    Command line interface for Okapi Core
+                            .'\
+                   .___    /   \
+                    `. `.-Y     |
+                      `/  |     /`''---.......--'`'-.
+                    .-'   ) __.'                     `\
+                  .'     \                             Y
+                 /  -=._.'     )                        `.
+                :   `-;       .                           `.
+                /           .^-.                            \
+               /          .'    `-.                          Y
+              |,-   _...-'         `'-.                      ]
+              \   .'                  |`                     ]L
+               `''                    [                      [[
+           _               _          [                     ] L
+          | |             (_)
+      ___ | | ____ _ _ __  _
+     / _ \| |/ / _` | '_ \| |
+    | (_) |   < (_| | |_) | |
+     \___/|_|\_\__,_| .__/|_| by Trinsic
+                    | |
+                    |_|
 subcommands:
   - didkey:
       about: didkey commands
@@ -193,19 +215,6 @@ subcommands:
                   long: default
                   takes_value: false
                   help: Set this profile as default
-        - set_profile:
-            about: Set profile header
-            version: "0.1"
-            args:
-              - out:
-                  long: out
-                  value_name: FILE
-                  help: output location for wallet profile
-                  takes_value: true
-              - profile:
-                  long: profile
-                  value_name: FILE
-                  help: Location of wallet profile to set as profile
         - search:
             about: Search the wallet using SQL queries
             args:
@@ -230,12 +239,6 @@ subcommands:
                   value_name: FILE
                   help: Item to be inserted
                   takes_value: true
-        - grant_access:
-            about: Grant access to the wallet
-            version: "0.1"
-        - revoke_access:
-            about: Revoke access to the wallet
-            version: "0.1"
   - issuer:
       about: Issuer Service
       version: "0.1"
