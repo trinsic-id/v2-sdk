@@ -237,8 +237,9 @@ subcommands:
               - item:
                   long: item
                   value_name: FILE
-                  help: Item to be inserted
+                  help: Path to file containing item data
                   takes_value: true
+                  required: true
   - issuer:
       about: Issuer Service
       version: "0.1"

@@ -118,10 +118,6 @@ async fn search(args: &SearchArgs, config: Config) {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: Config) {
-    let item_type = match args.item_type {
-        Some(it) => it,
-        None => panic!("Please include item type"),
-    };
     let item: didcommgrpc::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
@@ -140,7 +136,7 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
     let response = client
         .insert_item(InsertItemRequest {
             item: Some(item),
-            item_type: item_type.to_string(),
+            item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
         .await
         .expect("Insert item failed")

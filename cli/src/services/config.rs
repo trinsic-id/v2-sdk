@@ -4,7 +4,7 @@ use okapi::WalletProfile;
 use serde::{ser::Impossible, Deserialize, Serialize};
 use serde_json::json;
 use std::path::Path;
-use std::{fs, io::prelude::*, thread::panicking};
+use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::{Interceptor, Request};
 
