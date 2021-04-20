@@ -6,7 +6,7 @@
 /// with the proto support for the language.
 ///
 /// The JSON representation for `Struct` is JSON object.
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Struct {
     /// Unordered map of dynamically typed values.
     #[prost(map = "string, message", tag = "1")]
@@ -18,7 +18,7 @@ pub struct Struct {
 /// variants, absence of any variant indicates an error.
 ///
 /// The JSON representation for `Value` is JSON value.
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Value {
     /// The kind of value.
     #[prost(oneof = "value::Kind", tags = "1, 2, 3, 4, 5, 6")]
@@ -27,7 +27,7 @@ pub struct Value {
 /// Nested message and enum types in `Value`.
 pub mod value {
     /// The kind of value.
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Kind {
         /// Represents a null value.
         #[prost(enumeration = "super::NullValue", tag = "1")]
@@ -52,7 +52,7 @@ pub mod value {
 /// `ListValue` is a wrapper around a repeated field of values.
 ///
 /// The JSON representation for `ListValue` is JSON array.
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListValue {
     /// Repeated field of dynamically typed values.
     #[prost(message, repeated, tag = "1")]
@@ -62,19 +62,7 @@ pub struct ListValue {
 /// `Value` type union.
 ///
 ///  The JSON representation for `NullValue` is JSON `null`.
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum NullValue {
     /// Null value.

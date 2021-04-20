@@ -1,6 +1,6 @@
 /// JWS
 /// Protocol buffer message signing and encryption
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SignedMessage {
     #[prost(bytes = "vec", tag = "1")]
     pub payload: ::prost::alloc::vec::Vec<u8>,
@@ -9,7 +9,7 @@ pub struct SignedMessage {
 }
 /// Nested message and enum types in `SignedMessage`.
 pub mod signed_message {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Header {
         #[prost(string, tag = "1")]
         pub algorithm: ::prost::alloc::string::String,
@@ -19,7 +19,7 @@ pub mod signed_message {
         pub nonce: ::prost::alloc::string::String,
     }
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Signature {
     #[prost(bytes = "vec", tag = "3")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
@@ -28,7 +28,7 @@ pub struct Signature {
 }
 /// Nested message and enum types in `Signature`.
 pub mod signature {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Header {
         #[prost(bytes, tag = "1")]
         Protected(::prost::alloc::vec::Vec<u8>),
@@ -38,7 +38,7 @@ pub mod signature {
 }
 // JWE
 
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptedMessage {
     #[prost(bytes = "vec", tag = "1")]
     pub iv: ::prost::alloc::vec::Vec<u8>,
@@ -51,7 +51,7 @@ pub struct EncryptedMessage {
     #[prost(message, repeated, tag = "5")]
     pub recipients: ::prost::alloc::vec::Vec<EncryptionRecipient>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptionHeader {
     #[prost(enumeration = "EncryptionMode", tag = "1")]
     pub mode: i32,
@@ -62,44 +62,20 @@ pub struct EncryptionHeader {
     #[prost(string, tag = "4")]
     pub sender_key_id: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EncryptionRecipient {
     #[prost(message, optional, tag = "1")]
     pub header: ::core::option::Option<EncryptionHeader>,
     #[prost(bytes = "vec", tag = "2")]
     pub content_encryption_key: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EncryptionMode {
     Direct = 0,
     ContentEncryptionKey = 1,
 }
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EncryptionAlgorithm {
     Xchacha20poly1305 = 0,

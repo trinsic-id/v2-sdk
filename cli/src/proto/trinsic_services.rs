@@ -1,18 +1,6 @@
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NoOp {}
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ResponseStatus {
     Success = 0,
@@ -83,12 +71,12 @@ pub mod common_client {
         }
     }
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcquireTokenRequest {
     #[prost(message, optional, tag = "1")]
     pub signed_message: ::core::option::Option<super::super::pbmse::SignedMessage>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AcquireTokenResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,
@@ -158,36 +146,36 @@ pub mod authentication_client {
         }
     }
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueRequest {
     #[prost(message, optional, tag = "1")]
     pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueResponse {
     #[prost(message, optional, tag = "1")]
     pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
 }
 /// Create Proof
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
     #[prost(message, optional, tag = "1")]
     pub reveal_document: ::core::option::Option<super::super::google::protobuf::Struct>,
     #[prost(string, tag = "2")]
     pub document_id: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
     #[prost(message, optional, tag = "1")]
     pub proof_document: ::core::option::Option<super::super::google::protobuf::Struct>,
 }
 /// Verify Proof
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofRequest {
     #[prost(message, optional, tag = "1")]
     pub proof_document: ::core::option::Option<super::super::google::protobuf::Struct>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
     #[prost(bool, tag = "1")]
     pub valid: bool,
@@ -283,7 +271,7 @@ pub mod credential_client {
         }
     }
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateWalletRequest {
     #[prost(string, tag = "1")]
     pub controller: ::prost::alloc::string::String,
@@ -294,7 +282,7 @@ pub struct CreateWalletRequest {
     #[prost(string, tag = "3")]
     pub invitation_id: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateWalletResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,
@@ -309,7 +297,7 @@ pub struct CreateWalletResponse {
 ///Stores profile data for accessing a wallet.
 ///This result should be stored somewhere safe,
 ///as it contains private key information.
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletProfile {
     #[prost(message, optional, tag = "1")]
     pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
@@ -322,35 +310,35 @@ pub struct WalletProfile {
     #[prost(bytes = "vec", tag = "5")]
     pub invoker_jwk: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GrantAccessRequest {
     #[prost(string, tag = "1")]
     pub wallet_id: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub did: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GrantAccessResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RevokeAccessRequest {
     #[prost(string, tag = "1")]
     pub wallet_id: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub did: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RevokeAccessResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,
 }
 // GetProviderConfiguration
 
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProviderConfigurationRequest {}
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProviderConfigurationResponse {
     #[prost(message, optional, tag = "1")]
     pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
@@ -359,12 +347,12 @@ pub struct GetProviderConfigurationResponse {
 }
 // Search
 
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchRequest {
     #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
     #[prost(message, repeated, tag = "1")]
     pub items: ::prost::alloc::vec::Vec<super::super::google::protobuf::Struct>,
@@ -373,14 +361,14 @@ pub struct SearchResponse {
 }
 // InsertItem
 
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
     #[prost(message, optional, tag = "1")]
     pub item: ::core::option::Option<super::super::google::protobuf::Struct>,
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,

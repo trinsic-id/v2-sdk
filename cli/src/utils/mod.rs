@@ -42,6 +42,7 @@ pub fn write_file(filename: Option<&str>, data: &Vec<u8>) {
             let mut file = OpenOptions::new()
                 .write(true)
                 .create(true)
+                .truncate(true)
                 .open(out)
                 .expect("Unable to open file");
             file.write_all(&data).expect("Unable to write to file");

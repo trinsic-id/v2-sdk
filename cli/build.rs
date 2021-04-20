@@ -6,9 +6,8 @@ fn main() {
         .out_dir("./src/proto");
 
     let mut prost_config = prost_build::Config::new();
-    prost_config
-        .compile_well_known_types()
-        .type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]");
+    prost_config.compile_well_known_types();
+    //.type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]");
 
     config
         .compile_with_config(
