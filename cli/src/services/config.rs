@@ -251,10 +251,10 @@ fn set_server_attr(args: &ServerArgs) {
 }
 
 fn data_path() -> PathBuf {
-    let path: PathBuf = match var("OKAPI_HOME") {
+    let path: PathBuf = match var("OKAPI_ROOT") {
         Ok(path) => path.into(),
         Err(_) => dirs::home_dir().expect(
-            "Unable to locate home directory. Please set the environment variable $OKAPI_HOME",
+            "Unable to locate home directory. Please set the environment variable $OKAPI_ROOT",
         ),
     }
     .join(".trinsic");
