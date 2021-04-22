@@ -1,9 +1,8 @@
 use clap::ArgMatches;
 use okapi::MessageFormatter;
 use okapi::WalletProfile;
-use serde::{ser::Impossible, Deserialize, Serialize};
-use serde_json::json;
-use std::path::Path;
+use serde::{Deserialize, Serialize};
+use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::{Interceptor, Request};
@@ -252,7 +251,13 @@ fn set_server_attr(args: &ServerArgs) {
 }
 
 fn data_path() -> PathBuf {
-    let path = dirs::home_dir().unwrap().join(".trinsic");
+    let path: PathBuf = match var("OKAPI_HOME") {
+        Ok(path) => path.into(),
+        Err(_) => dirs::home_dir().expect(
+            "Unable to locate home directory. Please set the environment variable $OKAPI_HOME",
+        ),
+    }
+    .join(".trinsic");
     if !path.exists() {
         fs::create_dir_all(path.clone()).unwrap();
     }
