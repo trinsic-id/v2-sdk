@@ -1,0 +1,346 @@
+name: trinsic
+version: "1.0"
+author: Trinsic <support@trinsic.id>
+about: >-
+    Command line interface for Trinsic Core
+                            .'\
+                   .___    /   \
+                    `. `.-Y     |
+                      `/  |     /`''---.......--'`'-.
+                    .-'   ) __.'                     `\
+                  .'     \                             Y
+                 /  -=._.'     )                        `.
+                :   `-;       .                           `.
+                /           .^-.                            \
+               /          .'    `-.                          Y
+              |,-   _...-'         `'-.                      ]
+              \   .'                  |`                     ]L
+               `''                    [                      [[
+           _               _          [                     ] L
+          | |             (_)
+      ___ | | ____ _ _ __  _
+     / _ \| |/ / _` | '_ \| |
+    | (_) |   < (_| | |_) | |
+     \___/|_|\_\__,_| .__/|_| by Trinsic
+                    | |
+                    |_|
+subcommands:
+  - config:
+      about: Configuration setting
+      subcommands:
+        - set_uri:
+            about: Set the uri for the server
+            version: "0.1"
+            args:
+                - uri:
+                    value_name: STRING
+                    help: URI of the server
+                    takes_value: true
+                    required: true
+  - didkey:
+      about: didkey commands
+      subcommands:
+        - generate:
+            about: Generates a Json Web Key
+            version: "0.1"
+            args:
+              - out:
+                  long: out
+                  value_name: STRING
+                  help: File to save Json Web Key in
+                  takes_value: true
+              - kty:
+                  long: kty
+                  value_name: STRING
+                  help: >-
+                    Specify key type. Defaults to X25519. Options are Ed25519,
+                    X25519, P256, Bls12381_G2, and secp256k1.
+                  takes_value: true
+                  possible_values:
+                    - Ed25519
+                    - X25519
+                    - P-256
+                    - Bls12381_G2
+                    - Secp256k1
+        - resolve:
+            about: Resolve a DID
+            version: "0.1"
+            args:
+              - uri:
+                  value_name: STRING
+                  help: DID URI to resolve
+                  takes_value: true
+                  required: true
+  - didcomm:
+      about: didcomm commands
+      subcommands:
+        - pack:
+            about: Packs a plaintext message
+            version: "0.1"
+            short: p
+            args:
+              - sender_key:
+                  value_name: FILE
+                  help: Sender's Json Web Key
+                  takes_value: true
+                  required: true
+              - receiver_key:
+                  value_name: FILE
+                  help: Receiver's Json Web Key
+                  takes_value: true
+                  required: true
+              - associated_data:
+                  value_name: FILE
+                  help: Associated data to be packed
+                  takes_value: true
+                  long: data
+              - plaintext:
+                  value_name: FILE
+                  help: Plaintext message to be packed
+                  takes_value: true
+                  long: text
+              - encryption_mode:
+                  value_name: STRING
+                  long: mode
+                  help: >-
+                    Encryption mode. Default is direct. Options are direct and
+                    content_encryption_key
+                  possible_values:
+                    - direct
+                    - content_encryption_key
+              - encryption_algorithm:
+                  value_name: STRING
+                  long: alg
+                  help: >-
+                    Encryption algorithm. Default is xchacha20poly1305. Options
+                    are xchacha20poly1305 and aes_gcm
+                  possible_values:
+                    - xchacha20poly1305
+                    - aes_gcm
+              - out:
+                  long: out
+                  value_name: FILE
+                  help: output file for your packed message
+        - unpack:
+            about: Unpacks an encrypted message
+            version: "0.1"
+            short: up
+            args:
+              - sender_key:
+                  value_name: FILE
+                  help: Sender's Json Web Key
+                  takes_value: true
+              - receiver_key:
+                  value_name: FILE
+                  help: Receiver's Json Web Key
+                  takes_value: true
+              - encrypted_message:
+                  value_name: FILE
+                  help: Encrypted message to be unpacked
+                  takes_value: true
+        - verify:
+            about: Verify a signed message
+            version: "0.1"
+            short: v
+            args:
+              - key:
+                  value_name: FILE
+                  help: Recepient's Json Web Key
+                  takes_value: true
+              - signed_message:
+                  value_name: FILE
+                  help: Signed message to be verified
+                  takes_value: true
+        - sign:
+            about: Sign a message
+            version: "0.1"
+            args:
+              - key:
+                  value_name: FILE
+                  help: Signer's Json Web Key
+                  takes_value: true
+                  required: true
+              - payload:
+                  value_name: FILE
+                  help: Bytes to be signed
+                  takes_value: true
+                  long: payload
+              - out:
+                  long: out
+                  value_name: FILE
+                  help: output file for your packed message
+  - config:
+      about: Commands to set configuration parameters
+      args:
+        - server-address:
+            value_name: HOST_ADDRESS
+            help: '(Optional) Address of the server host. (default: http://localhost:5000/)'
+            takes_value: true
+            required: false
+            long: server-address
+            short: a
+        - profile-default:
+            long: profile-default
+            value_name: NAME
+            help: (Optional) Name of the profile to set as default
+            takes_value: true
+            required: false
+        - show:
+            long: show
+            takes_value: false
+            required: false
+            help: Show the current configuration file
+
+  - wallet:
+      about: Wallet Service
+      subcommands:
+        - get_provider_configuration:
+            about: Get the provider configuration
+            version: "0.1"
+        - create:
+            about: Create a new wallet
+            version: "0.1"
+            args:
+              - description:
+                  long: description
+                  value_name: STRING
+                  help: (Optional) Description for new cloud wallet
+                  takes_value: true
+                  required: false
+              - name:
+                  long: name
+                  value_name: PROFILE_NAME
+                  help: (Required) Name of the local profile to use to store the response
+                  takes_value: true
+                  required: true
+              - encrypted:
+                  long: encrypted
+                  help: create wallet encrypted
+              - key:
+                  long: key
+                  value_name: FILE
+                  help: >-
+                    Optional key to be used. If not specified, key will be
+                    generated.
+                  takes_value: true
+              - default:
+                  long: default
+                  takes_value: false
+                  help: Set this profile as default
+        - search:
+            about: Search the wallet using SQL queries
+            args:
+              - query:
+                  long: query
+                  value_name: SQL_QUERY
+                  help: >-
+                    (Optional) Search query to execute (Default is "SELECT * FROM c").
+                    To see all available query options, please check https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+                  takes_value: true
+        - insert_item:
+            about: Insert item into the wallet
+            version: "0.1"
+            args:
+              - type:
+                  long: type
+                  value_name: STRING
+                  help: Item type
+                  takes_value: true
+              - item:
+                  long: item
+                  value_name: FILE
+                  help: Path to file containing item data
+                  takes_value: true
+                  required: true
+  - issuer:
+      about: Issuer Service
+      version: "0.1"
+      subcommands:
+        - issue:
+            about: Issue a credential
+            version: "0.1"
+            args:
+                - document:
+                    long: document
+                    value_name: FILE
+                    help: Json document to sign
+                    takes_value: true
+                - out:
+                    long: out
+                    value_name: FILE
+                    help: output location for issue response
+                    takes_value: true
+        - create_proof:
+            about: Create a proof
+            version: "0.1"
+            args:
+                - reveal_document:
+                    long: reveal_document
+                    value_name: STRING
+                    help: Document
+                    takes_value: true
+                - document_id:
+                    long: document_id
+                    value_name: STRING
+                    help: Document id
+                    takes_value: true
+                - out:
+                    long: out
+                    value_name: FILE
+                    help: output location for created_proof
+                    takes_value: true
+        - verify_proof:
+            about: Verify a proof
+            version: "0.1"
+            args:
+                - proof_document:
+                    long: proof_document
+                    value_name: STRING
+                    help: Document
+                    takes_value: true
+  - authentication:
+      about: Authentication service
+      version: "0.1"
+      subcommands:
+        - acquire_token:
+            about: Acquires a token
+            version: "0.1"
+  - provider:
+      about: Provider service
+      version: "0.1"
+      subcommands:
+        - create_organization:
+            about: "Create an organization"
+            version: "0.1"
+            args:
+                - name:
+                    value_name: STRING
+                    help: name for organization
+                    takes_value: true
+                    required: true
+                - id:
+                    value_name: STRING
+                    help: id for organization
+                    takes_value: true
+                    required: true
+        - invite:
+            about: "Send an invitation"
+            version: "0.1"
+        - invitation_status:
+            about: "Check invitation status"
+            version: "0.1"
+        - create_credential_template:
+            about: "Create credential template"
+            version: "0.1"
+        - list_credential_templates:
+            about: "List credential templates"
+            version: "0.1"
+args:
+  - profile:
+      long: profile
+      short: p
+      value_name: NAME
+      help: >-
+        (Optional) Name of the profile to use with this command. If not set, it will use the default configured.
+      takes_value: true
+      required: false

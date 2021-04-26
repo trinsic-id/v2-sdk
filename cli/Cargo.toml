@@ -1,0 +1,33 @@
+[package]
+name = "trinsic"
+version = "0.1.0"
+authors = ["Trinsic <support@trinsic.id>"]
+edition = "2018"
+
+[dependencies]
+tonic = "0.4"
+prost = "0.7"
+prost-types = "0.7"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+didcomm-grpc = { path = "../../didcomm-v2/native" }
+clap = {version = "~2.27.0", features = ["yaml"]}
+serde = "1.0.119"
+serde_json = "1.0.60"
+chrono = "0.4.19"
+base64 = "0.13.0"
+toml = "0.5"
+dirs = "3.0"
+yaml-rust = "0.3"
+colored = "2"
+
+[build-dependencies]
+tonic-build = "0.4"
+prost-build = "0.7"
+
+[[bin]]
+name = "trinsic"
+path = "src/main.rs"
+
+[lib]
+name = "trinsic"
+path = "src/lib.rs"
