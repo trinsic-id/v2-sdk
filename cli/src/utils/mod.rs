@@ -1,7 +1,7 @@
 use chrono::{DateTime, Local, Utc};
 use serde_json::json;
 use std::fs::OpenOptions;
-use std::io::{stdin, stdout, Read, Write};
+use std::io::{stdin, stdout, BufRead, Read, Write};
 use std::str;
 
 pub static SERVER_URL: &str = "http://localhost:5000";
@@ -28,6 +28,24 @@ pub fn read_file(filename: Option<&str>) -> Vec<u8> {
             data
         }
     }
+}
+
+pub fn read_line(out: Option<&str>) -> String {
+    let mut message = String::new();
+
+    match out {
+        Some(msg) => {
+            print!("{}: ", msg);
+            stdout().flush().expect("Unable to flush stdout");
+            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
+            message
+        },
+        None => {
+            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
+            message
+        }
+    }
+            
 }
 
 pub fn read_file_as_string(filename: Option<&str>) -> String {

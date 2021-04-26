@@ -25,6 +25,18 @@ about: >-
                     | |
                     |_|
 subcommands:
+  - config:
+      about: Configuration setting
+      subcommands:
+        - set_uri:
+            about: Set the uri for the server
+            version: "0.1"
+            args:
+                - uri:
+                    value_name: STRING
+                    help: URI of the server
+                    takes_value: true
+                    required: true
   - didkey:
       about: didkey commands
       subcommands:
@@ -292,6 +304,36 @@ subcommands:
       subcommands:
         - acquire_token:
             about: Acquires a token
+            version: "0.1"
+  - provider:
+      about: Provider service
+      version: "0.1"
+      subcommands:
+        - create_organization:
+            about: "Create an organization"
+            version: "0.1"
+            args: 
+                - name:
+                    value_name: STRING
+                    help: name for organization
+                    takes_value: true
+                    required: true
+                - id:
+                    value_name: STRING
+                    help: id for organization
+                    takes_value: true
+                    required: true
+        - invite:
+            about: "Send an invitation"
+            version: "0.1"
+        - invitation_status:
+            about: "Check invitation status"
+            version: "0.1"
+        - create_credential_template:
+            about: "Create credential template"
+            version: "0.1"
+        - list_credential_templates:
+            about: "List credential templates"
             version: "0.1"
 args:
   - profile:

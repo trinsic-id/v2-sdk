@@ -8,6 +8,12 @@ Requires [Rustup](https://www.rust-lang.org/tools/install) toolchain
 cargo install --path .
 ```
 
+## Tooling
+
+- [clap](https://github.com/clap-rs/clap) - command line argument parser for Rust
+- [tonic](https://github.com/hyperium/tonic) - gRPC framework
+- [prost](https://github.com/danburkert/prost) - protocol buffer implementation
+
 ## Running the CLI
 
 ```
@@ -59,3 +65,40 @@ To see all available flags and options for this subcommand
 ```bash
 okapi wallet create --help
 ```
+
+
+
+## FAQ
+#### How is the profile.bin encoded? When I create a wallet with the CLI, where is it stored?
+
+#### What is a did:key?
+
+## Command Reference
+- didkey
+  - generate
+  - resolve
+
+- didcomm
+  - pack
+  - unpack
+  - verify
+  - sign
+
+- config
+
+- wallet
+  - get_provider_configuration
+  - create
+  - set_profile
+  - search
+  - insert_item
+  - grant_access
+  - revoke_access
+
+- issuer
+  - issue
+  - create_proof
+  - verify_proof
+
+- authentication
+  - acquire_token

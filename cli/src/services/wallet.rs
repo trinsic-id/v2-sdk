@@ -123,8 +123,9 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
     let item_bytes = item.to_vec();
 
     use okapi::MessageFormatter;
-    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
+    let item: okapi::proto::google_protobuf::Struct = okapi::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
 
+    //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()
         .connect()
