@@ -1,0 +1,86 @@
+syntax = "proto3";
+package trinsic.services;
+
+import "google/protobuf/struct.proto";
+import "models/CredentialTemplates.proto";
+import "models/Organizations.proto";
+
+message InviteRequest {
+    ParticipantType participant = 1;
+    string description = 2;
+    oneof contact_method {
+        string email = 5;
+        string phone = 6;
+        DidCommInvitation didcomm_invitation = 7;
+    }
+
+    message DidCommInvitation {}
+}
+enum ParticipantType {
+    participant_type_individual = 0;
+    participant_type_organization = 1;
+}
+
+message InviteResponse {
+    string invitation_id = 1;
+}
+
+// Request details for the status of onboarding
+// an individual or organization.
+// The referenece_id passed is the response from the
+// `Onboard` method call
+message InvitationStatusRequest {
+    string invitation_id = 1;
+}
+
+message InvitationStatusResponse {
+    enum Status {
+        // Onboarding resulted in error
+        Error = 0;
+
+        // The participant has been invited
+        InvitationSent = 1;
+
+        // The participant has been onboarded
+        Completed = 2;
+    }
+
+    Status status = 1;
+    string status_details = 2;
+}
+
+service Provider {
+
+  rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+  rpc Invite(InviteRequest) returns (InviteResponse);
+  rpc InviteWithWorkflow(InviteRequest) returns (InviteResponse);
+  rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
+  rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
+  rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
+}
+
+//service Attributes {
+//  rpc Create(Attribute) returns (AttributeId);
+//  rpc Retrieve(AttributeId) returns (Attribute);
+//  rpc List(google.protobuf.Empty) returns (ListAttributesResponse);
+//}
+
+//service Credentials {
+//  rpc Issue(IssueCredentialRequest) returns (IssueCredentialResponse);
+//  rpc List(ListCredentialRequest) returns (ListCredentialResponse);
+//}
+
+//service Organizations {
+//  rpc Create(CreateOrgRequest) returns (CreateOrgResponse);
+//  rpc List(ListOrgRequest) returns (ListOrgResponse);
+//}
+//
+//service Presentations {
+//  rpc GeneratePresentation(GeneratePresentationRequest) returns (GeneratePresentationResponse);
+//  rpc SubmitPresentation(SubmitPresentationRequest) returns (SubmitPresentationResponse);
+//}
+//
+//service PresentationTemplates {
+//  rpc Create(CreatePresentationTemplateRequest) returns (CreatePresentationTemplateResponse);
+//  rpc List(ListPresentationTemplateRequest) returns (ListPresentationTemplateResponse);
+//}
