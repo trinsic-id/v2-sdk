@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Trinsic.Server;
 using Xunit;
 
-namespace Trinsic.Identity.Server.Tests
+namespace Trinsic.Server.Tests
 {
     [CollectionDefinition(CollectionDefinitionName)]
     public class HostFixture : IAsyncLifetime, ICollectionFixture<HostFixture>

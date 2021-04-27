@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
-using Trinsic.Identity.Server.Tests;
+using Trinsic.Server.Tests;
 using Trinsic.Services;
 using Xunit;
 using W3C.CCG.SecurityVocabulary;
