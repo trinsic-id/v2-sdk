@@ -1,0 +1,18 @@
+syntax = "proto3";
+package trinsic.services;
+
+import "pbmse/pbmse.proto";
+
+message NoOp {}
+
+enum ResponseStatus {
+    SUCCESS = 0;
+    WALLET_ACCESS_DENIED = 10;
+    WALLET_EXISTS = 11;
+    SERIALIZATION_ERROR = 200;
+    UNKNOWN_ERROR = 100;
+}
+
+service Common {
+    rpc Request(pbmse.EncryptedMessage) returns (pbmse.EncryptedMessage);
+}
