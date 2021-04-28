@@ -1,0 +1,32 @@
+name: Build, Test & Package NET SDK
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+      - run: dotnet restore ./dotnet
+      - run: dotnet test --configuration Release ./dotnet/Trinsic.Sdk.Tests/
+      - run: dotnet pack -c Release ./dotnet/Trinsic.Sdk/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          path: |
+            ./dotnet/**/*.nupkg
+            ./dotnet/**/*.snupkg

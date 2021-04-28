@@ -1,0 +1,6 @@
+[submodule "didcomm-v2"]
+	path = didcomm-v2
+	url = git@github.com:trinsic-id/didcomm-v2.git
+[submodule "ld-proofs-dotnet"]
+	path = ld-proofs-dotnet
+	url = https://github.com/trinsic-id/ld-proofs-dotnet
