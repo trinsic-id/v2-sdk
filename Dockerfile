@@ -4,6 +4,7 @@ WORKDIR /app
 # Copy everything else and build
 COPY . ./
 WORKDIR /app/sdks/cli
+RUN git submodule update --init
 # RUN dotnet restore
 # RUN dotnet publish -c Release -o out
 
