@@ -26,6 +26,6 @@ cli/
 The cli is built with a rust gRPC library named [tonic](https://github.com/hyperium/tonic)
 
 # npm
-
-
 protoc --proto_path=../proto --js_out=library=trinsic,binary:./ ../proto/IssuerService.proto
+## gitpod
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/trinsic-id/sdks)
