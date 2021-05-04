@@ -4,5 +4,5 @@
 	branch = main
 [submodule "proto"]
 	path = proto
-	url = git@github.com:trinsic-id/okapi-proto.git
+	url = git@github.com:trinsic-id/proto.git
 	branch = main
