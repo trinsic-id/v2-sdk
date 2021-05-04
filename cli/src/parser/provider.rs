@@ -1,6 +1,6 @@
 use clap::ArgMatches;
-use trinsic::utils::read_line;
 use std::fmt::{self, Display, Formatter};
+use trinsic::utils::read_line;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("create_organization") {
