@@ -28,4 +28,4 @@ The cli is built with a rust gRPC library named [tonic](https://github.com/hyper
 # npm
 
 
-protoc --proto_path=../../Proto --js_out=library=trinsic,binary:./ ../../Proto/IssuerService.proto
+protoc --proto_path=../proto --js_out=library=trinsic,binary:./ ../proto/IssuerService.proto
