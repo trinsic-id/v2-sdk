@@ -5,9 +5,8 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services;
-using W3C.CCG.SecurityVocabulary;
 
-namespace Trinsic.Sdk
+namespace Trinsic
 {
     public abstract class ServiceBase
     {
@@ -33,7 +32,7 @@ namespace Trinsic.Sdk
             // will be used as authenticated header
             var capabilityDocument = new JObject
             {
-                { "@context", Constants.SECURITY_CONTEXT_V2_URL },
+                { "@context", "https://w3id.org/security/v2" },
                 { "invocationTarget", profile.WalletId },
                 { "proof", new JObject
                     {

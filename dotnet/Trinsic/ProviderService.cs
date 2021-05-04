@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Trinsic.Services;
 
-namespace Trinsic.Sdk
+namespace Trinsic
 {
     public class ProviderService : ServiceBase
     {
