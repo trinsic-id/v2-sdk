@@ -8,12 +8,10 @@ using DComm = DIDComm.Messaging.DIDComm;
 using Google.Protobuf;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
-using W3C.CCG.SecurityVocabulary;
 using Google.Protobuf.WellKnownTypes;
-using W3C.CCG.DidCore;
 using System.Text;
 
-namespace Trinsic.Sdk
+namespace Trinsic
 {
     public class WalletService : ServiceBase
     {
@@ -50,7 +48,7 @@ namespace Trinsic.Sdk
             // Generate new DID used by the current device
             var myKey = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
             var myExchangeKey = myKey.Key.FirstOrDefault(x => x.Crv == "X25519") ?? throw new Exception("Key agreement key not found");
-            var myDidDocument = new DidDocument(myKey.DidDocument.ToJObject());
+            var myDidDocument = myKey.DidDocument.ToJObject();
 
             // Create an encrypted message
             var packedMessage = DComm.Pack(new PackRequest
@@ -60,7 +58,7 @@ namespace Trinsic.Sdk
                 Plaintext = new CreateWalletRequest
                 {
                     Description = "My Cloud Wallet",
-                    Controller = myDidDocument.Id,
+                    Controller = myDidDocument["id"].ToString(),
                     SecurityCode = securityCode ?? string.Empty
                 }.ToByteString()
             });
