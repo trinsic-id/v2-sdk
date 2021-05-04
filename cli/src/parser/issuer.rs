@@ -7,16 +7,16 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .subcommand_matches("issue")
                 .expect("Error parsing request"),
         );
-    } else if args.is_present("create_proof") {
+    } else if args.is_present("create-proof") {
         return create_proof(
             &args
-                .subcommand_matches("create_proof")
+                .subcommand_matches("create-proof")
                 .expect("Error parsing request"),
         );
-    } else if args.is_present("verify_proof") {
+    } else if args.is_present("verify-proof") {
         return verify_proof(
             &args
-                .subcommand_matches("verify_proof")
+                .subcommand_matches("verify-proof")
                 .expect("Error parsing request"),
         );
     } else {
@@ -33,15 +33,15 @@ fn issue<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 
 fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::CreateProof(CreateProofArgs {
-        reveal_document: args.value_of("reveal_document"),
-        document_id: args.value_of("document_id"),
+        reveal_document: args.value_of("reveal-document"),
+        document_id: args.value_of("document-id"),
         out: args.value_of("out"),
     })
 }
 
 fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::VerifyProof(VerifyProofArgs {
-        proof_document: args.value_of("proof_document"),
+        proof_document: args.value_of("proof-document"),
     })
 }
 

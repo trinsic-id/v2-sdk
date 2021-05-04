@@ -1,5 +1,5 @@
 use clap::ArgMatches;
-use okapi::utils::read_line;
+use trinsic::utils::read_line;
 use std::fmt::{self, Display, Formatter};
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {

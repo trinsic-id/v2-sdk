@@ -1,10 +1,10 @@
 use clap::ArgMatches;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    if args.is_present("get_provider_configuration") {
+    if args.is_present("provider-configuration") {
         return get_provider_configuration(
             &args
-                .subcommand_matches("get_provider_configuration")
+                .subcommand_matches("provider-configuration")
                 .expect("Error parsing request"),
         );
     } else if args.is_present("create") {
@@ -19,10 +19,10 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .subcommand_matches("search")
                 .expect("Error parsing request"),
         );
-    } else if args.is_present("insert_item") {
+    } else if args.is_present("insert-item") {
         return insert_item(
             &args
-                .subcommand_matches("insert_item")
+                .subcommand_matches("insert-item")
                 .expect("Error parsing request"),
         );
     } else {

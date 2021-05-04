@@ -1,7 +1,7 @@
-use okapi::proto::trinsic_services::{
+use trinsic::proto::trinsic_services::{
     credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
-use okapi::utils::{read_file_as_string, write_file};
+use trinsic::utils::{read_file_as_string, write_file};
 
 use super::{super::parser::issuer::*, config::Config};
 use didcommgrpc::*;
@@ -26,9 +26,9 @@ async fn issue(args: &IssueArgs, config: Config) {
         serde_json::from_str(&read_file_as_string(args.document)).expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use okapi::MessageFormatter;
-    let document: okapi::proto::google_protobuf::Struct =
-        okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    use trinsic::MessageFormatter;
+    let document: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = CredentialClient::with_interceptor(channel, config);
 
@@ -66,9 +66,9 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
             .expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use okapi::MessageFormatter;
-    let document: okapi::proto::google_protobuf::Struct =
-        okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    use trinsic::MessageFormatter;
+    let document: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = CredentialClient::with_interceptor(channel, config);
 
@@ -103,9 +103,9 @@ async fn verify_proof(args: &VerifyProofArgs, config: Config) {
             .expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use okapi::MessageFormatter;
-    let document: okapi::proto::google_protobuf::Struct =
-        okapi::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    use trinsic::MessageFormatter;
+    let document: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = CredentialClient::with_interceptor(channel, config);
 
