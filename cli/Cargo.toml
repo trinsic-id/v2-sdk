@@ -1,6 +1,6 @@
 [package]
-name = "trinsic"
-version = "0.1.0"
+name = "okapi"
+version = "0.1.1"
 authors = ["Trinsic <support@trinsic.id>"]
 edition = "2018"
 
@@ -9,7 +9,7 @@ tonic = "0.4"
 prost = "0.7"
 prost-types = "0.7"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
-didcomm-grpc = { path = "../../didcomm-v2/native" }
+didcomm-grpc = { path = "../didcomm-v2/native" }
 clap = {version = "~2.27.0", features = ["yaml"]}
 serde = "1.0.119"
 serde_json = "1.0.60"

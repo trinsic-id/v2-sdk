@@ -21,7 +21,7 @@ fn main() {
                 "../../proto/WalletService.proto",
                 "../../proto/ProviderService.proto",
             ],
-            &["../../proto"],
+            &["../proto/proto"],
         )
         .unwrap();
 
