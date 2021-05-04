@@ -13,15 +13,15 @@ fn main() {
         .compile_with_config(
             prost_config,
             &[
-                "../../proto/pbmse/pbmse.proto",
-                "../../proto/greet.proto",
-                "../../proto/AuthService.proto",
-                "../../proto/CoreService.proto",
-                "../../proto/IssuerService.proto",
-                "../../proto/WalletService.proto",
-                "../../proto/ProviderService.proto",
+                "../proto/pbmse/pbmse.proto",
+                "../proto/greet.proto",
+                "../proto/AuthService.proto",
+                "../proto/CoreService.proto",
+                "../proto/IssuerService.proto",
+                "../proto/WalletService.proto",
+                "../proto/ProviderService.proto",
             ],
-            &["../proto/proto"],
+            &["../proto"],
         )
         .unwrap();
 
