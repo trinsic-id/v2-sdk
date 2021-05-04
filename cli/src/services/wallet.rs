@@ -1,12 +1,12 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use didcommgrpc::*;
-use okapi::proto::google_protobuf::Struct;
-use okapi::proto::trinsic_services::{
+use trinsic::proto::google_protobuf::Struct;
+use trinsic::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
-use okapi::utils::read_file_as_string;
+use trinsic::utils::read_file_as_string;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -75,7 +75,7 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         .expect("Create Wallet failed")
         .into_inner();
 
-    use okapi::MessageFormatter;
+    use trinsic::MessageFormatter;
     let profile = WalletProfile {
         wallet_id: response.wallet_id,
         did_document: Some(Struct::from_vec(&did_doc_bytes).unwrap()),
@@ -126,9 +126,9 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 
-    use okapi::MessageFormatter;
-    let item: okapi::proto::google_protobuf::Struct =
-        okapi::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+    use trinsic::MessageFormatter;
+    let item: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
 
     //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())

@@ -1,6 +1,6 @@
 use clap::ArgMatches;
-use okapi::MessageFormatter;
-use okapi::WalletProfile;
+use trinsic::MessageFormatter;
+use trinsic::WalletProfile;
 use serde::{Deserialize, Serialize};
 use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
@@ -113,7 +113,7 @@ impl Config {
 
     pub fn read_profile<T>(&self) -> Result<T, Error>
     where
-        T: okapi::MessageFormatter + prost::Message + Default,
+        T: trinsic::MessageFormatter + prost::Message + Default,
     {
         let filename = data_path().join(format!("{}.bin", self.profile.as_ref().unwrap().default));
         let mut file = OpenOptions::new().read(true).open(filename)?;
@@ -174,7 +174,7 @@ impl Config {
     fn save_capability(&self, profile: &WalletProfile, name: &str) -> Result<(), Error> {
         // Save capability invocation generated from the input profile
         use didcommgrpc::*;
-        use okapi::utils::*;
+        use trinsic::utils::*;
         let capability_filename = data_path().join(format!("{}.json", name));
         let capability_document = get_capability_document(&profile.wallet_id);
 

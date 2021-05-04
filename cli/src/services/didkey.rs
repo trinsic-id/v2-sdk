@@ -1,7 +1,7 @@
 use super::super::parser::didkey::*;
 use didcommgrpc::proto::didcomm_messaging::{GenerateKeyRequest, ResolveRequest};
 use didcommgrpc::DIDKey;
-use okapi::utils::write_file;
+use trinsic::utils::write_file;
 
 pub fn execute(args: &Command) {
     match args {

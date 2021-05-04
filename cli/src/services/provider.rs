@@ -1,8 +1,8 @@
 use super::super::parser::provider::*;
 use crate::services::config::*;
 use didcommgrpc::*;
-use okapi::proto::trinsic_services::{provider_client::ProviderClient, InviteRequest};
-use okapi::{
+use trinsic::proto::trinsic_services::{provider_client::ProviderClient, InviteRequest};
+use trinsic::{
     invite_request::{self, ContactMethod},
     proto::{google_protobuf::Struct, trinsic_services},
 };
