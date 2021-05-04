@@ -1,13 +1,13 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use didcommgrpc::*;
+use tonic::transport::Channel;
 use trinsic::proto::google_protobuf::Struct;
 use trinsic::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
 use trinsic::utils::read_file_as_string;
-use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
