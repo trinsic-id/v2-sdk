@@ -37,15 +37,20 @@ pub fn read_line(out: Option<&str>) -> String {
         Some(msg) => {
             print!("{}: ", msg);
             stdout().flush().expect("Unable to flush stdout");
-            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
+            stdin()
+                .lock()
+                .read_line(&mut message)
+                .expect("Unable to read from stdin");
             message
-        },
+        }
         None => {
-            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
+            stdin()
+                .lock()
+                .read_line(&mut message)
+                .expect("Unable to read from stdin");
             message
         }
     }
-            
 }
 
 pub fn read_file_as_string(filename: Option<&str>) -> String {

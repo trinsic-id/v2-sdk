@@ -2,6 +2,7 @@ pub(crate) mod config;
 mod didcomm;
 mod didkey;
 mod issuer;
+mod provider;
 mod wallet;
 
 use self::config::Config;
@@ -13,6 +14,7 @@ pub(crate) fn execute(args: &Service, config: Config) {
         Service::DIDKey(args) => didkey::execute(&args),
         Service::DIDComm(args) => didcomm::execute(&args),
         Service::Issuer(args) => issuer::execute(&args, config),
+        Service::Provider(args) => provider::execute(&args, config).unwrap(),
         Service::Config(args) => config::execute(&args),
         _ => println!("Not yet implemented"),
     }

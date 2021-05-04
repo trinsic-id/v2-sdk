@@ -59,9 +59,13 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
+
     let request = tonic::Request::new(CreateWalletRequest {
         controller: key.key[0].kid.clone(),
         description,
+        security_code: args
+            .security_code
+            .map_or(String::default(), |x| x.to_string()),
         ..Default::default()
     });
 
@@ -123,7 +127,8 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
     let item_bytes = item.to_vec();
 
     use okapi::MessageFormatter;
-    let item: okapi::proto::google_protobuf::Struct = okapi::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+    let item: okapi::proto::google_protobuf::Struct =
+        okapi::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
 
     //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())

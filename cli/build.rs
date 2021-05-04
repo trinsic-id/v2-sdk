@@ -19,6 +19,7 @@ fn main() {
                 "../../proto/CoreService.proto",
                 "../../proto/IssuerService.proto",
                 "../../proto/WalletService.proto",
+                "../../proto/ProviderService.proto",
             ],
             &["../../proto"],
         )

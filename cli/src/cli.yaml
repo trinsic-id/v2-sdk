@@ -2,28 +2,28 @@ name: okapi
 version: "1.0"
 author: Jace K. <Jace@trinsic.id>
 about: >-
-    Command line interface for Okapi Core
-                            .'\
-                   .___    /   \
-                    `. `.-Y     |
-                      `/  |     /`''---.......--'`'-.
-                    .-'   ) __.'                     `\
-                  .'     \                             Y
-                 /  -=._.'     )                        `.
-                :   `-;       .                           `.
-                /           .^-.                            \
-               /          .'    `-.                          Y
-              |,-   _...-'         `'-.                      ]
-              \   .'                  |`                     ]L
-               `''                    [                      [[
-           _               _          [                     ] L
-          | |             (_)
-      ___ | | ____ _ _ __  _
-     / _ \| |/ / _` | '_ \| |
-    | (_) |   < (_| | |_) | |
-     \___/|_|\_\__,_| .__/|_| by Trinsic
-                    | |
-                    |_|
+  Command line interface for Okapi Core
+                          .'\
+                 .___    /   \
+                  `. `.-Y     |
+                    `/  |     /`''---.......--'`'-.
+                  .-'   ) __.'                     `\
+                .'     \                             Y
+               /  -=._.'     )                        `.
+              :   `-;       .                           `.
+              /           .^-.                            \
+             /          .'    `-.                          Y
+            |,-   _...-'         `'-.                      ]
+            \   .'                  |`                     ]L
+             `''                    [                      [[
+         _               _          [                     ] L
+        | |             (_)
+    ___ | | ____ _ _ __  _
+   / _ \| |/ / _` | '_ \| |
+  | (_) |   < (_| | |_) | |
+   \___/|_|\_\__,_| .__/|_| by Trinsic
+                  | |
+                  |_|
 subcommands:
   - config:
       about: Configuration setting
@@ -32,11 +32,11 @@ subcommands:
             about: Set the uri for the server
             version: "0.1"
             args:
-                - uri:
-                    value_name: STRING
-                    help: URI of the server
-                    takes_value: true
-                    required: true
+              - uri:
+                  value_name: STRING
+                  help: URI of the server
+                  takes_value: true
+                  required: true
   - didkey:
       about: didkey commands
       subcommands:
@@ -174,7 +174,7 @@ subcommands:
       args:
         - server-address:
             value_name: HOST_ADDRESS
-            help: '(Optional) Address of the server host. (default: http://localhost:5000/)'
+            help: "(Optional) Address of the server host. (default: http://localhost:5000/)"
             takes_value: true
             required: false
             long: server-address
@@ -205,6 +205,12 @@ subcommands:
                   long: description
                   value_name: STRING
                   help: (Optional) Description for new cloud wallet
+                  takes_value: true
+                  required: false
+              - security-code:
+                  long: security-code
+                  value_name: CODE
+                  help: (Optional) Security code for authenticating with external identity
                   takes_value: true
                   required: false
               - name:
@@ -260,44 +266,44 @@ subcommands:
             about: Issue a credential
             version: "0.1"
             args:
-                - document:
-                    long: document
-                    value_name: FILE
-                    help: Json document to sign
-                    takes_value: true
-                - out:
-                    long: out
-                    value_name: FILE
-                    help: output location for issue response
-                    takes_value: true
+              - document:
+                  long: document
+                  value_name: FILE
+                  help: Json document to sign
+                  takes_value: true
+              - out:
+                  long: out
+                  value_name: FILE
+                  help: output location for issue response
+                  takes_value: true
         - create_proof:
             about: Create a proof
             version: "0.1"
             args:
-                - reveal_document:
-                    long: reveal_document
-                    value_name: STRING
-                    help: Document
-                    takes_value: true
-                - document_id:
-                    long: document_id
-                    value_name: STRING
-                    help: Document id
-                    takes_value: true
-                - out:
-                    long: out
-                    value_name: FILE
-                    help: output location for created_proof
-                    takes_value: true
+              - reveal_document:
+                  long: reveal_document
+                  value_name: STRING
+                  help: Document
+                  takes_value: true
+              - document_id:
+                  long: document_id
+                  value_name: STRING
+                  help: Document id
+                  takes_value: true
+              - out:
+                  long: out
+                  value_name: FILE
+                  help: output location for created_proof
+                  takes_value: true
         - verify_proof:
             about: Verify a proof
             version: "0.1"
             args:
-                - proof_document:
-                    long: proof_document
-                    value_name: STRING
-                    help: Document
-                    takes_value: true
+              - proof_document:
+                  long: proof_document
+                  value_name: STRING
+                  help: Document
+                  takes_value: true
   - authentication:
       about: Authentication service
       version: "0.1"
@@ -312,20 +318,47 @@ subcommands:
         - create_organization:
             about: "Create an organization"
             version: "0.1"
-            args: 
-                - name:
-                    value_name: STRING
-                    help: name for organization
-                    takes_value: true
-                    required: true
-                - id:
-                    value_name: STRING
-                    help: id for organization
-                    takes_value: true
-                    required: true
+            args:
+              - name:
+                  value_name: STRING
+                  help: name for organization
+                  takes_value: true
+                  required: true
+              - id:
+                  value_name: STRING
+                  help: id for organization
+                  takes_value: true
+                  required: true
         - invite:
             about: "Send an invitation"
             version: "0.1"
+            args:
+              - description:
+                  long: description
+                  value_name: STRING
+                  help: Description
+                  takes_value: true
+                  required: false
+              - method-email:
+                  long: method-email
+                  value_name: EMAIL
+                  help: send invitation via email
+                  takes_value: true
+                  required: false
+              - method-sms:
+                  long: method-sms
+                  value_name: PHONE
+                  help: send invitation via sms
+                  takes_value: true
+                  required: false
+              - individual:
+                  long: individual
+                  help: (Default) Invite participant as individual
+                  required: false
+              - organization:
+                  long: organization
+                  help: Invite participant as organization
+                  required: false
         - invitation_status:
             about: "Check invitation status"
             version: "0.1"

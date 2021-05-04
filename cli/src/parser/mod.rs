@@ -4,8 +4,8 @@ pub mod config;
 pub mod didcomm;
 pub mod didkey;
 pub mod issuer;
+pub mod provider;
 pub mod wallet;
-//pub mod provider;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
     if args.is_present("didkey") {
@@ -40,13 +40,13 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
         ));
     } else if args.is_present("authentication") {
         return Service::Authentication;
-    } /*else if args.is_present("provider") {
+    } else if args.is_present("provider") {
         return Service::Provider(provider::parse(
             &args
                 .subcommand_matches("provider")
                 .expect("Error parsing request"),
         ));
-    } */else {
+    } else {
         Service::Unknown
     }
 }
@@ -57,7 +57,7 @@ pub enum Service<'a> {
     DIDKey(didkey::Command<'a>),
     Wallet(wallet::Command<'a>),
     Issuer(issuer::Command<'a>),
-    //Provider(provider::Command<'a>)
+    Provider(provider::Command<'a>),
     Config(config::Command<'a>),
     Authentication,
     Unknown,

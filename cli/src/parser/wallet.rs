@@ -37,6 +37,7 @@ fn create<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
         encrypted: args.value_of("encrypted").is_some(),
         key: args.value_of("key"),
         set_default: args.is_present("default"),
+        security_code: args.value_of("security-code"),
     })
 }
 
@@ -71,6 +72,7 @@ pub enum Command<'a> {
 pub struct CreateArgs<'a> {
     pub description: Option<&'a str>,
     pub profile_name: Option<&'a str>,
+    pub security_code: Option<&'a str>,
     pub encrypted: bool,
     pub key: Option<&'a str>,
     pub set_default: bool,

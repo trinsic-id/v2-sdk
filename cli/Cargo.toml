@@ -25,9 +25,9 @@ tonic-build = "0.4"
 prost-build = "0.7"
 
 [[bin]]
-name = "trinsic"
+name = "okapi"
 path = "src/main.rs"
 
 [lib]
-name = "trinsic"
+name = "okapi"
 path = "src/lib.rs"
