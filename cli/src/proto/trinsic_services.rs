@@ -6,7 +6,6 @@ pub enum ResponseStatus {
     Success = 0,
     WalletAccessDenied = 10,
     WalletExists = 11,
-    ItemNotFound = 20,
     SerializationError = 200,
     UnknownError = 100,
 }
@@ -278,7 +277,7 @@ pub struct CreateWalletRequest {
     pub controller: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    /// (Optional) Supply an invitation id to associate this caller profile
+    /// (Optional) Supply a security code to associate this caller profile
     /// to an existing cloud wallet.
     #[prost(string, tag = "3")]
     pub security_code: ::prost::alloc::string::String,
@@ -293,45 +292,6 @@ pub struct CreateWalletResponse {
     pub capability: ::prost::alloc::string::String,
     #[prost(string, tag = "4")]
     pub invoker: ::prost::alloc::string::String,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConnectRequest {
-    #[prost(oneof = "connect_request::ContactMethod", tags = "5, 6")]
-    pub contact_method: ::core::option::Option<connect_request::ContactMethod>,
-}
-/// Nested message and enum types in `ConnectRequest`.
-pub mod connect_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum ContactMethod {
-        #[prost(string, tag = "5")]
-        Email(::prost::alloc::string::String),
-        #[prost(string, tag = "6")]
-        Phone(::prost::alloc::string::String),
-    }
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConnectResponse {
-    #[prost(enumeration = "ResponseStatus", tag = "1")]
-    pub status: i32,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InvitationToken {
-    #[prost(string, tag = "1")]
-    pub security_code: ::prost::alloc::string::String,
-    #[prost(string, tag = "2")]
-    pub wallet_id: ::prost::alloc::string::String,
-    #[prost(oneof = "invitation_token::ContactMethod", tags = "5, 6")]
-    pub contact_method: ::core::option::Option<invitation_token::ContactMethod>,
-}
-/// Nested message and enum types in `InvitationToken`.
-pub mod invitation_token {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum ContactMethod {
-        #[prost(string, tag = "5")]
-        Email(::prost::alloc::string::String),
-        #[prost(string, tag = "6")]
-        Phone(::prost::alloc::string::String),
-    }
 }
 ///
 ///Stores profile data for accessing a wallet.
@@ -465,22 +425,6 @@ pub mod wallet_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        pub async fn connect_external_identity(
-            &mut self,
-            request: impl tonic::IntoRequest<super::ConnectRequest>,
-        ) -> Result<tonic::Response<super::ConnectResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/trinsic.services.Wallet/ConnectExternalIdentity",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
         pub async fn create_wallet(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateWalletRequest>,
@@ -601,6 +545,111 @@ pub mod wallet_client {
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Attribute {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(enumeration = "AttributeType", tag = "3")]
+    pub r#type: i32,
+    #[prost(string, tag = "4")]
+    pub value: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AttributeId {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListAttributesResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub attributes: ::prost::alloc::vec::Vec<Attribute>,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum AttributeType {
+    Date = 0,
+    Number = 1,
+    Text = 2,
+    Enum = 3,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateCredentialTemplateRequest {}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateCredentialTemplateResponse {}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListCredentialTemplatesRequest {
+    #[prost(string, tag = "1")]
+    pub query: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListCredentialTemplatesResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub templates: ::prost::alloc::vec::Vec<CredentialTemplate>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CredentialTemplate {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub title: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub description: ::prost::alloc::string::String,
+    #[prost(string, repeated, tag = "4")]
+    pub contexts: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(string, tag = "5")]
+    pub schema: ::prost::alloc::string::String,
+}
+// platform models
+
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Organization {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(enumeration = "organization::Capability", repeated, tag = "3")]
+    pub capabilities: ::prost::alloc::vec::Vec<i32>,
+    #[prost(message, repeated, tag = "4")]
+    pub members: ::prost::alloc::vec::Vec<Member>,
+}
+/// Nested message and enum types in `Organization`.
+pub mod organization {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[repr(i32)]
+    pub enum Capability {
+        Verifier = 0,
+        Issuer = 1,
+        Provider = 2,
+    }
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Member {
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub email: ::prost::alloc::string::String,
+}
+// service models
+
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateOrganizationRequest {
+    #[prost(message, optional, tag = "1")]
+    pub organization: ::core::option::Option<Organization>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateOrganizationResponse {
+    #[prost(message, optional, tag = "2")]
+    pub organization: ::core::option::Option<Organization>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListOrganizationRequest {}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListOrganizationResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub organization: ::prost::alloc::vec::Vec<Organization>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
     #[prost(enumeration = "ParticipantType", tag = "1")]
     pub participant: i32,
@@ -696,7 +745,22 @@ pub mod provider_client {
             let inner = tonic::client::Grpc::with_interceptor(inner, interceptor);
             Self { inner }
         }
-        #[doc = "   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);"]
+        pub async fn create_organization(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateOrganizationRequest>,
+        ) -> Result<tonic::Response<super::CreateOrganizationResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Provider/CreateOrganization",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
         pub async fn invite(
             &mut self,
             request: impl tonic::IntoRequest<super::InviteRequest>,
@@ -740,6 +804,40 @@ pub mod provider_client {
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/trinsic.services.Provider/InvitationStatus");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn create_credential_template(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateCredentialTemplateRequest>,
+        ) -> Result<tonic::Response<super::CreateCredentialTemplateResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Provider/CreateCredentialTemplate",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn list_credential_templates(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListCredentialTemplatesRequest>,
+        ) -> Result<tonic::Response<super::ListCredentialTemplatesResponse>, tonic::Status>
+        {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Provider/ListCredentialTemplates",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
