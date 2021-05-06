@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic", "Trinsic\Trinsic.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportLibraries", "SupportLibraries", "{9DC00609-BD25-4F61-B94C-BFF1E6898871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging.gRPC", "..\..\didcomm-v2\dotnet\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj", "{D72E5263-0916-4EFB-86A2-947C684374C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging.gRPC", "..\okapi\dotnet\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj", "{D72E5263-0916-4EFB-86A2-947C684374C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Protobuf", "Trinsic.Protobuf\Trinsic.Protobuf.csproj", "{6D106D2D-BE41-47E9-A067-63EECF9E5F93}"
 EndProject
