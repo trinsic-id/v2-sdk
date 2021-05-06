@@ -1,7 +1,3 @@
-[submodule "didcomm-v2"]
-	path = didcomm-v2
-	url = git@github.com:trinsic-id/didcomm-v2.git
-	branch = main
 [submodule "proto"]
 	path = proto
 	url = git@github.com:trinsic-id/proto.git
