@@ -1,4 +1,4 @@
-name: Build, Test & Package NET SDK
+name: "NET: Build, Test, Package"
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ on:
         default: "1.0.0"
 
 jobs:
-  package:
+  dotnet:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

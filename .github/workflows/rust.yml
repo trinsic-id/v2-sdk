@@ -1,4 +1,4 @@
-name: Build & Test Rust CLI
+name: "Rust: Build, Test"
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ on:
         default: "1.0.0"
 
 jobs:
-  build:
+  rust:
     runs-on: ubuntu-latest
     defaults:
       run:
