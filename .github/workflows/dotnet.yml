@@ -28,5 +28,5 @@ jobs:
         with:
           name: nuget
           path: |
-            ./dotnet/**/*.nupkg
-            ./dotnet/**/*.snupkg
+            ./dotnet/**/Release/*.nupkg
+            ./dotnet/**/Release/*.snupkg
