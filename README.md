@@ -1,6 +1,7 @@
 # Trinsic SDK v2
 
 [![NET](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml)
+[![Rust](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml)
 
 - .NET
 - TS/WASM
