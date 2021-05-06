@@ -2,3 +2,7 @@
 	path = proto
 	url = git@github.com:trinsic-id/proto.git
 	branch = main
+[submodule "okapi"]
+	path = okapi
+	url = git@github.com:trinsic-id/okapi.git
+	branch = main
