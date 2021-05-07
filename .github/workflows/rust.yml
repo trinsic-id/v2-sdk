@@ -1,0 +1,29 @@
+name: "Rust: Build, Test"
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cli
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: cargo build
+      - run: cargo test

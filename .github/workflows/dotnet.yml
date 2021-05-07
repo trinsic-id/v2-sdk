@@ -1,0 +1,32 @@
+name: "NET: Build, Package"
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+
+jobs:
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: dotnet restore ./dotnet
+      - run: dotnet pack -c Release ./dotnet/Trinsic/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          path: |
+            ./dotnet/**/Release/*.nupkg
+            ./dotnet/**/Release/*.snupkg
