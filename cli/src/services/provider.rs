@@ -1,12 +1,8 @@
 use super::super::parser::provider::*;
 use crate::services::config::*;
-use didcommgrpc::*;
 use tonic::transport::Channel;
 use trinsic::proto::trinsic_services::{provider_client::ProviderClient, InviteRequest};
-use trinsic::{
-    invite_request::{self, ContactMethod},
-    proto::{google_protobuf::Struct, trinsic_services},
-};
+use trinsic::{invite_request::ContactMethod, proto::trinsic_services};
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
