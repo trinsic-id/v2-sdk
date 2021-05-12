@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Text;
-using DIDComm.Messaging;
+using Okapi;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services;
+using Okapi.Proofs;
+using Okapi.Keys;
 
 namespace Trinsic
 {
@@ -43,7 +45,7 @@ namespace Trinsic
                 }
             };
 
-            var proofResponse = LDProofs.CreateProof(new DIDComm.Messaging.CreateProofRequest
+            var proofResponse = LDProofs.CreateProof(new Okapi.Proofs.CreateProofRequest
             {
                 Key = JsonWebKey.Parser.ParseFrom(profile.InvokerJwk),
                 Document = capabilityDocument.ToStruct(),

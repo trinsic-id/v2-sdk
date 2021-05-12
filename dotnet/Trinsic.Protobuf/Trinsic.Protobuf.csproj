@@ -10,6 +10,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Grpc" Version="2.37.1" />
     <PackageReference Include="Grpc.Tools" Version="2.37.1" PrivateAssets="All" />
+    <PackageReference Include="Okapi.Net" Version="0.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,14 +21,14 @@
     <Protobuf Include="..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
     <Protobuf Include="..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
 
-    <Protobuf Include="..\..\proto\pbmse\pbmse.proto" Link="Proto/pbmse/pbmse.proto" />
+    <!-- <Protobuf Include="..\..\proto\pbmse\pbmse.proto" Link="Proto/pbmse/pbmse.proto" /> -->
     <Protobuf Include="..\..\proto\models\Attributes.proto" Link="Proto/models/Attributes.proto" ProtoRoot="../../proto" />
     <Protobuf Include="..\..\proto\models\CredentialTemplates.proto" Link="Proto/models/CredentialTemplates.proto" ProtoRoot="../../proto" />
     <Protobuf Include="..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
     <Protobuf Include="..\..\proto\models\Organizations.proto" Link="Proto\models\Organizations.proto" />
 
 
-    <!-- 
+    <!--
     <Protobuf Include="..\..\proto\models\Credentials.proto">
       <Link>Proto\models\Credentials.proto</Link>
     </Protobuf>

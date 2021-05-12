@@ -8,25 +8,56 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      packageVersion:
-        description: "Package Version"
-        required: true
-        default: "1.0.0"
+  release:
+    types: [published, prereleased]
 
 jobs:
-  dotnet:
+  dotnet_package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
           submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
-      - run: dotnet restore ./dotnet
-      - run: dotnet pack -c Release ./dotnet/Trinsic/
+      - name: Generate Package Version
+        run: |
+          $packageVersion = node -p -e "require('./package.json').version"
+          $manualVersion = "${{ github.event.release.tag_name }}"
+          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $version = $version.TrimStart("v")
+
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
+      - run: dotnet restore
+        working-directory: ./dotnet
+      - name: Create Nuget package
+        run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
+        shell: pwsh
+        working-directory: ./dotnet
       - uses: actions/upload-artifact@v2
         with:
           name: nuget
           path: |
             ./dotnet/**/Release/*.nupkg
             ./dotnet/**/Release/*.snupkg
+
+  dotnet_publish:
+    name: Publish Nuget
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published' &&
+      github.release.draft == false &&
+      github.release.prerelease == false
+    runs-on: windows-latest
+    needs: [dotnet_package]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./nuget
+      - name: Push packages to Nuget
+        run: |
+          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          {
+            nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+          }
+        shell: pwsh

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic", "Trinsic\Trinsic.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportLibraries", "SupportLibraries", "{9DC00609-BD25-4F61-B94C-BFF1E6898871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIDComm.Messaging.gRPC", "..\okapi\dotnet\Library\DIDComm.Messaging.gRPC\DIDComm.Messaging.gRPC.csproj", "{D72E5263-0916-4EFB-86A2-947C684374C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okapi", "..\okapi\dotnet\Library\Okapi\Okapi.csproj", "{D72E5263-0916-4EFB-86A2-947C684374C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Protobuf", "Trinsic.Protobuf\Trinsic.Protobuf.csproj", "{6D106D2D-BE41-47E9-A067-63EECF9E5F93}"
 EndProject
@@ -37,17 +37,16 @@ Global
 		{27653C85-B966-4FBD-8F5C-A2711F7DA913}.Release|x86.ActiveCfg = Release|Any CPU
 		{27653C85-B966-4FBD-8F5C-A2711F7DA913}.Release|x86.Build.0 = Release|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|x64.Build.0 = Debug|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|x86.Build.0 = Debug|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|x64.ActiveCfg = Release|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|x64.Build.0 = Release|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|x86.ActiveCfg = Release|Any CPU
 		{D72E5263-0916-4EFB-86A2-947C684374C5}.Release|x86.Build.0 = Release|Any CPU
+		{D72E5263-0916-4EFB-86A2-947C684374C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Debug|x64.ActiveCfg = Debug|Any CPU
