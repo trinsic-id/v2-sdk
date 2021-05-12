@@ -1,6 +1,6 @@
 use super::super::parser::didkey::*;
-use didcommgrpc::proto::didcomm_messaging::{GenerateKeyRequest, ResolveRequest};
-use didcommgrpc::DIDKey;
+use okapi::proto::keys::{GenerateKeyRequest, ResolveRequest};
+use okapi::DIDKey;
 use trinsic::utils::write_file;
 
 pub fn execute(args: &Command) {
@@ -25,7 +25,7 @@ fn generate_key(args: &GenerateArgs) {
 
     let res = DIDKey::generate(&GenerateKeyRequest {
         seed: vec![],
-        key_type: key_type,
+        key_type,
     })
     .expect("Error Generating DIDKey");
     let key = serde_json::to_string_pretty(&res.key[0])

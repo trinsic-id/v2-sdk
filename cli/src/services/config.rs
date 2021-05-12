@@ -110,7 +110,7 @@ impl Config {
 
         update_file(&config_file, self)
     }
-
+    #[allow(dead_code)]
     pub fn read_profile<T>(&self) -> Result<T, Error>
     where
         T: trinsic::MessageFormatter + prost::Message + Default,
@@ -173,7 +173,10 @@ impl Config {
 
     fn save_capability(&self, profile: &WalletProfile, name: &str) -> Result<(), Error> {
         // Save capability invocation generated from the input profile
-        use didcommgrpc::*;
+        use okapi::{
+            proto::{keys::*, proofs::*},
+            *,
+        };
         use trinsic::utils::*;
         let capability_filename = data_path().join(format!("{}.json", name));
         let capability_document = get_capability_document(&profile.wallet_id);

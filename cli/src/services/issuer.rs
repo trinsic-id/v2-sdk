@@ -4,7 +4,7 @@ use trinsic::proto::trinsic_services::{
 use trinsic::utils::{read_file_as_string, write_file};
 
 use super::{super::parser::issuer::*, config::Config};
-use didcommgrpc::*;
+use okapi::*;
 use tonic::transport::Channel;
 
 pub(crate) fn execute(args: &Command, config: Config) {
@@ -22,7 +22,7 @@ async fn issue(args: &IssueArgs, config: Config) {
         .connect()
         .await
         .expect("Unable to connect to server");
-    let document: didcommgrpc::proto::google_protobuf::Struct =
+    let document: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.document)).expect("Unable to parse Item");
     let document = document.to_vec();
 
@@ -61,7 +61,7 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
         Some(id) => id.to_string(),
         None => panic!("Please include document id"),
     };
-    let document: didcommgrpc::proto::google_protobuf::Struct =
+    let document: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.reveal_document))
             .expect("Unable to parse Item");
     let document = document.to_vec();
@@ -74,7 +74,7 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
 
     let request = tonic::Request::new(CreateProofRequest {
         reveal_document: Some(document),
-        document_id: document_id,
+        document_id,
     });
 
     let response = client
@@ -98,7 +98,7 @@ async fn verify_proof(args: &VerifyProofArgs, config: Config) {
         .connect()
         .await
         .expect("Unable to connect to server");
-    let document: didcommgrpc::proto::google_protobuf::Struct =
+    let document: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.proof_document))
             .expect("Unable to parse Item");
     let document = document.to_vec();

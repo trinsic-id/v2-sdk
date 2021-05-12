@@ -1,0 +1,7 @@
+{
+  "name": "trinsic",
+  "version": "1.0.0",
+  "description": "Trinsic SDK for interaction with Trinsic Core and Ecosystems backend services",
+  "author": "Trinsic",
+  "license": "Apache-2.0"
+}

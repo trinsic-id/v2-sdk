@@ -3,13 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Trinsic.Services;
-using DIDComm.Messaging;
-using DComm = DIDComm.Messaging.DIDComm;
 using Google.Protobuf;
-using Grpc.Core;
 using Newtonsoft.Json.Linq;
 using Google.Protobuf.WellKnownTypes;
-using System.Text;
+using Okapi.Keys;
+using Okapi.Transport;
+using Pbmse;
 
 namespace Trinsic
 {
@@ -51,7 +50,7 @@ namespace Trinsic
             var myDidDocument = myKey.DidDocument.ToJObject();
 
             // Create an encrypted message
-            var packedMessage = DComm.Pack(new PackRequest
+            var packedMessage = DIDComm.Pack(new PackRequest
             {
                 SenderKey = myExchangeKey,
                 ReceiverKey = providerExchangeKey,
@@ -65,9 +64,9 @@ namespace Trinsic
 
             // Invoke create wallet using encrypted message
             // Call the server endpoint with encrypted message
-            var response = await Client.CreateWalletEncryptedAsync(packedMessage.Message.As<Pbmse.EncryptedMessage>());
+            var response = await Client.CreateWalletEncryptedAsync(packedMessage.Message.As<EncryptedMessage>());
 
-            var decryptedResponse = DComm.Unpack(new UnpackRequest
+            var decryptedResponse = DIDComm.Unpack(new UnpackRequest
             {
                 Message = response.As<EncryptedMessage>(),
                 ReceiverKey = myExchangeKey,
@@ -117,7 +116,7 @@ namespace Trinsic
         {
             var response = await Client.SearchAsync(new SearchRequest { Query = query }, GetMetadata());
             return response;
-            
+
         }
 
         /// <summary>
