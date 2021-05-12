@@ -10,6 +10,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Grpc" Version="2.37.1" />
     <PackageReference Include="Grpc.Tools" Version="2.37.1" PrivateAssets="All" />
+    <PackageReference Include="Okapi.Net" Version="0.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +40,4 @@
     </Protobuf> -->
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\okapi\dotnet\Library\Okapi\Okapi.csproj" />
-  </ItemGroup>
 </Project>
