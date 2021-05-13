@@ -1,6 +1,6 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
-use didcommgrpc::*;
+use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
 use trinsic::proto::google_protobuf::Struct;
 use trinsic::proto::trinsic_services::{
@@ -122,7 +122,7 @@ async fn search(args: &SearchArgs, config: Config) {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: Config) {
-    let item: didcommgrpc::proto::google_protobuf::Struct =
+    let item: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 

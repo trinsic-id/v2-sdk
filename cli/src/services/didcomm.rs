@@ -2,7 +2,11 @@ use std::fs::OpenOptions;
 use std::io::{stdin, stdout, BufRead, Read, Write};
 
 use super::super::parser::didcomm::*;
-use didcommgrpc::*;
+use okapi::{
+    pbmse::*,
+    proto::{keys::*, transport::*},
+    *,
+};
 
 pub fn execute(args: &Command) {
     match args {
