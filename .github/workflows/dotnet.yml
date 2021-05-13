@@ -76,7 +76,7 @@ jobs:
         run: |
           foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
           {
-            nuget push $item.FullName -ApiKey "${{ secrets.ACCESS_TOKEN }}" -Source https://nuget.pkg.github.com/trinsic-id/index.json -SkipDuplicate
+            nuget push $item.FullName -ApiKey "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" -Source https://nuget.pkg.github.com/trinsic-id/index.json -SkipDuplicate
           }
         shell: pwsh
 
