@@ -74,9 +74,10 @@ jobs:
           path: ./nuget
       - name: Push packages to Nuget
         run: |
+          dotnet nuget add source --username tmarkovski --password ${{ secrets.ACCESS_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/trinsic-id/index.json"
           foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
           {
-            nuget push $item.FullName -ApiKey "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" -Source https://nuget.pkg.github.com/trinsic-id/index.json -SkipDuplicate
+            nuget push $item.FullName -ApiKey "${{ secrets.ACCESS_TOKEN }}" -Source "github" -SkipDuplicate
           }
         shell: pwsh
 
