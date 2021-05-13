@@ -41,7 +41,7 @@ jobs:
             ./dotnet/**/Release/*.nupkg
             ./dotnet/**/Release/*.snupkg
 
-  dotnet_publish:
+  dotnet_publish_nuget:
     name: Publish Nuget
     if: |
       github.event_name == 'release' &&
@@ -61,3 +61,23 @@ jobs:
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
+
+        # dotnet nuget add source --username tmarkovski --password ${{ secrets.ACCESS_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/trinsic-id/index.json"
+
+  dotnet_publish_github:
+    name: Publish Nuget
+    runs-on: windows-latest
+    needs: [dotnet_package]
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: ./nuget
+      - name: Push packages to Nuget
+        run: |
+          foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
+          {
+            nuget push $item.FullName -ApiKey "${{ secrets.ACCESS_TOKEN }}" -Source https://nuget.pkg.github.com/trinsic-id/index.json -SkipDuplicate
+          }
+        shell: pwsh
+
+
