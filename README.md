@@ -1,5 +1,8 @@
+
+
 # Trinsic SDK v2
 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/trinsic-id/sdk)
 [![NET](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml)
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml)
 
@@ -35,3 +38,4 @@ protoc --proto_path=../proto --js_out=library=trinsic,binary:./ ../proto/IssuerS
 
 ## Working with submodules
 Immediately after cloning, do `git submodule update --init --recursive`
+

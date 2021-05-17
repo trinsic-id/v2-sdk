@@ -2,14 +2,13 @@
 image:
   file: .gitpod.Dockerfile
 
-ports:
-  - port: 5000
-    onOpen: ignore
+# ports:
+#   - port: 5000
+#     onOpen: ignore
 
 tasks:
-  - command: rustup component add rustfmt && cargo install --path sdks/cli
+  - command: rustup component add rustfmt && cargo install --path cli
 
 vscode:
   extensions:
-    - muhammad-sammy.csharp
     - matklad.rust-analyzer
