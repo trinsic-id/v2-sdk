@@ -1,9 +1,13 @@
-import okapi from '@trinsic/okapi';
-import { ChannelCredentials, Channel } from "@grpc/grpc-js";
+import okapi from "@trinsic/okapi";
+import { credentials as ChannelCredentials, Channel } from "grpc";
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "../dist/ProviderService_grpc_pb";
-import { trinsic as Provider } from '../dist/ProviderService';
-
+import { ProviderClient } from "./proto/ProviderService_grpc_pb";
+import {
+  InvitationStatusRequest,
+  InvitationStatusResponse,
+  InviteRequest,
+  InviteResponse,
+} from "./proto/ProviderService_pb";
 
 export default class ProviderService extends ServiceBase {
   channel: Channel;
@@ -11,23 +15,46 @@ export default class ProviderService extends ServiceBase {
 
   constructor(serviceAddress: string = "http://localhost:5000") {
     super();
-    let channel = new Channel(serviceAddress, ChannelCredentials.createInsecure(), {});
+
+    let credentials = ChannelCredentials.createInsecure();
+    let channel = new Channel(serviceAddress, credentials, {});
     this.channel = channel;
-    this.client = new ProviderClient(channel);
+    this.client = new ProviderClient(serviceAddress, credentials);
   }
 
   setChannel(channel: Channel) {
     this.channel = channel;
-    this.client = new ProviderClient(channel);
-  }
-  
-  async inviteParticipant(request: Provider.services.InviteRequest) : Promise<Provider.services.InviteResponse> {
-    let response = await this.client.invite(request, this.GetMetadata()) as Provider.services.InviteResponse;
-    return response;
+    this.client = new ProviderClient(
+      channel.getTarget(),
+      ChannelCredentials.createInsecure()
+    );
   }
 
-  async invitationStatus(request: Provider.services.InvitationStatusRequest) : Promise<Provider.services.InvitationStatusResponse> {
-    let response = await this.client.invitationStatus(request, this.GetMetadata()) as Provider.services.InvitationStatusResponse;
-    return response;
+  async inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
+    return new Promise((resolve, reject) => {
+      this.client.invite(request, this.GetMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
+  async invitationStatus(
+    request: InvitationStatusRequest
+  ): Promise<InvitationStatusResponse> {
+    return new Promise((resolve, reject) => {
+      this.client.invitationStatus(
+        request,
+        this.GetMetadata(),
+        (error, response) => {
+          if (error) {
+            reject(error);
+          }
+          return resolve(response);
+        }
+      );
+    });
   }
 }

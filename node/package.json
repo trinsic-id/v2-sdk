@@ -7,17 +7,20 @@
     "build:typescript": "tsc",
     "build:proto": "pwsh ./Make-Proto-Black.ps1 && npm run build",
     "start:server": "node samples/server.js",
-    "start:client": "node samples/client.js"
+    "start:client": "node samples/client.js",
+    "test": "ava"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@grpc/grpc-js": "^1.2.8",
+    "grpc": "^1.24.4",
     "@trinsic/okapi": "^0.0.5",
     "google-protobuf": "^3.15.1"
   },
   "devDependencies": {
+    "ava": "^3.15.0",
     "grpc-tools": "^1.10.0",
+    "jest": "^26.6.3",
     "ts-node": "^9.0.0",
     "ts-protoc-gen": "^0.14.0",
     "typescript": "^4.0.5"

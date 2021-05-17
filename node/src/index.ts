@@ -3,7 +3,7 @@
 
 // import {credentials} from "@grpc/grpc-js";
 // import {ProviderClient} from "../dist/ProviderService_grpc_pb";
-import WalletService from './WalletService';
+import { TrinsicWalletService } from './WalletService';
 
 // import * as TemplateModels from "../dist/CredentialTemplates_pb";
 // import * as PresentationTemplates from "../dist/PresentationTemplates_pb";
@@ -17,7 +17,7 @@ export {
     // provider,
     // credentialTemplates,
     // attributes,
-    WalletService
+    TrinsicWalletService as WalletService
     // organizations,
     // OrganizationModels,
     // TemplateModels,
