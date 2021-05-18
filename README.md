@@ -38,4 +38,3 @@ protoc --proto_path=../proto --js_out=library=trinsic,binary:./ ../proto/IssuerS
 
 ## Working with submodules
 Immediately after cloning, do `git submodule update --init --recursive`
-
