@@ -1,0 +1,34 @@
+syntax = "proto3";
+package trinsic.services;
+
+import 'models/Attributes.proto';
+
+message CreatePresentationTemplateRequest {
+  string name = 2;
+  repeated Attribute attributes = 3;
+}
+
+message CreatePresentationTemplateResponse {
+  string id = 1;
+  string name = 2;
+  repeated Attribute attributes= 3;
+}
+
+message ListPresentationTemplateResponse {
+  repeated PresentationTemplate templates = 1;
+}
+
+message ListPresentationTemplateRequest{
+  
+}
+
+message PresentationTemplate {
+  string id = 1;
+  string name = 2;
+  repeated Attribute attributes= 3;
+}
+
+//service PresentationTemplates {
+//  rpc Create(CreatePresentationTemplateRequest) returns (CreatePresentationTemplateResponse);
+//  rpc List(ListPresentationTemplateRequest) returns (ListPresentationTemplateResponse);
+//}
