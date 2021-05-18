@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Grpc.Tools" Version="2.36.1" PrivateAssets="All" />
-    <PackageReference Include="Okapi.Net" Version="1.0.0-preview.6" />
+    <PackageReference Include="Okapi.Net" Version="1.0.0-preview.10" />
   </ItemGroup>
 
   <ItemGroup>
