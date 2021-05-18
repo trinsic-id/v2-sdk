@@ -6,9 +6,6 @@
     "build": "npm run build:typescript && npm run build:copy",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./dist/",
-    "build:proto": "pwsh ./Make-Proto-Black.ps1 && npm run build",
-    "start:server": "node samples/server.js",
-    "start:client": "node samples/client.js",
     "test": "ava --verbose"
   },
   "author": "",
