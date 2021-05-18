@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+// platform models
+
+message Organization {
+  string id = 1;
+  string name = 2;
+  enum Capability {
+    VERIFIER = 0;
+    ISSUER = 1;
+    PROVIDER = 2;
+  }
+  repeated Capability capabilities = 3;
+  repeated Member members = 4;
+}
+
+message Member {
+  string name = 1;
+  string email = 2;
+}
+
+// service models
+
+message CreateOrganizationRequest {
+  Organization organization = 1;
+}
+
+message CreateOrganizationResponse {
+  Organization organization = 2;
+}
+
+message ListOrganizationRequest {
+  
+}
+
+message ListOrganizationResponse {
+  repeated Organization organization = 1;
+}
+
+//service Organizations {
+//  rpc Create(CreateOrgRequest) returns (CreateOrgResponse);
+//  rpc List(ListOrgRequest) returns (ListOrgResponse);
+//}
