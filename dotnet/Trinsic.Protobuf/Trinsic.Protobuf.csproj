@@ -6,10 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.15.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Grpc" Version="2.37.1" />
-    <PackageReference Include="Grpc.Tools" Version="2.37.1" PrivateAssets="All" />
+    <PackageReference Include="Grpc.Tools" Version="2.36.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +18,6 @@
     <Protobuf Include="..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
     <Protobuf Include="..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
 
-    <!-- <Protobuf Include="..\..\proto\pbmse\pbmse.proto" Link="Proto/pbmse/pbmse.proto" /> -->
     <Protobuf Include="..\..\proto\models\Attributes.proto" Link="Proto/models/Attributes.proto" ProtoRoot="../../proto" />
     <Protobuf Include="..\..\proto\models\CredentialTemplates.proto" Link="Proto/models/CredentialTemplates.proto" ProtoRoot="../../proto" />
     <Protobuf Include="..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
@@ -40,6 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\okapi\dotnet\Library\Okapi\Okapi.csproj" />
+    <ProjectReference Include="..\..\okapi\dotnet\Library\Okapi\Okapi.csproj" />
   </ItemGroup>
 </Project>
