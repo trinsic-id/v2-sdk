@@ -1,7 +1,3 @@
-[submodule "proto"]
-	path = proto
-	url = https://github.com/trinsic-id/proto.git
-	branch = main
 [submodule "okapi"]
 	path = okapi
 	url = https://github.com/trinsic-id/okapi.git
