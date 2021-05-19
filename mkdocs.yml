@@ -1,11 +1,17 @@
 site_name: Documentation
 site_dir: docs-site
+repo_url: https://github.com/trinsic-id/sdk
+edit_uri: edit/main/docs/
+repo_name: trinsic-id/sdk
+
 extra_css: 
   - _static/extra.css
 theme:
     name: material
     logo: _static/logo-title.svg
     favicon: _static/logo.png
+    icon:
+      repo: fontawesome/brands/github-alt
     font:
       text: Inter
     palette:
