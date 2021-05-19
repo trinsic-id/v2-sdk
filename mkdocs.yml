@@ -1,4 +1,4 @@
-site_name: Docs
+site_name: Documentation
 site_dir: docs-site
 extra_css: 
   - _static/extra.css
@@ -6,6 +6,20 @@ theme:
     name: material
     logo: _static/logo-title.svg
     favicon: _static/logo.png
+    font:
+      text: Inter
+    palette:
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        toggle:
+          icon: fontawesome/solid/cloud-moon
+          name: Switch to dark mode
+        
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        toggle:
+          icon: fontawesome/solid/sun
+          name: Switch to light mode
     highlightjs: true
     hljs_languages:
         - yaml
