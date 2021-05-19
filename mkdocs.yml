@@ -1,10 +1,10 @@
-site_name: Trinsic SDK Documentation
+site_name: Docs
 site_dir: docs-site
 extra_css: 
   - _static/extra.css
 theme:
     name: material
-    logo: _static/logo.png
+    logo: _static/logo-title.svg
     favicon: _static/logo.png
     highlightjs: true
     hljs_languages:

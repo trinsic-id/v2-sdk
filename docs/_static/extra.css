@@ -3,4 +3,11 @@
     box-shadow: none !important;
     /*#006BE5;*/
 }
+.md-header__button.md-logo {
+    margin-bottom: .4rem;
+}
 
+.md-header__button.md-logo img, .md-header__button.md-logo svg, .md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+    width: auto;
+    height: 1.8rem;
+}
