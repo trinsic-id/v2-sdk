@@ -1,5 +1,5 @@
 import okapi from '@trinsic/okapi';
-import { credentials as ChannelCredentials, Channel, Metadata } from "grpc";
+import { Metadata } from "grpc";
 import { WalletProfile } from './proto/WalletService_pb';
 
 export default abstract class ServiceBase {

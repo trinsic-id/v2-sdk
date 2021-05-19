@@ -10,6 +10,14 @@ walletService.registerOrConnect("michaelblack117@gmail.com")
     console.error(error);
   });
 
+// walletService.getProviderConfiguration()
+//   .then(response => {
+//     console.log(response);
+//   })
+//   .catch(error => {
+//     console.error(error);
+//   });
+
 walletService.createWallet()
   .then(response => {
     console.log(response);
