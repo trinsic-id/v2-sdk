@@ -4,8 +4,11 @@ repo_url: https://github.com/trinsic-id/sdk
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 
-extra_css: 
-  - _static/extra.css
+nav:
+  - Introduction: index.md
+  - Walkthrough: cli/walkthrough.md
+  - CLI Reference: cli/reference.md
+
 theme:
     name: material
     logo: _static/logo-title.svg
@@ -30,3 +33,6 @@ theme:
     hljs_languages:
         - yaml
         - rust
+
+extra_css: 
+  - _static/extra.css
