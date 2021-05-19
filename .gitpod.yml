@@ -4,12 +4,12 @@ image:
 
 ports:
   - port: 5000
-    onOpen: ignore
+    onOpen: open-browser
 
 tasks:
-  - command: rustup component add rustfmt && cargo install --path sdks/cli
+  - command: rustup component add rustfmt && cargo install --path cli
+  - command: mkdocs serve -a 127.0.0.1:5000
 
 vscode:
   extensions:
-    - muhammad-sammy.csharp
     - matklad.rust-analyzer

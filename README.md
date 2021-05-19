@@ -1,5 +1,8 @@
+
+
 # Trinsic SDK v2
 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/trinsic-id/sdk)
 [![NET](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml)
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/rust.yml)
 
@@ -29,6 +32,9 @@ cli/
 The cli is built with a rust gRPC library named [tonic](https://github.com/hyperium/tonic)
 
 # npm
-
-
 protoc --proto_path=../proto --js_out=library=trinsic,binary:./ ../proto/IssuerService.proto
+## gitpod
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/trinsic-id/sdk)
+
+## Working with submodules
+Immediately after cloning, do `git submodule update --init --recursive`
