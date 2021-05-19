@@ -5,3 +5,6 @@ FROM gitpod/workspace-full
 # ENV TRIGGER_REBUILD 3
 
 # Custom commands or tools can go here
+
+RUN brew install mkdocs
+RUN pip install mkdocs-material
