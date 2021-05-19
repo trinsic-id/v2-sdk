@@ -1,8 +1,19 @@
-const trinsic = require('../dist/src/index');
+var TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletService;
 
-let walletService = new trinsic.WalletService("localhost:5000");
+let walletService = new TrinsicWalletService("localhost:5000");
 
-// walletService.registerOrConnect("michaelblack117@gmail.com");
-// console.log(walletService.GetMetadata())
+walletService.registerOrConnect("michaelblack117@gmail.com")
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
-// walletService.createWallet();
+walletService.createWallet()
+  .then(response => {
+    console.log(response);
+  })
+  .catch(error => {
+    console.error(error);
+  });

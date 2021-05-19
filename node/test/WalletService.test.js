@@ -8,4 +8,11 @@ test("get provider configuration", async t => {
     t.pass();
 });
 
+test("register or connect", async t => {
+    let service = new TrinsicWalletService();
+    await service.registerOrConnect("michaelblack117@gmail.com");
+
+    t.pass();
+})
+
 test("debug", t => t.pass());

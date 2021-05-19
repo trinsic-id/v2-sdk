@@ -7,6 +7,10 @@ import {
   ConnectRequest,
   GetProviderConfigurationRequest,
   GetProviderConfigurationResponse,
+  CreateWalletRequest,
+  CreateWalletResponse,
+  WalletProfile,
+  ConnectResponse
 } from "./proto/WalletService_pb";
 
 export * from "grpc";
@@ -37,15 +41,20 @@ export class TrinsicWalletService extends ServiceBase {
     );
   }
 
-  public registerOrConnect(email: string) {
+  public registerOrConnect(email: string): Promise<ConnectResponse> {
     let request = new ConnectRequest();
     request.setEmail(email);
-    this.client.connectExternalIdentity(request, (error, response) => {
-      if (error) {
-        console.log(response);
-      } else {
-        console.log("" + response.getStatus());
-      }
+    
+    return new Promise((resolve, reject) => {
+      this.client.connectExternalIdentity(request, (error, response) => {
+        if (error) {
+          console.log(response);
+          reject(error);
+        } else {
+          console.log("" + response.getStatus());
+          resolve(response);
+        }
+      });
     });
   }
 
@@ -64,71 +73,81 @@ export class TrinsicWalletService extends ServiceBase {
     });
   }
 
-  public createWallet(securityCode: string = null) {
+  public createWallet(securityCode: string = null): Promise<WalletProfile> {
     // Fetch Server Configuration and find key to use
     // for generating shared secret for authenticated encryption
+    return new Promise((resolve, reject) => {
+      this.getProviderConfiguration()
+      .then((response) => {
+        let configuration = response;
+        let resolveRequest = new okapi.ResolveRequest();
+        resolveRequest.setDid(configuration.getKeyAgreementKeyId());
+        let resolveResponse = okapi.DIDKey.resolve(resolveRequest);
+        
+        let providerExchangeKey = resolveResponse
+          .getKeysList()
+          .find((x) => x.getKid() === configuration.getKeyAgreementKeyId());
+        
+        if (providerExchangeKey === undefined)
+          throw new Error("Key agreement key not found");
 
-    let configuration = this.client.getProviderConfiguration(
-      new GetProviderConfigurationRequest(),
-      (error, response) => {}
-    );
-    // console.log(configuration);
-    // let resolveRequest = new okapi.ResolveRequest();
-    // resolveRequest.setDid(configuration.KeyAgreementKeyId);
-    // let resolveResponse = okapi.DIDKey.resolve(resolveRequest);
-    // let providerExchangeKey = resolveResponse
-    //   .getKeysList()
-    //   .find((x) => x.getKid() === configuration.KeyAgreementKeyId);
-    // if (providerExchangeKey === undefined)
-    //   throw new Error("Key agreement key not found");
+        // Generate new DID used by the current device
+        let keyRequest = new okapi.GenerateKeyRequest();
+        keyRequest.setKeyType(okapi.KeyType.ED25519);
+        let myKey = okapi.DIDKey.generate(keyRequest);
+        let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
+        
+        if (myExchangeKey === undefined)
+          throw new Error("Key agreement key not found");
+        
+        let myDidDocument = myKey.getDidDocument();
 
-    // // Generate new DID used by the current device
-    // let keyRequest = new okapi.GenerateKeyRequest();
-    // keyRequest.setKeyType(okapi.KeyType.ED25519);
-    // let myKey = okapi.DIDKey.generate(keyRequest);
-    // let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
-    // if (myExchangeKey === undefined)
-    //   throw new Error("Key agreement key not found");
-    // let myDidDocument = myKey.getDidDocument();
+        // Create an encrypted message
+        let packRequest = new okapi.PackRequest();
+        packRequest.setSenderKey(myExchangeKey);
+        packRequest.setReceiverKey(providerExchangeKey);
+        let createWalletRequest = new CreateWalletRequest();
+        createWalletRequest.setDescription("My Cloud Wallet");
+        createWalletRequest.setController(myDidDocument["id"]);
+        createWalletRequest.setSecurityCode(securityCode ?? "");
+        packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
-    // // Create an encrypted message
-    // let packRequest = new okapi.PackRequest();
-    // packRequest.setSenderKey(myExchangeKey);
-    // packRequest.setReceiverKey(providerExchangeKey);
-    // packRequest.setPlaintext(
-    //   new Wallet.services.CreateWalletRequest({
-    //     description: "My Cloud Wallet",
-    //     controller: myDidDocument["id"],
-    //     security_code: securityCode ?? "",
-    //   }).serialize()
-    // );
+        let packedMessage = okapi.DIDComm.pack(packRequest);
 
-    // let packedMessage = okapi.DIDComm.pack(packRequest);
+        // Invoke create wallet using encrypted message
+        // Call the server endpoint with encrypted message
+        this.client.createWalletEncrypted(
+          packedMessage.getMessage(),
+          (error, response) => {
+            if (error) 
+              throw new Error(error.message);
+            
+            let unpackRequest = new okapi.UnpackRequest();
+            unpackRequest.setMessage(response);
+            unpackRequest.setReceiverKey(myExchangeKey);
+            unpackRequest.setSenderKey(providerExchangeKey);
+    
+            let decryptedResponse = okapi.DIDComm.unpack(unpackRequest);
+    
+            let createWalletResponse = CreateWalletResponse.deserializeBinary(
+              decryptedResponse.getPlaintext_asU8()
+            );
+    
+            // This profile should be stored and supplied later
+            let walletProfile = new WalletProfile();
+            walletProfile.setWalletId(createWalletResponse.getWalletId());
+            walletProfile.setCapability(createWalletResponse.getCapability());
+            walletProfile.setDidDocument(myKey.getDidDocument());
+            walletProfile.setInvoker(createWalletResponse.getInvoker());
+            walletProfile.setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 
-    // // Invoke create wallet using encrypted message
-    // // Call the server endpoint with encrypted message
-    // let response = this.client.CreateWalletEncrypted(
-    //   packedMessage.getMessage()
-    // );
-
-    // let unpackRequest = new okapi.UnpackRequest();
-    // unpackRequest.setMessage(response);
-    // unpackRequest.setReceiverKey(myExchangeKey);
-    // unpackRequest.setSenderKey(providerExchangeKey);
-
-    // let decryptedResponse = okapi.DIDComm.unpack(unpackRequest);
-
-    // let createWalletResponse = Wallet.services.CreateWalletResponse.deserialize(
-    //   decryptedResponse.getPlaintext()
-    // );
-
-    // // This profile should be stored and supplied later
-    // return new Wallet.services.WalletProfile({
-    //   wallet_id: createWalletResponse.wallet_id,
-    //   capability: createWalletResponse.capability,
-    //   did_document: myKey.getDidDocument(),
-    //   invoker: createWalletResponse.invoker,
-    //   invoker_jwk: myKey.getKeyList()[0].serializeBinary(),
-    // });
+            return walletProfile;
+          }
+        );
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
+    })
   }
 }
