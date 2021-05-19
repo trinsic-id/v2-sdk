@@ -8,7 +8,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/cli/target/debug/cli",
+            "program": "${workspaceFolder}/target/debug/trinsic",
             "args": [],
             "cwd": "${workspaceFolder}"
         }

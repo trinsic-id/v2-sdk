@@ -1,0 +1,18 @@
+syntax = "proto3";
+package trinsic.services;
+
+import "CoreService.proto";
+import "pbmse/pbmse.proto";
+
+message AcquireTokenRequest {
+    pbmse.SignedMessage signed_message = 1;
+}
+message AcquireTokenResponse {
+    ResponseStatus status = 1;
+
+    string wallet_token = 2;
+}
+
+service Authentication {
+    rpc AcquireToken(AcquireTokenRequest) returns (AcquireTokenResponse);
+}
