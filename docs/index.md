@@ -1,13 +1,13 @@
 # Introduction
-Thousands of organizations of all sizes - from startups to governments, use Trinsic's software and APIs to instantly verify information about individuals in person and online with technology instead of paper.
-
 Businesses spend huge amounts of time and money doing manual verification of the information contained within paper and pdf documents. The verification process is slow, security is weak, and prone to fraud (eg fake id cards in bars). These inefficiencies are often felt in highly regulated industries like supply chain, healthcare, banking, and education.
 
 Using the latest developments in cryptography and networking standards, We enable developers to shift their verification processes to an entirely digital, interoperable, portable format where high-risk trust decisions can be made almost instantly.
 
 This is much faster compared to exchanging and validating information through a paper or html form. It also massively increases the trust in the authenticity of the data getting exchanged. And it requires no centralized authority to operate - it's completely distribute like the internet itself.
 
-Trinsic provides an SDK that makes it easy to add these verification capabilities to our existing system without any new infrastructure or setup. 
+Thousands of organizations of all sizes - from startups to governments, use Trinsic's software and APIs to instantly verify information about individuals in person and online with technology instead of paper.
+
+Trinsic provides an SDK that makes it easy to add these verification capabilities to your existing system without any new infrastructure or setup. 
 
 ## The Trinsic Platform
 
@@ -58,4 +58,3 @@ Describes a pass using the attribute types and queries on those attributes
 **Trust Registry**
 Shows a list of authorized issuers and verifiers and the templates they're authorized to use.
 
-### Tech
