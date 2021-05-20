@@ -1,27 +1,24 @@
 # Introduction
-We enable developers to shift their data exchanges from paper to an entirely digital, privacy preserving format called verifiable credentials.
+Thousands of organizations of all sizes - from startups to governments, use Trinsic's software and APIs to instantly verify information about individuals in person and online with technology instead of paper.
 
-Trinsic enables developers to give people a digital identity that works equally well in person and online. 
+Businesses spend huge amounts of time and money doing manual verification of the information contained within paper and pdf documents. The verification process is slow, security is weak, and prone to fraud (eg fake id cards in bars). These inefficiencies are often felt in highly regulated industries like supply chain, healthcare, banking, and education.
 
-We give you an SDK that makes it easy to add this functionality to your product. 
+Using the latest developments in cryptography and networking standards, We enable developers to shift their verification processes to an entirely digital, interoperable, portable format where high-risk trust decisions can be made almost instantly.
 
-Businesses spend huge amounts of time to do human verification of paper-based documents. The verification process is slow, weak and prone to error (eg fake id cards in bars).
+This is much faster compared to exchanging and validating information through a paper or html form. It also massively increases the trust in the authenticity of the data getting exchanged. And it requires no centralized authority to operate - it's completely distribute like the internet itself.
 
-Paper documents can been scanned into the digital world using PDFs or images, and even can be signed like a paper document using software like Docusign, but still aren't yet digitally native.
+Trinsic provides an SDK that makes it easy to add these verification capabilities to our existing system without any new infrastructure or setup. 
 
-Trinsic's Credentials are tamper evident, privacy-preserving, and easily verifiable. It's built on a rapidly adopted standard to represent physical documents in a digital format.
+## The Trinsic Platform
 
-Trinsic enables developer to create applications where people can prove things about themself to anyone with technology instead of paper. We call this technology Trust over IP, and it's built on open standards that anyone can use. The verification can happen immediately, with minimal data shared in the exchange. 
-
-Gone are the days of taking a picture of your driver's license. or turning around because you forgot a plastic card. 
-
-## Product Concepts
-
-Trinsic's SDK have two main levels of functionality.
-- Core, which deals with Credentials, Passes, and Wallets.
-- Ecosystems, which manages things like Templates and Registries.
+The Trinsic SDK has two main modules for now. We've split it up to enable more flexibility for different use cases.
+- Core, which deals with Messages and Wallets.
+- Ecosystems, which provides useful objects like Credential Templates, Pass Templates and Registries.
 
 ### Trinsic Core
+
+#### Messages
+Trinsic Core has two primary message types to utilize.
 
 **Credentials**
 Credentials are containers that hold information about you. 
@@ -31,9 +28,16 @@ The W3C Verifiable Credential Data Model is a standard that provides an interope
 **Passes**
 Passes are generated from credentials or issued directly. They are specific to a scenario and only include the information necessary to fulfill a verifier's request.
 
-**Wallets**
-A credential storage system encrypted and controlled by keys located on one or more devices. 
+#### Wallets
+A storage system encrypted and controlled by keys located on one or more devices. 
+Storage is provided as a hosted service for convenience
+But keys are stored on the edge. Trinsic has no ability to view inside wallets.
 
+#### Communication
+- Existing mediums of interopable information exchange are insecure and slow. In person it's paper. online it's the web form or sometimes email. It's all self-attested information. We've developed a secure messaging protocol that works in any context.
+- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven't been tampered or sniffed.
+- It's the power of PGP and (more recently) signal with much greater interoperability and cross platform transport mechanisms. Let's you send a message to someone online, and have them generate a proof of that message and have it be verified offline
+- Selective disclosure, revocation, signing, encryption, verification all come out of the box and are easy to use, and are interoperable.
 ### Trinsic Ecosystem
 _**Coming soon.**_
 
