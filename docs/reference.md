@@ -1,9 +1,9 @@
 
-## CLI Configuration
+## Configurations
 
 All settings regarding the CLI are stored in `~/.trinsic/okapi.toml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
 
-### Display configuration
+### Get configuration
 
 To print the current configuration file in the terminal use:
 
@@ -11,7 +11,7 @@ To print the current configuration file in the terminal use:
 okapi config --show
 ```
 
-### Setting Configuration Variables
+### Set Configurations
 
 #### `config` subcommand
 
@@ -41,16 +41,43 @@ The flag `--default` is optional. If specified, it will also set the configurati
 
 To see all available flags and options for this subcommand
 
-```bash
-okapi wallet create --help
-```
+=== "CLI"
+    ```bash
+    okapi wallet create --help
+    ```
+=== "JS"
 
+    ```js
+    var string = "hello world";
+    ```
 
+=== "C#"
 
-## FAQ
-#### How is the profile.bin encoded? When I create a wallet with the CLI, where is it stored?
+    ```csharp
+    int tmp = 2;
+    ```
 
-#### What is a did:key?
+## Credential Service
+//TODO - add each section
+=== "CLI"
+
+    ```bash
+    trinsic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
+    ```     
+=== "JS"
+
+    ```js
+    var string = "hello world";
+    ```
+
+=== "C#"
+
+    ```csharp
+    int tmp = 2;
+    ```
+
+## Provider Service
+
 
 ## Command Reference
 - didkey
