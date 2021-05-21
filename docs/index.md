@@ -1,60 +1,61 @@
 # Introduction
-Businesses spend huge amounts of time and money doing manual verification of the information contained within paper and pdf documents. The verification process is slow, security is weak, and prone to fraud (eg fake id cards in bars). These inefficiencies are often felt in highly regulated industries like supply chain, healthcare, banking, and education.
 
-Using the latest developments in cryptography and networking standards, We enable developers to shift their verification processes to an entirely digital, interoperable, portable format where high-risk trust decisions can be made almost instantly.
+Organizations spend huge amounts of time and money to manually verify information contained within paper and pdf documents. This verification process is slow and prone to misuse. Long security lines, repetitive paper forms, and increasing identity theft are a burden for individuals and organizations alike. 
 
-This is much faster compared to exchanging and validating information through a paper or html form. It also massively increases the trust in the authenticity of the data getting exchanged. And it requires no centralized authority to operate - it's completely distribute like the internet itself.
+Using the latest innovations in authentication standards and networking protocols, Trinsic gives developers the tools to transform credentials, licenses, passes, and certificates to a format that can be exchanged digitally and verified instantly by anyone. This format is called a Verifiable Credential, and has recently been standardized by the W3C.
 
-Thousands of organizations of all sizes - from startups to governments, use Trinsic's software and APIs to instantly verify information about individuals in person and online with technology instead of paper.
+Verifiable Credentials come with some new superpowers. Unlike a paper document or html form, when information within a verifiable credential is shared, it can instantly be proven to have come from a trusted source. Thanks to the flexibility of its digital nature, verifiable credentials can be easily shared with the minimum information needed for a use case. Finally, they require no centralized authority or proprietary technology to use - verifiable credentials are built on interoperable standards  designed to be open, privacy-preserving, and distributed like the internet itself.
 
-Trinsic provides an SDK that makes it easy to add these verification capabilities to your existing system without any new infrastructure or setup. 
+Hundreds of organizations of all sizes and industries use Trinsic’s infrastructure and tools to instantly verify information about individuals with technology instead of paper.
 
-## The Trinsic Platform
+## What is Trinsic?
 
-The Trinsic SDK has two main modules for now. We've split it up to enable more flexibility for different use cases.
-- Core, which deals with Messages and Wallets.
-- Ecosystems, which provides useful objects like Credential Templates, Pass Templates and Registries.
+Trinsic provides a developer SDK so you can easily use verifiable credentials to quickly build an ecosystem of credential exchange. The Trinsic SDK initially has two main modules. We’ve split it up for separation of concerns. Each of these terms 
 
-### Trinsic Core
+- Core - Send and receive encrypted messages between devices.
+- Ecosystems - Manage Credential Templates, Pass Templates and Registries.
 
-#### Messages
-Trinsic Core has two primary message types to utilize.
+## Core
 
-**Credentials**
-Credentials are containers that hold information about you. 
+Trinsic Core can be used to send and store encrypted messages between two credential wallets. 
 
-The W3C Verifiable Credential Data Model is a standard that provides an interoperable digital representation of physical licenses, cards, documents, or certificates, and all kinds of abstract data. They are based on the [W3C VC Data Model](https://www.w3.org/TR/vc-data-model/#introduction).
+### Wallets
 
-**Passes**
-Passes are generated from credentials or issued directly. They are specific to a scenario and only include the information necessary to fulfill a verifier's request.
+Credential wallets are a cross between a cryptocurrency wallet and an email inboxes. There is a wallet hosted by a wallet provider - in this case Trinsic. Each wallet can be accessed by a set of keys stored on devices. These keys provide signing and encryption capabilities. storage system encrypted and controlled by keys located on one or more devices. Storage is provided as a hosted service for convenience But keys are stored on the edge. Trinsic has no ability to view inside wallets.
 
-#### Wallets
-A storage system encrypted and controlled by keys located on one or more devices. 
-Storage is provided as a hosted service for convenience
-But keys are stored on the edge. Trinsic has no ability to view inside wallets.
+Wallets can be thought of as a cross between a cryptocurrency wallet and an email inbox. These wallets represent an individuals identity. 
 
-#### Communication
-- Existing mediums of interopable information exchange are insecure and slow. In person it's paper. online it's the web form or sometimes email. It's all self-attested information. We've developed a secure messaging protocol that works in any context.
-- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven't been tampered or sniffed.
-- It's the power of PGP and (more recently) signal with much greater interoperability and cross platform transport mechanisms. Let's you send a message to someone online, and have them generate a proof of that message and have it be verified offline
+Each wallet can be identified with multiple addresses. This gives some really helpful capabilities. If I want to interact with three different people, I can choose to give them the same ID or a different ID each, depending on if I want them to be able to correlate me with another.
+
+### Secure Communication
+
+Trinsic Core has the ability to send any payload securely. The SDK supports signing, encryption, proof generation, and encryption. All of these messages
+
+When a message is signed, it can then be verified to not have been tampered with. 
+
+When it is packed, it can be sent along an insecure channel without a third party reading its contents. 
+
+When it's unpacked 
+
+- Existing mediums of interopable information exchange are insecure and slow. In person it’s paper. online it’s the web form or sometimes email. It’s all self-attested information. We’ve developed a secure messaging protocol that works in any context.
+- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven’t been tampered or sniffed.
+- It’s the power of PGP and (more recently) signal with much greater interoperability and cross platform transport mechanisms. Let’s you send a message to someone online, and have them generate a proof of that message and have it be verified offline
 - Selective disclosure, revocation, signing, encryption, verification all come out of the box and are easy to use, and are interoperable.
+
 ### Trinsic Ecosystem
-_**Coming soon.**_
 
-While credentials, passes, and wallets are the only thing an individual using your app might need to interact with, there are a few more concepts for the Provider. Templates and Ecosystems. 
+***Coming soon.***
 
-Verifiers and holders want a way to know the issuer is a legitimate entity they trust. 
+While credentials, passes, and wallets are the only thing an individual using your app might need to interact with, there are a few more concepts for the Provider. Templates and Ecosystems.
 
-Holders want to know that the verifier they're sending a pass to is someone they trust.
+Verifiers and holders want a way to know the issuer is a legitimate entity they trust.
 
-We introduce the concept of a trust registry. 
+Holders want to know that the verifier they’re sending a pass to is someone they trust.
 
-**Credential Template**
-Describes a credential using its name and attribute types
+We introduce the concept of a trust registry.
 
-**Pass Template**
-Describes a pass using the attribute types and queries on those attributes
+**Credential Template** Describes a credential using its name and attribute types
 
-**Trust Registry**
-Shows a list of authorized issuers and verifiers and the templates they're authorized to use.
+**Pass Template** Describes a pass using the attribute types and queries on those attributes
 
+**Trust Registry** Shows a list of authorized issuers and verifiers and the templates they’re authorized to use.
