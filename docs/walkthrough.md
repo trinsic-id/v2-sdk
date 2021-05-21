@@ -1,37 +1,54 @@
 # Walkthrough
 ## Prerequisites
-### 1. Install cli
+### 1. Install an SDK or the cli
 If you're using gitpod, the cli should already have been installed. 
 
 If not, use `cargo install --path .` in the `cli` directory.
 
 ## Alice receives and proves a digital vaccination card
 Alice's town just received the go ahead to vaccinate everyone. We're going to walk through
-a scenario where the CDC has created a new digital vaccination card and is using Alice's town as a pilot.
+a scenario where the CDC has created a new digital vaccination card and is using Alice's town as a pilot. 
+We'll see how the vaccination clinic can issue a card to Alice using the Trinsic SDK.
 
-### CDC publishes template for vaccination alongside authorized issuers
-_handwavy bit_
-
-CDC independently publishes https://cdc.gov/.well-known/trust-registry that lists the credentials and issuers authorized to issue them
-
-### Vaccination clinic, Alice, and Airline all create wallets
-One terminal is provider, creates all wallets
-`trinsic wallet create --description "Vaccination Clinic"`
-
-3 terms are issuer, holder, verifier respectively. When making a call to the server, be sure to specify which profile is being used: 
-`trinsic --profile alice wallet search`
 ### Issue
+=== "CLI"
 
-```
-trinsic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
-```
+    ```bash
+    trinsic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
+    ```     
+=== "JS"
+
+    ```js
+    var string = "hello world";
+    ```
+
+=== "C#"
+
+    ```csharp
+    int tmp = 2;
+    ```
+
 
 The signed document is sent to the user, via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
 The holder stores the document in their wallet.
 
-```
-trinsic wallet insert_item --item ./covid-vocab/vaccination-certificate-signed.jsonld
-```
+=== "CLI"
+
+    ```bash
+    trinsic wallet insert_item --item ./covid-vocab/vaccination-certificate-signed.jsonld
+    ```
+     
+=== "JS"
+
+    ```js
+    var string = "hello world";
+    ```
+
+=== "C#"
+
+    ```csharp
+    int tmp = 2;
+    ```
 
 Note down the response `item_id`
 
@@ -39,18 +56,46 @@ Note down the response `item_id`
 
 Replace the `<item_id>` in the command bellow with the output from the `insert_item` above.
 
-```
-trinsic issuer create_proof --document_id <item_id> --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal_document ./covid-vocab/vaccination-certificate-frame.jsonld
-```
+=== "CLI"
+
+    ```
+    trinsic issuer create_proof --document_id <item_id> --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal_document ./covid-vocab/vaccination-certificate-frame.jsonld
+    ```
+     
+=== "JS"
+
+    ```js
+    var string = "hello world";
+    ```
+
+=== "C#"
+
+    ```csharp
+    int tmp = 2;
+    ```
+
 
 The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
 
 ### Verify Proof
 
-```
-trinsic issuer verify_proof --proof_document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
-```
+=== "CLI"
 
+    ```console
+    trinsic issuer verify_proof --proof_document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
+    ```
+     
+=== "JS"
+
+    ```js
+    var string = "hello world";
+    ```
+
+=== "C#"
+
+    ```csharp
+    int tmp = 2;
+    ```
 
 
 ### Vaccination Clinic issues Alice a credential

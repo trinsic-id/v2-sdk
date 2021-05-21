@@ -29,10 +29,11 @@ theme:
         toggle:
           icon: fontawesome/solid/sun
           name: Switch to light mode
-    highlightjs: true
-    hljs_languages:
-        - yaml
-        - rust
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.snippets
 
 extra_css: 
   - _static/extra.css
