@@ -6,8 +6,8 @@ repo_name: trinsic-id/sdk
 
 nav:
   - Introduction: index.md
-  - Walkthrough: cli/walkthrough.md
-  - CLI Reference: cli/reference.md
+  - Walkthrough: walkthrough.md
+  - Reference: reference.md
 
 theme:
     name: material
