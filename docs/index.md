@@ -20,10 +20,8 @@ Trinsic provides a developer SDK so you can easily use verifiable credentials to
 Trinsic Core can be used to send and store encrypted messages between two credential wallets. 
 
 ### Wallets
-
-Credential wallets are a cross between a cryptocurrency wallet and an email inboxes. There is a wallet hosted by a wallet provider - in this case Trinsic. Each wallet can be accessed by a set of keys stored on devices. These keys provide signing and encryption capabilities. storage system encrypted and controlled by keys located on one or more devices. Storage is provided as a hosted service for convenience But keys are stored on the edge. Trinsic has no ability to view inside wallets.
-
-Wallets can be thought of as a cross between a cryptocurrency wallet and an email inbox. These wallets represent an individuals identity. 
+//todo
+Credential wallets can be thought of like an email inbox. They exist to receive and store credentials. There is a wallet hosted by a wallet provider - in this case Trinsic. Each wallet can be accessed by a set of keys stored on devices. These keys provide signing and encryption capabilities. storage system encrypted and controlled by keys located on one or more devices. Storage is provided as a hosted service for convenience But keys are stored on the edge. Trinsic has no ability to view inside wallets.
 
 Each wallet can be identified with multiple addresses. This gives some really helpful capabilities. If I want to interact with three different people, I can choose to give them the same ID or a different ID each, depending on if I want them to be able to correlate me with another.
 
@@ -37,11 +35,16 @@ When it is packed, it can be sent along an insecure channel without a third part
 
 When it's unpacked 
 
-- Existing mediums of interopable information exchange are insecure and slow. In person it’s paper. online it’s the web form or sometimes email. It’s all self-attested information. We’ve developed a secure messaging protocol that works in any context.
+- Existing mediums of interoperable information exchange are insecure and slow. In person it’s paper. online it’s the web form or sometimes email. It’s all self-attested information. We’ve developed a secure messaging protocol that works in any context.
 - Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven’t been tampered or sniffed.
 - It’s the power of PGP and (more recently) signal with much greater interoperability and cross platform transport mechanisms. Let’s you send a message to someone online, and have them generate a proof of that message and have it be verified offline
 - Selective disclosure, revocation, signing, encryption, verification all come out of the box and are easy to use, and are interoperable.
 
+#### Communication
+- Existing mediums of interopable information exchange are insecure and slow. In person it's paper. online it's the web form or sometimes email. It's all self-attested information. We've developed a secure messaging protocol that works in any context.
+- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven't been tampered or sniffed.
+- It's the power of PGP and (more recently) signal with much greater interoperability and cross platform transport mechanisms. Let's you send a message to someone online, and have them generate a proof of that message and have it be verified offline
+- Selective disclosure, revocation, signing, encryption, verification all come out of the box and are easy to use, and are interoperable.
 ### Trinsic Ecosystem
 
 ***Coming soon.***
