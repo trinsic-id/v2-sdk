@@ -2,6 +2,7 @@ syntax = "proto3";
 package trinsic.services;
 
 import "google/protobuf/struct.proto";
+import "CoreService.proto";
 
 message InviteRequest {
     ParticipantType participant = 1;
@@ -20,7 +21,9 @@ enum ParticipantType {
 }
 
 message InviteResponse {
-    string invitation_id = 1;
+    ResponseStatus status = 1;
+
+    string invitation_id = 10;
 }
 
 // Request details for the status of onboarding
