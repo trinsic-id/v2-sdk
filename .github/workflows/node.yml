@@ -22,10 +22,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with: 
-          token: ${{ secrets.ACCESS_TOKEN }}
           node-version: ${{ matrix.node-version }}
-        uses: actions/checkout@v1
-        with:
           submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: npm ci
