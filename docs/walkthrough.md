@@ -14,7 +14,7 @@ a scenario where the CDC has created a new digital vaccination card and is using
 We'll see how the vaccination clinic can issue a card to Alice using the Trinsic SDK.
 
 ### Create Wallet
-First we'll create the wallets in the ecosystem. These are stored in ~/.trinsic/config.toml
+First we'll create the wallets in the ecosystem. These are stored in ~/.trinsic/okapi.toml
 These can have descriptions and a human readable name to easily find them. 
 The profile is stored in ~/.trinsic/<alias>.bin. This profile includes the authorization token needed to authenticate to the API.
 
