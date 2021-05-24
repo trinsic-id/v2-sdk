@@ -9,11 +9,12 @@ import {
   InviteResponse,
 } from "./proto/ProviderService_pb";
 
-export default class ProviderService extends ServiceBase {
+export * from "grpc";
+export class TrinsicProviderService extends ServiceBase {
   channel: Channel;
   client: ProviderClient;
 
-  constructor(serviceAddress: string = "http://localhost:5000") {
+  constructor(serviceAddress: string = "localhost:5000") {
     super();
 
     let credentials = ChannelCredentials.createInsecure();
@@ -30,9 +31,9 @@ export default class ProviderService extends ServiceBase {
     );
   }
 
-  async inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
+  public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
     return new Promise((resolve, reject) => {
-      this.client.invite(request, this.GetMetadata(), (error, response) => {
+      this.client.invite(request, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -41,20 +42,14 @@ export default class ProviderService extends ServiceBase {
     });
   }
 
-  async invitationStatus(
-    request: InvitationStatusRequest
-  ): Promise<InvitationStatusResponse> {
+  public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {
     return new Promise((resolve, reject) => {
-      this.client.invitationStatus(
-        request,
-        this.GetMetadata(),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          }
-          return resolve(response);
+      this.client.invitationStatus(request, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
         }
-      );
+        return resolve(response);
+      });
     });
   }
 }

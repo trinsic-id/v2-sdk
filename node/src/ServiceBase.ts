@@ -1,18 +1,20 @@
-import okapi from '@trinsic/okapi';
+const okapi = require("@trinsic/okapi");
+// import okapi from '@trinsic/okapi';
 import { Metadata } from "grpc";
 import { WalletProfile } from './proto/WalletService_pb';
+import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
 
 export default abstract class ServiceBase {
-  capInvocation: String;
+  capInvocation: string;
 
-  GetMetadata(): Metadata {
+  getMetadata(): Metadata {
     if (!this.capInvocation) throw new Error("Profile not set.");
     let metadata = new Metadata();
-    metadata["Capability-Invocation"] = this.capInvocation;
+    metadata.add("Capability-Invocation", this.capInvocation);
     return metadata;
   }
 
-  SetProfile(profile: WalletProfile): void {
+  setProfile(profile: WalletProfile): void {
     let capabilityDocument = {
       "@context": "https://wid.org/security/v2",
       "invocationTarget": profile.getWalletId(),
@@ -24,7 +26,7 @@ export default abstract class ServiceBase {
     };
 
     let proofRequest = new okapi.CreateProofRequest();
-    proofRequest.setDocument(capabilityDocument);
+    proofRequest.setDocument(Struct.fromJavaScript(capabilityDocument));
     proofRequest.setKey(okapi.JsonWebKey.deserializeBinary(profile.getInvokerJwk_asU8()));
     proofRequest.setSuite(okapi.LdSuite.JCSED25519SIGNATURE2020);
 
@@ -32,6 +34,6 @@ export default abstract class ServiceBase {
 
     // Set the auth field to the signed document by converting it back
     // to JSON and encoding it in base64
-    this.capInvocation = btoa(proofResponse.getSignedDocument());
+    this.capInvocation = btoa(JSON.stringify(proofResponse.getSignedDocument().toJavaScript()));
   }
 }

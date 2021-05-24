@@ -1,7 +1,7 @@
 const okapi = require("@trinsic/okapi");
 // import okapi from "@trinsic/okapi";
 import { EncryptedMessage } from './proto/pbmse/pbmse_pb';
-
+import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
 import { credentials as ChannelCredentials, Channel } from "grpc";
 import ServiceBase from "./ServiceBase";
 import { WalletClient } from "./proto/WalletService_grpc_pb";
@@ -14,9 +14,16 @@ import {
   CreateWalletResponse,
   WalletProfile,
   ConnectResponse,
+  InsertItemRequest,
+  SearchResponse,
+  SearchRequest,
 } from "./proto/WalletService_pb";
 import { grpc } from "@trinsic/okapi";
-import { IssueRequest } from './proto/IssuerService_pb';
+import { CreateProofRequest, IssueRequest, VerifyProofRequest } from './proto/IssuerService_pb';
+
+
+type JavaScriptValue = string | number | boolean | {} | any[]
+type JSStruct = {[key: string]: JavaScriptValue}
 
 export * from "grpc";
 export class TrinsicWalletService extends ServiceBase {
@@ -100,14 +107,14 @@ export class TrinsicWalletService extends ServiceBase {
     if (myExchangeKey === undefined)
       throw new Error("Key agreement key not found");
     
-    let myDidDocument = myKey.getDidDocument();
+    let myDidDocument = myKey.getDidDocument().toJavaScript();
     // Create an encrypted message
     let packRequest = new okapi.PackRequest();
     packRequest.setSenderKey(myExchangeKey);
     packRequest.setReceiverKey(providerExchangeKey);
     let createWalletRequest = new CreateWalletRequest();
     createWalletRequest.setDescription("My Cloud Wallet");
-    createWalletRequest.setController(myDidDocument["wrappers_"]["1"]["map_"]["id"]["value"].filter(x => x)[0]);
+    createWalletRequest.setController(myDidDocument["id"]);
     createWalletRequest.setSecurityCode(securityCode ?? "");
     packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
@@ -150,16 +157,79 @@ export class TrinsicWalletService extends ServiceBase {
     })
   }
 
-  public async IssueCredential(document: Object) : Promise<Object> {
+  public issueCredential(document: JSStruct): Promise<object> {
     return new Promise((resolve, reject) => {
       let issueRequest = new IssueRequest();
-      issueRequest.setDocument(document);
-      this.credentialClient.issue(issueRequest, (error, response) => {
+      issueRequest.setDocument(Struct.fromJavaScript(document));
+      this.credentialClient.issue(issueRequest, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
         }
         else {
-          resolve(response.getDocument());
+          resolve(response.getDocument().toJavaScript());
+        }
+      })
+    })
+  }
+
+  // must be authorized
+  public search(query: string = "SELECT * from c"): Promise<SearchResponse> {
+    return new Promise((resolve, reject) => {
+      let searchRequest = new SearchRequest();
+      searchRequest.setQuery(query)
+      this.client.search(searchRequest, this.getMetadata(),(error, response) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(response);
+        }
+      })
+    })
+  }
+
+  // must be authorized
+  public insertItem(item: JSStruct): Promise<string> {
+    return new Promise((resolve, reject) => {
+      let itemRequest = new InsertItemRequest();
+      itemRequest.setItem(Struct.fromJavaScript(item));
+      this.client.insertItem(itemRequest, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(response.getItemId())
+        }
+      })
+    })
+  }
+
+  public createProof(documentId: string, revealDocument: JSStruct): Promise<object> {
+    return new Promise((resolve, reject) => {
+      let createProofRequest = new CreateProofRequest();
+      createProofRequest.setDocumentId(documentId);
+      createProofRequest.setRevealDocument(Struct.fromJavaScript(revealDocument));
+      this.credentialClient.createProof(createProofRequest, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(response.getProofDocument().toJavaScript())
+        }
+      })
+    })
+  }
+
+  public verifyProof(proofDocument: JSStruct): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      let verifyProofRequest = new VerifyProofRequest();
+      verifyProofRequest.setProofDocument(Struct.fromJavaScript(proofDocument));
+      this.credentialClient.verifyProof(verifyProofRequest, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(response.getValid())
         }
       })
     })
