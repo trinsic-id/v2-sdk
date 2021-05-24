@@ -2,6 +2,7 @@ syntax = "proto3";
 package trinsic.services;
 
 import "google/protobuf/struct.proto";
+import "CoreService.proto";
 
 message IssueRequest {
     google.protobuf.Struct document = 1;
@@ -30,10 +31,26 @@ message VerifyProofResponse {
     bool valid = 1;
 }
 
+message SendRequest {
+    oneof delivery_method {
+        string email = 1;
+        string did_uri = 2;
+        google.protobuf.Struct didcomm_invitation = 3;
+    }
+
+    google.protobuf.Struct document = 100;
+}
+
+message SendResponse {
+    ResponseStatus status = 1;
+}
+
 service Credential {
     rpc Issue(IssueRequest) returns (IssueResponse);
 
     rpc CreateProof(CreateProofRequest) returns (CreateProofResponse);
 
     rpc VerifyProof(VerifyProofRequest) returns (VerifyProofResponse);
+
+    rpc Send(SendRequest) returns (SendResponse);
 }
