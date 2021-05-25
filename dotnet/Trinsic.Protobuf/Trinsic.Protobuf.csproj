@@ -37,7 +37,4 @@
     </Protobuf> -->
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\okapi\dotnet\Library\Okapi\Okapi.csproj" />
-  </ItemGroup>
 </Project>
