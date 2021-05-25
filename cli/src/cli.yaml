@@ -2,7 +2,11 @@ name: trinsic
 version: "1.0"
 author: Trinsic Technologies Inc.
 about: >-
-    <ADD LEGAL TEXT>
+
+    ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
+     │ ├┬┘││││└─┐││
+     ┴ ┴└─┴┘└┘└─┘┴└─┘
+
 subcommands:
   - didkey:
       about: didkey commands
