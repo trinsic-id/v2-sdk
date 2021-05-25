@@ -18,7 +18,7 @@ on:
 
 jobs:
   build_test:
-    name: Build for Web Assembly
+    name: Build for npm
     runs-on: windows-latest
     defaults:
       run:
