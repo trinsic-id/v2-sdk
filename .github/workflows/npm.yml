@@ -34,11 +34,11 @@ jobs:
 
   publish_npm:
     name: Publish packages to NPM
-    if: |
-      github.event_name == 'release' &&
-      github.event.action == 'published' &&
-      github.release.draft == false &&
-      github.release.prerelease == false
+    # if: |
+    #   github.event_name == 'release' &&
+    #   github.event.action == 'published' &&
+    #   github.release.draft == false &&
+    #   github.release.prerelease == false
     runs-on: windows-latest
     needs: [build_test]
     defaults:
