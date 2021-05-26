@@ -1,4 +1,4 @@
-name: ci
+name: Docs: Build
 on:
   pull_request:
     branches:
