@@ -1,5 +1,5 @@
 {
-  "name": "@trinsic/trinsic",
+  "name": "trinsic",
   "version": "0.0.1",
   "description": "verifiable credentials",
   "scripts": {
@@ -8,7 +8,7 @@
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./dist/",
     "test": "ava --verbose"
   },
-  "author": "",
+  "author": "Trinsic",
   "license": "ISC",
   "dependencies": {
     "@trinsic/okapi": "^1.0.0-preview.10",
