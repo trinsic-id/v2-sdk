@@ -10,8 +10,8 @@ nav:
       - Introduction: reference.md
       - SDK Concepts: sdk-concepts.md
       - Services:
-          - Universal Wallet: services/universal-wallet.md
-          - Credential Exchange: services/credential-exchange.md
+          - Wallet Service: services/wallet-service.md
+          - Provider Service: services/provider-service.md
 theme:
   name: material
   logo: _static/logo-title.svg
@@ -40,5 +40,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
 extra_css:
   - _static/extra.css
