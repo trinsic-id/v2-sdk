@@ -7,11 +7,11 @@ nav:
   - Introduction: index.md
   - Walkthrough: walkthrough.md
   - Reference:
-      - Introduction: reference.md
+      - Introduction: reference/index.md
       - SDK Concepts: sdk-concepts.md
       - Services:
-          - Wallet Service: services/wallet-service.md
-          - Provider Service: services/provider-service.md
+          - Wallet Service: reference/services/wallet-service.md
+          - Provider Service: reference/services/provider-service.md
 theme:
   name: material
   logo: _static/logo-title.svg

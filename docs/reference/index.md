@@ -1,31 +1,8 @@
+# API Reference Guide
 
-## Configurations
+## Using SDK vs CLI
 
-All settings regarding the CLI are stored in `~/.trinsic/okapi.toml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
-
-### Get configuration
-
-To print the current configuration file in the terminal use:
-
-```bash
-okapi config --show
-```
-
-### Set Configurations
-
-#### `config` subcommand
-
-To change the default server the CLI communicates, set the `server-address` attribute
-
-```
-okapi config --server-address https://example.com/
-```
-
-#### `profile` subcommand
-
-```bash
-okapi config --profile-default alice
-```
+### CLI Configuration
 
 ## Wallet Commands
 
@@ -63,7 +40,7 @@ To see all available flags and options for this subcommand
 
     ```bash
     trinsic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
-    ```     
+    ```
 === "JS"
 
     ```js

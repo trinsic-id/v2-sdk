@@ -4,24 +4,14 @@
 
 === "Trinsic CLI"
     ```bash
-
-    # default search query, returns all records
     trinsic wallet search
-
     ```
-=== "JavaScript"
-
+=== "TypeScript"
     ```js
-    var items = await service.Search();
-
-    //optionally, specify a search query
-    var items = await service.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
+    const items = await service.Search();
     ```
-
 === "C#"
-
     ```csharp
-    var service = new WalletService();
     var items = await service.Search();
     ```
 
@@ -103,5 +93,5 @@ SELECT * FROM c WHERE c.name = 'Trinsic' AND c.dateCreated >= "2020-09-30T23:14:
 The `GROUP BY` clause divides the query's results according to the values of one or more specified properties.
 Examples and detailed description on working with grouped results [can be found here :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-group-by){target=_blank}
 
-### Complete SQL Reference Documentation
+### Additional Resources
 You can read the full documentation on working with [SQL queries :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started){target=_blank} on the Azure Cosmos DB website.
