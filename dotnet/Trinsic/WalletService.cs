@@ -131,6 +131,17 @@ namespace Trinsic
         }
 
         /// <summary>
+        /// Sends a document to the specified destination
+        /// </summary>
+        /// <param name="document"></param>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        public async Task Send(JObject document, string email)
+        {
+            var response = await CredentialClient.SendAsync(new SendRequest { Email = email, Document = document.ToStruct() }, GetMetadata());
+        }
+
+        /// <summary>
         /// Derive a proof from an existing document in the wallet using
         /// an input reveal document frame
         /// </summary>
