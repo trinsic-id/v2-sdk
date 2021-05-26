@@ -61,5 +61,5 @@ Docs can be viewed here: https://trinsic-id.github.io/sdk
 
 ** Using Insiders Features on Local env (For Trinsineers) ** 
 - ping @michaeldboyd for shared secret
-- run `pip install git+https://<SHARED_SECRED}>@github.com/squidfunk/mkdocs-material-insiders.git`
+- run `pip install git+https://<SHARED_SECRET}>@github.com/squidfunk/mkdocs-material-insiders.git`
 - use any features included in the [reference guide](https://squidfunk.github.io/mkdocs-material/reference/abbreviations/) with tag `insiders only`
