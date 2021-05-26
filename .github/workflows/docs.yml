@@ -11,5 +11,8 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs-material
+      - run: pip install git+https://${{ env.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
       - run: mkdocs gh-deploy --site-dir ./docs-site --force
+        env: 
+          MKDOCS_INSIDERS_TOKEN: ${{ secrets.MKDOCS_INSIDERS_TOKEN}}
+    
