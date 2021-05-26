@@ -8,6 +8,7 @@ nav:
   - Walkthrough: walkthrough.md
   - Reference:
       - Introduction: reference/index.md
+      - Security Profiles: reference/profiles.md
       - SDK Concepts: sdk-concepts.md
       - Services:
           - Wallet Service: reference/services/wallet-service.md

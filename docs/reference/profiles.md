@@ -1,5 +1,7 @@
 
-# Profiles and Authentication
+# Security Profiles / Authorization
+
+Trinsic Ecosystems uses authenticated access for accessing personal data. This is implemented using [Authorization Capabilities for Linked Data :material-open-in-new:](https://w3c-ccg.github.io/zcap-ld/){target=_blank}.
 
 All settings regarding the CLI are stored in `~/.trinsic/okapi.toml` file. You can edit this file directly to change the desired settings, or use the CLI `config` subcommand.
 
