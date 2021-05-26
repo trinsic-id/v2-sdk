@@ -1,6 +1,6 @@
 {
-  "name": "trinsic",
-  "version": "0.0.1",
+  "name": "@trinsic/trinsic",
+  "version": "0.0.2",
   "description": "verifiable credentials",
   "scripts": {
     "build": "npm run build:typescript && npm run build:copy",
