@@ -9,6 +9,12 @@
     "test": "ava --verbose"
   },
   "author": "Trinsic",
+  "contributors": [
+    {
+      "name": "Michael Black",
+      "email": "michaelblack117@gmail.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "@trinsic/okapi": "^1.0.0-preview.10",
