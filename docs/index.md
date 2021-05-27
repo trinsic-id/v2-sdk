@@ -55,3 +55,5 @@ We introduce the concept of a trust registry.
 **Pass Template** Describes a pass using the attribute types and queries on those attributes
 
 **Trust Registry** Shows a list of authorized issuers and verifiers and the templates they’re authorized to use.
+
+*[Verifiable Credential]: A credential is a set of attributes about someone or something. Typically, credentials are digital versions of physical licenses, cards, documents, or certificates, but they can represent all kinds of abstract data. Based on the W3C Verifiable Credential Data Model
