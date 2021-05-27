@@ -3,10 +3,10 @@ name: "npm: Build, Package, Publish"
 on:
   pull_request:
     branches:
-      - Black/2021-05-25/npm-pipeline
+      - main
   push:
     branches:
-      - Black/2021-05-25/npm-pipeline
+      - main
   workflow_dispatch:
     inputs:
       packageVersion:
