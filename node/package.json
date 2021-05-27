@@ -1,6 +1,6 @@
 {
-  "name": "trinsic",
-  "version": "1.0.2",
+  "name": "@trinsic/trinsic",
+  "version": "0.0.2",
   "description": "verifiable credentials",
   "scripts": {
     "build": "npm run build:typescript && npm run build:copy",
@@ -8,7 +8,13 @@
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./dist/",
     "test": "ava --verbose"
   },
-  "author": "",
+  "author": "Trinsic",
+  "contributors": [
+    {
+      "name": "Michael Black",
+      "email": "michaelblack117@gmail.com"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "@trinsic/okapi": "^1.0.0-preview.10",
