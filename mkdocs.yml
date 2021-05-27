@@ -14,28 +14,28 @@ nav:
           - Wallet Service: reference/services/wallet-service.md
           - Provider Service: reference/services/provider-service.md
 theme:
-  name: material
-  logo: _static/logo-title.svg
-  favicon: _static/logo.png
-  icon:
-    repo: fontawesome/brands/github-alt
-  font:
-    text: Inter
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: fontawesome/solid/cloud-moon
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: fontawesome/solid/sun
-        name: Switch to light mode
-  features:
-    # - navigation.instant
-    - navigation.sections
-    - navigation.tabs
+    name: material
+    logo: _static/logo-title.svg
+    favicon: _static/logo.png
+    features:
+      - content.tabs.link
+      - navigation.sections
+      - navigation.tabs
+    icon:
+      repo: fontawesome/brands/github-alt
+    font:
+      text: Inter
+    palette:
+      - media: "(prefers-color-scheme: light)"
+        scheme: default
+        toggle:
+          icon: fontawesome/solid/cloud-moon
+          name: Switch to dark mode
+      - media: "(prefers-color-scheme: dark)"
+        scheme: slate
+        toggle:
+          icon: fontawesome/solid/sun
+          name: Switch to light mode
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
