@@ -19,7 +19,7 @@ on:
 jobs:
   build_test:
     name: Build for npm
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./node
@@ -39,12 +39,11 @@ jobs:
     #   github.event.action == 'published' &&
     #   github.release.draft == false &&
     #   github.release.prerelease == false
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: [build_test]
     defaults:
       run:
         working-directory: ./node
-        shell: pwsh
     steps:
       - uses: actions/checkout@v1
         with:
@@ -60,9 +59,6 @@ jobs:
           $version = $version.TrimStart("v")
 
           echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        working-directory: ./node
-      - name: Publish
-        run: |
-        npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-        npm publish $env:PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - run: npm publish $env:PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
           
