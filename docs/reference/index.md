@@ -4,8 +4,6 @@ This document described the available features in the Trinsic SDK. The SDK is av
 
 ## Using SDK vs CLI
 
-### CLI Configuration
-
 ## Wallet Commands
 
 ### `create` subcommand

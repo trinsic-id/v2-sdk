@@ -76,7 +76,7 @@ SELECT * FROM c OFFSET 10 LIMIT 5
 
 #### Sorting
 
-The optional `ORDER BY` clause specifies the sorting order for results returned by the query. To control sorting order, optinally specify `ASC` or `DESC` at the end.
+The optional `ORDER BY` clause specifies the sorting order for results returned by the query. To control sorting order, specify `ASC` or `DESC` at the end; if not specified ascending order is used by default.
 
 ```sql
 SELECT * FROM c ORDER BY c.credential.issued DESC
@@ -96,4 +96,12 @@ The `GROUP BY` clause divides the query's results according to the values of one
 Examples and detailed description on working with grouped results [can be found here :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-group-by){target=_blank}
 
 ### Additional Resources
-You can read the full documentation on working with [SQL queries :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started){target=_blank} on the Azure Cosmos DB website.
+
+You can read the full documentation on working with SQL queries on the [Azure Cosmos DB website :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started){target=_blank}.
+
+## Issue Credential / Sign Data
+
+## Create Proof / Share Data
+
+## Verify Proof / Verify Data
+
