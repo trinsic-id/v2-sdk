@@ -1,0 +1,70 @@
+name: "npm: Build, Package, Publish"
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+  release:
+    types: [published, prereleased]
+
+jobs:
+  build_test:
+    name: Build for npm
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./node
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: npm install
+      - run: npm run build
+      # - run: npm run test
+
+  publish_npm:
+    name: Publish packages to NPM
+    if: |
+      github.event_name == 'release' &&
+      github.event.action == 'published' &&
+      github.release.draft == false &&
+      github.release.prerelease == false
+    runs-on: ubuntu-latest
+    needs: [build_test]
+    defaults:
+      run:
+        working-directory: ./node
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.ACCESS_TOKEN }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install
+      - run: npm run build
+      - name: Generate Package Version
+        run: |
+          packageVersion=$(node -p -e "require('./package.json').version")
+          version=${manualVersion:-packageVersion}
+          version="v"$version
+
+          export SDK_PACKAGE_VERSION=$version
+        env: 
+          manualVersion: ${{ github.event.release.tag_name }}
+      # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - run: npm publish $SDK_PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
+        env: 
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
