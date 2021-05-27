@@ -1,6 +1,8 @@
 # Universal Wallet Service
 
-## Inserting Records
+## Create Wallet
+
+## Insert Record
 
 === "Trinsic CLI"
     ```bash
@@ -15,7 +17,7 @@
     var items = await service.Search();
     ```
 
-## Searching / Querying
+## Search / Query
 
 Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
 This apporach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.

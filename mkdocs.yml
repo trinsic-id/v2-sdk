@@ -9,7 +9,7 @@ nav:
   - Reference:
       - Introduction: reference/index.md
       - Security Profiles: reference/profiles.md
-      - SDK Concepts: sdk-concepts.md
+      - Configuration: reference/configuration.md
       - Services:
           - Wallet Service: reference/services/wallet-service.md
           - Provider Service: reference/services/provider-service.md
@@ -45,5 +45,6 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - attr_list
+  - def_list
 extra_css:
   - _static/extra.css
