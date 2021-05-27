@@ -36,6 +36,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.snippets
+  - abbr
+  
 
 extra_css: 
   - _static/extra.css

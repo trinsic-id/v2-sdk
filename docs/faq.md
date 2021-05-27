@@ -2,6 +2,8 @@
 
 ## What is Linked Data? 
 
+## What are Linked Data Proofs?
+
 ## What are Verifiable Credentials? 
 
 ## What are Decentralized Identifiers? 
@@ -12,9 +14,22 @@
 
 ## How is the data stored? 
 
+## How is data exchanged?
+
 ## What's the migration path between Trinsic v1 and v2?
 
 ## What's going to be built next?
+- Trust Registries
+- Webhook notifications
+- Better key management
+- Revocation
+- Selective Disclosure Passes
+- Database integrations
+- 
+
+## What's the performance here? Load test results? 
+
+
 
 ## What are some good use cases for this tech?
 
