@@ -41,7 +41,7 @@ This will sign the credential stored in the cloud wallet and store it back local
 === "CLI"
 
     ```bash
-    trinsic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
+    trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
     ```    
 === "JS"
 
@@ -63,7 +63,8 @@ The holder stores the document in their wallet.
 === "CLI"
 
     ```bash
-    trinsic wallet insert_item --item ./covid-vocab/vaccination-certificate-signed.jsonld
+    trinsic --profile alice wallet insert-item --item ./covid-vocab/vaccination-certificate-signed.jsonld
+
     ```
      
 === "JS"
@@ -87,7 +88,7 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
 === "CLI"
 
     ```bash
-    trinsic issuer create_proof --document_id <item_id> --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal_document ./covid-vocab/vaccination-certificate-frame.jsonld
+    trinsic --profile alice issuer create-proof --document-id urn:uuid:bcb9aa00-b471-43dd-86e6-03a0c16029d8 --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
     ```
      
 === "JS"
@@ -110,7 +111,7 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 === "CLI"
 
     ```bash
-    trinsic issuer verify_proof --proof_document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
+    trinsic --profile airline issuer verify-proof --proof-document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
     ```
      
 === "JS"
@@ -126,3 +127,30 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
     ```
 
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.
+
+What is included in the profile.bin?
+Credentials are signed json files. 
+Why does the order get screwed up?
+
+----
+
+trinsic wallet create --description "Alice's Wallet" --name alice && \
+trinsic wallet create --description "Airline's wallet" --name airline && \
+trinsic wallet create --description "Vaccination Clinic" --name clinic
+
+ll ~/.trinsic
+more ~/.trinsic/config.toml
+
+trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
+
+
+trinsic --profile alice wallet insert-item --item ./covid-vocab/vaccination-certificate-signed.jsonld
+
+trinsic --profile alice issuer create-proof --document-id urn:uuid:bcb9aa00-b471-43dd-86e6-03a0c16029d8 --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
+
+vim ./covid-vocab/vaccination-certificate-partial-proof.jsonld
+
+trinsic --profile airline issuer verify-proof --proof-document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
+
+rm ~/.trinsic/*.json ~/.trinsic/*.bin
+
