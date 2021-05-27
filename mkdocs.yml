@@ -13,6 +13,8 @@ theme:
     name: material
     logo: _static/logo-title.svg
     favicon: _static/logo.png
+    features:
+      - content.tabs.link
     icon:
       repo: fontawesome/brands/github-alt
     font:
