@@ -27,8 +27,6 @@ cli/
   - Sign, Pack/Unpack
   - Generate ED keys
 
-
-
 # CLI
 
 The cli is built with a rust gRPC library named [tonic](https://github.com/hyperium/tonic)
@@ -60,3 +58,8 @@ Write markdown in the `docs` folder. You can use normal markdown, html, or any o
 When finished editing, just make a PR.
 They'll be built and deployed automatically using the [`docs.yml`](./.github/workflows/docs.yml) 
 Docs can be viewed here: https://trinsic-id.github.io/sdk
+
+** Using Insiders Features on Local env (For Trinsineers) ** 
+- ping @michaeldboyd for shared secret
+- run `pip install git+https://<SHARED_SECRET}>@github.com/squidfunk/mkdocs-material-insiders.git`
+- use any features included in the [reference guide](https://squidfunk.github.io/mkdocs-material/reference/abbreviations/) with tag `insiders only`
