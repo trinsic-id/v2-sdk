@@ -34,6 +34,5 @@ export default abstract class ServiceBase {
 
     // Set the auth field to the signed document by converting it back
     // to JSON and encoding it in base64
-    this.capInvocation = btoa(JSON.stringify(proofResponse.getSignedDocument().toJavaScript()));
-  }
+    this.capInvocation = Buffer.from(JSON.stringify(proofResponse.getSignedDocument().toJavaScript())).toString('base64');  }
 }
