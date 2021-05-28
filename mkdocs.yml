@@ -8,8 +8,9 @@ nav:
   - Walkthrough: walkthrough.md
   - Reference:
       - Introduction: reference/index.md
-      - Security Profiles: reference/profiles.md
-      - Configuration: reference/configuration.md
+      - SDK Concepts:
+        - Security Profiles: reference/profiles.md
+        - Configuration: reference/configuration.md
       - Services:
           - Wallet Service: reference/services/wallet-service.md
           - Provider Service: reference/services/provider-service.md
