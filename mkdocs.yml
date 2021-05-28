@@ -21,6 +21,7 @@ theme:
       - content.tabs.link
       - navigation.sections
       - navigation.tabs
+      - navigation.tracking
     icon:
       repo: fontawesome/brands/github-alt
     font:
@@ -38,7 +39,11 @@ theme:
           name: Switch to light mode
 markdown_extensions:
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-experimental
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed
   - pymdownx.snippets
   - pymdownx.emoji:
@@ -46,5 +51,9 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - attr_list
   - def_list
+  - toc:
+      permalink: true
 extra_css:
   - _static/extra.css
+plugins:
+  - tags
