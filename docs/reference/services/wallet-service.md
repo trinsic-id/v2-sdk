@@ -1,6 +1,44 @@
-# Universal Wallet Service
+# Wallet Service
+
+The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the [Universal Wallet 2020 :material-open-in-new:](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target+_blank} specficiation by W3C CCG. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.
 
 ## Create Wallet
+
+Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider.
+
+### Create wallet directly
+
+To create a wallet directly without invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/profiles) page.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic wallet create --name <profile_name>
+    ```
+=== "TypeScript"
+    ```js
+    const profile = await walletService.Create();
+    ```
+=== "C#"
+    ```csharp
+    var profile = await walletService.Create();
+    ```
+
+### Create wallet with provider invitation
+
+If invited by a provider, you can supply the security code found in your invitation (via email, SMS, etc). Read more about [inviting participants](/reference/services/provider-service/#invite-participants) to your ecosystem as provider.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic wallet create --name <profile> --security-code <code>
+    ```
+=== "TypeScript"
+    ```js
+    const profile = await walletService.Create("<security code>");
+    ```
+=== "C#"
+    ```csharp
+    var profile = await walletService.Create("<security code>");
+    ```
 
 ## Insert Record
 
