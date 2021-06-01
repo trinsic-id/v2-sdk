@@ -8,8 +8,9 @@ nav:
       - Introduction: index.md
       - Walkthrough: walkthrough.md
   - Reference:
-      - Introduction: reference/index.md
-      - SDK Concepts:
+      - Overview: reference/index.md
+      - Installation: reference/installation.md
+      - Concepts:
         - Security Profiles: reference/profiles.md
         - Configuration: reference/configuration.md
       - Services:
