@@ -221,8 +221,9 @@ subcommands:
               - type:
                   long: type
                   value_name: STRING
-                  help: Item type
+                  help: (Optional) Item type
                   takes_value: true
+                  required: false
               - item:
                   long: item
                   value_name: FILE

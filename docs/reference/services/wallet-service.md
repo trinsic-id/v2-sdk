@@ -42,17 +42,26 @@ If invited by a provider, you can supply the security code found in your invitat
 
 ## Insert Record
 
+This method allows inserting any JSON data in the wallet.
+
 === "Trinsic CLI"
     ```bash
-    trinsic wallet search
+    trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
 === "TypeScript"
     ```js
-    const items = await service.Search();
+    let itemId = await walletService.insertItem({
+        "foo": "bar"
+    });
     ```
 === "C#"
     ```csharp
-    var items = await service.Search();
+    var item = new JObject
+    {
+        { "foo", "bar" }
+    };
+
+    var itemId = await walletService.InsertItem(item);
     ```
 
 ## Search / Query
@@ -137,9 +146,43 @@ Examples and detailed description on working with grouped results [can be found 
 
 You can read the full documentation on working with SQL queries on the [Azure Cosmos DB website :material-open-in-new:](https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started){target=_blank}.
 
-## Issue Credential / Sign Data
+## Issue Credential
+
+The wallet service supports signing data using [BBS+ Signatures :material-open-in-new:](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.
+
+> This endpoint requires that the user provide a valid JSON-LD document.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic issuer issue --document <INPUT_JSONLD_FILE> --out <OUTPUT_FILE>
+    ```
+=== "TypeScript"
+
+    ```js
+    let unsignedDocument = {
+        "@context": "https://w3id.org/security/v2",
+        "id": "https://issuer.oidp.uscis.gov/credentials/83627465"
+    }
+
+    let signedDocument = await walletService.issue(unsignedDocument);
+    ```
+
+=== "C#"
+
+    ```csharp
+    var unsignedDocument = new JObject
+    {
+        { "@context", "https://w3id.org/security/v2" },
+        { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
+    };
+
+    var signedDocument = await walletService.IssueCredential(unsignedDocument);
+    ```
+
+The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
 ## Create Proof / Share Data
 
 ## Verify Proof / Verify Data
 
+## Sending and exchanging data
