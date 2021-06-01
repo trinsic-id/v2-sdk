@@ -1,11 +1,12 @@
-site_name: Documentation
+site_name: ""
 site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 nav:
-  - Introduction: index.md
-  - Walkthrough: walkthrough.md
+  - Getting Started:
+      - Introduction: index.md
+      - Walkthrough: walkthrough.md
   - Reference:
       - Introduction: reference/index.md
       - SDK Concepts:
@@ -14,6 +15,7 @@ nav:
       - Services:
           - Wallet Service: reference/services/wallet-service.md
           - Provider Service: reference/services/provider-service.md
+  - FAQ: faq.md
 theme:
     name: material
     logo: _static/logo-title.svg
