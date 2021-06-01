@@ -48,4 +48,5 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     Console.WriteLine(inviteResponse.InvitationId);
     ```
 
-    The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
+
+The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.

@@ -68,10 +68,10 @@ The default query used in the commands below returns a full wallet result set. T
     ```bash
     trinsic wallet search
     ```
-=== "JavaScript"
+=== "TypeScript"
 
     ```js
-    var items = await walletService.Search();
+    const items = await walletService.Search();
     ```
 
 === "C#"
@@ -89,7 +89,7 @@ To pass custom query to the search function, use the query parameter or the avai
     trinsic wallet search \
         --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
     ```
-=== "JavaScript"
+=== "TypeScript"
 
     ```js
     var items = await walletService.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
