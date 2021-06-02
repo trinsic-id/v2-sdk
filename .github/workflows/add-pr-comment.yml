@@ -1,0 +1,19 @@
+name: PR Review Bot
+
+on:
+  pull_request:
+    types: [opened]
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: |
+            This PR can be [reviewed in Gitpod](https://gitpod.io/#${{ github.event.pull_request.html_url }})
+          allow-repeats: false
