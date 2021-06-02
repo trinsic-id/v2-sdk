@@ -343,3 +343,4 @@ Cargo.lock
 .DS_Store
 
 .ionide
+docs-site/
