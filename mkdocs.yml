@@ -32,7 +32,8 @@ theme:
           icon: fontawesome/solid/sun
           name: Switch to light mode
 markdown_extensions:
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      linenums: true
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.snippets
