@@ -1,6 +1,6 @@
 # Wallet Service
 
-The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the [Universal Wallet 2020 :material-open-in-new:](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target+_blank} specficiation by W3C CCG. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.
+The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the [Universal Wallet 2020 :material-open-in-new:](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specficiation by W3C CCG. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.
 
 ## Create Wallet
 
@@ -64,10 +64,14 @@ This method allows inserting any JSON data in the wallet.
     var itemId = await walletService.InsertItem(item);
     ```
 
+The output of this method will be a unique `itemId` that can be used as input where required.
+
 ## Search / Query
 
 Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
 This apporach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
+
+> This endpoint will support querying using [Verifiable Presentation Request Spec :material-open-in-new:](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
 
 ### Basic Search
 
@@ -181,7 +185,46 @@ The wallet service supports signing data using [BBS+ Signatures :material-open-i
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
-## Create Proof / Share Data
+## Create Proof
+
+Wallets allow data to be shared between parties in a secure manner, using a technique called [Zero Knowledge Proofs](/faq/#what-are-zero-knowledge-proofs). Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.
+
+The endpoint to create a proof requires two inputs:
+
+- document in the wallet that is signed with the correct signature
+- JSONLD frame that describes the data to be disclosed
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic issuer create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
+    ```
+=== "TypeScript"
+
+    ```js
+    let frame = {
+        "@context": "https://www.w3.org/2018/credentials/v1",
+        "type": [ "VerifiableCredential" ],
+        "@explicit": true,
+        "issuer": {}
+    }
+    let itemId = "<item document id>";
+
+    let signedDocument = await walletService.createProof(itemId, frame);
+    ```
+
+=== "C#"
+
+    ```csharp
+    var frame = new JObject
+    {
+        { "@context", "https://www.w3.org/2018/credentials/v1" },
+        { "@explicit", true }
+        { "issuer", new JObject() }
+    };
+    var itemId = "<item document id>";
+
+    var signedDocument = await walletService.CreateProof(itemId, frame);
+    ```
 
 ## Verify Proof / Verify Data
 

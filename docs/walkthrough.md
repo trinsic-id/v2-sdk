@@ -17,14 +17,14 @@ First we'll create the wallets in the ecosystem. These are stored in `~/.trinsic
 These can have descriptions and a human readable name to easily find them.
 The profile is stored in `~/.trinsic/<name>.bin`. This profile includes the authorization token needed to authenticate to the API.
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic wallet create --description "Alice's Wallet" --name alice && \
     trinsic wallet create --description "Airline's wallet" --name airline && \
     trinsic wallet create --description "Vaccination Clinic" --name clinic
     ```
-=== "JS"
+=== "TypeScript"
 
     ```js
     var string = "hello world";
@@ -37,12 +37,12 @@ The profile is stored in `~/.trinsic/<name>.bin`. This profile includes the auth
     ```
 ### Issue a Vaccine Credential
 This will sign the credential stored in the cloud wallet and store it back locally.
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
     ```
-=== "JS"
+=== "TypeScript"
 
     ```js
     var string = "hello world";
@@ -84,13 +84,13 @@ Note down the response `item_id`.
 
 Replace the `<item_id>` in the command bellow with the output from the `insert_item` above.
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile alice issuer create-proof --document-id urn:uuid:bcb9aa00-b471-43dd-86e6-03a0c16029d8 --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
     ```
 
-=== "JS"
+=== "TypeScript"
 
     ```js
     var string = "hello world";
@@ -107,13 +107,13 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 
 ### Verify Proof
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile airline issuer verify-proof --proof-document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
     ```
 
-=== "JS"
+=== "TypeScript"
 
     ```js
     var string = "hello world";

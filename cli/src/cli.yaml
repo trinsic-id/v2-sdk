@@ -254,19 +254,22 @@ subcommands:
             args:
               - reveal-document:
                   long: reveal-document
-                  value_name: STRING
+                  value_name: JSONLD_FRAME_FILE
                   help: Document
                   takes_value: true
+                  required: true
               - document-id:
                   long: document-id
                   value_name: STRING
                   help: Document id
                   takes_value: true
+                  required: true
               - out:
                   long: out
-                  value_name: FILE
+                  value_name: OUTPUT_FILE
                   help: output location for created_proof
                   takes_value: true
+                  required: true
         - verify-proof:
             about: Verify a proof
             version: "0.1"
