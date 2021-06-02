@@ -32,10 +32,8 @@ class TrinsicWalletService extends ServiceBase_1.default {
         // let credentials = ChannelCredentials.createInsecure();
         // let channel = new Channel(serviceAddress, credentials, {});
         // this.channel = channel;
-        this.client = new WalletService_grpc_web_pb_1.WalletClient(serviceAddress, {}, {});
-        this.credentialClient = new IssuerService_grpc_web_pb_1.CredentialClient(serviceAddress, 
-        // ChannelCredentials.createInsecure(),
-        {}, {});
+        this.client = new WalletService_grpc_web_pb_1.WalletClient(serviceAddress, null, null);
+        this.credentialClient = new IssuerService_grpc_web_pb_1.CredentialClient(serviceAddress, null, null);
     }
     // setChannel(channel: Channel) {
     //   this.channel = channel;

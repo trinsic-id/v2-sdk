@@ -19,7 +19,6 @@ import {
 } from "./proto/WalletService_pb";
 import { CreateProofRequest, IssueRequest, VerifyProofRequest } from './proto/IssuerService_pb';
 
-
 type JavaScriptValue = string | number | boolean | {} | any[]
 type JSStruct = {[key: string]: JavaScriptValue}
 
@@ -34,13 +33,8 @@ export class TrinsicWalletService extends ServiceBase {
     // let credentials = ChannelCredentials.createInsecure();
     // let channel = new Channel(serviceAddress, credentials, {});
     // this.channel = channel;
-    this.client = new WalletClient(serviceAddress, {}, {});
-    this.credentialClient = new CredentialClient(
-      serviceAddress,
-      // ChannelCredentials.createInsecure(),
-      {},
-      {}
-    );
+    this.client = new WalletClient(serviceAddress, null, null);
+    this.credentialClient = new CredentialClient(serviceAddress, null, null);
   }
 
   // setChannel(channel: Channel) {

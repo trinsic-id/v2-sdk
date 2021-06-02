@@ -19,7 +19,8 @@
   "dependencies": {
     "@trinsic/okapi": "^1.0.0-preview.10",
     "google-protobuf": "^3.17.0",
-    "grpc-web": "^1.2.1"
+    "grpc-web": "^1.2.1",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.15.2",
