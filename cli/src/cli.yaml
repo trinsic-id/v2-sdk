@@ -276,9 +276,10 @@ subcommands:
             args:
               - proof-document:
                   long: proof-document
-                  value_name: STRING
-                  help: Document
+                  value_name: JSONLD_FILE
+                  help: Input Document
                   takes_value: true
+                  required: true
   - authentication:
       about: Authentication service
       version: "0.1"

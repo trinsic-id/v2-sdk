@@ -226,6 +226,56 @@ The endpoint to create a proof requires two inputs:
     var signedDocument = await walletService.CreateProof(itemId, frame);
     ```
 
-## Verify Proof / Verify Data
+## Verify Proof
 
-## Sending and exchanging data
+This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic issuer verify-proof --proof-document <JSONLD_FILE>
+    ```
+=== "TypeScript"
+
+    ```js
+    let isValid = await walletService.verifyProof(proofDocument);
+
+    console.log("Verify result: " + isValid);
+    ```
+
+=== "C#"
+
+    ```csharp
+    var isValid = await walletService.VerifyProof(proofDocument);
+
+    Console.WriteLine($"Verify result: {isValid}");
+    ```
+
+## Data Exchange
+
+Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.
+
+- [DIDComm Messaging :material-open-in-new:](https://identity.foundation/didcomm-messaging/spec/){target=_blank}
+- [Wallet And Credential Interactions :material-open-in-new:](https://identity.foundation/wallet-and-credential-interactions/){target=_blank}
+- [OpenID Connect Credential Provider :material-open-in-new:](https://mattrglobal.github.io/oidc-client-bound-assertions-spec/){target=_blank}
+
+> During this beta period, we are only supporting exchanging data between users by using their email addresses. The messages are routed securely to the destination wallet without leaving the secure network of the ecosystem backend. Our goal is to provide basic ability to share data without affecting the user experience. As interoperable exchange methods become available, we will add this functionality in the SDK.
+
+### Sending documents using Email as identifier
+
+To send a document to another user, they must have created a wallet and [associated their email address](#create-wallet-with-provider-invitation) with that wallet.
+
+=== "Trinsic CLI"
+    ```bash
+    # TODO
+    ```
+=== "TypeScript"
+
+    ```js
+    // TODO
+    ```
+
+=== "C#"
+
+    ```csharp
+    await walletService.Send(document, "admin@example.com");
+    ```
