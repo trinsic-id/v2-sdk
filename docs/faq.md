@@ -4,19 +4,21 @@
 
 ## What are Linked Data Proofs?
 
+## What are Zero Knowledge Proofs?
+
 ## What are Verifiable Credentials? (mdb)
 
 ## What are Decentralized Identifiers? (mdb)
 
-## How should I manage my keys? 
+## How should I manage my keys?
 
-## How do the signatures and verifications work? 
+## How do the signatures and verifications work?
 
-## How is the data securely stored? 
+## How is the data securely stored?
 
 ## How is data securely exchanged?
 
-## What's the performance here? Load test results? 
+## What's the performance here? Load test results?
 
 ## What are some good use cases for this tech? (mdb)
 
