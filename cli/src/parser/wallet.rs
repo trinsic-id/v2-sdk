@@ -25,6 +25,12 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .subcommand_matches("insert-item")
                 .expect("Error parsing request"),
         );
+    } else if args.is_present("send") {
+        return send(
+            &args
+                .subcommand_matches("send")
+                .expect("Error parsing request"),
+        );
     } else {
         panic!("Unrecognized command")
     }
@@ -54,6 +60,13 @@ fn insert_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
+fn send<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    Command::Send(SendArgs {
+        email: args.value_of("email"),
+        item: args.value_of("item"),
+    })
+}
+
 fn get_provider_configuration<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::GetProviderConfiguration
 }
@@ -63,6 +76,7 @@ pub enum Command<'a> {
     Create(CreateArgs<'a>),
     Search(SearchArgs<'a>),
     InsertItem(InsertItemArgs<'a>),
+    Send(SendArgs<'a>),
     GrantAccess,
     RevokeAccess,
     GetProviderConfiguration,
@@ -86,6 +100,12 @@ pub struct SearchArgs<'a> {
 #[derive(Debug, PartialEq)]
 pub struct InsertItemArgs<'a> {
     pub item_type: Option<&'a str>,
+    pub item: Option<&'a str>,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct SendArgs<'a> {
+    pub email: Option<&'a str>,
     pub item: Option<&'a str>,
 }
 

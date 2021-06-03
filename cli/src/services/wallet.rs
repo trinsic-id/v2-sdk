@@ -15,6 +15,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
         Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
+        &Command::Send(args) => Ok(send(args, config)),
         Command::GetProviderConfiguration => Ok(get_provider_configuration(config)),
         _ => Err(Error::UnknownCommand),
     }
@@ -141,6 +142,36 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
 
     let response = client
         .insert_item(InsertItemRequest {
+            item: Some(item),
+            item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
+        })
+        .await
+        .expect("Insert item failed")
+        .into_inner();
+
+    println!("{:?}", response);
+}
+
+#[tokio::main]
+async fn send(args: &SendArgs, config: Config) {
+    let item: okapi::proto::google_protobuf::Struct =
+        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
+    let item_bytes = item.to_vec();
+
+    use trinsic::MessageFormatter;
+    let item: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+
+    let channel = Channel::from_shared(config.server.address.to_string())
+        .unwrap()
+        .connect()
+        .await
+        .expect("Unable to connect to server");
+
+    let mut client = WalletClient::with_interceptor(channel, config);
+
+    let response = client
+        .send(InsertItemRequest {
             item: Some(item),
             item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
