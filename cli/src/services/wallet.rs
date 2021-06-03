@@ -2,12 +2,15 @@ use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
+use trinsic::credential_client::CredentialClient;
 use trinsic::proto::google_protobuf::Struct;
 use trinsic::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
+use trinsic::send_request::DeliveryMethod;
 use trinsic::utils::read_file_as_string;
+use trinsic::SendRequest;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -15,7 +18,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
         Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
-        &Command::Send(args) => Ok(send(args, config)),
+        Command::Send(args) => Ok(send(args, config)),
         Command::GetProviderConfiguration => Ok(get_provider_configuration(config)),
         _ => Err(Error::UnknownCommand),
     }
@@ -168,15 +171,17 @@ async fn send(args: &SendArgs, config: Config) {
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletClient::with_interceptor(channel, config);
+    let mut client = CredentialClient::with_interceptor(channel, config);
 
     let response = client
-        .send(InsertItemRequest {
-            item: Some(item),
-            item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
+        .send(SendRequest {
+            document: Some(item),
+            delivery_method: Some(DeliveryMethod::Email(
+                args.email.expect("Email must be specified").to_string(),
+            )),
         })
         .await
-        .expect("Insert item failed")
+        .expect("Send item failed")
         .into_inner();
 
     println!("{:?}", response);
