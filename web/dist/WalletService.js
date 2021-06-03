@@ -19,8 +19,8 @@ const okapi_1 = __importDefault(require("@trinsic/okapi"));
 const pbmse_pb_1 = require("./proto/pbmse/pbmse_pb");
 const struct_pb_1 = require("google-protobuf/google/protobuf/struct_pb");
 const ServiceBase_1 = __importDefault(require("./ServiceBase"));
-const WalletService_grpc_web_pb_1 = require("./proto/WalletService_grpc_web_pb");
-const IssuerService_grpc_web_pb_1 = require("./proto/IssuerService_grpc_web_pb");
+const WalletServiceServiceClientPb_1 = require("./proto/WalletServiceServiceClientPb");
+const IssuerServiceServiceClientPb_1 = require("./proto/IssuerServiceServiceClientPb");
 const WalletService_pb_1 = require("./proto/WalletService_pb");
 const IssuerService_pb_1 = require("./proto/IssuerService_pb");
 __exportStar(require("grpc-web"), exports);
@@ -32,8 +32,8 @@ class TrinsicWalletService extends ServiceBase_1.default {
         // let credentials = ChannelCredentials.createInsecure();
         // let channel = new Channel(serviceAddress, credentials, {});
         // this.channel = channel;
-        this.client = new WalletService_grpc_web_pb_1.WalletClient(serviceAddress, null, null);
-        this.credentialClient = new IssuerService_grpc_web_pb_1.CredentialClient(serviceAddress, null, null);
+        this.client = new WalletServiceServiceClientPb_1.WalletClient(serviceAddress, null, null);
+        this.credentialClient = new IssuerServiceServiceClientPb_1.CredentialClient(serviceAddress, null, null);
     }
     // setChannel(channel: Channel) {
     //   this.channel = channel;

@@ -15,7 +15,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrinsicProviderService = void 0;
 const ServiceBase_1 = __importDefault(require("./ServiceBase"));
-const ProviderService_grpc_web_pb_1 = require("./proto/ProviderService_grpc_web_pb");
+const ProviderServiceServiceClientPb_1 = require("./proto/ProviderServiceServiceClientPb");
 __exportStar(require("grpc-web"), exports);
 class TrinsicProviderService extends ServiceBase_1.default {
     // channel: Channel;
@@ -25,7 +25,7 @@ class TrinsicProviderService extends ServiceBase_1.default {
         // let credentials = ChannelCredentials.createInsecure();
         // let channel = new Channel(serviceAddress, credentials, {});
         // this.channel = channel;
-        this.client = new ProviderService_grpc_web_pb_1.ProviderClient(serviceAddress, {}, {});
+        this.client = new ProviderServiceServiceClientPb_1.ProviderClient(serviceAddress, {}, {});
     }
     // setChannel(channel: Channel) {
     //   this.channel = channel;

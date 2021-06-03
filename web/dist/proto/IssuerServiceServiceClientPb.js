@@ -40,7 +40,7 @@ class CredentialClient {
             options = {};
         if (!credentials)
             credentials = {};
-        options['format'] = 'text';
+        options['format'] = 'binary';
         this.client_ = new grpcWeb.GrpcWebClientBase(options);
         this.hostname_ = hostname;
         this.credentials_ = credentials;

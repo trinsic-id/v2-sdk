@@ -3,8 +3,8 @@ import okapi from "@trinsic/okapi";
 import { EncryptedMessage } from './proto/pbmse/pbmse_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
 import ServiceBase from "./ServiceBase";
-import { WalletClient } from "./proto/WalletService_grpc_web_pb";
-import { CredentialClient } from "./proto/IssuerService_grpc_web_pb";
+import { WalletClient } from "./proto/WalletServiceServiceClientPb";
+import { CredentialClient } from "./proto/IssuerServiceServiceClientPb";
 import {
   ConnectRequest,
   GetProviderConfigurationRequest,

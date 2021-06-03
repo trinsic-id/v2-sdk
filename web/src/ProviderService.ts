@@ -1,5 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "./proto/ProviderService_grpc_web_pb";
+import { ProviderClient } from "./proto/ProviderServiceServiceClientPb";
 import {
   InvitationStatusRequest,
   InvitationStatusResponse,

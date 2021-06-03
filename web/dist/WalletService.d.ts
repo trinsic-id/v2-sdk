@@ -1,6 +1,6 @@
 import ServiceBase from "./ServiceBase";
-import { WalletClient } from "./proto/WalletService_grpc_web_pb";
-import { CredentialClient } from "./proto/IssuerService_grpc_web_pb";
+import { WalletClient } from "./proto/WalletServiceServiceClientPb";
+import { CredentialClient } from "./proto/IssuerServiceServiceClientPb";
 import { GetProviderConfigurationResponse, WalletProfile, ConnectResponse, SearchResponse } from "./proto/WalletService_pb";
 declare type JavaScriptValue = string | number | boolean | {} | any[];
 declare type JSStruct = {
