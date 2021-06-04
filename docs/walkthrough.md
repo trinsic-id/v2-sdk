@@ -6,7 +6,7 @@ a scenario where we create a wallet and use it to issue, present, and verify a c
 
 ## 0. Install Trinsic
 Before we start, make sure you have an SDK installed.
-=== "CLI"
+=== "Trinsic CLI"
 
     --8<-- "reference/installation/install-cli.md"
 
@@ -22,7 +22,7 @@ Before we start, make sure you have an SDK installed.
 
 ## 1. Create a Wallet
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic wallet create --description "Alice's Wallet" --name alice && \
@@ -46,7 +46,7 @@ Before we start, make sure you have an SDK installed.
 
 ## 2. Issue a Credential
 This will sign the credential stored in the cloud wallet and store it back locally.
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
@@ -76,7 +76,7 @@ The holder stores the document in their wallet.
 ---
 
 ## 3. Store Credential in Wallet
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile alice wallet insert-item --item ./covid-vocab/vaccination-certificate-signed.jsonld
@@ -103,7 +103,7 @@ Note down the response `item_id`.
 
 Replace the `<item_id>` in the command bellow with the output from the `insert_item` above.
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile alice issuer create-proof --document-id urn:uuid:bcb9aa00-b471-43dd-86e6-03a0c16029d8 --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
@@ -128,7 +128,7 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 
 ## 5. Verify Proof
 
-=== "CLI"
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile airline issuer verify-proof --proof-document ./covid-vocab/vaccination-certificate-partial-proof.jsonld

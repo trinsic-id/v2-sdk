@@ -44,8 +44,7 @@ theme:
           icon: fontawesome/solid/sun
           name: Switch to light mode
 markdown_extensions:
-  - pymdownx.highlight:
-      linenums: true
+  - pymdownx.highlight
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
