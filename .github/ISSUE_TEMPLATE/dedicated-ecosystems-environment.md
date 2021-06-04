@@ -1,5 +1,5 @@
 ---
-name: Dedicated Ecosystems Environment
+name: Dedicated Ecosystems environment
 about: Describe this issue template's purpose here.
 title: Request for Dedicated Ecosystems Environment
 labels: environment request
