@@ -6,10 +6,12 @@ repo_name: trinsic-id/sdk
 nav:
   - Getting Started:
       - Introduction: index.md
+      - What is Trinsic?: trinsic.md
       - Walkthrough: walkthrough.md
+      
   - Reference:
       - Overview: reference/index.md
-      - Installation: reference/installation.md
+      - Installation: reference/installation/index.md
       - Concepts:
         - Security Profiles: reference/profiles.md
         - Configuration: reference/configuration.md
@@ -49,7 +51,8 @@ markdown_extensions:
           class: mermaid-experimental
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: ['.', 'docs']
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

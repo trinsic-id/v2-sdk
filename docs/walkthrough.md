@@ -1,21 +1,26 @@
 # Walkthrough
 
-This walkthrough shows how Trinsic's SDK enables a provider to quickly create an ecosystem and begin doing credential exchange.
+Let's walk through
+a scenario where we create a wallet and use it to issue, present, and verify a credential. 
 
-## Install the SDK
-If you're using our Gitpod Environment, the CLI and all the language specific SDKs have already been installed in your environment.
 
-If you're running this locally, you'll need to first install [rust](https://www.rust-lang.org/tools/install). Once installed run `cargo install --path .` in the `cli` directory.
+## 0. Install Trinsic
+Before we start, make sure you have an SDK installed.
+=== "Trinsic CLI"
 
-## Alice receives and proves a digital vaccination card
-Alice's town just received the go ahead to vaccinate everyone. We're going to walk through
-a scenario where the CDC has created a new digital vaccination card and is using Alice's town as a pilot.
-We'll see how the vaccination clinic can issue a card to Alice using the Trinsic SDK.
+    --8<-- "reference/installation/install-cli.md"
 
-### Create Wallet
-First we'll create the wallets in the ecosystem. These are stored in `~/.trinsic/okapi.toml`
-These can have descriptions and a human readable name to easily find them.
-The profile is stored in `~/.trinsic/<name>.bin`. This profile includes the authorization token needed to authenticate to the API.
+=== "TypeScript"
+
+    --8<-- "reference/installation/install-node.md"
+
+=== "C#"
+
+    --8<-- "reference/installation/install-net.md"
+
+---
+
+## 1. Create a Wallet
 
 === "Trinsic CLI"
 
@@ -27,15 +32,19 @@ The profile is stored in `~/.trinsic/<name>.bin`. This profile includes the auth
 === "TypeScript"
 
     ```js
-    var string = "hello world";
+    coming soon
     ```
 
 === "C#"
 
     ```csharp
-    int tmp = 2;
+    var providerProfile = await walletService.CreateWallet(); 
+    providerService.SetProfile(providerProfile);
     ```
-### Issue a Vaccine Credential
+
+--- 
+
+## 2. Issue a Credential
 This will sign the credential stored in the cloud wallet and store it back locally.
 === "Trinsic CLI"
 
@@ -45,42 +54,52 @@ This will sign the credential stored in the cloud wallet and store it back local
 === "TypeScript"
 
     ```js
-    var string = "hello world";
+    coming soon
     ```
 
 === "C#"
 
     ```csharp
-    int tmp = 2;
+    var unsignedDocument = new JObject
+    {
+        { "@context", "https://w3id.org/security/v3-unstable" },
+        { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
+    };
+
+    var issueResponse = await walletService.IssueCredential(unsignedDocument);
     ```
 
 
 The signed document is sent to the user, via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
 The holder stores the document in their wallet.
 
-### Store Credential in Alice's Wallet
-=== "CLI"
+---
+
+## 3. Store Credential in Wallet
+=== "Trinsic CLI"
 
     ```bash
     trinsic --profile alice wallet insert-item --item ./covid-vocab/vaccination-certificate-signed.jsonld
 
     ```
 
-=== "JS"
+=== "TypeScript"
 
     ```js
-    var string = "hello world";
+    coming soon
     ```
 
 === "C#"
 
     ```csharp
-    int tmp = 2;
+    var itemId = await walletService.InsertItem(issueResponse);
     ```
 
 Note down the response `item_id`.
 
-### Create Proof
+---
+
+## 4. Create Proof
 
 Replace the `<item_id>` in the command bellow with the output from the `insert_item` above.
 
@@ -93,19 +112,21 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
 === "TypeScript"
 
     ```js
-    var string = "hello world";
+    coming soon
     ```
 
 === "C#"
 
     ```csharp
-    int tmp = 2;
+    var proof = await walletService.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
     ```
 
 
 The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
 
-### Verify Proof
+---
+
+## 5. Verify Proof
 
 === "Trinsic CLI"
 
@@ -116,13 +137,13 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 === "TypeScript"
 
     ```js
-    var string = "hello world";
+    coming soon
     ```
 
 === "C#"
 
     ```csharp
-    int tmp = 2;
+    var valid = await walletService.VerifyProof(proof);
     ```
 
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.

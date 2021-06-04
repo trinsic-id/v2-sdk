@@ -1,10 +1,10 @@
 # Configuration
 
-Trinsic SDK contains minimal configuration. This configuration is stored differently, depending what package is used.
+Trinsic SDK contains minimal configuration. This configuration is stored differently, depending on what package is used.
 
 ## Configuration with CLI
 
-The CLI stores it's configuration in the user's home directory, typicially in `~/.trinsic/`. This directory contains the main configuration file `config.toml` and all the profile data.
+The CLI stores it's configuration in the user's home directory, typically in `~/.trinsic/`. This directory contains the main configuration file `config.toml` and all the profile data.
 
 ### Show Configuration
 
