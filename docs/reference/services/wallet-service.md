@@ -266,7 +266,7 @@ To send a document to another user, they must have created a wallet and [associa
 
 === "Trinsic CLI"
     ```bash
-    # TODO
+    trinsic wallet send --email <EMAIL_ADDRESS> --item <FILE>
     ```
 === "TypeScript"
 

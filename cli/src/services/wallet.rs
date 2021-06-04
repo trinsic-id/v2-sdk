@@ -2,12 +2,15 @@ use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
+use trinsic::credential_client::CredentialClient;
 use trinsic::proto::google_protobuf::Struct;
 use trinsic::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
     InsertItemRequest, SearchRequest, WalletProfile,
 };
+use trinsic::send_request::DeliveryMethod;
 use trinsic::utils::read_file_as_string;
+use trinsic::SendRequest;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -15,6 +18,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
         Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
+        Command::Send(args) => Ok(send(args, config)),
         Command::GetProviderConfiguration => Ok(get_provider_configuration(config)),
         _ => Err(Error::UnknownCommand),
     }
@@ -146,6 +150,38 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
         })
         .await
         .expect("Insert item failed")
+        .into_inner();
+
+    println!("{:?}", response);
+}
+
+#[tokio::main]
+async fn send(args: &SendArgs, config: Config) {
+    let item: okapi::proto::google_protobuf::Struct =
+        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
+    let item_bytes = item.to_vec();
+
+    use trinsic::MessageFormatter;
+    let item: trinsic::proto::google_protobuf::Struct =
+        trinsic::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+
+    let channel = Channel::from_shared(config.server.address.to_string())
+        .unwrap()
+        .connect()
+        .await
+        .expect("Unable to connect to server");
+
+    let mut client = CredentialClient::with_interceptor(channel, config);
+
+    let response = client
+        .send(SendRequest {
+            document: Some(item),
+            delivery_method: Some(DeliveryMethod::Email(
+                args.email.expect("Email must be specified").to_string(),
+            )),
+        })
+        .await
+        .expect("Send item failed")
         .into_inner();
 
     println!("{:?}", response);

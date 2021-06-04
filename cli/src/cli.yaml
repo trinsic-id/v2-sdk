@@ -3,9 +3,9 @@ version: "1.0"
 author: Trinsic Technologies Inc.
 about: >-
 
-    ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
-     │ ├┬┘││││└─┐││
-     ┴ ┴└─┴┘└┘└─┘┴└─┘
+  ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
+   │ ├┬┘││││└─┐││
+   ┴ ┴└─┴┘└┘└─┘┴└─┘
 
 subcommands:
   - didkey:
@@ -224,6 +224,21 @@ subcommands:
                   help: (Optional) Item type
                   takes_value: true
                   required: false
+              - item:
+                  long: item
+                  value_name: FILE
+                  help: Path to file containing item data
+                  takes_value: true
+                  required: true
+        - send:
+            about: Send a document to another wallet
+            args:
+              - email:
+                  long: email
+                  value_name: EMAIL_ADDRESS
+                  help: The email of the destination wallet
+                  takes_value: true
+                  required: true
               - item:
                   long: item
                   value_name: FILE
