@@ -65,7 +65,6 @@ markdown_extensions:
   - abbr
 extra_css:
   - _static/extra.css
-plugins:
-  - tags
+
 extra:
   generator: false
