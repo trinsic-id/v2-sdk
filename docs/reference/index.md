@@ -1,6 +1,6 @@
 # API Reference Guide
 
-This document described the available features in the Trinsic SDK. The SDK is available as package for most languages, as well as a command line tool. Both the SDK and CLI have idential functionality, though differ slightly in how they operate with configuration and structured data.
+This document described the available features in the Trinsic SDK. The SDK is available as a package for most languages, as well as a command line tool. Both the SDK and CLI have identical functionality, though differ slightly in how they operate with configuration and structured data.
 
 ## Available Platforms
 
