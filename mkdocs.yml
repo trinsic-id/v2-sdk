@@ -7,6 +7,7 @@ nav:
   - Getting Started:
       - Introduction: index.md
       - What is Trinsic?: trinsic.md
+      - Onboarding: onboard.md
       - Walkthrough: walkthrough.md
       
   - Reference:
