@@ -1,5 +1,59 @@
 # Walkthrough
-It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. 
+It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. It assumes no prior knowledge to decentralized identity. 
+ 
+## Prerequisites
+Before you begin, you'll need to be a early adopter of Trinsic Ecosystems to have the fully-functional platform. The instructions assume you have already set up your ecosystem deployment.
+
+If you haven't been invited to Trinsic Ecosystems yet, please [get in touch](https://trinsic.id/contact-us/) or [learn more](https://trinsic.id/trinsic-ecosystems/)! We'd love to help you get started. 
+## Install Trinsic
+If you are ready to begin integrating the SDK into an existing project, make sure you have an SDK installed.
+We currently provide a CLI, TypeScript, and C# SDKs for local development.
+
+If you're here to just go through the walkthrough, check out our [Gitpod cloud environment](https://gitpod.io/#https://github.com/trinsic-id/sdk) for easy installation (You'll have to create a free account with gitpod). 
+
+=== "Trinsic CLI"
+
+    --8<-- "reference/installation/install-cli.md"
+
+=== "TypeScript"
+
+    --8<-- "reference/installation/install-node.md"
+
+=== "C#"
+
+    --8<-- "reference/installation/install-net.md"
+
+Once installed, configure the SDK's server address to your Ecosystem:
+
+=== "Trinsic CLI"
+
+    ```bash
+    trinsic config --server-address https://example.com
+    ```
+
+=== "TypeScript"
+
+    ```js
+    import { WalletService } from '@trinsic/trinsic';
+
+    // Set the server address
+    const service = new WalletService("https://example.com");
+
+    ```
+
+=== "C#"
+
+    ```csharp
+    using Trinsic;
+
+    // Set the server address
+    var service = new WalletService("https://example.com");
+    ```
+
+Reference: [Configuration](reference/configuration.md)
+---
+
+
 
 ## Meet Allison
 Allison's town just received the go ahead to vaccinate everyone. 
@@ -22,23 +76,6 @@ In most credential exchange scenarios there are three primary roles - Issuer, Ho
 **Governance Authority** - todo 
 
 **Ecosystem Provider** -  -->
-## 0. Install Trinsic
-Before we start, make sure you have an SDK installed.
-We currently provide a CLI, TypeScript, and C# SDKs
-
-=== "Trinsic CLI"
-
-    --8<-- "reference/installation/install-cli.md"
-
-=== "TypeScript"
-
-    --8<-- "reference/installation/install-node.md"
-
-=== "C#"
-
-    --8<-- "reference/installation/install-net.md"
-
----
 
 ## 1. Create Wallets
 We'll start by creating a wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
@@ -69,19 +106,18 @@ These wallets have been created by you, your role is an ecosystem provider. Your
     ```
 
 !!! note
-    Reference: [Create Wallet](reference/services/wallet-service.md#create-wallet]
+    Reference: [Create Wallet](reference/services/wallet-service.md#create-wallet)
 --- 
 
 
 ## 2. Issue a Credential
-Credential is a json-ld document. 
-it is signed with a special digital signature that makes eahc piece of data in the credential separately verifiable. This is a bbs+ signature scheme. 
+Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme. 
 The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. 
 
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./covid-vocab/vaccination-certificate-signed.jsonld
+    trinsic --profile clinic issuer issue --document ./covid-vocab/vaccination-certificate-unsigned.jsonld --out ./vaccination-certificate-signed.jsonld
     ```
 === "TypeScript"
 
@@ -100,7 +136,7 @@ The credential is signed, but not sent. For now, sending the credential should b
 
     var issueResponse = await walletService.IssueCredential(unsignedDocument);
     ```
-    !!! info
+!!! info
     Reference: [Issue a Credential](reference/services/wallet-service.md#issue-credential)
 
 ---
@@ -113,7 +149,7 @@ Once Allison receives the credential, she can store it within her wallet. She ca
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile alice wallet insert-item --item ./covid-vocab/vaccination-certificate-signed.jsonld
+    trinsic --profile allison wallet insert-item --item ./vaccination-certificate-signed.jsonld
 
     ```
 
@@ -129,7 +165,7 @@ Once Allison receives the credential, she can store it within her wallet. She ca
     var itemId = await walletService.InsertItem(issueResponse);
     ```
 
-Note down the response `item_id`.
+Note down the response `item_id` for the next step.
 
 !!! info
     Reference: [Insert Record](reference/services/wallet-service.md#insert-record)
@@ -142,7 +178,7 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile alice issuer create-proof --document-id urn:uuid:bcb9aa00-b471-43dd-86e6-03a0c16029d8 --out ./covid-vocab/vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
+    trinsic --profile allison issuer create-proof --document-id <item_id> --out ./vaccination-certificate-partial-proof.jsonld --reveal-document ./covid-vocab/vaccination-certificate-frame.jsonld
     ```
 
 === "TypeScript"
@@ -168,7 +204,7 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile airline issuer verify-proof --proof-document ./covid-vocab/vaccination-certificate-partial-proof.jsonld
+    trinsic --profile airline issuer verify-proof --proof-document ./vaccination-certificate-partial-proof.jsonld
     ```
 
 === "TypeScript"
