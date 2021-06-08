@@ -1,7 +1,7 @@
-const { TrinsicWalletService } = require("../../dist/WalletService.js")
+import { WalletService } from "@trinsic/trinsic-web";
 
 const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
-  let walletService = new TrinsicWalletService();
+  let walletService = new WalletService();
 
   let profile = await walletService.createWallet();
 
@@ -37,8 +37,3 @@ const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
 }
 
 Demo_CreateWallet_SetProfile_SearchRecords();
-
-
-  
-
-
