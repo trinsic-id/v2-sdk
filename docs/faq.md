@@ -27,3 +27,17 @@
 ## What's the vision for this tech? (mdb, but add your take)
 
 ## How does it work? 
+
+# Terminology
+
+## Wallet
+Personal cloud storage with strong authentication and encryption and APIs to exchange credentials. 
+ 
+
+
+## Credential
+
+## Key
+
+## Key ID
+

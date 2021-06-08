@@ -1,11 +1,34 @@
 # Walkthrough
+It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. 
 
-Let's walk through
-a scenario where we create a wallet and use it to issue, present, and verify a credential. 
+## Meet Allison
+Allison's town just received the go ahead to vaccinate everyone. We're going to walk through
+a scenario where the CDC has created a new digital vaccination card and is using Allison's town as a pilot.
 
+The CDC has independently published <a>https://cdc.gov/.well-known/credentials/covid19-vaccination-card.jsonld</a>. This is the latest vaccination card that should be issued.
 
+We'll walk through a scenario where Allison gets her vaccination card and then generates a pass with it to board an airline, all using her devices.
+
+## Brief Terminology Explainer
+If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basic](https://trinsic.id/trinsic-basics-the-verifiable-credentials-model/).
+
+In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier. 
+
+**Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
+
+**Holder**: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.
+
+**Verifier**: Verifies passes presented from holders. 
+
+<!-- There are also two parties who are not talked that provide the human layer of trust. A governance authority defines the credential and pass templates.
+
+**Governance Authority** - todo 
+
+**Ecosystem Provider** -  -->
 ## 0. Install Trinsic
 Before we start, make sure you have an SDK installed.
+We currently support a CLI, TypeScript, and C# SDKs
+
 === "Trinsic CLI"
 
     --8<-- "reference/installation/install-cli.md"
@@ -20,12 +43,14 @@ Before we start, make sure you have an SDK installed.
 
 ---
 
-## 1. Create a Wallet
+## 1. Creating the Wallets
+We'll start by creating a wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
+
 
 === "Trinsic CLI"
 
     ```bash
-    trinsic wallet create --description "Alice's Wallet" --name alice && \
+    trinsic wallet create --description "Allison's Wallet" --name allison && \
     trinsic wallet create --description "Airline's wallet" --name airline && \
     trinsic wallet create --description "Vaccination Clinic" --name clinic
     ```
@@ -44,8 +69,12 @@ Before we start, make sure you have an SDK installed.
 
 --- 
 
+
 ## 2. Issue a Credential
-This will sign the credential stored in the cloud wallet and store it back locally.
+This will sign the credential stored in the cloud wallet and store it back locally. 
+
+[Reference: Issue a Credential](reference/services/wallet-service.md#issue-credential)
+
 === "Trinsic CLI"
 
     ```bash
@@ -69,13 +98,11 @@ This will sign the credential stored in the cloud wallet and store it back local
     var issueResponse = await walletService.IssueCredential(unsignedDocument);
     ```
 
-
-The signed document is sent to the user, via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
-The holder stores the document in their wallet.
-
 ---
 
 ## 3. Store Credential in Wallet
+
+[Reference: Insert Item]()
 === "Trinsic CLI"
 
     ```bash

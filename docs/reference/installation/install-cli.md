@@ -5,7 +5,7 @@ The CLI can be installed directly using the Cargo tool. This requires the [Rustu
 Once installed, run this command in terminal:
 
 ```bash
-cargo install --git https://github.com/trinsic-id/sdk.git
+cargo install --git https://github.com/trinsic-id/sdk.git --branch main
 ```
 
 To verify that the CLI has been installed successfully, try running:
