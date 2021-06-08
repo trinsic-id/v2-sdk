@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const test = require("ava");
-// import okapi from '@trinsic/okapi';
-const okapi = require('@trinsic/okapi');
+import okapi from '@trinsic/okapi';
+// const okapi = require('@trinsic/okapi');
 const TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletService;
-const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 test("get provider configuration", async t => {
@@ -43,7 +42,7 @@ test("generate proof with Jcs", async t => {
         }
     };
 
-    let generateKeyRequest = new GenerateKeyRequest();
+    let generateKeyRequest = new okapi.GenerateKeyRequest();
     generateKeyRequest.setKeyType = okapi.KeyType.ED25519;
     let key = okapi.DIDKey.generate(generateKeyRequest);
     let signingKey = key.getKeyList().find(x => x.getCrv() === "Ed25519");

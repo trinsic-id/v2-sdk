@@ -3,6 +3,7 @@ const okapi = require("@trinsic/okapi");
 import { Metadata } from "grpc-web";
 import { WalletProfile } from './proto/WalletService_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
+import { CreateProofRequest } from './proto/IssuerService_pb';
 
 export default abstract class ServiceBase {
   capInvocation: string;

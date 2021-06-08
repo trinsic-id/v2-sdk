@@ -476,10 +476,10 @@ proto.pbmse.SignedMessage.Header.prototype.setNonce = function(value) {
 
 /**
  * optional bytes payload = 1;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.SignedMessage.prototype.getPayload = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
@@ -720,10 +720,10 @@ proto.pbmse.Signature.serializeBinaryToWriter = function(message, writer) {
 
 /**
  * optional bytes protected = 1;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.Signature.prototype.getProtected = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
@@ -817,10 +817,10 @@ proto.pbmse.Signature.prototype.hasUnprotected = function() {
 
 /**
  * optional bytes signature = 3;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.Signature.prototype.getSignature = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
@@ -1029,10 +1029,10 @@ proto.pbmse.EncryptedMessage.serializeBinaryToWriter = function(message, writer)
 
 /**
  * optional bytes iv = 1;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.EncryptedMessage.prototype.getIv = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
@@ -1071,10 +1071,10 @@ proto.pbmse.EncryptedMessage.prototype.setIv = function(value) {
 
 /**
  * optional bytes aad = 2;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.EncryptedMessage.prototype.getAad = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
@@ -1113,10 +1113,10 @@ proto.pbmse.EncryptedMessage.prototype.setAad = function(value) {
 
 /**
  * optional bytes ciphertext = 3;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.EncryptedMessage.prototype.getCiphertext = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
@@ -1155,10 +1155,10 @@ proto.pbmse.EncryptedMessage.prototype.setCiphertext = function(value) {
 
 /**
  * optional bytes tag = 4;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.EncryptedMessage.prototype.getTag = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -1618,10 +1618,10 @@ proto.pbmse.EncryptionRecipient.prototype.hasHeader = function() {
 
 /**
  * optional bytes content_encryption_key = 2;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.pbmse.EncryptionRecipient.prototype.getContentEncryptionKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 

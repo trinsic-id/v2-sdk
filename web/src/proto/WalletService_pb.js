@@ -1674,10 +1674,10 @@ proto.trinsic.services.WalletProfile.prototype.setCapability = function(value) {
 
 /**
  * optional bytes invoker_jwk = 5;
- * @return {string}
+ * @return {!(string|Uint8Array)}
  */
 proto.trinsic.services.WalletProfile.prototype.getInvokerJwk = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 

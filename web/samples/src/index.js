@@ -1,7 +1,7 @@
-var TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletService;
+import { TrinsicWalletService } from "../../dist/WalletService.js";
 
 const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
-  let walletService = new TrinsicWalletService("localhost:5000");
+  let walletService = new TrinsicWalletService();
 
   let profile = await walletService.createWallet();
 
@@ -32,20 +32,13 @@ const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
 
   console.assert(valid === true, "should be valid proof");
   console.log(valid)
+
+  document.getElementById("wallet").innerHTML(valid)
 }
 
-// Demo_CreateWallet_SetProfile_SearchRecords();
+Demo_CreateWallet_SetProfile_SearchRecords();
 
 
-let walletService = new TrinsicWalletService("https://20.84.208.207:5000");
-
-walletService.createWallet()
-  .then(response => {
-    console.log(response);
-  })
-  .catch(error => {
-    console.error(error);
-  })
   
 
 

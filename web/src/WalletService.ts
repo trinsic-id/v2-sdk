@@ -1,5 +1,5 @@
-// const okapi = require("@trinsic/okapi");
-import okapi from "@trinsic/okapi";
+const okapi = require("@trinsic/okapi");
+// import okapi from "@trinsic/okapi";
 import { EncryptedMessage } from './proto/pbmse/pbmse_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
 import ServiceBase from "./ServiceBase";
@@ -94,7 +94,9 @@ export class TrinsicWalletService extends ServiceBase {
     // Generate new DID used by the current device
     let keyRequest = new okapi.GenerateKeyRequest();
     keyRequest.setKeyType(okapi.KeyType.ED25519);
+    console.log("generating...")
     let myKey = okapi.DIDKey.generate(keyRequest);
+    console.log("generated.", myKey);
     let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
     
     if (myExchangeKey === undefined)
@@ -122,7 +124,6 @@ export class TrinsicWalletService extends ServiceBase {
         {},
         (error, response) => {
           if (error) {
-            console.error(error.message)
             reject(error.message);
           }
           

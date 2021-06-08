@@ -181,6 +181,30 @@ pub struct VerifyProofResponse {
     #[prost(bool, tag = "1")]
     pub valid: bool,
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SendRequest {
+    #[prost(message, optional, tag = "100")]
+    pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    #[prost(oneof = "send_request::DeliveryMethod", tags = "1, 2, 3")]
+    pub delivery_method: ::core::option::Option<send_request::DeliveryMethod>,
+}
+/// Nested message and enum types in `SendRequest`.
+pub mod send_request {
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum DeliveryMethod {
+        #[prost(string, tag = "1")]
+        Email(::prost::alloc::string::String),
+        #[prost(string, tag = "2")]
+        DidUri(::prost::alloc::string::String),
+        #[prost(message, tag = "3")]
+        DidcommInvitation(super::super::super::google::protobuf::Struct),
+    }
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SendResponse {
+    #[prost(enumeration = "ResponseStatus", tag = "1")]
+    pub status: i32,
+}
 #[doc = r" Generated client implementations."]
 pub mod credential_client {
     #![allow(unused_variables, dead_code, missing_docs)]
@@ -256,6 +280,20 @@ pub mod credential_client {
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/trinsic.services.Credential/VerifyProof");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn send(
+            &mut self,
+            request: impl tonic::IntoRequest<super::SendRequest>,
+        ) -> Result<tonic::Response<super::SendResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/trinsic.services.Credential/Send");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
@@ -625,7 +663,9 @@ pub mod invite_request {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
-    #[prost(string, tag = "1")]
+    #[prost(enumeration = "ResponseStatus", tag = "1")]
+    pub status: i32,
+    #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
 }
 /// Request details for the status of onboarding

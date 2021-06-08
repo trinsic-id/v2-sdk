@@ -14,8 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrinsicWalletService = void 0;
-// const okapi = require("@trinsic/okapi");
-const okapi_1 = __importDefault(require("@trinsic/okapi"));
+const okapi = require("@trinsic/okapi");
+// import okapi from "@trinsic/okapi";
 const pbmse_pb_1 = require("./proto/pbmse/pbmse_pb");
 const struct_pb_1 = require("google-protobuf/google/protobuf/struct_pb");
 const ServiceBase_1 = __importDefault(require("./ServiceBase"));
@@ -72,24 +72,26 @@ class TrinsicWalletService extends ServiceBase_1.default {
         // Fetch Server Configuration and find key to use
         // for generating shared secret for authenticated encryption
         let configuration = await this.getProviderConfiguration();
-        let resolveRequest = new okapi_1.default.ResolveRequest();
+        let resolveRequest = new okapi.ResolveRequest();
         resolveRequest.setDid(configuration.getKeyAgreementKeyId());
-        let resolveResponse = okapi_1.default.DIDKey.resolve(resolveRequest);
+        let resolveResponse = okapi.DIDKey.resolve(resolveRequest);
         let providerExchangeKey = resolveResponse
             .getKeysList()
             .find((x) => x.getKid() === configuration.getKeyAgreementKeyId());
         if (providerExchangeKey === undefined)
             throw new Error("Key agreement key not found");
         // Generate new DID used by the current device
-        let keyRequest = new okapi_1.default.GenerateKeyRequest();
-        keyRequest.setKeyType(okapi_1.default.KeyType.ED25519);
-        let myKey = okapi_1.default.DIDKey.generate(keyRequest);
+        let keyRequest = new okapi.GenerateKeyRequest();
+        keyRequest.setKeyType(okapi.KeyType.ED25519);
+        console.log("generating...");
+        let myKey = okapi.DIDKey.generate(keyRequest);
+        console.log("generated.", myKey);
         let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
         if (myExchangeKey === undefined)
             throw new Error("Key agreement key not found");
         let myDidDocument = myKey.getDidDocument().toJavaScript();
         // Create an encrypted message
-        let packRequest = new okapi_1.default.PackRequest();
+        let packRequest = new okapi.PackRequest();
         packRequest.setSenderKey(myExchangeKey);
         packRequest.setReceiverKey(providerExchangeKey);
         let createWalletRequest = new WalletService_pb_1.CreateWalletRequest();
@@ -97,21 +99,20 @@ class TrinsicWalletService extends ServiceBase_1.default {
         createWalletRequest.setController(myDidDocument["id"].toString());
         createWalletRequest.setSecurityCode(securityCode ?? "");
         packRequest.setPlaintext(createWalletRequest.serializeBinary());
-        var packedMessage = okapi_1.default.DIDComm.pack(packRequest);
+        var packedMessage = okapi.DIDComm.pack(packRequest);
         return new Promise((resolve, reject) => {
             // Invoke create wallet using encrypted message
             // Call the server endpoint with encrypted message
             let message = pbmse_pb_1.EncryptedMessage.deserializeBinary(packedMessage.getMessage().serializeBinary());
             this.client.createWalletEncrypted(message, {}, (error, response) => {
                 if (error) {
-                    console.error(error.message);
                     reject(error.message);
                 }
-                let unpackRequest = new okapi_1.default.UnpackRequest();
+                let unpackRequest = new okapi.UnpackRequest();
                 unpackRequest.setMessage(response);
                 unpackRequest.setReceiverKey(myExchangeKey);
                 unpackRequest.setSenderKey(providerExchangeKey);
-                let decryptedResponse = okapi_1.default.DIDComm.unpack(unpackRequest);
+                let decryptedResponse = okapi.DIDComm.unpack(unpackRequest);
                 let createWalletResponse = WalletService_pb_1.CreateWalletResponse.deserializeBinary(decryptedResponse.getPlaintext_asU8());
                 // This profile should be stored and supplied later
                 let walletProfile = new WalletService_pb_1.WalletProfile();
