@@ -16,6 +16,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "@trinsic/okapi": "^1.0.0-preview.14"
+    "@trinsic/okapi": "^1.0.0-preview.19",
+    "@trinsic/trinsic-web": "file:../web"
   }
 }
