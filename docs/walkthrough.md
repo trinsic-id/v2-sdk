@@ -2,16 +2,13 @@
 It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. 
 
 ## Meet Allison
-Allison's town just received the go ahead to vaccinate everyone. We're going to walk through
-a scenario where the CDC has created a new digital vaccination card and is using Allison's town as a pilot.
-
-The CDC has independently published <a>https://cdc.gov/.well-known/credentials/covid19-vaccination-card.jsonld</a>. This is the latest vaccination card that should be issued.
-
+Allison's town just received the go ahead to vaccinate everyone. 
 We'll walk through a scenario where Allison gets her vaccination card and then generates a pass with it to board an airline, all using her devices.
 
-## Brief Terminology Explainer
+## Brief Tech Explainer
 If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basic](https://trinsic.id/trinsic-basics-the-verifiable-credentials-model/).
 
+![](_static/trust-triangle.png)
 In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier. 
 
 **Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
@@ -27,7 +24,7 @@ In most credential exchange scenarios there are three primary roles - Issuer, Ho
 **Ecosystem Provider** -  -->
 ## 0. Install Trinsic
 Before we start, make sure you have an SDK installed.
-We currently support a CLI, TypeScript, and C# SDKs
+We currently provide a CLI, TypeScript, and C# SDKs
 
 === "Trinsic CLI"
 
@@ -43,9 +40,12 @@ We currently support a CLI, TypeScript, and C# SDKs
 
 ---
 
-## 1. Creating the Wallets
+## 1. Create Wallets
 We'll start by creating a wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
 
+These wallets have been created by you, your role is an ecosystem provider. Your role is to help deploy a credential exchange ecosystem. 
+
+![](_static/named-triangle.png)
 
 === "Trinsic CLI"
 
@@ -54,6 +54,7 @@ We'll start by creating a wallet for each participant in this credential exchang
     trinsic wallet create --description "Airline's wallet" --name airline && \
     trinsic wallet create --description "Vaccination Clinic" --name clinic
     ```
+
 === "TypeScript"
 
     ```js
@@ -67,13 +68,15 @@ We'll start by creating a wallet for each participant in this credential exchang
     providerService.SetProfile(providerProfile);
     ```
 
+!!! note
+    Reference: [Create Wallet](reference/services/wallet-service.md#create-wallet]
 --- 
 
 
 ## 2. Issue a Credential
-This will sign the credential stored in the cloud wallet and store it back locally. 
-
-[Reference: Issue a Credential](reference/services/wallet-service.md#issue-credential)
+Credential is a json-ld document. 
+it is signed with a special digital signature that makes eahc piece of data in the credential separately verifiable. This is a bbs+ signature scheme. 
+The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. 
 
 === "Trinsic CLI"
 
@@ -97,12 +100,16 @@ This will sign the credential stored in the cloud wallet and store it back local
 
     var issueResponse = await walletService.IssueCredential(unsignedDocument);
     ```
+    !!! info
+    Reference: [Issue a Credential](reference/services/wallet-service.md#issue-credential)
 
 ---
 
 ## 3. Store Credential in Wallet
 
-[Reference: Insert Item]()
+Once Allison receives the credential, she can store it within her wallet. She can use any device that she's authorized to use with her wallet. 
+
+
 === "Trinsic CLI"
 
     ```bash
@@ -124,6 +131,8 @@ This will sign the credential stored in the cloud wallet and store it back local
 
 Note down the response `item_id`.
 
+!!! info
+    Reference: [Insert Record](reference/services/wallet-service.md#insert-record)
 ---
 
 ## 4. Create Proof
@@ -147,9 +156,10 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
     ```csharp
     var proof = await walletService.CreateProof(itemId, new JObject { { "@context", "https://w3id.org/security/v3-unstable" } });
     ```
-
-
 The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this demo, it will be considered out-of-band.
+
+!!! info
+    Reference: [Create Proof](reference/services/wallet-service.md#create-proof)
 
 ---
 
@@ -174,3 +184,5 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
     ```
 
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.
+!!! info
+    Reference: [Verify Proof](reference/services/wallet-service.md#verify-proof)

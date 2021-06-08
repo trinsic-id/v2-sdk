@@ -7,7 +7,7 @@ nav:
   - Getting Started:
       - Introduction: index.md
       - What is Trinsic?: trinsic.md
-      - Onboarding: onboard.md
+      - Become an Early Adopter: early-adopter.md
       - Walkthrough: walkthrough.md
       
   - Reference:
@@ -61,6 +61,8 @@ markdown_extensions:
       custom_checkbox: true
   - attr_list
   - def_list
+  - admonition
+  - pymdownx.details
   - toc:
       permalink: true
   - abbr
