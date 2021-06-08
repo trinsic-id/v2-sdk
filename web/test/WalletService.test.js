@@ -1,22 +1,21 @@
 const fs = require('fs');
 const path = require('path');
-const test = require("ava");
-import okapi from '@trinsic/okapi';
-// const okapi = require('@trinsic/okapi');
+const jasmine = require("jasmine");
+// import okapi from '@trinsic/okapi';
+const okapi = require('@trinsic/okapi');
 const TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletService;
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
-test("get provider configuration", async t => {
+it("get provider configuration", async () => {
     let service = new TrinsicWalletService("https://localhost:5000");
     let configuration = await service.getProviderConfiguration();
 
-    t.not(configuration, null);
-    t.not(configuration.getDidDocument(), null);
-    t.not(configuration.getKeyAgreementKeyId, null);
-    t.pass();
+    expect(configuration).not.toBeNull();
+    expect(configuration.getDidDocument()).not.toBeNull();
+    expect(configuration.getKeyAgreementKeyId).not.toBeNull();
 });
 
-test("create wallet profile", async t => {
+it("create wallet profile", async () => {
     let service = new TrinsicWalletService("https://localhost:5000");
     let profile = await service.createWallet();
 
@@ -27,11 +26,10 @@ test("create wallet profile", async t => {
     let p = path.join(homePath, '.trinsic', 'profile.bin');
     fs.writeFileSync(p, JSON.stringify(profile.toObject()));
 
-    t.not(profile, null);
-    t.pass();
+    expect(profile).not.toBeNull();
 })
 
-test("generate proof with Jcs", async t => {
+it("generate proof with Jcs", async () => {
     let capabilityDocument = {
         "@context": "https://wid.org/security/v2",
         "invocationTarget": "urn:trinsic:wallets:noop",
@@ -54,17 +52,16 @@ test("generate proof with Jcs", async t => {
 
     let proofResponse = okapi.LdProofs.generate(createProofRequest);
 
-    t.not(proofResponse, null);
-    t.not(proofResponse.getSignedDocument(), null);
-    t.pass();
+    expect(proofResponse).not.toBeNull();
+    expect(proofResponse.getSignedDocument()).not.toBeNull();
 })
 
-test("Demo: create wallet, set profile, search records, issue credential", async t => {
+it("Demo: create wallet, set profile, search records, issue credential", async () => {
     let walletService = new TrinsicWalletService("https://localhost:5000");
 
     let profile = await walletService.createWallet();
 
-    t.not(profile, null);
+    expect(profile).not.toBeNull();
 
     walletService.setProfile(profile);
 
@@ -77,20 +74,19 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
     let itemId = await walletService.insertItem(issueResponse);
 
-    t.not(itemId, null);
-    t.not(itemId, "");
+    expect(itemId).not.toBeNull();
+    expect(itemId).not.toBe("");
 
     let items = await walletService.search();
 
-    t.not(items, null);
-    t.true(items.getItemsList().length > 0);
+    expect(items).not.toBeNull();
+    expect(items.getItemsList().length > 0).toBe(true);
 
     let proof = await walletService.createProof(itemId, { "@context": "https://w3id.org/security/v3-unstable" });
 
     let valid = await walletService.verifyProof(proof);
 
-    t.true(valid);
-    t.pass();
+    expect(valid).toBe(true)
 })
 
-test("debug", t => t.pass());
+it("debug", () => expect(true).toBe(true));

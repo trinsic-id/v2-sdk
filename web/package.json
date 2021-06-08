@@ -6,7 +6,7 @@
     "build": "npm run build:typescript && npm run build:copy",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./dist/",
-    "test": "ava --verbose"
+    "test": "jasmine"
   },
   "author": "Trinsic",
   "contributors": [
@@ -30,7 +30,14 @@
     "copyfiles": "^2.4.1",
     "geckodriver": "^2.0.0",
     "grpc-tools": "1.11.1",
+    "jasmine": "^3.7.0",
+    "jasmine-core": "^3.7.1",
     "jest": "^27.0.4",
+    "karma": "^6.3.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.1",
+    "karma-jasmine": "^4.0.1",
+    "karma-safari-launcher": "^1.0.0",
     "ts-node": "^10.0.0",
     "ts-protoc-gen": "0.15.0",
     "typescript": "^4.3.2"

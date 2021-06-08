@@ -1,4 +1,4 @@
-import { TrinsicWalletService } from "../../dist/WalletService.js";
+const { TrinsicWalletService } = require("../../dist/WalletService.js")
 
 const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
   let walletService = new TrinsicWalletService();

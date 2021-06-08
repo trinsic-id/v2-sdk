@@ -1,4 +1,4 @@
-const test = require("ava");
+const jasmine = require("jasmine");
 const { TrinsicProviderService } = require("../dist/ProviderService.js");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../dist/proto/ProviderService_pb');
 const { TrinsicWalletService } = require("../dist/WalletService.js");
@@ -27,7 +27,7 @@ const createProfile = async () => {
   return profile;
 }
 
-test("make an invitation", async t => {
+it("make an invitation", async () => {
   let providerService = new TrinsicProviderService("https://localhost:5000");
   let profile = await createProfile();
   providerService.setProfile(profile);
@@ -37,12 +37,11 @@ test("make an invitation", async t => {
   
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
-  t.not(inviteResponse, null);
-  t.not(inviteResponse.getInvitationId(), null);
-  t.pass();
+  expect(inviteResponse).not.toBeNull();
+  expect(inviteResponse.getInvitationId()).not.toBeNull();
 });
 
-test("check status of invitation", async t => {
+it("check status of invitation", async () => {
   // let providerService = new TrinsicProviderService();
   // let profile = await createProfile();
   // providerService.setProfile(profile);
@@ -59,7 +58,6 @@ test("check status of invitation", async t => {
 
   // t.not(invitationStatusResponse, null);
   // t.not(invitationStatusResponse.getStatus(), null);
-  t.pass();
 })
 
-test("debug", t => t.pass());
+it("debug", () => expect(true).toBe(true));
