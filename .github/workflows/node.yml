@@ -4,9 +4,13 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - 'docs/**'
+      - 'mkdocs.yml'
   push:
     branches:
       - main
+
 
 jobs:
   node:

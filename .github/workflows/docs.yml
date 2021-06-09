@@ -1,12 +1,13 @@
 name: Build Documentation
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
+  # todo: add a staging target for doc builds
+  # pull_request: 
+  #   branches:
+  #     - main
+  #   paths:
+  #     - 'docs/**'
+  #     - 'mkdocs.yml'
   push:
     branches:
       - main
@@ -20,5 +21,5 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
-      - run: mkdocs gh-deploy --remote-branch ${GITHUB_REF#refs/heads/} --site-dir ./docs-html --force
+      - run: mkdocs gh-deploy --remote-branch gh-pages --site-dir ./docs-html --force
 
