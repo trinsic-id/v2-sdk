@@ -4,6 +4,9 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
   push:
     branches:
       - main
