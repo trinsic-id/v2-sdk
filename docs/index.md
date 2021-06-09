@@ -9,8 +9,3 @@ With Trinsic, you can transform credentials, licenses, passes, and certificates 
 Because verifiable credentials are digital, they can be easily shared with only the minimum information needed for a use case. They also require no centralized authority or proprietary technology to use - verifiable credentials are built on interoperable standards  designed to be open, privacy-preserving, and distributed like the internet itself.
 
 Hundreds of organizations of all sizes and industries use Trinsic’s infrastructure and tools to instantly verify information about individuals with technology instead of paper.
-
----
-- Cost and Problem
-- Solution
-- Remove Buzzwords
