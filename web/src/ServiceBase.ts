@@ -3,7 +3,7 @@ const okapi = require("@trinsic/okapi");
 import { Metadata } from "grpc-web";
 import { WalletProfile } from './proto/WalletService_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
-import { CreateProofRequest } from './proto/IssuerService_pb';
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 export default abstract class ServiceBase {
   capInvocation: string;
@@ -14,7 +14,7 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
-  setProfile(profile: WalletProfile): void {
+  async setProfile(profile: WalletProfile): Promise<void> {
     let capabilityDocument = {
       "@context": "https://wid.org/security/v2",
       "invocationTarget": profile.getWalletId(),
@@ -30,7 +30,7 @@ export default abstract class ServiceBase {
     proofRequest.setKey(okapi.JsonWebKey.deserializeBinary(profile.getInvokerJwk_asU8()));
     proofRequest.setSuite(okapi.LdSuite.JCSED25519SIGNATURE2020);
 
-    let proofResponse = okapi.LdProofs.generate(proofRequest)
+    let proofResponse = await okapi.LdProofs.generate(proofRequest)
 
     // Set the auth field to the signed document by converting it back
     // to JSON and encoding it in base64

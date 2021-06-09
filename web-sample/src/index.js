@@ -1,14 +1,15 @@
 import { WalletService } from "@trinsic/trinsic-web";
 
 const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
-  let walletService = new WalletService();
+  let walletService = new WalletService("http://localhost:5000");
 
   let profile = await walletService.createWallet();
 
   console.assert(profile !== null, "profile should not be null");
-  console.log(profile);
+  console.log("profile", profile);
 
-  walletService.setProfile(profile);
+  await walletService.setProfile(profile);
+  console.log("profile set!")
 
   let unsignedDocument = {
     "@context": "https://w3id.org/security/v3-unstable",
@@ -16,6 +17,7 @@ const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
   }
 
   let issueResponse = await walletService.issueCredential(unsignedDocument);
+  console.log("issued credential", issueResponse);
 
   let itemId = await walletService.insertItem(issueResponse);
 

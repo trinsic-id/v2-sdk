@@ -30,7 +30,7 @@ const createProfile = async () => {
 it("make an invitation", async () => {
   let providerService = new TrinsicProviderService("https://localhost:5000");
   let profile = await createProfile();
-  providerService.setProfile(profile);
+  await providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
   inviteRequest.setEmail("michael.black@trinsic.id");
   inviteRequest.setDescription("invitation");

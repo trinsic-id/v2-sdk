@@ -63,7 +63,7 @@ it("Demo: create wallet, set profile, search records, issue credential", async (
 
     expect(profile).not.toBeNull();
 
-    walletService.setProfile(profile);
+    await walletService.setProfile(profile);
 
     let unsignedDocument = {
         "@context": "https://w3id.org/security/v3-unstable",
