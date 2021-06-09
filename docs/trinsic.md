@@ -1,13 +1,9 @@
 # What is Trinsic?
 
-Trinsic provides a developer SDK so you can use verifiable credentials to build an ecosystem of credential exchange. The Trinsic SDK initially has two main modules. We’ve split it up for separation of concerns. Each of these terms:
+Trinsic provides a developer SDK so you can use verifiable credentials to build an ecosystem of credential exchange. The Trinsic SDK initially has two main modules. We’ve split it up for separation of concerns.
 
-- Core - Send and receive encrypted messages between devices.
-- Ecosystems - Manage Credential Templates, Pass Templates and Registries.
-
-## Core
-
-Trinsic Core can be used to send and store encrypted messages between two credential wallets. 
+## Trinsic Core
+Use Trinsic Core to sign, store, send, and verify any information. It's a more flexible version of encrypted chat. Anyone can install a wallet and begin communicating with anyone else
 
 ### Wallets
 Credential wallets can be thought of like an email inbox. Wallets exist to send, receive and store credentials. Wallets can be hosted by anyone. We expect most people will want to use a wallet provider to host their wallet initially - in this case Trinsic. Each wallet can only be accessed by a set of keys stored on devices. These keys provide the proof of identity guarantees that make verifiable credentials so powerful.
