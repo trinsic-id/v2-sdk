@@ -1,6 +1,6 @@
-# Onboarding
+# Early Adopter Program
 
-Welcome! We are rolling Trinsic Ecosystems out in phases. If you would like access, you should [sign up for the waitlist](https://trinsic.id/introducing-trinsic-ecosystems/).
+Welcome! We are rolling out Trinsic Ecosystems in phases. If you would like access, you should [sign up for the waitlist](https://trinsic.id/introducing-trinsic-ecosystems/).
 
 We'll send an email with instructions to join the slack group, authorize to the cloud endpoint, and schedule calls with our engineering team. 
 
