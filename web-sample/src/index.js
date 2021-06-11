@@ -33,9 +33,9 @@ const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
   let valid = await walletService.verifyProof(proof);
 
   console.assert(valid === true, "should be valid proof");
-  console.log(valid)
+  console.log(valid);
 
-  document.getElementById("wallet").innerHTML(valid)
+  document.getElementById("wallet").innerHTML = valid
 }
 
 Demo_CreateWallet_SetProfile_SearchRecords();

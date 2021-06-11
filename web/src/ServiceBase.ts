@@ -3,7 +3,7 @@ const okapi = require("@trinsic/okapi");
 import { Metadata } from "grpc-web";
 import { WalletProfile } from './proto/WalletService_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
-global.Buffer = global.Buffer || require('buffer').Buffer;
+const Buffer = require('buffer').Buffer;
 
 export default abstract class ServiceBase {
   capInvocation: string;
@@ -34,5 +34,6 @@ export default abstract class ServiceBase {
 
     // Set the auth field to the signed document by converting it back
     // to JSON and encoding it in base64
-    this.capInvocation = Buffer.from(JSON.stringify(proofResponse.getSignedDocument().toJavaScript())).toString('base64');  }
+    this.capInvocation = Buffer.from(JSON.stringify(proofResponse.getSignedDocument().toJavaScript())).toString('base64');  
+  }
 }

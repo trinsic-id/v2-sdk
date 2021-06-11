@@ -7,7 +7,7 @@ const TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletSe
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 it("get provider configuration", async () => {
-    let service = new TrinsicWalletService("https://localhost:5000");
+    let service = new TrinsicWalletService("http://localhost:5000");
     let configuration = await service.getProviderConfiguration();
 
     expect(configuration).not.toBeNull();
@@ -16,7 +16,7 @@ it("get provider configuration", async () => {
 });
 
 it("create wallet profile", async () => {
-    let service = new TrinsicWalletService("https://localhost:5000");
+    let service = new TrinsicWalletService("http://localhost:5000");
     let profile = await service.createWallet();
 
     let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
@@ -43,7 +43,7 @@ it("generate proof with Jcs", async () => {
     let generateKeyRequest = new okapi.GenerateKeyRequest();
     generateKeyRequest.setKeyType = okapi.KeyType.ED25519;
     let key = okapi.DIDKey.generate(generateKeyRequest);
-    let signingKey = key.getKeyList().find(x => x.getCrv() === "Ed25519");
+    let signingKey = key.getKeysList().find(x => x.getCrv() === "Ed25519");
 
     let createProofRequest = new okapi.CreateProofRequest();
     createProofRequest.setKey(signingKey);
@@ -57,7 +57,7 @@ it("generate proof with Jcs", async () => {
 })
 
 it("Demo: create wallet, set profile, search records, issue credential", async () => {
-    let walletService = new TrinsicWalletService("https://localhost:5000");
+    let walletService = new TrinsicWalletService("http://localhost:5000");
 
     let profile = await walletService.createWallet();
 
@@ -82,7 +82,7 @@ it("Demo: create wallet, set profile, search records, issue credential", async (
     expect(items).not.toBeNull();
     expect(items.getItemsList().length > 0).toBe(true);
 
-    let proof = await walletService.createProof(itemId, { "@context": "https://w3id.org/security/v3-unstable" });
+    let proof = await walletService.createProof(itemId, { "@context": "http://w3id.org/security/v3-unstable" });
 
     let valid = await walletService.verifyProof(proof);
 

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const okapi = require("@trinsic/okapi");
 const struct_pb_1 = require("google-protobuf/google/protobuf/struct_pb");
-global.Buffer = global.Buffer || require('buffer').Buffer;
+const Buffer = require('buffer').Buffer;
 class ServiceBase {
     capInvocation;
     getMetadata() {
