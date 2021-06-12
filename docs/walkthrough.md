@@ -1,15 +1,15 @@
 # Walkthrough
-It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. It assumes no prior knowledge to decentralized identity. 
- 
+It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with Trinsic. It assumes no prior knowledge to decentralized identity.
+
 ## Prerequisites
 Before you begin, you'll need to be a early adopter of Trinsic Ecosystems to have the fully-functional platform. The instructions assume you have already set up your ecosystem deployment.
 
-If you haven't been invited to Trinsic Ecosystems yet, please [get in touch](https://trinsic.id/contact-us/) or [learn more](https://trinsic.id/trinsic-ecosystems/)! We'd love to help you get started. 
+If you haven't been invited to Trinsic Ecosystems yet, please [get in touch](https://trinsic.id/contact-us/) or [learn more](https://trinsic.id/trinsic-ecosystems/)! We'd love to help you get started.
 ## Install Trinsic
 If you are ready to begin integrating the SDK into an existing project, make sure you have an SDK installed.
 We currently provide a CLI, TypeScript, and C# SDKs for local development.
 
-If you're here to just go through the walkthrough, check out our [Gitpod cloud environment](https://gitpod.io/#https://github.com/trinsic-id/sdk) for easy installation (You'll have to create a free account with gitpod). 
+If you're here to just go through the walkthrough, check out our [Gitpod cloud environment](https://gitpod.io/#https://github.com/trinsic-id/sdk) for easy installation (You'll have to create a free account with gitpod).
 
 === "Trinsic CLI"
 
@@ -33,7 +33,7 @@ Once installed, configure the SDK's server address to your Ecosystem:
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     import { WalletService } from '@trinsic/trinsic';
 
     // Set the server address
@@ -56,31 +56,31 @@ Reference: [Configuration](reference/configuration.md)
 
 
 ## Meet Allison
-Allison's town just received the go ahead to vaccinate everyone. 
+Allison's town just received the go ahead to vaccinate everyone.
 We'll walk through a scenario where Allison gets her vaccination card and then generates a pass with it to board an airline, all using her devices.
 
 ## Brief Tech Explainer
 If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basic](https://trinsic.id/trinsic-basics-the-verifiable-credentials-model/).
 
 ![](_static/trust-triangle.png)
-In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier. 
+In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.
 
 **Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
 
 **Holder**: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.
 
-**Verifier**: Verifies passes presented from holders. 
+**Verifier**: Verifies passes presented from holders.
 
 <!-- There are also two parties who are not talked that provide the human layer of trust. A governance authority defines the credential and pass templates.
 
-**Governance Authority** - todo 
+**Governance Authority** - todo
 
 **Ecosystem Provider** -  -->
 
 ## 1. Create Wallets
 We'll start by creating a wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
 
-These wallets have been created by you, your role is an ecosystem provider. Your role is to help deploy a credential exchange ecosystem. 
+These wallets have been created by you, your role is an ecosystem provider. Your role is to help deploy a credential exchange ecosystem.
 
 ![](_static/named-triangle.png)
 
@@ -94,25 +94,25 @@ These wallets have been created by you, your role is an ecosystem provider. Your
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     coming soon
     ```
 
 === "C#"
 
     ```csharp
-    var providerProfile = await walletService.CreateWallet(); 
+    var providerProfile = await walletService.CreateWallet();
     providerService.SetProfile(providerProfile);
     ```
 
 !!! note
     Reference: [Create Wallet](reference/services/wallet-service.md#create-wallet)
---- 
+---
 
 
 ## 2. Issue a Credential
-Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme. 
-The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. 
+Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
+The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods.
 
 === "Trinsic CLI"
 
@@ -121,7 +121,7 @@ The credential is signed, but not sent. For now, sending the credential should b
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     coming soon
     ```
 
@@ -143,7 +143,7 @@ The credential is signed, but not sent. For now, sending the credential should b
 
 ## 3. Store Credential in Wallet
 
-Once Allison receives the credential, she can store it within her wallet. She can use any device that she's authorized to use with her wallet. 
+Once Allison receives the credential, she can store it within her wallet. She can use any device that she's authorized to use with her wallet.
 
 
 === "Trinsic CLI"
@@ -155,7 +155,7 @@ Once Allison receives the credential, she can store it within her wallet. She ca
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     coming soon
     ```
 
@@ -183,7 +183,7 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     coming soon
     ```
 
@@ -209,7 +209,7 @@ The proof is sent to the verifying party via DIDComm, OIDC, email, etc. For this
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     coming soon
     ```
 
