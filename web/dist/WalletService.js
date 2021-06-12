@@ -23,6 +23,15 @@ const WalletServiceServiceClientPb_1 = require("./proto/WalletServiceServiceClie
 const IssuerServiceServiceClientPb_1 = require("./proto/IssuerServiceServiceClientPb");
 const WalletService_pb_1 = require("./proto/WalletService_pb");
 const IssuerService_pb_1 = require("./proto/IssuerService_pb");
+// type TClient = WalletClient | CredentialClient
+const UnaryInterceptor = function () { };
+UnaryInterceptor.prototype.intercept = function (request, invoker) {
+    console.log("unary interceptor", request.getMetadata());
+    return invoker(request).then((response) => response);
+};
+// const StreamInterceptor = (eventType, callback) {
+//   console.log(eventType);
+// }
 __exportStar(require("grpc-web"), exports);
 class TrinsicWalletService extends ServiceBase_1.default {
     client;
@@ -32,9 +41,25 @@ class TrinsicWalletService extends ServiceBase_1.default {
         // let credentials = ChannelCredentials.createInsecure();
         // let channel = new Channel(serviceAddress, credentials, {});
         // this.channel = channel;
-        this.client = new WalletServiceServiceClientPb_1.WalletClient(serviceAddress, null, null);
-        this.credentialClient = new IssuerServiceServiceClientPb_1.CredentialClient(serviceAddress, null, null);
+        this.client = new WalletServiceServiceClientPb_1.WalletClient(serviceAddress, null, { 'unaryInterceptors': [UnaryInterceptor] });
+        this.credentialClient = new IssuerServiceServiceClientPb_1.CredentialClient(serviceAddress, null, { 'unaryInterceptors': [UnaryInterceptor] });
     }
+    // private mapMetadata<TClient>(client: TClient) : TClient {
+    //   for (const prop in client) {
+    //     if (typeof client[prop] !== 'function') {
+    //       continue;
+    //     }
+    //     const original = client[prop] as unknown as Function;
+    //     client[prop] = ((...args: any[]) => {
+    //       args[1] = {
+    //         ...args[1],
+    //         'Capability-Invocation': this.getMetadata()['Capability-Invocation']
+    //       }
+    //       return original.call(client, ...args);
+    //     }) as any;
+    //     return client;
+    //   }
+    // }
     // setChannel(channel: Channel) {
     //   this.channel = channel;
     //   this.client = new WalletClient(

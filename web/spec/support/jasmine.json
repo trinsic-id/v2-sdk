@@ -7,5 +7,6 @@
     "helpers/**/*.js"
   ],
   "stopSpecOnExpectationFailure": false,
-  "random": true
+  "random": true,
+  "default-timeout": 10000
 }

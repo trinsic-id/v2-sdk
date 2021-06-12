@@ -30,20 +30,9 @@ export class TrinsicWalletService extends ServiceBase {
   constructor(serviceAddress: string = "localhost:5000") {
     super();
 
-    // let credentials = ChannelCredentials.createInsecure();
-    // let channel = new Channel(serviceAddress, credentials, {});
-    // this.channel = channel;
     this.client = new WalletClient(serviceAddress, null, null);
     this.credentialClient = new CredentialClient(serviceAddress, null, null);
   }
-
-  // setChannel(channel: Channel) {
-  //   this.channel = channel;
-  //   this.client = new WalletClient(
-  //     channel.getTarget(),
-  //     ChannelCredentials.createInsecure()
-  //   );
-  // }
 
   public registerOrConnect(email: string): Promise<ConnectResponse> {
     let request = new ConnectRequest();

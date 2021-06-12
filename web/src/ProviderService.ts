@@ -9,25 +9,13 @@ import {
 
 export * from "grpc-web";
 export class TrinsicProviderService extends ServiceBase {
-  // channel: Channel;
   client: ProviderClient;
 
   constructor(serviceAddress: string = "localhost:5000") {
     super();
 
-    // let credentials = ChannelCredentials.createInsecure();
-    // let channel = new Channel(serviceAddress, credentials, {});
-    // this.channel = channel;
     this.client = new ProviderClient(serviceAddress, {}, {});
   }
-
-  // setChannel(channel: Channel) {
-  //   this.channel = channel;
-  //   this.client = new ProviderClient(
-  //     channel.getTarget(),
-  //     ChannelCredentials.createInsecure()
-  //   );
-  // }
 
   public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
     return new Promise((resolve, reject) => {
