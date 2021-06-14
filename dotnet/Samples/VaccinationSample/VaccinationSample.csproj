@@ -10,4 +10,9 @@
     <PackageReference Include="Trinsic" Version="1.0.0-preview.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="vaccination-certificate-unsigned.jsonld">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
