@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Okapi.Net" Version="1.0.0-preview.14" />
     <PackageReference Include="Trinsic" Version="1.0.0-preview.1" />
   </ItemGroup>
 

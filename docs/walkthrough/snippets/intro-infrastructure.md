@@ -14,5 +14,3 @@ journey
       Share: 3: Alice
       Verify: 5: Venue
 ```
-
-<iframe frameborder="0" width="100%" height="600px" src="https://replit.com/@trinsic/VaccinationSampleNet?embed=1&outputonly=1"></iframe>

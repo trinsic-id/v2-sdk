@@ -6,12 +6,11 @@ using Trinsic;
 
 Console.WriteLine("Hello World!");
 
-var walletService = new WalletService("http://localhost:5000");
+var walletService = new WalletService("http://20.84.172.172:5000");
 
 var alice = await walletService.CreateWallet();
 var clinic = await walletService.CreateWallet();
 var venue = await walletService.CreateWallet();
-
 
 walletService.SetProfile(alice);
 
