@@ -74,12 +74,6 @@ In most credential exchange scenarios there are three primary roles - Issuer, Ho
 
 **Verifier**: Verifies passes presented from holders.
 
-<!-- There are also two parties who are not talked that provide the human layer of trust. A governance authority defines the credential and pass templates.
-
-**Governance Authority** - todo
-
-**Ecosystem Provider** -  -->
-
 ## 1. Create Wallets
 
 We'll start by creating a wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
