@@ -14,5 +14,8 @@
     <None Update="vaccination-certificate-unsigned.jsonld">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="vaccination-certificate-frame.jsonld">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
