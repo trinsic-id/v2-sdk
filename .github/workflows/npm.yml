@@ -35,7 +35,7 @@ jobs:
       - run: npm run build
       # - run: npm run test
 
-build_test_web:
+  build_test_web:
     name: Build NPM for Browsers
     runs-on: ubuntu-latest
     defaults:
@@ -48,8 +48,6 @@ build_test_web:
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: npm install
       - run: npm run build
-      # - run: npm run test
-
 
   publish_npm:
     name: Publish NPM for Node
