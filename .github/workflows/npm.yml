@@ -23,9 +23,12 @@ jobs:
   build_test:
     name: Build NPM for Node
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [ "./node", "./web" ]
     defaults:
       run:
-        working-directory: ./node
+        working-directory: ${{ matrix.target }}
     steps:
       - uses: actions/checkout@v1
         with:
