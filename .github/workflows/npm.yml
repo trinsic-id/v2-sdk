@@ -21,11 +21,11 @@ on:
 
 jobs:
   build_test:
-    name: Build NPM for Node
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [ "./node", "./web" ]
+        target: [ "node", "web" ]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
@@ -38,22 +38,8 @@ jobs:
       - run: npm run build
       # - run: npm run test
 
-  build_test_web:
-    name: Build NPM for Browsers
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./web
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          submodules: 'recursive'
-          token: ${{ secrets.ACCESS_TOKEN }}
-      - run: npm install
-      - run: npm run build
-
   publish_npm:
-    name: Publish NPM for Node
+    name: Publish to NPM
     if: |
       github.event_name == 'release' &&
       github.event.action == 'published' &&
@@ -61,46 +47,12 @@ jobs:
       github.release.prerelease == false
     runs-on: ubuntu-latest
     needs: [build_test]
+    strategy:
+      matrix:
+        target: [ "node", "web" ]
     defaults:
       run:
-        working-directory: ./node
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          submodules: 'recursive'
-          token: ${{ secrets.ACCESS_TOKEN }}
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm install
-      - run: npm run build
-      - name: Generate Package Version
-        run: |
-          packageVersion=$(node -p -e "require('./package.json').version")
-          version=${manualVersion:-packageVersion}
-          version="v"$version
-
-          export SDK_PACKAGE_VERSION=$version
-        env:
-          manualVersion: ${{ github.event.release.tag_name }}
-      # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - run: npm publish $SDK_PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  publish_npm_web:
-    name: Publish NPM for Web
-    if: |
-      github.event_name == 'release' &&
-      github.event.action == 'published' &&
-      github.release.draft == false &&
-      github.release.prerelease == false
-    runs-on: ubuntu-latest
-    needs: [build_test_web]
-    defaults:
-      run:
-        working-directory: ./web
+        working-directory: ${{ matrix.target }}
     steps:
       - uses: actions/checkout@v1
         with:
