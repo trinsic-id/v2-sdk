@@ -3,9 +3,9 @@ version: "1.0"
 author: Trinsic Technologies Inc.
 about: >-
 
-    ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
-     │ ├┬┘││││└─┐││
-     ┴ ┴└─┴┘└┘└─┘┴└─┘
+  ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
+   │ ├┬┘││││└─┐││
+   ┴ ┴└─┴┘└┘└─┘┴└─┘
 
 subcommands:
   - didkey:
@@ -221,8 +221,24 @@ subcommands:
               - type:
                   long: type
                   value_name: STRING
-                  help: Item type
+                  help: (Optional) Item type
                   takes_value: true
+                  required: false
+              - item:
+                  long: item
+                  value_name: FILE
+                  help: Path to file containing item data
+                  takes_value: true
+                  required: true
+        - send:
+            about: Send a document to another wallet
+            args:
+              - email:
+                  long: email
+                  value_name: EMAIL_ADDRESS
+                  help: The email of the destination wallet
+                  takes_value: true
+                  required: true
               - item:
                   long: item
                   value_name: FILE
@@ -253,28 +269,32 @@ subcommands:
             args:
               - reveal-document:
                   long: reveal-document
-                  value_name: STRING
+                  value_name: JSONLD_FRAME_FILE
                   help: Document
                   takes_value: true
+                  required: true
               - document-id:
                   long: document-id
                   value_name: STRING
                   help: Document id
                   takes_value: true
+                  required: true
               - out:
                   long: out
-                  value_name: FILE
+                  value_name: OUTPUT_FILE
                   help: output location for created_proof
                   takes_value: true
+                  required: true
         - verify-proof:
             about: Verify a proof
             version: "0.1"
             args:
               - proof-document:
                   long: proof-document
-                  value_name: STRING
-                  help: Document
+                  value_name: JSONLD_FILE
+                  help: Input Document
                   takes_value: true
+                  required: true
   - authentication:
       about: Authentication service
       version: "0.1"

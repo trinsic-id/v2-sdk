@@ -1,20 +1,34 @@
-site_name: Documentation
+site_name: "Ecosystems Documentation"
 site_dir: docs-site
-repo_url: https://github.com/trinsic-id/sdk
+repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
-
 nav:
-  - Introduction: index.md
-  - Walkthrough: walkthrough.md
-  - Reference: reference.md
-
+  - Getting Started:
+      - Introduction: index.md
+      - What is Trinsic?: trinsic.md
+      - Become an Early Adopter: early-adopter.md
+      - Walkthrough: walkthrough.md
+      
+  - Reference:
+      - Overview: reference/index.md
+      - Installation: reference/installation/index.md
+      - Concepts:
+        - Security Profiles: reference/profiles.md
+        - Configuration: reference/configuration.md
+      - Services:
+          - Wallet Service: reference/services/wallet-service.md
+          - Provider Service: reference/services/provider-service.md
+  - FAQ: faq.md
 theme:
     name: material
     logo: _static/logo-title.svg
     favicon: _static/logo.png
     features:
       - content.tabs.link
+      - navigation.sections
+      - navigation.tabs
+      - navigation.tracking
     icon:
       repo: fontawesome/brands/github-alt
     font:
@@ -25,7 +39,6 @@ theme:
         toggle:
           icon: fontawesome/solid/cloud-moon
           name: Switch to dark mode
-        
       - media: "(prefers-color-scheme: dark)"
         scheme: slate
         toggle:
@@ -33,9 +46,28 @@ theme:
           name: Switch to light mode
 markdown_extensions:
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid-experimental
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed
-  - pymdownx.snippets
-
-extra_css: 
+  - pymdownx.snippets:
+      base_path: ['.', 'docs']
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - def_list
+  - admonition
+  - pymdownx.details
+  - toc:
+      permalink: true
+  - abbr
+extra_css:
   - _static/extra.css
+
+extra:
+  generator: false
