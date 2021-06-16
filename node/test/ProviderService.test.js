@@ -28,13 +28,13 @@ const createProfile = async () => {
 }
 
 test("make an invitation", async t => {
-  let providerService = new TrinsicProviderService("20.84.208.207:5000");
+  let providerService = new TrinsicProviderService();
   let profile = await createProfile();
   providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
   inviteRequest.setEmail("michael.black@trinsic.id");
   inviteRequest.setDescription("invitation");
-  
+
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
   t.not(inviteResponse, null);
@@ -54,7 +54,7 @@ test("check status of invitation", async t => {
 
   // let invitationStatusRequest = new InvitationStatusRequest();
   // invitationStatusRequest.setInvitationId(inviteResponse.getInvitationId());
-  
+
   // let invitationStatusResponse = await providerService.invitationStatus(invitationStatusRequest);
 
   // t.not(invitationStatusResponse, null);

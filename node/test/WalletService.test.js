@@ -8,7 +8,7 @@ const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 test("get provider configuration", async t => {
-    let service = new TrinsicWalletService("20.84.208.207:5000");
+    let service = new TrinsicWalletService();
     let configuration = await service.getProviderConfiguration();
 
     t.not(configuration, null);
@@ -18,7 +18,7 @@ test("get provider configuration", async t => {
 });
 
 test("create wallet profile", async t => {
-    let service = new TrinsicWalletService("20.84.208.207:5000");
+    let service = new TrinsicWalletService();
     let profile = await service.createWallet();
 
     let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
@@ -61,7 +61,7 @@ test("generate proof with Jcs", async t => {
 })
 
 test("Demo: create wallet, set profile, search records, issue credential", async t => {
-    let walletService = new TrinsicWalletService("20.84.208.207:5000");
+    let walletService = new TrinsicWalletService();
 
     let profile = await walletService.createWallet();
 
