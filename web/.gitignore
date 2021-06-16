@@ -1,1 +1,6 @@
 lib/
+
+src/proto/**/*.js
+src/proto/**/*.d.ts
+src/proto/**/*ServiceClientPb.ts
+!src/proto/index.d.ts
