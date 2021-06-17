@@ -46,8 +46,8 @@ jobs:
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
         with:
-          name: lib
-          path: ./lib
+          name: ${{ matrix.target }}-lib
+          path: ./${{ matrix.target }}/lib
 
   publish_npm:
     name: Publish to NPM
