@@ -43,6 +43,11 @@ jobs:
           npm install
           npm run build
         shell: pwsh
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: lib
+          path: ./lib
 
   publish_npm:
     name: Publish to NPM
@@ -90,3 +95,4 @@ jobs:
       - run: npm publish $SDK_PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
