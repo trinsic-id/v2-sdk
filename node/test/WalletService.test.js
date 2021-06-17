@@ -3,7 +3,7 @@ const path = require('path');
 const test = require("ava");
 // import okapi from '@trinsic/okapi';
 const okapi = require('@trinsic/okapi');
-const TrinsicWalletService = require("../dist/WalletService.js").TrinsicWalletService;
+const TrinsicWalletService = require("../lib").WalletService;
 const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 

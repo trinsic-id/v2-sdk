@@ -1,4 +1,4 @@
-name: "npm: Build, Package, Publish"
+name: "TypeScript: Build, Package, Publish"
 
 on:
   pull_request:
@@ -43,6 +43,11 @@ jobs:
           npm install
           npm run build
         shell: pwsh
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.target }}-lib
+          path: ./${{ matrix.target }}/lib
 
   publish_npm:
     name: Publish to NPM
@@ -79,14 +84,17 @@ jobs:
         shell: pwsh
       - name: Generate Package Version
         run: |
-          packageVersion=$(node -p -e "require('./package.json').version")
-          version=${manualVersion:-packageVersion}
-          version="v"$version
+          $packageVersion = node -p -e "require('./package.json').version"
+          $manualVersion = "${{ github.event.release.tag_name }}"
+          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
+          $version = $version.TrimStart("v")
 
-          export SDK_PACKAGE_VERSION=$version
-        env:
-          manualVersion: ${{ github.event.release.tag_name }}
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
       # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - run: npm publish $SDK_PACKAGE_VERSION --no-git-tag-version --yes --no-verify-access --access public
+      - run: |
+          npm version $PACKAGE_VERSION
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
