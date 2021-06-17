@@ -1,4 +1,4 @@
-name: "npm: Build, Package, Publish"
+name: "TypeScript: Build, Package, Publish"
 
 on:
   pull_request:
