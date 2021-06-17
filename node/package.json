@@ -2,10 +2,11 @@
   "name": "@trinsic/trinsic",
   "version": "0.0.2",
   "description": "verifiable credentials",
+  "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:typescript && npm run build:copy",
     "build:typescript": "tsc",
-    "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./dist/",
+    "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./lib/",
     "test": "ava --verbose"
   },
   "author": "Trinsic",
