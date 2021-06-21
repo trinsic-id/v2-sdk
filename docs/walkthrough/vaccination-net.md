@@ -30,7 +30,11 @@ dotnet add package Okapi.Net --prerelease
 
 ## Configure services
 
+Create a reference to the wallet service that points to your ecosystem service. You should have received this URL with your ecosystem setup. In your `Program.cs` file add the following line replacing the placeholder with your URL:
+
 ```csharp
+using Trinsic;
+
 var walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
 ```
 
@@ -42,9 +46,9 @@ To create a new wallet profile, we use the [Create Wallet](/reference/services/w
 ```csharp
 // SETUP ACTORS
 // Create 3 different profiles for each participant in the scenario
-var alice = await walletService.CreateWallet();
+var allison = await walletService.CreateWallet();
 var clinic = await walletService.CreateWallet();
-var venue = await walletService.CreateWallet();
+var airline = await walletService.CreateWallet();
 ```
 
 

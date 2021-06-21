@@ -5,12 +5,11 @@ In this walkthrough we'll explore a scenario where Allison gets her vaccination 
 
 ```mermaid
 journey
-    title Obtaining and verifying vaccination certificate
     section Issuance
-      Obtain cert.: 3: Alice, Clinic
-      Store in wallet: 3: Alice
+      Obtain cert.: 3: Allison, Clinic
+      Store in wallet: 3: Allison
     section Verification
-      Request cert.: 3: Alice, Airline
-      Share: 3: Alice
+      Request cert.: 3: Allison, Airline
+      Share: 3: Allison
       Verify: 5: Airline
 ```
