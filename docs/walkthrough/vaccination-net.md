@@ -2,7 +2,31 @@
 
 --8<----
 walkthrough/snippets/intro-infrastructure.md
+walkthrough/snippets/intro-use-case.md
 --8<----
+
+## Technical requirements
+
+You can run this example on your local machine, or you can use our Gitpod setup to bootstrap a full development environment. If running locally, you only need .NET Core installed. We will use the dotnet CLI and the editor of your choice.
+
+## Create new project
+
+Let's create a new .NET console app that we will use to add our sample code.
+
+```bash
+dotnet new console -n VaccinationSample && cd VaccinationSample
+```
+
+Let's add the required dependencies
+
+```bash
+dotnet add package Trinsic --prerelease
+dotnet add package Okapi.Net --prerelease
+```
+
+!!! note ""
+    The package `Okapi.Net` is already a dependency of `Trinsic` package, but we must add explicitly to bring in static library dependencies.
+    This will not be required in future version and only package `Trinsic` can be used.
 
 ## Configure services
 
