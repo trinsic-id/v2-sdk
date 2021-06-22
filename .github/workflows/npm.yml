@@ -4,9 +4,10 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - 'docs/**'
-      - 'mkdocs.yml'
+    paths:
+      - 'node/**'
+      - 'web/**'
+      - 'proto/**'
   push:
     branches:
       - main
