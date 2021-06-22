@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Google.Protobuf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
@@ -9,9 +10,15 @@ var walletService = new WalletService("http://20.84.172.172:5000");
 
 // SETUP ACTORS
 // Create 3 different profiles for each participant in the scenario
-WalletProfile allison = await walletService.CreateWallet();
-WalletProfile clinic = await walletService.CreateWallet();
-WalletProfile airline = await walletService.CreateWallet();
+var allison = await walletService.CreateWallet();
+var clinic = await walletService.CreateWallet();
+var airline = await walletService.CreateWallet();
+
+// Store profile for later use
+// File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+
+// Create profile from existing data
+// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 
 // ISSUE CREDENTIAL
 // Sign a credential as the clinic and send it to Allison
