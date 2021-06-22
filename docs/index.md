@@ -1,6 +1,6 @@
 # Introduction
 
-Organizations waste billions of dollars, years of time, and huge amounts of human ingenuity trying to establish trust with others by verifying, securing, and proving identity data. We can ony verify information contained within paper and pdf documents, digitally through data aggregators that mine & sell people's data, or through photographs of sensitive government-issued documents. There is simply not a good way to establish trust online.
+Organizations waste billions of dollars, years of time, and huge amounts of human ingenuity trying to establish trust with others by verifying, securing, and proving identity data. We can only verify information contained within paper and pdf documents, digitally through data aggregators that mine & sell people's data, or through photographs of sensitive government-issued documents. There is simply not a good way to establish trust online.
 
 Trinsic solves this problem by offering developers a set of tools for implementing Trust over IP. Establish trust online natively instead of using work-arounds using the latest in open authentication standards and networking protocols. 
 
