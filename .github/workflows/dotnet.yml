@@ -35,11 +35,11 @@ jobs:
       - run: |
           dotnet restore
           dotnet build -c Release
-        working-directory: ./dotnet
+        working-directory: ./dotnet/Source
       - name: Create Nuget package
         run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
-        working-directory: ./dotnet
+        working-directory: ./dotnet/Source
       - uses: actions/upload-artifact@v2
         with:
           name: nuget
