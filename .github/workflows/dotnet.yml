@@ -4,9 +4,9 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - 'docs/**'
-      - 'mkdocs.yml'
+    paths:
+      - 'dotnet/**'
+      - 'proto/**'
   push:
     branches:
       - main
@@ -35,11 +35,11 @@ jobs:
       - run: |
           dotnet restore
           dotnet build -c Release
-        working-directory: ./dotnet
+        working-directory: ./dotnet/Source
       - name: Create Nuget package
         run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
-        working-directory: ./dotnet
+        working-directory: ./dotnet/Source
       - uses: actions/upload-artifact@v2
         with:
           name: nuget
@@ -67,8 +67,6 @@ jobs:
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
-
-        # dotnet nuget add source --username tmarkovski --password ${{ secrets.ACCESS_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/trinsic-id/index.json"
 
   dotnet_publish_github:
     name: Publish to GitHub Packages

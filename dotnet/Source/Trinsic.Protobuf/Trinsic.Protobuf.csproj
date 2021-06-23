@@ -14,15 +14,15 @@
   <ItemGroup>
 
     <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
-    <Protobuf Include="..\..\proto\CoreService.proto" Link="Proto/CoreService.proto" />
-    <Protobuf Include="..\..\proto\AuthService.proto" Link="Proto/AuthService.proto" />
-    <Protobuf Include="..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
-    <Protobuf Include="..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
+    <Protobuf Include="..\..\..\proto\CoreService.proto" Link="Proto/CoreService.proto" />
+    <Protobuf Include="..\..\..\proto\AuthService.proto" Link="Proto/AuthService.proto" />
+    <Protobuf Include="..\..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
+    <Protobuf Include="..\..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
 
-    <Protobuf Include="..\..\proto\models\Attributes.proto" Link="Proto/models/Attributes.proto" ProtoRoot="../../proto" />
-    <Protobuf Include="..\..\proto\models\CredentialTemplates.proto" Link="Proto/models/CredentialTemplates.proto" ProtoRoot="../../proto" />
-    <Protobuf Include="..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
-    <Protobuf Include="..\..\proto\models\Organizations.proto" Link="Proto\models\Organizations.proto" />
+    <Protobuf Include="..\..\..\proto\models\Attributes.proto" Link="Proto/models/Attributes.proto" ProtoRoot="../../../proto" />
+    <Protobuf Include="..\..\..\proto\models\CredentialTemplates.proto" Link="Proto/models/CredentialTemplates.proto" ProtoRoot="../../../proto" />
+    <Protobuf Include="..\..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
+    <Protobuf Include="..\..\..\proto\models\Organizations.proto" Link="Proto\models\Organizations.proto" />
 
 
     <!--

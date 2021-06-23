@@ -18,7 +18,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     trinsic provider invite --person --method-email alice@faber.edu
     ```
 === "TypeScript"
-    ```js
+    ```typescript
     import { ProviderService, ParticipantType } from "@trinsic/trinsic";
 
     const providerService = new ProviderService();

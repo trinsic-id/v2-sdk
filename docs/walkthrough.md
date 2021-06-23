@@ -37,7 +37,7 @@ Once installed, configure the SDK's server address to your Ecosystem:
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     import { WalletService } from '@trinsic/trinsic';
 
     // Set the server address
