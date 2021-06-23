@@ -54,7 +54,7 @@ When using the SDK in your code, you can pass parameters to the default service 
 
 === "TypeScript"
 
-    ```js
+    ```typescript
     import { WalletService } from '@trinsic/trinsic';
 
     // Set the server address

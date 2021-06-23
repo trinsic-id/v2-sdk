@@ -13,8 +13,8 @@ The SDK is available for the following languages:
     - [x] .NET Core (MacOS, Windows, Linux)
 - [x] TypeScript/JS
     - [x] Node.js
-    - [ ] Browser
+    - [x] Browser
 - [ ] React Native
 - [ ] Rust
-- [ ] Python
+- [x] Python
 - [ ] Go
