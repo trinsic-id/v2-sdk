@@ -15,7 +15,7 @@ To create a wallet directly without invitation, use the following methods. These
     trinsic wallet create --name <profile_name>
     ```
 === "TypeScript"
-    ```js
+    ```typescript
     const profile = await walletService.Create();
     ```
 === "C#"
@@ -32,7 +32,7 @@ If invited by a provider, you can supply the security code found in your invitat
     trinsic wallet create --name <profile> --security-code <code>
     ```
 === "TypeScript"
-    ```js
+    ```typescript
     const profile = await walletService.Create("<security code>");
     ```
 === "C#"
@@ -49,7 +49,7 @@ This method allows inserting any JSON data in the wallet.
     trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
 === "TypeScript"
-    ```js
+    ```typescript
     let itemId = await walletService.insertItem({
         "foo": "bar"
     });
@@ -83,7 +83,7 @@ The default query used in the commands below returns a full wallet result set. T
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     const items = await walletService.Search();
     ```
 
@@ -104,8 +104,10 @@ To pass custom query to the search function, use the query parameter or the avai
     ```
 === "TypeScript"
 
-    ```js
-    var items = await walletService.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
+    ```typescript
+    const query = "SELECT * FROM c WHERE c.type = 'VerifiableCredential'";
+
+    const items = await walletService.Search(query);
     ```
 
 === "C#"
@@ -162,7 +164,7 @@ The wallet service supports signing data using [BBS+ Signatures :material-open-i
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     let unsignedDocument = {
         "@context": "https://w3id.org/security/v2",
         "id": "https://issuer.oidp.uscis.gov/credentials/83627465"
@@ -200,7 +202,7 @@ The endpoint to create a proof requires two inputs:
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     let frame = {
         "@context": "https://www.w3.org/2018/credentials/v1",
         "type": [ "VerifiableCredential" ],
@@ -236,7 +238,7 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     let isValid = await walletService.verifyProof(proofDocument);
 
     console.log("Verify result: " + isValid);
@@ -270,7 +272,7 @@ To send a document to another user, they must have created a wallet and [associa
     ```
 === "TypeScript"
 
-    ```js
+    ```typescript
     // TODO
     ```
 
