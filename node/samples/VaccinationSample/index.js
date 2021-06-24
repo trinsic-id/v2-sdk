@@ -1,5 +1,6 @@
 const { WalletService, WalletProfile } = require('@trinsic/trinsic');
 const fs = require('fs');
+const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 const main = async () => {
   let walletService = new WalletService()//"http://20.84.172.172:5000");
@@ -11,13 +12,13 @@ const main = async () => {
   let airline = await walletService.createWallet();
   
   // Store profile for later use
-  fs.writeFileSync("allison.bin", allison.toArray());
+  // fs.writeFileSync("allison.bin", JSON.stringify(allison.toObject()));
   
   // Create profile from existing data
   // let profileJSON = JSON.parse(fs.readFileSync("allison.bin"));
   // let allison = new WalletProfile();
   // allison.setCapability(profileJSON.capability);
-  // allison.setDidDocument(Struct.fromJavaScript(profile.didDocument));
+  // allison.setDidDocument(Struct.fromJavaScript(profileJSON.didDocument));
   // allison.setInvoker(profileJSON.invoker);
   // allison.setInvokerJwk(profileJSON.invokerJwk);
   // allison.setWalletId(profileJSON.walletId);
