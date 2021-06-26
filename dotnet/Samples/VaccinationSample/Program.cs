@@ -1,10 +1,8 @@
 ﻿using System;
 using System.IO;
-using Google.Protobuf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
-using Trinsic.Services;
 
 var walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
 
