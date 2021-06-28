@@ -295,13 +295,6 @@ subcommands:
                   help: Input Document
                   takes_value: true
                   required: true
-  - authentication:
-      about: Authentication service
-      version: "0.1"
-      subcommands:
-        - acquire_token:
-            about: Acquires a token
-            version: "0.1"
   - provider:
       about: Provider service
       version: "0.1"
