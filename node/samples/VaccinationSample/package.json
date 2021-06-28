@@ -1,0 +1,14 @@
+{
+  "name": "vaccinationsample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@trinsic/trinsic": "^1.0.0-preview.2"
+  }
+}

@@ -19,7 +19,7 @@ import {
   SearchRequest,
 } from "./proto/WalletService_pb";
 import { grpc } from "@trinsic/okapi";
-import { CreateProofRequest, IssueRequest, VerifyProofRequest } from './proto/IssuerService_pb';
+import { CreateProofRequest, IssueRequest, SendRequest, SendResponse, VerifyProofRequest } from './proto/IssuerService_pb';
 
 
 type JavaScriptValue = string | number | boolean | {} | any[]
@@ -114,8 +114,9 @@ export class TrinsicWalletService extends ServiceBase {
     packRequest.setReceiverKey(providerExchangeKey);
     let createWalletRequest = new CreateWalletRequest();
     createWalletRequest.setDescription("My Cloud Wallet");
-    createWalletRequest.setController(myDidDocument["id"]);
-    createWalletRequest.setSecurityCode(securityCode ?? "");
+    createWalletRequest.setController(myDidDocument["id"].toString());
+    if (!securityCode) securityCode = "";
+    createWalletRequest.setSecurityCode(securityCode);
     packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
     var packedMessage = okapi.DIDComm.pack(packRequest);
@@ -201,6 +202,23 @@ export class TrinsicWalletService extends ServiceBase {
           resolve(response.getItemId())
         }
       })
+    })
+  }
+
+  public send(document: JSStruct, email: string): Promise<SendResponse>
+  {
+    return new Promise((resolve, reject) => {
+      let sendRequest = new SendRequest();
+      sendRequest.setEmail(email);
+      sendRequest.setDocument(Struct.fromJavaScript(document));
+      this.credentialClient.send(sendRequest, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        else {
+          resolve(response)
+        }
+      });
     })
   }
 
