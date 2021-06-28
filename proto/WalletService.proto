@@ -2,6 +2,7 @@ syntax = "proto3";
 package trinsic.services;
 
 import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
 import "CoreService.proto";
 import "pbmse/pbmse.proto";
 
@@ -74,7 +75,6 @@ message RevokeAccessResponse {
 
 // GetProviderConfiguration
 
-message GetProviderConfigurationRequest {}
 message GetProviderConfigurationResponse {
     google.protobuf.Struct did_document = 1;
     string key_agreement_key_id = 2;
@@ -104,7 +104,7 @@ message InsertItemResponse {
 }
 
 service Wallet {
-    rpc GetProviderConfiguration(GetProviderConfigurationRequest) returns (GetProviderConfigurationResponse);
+    rpc GetProviderConfiguration(google.protobuf.Empty) returns (GetProviderConfigurationResponse);
 
     rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
 
