@@ -19,14 +19,14 @@ message CreateWalletResponse {
 
     string wallet_id = 2;
     string capability = 3;
-    string invoker = 4; 
+    string invoker = 4;
 }
 
 message ConnectRequest {
     oneof contact_method {
         string email = 5;
         string phone = 6;
-    } 
+    }
 }
 
 message ConnectResponse {
@@ -39,7 +39,7 @@ message InvitationToken {
     oneof contact_method {
         string email = 5;
         string phone = 6;
-    } 
+    }
 }
 
 /*
@@ -106,7 +106,7 @@ message InsertItemResponse {
 service Wallet {
     rpc GetProviderConfiguration(GetProviderConfigurationRequest) returns (GetProviderConfigurationResponse);
 
-    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse); 
+    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
 
     rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
 

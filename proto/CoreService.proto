@@ -3,8 +3,6 @@ package trinsic.services;
 
 import "pbmse/pbmse.proto";
 
-message NoOp {}
-
 enum ResponseStatus {
     SUCCESS = 0;
     WALLET_ACCESS_DENIED = 10;
