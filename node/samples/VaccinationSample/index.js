@@ -1,4 +1,4 @@
-const { WalletService, WalletProfile } = require('../../lib');
+const { WalletService, WalletProfile } = require('@trinsic/trinsic');
 const fs = require('fs');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
