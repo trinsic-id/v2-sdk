@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SupportLibraries", "Support
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinsic.Protobuf", "Trinsic.Protobuf\Trinsic.Protobuf.csproj", "{6D106D2D-BE41-47E9-A067-63EECF9E5F93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okapi", "..\okapi\dotnet\Library\Okapi\Okapi.csproj", "{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,18 +46,7 @@ Global
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Release|x64.Build.0 = Release|Any CPU
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Release|x86.ActiveCfg = Release|Any CPU
 		{6D106D2D-BE41-47E9-A067-63EECF9E5F93}.Release|x86.Build.0 = Release|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Debug|x64.Build.0 = Debug|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Debug|x86.Build.0 = Debug|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Release|x64.ActiveCfg = Release|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Release|x64.Build.0 = Release|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Release|x86.ActiveCfg = Release|Any CPU
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D} = {9DC00609-BD25-4F61-B94C-BFF1E6898871}
 	EndGlobalSection
 EndGlobal

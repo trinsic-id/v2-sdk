@@ -169,9 +169,9 @@ namespace Trinsic
         public async Task<bool> VerifyProof(JObject proofDocument)
         {
             var response = await CredentialClient.VerifyProofAsync(
-                request: new Services.VerifyProofRequest
+                request: new VerifyProofRequest
                 {
-                    ProofDocument = proofDocument.ToStruct()
+                    ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
                 },
                 headers: GetMetadata());
 

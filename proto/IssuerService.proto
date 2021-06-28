@@ -5,26 +5,42 @@ import "google/protobuf/struct.proto";
 import "CoreService.proto";
 
 message IssueRequest {
-    google.protobuf.Struct document = 1;
+    oneof input {
+        google.protobuf.Struct document = 1;
+        string document_string = 2;
+        bytes document_bytes = 3;
+    }
 }
 
 message IssueResponse {
-    google.protobuf.Struct document = 1;
+    oneof result {
+        google.protobuf.Struct document = 1;
+        string document_string = 2;
+        bytes document_bytes = 3;
+    }
 }
 
 // Create Proof
 message CreateProofRequest {
-    google.protobuf.Struct reveal_document = 1;
+    oneof input {
+        google.protobuf.Struct reveal_document = 1;
+        string reveal_document_string = 3;
+        bytes reveal_document_bytes = 4;
+    }
     string document_id = 2;
 }
 
 message CreateProofResponse {
-    google.protobuf.Struct proof_document = 1;
+    oneof result {
+        google.protobuf.Struct proof_document = 1;
+        google.protobuf.Struct proof_document_string = 3;
+        google.protobuf.Struct proof_document_bytes = 2;
+    }
 }
 
 // Verify Proof
 message VerifyProofRequest {
-    google.protobuf.Struct proof_document = 1;
+    JsonPayload proof_document = 1;
 }
 
 message VerifyProofResponse {

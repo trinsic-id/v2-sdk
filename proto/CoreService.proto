@@ -1,6 +1,7 @@
 syntax = "proto3";
 package trinsic.services;
 
+import "google/protobuf/struct.proto";
 import "pbmse/pbmse.proto";
 
 enum ResponseStatus {
@@ -10,6 +11,20 @@ enum ResponseStatus {
     ITEM_NOT_FOUND = 20;
     SERIALIZATION_ERROR = 200;
     UNKNOWN_ERROR = 100;
+}
+
+enum JsonFormat {
+    Protobuf = 0;
+    Binary = 1;
+    String = 2;
+}
+
+message JsonPayload {
+    oneof json {
+        google.protobuf.Struct json_struct = 1;
+        string json_string = 2;
+        bytes json_bytes = 3;
+    }
 }
 
 service Common {
