@@ -119,36 +119,7 @@ Read more about [security profiles](/reference/profiles/) and authentication.
 ## Certificate issuance
 
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This ceritificate is digitially signed by the clinic, acting as an issuer.
-The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
-
-=== "vaccination-certificate-unsigned.jsonld"
-    ```json
-    {
-        "@context": [
-            "https://www.w3.org/2018/credentials/v1",
-            "https://w3id.org/vaccination/v1",
-            "https://w3id.org/security/bbs/v1"
-        ],
-        "id": "urn:uvci:af5vshde843jf831j128fj",
-        "type": [
-            "VaccinationCertificate",
-            "VerifiableCredential"
-        ],
-        "description": "COVID-19 Vaccination Certificate",
-        "name": "COVID-19 Vaccination Certificate",
-        "expirationDate": "2029-12-03T12:19:52Z",
-        "issuanceDate": "2019-12-03T12:19:52Z",
-        "issuer": "did:key:zUC724vuGvHpnCGFG1qqpXb81SiBLu3KLSqVzenwEZNPoY35i2Bscb8DLaVwHvRFs6F2NkNNXRcPWvqnPDUd9ukdjLkjZd3u9zzL4wDZDUpkPAatLDGLEYVo8kkAzuAKJQMr7N2",
-        "credentialSubject": {
-            "id": "urn:uuid:c53e70f8-ce9a-4576-8744-e5f85c20a743",
-            "type": "VaccinationEvent",
-            "batchNumber": "1183738569",
-            "countryOfVaccination": "US"
-        }
-    }
-    ```
-
-Let's set the active profile to the clinic, and call the issuance endpoint
+The certificate is in a JSON form, and for this example, we load the JSON structure directly.
 
 ```js
 // Set active profile to 'clinic' so we can issue credential signed
@@ -202,31 +173,6 @@ let itemId = await walletService.insertItem(credential);
 
 Before boarding an airplane, Allison must show a proof of vaccination. The request for this proof also comes in a form of JSON, in this case a JSON-LD frame.
 This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.
-
-Let's save this request in a file named `vaccination-certificate-frame.jsonld`
-
-=== "vaccination-certificate-frame.jsonld"
-    ```json
-    {
-        "@context": [
-            "https://www.w3.org/2018/credentials/v1",
-            "https://w3id.org/vaccination/v1",
-            "https://w3id.org/security/bbs/v1"
-        ],
-        "type": [
-            "VerifiableCredential",
-            "VaccinationCertificate"
-        ],
-        "@explicit": true,
-        "issuer": {},
-        "credentialSubject": {
-            "@explicit": true,
-            "@type": "VaccinationEvent",
-            "batchNumber": {},
-            "countryOfVaccination": {}
-        }
-    }
-    ```
 
 This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
 
