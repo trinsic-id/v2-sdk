@@ -5,37 +5,21 @@ import "google/protobuf/struct.proto";
 import "CoreService.proto";
 
 message IssueRequest {
-    oneof input {
-        google.protobuf.Struct document = 1;
-        string document_string = 2;
-        bytes document_bytes = 3;
-    }
+    JsonPayload document = 1;
 }
 
 message IssueResponse {
-    oneof result {
-        google.protobuf.Struct document = 1;
-        string document_string = 2;
-        bytes document_bytes = 3;
-    }
+    JsonPayload document = 1;
 }
 
 // Create Proof
 message CreateProofRequest {
-    oneof input {
-        google.protobuf.Struct reveal_document = 1;
-        string reveal_document_string = 3;
-        bytes reveal_document_bytes = 4;
-    }
+    JsonPayload reveal_document = 1;
     string document_id = 2;
 }
 
 message CreateProofResponse {
-    oneof result {
-        google.protobuf.Struct proof_document = 1;
-        google.protobuf.Struct proof_document_string = 3;
-        google.protobuf.Struct proof_document_bytes = 2;
-    }
+    JsonPayload proof_document = 1;
 }
 
 // Verify Proof
@@ -51,10 +35,10 @@ message SendRequest {
     oneof delivery_method {
         string email = 1;
         string did_uri = 2;
-        google.protobuf.Struct didcomm_invitation = 3;
+        JsonPayload didcomm_invitation = 3;
     }
 
-    google.protobuf.Struct document = 100;
+    JsonPayload document = 100;
 }
 
 message SendResponse {
