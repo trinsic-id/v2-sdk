@@ -39,7 +39,7 @@ namespace Trinsic
         {
             // Fetch Server Configuration and find key to use
             // for generating shared secret for authenticated encryption
-            var configuration = await Client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
+            var configuration = await Client.GetProviderConfigurationAsync(new Empty());
             var resolveResponse = DIDKey.Resolve(new ResolveRequest { Did = configuration.KeyAgreementKeyId });
             var providerExchangeKey = resolveResponse.Keys.FirstOrDefault(x => x.Kid == configuration.KeyAgreementKeyId)
                 ?? throw new Exception("Key agreement key not found");
