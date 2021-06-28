@@ -52,16 +52,11 @@ const fs = require('fs');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 // Serialize profile by exporting the binary protobuf form
-fs.writeFileSync("allison.bin", JSON.stringify(allison.toObject()));
-
+fs.writeFileSync("allison.bin", allison.serializeBinary());
+  
 // Create profile from existing data
-let profileJSON = JSON.parse(fs.readFileSync("allison.bin"));
-let allison = new WalletProfile();
-allison.setCapability(profileJSON.capability);
-allison.setDidDocument(Struct.fromJavaScript(profileJSON.didDocument));
-allison.setInvoker(profileJSON.invoker);
-allison.setInvokerJwk(profileJSON.invokerJwk);
-allison.setWalletId(profileJSON.walletId);
+let profile = fs.readFileSync("allison.bin");
+let allison = WalletProfile.deserializeBinary(profile);
 ```
 
 !!! note "Loading Profiles"
