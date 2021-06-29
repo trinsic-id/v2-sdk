@@ -41,7 +41,7 @@ class ServiceBase:
                                                             suite=LdSuite.JcsEd25519Signature2020))
 
         proof_json = json.dumps(struct_to_dictionary(proof_response.signed_document), indent=2)
-        self.cap_invocation = str(base64.standard_b64encode(bytes(proof_json, encoding="ascii")))
+        self.cap_invocation = base64.standard_b64encode(proof_json.encode("utf-8")).decode("utf-8")
 
 
 class WalletService(ServiceBase):
@@ -54,6 +54,10 @@ class WalletService(ServiceBase):
         self.channel = channel
         self.client = WalletStub(self.channel)
         self.credential_client = CredentialStub(self.channel)
+
+    def __del__(self):
+        if self.channel:
+            self.channel.close()
 
     async def register_or_connect(self, email: str):
         await self.client.connect_external_identity(email=email)
@@ -93,7 +97,7 @@ class WalletService(ServiceBase):
     async def issue_credential(self, document: dict) -> dict:
         self.credential_client.metadata = self.metadata
         response = await self.credential_client.issue(document=JsonPayload(json_string=json.dumps(document)))
-        return response.document.to_dict()
+        return json.loads(response.document.json_string)
 
     async def search(self, query: str = "SELECT * from c") -> SearchResponse:
         self.client.metadata = self.metadata
@@ -108,14 +112,15 @@ class WalletService(ServiceBase):
         await self.credential_client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
-        self.client.metadata = self.metadata
-        return (await self.credential_client.create_proof(document_id=document_id,
-                                                          reveal_document=JsonPayload(json_string=json.dumps(
-                                                              reveal_document)))).proof_document.to_dict()
+        self.credential_client.metadata = self.metadata
+        return json.loads((await self.credential_client.create_proof(
+            document_id=document_id, reveal_document=JsonPayload(
+                json_string=json.dumps(reveal_document)))).proof_document.json_string)
 
     async def verify_proof(self, proof_document: dict) -> bool:
-        self.client.metadata = self.metadata
-        return (await self.credential_client.verify_proof(proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
+        self.credential_client.metadata = self.metadata
+        return (await self.credential_client.verify_proof(
+            proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
 
 
 class ProviderService(ServiceBase):
@@ -127,6 +132,10 @@ class ProviderService(ServiceBase):
 
         self.channel = channel
         self.provider_client = ProviderStub(self.channel)
+
+    def __del__(self):
+        if self.channel:
+            self.channel.close()
 
     async def invite_participant(self, request: InviteRequest) -> InviteResponse:
         field_name, value = betterproto.which_one_of(request, "contact_method")
