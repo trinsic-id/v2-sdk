@@ -34,6 +34,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         # Alice stores the credential in her cloud wallet.
         wallet_service.set_profile(allison)
         item_id = await wallet_service.insert_item(credential)
+        print(f"item id = {item_id}")
 
         # SHARE CREDENTIAL
         # Allison shares the credential with the venue.
