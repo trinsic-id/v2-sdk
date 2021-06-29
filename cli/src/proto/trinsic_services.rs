@@ -1,5 +1,82 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct NoOp {}
+#[doc = r" Generated client implementations."]
+pub mod debugging_client {
+    #![allow(unused_variables, dead_code, missing_docs)]
+    use tonic::codegen::*;
+    pub struct DebuggingClient<T> {
+        inner: tonic::client::Grpc<T>,
+    }
+    impl DebuggingClient<tonic::transport::Channel> {
+        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
+        where
+            D: std::convert::TryInto<tonic::transport::Endpoint>,
+            D::Error: Into<StdError>,
+        {
+            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
+            Ok(Self::new(conn))
+        }
+    }
+    impl<T> DebuggingClient<T>
+    where
+        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T::ResponseBody: Body + HttpBody + Send + 'static,
+        T::Error: Into<StdError>,
+        <T::ResponseBody as HttpBody>::Error: Into<StdError> + Send,
+    {
+        pub fn new(inner: T) -> Self {
+            let inner = tonic::client::Grpc::new(inner);
+            Self { inner }
+        }
+        pub fn with_interceptor(inner: T, interceptor: impl Into<tonic::Interceptor>) -> Self {
+            let inner = tonic::client::Grpc::with_interceptor(inner, interceptor);
+            Self { inner }
+        }
+        pub async fn call_empty(
+            &mut self,
+            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
+        ) -> Result<tonic::Response<super::super::google::protobuf::Empty>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/trinsic.services.Debugging/CallEmpty");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+    }
+    impl<T: Clone> Clone for DebuggingClient<T> {
+        fn clone(&self) -> Self {
+            Self {
+                inner: self.inner.clone(),
+            }
+        }
+    }
+    impl<T> std::fmt::Debug for DebuggingClient<T> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            write!(f, "DebuggingClient {{ ... }}")
+        }
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct JsonPayload {
+    #[prost(oneof = "json_payload::Json", tags = "1, 2, 3")]
+    pub json: ::core::option::Option<json_payload::Json>,
+}
+/// Nested message and enum types in `JsonPayload`.
+pub mod json_payload {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Json {
+        #[prost(message, tag = "1")]
+        JsonStruct(super::super::super::google::protobuf::Struct),
+        #[prost(string, tag = "2")]
+        JsonString(::prost::alloc::string::String),
+        #[prost(bytes, tag = "3")]
+        JsonBytes(::prost::alloc::vec::Vec<u8>),
+    }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ResponseStatus {
@@ -9,6 +86,13 @@ pub enum ResponseStatus {
     ItemNotFound = 20,
     SerializationError = 200,
     UnknownError = 100,
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum JsonFormat {
+    Protobuf = 0,
+    Binary = 1,
+    String = 2,
 }
 #[doc = r" Generated client implementations."]
 pub mod common_client {
@@ -73,108 +157,33 @@ pub mod common_client {
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AcquireTokenRequest {
-    #[prost(message, optional, tag = "1")]
-    pub signed_message: ::core::option::Option<super::super::pbmse::SignedMessage>,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AcquireTokenResponse {
-    #[prost(enumeration = "ResponseStatus", tag = "1")]
-    pub status: i32,
-    #[prost(string, tag = "2")]
-    pub wallet_token: ::prost::alloc::string::String,
-}
-#[doc = r" Generated client implementations."]
-pub mod authentication_client {
-    #![allow(unused_variables, dead_code, missing_docs)]
-    use tonic::codegen::*;
-    pub struct AuthenticationClient<T> {
-        inner: tonic::client::Grpc<T>,
-    }
-    impl AuthenticationClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
-        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
-        where
-            D: std::convert::TryInto<tonic::transport::Endpoint>,
-            D::Error: Into<StdError>,
-        {
-            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
-            Ok(Self::new(conn))
-        }
-    }
-    impl<T> AuthenticationClient<T>
-    where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + HttpBody + Send + 'static,
-        T::Error: Into<StdError>,
-        <T::ResponseBody as HttpBody>::Error: Into<StdError> + Send,
-    {
-        pub fn new(inner: T) -> Self {
-            let inner = tonic::client::Grpc::new(inner);
-            Self { inner }
-        }
-        pub fn with_interceptor(inner: T, interceptor: impl Into<tonic::Interceptor>) -> Self {
-            let inner = tonic::client::Grpc::with_interceptor(inner, interceptor);
-            Self { inner }
-        }
-        pub async fn acquire_token(
-            &mut self,
-            request: impl tonic::IntoRequest<super::AcquireTokenRequest>,
-        ) -> Result<tonic::Response<super::AcquireTokenResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/trinsic.services.Authentication/AcquireToken",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-    }
-    impl<T: Clone> Clone for AuthenticationClient<T> {
-        fn clone(&self) -> Self {
-            Self {
-                inner: self.inner.clone(),
-            }
-        }
-    }
-    impl<T> std::fmt::Debug for AuthenticationClient<T> {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-            write!(f, "AuthenticationClient {{ ... }}")
-        }
-    }
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueRequest {
     #[prost(message, optional, tag = "1")]
-    pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub document: ::core::option::Option<JsonPayload>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueResponse {
     #[prost(message, optional, tag = "1")]
-    pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub document: ::core::option::Option<JsonPayload>,
 }
 /// Create Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
     #[prost(message, optional, tag = "1")]
-    pub reveal_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub reveal_document: ::core::option::Option<JsonPayload>,
     #[prost(string, tag = "2")]
     pub document_id: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
     #[prost(message, optional, tag = "1")]
-    pub proof_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub proof_document: ::core::option::Option<JsonPayload>,
 }
 /// Verify Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofRequest {
     #[prost(message, optional, tag = "1")]
-    pub proof_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub proof_document: ::core::option::Option<JsonPayload>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
@@ -184,7 +193,7 @@ pub struct VerifyProofResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
     #[prost(message, optional, tag = "100")]
-    pub document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub document: ::core::option::Option<JsonPayload>,
     #[prost(oneof = "send_request::DeliveryMethod", tags = "1, 2, 3")]
     pub delivery_method: ::core::option::Option<send_request::DeliveryMethod>,
 }
@@ -197,7 +206,7 @@ pub mod send_request {
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
         #[prost(message, tag = "3")]
-        DidcommInvitation(super::super::super::google::protobuf::Struct),
+        DidcommInvitation(super::JsonPayload),
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -378,7 +387,7 @@ pub mod invitation_token {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletProfile {
     #[prost(message, optional, tag = "1")]
-    pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub did_document: ::core::option::Option<JsonPayload>,
     #[prost(string, tag = "2")]
     pub wallet_id: ::prost::alloc::string::String,
     #[prost(string, tag = "3")]
@@ -415,11 +424,9 @@ pub struct RevokeAccessResponse {
 // GetProviderConfiguration
 
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GetProviderConfigurationRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProviderConfigurationResponse {
     #[prost(message, optional, tag = "1")]
-    pub did_document: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub did_document: ::core::option::Option<JsonPayload>,
     #[prost(string, tag = "2")]
     pub key_agreement_key_id: ::prost::alloc::string::String,
 }
@@ -433,7 +440,7 @@ pub struct SearchRequest {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
     #[prost(message, repeated, tag = "1")]
-    pub items: ::prost::alloc::vec::Vec<super::super::google::protobuf::Struct>,
+    pub items: ::prost::alloc::vec::Vec<JsonPayload>,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
 }
@@ -442,7 +449,7 @@ pub struct SearchResponse {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
     #[prost(message, optional, tag = "1")]
-    pub item: ::core::option::Option<super::super::google::protobuf::Struct>,
+    pub item: ::core::option::Option<JsonPayload>,
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
@@ -488,7 +495,7 @@ pub mod wallet_client {
         }
         pub async fn get_provider_configuration(
             &mut self,
-            request: impl tonic::IntoRequest<super::GetProviderConfigurationRequest>,
+            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
         ) -> Result<tonic::Response<super::GetProviderConfigurationResponse>, tonic::Status>
         {
             self.inner.ready().await.map_err(|e| {

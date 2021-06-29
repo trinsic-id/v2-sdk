@@ -100,6 +100,70 @@ describe("wallet service tests", () => {
         expect(valid).toBe(true)
     })
     
+    // it("create wallet with provider invitation", async () => {
+    //     let providerService = new TrinsicProviderService();
+    //     let walletService = new TrinsicWalletService();
+    
+    //     // Provider creates initial wallet for Alice
+    //     let providerProfile = await walletService.createWallet();
+    //     providerService.setProfile(providerProfile);
+    
+    //     let email = `${getuid()}@example.com`;
+    //     console.log("email", email);
+    //     let inviteRequest = new InviteRequest();
+    //     inviteRequest.setDescription("Test Wallet");
+    //     inviteRequest.setEmail(email);
+    //     let invitationResponse = await providerService.inviteParticipant(inviteRequest);
+    //     console.log("invitationResponse", invitationResponse);
+    //     // Alice accepts the invitation and creates the wallet
+    //     console.log("invitation ID", invitationResponse.getInvitationId());
+    //     let createResponse = await walletService.createWallet(invitationResponse.getInvitationId());
+    //     console.log("createResponse", createResponse);
+    //     walletService.setProfile(createResponse);
+    
+    //     // Alice searches for wallet records
+    //     let search = await walletService.search();
+    //     console.log("search", search);
+    //     expect(search).not.toBeNull();
+    //     expect(search.getItemsList().length).toBeGreaterThan(0);
+    
+    //     // Send the document to an existing email
+    //     await walletService.send({ "test": "value" }, email);
+    // });
+    
+    // it("send an item to a user's wallet using email", async () => {
+    //     let providerService = new TrinsicProviderService();
+    //     let walletService = new TrinsicWalletService();
+    
+    //     let providerProfile = await walletService.createWallet();
+    //     providerService.setProfile(providerProfile);
+    
+    //     // Provider creates initial wallet for Alice
+    //     let aliceEmail = `${getuid()}@example.com`;
+    //     let aliceInviteRequest = new InviteRequest();
+    //     aliceInviteRequest.setDescription("Test Wallet");
+    //     aliceInviteRequest.setEmail(aliceEmail);
+    //     let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
+    //     let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+    
+    //     let bobEmail = `${getuid()}@example.com`;
+    //     let bobInviteRequest = new InviteRequest();
+    //     bobInviteRequest.setDescription("Test Wallet");
+    //     bobInviteRequest.setEmail(bobEmail);
+    //     invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
+    //     let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+    
+    //     // Alice's searches for wallet records
+    //     walletService.setProfile(aliceProfile);
+    //     await walletService.send({ "test": "value" }, bobEmail);
+    
+    //     walletService.setProfile(bobProfile);
+    //     let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
+    
+    //     expect(results.getItemsList()).not.toBeNull();
+    //     expect(results.getItemsList().length).toBeGreaterThan(0);
+    // });
+
     it("debug", () => expect(true).toBe(true));
 })
 

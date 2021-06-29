@@ -4,8 +4,11 @@ const test = require("ava");
 // import okapi from '@trinsic/okapi';
 const okapi = require('@trinsic/okapi');
 const TrinsicWalletService = require("../lib").WalletService;
+const TrinsicProviderService = require("../lib").ProviderService;
 const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
+const { getuid } = require('process');
+const { InviteRequest } = require('../lib');
 
 test("get provider configuration", async t => {
     let service = new TrinsicWalletService();
@@ -93,5 +96,68 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     t.true(valid);
     t.pass();
 })
+
+test("create wallet with provider invitation", async t => {
+    let providerService = new TrinsicProviderService();
+    let walletService = new TrinsicWalletService();
+
+    // Provider creates initial wallet for Alice
+    let providerProfile = await walletService.createWallet();
+    providerService.setProfile(providerProfile);
+
+    let email = `${getuid()}@example.com`;
+    let inviteRequest = new InviteRequest();
+    inviteRequest.setDescription("Test Wallet");
+    inviteRequest.setEmail(email);
+    let invitationResponse = await providerService.inviteParticipant(inviteRequest);
+
+    // Alice accepts the invitation and creates the wallet
+    let createResponse = await walletService.createWallet(invitationResponse.getInvitationId());
+    walletService.setProfile(createResponse);
+
+    // Alice searches for wallet records
+    let search = await walletService.search();
+    t.not(search, null);
+    t.true(search.getItemsList().length > 0);
+
+    // Send the document to an existing email
+    await walletService.send({ "test": "value" }, email);
+
+    t.pass();
+});
+
+test("send an item to a user's wallet using email", async t => {
+    let providerService = new TrinsicProviderService();
+    let walletService = new TrinsicWalletService();
+
+    let providerProfile = await walletService.createWallet();
+    providerService.setProfile(providerProfile);
+
+    // Provider creates initial wallet for Alice
+    let aliceEmail = `${getuid()}@example.com`;
+    let aliceInviteRequest = new InviteRequest();
+    aliceInviteRequest.setDescription("Test Wallet");
+    aliceInviteRequest.setEmail(aliceEmail);
+    let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
+    let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+
+    let bobEmail = `${getuid()}@example.com`;
+    let bobInviteRequest = new InviteRequest();
+    bobInviteRequest.setDescription("Test Wallet");
+    bobInviteRequest.setEmail(bobEmail);
+    invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
+    let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+
+    // Alice's searches for wallet records
+    walletService.setProfile(aliceProfile);
+    await walletService.send({ "test": "value" }, bobEmail);
+
+    walletService.setProfile(bobProfile);
+    let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
+
+    t.not(results.getItemsList(), null);
+    t.true(results.getItemsList().length > 0);
+    t.pass();
+});
 
 test("debug", t => t.pass());
