@@ -31,3 +31,4 @@ path = "src/main.rs"
 [lib]
 name = "trinsic"
 path = "src/lib.rs"
+doctest = false

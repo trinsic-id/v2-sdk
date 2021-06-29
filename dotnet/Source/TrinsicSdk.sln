@@ -74,6 +74,5 @@ Global
 		{6A3C2ED4-038E-4F12-A3F3-90891FE4923B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6FC8A599-3BC5-4E4F-A8F8-9630EB03292D} = {9DC00609-BD25-4F61-B94C-BFF1E6898871}
 	EndGlobalSection
 EndGlobal

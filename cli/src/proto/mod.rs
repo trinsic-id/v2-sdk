@@ -173,3 +173,9 @@ impl<'de> Visitor<'de> for Value {
         })
     }
 }
+
+pub(crate) mod google {
+    pub mod protobuf {
+        pub use crate::proto::google_protobuf::*;
+    }
+}

@@ -10,12 +10,19 @@ fn main() {
     //.type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]");
 
     config
+        .type_attribute(
+            "JsonPayload",
+            "#[derive(::serde::Serialize, ::serde::Deserialize)]",
+        )
+        .type_attribute(
+            "JsonPayload.json",
+            "#[derive(::serde::Serialize, ::serde::Deserialize)]",
+        )
         .compile_with_config(
             prost_config,
             &[
                 "../proto/pbmse/pbmse.proto",
-                "../proto/greet.proto",
-                "../proto/AuthService.proto",
+                "../proto/DebugService.proto",
                 "../proto/CoreService.proto",
                 "../proto/IssuerService.proto",
                 "../proto/WalletService.proto",

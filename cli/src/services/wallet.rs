@@ -3,14 +3,15 @@ use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
 use trinsic::credential_client::CredentialClient;
-use trinsic::proto::google_protobuf::Struct;
+use trinsic::json_payload::Json;
+use trinsic::proto::google_protobuf::{Empty, Struct};
 use trinsic::proto::trinsic_services::{
-    wallet_client::WalletClient, CreateWalletRequest, GetProviderConfigurationRequest,
-    InsertItemRequest, SearchRequest, WalletProfile,
+    wallet_client::WalletClient, CreateWalletRequest, InsertItemRequest, SearchRequest,
+    WalletProfile,
 };
 use trinsic::send_request::DeliveryMethod;
 use trinsic::utils::read_file_as_string;
-use trinsic::SendRequest;
+use trinsic::{JsonPayload, SendRequest};
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -29,7 +30,7 @@ async fn get_provider_configuration(config: Config) {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
-    let request = tonic::Request::new(GetProviderConfigurationRequest {});
+    let request = tonic::Request::new(Empty {});
     let response = client
         .get_provider_configuration(request)
         .await
@@ -145,7 +146,9 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
 
     let response = client
         .insert_item(InsertItemRequest {
-            item: Some(item),
+            item: Some(JsonPayload {
+                json: Some(Json::JsonStruct(item)),
+            }),
             item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
         .await
@@ -175,7 +178,9 @@ async fn send(args: &SendArgs, config: Config) {
 
     let response = client
         .send(SendRequest {
-            document: Some(item),
+            document: Some(JsonPayload {
+                json: Some(Json::JsonStruct(item)),
+            }),
             delivery_method: Some(DeliveryMethod::Email(
                 args.email.expect("Email must be specified").to_string(),
             )),
