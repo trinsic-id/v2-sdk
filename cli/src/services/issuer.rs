@@ -1,7 +1,9 @@
+use trinsic::json_payload::Json;
 use trinsic::proto::trinsic_services::{
     credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
 use trinsic::utils::{read_file_as_string, write_file};
+use trinsic::JsonPayload;
 
 use super::{super::parser::issuer::*, config::Config};
 use okapi::*;
@@ -33,7 +35,9 @@ async fn issue(args: &IssueArgs, config: Config) {
     let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(IssueRequest {
-        document: Some(document),
+        document: Some(JsonPayload {
+            json: Some(Json::JsonStruct(document)),
+        }),
     });
 
     let response = client
@@ -73,7 +77,9 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
     let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(CreateProofRequest {
-        reveal_document: Some(document),
+        reveal_document: Some(JsonPayload {
+            json: Some(Json::JsonStruct(document)),
+        }),
         document_id,
     });
 
@@ -110,7 +116,9 @@ async fn verify_proof(args: &VerifyProofArgs, config: Config) {
     let mut client = CredentialClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(VerifyProofRequest {
-        proof_document: Some(document),
+        proof_document: Some(JsonPayload {
+            json: Some(Json::JsonStruct(document)),
+        }),
     });
 
     let response = client

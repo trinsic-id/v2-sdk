@@ -16,7 +16,7 @@ To create a wallet directly without invitation, use the following methods. These
     ```
 === "TypeScript"
     ```typescript
-    const profile = await walletService.Create();
+    const profile = await walletService.createWallet();
     ```
 === "C#"
     ```csharp
@@ -33,7 +33,7 @@ If invited by a provider, you can supply the security code found in your invitat
     ```
 === "TypeScript"
     ```typescript
-    const profile = await walletService.Create("<security code>");
+    const profile = await walletService.createWallet("<security code>");
     ```
 === "C#"
     ```csharp
@@ -107,7 +107,7 @@ To pass custom query to the search function, use the query parameter or the avai
     ```typescript
     const query = "SELECT * FROM c WHERE c.type = 'VerifiableCredential'";
 
-    const items = await walletService.Search(query);
+    const items = await walletService.search(query);
     ```
 
 === "C#"
@@ -273,7 +273,7 @@ To send a document to another user, they must have created a wallet and [associa
 === "TypeScript"
 
     ```typescript
-    // TODO
+    await walletService.send(document, "admin@example.com");
     ```
 
 === "C#"
