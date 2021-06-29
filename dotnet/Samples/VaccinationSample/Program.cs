@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
-using Google.Protobuf;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
-using Trinsic.Services;
 
-var walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
+var walletService = new WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000");
 
 // SETUP ACTORS
 // Create 3 different profiles for each participant in the scenario
