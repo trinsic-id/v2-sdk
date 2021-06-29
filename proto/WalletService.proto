@@ -2,6 +2,7 @@ syntax = "proto3";
 package trinsic.services;
 
 import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
 import "CoreService.proto";
 import "pbmse/pbmse.proto";
 
@@ -19,14 +20,14 @@ message CreateWalletResponse {
 
     string wallet_id = 2;
     string capability = 3;
-    string invoker = 4; 
+    string invoker = 4;
 }
 
 message ConnectRequest {
     oneof contact_method {
         string email = 5;
         string phone = 6;
-    } 
+    }
 }
 
 message ConnectResponse {
@@ -39,7 +40,7 @@ message InvitationToken {
     oneof contact_method {
         string email = 5;
         string phone = 6;
-    } 
+    }
 }
 
 /*
@@ -48,7 +49,7 @@ message InvitationToken {
     as it contains private key information.
 */
 message WalletProfile {
-    google.protobuf.Struct did_document = 1;
+    JsonPayload did_document = 1;
     string wallet_id = 2;
     string invoker = 3;
     string capability = 4;
@@ -74,9 +75,8 @@ message RevokeAccessResponse {
 
 // GetProviderConfiguration
 
-message GetProviderConfigurationRequest {}
 message GetProviderConfigurationResponse {
-    google.protobuf.Struct did_document = 1;
+    JsonPayload did_document = 1;
     string key_agreement_key_id = 2;
 }
 
@@ -87,14 +87,14 @@ message SearchRequest {
 }
 
 message SearchResponse {
-    repeated google.protobuf.Struct items = 1;
+    repeated JsonPayload items = 1;
     bool has_more = 2;
 }
 
 // InsertItem
 
 message InsertItemRequest {
-    google.protobuf.Struct item = 1;
+    JsonPayload item = 1;
     string item_type = 2;
 }
 
@@ -104,9 +104,9 @@ message InsertItemResponse {
 }
 
 service Wallet {
-    rpc GetProviderConfiguration(GetProviderConfigurationRequest) returns (GetProviderConfigurationResponse);
+    rpc GetProviderConfiguration(google.protobuf.Empty) returns (GetProviderConfigurationResponse);
 
-    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse); 
+    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
 
     rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
 
