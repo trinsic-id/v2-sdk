@@ -4,7 +4,7 @@ import unittest
 from trinsic.services import WalletService
 
 
-class MyTestCase(unittest.IsolatedAsyncioTestCase):
+class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_trinsic_service_demo(self):
         wallet_service = WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000")
 
@@ -23,7 +23,6 @@ class MyTestCase(unittest.IsolatedAsyncioTestCase):
         # ISSUE CREDENTIAL
         # Sign a credential as the clinic and send it to Allison
         wallet_service.set_profile(clinic)
-        credential_json = ""
         with open("vaccination-certificate-unsigned.jsonld", "r") as fid:
             credential_json = json.load(fid)
 
@@ -42,7 +41,6 @@ class MyTestCase(unittest.IsolatedAsyncioTestCase):
         # that they require expressed as a JSON-LD frame.
         wallet_service.set_profile(allison)
 
-        proof_request_json = ""
         with open("vaccination-certificate-frame.jsonld", "r") as fid2:
             proof_request_json = json.load(fid2)
 
