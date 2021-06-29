@@ -1,0 +1,63 @@
+name: Build Python SDK
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "python/**"
+      - "proto/**"
+      - ".github/workflows/*python*"
+  push:
+    branches:
+      - main
+
+jobs:
+  test_python:
+    name: Test Python code
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3.8, 3.9]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run: |
+          cd python
+          pip install --upgrade pip
+          pip install -i https://test.pypi.org/simple/ trinsic-okapi
+          pip install -r requirements.txt
+          pip install build
+          pip install pytest pytest-cov
+      - name: Test with pytest
+        run: |
+          cd python
+          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
+      - name: Upload nuget artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-results
+          path: |
+            ./python/pytest*.*
+
+  upload_test_results:
+    name: Upload Python Test Results
+    runs-on: ubuntu-latest
+    needs: [test_python]
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: pytest-results
+          path: python
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1.18
+        if: always()
+        with:
+          files: python/pytest_junit.xml
