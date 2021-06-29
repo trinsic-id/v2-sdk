@@ -1,10 +1,19 @@
 import json
 import unittest
+from os.path import abspath, join, dirname
 
 from trinsic.services import WalletService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
+    @property
+    def vaccine_cert_unsigned_path(self) -> str:
+        return abspath(join(dirname(__file__), "vaccination-certificate-unsigned.jsonld"))
+
+    @property
+    def vaccine_cert_frame_path(self) -> str:
+        return abspath(join(dirname(__file__), "vaccination-certificate-frame.jsonld"))
+
     async def test_trinsic_service_demo(self):
         wallet_service = WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000")
 
@@ -23,7 +32,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         # ISSUE CREDENTIAL
         # Sign a credential as the clinic and send it to Allison
         wallet_service.set_profile(clinic)
-        with open("vaccination-certificate-unsigned.jsonld", "r") as fid:
+        with open(self.vaccine_cert_unsigned_path, "r") as fid:
             credential_json = json.load(fid)
 
         credential = await wallet_service.issue_credential(credential_json)
@@ -42,7 +51,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         # that they require expressed as a JSON-LD frame.
         wallet_service.set_profile(allison)
 
-        with open("vaccination-certificate-frame.jsonld", "r") as fid2:
+        with open(self.vaccine_cert_frame_path, "r") as fid2:
             proof_request_json = json.load(fid2)
 
         credential_proof = await wallet_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
