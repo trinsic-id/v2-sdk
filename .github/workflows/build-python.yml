@@ -31,9 +31,8 @@ jobs:
         run: |
           cd python
           pip install --upgrade pip
-          pip install -i https://test.pypi.org/simple/ trinsic-okapi
           pip install -r requirements.txt
-          pip install build
+          pip install -i https://test.pypi.org/simple/ trinsic-okapi
           pip install pytest pytest-cov
       - name: Test with pytest
         run: |
