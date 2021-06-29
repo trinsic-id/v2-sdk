@@ -14,7 +14,7 @@ from okapi.proto.okapi.transport import PackRequest, UnpackRequest
 
 from trinsic.proto.trinsic.services import WalletProfile, WalletStub, CredentialStub, CreateWalletRequest, \
     CreateWalletResponse, SearchResponse, ProviderStub, InviteRequest, InviteResponse, InvitationStatusRequest, \
-    InvitationStatusResponse
+    InvitationStatusResponse, JsonPayload
 
 
 class ServiceBase:
@@ -65,12 +65,13 @@ class WalletService(ServiceBase):
 
         my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.Ed25519))
         my_exchange_key = [x for x in my_key.key if x.crv == "X25519"][0]
-        my_did_document_id = my_key.did_document.fields['id']
+
+        my_did_document = struct_to_dictionary(my_key.did_document)
 
         packed_message = DIDComm.pack(PackRequest(sender_key=my_exchange_key, receiver_key=provider_exchange_key,
                                                   plaintext=bytes(CreateWalletRequest(
                                                       description="My Cloud Wallet",
-                                                      controller=str(my_did_document_id.string_value),
+                                                      controller=my_did_document['id'],
                                                       security_code=security_code or ""))))
 
         response = await self.client.create_wallet_encrypted(iv=packed_message.message.iv,
@@ -85,13 +86,13 @@ class WalletService(ServiceBase):
 
         return WalletProfile(wallet_id=create_wallet_response.wallet_id,
                              capability=create_wallet_response.capability,
-                             did_document=my_key.did_document,
+                             did_document=JsonPayload(json_string=json.dumps(my_did_document)),
                              invoker=create_wallet_response.invoker,
                              invoker_jwk=bytes(my_key.key[0]))
 
     async def issue_credential(self, document: dict) -> dict:
         self.credential_client.metadata = self.metadata
-        response = await self.credential_client.issue(document=dictionary_to_struct(document))
+        response = await self.credential_client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return response.document.to_dict()
 
     async def search(self, query: str = "SELECT * from c") -> SearchResponse:
@@ -100,20 +101,21 @@ class WalletService(ServiceBase):
 
     async def insert_item(self, item: dict) -> str:
         self.client.metadata = self.metadata
-        return (await self.client.insert_item(item=dictionary_to_struct(item))).item_id
+        return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id
 
     async def send(self, document: dict, email: str):
         self.client.metadata = self.metadata
-        await self.credential_client.send(email=email, document=dictionary_to_struct(document))
+        await self.credential_client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         self.client.metadata = self.metadata
-        return (await self.credential_client.create_proof(document_id=document_id, reveal_document=dictionary_to_struct(
-            reveal_document))).proof_document.to_dict()
+        return (await self.credential_client.create_proof(document_id=document_id,
+                                                          reveal_document=JsonPayload(json_string=json.dumps(
+                                                              reveal_document)))).proof_document.to_dict()
 
     async def verify_proof(self, proof_document: dict) -> bool:
         self.client.metadata = self.metadata
-        return (await self.credential_client.verify_proof(proof_document=dictionary_to_struct(proof_document))).valid
+        return (await self.credential_client.verify_proof(proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
 
 
 class ProviderService(ServiceBase):
