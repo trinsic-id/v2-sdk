@@ -1,4 +1,4 @@
-name: "NET: Build, Package"
+name: ".NET Core"
 
 on:
   pull_request:
@@ -15,8 +15,8 @@ on:
     types: [published, prereleased]
 
 jobs:
-  dotnet_package:
-    name: Package
+  build_test_pack:
+    name: Build, Test, Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -58,7 +58,7 @@ jobs:
       github.release.draft == false &&
       github.release.prerelease == false
     runs-on: windows-latest
-    needs: [dotnet_package]
+    needs: [build_test_pack]
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -74,7 +74,7 @@ jobs:
   dotnet_publish_github:
     name: Publish to GitHub Packages
     runs-on: windows-latest
-    needs: [dotnet_package]
+    needs: [build_test_pack]
     steps:
       - uses: actions/download-artifact@v2
         with:
