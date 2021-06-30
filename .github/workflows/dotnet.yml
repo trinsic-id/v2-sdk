@@ -35,7 +35,10 @@ jobs:
       - run: |
           dotnet restore
           dotnet build -c Release
+          dotnet test -c Release
         working-directory: ./dotnet/Source
+        env:
+          TRINSIC_SERVER_ADDRESS: http://tomislav-staging.eastus.azurecontainer.io:5000
       - name: Create Nuget package
         run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh
