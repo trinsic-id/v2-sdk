@@ -345,3 +345,4 @@ Cargo.lock
 .ionide
 
 docs-site/
+python/venv/

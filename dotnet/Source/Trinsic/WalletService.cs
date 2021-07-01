@@ -39,7 +39,7 @@ namespace Trinsic
         {
             // Fetch Server Configuration and find key to use
             // for generating shared secret for authenticated encryption
-            var configuration = await Client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
+            var configuration = await Client.GetProviderConfigurationAsync(new Empty());
             var resolveResponse = DIDKey.Resolve(new ResolveRequest { Did = configuration.KeyAgreementKeyId });
             var providerExchangeKey = resolveResponse.Keys.FirstOrDefault(x => x.Kid == configuration.KeyAgreementKeyId)
                 ?? throw new Exception("Key agreement key not found");
@@ -79,7 +79,7 @@ namespace Trinsic
             {
                 WalletId = createWalletResponse.WalletId,
                 Capability = createWalletResponse.Capability,
-                DidDocument = myKey.DidDocument,
+                DidDocument = new JsonPayload { JsonStruct = myKey.DidDocument },
                 Invoker = createWalletResponse.Invoker,
                 InvokerJwk = myKey.Key.First().ToByteString()
             };
@@ -94,8 +94,8 @@ namespace Trinsic
         {
             try
             {
-                var response = await CredentialClient.IssueAsync(new IssueRequest { Document = document.ToStruct() }, GetMetadata());
-                return response.Document.ToJObject();
+                var response = await CredentialClient.IssueAsync(new IssueRequest { Document = new JsonPayload { JsonStruct = document.ToStruct() } }, GetMetadata());
+                return response.Document.JsonStruct.ToJObject();
             }
             catch (Exception e)
             {
@@ -126,7 +126,12 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<string> InsertItem(JObject item)
         {
-            var response = await Client.InsertItemAsync(new InsertItemRequest { Item = item.ToStruct() }, GetMetadata());
+            var response = await Client.InsertItemAsync(
+                request: new InsertItemRequest
+                {
+                    Item = new JsonPayload { JsonStruct = item.ToStruct() }
+                },
+                headers: GetMetadata());
             return response.ItemId;
         }
 
@@ -138,7 +143,13 @@ namespace Trinsic
         /// <returns></returns>
         public async Task Send(JObject document, string email)
         {
-            var response = await CredentialClient.SendAsync(new SendRequest { Email = email, Document = document.ToStruct() }, GetMetadata());
+            var response = await CredentialClient.SendAsync(
+                request: new SendRequest
+                {
+                    Email = email,
+                    Document = new JsonPayload { JsonStruct = document.ToStruct() }
+                },
+                headers: GetMetadata());
         }
 
         /// <summary>
@@ -154,11 +165,11 @@ namespace Trinsic
                 request: new Services.CreateProofRequest
                 {
                     DocumentId = documentId,
-                    RevealDocument = revealDocument.ToStruct()
+                    RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
                 },
-            headers: GetMetadata());
+                headers: GetMetadata());
 
-            return response.ProofDocument.ToJObject();
+            return response.ProofDocument.JsonStruct.ToJObject();
         }
 
         /// <summary>
@@ -169,9 +180,9 @@ namespace Trinsic
         public async Task<bool> VerifyProof(JObject proofDocument)
         {
             var response = await CredentialClient.VerifyProofAsync(
-                request: new Services.VerifyProofRequest
+                request: new VerifyProofRequest
                 {
-                    ProofDocument = proofDocument.ToStruct()
+                    ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
                 },
                 headers: GetMetadata());
 
