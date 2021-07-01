@@ -17,6 +17,10 @@ on:
         description: "Package Version"
         required: true
         default: "1.0.0"
+      serviceUrl:
+        description: "The endpoint to use in the tests"
+        required: true
+        default: "beta-staging.centralus.azurecontainer.io:5000"
   release:
     types: [published, prereleased]
 
@@ -43,6 +47,7 @@ jobs:
 
           npm install
           npm run build
+          npm test
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
