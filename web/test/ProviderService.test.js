@@ -1,8 +1,8 @@
 const jasmine = require("jasmine");
-const { TrinsicProviderService } = require("../dist/ProviderService.js");
-const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../dist/proto/ProviderService_pb');
-const { TrinsicWalletService } = require("../dist/WalletService.js");
-const { WalletProfile } = require("../dist/proto/WalletService_pb.js");
+const { TrinsicProviderService } = require("../lib/ProviderService.js");
+const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
+const { TrinsicWalletService } = require("../lib/WalletService.js");
+const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const fs = require("fs");
 const path = require("path");

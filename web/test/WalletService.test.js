@@ -2,7 +2,7 @@
 // const path = require('path');
 // import okapi from '@trinsic/okapi';
 const okapi = require('@trinsic/okapi');
-const { TrinsicWalletService } = require("../dist/WalletService");
+const { TrinsicWalletService } = require("../lib/WalletService");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const jasmine = require('jasmine');
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
