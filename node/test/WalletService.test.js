@@ -9,9 +9,10 @@ const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const { getuid } = require('process');
 const { InviteRequest } = require('../lib');
+const endpoint = process.env.SERVICE_URL
 
 test("get provider configuration", async t => {
-    let service = new TrinsicWalletService();
+    let service = new TrinsicWalletService(endpoint);
     let configuration = await service.getProviderConfiguration();
 
     t.not(configuration, null);
@@ -21,7 +22,7 @@ test("get provider configuration", async t => {
 });
 
 test("create wallet profile", async t => {
-    let service = new TrinsicWalletService();
+    let service = new TrinsicWalletService(endpoint);
     let profile = await service.createWallet();
 
     let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
@@ -64,7 +65,7 @@ test("generate proof with Jcs", async t => {
 })
 
 test("Demo: create wallet, set profile, search records, issue credential", async t => {
-    let walletService = new TrinsicWalletService();
+    let walletService = new TrinsicWalletService(endpoint);
 
     let profile = await walletService.createWallet();
 
@@ -98,8 +99,8 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 })
 
 test("create wallet with provider invitation", async t => {
-    let providerService = new TrinsicProviderService();
-    let walletService = new TrinsicWalletService();
+    let providerService = new TrinsicProviderService(endpoint);
+    let walletService = new TrinsicWalletService(endpoint);
 
     // Provider creates initial wallet for Alice
     let providerProfile = await walletService.createWallet();
@@ -127,8 +128,8 @@ test("create wallet with provider invitation", async t => {
 });
 
 test("send an item to a user's wallet using email", async t => {
-    let providerService = new TrinsicProviderService();
-    let walletService = new TrinsicWalletService();
+    let providerService = new TrinsicProviderService(endpoint);
+    let walletService = new TrinsicWalletService(endpoint);
 
     let providerProfile = await walletService.createWallet();
     providerService.setProfile(providerProfile);

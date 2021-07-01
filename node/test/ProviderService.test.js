@@ -3,6 +3,9 @@ const { InviteRequest, WalletProfile, ProviderService } = require("../lib");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const fs = require("fs");
 const path = require("path");
+const { getuid } = require("process");
+
+const endpoint = process.env.SERVICE_URL
 
 const createProfile = async () => {
   // if you have a profile saved
@@ -10,7 +13,7 @@ const createProfile = async () => {
   let profilePath = path.join(homePath, ".trinsic", "profile.bin");
 
   let profileJSON = JSON.parse(fs.readFileSync(profilePath));
-  let profile = new WalletProfile();
+  let profile = new WalletProfile(endpoint);
   profile.setCapability(profileJSON.capability);
   profile.setDidDocument(Struct.fromJavaScript(profile.didDocument));
   profile.setInvoker(profileJSON.invoker);
@@ -25,11 +28,12 @@ const createProfile = async () => {
 };
 
 test("make an invitation", async (t) => {
-  let providerService = new ProviderService();
+  let providerService = new ProviderService(endpoint);
   let profile = await createProfile();
   providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
-  inviteRequest.setEmail("michael.black@trinsic.id");
+  let email = `${getuid()}@example.com`;
+  inviteRequest.setEmail(email);
   inviteRequest.setDescription("invitation");
 
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
