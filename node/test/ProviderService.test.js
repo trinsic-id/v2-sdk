@@ -12,17 +12,17 @@ const createProfile = async () => {
   let homePath = process.env[process.platform === "win32" ? "USERPROFILE" : "HOME"];
   let profilePath = path.join(homePath, ".trinsic", "profile.bin");
 
-  let profileJSON = JSON.parse(fs.readFileSync(profilePath));
-  let profile = new WalletProfile(endpoint);
-  profile.setCapability(profileJSON.capability);
-  profile.setDidDocument(Struct.fromJavaScript(profile.didDocument));
-  profile.setInvoker(profileJSON.invoker);
-  profile.setInvokerJwk(profileJSON.invokerJwk);
-  profile.setWalletId(profileJSON.walletId);
+  // let profileJSON = JSON.parse(fs.readFileSync(profilePath));
+  // let profile = new WalletProfile(endpoint);
+  // profile.setCapability(profileJSON.capability);
+  // profile.setDidDocument(Struct.fromJavaScript(profile.didDocument));
+  // profile.setInvoker(profileJSON.invoker);
+  // profile.setInvokerJwk(profileJSON.invokerJwk);
+  // profile.setWalletId(profileJSON.walletId);
 
   // // if you don't have a profile saved
-  // let walletService = new TrinsicWalletService();
-  // let profile = await walletService.createWallet()
+  let walletService = new TrinsicWalletService();
+  let profile = await walletService.createWallet()
 
   return profile;
 };
