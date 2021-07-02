@@ -12,6 +12,8 @@ const { randomEmail } = require("./helpers/random");
 const endpoint = process.env.INPUT_SERVICEURL
 
 test("get provider configuration", async t => {
+    console.log("ENVIRONMENT", process.env);
+    console.log("TEST ENDPOINT:", endpoint)
     let service = new WalletService(endpoint);
     let configuration = await service.getProviderConfiguration();
 
