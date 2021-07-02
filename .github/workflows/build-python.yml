@@ -27,17 +27,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Install dependencies
-        run: |
-          cd python
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -i https://test.pypi.org/simple/ trinsic-okapi
-          pip install pytest pytest-cov
-      - name: Test with pytest
-        run: |
-          cd python
-          pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
+      - name: Build, Test, Pack
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -UseDevelopOkapi
+        shell: pwsh
       - name: Upload nuget artifact
         uses: actions/upload-artifact@v2
         with:
