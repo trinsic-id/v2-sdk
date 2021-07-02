@@ -5,7 +5,7 @@ const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const jasmine = require('jasmine');
 const { randomEmail } = require('./helpers/random');
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const endpoint = "http://" + (process.env.INPUT_SERVICEURL ?? "localhost:5000")
+const endpoint = "http://" + (process.env.TRINSIC_TEST_URL_WEB ?? "localhost:5000")
 
 describe("wallet service tests", () => {
     it("get provider configuration", async () => {

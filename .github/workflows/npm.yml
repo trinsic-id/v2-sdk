@@ -17,8 +17,12 @@ on:
         description: "Package Version"
         required: true
         default: "1.0.0"
-      serviceUrl:
-        description: "The endpoint to use in the tests"
+      nodeUrl:
+        description: "The endpoint to use in the node tests"
+        required: true
+        default: "beta-staging.centralus.azurecontainer.io:5000"
+      webUrl:
+        description: "The endpoint to use in the web tests"
         required: true
         default: "beta-staging.centralus.azurecontainer.io:5000"
   release:
@@ -30,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [ "node" ]
+        target: [ "node", "web" ]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
@@ -49,7 +53,8 @@ jobs:
           npm run build
           npm test
         env:
-          INPUT_SERVICEURL: ${{ github.event.inputs.serviceUrl }}
+          TRINSIC_TEST_URL: ${{ github.event.inputs.nodeUrl }}
+          TRINSIC_TEST_URL_WEB: ${{ github.event.inputs.webUrl }}
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2

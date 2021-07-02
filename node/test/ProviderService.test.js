@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { randomEmail } = require("./helpers/random");
 
-const endpoint = process.env.INPUT_SERVICEURL
+const endpoint = process.env.TRINSIC_TEST_URL
 
 const createProfile = async () => {
   // if you have a profile saved
