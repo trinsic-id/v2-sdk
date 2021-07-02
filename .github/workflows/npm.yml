@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target: [ "node", "web" ]
+        target: [ "node" ]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
