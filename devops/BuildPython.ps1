@@ -1,7 +1,7 @@
 param
 (
-    [string]$GitTag = ' ',
-    [string]$PackageVersion = ' ',
+    [AllowNull()][string]$GitTag = '',
+    [AllowNull()][string]$PackageVersion = '',
     [switch]$UseDevelopOkapi = $false
 )
 
