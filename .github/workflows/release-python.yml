@@ -2,15 +2,20 @@ name: Release Python SDK
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Package version - PEP440 compliant [N!]N(.N)*[{a|b|rc}N][.postN][.devN]'
+        required: true
+        default: ' '
   release:
-    types: [ published, prereleased ]
+    types: [ published ]
   push:
     branches:
       - main
 
 jobs:
   release_testpypi:
-    name: TestPyPI deploy
+    name: Python Package deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -18,45 +23,29 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
-      - name: Install pypa/build
-        run: |
-          cd python
-          pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -i https://test.pypi.org/simple/ trinsic-okapi
-          pip install build
-      - name: Build a binary wheel and a source tarball
-        run: |
-          cd python
-          python -m build --sdist --wheel --outdir dist/ .
-      - name: Publish distribution 📦 to Test PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          repository_url: https://test.pypi.org/legacy/
-          packages_dir: ./python/dist
-          skip_existing: true
+      - name: Build, Test, Pack
+        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -PackageVersion ${{ github.event.inputs.version }}
+        shell: pwsh
       - name: Push packages to release
         if: |
-          github.event_name == 'release' &&
-          github.event.action == 'published'
+          (github.event_name == 'release' &&
+          github.event.action == 'published')
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./python/dist/*
+          file_glob: true
           asset_name: "python"
           tag: ${{ github.ref }}
           overwrite: true
           body: "Python SDK package"
       - name: Publish distribution 📦 to PyPI
-         if: |
-           github.event_name == 'release' &&
-           github.event.action == 'published' &&
-           github.release.draft == false &&
-           github.release.prerelease == false
+        if: |
+          (github.event_name == 'release' &&
+          github.event.action == 'published') ||
+          github.event.inputs.version != ''
         uses: pypa/gh-action-pypi-publish@master
         with:
+          user: __token__
           password: ${{ secrets.PYPI_API_TOKEN }}
-          repository_url: https://pypi.org/legacy/
           packages_dir: ./python/dist
-          skip_existing: true
