@@ -85,8 +85,8 @@ describe("wallet service tests", () => {
     }, 15000);
     
     // it("create wallet with provider invitation", async () => {
-    //     let providerService = new ProviderService();
-    //     let walletService = new WalletService();
+    //     let providerService = new ProviderService(endpoint);
+    //     let walletService = new WalletService(endpoint);
     
     //     // Provider creates initial wallet for Alice
     //     let providerProfile = await walletService.createWallet();
@@ -116,8 +116,8 @@ describe("wallet service tests", () => {
     // });
     
     // it("send an item to a user's wallet using email", async () => {
-    //     let providerService = new ProviderService();
-    //     let walletService = new WalletService();
+    //     let providerService = new ProviderService(endpoint);
+    //     let walletService = new WalletService(endpoint);
     
     //     let providerProfile = await walletService.createWallet();
     //     providerService.setProfile(providerProfile);

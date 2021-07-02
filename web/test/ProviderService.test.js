@@ -1,7 +1,6 @@
 const jasmine = require("jasmine");
-const { ProviderService } = require("../lib");
+const { ProviderService, WalletService } = require("../lib");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
-const { TrinsicWalletService } = require("../lib/WalletService.js");
 const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const { randomEmail } = require('./helpers/random');
@@ -22,7 +21,7 @@ const createProfile = async () => {
   // profile.setWalletId(profileJSON.walletId);
 
   // if you don't have a profile saved
-  let walletService = new TrinsicWalletService(endpoint);
+  let walletService = new WalletService(endpoint);
   let profile = await walletService.createWallet()
 
   return profile;

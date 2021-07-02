@@ -14,7 +14,7 @@ const createProfile = async () => {
   // let profile = WalletProfile.deserializeBinary(fs.readFileSync(profilePath));
 
   // if you don't have a profile saved
-  let walletService = new WalletService();
+  let walletService = new WalletService(endpoint);
   let profile = await walletService.createWallet()
 
   return profile;
