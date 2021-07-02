@@ -44,11 +44,12 @@ jobs:
           curl -L https://github.com/grpc/grpc-web/releases/download/1.2.1/protoc-gen-grpc-web-1.2.1-linux-x86_64 --output protoc-gen-grpc-web
           chmod +x protoc-gen-grpc-web
           $env:PATH += ":$PWD"
-          
-          export INPUT_SERVICEURL=${{ inputs.serviceUrl }}
+
           npm install
           npm run build
           npm test
+        env:
+          INPUT_SERVICEURL: ${{ github.event.inputs.serviceUrl }}
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
