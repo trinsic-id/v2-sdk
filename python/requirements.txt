@@ -1,2 +1,3 @@
 betterproto~=2.0.0b3
 grpclib~=0.4.1
+trinsic-okapi
