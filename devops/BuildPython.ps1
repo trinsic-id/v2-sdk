@@ -1,7 +1,7 @@
 param
 (
     [string]$GitTag,
-	[switch]$UseDevelopOkapi = $false,
+	[switch]$UseDevelopOkapi = $false
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
