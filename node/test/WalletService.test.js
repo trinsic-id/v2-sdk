@@ -3,16 +3,16 @@ const path = require('path');
 const test = require("ava");
 // import okapi from '@trinsic/okapi';
 const okapi = require('@trinsic/okapi');
-const TrinsicWalletService = require("../lib").WalletService;
-const TrinsicProviderService = require("../lib").ProviderService;
+const { WalletService, ProviderService } = require("../lib");
 const { GenerateKeyRequest } = require('@trinsic/okapi');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-const { getuid } = require('process');
 const { InviteRequest } = require('../lib');
-const endpoint = process.env.SERVICE_URL
+const { randomEmail } = require("./helpers/random");
+
+const endpoint = process.env.INPUT_SERVICEURL
 
 test("get provider configuration", async t => {
-    let service = new TrinsicWalletService(endpoint);
+    let service = new WalletService(endpoint);
     let configuration = await service.getProviderConfiguration();
 
     t.not(configuration, null);
@@ -22,15 +22,15 @@ test("get provider configuration", async t => {
 });
 
 test("create wallet profile", async t => {
-    let service = new TrinsicWalletService(endpoint);
+    let service = new WalletService(endpoint);
     let profile = await service.createWallet();
 
-    let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
-    if (!fs.existsSync(path.join(homePath, '.trinsic'))) {
-        fs.mkdirSync(path.join(homePath, '.trinsic'));
-    }
-    let p = path.join(homePath, '.trinsic', 'profile.bin');
-    fs.writeFileSync(p, JSON.stringify(profile.toObject()));
+    // let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
+    // if (!fs.existsSync(path.join(homePath, '.trinsic'))) {
+    //     fs.mkdirSync(path.join(homePath, '.trinsic'));
+    // }
+    // let p = path.join(homePath, '.trinsic', 'profile.bin');
+    // fs.writeFileSync(p, profile.serializeBinary());
 
     t.not(profile, null);
     t.pass();
@@ -65,7 +65,7 @@ test("generate proof with Jcs", async t => {
 })
 
 test("Demo: create wallet, set profile, search records, issue credential", async t => {
-    let walletService = new TrinsicWalletService(endpoint);
+    let walletService = new WalletService(endpoint);
 
     let profile = await walletService.createWallet();
 
@@ -99,14 +99,14 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 })
 
 test("create wallet with provider invitation", async t => {
-    let providerService = new TrinsicProviderService(endpoint);
-    let walletService = new TrinsicWalletService(endpoint);
+    let providerService = new ProviderService(endpoint);
+    let walletService = new WalletService(endpoint);
 
     // Provider creates initial wallet for Alice
     let providerProfile = await walletService.createWallet();
     providerService.setProfile(providerProfile);
 
-    let email = `${getuid()}@example.com`;
+    let email = randomEmail(); 
     let inviteRequest = new InviteRequest();
     inviteRequest.setDescription("Test Wallet");
     inviteRequest.setEmail(email);
@@ -119,7 +119,7 @@ test("create wallet with provider invitation", async t => {
     // Alice searches for wallet records
     let search = await walletService.search();
     t.not(search, null);
-    t.true(search.getItemsList().length > 0);
+    t.true(search.getItemsList().length === 0);
 
     // Send the document to an existing email
     await walletService.send({ "test": "value" }, email);
@@ -128,21 +128,21 @@ test("create wallet with provider invitation", async t => {
 });
 
 test("send an item to a user's wallet using email", async t => {
-    let providerService = new TrinsicProviderService(endpoint);
-    let walletService = new TrinsicWalletService(endpoint);
+    let providerService = new ProviderService(endpoint);
+    let walletService = new WalletService(endpoint);
 
     let providerProfile = await walletService.createWallet();
     providerService.setProfile(providerProfile);
 
     // Provider creates initial wallet for Alice
-    let aliceEmail = `${getuid()}@example.com`;
+    let aliceEmail = randomEmail();
     let aliceInviteRequest = new InviteRequest();
     aliceInviteRequest.setDescription("Test Wallet");
     aliceInviteRequest.setEmail(aliceEmail);
     let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
     let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
-    let bobEmail = `${getuid()}@example.com`;
+    let bobEmail = randomEmail();
     let bobInviteRequest = new InviteRequest();
     bobInviteRequest.setDescription("Test Wallet");
     bobInviteRequest.setEmail(bobEmail);

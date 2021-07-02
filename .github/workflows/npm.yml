@@ -47,7 +47,7 @@ jobs:
 
           npm install
           npm run build
-          SERVICE_URL=${INPUT_SERVICEURL} npm test
+          npm test
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2

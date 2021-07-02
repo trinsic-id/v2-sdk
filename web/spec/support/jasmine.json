@@ -4,9 +4,9 @@
     "../test/*.js"
   ],
   "helpers": [
-    "helpers/**/*.js"
+    "../test/helpers/**/*.js"
   ],
   "stopSpecOnExpectationFailure": false,
   "random": true,
-  "default-timeout": 10000
+  "default-timeout-interval": 15000
 }

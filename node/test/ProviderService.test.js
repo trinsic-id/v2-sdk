@@ -1,27 +1,20 @@
 const test = require("ava");
-const { InviteRequest, WalletProfile, ProviderService } = require("../lib");
+const { InviteRequest, WalletProfile, ProviderService, WalletService } = require("../lib");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const fs = require("fs");
 const path = require("path");
-const { getuid } = require("process");
+const { randomEmail } = require("./helpers/random");
 
-const endpoint = process.env.SERVICE_URL
+const endpoint = process.env.INPUT_SERVICEURL
 
 const createProfile = async () => {
   // if you have a profile saved
-  let homePath = process.env[process.platform === "win32" ? "USERPROFILE" : "HOME"];
-  let profilePath = path.join(homePath, ".trinsic", "profile.bin");
+  // let homePath = process.env[process.platform === "win32" ? "USERPROFILE" : "HOME"];
+  // let profilePath = path.join(homePath, ".trinsic", "profile.bin");
+  // let profile = WalletProfile.deserializeBinary(fs.readFileSync(profilePath));
 
-  // let profileJSON = JSON.parse(fs.readFileSync(profilePath));
-  // let profile = new WalletProfile(endpoint);
-  // profile.setCapability(profileJSON.capability);
-  // profile.setDidDocument(Struct.fromJavaScript(profile.didDocument));
-  // profile.setInvoker(profileJSON.invoker);
-  // profile.setInvokerJwk(profileJSON.invokerJwk);
-  // profile.setWalletId(profileJSON.walletId);
-
-  // // if you don't have a profile saved
-  let walletService = new TrinsicWalletService();
+  // if you don't have a profile saved
+  let walletService = new WalletService();
   let profile = await walletService.createWallet()
 
   return profile;
@@ -32,7 +25,7 @@ test("make an invitation", async (t) => {
   let profile = await createProfile();
   providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
-  let email = `${getuid()}@example.com`;
+  let email = randomEmail();
   inviteRequest.setEmail(email);
   inviteRequest.setDescription("invitation");
 

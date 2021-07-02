@@ -1,22 +1,15 @@
-// const fs = require('fs');
-// const path = require('path');
 // import okapi from '@trinsic/okapi';
 const okapi = require('@trinsic/okapi');
-const { TrinsicWalletService } = require("../lib/WalletService");
+const { WalletService } = require("../lib");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const jasmine = require('jasmine');
+const { randomEmail } = require('./helpers/random');
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const endpoint = "http://" + (process.env.INPUT_SERVICEURL ?? "localhost:5000")
 
 describe("wallet service tests", () => {
-    beforeAll(() => {
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
-    })
-    beforeEach(() => {
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000;
-    })
-
     it("get provider configuration", async () => {
-        let service = new TrinsicWalletService("http://localhost:5000");
+        let service = new WalletService(endpoint);
         let configuration = await service.getProviderConfiguration();
     
         expect(configuration).not.toBeNull();
@@ -25,15 +18,8 @@ describe("wallet service tests", () => {
     });
     
     it("create wallet profile", async () => {
-        let service = new TrinsicWalletService("http://localhost:5000");
+        let service = new WalletService(endpoint);
         let profile = await service.createWallet();
-    
-        // let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
-        // if (!fs.existsSync(path.join(homePath, '.trinsic'))) {
-        //     fs.mkdirSync(path.join(homePath, '.trinsic'));
-        // }
-        // let p = path.join(homePath, '.trinsic', 'profile.bin');
-        // fs.writeFileSync(p, JSON.stringify(profile.toObject()));
     
         expect(profile).not.toBeNull();
     })
@@ -66,7 +52,7 @@ describe("wallet service tests", () => {
     })
     
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
-        let walletService = new TrinsicWalletService("http://localhost:5000");
+        let walletService = new WalletService(endpoint);
     
         let profile = await walletService.createWallet();
     
@@ -91,24 +77,22 @@ describe("wallet service tests", () => {
         expect(items).not.toBeNull();
         expect(items.getItemsList().length).toBeGreaterThan(0);
     
-        console.log("creating proof...")
         let proof = await walletService.createProof(itemId, { "@context": "http://w3id.org/security/v3-unstable" });
-        console.log("proof", proof);
     
         let valid = await walletService.verifyProof(proof);
     
         expect(valid).toBe(true)
-    })
+    }, 15000);
     
     // it("create wallet with provider invitation", async () => {
-    //     let providerService = new TrinsicProviderService();
-    //     let walletService = new TrinsicWalletService();
+    //     let providerService = new ProviderService();
+    //     let walletService = new WalletService();
     
     //     // Provider creates initial wallet for Alice
     //     let providerProfile = await walletService.createWallet();
     //     providerService.setProfile(providerProfile);
     
-    //     let email = `${getuid()}@example.com`;
+    //     let email = randomEmail();
     //     console.log("email", email);
     //     let inviteRequest = new InviteRequest();
     //     inviteRequest.setDescription("Test Wallet");
@@ -132,21 +116,21 @@ describe("wallet service tests", () => {
     // });
     
     // it("send an item to a user's wallet using email", async () => {
-    //     let providerService = new TrinsicProviderService();
-    //     let walletService = new TrinsicWalletService();
+    //     let providerService = new ProviderService();
+    //     let walletService = new WalletService();
     
     //     let providerProfile = await walletService.createWallet();
     //     providerService.setProfile(providerProfile);
     
     //     // Provider creates initial wallet for Alice
-    //     let aliceEmail = `${getuid()}@example.com`;
+    //     let aliceEmail = randomEmail();
     //     let aliceInviteRequest = new InviteRequest();
     //     aliceInviteRequest.setDescription("Test Wallet");
     //     aliceInviteRequest.setEmail(aliceEmail);
     //     let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
     //     let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
     
-    //     let bobEmail = `${getuid()}@example.com`;
+    //     let bobEmail = randomEmail();
     //     let bobInviteRequest = new InviteRequest();
     //     bobInviteRequest.setDescription("Test Wallet");
     //     bobInviteRequest.setEmail(bobEmail);

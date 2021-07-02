@@ -1,12 +1,12 @@
 const jasmine = require("jasmine");
-const { TrinsicProviderService } = require("../lib/ProviderService.js");
+const { ProviderService } = require("../lib");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
 const { TrinsicWalletService } = require("../lib/WalletService.js");
 const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-const fs = require("fs");
-const path = require("path");
+const { randomEmail } = require('./helpers/random');
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const endpoint = "http://" + (process.env.INPUT_SERVICEURL ?? "localhost:5000")
 
 const createProfile = async () => {
   // // if you have a profile saved
@@ -22,18 +22,18 @@ const createProfile = async () => {
   // profile.setWalletId(profileJSON.walletId);
 
   // if you don't have a profile saved
-  let walletService = new TrinsicWalletService();
+  let walletService = new TrinsicWalletService(endpoint);
   let profile = await walletService.createWallet()
 
   return profile;
 }
 
 it("make an invitation", async () => {
-  let providerService = new TrinsicProviderService("http://localhost:5000");
+  let providerService = new ProviderService(endpoint);
   let profile = await createProfile();
   await providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
-  inviteRequest.setEmail("michael.black@trinsic.id");
+  inviteRequest.setEmail(randomEmail());
   inviteRequest.setDescription("invitation");
   
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
@@ -43,11 +43,11 @@ it("make an invitation", async () => {
 });
 
 it("check status of invitation", async () => {
-  // let providerService = new TrinsicProviderService();
+  // let providerService = new ProviderService();
   // let profile = await createProfile();
   // providerService.setProfile(profile);
   // let inviteRequest = new InviteRequest();
-  // inviteRequest.setEmail("michael.black@trinsic.id");
+  // inviteRequest.setEmail(randomEmail());
   // inviteRequest.setDescription("invitation");
 
   // let inviteResponse = await providerService.inviteParticipant(inviteRequest);

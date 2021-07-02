@@ -34,6 +34,7 @@
     "geckodriver": "^2.0.0",
     "grpc-tools": "1.11.1",
     "jasmine": "^3.7.0",
+    "jasmine-browser-runner": "^0.6.0",
     "jasmine-core": "^3.7.1",
     "jest": "^27.0.4",
     "karma": "^6.3.3",
@@ -44,7 +45,8 @@
     "protoc-gen-grpc-web": "^1.2.1",
     "ts-node": "^10.0.0",
     "ts-protoc-gen": "0.15.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "xmlhttprequest": "^1.8.0"
   },
   "ava": {
     "require": [
