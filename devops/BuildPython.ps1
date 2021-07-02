@@ -29,6 +29,7 @@ function Install-Requirements {
 	if ($UseDevelopOkapi) {
 		python -m pip install --pre trinsic-okapi
 	}
+	python ./trinsic/generate_proto_files.py
 }
 function Run-Tests {
 	python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
@@ -53,7 +54,6 @@ function Build-Package {
 # Setup
 $InvocationPath = (Get-Item .).FullName
 cd "$PSScriptRoot/../python"
-Copy-Item "../libs/*" -Destination "./okapi/libs" -Recurse
 # Do the things
 Activate-Venv
 Install-Requirements
