@@ -1,0 +1,30 @@
+{
+  "proof": {
+    "verificationMethod": "did:key:z5TcEHXhDfyTTpwiWn9SugJsScTmq9eVqeFfJau95Nc2egMfkQG7yvsbcZDusVBZdET2i1YbGVdK4d1MCscBkGoMFb6oTmoZsAnsDUSqoJtPnHZnAcAq4SgKrFgktBVUxTpG44RKZ4HaPMMrqirjidvF5gWmck7kUibJe17vuLHHbxfgWVmwv9LoN2kw7YpQ2sTfBcYTL#zUC71kPhoUdVdu7ivFre4QsUyX9yijzm1HZSkaU6ZzFfRoDNcgswrotpsW3Nvwkon5zhE7k11p4Cs4fBWNe3aNqFrxjaL2GGFrYa89R6eCGzbkQPQiyvJxWWAkJCUowoguriWNW",
+    "proofValue": "pnGC5lMmisnXKdzkLKhKXgQv8kglp32QbdUI33Jm/B4DHPmU+rPGUPtc7h3l/ikQLvNT3eSX9GKrxebbGQ3X3O/GYGQnb5D4rIBzVI+h2OwF6kZmwLffOJVdt5lN7SvgsLDXeOGuNdtk7EGmw/PTCw==",
+    "created": "2021-06-30T07:20:53",
+    "type": "BbsBlsSignature2020",
+    "proofPurpose": "assertionMethod"
+  },
+  "id": "urn:uvci:af5vshde843jf831j128fj",
+  "expirationDate": "2029-12-03T12:19:52Z",
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/vaccination/v1",
+    "https://w3id.org/security/bbs/v1"
+  ],
+  "type": [
+    "VaccinationCertificate",
+    "VerifiableCredential"
+  ],
+  "description": "COVID-19 Vaccination Certificate",
+  "credentialSubject": {
+    "type": "VaccinationEvent",
+    "id": "urn:uuid:c53e70f8-ce9a-4576-8744-e5f85c20a743",
+    "countryOfVaccination": "US",
+    "batchNumber": "1183738569"
+  },
+  "name": "COVID-19 Vaccination Certificate",
+  "issuer": "did:key:zUC724vuGvHpnCGFG1qqpXb81SiBLu3KLSqVzenwEZNPoY35i2Bscb8DLaVwHvRFs6F2NkNNXRcPWvqnPDUd9ukdjLkjZd3u9zzL4wDZDUpkPAatLDGLEYVo8kkAzuAKJQMr7N2",
+  "issuanceDate": "2019-12-03T12:19:52Z"
+}
