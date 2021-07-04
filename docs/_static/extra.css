@@ -14,12 +14,11 @@
     --md-hue: 200; /* [0, 360] */
 }
 
-.md-header-nav__button.md-logo {
-    margin: auto;
-    padding: 0rem;
+.md-header__button.md-logo {
+    margin-bottom: .4rem;
 }
 
-.md-header-nav__button.md-logo img, .md-header-nav__button.md-logo svg, .md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
-    width: 5rem;
-    height: auto;
+.md-header__button.md-logo img, .md-header__button.md-logo svg, .md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+    width: auto;
+    height: 1.8rem;
 }
