@@ -17,15 +17,15 @@ If you're here to just go through the walkthrough, check out our [Gitpod cloud e
 
 === "Trinsic CLI"
 
-    --8<-- "reference/installation/install-cli.md"
+    --8<-- "setup/installation/install-cli.md"
 
 === "TypeScript"
 
-    --8<-- "reference/installation/install-node.md"
+    --8<-- "setup/installation/install-node.md"
 
 === "C#"
 
-    --8<-- "reference/installation/install-net.md"
+    --8<-- "setup/installation/install-net.md"
 
 Once installed, configure the SDK's server address to your Ecosystem:
 
@@ -210,8 +210,8 @@ Replace the `<item_id>` in the command bellow with the output from the `insert_i
 === "TypeScript"
 
     ```js
-        let proof = await walletService.createProof(itemId, 
-        { 
+        let proof = await walletService.createProof(itemId,
+        {
             "@context": [
                 "https://www.w3.org/2018/credentials/v1",
                 "https://w3id.org/vaccination/v1",

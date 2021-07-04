@@ -1,39 +1,38 @@
-site_name: "Ecosystems"
+site_name: "Documentation"
 site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 nav:
-  - Getting Started:
-      - Introduction: index.md
-      - What is Trinsic?: trinsic.md
-      - Become an Early Adopter: early-adopter.md
-      - Walkthrough:
-          - Vaccination Use Case: walkthrough.md
-          - .NET Core: walkthrough/vaccination-net.md
-          - TypeScript / JavaScript:
-            - Node.js: walkthrough/vaccination-node.md
-            - Browser: walkthrough/vaccination-browser.md
-
+  - Overview: index.md
+  - Start Building:
+    - CLI: walkthrough/vaccination-cli.md
+    - Node: walkthrough/vaccination-node.md
+    - Web: walkthrough/vaccination-browser.md
+    - C#: walkthrough/vaccination-net.md
+  - Concepts: concepts/index.md
+  - Setup: setup/index.md
   - Reference:
-      - Overview: reference/index.md
-      - Installation: reference/installation/index.md
-      - Concepts:
-          - Security Profiles: reference/profiles.md
-          - Configuration: reference/configuration.md
-      - Services:
-          - Wallet Service: reference/services/wallet-service.md
-          - Provider Service: reference/services/provider-service.md
-  - FAQ: faq.md
+    - Wallet Service: reference/wallet.md
+    - Provider Service: reference/provider.md
+  - Support:
+    - Community: https://example.com
+    - Github: https://github.com/trinsic-id
+    - Email us: mailto:support@trinsic.id
+  - Trinsic Ecosystems: early-adopter.md
 theme:
   name: material
   logo: _static/logo-title.svg
   favicon: _static/logo.png
   features:
     - content.tabs.link
+    - navigation.instant
     # - navigation.sections
-    # - navigation.tracking
-    # - navigation.expand
+    - navigation.tracking
+    - navigation.expand
+    - navigation.sections
+    - toc.integrate
+
   icon:
     repo: fontawesome/brands/github-alt
   font:
@@ -76,7 +75,7 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
-  - javascripts/config.js
+  - _static/javascripts/config.js
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css
   - _static/extra.css
