@@ -1,4 +1,3 @@
-import subprocess
 import grpc_tools.protoc as protoc
 from os.path import join, dirname, abspath
 import glob
