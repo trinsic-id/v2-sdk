@@ -2,6 +2,7 @@ In this walkthrough we will showcase a practical example of how participants in 
 
 ## Ecosystem setup
 
-Before we begin, please ensure that you have a running ecosystems infrastructure. If you haven't yet, [join our early adopter program](/early-adopter.md) to have your own dedicated  infrastructure configured.
+Before we begin, please ensure that you have a running ecosystems infrastructure. If you haven't yet, [join our early adopter program](./early-adopter.md) to have your own dedicated infrastructure configured.
+
 Once your infrastructure is up, you will receive an endpoint to connect to your cloud service.
 

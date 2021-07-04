@@ -5,21 +5,22 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 nav:
   - Overview: index.md
+  - Concepts: concepts/index.md
   - Start Building:
     - CLI: walkthrough/vaccination-cli.md
     - Node: walkthrough/vaccination-node.md
     - Web: walkthrough/vaccination-browser.md
     - C#: walkthrough/vaccination-net.md
-  - Concepts: concepts/index.md
-  - Setup: setup/index.md
   - Reference:
+    - Setup: setup/index.md
     - Wallet Service: reference/wallet.md
     - Provider Service: reference/provider.md
   - Support:
-    - Community: https://example.com
-    - Github: https://github.com/trinsic-id
+    - Join Slack Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
+    - Contribute on Github: https://github.com/trinsic-id
     - Email us: mailto:support@trinsic.id
-  - Trinsic Ecosystems: early-adopter.md
+  - What's Next:
+    - Join Trinsic Ecosystems: early-adopter.md
 theme:
   name: material
   logo: _static/logo-title.svg
@@ -27,12 +28,10 @@ theme:
   features:
     - content.tabs.link
     - navigation.instant
-    # - navigation.sections
     - navigation.tracking
     - navigation.expand
     - navigation.sections
     - toc.integrate
-
   icon:
     repo: fontawesome/brands/github-alt
   font:
@@ -71,6 +70,7 @@ markdown_extensions:
   - pymdownx.details
   - toc:
       permalink: true
+      toc_depth: 2
   - abbr
 
 extra_javascript:

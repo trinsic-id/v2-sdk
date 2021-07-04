@@ -13,3 +13,13 @@ journey
       Share: 3: Allison
       Verify: 5: Airline
 ```
+
+If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basics](https://trinsic.id/trinsic-basics-the-verifiable-credentials-model/).
+
+In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.
+
+**Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
+
+**Holder**: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.
+
+**Verifier**: Verifies passes presented from holders.

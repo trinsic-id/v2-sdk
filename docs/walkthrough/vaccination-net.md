@@ -65,11 +65,11 @@ File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 ```
 
-Read more about [security profiles](/reference/profiles/) and authentication.
+Read more about [security profiles](../setup/index.md#authorization) and authentication.
 
 ## Certificate issuance
 
-Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This ceritificate is digitially signed by the clinic, acting as an issuer.
+Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
 The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
 
 === "vaccination-certificate-unsigned.jsonld"

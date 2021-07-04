@@ -1,4 +1,6 @@
-# Trinsic Ecosystems
+# Introducing Trinsic Ecosystems
+
+For organizations ready to deploy verifiable credentials into a complex industry or use case, Trinsic has prepared tools to help you do so.
 
 To learn more about Trinsic Ecosystems, read our announcement about it:
 

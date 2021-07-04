@@ -21,9 +21,6 @@ trinsic --profile allison issuer create-proof --document-id "" --out ./vaccinati
 more vaccination-certificate-partial-proof.jsonld
 
 mv vaccination-certificate-partial-proof.json ../airline
+
 # Airline
 trinsic --profile airline issuer verify-proof --proof-document ./vaccination-certificate-partial-proof.jsonld
-
-rm ~/.trinsic/*.json ~/.trinsic/*.bin
-
-How are these wallets now connected?
