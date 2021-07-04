@@ -12,18 +12,16 @@ Each wallet can be identified with one or more addresses. A wallet holder can ch
 
 ### Secure Communication
 
-Trinsic Core can send any JSON payload securely. The SDK supports signing and encryption. 
+Trinsic Core can send any JSON payload securely. The SDK supports signing and encryption.
 
 - Existing ways of sending and verifying identity documents are often insecure and slow. In person we most often use paper. Online, we most often send identity document information by inputting it into a web form or sending it through email. This is all self-attested information - meaning that the verifier has no guarantee the information comes from a trusted source.
 
-- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven’t been tampered or sniffed. They also allow the verifier to know the information comes directly from a specific trusted third party. Verifiers also know that the information was sent to them from a device known to be trusted by the individual. 
+- Trinsic Core enables messages to be sent back and forth with high degree of trust that the contents haven’t been tampered or sniffed. They also allow the verifier to know the information comes directly from a specific trusted third party. Verifiers also know that the information was sent to them from a device known to be trusted by the individual.
 
 - Selective disclosure, revocation, signing, encryption, verification all come out of the box and are easy to use, and are interoperable.
 ### Trinsic Ecosystem
 
-***Coming soon.***
-
-While credentials, passes, and wallets are the only thing an individual using your app might need to interact with, there are a few more concepts for the Provider. 
+While credentials, passes, and wallets are the only thing an individual using your app might need to interact with, there are a few more concepts for the Provider.
 
 Verifiers and holders want a way to know the issuer is a legitimate entity they trust.
 
