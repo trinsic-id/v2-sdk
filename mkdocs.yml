@@ -3,6 +3,7 @@ site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
+site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
   - Overview: index.md
   - Concepts: concepts/index.md
@@ -12,9 +13,9 @@ nav:
     - Web: walkthrough/vaccination-browser.md
     - C#: walkthrough/vaccination-net.md
   - Reference:
-    - Setup: setup/index.md
-    - Wallet Service: reference/wallet.md
-    - Provider Service: reference/provider.md
+    - Setup: reference/setup/index.md
+    - Wallet Service: reference/services/wallet-service.md
+    - Provider Service: reference/services/provider-service.md
   - Support:
     - Join Slack Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
     - Contribute on Github: https://github.com/trinsic-id

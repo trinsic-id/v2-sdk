@@ -22,7 +22,7 @@ Once installed, configure the CLI's server address to your Ecosystem:
     ```
 
 !!! noted
- Reference: [Configuration with CLI](../setup/index.md#configuration-with-cli)
+ Reference: [Configuration with CLI](../reference/setup/index.md#configuration-with-cli)
 
 ## Meet Allison
 
@@ -36,8 +36,6 @@ We'll start by creating a wallet for each participant in this credential exchang
 
 These wallets have been created by you, your role is an ecosystem provider. Your role is to help deploy a credential exchange ecosystem.
 
-![](_static/named-triangle.png)
-
 === "Trinsic CLI"
 
     ```bash
@@ -47,7 +45,7 @@ These wallets have been created by you, your role is an ecosystem provider. Your
     ```
 
 !!! note
-Reference: [Create Wallet](reference/services/wallet-service.md#create-wallet)
+Reference: [Create Wallet](/reference/services/wallet-service/#create-wallet)
 
 ---
 
@@ -65,7 +63,7 @@ The credential is signed, but not sent. For now, sending the credential should b
     ```
 
 !!! info
-Reference: [Issue a Credential](reference/services/wallet-service.md#issue-credential)
+Reference: [Issue a Credential](/reference/services/wallet-service/#issue-credential)
 
 ---
 
@@ -82,7 +80,7 @@ Once Allison receives the credential, she can store it within her wallet. She ca
 Note down the response `item_id` printed to the console for the next step.
 
 !!! info
-Reference: [Insert Record](reference/services/wallet-service.md#insert-record)
+Reference: [Insert Record](/reference/services/wallet-service/#insert-record)
 
 ---
 
@@ -107,7 +105,7 @@ Take a look at the proof. Notice how only the attributes included in the `frame`
 Allison sends this proof to the airline for them to verify.
 
 !!! info
-Reference: [Create Proof](reference/services/wallet-service.md#create-proof)
+Reference: [Create Proof](/reference/services/wallet-service/#create-proof)
 
 ---
 
@@ -122,4 +120,4 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.
 !!! info
-Reference: [Verify Proof](reference/services/wallet-service.md#verify-proof)
+Reference: [Verify Proof](/reference/services/wallet-service/#verify-proof)
