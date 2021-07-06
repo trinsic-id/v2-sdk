@@ -1,5 +1,4 @@
-import okapi from "@trinsic/okapi";
-import { credentials as ChannelCredentials, Channel } from "grpc";
+import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
 import { ProviderClient } from "./proto/ProviderService_grpc_pb";
 import {
@@ -9,7 +8,6 @@ import {
   InviteResponse,
 } from "./proto/ProviderService_pb";
 
-export * from "grpc";
 export class TrinsicProviderService extends ServiceBase {
   channel: Channel;
   client: ProviderClient;
