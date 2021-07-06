@@ -1,11 +1,9 @@
-const jasmine = require("jasmine");
 const { ProviderService, WalletService } = require("../lib");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
 const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 const { randomEmail } = require('./helpers/random');
-global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const endpoint = "http://" + (process.env.TRINSIC_TEST_URL_WEB ?? "localhost:5000")
+let endpoint = "http://tomislav-staging.eastus.azurecontainer.io:5000";
 
 const createProfile = async () => {
   // // if you have a profile saved
@@ -21,8 +19,8 @@ const createProfile = async () => {
   // profile.setWalletId(profileJSON.walletId);
 
   // if you don't have a profile saved
-  let walletService = new WalletService(endpoint);
-  let profile = await walletService.createWallet()
+  let service = new WalletService(endpoint);
+  let profile = await service.createWallet()
 
   return profile;
 }
@@ -39,7 +37,7 @@ it("make an invitation", async () => {
 
   expect(inviteResponse).not.toBeNull();
   expect(inviteResponse.getInvitationId()).not.toBeNull();
-});
+}, 10000);
 
 it("check status of invitation", async () => {
   // let providerService = new ProviderService();

@@ -11,7 +11,10 @@
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./lib/",
-    "test": "jasmine"
+    "test:build": "npx webpack build",
+    "test:jasmine": "npx jasmine-browser-runner runSpecs",
+    "test:debug": "npx jasmine-browser-runner serve",
+    "test": "npm run test:build && npm run test:jasmine"
   },
   "author": "Trinsic",
   "contributors": [
@@ -34,6 +37,7 @@
     "geckodriver": "^2.0.0",
     "grpc-tools": "1.11.1",
     "jasmine": "^3.7.0",
+    "jasmine-browser-runner": "^0.6.0",
     "jasmine-core": "^3.7.1",
     "jest": "^27.0.4",
     "karma": "^6.3.3",
@@ -45,6 +49,8 @@
     "ts-node": "^10.0.0",
     "ts-protoc-gen": "0.15.0",
     "typescript": "^4.3.2",
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2",
     "xmlhttprequest": "^1.8.0"
   },
   "ava": {

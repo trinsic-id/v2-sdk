@@ -1,7 +1,7 @@
 import { WalletService } from "@trinsic/trinsic-web";
 
 const Demo_CreateWallet_SetProfile_SearchRecords = async () => {
-  let walletService = new WalletService("http://localhost:5000");
+  let walletService = new WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000");
 
   let profile = await walletService.createWallet();
 

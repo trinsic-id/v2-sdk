@@ -2,15 +2,13 @@
 const okapi = require('@trinsic/okapi');
 const { WalletService } = require("../lib");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-const jasmine = require('jasmine');
-const { randomEmail } = require('./helpers/random');
-global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-const endpoint = "http://" + (process.env.TRINSIC_TEST_URL_WEB ?? "localhost:5000")
+// const { randomEmail } = require('./helpers/random');
+let endpoint = "http://tomislav-staging.eastus.azurecontainer.io:5000";// http://" + (process.env.TRINSIC_TEST_URL_WEB ?? "localhost:5000")
+const walletService = new WalletService(endpoint);
 
 describe("wallet service tests", () => {
     it("get provider configuration", async () => {
-        let service = new WalletService(endpoint);
-        let configuration = await service.getProviderConfiguration();
+        let configuration = await walletService.getProviderConfiguration();
     
         expect(configuration).not.toBeNull();
         expect(configuration.getDidDocument()).not.toBeNull();
@@ -18,8 +16,7 @@ describe("wallet service tests", () => {
     });
     
     it("create wallet profile", async () => {
-        let service = new WalletService(endpoint);
-        let profile = await service.createWallet();
+        let profile = await walletService.createWallet();
     
         expect(profile).not.toBeNull();
     })
@@ -51,9 +48,7 @@ describe("wallet service tests", () => {
         expect(proofResponse.getSignedDocument()).not.toBeNull();
     })
     
-    it("Demo: create wallet, set profile, search records, issue credential", async () => {
-        let walletService = new WalletService(endpoint);
-    
+    it("Demo: create wallet, set profile, search records, issue credential", async () => {    
         let profile = await walletService.createWallet();
     
         expect(profile).not.toBeNull();
@@ -82,7 +77,7 @@ describe("wallet service tests", () => {
         let valid = await walletService.verifyProof(proof);
     
         expect(valid).toBe(true)
-    }, 15000);
+    }, 20000);
     
     // it("create wallet with provider invitation", async () => {
     //     let providerService = new ProviderService(endpoint);
@@ -90,14 +85,14 @@ describe("wallet service tests", () => {
     
     //     // Provider creates initial wallet for Alice
     //     let providerProfile = await walletService.createWallet();
-    //     providerService.setProfile(providerProfile);
+    //     providerwalletService.setProfile(providerProfile);
     
     //     let email = randomEmail();
     //     console.log("email", email);
     //     let inviteRequest = new InviteRequest();
     //     inviteRequest.setDescription("Test Wallet");
     //     inviteRequest.setEmail(email);
-    //     let invitationResponse = await providerService.inviteParticipant(inviteRequest);
+    //     let invitationResponse = await providerwalletService.inviteParticipant(inviteRequest);
     //     console.log("invitationResponse", invitationResponse);
     //     // Alice accepts the invitation and creates the wallet
     //     console.log("invitation ID", invitationResponse.getInvitationId());
@@ -120,21 +115,21 @@ describe("wallet service tests", () => {
     //     let walletService = new WalletService(endpoint);
     
     //     let providerProfile = await walletService.createWallet();
-    //     providerService.setProfile(providerProfile);
+    //     providerwalletService.setProfile(providerProfile);
     
     //     // Provider creates initial wallet for Alice
     //     let aliceEmail = randomEmail();
     //     let aliceInviteRequest = new InviteRequest();
     //     aliceInviteRequest.setDescription("Test Wallet");
     //     aliceInviteRequest.setEmail(aliceEmail);
-    //     let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
+    //     let invitationResponse = await providerwalletService.inviteParticipant(aliceInviteRequest);
     //     let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
     
     //     let bobEmail = randomEmail();
     //     let bobInviteRequest = new InviteRequest();
     //     bobInviteRequest.setDescription("Test Wallet");
     //     bobInviteRequest.setEmail(bobEmail);
-    //     invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
+    //     invitationResponse = await providerwalletService.inviteParticipant(bobInviteRequest);
     //     let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
     
     //     // Alice's searches for wallet records
@@ -150,4 +145,3 @@ describe("wallet service tests", () => {
 
     it("debug", () => expect(true).toBe(true));
 })
-
