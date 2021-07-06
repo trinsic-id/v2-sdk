@@ -10,5 +10,6 @@
   "helpers": [
     "helpers/*.js"
   ],
-  "random": true
+  "random": true,
+  "browser": "headlessChrome"
 }
