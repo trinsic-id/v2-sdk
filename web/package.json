@@ -11,7 +11,7 @@
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./lib/",
-    "test:setenv": "./setenv.sh",
+    "test:setenv": "pwsh ./setenv.ps1",
     "test:build": "npx webpack build",
     "test:jasmine": "npx jasmine-browser-runner runSpecs",
     "test:debug": "npx jasmine-browser-runner serve",
