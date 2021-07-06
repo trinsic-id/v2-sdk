@@ -11,10 +11,11 @@
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 './src/proto/**/*_pb.*' ./lib/",
+    "test:setenv": "./setenv.sh",
     "test:build": "npx webpack build",
     "test:jasmine": "npx jasmine-browser-runner runSpecs",
     "test:debug": "npx jasmine-browser-runner serve",
-    "test": "npm run test:build && npm run test:jasmine"
+    "test": "npm run test:setenv && npm run test:build && npm run test:jasmine"
   },
   "author": "Trinsic",
   "contributors": [

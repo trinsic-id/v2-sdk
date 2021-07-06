@@ -2,7 +2,7 @@ const { ProviderService, WalletService } = require("../lib");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
 const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-let endpoint = "http://tomislav-staging.eastus.azurecontainer.io:5000";
+let endpoint = require('./env').env.ENDPOINT
 
 const randomEmail = (suffix = "example.com", length = 16) => {
   return Math.random().toString(16).substr(2, length) + '@' + suffix;
