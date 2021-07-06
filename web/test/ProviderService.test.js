@@ -2,8 +2,11 @@ const { ProviderService, WalletService } = require("../lib");
 const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
 const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-const { randomEmail } = require('./helpers/random');
 let endpoint = "http://tomislav-staging.eastus.azurecontainer.io:5000";
+
+const randomEmail = (suffix = "example.com", length = 16) => {
+  return Math.random().toString(16).substr(2, length) + '@' + suffix;
+}
 
 const createProfile = async () => {
   // // if you have a profile saved

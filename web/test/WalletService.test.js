@@ -2,7 +2,6 @@
 const okapi = require('@trinsic/okapi');
 const { WalletService } = require("../lib");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-// const { randomEmail } = require('./helpers/random');
 let endpoint = "http://tomislav-staging.eastus.azurecontainer.io:5000";// http://" + (process.env.TRINSIC_TEST_URL_WEB ?? "localhost:5000")
 const walletService = new WalletService(endpoint);
 
