@@ -1,8 +1,7 @@
-const okapi = require("@trinsic/okapi");
-// import okapi from "@trinsic/okapi";
+import { DIDComm, DIDKey, GenerateKeyRequest, KeyType, PackRequest, ResolveRequest, UnpackRequest } from "@trinsic/okapi";
 import { EncryptedMessage } from "./proto/pbmse/pbmse_pb";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import { credentials as ChannelCredentials, Channel } from "grpc";
+import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
 import { WalletClient } from "./proto/WalletService_grpc_pb";
 import { CredentialClient } from "./proto/IssuerService_grpc_pb";
@@ -17,7 +16,6 @@ import {
   SearchResponse,
   SearchRequest,
 } from "./proto/WalletService_pb";
-import { grpc } from "@trinsic/okapi";
 import {
   CreateProofRequest,
   IssueRequest,
@@ -31,7 +29,6 @@ import { JsonPayload } from "./proto";
 type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
 
-export * from "grpc";
 export class TrinsicWalletService extends ServiceBase {
   channel: Channel;
   client: WalletClient;
@@ -83,9 +80,9 @@ export class TrinsicWalletService extends ServiceBase {
     // Fetch Server Configuration and find key to use
     // for generating shared secret for authenticated encryption
     let configuration = await this.getProviderConfiguration();
-    let resolveRequest = new okapi.ResolveRequest();
+    let resolveRequest = new ResolveRequest();
     resolveRequest.setDid(configuration.getKeyAgreementKeyId());
-    let resolveResponse = okapi.DIDKey.resolve(resolveRequest);
+    let resolveResponse = DIDKey.resolve(resolveRequest);
 
     let providerExchangeKey = resolveResponse
       .getKeysList()
@@ -94,16 +91,16 @@ export class TrinsicWalletService extends ServiceBase {
     if (providerExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     // Generate new DID used by the current device
-    let keyRequest = new okapi.GenerateKeyRequest();
-    keyRequest.setKeyType(okapi.KeyType.ED25519);
-    let myKey = okapi.DIDKey.generate(keyRequest);
+    let keyRequest = new GenerateKeyRequest();
+    keyRequest.setKeyType(KeyType.ED25519);
+    let myKey = DIDKey.generate(keyRequest);
     let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
 
     if (myExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     let myDidDocument = myKey.getDidDocument().toJavaScript();
     // Create an encrypted message
-    let packRequest = new okapi.PackRequest();
+    let packRequest = new PackRequest();
     packRequest.setSenderKey(myExchangeKey);
     packRequest.setReceiverKey(providerExchangeKey);
     let createWalletRequest = new CreateWalletRequest();
@@ -113,7 +110,7 @@ export class TrinsicWalletService extends ServiceBase {
     createWalletRequest.setSecurityCode(securityCode);
     packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
-    var packedMessage = okapi.DIDComm.pack(packRequest);
+    var packedMessage = DIDComm.pack(packRequest);
 
     return new Promise((resolve, reject) => {
       // Invoke create wallet using encrypted message
@@ -125,12 +122,12 @@ export class TrinsicWalletService extends ServiceBase {
           reject(error.message);
         }
 
-        let unpackRequest = new okapi.UnpackRequest();
+        let unpackRequest = new UnpackRequest();
         unpackRequest.setMessage(response);
         unpackRequest.setReceiverKey(myExchangeKey);
         unpackRequest.setSenderKey(providerExchangeKey);
 
-        let decryptedResponse = okapi.DIDComm.unpack(unpackRequest);
+        let decryptedResponse = DIDComm.unpack(unpackRequest);
 
         let createWalletResponse = CreateWalletResponse.deserializeBinary(decryptedResponse.getPlaintext_asU8());
 
@@ -138,7 +135,7 @@ export class TrinsicWalletService extends ServiceBase {
         let walletProfile = new WalletProfile();
         walletProfile.setWalletId(createWalletResponse.getWalletId());
         walletProfile.setCapability(createWalletResponse.getCapability());
-        walletProfile.setDidDocument(myKey.getDidDocument());
+        walletProfile.setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()));
         walletProfile.setInvoker(createWalletResponse.getInvoker());
         walletProfile.setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 
