@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 # Provider
 trinsic wallet create --description "Clinic's Wallet" --name clinic && \
