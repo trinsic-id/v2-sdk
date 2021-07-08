@@ -8,7 +8,7 @@ Wallets can be created directly by the user or through an invitation by the ecos
 
 ### Create wallet directly
 
-To create a wallet directly without invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/profiles) page.
+To create a wallet directly without invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/setup/#authorization) page.
 
 === "Trinsic CLI"
     ```bash
