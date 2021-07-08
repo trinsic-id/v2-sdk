@@ -49,7 +49,7 @@ jobs:
           npm run build
           npm test
         env:
-          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl }}
+          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || "beta-staging.centralus.azurecontainer.io:5000" }}
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
