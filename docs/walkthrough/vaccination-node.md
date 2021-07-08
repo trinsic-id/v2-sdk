@@ -2,6 +2,7 @@
 
 --8<----
 walkthrough/snippets/intro-infrastructure.md
+walkthrough/snippets/intro-use-case.md
 --8<----
 
 ## Technical requirements
@@ -53,7 +54,7 @@ const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 // Serialize profile by exporting the binary protobuf form
 fs.writeFileSync("allison.bin", allison.serializeBinary());
-  
+
 // Create profile from existing data
 let profile = fs.readFileSync("allison.bin");
 let allison = WalletProfile.deserializeBinary(profile);
@@ -62,11 +63,11 @@ let allison = WalletProfile.deserializeBinary(profile);
 !!! note "Loading Profiles"
     In order to load a profile from a saved file you'll need to install google-protobuf with `npm i google-protobuf` in order to use the Struct class and convert the DID Document from JavaScript to the protobuf form.
 
-Read more about [security profiles](/reference/profiles/) and authentication.
+Read more about [security profiles](../reference/setup/index.md#authorization) and authentication.
 
 ## Certificate issuance
 
-Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This ceritificate is digitially signed by the clinic, acting as an issuer.
+Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
 The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
 
 === "vaccination-certificate-unsigned.jsonld"
@@ -119,7 +120,7 @@ Allison can store this credential in her cloud wallet, simply by calling the [In
 ```js
 // Set active profile to 'allison' so we can manage her cloud wallet
 walletService.setProfile(allison);
-  
+
 // Insert the signed credential
 let itemId = await walletService.insertItem(credential);
 ```
