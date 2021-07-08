@@ -1,27 +1,30 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
-# Provider
+# Provider creates wallets for clinic and airline
 trinsic wallet create --description "Clinic's Wallet" --name clinic && \
 trinsic wallet create --description "Airline's wallet" --name airline;
 
-# Allison
+# Allison creates a wallet
 trinsic wallet create --name allison --security-code <code>
 
 # Issuer
-trinsic --profile clinic issuer issue --document ../vaccination-certificate-unsigned.jsonld --out ./vaccination-certificate-signed.jsonld
+trinsic --profile clinic issuer issue --document vaccination-certificate-unsigned.jsonld --out ./clinic/vaccination-certificate-signed.jsonld
 
-more ./vaccination-certificate-signed.jsonld
+more ./clinic/vaccination-certificate-signed.jsonld
 
-mv ./vaccination-certificate-signed.jsonld allison
+# Send to holder. Can be done many ways
+mv ./clinic/vaccination-certificate-signed.jsonld allison
 
-# Allison
-trinsic --profile allison wallet insert-item --item ./vaccination-certificate-signed.jsonld
+# Allison inserts credential into cloud wallet 
+trinsic --profile allison wallet insert-item --item ./allison/vaccination-certificate-signed.jsonld
 
-trinsic --profile allison issuer create-proof --document-id "" --out ./vaccination-certificate-partial-proof.jsonld --reveal-document ../vaccination-certificate-frame.jsonld
+# Allison creates a proof of her credential
+trinsic --profile allison issuer create-proof --document-id "" --out ./allison/vaccination-certificate-partial-proof.jsonld --reveal-document ./vaccination-certificate-frame.jsonld
 
-more vaccination-certificate-partial-proof.jsonld
+more ./allison/vaccination-certificate-partial-proof.jsonld
 
-mv vaccination-certificate-partial-proof.json ../airline
+# Allison sends proof of vaccination to an airline
+mv ./allison/vaccination-certificate-partial-proof.json ./airline
 
-# Airline
-trinsic --profile airline issuer verify-proof --proof-document ./vaccination-certificate-partial-proof.jsonld
+# Airline verifies proof
+trinsic --profile airline issuer verify-proof --proof-document ./airline/vaccination-certificate-partial-proof.jsonld

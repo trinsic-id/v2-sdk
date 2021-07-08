@@ -32,7 +32,6 @@ theme:
     - navigation.tracking
     - navigation.expand
     - navigation.sections
-    - toc.integrate
   icon:
     repo: fontawesome/brands/github-alt
   font:
