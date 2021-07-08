@@ -1,5 +1,6 @@
 import json
 import unittest
+import os
 from os.path import abspath, join, dirname
 
 from trinsic.services import WalletService
@@ -15,7 +16,8 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         return abspath(join(dirname(__file__), "vaccination-certificate-frame.jsonld"))
 
     async def test_trinsic_service_demo(self):
-        wallet_service = WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000")
+        server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
+        wallet_service = WalletService(server_address)
 
         # SETUP ACTORS
         # Create 3 different profiles for each participant in the scenario
