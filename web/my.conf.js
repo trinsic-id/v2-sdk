@@ -12,10 +12,9 @@ module.exports = function(config) {
     // available frameworks: https://www.npmjs.com/search?q=keywords:karma-adapter
     frameworks: ['jasmine'],
 
-
     // list of files / patterns to load in the browser
     files: [
-      'test/*.js'
+      'test/*.js',
     ],
 
 
@@ -52,10 +51,9 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
-
     // start these browsers
     // available browser launchers: https://www.npmjs.com/search?q=keywords:karma-launcher
-    browsers: ['Chrome', 'Firefox', 'Safari'],
+    browsers: ['headlessChrome'],
 
 
     // Continuous Integration mode

@@ -3,7 +3,7 @@ const { BinaryWriter } = require('google-protobuf');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 const main = async () => {
-  let walletService = new WalletService()//"http://20.84.172.172:5000");
+  let walletService = new WalletService("http://tomislav-staging.eastus.azurecontainer.io:5000")
 
   // SETUP ACTORS
   // Create 3 different profiles for each participant in the scenario
@@ -12,10 +12,10 @@ const main = async () => {
   let airline = await walletService.createWallet();
   
   // Store profile for later use
-  localStorage.setItem("allison.bin", allison.serializeBinary());
+  // localStorage.setItem("allison.bin", allison.serializeBinary());
   
   // Create profile from existing data
-  let allison = WalletProfile.deserializeBinary(localStorage.getItem("allison.bin"));
+  // let allison = WalletProfile.deserializeBinary(localStorage.getItem("allison.bin"));
   
   // ISSUE CREDENTIAL
   // Sign a credential as the clinic and send it to Allison
@@ -44,7 +44,7 @@ const main = async () => {
         "countryOfVaccination": "US"
     }
   };
-  let credential = await walletService.issueCredential(JSON.parse(credentialJson));
+  let credential = await walletService.issueCredential(credentialJson);
   
   console.log("Credential:");
   console.log(credential);
@@ -80,7 +80,7 @@ const main = async () => {
         "countryOfVaccination": {}
     }
   };
-  let credentialProof = await walletService.createProof(itemId, JSON.parse(proofRequestJson));
+  let credentialProof = await walletService.createProof(itemId, proofRequestJson);
   
   console.log("Proof:");
   console.log(credentialProof);

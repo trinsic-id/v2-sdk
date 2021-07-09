@@ -1,0 +1,13 @@
+const path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: {
+    wallet: './test/WalletService.test.js',
+    provider: './test/ProviderService.test.js',
+  },
+  output: {
+    path: path.resolve(__dirname, './test/build'),
+    filename: '[name].bundle.js',
+  }
+};
