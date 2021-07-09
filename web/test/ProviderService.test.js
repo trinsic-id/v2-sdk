@@ -1,12 +1,12 @@
-const jasmine = require("jasmine");
-const { TrinsicProviderService } = require("../dist/ProviderService.js");
-const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../dist/proto/ProviderService_pb');
-const { TrinsicWalletService } = require("../dist/WalletService.js");
-const { WalletProfile } = require("../dist/proto/WalletService_pb.js");
+const { ProviderService, WalletService } = require("../lib");
+const { InviteRequest, InvitationStatusRequest, InvitationStatusResponse } = require('../lib/proto/ProviderService_pb');
+const { WalletProfile } = require("../lib/proto/WalletService_pb.js");
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
-const fs = require("fs");
-const path = require("path");
-global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+let endpoint = require('./env').env.ENDPOINT
+
+const randomEmail = (suffix = "example.com", length = 16) => {
+  return Math.random().toString(16).substr(2, length) + '@' + suffix;
+}
 
 const createProfile = async () => {
   // // if you have a profile saved
@@ -22,32 +22,32 @@ const createProfile = async () => {
   // profile.setWalletId(profileJSON.walletId);
 
   // if you don't have a profile saved
-  let walletService = new TrinsicWalletService();
-  let profile = await walletService.createWallet()
+  let service = new WalletService(endpoint);
+  let profile = await service.createWallet()
 
   return profile;
 }
 
 it("make an invitation", async () => {
-  let providerService = new TrinsicProviderService("http://localhost:5000");
+  let providerService = new ProviderService(endpoint);
   let profile = await createProfile();
   await providerService.setProfile(profile);
   let inviteRequest = new InviteRequest();
-  inviteRequest.setEmail("michael.black@trinsic.id");
+  inviteRequest.setEmail(randomEmail());
   inviteRequest.setDescription("invitation");
   
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
   expect(inviteResponse).not.toBeNull();
   expect(inviteResponse.getInvitationId()).not.toBeNull();
-});
+}, 10000);
 
 it("check status of invitation", async () => {
-  // let providerService = new TrinsicProviderService();
+  // let providerService = new ProviderService();
   // let profile = await createProfile();
   // providerService.setProfile(profile);
   // let inviteRequest = new InviteRequest();
-  // inviteRequest.setEmail("michael.black@trinsic.id");
+  // inviteRequest.setEmail(randomEmail());
   // inviteRequest.setDescription("invitation");
 
   // let inviteResponse = await providerService.inviteParticipant(inviteRequest);

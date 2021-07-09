@@ -135,7 +135,9 @@ export class TrinsicWalletService extends ServiceBase {
         let walletProfile = new WalletProfile();
         walletProfile.setWalletId(createWalletResponse.getWalletId());
         walletProfile.setCapability(createWalletResponse.getCapability());
-        walletProfile.setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()));
+        let didDoc = new JsonPayload();
+        didDoc.setJsonStruct(myKey.getDidDocument());
+        walletProfile.setDidDocument(didDoc);
         walletProfile.setInvoker(createWalletResponse.getInvoker());
         walletProfile.setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 

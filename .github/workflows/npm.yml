@@ -17,8 +17,15 @@ on:
         description: "Package Version"
         required: true
         default: "1.0.0"
+      testUrl:
+        description: "Test Endpoint"
+        required: true
+        default: "beta-staging.centralus.azurecontainer.io:5000"
   release:
     types: [published, prereleased]
+  
+env:
+  DEFAULT_TEST_URL: "beta-staging.centralus.azurecontainer.io:5000"
 
 jobs:
   build_test:
@@ -43,6 +50,9 @@ jobs:
 
           npm install
           npm run build
+          npm test
+        env:
+          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || env.DEFAULT_TEST_URL }}
         shell: pwsh
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v2

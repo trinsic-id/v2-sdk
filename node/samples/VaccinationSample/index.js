@@ -1,9 +1,9 @@
-const { WalletService, WalletProfile } = require('@trinsic/trinsic');
+const { WalletService, WalletProfile } = require('../../lib');
 const fs = require('fs');
 const { Struct } = require('google-protobuf/google/protobuf/struct_pb');
 
 const main = async () => {
-  let walletService = new WalletService()//"http://20.84.172.172:5000");
+  let walletService = new WalletService();
 
   // SETUP ACTORS
   // Create 3 different profiles for each participant in the scenario
