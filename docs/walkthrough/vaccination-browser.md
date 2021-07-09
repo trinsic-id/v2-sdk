@@ -21,7 +21,7 @@ You can select all the defaults for the node project.
 Add the required dependencies
 
 ```bash
-npm i @trinsic/trinsic-web 
+npm i @trinsic/trinsic-web
 ```
 
 ```bash
@@ -30,7 +30,7 @@ npm i --save-dev http-server webpack webpack-cli
 
 ## Configure Webpack
 
-After installing the dependencies you'll need a configuration file for webpack. 
+After installing the dependencies you'll need a configuration file for webpack.
 Create a file called webpack.config.js at the root of your project and then copy and paste this into that file
 ```js
 const path = require('path');
@@ -114,7 +114,7 @@ let allison = WalletProfile.deserializeBinary(localStorage.getItem("allison.bin"
 !!! note "Loading Profiles"
     In order to load a profile from a saved file you'll need to install google-protobuf with `npm i google-protobuf` in order to use the Struct class and convert the DID Document from JavaScript to the protobuf form.
 
-Read more about [security profiles](/reference/profiles/) and authentication.
+Read more about [security profiles](../reference/setup/index.md/profiles) and authentication.
 
 ## Certificate issuance
 
@@ -164,7 +164,7 @@ Allison can store this credential in her cloud wallet, simply by calling the [In
 ```js
 // Set active profile to 'allison' so we can manage her cloud wallet
 walletService.setProfile(allison);
-  
+
 // Insert the signed credential
 let itemId = await walletService.insertItem(credential);
 ```
@@ -223,7 +223,7 @@ document.getElementById("wallet").innerHTML = valid
 ```
 
 ## Build
-To build the bundle.js file run 
+To build the bundle.js file run
 ```bash
 webpack build
 ```

@@ -1,8 +1,8 @@
-# Configuration
+## Configuration
 
 Trinsic SDK contains minimal configuration. This configuration is stored differently, depending on what package is used.
 
-## Configuration with CLI
+### Configuration with CLI
 
 The CLI stores it's configuration in the user's home directory, typically in `~/.trinsic/`. This directory contains the main configuration file `config.toml` and all the profile data.
 
@@ -48,7 +48,7 @@ The following attributes are currently supported:
     trinsic config --profile-default alice
     ```
 
-## Configuration with SDK
+### Configuration with SDK
 
 When using the SDK in your code, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.
 

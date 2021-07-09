@@ -1,5 +1,3 @@
-### Trinsic CLI
-
 The CLI can be installed directly using the Cargo tool. This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
 
 Once installed, run this command in terminal:

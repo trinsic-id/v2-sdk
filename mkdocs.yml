@@ -1,39 +1,37 @@
-site_name: "Ecosystems"
+site_name: "Documentation"
 site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
+site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
-  - Getting Started:
-      - Introduction: index.md
-      - What is Trinsic?: trinsic.md
-      - Become an Early Adopter: early-adopter.md
-      - Walkthrough:
-          - Vaccination Use Case: walkthrough.md
-          - .NET Core: walkthrough/vaccination-net.md
-          - TypeScript / JavaScript:
-            - Node.js: walkthrough/vaccination-node.md
-            - Browser: walkthrough/vaccination-browser.md
-
+  - Overview: index.md
+  - Concepts: concepts/index.md
+  - Start Building:
+    - CLI: walkthrough/vaccination-cli.md
+    - Node: walkthrough/vaccination-node.md
+    - Web: walkthrough/vaccination-browser.md
+    - C#: walkthrough/vaccination-net.md
   - Reference:
-      - Overview: reference/index.md
-      - Installation: reference/installation/index.md
-      - Concepts:
-          - Security Profiles: reference/profiles.md
-          - Configuration: reference/configuration.md
-      - Services:
-          - Wallet Service: reference/services/wallet-service.md
-          - Provider Service: reference/services/provider-service.md
-  - FAQ: faq.md
+    - Setup: reference/setup/index.md
+    - Wallet Service: reference/services/wallet-service.md
+    - Provider Service: reference/services/provider-service.md
+  - Support:
+    - Join Slack Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
+    - Contribute on Github: https://github.com/trinsic-id
+    - Email us: mailto:support@trinsic.id
+  - What's Next:
+    - Join Trinsic Ecosystems: early-adopter.md
 theme:
   name: material
   logo: _static/logo-title.svg
   favicon: _static/logo.png
   features:
     - content.tabs.link
-    - navigation.sections
-    - navigation.tabs
+    - navigation.instant
     - navigation.tracking
+    - navigation.expand
+    - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
   font:
@@ -72,11 +70,12 @@ markdown_extensions:
   - pymdownx.details
   - toc:
       permalink: true
+      toc_depth: 2
   - abbr
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
-  - javascripts/config.js
+  - _static/javascripts/config.js
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css
   - _static/extra.css

@@ -30,6 +30,8 @@ jobs:
       - name: Build, Test, Pack
         run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -UseDevelopOkapi
         shell: pwsh
+        env:
+          TRINSIC_SERVER_ADDRESS: http://tomislav-staging.eastus.azurecontainer.io:5000
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
