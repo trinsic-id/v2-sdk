@@ -9,6 +9,7 @@
 
 - .NET
 - TypeScript
+- Python
 - Command Line
 
 ## Working with submodules
