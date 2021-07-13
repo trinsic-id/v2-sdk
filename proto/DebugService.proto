@@ -5,5 +5,7 @@ import "google/protobuf/empty.proto";
 
 service Debugging {
     rpc CallEmpty(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+    rpc CallEmptyAuth(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
