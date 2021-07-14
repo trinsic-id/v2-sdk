@@ -83,7 +83,9 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
     use trinsic::MessageFormatter;
     let profile = WalletProfile {
         wallet_id: response.wallet_id,
-        did_document: Some(Struct::from_vec(&did_doc_bytes).unwrap()),
+        did_document: Some(JsonPayload {
+            json: Some(Json::JsonStruct(Struct::from_vec(&did_doc_bytes).unwrap())),
+        }),
         invoker: key.key[0].kid.clone(),
         invoker_jwk: key.key[0].to_vec(),
         capability: response.capability,
