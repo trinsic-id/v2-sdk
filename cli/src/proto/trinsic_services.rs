@@ -46,6 +46,21 @@ pub mod debugging_client {
                 http::uri::PathAndQuery::from_static("/trinsic.services.Debugging/CallEmpty");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        pub async fn call_empty_auth(
+            &mut self,
+            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
+        ) -> Result<tonic::Response<super::super::google::protobuf::Empty>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/trinsic.services.Debugging/CallEmptyAuth");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
     }
     impl<T: Clone> Clone for DebuggingClient<T> {
         fn clone(&self) -> Self {
