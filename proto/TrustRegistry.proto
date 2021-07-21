@@ -1,0 +1,112 @@
+syntax = "proto3";
+package trinsic.services;
+
+import "google/protobuf/struct.proto";
+import "CoreService.proto";
+
+message AddTrustRegistryRequest {
+    string trust_registry = 1;
+    string did_uri = 2;
+    string description = 3;
+    string website = 4;
+}
+
+message AddTrustRegistryResponse {
+    ResponseStatus status = 1;
+}
+
+message RemoveTrustRegistryRequest {
+    string trust_registry_uri = 1;
+}
+
+message RemoveTrustRegistryResponse {
+    ResponseStatus status = 1;
+}
+
+message ListTrustRegistriesRequest {}
+
+message ListTrustRegistriesResponse {
+    repeated TrustRegistry registries = 1;
+}
+
+message TrustRegistry {
+    string trust_registry = 1;
+    string description = 3;
+    string website = 4;
+}
+
+message RegisterAuthorityRequest {
+    oneof authority {
+        string did_uri = 1;
+        string x509_cert = 2;
+    }
+
+    oneof template {
+        string template_uri = 10;
+        string context_uri = 11;
+    }
+
+    repeated AuthorityAction action = 20;
+}
+
+message RegisterAuthorityResponse {
+    ResponseStatus status = 1;
+}
+
+message UnregisterAuthorityRequest {
+    oneof authority {
+        string did_uri = 1;
+        string x509_cert = 2;
+    }
+
+    oneof template {
+        string template_uri = 10;
+        string context_uri = 11;
+    }
+}
+
+message UnregisterAuthorityResponse {
+    ResponseStatus status = 1;
+}
+
+message CheckAuthorityRequest {
+    string authority = 1;
+    // Optional. If not specified, default EGF will be used
+    string trust_registry = 2;
+    AuthorityAction action = 3;
+    // Optional. If not specified, will return all authorized templates for this issuer
+    // under the specified EGF
+    string template_url = 4;
+}
+
+enum AuthorityAction {
+    ISSUE = 0;
+    VERIFY = 1;
+}
+
+message CheckAuthorityResponse {
+    string authority = 1;
+    repeated AuthorityEntry result = 2;
+}
+
+message AuthorityEntry {
+    string template_url = 1;
+    AuthorityAction action = 2;
+}
+
+service TrustRegistryRpc {
+    // Adds a trust registry defintion to the ecosystem
+    rpc AddTrustRegistry(AddTrustRegistryRequest) returns (AddTrustRegistryResponse);
+
+    rpc RemoveTrustRegistry(RemoveTrustRegistryRequest) returns (RemoveTrustRegistryResponse);
+
+    rpc ListTrustRegistries(ListTrustRegistriesRequest) returns (ListTrustRegistriesResponse);
+
+    // Registers an authoritative issuer with a credential template
+    rpc RegisterAuthority(RegisterAuthorityRequest) returns (RegisterAuthorityResponse);
+
+    // Removes an authoritative issuer with a credential template from the trust registry
+    rpc UnregisterAuthority(UnregisterAuthorityRequest) returns (UnregisterAuthorityResponse);
+
+    rpc CheckAuthority(CheckAuthorityRequest) returns (CheckAuthorityResponse);
+}
