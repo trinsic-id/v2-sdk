@@ -1,5 +1,5 @@
-const okapi = require("@trinsic/okapi");
-// import okapi from '@trinsic/okapi';
+//const okapi = require("@trinsic/okapi");
+import okapi from '@trinsic/okapi';
 import { Metadata } from "grpc-web";
 import { WalletProfile } from './proto/WalletService_pb';
 import { Struct } from 'google-protobuf/google/protobuf/struct_pb';
