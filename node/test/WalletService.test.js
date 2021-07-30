@@ -26,13 +26,6 @@ test("create wallet profile", async (t) => {
   let service = new WalletService(endpoint);
   let profile = await service.createWallet();
 
-  // let homePath = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME']
-  // if (!fs.existsSync(path.join(homePath, '.trinsic'))) {
-  //     fs.mkdirSync(path.join(homePath, '.trinsic'));
-  // }
-  // let p = path.join(homePath, '.trinsic', 'profile.bin');
-  // fs.writeFileSync(p, profile.serializeBinary());
-
   t.not(profile, null);
   t.pass();
 });
@@ -73,12 +66,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
   await walletService.setProfile(profile);
 
-  let unsignedDocument = {
-    "@context": "https://w3id.org/security/v2",
-    id: "https://issuer.oidp.uscis.gov/credentials/83627465",
-  };
-
-  let issueResponse = await walletService.issueCredential(unsignedDocument);
+  let issueResponse = await walletService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
 
   let itemId = await walletService.insertItem(issueResponse);
 
@@ -90,7 +78,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   t.not(items, null);
   t.true(items.getItemsList().length > 0);
 
-  let proof = await walletService.createProof(itemId, { "@context": "https://w3id.org/security/v2" });
+  let proof = await walletService.createProof(itemId, require("./data/vaccination-certificate-frame.json"));
 
   let valid = await walletService.verifyProof(proof);
 
@@ -130,28 +118,28 @@ test("send an item to a user's wallet using email", async (t) => {
   let walletService = new WalletService(endpoint);
 
   let providerProfile = await walletService.createWallet();
-  providerService.setProfile(providerProfile);
+  await providerService.setProfile(providerProfile);
 
   // Provider creates initial wallet for Alice
   let aliceEmail = randomEmail();
-  let aliceInviteRequest = new InviteRequest();
-  aliceInviteRequest.setDescription("Test Wallet");
-  aliceInviteRequest.setEmail(aliceEmail);
+  let aliceInviteRequest = new InviteRequest()
+    .setDescription("Test Wallet")
+    .setEmail(aliceEmail);
   let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
   let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
   let bobEmail = randomEmail();
-  let bobInviteRequest = new InviteRequest();
-  bobInviteRequest.setDescription("Test Wallet");
-  bobInviteRequest.setEmail(bobEmail);
+  let bobInviteRequest = new InviteRequest()
+    .setDescription("Test Wallet")
+    .setEmail(bobEmail);
   invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
   let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
   // Alice's searches for wallet records
-  walletService.setProfile(aliceProfile);
+  await walletService.setProfile(aliceProfile);
   await walletService.send({ test: "value" }, bobEmail);
 
-  walletService.setProfile(bobProfile);
+  await walletService.setProfile(bobProfile);
   let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
 
   t.not(results.getItemsList(), null);
