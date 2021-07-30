@@ -1,8 +1,9 @@
 {
   "name": "@trinsic/trinsic-web",
-  "version": "0.0.1",
+  "version": "1.0.0-preview.27",
   "description": "verifiable credentials",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/*"
   ],
