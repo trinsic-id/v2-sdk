@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { randomEmail } = require("./helpers/random");
 
-const endpoint = process.env.TRINSIC_TEST_URL
+const endpoint = process.env.TRINSIC_TEST_URL;
 
 const createProfile = async () => {
   // if you have a profile saved
@@ -15,7 +15,7 @@ const createProfile = async () => {
 
   // if you don't have a profile saved
   let walletService = new WalletService(endpoint);
-  let profile = await walletService.createWallet()
+  let profile = await walletService.createWallet();
 
   return profile;
 };
@@ -23,11 +23,11 @@ const createProfile = async () => {
 test("make an invitation", async (t) => {
   let providerService = new ProviderService(endpoint);
   let profile = await createProfile();
-  providerService.setProfile(profile);
-  let inviteRequest = new InviteRequest();
-  let email = randomEmail();
-  inviteRequest.setEmail(email);
-  inviteRequest.setDescription("invitation");
+  await providerService.setProfile(profile);
+
+  let inviteRequest = new InviteRequest()
+    .setEmail(randomEmail())
+    .setDescription("invitation");
 
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
