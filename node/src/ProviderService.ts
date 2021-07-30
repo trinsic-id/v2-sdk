@@ -23,10 +23,7 @@ export class TrinsicProviderService extends ServiceBase {
 
   setChannel(channel: Channel) {
     this.channel = channel;
-    this.client = new ProviderClient(
-      channel.getTarget(),
-      ChannelCredentials.createInsecure()
-    );
+    this.client = new ProviderClient(channel.getTarget(), ChannelCredentials.createInsecure());
   }
 
   public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
