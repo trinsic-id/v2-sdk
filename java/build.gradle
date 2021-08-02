@@ -38,7 +38,7 @@ repositories {
         url = "https://maven.pkg.github.com/trinsic-id/okapi"
         credentials {
             username = "fundthmcalculus"
-            password = "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"
+            password = ""  // TODO - Personal access token with `read:packages`
         }
     }
 }
