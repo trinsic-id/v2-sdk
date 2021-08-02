@@ -3,51 +3,56 @@ package trinsic.services;
 
 import "CoreService.proto";
 
-message AddGovernanceFrameworkRequest {
+message AddFrameworkRequest {
     GovernanceFramework governance_framework = 1;
 }
 
-message AddGovernanceFrameworkResponse {
+message AddFrameworkResponse {
     ResponseStatus status = 1;
 }
 
-message RemoveGovernanceFrameworkRequest {
+message RemoveFrameworkRequest {
     GovernanceFramework governance_framework = 1;
 }
 
-message RemoveGovernanceFrameworkResponse {
+message RemoveFrameworkResponse {
     ResponseStatus status = 1;
 }
 
-message ListGovernanceFrameworksRequest {}
+message SearchRegistryRequest {
+    string query = 1; // SELECT c from c where c.type == 'GovernaceFramework'
+}
 
-message ListGovernanceFrameworksResponse {
+message SearchRegistryResponse {
     repeated GovernanceFramework governance_frameworks = 1;
 }
 
 message GovernanceFramework {
-    string governance_framework_uri = 1;
+    string framework_uri = 1;
+    string authority_uri = 2;
     string description = 3;
 }
 
-message RegisterAuthorityRequest {
+message RegisterMemberRequest {
     oneof authority {
         string did_uri = 1;
         string x509_cert = 2;
     }
 
     string credential_type_uri = 10;
-    repeated AuthorityAction action = 20;
+    uint64 valid_from_utc = 11;
+    uint64 valid_to_utc = 12;
+    repeated MemberRole role = 20;
 }
 
-message RegisterAuthorityResponse {
+message RegisterMemberResponse {
     ResponseStatus status = 1;
 
     JsonPayload authority_credential = 2;
 }
 
-message UnregisterAuthorityRequest {
-    oneof authority {
+message UnregisterMemberRequest {
+    oneof member {
         string did_uri = 1;
         string x509_cert = 2;
     }
@@ -58,48 +63,65 @@ message UnregisterAuthorityRequest {
     }
 }
 
-message UnregisterAuthorityResponse {
+message UnregisterMemberResponse {
     ResponseStatus status = 1;
 }
 
-message CheckAuthorityRequest {
-    string authority = 1;
-    // Optional. If not specified, default EGF will be used
-    string trust_registry = 2;
-    AuthorityAction action = 3;
+message GetMemberStatusRequest {
+    string governance_framework_uri = 1;
+    MemberRole role = 2;
     // Optional. If not specified, will return all authorized templates for this issuer
     // under the specified EGF
-    string template_url = 4;
+    string credential_type_uri = 3;
 }
 
-enum AuthorityAction {
-    ISSUE = 0;
-    VERIFY = 1;
+enum RegistrationStatus {
+    CURRENT = 0; // - the entity is currently authorized, as of time of the query.
+    EXPIRED = 1; // - entity rights have expired.
+    TERMINATED = 2; // - entity has voluntarily ceased Issuer role under the specific EGF.
+    REVOKED = 3; // - entity authority under specific EGF was terminated by the governing authority.
 }
 
-message CheckAuthorityResponse {
-    string authority = 1;
-    repeated AuthorityEntry result = 2;
+enum MemberRole {
+    ISSUER = 0;
+    VERIFIER = 1;
 }
 
-message AuthorityEntry {
-    string template_url = 1;
-    AuthorityAction action = 2;
+message GetMemberStatusResponse {
+    string governance_framework_uri = 1;
+    oneof member {
+        string did_uri = 2;
+        string x509_cert = 3;
+    }
+    repeated MemberEntry result = 4;
 }
+
+message MemberEntry {
+    string credential_type_uri = 1;
+    MemberRole role = 2;
+}
+
+message FetchDataRequest {
+    string governance_framework_uri = 1;
+}
+
+message FetchDataResponse {}
 
 service TrustRegistry {
     // Adds a trust registry defintion to the ecosystem
-    rpc AddGovernanceFramework(AddGovernanceFrameworkRequest) returns (AddGovernanceFrameworkResponse);
+    rpc AddFramework(AddFrameworkRequest) returns (AddFrameworkResponse);
 
-    rpc RemoveGovernanceFramework(RemoveGovernanceFrameworkRequest) returns (RemoveGovernanceFrameworkResponse);
+    rpc RemoveFramework(RemoveFrameworkRequest) returns (RemoveFrameworkResponse);
 
-    rpc ListGovernanceFrameworks(ListGovernanceFrameworksRequest) returns (ListGovernanceFrameworksResponse);
+    rpc SearchRegistry(SearchRegistryRequest) returns (SearchRegistryResponse);
 
     // Registers an authoritative issuer with a credential template
-    rpc RegisterAuthority(RegisterAuthorityRequest) returns (RegisterAuthorityResponse);
+    rpc RegisterMember(RegisterMemberRequest) returns (RegisterMemberResponse);
 
     // Removes an authoritative issuer with a credential template from the trust registry
-    rpc UnregisterAuthority(UnregisterAuthorityRequest) returns (UnregisterAuthorityResponse);
+    rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
 
-    rpc CheckAuthority(CheckAuthorityRequest) returns (CheckAuthorityResponse);
+    rpc GetMemberStatus(GetMemberStatusRequest) returns (GetMemberStatusResponse);
+
+    rpc FetchData(FetchDataRequest) returns (stream FetchDataResponse);
 }
