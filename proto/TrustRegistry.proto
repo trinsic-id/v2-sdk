@@ -1,38 +1,33 @@
 syntax = "proto3";
 package trinsic.services;
 
-import "google/protobuf/struct.proto";
 import "CoreService.proto";
 
-message AddTrustRegistryRequest {
-    string trust_registry = 1;
-    string did_uri = 2;
-    string description = 3;
-    string website = 4;
+message AddGovernanceFrameworkRequest {
+    GovernanceFramework governance_framework = 1;
 }
 
-message AddTrustRegistryResponse {
+message AddGovernanceFrameworkResponse {
     ResponseStatus status = 1;
 }
 
-message RemoveTrustRegistryRequest {
-    string trust_registry_uri = 1;
+message RemoveGovernanceFrameworkRequest {
+    GovernanceFramework governance_framework = 1;
 }
 
-message RemoveTrustRegistryResponse {
+message RemoveGovernanceFrameworkResponse {
     ResponseStatus status = 1;
 }
 
-message ListTrustRegistriesRequest {}
+message ListGovernanceFrameworksRequest {}
 
-message ListTrustRegistriesResponse {
-    repeated TrustRegistry registries = 1;
+message ListGovernanceFrameworksResponse {
+    repeated GovernanceFramework governance_frameworks = 1;
 }
 
-message TrustRegistry {
-    string trust_registry = 1;
+message GovernanceFramework {
+    string governance_framework_uri = 1;
     string description = 3;
-    string website = 4;
 }
 
 message RegisterAuthorityRequest {
@@ -41,16 +36,14 @@ message RegisterAuthorityRequest {
         string x509_cert = 2;
     }
 
-    oneof template {
-        string template_uri = 10;
-        string context_uri = 11;
-    }
-
+    string credential_type_uri = 10;
     repeated AuthorityAction action = 20;
 }
 
 message RegisterAuthorityResponse {
     ResponseStatus status = 1;
+
+    JsonPayload authority_credential = 2;
 }
 
 message UnregisterAuthorityRequest {
@@ -94,13 +87,13 @@ message AuthorityEntry {
     AuthorityAction action = 2;
 }
 
-service TrustRegistryRpc {
+service TrustRegistry {
     // Adds a trust registry defintion to the ecosystem
-    rpc AddTrustRegistry(AddTrustRegistryRequest) returns (AddTrustRegistryResponse);
+    rpc AddGovernanceFramework(AddGovernanceFrameworkRequest) returns (AddGovernanceFrameworkResponse);
 
-    rpc RemoveTrustRegistry(RemoveTrustRegistryRequest) returns (RemoveTrustRegistryResponse);
+    rpc RemoveGovernanceFramework(RemoveGovernanceFrameworkRequest) returns (RemoveGovernanceFrameworkResponse);
 
-    rpc ListTrustRegistries(ListTrustRegistriesRequest) returns (ListTrustRegistriesResponse);
+    rpc ListGovernanceFrameworks(ListGovernanceFrameworksRequest) returns (ListGovernanceFrameworksResponse);
 
     // Registers an authoritative issuer with a credential template
     rpc RegisterAuthority(RegisterAuthorityRequest) returns (RegisterAuthorityResponse);

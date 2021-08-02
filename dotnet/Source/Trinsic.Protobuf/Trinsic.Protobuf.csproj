@@ -19,22 +19,9 @@
     <Protobuf Include="..\..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
     <Protobuf Include="..\..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
 
-    <!--<Protobuf Include="..\..\..\proto\models\Attributes.proto" Link="Proto/models/Attributes.proto" ProtoRoot="../../../proto" />
-    <Protobuf Include="..\..\..\proto\models\CredentialTemplates.proto" Link="Proto/models/CredentialTemplates.proto" ProtoRoot="../../../proto" />-->
     <Protobuf Include="..\..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
-    <!--<Protobuf Include="..\..\..\proto\models\Organizations.proto" Link="Proto\models\Organizations.proto" />-->
+    <Protobuf Include="..\..\..\proto\TrustRegistry.proto" Link="Proto\TrustRegistry.proto" />
 
-
-    <!--
-    <Protobuf Include="..\..\proto\models\Credentials.proto">
-      <Link>Proto\models\Credentials.proto</Link>
-    </Protobuf>
-    <Protobuf Include="..\..\proto\models\Presentations.proto">
-      <Link>Proto\models\Presentations.proto</Link>
-    </Protobuf>
-    <Protobuf Include="..\..\proto\models\PresentationTemplates.proto">
-      <Link>Proto\models\PresentationTemplates.proto</Link>
-    </Protobuf> -->
   </ItemGroup>
 
 </Project>
