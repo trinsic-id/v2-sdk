@@ -1,4 +1,12 @@
-import { DIDComm, DIDKey, GenerateKeyRequest, KeyType, PackRequest, ResolveRequest, UnpackRequest } from "@trinsic/okapi";
+import {
+  DIDComm,
+  DIDKey,
+  GenerateKeyRequest,
+  KeyType,
+  PackRequest,
+  ResolveRequest,
+  UnpackRequest,
+} from "@trinsic/okapi";
 import { EncryptedMessage } from "./proto/pbmse/pbmse_pb";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
@@ -50,8 +58,7 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public registerOrConnect(email: string): Promise<ConnectResponse> {
-    let request = new ConnectRequest();
-    request.setEmail(email);
+    let request = new ConnectRequest().setEmail(email);
 
     return new Promise((resolve, reject) => {
       this.client.connectExternalIdentity(request, (error, response) => {
@@ -80,9 +87,8 @@ export class TrinsicWalletService extends ServiceBase {
     // Fetch Server Configuration and find key to use
     // for generating shared secret for authenticated encryption
     let configuration = await this.getProviderConfiguration();
-    let resolveRequest = new ResolveRequest();
-    resolveRequest.setDid(configuration.getKeyAgreementKeyId());
-    let resolveResponse = DIDKey.resolve(resolveRequest);
+    let resolveRequest = new ResolveRequest().setDid(configuration.getKeyAgreementKeyId());
+    let resolveResponse = await DIDKey.resolve(resolveRequest);
 
     let providerExchangeKey = resolveResponse
       .getKeysList()
@@ -91,55 +97,55 @@ export class TrinsicWalletService extends ServiceBase {
     if (providerExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     // Generate new DID used by the current device
-    let keyRequest = new GenerateKeyRequest();
-    keyRequest.setKeyType(KeyType.ED25519);
-    let myKey = DIDKey.generate(keyRequest);
+    let keyRequest = new GenerateKeyRequest().setKeyType(KeyType.ED25519);
+    let myKey = await DIDKey.generate(keyRequest);
     let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
 
     if (myExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     let myDidDocument = myKey.getDidDocument().toJavaScript();
     // Create an encrypted message
-    let packRequest = new PackRequest();
-    packRequest.setSenderKey(myExchangeKey);
-    packRequest.setReceiverKey(providerExchangeKey);
-    let createWalletRequest = new CreateWalletRequest();
-    createWalletRequest.setDescription("My Cloud Wallet");
-    createWalletRequest.setController(myDidDocument["id"].toString());
+
+    let createWalletRequest = new CreateWalletRequest()
+      .setDescription("My Cloud Wallet")
+      .setController(myDidDocument["id"].toString());
     if (!securityCode) securityCode = "";
     createWalletRequest.setSecurityCode(securityCode);
-    packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
-    var packedMessage = DIDComm.pack(packRequest);
+    let packRequest = new PackRequest()
+      .setSenderKey(myExchangeKey)
+      .setReceiverKey(providerExchangeKey)
+      .setPlaintext(createWalletRequest.serializeBinary());
+
+    var packedMessage = await DIDComm.pack(packRequest);
 
     return new Promise((resolve, reject) => {
       // Invoke create wallet using encrypted message
       // Call the server endpoint with encrypted message
       let message = EncryptedMessage.deserializeBinary(packedMessage.getMessage().serializeBinary());
-      this.client.createWalletEncrypted(message, (error, response) => {
+
+      this.client.createWalletEncrypted(message, async (error, response) => {
         if (error) {
           console.error(error.message);
           reject(error.message);
         }
 
-        let unpackRequest = new UnpackRequest();
-        unpackRequest.setMessage(response);
-        unpackRequest.setReceiverKey(myExchangeKey);
-        unpackRequest.setSenderKey(providerExchangeKey);
+        let unpackRequest = new UnpackRequest()
+          .setMessage(response)
+          .setReceiverKey(myExchangeKey)
+          .setSenderKey(providerExchangeKey);
 
-        let decryptedResponse = DIDComm.unpack(unpackRequest);
+        let decryptedResponse = await DIDComm.unpack(unpackRequest);
 
         let createWalletResponse = CreateWalletResponse.deserializeBinary(decryptedResponse.getPlaintext_asU8());
 
         // This profile should be stored and supplied later
-        let walletProfile = new WalletProfile();
-        walletProfile.setWalletId(createWalletResponse.getWalletId());
-        walletProfile.setCapability(createWalletResponse.getCapability());
-        let didDoc = new JsonPayload();
-        didDoc.setJsonStruct(myKey.getDidDocument());
-        walletProfile.setDidDocument(didDoc);
-        walletProfile.setInvoker(createWalletResponse.getInvoker());
-        walletProfile.setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
+        let walletProfile = new WalletProfile()
+          .setWalletId(createWalletResponse.getWalletId())
+          .setCapability(createWalletResponse.getCapability())
+          .setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()))
+          .setInvoker(createWalletResponse.getInvoker())
+          .setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 
         resolve(walletProfile);
       });
@@ -151,8 +157,8 @@ export class TrinsicWalletService extends ServiceBase {
     request.setJsonStruct(Struct.fromJavaScript(document));
 
     return new Promise((resolve, reject) => {
-      let issueRequest = new IssueRequest();
-      issueRequest.setDocument(request);
+      let issueRequest = new IssueRequest().setDocument(request);
+
       this.credentialClient.issue(issueRequest, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
@@ -166,8 +172,8 @@ export class TrinsicWalletService extends ServiceBase {
   // must be authorized
   public search(query: string = "SELECT * from c"): Promise<SearchResponse> {
     return new Promise((resolve, reject) => {
-      let searchRequest = new SearchRequest();
-      searchRequest.setQuery(query);
+      let searchRequest = new SearchRequest().setQuery(query);
+
       this.client.search(searchRequest, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
@@ -180,12 +186,11 @@ export class TrinsicWalletService extends ServiceBase {
 
   // must be authorized
   public insertItem(item: JSStruct): Promise<string> {
-    var request = new JsonPayload();
-    request.setJsonStruct(Struct.fromJavaScript(item));
+    var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(item));
 
     return new Promise((resolve, reject) => {
-      let itemRequest = new InsertItemRequest();
-      itemRequest.setItem(request);
+      let itemRequest = new InsertItemRequest().setItem(request);
+
       this.client.insertItem(itemRequest, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
@@ -197,8 +202,7 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public send(document: JSStruct, email: string): Promise<SendResponse> {
-    var request = new JsonPayload();
-    request.setJsonStruct(Struct.fromJavaScript(document));
+    var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(document));
 
     return new Promise((resolve, reject) => {
       let sendRequest = new SendRequest();
@@ -215,8 +219,7 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public createProof(documentId: string, revealDocument: JSStruct): Promise<object> {
-    var request = new JsonPayload();
-    request.setJsonStruct(Struct.fromJavaScript(revealDocument));
+    var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(revealDocument));
 
     return new Promise((resolve, reject) => {
       let createProofRequest = new CreateProofRequest();
@@ -233,8 +236,7 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public verifyProof(proofDocument: JSStruct): Promise<boolean> {
-    var request = new JsonPayload();
-    request.setJsonStruct(Struct.fromJavaScript(proofDocument));
+    var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(proofDocument));
 
     return new Promise((resolve, reject) => {
       let verifyProofRequest = new VerifyProofRequest();

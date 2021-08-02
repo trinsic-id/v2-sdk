@@ -1,13 +1,16 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    wallet: './test/WalletService.test.js',
-    provider: './test/ProviderService.test.js',
+    wallet: "./test/WalletService.test.js",
+    provider: "./test/ProviderService.test.js",
   },
   output: {
-    path: path.resolve(__dirname, './test/build'),
-    filename: '[name].bundle.js',
-  }
+    path: path.resolve(__dirname, "./test/build"),
+    filename: "[name].bundle.js",
+  },
+  experiments: {
+    asyncWebAssembly: true,
+  },
 };
