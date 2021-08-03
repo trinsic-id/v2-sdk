@@ -346,3 +346,6 @@ Cargo.lock
 
 docs-site/
 python/venv/
+java/.gradle/
+java/build/
+libs/
