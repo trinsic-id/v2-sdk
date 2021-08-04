@@ -1,4 +1,6 @@
 syntax = "proto3";
+option go_package = "github.com/trinsic-id/sdk";
+
 package trinsic.services;
 
 import 'models/Attributes.proto';
