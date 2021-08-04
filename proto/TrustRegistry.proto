@@ -28,12 +28,12 @@ message SearchRegistryResponse {
 }
 
 message GovernanceFramework {
-    string framework_uri = 1;
-    string authority_uri = 2;
+    string governance_framework_uri = 1;
+    string trust_registry_uri = 2;
     string description = 3;
 }
 
-message RegisterMemberRequest {
+message RegisterIssuerRequest {
     oneof authority {
         string did_uri = 1;
         string x509_cert = 2;
@@ -41,14 +41,30 @@ message RegisterMemberRequest {
 
     string credential_type_uri = 10;
     uint64 valid_from_utc = 11;
-    uint64 valid_to_utc = 12;
-    repeated MemberRole role = 20;
+    uint64 valid_until_utc = 12;
+    string governance_framework_uri = 20;
 }
 
-message RegisterMemberResponse {
+message RegisterIssuerResponse {
     ResponseStatus status = 1;
 
     JsonPayload authority_credential = 2;
+}
+
+message RegisterVerifierRequest {
+    oneof authority {
+        string did_uri = 1;
+        string x509_cert = 2;
+    }
+
+    string presentation_type_uri = 10;
+    uint64 valid_from_utc = 11;
+    uint64 valid_until_utc = 12;
+    string governance_framework_uri = 20;
+}
+
+message RegisterVerifierResponse {
+    ResponseStatus status = 1;
 }
 
 message UnregisterMemberRequest {
@@ -116,7 +132,8 @@ service TrustRegistry {
     rpc SearchRegistry(SearchRegistryRequest) returns (SearchRegistryResponse);
 
     // Registers an authoritative issuer with a credential template
-    rpc RegisterMember(RegisterMemberRequest) returns (RegisterMemberResponse);
+    rpc RegisterIssuer(RegisterIssuerRequest) returns (RegisterIssuerResponse);
+    rpc RegisterVerifier(RegisterVerifierRequest) returns (RegisterVerifierResponse);
 
     // Removes an authoritative issuer with a credential template from the trust registry
     rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
