@@ -19,6 +19,10 @@ enum JsonFormat {
     String = 2;
 }
 
+message RequestOptions {
+    JsonFormat response_json_format = 1;
+}
+
 message JsonPayload {
     oneof json {
         google.protobuf.Struct json_struct = 1;

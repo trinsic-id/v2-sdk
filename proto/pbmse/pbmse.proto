@@ -2,25 +2,21 @@ syntax = "proto3";
 
 package pbmse;
 
+option go_package = "github.com/trinsic-id/sdk";
+
 // JWS
 // Protocol buffer message signing and encryption
 message SignedMessage {
     bytes payload = 1;
     repeated Signature signatures = 2;
-
-    message Header {
-        string algorithm = 1;
-        string key_id = 2;
-        string nonce = 3;
-    }
 }
-
 message Signature {
-    oneof header {
-        bytes protected = 1;
-        SignedMessage.Header unprotected = 2;
-    }
+    bytes header = 1;
     bytes signature = 3;
+}
+message SignatureHeader {
+    string algorithm = 1;
+    string key_id = 2;
 }
 
 // JWE
