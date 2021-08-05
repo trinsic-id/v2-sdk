@@ -43,12 +43,14 @@ message RegisterIssuerRequest {
     uint64 valid_from_utc = 11;
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
+
+    RequestOptions options = 100;
 }
 
 message RegisterIssuerResponse {
     ResponseStatus status = 1;
 
-    JsonPayload authority_credential = 2;
+    JsonPayload response_data = 2;
 }
 
 message RegisterVerifierRequest {
@@ -61,10 +63,14 @@ message RegisterVerifierRequest {
     uint64 valid_from_utc = 11;
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
+
+    RequestOptions options = 100;
 }
 
 message RegisterVerifierResponse {
     ResponseStatus status = 1;
+
+    JsonPayload response_data = 2;
 }
 
 message UnregisterMemberRequest {
