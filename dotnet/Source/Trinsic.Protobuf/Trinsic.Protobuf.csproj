@@ -20,7 +20,7 @@
     <Protobuf Include="..\..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
 
     <Protobuf Include="..\..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
-    <Protobuf Include="..\..\..\proto\TrustRegistry.proto" Link="Proto\TrustRegistry.proto" />
+    <Protobuf Include="..\..\..\proto\TrustRegistry.proto" Link="Proto/TrustRegistry.proto" />
 
   </ItemGroup>
 
