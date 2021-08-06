@@ -84,11 +84,16 @@ message GetProviderConfigurationResponse {
 
 message SearchRequest {
     string query = 1;
+    string continuation_token = 2;
+
+    RequestOptions options = 5;
 }
 
 message SearchResponse {
     repeated JsonPayload items = 1;
     bool has_more = 2;
+    int32 count = 3;
+    string continuation_token = 4;
 }
 
 // InsertItem
