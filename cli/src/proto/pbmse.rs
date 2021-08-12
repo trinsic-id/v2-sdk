@@ -7,34 +7,19 @@ pub struct SignedMessage {
     #[prost(message, repeated, tag = "2")]
     pub signatures: ::prost::alloc::vec::Vec<Signature>,
 }
-/// Nested message and enum types in `SignedMessage`.
-pub mod signed_message {
-    #[derive(Clone, PartialEq, ::prost::Message)]
-    pub struct Header {
-        #[prost(string, tag = "1")]
-        pub algorithm: ::prost::alloc::string::String,
-        #[prost(string, tag = "2")]
-        pub key_id: ::prost::alloc::string::String,
-        #[prost(string, tag = "3")]
-        pub nonce: ::prost::alloc::string::String,
-    }
-}
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Signature {
+    #[prost(bytes = "vec", tag = "1")]
+    pub header: ::prost::alloc::vec::Vec<u8>,
     #[prost(bytes = "vec", tag = "3")]
     pub signature: ::prost::alloc::vec::Vec<u8>,
-    #[prost(oneof = "signature::Header", tags = "1, 2")]
-    pub header: ::core::option::Option<signature::Header>,
 }
-/// Nested message and enum types in `Signature`.
-pub mod signature {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Header {
-        #[prost(bytes, tag = "1")]
-        Protected(::prost::alloc::vec::Vec<u8>),
-        #[prost(message, tag = "2")]
-        Unprotected(super::signed_message::Header),
-    }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct SignatureHeader {
+    #[prost(string, tag = "1")]
+    pub algorithm: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub key_id: ::prost::alloc::string::String,
 }
 // JWE
 

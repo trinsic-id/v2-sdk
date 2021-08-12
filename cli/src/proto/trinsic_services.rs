@@ -75,6 +75,11 @@ pub mod debugging_client {
         }
     }
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct RequestOptions {
+    #[prost(enumeration = "JsonFormat", tag = "1")]
+    pub response_json_format: i32,
+}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct JsonPayload {
     #[prost(oneof = "json_payload::Json", tags = "1, 2, 3")]
@@ -451,6 +456,10 @@ pub struct GetProviderConfigurationResponse {
 pub struct SearchRequest {
     #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub continuation_token: ::prost::alloc::string::String,
+    #[prost(message, optional, tag = "5")]
+    pub options: ::core::option::Option<RequestOptions>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
@@ -458,6 +467,10 @@ pub struct SearchResponse {
     pub items: ::prost::alloc::vec::Vec<JsonPayload>,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
+    #[prost(int32, tag = "3")]
+    pub count: i32,
+    #[prost(string, tag = "4")]
+    pub continuation_token: ::prost::alloc::string::String,
 }
 // InsertItem
 
