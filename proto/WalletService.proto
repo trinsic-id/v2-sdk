@@ -1,6 +1,8 @@
 syntax = "proto3";
 package trinsic.services;
 
+option go_package = "github.com/trinsic-id/sdk";
+
 import "google/protobuf/struct.proto";
 import "google/protobuf/empty.proto";
 import "CoreService.proto";
