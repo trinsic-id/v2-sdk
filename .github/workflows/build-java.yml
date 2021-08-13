@@ -37,6 +37,7 @@ jobs:
         working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
         with:
