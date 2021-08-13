@@ -27,14 +27,16 @@ jobs:
           distribution: 'adopt'
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.4
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs
+#      - name: Download workflow artifact
+#        uses: dawidd6/action-download-artifact@v2.14.0
+#        with:
+#          workflow: "build-libs.yml"
+#          path: ./libs
       - name: Build with Gradle
         run: gradle build
         working-directory: java
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         if: (${{ matrix.os }} == 'ubuntu-latest')
         with:
