@@ -2508,7 +2508,8 @@ public final class Attributes {
       "\"I\n\026ListAttributesResponse\022/\n\nattributes" +
       "\030\001 \003(\0132\033.trinsic.services.Attribute*9\n\rA" +
       "ttributeType\022\010\n\004date\020\000\022\n\n\006number\020\001\022\010\n\004te" +
-      "xt\020\002\022\010\n\004enum\020\003b\006proto3"
+      "xt\020\002\022\010\n\004enum\020\003B-\n\020trinsic.servicesZ\031gith" +
+      "ub.com/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

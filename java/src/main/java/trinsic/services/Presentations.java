@@ -2999,7 +2999,8 @@ public final class Presentations {
       "\001 \001(\t\"\207\001\n\032SubmitPresentationResponse\022\036\n\026" +
       "presentationTemplateId\030\001 \001(\t\022\020\n\010holderId" +
       "\030\002 \001(\t\0227\n\022verifiedAttributes\030\003 \003(\0132\033.tri" +
-      "nsic.services.Attributeb\006proto3"
+      "nsic.services.AttributeB-\n\020trinsic.servi" +
+      "cesZ\031github.com/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

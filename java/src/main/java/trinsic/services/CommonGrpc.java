@@ -14,29 +14,29 @@ public final class CommonGrpc {
   public static final String SERVICE_NAME = "trinsic.services.Common";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage,
-      pbmse.Pbmse.EncryptedMessage> getRequestMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage,
+      trinsic.services.Pbmse.EncryptedMessage> getRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Request",
-      requestType = pbmse.Pbmse.EncryptedMessage.class,
-      responseType = pbmse.Pbmse.EncryptedMessage.class,
+      requestType = trinsic.services.Pbmse.EncryptedMessage.class,
+      responseType = trinsic.services.Pbmse.EncryptedMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage,
-      pbmse.Pbmse.EncryptedMessage> getRequestMethod() {
-    io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage, pbmse.Pbmse.EncryptedMessage> getRequestMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage,
+      trinsic.services.Pbmse.EncryptedMessage> getRequestMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage, trinsic.services.Pbmse.EncryptedMessage> getRequestMethod;
     if ((getRequestMethod = CommonGrpc.getRequestMethod) == null) {
       synchronized (CommonGrpc.class) {
         if ((getRequestMethod = CommonGrpc.getRequestMethod) == null) {
           CommonGrpc.getRequestMethod = getRequestMethod =
-              io.grpc.MethodDescriptor.<pbmse.Pbmse.EncryptedMessage, pbmse.Pbmse.EncryptedMessage>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.Pbmse.EncryptedMessage, trinsic.services.Pbmse.EncryptedMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Request"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  pbmse.Pbmse.EncryptedMessage.getDefaultInstance()))
+                  trinsic.services.Pbmse.EncryptedMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  pbmse.Pbmse.EncryptedMessage.getDefaultInstance()))
+                  trinsic.services.Pbmse.EncryptedMessage.getDefaultInstance()))
               .setSchemaDescriptor(new CommonMethodDescriptorSupplier("Request"))
               .build();
         }
@@ -95,8 +95,8 @@ public final class CommonGrpc {
 
     /**
      */
-    public void request(pbmse.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage> responseObserver) {
+    public void request(trinsic.services.Pbmse.EncryptedMessage request,
+        io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRequestMethod(), responseObserver);
     }
 
@@ -106,8 +106,8 @@ public final class CommonGrpc {
             getRequestMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                pbmse.Pbmse.EncryptedMessage,
-                pbmse.Pbmse.EncryptedMessage>(
+                trinsic.services.Pbmse.EncryptedMessage,
+                trinsic.services.Pbmse.EncryptedMessage>(
                   this, METHODID_REQUEST)))
           .build();
     }
@@ -129,8 +129,8 @@ public final class CommonGrpc {
 
     /**
      */
-    public void request(pbmse.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage> responseObserver) {
+    public void request(trinsic.services.Pbmse.EncryptedMessage request,
+        io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRequestMethod(), getCallOptions()), request, responseObserver);
     }
@@ -152,7 +152,7 @@ public final class CommonGrpc {
 
     /**
      */
-    public pbmse.Pbmse.EncryptedMessage request(pbmse.Pbmse.EncryptedMessage request) {
+    public trinsic.services.Pbmse.EncryptedMessage request(trinsic.services.Pbmse.EncryptedMessage request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRequestMethod(), getCallOptions(), request);
     }
@@ -174,8 +174,8 @@ public final class CommonGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<pbmse.Pbmse.EncryptedMessage> request(
-        pbmse.Pbmse.EncryptedMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.Pbmse.EncryptedMessage> request(
+        trinsic.services.Pbmse.EncryptedMessage request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRequestMethod(), getCallOptions()), request);
     }
@@ -201,8 +201,8 @@ public final class CommonGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_REQUEST:
-          serviceImpl.request((pbmse.Pbmse.EncryptedMessage) request,
-              (io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage>) responseObserver);
+          serviceImpl.request((trinsic.services.Pbmse.EncryptedMessage) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();

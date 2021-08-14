@@ -52,7 +52,7 @@ public class TrinsicWalletService extends ServiceBase {
                         .setSecurityCode(securityCode)
                         .build().toByteString()).build());
 
-        var response = walletClient.createWalletEncrypted(Pbmse.EncryptedMessage.newBuilder()
+        var response = walletClient.createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage.newBuilder()
                 .setIv(packedMessage.getMessage().getIv())
                 .addAllRecipients(packedMessage.getMessage().getRecipientsList())
                 .setCiphertext(packedMessage.getMessage().getCiphertext())

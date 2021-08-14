@@ -3492,8 +3492,9 @@ public final class CredentialTemplates {
       "lates\030\001 \003(\0132$.trinsic.services.Credentia" +
       "lTemplate\"f\n\022CredentialTemplate\022\n\n\002Id\030\001 " +
       "\001(\t\022\r\n\005Title\030\002 \001(\t\022\023\n\013Description\030\003 \001(\t\022" +
-      "\020\n\010Contexts\030\004 \003(\t\022\016\n\006Schema\030\005 \001(\tb\006proto" +
-      "3"
+      "\020\n\010Contexts\030\004 \003(\t\022\016\n\006Schema\030\005 \001(\tB-\n\020tri" +
+      "nsic.servicesZ\031github.com/trinsic-id/sdk" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

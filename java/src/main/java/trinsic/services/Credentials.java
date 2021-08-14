@@ -4917,8 +4917,9 @@ public final class Credentials {
       "e\0221\n\ncredential\030\001 \001(\0132\035.trinsic.services" +
       ".aCredential\"\027\n\025ListCredentialRequest\"L\n" +
       "\026ListCredentialResponse\0222\n\013credentials\030\001" +
-      " \003(\0132\035.trinsic.services.aCredentialb\006pro" +
-      "to3"
+      " \003(\0132\035.trinsic.services.aCredentialB-\n\020t" +
+      "rinsic.servicesZ\031github.com/trinsic-id/s" +
+      "dkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

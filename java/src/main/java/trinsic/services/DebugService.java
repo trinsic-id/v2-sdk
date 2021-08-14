@@ -28,7 +28,8 @@ public final class DebugService {
       "g\022;\n\tCallEmpty\022\026.google.protobuf.Empty\032\026" +
       ".google.protobuf.Empty\022?\n\rCallEmptyAuth\022" +
       "\026.google.protobuf.Empty\032\026.google.protobu" +
-      "f.Emptyb\006proto3"
+      "f.EmptyB-\n\020trinsic.servicesZ\031github.com/" +
+      "trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
