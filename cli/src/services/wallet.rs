@@ -110,6 +110,7 @@ async fn search(args: &SearchArgs, config: Config) {
 
     let request = tonic::Request::new(SearchRequest {
         query: query.clone(),
+        ..Default::default()
     });
 
     let response = client

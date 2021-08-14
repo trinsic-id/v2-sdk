@@ -20,11 +20,17 @@ message RemoveFrameworkResponse {
 }
 
 message SearchRegistryRequest {
-    string query = 1; // SELECT c from c where c.type == 'GovernaceFramework'
+    string query = 1; // SELECT c from c where c.type == 'GovernanceFramework'
+    string continuation_token = 2;
+
+    RequestOptions options = 5;
 }
 
 message SearchRegistryResponse {
-    repeated GovernanceFramework governance_frameworks = 1;
+    repeated JsonPayload items = 1;
+    bool has_more = 2;
+    int32 count = 3;
+    string continuation_token = 4;
 }
 
 message GovernanceFramework {
@@ -89,12 +95,32 @@ message UnregisterMemberResponse {
     ResponseStatus status = 1;
 }
 
-message GetMemberStatusRequest {
+message CheckIssuerStatusRequest {
     string governance_framework_uri = 1;
-    MemberRole role = 2;
-    // Optional. If not specified, will return all authorized templates for this issuer
-    // under the specified EGF
-    string credential_type_uri = 3;
+    oneof member {
+        string did_uri = 2;
+        string x509_cert = 3;
+    }
+    string credential_type_uri = 4;
+}
+
+message CheckIssuerStatusResponse {
+    string governance_framework_uri = 1;
+    RegistrationStatus status = 4;
+}
+
+message CheckVerifierStatusRequest {
+    string governance_framework_uri = 1;
+    oneof member {
+        string did_uri = 2;
+        string x509_cert = 3;
+    }
+    string credential_type_uri = 4;
+}
+
+message CheckVerifierStatusResponse {
+    string governance_framework_uri = 1;
+    RegistrationStatus status = 4;
 }
 
 enum RegistrationStatus {
@@ -102,32 +128,17 @@ enum RegistrationStatus {
     EXPIRED = 1; // - entity rights have expired.
     TERMINATED = 2; // - entity has voluntarily ceased Issuer role under the specific EGF.
     REVOKED = 3; // - entity authority under specific EGF was terminated by the governing authority.
-}
-
-enum MemberRole {
-    ISSUER = 0;
-    VERIFIER = 1;
-}
-
-message GetMemberStatusResponse {
-    string governance_framework_uri = 1;
-    oneof member {
-        string did_uri = 2;
-        string x509_cert = 3;
-    }
-    repeated MemberEntry result = 4;
-}
-
-message MemberEntry {
-    string credential_type_uri = 1;
-    MemberRole role = 2;
+    NOT_FOUND = 10;
 }
 
 message FetchDataRequest {
     string governance_framework_uri = 1;
+    string query = 2;
 }
 
-message FetchDataResponse {}
+message FetchDataResponse {
+    JsonPayload response = 1;
+}
 
 service TrustRegistry {
     // Adds a trust registry defintion to the ecosystem
@@ -144,7 +155,9 @@ service TrustRegistry {
     // Removes an authoritative issuer with a credential template from the trust registry
     rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
 
-    rpc GetMemberStatus(GetMemberStatusRequest) returns (GetMemberStatusResponse);
+    rpc CheckIssuerStatus(CheckIssuerStatusRequest) returns (CheckIssuerStatusResponse);
+
+    rpc CheckVerifierStatus(CheckVerifierStatusRequest) returns (CheckVerifierStatusResponse);
 
     rpc FetchData(FetchDataRequest) returns (stream FetchDataResponse);
 }
