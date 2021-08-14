@@ -1,0 +1,46 @@
+name: Build Java SDK
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "java/**"
+      - "proto/**"
+      - ".github/workflows/*java*"
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1.0.4
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+          repo: trinsic-id/okapi
+      - name: Build with Gradle
+        run: gradle build
+        working-directory: java
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
+      - uses: actions/upload-artifact@v2
+        if: (${{ matrix.os }} == 'ubuntu-latest')
+        with:
+          name: Package
+          path: java/build/libs

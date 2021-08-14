@@ -38,7 +38,7 @@ repositories {
         url = "https://maven.pkg.github.com/trinsic-id/okapi"
         credentials {
             username = "fundthmcalculus"
-            password = ""  // TODO - Personal access token with `read:packages`
+            password = System.getenv("GITHUB_TOKEN")  // TODO - Personal access token with `read:packages`
         }
     }
 }
@@ -58,7 +58,7 @@ dependencies {
     implementation 'io.grpc:grpc-stub:1.39.0'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    implementation 'id.trinsic:okapi:0.1.1'
+    implementation 'id.trinsic:okapi:0.1.5'
 }
 
 test {
