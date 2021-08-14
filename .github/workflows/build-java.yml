@@ -32,7 +32,7 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
-          repo: https://github.com/trinsic-id/okapi
+          repo: trinsic-id/okapi
       - name: Build with Gradle
         run: gradle build
         working-directory: java
