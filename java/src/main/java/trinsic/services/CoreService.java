@@ -275,6 +275,531 @@ public final class CoreService {
     // @@protoc_insertion_point(enum_scope:trinsic.services.JsonFormat)
   }
 
+  public interface RequestOptionsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:trinsic.services.RequestOptions)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+     * @return The enum numeric value on the wire for responseJsonFormat.
+     */
+    int getResponseJsonFormatValue();
+    /**
+     * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+     * @return The responseJsonFormat.
+     */
+    trinsic.services.CoreService.JsonFormat getResponseJsonFormat();
+  }
+  /**
+   * Protobuf type {@code trinsic.services.RequestOptions}
+   */
+  public static final class RequestOptions extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:trinsic.services.RequestOptions)
+      RequestOptionsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RequestOptions.newBuilder() to construct.
+    private RequestOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RequestOptions() {
+      responseJsonFormat_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RequestOptions();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestOptions(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              responseJsonFormat_ = rawValue;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.CoreService.internal_static_trinsic_services_RequestOptions_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.CoreService.internal_static_trinsic_services_RequestOptions_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.CoreService.RequestOptions.class, trinsic.services.CoreService.RequestOptions.Builder.class);
+    }
+
+    public static final int RESPONSE_JSON_FORMAT_FIELD_NUMBER = 1;
+    private int responseJsonFormat_;
+    /**
+     * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+     * @return The enum numeric value on the wire for responseJsonFormat.
+     */
+    @java.lang.Override public int getResponseJsonFormatValue() {
+      return responseJsonFormat_;
+    }
+    /**
+     * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+     * @return The responseJsonFormat.
+     */
+    @java.lang.Override public trinsic.services.CoreService.JsonFormat getResponseJsonFormat() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.CoreService.JsonFormat result = trinsic.services.CoreService.JsonFormat.valueOf(responseJsonFormat_);
+      return result == null ? trinsic.services.CoreService.JsonFormat.UNRECOGNIZED : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (responseJsonFormat_ != trinsic.services.CoreService.JsonFormat.Protobuf.getNumber()) {
+        output.writeEnum(1, responseJsonFormat_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (responseJsonFormat_ != trinsic.services.CoreService.JsonFormat.Protobuf.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, responseJsonFormat_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.CoreService.RequestOptions)) {
+        return super.equals(obj);
+      }
+      trinsic.services.CoreService.RequestOptions other = (trinsic.services.CoreService.RequestOptions) obj;
+
+      if (responseJsonFormat_ != other.responseJsonFormat_) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESPONSE_JSON_FORMAT_FIELD_NUMBER;
+      hash = (53 * hash) + responseJsonFormat_;
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.CoreService.RequestOptions parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.CoreService.RequestOptions prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code trinsic.services.RequestOptions}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:trinsic.services.RequestOptions)
+        trinsic.services.CoreService.RequestOptionsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.CoreService.internal_static_trinsic_services_RequestOptions_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.CoreService.internal_static_trinsic_services_RequestOptions_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.CoreService.RequestOptions.class, trinsic.services.CoreService.RequestOptions.Builder.class);
+      }
+
+      // Construct using trinsic.services.CoreService.RequestOptions.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        responseJsonFormat_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.CoreService.internal_static_trinsic_services_RequestOptions_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.CoreService.RequestOptions getDefaultInstanceForType() {
+        return trinsic.services.CoreService.RequestOptions.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.CoreService.RequestOptions build() {
+        trinsic.services.CoreService.RequestOptions result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.CoreService.RequestOptions buildPartial() {
+        trinsic.services.CoreService.RequestOptions result = new trinsic.services.CoreService.RequestOptions(this);
+        result.responseJsonFormat_ = responseJsonFormat_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.CoreService.RequestOptions) {
+          return mergeFrom((trinsic.services.CoreService.RequestOptions)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.CoreService.RequestOptions other) {
+        if (other == trinsic.services.CoreService.RequestOptions.getDefaultInstance()) return this;
+        if (other.responseJsonFormat_ != 0) {
+          setResponseJsonFormatValue(other.getResponseJsonFormatValue());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.CoreService.RequestOptions parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.CoreService.RequestOptions) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int responseJsonFormat_ = 0;
+      /**
+       * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+       * @return The enum numeric value on the wire for responseJsonFormat.
+       */
+      @java.lang.Override public int getResponseJsonFormatValue() {
+        return responseJsonFormat_;
+      }
+      /**
+       * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+       * @param value The enum numeric value on the wire for responseJsonFormat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResponseJsonFormatValue(int value) {
+        
+        responseJsonFormat_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+       * @return The responseJsonFormat.
+       */
+      @java.lang.Override
+      public trinsic.services.CoreService.JsonFormat getResponseJsonFormat() {
+        @SuppressWarnings("deprecation")
+        trinsic.services.CoreService.JsonFormat result = trinsic.services.CoreService.JsonFormat.valueOf(responseJsonFormat_);
+        return result == null ? trinsic.services.CoreService.JsonFormat.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+       * @param value The responseJsonFormat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResponseJsonFormat(trinsic.services.CoreService.JsonFormat value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        responseJsonFormat_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.JsonFormat response_json_format = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResponseJsonFormat() {
+        
+        responseJsonFormat_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:trinsic.services.RequestOptions)
+    }
+
+    // @@protoc_insertion_point(class_scope:trinsic.services.RequestOptions)
+    private static final trinsic.services.CoreService.RequestOptions DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.CoreService.RequestOptions();
+    }
+
+    public static trinsic.services.CoreService.RequestOptions getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RequestOptions>
+        PARSER = new com.google.protobuf.AbstractParser<RequestOptions>() {
+      @java.lang.Override
+      public RequestOptions parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestOptions(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RequestOptions> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestOptions> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.CoreService.RequestOptions getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface JsonPayloadOrBuilder extends
       // @@protoc_insertion_point(interface_extends:trinsic.services.JsonPayload)
       com.google.protobuf.MessageOrBuilder {
@@ -1298,6 +1823,11 @@ public final class CoreService {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_trinsic_services_RequestOptions_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_RequestOptions_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_trinsic_services_JsonPayload_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1313,31 +1843,40 @@ public final class CoreService {
     java.lang.String[] descriptorData = {
       "\n\021CoreService.proto\022\020trinsic.services\032\034g" +
       "oogle/protobuf/struct.proto\032\021pbmse/pbmse" +
-      ".proto\"r\n\013JsonPayload\022.\n\013json_struct\030\001 \001" +
-      "(\0132\027.google.protobuf.StructH\000\022\025\n\013json_st" +
-      "ring\030\002 \001(\tH\000\022\024\n\njson_bytes\030\003 \001(\014H\000B\006\n\004js" +
-      "on*\213\001\n\016ResponseStatus\022\013\n\007SUCCESS\020\000\022\030\n\024WA" +
-      "LLET_ACCESS_DENIED\020\n\022\021\n\rWALLET_EXISTS\020\013\022" +
-      "\022\n\016ITEM_NOT_FOUND\020\024\022\030\n\023SERIALIZATION_ERR" +
-      "OR\020\310\001\022\021\n\rUNKNOWN_ERROR\020d*2\n\nJsonFormat\022\014" +
-      "\n\010Protobuf\020\000\022\n\n\006Binary\020\001\022\n\n\006String\020\0022E\n\006" +
-      "Common\022;\n\007Request\022\027.pbmse.EncryptedMessa" +
-      "ge\032\027.pbmse.EncryptedMessageb\006proto3"
+      ".proto\"L\n\016RequestOptions\022:\n\024response_jso" +
+      "n_format\030\001 \001(\0162\034.trinsic.services.JsonFo" +
+      "rmat\"r\n\013JsonPayload\022.\n\013json_struct\030\001 \001(\013" +
+      "2\027.google.protobuf.StructH\000\022\025\n\013json_stri" +
+      "ng\030\002 \001(\tH\000\022\024\n\njson_bytes\030\003 \001(\014H\000B\006\n\004json" +
+      "*\213\001\n\016ResponseStatus\022\013\n\007SUCCESS\020\000\022\030\n\024WALL" +
+      "ET_ACCESS_DENIED\020\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n" +
+      "\016ITEM_NOT_FOUND\020\024\022\030\n\023SERIALIZATION_ERROR" +
+      "\020\310\001\022\021\n\rUNKNOWN_ERROR\020d*2\n\nJsonFormat\022\014\n\010" +
+      "Protobuf\020\000\022\n\n\006Binary\020\001\022\n\n\006String\020\0022E\n\006Co" +
+      "mmon\022;\n\007Request\022\027.pbmse.EncryptedMessage" +
+      "\032\027.pbmse.EncryptedMessageB-\n\020trinsic.ser" +
+      "vicesZ\031github.com/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.StructProto.getDescriptor(),
-          pbmse.Pbmse.getDescriptor(),
+          trinsic.services.Pbmse.getDescriptor(),
         });
-    internal_static_trinsic_services_JsonPayload_descriptor =
+    internal_static_trinsic_services_RequestOptions_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_trinsic_services_RequestOptions_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_trinsic_services_RequestOptions_descriptor,
+        new java.lang.String[] { "ResponseJsonFormat", });
+    internal_static_trinsic_services_JsonPayload_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_trinsic_services_JsonPayload_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_JsonPayload_descriptor,
         new java.lang.String[] { "JsonStruct", "JsonString", "JsonBytes", "Json", });
     com.google.protobuf.StructProto.getDescriptor();
-    pbmse.Pbmse.getDescriptor();
+    trinsic.services.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

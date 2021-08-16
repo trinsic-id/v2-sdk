@@ -4041,7 +4041,9 @@ public final class ProviderService {
       "eRequest\032 .trinsic.services.InviteRespon" +
       "se\022i\n\020InvitationStatus\022).trinsic.service" +
       "s.InvitationStatusRequest\032*.trinsic.serv" +
-      "ices.InvitationStatusResponseb\006proto3"
+      "ices.InvitationStatusResponseB-\n\020trinsic" +
+      ".servicesZ\031github.com/trinsic-id/sdkb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

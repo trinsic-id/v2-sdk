@@ -12,7 +12,9 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "0.1.1"
+def jarVersion = "0.1.2"
+
+apply from: "conf.gradle"
 
 publishing {
     repositories {
@@ -65,7 +67,7 @@ dependencies {
     implementation 'io.grpc:grpc-stub:1.39.0'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    implementation 'id.trinsic:okapi:0.1.5'
+    implementation 'id.trinsic:okapi:0.1.6'
 }
 
 test {

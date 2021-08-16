@@ -8922,6 +8922,33 @@ public final class WalletService {
      */
     com.google.protobuf.ByteString
         getQueryBytes();
+
+    /**
+     * <code>string continuation_token = 2;</code>
+     * @return The continuationToken.
+     */
+    java.lang.String getContinuationToken();
+    /**
+     * <code>string continuation_token = 2;</code>
+     * @return The bytes for continuationToken.
+     */
+    com.google.protobuf.ByteString
+        getContinuationTokenBytes();
+
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     * @return Whether the options field is set.
+     */
+    boolean hasOptions();
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     * @return The options.
+     */
+    trinsic.services.CoreService.RequestOptions getOptions();
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     */
+    trinsic.services.CoreService.RequestOptionsOrBuilder getOptionsOrBuilder();
   }
   /**
    * Protobuf type {@code trinsic.services.SearchRequest}
@@ -8937,6 +8964,7 @@ public final class WalletService {
     }
     private SearchRequest() {
       query_ = "";
+      continuationToken_ = "";
     }
 
     @java.lang.Override
@@ -8973,6 +9001,25 @@ public final class WalletService {
               java.lang.String s = input.readStringRequireUtf8();
 
               query_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              continuationToken_ = s;
+              break;
+            }
+            case 42: {
+              trinsic.services.CoreService.RequestOptions.Builder subBuilder = null;
+              if (options_ != null) {
+                subBuilder = options_.toBuilder();
+              }
+              options_ = input.readMessage(trinsic.services.CoreService.RequestOptions.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(options_);
+                options_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -9045,6 +9092,70 @@ public final class WalletService {
       }
     }
 
+    public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
+    private volatile java.lang.Object continuationToken_;
+    /**
+     * <code>string continuation_token = 2;</code>
+     * @return The continuationToken.
+     */
+    @java.lang.Override
+    public java.lang.String getContinuationToken() {
+      java.lang.Object ref = continuationToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        continuationToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string continuation_token = 2;</code>
+     * @return The bytes for continuationToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getContinuationTokenBytes() {
+      java.lang.Object ref = continuationToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        continuationToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OPTIONS_FIELD_NUMBER = 5;
+    private trinsic.services.CoreService.RequestOptions options_;
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     * @return Whether the options field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptions() {
+      return options_ != null;
+    }
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     * @return The options.
+     */
+    @java.lang.Override
+    public trinsic.services.CoreService.RequestOptions getOptions() {
+      return options_ == null ? trinsic.services.CoreService.RequestOptions.getDefaultInstance() : options_;
+    }
+    /**
+     * <code>.trinsic.services.RequestOptions options = 5;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.CoreService.RequestOptionsOrBuilder getOptionsOrBuilder() {
+      return getOptions();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9062,6 +9173,12 @@ public final class WalletService {
       if (!getQueryBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
+      if (!getContinuationTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
+      }
+      if (options_ != null) {
+        output.writeMessage(5, getOptions());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -9073,6 +9190,13 @@ public final class WalletService {
       size = 0;
       if (!getQueryBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
+      }
+      if (!getContinuationTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
+      }
+      if (options_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getOptions());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9091,6 +9215,13 @@ public final class WalletService {
 
       if (!getQuery()
           .equals(other.getQuery())) return false;
+      if (!getContinuationToken()
+          .equals(other.getContinuationToken())) return false;
+      if (hasOptions() != other.hasOptions()) return false;
+      if (hasOptions()) {
+        if (!getOptions()
+            .equals(other.getOptions())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9104,6 +9235,12 @@ public final class WalletService {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + QUERY_FIELD_NUMBER;
       hash = (53 * hash) + getQuery().hashCode();
+      hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getContinuationToken().hashCode();
+      if (hasOptions()) {
+        hash = (37 * hash) + OPTIONS_FIELD_NUMBER;
+        hash = (53 * hash) + getOptions().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9239,6 +9376,14 @@ public final class WalletService {
         super.clear();
         query_ = "";
 
+        continuationToken_ = "";
+
+        if (optionsBuilder_ == null) {
+          options_ = null;
+        } else {
+          options_ = null;
+          optionsBuilder_ = null;
+        }
         return this;
       }
 
@@ -9266,6 +9411,12 @@ public final class WalletService {
       public trinsic.services.WalletService.SearchRequest buildPartial() {
         trinsic.services.WalletService.SearchRequest result = new trinsic.services.WalletService.SearchRequest(this);
         result.query_ = query_;
+        result.continuationToken_ = continuationToken_;
+        if (optionsBuilder_ == null) {
+          result.options_ = options_;
+        } else {
+          result.options_ = optionsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -9317,6 +9468,13 @@ public final class WalletService {
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
+        }
+        if (!other.getContinuationToken().isEmpty()) {
+          continuationToken_ = other.continuationToken_;
+          onChanged();
+        }
+        if (other.hasOptions()) {
+          mergeOptions(other.getOptions());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9422,6 +9580,201 @@ public final class WalletService {
         onChanged();
         return this;
       }
+
+      private java.lang.Object continuationToken_ = "";
+      /**
+       * <code>string continuation_token = 2;</code>
+       * @return The continuationToken.
+       */
+      public java.lang.String getContinuationToken() {
+        java.lang.Object ref = continuationToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          continuationToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string continuation_token = 2;</code>
+       * @return The bytes for continuationToken.
+       */
+      public com.google.protobuf.ByteString
+          getContinuationTokenBytes() {
+        java.lang.Object ref = continuationToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          continuationToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string continuation_token = 2;</code>
+       * @param value The continuationToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContinuationToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        continuationToken_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string continuation_token = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearContinuationToken() {
+        
+        continuationToken_ = getDefaultInstance().getContinuationToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string continuation_token = 2;</code>
+       * @param value The bytes for continuationToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContinuationTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        continuationToken_ = value;
+        onChanged();
+        return this;
+      }
+
+      private trinsic.services.CoreService.RequestOptions options_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.CoreService.RequestOptions, trinsic.services.CoreService.RequestOptions.Builder, trinsic.services.CoreService.RequestOptionsOrBuilder> optionsBuilder_;
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       * @return Whether the options field is set.
+       */
+      public boolean hasOptions() {
+        return optionsBuilder_ != null || options_ != null;
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       * @return The options.
+       */
+      public trinsic.services.CoreService.RequestOptions getOptions() {
+        if (optionsBuilder_ == null) {
+          return options_ == null ? trinsic.services.CoreService.RequestOptions.getDefaultInstance() : options_;
+        } else {
+          return optionsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public Builder setOptions(trinsic.services.CoreService.RequestOptions value) {
+        if (optionsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          options_ = value;
+          onChanged();
+        } else {
+          optionsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public Builder setOptions(
+          trinsic.services.CoreService.RequestOptions.Builder builderForValue) {
+        if (optionsBuilder_ == null) {
+          options_ = builderForValue.build();
+          onChanged();
+        } else {
+          optionsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public Builder mergeOptions(trinsic.services.CoreService.RequestOptions value) {
+        if (optionsBuilder_ == null) {
+          if (options_ != null) {
+            options_ =
+              trinsic.services.CoreService.RequestOptions.newBuilder(options_).mergeFrom(value).buildPartial();
+          } else {
+            options_ = value;
+          }
+          onChanged();
+        } else {
+          optionsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public Builder clearOptions() {
+        if (optionsBuilder_ == null) {
+          options_ = null;
+          onChanged();
+        } else {
+          options_ = null;
+          optionsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public trinsic.services.CoreService.RequestOptions.Builder getOptionsBuilder() {
+        
+        onChanged();
+        return getOptionsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      public trinsic.services.CoreService.RequestOptionsOrBuilder getOptionsOrBuilder() {
+        if (optionsBuilder_ != null) {
+          return optionsBuilder_.getMessageOrBuilder();
+        } else {
+          return options_ == null ?
+              trinsic.services.CoreService.RequestOptions.getDefaultInstance() : options_;
+        }
+      }
+      /**
+       * <code>.trinsic.services.RequestOptions options = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.CoreService.RequestOptions, trinsic.services.CoreService.RequestOptions.Builder, trinsic.services.CoreService.RequestOptionsOrBuilder> 
+          getOptionsFieldBuilder() {
+        if (optionsBuilder_ == null) {
+          optionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.CoreService.RequestOptions, trinsic.services.CoreService.RequestOptions.Builder, trinsic.services.CoreService.RequestOptionsOrBuilder>(
+                  getOptions(),
+                  getParentForChildren(),
+                  isClean());
+          options_ = null;
+        }
+        return optionsBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -9508,6 +9861,24 @@ public final class WalletService {
      * @return The hasMore.
      */
     boolean getHasMore();
+
+    /**
+     * <code>int32 count = 3;</code>
+     * @return The count.
+     */
+    int getCount();
+
+    /**
+     * <code>string continuation_token = 4;</code>
+     * @return The continuationToken.
+     */
+    java.lang.String getContinuationToken();
+    /**
+     * <code>string continuation_token = 4;</code>
+     * @return The bytes for continuationToken.
+     */
+    com.google.protobuf.ByteString
+        getContinuationTokenBytes();
   }
   /**
    * Protobuf type {@code trinsic.services.SearchResponse}
@@ -9523,6 +9894,7 @@ public final class WalletService {
     }
     private SearchResponse() {
       items_ = java.util.Collections.emptyList();
+      continuationToken_ = "";
     }
 
     @java.lang.Override
@@ -9568,6 +9940,17 @@ public final class WalletService {
             case 16: {
 
               hasMore_ = input.readBool();
+              break;
+            }
+            case 24: {
+
+              count_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              continuationToken_ = s;
               break;
             }
             default: {
@@ -9656,6 +10039,55 @@ public final class WalletService {
       return hasMore_;
     }
 
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>int32 count = 3;</code>
+     * @return The count.
+     */
+    @java.lang.Override
+    public int getCount() {
+      return count_;
+    }
+
+    public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
+    private volatile java.lang.Object continuationToken_;
+    /**
+     * <code>string continuation_token = 4;</code>
+     * @return The continuationToken.
+     */
+    @java.lang.Override
+    public java.lang.String getContinuationToken() {
+      java.lang.Object ref = continuationToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        continuationToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string continuation_token = 4;</code>
+     * @return The bytes for continuationToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getContinuationTokenBytes() {
+      java.lang.Object ref = continuationToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        continuationToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9676,6 +10108,12 @@ public final class WalletService {
       if (hasMore_ != false) {
         output.writeBool(2, hasMore_);
       }
+      if (count_ != 0) {
+        output.writeInt32(3, count_);
+      }
+      if (!getContinuationTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -9692,6 +10130,13 @@ public final class WalletService {
       if (hasMore_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, hasMore_);
+      }
+      if (count_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, count_);
+      }
+      if (!getContinuationTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9712,6 +10157,10 @@ public final class WalletService {
           .equals(other.getItemsList())) return false;
       if (getHasMore()
           != other.getHasMore()) return false;
+      if (getCount()
+          != other.getCount()) return false;
+      if (!getContinuationToken()
+          .equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9730,6 +10179,10 @@ public final class WalletService {
       hash = (37 * hash) + HAS_MORE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getHasMore());
+      hash = (37 * hash) + COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getCount();
+      hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getContinuationToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9872,6 +10325,10 @@ public final class WalletService {
         }
         hasMore_ = false;
 
+        count_ = 0;
+
+        continuationToken_ = "";
+
         return this;
       }
 
@@ -9909,6 +10366,8 @@ public final class WalletService {
           result.items_ = itemsBuilder_.build();
         }
         result.hasMore_ = hasMore_;
+        result.count_ = count_;
+        result.continuationToken_ = continuationToken_;
         onBuilt();
         return result;
       }
@@ -9985,6 +10444,13 @@ public final class WalletService {
         }
         if (other.getHasMore() != false) {
           setHasMore(other.getHasMore());
+        }
+        if (other.getCount() != 0) {
+          setCount(other.getCount());
+        }
+        if (!other.getContinuationToken().isEmpty()) {
+          continuationToken_ = other.continuationToken_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10283,6 +10749,113 @@ public final class WalletService {
       public Builder clearHasMore() {
         
         hasMore_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int count_ ;
+      /**
+       * <code>int32 count = 3;</code>
+       * @return The count.
+       */
+      @java.lang.Override
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>int32 count = 3;</code>
+       * @param value The count to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCount(int value) {
+        
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 count = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCount() {
+        
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object continuationToken_ = "";
+      /**
+       * <code>string continuation_token = 4;</code>
+       * @return The continuationToken.
+       */
+      public java.lang.String getContinuationToken() {
+        java.lang.Object ref = continuationToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          continuationToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string continuation_token = 4;</code>
+       * @return The bytes for continuationToken.
+       */
+      public com.google.protobuf.ByteString
+          getContinuationTokenBytes() {
+        java.lang.Object ref = continuationToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          continuationToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string continuation_token = 4;</code>
+       * @param value The continuationToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContinuationToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        continuationToken_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string continuation_token = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearContinuationToken() {
+        
+        continuationToken_ = getDefaultInstance().getContinuationToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string continuation_token = 4;</code>
+       * @param value The bytes for continuationToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContinuationTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        continuationToken_ = value;
         onChanged();
         return this;
       }
@@ -11897,35 +12470,39 @@ public final class WalletService {
       "onseStatus\"u\n GetProviderConfigurationRe" +
       "sponse\0223\n\014did_document\030\001 \001(\0132\035.trinsic.s" +
       "ervices.JsonPayload\022\034\n\024key_agreement_key" +
-      "_id\030\002 \001(\t\"\036\n\rSearchRequest\022\r\n\005query\030\001 \001(" +
-      "\t\"P\n\016SearchResponse\022,\n\005items\030\001 \003(\0132\035.tri" +
-      "nsic.services.JsonPayload\022\020\n\010has_more\030\002 " +
-      "\001(\010\"S\n\021InsertItemRequest\022+\n\004item\030\001 \001(\0132\035" +
-      ".trinsic.services.JsonPayload\022\021\n\titem_ty" +
-      "pe\030\002 \001(\t\"W\n\022InsertItemResponse\0220\n\006status" +
-      "\030\001 \001(\0162 .trinsic.services.ResponseStatus" +
-      "\022\017\n\007item_id\030\002 \001(\t2\306\006\n\006Wallet\022f\n\030GetProvi" +
-      "derConfiguration\022\026.google.protobuf.Empty" +
-      "\0322.trinsic.services.GetProviderConfigura" +
-      "tionResponse\022^\n\027ConnectExternalIdentity\022" +
-      " .trinsic.services.ConnectRequest\032!.trin" +
-      "sic.services.ConnectResponse\022]\n\014CreateWa" +
-      "llet\022%.trinsic.services.CreateWalletRequ" +
-      "est\032&.trinsic.services.CreateWalletRespo" +
-      "nse\022i\n\030CreateWalletWithWorkflow\022%.trinsi" +
-      "c.services.CreateWalletRequest\032&.trinsic" +
-      ".services.CreateWalletResponse\022I\n\025Create" +
-      "WalletEncrypted\022\027.pbmse.EncryptedMessage" +
-      "\032\027.pbmse.EncryptedMessage\022K\n\006Search\022\037.tr" +
-      "insic.services.SearchRequest\032 .trinsic.s" +
-      "ervices.SearchResponse\022W\n\nInsertItem\022#.t" +
-      "rinsic.services.InsertItemRequest\032$.trin" +
-      "sic.services.InsertItemResponse\022Z\n\013Grant" +
-      "Access\022$.trinsic.services.GrantAccessReq" +
-      "uest\032%.trinsic.services.GrantAccessRespo" +
-      "nse\022]\n\014RevokeAccess\022%.trinsic.services.R" +
-      "evokeAccessRequest\032&.trinsic.services.Re" +
-      "vokeAccessResponseb\006proto3"
+      "_id\030\002 \001(\t\"m\n\rSearchRequest\022\r\n\005query\030\001 \001(" +
+      "\t\022\032\n\022continuation_token\030\002 \001(\t\0221\n\007options" +
+      "\030\005 \001(\0132 .trinsic.services.RequestOptions" +
+      "\"{\n\016SearchResponse\022,\n\005items\030\001 \003(\0132\035.trin" +
+      "sic.services.JsonPayload\022\020\n\010has_more\030\002 \001" +
+      "(\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continuation_token\030" +
+      "\004 \001(\t\"S\n\021InsertItemRequest\022+\n\004item\030\001 \001(\013" +
+      "2\035.trinsic.services.JsonPayload\022\021\n\titem_" +
+      "type\030\002 \001(\t\"W\n\022InsertItemResponse\0220\n\006stat" +
+      "us\030\001 \001(\0162 .trinsic.services.ResponseStat" +
+      "us\022\017\n\007item_id\030\002 \001(\t2\306\006\n\006Wallet\022f\n\030GetPro" +
+      "viderConfiguration\022\026.google.protobuf.Emp" +
+      "ty\0322.trinsic.services.GetProviderConfigu" +
+      "rationResponse\022^\n\027ConnectExternalIdentit" +
+      "y\022 .trinsic.services.ConnectRequest\032!.tr" +
+      "insic.services.ConnectResponse\022]\n\014Create" +
+      "Wallet\022%.trinsic.services.CreateWalletRe" +
+      "quest\032&.trinsic.services.CreateWalletRes" +
+      "ponse\022i\n\030CreateWalletWithWorkflow\022%.trin" +
+      "sic.services.CreateWalletRequest\032&.trins" +
+      "ic.services.CreateWalletResponse\022I\n\025Crea" +
+      "teWalletEncrypted\022\027.pbmse.EncryptedMessa" +
+      "ge\032\027.pbmse.EncryptedMessage\022K\n\006Search\022\037." +
+      "trinsic.services.SearchRequest\032 .trinsic" +
+      ".services.SearchResponse\022W\n\nInsertItem\022#" +
+      ".trinsic.services.InsertItemRequest\032$.tr" +
+      "insic.services.InsertItemResponse\022Z\n\013Gra" +
+      "ntAccess\022$.trinsic.services.GrantAccessR" +
+      "equest\032%.trinsic.services.GrantAccessRes" +
+      "ponse\022]\n\014RevokeAccess\022%.trinsic.services" +
+      ".RevokeAccessRequest\032&.trinsic.services." +
+      "RevokeAccessResponseB-\n\020trinsic.services" +
+      "Z\031github.com/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11933,7 +12510,7 @@ public final class WalletService {
           com.google.protobuf.StructProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
           trinsic.services.CoreService.getDescriptor(),
-          pbmse.Pbmse.getDescriptor(),
+          trinsic.services.Pbmse.getDescriptor(),
         });
     internal_static_trinsic_services_CreateWalletRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -12006,13 +12583,13 @@ public final class WalletService {
     internal_static_trinsic_services_SearchRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_SearchRequest_descriptor,
-        new java.lang.String[] { "Query", });
+        new java.lang.String[] { "Query", "ContinuationToken", "Options", });
     internal_static_trinsic_services_SearchResponse_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_trinsic_services_SearchResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_SearchResponse_descriptor,
-        new java.lang.String[] { "Items", "HasMore", });
+        new java.lang.String[] { "Items", "HasMore", "Count", "ContinuationToken", });
     internal_static_trinsic_services_InsertItemRequest_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_trinsic_services_InsertItemRequest_fieldAccessorTable = new
@@ -12028,7 +12605,7 @@ public final class WalletService {
     com.google.protobuf.StructProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
     trinsic.services.CoreService.getDescriptor();
-    pbmse.Pbmse.getDescriptor();
+    trinsic.services.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
