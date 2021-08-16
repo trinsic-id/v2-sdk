@@ -52,13 +52,14 @@ public class TrinsicWalletService extends ServiceBase {
                         .setSecurityCode(securityCode)
                         .build().toByteString()).build());
 
-        var response = walletClient.createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage.newBuilder()
+        Pbmse.EncryptedMessage request = Pbmse.EncryptedMessage.newBuilder()
                 .setIv(packedMessage.getMessage().getIv())
                 .addAllRecipients(Utilities.toServicesEncryptionRecipient(packedMessage.getMessage().getRecipientsList()))
                 .setCiphertext(packedMessage.getMessage().getCiphertext())
                 .setAad(packedMessage.getMessage().getAad())
                 .setTag(packedMessage.getMessage().getTag())
-                .build());
+                .build();
+        var response = walletClient.createWalletEncrypted(request);
 
         var decryptedResponse = DidComm.unpack(Transport.UnpackRequest.newBuilder()
                 .setMessage(Utilities.toOkapiEncryptedMessage(response))
