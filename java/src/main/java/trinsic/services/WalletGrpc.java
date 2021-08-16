@@ -138,29 +138,29 @@ public final class WalletGrpc {
     return getCreateWalletWithWorkflowMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage,
-      pbmse.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage,
+      trinsic.services.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CreateWalletEncrypted",
-      requestType = pbmse.Pbmse.EncryptedMessage.class,
-      responseType = pbmse.Pbmse.EncryptedMessage.class,
+      requestType = trinsic.services.Pbmse.EncryptedMessage.class,
+      responseType = trinsic.services.Pbmse.EncryptedMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage,
-      pbmse.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod() {
-    io.grpc.MethodDescriptor<pbmse.Pbmse.EncryptedMessage, pbmse.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage,
+      trinsic.services.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.Pbmse.EncryptedMessage, trinsic.services.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
     if ((getCreateWalletEncryptedMethod = WalletGrpc.getCreateWalletEncryptedMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getCreateWalletEncryptedMethod = WalletGrpc.getCreateWalletEncryptedMethod) == null) {
           WalletGrpc.getCreateWalletEncryptedMethod = getCreateWalletEncryptedMethod =
-              io.grpc.MethodDescriptor.<pbmse.Pbmse.EncryptedMessage, pbmse.Pbmse.EncryptedMessage>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.Pbmse.EncryptedMessage, trinsic.services.Pbmse.EncryptedMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateWalletEncrypted"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  pbmse.Pbmse.EncryptedMessage.getDefaultInstance()))
+                  trinsic.services.Pbmse.EncryptedMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  pbmse.Pbmse.EncryptedMessage.getDefaultInstance()))
+                  trinsic.services.Pbmse.EncryptedMessage.getDefaultInstance()))
               .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateWalletEncrypted"))
               .build();
         }
@@ -371,8 +371,8 @@ public final class WalletGrpc {
 
     /**
      */
-    public void createWalletEncrypted(pbmse.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage> responseObserver) {
+    public void createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage request,
+        io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateWalletEncryptedMethod(), responseObserver);
     }
 
@@ -438,8 +438,8 @@ public final class WalletGrpc {
             getCreateWalletEncryptedMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                pbmse.Pbmse.EncryptedMessage,
-                pbmse.Pbmse.EncryptedMessage>(
+                trinsic.services.Pbmse.EncryptedMessage,
+                trinsic.services.Pbmse.EncryptedMessage>(
                   this, METHODID_CREATE_WALLET_ENCRYPTED)))
           .addMethod(
             getSearchMethod(),
@@ -521,8 +521,8 @@ public final class WalletGrpc {
 
     /**
      */
-    public void createWalletEncrypted(pbmse.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage> responseObserver) {
+    public void createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage request,
+        io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateWalletEncryptedMethod(), getCallOptions()), request, responseObserver);
     }
@@ -604,7 +604,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public pbmse.Pbmse.EncryptedMessage createWalletEncrypted(pbmse.Pbmse.EncryptedMessage request) {
+    public trinsic.services.Pbmse.EncryptedMessage createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateWalletEncryptedMethod(), getCallOptions(), request);
     }
@@ -686,8 +686,8 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<pbmse.Pbmse.EncryptedMessage> createWalletEncrypted(
-        pbmse.Pbmse.EncryptedMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.Pbmse.EncryptedMessage> createWalletEncrypted(
+        trinsic.services.Pbmse.EncryptedMessage request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateWalletEncryptedMethod(), getCallOptions()), request);
     }
@@ -769,8 +769,8 @@ public final class WalletGrpc {
               (io.grpc.stub.StreamObserver<trinsic.services.WalletService.CreateWalletResponse>) responseObserver);
           break;
         case METHODID_CREATE_WALLET_ENCRYPTED:
-          serviceImpl.createWalletEncrypted((pbmse.Pbmse.EncryptedMessage) request,
-              (io.grpc.stub.StreamObserver<pbmse.Pbmse.EncryptedMessage>) responseObserver);
+          serviceImpl.createWalletEncrypted((trinsic.services.Pbmse.EncryptedMessage) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.Pbmse.EncryptedMessage>) responseObserver);
           break;
         case METHODID_SEARCH:
           serviceImpl.search((trinsic.services.WalletService.SearchRequest) request,

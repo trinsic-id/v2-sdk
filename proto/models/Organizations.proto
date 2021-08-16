@@ -1,5 +1,6 @@
 syntax = "proto3";
 option go_package = "github.com/trinsic-id/sdk";
+option java_package = "trinsic.services";
 
 // platform models
 

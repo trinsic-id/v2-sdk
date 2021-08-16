@@ -1,13 +1,16 @@
 import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
 import io.grpc.*;
+import trinsic.okapi.Pbmse;
 import trinsic.services.CoreService;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.Callable;
+import java.util.List;
 
 public class Utilities {
     public static Value stringValue(String s) {
@@ -36,6 +39,45 @@ public class Utilities {
                     .usePlaintext().build(); // TODO Switch to HTTPS
         }
         return channel;
+    }
+
+    public static Pbmse.EncryptionRecipient toOkapiEncryptionRecipient(trinsic.services.Pbmse.EncryptionRecipient input) {
+        return Pbmse.EncryptionRecipient.newBuilder()
+                .mergeFrom(input)
+                .build();
+    }
+    public static List<Pbmse.EncryptionRecipient> toOkapiEncryptionRecipient(List<trinsic.services.Pbmse.EncryptionRecipient> input) {
+        var output = new ArrayList<Pbmse.EncryptionRecipient>();
+        input.forEach(encryptionRecipient -> output.add(toOkapiEncryptionRecipient(encryptionRecipient)));
+        return output;
+    }
+
+    public static trinsic.services.Pbmse.EncryptionRecipient toServicesEncryptionRecipient(Pbmse.EncryptionRecipient input) throws InvalidProtocolBufferException {
+        return trinsic.services.Pbmse.EncryptionRecipient.newBuilder()
+                .mergeFrom(input.toByteArray())
+                .build();
+    }
+    public static List<trinsic.services.Pbmse.EncryptionRecipient> toServicesEncryptionRecipient(List<Pbmse.EncryptionRecipient> input) {
+        var output = new ArrayList<trinsic.services.Pbmse.EncryptionRecipient>();
+        input.forEach(encryptionRecipient -> {
+            try {
+                output.add(toServicesEncryptionRecipient(encryptionRecipient));
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
+        });
+        return output;
+    }
+
+    public static trinsic.services.Pbmse.EncryptedMessage toServicesEncryptedMessage(Pbmse.EncryptedMessage input) throws InvalidProtocolBufferException {
+        return trinsic.services.Pbmse.EncryptedMessage.newBuilder()
+                .mergeFrom(input.toByteArray())
+                .build();
+    }
+    public static Pbmse.EncryptedMessage toOkapiEncryptedMessage(trinsic.services.Pbmse.EncryptedMessage input) throws InvalidProtocolBufferException {
+        return Pbmse.EncryptedMessage.newBuilder()
+                .mergeFrom(input.toByteArray())
+                .build();
     }
 }
 

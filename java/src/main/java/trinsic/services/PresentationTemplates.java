@@ -4401,7 +4401,8 @@ public final class PresentationTemplates {
       "ntationTemplateRequest\"a\n\024PresentationTe" +
       "mplate\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022/\n\nattr" +
       "ibutes\030\003 \003(\0132\033.trinsic.services.Attribut" +
-      "eb\006proto3"
+      "eB-\n\020trinsic.servicesZ\031github.com/trinsi" +
+      "c-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

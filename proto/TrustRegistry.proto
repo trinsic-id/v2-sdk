@@ -2,6 +2,7 @@ syntax = "proto3";
 package trinsic.services;
 
 import "CoreService.proto";
+option java_package = "trinsic.services";
 
 message AddFrameworkRequest {
     GovernanceFramework governance_framework = 1;
