@@ -1,11 +1,11 @@
-import Okapi.Keys.API;
 import com.google.gson.Gson;
 import com.google.protobuf.Empty;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
 import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
-import pbmse.Pbmse;
+import trinsic.okapi.Keys;
+import trinsic.okapi.Transport;
 import trinsic.services.*;
 
 import java.net.MalformedURLException;
@@ -34,16 +34,16 @@ public class TrinsicWalletService extends ServiceBase {
         securityCode = securityCode == null ? "" : securityCode;
 
         var configuration = this.walletClient.getProviderConfiguration(Empty.newBuilder().build());
-        var resolveResponse = DidKey.resolve(API.ResolveRequest.newBuilder()
+        var resolveResponse = DidKey.resolve(Keys.ResolveRequest.newBuilder()
                 .setDid(configuration.getKeyAgreementKeyId()).build());
         var providerExchangeKey = resolveResponse.getKeysList().stream().filter(x -> x.getKid().equals(configuration.getKeyAgreementKeyId())).findFirst().get();
 
-        var myKey = DidKey.generate(API.GenerateKeyRequest.newBuilder().setKeyType(API.KeyType.Ed25519).build());
+        var myKey = DidKey.generate(Keys.GenerateKeyRequest.newBuilder().setKeyType(Keys.KeyType.Ed25519).build());
         var myExchangeKey = myKey.getKeyList().stream().filter(x -> x.getCrv().equals("X25519")).findFirst().get();
 
         var myDidDocument = myKey.getDidDocument();
 
-        var packedMessage = DidComm.pack(Okapi.Transport.API.PackRequest.newBuilder()
+        var packedMessage = DidComm.pack(Transport.PackRequest.newBuilder()
                 .setSenderKey(myExchangeKey)
                 .setReceiverKey(providerExchangeKey)
                 .setPlaintext(WalletService.CreateWalletRequest.newBuilder()
@@ -54,14 +54,14 @@ public class TrinsicWalletService extends ServiceBase {
 
         var response = walletClient.createWalletEncrypted(trinsic.services.Pbmse.EncryptedMessage.newBuilder()
                 .setIv(packedMessage.getMessage().getIv())
-                .addAllRecipients(packedMessage.getMessage().getRecipientsList())
+                .addAllRecipients(Utilities.toServicesEncryptionRecipient(packedMessage.getMessage().getRecipientsList()))
                 .setCiphertext(packedMessage.getMessage().getCiphertext())
                 .setAad(packedMessage.getMessage().getAad())
                 .setTag(packedMessage.getMessage().getTag())
                 .build());
 
-        var decryptedResponse = DidComm.unpack(Okapi.Transport.API.UnpackRequest.newBuilder()
-                .setMessage(response)
+        var decryptedResponse = DidComm.unpack(Transport.UnpackRequest.newBuilder()
+                .setMessage(Utilities.toOkapiEncryptedMessage(response))
                 .setReceiverKey(myExchangeKey)
                 .setSenderKey(providerExchangeKey)
                 .build());

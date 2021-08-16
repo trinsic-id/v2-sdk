@@ -3,12 +3,13 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 
-import Okapi.Proofs.API;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Value;
 import com.google.protobuf.util.JsonFormat;
 
 import io.grpc.Metadata;
+import trinsic.okapi.Keys;
+import trinsic.okapi.Proofs;
 import trinsic.services.WalletService.WalletProfile;
 
 public class ServiceBase {
@@ -35,10 +36,10 @@ public class ServiceBase {
             put("proof", Utilities.structValue(proofDict));
         }};
 
-        var proofResponse = LdProofs.createProof( API.CreateProofRequest.newBuilder()
-                        .setKey(Okapi.Keys.API.JsonWebKey.parseFrom(profile.getInvokerJwk()))
+        var proofResponse = LdProofs.createProof( Proofs.CreateProofRequest.newBuilder()
+                        .setKey(Keys.JsonWebKey.parseFrom(profile.getInvokerJwk()))
                         .setDocument(Utilities.hashmapToStruct(capabilityDict))
-                        .setSuite(API.LdSuite.JcsEd25519Signature2020)
+                        .setSuite(Proofs.LdSuite.JcsEd25519Signature2020)
                 .build());
         var proofJson = proofResponse.getSignedDocument().getFieldsMap();
         var format = JsonFormat.printer().print(proofResponse.getSignedDocument());
