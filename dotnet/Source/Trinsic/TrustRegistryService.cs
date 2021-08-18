@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
+using Newtonsoft.Json.Linq;
 using Trinsic.Services;
 
 namespace Trinsic
@@ -65,6 +69,70 @@ namespace Trinsic
                 ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
                 ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
             }, GetMetadata());
+        }
+
+        public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Register a DID as authoritative verifier with the configured governance framework.
+        /// </summary>
+        /// <param name="verifierDid">The verifier DID</param>
+        /// <param name="presentationType">The full presentation type URI</param>
+        /// <param name="governanceFramework">The governance framework URI</param>
+        /// <param name="validFrom">Valid from (UTC)</param>
+        /// <param name="validUntil">Valid until (UTC)</param>
+        /// <returns></returns>
+        public async Task RegisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
+        {
+            var response = await Client.RegisterVerifierAsync(new RegisterVerifierRequest
+            {
+                DidUri = verifierDid,
+                PresentationTypeUri = presentationType,
+                GovernanceFrameworkUri = governanceFramework,
+                ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
+                ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
+            }, GetMetadata());
+        }
+
+        public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Checks the status of the issuer for a given credential type in the given governance framework
+        /// </summary>
+        /// <param name="issuerDid">The issuer DID</param>
+        /// <param name="presentationType"></param>
+        /// <param name="governanceFramework"></param>
+        /// <returns></returns>
+        public async Task CheckIssuerStatus(string issuerDid, string presentationType, string governanceFramework)
+        {
+            var response = await Client.CheckIssuerStatusAsync(new CheckIssuerStatusRequest
+            {
+                DidUri = issuerDid,
+                CredentialTypeUri = presentationType,
+                GovernanceFrameworkUri = governanceFramework
+            }, GetMetadata());
+        }
+
+        /// <summary>
+        /// Search the trust registry
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<JObject>> SearchRegistry(string query = "SELECT * FROM c")
+        {
+            var response = await Client.SearchRegistryAsync(new SearchRegistryRequest
+            {
+                Query = query,
+                Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
+            }, GetMetadata());
+
+            return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
         }
     }
 }
