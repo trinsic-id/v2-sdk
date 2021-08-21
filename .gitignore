@@ -359,3 +359,4 @@ ruby/doc/
 ruby/pkg/
 ruby/spec/reports/
 ruby/tmp/
+ruby/Gemfile.lock

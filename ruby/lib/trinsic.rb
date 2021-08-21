@@ -1,4 +1,4 @@
-require "trinsic/version"
+require_relative 'version'
 require 'grpc'
 require 'okapi'
 require 'base64'

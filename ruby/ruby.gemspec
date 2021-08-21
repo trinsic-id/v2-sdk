@@ -1,4 +1,4 @@
-require_relative 'lib/trinsic/version'
+require_relative 'lib/trinsic/rb'
 
 Gem::Specification.new do |spec|
   spec.name          = "trinsic"
