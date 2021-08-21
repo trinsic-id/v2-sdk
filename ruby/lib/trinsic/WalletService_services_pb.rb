@@ -2,7 +2,7 @@
 # Source: WalletService.proto for package 'trinsic.services'
 
 require 'grpc'
-require 'WalletService_pb'
+require_relative 'WalletService_pb'
 
 module Trinsic
   module Services

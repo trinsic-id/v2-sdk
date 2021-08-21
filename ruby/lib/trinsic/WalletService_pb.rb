@@ -5,8 +5,8 @@ require 'google/protobuf'
 
 require 'google/protobuf/struct_pb'
 require 'google/protobuf/empty_pb'
-require 'CoreService_pb'
-require 'pbmse/pbmse_pb'
+require_relative 'CoreService_pb'
+require 'okapi/pbmse/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("WalletService.proto", :syntax => :proto3) do
     add_message "trinsic.services.CreateWalletRequest" do
@@ -64,10 +64,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "trinsic.services.SearchRequest" do
       optional :query, :string, 1
+      optional :continuation_token, :string, 2
+      optional :options, :message, 5, "trinsic.services.RequestOptions"
     end
     add_message "trinsic.services.SearchResponse" do
       repeated :items, :message, 1, "trinsic.services.JsonPayload"
       optional :has_more, :bool, 2
+      optional :count, :int32, 3
+      optional :continuation_token, :string, 4
     end
     add_message "trinsic.services.InsertItemRequest" do
       optional :item, :message, 1, "trinsic.services.JsonPayload"

@@ -4,7 +4,7 @@
 require 'google/protobuf'
 
 require 'google/protobuf/struct_pb'
-require 'CoreService_pb'
+require_relative 'CoreService_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("IssuerService.proto", :syntax => :proto3) do
     add_message "trinsic.services.IssueRequest" do

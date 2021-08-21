@@ -4,9 +4,12 @@
 require 'google/protobuf'
 
 require 'google/protobuf/struct_pb'
-require 'pbmse/pbmse_pb'
+require 'okapi/pbmse/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("CoreService.proto", :syntax => :proto3) do
+    add_message "trinsic.services.RequestOptions" do
+      optional :response_json_format, :enum, 1, "trinsic.services.JsonFormat"
+    end
     add_message "trinsic.services.JsonPayload" do
       oneof :json do
         optional :json_struct, :message, 1, "google.protobuf.Struct"
@@ -32,6 +35,7 @@ end
 
 module Trinsic
   module Services
+    RequestOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.RequestOptions").msgclass
     JsonPayload = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.JsonPayload").msgclass
     ResponseStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.ResponseStatus").enummodule
     JsonFormat = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("trinsic.services.JsonFormat").enummodule
