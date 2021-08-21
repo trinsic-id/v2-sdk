@@ -3,6 +3,7 @@ require 'grpc'
 require 'okapi'
 require 'base64'
 require 'time'
+require 'uri'
 require 'google/protobuf/well_known_types'
 require_relative 'trinsic/WalletService_services_pb'
 require_relative 'trinsic/IssuerService_services_pb'
@@ -37,13 +38,20 @@ module Trinsic
       proof_json = Google::Protobuf::Struct.encode_json(proof_response.signed_document)
       @cap_invocation = Base64.strict_encode64(proof_json)
     end
+
+    def parse_url(url)
+      uri = URI.parse(url)
+      "#{uri.host}:#{uri.port}"
+    end
   end
 
   class WalletService < ServiceBase
     def initialize(service_address)
-      @service_address = (service_address || "localhost:5000")
-      @wallet_client = Trinsic::Services::Wallet::Stub.new(@service_address, :this_channel_is_insecure)
-      @credential_client = Trinsic::Services::Credential::Stub.new(@service_address, :this_channel_is_insecure)
+      @service_address = (service_address || "http://localhost:5000")
+
+      
+      @wallet_client = Trinsic::Services::Wallet::Stub.new(parse_url(@service_address), :this_channel_is_insecure)
+      @credential_client = Trinsic::Services::Credential::Stub.new(parse_url(@service_address), :this_channel_is_insecure)
     end
 
     def register_or_connect(email)
@@ -119,8 +127,8 @@ module Trinsic
 
   class CredentialService < ServiceBase
     def initialize(service_address)
-      @service_address = (service_address || "localhost:5000")
-      @provider_client = Trinsic::Services::Provider::Stub.new(@service_address)
+      @service_address = (service_address || "http://localhost:5000")
+      @provider_client = Trinsic::Services::Provider::Stub.new(parse_url(@service_address))
     end
 
     def invite_participant(request)
