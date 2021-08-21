@@ -40,7 +40,7 @@ jobs:
         run: |
           gem install bundler
           gem install rspec
-          bundle config set rubygems.pkg.github.com ${{ GITHUB_ACTOR }}:${{ secrets.GITHUB_TOKEN }}
+          bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
           bundle install
         working-directory: ruby
       - name: Run tests
