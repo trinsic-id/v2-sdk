@@ -4,7 +4,6 @@ package trinsic.services;
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 
-import "google/protobuf/struct.proto";
 import "CoreService.proto";
 
 message InviteRequest {
