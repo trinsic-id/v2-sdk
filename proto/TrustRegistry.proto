@@ -116,7 +116,7 @@ message CheckVerifierStatusRequest {
         string did_uri = 2;
         string x509_cert = 3;
     }
-    string credential_type_uri = 4;
+    string presentation_type_uri = 4;
 }
 
 message CheckVerifierStatusResponse {

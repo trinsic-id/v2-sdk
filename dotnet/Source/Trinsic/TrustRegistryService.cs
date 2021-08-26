@@ -31,18 +31,18 @@ namespace Trinsic
         /// <remarks>
         /// Calling this multiple times with the same URI will update the previously registered framework.
         /// </remarks>
-        /// <param name="governanceFrameworkUri">The governane framework URI</param>
+        /// <param name="governanceFramework">The governance framework URI</param>
         /// <param name="description">The framework description</param>
         /// <returns></returns>
-        public async Task RegisterGovernanceFramework(string governanceFrameworkUri, string description)
+        public async Task RegisterGovernanceFramework(string governanceFramework, string description)
         {
-            if (Uri.TryCreate(governanceFrameworkUri, UriKind.Absolute, out _))
+            if (Uri.TryCreate(governanceFramework, UriKind.Absolute, out _))
             {
                 var response = await Client.AddFrameworkAsync(new AddFrameworkRequest
                 {
                     GovernanceFramework = new GovernanceFramework
                     {
-                        GovernanceFrameworkUri = governanceFrameworkUri,
+                        GovernanceFrameworkUri = governanceFramework,
                         Description = description
                     }
                 }, GetMetadata());
@@ -106,17 +106,38 @@ namespace Trinsic
         /// Checks the status of the issuer for a given credential type in the given governance framework
         /// </summary>
         /// <param name="issuerDid">The issuer DID</param>
-        /// <param name="presentationType"></param>
+        /// <param name="credentialType"></param>
         /// <param name="governanceFramework"></param>
-        /// <returns></returns>
-        public async Task CheckIssuerStatus(string issuerDid, string presentationType, string governanceFramework)
+        /// <returns>The status of the registration</returns>
+        public async Task<RegistrationStatus> CheckIssuerStatus(string issuerDid, string credentialType, string governanceFramework)
         {
             var response = await Client.CheckIssuerStatusAsync(new CheckIssuerStatusRequest
             {
                 DidUri = issuerDid,
-                CredentialTypeUri = presentationType,
+                CredentialTypeUri = credentialType,
                 GovernanceFrameworkUri = governanceFramework
             }, GetMetadata());
+
+            return response.Status;
+        }
+
+        /// <summary>
+        /// Checks the status of the verifier for a given presentation type in the given governance framework
+        /// </summary>
+        /// <param name="issuerDid">The issuer DID</param>
+        /// <param name="presentationType">The presentation type URI</param>
+        /// <param name="governanceFramework">The governance framework URI</param>
+        /// <returns>The status of the registration</returns>
+        public async Task<RegistrationStatus> CheckVerifierStatus(string issuerDid, string presentationType, string governanceFramework)
+        {
+            var response = await Client.CheckVerifierStatusAsync(new CheckVerifierStatusRequest
+            {
+                DidUri = issuerDid,
+                PresentationTypeUri = presentationType,
+                GovernanceFrameworkUri = governanceFramework
+            }, GetMetadata());
+
+            return response.Status;
         }
 
         /// <summary>
