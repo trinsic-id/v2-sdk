@@ -352,6 +352,18 @@ subcommands:
         - list_credential_templates:
             about: "List credential templates"
             version: "0.1"
+  - trust-registry:
+      about: Trust Registry
+      subcommands:
+        - search:
+        - check-issuer:
+        - check-verifier:
+        - download:
+        - register-egf:
+        - register-issuer:
+        - register-verifier:
+        - unregister-issuer:
+        - unregister-verifier:
 args:
   - profile:
       long: profile
