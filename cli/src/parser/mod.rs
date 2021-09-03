@@ -6,6 +6,7 @@ pub mod didkey;
 pub mod issuer;
 pub mod provider;
 pub mod wallet;
+pub mod trustregistry;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
     if args.is_present("didkey") {
@@ -60,5 +61,6 @@ pub enum Service<'a> {
     Provider(provider::Command<'a>),
     Config(config::Command<'a>),
     Authentication,
+    TrustRegistry(config::Command<'a>),
     Unknown,
 }
