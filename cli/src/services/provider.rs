@@ -1,7 +1,9 @@
 use super::super::parser::provider::*;
+use crate::parser;
 use crate::services::config::*;
 use tonic::transport::Channel;
 use trinsic::proto::trinsic_services::{provider_client::ProviderClient, InviteRequest};
+use trinsic::*;
 use trinsic::{invite_request::ContactMethod, proto::trinsic_services};
 
 #[allow(clippy::unit_arg)]
@@ -14,13 +16,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
 
 #[tokio::main]
 async fn invite(args: &InviteArgs, config: Config) {
-    let channel = Channel::from_shared(config.server.address.to_string())
-        .unwrap()
-        .connect()
-        .await
-        .expect("Unable to connect to server");
-
-    let mut client = ProviderClient::new(channel);
+    let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config);
 
     let request = tonic::Request::new(InviteRequest {
         contact_method: match &args.invitation_method {
@@ -29,8 +25,12 @@ async fn invite(args: &InviteArgs, config: Config) {
             InvitationMethod::None => None,
         },
         participant: match args.participant_type {
-            ParticipantType::Individual => trinsic_services::ParticipantType::Individual as i32,
-            ParticipantType::Organization => trinsic_services::ParticipantType::Organization as i32,
+            parser::provider::ParticipantType::Individual => {
+                trinsic_services::ParticipantType::Individual as i32
+            }
+            parser::provider::ParticipantType::Organization => {
+                trinsic_services::ParticipantType::Organization as i32
+            }
         },
         description: args
             .description

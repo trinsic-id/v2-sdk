@@ -1,5 +1,5 @@
 use tonic::transport::Channel;
-use trinsic::{SearchRegistryRequest, trust_registry_client::TrustRegistryClient};
+use trinsic::{trust_registry_client::TrustRegistryClient, SearchRegistryRequest, *};
 
 use crate::parser::trustregistry::*;
 
@@ -10,6 +10,8 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
         Command::Search(args) => Ok(search(args, config)),
         Command::RegisterIssuer(args) => Ok(register_issuer(args, config)),
         Command::RegisterVerifier(args) => Ok(register_verifier(args, config)),
+        Command::UnregisterIssuer(args) => Ok(unregister_issuer(args, config)),
+        Command::UnregisterVerifier(args) => Ok(unregister_verifier(args, config)),
     }
 }
 
@@ -20,13 +22,7 @@ async fn search(args: &SearchArgs, config: Config) {
         .as_ref()
         .map_or("SELECT * FROM c".to_string(), |q| q.to_owned());
 
-    let channel = Channel::from_shared(config.server.address.clone())
-        .unwrap()
-        .connect()
-        .await
-        .expect("Unable to connect to server");
-
-        let mut client = TrustRegistryClient::with_interceptor(channel, config);
+    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config);
 
     let request = tonic::Request::new(SearchRegistryRequest {
         query: query.clone(),
@@ -40,10 +36,18 @@ async fn search(args: &SearchArgs, config: Config) {
         .into_inner();
 }
 
-fn register_issuer(args: &RegisterIssuerArgs, config: Config) {
+fn register_issuer(args: &RegistrationArgs, config: Config) {
     todo!()
 }
 
-fn register_verifier(args: &RegisterVerifierArgs, config: Config) {
+fn unregister_issuer(args: &RegistrationArgs, config: Config) {
+    todo!()
+}
+
+fn register_verifier(args: &RegistrationArgs, config: Config) {
+    todo!()
+}
+
+fn unregister_verifier(args: &RegistrationArgs, config: Config) {
     todo!()
 }

@@ -3,8 +3,8 @@ mod didcomm;
 mod didkey;
 mod issuer;
 mod provider;
-mod wallet;
 mod trustregistry;
+mod wallet;
 
 use self::config::Config;
 use super::parser::Service;
