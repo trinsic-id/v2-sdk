@@ -10,11 +10,11 @@ prost = "0.7"
 prost-types = "0.7"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
 okapi = { path = "../okapi/native" }
-clap = {version = "~2.27.0", features = ["yaml"]}
-serde = "1.0.119"
-serde_json = "1.0.60"
-chrono = "0.4.19"
-base64 = "0.13.0"
+clap = {version = "~2", features = ["yaml"]}
+serde = "1.0"
+serde_json = "1.0"
+chrono = "0.4"
+base64 = "0.13"
 toml = "0.5"
 dirs = "3.0"
 yaml-rust = "0.3"

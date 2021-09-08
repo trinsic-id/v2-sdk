@@ -17,7 +17,7 @@ pub(crate) fn execute(args: &Service, config: Config) {
         Service::Issuer(args) => issuer::execute(&args, config),
         Service::Provider(args) => provider::execute(&args, config).unwrap(),
         Service::Config(args) => config::execute(&args),
-        Service::TrustRegistry(args) => trustregistry::execute(&args, config).unwrap(),
+        Service::TrustRegistry(args) => trustregistry::execute(&args, &config).unwrap(),
         _ => println!("Not yet implemented"),
     }
 }

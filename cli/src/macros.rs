@@ -9,6 +9,8 @@ macro_rules! grpc_channel {
     };
 }
 
+/// Create a client for a given service type with
+/// support for authenticatd endpoints
 #[macro_export]
 macro_rules! grpc_client_with_auth {
     ($c:ty,$x:expr) => {
