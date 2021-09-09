@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'models/Attributes_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("models/CredentialTemplates.proto", :syntax => :proto3) do
     add_message "trinsic.services.CreateCredentialTemplateRequest" do

@@ -34,7 +34,7 @@ public final class Attributes {
     /**
      * <code>enum = 3;</code>
      */
-    enumeration(3),
+    enum(3),
     UNRECOGNIZED(-1),
     ;
 
@@ -83,7 +83,7 @@ public final class Attributes {
         case 0: return date;
         case 1: return number;
         case 2: return text;
-        case 3: return enumeration;
+        case 3: return enum;
         default: return null;
       }
     }
@@ -2501,20 +2501,18 @@ public final class Attributes {
   static {
     java.lang.String[] descriptorData = {
       "\n\027models/Attributes.proto\022\020trinsic.servi" +
-      "ces\032\033google/protobuf/empty.proto\"c\n\tAttr" +
-      "ibute\022\n\n\002Id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022-\n\004type\030" +
-      "\003 \001(\0162\037.trinsic.services.AttributeType\022\r" +
-      "\n\005value\030\004 \001(\t\"\031\n\013AttributeId\022\n\n\002Id\030\001 \001(\t" +
-      "\"I\n\026ListAttributesResponse\022/\n\nattributes" +
-      "\030\001 \003(\0132\033.trinsic.services.Attribute*9\n\rA" +
-      "ttributeType\022\010\n\004date\020\000\022\n\n\006number\020\001\022\010\n\004te" +
-      "xt\020\002\022\010\n\004enum\020\003B-\n\020trinsic.servicesZ\031gith" +
-      "ub.com/trinsic-id/sdkb\006proto3"
+      "ces\"c\n\tAttribute\022\n\n\002Id\030\001 \001(\t\022\014\n\004name\030\002 \001" +
+      "(\t\022-\n\004type\030\003 \001(\0162\037.trinsic.services.Attr" +
+      "ibuteType\022\r\n\005value\030\004 \001(\t\"\031\n\013AttributeId\022" +
+      "\n\n\002Id\030\001 \001(\t\"I\n\026ListAttributesResponse\022/\n" +
+      "\nattributes\030\001 \003(\0132\033.trinsic.services.Att" +
+      "ribute*9\n\rAttributeType\022\010\n\004date\020\000\022\n\n\006num" +
+      "ber\020\001\022\010\n\004text\020\002\022\010\n\004enum\020\003B-\n\020trinsic.ser" +
+      "vicesZ\031github.com/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.EmptyProto.getDescriptor(),
         });
     internal_static_trinsic_services_Attribute_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -2534,7 +2532,6 @@ public final class Attributes {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_ListAttributesResponse_descriptor,
         new java.lang.String[] { "Attributes", });
-    com.google.protobuf.EmptyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'google/protobuf/empty_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("models/Attributes.proto", :syntax => :proto3) do
     add_message "trinsic.services.Attribute" do
