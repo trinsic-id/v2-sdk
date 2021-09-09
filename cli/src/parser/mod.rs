@@ -5,6 +5,7 @@ pub mod didcomm;
 pub mod didkey;
 pub mod issuer;
 pub mod provider;
+pub mod trustregistry;
 pub mod wallet;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
@@ -46,6 +47,12 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .subcommand_matches("provider")
                 .expect("Error parsing request"),
         ));
+    } else if args.is_present("trust-registry") {
+        return Service::TrustRegistry(trustregistry::parse(
+            &args
+                .subcommand_matches("trust-registry")
+                .expect("Error parsing request"),
+        ));
     } else {
         Service::Unknown
     }
@@ -60,5 +67,6 @@ pub enum Service<'a> {
     Provider(provider::Command<'a>),
     Config(config::Command<'a>),
     Authentication,
+    TrustRegistry(trustregistry::Command),
     Unknown,
 }

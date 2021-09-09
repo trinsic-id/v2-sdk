@@ -27,6 +27,7 @@ fn main() {
                 "../proto/IssuerService.proto",
                 "../proto/WalletService.proto",
                 "../proto/ProviderService.proto",
+                "../proto/TrustRegistry.proto",
             ],
             &["../proto"],
         )
