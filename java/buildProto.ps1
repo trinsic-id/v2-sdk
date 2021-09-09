@@ -1,3 +1,0 @@
-# https://mvnrepository.com/artifact/io.grpc/protoc-gen-grpc-java
-# https://github.com/grpc/grpc-java/tree/master/compiler
-protoc --plugin=protoc-gen-grpc-java="C:\bin\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe" --proto_path=../proto --java_out=./src/main/java --grpc-java_out=./src/main/java ../proto/CoreService.proto ../proto/DebugService.proto ../proto/IssuerService.proto ../proto/ProviderService.proto ../proto/WalletService.proto ../proto/pbmse/pbmse.proto ../proto/models/Attributes.proto ../proto/models/Credentials.proto ../proto/models/CredentialTemplates.proto ../proto/models/Organizations.proto ../proto/models/Presentations.proto ../proto/models/PresentationTemplates.proto
