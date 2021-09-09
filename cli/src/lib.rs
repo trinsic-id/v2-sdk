@@ -29,6 +29,8 @@ where
 pub mod proto;
 pub mod utils;
 pub use proto::pbmse;
+#[macro_use]
+pub(crate) mod macros;
 
 pub mod google {
     pub mod protobuf {
