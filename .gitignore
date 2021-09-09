@@ -360,6 +360,12 @@ ruby/pkg/
 ruby/spec/reports/
 ruby/tmp/
 ruby/Gemfile.lock
+
+# More Python
+python/trinsic_sdk.egg-info/
+python/build/
+python/pytest_junit.xml
+python/dist/
 settings.json
 
 # Swift
