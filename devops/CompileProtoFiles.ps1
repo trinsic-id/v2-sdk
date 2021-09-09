@@ -10,6 +10,7 @@ function Get-Proto-Files()
     "../proto/DebugService.proto",
     "../proto/IssuerService.proto",
     "../proto/ProviderService.proto",
+    "../proto/TrustRegistry.proto",
     "../proto/WalletService.proto",
     "../proto/pbmse/pbmse.proto",
     "../proto/models/Attributes.proto",
