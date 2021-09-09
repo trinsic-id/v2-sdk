@@ -360,3 +360,14 @@ ruby/pkg/
 ruby/spec/reports/
 ruby/tmp/
 ruby/Gemfile.lock
+settings.json
+
+# Swift
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+swift/TrinsicServices/.build
