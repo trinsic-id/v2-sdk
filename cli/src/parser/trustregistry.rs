@@ -75,7 +75,7 @@ fn search<'a>(args: &'a ArgMatches<'_>) -> Command {
 
 fn register_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
     Command::RegisterIssuer(RegistrationArgs {
-        did_uri: args.value_of("did-uri").map(|q| q.into()),
+        did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("credential-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
@@ -84,7 +84,7 @@ fn register_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
 
 fn register_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
     Command::RegisterVerifier(RegistrationArgs {
-        did_uri: args.value_of("did-uri").map(|q| q.into()),
+        did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
@@ -93,7 +93,7 @@ fn register_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
 
 fn check_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
     Command::CheckIssuer(RegistrationArgs {
-        did_uri: args.value_of("did-uri").map(|q| q.into()),
+        did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("credential-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
@@ -102,7 +102,7 @@ fn check_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
 
 fn check_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
     Command::CheckVerifier(RegistrationArgs {
-        did_uri: args.value_of("did-uri").map(|q| q.into()),
+        did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
