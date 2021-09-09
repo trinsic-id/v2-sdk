@@ -5689,9 +5689,9 @@ public final class IssuerService {
       "roof\022$.trinsic.services.VerifyProofReque" +
       "st\032%.trinsic.services.VerifyProofRespons" +
       "e\022E\n\004Send\022\035.trinsic.services.SendRequest" +
-      "\032\036.trinsic.services.SendResponseB-\n\020trin" +
-      "sic.servicesZ\031github.com/trinsic-id/sdkb" +
-      "\006proto3"
+      "\032\036.trinsic.services.SendResponseB?\n\020trin" +
+      "sic.servicesZ\031github.com/trinsic-id/sdk\242" +
+      "\002\017TrinsicServicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
