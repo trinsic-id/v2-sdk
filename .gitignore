@@ -360,7 +360,20 @@ ruby/pkg/
 ruby/spec/reports/
 ruby/tmp/
 ruby/Gemfile.lock
+
+# More Python
 python/trinsic_sdk.egg-info/
 python/build/
 python/pytest_junit.xml
 python/dist/
+settings.json
+
+# Swift
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+swift/TrinsicServices/.build
