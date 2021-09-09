@@ -3,6 +3,7 @@ package trinsic.services;
 
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
+option objc_class_prefix = "TrinsicServices";
 
 import "CoreService.proto";
 
