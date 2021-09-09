@@ -13,12 +13,8 @@ function Get-Proto-Files()
     "../proto/TrustRegistry.proto",
     "../proto/WalletService.proto",
     "../proto/pbmse/pbmse.proto",
-    "../proto/models/Attributes.proto",
-    "../proto/models/Credentials.proto",
     "../proto/models/CredentialTemplates.proto",
-    "../proto/models/Organizations.proto",
-    "../proto/models/Presentations.proto",
-    "../proto/models/PresentationTemplates.proto"
+    "../proto/models/Organizations.proto"
     )
 }
 
