@@ -5,7 +5,7 @@ require 'google/protobuf'
 
 require 'google/protobuf/empty_pb'
 require_relative 'CoreService_pb'
-require_relative 'pbmse/pbmse_pb'
+require 'okapi/pbmse/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("WalletService.proto", :syntax => :proto3) do
     add_message "trinsic.services.CreateWalletRequest" do
