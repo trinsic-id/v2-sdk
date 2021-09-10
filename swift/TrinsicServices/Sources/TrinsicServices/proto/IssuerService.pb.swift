@@ -20,135 +20,135 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Trinsic_Services_IssueRequest {
+public struct Trinsic_Services_IssueRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var document: Trinsic_Services_JsonPayload {
+  public var document: Trinsic_Services_JsonPayload {
     get {return _document ?? Trinsic_Services_JsonPayload()}
     set {_document = newValue}
   }
   /// Returns true if `document` has been explicitly set.
-  var hasDocument: Bool {return self._document != nil}
+  public var hasDocument: Bool {return self._document != nil}
   /// Clears the value of `document`. Subsequent reads from it will return its default value.
-  mutating func clearDocument() {self._document = nil}
+  public mutating func clearDocument() {self._document = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _document: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_IssueResponse {
+public struct Trinsic_Services_IssueResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var document: Trinsic_Services_JsonPayload {
+  public var document: Trinsic_Services_JsonPayload {
     get {return _document ?? Trinsic_Services_JsonPayload()}
     set {_document = newValue}
   }
   /// Returns true if `document` has been explicitly set.
-  var hasDocument: Bool {return self._document != nil}
+  public var hasDocument: Bool {return self._document != nil}
   /// Clears the value of `document`. Subsequent reads from it will return its default value.
-  mutating func clearDocument() {self._document = nil}
+  public mutating func clearDocument() {self._document = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _document: Trinsic_Services_JsonPayload? = nil
 }
 
 /// Create Proof
-struct Trinsic_Services_CreateProofRequest {
+public struct Trinsic_Services_CreateProofRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var revealDocument: Trinsic_Services_JsonPayload {
+  public var revealDocument: Trinsic_Services_JsonPayload {
     get {return _revealDocument ?? Trinsic_Services_JsonPayload()}
     set {_revealDocument = newValue}
   }
   /// Returns true if `revealDocument` has been explicitly set.
-  var hasRevealDocument: Bool {return self._revealDocument != nil}
+  public var hasRevealDocument: Bool {return self._revealDocument != nil}
   /// Clears the value of `revealDocument`. Subsequent reads from it will return its default value.
-  mutating func clearRevealDocument() {self._revealDocument = nil}
+  public mutating func clearRevealDocument() {self._revealDocument = nil}
 
-  var documentID: String = String()
+  public var documentID: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _revealDocument: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_CreateProofResponse {
+public struct Trinsic_Services_CreateProofResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var proofDocument: Trinsic_Services_JsonPayload {
+  public var proofDocument: Trinsic_Services_JsonPayload {
     get {return _proofDocument ?? Trinsic_Services_JsonPayload()}
     set {_proofDocument = newValue}
   }
   /// Returns true if `proofDocument` has been explicitly set.
-  var hasProofDocument: Bool {return self._proofDocument != nil}
+  public var hasProofDocument: Bool {return self._proofDocument != nil}
   /// Clears the value of `proofDocument`. Subsequent reads from it will return its default value.
-  mutating func clearProofDocument() {self._proofDocument = nil}
+  public mutating func clearProofDocument() {self._proofDocument = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _proofDocument: Trinsic_Services_JsonPayload? = nil
 }
 
 /// Verify Proof
-struct Trinsic_Services_VerifyProofRequest {
+public struct Trinsic_Services_VerifyProofRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var proofDocument: Trinsic_Services_JsonPayload {
+  public var proofDocument: Trinsic_Services_JsonPayload {
     get {return _proofDocument ?? Trinsic_Services_JsonPayload()}
     set {_proofDocument = newValue}
   }
   /// Returns true if `proofDocument` has been explicitly set.
-  var hasProofDocument: Bool {return self._proofDocument != nil}
+  public var hasProofDocument: Bool {return self._proofDocument != nil}
   /// Clears the value of `proofDocument`. Subsequent reads from it will return its default value.
-  mutating func clearProofDocument() {self._proofDocument = nil}
+  public mutating func clearProofDocument() {self._proofDocument = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _proofDocument: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_VerifyProofResponse {
+public struct Trinsic_Services_VerifyProofResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var valid: Bool = false
+  public var valid: Bool = false
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_SendRequest {
+public struct Trinsic_Services_SendRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var deliveryMethod: Trinsic_Services_SendRequest.OneOf_DeliveryMethod? = nil
+  public var deliveryMethod: Trinsic_Services_SendRequest.OneOf_DeliveryMethod? = nil
 
-  var email: String {
+  public var email: String {
     get {
       if case .email(let v)? = deliveryMethod {return v}
       return String()
@@ -156,7 +156,7 @@ struct Trinsic_Services_SendRequest {
     set {deliveryMethod = .email(newValue)}
   }
 
-  var didUri: String {
+  public var didUri: String {
     get {
       if case .didUri(let v)? = deliveryMethod {return v}
       return String()
@@ -164,7 +164,7 @@ struct Trinsic_Services_SendRequest {
     set {deliveryMethod = .didUri(newValue)}
   }
 
-  var didcommInvitation: Trinsic_Services_JsonPayload {
+  public var didcommInvitation: Trinsic_Services_JsonPayload {
     get {
       if case .didcommInvitation(let v)? = deliveryMethod {return v}
       return Trinsic_Services_JsonPayload()
@@ -172,24 +172,24 @@ struct Trinsic_Services_SendRequest {
     set {deliveryMethod = .didcommInvitation(newValue)}
   }
 
-  var document: Trinsic_Services_JsonPayload {
+  public var document: Trinsic_Services_JsonPayload {
     get {return _document ?? Trinsic_Services_JsonPayload()}
     set {_document = newValue}
   }
   /// Returns true if `document` has been explicitly set.
-  var hasDocument: Bool {return self._document != nil}
+  public var hasDocument: Bool {return self._document != nil}
   /// Clears the value of `document`. Subsequent reads from it will return its default value.
-  mutating func clearDocument() {self._document = nil}
+  public mutating func clearDocument() {self._document = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_DeliveryMethod: Equatable {
+  public enum OneOf_DeliveryMethod: Equatable {
     case email(String)
     case didUri(String)
     case didcommInvitation(Trinsic_Services_JsonPayload)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Trinsic_Services_SendRequest.OneOf_DeliveryMethod, rhs: Trinsic_Services_SendRequest.OneOf_DeliveryMethod) -> Bool {
+    public static func ==(lhs: Trinsic_Services_SendRequest.OneOf_DeliveryMethod, rhs: Trinsic_Services_SendRequest.OneOf_DeliveryMethod) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -212,21 +212,21 @@ struct Trinsic_Services_SendRequest {
   #endif
   }
 
-  init() {}
+  public init() {}
 
   fileprivate var _document: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_SendResponse {
+public struct Trinsic_Services_SendResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -234,12 +234,12 @@ struct Trinsic_Services_SendResponse {
 fileprivate let _protobuf_package = "trinsic.services"
 
 extension Trinsic_Services_IssueRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".IssueRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".IssueRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -251,14 +251,14 @@ extension Trinsic_Services_IssueRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._document {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_IssueRequest, rhs: Trinsic_Services_IssueRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_IssueRequest, rhs: Trinsic_Services_IssueRequest) -> Bool {
     if lhs._document != rhs._document {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -266,12 +266,12 @@ extension Trinsic_Services_IssueRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension Trinsic_Services_IssueResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".IssueResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".IssueResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -283,14 +283,14 @@ extension Trinsic_Services_IssueResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._document {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_IssueResponse, rhs: Trinsic_Services_IssueResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_IssueResponse, rhs: Trinsic_Services_IssueResponse) -> Bool {
     if lhs._document != rhs._document {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -298,13 +298,13 @@ extension Trinsic_Services_IssueResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Trinsic_Services_CreateProofRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateProofRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateProofRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "reveal_document"),
     2: .standard(proto: "document_id"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -317,7 +317,7 @@ extension Trinsic_Services_CreateProofRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._revealDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -327,7 +327,7 @@ extension Trinsic_Services_CreateProofRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_CreateProofRequest, rhs: Trinsic_Services_CreateProofRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_CreateProofRequest, rhs: Trinsic_Services_CreateProofRequest) -> Bool {
     if lhs._revealDocument != rhs._revealDocument {return false}
     if lhs.documentID != rhs.documentID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -336,12 +336,12 @@ extension Trinsic_Services_CreateProofRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Trinsic_Services_CreateProofResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateProofResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateProofResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "proof_document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -353,14 +353,14 @@ extension Trinsic_Services_CreateProofResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._proofDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_CreateProofResponse, rhs: Trinsic_Services_CreateProofResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_CreateProofResponse, rhs: Trinsic_Services_CreateProofResponse) -> Bool {
     if lhs._proofDocument != rhs._proofDocument {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -368,12 +368,12 @@ extension Trinsic_Services_CreateProofResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Trinsic_Services_VerifyProofRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyProofRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".VerifyProofRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "proof_document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -385,14 +385,14 @@ extension Trinsic_Services_VerifyProofRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._proofDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_VerifyProofRequest, rhs: Trinsic_Services_VerifyProofRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_VerifyProofRequest, rhs: Trinsic_Services_VerifyProofRequest) -> Bool {
     if lhs._proofDocument != rhs._proofDocument {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -400,12 +400,12 @@ extension Trinsic_Services_VerifyProofRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Trinsic_Services_VerifyProofResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".VerifyProofResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".VerifyProofResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "valid"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -417,14 +417,14 @@ extension Trinsic_Services_VerifyProofResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.valid != false {
       try visitor.visitSingularBoolField(value: self.valid, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_VerifyProofResponse, rhs: Trinsic_Services_VerifyProofResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_VerifyProofResponse, rhs: Trinsic_Services_VerifyProofResponse) -> Bool {
     if lhs.valid != rhs.valid {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -432,15 +432,15 @@ extension Trinsic_Services_VerifyProofResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Trinsic_Services_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SendRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SendRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "email"),
     2: .standard(proto: "did_uri"),
     3: .standard(proto: "didcomm_invitation"),
     100: .same(proto: "document"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -481,7 +481,7 @@ extension Trinsic_Services_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every case branch when no optimizations are
     // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -506,7 +506,7 @@ extension Trinsic_Services_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_SendRequest, rhs: Trinsic_Services_SendRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_SendRequest, rhs: Trinsic_Services_SendRequest) -> Bool {
     if lhs.deliveryMethod != rhs.deliveryMethod {return false}
     if lhs._document != rhs._document {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -515,12 +515,12 @@ extension Trinsic_Services_SendRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension Trinsic_Services_SendResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SendResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SendResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -532,14 +532,14 @@ extension Trinsic_Services_SendResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_SendResponse, rhs: Trinsic_Services_SendResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_SendResponse, rhs: Trinsic_Services_SendResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
