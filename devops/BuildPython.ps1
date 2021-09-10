@@ -42,7 +42,7 @@ function Install-Requirements
 }
 function Run-Tests
 {
-    python -m pytest --cache-clear ./tests --junitxml = pytest_junit.xml --cov = .
+    python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
 }
 function Set-Python-Version
 {
