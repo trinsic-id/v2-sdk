@@ -5664,39 +5664,38 @@ public final class IssuerService {
   static {
     java.lang.String[] descriptorData = {
       "\n\023IssuerService.proto\022\020trinsic.services\032" +
-      "\034google/protobuf/struct.proto\032\021CoreServi" +
-      "ce.proto\"?\n\014IssueRequest\022/\n\010document\030\001 \001" +
-      "(\0132\035.trinsic.services.JsonPayload\"@\n\rIss" +
-      "ueResponse\022/\n\010document\030\001 \001(\0132\035.trinsic.s" +
-      "ervices.JsonPayload\"a\n\022CreateProofReques" +
-      "t\0226\n\017reveal_document\030\001 \001(\0132\035.trinsic.ser" +
-      "vices.JsonPayload\022\023\n\013document_id\030\002 \001(\t\"L" +
-      "\n\023CreateProofResponse\0225\n\016proof_document\030" +
-      "\001 \001(\0132\035.trinsic.services.JsonPayload\"K\n\022" +
-      "VerifyProofRequest\0225\n\016proof_document\030\001 \001" +
-      "(\0132\035.trinsic.services.JsonPayload\"$\n\023Ver" +
-      "ifyProofResponse\022\r\n\005valid\030\001 \001(\010\"\262\001\n\013Send" +
-      "Request\022\017\n\005email\030\001 \001(\tH\000\022\021\n\007did_uri\030\002 \001(" +
-      "\tH\000\022;\n\022didcomm_invitation\030\003 \001(\0132\035.trinsi" +
-      "c.services.JsonPayloadH\000\022/\n\010document\030d \001" +
-      "(\0132\035.trinsic.services.JsonPayloadB\021\n\017del" +
-      "ivery_method\"@\n\014SendResponse\0220\n\006status\030\001" +
-      " \001(\0162 .trinsic.services.ResponseStatus2\325" +
-      "\002\n\nCredential\022H\n\005Issue\022\036.trinsic.service" +
-      "s.IssueRequest\032\037.trinsic.services.IssueR" +
-      "esponse\022Z\n\013CreateProof\022$.trinsic.service" +
-      "s.CreateProofRequest\032%.trinsic.services." +
-      "CreateProofResponse\022Z\n\013VerifyProof\022$.tri" +
-      "nsic.services.VerifyProofRequest\032%.trins" +
-      "ic.services.VerifyProofResponse\022E\n\004Send\022" +
-      "\035.trinsic.services.SendRequest\032\036.trinsic" +
-      ".services.SendResponseB-\n\020trinsic.servic" +
-      "esZ\031github.com/trinsic-id/sdkb\006proto3"
+      "\021CoreService.proto\"?\n\014IssueRequest\022/\n\010do" +
+      "cument\030\001 \001(\0132\035.trinsic.services.JsonPayl" +
+      "oad\"@\n\rIssueResponse\022/\n\010document\030\001 \001(\0132\035" +
+      ".trinsic.services.JsonPayload\"a\n\022CreateP" +
+      "roofRequest\0226\n\017reveal_document\030\001 \001(\0132\035.t" +
+      "rinsic.services.JsonPayload\022\023\n\013document_" +
+      "id\030\002 \001(\t\"L\n\023CreateProofResponse\0225\n\016proof" +
+      "_document\030\001 \001(\0132\035.trinsic.services.JsonP" +
+      "ayload\"K\n\022VerifyProofRequest\0225\n\016proof_do" +
+      "cument\030\001 \001(\0132\035.trinsic.services.JsonPayl" +
+      "oad\"$\n\023VerifyProofResponse\022\r\n\005valid\030\001 \001(" +
+      "\010\"\262\001\n\013SendRequest\022\017\n\005email\030\001 \001(\tH\000\022\021\n\007di" +
+      "d_uri\030\002 \001(\tH\000\022;\n\022didcomm_invitation\030\003 \001(" +
+      "\0132\035.trinsic.services.JsonPayloadH\000\022/\n\010do" +
+      "cument\030d \001(\0132\035.trinsic.services.JsonPayl" +
+      "oadB\021\n\017delivery_method\"@\n\014SendResponse\0220" +
+      "\n\006status\030\001 \001(\0162 .trinsic.services.Respon" +
+      "seStatus2\325\002\n\nCredential\022H\n\005Issue\022\036.trins" +
+      "ic.services.IssueRequest\032\037.trinsic.servi" +
+      "ces.IssueResponse\022Z\n\013CreateProof\022$.trins" +
+      "ic.services.CreateProofRequest\032%.trinsic" +
+      ".services.CreateProofResponse\022Z\n\013VerifyP" +
+      "roof\022$.trinsic.services.VerifyProofReque" +
+      "st\032%.trinsic.services.VerifyProofRespons" +
+      "e\022E\n\004Send\022\035.trinsic.services.SendRequest" +
+      "\032\036.trinsic.services.SendResponseB?\n\020trin" +
+      "sic.servicesZ\031github.com/trinsic-id/sdk\242" +
+      "\002\017TrinsicServicesb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.StructProto.getDescriptor(),
           trinsic.services.CoreService.getDescriptor(),
         });
     internal_static_trinsic_services_IssueRequest_descriptor =
@@ -5747,7 +5746,6 @@ public final class IssuerService {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_SendResponse_descriptor,
         new java.lang.String[] { "Status", });
-    com.google.protobuf.StructProto.getDescriptor();
     trinsic.services.CoreService.getDescriptor();
   }
 

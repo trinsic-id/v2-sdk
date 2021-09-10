@@ -12443,71 +12443,70 @@ public final class WalletService {
   static {
     java.lang.String[] descriptorData = {
       "\n\023WalletService.proto\022\020trinsic.services\032" +
-      "\034google/protobuf/struct.proto\032\033google/pr" +
-      "otobuf/empty.proto\032\021CoreService.proto\032\021p" +
-      "bmse/pbmse.proto\"U\n\023CreateWalletRequest\022" +
-      "\022\n\ncontroller\030\001 \001(\t\022\023\n\013description\030\002 \001(\t" +
-      "\022\025\n\rsecurity_code\030\003 \001(\t\"\200\001\n\024CreateWallet" +
-      "Response\0220\n\006status\030\001 \001(\0162 .trinsic.servi" +
-      "ces.ResponseStatus\022\021\n\twallet_id\030\002 \001(\t\022\022\n" +
-      "\ncapability\030\003 \001(\t\022\017\n\007invoker\030\004 \001(\t\"D\n\016Co" +
-      "nnectRequest\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006" +
-      " \001(\tH\000B\020\n\016contact_method\"C\n\017ConnectRespo" +
-      "nse\0220\n\006status\030\001 \001(\0162 .trinsic.services.R" +
-      "esponseStatus\"o\n\017InvitationToken\022\025\n\rsecu" +
-      "rity_code\030\001 \001(\t\022\021\n\twallet_id\030\002 \001(\t\022\017\n\005em" +
-      "ail\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000B\020\n\016contact_" +
-      "method\"\221\001\n\rWalletProfile\0223\n\014did_document" +
-      "\030\001 \001(\0132\035.trinsic.services.JsonPayload\022\021\n" +
-      "\twallet_id\030\002 \001(\t\022\017\n\007invoker\030\003 \001(\t\022\022\n\ncap" +
-      "ability\030\004 \001(\t\022\023\n\013invoker_jwk\030\005 \001(\014\"4\n\022Gr" +
-      "antAccessRequest\022\021\n\twallet_id\030\001 \001(\t\022\013\n\003d" +
-      "id\030\002 \001(\t\"G\n\023GrantAccessResponse\0220\n\006statu" +
-      "s\030\001 \001(\0162 .trinsic.services.ResponseStatu" +
-      "s\"5\n\023RevokeAccessRequest\022\021\n\twallet_id\030\001 " +
-      "\001(\t\022\013\n\003did\030\002 \001(\t\"H\n\024RevokeAccessResponse" +
-      "\0220\n\006status\030\001 \001(\0162 .trinsic.services.Resp" +
-      "onseStatus\"u\n GetProviderConfigurationRe" +
-      "sponse\0223\n\014did_document\030\001 \001(\0132\035.trinsic.s" +
-      "ervices.JsonPayload\022\034\n\024key_agreement_key" +
-      "_id\030\002 \001(\t\"m\n\rSearchRequest\022\r\n\005query\030\001 \001(" +
-      "\t\022\032\n\022continuation_token\030\002 \001(\t\0221\n\007options" +
-      "\030\005 \001(\0132 .trinsic.services.RequestOptions" +
-      "\"{\n\016SearchResponse\022,\n\005items\030\001 \003(\0132\035.trin" +
-      "sic.services.JsonPayload\022\020\n\010has_more\030\002 \001" +
-      "(\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continuation_token\030" +
-      "\004 \001(\t\"S\n\021InsertItemRequest\022+\n\004item\030\001 \001(\013" +
-      "2\035.trinsic.services.JsonPayload\022\021\n\titem_" +
-      "type\030\002 \001(\t\"W\n\022InsertItemResponse\0220\n\006stat" +
-      "us\030\001 \001(\0162 .trinsic.services.ResponseStat" +
-      "us\022\017\n\007item_id\030\002 \001(\t2\306\006\n\006Wallet\022f\n\030GetPro" +
-      "viderConfiguration\022\026.google.protobuf.Emp" +
-      "ty\0322.trinsic.services.GetProviderConfigu" +
-      "rationResponse\022^\n\027ConnectExternalIdentit" +
-      "y\022 .trinsic.services.ConnectRequest\032!.tr" +
-      "insic.services.ConnectResponse\022]\n\014Create" +
-      "Wallet\022%.trinsic.services.CreateWalletRe" +
-      "quest\032&.trinsic.services.CreateWalletRes" +
-      "ponse\022i\n\030CreateWalletWithWorkflow\022%.trin" +
-      "sic.services.CreateWalletRequest\032&.trins" +
-      "ic.services.CreateWalletResponse\022I\n\025Crea" +
-      "teWalletEncrypted\022\027.pbmse.EncryptedMessa" +
-      "ge\032\027.pbmse.EncryptedMessage\022K\n\006Search\022\037." +
-      "trinsic.services.SearchRequest\032 .trinsic" +
-      ".services.SearchResponse\022W\n\nInsertItem\022#" +
-      ".trinsic.services.InsertItemRequest\032$.tr" +
-      "insic.services.InsertItemResponse\022Z\n\013Gra" +
-      "ntAccess\022$.trinsic.services.GrantAccessR" +
-      "equest\032%.trinsic.services.GrantAccessRes" +
-      "ponse\022]\n\014RevokeAccess\022%.trinsic.services" +
-      ".RevokeAccessRequest\032&.trinsic.services." +
-      "RevokeAccessResponseB-\n\020trinsic.services" +
-      "Z\031github.com/trinsic-id/sdkb\006proto3"
+      "\033google/protobuf/empty.proto\032\021CoreServic" +
+      "e.proto\032\021pbmse/pbmse.proto\"U\n\023CreateWall" +
+      "etRequest\022\022\n\ncontroller\030\001 \001(\t\022\023\n\013descrip" +
+      "tion\030\002 \001(\t\022\025\n\rsecurity_code\030\003 \001(\t\"\200\001\n\024Cr" +
+      "eateWalletResponse\0220\n\006status\030\001 \001(\0162 .tri" +
+      "nsic.services.ResponseStatus\022\021\n\twallet_i" +
+      "d\030\002 \001(\t\022\022\n\ncapability\030\003 \001(\t\022\017\n\007invoker\030\004" +
+      " \001(\t\"D\n\016ConnectRequest\022\017\n\005email\030\005 \001(\tH\000\022" +
+      "\017\n\005phone\030\006 \001(\tH\000B\020\n\016contact_method\"C\n\017Co" +
+      "nnectResponse\0220\n\006status\030\001 \001(\0162 .trinsic." +
+      "services.ResponseStatus\"o\n\017InvitationTok" +
+      "en\022\025\n\rsecurity_code\030\001 \001(\t\022\021\n\twallet_id\030\002" +
+      " \001(\t\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000B\020" +
+      "\n\016contact_method\"\221\001\n\rWalletProfile\0223\n\014di" +
+      "d_document\030\001 \001(\0132\035.trinsic.services.Json" +
+      "Payload\022\021\n\twallet_id\030\002 \001(\t\022\017\n\007invoker\030\003 " +
+      "\001(\t\022\022\n\ncapability\030\004 \001(\t\022\023\n\013invoker_jwk\030\005" +
+      " \001(\014\"4\n\022GrantAccessRequest\022\021\n\twallet_id\030" +
+      "\001 \001(\t\022\013\n\003did\030\002 \001(\t\"G\n\023GrantAccessRespons" +
+      "e\0220\n\006status\030\001 \001(\0162 .trinsic.services.Res" +
+      "ponseStatus\"5\n\023RevokeAccessRequest\022\021\n\twa" +
+      "llet_id\030\001 \001(\t\022\013\n\003did\030\002 \001(\t\"H\n\024RevokeAcce" +
+      "ssResponse\0220\n\006status\030\001 \001(\0162 .trinsic.ser" +
+      "vices.ResponseStatus\"u\n GetProviderConfi" +
+      "gurationResponse\0223\n\014did_document\030\001 \001(\0132\035" +
+      ".trinsic.services.JsonPayload\022\034\n\024key_agr" +
+      "eement_key_id\030\002 \001(\t\"m\n\rSearchRequest\022\r\n\005" +
+      "query\030\001 \001(\t\022\032\n\022continuation_token\030\002 \001(\t\022" +
+      "1\n\007options\030\005 \001(\0132 .trinsic.services.Requ" +
+      "estOptions\"{\n\016SearchResponse\022,\n\005items\030\001 " +
+      "\003(\0132\035.trinsic.services.JsonPayload\022\020\n\010ha" +
+      "s_more\030\002 \001(\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continuat" +
+      "ion_token\030\004 \001(\t\"S\n\021InsertItemRequest\022+\n\004" +
+      "item\030\001 \001(\0132\035.trinsic.services.JsonPayloa" +
+      "d\022\021\n\titem_type\030\002 \001(\t\"W\n\022InsertItemRespon" +
+      "se\0220\n\006status\030\001 \001(\0162 .trinsic.services.Re" +
+      "sponseStatus\022\017\n\007item_id\030\002 \001(\t2\306\006\n\006Wallet" +
+      "\022f\n\030GetProviderConfiguration\022\026.google.pr" +
+      "otobuf.Empty\0322.trinsic.services.GetProvi" +
+      "derConfigurationResponse\022^\n\027ConnectExter" +
+      "nalIdentity\022 .trinsic.services.ConnectRe" +
+      "quest\032!.trinsic.services.ConnectResponse" +
+      "\022]\n\014CreateWallet\022%.trinsic.services.Crea" +
+      "teWalletRequest\032&.trinsic.services.Creat" +
+      "eWalletResponse\022i\n\030CreateWalletWithWorkf" +
+      "low\022%.trinsic.services.CreateWalletReque" +
+      "st\032&.trinsic.services.CreateWalletRespon" +
+      "se\022I\n\025CreateWalletEncrypted\022\027.pbmse.Encr" +
+      "yptedMessage\032\027.pbmse.EncryptedMessage\022K\n" +
+      "\006Search\022\037.trinsic.services.SearchRequest" +
+      "\032 .trinsic.services.SearchResponse\022W\n\nIn" +
+      "sertItem\022#.trinsic.services.InsertItemRe" +
+      "quest\032$.trinsic.services.InsertItemRespo" +
+      "nse\022Z\n\013GrantAccess\022$.trinsic.services.Gr" +
+      "antAccessRequest\032%.trinsic.services.Gran" +
+      "tAccessResponse\022]\n\014RevokeAccess\022%.trinsi" +
+      "c.services.RevokeAccessRequest\032&.trinsic" +
+      ".services.RevokeAccessResponseB-\n\020trinsi" +
+      "c.servicesZ\031github.com/trinsic-id/sdkb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.StructProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
           trinsic.services.CoreService.getDescriptor(),
           trinsic.services.Pbmse.getDescriptor(),
@@ -12602,7 +12601,6 @@ public final class WalletService {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_InsertItemResponse_descriptor,
         new java.lang.String[] { "Status", "ItemId", });
-    com.google.protobuf.StructProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
     trinsic.services.CoreService.getDescriptor();
     trinsic.services.Pbmse.getDescriptor();
