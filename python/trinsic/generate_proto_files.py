@@ -1,3 +1,5 @@
+import os
+
 import grpc_tools.protoc as protoc
 from os.path import join, dirname, abspath, relpath
 import glob
@@ -25,4 +27,7 @@ def generate_better_proto_files() -> None:
 
 
 if __name__ == "__main__":
+    old_cwd = os.getcwd()
+    os.chdir(dirname(abspath(__file__)))
     generate_better_proto_files()
+    os.chdir(old_cwd)
