@@ -3,7 +3,7 @@ function Setup()
     Set-Location $PSScriptRoot
 }
 
-function Get-Proto-Files()
+function Get-ProtoFiles()
 {
     return @(
     "../proto/CoreService.proto",
@@ -18,17 +18,17 @@ function Get-Proto-Files()
     )
 }
 
-function Get-Proto-Path()
+function Get-ProtoPath()
 {
     return "--proto_path=../proto"
 }
 
-function Get-Java-Plugin-Path()
+function Get-JavaPluginPath()
 {
     return 'protoc-gen-grpc-java="C:\bin\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe"'
 }
 
-function Remove-Old-Proto-Files($ProtoPath)
+function Remove-OldProtoFiles($ProtoPath)
 {
     $BaseDir = Split-Path -Path $ProtoPath -Parent
     $ProtoDir = Split-Path -Path $ProtoPath -Leaf
@@ -54,11 +54,11 @@ function Set-Replace-Lines($filename)
     Set-Content -path $filename -value $fileLines
 }
 
-function Compile-Golang()
+function Update-Golang()
 {
     $GoPath = "../go/proto"
-    Remove-Old-Proto-Files($GoPath)
-    protoc $( Get-Proto-Path ) `
+    Remove-OldProtoFiles($GoPath)
+    protoc $( Get-ProtoPath ) `
         --go_out="$GoPath" `
         --go-grpc_out="$GoPath" `
         --go_opt=paths=source_relative `
@@ -72,15 +72,15 @@ function Compile-Golang()
     Remove-Item -Path "$GoPath/models" -Force -Recurse
 }
 
-function Compile-Ruby()
+function Update-Ruby()
 {
     # TODO - Get this plugin path directly.
     $RubyPath = "../ruby/lib/trinsic"
-    Remove-Old-Proto-Files($RubyPath)
-    grpc_tools_ruby_protoc $( Get-Proto-Path ) `
+    Remove-OldProtoFiles($RubyPath)
+    grpc_tools_ruby_protoc $( Get-ProtoPath ) `
        --ruby_out="$RubyPath" `
        --grpc_out="$RubyPath" `
-       $( Get-Proto-Files )
+       $( Get-ProtoFiles )
 
     # TODO - Type specifier capability
     Remove-Item -Path "$RubyPath/pbmse" -Force -Recurse
@@ -98,27 +98,30 @@ function Compile-Ruby()
     }
 }
 
-function Compile-Swift()
+function Update-Swift()
 {
-    protoc $( Get-Proto-Path ) `
-        --swift_out=./Sources/OkapiSwift/proto `
-        --swift_opt=Visibility=Public  `
-        $( Get-Proto-Files )
+    $SwiftPath = "../swift/TrinsicServices/Sources/TrinsicServices/proto"
+    Remove-OldProtoFiles($SwiftPath)
+    protoc $( Get-ProtoPath ) `
+        --swift_opt=Visibility=Public `
+        --swift_out="$SwiftPath" `
+        --grpc-swift_out="$SwiftPath" `
+        $( Get-ProtoFiles )
 }
 
-function Compile-Java()
+function Update-Java()
 {
     $JavaPath = "../java/src/main/java"
-    protoc $( Get-Proto-Path ) `
-        --plugin=$( Get-Java-Plugin-Path ) `
+    protoc $( Get-ProtoPath ) `
+        --plugin=$( Get-JavaPluginPath ) `
         --java_out="$JavaPath" `
-        $( Get-Proto-Files )
+        $( Get-ProtoFiles )
 }
 
 Setup
-Compile-Golang
-Compile-Ruby
-Compile-Swift
-Compile-Java
+Update-Golang
+Update-Ruby
+Update-Swift
+Update-Java
 # Python is handled in the BuildPython due to venv requirements
 . "./BuildPython.ps1" -RequirementsOnly $true
