@@ -44,36 +44,16 @@ function Run-Tests
 {
     python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
 }
-function Set-Python-Version
-{
-    param ([string]$pythonPackageVersion = '')
-    $setupConfig = Get-Content ./setup.cfg
-    for ($ij = 0; $ij -lt $setupConfig.Length; $ij++) {
-        if ( $setupConfig[$ij].StartsWith("version"))
-        {
-            $setupConfig[$ij] = "version = " + $pythonPackageVersion
-        }
-    }
-    Set-Content -path ./setup.cfg -value $setupConfig
-}
 function Build-Package
 {
-    try
-    {
-        # Get release version from tag and set the setup.cfg file
-        $pythonPackageVersion = Get-PythonVersion($GitTag)
-        Set-Python-Version($pythonPackageVersion)
-    }
-    catch
-    {
-        if (-not [string]::IsNullOrWhitespace($PackageVersion))
-        {
-            Set-Python-Version($PackageVersion)
+    $replaceLineVersion = $PackageVersion
+    try {
+        $replaceLineVersion = Get-PythonVersion($GitTag)
+    } catch {
+    } finally {
+        if (-not [string]::IsNullOrWhitespace($replaceLineVersion)) {
+            Set-Version -configFile "./setup.cfg" -findLine "version" -replaceLine "version = '${replaceLineVersion}'"
         }
-    }
-    finally
-    {
-
         python -m build --sdist --wheel --outdir dist/ .
     }
 }
