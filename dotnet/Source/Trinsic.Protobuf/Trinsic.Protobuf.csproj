@@ -18,6 +18,7 @@
     <Protobuf Include="..\..\..\proto\DebugService.proto" Link="Proto/DebugService.proto" />
     <Protobuf Include="..\..\..\proto\WalletService.proto" Link="Proto/WalletService.proto" />
     <Protobuf Include="..\..\..\proto\IssuerService.proto" Link="Proto/IssuerService.proto" />
+    <Protobuf Include="..\..\..\proto\CredentialTemplateService.proto" Link="Proto/CredentialTemplateService.proto" />
 
     <Protobuf Include="..\..\..\proto\ProviderService.proto" Link="Proto/ProviderService.proto" />
     <Protobuf Include="..\..\..\proto\TrustRegistry.proto" Link="Proto/TrustRegistry.proto" />
