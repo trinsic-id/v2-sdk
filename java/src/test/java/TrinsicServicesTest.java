@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 class TrinsicServicesTest {
     private static String baseTestPath() {
-        return Path.of(new File("").getAbsolutePath(), "src","test").toAbsolutePath().toString();
+        return Path.of(new File("").getAbsolutePath(), "..","devops","testdata").toAbsolutePath().toString();
     }
     private static Path vaccineCertUnsignedPath() {
         return Path.of(baseTestPath(), "vaccination-certificate-unsigned.jsonld");

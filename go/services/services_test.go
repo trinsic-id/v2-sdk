@@ -23,6 +23,30 @@ func GetVaccineCertFramePath() string {
 	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
 }
 
+func TestCreateChannelIfNeeded(t *testing.T) {
+	var validHttpAddress = "http://localhost:5000"
+	var validHttpsAddress = "https://localhost:5000" // Currently fails due to lack of HTTPS support.
+	var missingPortAddress = "http://localhost"
+	var missingProtocolAddress = "localhost:5000"
+	var blankAddress = ""
+	testAddresses := []string{validHttpAddress, validHttpsAddress, missingPortAddress, missingProtocolAddress, blankAddress}
+	throwsException := []bool {false, true, true, true, true}
+
+	for ij := 0; ij < len(testAddresses); ij++ {
+		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
+		if (err != nil) != throwsException[ij] {
+			t.Fatalf("URL=%s should fail=%v\nerror=%v", testAddresses[ij], throwsException[ij], err)
+		}
+		if channel != nil {
+			_ = channel.Close()
+			// Cannot have error and channel.
+			if err != nil {
+				t.Fail()
+			}
+		}
+	}
+}
+
 func TestServices(t *testing.T) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
 	walletService := CreateWalletService(serverAddress, nil)
