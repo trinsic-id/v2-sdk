@@ -7,6 +7,7 @@
 package sdk
 
 import (
+	"github.com/trinsic-id/okapi/go/okapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -1179,7 +1180,7 @@ var file_WalletService_proto_goTypes = []interface{}{
 	(*JsonPayload)(nil),                      // 16: trinsic.services.JsonPayload
 	(*RequestOptions)(nil),                   // 17: trinsic.services.RequestOptions
 	(*emptypb.Empty)(nil),                    // 18: google.protobuf.Empty
-	(*EncryptedMessage)(nil),                 // 19: pbmse.EncryptedMessage
+	(*okapi.EncryptedMessage)(nil),                 // 19: pbmse.EncryptedMessage
 }
 var file_WalletService_proto_depIdxs = []int32{
 	15, // 0: trinsic.services.CreateWalletResponse.status:type_name -> trinsic.services.ResponseStatus
@@ -1223,7 +1224,7 @@ func file_WalletService_proto_init() {
 		return
 	}
 	file_CoreService_proto_init()
-	file_pbmse_pbmse_proto_init()
+	//file_pbmse_pbmse_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_WalletService_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateWalletRequest); i {

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/trinsic-id/okapi/go/okapi"
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -11,6 +12,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/structpb"
+	"net/url"
 	"time"
 )
 
@@ -71,7 +73,10 @@ type WalletService struct {
 }
 
 func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) *WalletService {
-	channel = createChannelIfNeeded(serviceAddress, channel)
+	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		panic(err)
+	}
 
 	service := WalletService{
 		base:             &ServiceBase{},
@@ -82,15 +87,34 @@ func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) *Walle
 	return &service
 }
 
-func createChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn) *grpc.ClientConn {
+func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
 	if channel == nil {
-		channel2, err := grpc.Dial(serviceAddress, grpc.WithInsecure(), grpc.WithBlock())
+		var serviceUrl, err = url.Parse(serviceAddress)
 		if err != nil {
-			panic(err)
+			return nil, err
 		}
-		channel = channel2
+		if serviceUrl.Port() == "" {
+			return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
+		}
+		dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
+		var dialOptions []grpc.DialOption
+		if blockOnOpen {
+			dialOptions = append(dialOptions, grpc.WithBlock())
+		}
+		if serviceUrl.Scheme == "http" {
+			dialOptions = append(dialOptions, grpc.WithInsecure())
+		} else {
+			// TODO - Get the credentials bundle
+			//credBundle := credentials.Bundle{}
+			//dialOptions = append(dialOptions, grpc.WithCredentialsBundle(credentials.Bundle()))
+			return nil, errors.New("HTTPS not supported yet due to credential bundle declaration")
+		}
+		channel, err = grpc.Dial(dialUrl, dialOptions...)
+		if err != nil {
+			return nil, err
+		}
 	}
-	return channel
+	return channel, nil
 }
 
 type IWalletService interface {
@@ -154,14 +178,16 @@ func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
 	})
 	if err != nil { panic(err) }
 
-	packedSdkMessage := OkapiEncryptedMessageToSdkEncryptedMessage(packedMessage.Message)
+	//packedSdkMessage := OkapiEncryptedMessageToSdkEncryptedMessage(packedMessage.Message)
+	packedSdkMessage := packedMessage.Message
 	response, err := w.walletClient.CreateWalletEncrypted(context.Background(), packedSdkMessage)
 	if err != nil { panic(err) }
 
 	decryptedResponse, err := okapi.DidComm{}.Unpack(&okapi.UnpackRequest{
 		SenderKey:   providerExchangeKey,
 		ReceiverKey: myExchangeKey,
-		Message:     SdkEncryptedMessageToOkapiEncryptedMessage(response),
+		Message:     response,
+		//Message:     SdkEncryptedMessageToOkapiEncryptedMessage(response),
 	})
 	if err != nil { panic(err) }
 
@@ -270,24 +296,24 @@ func (w WalletService) VerifyProof(proofDocument map[string]interface{}) bool {
 	return proof.Valid
 }
 
-func SdkEncryptedMessageToOkapiEncryptedMessage(message *sdk.EncryptedMessage) *okapi.EncryptedMessage {
-	bytes, err := proto.Marshal(message)
-	if err != nil {panic(err)}
-	sdkMessage := okapi.EncryptedMessage{}
-	err = proto.Unmarshal(bytes, &sdkMessage)
-	if err != nil {panic(err)}
-	return &sdkMessage
-}
+//func SdkEncryptedMessageToOkapiEncryptedMessage(message *sdk.EncryptedMessage) *okapi.EncryptedMessage {
+//	bytes, err := proto.Marshal(message)
+//	if err != nil {panic(err)}
+//	sdkMessage := okapi.EncryptedMessage{}
+//	err = proto.Unmarshal(bytes, &sdkMessage)
+//	if err != nil {panic(err)}
+//	return &sdkMessage
+//}
 
 // OkapiEncryptedMessageToSdkEncryptedMessage exists because golang cannot convert identical structs
-func OkapiEncryptedMessageToSdkEncryptedMessage(message *okapi.EncryptedMessage) *sdk.EncryptedMessage {
-	bytes, err := proto.Marshal(message)
-	if err != nil {panic(err)}
-	sdkMessage := sdk.EncryptedMessage{}
-	err = proto.Unmarshal(bytes, &sdkMessage)
-	if err != nil {panic(err)}
-	return &sdkMessage
-}
+//func OkapiEncryptedMessageToSdkEncryptedMessage(message *okapi.EncryptedMessage) *sdk.EncryptedMessage {
+//	bytes, err := proto.Marshal(message)
+//	if err != nil {panic(err)}
+//	sdkMessage := sdk.EncryptedMessage{}
+//	err = proto.Unmarshal(bytes, &sdkMessage)
+//	if err != nil {panic(err)}
+//	return &sdkMessage
+//}
 
 type ProviderService struct {
 	base ServiceBase
@@ -296,7 +322,10 @@ type ProviderService struct {
 }
 
 func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) *ProviderService {
-	channel = createChannelIfNeeded(serviceAddress, channel)
+	channel,err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		panic(err)
+	}
 
 	service := ProviderService{
 		base:           ServiceBase{},

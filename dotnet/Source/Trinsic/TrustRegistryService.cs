@@ -12,7 +12,7 @@ namespace Trinsic
     public class TrustRegistryService : ServiceBase
     {
         public TrustRegistryService(string serviceAddress = "http://localhost:5000")
-            : this(GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions()))
+            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
         {
         }
 

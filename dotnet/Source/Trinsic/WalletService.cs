@@ -15,7 +15,7 @@ namespace Trinsic
     public class WalletService : ServiceBase
     {
         public WalletService(string serviceAddress = "http://localhost:5000")
-            : this(GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions()))
+            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
         {
         }
 

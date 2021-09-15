@@ -74,6 +74,8 @@ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5Cc
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/trinsic-id/okapi/go v0.0.0-20210805174708-1ce09b6da9fd h1:TBVVA+ENrsU62LSUw38aSVM3/Tb5Jo/chX0MkSZBcUU=
 github.com/trinsic-id/okapi/go v0.0.0-20210805174708-1ce09b6da9fd/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
+github.com/trinsic-id/okapi/go v0.0.0-20210914150428-2179b232f2ce h1:EmIi03WKpSF1xDrm8P1cMaKYIkq9T/TXv+jBv774VWI=
+github.com/trinsic-id/okapi/go v0.0.0-20210914150428-2179b232f2ce/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
 golang.org/x/crypto v0.0.0-20170930174604-9419663f5a44/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
