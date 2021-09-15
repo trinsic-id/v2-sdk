@@ -32,6 +32,13 @@ namespace Trinsic.Tests
         [Fact]
         public void TestParseURL()
         {
+            Assert.Throws<UriFormatException>(() => ServiceBase.CreateChannelIfNeeded("localhost"));
+            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("localhost:5000"));
+            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("http://localhost"));
+            // Throws because HTTPS is not yet supported.
+            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("https://localhost:5000"));
+            
+            Assert.NotNull(ServiceBase.CreateChannelIfNeeded("http://localhost:5000"));
             
         }
 
