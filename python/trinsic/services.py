@@ -17,6 +17,14 @@ from trinsic.proto.trinsic.services import WalletProfile, WalletStub, Credential
     InvitationStatusResponse, JsonPayload
 
 
+def create_channel_if_needed(channel: Channel, service_address: str) -> Channel:
+    if not channel:
+        service_url = urllib.parse.urlsplit(service_address)
+        is_https = service_url.scheme == "https"
+        channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
+    return channel
+
+
 class ServiceBase:
     def __init__(self):
         self.cap_invocation: str = ""
@@ -47,11 +55,7 @@ class ServiceBase:
 class WalletService(ServiceBase):
     def __init__(self, service_address: str = "http://localhost:5000", channel: Channel = None):
         super().__init__()
-        if not channel:
-            service_url = urllib.parse.urlsplit(service_address)
-            channel = Channel(host=f"{service_url.hostname}", port=service_url.port)
-
-        self.channel = channel
+        self.channel = create_channel_if_needed(channel, service_address)
         self.client = WalletStub(self.channel)
         self.credential_client = CredentialStub(self.channel)
 
@@ -126,11 +130,7 @@ class WalletService(ServiceBase):
 class ProviderService(ServiceBase):
     def __init__(self, service_address: str = "http://localhost:5000", channel: Channel = None):
         super().__init__()
-        if not channel:
-            service_url = urllib.parse.urlsplit(service_address)
-            channel = Channel(host=f"{service_url.hostname}", port=service_url.port)
-
-        self.channel = channel
+        self.channel = create_channel_if_needed(channel, service_address)
         self.provider_client = ProviderStub(self.channel)
 
     def __del__(self):

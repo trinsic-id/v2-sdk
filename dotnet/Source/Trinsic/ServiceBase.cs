@@ -3,6 +3,7 @@ using System.Text;
 using Okapi;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services;
 using Okapi.Proofs;
@@ -56,6 +57,14 @@ namespace Trinsic
             // to JSON and encoding it in base64
             CapInvocation = Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     proofResponse.SignedDocument.ToJObject().ToString()));
+        }
+        
+        public static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
+        {
+            var url = new Uri(serviceAddress);
+            if (url.IsDefaultPort) throw new ArgumentException("GRPC Port and scheme required");
+            if ("https".Equals(url.Scheme)) throw new ArgumentException("HTTPS not yet supported");
+            return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
         }
     }
 }

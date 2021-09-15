@@ -7,6 +7,7 @@
 package sdk
 
 import (
+	okapi "github.com/trinsic-id/okapi/go/okapi"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
@@ -335,7 +336,7 @@ var file_CoreService_proto_goTypes = []interface{}{
 	(*RequestOptions)(nil),   // 2: trinsic.services.RequestOptions
 	(*JsonPayload)(nil),      // 3: trinsic.services.JsonPayload
 	(*structpb.Struct)(nil),  // 4: google.protobuf.Struct
-	(*EncryptedMessage)(nil), // 5: pbmse.EncryptedMessage
+	(*okapi.EncryptedMessage)(nil), // 5: pbmse.EncryptedMessage
 }
 var file_CoreService_proto_depIdxs = []int32{
 	1, // 0: trinsic.services.RequestOptions.response_json_format:type_name -> trinsic.services.JsonFormat
@@ -354,7 +355,7 @@ func file_CoreService_proto_init() {
 	if File_CoreService_proto != nil {
 		return
 	}
-	file_pbmse_pbmse_proto_init()
+	//okapi.file_pbmse_pbmse_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_CoreService_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RequestOptions); i {

@@ -1,16 +1,18 @@
 import com.google.gson.Gson;
+import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 
 class TrinsicServicesTest {
     private static String baseTestPath() {
-        return Path.of(new File("").getAbsolutePath(), "src","test").toAbsolutePath().toString();
+        return Path.of(new File("").getAbsolutePath(), "..","devops","testdata").toAbsolutePath().toString();
     }
     private static Path vaccineCertUnsignedPath() {
         return Path.of(baseTestPath(), "vaccination-certificate-unsigned.jsonld");
@@ -18,6 +20,32 @@ class TrinsicServicesTest {
 
     private static Path vaccineCertFramePath() {
         return Path.of(baseTestPath(), "vaccination-certificate-frame.jsonld");
+    }
+
+    @Test
+    public void testInvalidURL() {
+        var validHttpAddress = "http://localhost:5000";
+        var validHttpsAddress = "https://localhost:5000";
+        var missingPortAddress = "http://localhost";
+        var missingProtocolAddress = "localhost:5000";
+        var blankAddress = "";
+
+        final var addresses = new String[] {validHttpAddress, validHttpsAddress, missingPortAddress, missingProtocolAddress, blankAddress};
+        final var throwsException = new Boolean[] {false, false, true, true, true};
+
+        for (int ij = 0; ij < addresses.length; ij++) {
+            var myAddress = addresses[ij];
+            var myMessage = "URL should throw: " + throwsException[ij] + ": " + myAddress;
+            if (throwsException[ij])
+                Assertions.assertThrows(MalformedURLException.class,  () -> createAndShutdownChannel(myAddress), myMessage);
+            else
+                Assertions.assertDoesNotThrow( () -> createAndShutdownChannel(myAddress), myMessage);
+        }
+    }
+
+    private void createAndShutdownChannel(String myAddress) throws MalformedURLException {
+        var channel = (ManagedChannel) Utilities.getChannel(myAddress, null);
+        channel.shutdownNow();
     }
 
     @Test

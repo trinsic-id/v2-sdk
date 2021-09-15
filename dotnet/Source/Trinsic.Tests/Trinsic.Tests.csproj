@@ -36,12 +36,6 @@
     </ItemGroup>
     <ItemGroup>
       <None Remove="vaccination-certificate-unsigned.jsonld" />
-      <Content Include="vaccination-certificate-unsigned.jsonld">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <None Remove="vaccination-certificate-frame.jsonld" />
-      <Content Include="vaccination-certificate-frame.jsonld">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 </Project>
