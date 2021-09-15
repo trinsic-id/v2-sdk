@@ -20,8 +20,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum Trinsic_Services_ResponseStatus: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Trinsic_Services_ResponseStatus: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case success // = 0
   case walletAccessDenied // = 10
   case walletExists // = 11
@@ -30,11 +30,11 @@ enum Trinsic_Services_ResponseStatus: SwiftProtobuf.Enum {
   case unknownError // = 100
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .success
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .success
     case 10: self = .walletAccessDenied
@@ -46,7 +46,7 @@ enum Trinsic_Services_ResponseStatus: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     switch self {
     case .success: return 0
     case .walletAccessDenied: return 10
@@ -64,7 +64,7 @@ enum Trinsic_Services_ResponseStatus: SwiftProtobuf.Enum {
 
 extension Trinsic_Services_ResponseStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Trinsic_Services_ResponseStatus] = [
+  public static var allCases: [Trinsic_Services_ResponseStatus] = [
     .success,
     .walletAccessDenied,
     .walletExists,
@@ -76,18 +76,18 @@ extension Trinsic_Services_ResponseStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-enum Trinsic_Services_JsonFormat: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Trinsic_Services_JsonFormat: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case protobuf // = 0
   case binary // = 1
   case string // = 2
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .protobuf
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .protobuf
     case 1: self = .binary
@@ -96,7 +96,7 @@ enum Trinsic_Services_JsonFormat: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     switch self {
     case .protobuf: return 0
     case .binary: return 1
@@ -111,7 +111,7 @@ enum Trinsic_Services_JsonFormat: SwiftProtobuf.Enum {
 
 extension Trinsic_Services_JsonFormat: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Trinsic_Services_JsonFormat] = [
+  public static var allCases: [Trinsic_Services_JsonFormat] = [
     .protobuf,
     .binary,
     .string,
@@ -120,26 +120,26 @@ extension Trinsic_Services_JsonFormat: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct Trinsic_Services_RequestOptions {
+public struct Trinsic_Services_RequestOptions {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var responseJsonFormat: Trinsic_Services_JsonFormat = .protobuf
+  public var responseJsonFormat: Trinsic_Services_JsonFormat = .protobuf
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_JsonPayload {
+public struct Trinsic_Services_JsonPayload {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var json: Trinsic_Services_JsonPayload.OneOf_Json? = nil
+  public var json: Trinsic_Services_JsonPayload.OneOf_Json? = nil
 
-  var jsonStruct: SwiftProtobuf.Google_Protobuf_Struct {
+  public var jsonStruct: SwiftProtobuf.Google_Protobuf_Struct {
     get {
       if case .jsonStruct(let v)? = json {return v}
       return SwiftProtobuf.Google_Protobuf_Struct()
@@ -147,7 +147,7 @@ struct Trinsic_Services_JsonPayload {
     set {json = .jsonStruct(newValue)}
   }
 
-  var jsonString: String {
+  public var jsonString: String {
     get {
       if case .jsonString(let v)? = json {return v}
       return String()
@@ -155,7 +155,7 @@ struct Trinsic_Services_JsonPayload {
     set {json = .jsonString(newValue)}
   }
 
-  var jsonBytes: Data {
+  public var jsonBytes: Data {
     get {
       if case .jsonBytes(let v)? = json {return v}
       return Data()
@@ -163,15 +163,15 @@ struct Trinsic_Services_JsonPayload {
     set {json = .jsonBytes(newValue)}
   }
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_Json: Equatable {
+  public enum OneOf_Json: Equatable {
     case jsonStruct(SwiftProtobuf.Google_Protobuf_Struct)
     case jsonString(String)
     case jsonBytes(Data)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Trinsic_Services_JsonPayload.OneOf_Json, rhs: Trinsic_Services_JsonPayload.OneOf_Json) -> Bool {
+    public static func ==(lhs: Trinsic_Services_JsonPayload.OneOf_Json, rhs: Trinsic_Services_JsonPayload.OneOf_Json) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -194,7 +194,7 @@ struct Trinsic_Services_JsonPayload {
   #endif
   }
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -202,7 +202,7 @@ struct Trinsic_Services_JsonPayload {
 fileprivate let _protobuf_package = "trinsic.services"
 
 extension Trinsic_Services_ResponseStatus: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SUCCESS"),
     10: .same(proto: "WALLET_ACCESS_DENIED"),
     11: .same(proto: "WALLET_EXISTS"),
@@ -213,7 +213,7 @@ extension Trinsic_Services_ResponseStatus: SwiftProtobuf._ProtoNameProviding {
 }
 
 extension Trinsic_Services_JsonFormat: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "Protobuf"),
     1: .same(proto: "Binary"),
     2: .same(proto: "String"),
@@ -221,12 +221,12 @@ extension Trinsic_Services_JsonFormat: SwiftProtobuf._ProtoNameProviding {
 }
 
 extension Trinsic_Services_RequestOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RequestOptions"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".RequestOptions"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "response_json_format"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -238,14 +238,14 @@ extension Trinsic_Services_RequestOptions: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.responseJsonFormat != .protobuf {
       try visitor.visitSingularEnumField(value: self.responseJsonFormat, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_RequestOptions, rhs: Trinsic_Services_RequestOptions) -> Bool {
+  public static func ==(lhs: Trinsic_Services_RequestOptions, rhs: Trinsic_Services_RequestOptions) -> Bool {
     if lhs.responseJsonFormat != rhs.responseJsonFormat {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -253,14 +253,14 @@ extension Trinsic_Services_RequestOptions: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Trinsic_Services_JsonPayload: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".JsonPayload"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".JsonPayload"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "json_struct"),
     2: .standard(proto: "json_string"),
     3: .standard(proto: "json_bytes"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -300,7 +300,7 @@ extension Trinsic_Services_JsonPayload: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every case branch when no optimizations are
     // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -322,7 +322,7 @@ extension Trinsic_Services_JsonPayload: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_JsonPayload, rhs: Trinsic_Services_JsonPayload) -> Bool {
+  public static func ==(lhs: Trinsic_Services_JsonPayload, rhs: Trinsic_Services_JsonPayload) -> Bool {
     if lhs.json != rhs.json {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

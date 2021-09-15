@@ -20,33 +20,33 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Organization {
+public struct Organization {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var id: String = String()
+  public var id: String = String()
 
-  var name: String = String()
+  public var name: String = String()
 
-  var capabilities: [Organization.Capability] = []
+  public var capabilities: [Organization.Capability] = []
 
-  var members: [Member] = []
+  public var members: [Member] = []
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum Capability: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum Capability: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
     case verifier // = 0
     case issuer // = 1
     case provider // = 2
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .verifier
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .verifier
       case 1: self = .issuer
@@ -55,7 +55,7 @@ struct Organization {
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       switch self {
       case .verifier: return 0
       case .issuer: return 1
@@ -66,14 +66,14 @@ struct Organization {
 
   }
 
-  init() {}
+  public init() {}
 }
 
 #if swift(>=4.2)
 
 extension Organization.Capability: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Organization.Capability] = [
+  public static var allCases: [Organization.Capability] = [
     .verifier,
     .issuer,
     .provider,
@@ -82,96 +82,96 @@ extension Organization.Capability: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct Member {
+public struct Member {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var name: String = String()
+  public var name: String = String()
 
-  var email: String = String()
+  public var email: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct CreateOrganizationRequest {
+public struct CreateOrganizationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var organization: Organization {
+  public var organization: Organization {
     get {return _organization ?? Organization()}
     set {_organization = newValue}
   }
   /// Returns true if `organization` has been explicitly set.
-  var hasOrganization: Bool {return self._organization != nil}
+  public var hasOrganization: Bool {return self._organization != nil}
   /// Clears the value of `organization`. Subsequent reads from it will return its default value.
-  mutating func clearOrganization() {self._organization = nil}
+  public mutating func clearOrganization() {self._organization = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _organization: Organization? = nil
 }
 
-struct CreateOrganizationResponse {
+public struct CreateOrganizationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var organization: Organization {
+  public var organization: Organization {
     get {return _organization ?? Organization()}
     set {_organization = newValue}
   }
   /// Returns true if `organization` has been explicitly set.
-  var hasOrganization: Bool {return self._organization != nil}
+  public var hasOrganization: Bool {return self._organization != nil}
   /// Clears the value of `organization`. Subsequent reads from it will return its default value.
-  mutating func clearOrganization() {self._organization = nil}
+  public mutating func clearOrganization() {self._organization = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _organization: Organization? = nil
 }
 
-struct ListOrganizationRequest {
+public struct ListOrganizationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct ListOrganizationResponse {
+public struct ListOrganizationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var organization: [Organization] = []
+  public var organization: [Organization] = []
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension Organization: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "Organization"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "Organization"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "name"),
     3: .same(proto: "capabilities"),
     4: .same(proto: "members"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -186,7 +186,7 @@ extension Organization: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
@@ -202,7 +202,7 @@ extension Organization: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Organization, rhs: Organization) -> Bool {
+  public static func ==(lhs: Organization, rhs: Organization) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.name != rhs.name {return false}
     if lhs.capabilities != rhs.capabilities {return false}
@@ -213,7 +213,7 @@ extension Organization: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
 }
 
 extension Organization.Capability: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "VERIFIER"),
     1: .same(proto: "ISSUER"),
     2: .same(proto: "PROVIDER"),
@@ -221,13 +221,13 @@ extension Organization.Capability: SwiftProtobuf._ProtoNameProviding {
 }
 
 extension Member: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "Member"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "Member"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "email"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -240,7 +240,7 @@ extension Member: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.name.isEmpty {
       try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
     }
@@ -250,7 +250,7 @@ extension Member: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Member, rhs: Member) -> Bool {
+  public static func ==(lhs: Member, rhs: Member) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.email != rhs.email {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -259,12 +259,12 @@ extension Member: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
 }
 
 extension CreateOrganizationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "CreateOrganizationRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "CreateOrganizationRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "organization"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -276,14 +276,14 @@ extension CreateOrganizationRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._organization {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: CreateOrganizationRequest, rhs: CreateOrganizationRequest) -> Bool {
+  public static func ==(lhs: CreateOrganizationRequest, rhs: CreateOrganizationRequest) -> Bool {
     if lhs._organization != rhs._organization {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -291,12 +291,12 @@ extension CreateOrganizationRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension CreateOrganizationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "CreateOrganizationResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "CreateOrganizationResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     2: .same(proto: "organization"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -308,14 +308,14 @@ extension CreateOrganizationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._organization {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: CreateOrganizationResponse, rhs: CreateOrganizationResponse) -> Bool {
+  public static func ==(lhs: CreateOrganizationResponse, rhs: CreateOrganizationResponse) -> Bool {
     if lhs._organization != rhs._organization {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -323,31 +323,31 @@ extension CreateOrganizationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension ListOrganizationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "ListOrganizationRequest"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let protoMessageName: String = "ListOrganizationRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: ListOrganizationRequest, rhs: ListOrganizationRequest) -> Bool {
+  public static func ==(lhs: ListOrganizationRequest, rhs: ListOrganizationRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension ListOrganizationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "ListOrganizationResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = "ListOrganizationResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "organization"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -359,14 +359,14 @@ extension ListOrganizationResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.organization.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.organization, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: ListOrganizationResponse, rhs: ListOrganizationResponse) -> Bool {
+  public static func ==(lhs: ListOrganizationResponse, rhs: ListOrganizationResponse) -> Bool {
     if lhs.organization != rhs.organization {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

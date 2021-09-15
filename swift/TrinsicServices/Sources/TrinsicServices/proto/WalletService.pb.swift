@@ -20,50 +20,50 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct Trinsic_Services_CreateWalletRequest {
+public struct Trinsic_Services_CreateWalletRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var controller: String = String()
+  public var controller: String = String()
 
-  var description_p: String = String()
+  public var description_p: String = String()
 
   /// (Optional) Supply an invitation id to associate this caller profile
   /// to an existing cloud wallet.
-  var securityCode: String = String()
+  public var securityCode: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_CreateWalletResponse {
+public struct Trinsic_Services_CreateWalletResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var walletID: String = String()
+  public var walletID: String = String()
 
-  var capability: String = String()
+  public var capability: String = String()
 
-  var invoker: String = String()
+  public var invoker: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_ConnectRequest {
+public struct Trinsic_Services_ConnectRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var contactMethod: Trinsic_Services_ConnectRequest.OneOf_ContactMethod? = nil
+  public var contactMethod: Trinsic_Services_ConnectRequest.OneOf_ContactMethod? = nil
 
-  var email: String {
+  public var email: String {
     get {
       if case .email(let v)? = contactMethod {return v}
       return String()
@@ -71,7 +71,7 @@ struct Trinsic_Services_ConnectRequest {
     set {contactMethod = .email(newValue)}
   }
 
-  var phone: String {
+  public var phone: String {
     get {
       if case .phone(let v)? = contactMethod {return v}
       return String()
@@ -79,14 +79,14 @@ struct Trinsic_Services_ConnectRequest {
     set {contactMethod = .phone(newValue)}
   }
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_ContactMethod: Equatable {
+  public enum OneOf_ContactMethod: Equatable {
     case email(String)
     case phone(String)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Trinsic_Services_ConnectRequest.OneOf_ContactMethod, rhs: Trinsic_Services_ConnectRequest.OneOf_ContactMethod) -> Bool {
+    public static func ==(lhs: Trinsic_Services_ConnectRequest.OneOf_ContactMethod, rhs: Trinsic_Services_ConnectRequest.OneOf_ContactMethod) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -105,33 +105,33 @@ struct Trinsic_Services_ConnectRequest {
   #endif
   }
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_ConnectResponse {
+public struct Trinsic_Services_ConnectResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_InvitationToken {
+public struct Trinsic_Services_InvitationToken {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var securityCode: String = String()
+  public var securityCode: String = String()
 
-  var walletID: String = String()
+  public var walletID: String = String()
 
-  var contactMethod: Trinsic_Services_InvitationToken.OneOf_ContactMethod? = nil
+  public var contactMethod: Trinsic_Services_InvitationToken.OneOf_ContactMethod? = nil
 
-  var email: String {
+  public var email: String {
     get {
       if case .email(let v)? = contactMethod {return v}
       return String()
@@ -139,7 +139,7 @@ struct Trinsic_Services_InvitationToken {
     set {contactMethod = .email(newValue)}
   }
 
-  var phone: String {
+  public var phone: String {
     get {
       if case .phone(let v)? = contactMethod {return v}
       return String()
@@ -147,14 +147,14 @@ struct Trinsic_Services_InvitationToken {
     set {contactMethod = .phone(newValue)}
   }
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_ContactMethod: Equatable {
+  public enum OneOf_ContactMethod: Equatable {
     case email(String)
     case phone(String)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Trinsic_Services_InvitationToken.OneOf_ContactMethod, rhs: Trinsic_Services_InvitationToken.OneOf_ContactMethod) -> Bool {
+    public static func ==(lhs: Trinsic_Services_InvitationToken.OneOf_ContactMethod, rhs: Trinsic_Services_InvitationToken.OneOf_ContactMethod) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -173,195 +173,195 @@ struct Trinsic_Services_InvitationToken {
   #endif
   }
 
-  init() {}
+  public init() {}
 }
 
 ///
 ///Stores profile data for accessing a wallet.
 ///This result should be stored somewhere safe,
 ///as it contains private key information.
-struct Trinsic_Services_WalletProfile {
+public struct Trinsic_Services_WalletProfile {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var didDocument: Trinsic_Services_JsonPayload {
+  public var didDocument: Trinsic_Services_JsonPayload {
     get {return _didDocument ?? Trinsic_Services_JsonPayload()}
     set {_didDocument = newValue}
   }
   /// Returns true if `didDocument` has been explicitly set.
-  var hasDidDocument: Bool {return self._didDocument != nil}
+  public var hasDidDocument: Bool {return self._didDocument != nil}
   /// Clears the value of `didDocument`. Subsequent reads from it will return its default value.
-  mutating func clearDidDocument() {self._didDocument = nil}
+  public mutating func clearDidDocument() {self._didDocument = nil}
 
-  var walletID: String = String()
+  public var walletID: String = String()
 
-  var invoker: String = String()
+  public var invoker: String = String()
 
-  var capability: String = String()
+  public var capability: String = String()
 
-  var invokerJwk: Data = Data()
+  public var invokerJwk: Data = Data()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _didDocument: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_GrantAccessRequest {
+public struct Trinsic_Services_GrantAccessRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var walletID: String = String()
+  public var walletID: String = String()
 
-  var did: String = String()
+  public var did: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_GrantAccessResponse {
+public struct Trinsic_Services_GrantAccessResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_RevokeAccessRequest {
+public struct Trinsic_Services_RevokeAccessRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var walletID: String = String()
+  public var walletID: String = String()
 
-  var did: String = String()
+  public var did: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_RevokeAccessResponse {
+public struct Trinsic_Services_RevokeAccessResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_GetProviderConfigurationResponse {
+public struct Trinsic_Services_GetProviderConfigurationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var didDocument: Trinsic_Services_JsonPayload {
+  public var didDocument: Trinsic_Services_JsonPayload {
     get {return _didDocument ?? Trinsic_Services_JsonPayload()}
     set {_didDocument = newValue}
   }
   /// Returns true if `didDocument` has been explicitly set.
-  var hasDidDocument: Bool {return self._didDocument != nil}
+  public var hasDidDocument: Bool {return self._didDocument != nil}
   /// Clears the value of `didDocument`. Subsequent reads from it will return its default value.
-  mutating func clearDidDocument() {self._didDocument = nil}
+  public mutating func clearDidDocument() {self._didDocument = nil}
 
-  var keyAgreementKeyID: String = String()
+  public var keyAgreementKeyID: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _didDocument: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_SearchRequest {
+public struct Trinsic_Services_SearchRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var query: String = String()
+  public var query: String = String()
 
-  var continuationToken: String = String()
+  public var continuationToken: String = String()
 
-  var options: Trinsic_Services_RequestOptions {
+  public var options: Trinsic_Services_RequestOptions {
     get {return _options ?? Trinsic_Services_RequestOptions()}
     set {_options = newValue}
   }
   /// Returns true if `options` has been explicitly set.
-  var hasOptions: Bool {return self._options != nil}
+  public var hasOptions: Bool {return self._options != nil}
   /// Clears the value of `options`. Subsequent reads from it will return its default value.
-  mutating func clearOptions() {self._options = nil}
+  public mutating func clearOptions() {self._options = nil}
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _options: Trinsic_Services_RequestOptions? = nil
 }
 
-struct Trinsic_Services_SearchResponse {
+public struct Trinsic_Services_SearchResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var items: [Trinsic_Services_JsonPayload] = []
+  public var items: [Trinsic_Services_JsonPayload] = []
 
-  var hasMore_p: Bool = false
+  public var hasMore_p: Bool = false
 
-  var count: Int32 = 0
+  public var count: Int32 = 0
 
-  var continuationToken: String = String()
+  public var continuationToken: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_InsertItemRequest {
+public struct Trinsic_Services_InsertItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var item: Trinsic_Services_JsonPayload {
+  public var item: Trinsic_Services_JsonPayload {
     get {return _item ?? Trinsic_Services_JsonPayload()}
     set {_item = newValue}
   }
   /// Returns true if `item` has been explicitly set.
-  var hasItem: Bool {return self._item != nil}
+  public var hasItem: Bool {return self._item != nil}
   /// Clears the value of `item`. Subsequent reads from it will return its default value.
-  mutating func clearItem() {self._item = nil}
+  public mutating func clearItem() {self._item = nil}
 
-  var itemType: String = String()
+  public var itemType: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 
   fileprivate var _item: Trinsic_Services_JsonPayload? = nil
 }
 
-struct Trinsic_Services_InsertItemResponse {
+public struct Trinsic_Services_InsertItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var itemID: String = String()
+  public var itemID: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -369,14 +369,14 @@ struct Trinsic_Services_InsertItemResponse {
 fileprivate let _protobuf_package = "trinsic.services"
 
 extension Trinsic_Services_CreateWalletRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateWalletRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateWalletRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "controller"),
     2: .same(proto: "description"),
     3: .standard(proto: "security_code"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -390,7 +390,7 @@ extension Trinsic_Services_CreateWalletRequest: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.controller.isEmpty {
       try visitor.visitSingularStringField(value: self.controller, fieldNumber: 1)
     }
@@ -403,7 +403,7 @@ extension Trinsic_Services_CreateWalletRequest: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_CreateWalletRequest, rhs: Trinsic_Services_CreateWalletRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_CreateWalletRequest, rhs: Trinsic_Services_CreateWalletRequest) -> Bool {
     if lhs.controller != rhs.controller {return false}
     if lhs.description_p != rhs.description_p {return false}
     if lhs.securityCode != rhs.securityCode {return false}
@@ -413,15 +413,15 @@ extension Trinsic_Services_CreateWalletRequest: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Trinsic_Services_CreateWalletResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".CreateWalletResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".CreateWalletResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
     2: .standard(proto: "wallet_id"),
     3: .same(proto: "capability"),
     4: .same(proto: "invoker"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -436,7 +436,7 @@ extension Trinsic_Services_CreateWalletResponse: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
@@ -452,7 +452,7 @@ extension Trinsic_Services_CreateWalletResponse: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_CreateWalletResponse, rhs: Trinsic_Services_CreateWalletResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_CreateWalletResponse, rhs: Trinsic_Services_CreateWalletResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.walletID != rhs.walletID {return false}
     if lhs.capability != rhs.capability {return false}
@@ -463,13 +463,13 @@ extension Trinsic_Services_CreateWalletResponse: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Trinsic_Services_ConnectRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ConnectRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".ConnectRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     5: .same(proto: "email"),
     6: .same(proto: "phone"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -496,7 +496,7 @@ extension Trinsic_Services_ConnectRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
     // allocates stack space for every case branch when no optimizations are
     // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -514,7 +514,7 @@ extension Trinsic_Services_ConnectRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_ConnectRequest, rhs: Trinsic_Services_ConnectRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_ConnectRequest, rhs: Trinsic_Services_ConnectRequest) -> Bool {
     if lhs.contactMethod != rhs.contactMethod {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -522,12 +522,12 @@ extension Trinsic_Services_ConnectRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Trinsic_Services_ConnectResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".ConnectResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".ConnectResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -539,14 +539,14 @@ extension Trinsic_Services_ConnectResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_ConnectResponse, rhs: Trinsic_Services_ConnectResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_ConnectResponse, rhs: Trinsic_Services_ConnectResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -554,15 +554,15 @@ extension Trinsic_Services_ConnectResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Trinsic_Services_InvitationToken: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InvitationToken"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InvitationToken"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "security_code"),
     2: .standard(proto: "wallet_id"),
     5: .same(proto: "email"),
     6: .same(proto: "phone"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -591,7 +591,7 @@ extension Trinsic_Services_InvitationToken: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.securityCode.isEmpty {
       try visitor.visitSingularStringField(value: self.securityCode, fieldNumber: 1)
     }
@@ -615,7 +615,7 @@ extension Trinsic_Services_InvitationToken: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InvitationToken, rhs: Trinsic_Services_InvitationToken) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InvitationToken, rhs: Trinsic_Services_InvitationToken) -> Bool {
     if lhs.securityCode != rhs.securityCode {return false}
     if lhs.walletID != rhs.walletID {return false}
     if lhs.contactMethod != rhs.contactMethod {return false}
@@ -625,8 +625,8 @@ extension Trinsic_Services_InvitationToken: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension Trinsic_Services_WalletProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".WalletProfile"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".WalletProfile"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "did_document"),
     2: .standard(proto: "wallet_id"),
     3: .same(proto: "invoker"),
@@ -634,7 +634,7 @@ extension Trinsic_Services_WalletProfile: SwiftProtobuf.Message, SwiftProtobuf._
     5: .standard(proto: "invoker_jwk"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -650,7 +650,7 @@ extension Trinsic_Services_WalletProfile: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._didDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -669,7 +669,7 @@ extension Trinsic_Services_WalletProfile: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_WalletProfile, rhs: Trinsic_Services_WalletProfile) -> Bool {
+  public static func ==(lhs: Trinsic_Services_WalletProfile, rhs: Trinsic_Services_WalletProfile) -> Bool {
     if lhs._didDocument != rhs._didDocument {return false}
     if lhs.walletID != rhs.walletID {return false}
     if lhs.invoker != rhs.invoker {return false}
@@ -681,13 +681,13 @@ extension Trinsic_Services_WalletProfile: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Trinsic_Services_GrantAccessRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GrantAccessRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".GrantAccessRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "wallet_id"),
     2: .same(proto: "did"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -700,7 +700,7 @@ extension Trinsic_Services_GrantAccessRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.walletID.isEmpty {
       try visitor.visitSingularStringField(value: self.walletID, fieldNumber: 1)
     }
@@ -710,7 +710,7 @@ extension Trinsic_Services_GrantAccessRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_GrantAccessRequest, rhs: Trinsic_Services_GrantAccessRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_GrantAccessRequest, rhs: Trinsic_Services_GrantAccessRequest) -> Bool {
     if lhs.walletID != rhs.walletID {return false}
     if lhs.did != rhs.did {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -719,12 +719,12 @@ extension Trinsic_Services_GrantAccessRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension Trinsic_Services_GrantAccessResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GrantAccessResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".GrantAccessResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -736,14 +736,14 @@ extension Trinsic_Services_GrantAccessResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_GrantAccessResponse, rhs: Trinsic_Services_GrantAccessResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_GrantAccessResponse, rhs: Trinsic_Services_GrantAccessResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -751,13 +751,13 @@ extension Trinsic_Services_GrantAccessResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Trinsic_Services_RevokeAccessRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RevokeAccessRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".RevokeAccessRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "wallet_id"),
     2: .same(proto: "did"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -770,7 +770,7 @@ extension Trinsic_Services_RevokeAccessRequest: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.walletID.isEmpty {
       try visitor.visitSingularStringField(value: self.walletID, fieldNumber: 1)
     }
@@ -780,7 +780,7 @@ extension Trinsic_Services_RevokeAccessRequest: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_RevokeAccessRequest, rhs: Trinsic_Services_RevokeAccessRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_RevokeAccessRequest, rhs: Trinsic_Services_RevokeAccessRequest) -> Bool {
     if lhs.walletID != rhs.walletID {return false}
     if lhs.did != rhs.did {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -789,12 +789,12 @@ extension Trinsic_Services_RevokeAccessRequest: SwiftProtobuf.Message, SwiftProt
 }
 
 extension Trinsic_Services_RevokeAccessResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".RevokeAccessResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".RevokeAccessResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -806,14 +806,14 @@ extension Trinsic_Services_RevokeAccessResponse: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_RevokeAccessResponse, rhs: Trinsic_Services_RevokeAccessResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_RevokeAccessResponse, rhs: Trinsic_Services_RevokeAccessResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -821,13 +821,13 @@ extension Trinsic_Services_RevokeAccessResponse: SwiftProtobuf.Message, SwiftPro
 }
 
 extension Trinsic_Services_GetProviderConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".GetProviderConfigurationResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".GetProviderConfigurationResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "did_document"),
     2: .standard(proto: "key_agreement_key_id"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -840,7 +840,7 @@ extension Trinsic_Services_GetProviderConfigurationResponse: SwiftProtobuf.Messa
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._didDocument {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -850,7 +850,7 @@ extension Trinsic_Services_GetProviderConfigurationResponse: SwiftProtobuf.Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_GetProviderConfigurationResponse, rhs: Trinsic_Services_GetProviderConfigurationResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_GetProviderConfigurationResponse, rhs: Trinsic_Services_GetProviderConfigurationResponse) -> Bool {
     if lhs._didDocument != rhs._didDocument {return false}
     if lhs.keyAgreementKeyID != rhs.keyAgreementKeyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -859,14 +859,14 @@ extension Trinsic_Services_GetProviderConfigurationResponse: SwiftProtobuf.Messa
 }
 
 extension Trinsic_Services_SearchRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SearchRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SearchRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "query"),
     2: .standard(proto: "continuation_token"),
     5: .same(proto: "options"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -880,7 +880,7 @@ extension Trinsic_Services_SearchRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.query.isEmpty {
       try visitor.visitSingularStringField(value: self.query, fieldNumber: 1)
     }
@@ -893,7 +893,7 @@ extension Trinsic_Services_SearchRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_SearchRequest, rhs: Trinsic_Services_SearchRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_SearchRequest, rhs: Trinsic_Services_SearchRequest) -> Bool {
     if lhs.query != rhs.query {return false}
     if lhs.continuationToken != rhs.continuationToken {return false}
     if lhs._options != rhs._options {return false}
@@ -903,15 +903,15 @@ extension Trinsic_Services_SearchRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Trinsic_Services_SearchResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".SearchResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".SearchResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "items"),
     2: .standard(proto: "has_more"),
     3: .same(proto: "count"),
     4: .standard(proto: "continuation_token"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -926,7 +926,7 @@ extension Trinsic_Services_SearchResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.items.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.items, fieldNumber: 1)
     }
@@ -942,7 +942,7 @@ extension Trinsic_Services_SearchResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_SearchResponse, rhs: Trinsic_Services_SearchResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_SearchResponse, rhs: Trinsic_Services_SearchResponse) -> Bool {
     if lhs.items != rhs.items {return false}
     if lhs.hasMore_p != rhs.hasMore_p {return false}
     if lhs.count != rhs.count {return false}
@@ -953,13 +953,13 @@ extension Trinsic_Services_SearchResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Trinsic_Services_InsertItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InsertItemRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InsertItemRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "item"),
     2: .standard(proto: "item_type"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -972,7 +972,7 @@ extension Trinsic_Services_InsertItemRequest: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if let v = self._item {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     }
@@ -982,7 +982,7 @@ extension Trinsic_Services_InsertItemRequest: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InsertItemRequest, rhs: Trinsic_Services_InsertItemRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InsertItemRequest, rhs: Trinsic_Services_InsertItemRequest) -> Bool {
     if lhs._item != rhs._item {return false}
     if lhs.itemType != rhs.itemType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -991,13 +991,13 @@ extension Trinsic_Services_InsertItemRequest: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension Trinsic_Services_InsertItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InsertItemResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InsertItemResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
     2: .standard(proto: "item_id"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -1010,7 +1010,7 @@ extension Trinsic_Services_InsertItemResponse: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
@@ -1020,7 +1020,7 @@ extension Trinsic_Services_InsertItemResponse: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InsertItemResponse, rhs: Trinsic_Services_InsertItemResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InsertItemResponse, rhs: Trinsic_Services_InsertItemResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.itemID != rhs.itemID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
