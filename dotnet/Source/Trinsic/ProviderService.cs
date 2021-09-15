@@ -8,7 +8,7 @@ namespace Trinsic
     public class ProviderService : ServiceBase
     {
         public ProviderService(string serviceAddress = "http://localhost:5000")
-            : this(GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions()))
+            : this(CreateChannelIfNeeded(serviceAddress))
         {
         }
 

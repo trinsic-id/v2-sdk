@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Xml;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Abstractions;
@@ -16,6 +17,22 @@ namespace Trinsic.Tests
         public Tests(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
+        }
+        
+        private static string __FILE__([CallerFilePath] string fileName = "") => fileName;
+
+        private string TestDataPath =>
+            Path.GetFullPath(Path.Join(__FILE__(), "..", "..", "..", "..", "devops", "testdata"));
+
+        private string VaccinationCertificateUnsigned =>
+            Path.GetFullPath(Path.Join(TestDataPath, "vaccination-certificate-unsigned.jsonld"));
+        private string VaccinationCertificateFrame =>
+            Path.GetFullPath(Path.Join(TestDataPath, "vaccination-certificate-frame.jsonld"));
+
+        [Fact]
+        public void TestParseURL()
+        {
+            
         }
 
         [Fact]
@@ -39,11 +56,11 @@ namespace Trinsic.Tests
             // Sign a credential as the clinic and send it to Allison
             walletService.SetProfile(clinic);
 
-            var credentialJson = await File.ReadAllTextAsync("./vaccination-certificate-unsigned.jsonld");
+            var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
             var credential = await walletService.IssueCredential(document: JObject.Parse(credentialJson));
 
             _testOutputHelper.WriteLine("Credential:");
-            _testOutputHelper.WriteLine(credential.ToString(Newtonsoft.Json.Formatting.Indented));
+            _testOutputHelper.WriteLine(credential.ToString(Formatting.Indented));
 
             // STORE CREDENTIAL
             // Alice stores the credential in her cloud wallet.
@@ -57,11 +74,11 @@ namespace Trinsic.Tests
             // that they require expressed as a JSON-LD frame.
             walletService.SetProfile(allison);
 
-            var proofRequestJson = File.ReadAllText("./vaccination-certificate-frame.jsonld");
+            var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
             var credentialProof = await walletService.CreateProof(itemId, JObject.Parse(proofRequestJson));
 
             _testOutputHelper.WriteLine("Proof:");
-            _testOutputHelper.WriteLine(credentialProof.ToString(Newtonsoft.Json.Formatting.Indented));
+            _testOutputHelper.WriteLine(credentialProof.ToString(Formatting.Indented));
 
 
             // VERIFY CREDENTIAL
