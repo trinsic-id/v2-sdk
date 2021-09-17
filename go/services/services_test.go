@@ -12,7 +12,7 @@ import (
 
 func GetBasePath() string {
 	_, fileName, _, _ := runtime.Caller(1)
-	path := filepath.Clean(filepath.Join(filepath.Dir(fileName), "..", "..","python", "tests"))
+	path := filepath.Clean(filepath.Join(filepath.Dir(fileName), "..", "..", "devops", "testdata"))
 	return path
 }
 
@@ -49,13 +49,17 @@ func TestCreateChannelIfNeeded(t *testing.T) {
 
 func TestServices(t *testing.T) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
-	walletService := CreateWalletService(serverAddress, nil)
+	walletService, err := CreateWalletService(serverAddress, nil)
+	failError(t,"error creating service", err)
 
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
-	allison := walletService.CreateWallet("")
-	clinic := walletService.CreateWallet("")
-	airline := walletService.CreateWallet("")
+	allison, err := walletService.CreateWallet("")
+	failError(t,"error creating wallet", err)
+	clinic, err := walletService.CreateWallet("")
+	failError(t,"error creating wallet", err)
+	airline, err := walletService.CreateWallet("")
+	failError(t,"error creating wallet", err)
 
 	// Store profile for later use
 	// File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -65,42 +69,58 @@ func TestServices(t *testing.T) {
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
-	walletService.base.SetProfile(clinic)
-	fileContent, _ := ioutil.ReadFile(GetVaccineCertUnsignedPath())
-	var credentialJson map[string]interface{}
-	json.Unmarshal(fileContent, &credentialJson)
+	err = walletService.base.SetProfile(clinic)
+	failError(t,"error setting profile", err)
+	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
+	failError(t,"error reading file", err)
+	var credentialJson Document
+	err = json.Unmarshal(fileContent, &credentialJson)
+	failError(t,"error parsing JSON", err)
 
-	credential := walletService.IssueCredential(credentialJson)
+	credential, err := walletService.IssueCredential(credentialJson)
+	failError(t,"error issuing credential", err)
 
 	fmt.Printf("Credential:%s\n", credential)
 
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
-	walletService.base.SetProfile(allison)
-	itemId := walletService.InsertItem(credential)
+	err = walletService.base.SetProfile(allison)
+	failError(t,"error setting profile", err)
+	itemId, err := walletService.InsertItem(credential)
+	failError(t,"error inserting item", err)
 	fmt.Println("item id", itemId)
 
 	// SHARE CREDENTIAL
 	// Allison shares the credential with the venue.
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
-	walletService.base.SetProfile(allison)
+	err = walletService.base.SetProfile(allison)
+	failError(t,"error reading file", err)
 
-	fileContent2, _ := ioutil.ReadFile(GetVaccineCertFramePath())
-	var proofRequestJson map[string]interface{}
-	json.Unmarshal(fileContent2, &proofRequestJson)
+	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
+	failError(t,"error reading file", err)
+	var proofRequestJson Document
+	err = json.Unmarshal(fileContent2, &proofRequestJson)
+	failError(t,"error parsing JSON", err)
 
-	credentialProof := walletService.CreateProof(itemId, proofRequestJson)
-
+	credentialProof, err := walletService.CreateProof(itemId, proofRequestJson)
+	failError(t,"error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
-	walletService.base.SetProfile(airline)
-	valid := walletService.VerifyProof(credentialProof)
-
+	err = walletService.base.SetProfile(airline)
+	failError(t,"error setting profile", err)
+	valid, err := walletService.VerifyProof(credentialProof)
+	failError(t,"error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
 		t.Fail()
+	}
+}
+
+func failError(t *testing.T, message string, err error) {
+	if err != nil {
+		t.Errorf("%s: %v",message, err)
 	}
 }
