@@ -15,6 +15,11 @@ message IssueResponse {
     JsonPayload document = 1;
 }
 
+message IssueFromTemplateRequest {
+    string templateId = 1;
+    JsonPayload attributes = 2;
+}
+
 // Create Proof
 message CreateProofRequest {
     JsonPayload reveal_document = 1;
@@ -50,6 +55,8 @@ message SendResponse {
 
 service Credential {
     rpc Issue(IssueRequest) returns (IssueResponse);
+
+    rpc IssueFromTemplate(IssueFromTemplateRequest) returns (IssueResponse);
 
     rpc CreateProof(CreateProofRequest) returns (CreateProofResponse);
 
