@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/trinsic-id/okapi/go/okapi"
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -15,6 +16,8 @@ import (
 	"net/url"
 	"time"
 )
+
+type Document map[string]interface{}
 
 type ServiceBase struct {
 	capabilityInvocation string
@@ -36,7 +39,7 @@ func (s ServiceBase) GetMetadata() metadata.MD {
 	})
 }
 
-func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
+func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
 	capabilityStruct, err := structpb.NewStruct(map[string]interface{}{
 		"@context":         "https://w3id.org/security/v2",
 		"invocationTarget": profile.WalletId,
@@ -46,23 +49,24 @@ func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
 			"capability":   profile.Capability,
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil { return err }
 
 	invokerKey := okapi.JsonWebKey{}
 	err = proto.Unmarshal(profile.InvokerJwk, &invokerKey)
-	if err != nil { panic(err) }
+	if err != nil { return err }
 
 	proofResponse, err := okapi.LdProofs{}.CreateProof(&okapi.CreateProofRequest{
 		Document: capabilityStruct,
 		Key:      &invokerKey,
 		Suite:    okapi.LdSuite_JcsEd25519Signature2020,
 	})
-	if err != nil { panic(err) }
+	if err != nil { return err }
 
 	proofJson, err := json.Marshal(proofResponse.SignedDocument.AsMap())
-	if err != nil { panic(err) }
+	if err != nil { return err }
 
 	s.capabilityInvocation = base64.StdEncoding.EncodeToString(proofJson)
+	return nil
 }
 
 type WalletService struct {
@@ -72,10 +76,10 @@ type WalletService struct {
 	credentialClient sdk.CredentialClient
 }
 
-func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) *WalletService {
+func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (*WalletService, error) {
 	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	service := WalletService{
@@ -84,7 +88,7 @@ func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) *Walle
 		walletClient:     sdk.NewWalletClient(channel),
 		credentialClient: sdk.NewCredentialClient(channel),
 	}
-	return &service
+	return &service, nil
 }
 
 func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
@@ -121,28 +125,29 @@ type IWalletService interface {
 	IServiceBase
 	RegisterOrConnect(email string)
 	CreateWallet(securityCode string) sdk.WalletProfile
-	IssueCredential(document map[string]interface{}) map[string]interface{} // TODO - Better typing?
+	IssueCredential(document map[string]interface{}) Document
 	Search(query string) sdk.SearchResponse
-	InsertItem(item map[string]interface{}) string                        // TODO - Better typing?
-	Send(document map[string]interface{}, email string)                   // TODO - Better typing?
-	CreateProof(documentId string, revealDocument map[string]interface{}) // TODO - Better typing?
-	VerifyProof(proofDocument map[string]interface{})                     // TODO - Better typing?
+	InsertItem(item Document) string
+	Send(document Document, email string)
+	CreateProof(documentId string, revealDocument Document)
+	VerifyProof(proofDocument map[string]interface{})
 }
 
-func (w WalletService) RegisterOrConnect(email string) {
+func (w WalletService) RegisterOrConnect(email string) error {
 	connectRequest := sdk.ConnectRequest{
 		ContactMethod: &sdk.ConnectRequest_Email{Email: email},
 	}
 
 	_, err := w.walletClient.ConnectExternalIdentity(w.base.GetContext(), &connectRequest)
-	if err != nil { panic(err) }
+	if err != nil { return err }
+	return nil
 }
 
-func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
+func (w WalletService) CreateWallet(securityCode string) (*sdk.WalletProfile, error) {
 	configuration, err := w.walletClient.GetProviderConfiguration(context.Background(), &empty.Empty{})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	resolveResponse, err := okapi.DidKey{}.Resolve(&okapi.ResolveRequest{Did: configuration.KeyAgreementKeyId})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
 	var providerExchangeKey *okapi.JsonWebKey
 	for _, key := range resolveResponse.Keys {
@@ -153,7 +158,7 @@ func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
 	}
 
 	myKey, err := okapi.DidKey{}.Generate(&okapi.GenerateKeyRequest{KeyType: okapi.KeyType_Ed25519})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
 	var myExchangeKey *okapi.JsonWebKey
 	for _, key := range myKey.Key {
@@ -170,47 +175,45 @@ func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
 		SecurityCode: securityCode,
 	}
 	walletBytes, err := proto.Marshal(&walletRequest)
-	if err != nil {panic(err)}
+	if err != nil { return nil, err }
 	packedMessage, err := okapi.DidComm{}.Pack(&okapi.PackRequest{
 		SenderKey:   myExchangeKey,
 		ReceiverKey: providerExchangeKey,
 		Plaintext: walletBytes,
 	})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
-	//packedSdkMessage := OkapiEncryptedMessageToSdkEncryptedMessage(packedMessage.Message)
 	packedSdkMessage := packedMessage.Message
 	response, err := w.walletClient.CreateWalletEncrypted(context.Background(), packedSdkMessage)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
 	decryptedResponse, err := okapi.DidComm{}.Unpack(&okapi.UnpackRequest{
 		SenderKey:   providerExchangeKey,
 		ReceiverKey: myExchangeKey,
 		Message:     response,
-		//Message:     SdkEncryptedMessageToOkapiEncryptedMessage(response),
 	})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
 	createWalletResponse := sdk.CreateWalletResponse{}
 	err = proto.Unmarshal(decryptedResponse.Plaintext, &createWalletResponse)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 
 	myKeyJwk, err := proto.Marshal(myKey.Key[0])
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	jsonString, err := json.Marshal(myDidDocument)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	return &sdk.WalletProfile{
 		DidDocument: &sdk.JsonPayload{Json: &sdk.JsonPayload_JsonString{JsonString: string(jsonString)}},
 		WalletId:    createWalletResponse.WalletId,
 		Invoker:     createWalletResponse.Invoker,
 		Capability:  createWalletResponse.Capability,
 		InvokerJwk:  myKeyJwk,
-	}
+	}, nil
 }
 
-func (w WalletService) IssueCredential(document map[string]interface{}) map[string]interface{} {
+func (w WalletService) IssueCredential(document map[string]interface{}) (map[string]interface{}, error) {
 	jsonBytes, err := json.Marshal(document)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	issueRequest := sdk.IssueRequest{
 		Document: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -219,24 +222,24 @@ func (w WalletService) IssueCredential(document map[string]interface{}) map[stri
 		},
 	}
 	response, err := w.credentialClient.Issue(w.base.GetContext(), &issueRequest)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	var doc map[string]interface{}
 	err = json.Unmarshal([]byte(response.Document.GetJsonString()), &doc)
-	if err != nil { panic(err) }
-	return doc
+	if err != nil { return nil, err }
+	return doc, nil
 }
 
-func (w WalletService) Search(query string) *sdk.SearchResponse {
+func (w WalletService) Search(query string) (*sdk.SearchResponse, error) {
 	response, err := w.walletClient.Search(w.base.GetContext(), &sdk.SearchRequest{
 		Query: query,
 	})
-	if err != nil { panic(err) }
-	return response
+	if err != nil { return nil, err }
+	return response, nil
 }
 
-func (w WalletService) InsertItem(item map[string]interface{}) string {
+func (w WalletService) InsertItem(item map[string]interface{}) (string, error) {
 	jsonString, err := json.Marshal(item)
-	if err != nil { panic(err) }
+	if err != nil { return "", err }
 	response, err := w.walletClient.InsertItem(w.base.GetContext(), &sdk.InsertItemRequest{
 		Item: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -244,13 +247,13 @@ func (w WalletService) InsertItem(item map[string]interface{}) string {
 			},
 		},
 	})
-	if err != nil { panic(err) }
-	return response.ItemId
+	if err != nil { return "", err }
+	return response.ItemId, nil
 }
 
-func (w WalletService) Send(document map[string]interface{}, email string) {
+func (w WalletService) Send(document map[string]interface{}, email string) error {
 	jsonString, err := json.Marshal(document)
-	if err != nil { panic(err) }
+	if err != nil { return err }
 	_, err = w.credentialClient.Send(w.base.GetContext(), &sdk.SendRequest{
 		DeliveryMethod: &sdk.SendRequest_Email{
 			Email: email,
@@ -261,12 +264,13 @@ func (w WalletService) Send(document map[string]interface{}, email string) {
 			},
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil { return err }
+	return nil
 }
 
-func (w WalletService) CreateProof(documentId string, revealDocument map[string]interface{}) map[string]interface{} {
+func (w WalletService) CreateProof(documentId string, revealDocument Document) (Document, error) {
 	jsonString, err := json.Marshal(revealDocument)
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	proof, err := w.credentialClient.CreateProof(w.base.GetContext(), &sdk.CreateProofRequest{
 		DocumentId: documentId,
 		RevealDocument: &sdk.JsonPayload{
@@ -275,16 +279,16 @@ func (w WalletService) CreateProof(documentId string, revealDocument map[string]
 			},
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil { return nil, err }
 	var proofMap map[string]interface{}
 	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
-	if err != nil { panic(err) }
-	return proofMap
+	if err != nil { return nil, err }
+	return proofMap, nil
 }
 
-func (w WalletService) VerifyProof(proofDocument map[string]interface{}) bool {
+func (w WalletService) VerifyProof(proofDocument map[string]interface{}) (bool, error) {
 	jsonString, err := json.Marshal(proofDocument)
-	if err != nil { panic(err) }
+	if err != nil { return false, err }
 	proof, err := w.credentialClient.VerifyProof(w.base.GetContext(), &sdk.VerifyProofRequest{
 		ProofDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -292,28 +296,9 @@ func (w WalletService) VerifyProof(proofDocument map[string]interface{}) bool {
 			},
 		},
 	})
-	if err != nil { panic(err) }
-	return proof.Valid
+	if err != nil { return false, err }
+	return proof.Valid, nil
 }
-
-//func SdkEncryptedMessageToOkapiEncryptedMessage(message *sdk.EncryptedMessage) *okapi.EncryptedMessage {
-//	bytes, err := proto.Marshal(message)
-//	if err != nil {panic(err)}
-//	sdkMessage := okapi.EncryptedMessage{}
-//	err = proto.Unmarshal(bytes, &sdkMessage)
-//	if err != nil {panic(err)}
-//	return &sdkMessage
-//}
-
-// OkapiEncryptedMessageToSdkEncryptedMessage exists because golang cannot convert identical structs
-//func OkapiEncryptedMessageToSdkEncryptedMessage(message *okapi.EncryptedMessage) *sdk.EncryptedMessage {
-//	bytes, err := proto.Marshal(message)
-//	if err != nil {panic(err)}
-//	sdkMessage := sdk.EncryptedMessage{}
-//	err = proto.Unmarshal(bytes, &sdkMessage)
-//	if err != nil {panic(err)}
-//	return &sdkMessage
-//}
 
 type ProviderService struct {
 	base ServiceBase
@@ -321,18 +306,16 @@ type ProviderService struct {
 	providerClient sdk.ProviderClient
 }
 
-func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) *ProviderService {
+func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) (*ProviderService, error) {
 	channel,err := CreateChannelIfNeeded(serviceAddress, channel, true)
-	if err != nil {
-		panic(err)
-	}
+	if err != nil { return nil, err }
 
 	service := ProviderService{
 		base:           ServiceBase{},
 		channel:        channel,
 		providerClient: sdk.NewProviderClient(channel),
 	}
-	return &service
+	return &service, nil
 }
 
 type IProviderService interface {
@@ -341,16 +324,19 @@ type IProviderService interface {
 	InvitationStatus(request sdk.InvitationStatusRequest) sdk.InvitationStatusResponse
 }
 
-func (p ProviderService) InviteParticipant(request *sdk.InviteRequest) *sdk.InviteResponse {
-	// TODO - Verify contact method is set
+func (p ProviderService) InviteParticipant(request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
+	// Verify contact method is set
+	switch request.ContactMethod.(type) {
+	case nil:
+		return nil, fmt.Errorf("unset contact method")
+	}
 	response, err := p.providerClient.Invite(p.base.GetContext(), request)
-	if err != nil { panic(err) }
-	return response
+	if err != nil { return nil, err }
+	return response, nil
 }
 
-func (p ProviderService) InvitationStatus(request *sdk.InvitationStatusRequest) *sdk.InvitationStatusResponse {
-	// TODO - Verify onboarding reference is set
+func (p ProviderService) InvitationStatus(request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
 	response, err := p.providerClient.InvitationStatus(p.base.GetContext(), request)
-	if err != nil { panic(err) }
-	return response
+	if err != nil { return nil, err }
+	return response, nil
 }
