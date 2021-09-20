@@ -12,6 +12,7 @@ nav:
     - Node: walkthrough/vaccination-node.md
     - Web: walkthrough/vaccination-browser.md
     - C#: walkthrough/vaccination-net.md
+    - Python: walkthrough/vaccination-python.md
   - Reference:
     - Setup: reference/setup/index.md
     - Wallet Service: reference/services/wallet-service.md

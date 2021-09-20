@@ -22,6 +22,10 @@ To create a wallet directly without invitation, use the following methods. These
     ```csharp
     var profile = await walletService.Create();
     ```
+=== "Python"
+    ```python 
+    profile = await wallet_service.create_wallet()
+    ```
 
 ### Create wallet with provider invitation
 
@@ -38,6 +42,10 @@ If invited by a provider, you can supply the security code found in your invitat
 === "C#"
     ```csharp
     var profile = await walletService.Create("<security code>");
+    ```
+=== "Python"
+    ```python
+    profile = await wallet_service.create_wallet("<security code>")
     ```
 
 ## Insert Record
@@ -63,7 +71,10 @@ This method allows inserting any JSON data in the wallet.
 
     var itemId = await walletService.InsertItem(item);
     ```
-
+=== "Python"
+    ```python
+    item_id = await wallet_service.insert_item(credential)
+    ```
 The output of this method will be a unique `itemId` that can be used as input where required.
 
 ## Search / Query
@@ -93,6 +104,11 @@ The default query used in the commands below returns a full wallet result set. T
     var items = await walletService.Search();
     ```
 
+=== "Python"
+    ```python
+    item = await wallet_service.search()
+    ```
+
 ### SQL Search
 
 To pass custom query to the search function, use the query parameter or the available overload.
@@ -114,6 +130,12 @@ To pass custom query to the search function, use the query parameter or the avai
 
     ```csharp
     var items = await walletService.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
+    ```
+
+=== "Python"
+    ```python
+    query = "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
+    item = await wallet_service.search(query)
     ```
 
 
@@ -184,6 +206,15 @@ The wallet service supports signing data using [BBS+ Signatures :material-open-i
 
     var signedDocument = await walletService.IssueCredential(unsignedDocument);
     ```
+=== "Python"
+    ```python
+    import json
+    credential_json = json.dumps({
+      { "@context", "https://w3id.org/security/v2" },
+      { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
+    })
+    credential = await wallet_service.issue_credential(credential_json)
+    ```
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
@@ -227,6 +258,18 @@ The endpoint to create a proof requires two inputs:
 
     var signedDocument = await walletService.CreateProof(itemId, frame);
     ```
+=== "Python"
+    ```python
+    import json
+    frame_json = json.dumps({
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": [ "VerifiableCredential" ],
+    "@explicit": true,
+    "issuer": {}
+    })
+
+    presentation = wallet_services.create_proof(document_id, frame_json)
+    ```
 
 ## Verify Proof
 
@@ -250,6 +293,11 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     var isValid = await walletService.VerifyProof(proofDocument);
 
     Console.WriteLine($"Verify result: {isValid}");
+    ```
+
+=== "Python"
+    ```python
+    valid = await wallet_service.verify_proof(presentation)
     ```
 
 ## Data Exchange
@@ -280,4 +328,10 @@ To send a document to another user, they must have created a wallet and [associa
 
     ```csharp
     await walletService.Send(document, "admin@example.com");
+    ```
+
+=== "Python"
+
+    ```python
+    await wallet_service.send(document, "admin@example.com");
     ```

@@ -13,6 +13,15 @@ walkthrough/snippets/intro-use-case.md
 
 If you're here to just go through the walkthrough, check out our [Gitpod cloud environment](https://gitpod.io/#https://github.com/trinsic-id/sdk) for easy installation (You'll have to create a free account with gitpod).
 
+To install the CLI locally, clone our sdk github repo and compile the SDK
+```bash 
+git clone https://github.com/trinsic-id/sdk.git
+
+cd sdk/cli
+
+cargo install --path .
+```
+
 Once installed, configure the CLI's server address to your Ecosystem:
 
 === "Trinsic CLI"
@@ -21,13 +30,22 @@ Once installed, configure the CLI's server address to your Ecosystem:
     trinsic config --server-address https://example.com
     ```
 
-!!! noted
+!!! note
  Reference: [Configuration with CLI](../reference/setup/index.md#configuration-with-cli)
 
 ## Meet Allison
 
 Allison's town just received the go ahead to vaccinate everyone.
 We'll walk through a scenario where Allison gets her vaccination card and then generates a pass with it to board an airline, all using her devices.
+
+
+To start, create a directory call walkthrough, and then three directories in that called `allison`, `clinic`, and `airline`. 
+```
+walkthrough
+|- allison
+|- clinic
+|- airline
+```
 
 
 ## Create Wallets
@@ -52,7 +70,7 @@ Reference: [Create Wallet](/reference/services/wallet-service/#create-wallet)
 ## Issue a Credential
 
 Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
-The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. Because this sample is on the same file system, our communicate method is simply moving it to allison's directory :)
+The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. Because this sample is on the same file system, our communication method is simply moving it to allison's directory :)
 
 === "Trinsic CLI"
 
