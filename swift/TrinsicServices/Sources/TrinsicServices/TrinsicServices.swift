@@ -8,13 +8,16 @@ import NIOHPACK
 
 enum TrinsicError :Error {
     case profileNotSet
+    case httpsNotImplemented
+    case portNotSpecified
+    case urlNotParsed
 }
 
 class ServiceBase {
     var capInvocation: String = "";
 
     func getMetadata() throws -> [String: String] {
-        if self.capInvocation == "" {
+        if capInvocation == "" {
             throw TrinsicError.profileNotSet;
         }
         return ["capability-invocation": self.capInvocation];
@@ -39,26 +42,41 @@ class ServiceBase {
         proofRequest.document = Google_Protobuf_Struct(fields: capabilityDictionary);
         let proofResponse = try LdProofs.createProof(request: proofRequest);
         let proofJson = try proofResponse.signedDocument.jsonUTF8Data();
-        self.capInvocation = proofJson.base64EncodedString();
+        capInvocation = proofJson.base64EncodedString();
+    }
+
+    public static func createAndVerifyUrl(serviceAddress: String) throws -> URL {
+        let url = URL(string: serviceAddress);
+        if url == nil {
+            throw TrinsicError.urlNotParsed
+        }
+        if url?.scheme == "https" {
+            throw TrinsicError.httpsNotImplemented
+        }
+        if url?.port == nil {
+            throw TrinsicError.portNotSpecified
+        }
+        return url!
     }
 }
 
 class WalletService : ServiceBase {
     var credentialClient: Trinsic_Services_CredentialClient;
     var walletClient: Trinsic_Services_WalletClient;
-    init(serviceAddress: String = "http://localhost:5000") {
-        let url = URL(string: serviceAddress)!;
+    init(serviceAddress: String = "http://localhost:5000") throws {
+        let url = try ServiceBase.createAndVerifyUrl(serviceAddress: serviceAddress)
+
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1);
         let channel = ClientConnection.insecure(group: group).connect(host: url.host!, port: url.port!);
-        self.credentialClient = Trinsic_Services_CredentialClient(channel: channel);
-        self.walletClient = Trinsic_Services_WalletClient(channel: channel);
+        credentialClient = Trinsic_Services_CredentialClient(channel: channel);
+        walletClient = Trinsic_Services_WalletClient(channel: channel);
     }
-    
+
     func registerOrConnect(email: String) throws {
         // TODO - Async?
         var request = Trinsic_Services_ConnectRequest();
         request.email = email;
-        try self.walletClient.connectExternalIdentity(request).response.wait();
+        try walletClient.connectExternalIdentity(request).response.wait();
     }
     
     func createWallet(securityCode: String = "") throws -> Trinsic_Services_WalletProfile {
@@ -112,21 +130,21 @@ class WalletService : ServiceBase {
         var issueRequest = Trinsic_Services_IssueRequest();
         issueRequest.document = Trinsic_Services_JsonPayload();
         issueRequest.document.jsonString = String(decoding: try JSONSerialization.data(withJSONObject: document, options: JSONSerialization.WritingOptions.prettyPrinted), as: UTF8.self);
-        let response = try self.credentialClient.issue(issueRequest, callOptions: self.getCallOptions()).response.wait();
+        let response = try credentialClient.issue(issueRequest, callOptions: getCallOptions()).response.wait();
         return (try JSONSerialization.jsonObject(with: response.document.jsonString.data(using: .utf8)!, options: [])) as! [String: Any];
     }
     
     func search(query: String = "SELECT * from c") throws -> Trinsic_Services_SearchResponse {
         var searchRequest = Trinsic_Services_SearchRequest();
         searchRequest.query = query;
-        return try self.walletClient.search(searchRequest, callOptions: self.getCallOptions()).response.wait();
+        return try walletClient.search(searchRequest, callOptions: self.getCallOptions()).response.wait();
     }
     
     func insertItem(item: [String: Any]) throws -> String {
         var request = Trinsic_Services_InsertItemRequest();
         request.item = Trinsic_Services_JsonPayload();
         request.item.jsonString = String(decoding:try JSONSerialization.data(withJSONObject: item, options: JSONSerialization.WritingOptions.prettyPrinted), as: UTF8.self);
-        let result = try self.walletClient.insertItem(request, callOptions: self.getCallOptions());
+        let result = try walletClient.insertItem(request, callOptions: getCallOptions());
         // TODO - Async?
         return try result.response.wait().itemID;
     }
@@ -136,7 +154,7 @@ class WalletService : ServiceBase {
         sendRequest.email = email;
         sendRequest.document = Trinsic_Services_JsonPayload();
         sendRequest.document.jsonString = String(decoding: try JSONSerialization.data(withJSONObject: document, options: JSONSerialization.WritingOptions.prettyPrinted), as: UTF8.self);
-        try self.credentialClient.send(sendRequest, callOptions: self.getCallOptions()).response.wait();
+        try credentialClient.send(sendRequest, callOptions: getCallOptions()).response.wait();
     }
     
     func createProof(documentId: String, revealDocument: [String: Any]) throws -> [String: Any] {
@@ -144,7 +162,7 @@ class WalletService : ServiceBase {
         request.documentID = documentId;
         request.revealDocument = Trinsic_Services_JsonPayload();
         request.revealDocument.jsonString = String(decoding:try JSONSerialization.data(withJSONObject: revealDocument, options: JSONSerialization.WritingOptions.prettyPrinted), as: UTF8.self);
-        let result = (try self.credentialClient.createProof(request, callOptions: self.getCallOptions()).response.wait());
+        let result = (try credentialClient.createProof(request, callOptions: getCallOptions()).response.wait());
         // TODO - Async?
         return (try JSONSerialization.jsonObject(with: result.proofDocument.jsonString.data(using: .utf8)!, options: [])) as! [String: Any];
     }
@@ -153,7 +171,7 @@ class WalletService : ServiceBase {
         var request = Trinsic_Services_VerifyProofRequest();
         request.proofDocument = Trinsic_Services_JsonPayload();
         request.proofDocument.jsonString = String(decoding:try JSONSerialization.data(withJSONObject: proofDocument, options: JSONSerialization.WritingOptions.prettyPrinted), as: UTF8.self);
-        let result = try self.credentialClient.verifyProof(request, callOptions: self.getCallOptions());
+        let result = try credentialClient.verifyProof(request, callOptions: getCallOptions());
         // TODO - Async?
         return try result.response.wait().valid;
     }
@@ -161,11 +179,12 @@ class WalletService : ServiceBase {
 
 class ProviderService : ServiceBase {
     var providerClient: Trinsic_Services_ProviderClient;
-    init(serviceAddress: String = "http://localhost:5000") {
-        let url = URL(string: serviceAddress);
+    init(serviceAddress: String = "http://localhost:5000") throws {
+        let url = try ServiceBase.createAndVerifyUrl(serviceAddress: serviceAddress)
+
         let group = MultiThreadedEventLoopGroup(numberOfThreads: 1);
-        let channel = ClientConnection.insecure(group: group).connect(host: url!.host!, port: url!.port!);
-        self.providerClient = Trinsic_Services_ProviderClient(channel: channel);
+        let channel = ClientConnection.insecure(group: group).connect(host: url.host!, port: url.port!);
+        providerClient = Trinsic_Services_ProviderClient(channel: channel);
     }
     
     func inviteParticipant(request: Trinsic_Services_InviteRequest) throws -> Trinsic_Services_InviteResponse {

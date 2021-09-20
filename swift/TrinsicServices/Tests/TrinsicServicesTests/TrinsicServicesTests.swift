@@ -52,10 +52,37 @@ final class TrinsicServicesTests: XCTestCase {
             ]
         ];
     }
+
+    func testUrlParse() throws {
+        var validHttpAddress = "http://localhost:5000";
+        var validHttpsAddress = "https://localhost:5000";
+        let missingPortAddress = "http://localhost";
+        let missingProtocolAddress = "localhost:5000";
+        let blankAddress = "";
+
+        let failingAddresses = [missingPortAddress, missingProtocolAddress, blankAddress]
+
+        for address in failingAddresses {
+            do {
+                try ServiceBase.createAndVerifyUrl(serviceAddress: address)
+                XCTFail("Address should not parse")
+            }
+            catch TrinsicError.urlNotParsed {
+                // This is expected
+            }
+            catch TrinsicError.portNotSpecified {
+                // This is expected
+            }
+            catch TrinsicError.httpsNotImplemented {
+                // This is expected
+            }
+        }
+
+    }
     
     func testTrinsicServicesDemo() throws {
         let serverAddress = "http://trinsic-staging.centralus.azurecontainer.io:5000";
-        let walletService = WalletService(serviceAddress: serverAddress);
+        let walletService = try WalletService(serviceAddress: serverAddress);
         
         // SETUP Actors
         // Create 3 different profiles for each participant in the scenario
