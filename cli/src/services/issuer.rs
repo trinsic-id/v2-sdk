@@ -44,8 +44,7 @@ async fn issue(args: &IssueArgs, config: Config) {
         args.out,
         &serde_json::to_string_pretty(&response.document)
             .unwrap()
-            .as_bytes()
-            .to_vec(),
+            .as_bytes(),
     );
 }
 
@@ -82,8 +81,7 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
         args.out,
         &serde_json::to_string_pretty(&response.proof_document)
             .unwrap()
-            .as_bytes()
-            .to_vec(),
+            .as_bytes(),
     );
 }
 

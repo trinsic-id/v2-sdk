@@ -59,7 +59,7 @@ pub fn read_file_as_string(filename: Option<&str>) -> String {
         .to_string()
 }
 
-pub fn write_file(filename: Option<&str>, data: &Vec<u8>) {
+pub fn write_file(filename: Option<&str>, data: &[u8]) {
     match filename {
         Some(out) => {
             let mut file = OpenOptions::new()
