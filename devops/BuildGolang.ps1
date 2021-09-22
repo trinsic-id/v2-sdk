@@ -1,26 +1,29 @@
 param
 (
-    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][string]$GitTag = '',
     [AllowNull()][string]$PackageVersion = '',
     [AllowNull()][string]$TestOutput = 'test_output.xml',
+    [AllowNull()][string]$ArtifactName = 'windows-gnu',
     [AllowNull()][Boolean]$RequirementsOnly = $false
 )
 
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
-    cd "./services"
+    # Due to weirdness with github action runners not updating path dynamically, we have to use the yaml file to install these
+    # go install golang.org/x/lint/golint@latest
+    # go install github.com/jstemmer/go-junit-report@latest
     go install
-    cd ".."
     $GOMODPATH = "$env:GOPATH/pkg/mod/github.com/trinsic-id/okapi"
     Get-ChildItem $GOMODPATH | `
         Where-Object {$_.PSIsContainer -eq $True } | `
         ForEach-Object {Copy-NativeBinaries -Destination "$($_.FullName)/okapi"}
 }
 function Test-Golang {
-    # go test -v 2>&1 | go-junit-report > $TestOutput
-    go test -v
+    go build
+    golint
+    go test -v | go-junit-report > $TestOutput
+    # TODO - Add `staticcheck` support
 }
 function Build-Package {
     $replaceLineVersion = $PackageVersion
@@ -28,27 +31,24 @@ function Build-Package {
         $replaceLineVersion = Get-GolangVersion($GitTag)
     } catch {
     } finally {
-        go build
     }
 }
 
 function Copy-NativeBinaries($Destination) {
     $source = "$PSScriptRoot/../libs/$ArtifactName"
     Get-ChildItem $source -Recurse | `
-        Where-Object { $_.PSIsContainer -eq $False } | `
+        Where-Object { $_.PSIsContainer -eq $False -and !$_.Extension.Contains("dylib") } | `
         ForEach-Object {Copy-Item -Path $_.Fullname -Destination $Destination -Force} # Do the things
     Copy-Item -Path "$source/../C_header/okapi.h" -Destination "$Destination" -Force
 }
 
 # Setup
 $InvocationPath = (Get-Item .).FullName
-Set-Location "$PSScriptRoot/../go"
-Copy-NativeBinaries -Destination "./services"
+Set-Location "$PSScriptRoot/../go/services"
+Copy-NativeBinaries -Destination "./"
 Install-Requirements
 if (!$RequirementsOnly) {
-    cd "./services"
     Test-Golang
     Build-Package
-    cd ".."
 }
 Set-Location $InvocationPath

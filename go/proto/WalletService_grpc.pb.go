@@ -4,7 +4,7 @@ package sdk
 
 import (
 	context "context"
-	"github.com/trinsic-id/okapi/go/okapi"
+	proto "github.com/trinsic-id/okapi/go/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -24,7 +24,7 @@ type WalletClient interface {
 	ConnectExternalIdentity(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	CreateWallet(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
 	CreateWalletWithWorkflow(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(ctx context.Context, in *okapi.EncryptedMessage, opts ...grpc.CallOption) (*okapi.EncryptedMessage, error)
+	CreateWalletEncrypted(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error)
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
 	GrantAccess(ctx context.Context, in *GrantAccessRequest, opts ...grpc.CallOption) (*GrantAccessResponse, error)
@@ -75,8 +75,8 @@ func (c *walletClient) CreateWalletWithWorkflow(ctx context.Context, in *CreateW
 	return out, nil
 }
 
-func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *okapi.EncryptedMessage, opts ...grpc.CallOption) (*okapi.EncryptedMessage, error) {
-	out := new(okapi.EncryptedMessage)
+func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error) {
+	out := new(proto.EncryptedMessage)
 	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/CreateWalletEncrypted", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -128,7 +128,7 @@ type WalletServer interface {
 	ConnectExternalIdentity(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	CreateWallet(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
 	CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(context.Context, *okapi.EncryptedMessage) (*okapi.EncryptedMessage, error)
+	CreateWalletEncrypted(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error)
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
 	GrantAccess(context.Context, *GrantAccessRequest) (*GrantAccessResponse, error)
@@ -152,7 +152,7 @@ func (UnimplementedWalletServer) CreateWallet(context.Context, *CreateWalletRequ
 func (UnimplementedWalletServer) CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletWithWorkflow not implemented")
 }
-func (UnimplementedWalletServer) CreateWalletEncrypted(context.Context, *okapi.EncryptedMessage) (*okapi.EncryptedMessage, error) {
+func (UnimplementedWalletServer) CreateWalletEncrypted(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletEncrypted not implemented")
 }
 func (UnimplementedWalletServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
@@ -253,7 +253,7 @@ func _Wallet_CreateWalletWithWorkflow_Handler(srv interface{}, ctx context.Conte
 }
 
 func _Wallet_CreateWalletEncrypted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(okapi.EncryptedMessage)
+	in := new(proto.EncryptedMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -265,7 +265,7 @@ func _Wallet_CreateWalletEncrypted_Handler(srv interface{}, ctx context.Context,
 		FullMethod: "/trinsic.services.Wallet/CreateWalletEncrypted",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServer).CreateWalletEncrypted(ctx, req.(*okapi.EncryptedMessage))
+		return srv.(WalletServer).CreateWalletEncrypted(ctx, req.(*proto.EncryptedMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
