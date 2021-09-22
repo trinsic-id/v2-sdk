@@ -31,6 +31,7 @@ jobs:
         with:
           workflow: "build-libs.yml"
           path: ./libs
+          repo: trinsic-id/okapi
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
