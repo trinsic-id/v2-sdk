@@ -10,6 +10,9 @@ param
 . "$PSScriptRoot/VersionParse.ps1"
 
 function Install-Requirements {
+    cd "./services"
+    go install
+    cd ".."
     $GOMODPATH = "$env:GOPATH/pkg/mod/github.com/trinsic-id/okapi"
     Get-ChildItem $GOMODPATH | `
         Where-Object {$_.PSIsContainer -eq $True } | `
