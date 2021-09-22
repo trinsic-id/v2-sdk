@@ -78,6 +78,10 @@ github.com/trinsic-id/okapi/go v0.0.0-20210914150428-2179b232f2ce h1:EmIi03WKpSF
 github.com/trinsic-id/okapi/go v0.0.0-20210914150428-2179b232f2ce/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
 github.com/trinsic-id/okapi/go v0.0.0-20210917165902-479c70f33cc3 h1:h/dLaGIIA9dvukqZxOiGVx6xV2AGVgtBe1iWdBc+nik=
 github.com/trinsic-id/okapi/go v0.0.0-20210917165902-479c70f33cc3/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
+github.com/trinsic-id/okapi/go v0.0.0-20210922185137-c703aa8fc044 h1:inktCzDUxIkirwBSTvlhBezbUpowGR00Ng8+S3grgQY=
+github.com/trinsic-id/okapi/go v0.0.0-20210922185137-c703aa8fc044/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
+github.com/trinsic-id/okapi/go v0.0.0-20210922193619-ef11f052808e h1:pYjamtz9T7AZBoZDLmzpDW4EN5bO4Hry5qCW7haUnIw=
+github.com/trinsic-id/okapi/go v0.0.0-20210922193619-ef11f052808e/go.mod h1:vItzgumQX1y7+va1ayhl1OVNpI3LjlH8Ps5RJIxX6Bo=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
 golang.org/x/crypto v0.0.0-20170930174604-9419663f5a44/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
