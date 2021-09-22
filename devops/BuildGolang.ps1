@@ -14,10 +14,6 @@ function Install-Requirements {
     # go install golang.org/x/lint/golint@latest
     # go install github.com/jstemmer/go-junit-report@latest
     go install
-    $GOMODPATH = "$env:GOPATH/pkg/mod/github.com/trinsic-id/okapi"
-    Get-ChildItem $GOMODPATH | `
-        Where-Object {$_.PSIsContainer -eq $True } | `
-        ForEach-Object {Copy-NativeBinaries -Destination "$($_.FullName)/okapi"}
 }
 function Test-Golang {
     go build
