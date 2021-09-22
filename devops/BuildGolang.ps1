@@ -29,14 +29,14 @@ function Build-Package {
 $InvocationPath = (Get-Item .).FullName
 Set-Location "$PSScriptRoot/../go"
 $source = "../libs/$ArtifactName"
-$dest = "./okapi"
+$dest = "./services"
 Get-ChildItem $source -Recurse | `
     Where-Object { $_.PSIsContainer -eq $False } | `
     ForEach-Object {Copy-Item -Path $_.Fullname -Destination $dest -Force} # Do the things
 Copy-Item -Path "../libs/C_header/okapi.h" -Destination "$dest"
 Install-Requirements
 if (!$RequirementsOnly) {
-    cd "./okapi"
+    cd "./services"
     Test-Golang
     Build-Package
     cd ".."
