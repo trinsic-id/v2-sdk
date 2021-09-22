@@ -7,7 +7,7 @@
 package sdk
 
 import (
-	okapi "github.com/trinsic-id/okapi/go/okapi"
+	proto "github.com/trinsic-id/okapi/go/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
@@ -336,7 +336,7 @@ var file_CoreService_proto_goTypes = []interface{}{
 	(*RequestOptions)(nil),   // 2: trinsic.services.RequestOptions
 	(*JsonPayload)(nil),      // 3: trinsic.services.JsonPayload
 	(*structpb.Struct)(nil),  // 4: google.protobuf.Struct
-	(*okapi.EncryptedMessage)(nil), // 5: pbmse.EncryptedMessage
+	(*proto.EncryptedMessage)(nil), // 5: pbmse.EncryptedMessage
 }
 var file_CoreService_proto_depIdxs = []int32{
 	1, // 0: trinsic.services.RequestOptions.response_json_format:type_name -> trinsic.services.JsonFormat

@@ -7,7 +7,7 @@
 package sdk
 
 import (
-	"github.com/trinsic-id/okapi/go/okapi"
+	proto "github.com/trinsic-id/okapi/go/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -1180,7 +1180,7 @@ var file_WalletService_proto_goTypes = []interface{}{
 	(*JsonPayload)(nil),                      // 16: trinsic.services.JsonPayload
 	(*RequestOptions)(nil),                   // 17: trinsic.services.RequestOptions
 	(*emptypb.Empty)(nil),                    // 18: google.protobuf.Empty
-	(*okapi.EncryptedMessage)(nil),                 // 19: pbmse.EncryptedMessage
+	(*proto.EncryptedMessage)(nil),                 // 19: pbmse.EncryptedMessage
 }
 var file_WalletService_proto_depIdxs = []int32{
 	15, // 0: trinsic.services.CreateWalletResponse.status:type_name -> trinsic.services.ResponseStatus
