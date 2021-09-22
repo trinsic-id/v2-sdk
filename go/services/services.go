@@ -23,7 +23,7 @@ type ServiceBase struct {
 	capabilityInvocation string
 }
 
-type IServiceBase interface {
+type ServiceBaser interface {
 	GetContext() context.Context
 	GetMetadata() metadata.MD
 	SetProfile(profile sdk.WalletProfile)
@@ -121,8 +121,8 @@ func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, bloc
 	return channel, nil
 }
 
-type IWalletService interface {
-	IServiceBase
+type WalletServicer interface {
+	ServiceBaser
 	RegisterOrConnect(email string)
 	CreateWallet(securityCode string) sdk.WalletProfile
 	IssueCredential(document map[string]interface{}) Document
@@ -318,8 +318,8 @@ func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) (*Pr
 	return &service, nil
 }
 
-type IProviderService interface {
-	IServiceBase
+type ProviderServicer interface {
+	ServiceBaser
 	InviteParticipant(request sdk.InviteRequest) sdk.InviteResponse
 	InvitationStatus(request sdk.InvitationStatusRequest) sdk.InvitationStatusResponse
 }
