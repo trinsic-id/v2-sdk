@@ -27,7 +27,7 @@ type ServiceBase struct {
 
 type Service interface {
 	GetContext() (context.Context, error)
-	GetMetadata() metadata.MD
+	GetMetadata() (metadata.MD, error)
 	SetProfile(profile sdk.WalletProfile)
 }
 
@@ -88,11 +88,11 @@ func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
 
 type WalletService interface {
 	Service
-	RegisterOrConnect(email string)
-	CreateWallet(securityCode string) sdk.WalletProfile
-	IssueCredential(document map[string]interface{}) Document
+	RegisterOrConnect(email string) error
+	CreateWallet(securityCode string) (*sdk.WalletProfile, error)
+	IssueCredential(document map[string]interface{}) (Document, error)
 	Search(query string) sdk.SearchResponse
-	InsertItem(item Document) string
+	InsertItem(item Document) (string, error)
 	Send(document Document, email string)
 	CreateProof(documentId string, revealDocument Document) (Document, error)
 	VerifyProof(proofDocument map[string]interface{})
@@ -255,7 +255,7 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 	}, nil
 }
 
-func (w *WalletBase) IssueCredential(document map[string]interface{}) (map[string]interface{}, error) {
+func (w *WalletBase) IssueCredential(document map[string]interface{}) (Document, error) {
 	jsonBytes, err := json.Marshal(document)
 	if err != nil {
 		return nil, err
@@ -298,7 +298,7 @@ func (w *WalletBase) Search(query string) (*sdk.SearchResponse, error) {
 	return response, nil
 }
 
-func (w *WalletBase) InsertItem(item map[string]interface{}) (string, error) {
+func (w *WalletBase) InsertItem(item Document) (string, error) {
 	jsonString, err := json.Marshal(item)
 	if err != nil {
 		return "", err
