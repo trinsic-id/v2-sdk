@@ -3,13 +3,14 @@ package services
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stretchr/testify/assert"
-	sdk "github.com/trinsic-id/sdk/go/proto"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
 func GetBasePath() string {
@@ -49,7 +50,7 @@ func TestCreateChannelIfNeeded(t *testing.T) {
 	var missingProtocolAddress = "localhost:5000"
 	var blankAddress = ""
 	testAddresses := []string{validHttpAddress, validHttpsAddress, missingPortAddress, missingProtocolAddress, blankAddress}
-	throwsException := []bool {false, true, true, true, true}
+	throwsException := []bool{false, true, true, true, true}
 
 	for ij := 0; ij < len(testAddresses); ij++ {
 		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
@@ -85,7 +86,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
-	err = walletService.base.SetProfile(clinic)
+	err = walletService.SetProfile(clinic)
 	failError(t, "error setting profile", err)
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
@@ -100,7 +101,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
-	err = walletService.base.SetProfile(allison)
+	err = walletService.SetProfile(allison)
 	failError(t, "error setting profile", err)
 	itemId, err := walletService.InsertItem(credential)
 	failError(t, "error inserting item", err)
@@ -110,7 +111,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// Allison shares the credential with the venue.
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
-	err = walletService.base.SetProfile(allison)
+	err = walletService.SetProfile(allison)
 	failError(t, "error reading file", err)
 
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
@@ -125,7 +126,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
-	err = walletService.base.SetProfile(airline)
+	err = walletService.SetProfile(airline)
 	failError(t, "error setting profile", err)
 	valid, err := walletService.VerifyProof(credentialProof)
 	failError(t, "error verifying proof", err)
@@ -135,14 +136,14 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 }
 
-func createWalletServiceViaEnvVar(t *testing.T) (*WalletService, error) {
+func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
 	walletService, err := CreateWalletService(serverAddress, nil)
 	failError(t, "error creating service", err)
 	return walletService, err
 }
 
-func createProviderServiceViaEnvVar(t *testing.T) (*ProviderService, error) {
+func createProviderServiceViaEnvVar(t *testing.T) (ProviderService, error) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
 	providerService, err := CreateProviderService(serverAddress, nil)
 	failError(t, "error creating service", err)
@@ -194,6 +195,6 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 
 func failError(t *testing.T, message string, err error) {
 	if err != nil {
-		t.Errorf("%s: %v",message, err)
+		t.Errorf("%s: %v", message, err)
 	}
 }
