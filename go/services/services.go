@@ -90,12 +90,12 @@ type WalletService interface {
 	Service
 	RegisterOrConnect(email string) error
 	CreateWallet(securityCode string) (*sdk.WalletProfile, error)
-	IssueCredential(document map[string]interface{}) (Document, error)
-	Search(query string) (sdk.SearchResponse, error)
+	IssueCredential(document Document) (Document, error)
+	Search(query string) (*sdk.SearchResponse, error)
 	InsertItem(item Document) (string, error)
-	Send(document Document, email string)
+	Send(document Document, email string) error
 	CreateProof(documentId string, revealDocument Document) (Document, error)
-	VerifyProof(proofDocument map[string]interface{})
+	VerifyProof(proofDocument Document) (bool, error)
 }
 
 func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (WalletService, error) {
@@ -255,7 +255,7 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 	}, nil
 }
 
-func (w *WalletBase) IssueCredential(document map[string]interface{}) (Document, error) {
+func (w *WalletBase) IssueCredential(document Document) (Document, error) {
 	jsonBytes, err := json.Marshal(document)
 	if err != nil {
 		return nil, err
@@ -320,7 +320,7 @@ func (w *WalletBase) InsertItem(item Document) (string, error) {
 	return response.ItemId, nil
 }
 
-func (w *WalletBase) Send(document map[string]interface{}, email string) error {
+func (w *WalletBase) Send(document Document, email string) error {
 	jsonString, err := json.Marshal(document)
 	if err != nil {
 		return err
@@ -373,7 +373,7 @@ func (w *WalletBase) CreateProof(documentId string, revealDocument Document) (Do
 	return proofMap, nil
 }
 
-func (w *WalletBase) VerifyProof(proofDocument map[string]interface{}) (bool, error) {
+func (w *WalletBase) VerifyProof(proofDocument Document) (bool, error) {
 	jsonString, err := json.Marshal(proofDocument)
 	if err != nil {
 		return false, err
@@ -395,13 +395,10 @@ func (w *WalletBase) VerifyProof(proofDocument map[string]interface{}) (bool, er
 	return proof.Valid, nil
 }
 
-/*
-ProviderService provides the ...
-*/
 type ProviderService interface {
 	Service
-	InviteParticipant(request sdk.InviteRequest) (sdk.InviteResponse, error)
-	InvitationStatus(request sdk.InvitationStatusRequest) (sdk.InvitationStatusResponse, error)
+	InviteParticipant(request sdk.InviteRequest) (*sdk.InviteResponse, error)
+	InvitationStatus(request sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
 }
 
 type ProviderBase struct {
