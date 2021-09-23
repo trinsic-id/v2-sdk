@@ -30,14 +30,19 @@ type ServiceBaser interface {
 	SetProfile(profile sdk.WalletProfile)
 }
 
-func (s ServiceBase) GetContext() context.Context {
-	return metadata.NewOutgoingContext(context.Background(), s.GetMetadata())
+func (s ServiceBase) GetContext() (context.Context, error) {
+	md, err := s.GetMetadata()
+	if err != nil { return nil, err }
+	return metadata.NewOutgoingContext(context.Background(), md), nil
 }
 
-func (s ServiceBase) GetMetadata() metadata.MD {
+func (s ServiceBase) GetMetadata() (metadata.MD, error) {
+	if s.capabilityInvocation == "" {
+		return nil, errors.New("profile not set")
+	}
 	return metadata.New(map[string]string{
 		"capability-invocation": s.capabilityInvocation,
-	})
+	}), nil
 }
 
 func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
@@ -139,7 +144,9 @@ func (w WalletService) RegisterOrConnect(email string) error {
 		ContactMethod: &sdk.ConnectRequest_Email{Email: email},
 	}
 
-	_, err := w.walletClient.ConnectExternalIdentity(w.base.GetContext(), &connectRequest)
+	md, err := w.base.GetContext()
+	if err != nil { return err }
+	_, err = w.walletClient.ConnectExternalIdentity(md, &connectRequest)
 	if err != nil { return err }
 	return nil
 }
@@ -222,7 +229,10 @@ func (w WalletService) IssueCredential(document map[string]interface{}) (map[str
 			},
 		},
 	}
-	response, err := w.credentialClient.Issue(w.base.GetContext(), &issueRequest)
+
+	md, err := w.base.GetContext()
+	if err != nil { return nil, err }
+	response, err := w.credentialClient.Issue(md, &issueRequest)
 	if err != nil { return nil, err }
 	var doc map[string]interface{}
 	err = json.Unmarshal([]byte(response.Document.GetJsonString()), &doc)
@@ -231,7 +241,9 @@ func (w WalletService) IssueCredential(document map[string]interface{}) (map[str
 }
 
 func (w WalletService) Search(query string) (*sdk.SearchResponse, error) {
-	response, err := w.walletClient.Search(w.base.GetContext(), &sdk.SearchRequest{
+	md, err := w.base.GetContext()
+	if err != nil { return nil, err }
+	response, err := w.walletClient.Search(md, &sdk.SearchRequest{
 		Query: query,
 	})
 	if err != nil { return nil, err }
@@ -241,7 +253,9 @@ func (w WalletService) Search(query string) (*sdk.SearchResponse, error) {
 func (w WalletService) InsertItem(item map[string]interface{}) (string, error) {
 	jsonString, err := json.Marshal(item)
 	if err != nil { return "", err }
-	response, err := w.walletClient.InsertItem(w.base.GetContext(), &sdk.InsertItemRequest{
+	md, err := w.base.GetContext()
+	if err != nil { return "", err }
+	response, err := w.walletClient.InsertItem(md, &sdk.InsertItemRequest{
 		Item: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
@@ -255,7 +269,9 @@ func (w WalletService) InsertItem(item map[string]interface{}) (string, error) {
 func (w WalletService) Send(document map[string]interface{}, email string) error {
 	jsonString, err := json.Marshal(document)
 	if err != nil { return err }
-	_, err = w.credentialClient.Send(w.base.GetContext(), &sdk.SendRequest{
+	md, err := w.base.GetContext()
+	if err != nil { return err }
+	_, err = w.credentialClient.Send(md, &sdk.SendRequest{
 		DeliveryMethod: &sdk.SendRequest_Email{
 			Email: email,
 		},
@@ -272,7 +288,9 @@ func (w WalletService) Send(document map[string]interface{}, email string) error
 func (w WalletService) CreateProof(documentId string, revealDocument Document) (Document, error) {
 	jsonString, err := json.Marshal(revealDocument)
 	if err != nil { return nil, err }
-	proof, err := w.credentialClient.CreateProof(w.base.GetContext(), &sdk.CreateProofRequest{
+	md, err := w.base.GetContext()
+	if err != nil { return nil, err }
+	proof, err := w.credentialClient.CreateProof(md, &sdk.CreateProofRequest{
 		DocumentId: documentId,
 		RevealDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -290,7 +308,9 @@ func (w WalletService) CreateProof(documentId string, revealDocument Document) (
 func (w WalletService) VerifyProof(proofDocument map[string]interface{}) (bool, error) {
 	jsonString, err := json.Marshal(proofDocument)
 	if err != nil { return false, err }
-	proof, err := w.credentialClient.VerifyProof(w.base.GetContext(), &sdk.VerifyProofRequest{
+	md, err := w.base.GetContext()
+	if err != nil { return false, err }
+	proof, err := w.credentialClient.VerifyProof(md, &sdk.VerifyProofRequest{
 		ProofDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
@@ -331,13 +351,13 @@ func (p ProviderService) InviteParticipant(request *sdk.InviteRequest) (*sdk.Inv
 	case nil:
 		return nil, fmt.Errorf("unset contact method")
 	}
-	response, err := p.providerClient.Invite(p.base.GetContext(), request)
+	response, err := p.providerClient.Invite(context.Background(), request)
 	if err != nil { return nil, err }
 	return response, nil
 }
 
 func (p ProviderService) InvitationStatus(request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
-	response, err := p.providerClient.InvitationStatus(p.base.GetContext(), request)
+	response, err := p.providerClient.InvitationStatus(context.Background(), request)
 	if err != nil { return nil, err }
 	return response, nil
 }
