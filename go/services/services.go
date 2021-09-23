@@ -91,7 +91,7 @@ type WalletService interface {
 	RegisterOrConnect(email string) error
 	CreateWallet(securityCode string) (*sdk.WalletProfile, error)
 	IssueCredential(document map[string]interface{}) (Document, error)
-	Search(query string) sdk.SearchResponse
+	Search(query string) (sdk.SearchResponse, error)
 	InsertItem(item Document) (string, error)
 	Send(document Document, email string)
 	CreateProof(documentId string, revealDocument Document) (Document, error)
@@ -400,8 +400,8 @@ ProviderService provides the ...
 */
 type ProviderService interface {
 	Service
-	InviteParticipant(request sdk.InviteRequest) sdk.InviteResponse
-	InvitationStatus(request sdk.InvitationStatusRequest) sdk.InvitationStatusResponse
+	InviteParticipant(request sdk.InviteRequest) (sdk.InviteResponse, error)
+	InvitationStatus(request sdk.InvitationStatusRequest) (sdk.InvitationStatusResponse, error)
 }
 
 type ProviderBase struct {
