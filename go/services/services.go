@@ -28,7 +28,7 @@ type ServiceBase struct {
 type Service interface {
 	GetContext() (context.Context, error)
 	GetMetadata() (metadata.MD, error)
-	SetProfile(profile sdk.WalletProfile)
+	SetProfile(profile *sdk.WalletProfile) error
 }
 
 func (s *ServiceBase) GetContext() (context.Context, error) {
