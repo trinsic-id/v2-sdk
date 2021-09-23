@@ -397,8 +397,8 @@ func (w *WalletBase) VerifyProof(proofDocument Document) (bool, error) {
 
 type ProviderService interface {
 	Service
-	InviteParticipant(request sdk.InviteRequest) (*sdk.InviteResponse, error)
-	InvitationStatus(request sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
+	InviteParticipant(request *sdk.InviteRequest) (*sdk.InviteResponse, error)
+	InvitationStatus(request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
 }
 
 type ProviderBase struct {
