@@ -2,7 +2,7 @@
 # Source: ProviderService.proto for package 'trinsic.services'
 
 require 'grpc'
-require 'ProviderService_pb'
+require_relative 'ProviderService_pb'
 
 module Trinsic
   module Services

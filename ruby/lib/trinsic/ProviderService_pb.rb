@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'CoreService_pb'
+require_relative 'CoreService_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("ProviderService.proto", :syntax => :proto3) do
     add_message "trinsic.services.InviteRequest" do
