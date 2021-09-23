@@ -105,6 +105,7 @@ func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (Walle
 	}
 
 	service := &WalletBase{
+		ServiceBase:      &ServiceBase{},
 		channel:          channel,
 		walletClient:     sdk.NewWalletClient(channel),
 		credentialClient: sdk.NewCredentialClient(channel),
@@ -416,6 +417,7 @@ func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) (Pro
 	}
 
 	service := &ProviderBase{
+		ServiceBase:    &ServiceBase{},
 		channel:        channel,
 		providerClient: sdk.NewProviderClient(channel),
 	}
