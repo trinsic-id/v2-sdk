@@ -70,7 +70,7 @@ class WalletService(ServiceBase):
         configuration = await self.client.get_provider_configuration()
         resolve_response = DIDKey.resolve(ResolveRequest(did=configuration.key_agreement_key_id))
         provider_exchange_key: JsonWebKey = \
-        [x for x in resolve_response.keys if x.kid == configuration.key_agreement_key_id][0]
+            [x for x in resolve_response.keys if x.kid == configuration.key_agreement_key_id][0]
 
         my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.Ed25519))
         my_exchange_key: JsonWebKey = [x for x in my_key.key if x.crv == "X25519"][0]

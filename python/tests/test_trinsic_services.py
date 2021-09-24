@@ -33,14 +33,11 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
     async def test_providerservice_inviteparticipant(self):
         server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
-        wallet_service = WalletService(server_address)
         provider_service = ProviderService(server_address)
-        wallet = await wallet_service.create_wallet()
         invite_response = await provider_service.invite_participant(
             participant=ParticipantType.participant_type_individual,
             description="I dunno",
-            email="scott.phillips@trinsic.id",
-            phone="5555555555")
+            email="scott.phillips@trinsic.id")
         self.assertIsNotNone(invite_response)
 
     def test_url_parse(self):
