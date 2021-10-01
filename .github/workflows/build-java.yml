@@ -36,6 +36,7 @@ jobs:
       - name: Build with Gradle
         run: |
           ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+        shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
