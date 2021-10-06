@@ -186,6 +186,13 @@ pub struct IssueResponse {
     #[prost(message, optional, tag = "1")]
     pub document: ::core::option::Option<JsonPayload>,
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct IssueFromTemplateRequest {
+    #[prost(string, tag = "1")]
+    pub template_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag = "2")]
+    pub attributes: ::core::option::Option<JsonPayload>,
+}
 /// Create Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
@@ -279,6 +286,22 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/trinsic.services.Credential/Issue");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn issue_from_template(
+            &mut self,
+            request: impl tonic::IntoRequest<super::IssueFromTemplateRequest>,
+        ) -> Result<tonic::Response<super::IssueResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Credential/IssueFromTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn create_proof(
