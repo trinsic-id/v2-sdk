@@ -20,14 +20,14 @@ public class TrinsicProviderService extends ServiceBase {
         if (request.getContactMethodCase() == ProviderService.InviteRequest.ContactMethodCase.CONTACTMETHOD_NOT_SET)
             throw new IllegalArgumentException("Contact method must be set.");
 
-        return getProviderClient().invite(request);
+        return this.providerClient.invite(request);
     }
 
     public ProviderService.InvitationStatusResponse invitationStatus(ProviderService.InvitationStatusRequest request) {
         if (request.getInvitationId().strip().length() == 0)
             throw new IllegalArgumentException("Onboarding reference ID must be set.");
 
-        return getProviderClient().invitationStatus(request);
+        return this.providerClient.invitationStatus(request);
     }
     private ProviderGrpc.ProviderBlockingStub getProviderClient() {
         return this.providerClient.withInterceptors(
