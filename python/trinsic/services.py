@@ -14,7 +14,7 @@ from okapi.proto.okapi.transport import PackRequest, UnpackRequest
 
 from trinsic.proto.trinsic.services import WalletProfile, WalletStub, CredentialStub, CreateWalletRequest, \
     CreateWalletResponse, SearchResponse, ProviderStub, InviteRequest, InviteResponse, InvitationStatusRequest, \
-    InvitationStatusResponse, JsonPayload
+    InvitationStatusResponse, JsonPayload, ParticipantType, InviteRequestDidCommInvitation
 
 
 def create_channel_if_needed(channel: Channel, service_address: str) -> Channel:
@@ -69,7 +69,8 @@ class WalletService(ServiceBase):
     async def create_wallet(self, security_code: str = None) -> WalletProfile:
         configuration = await self.client.get_provider_configuration()
         resolve_response = DIDKey.resolve(ResolveRequest(did=configuration.key_agreement_key_id))
-        provider_exchange_key: JsonWebKey = [x for x in resolve_response.keys if x.kid == configuration.key_agreement_key_id][0]
+        provider_exchange_key: JsonWebKey = \
+            [x for x in resolve_response.keys if x.kid == configuration.key_agreement_key_id][0]
 
         my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.Ed25519))
         my_exchange_key: JsonWebKey = [x for x in my_key.key if x.crv == "X25519"][0]
@@ -137,19 +138,23 @@ class ProviderService(ServiceBase):
         if self.channel:
             self.channel.close()
 
-    async def invite_participant(self, request: InviteRequest) -> InviteResponse:
-        field_name, value = betterproto.which_one_of(request, "contact_method")
-        if not field_name:
+    async def invite_participant(self,
+                                 participant: ParticipantType = None,
+                                 description: str = "",
+                                 email: str = "",
+                                 phone: str = "",
+                                 didcomm_invitation: InviteRequestDidCommInvitation = None) -> InviteResponse:
+        if not email and not phone:
             raise Exception("Contact method must be set")
 
-        self.provider_client.metadata = self.metadata
-        return await self.provider_client.invite(participant=request.participant, description=request.description,
-                                                 didcomm_invitation=request.didcomm_invitation, phone=request.phone,
-                                                 email=request.email)
+        return await self.provider_client.invite(participant=participant,
+                                                 description=description,
+                                                 phone=phone,
+                                                 email=email,
+                                                 didcomm_invitation=didcomm_invitation)
 
-    async def invitation_status(self, request: InvitationStatusRequest) -> InvitationStatusResponse:
-        if not request.invitation_id or not request.invitation_id.strip():
+    async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
+        if not invitation_id or not invitation_id.strip():
             raise Exception("Onboarding reference ID must be set.")
 
-        self.provider_client.metadata = self.metadata
-        return await self.provider_client.invitation_status(invitation_id=request.invitation_id)
+        return await self.provider_client.invitation_status(invitation_id=invitation_id)
