@@ -37,7 +37,7 @@ async fn search(args: &SearchArgs, config: &Config) {
         .expect("search registry command failed")
         .into_inner();
 
-    println!("{}", serde_json::to_string_pretty(&response.items).unwrap());
+    response.items.iter().for_each(|x| println!("{}", x));
 }
 
 #[tokio::main]
