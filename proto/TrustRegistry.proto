@@ -81,19 +81,31 @@ message RegisterVerifierResponse {
     JsonPayload response_data = 2;
 }
 
-message UnregisterMemberRequest {
-    oneof member {
+message UnregisterIssuerRequest {
+    oneof authority {
         string did_uri = 1;
         string x509_cert = 2;
     }
 
-    oneof template {
-        string template_uri = 10;
-        string context_uri = 11;
-    }
+    string credential_type_uri = 10;
+    string governance_framework_uri = 20;
 }
 
-message UnregisterMemberResponse {
+message UnregisterIssuerResponse {
+    ResponseStatus status = 1;
+}
+
+message UnregisterVerifierRequest {
+    oneof authority {
+        string did_uri = 1;
+        string x509_cert = 2;
+    }
+
+    string presentation_type_uri = 10;
+    string governance_framework_uri = 20;
+}
+
+message UnregisterVerifierResponse {
     ResponseStatus status = 1;
 }
 
@@ -155,7 +167,10 @@ service TrustRegistry {
     rpc RegisterVerifier(RegisterVerifierRequest) returns (RegisterVerifierResponse);
 
     // Removes an authoritative issuer with a credential template from the trust registry
-    rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
+    rpc UnregisterIssuer(UnregisterIssuerRequest) returns (UnregisterIssuerResponse);
+
+    // Removes an authoritative verifier with a presentation template from the trust registry
+    rpc UnregisterVerifier(UnregisterVerifierRequest) returns (UnregisterVerifierResponse);
 
     rpc CheckIssuerStatus(CheckIssuerStatusRequest) returns (CheckIssuerStatusResponse);
 
