@@ -21,11 +21,11 @@ Hundreds of organizations of all sizes and industries use Trinsic’s infrastruc
 - [x] Python
 - [x] Go
 - [x] Rust
+- [x] Swift (iOS)
+- [x] Java/Kotlin (Android)
 
 ## Up Next
 
-- [x] Swift (iOS)
-- [x] Java/Kotlin (Android)
 - [ ] React Native
 
 
