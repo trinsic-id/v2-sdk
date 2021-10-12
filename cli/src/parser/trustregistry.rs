@@ -50,6 +50,18 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command {
                 .subcommand_matches("register-verifier")
                 .expect("Error parsing request"),
         )
+    } else if args.is_present("unregister-issuer") {
+        unregister_issuer(
+            &args
+                .subcommand_matches("unregister-issuer")
+                .expect("Error parsing request"),
+        )
+    } else if args.is_present("unregister-verifier") {
+        unregister_verifier(
+            &args
+                .subcommand_matches("unregister-verifier")
+                .expect("Error parsing request"),
+        )
     } else if args.is_present("check-issuer") {
         check_issuer(
             &args
@@ -84,6 +96,24 @@ fn register_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
 
 fn register_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
     Command::RegisterVerifier(RegistrationArgs {
+        did_uri: args.value_of("did").map(|q| q.into()),
+        type_uri: args.value_of("presentation-type").map(|q| q.into()),
+        governance_framework_uri: args.value_of("egf").map(|q| q.into()),
+        ..Default::default()
+    })
+}
+
+fn unregister_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
+    Command::UnregisterIssuer(RegistrationArgs {
+        did_uri: args.value_of("did").map(|q| q.into()),
+        type_uri: args.value_of("credential-type").map(|q| q.into()),
+        governance_framework_uri: args.value_of("egf").map(|q| q.into()),
+        ..Default::default()
+    })
+}
+
+fn unregister_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
+    Command::UnregisterVerifier(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),

@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use prost::{DecodeError, Message};
 
 pub trait MessageFormatter {
@@ -26,6 +28,26 @@ where
     }
 }
 
+impl Display for JsonPayload {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!(
+            "{}",
+            match self.json.as_ref().unwrap() {
+                json_payload::Json::JsonStruct(x) =>
+                    serde_json::to_string_pretty(&x).unwrap_or_default(),
+                json_payload::Json::JsonString(x) => serde_json::to_string_pretty(
+                    &serde_json::from_str::<Value>(&x).unwrap_or_default()
+                )
+                .unwrap_or_default(),
+                json_payload::Json::JsonBytes(x) => serde_json::to_string_pretty(
+                    &serde_json::from_slice::<Value>(&x).unwrap_or_default()
+                )
+                .unwrap_or_default(),
+            }
+        ))
+    }
+}
+
 pub mod proto;
 pub mod utils;
 pub use proto::pbmse;
@@ -39,3 +61,4 @@ pub mod google {
 }
 
 pub use proto::trinsic_services::*;
+use serde_json::Value;

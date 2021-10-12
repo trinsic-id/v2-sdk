@@ -470,7 +470,53 @@ subcommands:
                   takes_value: true
                   required: true
         - unregister-issuer:
+            about: |
+              Unegister an Issuer DID as authoritative issuer for the
+              given ecosystem governance framework (EGF)
+            args:
+              - did:
+                  long: did
+                  value_name: DID
+                  help: The DID identifier of the issuer
+                  takes_value: true
+                  required: true
+              - credential-type:
+                  long: credential-type
+                  value_name: URI
+                  help: The fully qualified credential type URI
+                  takes_value: true
+                  required: true
+              - egf:
+                  long: egf
+                  value_name: URI
+                  help: The URI of the Ecosystem Governance Framework
+                  takes_value: true
+                  required: true
         - unregister-verifier:
+            about: |
+              Unregister a Verifier DID as authoritative verifier for
+              the given presentatiom type under the given ecosystem
+              governance framework (EGF)
+            args:
+              - did:
+                  long: did
+                  value_name: DID
+                  help: The DID identifier of the verifier
+                  takes_value: true
+                  required: true
+              - presentation-type:
+                  long: presentation-type
+                  value_name: URI
+                  help: The fully qualified presentation type URI
+                  takes_value: true
+                  required: true
+              - egf:
+                  long: egf
+                  value_name: URI
+                  help: The URI of the Ecosystem Governance Framework
+                  takes_value: true
+                  required: true
+
 args:
   - profile:
       long: profile

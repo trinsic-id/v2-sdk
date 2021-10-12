@@ -186,6 +186,13 @@ pub struct IssueResponse {
     #[prost(message, optional, tag = "1")]
     pub document: ::core::option::Option<JsonPayload>,
 }
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct IssueFromTemplateRequest {
+    #[prost(string, tag = "1")]
+    pub template_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag = "2")]
+    pub attributes: ::core::option::Option<JsonPayload>,
+}
 /// Create Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
@@ -279,6 +286,22 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/trinsic.services.Credential/Issue");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn issue_from_template(
+            &mut self,
+            request: impl tonic::IntoRequest<super::IssueFromTemplateRequest>,
+        ) -> Result<tonic::Response<super::IssueResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.Credential/IssueFromTemplate",
+            );
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn create_proof(
@@ -946,31 +969,50 @@ pub struct RegisterVerifierResponse {
     pub response_data: ::core::option::Option<JsonPayload>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UnregisterMemberRequest {
-    #[prost(oneof = "unregister_member_request::Member", tags = "1, 2")]
-    pub member: ::core::option::Option<unregister_member_request::Member>,
-    #[prost(oneof = "unregister_member_request::Template", tags = "10, 11")]
-    pub template: ::core::option::Option<unregister_member_request::Template>,
+pub struct UnregisterIssuerRequest {
+    #[prost(string, tag = "10")]
+    pub credential_type_uri: ::prost::alloc::string::String,
+    #[prost(string, tag = "20")]
+    pub governance_framework_uri: ::prost::alloc::string::String,
+    #[prost(oneof = "unregister_issuer_request::Authority", tags = "1, 2")]
+    pub authority: ::core::option::Option<unregister_issuer_request::Authority>,
 }
-/// Nested message and enum types in `UnregisterMemberRequest`.
-pub mod unregister_member_request {
+/// Nested message and enum types in `UnregisterIssuerRequest`.
+pub mod unregister_issuer_request {
     #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Member {
+    pub enum Authority {
         #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
         #[prost(string, tag = "2")]
         X509Cert(::prost::alloc::string::String),
     }
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UnregisterIssuerResponse {
+    #[prost(enumeration = "ResponseStatus", tag = "1")]
+    pub status: i32,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UnregisterVerifierRequest {
+    #[prost(string, tag = "10")]
+    pub presentation_type_uri: ::prost::alloc::string::String,
+    #[prost(string, tag = "20")]
+    pub governance_framework_uri: ::prost::alloc::string::String,
+    #[prost(oneof = "unregister_verifier_request::Authority", tags = "1, 2")]
+    pub authority: ::core::option::Option<unregister_verifier_request::Authority>,
+}
+/// Nested message and enum types in `UnregisterVerifierRequest`.
+pub mod unregister_verifier_request {
     #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum Template {
-        #[prost(string, tag = "10")]
-        TemplateUri(::prost::alloc::string::String),
-        #[prost(string, tag = "11")]
-        ContextUri(::prost::alloc::string::String),
+    pub enum Authority {
+        #[prost(string, tag = "1")]
+        DidUri(::prost::alloc::string::String),
+        #[prost(string, tag = "2")]
+        X509Cert(::prost::alloc::string::String),
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct UnregisterMemberResponse {
+pub struct UnregisterVerifierResponse {
     #[prost(enumeration = "ResponseStatus", tag = "1")]
     pub status: i32,
 }
@@ -1167,10 +1209,10 @@ pub mod trust_registry_client {
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Removes an authoritative issuer with a credential template from the trust registry"]
-        pub async fn unregister_member(
+        pub async fn unregister_issuer(
             &mut self,
-            request: impl tonic::IntoRequest<super::UnregisterMemberRequest>,
-        ) -> Result<tonic::Response<super::UnregisterMemberResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::UnregisterIssuerRequest>,
+        ) -> Result<tonic::Response<super::UnregisterIssuerResponse>, tonic::Status> {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
                     tonic::Code::Unknown,
@@ -1179,7 +1221,24 @@ pub mod trust_registry_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/trinsic.services.TrustRegistry/UnregisterMember",
+                "/trinsic.services.TrustRegistry/UnregisterIssuer",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Removes an authoritative verifier with a presentation template from the trust registry"]
+        pub async fn unregister_verifier(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UnregisterVerifierRequest>,
+        ) -> Result<tonic::Response<super::UnregisterVerifierResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/trinsic.services.TrustRegistry/UnregisterVerifier",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

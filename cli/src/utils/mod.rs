@@ -73,10 +73,13 @@ pub fn write_file(filename: Option<&str>, data: &[u8]) {
                 .truncate(true)
                 .open(out)
                 .expect("Unable to open file");
-            file.write_all(&data).expect("Unable to write to output file");
+            file.write_all(&data)
+                .expect("Unable to write to output file");
         }
         None => {
-            stdout().write_all(&data).expect("Unable to write to stdout");
+            stdout()
+                .write_all(&data)
+                .expect("Unable to write to stdout");
         }
     };
 }
