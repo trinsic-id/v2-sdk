@@ -24,8 +24,8 @@ Hundreds of organizations of all sizes and industries use Trinsic’s infrastruc
 
 ## Up Next
 
-- [ ] Objective C (iOS)
-- [ ] Java/Kotlin (Android)
+- [x] Swift (iOS)
+- [x] Java/Kotlin (Android)
 - [ ] React Native
 
 
