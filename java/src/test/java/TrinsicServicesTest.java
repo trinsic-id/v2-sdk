@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import trinsic.services.ProviderService;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,32 @@ class TrinsicServicesTest {
 
     private static Path vaccineCertFramePath() {
         return Path.of(baseTestPath(), "vaccination-certificate-frame.jsonld");
+    }
+
+    @Test
+    public void testServiceBaseSetProfile() throws IOException, DidException {
+        var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
+        var walletService = new TrinsicWalletService(serverAddress, null);
+
+        Assertions.assertThrows(IllegalArgumentException.class, walletService::getMetadata);
+        var walletProfile = walletService.createWallet("");
+        walletService.setProfile(walletProfile);
+        Assertions.assertDoesNotThrow(walletService::getMetadata);
+    }
+
+    @Test
+    public void testProviderServiceInviteParticipant() throws IOException, DidException {
+        var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
+        var walletService = new TrinsicWalletService(serverAddress, null);
+        var providerService = new TrinsicProviderService(serverAddress, null);
+
+        var wallet = walletService.createWallet("");
+        var inviteResponse = providerService.inviteParticipant(ProviderService.InviteRequest.newBuilder()
+                        .setParticipant(ProviderService.ParticipantType.participant_type_individual)
+                        .setDescription("I dunno")
+                        .setEmail("scott.phillips@trinsic.id")
+                .build());
+        Assertions.assertNotNull(inviteResponse);
     }
 
     @Test
