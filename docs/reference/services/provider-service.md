@@ -53,8 +53,8 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     from trinsic.services import ProviderService
   
     request = {
-        email = "admin@faber.edu",
-        participant = provider_services.Organization
+        "email" : "admin@faber.edu",
+        "participant" : provider_services.Organization
     } 
     response = await provider_service.invite_participant(request)
     ```
