@@ -15,8 +15,10 @@ import {
   RemoveFrameworkResponse,
   SearchRegistryRequest,
   SearchRegistryResponse,
-  UnregisterMemberRequest,
-  UnregisterMemberResponse,
+  UnregisterIssuerRequest,
+  UnregisterIssuerResponse,
+  UnregisterVerifierRequest,
+  UnregisterVerifierResponse,
 } from "./proto/TrustRegistry_pb";
 
 export class TrustRegistryService extends ServiceBase {
@@ -50,9 +52,20 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public unregisterMember(request: UnregisterMemberRequest): Promise<UnregisterMemberResponse> {
+  public unregisterIssuer(request: UnregisterIssuerRequest): Promise<UnregisterIssuerResponse> {
     return new Promise((resolve, reject) => {
-      this.client.unregisterMember(request, this.getMetadata(), (error, response) => {
+      this.client.unregisterIssuer(request, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
+  public unregisterVerifier(request: UnregisterVerifierRequest): Promise<UnregisterVerifierResponse> {
+    return new Promise((resolve, reject) => {
+      this.client.unregisterVerifier(request, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
         }
