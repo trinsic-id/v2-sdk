@@ -1,4 +1,4 @@
-name: "TypeScript: Build, Package, Publish"
+name: "Node & Browser"
 
 on:
   pull_request:

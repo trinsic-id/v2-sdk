@@ -1,4 +1,4 @@
-name: Build Ruby bindings
+name: Ruby
 
 on:
   pull_request:
