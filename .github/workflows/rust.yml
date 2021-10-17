@@ -26,7 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - run: cargo build
       - run: cargo test

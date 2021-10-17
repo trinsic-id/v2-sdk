@@ -40,7 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - uses: arduino/setup-protoc@v1
       - run: |
@@ -78,7 +77,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - uses: actions/setup-node@v2
         with:
