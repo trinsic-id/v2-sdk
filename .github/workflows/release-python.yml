@@ -1,4 +1,4 @@
-name: Python
+name: "Python (release)"
 
 on:
   workflow_dispatch:
