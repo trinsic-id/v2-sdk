@@ -50,21 +50,5 @@ jobs:
             ./dotnet/**/Release/*.nupkg
             ./dotnet/**/Release/*.snupkg
 
-  # dotnet_publish_github:
-  #   name: Publish to GitHub Packages
-  #   runs-on: windows-latest
-  #   needs: [build_test_pack]
-  #   steps:
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         path: ./nuget
-  #     - name: Push packages to Nuget
-  #       run: |
-  #         dotnet nuget add source --username tmarkovski --password ${{ secrets.ACCESS_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/trinsic-id/index.json"
-  #         foreach ($item in get-childitem ./nuget -recurse | select-object FullName | where { $_.FullName.EndsWith("nupkg") })
-  #         {
-  #           nuget push $item.FullName -ApiKey "${{ secrets.ACCESS_TOKEN }}" -Source "github" -SkipDuplicate
-  #         }
-  #       shell: pwsh
 
 

@@ -1,4 +1,4 @@
-name: "Node & Browser"
+name: "Node & Browser (build)"
 
 on:
   pull_request:
