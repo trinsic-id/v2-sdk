@@ -1,4 +1,4 @@
-name: Java Maven Package
+name: "Java (release)"
 
 on:
   workflow_dispatch:
@@ -34,4 +34,4 @@ jobs:
         working-directory: java
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
+          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000/

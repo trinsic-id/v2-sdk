@@ -1,4 +1,4 @@
-name: "TypeScript: Build, Package, Publish"
+name: "Node & Browser (build)"
 
 on:
   pull_request:
@@ -20,12 +20,12 @@ on:
       testUrl:
         description: "Test Endpoint"
         required: true
-        default: "beta-staging.centralus.azurecontainer.io:5000"
+        default: "trinsic-staging.centralus.azurecontainer.io:5000"
   release:
     types: [published, prereleased]
   
 env:
-  DEFAULT_TEST_URL: "beta-staging.centralus.azurecontainer.io:5000"
+  DEFAULT_TEST_URL: "trinsic-staging.centralus.azurecontainer.io:5000"
 
 jobs:
   build_test:
@@ -40,7 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - uses: arduino/setup-protoc@v1
       - run: |
@@ -78,7 +77,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
         with:
-          submodules: 'recursive'
           token: ${{ secrets.ACCESS_TOKEN }}
       - uses: actions/setup-node@v2
         with:
