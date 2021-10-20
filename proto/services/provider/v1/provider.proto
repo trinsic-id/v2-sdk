@@ -4,7 +4,7 @@ package trinsic.services;
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 
-import "CoreService.proto";
+import "services/common/v1/common.proto";
 
 message InviteRequest {
     ParticipantType participant = 1;

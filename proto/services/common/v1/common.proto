@@ -5,7 +5,7 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 
 import "google/protobuf/struct.proto";
-import "pbmse/pbmse.proto";
+import "pbmse/v1/pbmse.proto";
 
 enum ResponseStatus {
     SUCCESS = 0;
@@ -35,5 +35,5 @@ message JsonPayload {
 }
 
 service Common {
-    rpc Request(pbmse.EncryptedMessage) returns (pbmse.EncryptedMessage);
+    rpc Request(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
 }

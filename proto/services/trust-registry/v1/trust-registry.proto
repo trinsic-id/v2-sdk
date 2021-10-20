@@ -1,7 +1,7 @@
 syntax = "proto3";
 package trinsic.services;
 
-import "CoreService.proto";
+import "services/common/v1/common.proto";
 option java_package = "trinsic.services";
 option go_package = "github.com/trinsic-id/sdk";
 
