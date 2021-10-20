@@ -1,6 +1,6 @@
 version: v1
 deps:
-  # - buf.build/trinsic/okapi
+  - buf.build/trinsic/okapi
 lint:
   use:
     - DEFAULT
@@ -8,3 +8,6 @@ breaking:
   use:
     - FILE
 name: buf.build/trinsic/services
+build:
+  excludes:
+    - pbmse
