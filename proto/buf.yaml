@@ -1,6 +1,6 @@
 version: v1
 deps:
-  - buf.build/trinsic/okapi
+  # - buf.build/trinsic/okapi
 lint:
   use:
     - DEFAULT

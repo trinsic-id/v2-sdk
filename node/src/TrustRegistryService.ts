@@ -1,6 +1,6 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { TrustRegistryClient } from "./proto/TrustRegistry_grpc_pb";
+import { TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -20,7 +20,7 @@ import {
   UnregisterIssuerResponse,
   UnregisterVerifierRequest,
   UnregisterVerifierResponse,
-} from "./proto/TrustRegistry_pb";
+} from "./proto";
 
 export class TrustRegistryService extends ServiceBase {
   channel: Channel;

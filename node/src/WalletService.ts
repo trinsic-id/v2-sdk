@@ -6,14 +6,14 @@ import {
   PackRequest,
   ResolveRequest,
   UnpackRequest,
+  EncryptedMessage,
 } from "@trinsic/okapi";
-import { EncryptedMessage } from "./proto/pbmse/pbmse_pb";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { WalletClient } from "./proto/WalletService_grpc_pb";
-import { CredentialClient } from "./proto/IssuerService_grpc_pb";
 import {
+  WalletClient,
+  CredentialClient,
   ConnectRequest,
   GetProviderConfigurationResponse,
   CreateWalletRequest,
@@ -23,16 +23,14 @@ import {
   InsertItemRequest,
   SearchResponse,
   SearchRequest,
-} from "./proto/WalletService_pb";
-import {
   CreateProofRequest,
   IssueRequest,
   SendRequest,
   SendResponse,
   VerifyProofRequest,
-} from "./proto/IssuerService_pb";
-import { Empty } from "google-protobuf/google/protobuf/empty_pb";
-import { JsonPayload } from "./proto";
+  GetProviderConfigurationRequest,
+  JsonPayload,
+} from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
@@ -73,7 +71,7 @@ export class TrinsicWalletService extends ServiceBase {
 
   public getProviderConfiguration(): Promise<GetProviderConfigurationResponse> {
     return new Promise((resolve, reject) => {
-      this.client.getProviderConfiguration(new Empty(), (error, response) => {
+      this.client.getProviderConfiguration(new GetProviderConfigurationRequest(), (error, response) => {
         if (error) {
           reject(error);
         } else {
@@ -87,7 +85,7 @@ export class TrinsicWalletService extends ServiceBase {
     // Fetch Server Configuration and find key to use
     // for generating shared secret for authenticated encryption
     let configuration = await this.getProviderConfiguration();
-    let resolveRequest = new ResolveRequest()
+    let resolveRequest = new ResolveRequest();
     resolveRequest.setDid(configuration.getKeyAgreementKeyId());
     let resolveResponse = await DIDKey.resolve(resolveRequest);
 
@@ -98,8 +96,8 @@ export class TrinsicWalletService extends ServiceBase {
     if (providerExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     // Generate new DID used by the current device
-    let keyRequest = new GenerateKeyRequest()
-    keyRequest.setKeyType(KeyType.ED25519);
+    let keyRequest = new GenerateKeyRequest();
+    keyRequest.setKeyType(KeyType.KEY_TYPE_ED25519);
     let myKey = await DIDKey.generate(keyRequest);
     let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
 
@@ -114,9 +112,9 @@ export class TrinsicWalletService extends ServiceBase {
     if (!securityCode) securityCode = "";
     createWalletRequest.setSecurityCode(securityCode);
 
-    let packRequest = new PackRequest()
-    packRequest.setSenderKey(myExchangeKey)
-    packRequest.setReceiverKey(providerExchangeKey)
+    let packRequest = new PackRequest();
+    packRequest.setSenderKey(myExchangeKey);
+    packRequest.setReceiverKey(providerExchangeKey);
     packRequest.setPlaintext(createWalletRequest.serializeBinary());
 
     var packedMessage = await DIDComm.pack(packRequest);
@@ -132,9 +130,9 @@ export class TrinsicWalletService extends ServiceBase {
           reject(error.message);
         }
 
-        let unpackRequest = new UnpackRequest()
-        unpackRequest.setMessage(response)
-        unpackRequest.setReceiverKey(myExchangeKey)
+        let unpackRequest = new UnpackRequest();
+        unpackRequest.setMessage(response);
+        unpackRequest.setReceiverKey(myExchangeKey);
         unpackRequest.setSenderKey(providerExchangeKey);
 
         let decryptedResponse = await DIDComm.unpack(unpackRequest);
