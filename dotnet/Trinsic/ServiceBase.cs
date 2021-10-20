@@ -8,6 +8,8 @@ using Newtonsoft.Json.Linq;
 using Trinsic.Services;
 using Okapi.Proofs;
 using Okapi.Keys;
+using Okapi.Keys.V1;
+using Okapi.Proofs.V1;
 
 namespace Trinsic
 {
@@ -46,11 +48,11 @@ namespace Trinsic
                 }
             };
 
-            var proofResponse = LDProofs.CreateProof(new Okapi.Proofs.CreateProofRequest
+            var proofResponse = LDProofs.CreateProof(new Okapi.Proofs.V1.CreateProofRequest
             {
                 Key = JsonWebKey.Parser.ParseFrom(profile.InvokerJwk),
                 Document = capabilityDocument.ToStruct(),
-                Suite = LdSuite.JcsEd25519Signature2020
+                Suite = LdSuite.Jcsed25519Signature2020
             });
 
             // Set the auth field to the signed document by converting it back

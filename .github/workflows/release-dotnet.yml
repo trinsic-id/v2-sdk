@@ -25,7 +25,7 @@ jobs:
           dotnet restore
           dotnet build -c Release
           dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
-        working-directory: ./dotnet/Source
+        working-directory: ./dotnet
       - uses: actions/upload-artifact@v2
         with:
           name: nuget
@@ -39,7 +39,7 @@ jobs:
             nuget push $item.FullName -ApiKey "${{ secrets.NUGET_API_KEY }}" -Source https://api.nuget.org/v3/index.json -SkipDuplicate
           }
         shell: pwsh
-        working-directory: ./dotnet/Source
+        working-directory: ./dotnet
 
 
 

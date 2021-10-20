@@ -9,6 +9,9 @@ using Google.Protobuf.WellKnownTypes;
 using Okapi.Keys;
 using Okapi.Transport;
 using Pbmse;
+using Okapi.Keys.V1;
+using Okapi.Transport.V1;
+using Pbmse.V1;
 
 namespace Trinsic
 {
@@ -39,7 +42,7 @@ namespace Trinsic
         {
             // Fetch Server Configuration and find key to use
             // for generating shared secret for authenticated encryption
-            var configuration = await Client.GetProviderConfigurationAsync(new Empty());
+            var configuration = await Client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
             var resolveResponse = DIDKey.Resolve(new ResolveRequest { Did = configuration.KeyAgreementKeyId });
             var providerExchangeKey = resolveResponse.Keys.FirstOrDefault(x => x.Kid == configuration.KeyAgreementKeyId)
                 ?? throw new Exception("Key agreement key not found");
