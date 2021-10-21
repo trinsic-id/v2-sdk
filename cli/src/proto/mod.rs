@@ -9,7 +9,7 @@ use std::{collections::HashMap, fmt::Formatter};
 
 pub mod google_protobuf;
 pub mod greet;
-pub mod pbmse;
+pub mod pbmse_v1;
 pub mod trinsic_services;
 
 impl Serialize for Struct {

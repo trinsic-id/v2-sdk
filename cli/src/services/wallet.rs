@@ -4,14 +4,14 @@ use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
 use trinsic::credential_client::CredentialClient;
 use trinsic::json_payload::Json;
-use trinsic::proto::google_protobuf::{Empty, Struct};
+use trinsic::proto::google_protobuf::Struct;
 use trinsic::proto::trinsic_services::{
     wallet_client::WalletClient, CreateWalletRequest, InsertItemRequest, SearchRequest,
     WalletProfile,
 };
 use trinsic::send_request::DeliveryMethod;
 use trinsic::utils::read_file_as_string;
-use trinsic::{JsonPayload, SendRequest};
+use trinsic::{GetProviderConfigurationRequest, JsonPayload, SendRequest};
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -30,7 +30,9 @@ async fn get_provider_configuration(config: Config) {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
-    let request = tonic::Request::new(Empty {});
+    let request = tonic::Request::new(GetProviderConfigurationRequest {
+        ..Default::default()
+    });
     let response = client
         .get_provider_configuration(request)
         .await

@@ -57,12 +57,14 @@ pub struct EncryptionRecipient {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EncryptionMode {
-    Direct = 0,
-    ContentEncryptionKey = 1,
+    Unspecified = 0,
+    Direct = 1,
+    ContentEncryptionKey = 2,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EncryptionAlgorithm {
-    Xchacha20poly1305 = 0,
-    AesGcm = 1,
+    Unspecified = 0,
+    Xchacha20poly1305 = 1,
+    AesGcm = 2,
 }

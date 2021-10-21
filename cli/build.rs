@@ -21,13 +21,13 @@ fn main() {
         .compile_with_config(
             prost_config,
             &[
-                "../proto/pbmse/pbmse.proto",
-                "../proto/DebugService.proto",
-                "../proto/CoreService.proto",
-                "../proto/IssuerService.proto",
-                "../proto/WalletService.proto",
-                "../proto/ProviderService.proto",
-                "../proto/TrustRegistry.proto",
+                "../proto/pbmse/v1/pbmse.proto",
+                "../proto/services/debug/v1/debug.proto",
+                "../proto/services/common/v1/common.proto",
+                "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
+                "../proto/services/universal-wallet/v1/universal-wallet.proto",
+                "../proto/services/provider/v1/provider.proto",
+                "../proto/services/trust-registry/v1/trust-registry.proto",
             ],
             &["../proto"],
         )
@@ -43,6 +43,8 @@ fn main() {
         "./src/proto/trinsic_services.rs",
     )
     .unwrap();
+    copy("./src/proto/pbmse.v1.rs", "./src/proto/pbmse_v1.rs").unwrap();
     remove_file("./src/proto/google.protobuf.rs").unwrap();
     remove_file("./src/proto/trinsic.services.rs").unwrap();
+    remove_file("./src/proto/pbmse.v1.rs").unwrap();
 }

@@ -149,8 +149,8 @@ pub mod common_client {
         }
         pub async fn request(
             &mut self,
-            request: impl tonic::IntoRequest<super::super::super::pbmse::EncryptedMessage>,
-        ) -> Result<tonic::Response<super::super::super::pbmse::EncryptedMessage>, tonic::Status>
+            request: impl tonic::IntoRequest<super::super::super::pbmse::v1::EncryptedMessage>,
+        ) -> Result<tonic::Response<super::super::super::pbmse::v1::EncryptedMessage>, tonic::Status>
         {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
@@ -467,6 +467,11 @@ pub struct RevokeAccessResponse {
 // GetProviderConfiguration
 
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetProviderConfigurationRequest {
+    #[prost(message, optional, tag = "1")]
+    pub request_options: ::core::option::Option<RequestOptions>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProviderConfigurationResponse {
     #[prost(message, optional, tag = "1")]
     pub did_document: ::core::option::Option<JsonPayload>,
@@ -546,7 +551,7 @@ pub mod wallet_client {
         }
         pub async fn get_provider_configuration(
             &mut self,
-            request: impl tonic::IntoRequest<super::super::google::protobuf::Empty>,
+            request: impl tonic::IntoRequest<super::GetProviderConfigurationRequest>,
         ) -> Result<tonic::Response<super::GetProviderConfigurationResponse>, tonic::Status>
         {
             self.inner.ready().await.map_err(|e| {
@@ -610,8 +615,8 @@ pub mod wallet_client {
         }
         pub async fn create_wallet_encrypted(
             &mut self,
-            request: impl tonic::IntoRequest<super::super::super::pbmse::EncryptedMessage>,
-        ) -> Result<tonic::Response<super::super::super::pbmse::EncryptedMessage>, tonic::Status>
+            request: impl tonic::IntoRequest<super::super::super::pbmse::v1::EncryptedMessage>,
+        ) -> Result<tonic::Response<super::super::super::pbmse::v1::EncryptedMessage>, tonic::Status>
         {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(

@@ -186,7 +186,7 @@ impl Config {
             document: Some(
                 serde_json::from_str(&capability_document).expect("Invalid capability document"),
             ),
-            suite: LdSuite::JcsEd25519Signature2020 as i32,
+            suite: LdSuite::Jcsed25519signature2020 as i32,
         })
         .expect("Error creating proof");
 
