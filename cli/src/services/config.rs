@@ -4,8 +4,8 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::{Interceptor, Request};
+use trinsic::proto::services::universalwallet::v1::WalletProfile;
 use trinsic::MessageFormatter;
-use trinsic::WalletProfile;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -186,7 +186,7 @@ impl Config {
             document: Some(
                 serde_json::from_str(&capability_document).expect("Invalid capability document"),
             ),
-            suite: LdSuite::JcsEd25519Signature2020 as i32,
+            suite: LdSuite::Jcsed25519signature2020 as i32,
         })
         .expect("Error creating proof");
 

@@ -1,0 +1,27 @@
+# This action is used to manually invoke a full test against a certain environment
+# Requires an endpoint input which you can get from the Pulumi outputs
+
+name: Test Environment
+
+on:
+  workflow_dispatch:
+    inputs:
+      serverEndpoint:
+        description: 'The endpoint of the server to test (ex. http://localhost:5000)'
+        required: true
+        default: 'http://localhost:5000'
+
+jobs:
+  test_infra:
+    name: Run .NET SDK Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v1
+      - run: |
+          dotnet restore
+          dotnet build -c Release
+          dotnet test -c Release -v n
+        working-directory: ./dotnet/
+        env:
+          TRINSIC_SERVER_ADDRESS: ${{ github.event.inputs.serverEndpoint }}

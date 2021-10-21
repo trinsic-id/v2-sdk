@@ -1,7 +1,7 @@
 const okapi = require("@trinsic/okapi");
 const { CreateProofRequest } = okapi;
 import { Metadata } from "@grpc/grpc-js";
-import { WalletProfile } from "./proto/WalletService_pb";
+import { WalletProfile } from "./proto/";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 
 export default abstract class ServiceBase {

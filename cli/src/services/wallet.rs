@@ -2,16 +2,17 @@ use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
 use tonic::transport::Channel;
-use trinsic::credential_client::CredentialClient;
-use trinsic::json_payload::Json;
-use trinsic::proto::google_protobuf::{Empty, Struct};
-use trinsic::proto::trinsic_services::{
+use trinsic::proto::google::protobuf::Struct;
+use trinsic::proto::services::common::v1::json_payload::Json;
+use trinsic::proto::services::common::v1::JsonPayload;
+use trinsic::proto::services::universalwallet::v1::{
     wallet_client::WalletClient, CreateWalletRequest, InsertItemRequest, SearchRequest,
     WalletProfile,
 };
-use trinsic::send_request::DeliveryMethod;
-use trinsic::utils::read_file_as_string;
-use trinsic::{JsonPayload, SendRequest};
+use trinsic::proto::services::verifiablecredentials::v1::credential_client::CredentialClient;
+use trinsic::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
+use trinsic::proto::services::verifiablecredentials::v1::SendRequest;
+use trinsic::{proto::services::universalwallet::v1::*, utils::read_file_as_string};
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -30,7 +31,9 @@ async fn get_provider_configuration(config: Config) {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
-    let request = tonic::Request::new(Empty {});
+    let request = tonic::Request::new(GetProviderConfigurationRequest {
+        ..Default::default()
+    });
     let response = client
         .get_provider_configuration(request)
         .await
@@ -130,13 +133,12 @@ async fn search(args: &SearchArgs, config: Config) {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: Config) {
-    let item: okapi::proto::google_protobuf::Struct =
+    let item: Struct =
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 
     use trinsic::MessageFormatter;
-    let item: trinsic::proto::google_protobuf::Struct =
-        trinsic::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
     //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())
@@ -168,8 +170,7 @@ async fn send(args: &SendArgs, config: Config) {
     let item_bytes = item.to_vec();
 
     use trinsic::MessageFormatter;
-    let item: trinsic::proto::google_protobuf::Struct =
-        trinsic::proto::google_protobuf::Struct::from_vec(&item_bytes).unwrap();
+    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()

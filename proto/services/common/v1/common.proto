@@ -1,0 +1,40 @@
+syntax = "proto3";
+package services.common.v1;
+
+option csharp_namespace = "Trinsic.Services.Common.V1";
+option go_package = "github.com/trinsic-id/sdk";
+option java_package = "trinsic.services";
+
+import "google/protobuf/struct.proto";
+import "pbmse/v1/pbmse.proto";
+
+enum ResponseStatus {
+    SUCCESS = 0;
+    WALLET_ACCESS_DENIED = 10;
+    WALLET_EXISTS = 11;
+    ITEM_NOT_FOUND = 20;
+    SERIALIZATION_ERROR = 200;
+    UNKNOWN_ERROR = 100;
+}
+
+enum JsonFormat {
+    Protobuf = 0;
+    Binary = 1;
+    String = 2;
+}
+
+message RequestOptions {
+    JsonFormat response_json_format = 1;
+}
+
+message JsonPayload {
+    oneof json {
+        google.protobuf.Struct json_struct = 1;
+        string json_string = 2;
+        bytes json_bytes = 3;
+    }
+}
+
+service Common {
+    rpc Request(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
+}
