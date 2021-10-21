@@ -46,7 +46,7 @@ namespace Trinsic.Tests
         [Fact]
         public async Task TestWalletService()
         {
-            var walletService = new WalletService("http://trinsic-staging.centralus.azurecontainer.io:5000");
+            var walletService = new WalletService(Environment.GetEnvironmentVariable(ServerAddressName) ?? "http://localhost:5000");
 
             // SETUP ACTORS
             // Create 3 different profiles for each participant in the scenario
