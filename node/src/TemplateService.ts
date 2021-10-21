@@ -1,6 +1,6 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { CredentialTemplatesClient } from "./proto/CredentialTemplateService_grpc_pb";
+import { CredentialTemplatesClient } from "./proto";
 import {
   CreateCredentialTemplateRequest,
   CreateCredentialTemplateResponse,
@@ -13,8 +13,8 @@ import {
   SearchCredentialTemplatesResponse,
   UpdateCredentialTemplateRequest,
   UpdateCredentialTemplateResponse,
-} from "./proto/CredentialTemplateService_pb";
-import { CredentialClient } from "./proto/IssuerService_grpc_pb";
+} from "./proto";
+import { CredentialClient } from "./proto";
 import { IssueFromTemplateRequest, IssueResponse, JsonPayload } from "./proto";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 
@@ -36,7 +36,11 @@ export class TemplateService extends ServiceBase {
     this.credentialClient = new CredentialClient(serviceAddress, credentials);
   }
 
-  public createCredentialTemplate(name: string, schema: JSStruct, baseUri?: string): Promise<CreateCredentialTemplateResponse> {
+  public createCredentialTemplate(
+    name: string,
+    schema: JSStruct,
+    baseUri?: string
+  ): Promise<CreateCredentialTemplateResponse> {
     return new Promise((resolve, reject) => {
       var jsonSchema = new JsonPayload();
       jsonSchema.setJsonStruct(Struct.fromJavaScript(schema));
@@ -78,7 +82,11 @@ export class TemplateService extends ServiceBase {
     });
   }
 
-  public updateCredentialTemplate(templateId: string, name?: string, schema?: JSStruct): Promise<UpdateCredentialTemplateResponse> {
+  public updateCredentialTemplate(
+    templateId: string,
+    name?: string,
+    schema?: JSStruct
+  ): Promise<UpdateCredentialTemplateResponse> {
     return new Promise((resolve, reject) => {
       let request = new UpdateCredentialTemplateRequest();
       request.setId(templateId);

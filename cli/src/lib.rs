@@ -50,15 +50,15 @@ impl Display for JsonPayload {
 
 pub mod proto;
 pub mod utils;
-pub use proto::pbmse;
 #[macro_use]
 pub(crate) mod macros;
 
-pub mod google {
-    pub mod protobuf {
-        pub use crate::proto::google_protobuf::*;
-    }
-}
+// pub mod google {
+//     pub mod protobuf {
+//         pub use crate::proto::google::protobuf::*;
+//     }
+// }
 
-pub use proto::trinsic_services::*;
+use proto::services::common::v1::json_payload;
+use proto::services::common::v1::JsonPayload;
 use serde_json::Value;

@@ -377,3 +377,5 @@ xcuserdata/
 DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 swift/TrinsicServices/.build
+
+!/proto/**/debug/

@@ -1,8 +1,11 @@
+use crate::parser::trustregistry::*;
 use colored::Colorize;
 use tonic::transport::Channel;
-use trinsic::{trust_registry_client::TrustRegistryClient, SearchRegistryRequest, *};
-
-use crate::parser::trustregistry::*;
+use trinsic::proto::services::common::v1::ResponseStatus;
+use trinsic::{
+    grpc_channel, grpc_client_with_auth,
+    proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
+};
 
 use super::config::{Config, Error};
 

@@ -1,0 +1,136 @@
+syntax = "proto3";
+package services.universalwallet.v1;
+
+option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
+option go_package = "github.com/trinsic-id/sdk";
+option java_package = "trinsic.services";
+
+import "services/common/v1/common.proto";
+import "pbmse/v1/pbmse.proto";
+
+message CreateWalletRequest {
+    string controller = 1;
+    string description = 2;
+
+    // (Optional) Supply an invitation id to associate this caller profile
+    // to an existing cloud wallet.
+    string security_code = 3;
+}
+
+message CreateWalletResponse {
+    services.common.v1.ResponseStatus status = 1;
+
+    string wallet_id = 2;
+    string capability = 3;
+    string invoker = 4;
+}
+
+message ConnectRequest {
+    oneof contact_method {
+        string email = 5;
+        string phone = 6;
+    }
+}
+
+message ConnectResponse {
+    services.common.v1.ResponseStatus status = 1;
+}
+
+message InvitationToken {
+    string security_code = 1;
+    string wallet_id = 2;
+    oneof contact_method {
+        string email = 5;
+        string phone = 6;
+    }
+}
+
+/*
+    Stores profile data for accessing a wallet.
+    This result should be stored somewhere safe,
+    as it contains private key information.
+*/
+message WalletProfile {
+    services.common.v1.JsonPayload did_document = 1;
+    string wallet_id = 2;
+    string invoker = 3;
+    string capability = 4;
+    bytes invoker_jwk = 5;
+}
+
+message GrantAccessRequest {
+    string wallet_id = 1;
+    string did = 2;
+}
+message GrantAccessResponse {
+    services.common.v1.ResponseStatus status = 1;
+}
+
+message RevokeAccessRequest {
+    string wallet_id = 1;
+    string did = 2;
+}
+
+message RevokeAccessResponse {
+    services.common.v1.ResponseStatus status = 1;
+}
+
+// GetProviderConfiguration
+
+message GetProviderConfigurationRequest {
+    services.common.v1.RequestOptions request_options = 1;
+}
+
+message GetProviderConfigurationResponse {
+    services.common.v1.JsonPayload did_document = 1;
+    string key_agreement_key_id = 2;
+}
+
+// Search
+
+message SearchRequest {
+    string query = 1;
+    string continuation_token = 2;
+
+    services.common.v1.RequestOptions options = 5;
+}
+
+message SearchResponse {
+    repeated services.common.v1.JsonPayload items = 1;
+    bool has_more = 2;
+    int32 count = 3;
+    string continuation_token = 4;
+}
+
+// InsertItem
+
+message InsertItemRequest {
+    services.common.v1.JsonPayload item = 1;
+    string item_type = 2;
+}
+
+message InsertItemResponse {
+    services.common.v1.ResponseStatus status = 1;
+    string item_id = 2;
+}
+
+service Wallet {
+    rpc GetProviderConfiguration(GetProviderConfigurationRequest) returns (GetProviderConfigurationResponse);
+
+    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
+
+    rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
+
+    rpc CreateWalletWithWorkflow(CreateWalletRequest) returns (CreateWalletResponse);
+
+    rpc CreateWalletEncrypted(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
+
+    rpc Search(SearchRequest) returns (SearchResponse);
+
+    rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
+
+    rpc GrantAccess(GrantAccessRequest) returns (GrantAccessResponse);
+
+    rpc RevokeAccess(RevokeAccessRequest) returns (RevokeAccessResponse);
+}
+
