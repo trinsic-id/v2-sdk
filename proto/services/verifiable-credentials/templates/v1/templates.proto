@@ -1,11 +1,13 @@
 syntax = "proto3";
-package trinsic.services;
+
+package services.verifiablecredentials.templates.v1;
+option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
 
 import "services/common/v1/common.proto";
 
 message CreateCredentialTemplateRequest {
   string name = 1;
-  JsonPayload schema = 2;
+  services.common.v1.JsonPayload schema = 2;
   string base_uri = 3; 
 }
 
@@ -37,7 +39,7 @@ message SearchCredentialTemplatesResponse {
 message UpdateCredentialTemplateRequest {
   string id = 1;
   string name = 2;
-  JsonPayload schema = 3;
+  services.common.v1.JsonPayload schema = 3;
 }
 
 message UpdateCredentialTemplateResponse {
@@ -54,7 +56,7 @@ message CredentialTemplate {
   string id = 1;
   string name = 2;
   string version = 3;
-  JsonPayload schema = 4;
+  services.common.v1.JsonPayload schema = 4;
   string uri = 5;
 }
 

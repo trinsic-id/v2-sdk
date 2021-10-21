@@ -1,6 +1,7 @@
 syntax = "proto3";
-package trinsic.services;
+package services.debug.v1;
 
+option csharp_namespace = "Trinsic.Services.Debug.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 

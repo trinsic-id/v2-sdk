@@ -1,6 +1,7 @@
 syntax = "proto3";
-package trinsic.services;
+package services.universalwallet.v1;
 
+option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 
@@ -17,7 +18,7 @@ message CreateWalletRequest {
 }
 
 message CreateWalletResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 
     string wallet_id = 2;
     string capability = 3;
@@ -32,7 +33,7 @@ message ConnectRequest {
 }
 
 message ConnectResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message InvitationToken {
@@ -50,7 +51,7 @@ message InvitationToken {
     as it contains private key information.
 */
 message WalletProfile {
-    JsonPayload did_document = 1;
+    services.common.v1.JsonPayload did_document = 1;
     string wallet_id = 2;
     string invoker = 3;
     string capability = 4;
@@ -62,7 +63,7 @@ message GrantAccessRequest {
     string did = 2;
 }
 message GrantAccessResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message RevokeAccessRequest {
@@ -71,17 +72,17 @@ message RevokeAccessRequest {
 }
 
 message RevokeAccessResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 // GetProviderConfiguration
 
 message GetProviderConfigurationRequest {
-    RequestOptions request_options = 1;
+    services.common.v1.RequestOptions request_options = 1;
 }
 
 message GetProviderConfigurationResponse {
-    JsonPayload did_document = 1;
+    services.common.v1.JsonPayload did_document = 1;
     string key_agreement_key_id = 2;
 }
 
@@ -91,11 +92,11 @@ message SearchRequest {
     string query = 1;
     string continuation_token = 2;
 
-    RequestOptions options = 5;
+    services.common.v1.RequestOptions options = 5;
 }
 
 message SearchResponse {
-    repeated JsonPayload items = 1;
+    repeated services.common.v1.JsonPayload items = 1;
     bool has_more = 2;
     int32 count = 3;
     string continuation_token = 4;
@@ -104,12 +105,12 @@ message SearchResponse {
 // InsertItem
 
 message InsertItemRequest {
-    JsonPayload item = 1;
+    services.common.v1.JsonPayload item = 1;
     string item_type = 2;
 }
 
 message InsertItemResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
     string item_id = 2;
 }
 

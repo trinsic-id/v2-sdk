@@ -10,6 +10,7 @@ using Okapi.Proofs;
 using Okapi.Keys;
 using Okapi.Keys.V1;
 using Okapi.Proofs.V1;
+using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic
 {

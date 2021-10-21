@@ -2,16 +2,14 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using Trinsic.Services;
 using Google.Protobuf;
 using Newtonsoft.Json.Linq;
 using Google.Protobuf.WellKnownTypes;
 using Okapi.Keys;
-using Okapi.Transport;
-using Pbmse;
 using Okapi.Keys.V1;
-using Okapi.Transport.V1;
-using Pbmse.V1;
+using Trinsic.Services.UniversalWallet.V1;
+using Trinsic.Services.VerifiableCredentials.V1;
+using Trinsic.Services.Common.V1;
 
 namespace Trinsic
 {
@@ -140,7 +138,7 @@ namespace Trinsic
         public async Task<JObject> CreateProof(string documentId, JObject revealDocument)
         {
             var response = await CredentialClient.CreateProofAsync(
-                request: new Services.CreateProofRequest
+                request: new CreateProofRequest
                 {
                     DocumentId = documentId,
                     RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }

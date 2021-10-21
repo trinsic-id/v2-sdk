@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using Trinsic.Services;
+using Trinsic.Services.Common.V1;
 
 namespace Trinsic
 {

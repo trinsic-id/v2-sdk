@@ -1,6 +1,8 @@
 syntax = "proto3";
-package trinsic.services;
 
+package services.provider.v1;
+
+option csharp_namespace = "Trinsic.Services.Common.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services";
 
@@ -23,7 +25,7 @@ enum ParticipantType {
 }
 
 message InviteResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 
     string invitation_id = 10;
 }

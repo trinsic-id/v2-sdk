@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
-using Trinsic.Services;
+using Trinsic.Services.Common.V1;
+using Trinsic.Services.TrustRegistry.V1;
 
 namespace Trinsic
 {

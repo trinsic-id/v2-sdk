@@ -1,7 +1,9 @@
 syntax = "proto3";
-package trinsic.services;
+package services.trustregistry.v1;
 
 import "services/common/v1/common.proto";
+
+option csharp_namespace = "Trinsic.Services.TrustRegistry.V1";
 option java_package = "trinsic.services";
 option go_package = "github.com/trinsic-id/sdk";
 
@@ -10,7 +12,7 @@ message AddFrameworkRequest {
 }
 
 message AddFrameworkResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message RemoveFrameworkRequest {
@@ -18,18 +20,18 @@ message RemoveFrameworkRequest {
 }
 
 message RemoveFrameworkResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message SearchRegistryRequest {
     string query = 1; // SELECT c from c where c.type == 'GovernanceFramework'
     string continuation_token = 2;
 
-    RequestOptions options = 5;
+    services.common.v1.RequestOptions options = 5;
 }
 
 message SearchRegistryResponse {
-    repeated JsonPayload items = 1;
+    repeated services.common.v1.JsonPayload items = 1;
     bool has_more = 2;
     int32 count = 3;
     string continuation_token = 4;
@@ -52,13 +54,13 @@ message RegisterIssuerRequest {
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
 
-    RequestOptions options = 100;
+    services.common.v1.RequestOptions options = 100;
 }
 
 message RegisterIssuerResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 
-    JsonPayload response_data = 2;
+    services.common.v1.JsonPayload response_data = 2;
 }
 
 message RegisterVerifierRequest {
@@ -72,13 +74,13 @@ message RegisterVerifierRequest {
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
 
-    RequestOptions options = 100;
+    services.common.v1.RequestOptions options = 100;
 }
 
 message RegisterVerifierResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 
-    JsonPayload response_data = 2;
+    services.common.v1.JsonPayload response_data = 2;
 }
 
 message UnregisterIssuerRequest {
@@ -92,7 +94,7 @@ message UnregisterIssuerRequest {
 }
 
 message UnregisterIssuerResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message UnregisterVerifierRequest {
@@ -106,7 +108,7 @@ message UnregisterVerifierRequest {
 }
 
 message UnregisterVerifierResponse {
-    ResponseStatus status = 1;
+    services.common.v1.ResponseStatus status = 1;
 }
 
 message CheckIssuerStatusRequest {
@@ -151,7 +153,7 @@ message FetchDataRequest {
 }
 
 message FetchDataResponse {
-    JsonPayload response = 1;
+    services.common.v1.JsonPayload response = 1;
 }
 
 service TrustRegistry {
@@ -164,6 +166,8 @@ service TrustRegistry {
 
     // Registers an authoritative issuer with a credential template
     rpc RegisterIssuer(RegisterIssuerRequest) returns (RegisterIssuerResponse);
+
+    // Registers an authoritative verifier with a credential template
     rpc RegisterVerifier(RegisterVerifierRequest) returns (RegisterVerifierResponse);
 
     // Removes an authoritative issuer with a credential template from the trust registry
