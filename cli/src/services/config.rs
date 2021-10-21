@@ -4,8 +4,8 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::{Interceptor, Request};
+use trinsic::proto::services::universalwallet::v1::WalletProfile;
 use trinsic::MessageFormatter;
-use trinsic::WalletProfile;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 

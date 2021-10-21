@@ -3,7 +3,8 @@ use std::fs::{copy, remove_file};
 fn main() {
     let config = tonic_build::configure()
         .build_server(false)
-        .out_dir("./src/proto");
+        .out_dir("./src/proto")
+        .format(true);
 
     let mut prost_config = prost_build::Config::new();
     prost_config.compile_well_known_types();
@@ -33,18 +34,41 @@ fn main() {
         )
         .unwrap();
 
-    copy(
+    cleanup!(
         "./src/proto/google.protobuf.rs",
-        "./src/proto/google_protobuf.rs",
-    )
-    .unwrap();
-    copy(
-        "./src/proto/trinsic.services.rs",
-        "./src/proto/trinsic_services.rs",
-    )
-    .unwrap();
-    copy("./src/proto/pbmse.v1.rs", "./src/proto/pbmse_v1.rs").unwrap();
-    remove_file("./src/proto/google.protobuf.rs").unwrap();
-    remove_file("./src/proto/trinsic.services.rs").unwrap();
-    remove_file("./src/proto/pbmse.v1.rs").unwrap();
+        "./src/proto/google/protobuf/mod.rs"
+    );
+    cleanup!("./src/proto/pbmse.v1.rs", "./src/proto/pbmse/v1/mod.rs");
+    cleanup!(
+        "./src/proto/services.common.v1.rs",
+        "./src/proto/services/common/v1/mod.rs"
+    );
+    cleanup!(
+        "./src/proto/services.debug.v1.rs",
+        "./src/proto/services/debug/v1/mod.rs"
+    );
+    cleanup!(
+        "./src/proto/services.provider.v1.rs",
+        "./src/proto/services/provider/v1/mod.rs"
+    );
+    cleanup!(
+        "./src/proto/services.trustregistry.v1.rs",
+        "./src/proto/services/trustregistry/v1/mod.rs"
+    );
+    cleanup!(
+        "./src/proto/services.universalwallet.v1.rs",
+        "./src/proto/services/universalwallet/v1/mod.rs"
+    );
+    cleanup!(
+        "./src/proto/services.verifiablecredentials.v1.rs",
+        "./src/proto/services/verifiablecredentials/v1/mod.rs"
+    );
+}
+
+#[macro_export]
+macro_rules! cleanup {
+    ($from:expr,$to:expr) => {
+        copy($from, $to).unwrap();
+        remove_file($from).unwrap();
+    };
 }
