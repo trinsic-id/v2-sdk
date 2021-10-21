@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Okapi.Security;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -22,7 +23,7 @@ namespace Trinsic.Tests
         private static string __FILE__([CallerFilePath] string fileName = "") => fileName;
 
         private string TestDataPath =>
-            Path.GetFullPath(Path.Join(__FILE__(), "..", "..", "..", "..", "devops", "testdata"));
+            Path.GetFullPath(Path.Join(__FILE__(), "..", "..", "..", "devops", "testdata"));
 
         private string VaccinationCertificateUnsigned =>
             Path.GetFullPath(Path.Join(TestDataPath, "vaccination-certificate-unsigned.jsonld"));
@@ -45,7 +46,7 @@ namespace Trinsic.Tests
         [Fact]
         public async Task TestWalletService()
         {
-            var walletService = new WalletService(Environment.GetEnvironmentVariable(ServerAddressName));
+            var walletService = new WalletService("http://trinsic-staging.centralus.azurecontainer.io:5000");
 
             // SETUP ACTORS
             // Create 3 different profiles for each participant in the scenario

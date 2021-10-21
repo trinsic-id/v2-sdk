@@ -40,42 +40,17 @@ namespace Trinsic
 
         public async Task<WalletProfile> CreateWallet(string securityCode = null)
         {
-            // Fetch Server Configuration and find key to use
-            // for generating shared secret for authenticated encryption
-            var configuration = await Client.GetProviderConfigurationAsync(new GetProviderConfigurationRequest());
-            var resolveResponse = DIDKey.Resolve(new ResolveRequest { Did = configuration.KeyAgreementKeyId });
-            var providerExchangeKey = resolveResponse.Keys.FirstOrDefault(x => x.Kid == configuration.KeyAgreementKeyId)
-                ?? throw new Exception("Key agreement key not found");
-
             // Generate new DID used by the current device
             var myKey = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
-            var myExchangeKey = myKey.Key.FirstOrDefault(x => x.Crv == "X25519") ?? throw new Exception("Key agreement key not found");
             var myDidDocument = myKey.DidDocument.ToJObject();
-
-            // Create an encrypted message
-            var packedMessage = DIDComm.Pack(new PackRequest
-            {
-                SenderKey = myExchangeKey,
-                ReceiverKey = providerExchangeKey,
-                Plaintext = new CreateWalletRequest
-                {
-                    Description = "My Cloud Wallet",
-                    Controller = myDidDocument["id"].ToString(),
-                    SecurityCode = securityCode ?? string.Empty
-                }.ToByteString()
-            });
 
             // Invoke create wallet using encrypted message
             // Call the server endpoint with encrypted message
-            var response = await Client.CreateWalletEncryptedAsync(packedMessage.Message.As<EncryptedMessage>());
-
-            var decryptedResponse = DIDComm.Unpack(new UnpackRequest
+            var createWalletResponse = await Client.CreateWalletAsync(new CreateWalletRequest
             {
-                Message = response.As<EncryptedMessage>(),
-                ReceiverKey = myExchangeKey,
-                SenderKey = providerExchangeKey
+                Controller = myDidDocument["id"].ToString(),
+                SecurityCode = securityCode ?? string.Empty
             });
-            var createWalletResponse = CreateWalletResponse.Parser.ParseFrom(decryptedResponse.Plaintext);
 
             // This profile should be stored and supplied later
             return new WalletProfile
