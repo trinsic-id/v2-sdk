@@ -4,11 +4,10 @@ package sdk
 
 import (
 	context "context"
-	proto "github.com/trinsic-id/okapi/go/proto"
+	okapiproto "github.com/trinsic-id/okapi/go/okapiproto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -20,11 +19,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type WalletClient interface {
-	GetProviderConfiguration(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetProviderConfigurationResponse, error)
+	GetProviderConfiguration(ctx context.Context, in *GetProviderConfigurationRequest, opts ...grpc.CallOption) (*GetProviderConfigurationResponse, error)
 	ConnectExternalIdentity(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	CreateWallet(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
 	CreateWalletWithWorkflow(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error)
+	CreateWalletEncrypted(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error)
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
 	GrantAccess(ctx context.Context, in *GrantAccessRequest, opts ...grpc.CallOption) (*GrantAccessResponse, error)
@@ -39,9 +38,9 @@ func NewWalletClient(cc grpc.ClientConnInterface) WalletClient {
 	return &walletClient{cc}
 }
 
-func (c *walletClient) GetProviderConfiguration(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*GetProviderConfigurationResponse, error) {
+func (c *walletClient) GetProviderConfiguration(ctx context.Context, in *GetProviderConfigurationRequest, opts ...grpc.CallOption) (*GetProviderConfigurationResponse, error) {
 	out := new(GetProviderConfigurationResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/GetProviderConfiguration", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/GetProviderConfiguration", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +49,7 @@ func (c *walletClient) GetProviderConfiguration(ctx context.Context, in *emptypb
 
 func (c *walletClient) ConnectExternalIdentity(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error) {
 	out := new(ConnectResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/ConnectExternalIdentity", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/ConnectExternalIdentity", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +58,7 @@ func (c *walletClient) ConnectExternalIdentity(ctx context.Context, in *ConnectR
 
 func (c *walletClient) CreateWallet(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error) {
 	out := new(CreateWalletResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/CreateWallet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWallet", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,16 +67,16 @@ func (c *walletClient) CreateWallet(ctx context.Context, in *CreateWalletRequest
 
 func (c *walletClient) CreateWalletWithWorkflow(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error) {
 	out := new(CreateWalletResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/CreateWalletWithWorkflow", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error) {
-	out := new(proto.EncryptedMessage)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/CreateWalletEncrypted", in, out, opts...)
+func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error) {
+	out := new(okapiproto.EncryptedMessage)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWalletEncrypted", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +85,7 @@ func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *proto.Encr
 
 func (c *walletClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
 	out := new(SearchResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/Search", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +94,7 @@ func (c *walletClient) Search(ctx context.Context, in *SearchRequest, opts ...gr
 
 func (c *walletClient) InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error) {
 	out := new(InsertItemResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/InsertItem", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/InsertItem", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -104,7 +103,7 @@ func (c *walletClient) InsertItem(ctx context.Context, in *InsertItemRequest, op
 
 func (c *walletClient) GrantAccess(ctx context.Context, in *GrantAccessRequest, opts ...grpc.CallOption) (*GrantAccessResponse, error) {
 	out := new(GrantAccessResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/GrantAccess", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/GrantAccess", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +112,7 @@ func (c *walletClient) GrantAccess(ctx context.Context, in *GrantAccessRequest, 
 
 func (c *walletClient) RevokeAccess(ctx context.Context, in *RevokeAccessRequest, opts ...grpc.CallOption) (*RevokeAccessResponse, error) {
 	out := new(RevokeAccessResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Wallet/RevokeAccess", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/RevokeAccess", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -124,11 +123,11 @@ func (c *walletClient) RevokeAccess(ctx context.Context, in *RevokeAccessRequest
 // All implementations must embed UnimplementedWalletServer
 // for forward compatibility
 type WalletServer interface {
-	GetProviderConfiguration(context.Context, *emptypb.Empty) (*GetProviderConfigurationResponse, error)
+	GetProviderConfiguration(context.Context, *GetProviderConfigurationRequest) (*GetProviderConfigurationResponse, error)
 	ConnectExternalIdentity(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	CreateWallet(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
 	CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error)
+	CreateWalletEncrypted(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error)
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
 	GrantAccess(context.Context, *GrantAccessRequest) (*GrantAccessResponse, error)
@@ -140,7 +139,7 @@ type WalletServer interface {
 type UnimplementedWalletServer struct {
 }
 
-func (UnimplementedWalletServer) GetProviderConfiguration(context.Context, *emptypb.Empty) (*GetProviderConfigurationResponse, error) {
+func (UnimplementedWalletServer) GetProviderConfiguration(context.Context, *GetProviderConfigurationRequest) (*GetProviderConfigurationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProviderConfiguration not implemented")
 }
 func (UnimplementedWalletServer) ConnectExternalIdentity(context.Context, *ConnectRequest) (*ConnectResponse, error) {
@@ -152,7 +151,7 @@ func (UnimplementedWalletServer) CreateWallet(context.Context, *CreateWalletRequ
 func (UnimplementedWalletServer) CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletWithWorkflow not implemented")
 }
-func (UnimplementedWalletServer) CreateWalletEncrypted(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error) {
+func (UnimplementedWalletServer) CreateWalletEncrypted(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletEncrypted not implemented")
 }
 func (UnimplementedWalletServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
@@ -181,7 +180,7 @@ func RegisterWalletServer(s grpc.ServiceRegistrar, srv WalletServer) {
 }
 
 func _Wallet_GetProviderConfiguration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(GetProviderConfigurationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -190,10 +189,10 @@ func _Wallet_GetProviderConfiguration_Handler(srv interface{}, ctx context.Conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/GetProviderConfiguration",
+		FullMethod: "/services.universalwallet.v1.Wallet/GetProviderConfiguration",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServer).GetProviderConfiguration(ctx, req.(*emptypb.Empty))
+		return srv.(WalletServer).GetProviderConfiguration(ctx, req.(*GetProviderConfigurationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -208,7 +207,7 @@ func _Wallet_ConnectExternalIdentity_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/ConnectExternalIdentity",
+		FullMethod: "/services.universalwallet.v1.Wallet/ConnectExternalIdentity",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).ConnectExternalIdentity(ctx, req.(*ConnectRequest))
@@ -226,7 +225,7 @@ func _Wallet_CreateWallet_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/CreateWallet",
+		FullMethod: "/services.universalwallet.v1.Wallet/CreateWallet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).CreateWallet(ctx, req.(*CreateWalletRequest))
@@ -244,7 +243,7 @@ func _Wallet_CreateWalletWithWorkflow_Handler(srv interface{}, ctx context.Conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/CreateWalletWithWorkflow",
+		FullMethod: "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).CreateWalletWithWorkflow(ctx, req.(*CreateWalletRequest))
@@ -253,7 +252,7 @@ func _Wallet_CreateWalletWithWorkflow_Handler(srv interface{}, ctx context.Conte
 }
 
 func _Wallet_CreateWalletEncrypted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.EncryptedMessage)
+	in := new(okapiproto.EncryptedMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -262,10 +261,10 @@ func _Wallet_CreateWalletEncrypted_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/CreateWalletEncrypted",
+		FullMethod: "/services.universalwallet.v1.Wallet/CreateWalletEncrypted",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServer).CreateWalletEncrypted(ctx, req.(*proto.EncryptedMessage))
+		return srv.(WalletServer).CreateWalletEncrypted(ctx, req.(*okapiproto.EncryptedMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -280,7 +279,7 @@ func _Wallet_Search_Handler(srv interface{}, ctx context.Context, dec func(inter
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/Search",
+		FullMethod: "/services.universalwallet.v1.Wallet/Search",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).Search(ctx, req.(*SearchRequest))
@@ -298,7 +297,7 @@ func _Wallet_InsertItem_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/InsertItem",
+		FullMethod: "/services.universalwallet.v1.Wallet/InsertItem",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).InsertItem(ctx, req.(*InsertItemRequest))
@@ -316,7 +315,7 @@ func _Wallet_GrantAccess_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/GrantAccess",
+		FullMethod: "/services.universalwallet.v1.Wallet/GrantAccess",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).GrantAccess(ctx, req.(*GrantAccessRequest))
@@ -334,7 +333,7 @@ func _Wallet_RevokeAccess_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Wallet/RevokeAccess",
+		FullMethod: "/services.universalwallet.v1.Wallet/RevokeAccess",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).RevokeAccess(ctx, req.(*RevokeAccessRequest))
@@ -346,7 +345,7 @@ func _Wallet_RevokeAccess_Handler(srv interface{}, ctx context.Context, dec func
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Wallet_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.Wallet",
+	ServiceName: "services.universalwallet.v1.Wallet",
 	HandlerType: (*WalletServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -387,5 +386,5 @@ var Wallet_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "WalletService.proto",
+	Metadata: "services/universal-wallet/v1/universal-wallet.proto",
 }

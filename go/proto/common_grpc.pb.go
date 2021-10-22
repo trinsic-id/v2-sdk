@@ -4,7 +4,7 @@ package sdk
 
 import (
 	context "context"
-	proto "github.com/trinsic-id/okapi/go/proto"
+	okapiproto "github.com/trinsic-id/okapi/go/okapiproto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -19,7 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CommonClient interface {
-	Request(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error)
+	Request(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error)
 }
 
 type commonClient struct {
@@ -30,9 +30,9 @@ func NewCommonClient(cc grpc.ClientConnInterface) CommonClient {
 	return &commonClient{cc}
 }
 
-func (c *commonClient) Request(ctx context.Context, in *proto.EncryptedMessage, opts ...grpc.CallOption) (*proto.EncryptedMessage, error) {
-	out := new(proto.EncryptedMessage)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Common/Request", in, out, opts...)
+func (c *commonClient) Request(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error) {
+	out := new(okapiproto.EncryptedMessage)
+	err := c.cc.Invoke(ctx, "/services.common.v1.Common/Request", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func (c *commonClient) Request(ctx context.Context, in *proto.EncryptedMessage, 
 // All implementations must embed UnimplementedCommonServer
 // for forward compatibility
 type CommonServer interface {
-	Request(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error)
+	Request(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error)
 	mustEmbedUnimplementedCommonServer()
 }
 
@@ -51,7 +51,7 @@ type CommonServer interface {
 type UnimplementedCommonServer struct {
 }
 
-func (UnimplementedCommonServer) Request(context.Context, *proto.EncryptedMessage) (*proto.EncryptedMessage, error) {
+func (UnimplementedCommonServer) Request(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Request not implemented")
 }
 func (UnimplementedCommonServer) mustEmbedUnimplementedCommonServer() {}
@@ -68,7 +68,7 @@ func RegisterCommonServer(s grpc.ServiceRegistrar, srv CommonServer) {
 }
 
 func _Common_Request_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.EncryptedMessage)
+	in := new(okapiproto.EncryptedMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -77,10 +77,10 @@ func _Common_Request_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Common/Request",
+		FullMethod: "/services.common.v1.Common/Request",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommonServer).Request(ctx, req.(*proto.EncryptedMessage))
+		return srv.(CommonServer).Request(ctx, req.(*okapiproto.EncryptedMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -89,7 +89,7 @@ func _Common_Request_Handler(srv interface{}, ctx context.Context, dec func(inte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Common_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.Common",
+	ServiceName: "services.common.v1.Common",
 	HandlerType: (*CommonServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -98,5 +98,5 @@ var Common_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "CoreService.proto",
+	Metadata: "services/common/v1/common.proto",
 }

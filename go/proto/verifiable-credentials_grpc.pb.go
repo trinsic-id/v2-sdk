@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CredentialClient interface {
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
+	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error)
 	VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
@@ -34,7 +35,16 @@ func NewCredentialClient(cc grpc.ClientConnInterface) CredentialClient {
 
 func (c *credentialClient) Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
 	out := new(IssueResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Credential/Issue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/Issue", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *credentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
+	out := new(IssueResponse)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/IssueFromTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +53,7 @@ func (c *credentialClient) Issue(ctx context.Context, in *IssueRequest, opts ...
 
 func (c *credentialClient) CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error) {
 	out := new(CreateProofResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Credential/CreateProof", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/CreateProof", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +62,7 @@ func (c *credentialClient) CreateProof(ctx context.Context, in *CreateProofReque
 
 func (c *credentialClient) VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error) {
 	out := new(VerifyProofResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Credential/VerifyProof", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/VerifyProof", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +71,7 @@ func (c *credentialClient) VerifyProof(ctx context.Context, in *VerifyProofReque
 
 func (c *credentialClient) Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error) {
 	out := new(SendResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Credential/Send", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/Send", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -73,6 +83,7 @@ func (c *credentialClient) Send(ctx context.Context, in *SendRequest, opts ...gr
 // for forward compatibility
 type CredentialServer interface {
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
+	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error)
 	CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error)
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
@@ -85,6 +96,9 @@ type UnimplementedCredentialServer struct {
 
 func (UnimplementedCredentialServer) Issue(context.Context, *IssueRequest) (*IssueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Issue not implemented")
+}
+func (UnimplementedCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method IssueFromTemplate not implemented")
 }
 func (UnimplementedCredentialServer) CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProof not implemented")
@@ -118,10 +132,28 @@ func _Credential_Issue_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Credential/Issue",
+		FullMethod: "/services.verifiablecredentials.v1.Credential/Issue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CredentialServer).Issue(ctx, req.(*IssueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Credential_IssueFromTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(IssueFromTemplateRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CredentialServer).IssueFromTemplate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.verifiablecredentials.v1.Credential/IssueFromTemplate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CredentialServer).IssueFromTemplate(ctx, req.(*IssueFromTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -136,7 +168,7 @@ func _Credential_CreateProof_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Credential/CreateProof",
+		FullMethod: "/services.verifiablecredentials.v1.Credential/CreateProof",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CredentialServer).CreateProof(ctx, req.(*CreateProofRequest))
@@ -154,7 +186,7 @@ func _Credential_VerifyProof_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Credential/VerifyProof",
+		FullMethod: "/services.verifiablecredentials.v1.Credential/VerifyProof",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CredentialServer).VerifyProof(ctx, req.(*VerifyProofRequest))
@@ -172,7 +204,7 @@ func _Credential_Send_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Credential/Send",
+		FullMethod: "/services.verifiablecredentials.v1.Credential/Send",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CredentialServer).Send(ctx, req.(*SendRequest))
@@ -184,12 +216,16 @@ func _Credential_Send_Handler(srv interface{}, ctx context.Context, dec func(int
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Credential_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.Credential",
+	ServiceName: "services.verifiablecredentials.v1.Credential",
 	HandlerType: (*CredentialServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Issue",
 			Handler:    _Credential_Issue_Handler,
+		},
+		{
+			MethodName: "IssueFromTemplate",
+			Handler:    _Credential_IssueFromTemplate_Handler,
 		},
 		{
 			MethodName: "CreateProof",
@@ -205,5 +241,5 @@ var Credential_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "IssuerService.proto",
+	Metadata: "services/verifiable-credentials/v1/verifiable-credentials.proto",
 }

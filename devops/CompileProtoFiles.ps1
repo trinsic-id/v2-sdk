@@ -5,16 +5,26 @@ function Setup()
 
 function Get-ProtoFiles()
 {
+    # return @(
+    # "../proto/CoreService.proto",
+    # "../proto/DebugService.proto",
+    # "../proto/IssuerService.proto",
+    # "../proto/ProviderService.proto",
+    # "../proto/TrustRegistry.proto",
+    # "../proto/WalletService.proto",
+    # "../proto/pbmse/pbmse.proto",
+    # "../proto/models/CredentialTemplates.proto",
+    # "../proto/models/Organizations.proto"
+    # )
     return @(
-    "../proto/CoreService.proto",
-    "../proto/DebugService.proto",
-    "../proto/IssuerService.proto",
-    "../proto/ProviderService.proto",
-    "../proto/TrustRegistry.proto",
-    "../proto/WalletService.proto",
-    "../proto/pbmse/pbmse.proto",
-    "../proto/models/CredentialTemplates.proto",
-    "../proto/models/Organizations.proto"
+    "../proto/services/common/v1/common.proto",
+    "../proto/services/debug/v1/debug.proto",
+    "../proto/services/provider/v1/provider.proto",
+    "../proto/services/trust-registry/v1/trust-registry.proto",
+    "../proto/services/universal-wallet/v1/universal-wallet.proto",
+    "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
+    "../proto/services/verifiable-credentials/templates/v1/templates.proto",
+    "../proto/pbmse/v1/pbmse.proto"
     )
 }
 
@@ -63,7 +73,7 @@ function Update-Golang()
         --go-grpc_out="$GoPath" `
         --go_opt=paths=source_relative `
         --go-grpc_opt=paths=source_relative `
-        $( Get-Proto-Files )
+        $( Get-ProtoFiles )
 
     # flatten hierarchy
     Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force

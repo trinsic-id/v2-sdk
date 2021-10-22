@@ -27,20 +27,31 @@ func GetVaccineCertFramePath() string {
 }
 
 func TestServiceBase_SetProfile(t *testing.T) {
+	assert := assert.New(t)
 	base := ServiceBase{}
 	// No profile set, should be an error
 	ctxt, err := base.GetMetadata()
-	assert.EqualErrorf(t, err, "profile not set", "profile not set")
-	assert.Nil(t, ctxt)
+	if !assert.EqualErrorf(err, "profile not set", "profile not set") {
+		return
+	}
+	if !assert.Nil(ctxt) {
+		return
+	}
 
 	walletService, err := createWalletServiceViaEnvVar(t)
+	if !assert.Nil(err) {
+		return
+	}
 	demoWallet, err := walletService.CreateWallet("")
+	if !assert.Nil(err) {
+		return
+	}
 
 	err = base.SetProfile(demoWallet)
-	assert.NoError(t, err)
+	assert.NoError(err)
 	ctxt, err = base.GetMetadata()
-	assert.NoError(t, err)
-	assert.NotNil(t, ctxt)
+	assert.NoError(err)
+	assert.NotNil(ctxt)
 }
 
 func TestCreateChannelIfNeeded(t *testing.T) {
@@ -68,15 +79,30 @@ func TestCreateChannelIfNeeded(t *testing.T) {
 }
 
 func TestVaccineCredentials(t *testing.T) {
+	assert := assert.New(t)
 	walletService, err := createWalletServiceViaEnvVar(t)
+	if !assert.Nil(err) {
+		return
+	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
 	allison, err := walletService.CreateWallet("")
 	failError(t, "error creating wallet", err)
+	if !assert.NotNil(allison) {
+		return
+	}
+
 	clinic, err := walletService.CreateWallet("")
 	failError(t, "error creating wallet", err)
+	if !assert.NotNil(clinic) {
+		return
+	}
+
 	airline, err := walletService.CreateWallet("")
 	failError(t, "error creating wallet", err)
+	if !assert.NotNil(airline) {
+		return
+	}
 
 	// Store profile for later use
 	// File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -138,6 +164,9 @@ func TestVaccineCredentials(t *testing.T) {
 
 func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
+	if len(serverAddress) == 0 {
+		serverAddress = "http://127.0.0.1:5000"
+	}
 	walletService, err := CreateWalletService(serverAddress, nil)
 	failError(t, "error creating service", err)
 	return walletService, err
@@ -145,27 +174,33 @@ func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
 
 func createProviderServiceViaEnvVar(t *testing.T) (ProviderService, error) {
 	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
+	if len(serverAddress) == 0 {
+		serverAddress = "http://127.0.0.1:5000"
+	}
 	providerService, err := CreateProviderService(serverAddress, nil)
 	failError(t, "error creating service", err)
 	return providerService, err
 }
 
 func TestProviderService_InviteParticipant(t *testing.T) {
+	assert := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
 	walletService, err := createWalletServiceViaEnvVar(t)
-	if err != nil {
-		panic(err)
+	if !assert.Nil(err) {
+		return
 	}
+
 	fmt.Printf("%+v\n", walletService)
+
 	wallet, err := walletService.CreateWallet("")
-	if err != nil {
-		fmt.Printf("%+v\n", err)
-	} else {
-		fmt.Printf("%+v\n", wallet)
+	if !assert.Nil(err) || !assert.NotNil(wallet) {
+		return
 	}
+	fmt.Printf("%+v\n", wallet)
+
 	providerService, err := createProviderServiceViaEnvVar(t)
-	if err != nil {
-		panic(err)
+	if !assert.Nil(err) {
+		return
 	}
 
 	// The issue was not throwing an error that the profile isn't set, but we don't need a wallet profile, so use a

@@ -34,7 +34,7 @@ func NewProviderClient(cc grpc.ClientConnInterface) ProviderClient {
 
 func (c *providerClient) Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error) {
 	out := new(InviteResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Provider/Invite", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/Invite", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,7 +43,7 @@ func (c *providerClient) Invite(ctx context.Context, in *InviteRequest, opts ...
 
 func (c *providerClient) InviteWithWorkflow(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error) {
 	out := new(InviteResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Provider/InviteWithWorkflow", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/InviteWithWorkflow", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (c *providerClient) InviteWithWorkflow(ctx context.Context, in *InviteReque
 
 func (c *providerClient) InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error) {
 	out := new(InvitationStatusResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Provider/InvitationStatus", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/InvitationStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -106,7 +106,7 @@ func _Provider_Invite_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Provider/Invite",
+		FullMethod: "/services.provider.v1.Provider/Invite",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProviderServer).Invite(ctx, req.(*InviteRequest))
@@ -124,7 +124,7 @@ func _Provider_InviteWithWorkflow_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Provider/InviteWithWorkflow",
+		FullMethod: "/services.provider.v1.Provider/InviteWithWorkflow",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProviderServer).InviteWithWorkflow(ctx, req.(*InviteRequest))
@@ -142,7 +142,7 @@ func _Provider_InvitationStatus_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Provider/InvitationStatus",
+		FullMethod: "/services.provider.v1.Provider/InvitationStatus",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProviderServer).InvitationStatus(ctx, req.(*InvitationStatusRequest))
@@ -154,7 +154,7 @@ func _Provider_InvitationStatus_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Provider_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.Provider",
+	ServiceName: "services.provider.v1.Provider",
 	HandlerType: (*ProviderServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -171,5 +171,5 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "ProviderService.proto",
+	Metadata: "services/provider/v1/provider.proto",
 }
