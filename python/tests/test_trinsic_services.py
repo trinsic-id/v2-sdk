@@ -3,7 +3,7 @@ import unittest
 import os
 from os.path import abspath, join, dirname
 
-from trinsic.proto.trinsic.services import InviteRequest, ParticipantType
+from trinsic.proto.services.provider.v1 import ParticipantType
 from trinsic.services import WalletService, create_channel_if_needed, ProviderService
 
 

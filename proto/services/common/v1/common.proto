@@ -3,7 +3,7 @@ package services.common.v1;
 
 option csharp_namespace = "Trinsic.Services.Common.V1";
 option go_package = "github.com/trinsic-id/sdk";
-option java_package = "trinsic.services";
+option java_package = "trinsic.services.common.v1";
 
 import "google/protobuf/struct.proto";
 import "pbmse/v1/pbmse.proto";

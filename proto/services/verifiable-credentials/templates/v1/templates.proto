@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package services.verifiablecredentials.templates.v1;
 option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
+option java_package = "trinsic.services.verifiablecredentials.templates.v1";
 option go_package = "github.com/trinsic-id/sdk";
 
 import "services/common/v1/common.proto";

@@ -5,17 +5,6 @@ function Setup()
 
 function Get-ProtoFiles()
 {
-    # return @(
-    # "../proto/CoreService.proto",
-    # "../proto/DebugService.proto",
-    # "../proto/IssuerService.proto",
-    # "../proto/ProviderService.proto",
-    # "../proto/TrustRegistry.proto",
-    # "../proto/WalletService.proto",
-    # "../proto/pbmse/pbmse.proto",
-    # "../proto/models/CredentialTemplates.proto",
-    # "../proto/models/Organizations.proto"
-    # )
     return @(
     "../proto/services/common/v1/common.proto",
     "../proto/services/debug/v1/debug.proto",
@@ -84,7 +73,7 @@ function Update-Golang()
 
 function Update-Ruby()
 {
-    # TODO - Get this plugin path directly.
+    # Get this plugin path directly.
     $RubyPath = "../ruby/lib/trinsic"
     Remove-OldProtoFiles($RubyPath)
     grpc_tools_ruby_protoc $( Get-ProtoPath ) `
@@ -113,7 +102,7 @@ function Update-Swift()
     $SwiftPath = "../swift/TrinsicServices/Sources/TrinsicServices/proto"
     Remove-OldProtoFiles($SwiftPath)
     protoc $( Get-ProtoPath ) `
-        --swift_opt=Visibility=Public `
+        --swift_opt="Visibility=Public" `
         --swift_out="$SwiftPath" `
         --grpc-swift_out="$SwiftPath" `
         $( Get-ProtoFiles )
