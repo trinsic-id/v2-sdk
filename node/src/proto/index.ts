@@ -3,7 +3,7 @@ export * from "./services/common/v1/common_grpc_pb";
 export * from "./services/verifiable-credentials/v1/verifiable-credentials_pb";
 export * from "./services/verifiable-credentials/v1/verifiable-credentials_grpc_pb";
 export * from "./services/verifiable-credentials/templates/v1/templates_pb";
-export * from "./services/verifiable-credentials/templates/v1//templates_grpc_pb";
+export * from "./services/verifiable-credentials/templates/v1/templates_grpc_pb";
 export * from "./services/provider/v1/provider_pb";
 export * from "./services/provider/v1/provider_grpc_pb";
 export * from "./services/universal-wallet/v1/universal-wallet_pb";
