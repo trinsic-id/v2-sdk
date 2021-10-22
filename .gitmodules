@@ -1,4 +1,0 @@
-[submodule "okapi"]
-	path = okapi
-	url = https://github.com/trinsic-id/okapi.git
-	branch = main

@@ -1,6 +1,6 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { TrustRegistryClient } from "./proto/TrustRegistry_grpc_pb";
+import { TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -16,9 +16,11 @@ import {
   RemoveFrameworkResponse,
   SearchRegistryRequest,
   SearchRegistryResponse,
-  UnregisterMemberRequest,
-  UnregisterMemberResponse,
-} from "./proto/TrustRegistry_pb";
+  UnregisterIssuerRequest,
+  UnregisterIssuerResponse,
+  UnregisterVerifierRequest,
+  UnregisterVerifierResponse,
+} from "./proto";
 
 export class TrustRegistryService extends ServiceBase {
   channel: Channel;
@@ -60,9 +62,20 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public unregisterMember(request: UnregisterMemberRequest): Promise<UnregisterMemberResponse> {
+  public unregisterIssuer(request: UnregisterIssuerRequest): Promise<UnregisterIssuerResponse> {
     return new Promise((resolve, reject) => {
-      this.client.unregisterMember(request, this.getMetadata(), (error, response) => {
+      this.client.unregisterIssuer(request, this.getMetadata(), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
+  public unregisterVerifier(request: UnregisterVerifierRequest): Promise<UnregisterVerifierResponse> {
+    return new Promise((resolve, reject) => {
+      this.client.unregisterVerifier(request, this.getMetadata(), (error, response) => {
         if (error) {
           reject(error);
         }

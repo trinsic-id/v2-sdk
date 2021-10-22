@@ -1,0 +1,15 @@
+syntax = "proto3";
+package services.debug.v1;
+
+option csharp_namespace = "Trinsic.Services.Debug.V1";
+option go_package = "github.com/trinsic-id/sdk";
+option java_package = "trinsic.services";
+
+import "google/protobuf/empty.proto";
+
+service Debugging {
+    rpc CallEmpty(google.protobuf.Empty) returns (google.protobuf.Empty);
+
+    rpc CallEmptyAuth(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+

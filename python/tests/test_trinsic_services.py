@@ -3,17 +3,61 @@ import unittest
 import os
 from os.path import abspath, join, dirname
 
-from trinsic.services import WalletService
+from trinsic.proto.trinsic.services import InviteRequest, ParticipantType
+from trinsic.services import WalletService, create_channel_if_needed, ProviderService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
     @property
+    def base_data_path(self) -> str:
+        return abspath(join(dirname(__file__), "..", "..", "devops", "testdata"))
+
+    @property
     def vaccine_cert_unsigned_path(self) -> str:
-        return abspath(join(dirname(__file__), "vaccination-certificate-unsigned.jsonld"))
+        return abspath(join(self.base_data_path, "vaccination-certificate-unsigned.jsonld"))
 
     @property
     def vaccine_cert_frame_path(self) -> str:
-        return abspath(join(dirname(__file__), "vaccination-certificate-frame.jsonld"))
+        return abspath(join(self.base_data_path, "vaccination-certificate-frame.jsonld"))
+
+    async def test_servicebase_setprofile(self):
+        server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
+        wallet_service = WalletService(server_address)
+        with self.assertRaises(Exception) as excep:
+            self.assertIsNotNone(wallet_service.metadata)
+        self.assertTrue(excep.exception.args[0].lower() == "profile not set")
+
+        wallet = await wallet_service.create_wallet()
+        wallet_service.set_profile(wallet)
+        self.assertIsNotNone(wallet_service.metadata)
+
+    async def test_providerservice_inviteparticipant(self):
+        server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
+        provider_service = ProviderService(server_address)
+        invite_response = await provider_service.invite_participant(
+            participant=ParticipantType.participant_type_individual,
+            description="I dunno",
+            email="scott.phillips@trinsic.id")
+        self.assertIsNotNone(invite_response)
+
+    def test_url_parse(self):
+        valid_http_address = "http://localhost:5000"
+        valid_https_address = "https://localhost:5000"
+        missing_port_address = "http://localhost"
+        missing_protocol_address = "localhost:5000"
+        blank_address = ""
+        addresses = [valid_http_address, valid_https_address, missing_port_address, missing_protocol_address,
+                     blank_address]
+        throws_exception = [False, False, True, True, True]
+
+        for ij in range(len(addresses)):
+            try:
+                channel = create_channel_if_needed(None, addresses[ij])
+                if throws_exception[ij]:
+                    self.fail(f"URL={addresses[ij]} should throw")
+            except:
+                if not throws_exception[ij]:
+                    self.fail(f"URL={addresses[ij]} should not throw")
 
     async def test_trinsic_service_demo(self):
         server_address = os.getenv('TRINSIC_SERVER_ADDRESS')

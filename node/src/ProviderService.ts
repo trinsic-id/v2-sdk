@@ -1,12 +1,12 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "./proto/ProviderService_grpc_pb";
+import { ProviderClient } from "./proto";
 import {
   InvitationStatusRequest,
   InvitationStatusResponse,
   InviteRequest,
   InviteResponse,
-} from "./proto/ProviderService_pb";
+} from "./proto";
 
 export class TrinsicProviderService extends ServiceBase {
   channel: Channel;

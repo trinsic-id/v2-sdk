@@ -1,7 +1,11 @@
-use tonic::transport::Channel;
-use trinsic::{trust_registry_client::TrustRegistryClient, SearchRegistryRequest, *};
-
 use crate::parser::trustregistry::*;
+use colored::Colorize;
+use tonic::transport::Channel;
+use trinsic::proto::services::common::v1::ResponseStatus;
+use trinsic::{
+    grpc_channel, grpc_client_with_auth,
+    proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
+};
 
 use super::config::{Config, Error};
 
@@ -37,7 +41,7 @@ async fn search(args: &SearchArgs, config: &Config) {
         .expect("search registry command failed")
         .into_inner();
 
-    println!("{}", serde_json::to_string_pretty(&response.items).unwrap());
+    response.items.iter().for_each(|x| println!("{}", x));
 }
 
 #[tokio::main]
@@ -64,7 +68,7 @@ async fn register_issuer(args: &RegistrationArgs, config: &Config) {
 
     println!(
         "{}",
-        serde_json::to_string_pretty(&response.response_data).unwrap()
+        serde_json::to_string_pretty(&response.response_data.unwrap_or_default()).unwrap()
     );
 }
 
@@ -92,7 +96,11 @@ async fn check_issuer(args: &RegistrationArgs, config: &Config) {
 
     println!(
         "{}",
-        serde_json::to_string_pretty(&response.status).unwrap()
+        format!(
+            ": {:?}",
+            RegistrationStatus::from_i32(response.status).unwrap()
+        )
+        .bright_yellow()
     );
 }
 
@@ -123,12 +131,71 @@ async fn check_verifier(args: &RegistrationArgs, config: &Config) {
 
     println!(
         "{}",
-        serde_json::to_string_pretty(&response.status).unwrap()
+        format!(
+            ": {:?}",
+            RegistrationStatus::from_i32(response.status).unwrap()
+        )
+        .bright_yellow()
     );
 }
 
-fn unregister_issuer(args: &RegistrationArgs, config: &Config) {
-    todo!()
+#[tokio::main]
+async fn unregister_issuer(args: &RegistrationArgs, config: &Config) {
+    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(UnregisterIssuerRequest {
+        authority: Some(unregister_issuer_request::Authority::DidUri(
+            args.did_uri.clone().unwrap(),
+        )),
+        credential_type_uri: args.type_uri.clone().expect("credential type is required"),
+        governance_framework_uri: args
+            .governance_framework_uri
+            .clone()
+            .expect("governance framework is required"),
+        ..Default::default()
+    });
+
+    let response = client
+        .unregister_issuer(request)
+        .await
+        .expect("unregister issuer command failed")
+        .into_inner();
+
+    println!(
+        "{}",
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
+    );
+}
+
+#[tokio::main]
+async fn unregister_verifier(args: &RegistrationArgs, config: &Config) {
+    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(UnregisterVerifierRequest {
+        authority: Some(unregister_verifier_request::Authority::DidUri(
+            args.did_uri.clone().unwrap(),
+        )),
+        presentation_type_uri: args
+            .type_uri
+            .clone()
+            .expect("presentation type is required"),
+        governance_framework_uri: args
+            .governance_framework_uri
+            .clone()
+            .expect("governance framework is required"),
+        ..Default::default()
+    });
+
+    let response = client
+        .unregister_verifier(request)
+        .await
+        .expect("unregister issuer command failed")
+        .into_inner();
+
+    println!(
+        "{}",
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
+    );
 }
 
 #[tokio::main]
@@ -160,8 +227,4 @@ async fn register_verifier(args: &RegistrationArgs, config: &Config) {
         "{}",
         serde_json::to_string_pretty(&response.response_data).unwrap()
     );
-}
-
-fn unregister_verifier(args: &RegistrationArgs, config: &Config) {
-    todo!()
 }

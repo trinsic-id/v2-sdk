@@ -27,17 +27,15 @@ class SignedMessage(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class SignedMessageHeader(betterproto.Message):
-    algorithm: str = betterproto.string_field(1)
-    key_id: str = betterproto.string_field(2)
-    nonce: str = betterproto.string_field(3)
+class Signature(betterproto.Message):
+    header: bytes = betterproto.bytes_field(1)
+    signature: bytes = betterproto.bytes_field(3)
 
 
 @dataclass(eq=False, repr=False)
-class Signature(betterproto.Message):
-    protected: bytes = betterproto.bytes_field(1, group="header")
-    unprotected: "SignedMessageHeader" = betterproto.message_field(2, group="header")
-    signature: bytes = betterproto.bytes_field(3)
+class SignatureHeader(betterproto.Message):
+    algorithm: str = betterproto.string_field(1)
+    key_id: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)

@@ -3484,22 +3484,20 @@ public final class CredentialTemplates {
   static {
     java.lang.String[] descriptorData = {
       "\n models/CredentialTemplates.proto\022\020trin" +
-      "sic.services\032\027models/Attributes.proto\"!\n" +
-      "\037CreateCredentialTemplateRequest\"\"\n Crea" +
-      "teCredentialTemplateResponse\"/\n\036ListCred" +
-      "entialTemplatesRequest\022\r\n\005query\030\001 \001(\t\"Z\n" +
-      "\037ListCredentialTemplatesResponse\0227\n\ttemp" +
-      "lates\030\001 \003(\0132$.trinsic.services.Credentia" +
-      "lTemplate\"f\n\022CredentialTemplate\022\n\n\002Id\030\001 " +
-      "\001(\t\022\r\n\005Title\030\002 \001(\t\022\023\n\013Description\030\003 \001(\t\022" +
-      "\020\n\010Contexts\030\004 \003(\t\022\016\n\006Schema\030\005 \001(\tB-\n\020tri" +
-      "nsic.servicesZ\031github.com/trinsic-id/sdk" +
-      "b\006proto3"
+      "sic.services\"!\n\037CreateCredentialTemplate" +
+      "Request\"\"\n CreateCredentialTemplateRespo" +
+      "nse\"/\n\036ListCredentialTemplatesRequest\022\r\n" +
+      "\005query\030\001 \001(\t\"Z\n\037ListCredentialTemplatesR" +
+      "esponse\0227\n\ttemplates\030\001 \003(\0132$.trinsic.ser" +
+      "vices.CredentialTemplate\"f\n\022CredentialTe" +
+      "mplate\022\n\n\002Id\030\001 \001(\t\022\r\n\005Title\030\002 \001(\t\022\023\n\013Des" +
+      "cription\030\003 \001(\t\022\020\n\010Contexts\030\004 \003(\t\022\016\n\006Sche" +
+      "ma\030\005 \001(\tB-\n\020trinsic.servicesZ\031github.com" +
+      "/trinsic-id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.Attributes.getDescriptor(),
         });
     internal_static_trinsic_services_CreateCredentialTemplateRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -3531,7 +3529,6 @@ public final class CredentialTemplates {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_CredentialTemplate_descriptor,
         new java.lang.String[] { "Id", "Title", "Description", "Contexts", "Schema", });
-    trinsic.services.Attributes.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

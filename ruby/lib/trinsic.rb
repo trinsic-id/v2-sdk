@@ -7,6 +7,7 @@ require 'uri'
 require 'google/protobuf/well_known_types'
 require_relative 'trinsic/WalletService_services_pb'
 require_relative 'trinsic/IssuerService_services_pb'
+require_relative 'trinsic/ProviderService_services_pb'
 
 module Trinsic
   class Error < StandardError; end
@@ -41,7 +42,11 @@ module Trinsic
 
     def parse_url(url)
       uri = URI.parse(url)
-      "#{uri.host}:#{uri.port}"
+      if uri.port == uri.default_port
+        throw("missing port on URL")
+      end
+      grpc_uri = "#{uri.host}:#{uri.port}"
+      return grpc_uri, uri.scheme=="http"
     end
   end
 
@@ -49,9 +54,12 @@ module Trinsic
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
 
-      
-      @wallet_client = Trinsic::Services::Wallet::Stub.new(parse_url(@service_address), :this_channel_is_insecure)
-      @credential_client = Trinsic::Services::Credential::Stub.new(parse_url(@service_address), :this_channel_is_insecure)
+      grpc_url, is_insecure = parse_url(@service_address)
+      unless is_insecure
+        throw("https traffic not yet supported")
+      end
+      @wallet_client = Trinsic::Services::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
+      @credential_client = Trinsic::Services::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def register_or_connect(email)
@@ -125,20 +133,24 @@ module Trinsic
     end
   end
 
-  class CredentialService < ServiceBase
+  class ProviderService < ServiceBase
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
-      @provider_client = Trinsic::Services::Provider::Stub.new(parse_url(@service_address))
+      grpc_url, is_insecure = parse_url(@service_address)
+      unless is_insecure
+        throw("https traffic not yet supported")
+      end
+      @provider_client = Trinsic::Services::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def invite_participant(request)
       # TODO - Ensure a field has been set
-      @provider_client.invite(request, metadata: metadata)
+      @provider_client.invite(request)
     end
 
     def invitation_status(request)
-      # TODO Onboarding reference ID must be set
-      @provider_client.invitation_status(request, metadata: metadata)
+      # TODO - Onboarding reference ID must be set
+      @provider_client.invitation_status(request)
     end
   end
 end

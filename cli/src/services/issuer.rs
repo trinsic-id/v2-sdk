@@ -1,9 +1,9 @@
-use trinsic::json_payload::Json;
-use trinsic::proto::trinsic_services::{
+use trinsic::proto::services::common::v1::{json_payload::Json, JsonPayload};
+use trinsic::proto::services::verifiablecredentials::v1::{
     credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
 use trinsic::utils::{read_file_as_string, write_file};
-use trinsic::{grpc_client_with_auth, JsonPayload, *};
+use trinsic::{grpc_client_with_auth, *};
 
 use super::{super::parser::issuer::*, config::Config};
 use okapi::MessageFormatter;
@@ -24,8 +24,8 @@ async fn issue(args: &IssueArgs, config: Config) {
     let document = document.to_vec();
 
     use trinsic::MessageFormatter;
-    let document: trinsic::proto::google_protobuf::Struct =
-        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    let document: trinsic::proto::google::protobuf::Struct =
+        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
 
@@ -44,8 +44,7 @@ async fn issue(args: &IssueArgs, config: Config) {
         args.out,
         &serde_json::to_string_pretty(&response.document)
             .unwrap()
-            .as_bytes()
-            .to_vec(),
+            .as_bytes(),
     );
 }
 
@@ -61,8 +60,8 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
     let document = document.to_vec();
 
     use trinsic::MessageFormatter;
-    let document: trinsic::proto::google_protobuf::Struct =
-        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    let document: trinsic::proto::google::protobuf::Struct =
+        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
 
@@ -82,8 +81,7 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
         args.out,
         &serde_json::to_string_pretty(&response.proof_document)
             .unwrap()
-            .as_bytes()
-            .to_vec(),
+            .as_bytes(),
     );
 }
 
@@ -95,8 +93,8 @@ async fn verify_proof(args: &VerifyProofArgs, config: Config) {
     let document = document.to_vec();
 
     use trinsic::MessageFormatter;
-    let document: trinsic::proto::google_protobuf::Struct =
-        trinsic::proto::google_protobuf::Struct::from_vec(&document).unwrap();
+    let document: trinsic::proto::google::protobuf::Struct =
+        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
 

@@ -1,11 +1,13 @@
 require "./test/test_helper"
 require 'json'
 require 'okapi'
+require 'uri'
+require_relative '../lib/trinsic/ProviderService_pb'
 
 class TrinsicServiceTest < Minitest::Test
 
   def get_library_path
-    return File.expand_path(File.join(File.dirname(__FILE__ ), 'libs'))
+    return File.expand_path(File.join(File.dirname(__FILE__), 'libs'))
   end
 
   def before_setup
@@ -13,16 +15,72 @@ class TrinsicServiceTest < Minitest::Test
     Okapi::load_native_library
   end
 
+  def test_servicebase_setprofile
+    server_address = ENV["TRINSIC_SERVER_ADDRESS"]
+    wallet_service = Trinsic::WalletService.new(server_address)
+    assert_raises Exception do
+      wallet_service.metadata
+    end
+    walletProfile = wallet_service.create_wallet("")
+    wallet_service.set_profile(walletProfile)
+    metadata = wallet_service.metadata
+    assert(metadata != nil, "Valid metadata once profile is set")
+  end
+
+  def test_providerservice_inviteparticipant
+    server_address = ENV["TRINSIC_SERVER_ADDRESS"]
+    wallet_service = Trinsic::WalletService.new(server_address)
+    provider_service = Trinsic::ProviderService.new(server_address)
+
+    wallet = wallet_service.create_wallet("")
+    invite_request = Trinsic::Services::InviteRequest.new(:description=>"I dunno",
+                                                          :email=>"scott.phillips@trinsic.id")
+    # invite_request.email = "scott.phillips@trinsic.id"
+    invite_response = provider_service.invite_participant(invite_request)
+    assert(invite_response != nil)
+    # TODO - Verify invitation status response
+  end
+
+  def test_url_parse
+    valid_http_address = "http://localhost:5000"
+    valid_https_address = "https://localhost:5000" # Throws because not supported
+    missing_port_address = "http://localhost"
+    missing_protocol_address = "localhost:5000"
+    blank_address = ""
+    addresses = [valid_http_address, valid_https_address, missing_port_address, missing_protocol_address, blank_address]
+    throws_exception = [false, true, true, true, true]
+
+    (0..addresses.length).each { |ij|
+      if throws_exception[ij]
+        if addresses[ij] == valid_https_address
+          assert_raises UncaughtThrowError do
+            wallet_service = Trinsic::WalletService.new(addresses[ij])
+          end
+        else
+          assert_raises Exception do
+            wallet_service = Trinsic::WalletService.new(addresses[ij])
+          end
+        end
+      else
+        wallet_service = Trinsic::WalletService.new(addresses[ij])
+      end
+    }
+  end
+
   def test_that_it_has_a_version_number
     refute_nil ::Trinsic::VERSION
   end
 
+  def data_base_path
+    return File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "devops", "testdata"))
+  end
+
   def vaccine_cert_unsigned_path
-    return File.expand_path(File.join(File.dirname(__FILE__ ), "vaccination-certificate-unsigned.jsonld"))
+    return File.expand_path(File.join(data_base_path, "vaccination-certificate-unsigned.jsonld"))
   end
 
   def vaccine_cert_frame_path
-    return File.expand_path(File.join(File.dirname(__FILE__ ), "vaccination-certificate-frame.jsonld"))
+    return File.expand_path(File.join(data_base_path, "vaccination-certificate-frame.jsonld"))
   end
 
   def test_trinsic_services_demo
@@ -66,7 +124,7 @@ class TrinsicServiceTest < Minitest::Test
     text2 = File.open(self.vaccine_cert_frame_path).read
     proof_request_json = JSON.parse(text2)
 
-    credential_proof = wallet_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
+    credential_proof = wallet_service.create_proof(document_id = item_id, reveal_document = proof_request_json)
 
     puts "Proof: #{credential_proof}"
 

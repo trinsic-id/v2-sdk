@@ -2,9 +2,9 @@ use super::super::parser::provider::*;
 use crate::parser;
 use crate::services::config::*;
 use tonic::transport::Channel;
-use trinsic::proto::trinsic_services::{provider_client::ProviderClient, InviteRequest};
+use trinsic::proto::services::provider::v1::invite_request::ContactMethod;
+use trinsic::proto::services::provider::v1::{provider_client::ProviderClient, InviteRequest};
 use trinsic::*;
-use trinsic::{invite_request::ContactMethod, proto::trinsic_services};
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
@@ -26,10 +26,10 @@ async fn invite(args: &InviteArgs, config: Config) {
         },
         participant: match args.participant_type {
             parser::provider::ParticipantType::Individual => {
-                trinsic_services::ParticipantType::Individual as i32
+                trinsic::proto::services::provider::v1::ParticipantType::Individual as i32
             }
             parser::provider::ParticipantType::Organization => {
-                trinsic_services::ParticipantType::Organization as i32
+                trinsic::proto::services::provider::v1::ParticipantType::Organization as i32
             }
         },
         description: args

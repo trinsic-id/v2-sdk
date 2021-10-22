@@ -1,4 +1,4 @@
-name: Ruby Gem
+name: "Ruby (release)"
 
 on:
   workflow_dispatch:
@@ -26,39 +26,17 @@ jobs:
           path: ./libs
           branch: main
           repo: trinsic-id/okapi
-      - name: Move libs
-        run: |
-          New-Item -ItemType Directory -Path "./ruby/test/libs" -Force
-          Copy-Item "./libs/*" -Destination "./ruby/test/libs" -Recurse -Force -Container:$false
-        shell: pwsh
       - name: Install dependencies
         run: |
-          gem install bundler
-          gem install rspec
           bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-          bundle install
         working-directory: ruby
+      - name: Build and run tests
+        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        shell: pwsh
         env:
-          TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
-      - name: Publish to GPR
-        run: |
-          mkdir -p $HOME/.gem
-          touch $HOME/.gem/credentials
-          chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push --KEY github --host https://rubygems.pkg.github.com/trinsic-id *.gem
-        working-directory: ruby
-        env:
-          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
-
-      # - name: Publish to RubyGems
-        # run: |
-          # mkdir -p $HOME/.gem
-          # touch $HOME/.gem/credentials
-          # chmod 0600 $HOME/.gem/credentials
-          # printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          # gem build *.gemspec
-          # gem push *.gem
-        # env:
-          # GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000/
+      - name: Publish gem
+        uses: dawidd6/action-publish-gem@v1.2.0
+        with:
+          api_key: ${{secrets.RUBYGEMS_AUTH_TOKEN}}
+          github_token: ${{secrets.GITHUB_TOKEN}}

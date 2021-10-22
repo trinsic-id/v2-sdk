@@ -20,17 +20,17 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum Trinsic_Services_ParticipantType: SwiftProtobuf.Enum {
-  typealias RawValue = Int
+public enum Trinsic_Services_ParticipantType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
   case individual // = 0
   case organization // = 1
   case UNRECOGNIZED(Int)
 
-  init() {
+  public init() {
     self = .individual
   }
 
-  init?(rawValue: Int) {
+  public init?(rawValue: Int) {
     switch rawValue {
     case 0: self = .individual
     case 1: self = .organization
@@ -38,7 +38,7 @@ enum Trinsic_Services_ParticipantType: SwiftProtobuf.Enum {
     }
   }
 
-  var rawValue: Int {
+  public var rawValue: Int {
     switch self {
     case .individual: return 0
     case .organization: return 1
@@ -52,7 +52,7 @@ enum Trinsic_Services_ParticipantType: SwiftProtobuf.Enum {
 
 extension Trinsic_Services_ParticipantType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Trinsic_Services_ParticipantType] = [
+  public static var allCases: [Trinsic_Services_ParticipantType] = [
     .individual,
     .organization,
   ]
@@ -60,18 +60,18 @@ extension Trinsic_Services_ParticipantType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct Trinsic_Services_InviteRequest {
+public struct Trinsic_Services_InviteRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var participant: Trinsic_Services_ParticipantType = .individual
+  public var participant: Trinsic_Services_ParticipantType = .individual
 
-  var description_p: String = String()
+  public var description_p: String = String()
 
-  var contactMethod: Trinsic_Services_InviteRequest.OneOf_ContactMethod? = nil
+  public var contactMethod: Trinsic_Services_InviteRequest.OneOf_ContactMethod? = nil
 
-  var email: String {
+  public var email: String {
     get {
       if case .email(let v)? = contactMethod {return v}
       return String()
@@ -79,7 +79,7 @@ struct Trinsic_Services_InviteRequest {
     set {contactMethod = .email(newValue)}
   }
 
-  var phone: String {
+  public var phone: String {
     get {
       if case .phone(let v)? = contactMethod {return v}
       return String()
@@ -87,7 +87,7 @@ struct Trinsic_Services_InviteRequest {
     set {contactMethod = .phone(newValue)}
   }
 
-  var didcommInvitation: Trinsic_Services_InviteRequest.DidCommInvitation {
+  public var didcommInvitation: Trinsic_Services_InviteRequest.DidCommInvitation {
     get {
       if case .didcommInvitation(let v)? = contactMethod {return v}
       return Trinsic_Services_InviteRequest.DidCommInvitation()
@@ -95,15 +95,15 @@ struct Trinsic_Services_InviteRequest {
     set {contactMethod = .didcommInvitation(newValue)}
   }
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum OneOf_ContactMethod: Equatable {
+  public enum OneOf_ContactMethod: Equatable {
     case email(String)
     case phone(String)
     case didcommInvitation(Trinsic_Services_InviteRequest.DidCommInvitation)
 
   #if !swift(>=4.1)
-    static func ==(lhs: Trinsic_Services_InviteRequest.OneOf_ContactMethod, rhs: Trinsic_Services_InviteRequest.OneOf_ContactMethod) -> Bool {
+    public static func ==(lhs: Trinsic_Services_InviteRequest.OneOf_ContactMethod, rhs: Trinsic_Services_InviteRequest.OneOf_ContactMethod) -> Bool {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
@@ -126,62 +126,62 @@ struct Trinsic_Services_InviteRequest {
   #endif
   }
 
-  struct DidCommInvitation {
+  public struct DidCommInvitation {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    var unknownFields = SwiftProtobuf.UnknownStorage()
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    init() {}
+    public init() {}
   }
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_InviteResponse {
+public struct Trinsic_Services_InviteResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_ResponseStatus = .success
+  public var status: Trinsic_Services_ResponseStatus = .success
 
-  var invitationID: String = String()
+  public var invitationID: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
 /// Request details for the status of onboarding
 /// an individual or organization.
 /// The referenece_id passed is the response from the
 /// `Onboard` method call
-struct Trinsic_Services_InvitationStatusRequest {
+public struct Trinsic_Services_InvitationStatusRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var invitationID: String = String()
+  public var invitationID: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  init() {}
+  public init() {}
 }
 
-struct Trinsic_Services_InvitationStatusResponse {
+public struct Trinsic_Services_InvitationStatusResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var status: Trinsic_Services_InvitationStatusResponse.Status = .error
+  public var status: Trinsic_Services_InvitationStatusResponse.Status = .error
 
-  var statusDetails: String = String()
+  public var statusDetails: String = String()
 
-  var unknownFields = SwiftProtobuf.UnknownStorage()
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  enum Status: SwiftProtobuf.Enum {
-    typealias RawValue = Int
+  public enum Status: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
 
     /// Onboarding resulted in error
     case error // = 0
@@ -193,11 +193,11 @@ struct Trinsic_Services_InvitationStatusResponse {
     case completed // = 2
     case UNRECOGNIZED(Int)
 
-    init() {
+    public init() {
       self = .error
     }
 
-    init?(rawValue: Int) {
+    public init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .error
       case 1: self = .invitationSent
@@ -206,7 +206,7 @@ struct Trinsic_Services_InvitationStatusResponse {
       }
     }
 
-    var rawValue: Int {
+    public var rawValue: Int {
       switch self {
       case .error: return 0
       case .invitationSent: return 1
@@ -217,14 +217,14 @@ struct Trinsic_Services_InvitationStatusResponse {
 
   }
 
-  init() {}
+  public init() {}
 }
 
 #if swift(>=4.2)
 
 extension Trinsic_Services_InvitationStatusResponse.Status: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Trinsic_Services_InvitationStatusResponse.Status] = [
+  public static var allCases: [Trinsic_Services_InvitationStatusResponse.Status] = [
     .error,
     .invitationSent,
     .completed,
@@ -238,15 +238,15 @@ extension Trinsic_Services_InvitationStatusResponse.Status: CaseIterable {
 fileprivate let _protobuf_package = "trinsic.services"
 
 extension Trinsic_Services_ParticipantType: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "participant_type_individual"),
     1: .same(proto: "participant_type_organization"),
   ]
 }
 
 extension Trinsic_Services_InviteRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InviteRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InviteRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "participant"),
     2: .same(proto: "description"),
     5: .same(proto: "email"),
@@ -254,7 +254,7 @@ extension Trinsic_Services_InviteRequest: SwiftProtobuf.Message, SwiftProtobuf._
     7: .standard(proto: "didcomm_invitation"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -296,7 +296,7 @@ extension Trinsic_Services_InviteRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.participant != .individual {
       try visitor.visitSingularEnumField(value: self.participant, fieldNumber: 1)
     }
@@ -324,7 +324,7 @@ extension Trinsic_Services_InviteRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InviteRequest, rhs: Trinsic_Services_InviteRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InviteRequest, rhs: Trinsic_Services_InviteRequest) -> Bool {
     if lhs.participant != rhs.participant {return false}
     if lhs.description_p != rhs.description_p {return false}
     if lhs.contactMethod != rhs.contactMethod {return false}
@@ -334,32 +334,32 @@ extension Trinsic_Services_InviteRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension Trinsic_Services_InviteRequest.DidCommInvitation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = Trinsic_Services_InviteRequest.protoMessageName + ".DidCommInvitation"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  public static let protoMessageName: String = Trinsic_Services_InviteRequest.protoMessageName + ".DidCommInvitation"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InviteRequest.DidCommInvitation, rhs: Trinsic_Services_InviteRequest.DidCommInvitation) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InviteRequest.DidCommInvitation, rhs: Trinsic_Services_InviteRequest.DidCommInvitation) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension Trinsic_Services_InviteResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InviteResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InviteResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
     10: .standard(proto: "invitation_id"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -372,7 +372,7 @@ extension Trinsic_Services_InviteResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .success {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
@@ -382,7 +382,7 @@ extension Trinsic_Services_InviteResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InviteResponse, rhs: Trinsic_Services_InviteResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InviteResponse, rhs: Trinsic_Services_InviteResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.invitationID != rhs.invitationID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -391,12 +391,12 @@ extension Trinsic_Services_InviteResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension Trinsic_Services_InvitationStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InvitationStatusRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InvitationStatusRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "invitation_id"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -408,14 +408,14 @@ extension Trinsic_Services_InvitationStatusRequest: SwiftProtobuf.Message, Swift
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.invitationID.isEmpty {
       try visitor.visitSingularStringField(value: self.invitationID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InvitationStatusRequest, rhs: Trinsic_Services_InvitationStatusRequest) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InvitationStatusRequest, rhs: Trinsic_Services_InvitationStatusRequest) -> Bool {
     if lhs.invitationID != rhs.invitationID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -423,13 +423,13 @@ extension Trinsic_Services_InvitationStatusRequest: SwiftProtobuf.Message, Swift
 }
 
 extension Trinsic_Services_InvitationStatusResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".InvitationStatusResponse"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let protoMessageName: String = _protobuf_package + ".InvitationStatusResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
     2: .standard(proto: "status_details"),
   ]
 
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       // The use of inline closures is to circumvent an issue where the compiler
       // allocates stack space for every case branch when no optimizations are
@@ -442,7 +442,7 @@ extension Trinsic_Services_InvitationStatusResponse: SwiftProtobuf.Message, Swif
     }
   }
 
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .error {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
@@ -452,7 +452,7 @@ extension Trinsic_Services_InvitationStatusResponse: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Trinsic_Services_InvitationStatusResponse, rhs: Trinsic_Services_InvitationStatusResponse) -> Bool {
+  public static func ==(lhs: Trinsic_Services_InvitationStatusResponse, rhs: Trinsic_Services_InvitationStatusResponse) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.statusDetails != rhs.statusDetails {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -461,7 +461,7 @@ extension Trinsic_Services_InvitationStatusResponse: SwiftProtobuf.Message, Swif
 }
 
 extension Trinsic_Services_InvitationStatusResponse.Status: SwiftProtobuf._ProtoNameProviding {
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "Error"),
     1: .same(proto: "InvitationSent"),
     2: .same(proto: "Completed"),

@@ -4017,38 +4017,36 @@ public final class ProviderService {
   static {
     java.lang.String[] descriptorData = {
       "\n\025ProviderService.proto\022\020trinsic.service" +
-      "s\032\034google/protobuf/struct.proto\032\021CoreSer" +
-      "vice.proto\"\366\001\n\rInviteRequest\0226\n\013particip" +
-      "ant\030\001 \001(\0162!.trinsic.services.Participant" +
-      "Type\022\023\n\013description\030\002 \001(\t\022\017\n\005email\030\005 \001(\t" +
-      "H\000\022\017\n\005phone\030\006 \001(\tH\000\022O\n\022didcomm_invitatio" +
-      "n\030\007 \001(\01321.trinsic.services.InviteRequest" +
-      ".DidCommInvitationH\000\032\023\n\021DidCommInvitatio" +
-      "nB\020\n\016contact_method\"Y\n\016InviteResponse\0220\n" +
-      "\006status\030\001 \001(\0162 .trinsic.services.Respons" +
-      "eStatus\022\025\n\rinvitation_id\030\n \001(\t\"0\n\027Invita" +
-      "tionStatusRequest\022\025\n\rinvitation_id\030\001 \001(\t" +
-      "\"\255\001\n\030InvitationStatusResponse\022A\n\006status\030" +
-      "\001 \001(\01621.trinsic.services.InvitationStatu" +
-      "sResponse.Status\022\026\n\016status_details\030\002 \001(\t" +
-      "\"6\n\006Status\022\t\n\005Error\020\000\022\022\n\016InvitationSent\020" +
-      "\001\022\r\n\tCompleted\020\002*U\n\017ParticipantType\022\037\n\033p" +
-      "articipant_type_individual\020\000\022!\n\035particip" +
-      "ant_type_organization\020\0012\233\002\n\010Provider\022K\n\006" +
-      "Invite\022\037.trinsic.services.InviteRequest\032" +
-      " .trinsic.services.InviteResponse\022W\n\022Inv" +
-      "iteWithWorkflow\022\037.trinsic.services.Invit" +
-      "eRequest\032 .trinsic.services.InviteRespon" +
-      "se\022i\n\020InvitationStatus\022).trinsic.service" +
-      "s.InvitationStatusRequest\032*.trinsic.serv" +
-      "ices.InvitationStatusResponseB-\n\020trinsic" +
-      ".servicesZ\031github.com/trinsic-id/sdkb\006pr" +
-      "oto3"
+      "s\032\021CoreService.proto\"\366\001\n\rInviteRequest\0226" +
+      "\n\013participant\030\001 \001(\0162!.trinsic.services.P" +
+      "articipantType\022\023\n\013description\030\002 \001(\t\022\017\n\005e" +
+      "mail\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000\022O\n\022didcomm" +
+      "_invitation\030\007 \001(\01321.trinsic.services.Inv" +
+      "iteRequest.DidCommInvitationH\000\032\023\n\021DidCom" +
+      "mInvitationB\020\n\016contact_method\"Y\n\016InviteR" +
+      "esponse\0220\n\006status\030\001 \001(\0162 .trinsic.servic" +
+      "es.ResponseStatus\022\025\n\rinvitation_id\030\n \001(\t" +
+      "\"0\n\027InvitationStatusRequest\022\025\n\rinvitatio" +
+      "n_id\030\001 \001(\t\"\255\001\n\030InvitationStatusResponse\022" +
+      "A\n\006status\030\001 \001(\01621.trinsic.services.Invit" +
+      "ationStatusResponse.Status\022\026\n\016status_det" +
+      "ails\030\002 \001(\t\"6\n\006Status\022\t\n\005Error\020\000\022\022\n\016Invit" +
+      "ationSent\020\001\022\r\n\tCompleted\020\002*U\n\017Participan" +
+      "tType\022\037\n\033participant_type_individual\020\000\022!" +
+      "\n\035participant_type_organization\020\0012\233\002\n\010Pr" +
+      "ovider\022K\n\006Invite\022\037.trinsic.services.Invi" +
+      "teRequest\032 .trinsic.services.InviteRespo" +
+      "nse\022W\n\022InviteWithWorkflow\022\037.trinsic.serv" +
+      "ices.InviteRequest\032 .trinsic.services.In" +
+      "viteResponse\022i\n\020InvitationStatus\022).trins" +
+      "ic.services.InvitationStatusRequest\032*.tr" +
+      "insic.services.InvitationStatusResponseB" +
+      "-\n\020trinsic.servicesZ\031github.com/trinsic-" +
+      "id/sdkb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.StructProto.getDescriptor(),
           trinsic.services.CoreService.getDescriptor(),
         });
     internal_static_trinsic_services_InviteRequest_descriptor =
@@ -4081,7 +4079,6 @@ public final class ProviderService {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_trinsic_services_InvitationStatusResponse_descriptor,
         new java.lang.String[] { "Status", "StatusDetails", });
-    com.google.protobuf.StructProto.getDescriptor();
     trinsic.services.CoreService.getDescriptor();
   }
 

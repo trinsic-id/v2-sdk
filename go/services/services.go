@@ -4,37 +4,50 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
-	"github.com/golang/protobuf/ptypes/empty"
+	"errors"
+	"fmt"
+	"net/url"
+	"time"
+
 	"github.com/trinsic-id/okapi/go/okapi"
+	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/structpb"
-	"time"
 )
+
+type Document map[string]interface{}
 
 type ServiceBase struct {
 	capabilityInvocation string
 }
 
-type IServiceBase interface {
-	GetContext() context.Context
-	GetMetadata() metadata.MD
-	SetProfile(profile sdk.WalletProfile)
+type Service interface {
+	GetContext() (context.Context, error)
+	GetMetadata() (metadata.MD, error)
+	SetProfile(profile *sdk.WalletProfile) error
 }
 
-func (s ServiceBase) GetContext() context.Context {
-	return metadata.NewOutgoingContext(context.Background(), s.GetMetadata())
+func (s *ServiceBase) GetContext() (context.Context, error) {
+	md, err := s.GetMetadata()
+	if err != nil {
+		return nil, err
+	}
+	return metadata.NewOutgoingContext(context.Background(), md), nil
 }
 
-func (s ServiceBase) GetMetadata() metadata.MD {
+func (s *ServiceBase) GetMetadata() (metadata.MD, error) {
+	if s.capabilityInvocation == "" {
+		return nil, errors.New("profile not set")
+	}
 	return metadata.New(map[string]string{
 		"capability-invocation": s.capabilityInvocation,
-	})
+	}), nil
 }
 
-func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
+func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
 	capabilityStruct, err := structpb.NewStruct(map[string]interface{}{
 		"@context":         "https://w3id.org/security/v2",
 		"invocationTarget": profile.WalletId,
@@ -44,83 +57,130 @@ func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
 			"capability":   profile.Capability,
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return err
+	}
 
-	invokerKey := okapi.JsonWebKey{}
+	invokerKey := okapiproto.JsonWebKey{}
 	err = proto.Unmarshal(profile.InvokerJwk, &invokerKey)
-	if err != nil { panic(err) }
+	if err != nil {
+		return err
+	}
 
-	proofResponse, err := okapi.LdProofs{}.CreateProof(&okapi.CreateProofRequest{
+	proofResponse, err := okapi.LdProofs().CreateProof(&okapiproto.CreateProofRequest{
 		Document: capabilityStruct,
 		Key:      &invokerKey,
-		Suite:    okapi.LdSuite_JcsEd25519Signature2020,
+		Suite:    okapiproto.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return err
+	}
 
 	proofJson, err := json.Marshal(proofResponse.SignedDocument.AsMap())
-	if err != nil { panic(err) }
+	if err != nil {
+		return err
+	}
 
 	s.capabilityInvocation = base64.StdEncoding.EncodeToString(proofJson)
+	return nil
 }
 
-type WalletService struct {
-	base             *ServiceBase
+type WalletService interface {
+	Service
+	RegisterOrConnect(email string) error
+	CreateWallet(securityCode string) (*sdk.WalletProfile, error)
+	IssueCredential(document Document) (Document, error)
+	Search(query string) (*sdk.SearchResponse, error)
+	InsertItem(item Document) (string, error)
+	Send(document Document, email string) error
+	CreateProof(documentId string, revealDocument Document) (Document, error)
+	VerifyProof(proofDocument Document) (bool, error)
+}
+
+func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (WalletService, error) {
+	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		return nil, err
+	}
+
+	service := &WalletBase{
+		ServiceBase:      &ServiceBase{},
+		channel:          channel,
+		walletClient:     sdk.NewWalletClient(channel),
+		credentialClient: sdk.NewCredentialClient(channel),
+	}
+
+	return service, nil
+}
+
+func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
+	if channel == nil {
+		var serviceUrl, err = url.Parse(serviceAddress)
+		if err != nil {
+			return nil, err
+		}
+		if serviceUrl.Port() == "" {
+			return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
+		}
+		dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
+		var dialOptions []grpc.DialOption
+		if blockOnOpen {
+			dialOptions = append(dialOptions, grpc.WithBlock())
+		}
+		if serviceUrl.Scheme == "http" {
+			dialOptions = append(dialOptions, grpc.WithInsecure())
+		} else {
+			// TODO - Get the credentials bundle
+			//credBundle := credentials.Bundle{}
+			//dialOptions = append(dialOptions, grpc.WithCredentialsBundle(credentials.Bundle()))
+			return nil, errors.New("HTTPS not supported yet due to credential bundle declaration")
+		}
+		channel, err = grpc.Dial(dialUrl, dialOptions...)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return channel, nil
+}
+
+type WalletBase struct {
+	*ServiceBase
 	channel          *grpc.ClientConn
 	walletClient     sdk.WalletClient
 	credentialClient sdk.CredentialClient
 }
 
-func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) *WalletService {
-	channel = createChannelIfNeeded(serviceAddress, channel)
-
-	service := WalletService{
-		base:             &ServiceBase{},
-		channel:          channel,
-		walletClient:     sdk.NewWalletClient(channel),
-		credentialClient: sdk.NewCredentialClient(channel),
-	}
-	return &service
-}
-
-func createChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn) *grpc.ClientConn {
-	if channel == nil {
-		channel2, err := grpc.Dial(serviceAddress, grpc.WithInsecure(), grpc.WithBlock())
-		if err != nil {
-			panic(err)
-		}
-		channel = channel2
-	}
-	return channel
-}
-
-type IWalletService interface {
-	IServiceBase
-	RegisterOrConnect(email string)
-	CreateWallet(securityCode string) sdk.WalletProfile
-	IssueCredential(document map[string]interface{}) map[string]interface{} // TODO - Better typing?
-	Search(query string) sdk.SearchResponse
-	InsertItem(item map[string]interface{}) string                        // TODO - Better typing?
-	Send(document map[string]interface{}, email string)                   // TODO - Better typing?
-	CreateProof(documentId string, revealDocument map[string]interface{}) // TODO - Better typing?
-	VerifyProof(proofDocument map[string]interface{})                     // TODO - Better typing?
-}
-
-func (w WalletService) RegisterOrConnect(email string) {
+func (w *WalletBase) RegisterOrConnect(email string) error {
 	connectRequest := sdk.ConnectRequest{
 		ContactMethod: &sdk.ConnectRequest_Email{Email: email},
 	}
 
-	_, err := w.walletClient.ConnectExternalIdentity(w.base.GetContext(), &connectRequest)
-	if err != nil { panic(err) }
+	md, err := w.GetContext()
+	if err != nil {
+		return err
+	}
+	_, err = w.walletClient.ConnectExternalIdentity(md, &connectRequest)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
-func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
-	configuration, err := w.walletClient.GetProviderConfiguration(context.Background(), &empty.Empty{})
-	if err != nil { panic(err) }
-	resolveResponse, err := okapi.DidKey{}.Resolve(&okapi.ResolveRequest{Did: configuration.KeyAgreementKeyId})
-	if err != nil { panic(err) }
+func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, error) {
+	configuration, err := w.walletClient.GetProviderConfiguration(context.Background(), &sdk.GetProviderConfigurationRequest{})
+	if err != nil {
+		return nil, err
+	}
 
-	var providerExchangeKey *okapi.JsonWebKey
+	dk := okapi.DidKey()
+	dc := okapi.DidComm()
+
+	resolveResponse, err := dk.Resolve(&okapiproto.ResolveRequest{Did: configuration.KeyAgreementKeyId})
+	if err != nil {
+		return nil, err
+	}
+
+	var providerExchangeKey *okapiproto.JsonWebKey
 	for _, key := range resolveResponse.Keys {
 		if key.Kid == configuration.KeyAgreementKeyId {
 			providerExchangeKey = key
@@ -128,10 +188,12 @@ func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
 		}
 	}
 
-	myKey, err := okapi.DidKey{}.Generate(&okapi.GenerateKeyRequest{KeyType: okapi.KeyType_Ed25519})
-	if err != nil { panic(err) }
+	myKey, err := dk.Generate(&okapiproto.GenerateKeyRequest{KeyType: okapiproto.KeyType_KEY_TYPE_ED25519})
+	if err != nil {
+		return nil, err
+	}
 
-	var myExchangeKey *okapi.JsonWebKey
+	var myExchangeKey *okapiproto.JsonWebKey
 	for _, key := range myKey.Key {
 		if key.Crv == "X25519" {
 			myExchangeKey = key
@@ -146,45 +208,61 @@ func (w WalletService) CreateWallet(securityCode string) *sdk.WalletProfile {
 		SecurityCode: securityCode,
 	}
 	walletBytes, err := proto.Marshal(&walletRequest)
-	if err != nil {panic(err)}
-	packedMessage, err := okapi.DidComm{}.Pack(&okapi.PackRequest{
+	if err != nil {
+		return nil, err
+	}
+	packedMessage, err := dc.Pack(&okapiproto.PackRequest{
 		SenderKey:   myExchangeKey,
 		ReceiverKey: providerExchangeKey,
-		Plaintext: walletBytes,
+		Plaintext:   walletBytes,
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 
-	packedSdkMessage := OkapiEncryptedMessageToSdkEncryptedMessage(packedMessage.Message)
+	packedSdkMessage := packedMessage.Message
 	response, err := w.walletClient.CreateWalletEncrypted(context.Background(), packedSdkMessage)
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 
-	decryptedResponse, err := okapi.DidComm{}.Unpack(&okapi.UnpackRequest{
+	decryptedResponse, err := dc.Unpack(&okapiproto.UnpackRequest{
 		SenderKey:   providerExchangeKey,
 		ReceiverKey: myExchangeKey,
-		Message:     SdkEncryptedMessageToOkapiEncryptedMessage(response),
+		Message:     response,
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 
 	createWalletResponse := sdk.CreateWalletResponse{}
 	err = proto.Unmarshal(decryptedResponse.Plaintext, &createWalletResponse)
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 
 	myKeyJwk, err := proto.Marshal(myKey.Key[0])
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 	jsonString, err := json.Marshal(myDidDocument)
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 	return &sdk.WalletProfile{
 		DidDocument: &sdk.JsonPayload{Json: &sdk.JsonPayload_JsonString{JsonString: string(jsonString)}},
 		WalletId:    createWalletResponse.WalletId,
 		Invoker:     createWalletResponse.Invoker,
 		Capability:  createWalletResponse.Capability,
 		InvokerJwk:  myKeyJwk,
-	}
+	}, nil
 }
 
-func (w WalletService) IssueCredential(document map[string]interface{}) map[string]interface{} {
+func (w *WalletBase) IssueCredential(document Document) (Document, error) {
 	jsonBytes, err := json.Marshal(document)
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 	issueRequest := sdk.IssueRequest{
 		Document: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -192,40 +270,69 @@ func (w WalletService) IssueCredential(document map[string]interface{}) map[stri
 			},
 		},
 	}
-	response, err := w.credentialClient.Issue(w.base.GetContext(), &issueRequest)
-	if err != nil { panic(err) }
+
+	md, err := w.GetContext()
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.credentialClient.Issue(md, &issueRequest)
+	if err != nil {
+		return nil, err
+	}
 	var doc map[string]interface{}
 	err = json.Unmarshal([]byte(response.Document.GetJsonString()), &doc)
-	if err != nil { panic(err) }
-	return doc
+	if err != nil {
+		return nil, err
+	}
+	return doc, nil
 }
 
-func (w WalletService) Search(query string) *sdk.SearchResponse {
-	response, err := w.walletClient.Search(w.base.GetContext(), &sdk.SearchRequest{
+func (w *WalletBase) Search(query string) (*sdk.SearchResponse, error) {
+	md, err := w.GetContext()
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.walletClient.Search(md, &sdk.SearchRequest{
 		Query: query,
 	})
-	if err != nil { panic(err) }
-	return response
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
 
-func (w WalletService) InsertItem(item map[string]interface{}) string {
+func (w *WalletBase) InsertItem(item Document) (string, error) {
 	jsonString, err := json.Marshal(item)
-	if err != nil { panic(err) }
-	response, err := w.walletClient.InsertItem(w.base.GetContext(), &sdk.InsertItemRequest{
+	if err != nil {
+		return "", err
+	}
+	md, err := w.GetContext()
+	if err != nil {
+		return "", err
+	}
+	response, err := w.walletClient.InsertItem(md, &sdk.InsertItemRequest{
 		Item: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
 			},
 		},
 	})
-	if err != nil { panic(err) }
-	return response.ItemId
+	if err != nil {
+		return "", err
+	}
+	return response.ItemId, nil
 }
 
-func (w WalletService) Send(document map[string]interface{}, email string) {
+func (w *WalletBase) Send(document Document, email string) error {
 	jsonString, err := json.Marshal(document)
-	if err != nil { panic(err) }
-	_, err = w.credentialClient.Send(w.base.GetContext(), &sdk.SendRequest{
+	if err != nil {
+		return err
+	}
+	md, err := w.GetContext()
+	if err != nil {
+		return err
+	}
+	_, err = w.credentialClient.Send(md, &sdk.SendRequest{
 		DeliveryMethod: &sdk.SendRequest_Email{
 			Email: email,
 		},
@@ -235,13 +342,22 @@ func (w WalletService) Send(document map[string]interface{}, email string) {
 			},
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
-func (w WalletService) CreateProof(documentId string, revealDocument map[string]interface{}) map[string]interface{} {
+func (w *WalletBase) CreateProof(documentId string, revealDocument Document) (Document, error) {
 	jsonString, err := json.Marshal(revealDocument)
-	if err != nil { panic(err) }
-	proof, err := w.credentialClient.CreateProof(w.base.GetContext(), &sdk.CreateProofRequest{
+	if err != nil {
+		return nil, err
+	}
+	md, err := w.GetContext()
+	if err != nil {
+		return nil, err
+	}
+	proof, err := w.credentialClient.CreateProof(md, &sdk.CreateProofRequest{
 		DocumentId: documentId,
 		RevealDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
@@ -249,79 +365,82 @@ func (w WalletService) CreateProof(documentId string, revealDocument map[string]
 			},
 		},
 	})
-	if err != nil { panic(err) }
+	if err != nil {
+		return nil, err
+	}
 	var proofMap map[string]interface{}
 	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
-	if err != nil { panic(err) }
-	return proofMap
+	if err != nil {
+		return nil, err
+	}
+	return proofMap, nil
 }
 
-func (w WalletService) VerifyProof(proofDocument map[string]interface{}) bool {
+func (w *WalletBase) VerifyProof(proofDocument Document) (bool, error) {
 	jsonString, err := json.Marshal(proofDocument)
-	if err != nil { panic(err) }
-	proof, err := w.credentialClient.VerifyProof(w.base.GetContext(), &sdk.VerifyProofRequest{
+	if err != nil {
+		return false, err
+	}
+	md, err := w.GetContext()
+	if err != nil {
+		return false, err
+	}
+	proof, err := w.credentialClient.VerifyProof(md, &sdk.VerifyProofRequest{
 		ProofDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
 			},
 		},
 	})
-	if err != nil { panic(err) }
-	return proof.Valid
+	if err != nil {
+		return false, err
+	}
+	return proof.Valid, nil
 }
 
-func SdkEncryptedMessageToOkapiEncryptedMessage(message *sdk.EncryptedMessage) *okapi.EncryptedMessage {
-	bytes, err := proto.Marshal(message)
-	if err != nil {panic(err)}
-	sdkMessage := okapi.EncryptedMessage{}
-	err = proto.Unmarshal(bytes, &sdkMessage)
-	if err != nil {panic(err)}
-	return &sdkMessage
+type ProviderService interface {
+	Service
+	InviteParticipant(request *sdk.InviteRequest) (*sdk.InviteResponse, error)
+	InvitationStatus(request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
 }
 
-// OkapiEncryptedMessageToSdkEncryptedMessage exists because golang cannot convert identical structs
-func OkapiEncryptedMessageToSdkEncryptedMessage(message *okapi.EncryptedMessage) *sdk.EncryptedMessage {
-	bytes, err := proto.Marshal(message)
-	if err != nil {panic(err)}
-	sdkMessage := sdk.EncryptedMessage{}
-	err = proto.Unmarshal(bytes, &sdkMessage)
-	if err != nil {panic(err)}
-	return &sdkMessage
-}
-
-type ProviderService struct {
-	base ServiceBase
-	channel *grpc.ClientConn
+type ProviderBase struct {
+	*ServiceBase
+	channel        *grpc.ClientConn
 	providerClient sdk.ProviderClient
 }
 
-func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) *ProviderService {
-	channel = createChannelIfNeeded(serviceAddress, channel)
+func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) (ProviderService, error) {
+	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		return nil, err
+	}
 
-	service := ProviderService{
-		base:           ServiceBase{},
+	service := &ProviderBase{
+		ServiceBase:    &ServiceBase{},
 		channel:        channel,
 		providerClient: sdk.NewProviderClient(channel),
 	}
-	return &service
+	return service, nil
 }
 
-type IProviderService interface {
-	IServiceBase
-	InviteParticipant(request sdk.InviteRequest) sdk.InviteResponse
-	InvitationStatus(request sdk.InvitationStatusRequest) sdk.InvitationStatusResponse
+func (p *ProviderBase) InviteParticipant(request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
+	// Verify contact method is set
+	switch request.ContactMethod.(type) {
+	case nil:
+		return nil, fmt.Errorf("unset contact method")
+	}
+	response, err := p.providerClient.Invite(context.Background(), request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
 
-func (p ProviderService) InviteParticipant(request *sdk.InviteRequest) *sdk.InviteResponse {
-	// TODO - Verify contact method is set
-	response, err := p.providerClient.Invite(p.base.GetContext(), request)
-	if err != nil { panic(err) }
-	return response
-}
-
-func (p ProviderService) InvitationStatus(request *sdk.InvitationStatusRequest) *sdk.InvitationStatusResponse {
-	// TODO - Verify onboarding reference is set
-	response, err := p.providerClient.InvitationStatus(p.base.GetContext(), request)
-	if err != nil { panic(err) }
-	return response
+func (p *ProviderBase) InvitationStatus(request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
+	response, err := p.providerClient.InvitationStatus(context.Background(), request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }

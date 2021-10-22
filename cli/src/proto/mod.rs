@@ -1,5 +1,5 @@
-use self::google_protobuf::{value::Kind, *};
-use google_protobuf::{ListValue, Value};
+use self::google::protobuf::{value::Kind, *};
+use google::protobuf::{ListValue, Value};
 use serde::{
     de::{self, Error, SeqAccess, Visitor},
     ser::{SerializeMap, SerializeSeq},
@@ -7,10 +7,9 @@ use serde::{
 };
 use std::{collections::HashMap, fmt::Formatter};
 
-pub mod google_protobuf;
-pub mod greet;
+pub mod google;
 pub mod pbmse;
-pub mod trinsic_services;
+pub mod services;
 
 impl Serialize for Struct {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
@@ -174,8 +173,14 @@ impl<'de> Visitor<'de> for Value {
     }
 }
 
-pub(crate) mod google {
-    pub mod protobuf {
-        pub use crate::proto::google_protobuf::*;
-    }
-}
+// pub(crate) mod google {
+//     pub mod protobuf {
+//         pub use crate::proto::google::protobuf::*;
+//     }
+// }
+
+// pub(crate) mod common {
+//     pub mod v1 {
+//         pub use crate::proto::services::common::v1::*;
+//     }
+// }

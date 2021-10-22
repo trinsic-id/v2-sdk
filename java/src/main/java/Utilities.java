@@ -35,8 +35,14 @@ public class Utilities {
             serviceAddress = "http://localhost:5000";
         if (channel == null) {
             var serviceUrl = new URL(serviceAddress);
-            channel = ManagedChannelBuilder.forAddress(serviceUrl.getHost(), serviceUrl.getPort())
-                    .usePlaintext().build(); // TODO Switch to HTTPS
+            if (serviceUrl.getPort() == -1)
+                throw new MalformedURLException("Port required!");
+            var channelBuilder = ManagedChannelBuilder.forAddress(serviceUrl.getHost(), serviceUrl.getPort());
+            if (serviceUrl.getProtocol().equals("http"))
+                channelBuilder = channelBuilder.usePlaintext();
+            else
+                channelBuilder = channelBuilder.useTransportSecurity();
+            channel = channelBuilder.build();
         }
         return channel;
     }

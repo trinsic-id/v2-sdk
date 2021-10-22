@@ -1,4 +1,4 @@
-name: Build Ruby bindings
+name: Ruby (build)
 
 on:
   pull_request:
@@ -31,23 +31,15 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
-      - name: Move libs
-        run: |
-          New-Item -ItemType Directory -Path "./ruby/test/libs" -Force
-          Copy-Item "./libs/*" -Destination "./ruby/test/libs" -Recurse -Force -Container:$false
-        shell: pwsh
       - name: Install dependencies
         run: |
-          gem install bundler
-          gem install rspec
           bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-          bundle install
         working-directory: ruby
-      - name: Run tests
-        run: bundle exec rake
-        working-directory: ruby
+      - name: Build and run tests
+        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        shell: pwsh
         env:
-          TRINSIC_SERVER_ADDRESS: http://pr-development.centralus.azurecontainer.io:5000/
+          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000/
       - name: cobertura-report
         if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
         uses: 5monkeys/cobertura-action@v9

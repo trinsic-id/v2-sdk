@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'google/protobuf/struct_pb'
 require 'google/protobuf/empty_pb'
 require_relative 'CoreService_pb'
 require 'okapi/pbmse/pbmse_pb'

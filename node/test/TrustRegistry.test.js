@@ -1,14 +1,19 @@
 const test = require("ava");
-const { TrustRegistryService } = require("../lib");
-const { AddFrameworkRequest } = require("../lib/proto/TrustRegistry_pb");
+const { TrustRegistryService, AddFrameworkRequest, GovernanceFramework, WalletService } = require("../lib");
 const endpoint = process.env.TRINSIC_TEST_URL;
-const {v4:uuid} = require('uuid');
+const { v4: uuid } = require("uuid");
 
-test("add governance framework", (t) => {
-    t.pass();
-//   let trustRegistryService = new TrustRegistryService(endpoint);
+test("add governance framework", async (t) => {
+  let service = new WalletService(endpoint);
+  let profile = await service.createWallet();
 
-//   let response = await trustRegistryService.addGovernanceFramework(
-//     new AddFrameworkRequest().setGovernanceFramework(`urn:egf:${uuid()}`)
-//   );
+  let trustRegistryService = new TrustRegistryService(endpoint);
+  await trustRegistryService.setProfile(profile);
+
+  let response = await trustRegistryService.addGovernanceFramework(
+    new AddFrameworkRequest().setGovernanceFramework(
+      new GovernanceFramework().setGovernanceFrameworkUri(`urn:egf:${uuid()}`)
+    )
+  );
+  t.pass();
 });

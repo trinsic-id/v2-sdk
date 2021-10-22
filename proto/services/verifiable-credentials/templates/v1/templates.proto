@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package services.verifiablecredentials.templates.v1;
+option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
+option go_package = "github.com/trinsic-id/sdk";
+
+import "services/common/v1/common.proto";
+
+message CreateCredentialTemplateRequest {
+  string name = 1;
+  services.common.v1.JsonPayload schema = 2;
+  string base_uri = 3; 
+}
+
+message CreateCredentialTemplateResponse {
+  string id = 1;
+  string uri = 2;
+}
+
+message GetCredentialTemplateRequest {
+  string id = 1;
+}
+
+message GetCredentialTemplateResponse {
+  CredentialTemplate template = 1;
+}
+
+message SearchCredentialTemplatesRequest {
+  string query = 1; // SELECT * FROM c WHERE c.name = 'Diploma'
+  string continuation_token = 2;
+}
+
+message SearchCredentialTemplatesResponse {
+  repeated CredentialTemplate templates = 1;
+  bool has_more = 2;
+  int32 count = 3;
+  string continuation_token = 4;
+}
+
+message UpdateCredentialTemplateRequest {
+  string id = 1;
+  string name = 2;
+  services.common.v1.JsonPayload schema = 3;
+}
+
+message UpdateCredentialTemplateResponse {
+  CredentialTemplate template = 1;
+}
+
+message DeleteCredentialTemplateRequest {
+  string id = 1;
+}
+
+message DeleteCredentialTemplateResponse {}
+
+message CredentialTemplate {
+  string id = 1;
+  string name = 2;
+  string version = 3;
+  services.common.v1.JsonPayload schema = 4;
+  string uri = 5;
+}
+
+service CredentialTemplates {
+  rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
+  rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+  rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
+  rpc Update(UpdateCredentialTemplateRequest) returns (UpdateCredentialTemplateResponse);
+  rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
+}
+

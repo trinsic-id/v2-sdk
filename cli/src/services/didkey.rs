@@ -32,7 +32,7 @@ fn generate_key(args: &GenerateArgs) {
         .expect("Error serializing DIDKey response to JSON")
         + "\n";
 
-    write_file(args.out, &key.as_bytes().to_vec());
+    write_file(args.out, &key.as_bytes());
 }
 
 fn resolve(args: &ResolveArgs) {

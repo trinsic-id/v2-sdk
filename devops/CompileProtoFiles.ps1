@@ -3,52 +3,54 @@ function Setup()
     Set-Location $PSScriptRoot
 }
 
-function Get-Proto-Files()
+function Get-ProtoFiles()
 {
+    # return @(
+    # "../proto/CoreService.proto",
+    # "../proto/DebugService.proto",
+    # "../proto/IssuerService.proto",
+    # "../proto/ProviderService.proto",
+    # "../proto/TrustRegistry.proto",
+    # "../proto/WalletService.proto",
+    # "../proto/pbmse/pbmse.proto",
+    # "../proto/models/CredentialTemplates.proto",
+    # "../proto/models/Organizations.proto"
+    # )
     return @(
-    "../proto/CoreService.proto",
-    "../proto/DebugService.proto",
-    "../proto/IssuerService.proto",
-    "../proto/ProviderService.proto",
-    "../proto/TrustRegistry.proto",
-    "../proto/WalletService.proto",
-    "../proto/pbmse/pbmse.proto",
-    "../proto/models/Attributes.proto",
-    "../proto/models/Credentials.proto",
-    "../proto/models/CredentialTemplates.proto",
-    "../proto/models/Organizations.proto",
-    "../proto/models/Presentations.proto",
-    "../proto/models/PresentationTemplates.proto"
+    "../proto/services/common/v1/common.proto",
+    "../proto/services/debug/v1/debug.proto",
+    "../proto/services/provider/v1/provider.proto",
+    "../proto/services/trust-registry/v1/trust-registry.proto",
+    "../proto/services/universal-wallet/v1/universal-wallet.proto",
+    "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
+    "../proto/services/verifiable-credentials/templates/v1/templates.proto",
+    "../proto/pbmse/v1/pbmse.proto"
     )
 }
 
-function Get-Proto-Path()
+function Get-ProtoPath()
 {
     return "--proto_path=../proto"
 }
 
-function Get-Java-Plugin-Path()
+function Get-JavaPluginPath()
 {
     return 'protoc-gen-grpc-java="C:\bin\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe"'
 }
 
-function Compile-Golang()
+function Remove-OldProtoFiles($ProtoPath)
 {
-    $GoPath = "../go/proto"
-    protoc $( Get-Proto-Path ) --go_out="$GoPath" --go-grpc_out="$GoPath" --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative $( Get-Proto-Files )
-
-    # flatten hierarchy
-    Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force
-    Copy-Item -Path "$GoPath/models/*"  -Destination "$GoPath" -recurse -Force
-    Remove-Item -Path "$GoPath/pbmse" -Force -Recurse
-    Remove-Item -Path "$GoPath/models" -Force -Recurse
+    $BaseDir = Split-Path -Path $ProtoPath -Parent
+    $ProtoDir = Split-Path -Path $ProtoPath -Leaf
+    Remove-Item -Path $ProtoPath -Force -Recurse
+    New-Item -Path $BaseDir -Name $ProtoDir -ItemType "directory"
 }
 
-function Set-Require-Relative($filename)
+function Set-Replace-Lines($filename)
 {
     $replacePairs = @{ }
     $replacePairs["require 'keys_pb'"] = "require_relative 'keys_pb'"
-    $replacePairs["require 'pbmse/pbmse_pb'"] = "require_relative 'pbmse/pbmse_pb'"
+    $replacePairs["require 'pbmse/pbmse_pb'"] = "require 'okapi/pbmse/pbmse_pb'"
     $replacePairs["require 'CoreService_pb'"] = "require_relative 'CoreService_pb'"
     $replacePairs["require 'WalletService_pb'"] = "require_relative 'WalletService_pb'"
     $replacePairs["require 'IssuerService_pb'"] = "require_relative 'IssuerService_pb'"
@@ -62,41 +64,74 @@ function Set-Require-Relative($filename)
     Set-Content -path $filename -value $fileLines
 }
 
-function Compile-Ruby()
+function Update-Golang()
+{
+    $GoPath = "../go/proto"
+    Remove-OldProtoFiles($GoPath)
+    protoc $( Get-ProtoPath ) `
+        --go_out="$GoPath" `
+        --go-grpc_out="$GoPath" `
+        --go_opt=paths=source_relative `
+        --go-grpc_opt=paths=source_relative `
+        $( Get-ProtoFiles )
+
+    # flatten hierarchy
+    Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force
+    Copy-Item -Path "$GoPath/models/*"  -Destination "$GoPath" -recurse -Force
+    Remove-Item -Path "$GoPath/pbmse" -Force -Recurse
+    Remove-Item -Path "$GoPath/models" -Force -Recurse
+}
+
+function Update-Ruby()
 {
     # TODO - Get this plugin path directly.
     $RubyPath = "../ruby/lib/trinsic"
-    grpc_tools_ruby_protoc $( Get-Proto-Path ) `
+    Remove-OldProtoFiles($RubyPath)
+    grpc_tools_ruby_protoc $( Get-ProtoPath ) `
        --ruby_out="$RubyPath" `
        --grpc_out="$RubyPath" `
-       $( Get-Proto-Files )
+       $( Get-ProtoFiles )
 
     # TODO - Type specifier capability
-    # TODO - Remove the pbmse file
+    Remove-Item -Path "$RubyPath/pbmse" -Force -Recurse
 
     # Rewrite a few lines of the files for require-relative: https://github.com/protocolbuffers/protobuf/issues/1137
-    Set-Require-Relative("../ruby/lib/trinsic/IssuerService_pb.rb")
-    Set-Require-Relative("../ruby/lib/trinsic/IssuerService_services_pb.rb")
-    Set-Require-Relative("../ruby/lib/trinsic/WalletService_pb.rb")
-    Set-Require-Relative("../ruby/lib/trinsic/WalletService_services_pb.rb")
+    $filesToUpdate = @("../ruby/lib/trinsic/IssuerService_pb.rb",
+    "../ruby/lib/trinsic/IssuerService_services_pb.rb",
+    "../ruby/lib/trinsic/WalletService_pb.rb",
+    "../ruby/lib/trinsic/WalletService_services_pb.rb",
+    "../ruby/lib/trinsic/CoreService_pb.rb")
+
+    foreach ($filePath in $filesToUpdate)
+    {
+        Set-Replace-Lines($filePath)
+    }
 }
 
-function Compile-Swift()
+function Update-Swift()
 {
-    protoc $( Get-Proto-Path ) --swift_out = ./Sources/OkapiSwift/proto --swift_opt = Visibility = Public  $( Get-Proto-Files )
+    $SwiftPath = "../swift/TrinsicServices/Sources/TrinsicServices/proto"
+    Remove-OldProtoFiles($SwiftPath)
+    protoc $( Get-ProtoPath ) `
+        --swift_opt=Visibility=Public `
+        --swift_out="$SwiftPath" `
+        --grpc-swift_out="$SwiftPath" `
+        $( Get-ProtoFiles )
 }
 
-function Compile-Java()
+function Update-Java()
 {
     $JavaPath = "../java/src/main/java"
-    protoc $( Get-Proto-Path ) --plugin=$(Get-Java-Plugin-Path) --java_out="$JavaPath" $( Get-Proto-Files )
+    protoc $( Get-ProtoPath ) `
+        --plugin=$( Get-JavaPluginPath ) `
+        --java_out="$JavaPath" `
+        $( Get-ProtoFiles )
 }
 
 Setup
-Compile-Golang
-Compile-Ruby
-# TODO - enable once swift services is merged.
-#Compile-Swift
-Compile-Java
+Update-Golang
+Update-Ruby
+Update-Swift
+Update-Java
 # Python is handled in the BuildPython due to venv requirements
 . "./BuildPython.ps1" -RequirementsOnly $true
