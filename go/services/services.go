@@ -11,7 +11,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/trinsic-id/okapi/go/okapi"
-	okapiProto "github.com/trinsic-id/okapi/go/proto"
+	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
@@ -62,16 +62,16 @@ func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
 		return err
 	}
 
-	invokerKey := okapiProto.JsonWebKey{}
+	invokerKey := okapiproto.JsonWebKey{}
 	err = proto.Unmarshal(profile.InvokerJwk, &invokerKey)
 	if err != nil {
 		return err
 	}
 
-	proofResponse, err := okapi.LdProofs{}.CreateProof(&okapiProto.CreateProofRequest{
+	proofResponse, err := okapi.LdProofs().CreateProof(&okapiproto.CreateProofRequest{
 		Document: capabilityStruct,
 		Key:      &invokerKey,
-		Suite:    okapiProto.LdSuite_JcsEd25519Signature2020,
+		Suite:    okapiproto.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
 	})
 	if err != nil {
 		return err
@@ -172,12 +172,16 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 	if err != nil {
 		return nil, err
 	}
-	resolveResponse, err := okapi.DidKey{}.Resolve(&okapiProto.ResolveRequest{Did: configuration.KeyAgreementKeyId})
+
+	dk := okapi.DidKey()
+	dc := okapi.DidComm()
+
+	resolveResponse, err := dk.Resolve(&okapiproto.ResolveRequest{Did: configuration.KeyAgreementKeyId})
 	if err != nil {
 		return nil, err
 	}
 
-	var providerExchangeKey *okapiProto.JsonWebKey
+	var providerExchangeKey *okapiproto.JsonWebKey
 	for _, key := range resolveResponse.Keys {
 		if key.Kid == configuration.KeyAgreementKeyId {
 			providerExchangeKey = key
@@ -185,12 +189,12 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 		}
 	}
 
-	myKey, err := okapi.DidKey{}.Generate(&okapiProto.GenerateKeyRequest{KeyType: okapiProto.KeyType_Ed25519})
+	myKey, err := dk.Generate(&okapiproto.GenerateKeyRequest{KeyType: okapiproto.KeyType_KEY_TYPE_ED25519})
 	if err != nil {
 		return nil, err
 	}
 
-	var myExchangeKey *okapiProto.JsonWebKey
+	var myExchangeKey *okapiproto.JsonWebKey
 	for _, key := range myKey.Key {
 		if key.Crv == "X25519" {
 			myExchangeKey = key
@@ -208,7 +212,7 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 	if err != nil {
 		return nil, err
 	}
-	packedMessage, err := okapi.DidComm{}.Pack(&okapiProto.PackRequest{
+	packedMessage, err := dc.Pack(&okapiproto.PackRequest{
 		SenderKey:   myExchangeKey,
 		ReceiverKey: providerExchangeKey,
 		Plaintext:   walletBytes,
@@ -223,7 +227,7 @@ func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, erro
 		return nil, err
 	}
 
-	decryptedResponse, err := okapi.DidComm{}.Unpack(&okapiProto.UnpackRequest{
+	decryptedResponse, err := dc.Unpack(&okapiproto.UnpackRequest{
 		SenderKey:   providerExchangeKey,
 		ReceiverKey: myExchangeKey,
 		Message:     response,
