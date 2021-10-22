@@ -48,5 +48,15 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     Console.WriteLine(inviteResponse.InvitationId);
     ```
 
+=== "Python"
+    ```python
+    from trinsic.services import ProviderService
+  
+    request = {
+        "email" : "admin@faber.edu",
+        "participant" : provider_services.Organization
+    } 
+    response = await provider_service.invite_participant(request)
+    ```
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
