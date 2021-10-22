@@ -35,6 +35,8 @@ jobs:
           npm run build
           npm test
         shell: pwsh
+        env:
+          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || env.DEFAULT_TEST_URL }}
       - name: Generate Package Version
         run: |
           $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' | ConvertFrom-Json
