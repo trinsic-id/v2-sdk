@@ -24,9 +24,12 @@ type TrustRegistryClient interface {
 	SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error)
 	// Registers an authoritative issuer with a credential template
 	RegisterIssuer(ctx context.Context, in *RegisterIssuerRequest, opts ...grpc.CallOption) (*RegisterIssuerResponse, error)
+	// Registers an authoritative verifier with a credential template
 	RegisterVerifier(ctx context.Context, in *RegisterVerifierRequest, opts ...grpc.CallOption) (*RegisterVerifierResponse, error)
 	// Removes an authoritative issuer with a credential template from the trust registry
-	UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error)
+	UnregisterIssuer(ctx context.Context, in *UnregisterIssuerRequest, opts ...grpc.CallOption) (*UnregisterIssuerResponse, error)
+	// Removes an authoritative verifier with a presentation template from the trust registry
+	UnregisterVerifier(ctx context.Context, in *UnregisterVerifierRequest, opts ...grpc.CallOption) (*UnregisterVerifierResponse, error)
 	CheckIssuerStatus(ctx context.Context, in *CheckIssuerStatusRequest, opts ...grpc.CallOption) (*CheckIssuerStatusResponse, error)
 	CheckVerifierStatus(ctx context.Context, in *CheckVerifierStatusRequest, opts ...grpc.CallOption) (*CheckVerifierStatusResponse, error)
 	FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error)
@@ -42,7 +45,7 @@ func NewTrustRegistryClient(cc grpc.ClientConnInterface) TrustRegistryClient {
 
 func (c *trustRegistryClient) AddFramework(ctx context.Context, in *AddFrameworkRequest, opts ...grpc.CallOption) (*AddFrameworkResponse, error) {
 	out := new(AddFrameworkResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/AddFramework", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/AddFramework", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +54,7 @@ func (c *trustRegistryClient) AddFramework(ctx context.Context, in *AddFramework
 
 func (c *trustRegistryClient) RemoveFramework(ctx context.Context, in *RemoveFrameworkRequest, opts ...grpc.CallOption) (*RemoveFrameworkResponse, error) {
 	out := new(RemoveFrameworkResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/RemoveFramework", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RemoveFramework", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +63,7 @@ func (c *trustRegistryClient) RemoveFramework(ctx context.Context, in *RemoveFra
 
 func (c *trustRegistryClient) SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error) {
 	out := new(SearchRegistryResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/SearchRegistry", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/SearchRegistry", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +72,7 @@ func (c *trustRegistryClient) SearchRegistry(ctx context.Context, in *SearchRegi
 
 func (c *trustRegistryClient) RegisterIssuer(ctx context.Context, in *RegisterIssuerRequest, opts ...grpc.CallOption) (*RegisterIssuerResponse, error) {
 	out := new(RegisterIssuerResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/RegisterIssuer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RegisterIssuer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,16 +81,25 @@ func (c *trustRegistryClient) RegisterIssuer(ctx context.Context, in *RegisterIs
 
 func (c *trustRegistryClient) RegisterVerifier(ctx context.Context, in *RegisterVerifierRequest, opts ...grpc.CallOption) (*RegisterVerifierResponse, error) {
 	out := new(RegisterVerifierResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/RegisterVerifier", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RegisterVerifier", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trustRegistryClient) UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error) {
-	out := new(UnregisterMemberResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/UnregisterMember", in, out, opts...)
+func (c *trustRegistryClient) UnregisterIssuer(ctx context.Context, in *UnregisterIssuerRequest, opts ...grpc.CallOption) (*UnregisterIssuerResponse, error) {
+	out := new(UnregisterIssuerResponse)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *trustRegistryClient) UnregisterVerifier(ctx context.Context, in *UnregisterVerifierRequest, opts ...grpc.CallOption) (*UnregisterVerifierResponse, error) {
+	out := new(UnregisterVerifierResponse)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -96,7 +108,7 @@ func (c *trustRegistryClient) UnregisterMember(ctx context.Context, in *Unregist
 
 func (c *trustRegistryClient) CheckIssuerStatus(ctx context.Context, in *CheckIssuerStatusRequest, opts ...grpc.CallOption) (*CheckIssuerStatusResponse, error) {
 	out := new(CheckIssuerStatusResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/CheckIssuerStatus", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,7 +117,7 @@ func (c *trustRegistryClient) CheckIssuerStatus(ctx context.Context, in *CheckIs
 
 func (c *trustRegistryClient) CheckVerifierStatus(ctx context.Context, in *CheckVerifierStatusRequest, opts ...grpc.CallOption) (*CheckVerifierStatusResponse, error) {
 	out := new(CheckVerifierStatusResponse)
-	err := c.cc.Invoke(ctx, "/trinsic.services.TrustRegistry/CheckVerifierStatus", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +125,7 @@ func (c *trustRegistryClient) CheckVerifierStatus(ctx context.Context, in *Check
 }
 
 func (c *trustRegistryClient) FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error) {
-	stream, err := c.cc.NewStream(ctx, &TrustRegistry_ServiceDesc.Streams[0], "/trinsic.services.TrustRegistry/FetchData", opts...)
+	stream, err := c.cc.NewStream(ctx, &TrustRegistry_ServiceDesc.Streams[0], "/services.trustregistry.v1.TrustRegistry/FetchData", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -154,9 +166,12 @@ type TrustRegistryServer interface {
 	SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error)
 	// Registers an authoritative issuer with a credential template
 	RegisterIssuer(context.Context, *RegisterIssuerRequest) (*RegisterIssuerResponse, error)
+	// Registers an authoritative verifier with a credential template
 	RegisterVerifier(context.Context, *RegisterVerifierRequest) (*RegisterVerifierResponse, error)
 	// Removes an authoritative issuer with a credential template from the trust registry
-	UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error)
+	UnregisterIssuer(context.Context, *UnregisterIssuerRequest) (*UnregisterIssuerResponse, error)
+	// Removes an authoritative verifier with a presentation template from the trust registry
+	UnregisterVerifier(context.Context, *UnregisterVerifierRequest) (*UnregisterVerifierResponse, error)
 	CheckIssuerStatus(context.Context, *CheckIssuerStatusRequest) (*CheckIssuerStatusResponse, error)
 	CheckVerifierStatus(context.Context, *CheckVerifierStatusRequest) (*CheckVerifierStatusResponse, error)
 	FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error
@@ -182,8 +197,11 @@ func (UnimplementedTrustRegistryServer) RegisterIssuer(context.Context, *Registe
 func (UnimplementedTrustRegistryServer) RegisterVerifier(context.Context, *RegisterVerifierRequest) (*RegisterVerifierResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterVerifier not implemented")
 }
-func (UnimplementedTrustRegistryServer) UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterMember not implemented")
+func (UnimplementedTrustRegistryServer) UnregisterIssuer(context.Context, *UnregisterIssuerRequest) (*UnregisterIssuerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnregisterIssuer not implemented")
+}
+func (UnimplementedTrustRegistryServer) UnregisterVerifier(context.Context, *UnregisterVerifierRequest) (*UnregisterVerifierResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnregisterVerifier not implemented")
 }
 func (UnimplementedTrustRegistryServer) CheckIssuerStatus(context.Context, *CheckIssuerStatusRequest) (*CheckIssuerStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckIssuerStatus not implemented")
@@ -217,7 +235,7 @@ func _TrustRegistry_AddFramework_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/AddFramework",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/AddFramework",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).AddFramework(ctx, req.(*AddFrameworkRequest))
@@ -235,7 +253,7 @@ func _TrustRegistry_RemoveFramework_Handler(srv interface{}, ctx context.Context
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/RemoveFramework",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).RemoveFramework(ctx, req.(*RemoveFrameworkRequest))
@@ -253,7 +271,7 @@ func _TrustRegistry_SearchRegistry_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/SearchRegistry",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).SearchRegistry(ctx, req.(*SearchRegistryRequest))
@@ -271,7 +289,7 @@ func _TrustRegistry_RegisterIssuer_Handler(srv interface{}, ctx context.Context,
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/RegisterIssuer",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).RegisterIssuer(ctx, req.(*RegisterIssuerRequest))
@@ -289,7 +307,7 @@ func _TrustRegistry_RegisterVerifier_Handler(srv interface{}, ctx context.Contex
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/RegisterVerifier",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).RegisterVerifier(ctx, req.(*RegisterVerifierRequest))
@@ -297,20 +315,38 @@ func _TrustRegistry_RegisterVerifier_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_UnregisterMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterMemberRequest)
+func _TrustRegistry_UnregisterIssuer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnregisterIssuerRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrustRegistryServer).UnregisterMember(ctx, in)
+		return srv.(TrustRegistryServer).UnregisterIssuer(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/UnregisterMember",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).UnregisterMember(ctx, req.(*UnregisterMemberRequest))
+		return srv.(TrustRegistryServer).UnregisterIssuer(ctx, req.(*UnregisterIssuerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TrustRegistry_UnregisterVerifier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnregisterVerifierRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TrustRegistryServer).UnregisterVerifier(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TrustRegistryServer).UnregisterVerifier(ctx, req.(*UnregisterVerifierRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -325,7 +361,7 @@ func _TrustRegistry_CheckIssuerStatus_Handler(srv interface{}, ctx context.Conte
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/CheckIssuerStatus",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).CheckIssuerStatus(ctx, req.(*CheckIssuerStatusRequest))
@@ -343,7 +379,7 @@ func _TrustRegistry_CheckVerifierStatus_Handler(srv interface{}, ctx context.Con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.TrustRegistry/CheckVerifierStatus",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrustRegistryServer).CheckVerifierStatus(ctx, req.(*CheckVerifierStatusRequest))
@@ -376,7 +412,7 @@ func (x *trustRegistryFetchDataServer) Send(m *FetchDataResponse) error {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.TrustRegistry",
+	ServiceName: "services.trustregistry.v1.TrustRegistry",
 	HandlerType: (*TrustRegistryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -400,8 +436,12 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrustRegistry_RegisterVerifier_Handler,
 		},
 		{
-			MethodName: "UnregisterMember",
-			Handler:    _TrustRegistry_UnregisterMember_Handler,
+			MethodName: "UnregisterIssuer",
+			Handler:    _TrustRegistry_UnregisterIssuer_Handler,
+		},
+		{
+			MethodName: "UnregisterVerifier",
+			Handler:    _TrustRegistry_UnregisterVerifier_Handler,
 		},
 		{
 			MethodName: "CheckIssuerStatus",
@@ -419,5 +459,5 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 	},
-	Metadata: "TrustRegistry.proto",
+	Metadata: "services/trust-registry/v1/trust-registry.proto",
 }

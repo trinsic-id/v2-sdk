@@ -9,7 +9,6 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -168,7 +167,7 @@ func (w *WalletBase) RegisterOrConnect(email string) error {
 }
 
 func (w *WalletBase) CreateWallet(securityCode string) (*sdk.WalletProfile, error) {
-	configuration, err := w.walletClient.GetProviderConfiguration(context.Background(), &empty.Empty{})
+	configuration, err := w.walletClient.GetProviderConfiguration(context.Background(), &sdk.GetProviderConfigurationRequest{})
 	if err != nil {
 		return nil, err
 	}
