@@ -27,7 +27,7 @@ env:
 
 jobs:
   build_test:
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       matrix:

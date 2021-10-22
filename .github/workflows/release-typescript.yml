@@ -10,8 +10,9 @@ env:
 
 jobs:
   publish_npm:
-    name: Publish to NPM
+    name: Publish
     runs-on: ubuntu-latest
+    environment: npmjs.com
     strategy:
       matrix:
         target: [ "node", "web" ]
