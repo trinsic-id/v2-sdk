@@ -82,26 +82,10 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public async createWallet(securityCode: string = null): Promise<WalletProfile> {
-    // Fetch Server Configuration and find key to use
-    // for generating shared secret for authenticated encryption
-    let configuration = await this.getProviderConfiguration();
-    let resolveRequest = new ResolveRequest();
-    resolveRequest.setDid(configuration.getKeyAgreementKeyId());
-    let resolveResponse = await DIDKey.resolve(resolveRequest);
-
-    let providerExchangeKey = resolveResponse
-      .getKeysList()
-      .find((x) => x.getKid() === configuration.getKeyAgreementKeyId());
-
-    if (providerExchangeKey === undefined) throw new Error("Key agreement key not found");
-
     // Generate new DID used by the current device
     let keyRequest = new GenerateKeyRequest();
     keyRequest.setKeyType(KeyType.KEY_TYPE_ED25519);
     let myKey = await DIDKey.generate(keyRequest);
-    let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
-
-    if (myExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     let myDidDocument = myKey.getDidDocument().toJavaScript();
     // Create an encrypted message
@@ -112,39 +96,19 @@ export class TrinsicWalletService extends ServiceBase {
     if (!securityCode) securityCode = "";
     createWalletRequest.setSecurityCode(securityCode);
 
-    let packRequest = new PackRequest();
-    packRequest.setSenderKey(myExchangeKey);
-    packRequest.setReceiverKey(providerExchangeKey);
-    packRequest.setPlaintext(createWalletRequest.serializeBinary());
-
-    var packedMessage = await DIDComm.pack(packRequest);
-
     return new Promise((resolve, reject) => {
-      // Invoke create wallet using encrypted message
-      // Call the server endpoint with encrypted message
-      let message = EncryptedMessage.deserializeBinary(packedMessage.getMessage().serializeBinary());
-
-      this.client.createWalletEncrypted(message, async (error, response) => {
+      this.client.createWallet(createWalletRequest, async (error, response) => {
         if (error) {
           console.error(error.message);
           reject(error.message);
         }
 
-        let unpackRequest = new UnpackRequest();
-        unpackRequest.setMessage(response);
-        unpackRequest.setReceiverKey(myExchangeKey);
-        unpackRequest.setSenderKey(providerExchangeKey);
-
-        let decryptedResponse = await DIDComm.unpack(unpackRequest);
-
-        let createWalletResponse = CreateWalletResponse.deserializeBinary(decryptedResponse.getPlaintext_asU8());
-
         // This profile should be stored and supplied later
         let walletProfile = new WalletProfile()
-          .setWalletId(createWalletResponse.getWalletId())
-          .setCapability(createWalletResponse.getCapability())
+          .setWalletId(response.getWalletId())
+          .setCapability(response.getCapability())
           .setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()))
-          .setInvoker(createWalletResponse.getInvoker())
+          .setInvoker(response.getInvoker())
           .setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 
         resolve(walletProfile);

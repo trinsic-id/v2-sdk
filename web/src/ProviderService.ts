@@ -1,11 +1,6 @@
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "./proto/ProviderServiceServiceClientPb";
-import {
-  InvitationStatusRequest,
-  InvitationStatusResponse,
-  InviteRequest,
-  InviteResponse,
-} from "./proto/ProviderService_pb";
+import { ProviderClient } from "./proto";
+import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export * from "grpc-web";
 export class TrinsicProviderService extends ServiceBase {

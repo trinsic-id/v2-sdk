@@ -28,7 +28,7 @@ export default abstract class ServiceBase {
     let proofRequest = new CreateProofRequest()
       .setDocument(Struct.fromJavaScript(capabilityDocument))
       .setKey(okapi.JsonWebKey.deserializeBinary(profile.getInvokerJwk_asU8()))
-      .setSuite(okapi.LdSuite.JCSED25519SIGNATURE2020);
+      .setSuite(okapi.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020);
 
     let proofResponse = await okapi.LdProofs.generate(proofRequest);
 

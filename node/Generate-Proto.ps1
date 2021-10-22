@@ -2,9 +2,9 @@
 param($OutDir = './src/proto')
 
 $PROTOC_GEN_TS_PATH = "./node_modules/.bin/protoc-gen-ts"
-$GRPC_TOOLS_NODE_PROTOC="./node_modules/.bin/grpc_tools_node_protoc"
-$OUTPUT_DIR=$OutDir
-$PROTO_DIR= Resolve-Path "../proto"
+$GRPC_TOOLS_NODE_PROTOC = "./node_modules/.bin/grpc_tools_node_protoc"
+$OUTPUT_DIR = $OutDir
+$PROTO_DIR = Resolve-Path "../proto"
 
 foreach ($Item in Get-ChildItem -Path $PROTO_DIR -Include *.proto -Recurse) {
     $File = $Item.FullName

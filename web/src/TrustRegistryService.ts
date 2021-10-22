@@ -1,5 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { TrustRegistryClient } from "./proto/TrustRegistryServiceClientPb";
+import { TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -19,7 +19,7 @@ import {
   UnregisterIssuerResponse,
   UnregisterVerifierRequest,
   UnregisterVerifierResponse,
-} from "./proto/TrustRegistry_pb";
+} from "./proto";
 
 export class TrustRegistryService extends ServiceBase {
   client: TrustRegistryClient;
