@@ -1,0 +1,53 @@
+name: "TypeScript (build)"
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'node/**'
+      - 'web/**'
+      - 'proto/**'
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: "Package Version"
+        required: true
+        default: "1.0.0"
+      testUrl:
+        description: "Test Endpoint"
+        required: true
+        default: "trinsic-staging.centralus.azurecontainer.io:5000"
+
+env:
+  DEFAULT_TEST_URL: "trinsic-staging.centralus.azurecontainer.io:5000"
+
+jobs:
+  build_test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [ "node", "web" ]
+    defaults:
+      run:
+        working-directory: ${{ matrix.target }}
+    steps:
+      - uses: actions/checkout@v1
+      - uses: arduino/setup-protoc@v1
+      - run: |
+          curl -L https://github.com/grpc/grpc-web/releases/download/1.3.0/protoc-gen-grpc-web-1.3.0-linux-x86_64 --output protoc-gen-grpc-web
+          chmod +x protoc-gen-grpc-web
+          $env:PATH += ":$PWD"
+
+          npm install
+          npm run build
+          npm test
+        env:
+          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || env.DEFAULT_TEST_URL }}
+        shell: pwsh
+
+

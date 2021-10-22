@@ -25,7 +25,5 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v1
-        with:
-          token: ${{ secrets.ACCESS_TOKEN }}
       - run: cargo build
       - run: cargo test

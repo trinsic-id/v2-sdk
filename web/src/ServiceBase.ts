@@ -1,6 +1,6 @@
 import { CreateProofRequest, JsonWebKey, LdProofs, LdSuite } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
-import { WalletProfile } from "./proto/WalletService_pb";
+import { WalletProfile } from "./proto";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import { Buffer } from "buffer";
 

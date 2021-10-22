@@ -7,11 +7,11 @@ import {
   ResolveRequest,
   UnpackRequest,
 } from "@trinsic/okapi";
-import { EncryptedMessage } from "./proto/pbmse/pbmse_pb";
+import { EncryptedMessage } from "./proto";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import ServiceBase from "./ServiceBase";
-import { WalletClient } from "./proto/WalletServiceServiceClientPb";
-import { CredentialClient } from "./proto/IssuerServiceServiceClientPb";
+import { GetProviderConfigurationRequest, WalletClient } from "./proto";
+import { CredentialClient } from "./proto";
 import {
   ConnectRequest,
   GetProviderConfigurationResponse,
@@ -22,15 +22,8 @@ import {
   InsertItemRequest,
   SearchResponse,
   SearchRequest,
-} from "./proto/WalletService_pb";
-import {
-  CreateProofRequest,
-  IssueRequest,
-  SendRequest,
-  SendResponse,
-  VerifyProofRequest,
-} from "./proto/IssuerService_pb";
-import { Empty } from "google-protobuf/google/protobuf/empty_pb";
+} from "./proto";
+import { CreateProofRequest, IssueRequest, SendRequest, SendResponse, VerifyProofRequest } from "./proto";
 import { JsonPayload } from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
@@ -64,7 +57,7 @@ export class TrinsicWalletService extends ServiceBase {
 
   public getProviderConfiguration(): Promise<GetProviderConfigurationResponse> {
     return new Promise((resolve, reject) => {
-      this.client.getProviderConfiguration(new Empty(), {}, (error, response) => {
+      this.client.getProviderConfiguration(new GetProviderConfigurationRequest(), {}, (error, response) => {
         if (error) {
           reject(error);
         } else {
@@ -75,24 +68,9 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public async createWallet(securityCode: string = null): Promise<WalletProfile> {
-    // Fetch Server Configuration and find key to use
-    // for generating shared secret for authenticated encryption
-    let configuration = await this.getProviderConfiguration();
-    let resolveRequest = new ResolveRequest().setDid(configuration.getKeyAgreementKeyId());
-    let resolveResponse = await DIDKey.resolve(resolveRequest);
-
-    let providerExchangeKey = resolveResponse
-      .getKeysList()
-      .find((x) => x.getKid() === configuration.getKeyAgreementKeyId());
-
-    if (providerExchangeKey === undefined) throw new Error("Key agreement key not found");
-
     // Generate new DID used by the current device
     let keyRequest = new GenerateKeyRequest().setKeyType(KeyType.ED25519);
     let myKey = await DIDKey.generate(keyRequest);
-    let myExchangeKey = myKey.getKeyList().find((x) => x.getCrv() === "X25519");
-
-    if (myExchangeKey === undefined) throw new Error("Key agreement key not found");
 
     let myDidDocument = myKey.getDidDocument().toJavaScript();
     // Create an encrypted message
@@ -103,44 +81,17 @@ export class TrinsicWalletService extends ServiceBase {
     if (!securityCode) securityCode = "";
     createWalletRequest.setSecurityCode(securityCode);
 
-    let packRequest = new PackRequest()
-      .setSenderKey(myExchangeKey)
-      .setReceiverKey(providerExchangeKey)
-      .setPlaintext(createWalletRequest.serializeBinary());
+    let createWalletResponse = await this.client.createWallet(createWalletRequest, null);
 
-    var packedMessage = await DIDComm.pack(packRequest);
+    // This profile should be stored and supplied later
+    let walletProfile = new WalletProfile()
+      .setWalletId(createWalletResponse.getWalletId())
+      .setCapability(createWalletResponse.getCapability())
+      .setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()))
+      .setInvoker(createWalletResponse.getInvoker())
+      .setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
 
-    return new Promise((resolve, reject) => {
-      // Invoke create wallet using encrypted message
-      // Call the server endpoint with encrypted message
-      let message = EncryptedMessage.deserializeBinary(packedMessage.getMessage().serializeBinary());
-
-      this.client.createWalletEncrypted(message, {}, async (error, response) => {
-        if (error) {
-          console.error(error.message);
-          reject(error.message);
-        }
-
-        let unpackRequest = new UnpackRequest()
-          .setMessage(response)
-          .setReceiverKey(myExchangeKey)
-          .setSenderKey(providerExchangeKey);
-
-        let decryptedResponse = await DIDComm.unpack(unpackRequest);
-
-        let createWalletResponse = CreateWalletResponse.deserializeBinary(decryptedResponse.getPlaintext_asU8());
-
-        // This profile should be stored and supplied later
-        let walletProfile = new WalletProfile()
-          .setWalletId(createWalletResponse.getWalletId())
-          .setCapability(createWalletResponse.getCapability())
-          .setDidDocument(new JsonPayload().setJsonStruct(myKey.getDidDocument()))
-          .setInvoker(createWalletResponse.getInvoker())
-          .setInvokerJwk(myKey.getKeyList()[0].serializeBinary());
-
-        resolve(walletProfile);
-      });
-    });
+    return walletProfile;
   }
 
   public issueCredential(document: JSStruct): Promise<object> {

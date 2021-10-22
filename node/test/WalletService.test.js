@@ -41,14 +41,14 @@ test("generate proof with Jcs", async (t) => {
     },
   };
 
-  let generateKeyRequest = new GenerateKeyRequest().setKeyType(okapi.KeyType.ED25519);
+  let generateKeyRequest = new GenerateKeyRequest().setKeyType(okapi.KeyType.KEY_TYPE_ED25519);
   let key = await okapi.DIDKey.generate(generateKeyRequest);
   let signingKey = key.getKeyList().find((x) => x.getCrv() === "Ed25519");
 
   let createProofRequest = new okapi.CreateProofRequest()
     .setKey(signingKey)
     .setDocument(Struct.fromJavaScript(capabilityDocument))
-    .setSuite(okapi.LdSuite.JCSED25519SIGNATURE2020);
+    .setSuite(okapi.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020);
 
   let proofResponse = await okapi.LdProofs.generate(createProofRequest);
 
@@ -122,16 +122,12 @@ test("send an item to a user's wallet using email", async (t) => {
 
   // Provider creates initial wallet for Alice
   let aliceEmail = randomEmail();
-  let aliceInviteRequest = new InviteRequest()
-    .setDescription("Test Wallet")
-    .setEmail(aliceEmail);
+  let aliceInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(aliceEmail);
   let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
   let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
   let bobEmail = randomEmail();
-  let bobInviteRequest = new InviteRequest()
-    .setDescription("Test Wallet")
-    .setEmail(bobEmail);
+  let bobInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(bobEmail);
   invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
   let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
