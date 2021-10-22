@@ -33,7 +33,7 @@ func NewDebuggingClient(cc grpc.ClientConnInterface) DebuggingClient {
 
 func (c *debuggingClient) CallEmpty(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Debugging/CallEmpty", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.debug.v1.Debugging/CallEmpty", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func (c *debuggingClient) CallEmpty(ctx context.Context, in *emptypb.Empty, opts
 
 func (c *debuggingClient) CallEmptyAuth(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/trinsic.services.Debugging/CallEmptyAuth", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.debug.v1.Debugging/CallEmptyAuth", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +91,7 @@ func _Debugging_CallEmpty_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Debugging/CallEmpty",
+		FullMethod: "/services.debug.v1.Debugging/CallEmpty",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DebuggingServer).CallEmpty(ctx, req.(*emptypb.Empty))
@@ -109,7 +109,7 @@ func _Debugging_CallEmptyAuth_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trinsic.services.Debugging/CallEmptyAuth",
+		FullMethod: "/services.debug.v1.Debugging/CallEmptyAuth",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(DebuggingServer).CallEmptyAuth(ctx, req.(*emptypb.Empty))
@@ -121,7 +121,7 @@ func _Debugging_CallEmptyAuth_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Debugging_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trinsic.services.Debugging",
+	ServiceName: "services.debug.v1.Debugging",
 	HandlerType: (*DebuggingServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -134,5 +134,5 @@ var Debugging_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "DebugService.proto",
+	Metadata: "services/debug/v1/debug.proto",
 }
