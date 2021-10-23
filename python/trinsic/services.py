@@ -2,19 +2,21 @@ import base64
 import datetime
 import json
 import urllib.parse
-from typing import Mapping
+from typing import Mapping, Dict, List
 
-import betterproto
 from grpclib.client import Channel
-from okapi.keys import LDProofs, DIDKey, DIDComm
+from okapi.keys import LDProofs, DIDKey
 from okapi.okapi_utils import dictionary_to_struct, struct_to_dictionary
-from okapi.proto.okapi.keys import JsonWebKey, ResolveRequest, GenerateKeyRequest, KeyType
+from okapi.proto.okapi.keys import JsonWebKey, GenerateKeyRequest, KeyType
 from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
-from okapi.proto.okapi.transport import PackRequest, UnpackRequest
 
-from trinsic.proto.trinsic.services import WalletProfile, WalletStub, CredentialStub, CreateWalletRequest, \
-    CreateWalletResponse, SearchResponse, ProviderStub, InviteRequest, InviteResponse, InvitationStatusRequest, \
-    InvitationStatusResponse, JsonPayload, ParticipantType, InviteRequestDidCommInvitation
+from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
+from trinsic.proto.services.provider.v1 import ProviderStub, InviteRequestDidCommInvitation, InviteResponse, \
+    ParticipantType, InvitationStatusResponse
+from trinsic.proto.services.trustregistry.v1 import TrustRegistryStub, AddFrameworkRequest, GovernanceFramework, \
+    RegistrationStatus
+from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub, SearchResponse
+from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 
 
 def create_channel_if_needed(channel: Channel, service_address: str) -> Channel:
@@ -67,31 +69,11 @@ class WalletService(ServiceBase):
         await self.client.connect_external_identity(email=email)
 
     async def create_wallet(self, security_code: str = None) -> WalletProfile:
-        configuration = await self.client.get_provider_configuration()
-        resolve_response = DIDKey.resolve(ResolveRequest(did=configuration.key_agreement_key_id))
-        provider_exchange_key: JsonWebKey = \
-            [x for x in resolve_response.keys if x.kid == configuration.key_agreement_key_id][0]
-
         my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.Ed25519))
-        my_exchange_key: JsonWebKey = [x for x in my_key.key if x.crv == "X25519"][0]
-
         my_did_document = struct_to_dictionary(my_key.did_document)
 
-        packed_message = DIDComm.pack(PackRequest(sender_key=my_exchange_key, receiver_key=provider_exchange_key,
-                                                  plaintext=bytes(CreateWalletRequest(
-                                                      description="My Cloud Wallet",
-                                                      controller=my_did_document['id'],
-                                                      security_code=security_code or ""))))
-
-        response = await self.client.create_wallet_encrypted(iv=packed_message.message.iv,
-                                                             recipients=packed_message.message.recipients,
-                                                             ciphertext=packed_message.message.ciphertext,
-                                                             aad=packed_message.message.aad,
-                                                             tag=packed_message.message.tag)
-
-        decrypted_response = DIDComm.unpack(UnpackRequest(message=response, receiver_key=my_exchange_key,
-                                                          sender_key=provider_exchange_key))
-        create_wallet_response = CreateWalletResponse().parse(decrypted_response.plaintext)
+        create_wallet_response = await self.client.create_wallet(controller=str(my_did_document['id']),
+                                                                 security_code=security_code or "")
 
         return WalletProfile(wallet_id=create_wallet_response.wallet_id,
                              capability=create_wallet_response.capability,
@@ -158,3 +140,72 @@ class ProviderService(ServiceBase):
             raise Exception("Onboarding reference ID must be set.")
 
         return await self.provider_client.invitation_status(invitation_id=invitation_id)
+
+
+class TrustRegistryService(ServiceBase):
+    def __init__(self, service_address: str = "http://localhost:5000", channel: Channel = None):
+        super().__init__()
+        self.channel = create_channel_if_needed(channel, service_address)
+        self.provider_client = TrustRegistryStub(self.channel)
+
+    def __del__(self):
+        if self.channel:
+            self.channel.close()
+
+    async def register_governance_framework(self, governance_framework: str, description: str):
+        governance_url = urllib.parse.urlsplit(governance_framework, allow_fragments=False)
+        # TODO - Verify complete url
+        if governance_url.scheme and governance_url.netloc and governance_url.path:
+            self.provider_client.metadata = self.metadata
+            response = await self.provider_client.add_framework(governance_framework=GovernanceFramework(
+                governance_framework_uri=governance_framework,
+                description=description
+            ))
+        else:
+            raise ValueError(f"Invalid URI string={governance_framework}")
+
+    async def register_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
+                              valid_from: datetime.datetime, valid_until: datetime.datetime):
+        # TODO - Handle nones for valid_from, valid_until
+        self.provider_client.metadata = self.metadata
+        await self.provider_client.register_issuer(did_uri=issuer_did,
+                                                   credential_type_uri=credential_type,
+                                                   governance_framework_uri=governance_framework,
+                                                   valid_from_utc=int(valid_from.timestamp()),
+                                                   valid_until_utc=int(valid_until.timestamp()))
+
+    async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
+                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+        raise NotImplementedError
+
+    async def register_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
+                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+        self.provider_client.metadata = self.metadata
+        await self.provider_client.register_verifier(did_uri=verifier_did,
+                                                     presentation_type_uri=presentation_type,
+                                                     governance_framework_uri=governance_framework,
+                                                     valid_from_utc=int(valid_from.timestamp()),
+                                                     valid_until_utc=int(valid_until.timestamp()))
+
+    async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
+                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+        raise NotImplementedError
+
+    async def check_issuer_status(self, issuer_did: str, credential_type: str, governance_framework: str) -> RegistrationStatus:
+        self.provider_client.metadata = self.metadata
+        return (await self.provider_client.check_issuer_status(governance_framework_uri= governance_framework,
+                                                              did_uri=issuer_did,
+                                                              credential_type_uri=credential_type)).status
+
+    async def check_verifier_status(self, issuer_did: str, presentation_type: str,
+                                  governance_framework: str) -> RegistrationStatus:
+        self.provider_client.metadata = self.metadata
+        return (await self.provider_client.check_verifier_status(governance_framework_uri=governance_framework,
+                                                                 did_uri=issuer_did,
+                                                                 presentation_type_uri=presentation_type)).status
+
+    async def search_registry(self, query:str="SELECT * FROM c") -> List[Dict]:
+        self.provider_client.metadata = self.metadata
+        response = await self.provider_client.search_registry(query=query, options=RequestOptions(response_json_format=JsonFormat.Protobuf))
+
+        return [item.json_struct.to_dict() for item in response.items]

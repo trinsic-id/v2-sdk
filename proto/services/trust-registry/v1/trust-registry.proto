@@ -4,7 +4,7 @@ package services.trustregistry.v1;
 import "services/common/v1/common.proto";
 
 option csharp_namespace = "Trinsic.Services.TrustRegistry.V1";
-option java_package = "trinsic.services";
+option java_package = "trinsic.services.trustregistry.v1";
 option go_package = "github.com/trinsic-id/sdk";
 
 message AddFrameworkRequest {
