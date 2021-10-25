@@ -60,14 +60,13 @@ function Update-Golang()
     protoc $( Get-ProtoPath ) `
         --go_out="$GoPath" `
         --go-grpc_out="$GoPath" `
-        --go_opt=paths=source_relative `
-        --go-grpc_opt=paths=source_relative `
+        '--go_opt=module=github.com/trinsic-id/sdk' `
+        '--go-grpc_opt=module=github.com/trinsic-id/sdk' `
         $( Get-ProtoFiles )
 
     # flatten hierarchy
-    Copy-Item -Path "$GoPath/pbmse/*"  -Destination "$GoPath" -recurse -Force
     Copy-Item -Path "$GoPath/models/*"  -Destination "$GoPath" -recurse -Force
-    Remove-Item -Path "$GoPath/pbmse" -Force -Recurse
+    Remove-Item -Path "$GoPath/go" -Force -Recurse
     Remove-Item -Path "$GoPath/models" -Force -Recurse
 }
 
@@ -117,10 +116,15 @@ function Update-Java()
         $( Get-ProtoFiles )
 }
 
+function Update-Python
+{
+    # Python is handled in the BuildPython due to venv requirements
+    . "./BuildPython.ps1" -RequirementsOnly $true
+}
+
 Setup
 Update-Golang
-Update-Ruby
-Update-Swift
-Update-Java
-# Python is handled in the BuildPython due to venv requirements
-. "./BuildPython.ps1" -RequirementsOnly $true
+# Update-Ruby
+# Update-Swift
+# Update-Java
+# Update-Python
