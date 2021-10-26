@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -35,7 +35,7 @@ namespace Trinsic.Tests
         {
             Assert.Throws<UriFormatException>(() => ServiceBase.CreateChannelIfNeeded("localhost"));
             Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("localhost:5000"));
-            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("http://localhost"));
+            // Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("http://localhost"));
             // Throws because HTTPS is not yet supported.
             Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("https://localhost:5000"));
             
