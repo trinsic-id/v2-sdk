@@ -1,6 +1,7 @@
 package services
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -42,15 +43,19 @@ func TestServiceBase_SetProfile(t *testing.T) {
 	if !assert.Nil(err) {
 		return
 	}
-	demoWallet, err := walletService.CreateWallet("")
+	demoWallet, err := walletService.CreateWallet(context.Background(), "")
 	if !assert.Nil(err) {
 		return
 	}
 
 	err = base.SetProfile(demoWallet)
-	assert.NoError(err)
+	if !assert.NoError(err) {
+		return
+	}
 	ctxt, err = base.GetMetadata()
-	assert.NoError(err)
+	if !assert.NoError(err) {
+		return
+	}
 	assert.NotNil(ctxt)
 }
 
@@ -86,19 +91,19 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
-	allison, err := walletService.CreateWallet("")
+	allison, err := walletService.CreateWallet(context.Background(), "")
 	failError(t, "error creating wallet", err)
 	if !assert.NotNil(allison) {
 		return
 	}
 
-	clinic, err := walletService.CreateWallet("")
+	clinic, err := walletService.CreateWallet(context.Background(), "")
 	failError(t, "error creating wallet", err)
 	if !assert.NotNil(clinic) {
 		return
 	}
 
-	airline, err := walletService.CreateWallet("")
+	airline, err := walletService.CreateWallet(context.Background(), "")
 	failError(t, "error creating wallet", err)
 	if !assert.NotNil(airline) {
 		return
@@ -120,7 +125,7 @@ func TestVaccineCredentials(t *testing.T) {
 	err = json.Unmarshal(fileContent, &credentialJson)
 	failError(t, "error parsing JSON", err)
 
-	credential, err := walletService.IssueCredential(credentialJson)
+	credential, err := walletService.IssueCredential(context.Background(), credentialJson)
 	failError(t, "error issuing credential", err)
 
 	fmt.Printf("Credential:%s\n", credential)
@@ -129,7 +134,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// Alice stores the credential in her cloud wallet.
 	err = walletService.SetProfile(allison)
 	failError(t, "error setting profile", err)
-	itemId, err := walletService.InsertItem(credential)
+	itemId, err := walletService.InsertItem(context.Background(), credential)
 	failError(t, "error inserting item", err)
 	fmt.Println("item id", itemId)
 
@@ -146,7 +151,7 @@ func TestVaccineCredentials(t *testing.T) {
 	err = json.Unmarshal(fileContent2, &proofRequestJson)
 	failError(t, "error parsing JSON", err)
 
-	credentialProof, err := walletService.CreateProof(itemId, proofRequestJson)
+	credentialProof, err := walletService.CreateProof(context.Background(), itemId, proofRequestJson)
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 
@@ -154,7 +159,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// The airline verifies the credential
 	err = walletService.SetProfile(airline)
 	failError(t, "error setting profile", err)
-	valid, err := walletService.VerifyProof(credentialProof)
+	valid, err := walletService.VerifyProof(context.Background(), credentialProof)
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
@@ -192,7 +197,7 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 
 	fmt.Printf("%+v\n", walletService)
 
-	wallet, err := walletService.CreateWallet("")
+	wallet, err := walletService.CreateWallet(context.Background(), "")
 	if !assert.Nil(err) || !assert.NotNil(wallet) {
 		return
 	}
@@ -205,7 +210,7 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 
 	// The issue was not throwing an error that the profile isn't set, but we don't need a wallet profile, so use a
 	// context without metadata attached. See method definition.
-	inviteResponse, err := providerService.InviteParticipant(&sdk.InviteRequest{
+	inviteResponse, err := providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
 		Participant: sdk.ParticipantType_participant_type_individual,
 		Description: "I dunno",
 		ContactMethod: &sdk.InviteRequest_Email{
@@ -216,16 +221,6 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 		panic(err)
 	}
 	fmt.Printf("%+v\n", inviteResponse)
-
-	// TODO - Verify invitation status
-	//inviteStatus, err := providerService.InvitationStatus(&sdk.InvitationStatusRequest{
-	//	InvitationId: inviteResponse.InvitationId,
-	//})
-	//if err != nil {
-	//	panic(err)
-	//}
-	//fmt.Printf("%+v\n", inviteStatus)
-	//assert.Equal(t, sdk.InvitationStatusResponse_InvitationSent, inviteStatus.Status)
 }
 
 func failError(t *testing.T, message string, err error) {
