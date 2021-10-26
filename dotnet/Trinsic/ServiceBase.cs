@@ -65,7 +65,7 @@ namespace Trinsic
         public static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
         {
             var url = new Uri(serviceAddress);
-            if (url.IsDefaultPort) throw new ArgumentException("GRPC Port and scheme required");
+            //if (url.IsDefaultPort) throw new ArgumentException("GRPC Port and scheme required");
             if ("https".Equals(url.Scheme)) throw new ArgumentException("HTTPS not yet supported");
             return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
         }
