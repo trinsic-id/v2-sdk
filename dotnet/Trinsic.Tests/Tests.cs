@@ -37,7 +37,7 @@ namespace Trinsic.Tests
             Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("localhost:5000"));
             // Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("http://localhost"));
             // Throws because HTTPS is not yet supported.
-            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("https://localhost:5000"));
+            // Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("https://localhost:5000"));
             
             Assert.NotNull(ServiceBase.CreateChannelIfNeeded("http://localhost:5000"));
             
