@@ -13,8 +13,7 @@ from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
 from trinsic.proto.services.provider.v1 import ProviderStub, InviteRequestDidCommInvitation, InviteResponse, \
     ParticipantType, InvitationStatusResponse
-from trinsic.proto.services.trustregistry.v1 import TrustRegistryStub, AddFrameworkRequest, GovernanceFramework, \
-    RegistrationStatus
+from trinsic.proto.services.trustregistry.v1 import TrustRegistryStub, GovernanceFramework, RegistrationStatus
 from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub, SearchResponse
 from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 
@@ -154,7 +153,7 @@ class TrustRegistryService(ServiceBase):
 
     async def register_governance_framework(self, governance_framework: str, description: str):
         governance_url = urllib.parse.urlsplit(governance_framework, allow_fragments=False)
-        # TODO - Verify complete url
+        # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
             self.provider_client.metadata = self.metadata
             response = await self.provider_client.add_framework(governance_framework=GovernanceFramework(
