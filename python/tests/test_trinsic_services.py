@@ -43,16 +43,19 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     def test_url_parse(self):
         valid_http_address = "http://localhost:5000"
         valid_https_address = "https://localhost:5000"
+        valid_ip_address = "http://20.75.134.127:80"
+        missing_port_ip_address = "http://20.75.134.127"
         missing_port_address = "http://localhost"
         missing_protocol_address = "localhost:5000"
         blank_address = ""
-        addresses = [valid_http_address, valid_https_address, missing_port_address, missing_protocol_address,
+        addresses = [valid_http_address, valid_https_address, valid_ip_address, missing_port_ip_address,
+                     missing_port_address, missing_protocol_address,
                      blank_address]
-        throws_exception = [False, False, True, True, True]
+        throws_exception = [False, False, False, True, True, True, True]
 
         for ij in range(len(addresses)):
             try:
-                channel = create_channel_if_needed(None, addresses[ij])
+                create_channel_if_needed(service_address=addresses[ij])
                 if throws_exception[ij]:
                     self.fail(f"URL={addresses[ij]} should throw")
             except:

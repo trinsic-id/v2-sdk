@@ -60,13 +60,15 @@ func TestServiceBase_SetProfile(t *testing.T) {
 }
 
 func TestCreateChannelIfNeeded(t *testing.T) {
-	var validHttpAddress = "http://localhost:5000"
-	var validHttpsAddress = "https://localhost:5000" // Currently, fails due to lack of HTTPS support.
-	var missingPortAddress = "http://localhost"
-	var missingProtocolAddress = "localhost:5000"
-	var blankAddress = ""
-	testAddresses := []string{validHttpAddress, validHttpsAddress, missingPortAddress, missingProtocolAddress, blankAddress}
-	throwsException := []bool{false, true, true, true, true}
+	const validHttpAddress = "http://localhost:5000"
+	const validHttpsAddress = "https://localhost:5000" // Currently, fails due to lack of HTTPS support.
+	const validIpAddress = "http://20.75.134.127:80"
+	const missingPortIpAddress = "http://20.75.134.127"
+	const missingPortAddress = "http://localhost"
+	const missingProtocolAddress = "localhost:5000"
+	const blankAddress = ""
+	testAddresses := []string{validHttpAddress, validHttpsAddress, validIpAddress, missingPortIpAddress, missingPortAddress, missingProtocolAddress, blankAddress}
+	throwsException := []bool{false, true, false, true, true, true, true}
 
 	for ij := 0; ij < len(testAddresses); ij++ {
 		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
