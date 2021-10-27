@@ -1,7 +1,7 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
-use tonic::transport::Channel;
+use tonic::transport::{Certificate, Channel, ClientTlsConfig, Identity, ServerTlsConfig};
 use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
 use trinsic::proto::services::common::v1::JsonPayload;
@@ -64,9 +64,30 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let mut client = WalletClient::connect(config.server.address)
+    let cert = tokio::fs::read("data/client.pem").await?;
+    let key1 = tokio::fs::read("data/client.key").await?;
+
+    let my_ca =tokio::fs::read("data/my_ca.pem").await?;
+    let ca = Certificate::from_pem(my_ca);
+    let id= Identity::from_pem(cert,key1);
+
+    let tls = ClientTlsConfig::default()
+        .ca_certificate(ca)
+        .domain_name("trinsic.cloud")
+        .identity(id);
+    let address: &'static str = "https://dev-internal.trinsic.cloud:443/";
+    let channel = Channel::from_static(&address)
+        .tls_config(tls)
+        .unwrap()
+        .connect()
         .await
-        .expect("Unable to connect to server");
+        .unwrap();
+
+    // let mut client = WalletClient::connect(config.server.address)
+    //     .await
+    //     .expect("Unable to connect to server");
+
+    let mut client = WalletClient::new(channel);
 
     let request = tonic::Request::new(CreateWalletRequest {
         controller: key.key[0].kid.clone(),

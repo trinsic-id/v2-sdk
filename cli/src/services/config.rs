@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
-use tonic::{Interceptor, Request};
+use tonic::service::Interceptor;
 use trinsic::proto::services::universalwallet::v1::WalletProfile;
 use trinsic::MessageFormatter;
 
@@ -221,19 +221,32 @@ impl Config {
     }
 }
 
-#[allow(clippy::from_over_into)]
-impl Into<Interceptor> for Config {
-    fn into(self) -> Interceptor {
-        Interceptor::new(move |mut req: Request<()>| {
-            req.metadata_mut().insert(
-                "capability-invocation",
-                self.read_capability()
-                    .expect("couldn't read capability document")
-                    .parse()
-                    .expect("error parsing capability"),
-            );
-            Ok(req)
-        })
+// #[allow(clippy::from_over_into)]
+// impl Into<Interceptor> for Config {
+//     fn into(self) -> Interceptor {
+//         Interceptor::new(move |mut req: Request<()>| {
+//             req.metadata_mut().insert(
+//                 "capability-invocation",
+//                 self.read_capability()
+//                     .expect("couldn't read capability document")
+//                     .parse()
+//                     .expect("error parsing capability"),
+//             );
+//             Ok(req)
+//         })
+//     }
+// }
+
+impl Interceptor for Config {
+    fn call(&mut self, mut request: tonic::Request<()>) -> Result<tonic::Request<()>, tonic::Status> {
+        request.metadata_mut().insert(
+            "capability-invocation",
+            self.read_capability()
+                .expect("couldn't read capability document")
+                .parse()
+                .expect("error parsing capability"),
+        );
+        Ok(request)
     }
 }
 

@@ -2,19 +2,13 @@
 
 ## Installation
 
-Requires [Rustup](https://www.rust-lang.org/tools/install) toolchain
+Requires [Rustup](https://www.rust-lang.org/tools/install) nightly toolchain
 
 ```bash
-cargo install --path .
+cargo +nightly install --git https://github.com/trinsic-id/sdk trinsic
 ```
 
-## Tooling
-
-- [clap](https://github.com/clap-rs/clap) - command line argument parser for Rust
-- [tonic](https://github.com/hyperium/tonic) - gRPC framework
-- [prost](https://github.com/danburkert/prost) - protocol buffer implementation
-
-## Running the CLI
+## Usage
 
 ```
 trinsic --help

@@ -6,11 +6,8 @@ fn main() {
         .out_dir("./src/proto")
         .format(true);
 
-    let mut prost_config = prost_build::Config::new();
-    prost_config.compile_well_known_types();
-    //.type_attribute(".", "#[derive(::serde::Serialize, ::serde::Deserialize)]");
-
     config
+        .compile_well_known_types(true)
         .type_attribute(
             "JsonPayload",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
@@ -19,8 +16,7 @@ fn main() {
             "JsonPayload.json",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
-        .compile_with_config(
-            prost_config,
+        .compile(
             &[
                 "../proto/pbmse/v1/pbmse.proto",
                 "../proto/services/debug/v1/debug.proto",
