@@ -68,7 +68,6 @@ namespace Trinsic
             {
                 var url = new Uri(serviceAddress);
                 AssertPortIsProvided(serviceAddress, url);
-                if ("https".Equals(url.Scheme)) throw new ArgumentException("HTTPS not yet supported");
                 return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
             }
             catch (UriFormatException ufe)

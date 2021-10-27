@@ -35,7 +35,7 @@ namespace Trinsic.Tests
         [InlineData("localhost:5000", false)]
         [InlineData("http://localhost", false)]
         [InlineData("http://20.75.134.127", false)]
-        [InlineData("https://localhost:5000", false)] // Throws because HTTPS is not yet supported.
+        [InlineData("https://localhost:5000", true)]
         [InlineData("http://localhost:5000", true)]
         [InlineData("http://localhost:80", true)]
         [InlineData("http://20.75.134.127:80", true)]
