@@ -64,10 +64,26 @@ namespace Trinsic
         
         public static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
         {
-            var url = new Uri(serviceAddress);
-            //if (url.IsDefaultPort) throw new ArgumentException("GRPC Port and scheme required");
-            if ("https".Equals(url.Scheme)) throw new ArgumentException("HTTPS not yet supported");
-            return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
+            try
+            {
+                var url = new Uri(serviceAddress);
+                AssertPortIsProvided(serviceAddress, url);
+                if ("https".Equals(url.Scheme)) throw new ArgumentException("HTTPS not yet supported");
+                return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
+            }
+            catch (UriFormatException ufe)
+            {
+                throw new ArgumentException("Invalid service address", ufe);
+            }
+        }
+
+        private static void AssertPortIsProvided(string serviceAddress, Uri url)
+        {
+            // If port not provided, it will mismatch as a string
+            var rebuiltUri = new UriBuilder(url.Scheme, url.Host, url.Port, url.AbsolutePath);
+            // Remove trailing '/'
+            if (!serviceAddress.TrimEnd('/').StartsWith(rebuiltUri.ToString().TrimEnd('/')))
+                throw new ArgumentException("GRPC Port and scheme required");
         }
     }
 }

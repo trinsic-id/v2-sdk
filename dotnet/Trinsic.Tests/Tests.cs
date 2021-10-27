@@ -30,17 +30,21 @@ namespace Trinsic.Tests
         private string VaccinationCertificateFrame =>
             Path.GetFullPath(Path.Join(TestDataPath, "vaccination-certificate-frame.jsonld"));
 
-        [Fact]
-        public void TestParseURL()
+        [Theory]
+        [InlineData("localhost", false)]
+        [InlineData("localhost:5000", false)]
+        [InlineData("http://localhost", false)]
+        [InlineData("http://20.75.134.127", false)]
+        [InlineData("https://localhost:5000", false)] // Throws because HTTPS is not yet supported.
+        [InlineData("http://localhost:5000", true)]
+        [InlineData("http://localhost:80", true)]
+        [InlineData("http://20.75.134.127:80", true)]
+        public void TestParseURL(string url, bool isValid)
         {
-            Assert.Throws<UriFormatException>(() => ServiceBase.CreateChannelIfNeeded("localhost"));
-            Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("localhost:5000"));
-            // Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("http://localhost"));
-            // Throws because HTTPS is not yet supported.
-            // Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded("https://localhost:5000"));
-            
-            Assert.NotNull(ServiceBase.CreateChannelIfNeeded("http://localhost:5000"));
-            
+            if (!isValid)
+                Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded(url));
+            else
+                Assert.NotNull(ServiceBase.CreateChannelIfNeeded(url));
         }
 
         [Fact]

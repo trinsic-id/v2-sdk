@@ -18,7 +18,7 @@ from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub,
 from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 
 
-def create_channel_if_needed(channel: Channel, service_address: str) -> Channel:
+def create_channel_if_needed(channel: Channel = None, service_address: str = '') -> Channel:
     if not channel:
         service_url = urllib.parse.urlsplit(service_address)
         is_https = service_url.scheme == "https"
