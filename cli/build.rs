@@ -34,39 +34,39 @@ fn main() {
         )
         .unwrap();
 
-    cleanup!(
+    move_file!(
         "./src/proto/google.protobuf.rs",
         "./src/proto/google/protobuf/mod.rs"
     );
-    cleanup!("./src/proto/pbmse.v1.rs", "./src/proto/pbmse/v1/mod.rs");
-    cleanup!(
+    move_file!("./src/proto/pbmse.v1.rs", "./src/proto/pbmse/v1/mod.rs");
+    move_file!(
         "./src/proto/services.common.v1.rs",
         "./src/proto/services/common/v1/mod.rs"
     );
-    cleanup!(
+    move_file!(
         "./src/proto/services.debug.v1.rs",
         "./src/proto/services/debug/v1/mod.rs"
     );
-    cleanup!(
+    move_file!(
         "./src/proto/services.provider.v1.rs",
         "./src/proto/services/provider/v1/mod.rs"
     );
-    cleanup!(
+    move_file!(
         "./src/proto/services.trustregistry.v1.rs",
         "./src/proto/services/trustregistry/v1/mod.rs"
     );
-    cleanup!(
+    move_file!(
         "./src/proto/services.universalwallet.v1.rs",
         "./src/proto/services/universalwallet/v1/mod.rs"
     );
-    cleanup!(
+    move_file!(
         "./src/proto/services.verifiablecredentials.v1.rs",
         "./src/proto/services/verifiablecredentials/v1/mod.rs"
     );
 }
 
 #[macro_export]
-macro_rules! cleanup {
+macro_rules! move_file {
     ($from:expr,$to:expr) => {
         copy($from, $to).unwrap();
         remove_file($from).unwrap();

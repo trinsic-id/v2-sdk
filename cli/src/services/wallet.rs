@@ -52,7 +52,7 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         }
         None => DIDKey::generate(&GenerateKeyRequest {
             seed: vec![],
-            key_type: 0,
+            key_type: KeyType::Ed25519 as i32,
         })
         .unwrap(),
     };
