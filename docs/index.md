@@ -30,6 +30,4 @@ Hundreds of organizations of all sizes and industries use Trinsic’s infrastruc
 
 - [ ] React Native
 
->>>>>>> e05816a0d20c4093d638d7240988a0bf6cee6811
-
 Next: [Learn the Concepts](./concepts/index.md)
