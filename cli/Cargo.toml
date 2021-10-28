@@ -5,12 +5,10 @@ authors = ["Trinsic <support@trinsic.id>"]
 edition = "2021"
 
 [dependencies]
-tonic = { version = "0.6", git = "https://github.com/hyperium/tonic", features = ["tls"] }
+tonic = { version = "0.6", features = ["tls", "tls-roots"] }
 prost = "0.9"
 prost-types = "0.9"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread", "fs"] }
-tokio-rustls = "*"
-rustls-connector = "0.15"
 okapi = { git ="https://github.com/trinsic-id/okapi", branch = "main" }
 clap = { version = "~2", features = ["yaml"] }
 serde = "1.0"
@@ -21,12 +19,9 @@ toml = "0.5"
 dirs = "3.0"
 yaml-rust = "0.3"
 colored = "2"
-actix-rt = "*"
-rustls = "0.20"
-webpki-roots = "0.22"
 
 [build-dependencies]
-tonic-build = { version = "0.5", features = ["prost", "rustfmt"] }
+tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
 
 [[bin]]
 name = "trinsic"

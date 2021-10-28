@@ -1,9 +1,7 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
-use rustls_connector::RustlsConnector;
-use tokio_rustls::rustls::OwnedTrustAnchor;
-use tonic::transport::{Certificate, Channel, ClientTlsConfig, Identity, ServerTlsConfig};
+use tonic::transport::Channel;
 use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
 use trinsic::proto::services::common::v1::JsonPayload;
@@ -66,17 +64,11 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let address: &'static str = "https://dev-internal.trinsic.cloud:443/";
-    let channel = Channel::from_static(&address)
-        // .tls_config(tls)
-        // .unwrap()
+    let channel = Channel::from_shared(config.server.address)
+        .unwrap()
         .connect()
         .await
         .unwrap();
-
-    // let mut client = WalletClient::connect(config.server.address)
-    //     .await
-    //     .expect("Unable to connect to server");
 
     let mut client = WalletClient::new(channel);
 
@@ -206,32 +198,4 @@ async fn send(args: &SendArgs, config: Config) {
         .into_inner();
 
     println!("{:?}", response);
-}
-
-#[cfg(test)]
-mod tests {
-    use std::{
-        io::{Read, Write},
-        net::TcpStream,
-    };
-
-    use rustls_connector::RustlsConnector;
-    use tokio_rustls::{
-        rustls::{OwnedTrustAnchor, RootCertStore},
-        webpki::{TLSServerTrustAnchors, TrustAnchor},
-    };
-
-    #[test]
-    fn test_tls() {
-        let mut root_store = RootCertStore::empty();
-        let anch: Vec<TrustAnchor> = webpki_roots::TLS_SERVER_ROOTS
-            .0
-            .iter()
-            .map(|ta| TrustAnchor {
-                subject: ta.subject,
-                spki: ta.spki,
-                name_constraints: ta.name_constraints,
-            }).collect();
-        root_store.add_server_trust_anchors(&TLSServerTrustAnchors(&anch));
-    }
 }
