@@ -1,6 +1,8 @@
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
+use rustls_connector::RustlsConnector;
+use tokio_rustls::rustls::OwnedTrustAnchor;
 use tonic::transport::{Certificate, Channel, ClientTlsConfig, Identity, ServerTlsConfig};
 use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
@@ -64,21 +66,10 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let cert = tokio::fs::read("data/client.pem").await?;
-    let key1 = tokio::fs::read("data/client.key").await?;
-
-    let my_ca =tokio::fs::read("data/my_ca.pem").await?;
-    let ca = Certificate::from_pem(my_ca);
-    let id= Identity::from_pem(cert,key1);
-
-    let tls = ClientTlsConfig::default()
-        .ca_certificate(ca)
-        .domain_name("trinsic.cloud")
-        .identity(id);
     let address: &'static str = "https://dev-internal.trinsic.cloud:443/";
     let channel = Channel::from_static(&address)
-        .tls_config(tls)
-        .unwrap()
+        // .tls_config(tls)
+        // .unwrap()
         .connect()
         .await
         .unwrap();
@@ -215,4 +206,32 @@ async fn send(args: &SendArgs, config: Config) {
         .into_inner();
 
     println!("{:?}", response);
+}
+
+#[cfg(test)]
+mod tests {
+    use std::{
+        io::{Read, Write},
+        net::TcpStream,
+    };
+
+    use rustls_connector::RustlsConnector;
+    use tokio_rustls::{
+        rustls::{OwnedTrustAnchor, RootCertStore},
+        webpki::{TLSServerTrustAnchors, TrustAnchor},
+    };
+
+    #[test]
+    fn test_tls() {
+        let mut root_store = RootCertStore::empty();
+        let anch: Vec<TrustAnchor> = webpki_roots::TLS_SERVER_ROOTS
+            .0
+            .iter()
+            .map(|ta| TrustAnchor {
+                subject: ta.subject,
+                spki: ta.spki,
+                name_constraints: ta.name_constraints,
+            }).collect();
+        root_store.add_server_trust_anchors(&TLSServerTrustAnchors(&anch));
+    }
 }

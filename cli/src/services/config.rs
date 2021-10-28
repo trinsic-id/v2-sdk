@@ -238,7 +238,10 @@ impl Config {
 // }
 
 impl Interceptor for Config {
-    fn call(&mut self, mut request: tonic::Request<()>) -> Result<tonic::Request<()>, tonic::Status> {
+    fn call(
+        &mut self,
+        mut request: tonic::Request<()>,
+    ) -> Result<tonic::Request<()>, tonic::Status> {
         request.metadata_mut().insert(
             "capability-invocation",
             self.read_capability()
