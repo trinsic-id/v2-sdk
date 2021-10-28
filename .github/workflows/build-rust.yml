@@ -25,5 +25,8 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v1
-      - run: cargo +nightly build
-      - run: cargo +nightly test
+      - run: |
+        rustup install nightly
+        rustup default nightly
+        cargo build
+        cargo test
