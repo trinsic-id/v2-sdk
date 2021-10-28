@@ -52,7 +52,7 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         }
         None => DIDKey::generate(&GenerateKeyRequest {
             seed: vec![],
-            key_type: 0,
+            key_type: KeyType::Ed25519 as i32,
         })
         .unwrap(),
     };
@@ -64,9 +64,13 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         None => "My Cloud Wallet".to_string(),
     };
 
-    let mut client = WalletClient::connect(config.server.address)
+    let channel = Channel::from_shared(config.server.address)
+        .unwrap()
+        .connect()
         .await
-        .expect("Unable to connect to server");
+        .unwrap();
+
+    let mut client = WalletClient::new(channel);
 
     let request = tonic::Request::new(CreateWalletRequest {
         controller: key.key[0].kid.clone(),
