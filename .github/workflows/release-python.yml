@@ -23,8 +23,15 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.9
+      - name: Generate Package Version
+        run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' | ConvertFrom-Json
+          $version = $json.tag_name.Trim("v")
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "TAG_NAME=$json.tag_name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag "${{ github.ref }}" -PackageVersion "${{ github.event.inputs.version }}"
+        run: ./devops/BuildPython.ps1 -GitTag "$env:TAG_NAME" -PackageVersion "$env:PACKAGE_VERSION"
         shell: pwsh
       - name: Push packages to release
         if: |
