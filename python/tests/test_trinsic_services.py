@@ -3,11 +3,16 @@ import unittest
 import os
 from os.path import abspath, join, dirname
 
+import okapi.okapi_utils
+
 from trinsic.proto.services.provider.v1 import ParticipantType
 from trinsic.services import WalletService, create_channel_if_needed, ProviderService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
+    def setUp(self) -> None:
+        okapi.okapi_utils.download_binaries(False)
+
     @property
     def base_data_path(self) -> str:
         return abspath(join(dirname(__file__), "..", "..", "devops", "testdata"))
