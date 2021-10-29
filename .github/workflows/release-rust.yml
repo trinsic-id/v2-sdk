@@ -42,9 +42,12 @@ jobs:
 
       - name: Generate Archive Version
         run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest'
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
           echo "TAG_NAME=$json.tag_name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Build Archive
         run: |
           $file = "trinsic_cli_$env:TAG_NAME_macos_x86_64.tar.gz"
