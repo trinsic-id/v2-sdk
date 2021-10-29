@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
   release:
     types: [published, prereleased]
-  pull_request:
 
 jobs:
   homebrew:
@@ -15,6 +14,15 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v1
+        name: Checkout
+      - name: Generate Archive Version
+        run: |
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
+          echo "TAG_NAME=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Build CLI
         run: |
           rustup install nightly
@@ -39,18 +47,9 @@ jobs:
           /usr/bin/codesign --force -s $env:MACOS_CERTIFICATE_IDENTITY trinsic -v
         shell: pwsh
         working-directory: ./cli/target/release
-
-      - name: Generate Archive Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          echo "TAG_NAME=$json.tag_name" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Build Archive
         run: |
-          $file = "trinsic_cli_$env:TAG_NAME_macos_x86_64.tar.gz"
+          $file = "trinsic_cli_$($env:TAG_NAME)_macos_x86_64.tar.gz"
           tar czf $file --directory=./target/release/ trinsic
           echo "ARTIFACT_FILE=$file" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
@@ -58,7 +57,9 @@ jobs:
         name: Upload Archive
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ env.ARTIFACT_FILE }}
+          # this action doesn't respect job 'defaults' and requires
+          # explicit path
+          file: ./cli/${{ env.ARTIFACT_FILE }}
           asset_name: ${{ env.ARTIFACT_FILE }}
           tag: ${{ env.TAG_NAME }}
           overwrite: true
