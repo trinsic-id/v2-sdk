@@ -47,7 +47,7 @@ jobs:
         shell: pwsh
       - name: Build Archive
         run: |
-          $file = trinsic_cli_$env:TAG_NAME_macos_x86_64.tar.gz
+          $file = "trinsic_cli_$env:TAG_NAME_macos_x86_64.tar.gz"
           tar czf $file --directory=./target/release/ trinsic
           echo "ARTIFACT_FILE=$file" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
