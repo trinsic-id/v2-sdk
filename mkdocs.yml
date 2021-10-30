@@ -6,24 +6,37 @@ repo_name: trinsic-id/sdk
 site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
   - Overview: index.md
-  - Concepts: concepts/index.md
-  - Start Building:
-    - CLI: walkthrough/vaccination-cli.md
-    - Node: walkthrough/vaccination-node.md
-    - Web: walkthrough/vaccination-browser.md
-    - C#: walkthrough/vaccination-net.md
-    - Python: walkthrough/vaccination-python.md
+  - Get Started: early-adopter.md
+  - Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
+  - Support: support.md
+  - Learn:
+    - Introduction: concepts/index.md
+    - Credentials: concepts/credentials.md
+    - Presentations: concepts/presentations.md
+    - Ecosystems: concepts/ecosystems.md
+    - Trinsic's Platform: concepts/what-is-trinsic.md
+    - Underlying Tech: concepts/tech.md
+    - Security: concepts/security.md
+  - Build:
+    - CLI: cli/index.md
+    - Node: node/index.md
+    - C#: csharp/index.md
+    - Python: python/index.md
+    - Ruby: ruby/index.md
+    - Go: go/index.md
+    - Java: java/index.md
+    - Web: web/index.md
+    - iOS: ios/index.md
+    - Android: android/index.md
   - Reference:
     - Setup: reference/setup/index.md
     - Wallet Service: reference/services/wallet-service.md
     - Provider Service: reference/services/provider-service.md
     - Trust Registry: reference/services/trust-registry.md
-  - Support:
-    - Join Slack Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
-    - Contribute on Github: https://github.com/trinsic-id
-    - Email us: mailto:support@trinsic.id
-  - What's Next:
-    - Join Trinsic Ecosystems: early-adopter.md
+  - Resources:
+    - Roadmap: roadmap.md
+    - Changelog: changelog.md
+    - Github: https://github.com/trinsic-id
 theme:
   name: material
   logo: _static/logo-title.svg

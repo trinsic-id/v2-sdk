@@ -1,31 +1,28 @@
-# Introduction
+---
+hide:
+  - toc
+---
+# Trinsic Docs
+### Share data and authenticate individuals anywhere.
 
-## Welcome to Trinsic
-Trinsic is a developer platform to exchange verifiable credentials.
+## Quickstart 
+Get up and running in the language of your choice or interact with Trinsic through your terminal.
 
-Verifiable Credentials transform credentials, licenses, passes, and certificates into a W3C standard format that can be exchanged digitally and verified instantly. Unlike a paper document or html form, when information from a verifiable credential is shared, it can be instantly proven to be authentic.
+[:octicons-terminal-16: **Use the CLI**](#)
+### Server-side SDKs
+[:material-nodejs: Node](#){ .md-button .md-button--primary }
+[:material-language-python: Python](#){ .md-button .md-button--primary}
+[:material-menu: Go](#){ .md-button .md-button--primary}
+[:material-language-ruby: Ruby](#){ .md-button .md-button--primary}
+[:material-language-java: Java](#){ .md-button .md-button--primary}
+[:material-microsoft: .NET](#){ .md-button .md-button--primary}
 
-They require no centralized authority or proprietary technology to use - verifiable credentials are built on interoperable standards  designed to be open, privacy-preserving, and distributed like the internet itself.
+### Client-side SDKs
+[:material-android: Android](#){ .md-button} 
+[:material-apple: iOS](#){ .md-button} 
+[:fontawesome-brands-js-square: Web](#){ .md-button} 
 
-Hundreds of organizations of all sizes and industries use Trinsic’s infrastructure and tools to instantly verify information about individuals with technology instead of paper.
+## Learn about 
+If you're still new to self-sovereign identity, continue reading to get a better idea about verifiable credentials. We'll learn about the concepts of digital identity, verifiable credentials, and how Trinsic lets you use these powerful tools in your applications. 
 
-## Available SDKs
-
-- [x] [C#](./walkthrough/vaccination-net.md)
-    - [x] Mobile (Xamarin, MAUI)
-    - [x] .NET Core (MacOS, Windows, Linux)
-    - [ ] Web Assembly (Blazor)
-- [x] TypeScript/JS
-    - [x] [Node.js](./walkthrough/vaccination-node.md)
-    - [x] [Browser](./walkthrough/vaccination-browser.md)
-- [x] Python
-- [x] Go
-- [x] Rust
-- [x] Swift (iOS)
-- [x] Java/Kotlin (Android)
-
-## Up Next
-
-- [ ] React Native
-
-Next: [Learn the Concepts](./concepts/index.md)
+[**:octicons-info-16: What is Trinsic?**](./concepts/what-is-trinsic.md)
