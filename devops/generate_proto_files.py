@@ -7,6 +7,8 @@ from typing import List, Dict
 import pkg_resources
 from grpc_tools import protoc
 
+from build_sdks import update_line
+
 
 def get_language_dir(language_name: str) -> str:
     return abspath(join(dirname(abspath(__file__)), '..', language_name))
@@ -16,16 +18,6 @@ def get_proto_files(dir_name: str = None) -> List[str]:
     dir_name = dir_name or get_language_dir('proto')
     proto_search_glob = join(dir_name, '**', '*.proto')
     return [abspath(file_path) for file_path in glob.glob(proto_search_glob, recursive=True)]
-
-
-def replace_lines_in_file(file_name: str, replace_lines: Dict[str, str]) -> None:
-    with open(file_name, 'r') as fid:
-        file_lines = fid.readlines()
-
-    file_lines = [line.replace(key, value) for key, value in replace_lines.items() for line in file_lines]
-
-    with open(file_name, 'w') as fid:
-        fid.writelines(file_lines)
 
 
 def clean_proto_dir(language_proto_dir: str) -> None:
@@ -69,7 +61,7 @@ def update_golang():
     replace_pairs = {'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"':
                      'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"'}
     for file_name in glob.glob(join(go_proto_path, '*.go')):
-        replace_lines_in_file(file_name, replace_pairs)
+        update_line(file_name, replace_pairs)
 
 
 def update_ruby():
@@ -91,13 +83,6 @@ def update_java():
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
 
-def update_swift():
-    swift_path = get_language_dir('swift')
-    swift_proto_path = join(swift_path, 'Okapi', 'Sources', 'OkapiSwift', 'proto')
-    clean_proto_dir(swift_proto_path)
-    run_protoc({'swift_out': swift_proto_path}, {'swift_opt': "Visibility=Public"}, get_proto_files())
-
-
 def update_python():
     """
     Generate the protobuf interface files using the python library https://github.com/danielgtaylor/python-betterproto
@@ -116,6 +101,7 @@ def update_python():
     base_command = ['', '-I', get_language_dir('proto'), f'--python_betterproto_out={python_proto_path}']
     base_command.extend(get_proto_files())
     base_command.append(f'-I{proto_include}')
+    print(base_command)
     protoc.main(base_command)
 
 
@@ -124,7 +110,6 @@ def main():
     update_ruby()
     update_java()
     update_python()
-    update_swift()
 
 
 if __name__ == "__main__":
