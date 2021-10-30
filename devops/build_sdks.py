@@ -90,7 +90,10 @@ def build_golang(args) -> None:
     # Update version in setup.cfg
     golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
     # Copy in the binaries
-    copy_okapi_libs(golang_dir, 'windows-gnu')
+    try:
+        copy_okapi_libs(golang_dir, 'windows-gnu')
+    except:
+        pass
 
 
 def build_dotnet(args) -> None:

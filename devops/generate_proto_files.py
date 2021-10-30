@@ -79,8 +79,6 @@ def update_java():
     # TODO - clean_proto_dir(java_proto_path)
     run_protoc({'java_out': java_proto_path}, {}, get_proto_files(),
                plugin=r"C:\bin\protoc-gen-grpc-java-1.39.0-windows-x86_64.exe")
-    # remove okapi pbmse
-    shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
 
 def update_python():
