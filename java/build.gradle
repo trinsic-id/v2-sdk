@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "0.1.2"
+def jarVersion = "1.0.1"
 
 apply from: "conf.gradle"
 
