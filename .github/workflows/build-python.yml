@@ -34,6 +34,7 @@ jobs:
         shell: pwsh
         working-directory: python
         env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           TRINSIC_SERVER_ADDRESS: http://20.75.134.127:80/
       - name: Upload Unit Test Results - Python
         if: always()
