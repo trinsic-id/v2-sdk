@@ -3,7 +3,11 @@ hide:
   - toc
 ---
 # Trinsic Docs
-### Share data and authenticate individuals anywhere.
+
+### Issue and verify universally-accepted digital credentials.
+Online it's impossible to prove your legal name, age, or anything else about your identity - but in person, it's easy as long as you have the right paperwork.
+
+Trinsic provides an SDK to issue and verify universally-accepted digital credentials so that anywhere people go online or in-person, they can simply tap their phone, prove who they are, and get what they need.
 
 ## Quickstart 
 Get up and running in the language of your choice or interact with Trinsic through your terminal.
@@ -22,7 +26,6 @@ Get up and running in the language of your choice or interact with Trinsic throu
 [:material-apple: iOS](#){ .md-button} 
 [:fontawesome-brands-js-square: Web](#){ .md-button} 
 
-## Learn about 
-If you're still new to self-sovereign identity, continue reading to get a better idea about verifiable credentials. We'll learn about the concepts of digital identity, verifiable credentials, and how Trinsic lets you use these powerful tools in your applications. 
+## Learn More
+If you're new to verifiable credentials, continue reading on the next page to get a better idea about how they can be used. 
 
-[**:octicons-info-16: What is Trinsic?**](./concepts/what-is-trinsic.md)
