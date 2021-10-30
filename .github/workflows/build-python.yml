@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test_python:
+  build-and-test-python:
     name: Test Python code
     runs-on: ${{ matrix.os }}
     strategy:
@@ -42,18 +42,19 @@ jobs:
           name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
           path: 'python/test_output*.xml'
 
-  upload_test_results:
-    name: Upload Python Test Results
+  publish-test-results-python:
+    name: Publish Python Test Results
+    needs: build-and-test-python
     runs-on: ubuntu-latest
-    needs: [test_python]
+    if: always()
+
     steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
         with:
-          name: pytest-results
-          path: python
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: always()
+          path: artifacts
+      - name: Publish Test Report - Python
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          files: python/pytest_junit.xml
+          files: 'artifacts/**/*.xml'
+          check_name: Python Test Report
