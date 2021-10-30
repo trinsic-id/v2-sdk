@@ -42,11 +42,11 @@ module Trinsic
 
     def parse_url(url)
       uri = URI.parse(url)
-      if uri.port == uri.default_port
-        throw("missing port on URL")
-      end
       grpc_uri = "#{uri.host}:#{uri.port}"
-      return grpc_uri, uri.scheme=="http"
+      unless url.include? grpc_uri
+        raise Exception("Port not provided")
+      end
+      [grpc_uri, uri.scheme == "http"]
     end
   end
 
@@ -67,37 +67,18 @@ module Trinsic
     end
 
     def create_wallet(security_code)
-      if security_code == nil
-        security_code = ""
-      end
-
-      configuration = @wallet_client.get_provider_configuration(Google::Protobuf::Empty.new)
-      resolve_response = Okapi::DidKey::resolve(Okapi::Keys::ResolveRequest.new(:did=>configuration.key_agreement_key_id))
-      provider_exchange_key = resolve_response.keys.detect{|x| x.kid == configuration.key_agreement_key_id}
+      security_code = (security_code or "")
 
       my_key = Okapi::DidKey::generate(Okapi::Keys::GenerateKeyRequest.new(:key_type=>Okapi::Keys::KeyType::Ed25519))
-      my_exchange_key = my_key.key.detect{|x| x.crv == "X25519"}
-
       my_did_document = my_key.did_document.to_h
 
-      create_request = Trinsic::Services::CreateWalletRequest.new(:description=>"My Cloud Wallet",
-                                                                          :controller=>my_did_document['id'],
-                                                                          :security_code=>security_code)
-      packed_message = Okapi::DidComm::pack(Okapi::Transport::PackRequest.new(:sender_key=>my_exchange_key,
-                                                                              :receiver_key=>provider_exchange_key,
-                                                                              :plaintext=>Trinsic::Services::CreateWalletRequest.encode(create_request)))
+      create_request = Trinsic::Services::CreateWalletRequest.new(:controller=>my_did_document['id'], :security_code=>security_code)
+      response = @wallet_client.create_wallet(create_request)
 
-      response = @wallet_client.create_wallet_encrypted(packed_message.message)
-      decrypted_response = Okapi::DidComm::unpack(Okapi::Transport::UnpackRequest.new(:message=>response,
-                                                                                      :receiver_key=>my_exchange_key,
-                                                                                      :sender_key=>provider_exchange_key))
-
-      create_wallet_response = Trinsic::Services::CreateWalletResponse.decode(decrypted_response.plaintext)
-
-      Trinsic::Services::WalletProfile.new(:wallet_id=>create_wallet_response.wallet_id,
-                                                  :capability=>create_wallet_response.capability,
-                                                  :did_document=>Trinsic::Services::JsonPayload.new(:json_string=>JSON.generate(my_did_document)),
-                                                  :invoker=>create_wallet_response.invoker,
+      Trinsic::Services::WalletProfile.new(:wallet_id=>response.wallet_id,
+                                                  :capability=>response.capability,
+                                                  :did_document=>Trinsic::Services::JsonPayload.new(:json_struct=>my_key.did_document),
+                                                  :invoker=>response.invoker,
                                                   :invoker_jwk=>Okapi::Keys::JsonWebKey.encode(my_key.key[0]))
     end
 
