@@ -5,9 +5,10 @@ require 'base64'
 require 'time'
 require 'uri'
 require 'google/protobuf/well_known_types'
-require_relative 'trinsic/WalletService_services_pb'
-require_relative 'trinsic/IssuerService_services_pb'
-require_relative 'trinsic/ProviderService_services_pb'
+require 'services/universal-wallet/v1/universal-wallet_services_pb'
+require 'services/provider/v1/provider_services_pb'
+require 'services/verifiable-credentials/v1/verifiable-credentials_services_pb'
+require 'services/common/v1/common_pb'
 
 module Trinsic
   class Error < StandardError; end
@@ -58,8 +59,8 @@ module Trinsic
       unless is_insecure
         throw("https traffic not yet supported")
       end
-      @wallet_client = Trinsic::Services::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
-      @credential_client = Trinsic::Services::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
+      @wallet_client = Services::Universalwallet::V1::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
+      @credential_client = Services::Verifiablecredentials::V1::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def register_or_connect(email)
@@ -72,19 +73,19 @@ module Trinsic
       my_key = Okapi::DidKey::generate(Okapi::Keys::GenerateKeyRequest.new(:key_type=>Okapi::Keys::KeyType::Ed25519))
       my_did_document = my_key.did_document.to_h
 
-      create_request = Trinsic::Services::CreateWalletRequest.new(:controller=>my_did_document['id'], :security_code=>security_code)
+      create_request = Services::Universalwallet::V1::CreateWalletRequest.new(:controller=>my_did_document['id'], :security_code=>security_code)
       response = @wallet_client.create_wallet(create_request)
 
-      Trinsic::Services::WalletProfile.new(:wallet_id=>response.wallet_id,
+      Services::Universalwallet::V1::WalletProfile.new(:wallet_id=>response.wallet_id,
                                                   :capability=>response.capability,
-                                                  :did_document=>Trinsic::Services::JsonPayload.new(:json_struct=>my_key.did_document),
+                                                  :did_document=>Services::Common::V1::JsonPayload.new(:json_struct=>my_key.did_document),
                                                   :invoker=>response.invoker,
                                                   :invoker_jwk=>Okapi::Keys::JsonWebKey.encode(my_key.key[0]))
     end
 
     def issue_credential(document)
-      payload = Trinsic::Services::JsonPayload.new(:json_string=>JSON.generate(document))
-      request = Trinsic::Services::IssueRequest.new(:document=>payload)
+      payload = Services::Common::V1::JsonPayload.new(:json_string=>JSON.generate(document))
+      request = Services::Verifiablecredentials::V1::IssueRequest.new(:document=>payload)
       response = @credential_client.issue(request, metadata: self.metadata)
       JSON.parse(response.document.json_string)
     end
@@ -92,8 +93,8 @@ module Trinsic
       @wallet_client.search(query, metadata: metadata)
     end
     def insert_item(item)
-      payload = Trinsic::Services::JsonPayload.new(:json_string => JSON.generate(item))
-      request = Trinsic::Services::InsertItemRequest.new(:item=>payload)
+      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(item))
+      request = Services::Universalwallet::V1::InsertItemRequest.new(:item=>payload)
       @wallet_client.insert_item(request, metadata: metadata).item_id
     end
     def send(document, email)
@@ -102,14 +103,14 @@ module Trinsic
       @credential_client.send(request, metadata: metadata)
     end
     def create_proof(document_id, reveal_document)
-      payload = Trinsic::Services::JsonPayload.new(:json_string=>JSON.generate(reveal_document))
-      request = Trinsic::Services::CreateProofRequest.new(:document_id=>document_id,
+      payload = Services::Common::V1::JsonPayload.new(:json_string=>JSON.generate(reveal_document))
+      request = Services::Verifiablecredentials::V1::CreateProofRequest.new(:document_id=>document_id,
                                                           :reveal_document=>payload)
       JSON.parse(@credential_client.create_proof(request, metadata: metadata).proof_document.json_string)
     end
     def verify_proof(proof_document)
-      payload = Trinsic::Services::JsonPayload.new(:json_string => JSON.generate(proof_document))
-      request = Trinsic::Services::VerifyProofRequest.new(:proof_document=>payload)
+      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(proof_document))
+      request = Services::Verifiablecredentials::V1::VerifyProofRequest.new(:proof_document=>payload)
       @credential_client.verify_proof(request, metadata: metadata).valid
     end
   end
@@ -121,7 +122,7 @@ module Trinsic
       unless is_insecure
         throw("https traffic not yet supported")
       end
-      @provider_client = Trinsic::Services::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
+      @provider_client = Services::Provider::V1::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def invite_participant(request)
