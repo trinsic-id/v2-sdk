@@ -346,10 +346,10 @@ subcommands:
         - invitation_status:
             about: "Check invitation status"
             version: "0.1"
-        - create_credential_template:
+        - create-credential-template:
             about: "Create credential template"
             version: "0.1"
-        - list_credential_templates:
+        - list-credential-templates:
             about: "List credential templates"
             version: "0.1"
   - trust-registry:

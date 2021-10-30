@@ -8,7 +8,7 @@ Wallets can be created directly by the user or through an invitation by the ecos
 
 ### Create wallet directly
 
-To create a wallet directly without invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/setup/#authorization) page.
+To create a wallet directly without an invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/setup/#authorization) page.
 
 === "Trinsic CLI"
     ```bash
@@ -218,6 +218,39 @@ The wallet service supports signing data using [BBS+ Signatures :material-open-i
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
+## Issue Credential from Template
+
+<!-- TODO: Black-->
+=== "Trinsic CLI"
+    ```bash
+    
+    ```
+=== "TypeScript"
+    ```typescript
+    
+    ```
+=== "C#"
+    ```csharp
+    
+    ```
+
+=== "Python"
+    ```python
+    
+    ```
+
+=== "Go"
+    ```golang
+    
+    ```
+=== "Java"
+    ```java
+    
+    ```
+=== "Ruby"
+    ```ruby
+    
+    ```
 ## Create Proof
 
 Wallets allow data to be shared between parties in a secure manner, using a technique called [Zero Knowledge Proofs](/faq/#what-are-zero-knowledge-proofs). Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.

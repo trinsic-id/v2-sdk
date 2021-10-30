@@ -46,7 +46,7 @@ namespace Trinsic.Tests
             else
                 Assert.NotNull(ServiceBase.CreateChannelIfNeeded(url));
         }
-
+        
         [Fact]
         public async Task TestWalletService()
         {
@@ -102,5 +102,17 @@ namespace Trinsic.Tests
             _testOutputHelper.WriteLine($"Verification result: {valid}");
             Assert.True(valid);
         }
+
+        // TODO - Create trust registry unit test and then add commands to documentation reference
+        [Fact]
+        public void TestTrustRegistry()
+        {
+            //Given
+                
+            //When
+            
+            //Then
+        }
+
     }
 }

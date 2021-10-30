@@ -72,7 +72,7 @@ markdown_extensions:
   - pymdownx.details
   - toc:
       permalink: true
-      toc_depth: 2
+      toc_depth: 3
   - abbr
 
 extra_javascript:
