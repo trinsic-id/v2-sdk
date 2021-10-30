@@ -5,10 +5,10 @@ import urllib.parse
 from typing import Mapping, Dict, List
 
 from grpclib.client import Channel
-from okapi.keys import LDProofs, DIDKey
+from okapi.wrapper import LDProofs, DIDKey
 from okapi.okapi_utils import dictionary_to_struct, struct_to_dictionary
-from okapi.proto.okapi.keys import JsonWebKey, GenerateKeyRequest, KeyType
-from okapi.proto.okapi.proofs import CreateProofRequest, LdSuite
+from okapi.proto.okapi.keys.v1 import JsonWebKey, GenerateKeyRequest, KeyType
+from okapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
 
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
 from trinsic.proto.services.provider.v1 import ProviderStub, InviteRequestDidCommInvitation, InviteResponse, \
@@ -47,7 +47,7 @@ class ServiceBase:
 
         proof_response = LDProofs.create(CreateProofRequest(key=JsonWebKey().parse(profile.invoker_jwk),
                                                             document=dictionary_to_struct(capability_doc),
-                                                            suite=LdSuite.JcsEd25519Signature2020))
+                                                            suite=LdSuite.LD_SUITE_JCSED25519SIGNATURE2020))
 
         proof_json = json.dumps(struct_to_dictionary(proof_response.signed_document), indent=2)
         self.cap_invocation = base64.standard_b64encode(proof_json.encode("utf-8")).decode("utf-8")
@@ -68,7 +68,7 @@ class WalletService(ServiceBase):
         await self.client.connect_external_identity(email=email)
 
     async def create_wallet(self, security_code: str = None) -> WalletProfile:
-        my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.Ed25519))
+        my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.KEY_TYPE_ED25519))
         my_did_document = struct_to_dictionary(my_key.did_document)
 
         create_wallet_response = await self.client.create_wallet(controller=str(my_did_document['id']),
