@@ -12,7 +12,7 @@ on:
       - main
 
 jobs:
-  test_python:
+  build-and-test-python:
     name: Test Python code
     runs-on: ${{ matrix.os }}
     strategy:
@@ -25,32 +25,37 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
       - name: Build, Test, Pack
-        run: ./devops/BuildPython.ps1 -GitTag ${{ github.ref }} -UseDevelopOkapi
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install pytest pytest-cov
+          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
+          python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
         shell: pwsh
+        working-directory: python
         env:
-          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000/
-      - name: Upload test results
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          TRINSIC_SERVER_ADDRESS: http://20.75.134.127:80/
+      - name: Upload Unit Test Results - Python
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: pytest-results
-          path: |
-            ./python/pytest*.*
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
+          path: 'python/test_output*.xml'
 
-  upload_test_results:
-    name: Upload Python Test Results
+  publish-test-results-python:
+    name: Publish Python Test Results
+    needs: build-and-test-python
     runs-on: ubuntu-latest
-    needs: [test_python]
+    if: always()
+
     steps:
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v2.0.10
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
         with:
-          name: pytest-results
-          path: python
-      - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.18
-        if: always()
+          path: artifacts
+      - name: Publish Test Report - Python
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
         with:
-          files: python/pytest_junit.xml
+          files: 'artifacts/**/*.xml'
+          check_name: Python Test Report

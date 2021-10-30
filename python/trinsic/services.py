@@ -121,9 +121,9 @@ class ProviderService(ServiceBase):
 
     async def invite_participant(self,
                                  participant: ParticipantType = None,
-                                 description: str = "",
-                                 email: str = "",
-                                 phone: str = "",
+                                 description: str = None,
+                                 email: str = None,
+                                 phone: str = None,
                                  didcomm_invitation: InviteRequestDidCommInvitation = None) -> InviteResponse:
         if not email and not phone:
             raise Exception("Contact method must be set")
