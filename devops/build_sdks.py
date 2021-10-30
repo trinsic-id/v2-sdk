@@ -105,11 +105,15 @@ def get_package_versions(args) -> str:
 
 
 def get_github_version(github_token: str = None) -> str:
-    github_release_request = requests.get('https://api.github.com/repos/trinsic-id/sdk/releases/latest',
-                                          headers={'Authorization': github_token})
-    github_json = github_release_request.json()
-    version = github_json['tag_name']
-    return version
+    try:
+        github_release_request = requests.get('https://api.github.com/repos/trinsic-id/sdk/releases/latest',
+                                              headers={'Authorization': github_token})
+        github_json = github_release_request.json()
+        version = github_json['tag_name']
+        return version
+    except:
+        print(github_json)
+        raise
 
 
 def parse_arguments():
