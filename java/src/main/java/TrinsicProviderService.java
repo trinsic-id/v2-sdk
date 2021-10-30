@@ -1,7 +1,8 @@
 import io.grpc.Channel;
+import io.grpc.ManagedChannel;
 import io.grpc.stub.MetadataUtils;
-import trinsic.services.ProviderGrpc;
-import trinsic.services.ProviderService;
+import trinsic.services.common.v1.ProviderGrpc;
+import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.net.MalformedURLException;
 
@@ -15,15 +16,19 @@ public class TrinsicProviderService extends ServiceBase {
         this.providerClient = ProviderGrpc.newBlockingStub(this.channel);
     }
 
-    public ProviderService.InviteResponse inviteParticipant(ProviderService.InviteRequest request) {
+    public void shutdown() throws InterruptedException {
+        super.shutdown((ManagedChannel) this.channel);
+    }
+
+    public ProviderOuterClass.InviteResponse inviteParticipant(ProviderOuterClass.InviteRequest request) {
         // Ensure a contact method is set.
-        if (request.getContactMethodCase() == ProviderService.InviteRequest.ContactMethodCase.CONTACTMETHOD_NOT_SET)
+        if (request.getContactMethodCase() == ProviderOuterClass.InviteRequest.ContactMethodCase.CONTACTMETHOD_NOT_SET)
             throw new IllegalArgumentException("Contact method must be set.");
 
         return this.providerClient.invite(request);
     }
 
-    public ProviderService.InvitationStatusResponse invitationStatus(ProviderService.InvitationStatusRequest request) {
+    public ProviderOuterClass.InvitationStatusResponse invitationStatus(ProviderOuterClass.InvitationStatusRequest request) {
         if (request.getInvitationId().strip().length() == 0)
             throw new IllegalArgumentException("Onboarding reference ID must be set.");
 
