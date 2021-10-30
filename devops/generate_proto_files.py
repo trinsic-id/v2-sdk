@@ -4,6 +4,9 @@ import shutil
 from os.path import abspath, join, dirname
 from typing import List, Dict
 
+import pkg_resources
+from grpc_tools import protoc
+
 
 def get_language_dir(language_name: str) -> str:
     return abspath(join(dirname(abspath(__file__)), '..', language_name))
@@ -88,10 +91,40 @@ def update_java():
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
 
+def update_swift():
+    swift_path = get_language_dir('swift')
+    swift_proto_path = join(swift_path, 'Okapi', 'Sources', 'OkapiSwift', 'proto')
+    clean_proto_dir(swift_proto_path)
+    run_protoc({'swift_out': swift_proto_path}, {'swift_opt': "Visibility=Public"}, get_proto_files())
+
+
+def update_python():
+    """
+    Generate the protobuf interface files using the python library https://github.com/danielgtaylor/python-betterproto
+    :return:
+    """
+    # Remove everything under output directory
+    python_proto_path = join(get_language_dir('python'), "proto")
+    clean_proto_dir(python_proto_path)
+    # Paths for proto compilation
+    file_path = abspath(dirname(abspath(__file__)))
+    base_path = abspath(join(file_path, '..', 'proto'))
+    proto_file_path = abspath(join(base_path, "**", "*.proto"))
+    # Come up with better locations, import google defaults from the package location (see code in protoc.main)
+    proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
+    # Inject an empty python code file path to mimic the first argument.
+    base_command = ['', '-I', get_language_dir('proto'), f'--python_betterproto_out={python_proto_path}']
+    base_command.extend(get_proto_files())
+    base_command.append(f'-I{proto_include}')
+    protoc.main(base_command)
+
+
 def main():
     update_golang()
     update_ruby()
     update_java()
+    update_python()
+    update_swift()
 
 
 if __name__ == "__main__":
