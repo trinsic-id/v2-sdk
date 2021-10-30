@@ -1863,7 +1863,7 @@ public final class CommonOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.StructProto.getDescriptor(),
-          trinsic.okapi.pbmse.Pbmse.getDescriptor(),
+          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
         });
     internal_static_services_common_v1_RequestOptions_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1878,7 +1878,7 @@ public final class CommonOuterClass {
         internal_static_services_common_v1_JsonPayload_descriptor,
         new java.lang.String[] { "JsonStruct", "JsonString", "JsonBytes", "Json", });
     com.google.protobuf.StructProto.getDescriptor();
-    trinsic.okapi.pbmse.Pbmse.getDescriptor();
+    trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

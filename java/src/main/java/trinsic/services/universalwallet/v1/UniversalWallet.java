@@ -13144,7 +13144,7 @@ public final class UniversalWallet {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
-          trinsic.okapi.pbmse.Pbmse.getDescriptor(),
+          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
         });
     internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -13243,7 +13243,7 @@ public final class UniversalWallet {
         internal_static_services_universalwallet_v1_InsertItemResponse_descriptor,
         new java.lang.String[] { "Status", "ItemId", });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
-    trinsic.okapi.pbmse.Pbmse.getDescriptor();
+    trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

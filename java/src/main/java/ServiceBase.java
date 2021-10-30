@@ -1,19 +1,30 @@
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Value;
+import com.google.protobuf.util.JsonFormat;
+import io.grpc.ManagedChannel;
+import io.grpc.Metadata;
+import trinsic.okapi.keys.v1.Keys;
+import trinsic.okapi.proofs.v1.Proofs;
+import trinsic.services.universalwallet.v1.UniversalWallet;
+
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Value;
-import com.google.protobuf.util.JsonFormat;
-
-import io.grpc.Metadata;
-import trinsic.okapi.Keys;
-import trinsic.okapi.Proofs;
-import trinsic.services.WalletService.WalletProfile;
-
-public class ServiceBase {
+public abstract class ServiceBase {
     protected String capInvocation = "";
+
+    public abstract void shutdown() throws InterruptedException;
+
+    protected void shutdown(ManagedChannel channel) throws InterruptedException {
+        if (channel == null)
+            return;
+        final var managedChannel = (ManagedChannel) channel;
+        managedChannel.shutdownNow();
+        managedChannel.awaitTermination(5, TimeUnit.SECONDS);
+    }
 
     public Metadata getMetadata() {
         if (capInvocation == null || capInvocation.strip().length() == 0)
@@ -23,7 +34,7 @@ public class ServiceBase {
         return  metadata;
     }
 
-    public void setProfile(WalletProfile profile) throws InvalidProtocolBufferException, DidException {
+    public void setProfile(UniversalWallet.WalletProfile profile) throws InvalidProtocolBufferException, DidException {
         var proofDict = new HashMap<String, Value>() {{
             put("proofPurpose", Utilities.stringValue("capabilityInvocation"));
             put("created", Utilities.stringValue(Instant.now().toString()));
@@ -39,7 +50,7 @@ public class ServiceBase {
         var proofResponse = LdProofs.createProof( Proofs.CreateProofRequest.newBuilder()
                         .setKey(Keys.JsonWebKey.parseFrom(profile.getInvokerJwk()))
                         .setDocument(Utilities.hashmapToStruct(capabilityDict))
-                        .setSuite(Proofs.LdSuite.JcsEd25519Signature2020)
+                        .setSuite(Proofs.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020)
                 .build());
         var proofJson = proofResponse.getSignedDocument().getFieldsMap();
         var format = JsonFormat.printer().print(proofResponse.getSignedDocument());

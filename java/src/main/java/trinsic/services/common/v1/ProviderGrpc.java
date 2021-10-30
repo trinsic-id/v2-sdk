@@ -1,42 +1,43 @@
-package trinsic.services;
+package trinsic.services.common.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.39.0)",
-    comments = "Source: ProviderService.proto")
+    value = "by gRPC proto compiler (version 1.41.0)",
+    comments = "Source: services/provider/v1/provider.proto")
+@io.grpc.stub.annotations.GrpcGenerated
 public final class ProviderGrpc {
 
   private ProviderGrpc() {}
 
-  public static final String SERVICE_NAME = "trinsic.services.Provider";
+  public static final String SERVICE_NAME = "services.provider.v1.Provider";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest,
-      trinsic.services.ProviderService.InviteResponse> getInviteMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Invite",
-      requestType = trinsic.services.ProviderService.InviteRequest.class,
-      responseType = trinsic.services.ProviderService.InviteResponse.class,
+      requestType = trinsic.services.common.v1.ProviderOuterClass.InviteRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.InviteResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest,
-      trinsic.services.ProviderService.InviteResponse> getInviteMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest, trinsic.services.ProviderService.InviteResponse> getInviteMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteMethod;
     if ((getInviteMethod = ProviderGrpc.getInviteMethod) == null) {
       synchronized (ProviderGrpc.class) {
         if ((getInviteMethod = ProviderGrpc.getInviteMethod) == null) {
           ProviderGrpc.getInviteMethod = getInviteMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.ProviderService.InviteRequest, trinsic.services.ProviderService.InviteResponse>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Invite"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InviteRequest.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InviteRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InviteResponse.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InviteResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("Invite"))
               .build();
         }
@@ -45,29 +46,29 @@ public final class ProviderGrpc {
     return getInviteMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest,
-      trinsic.services.ProviderService.InviteResponse> getInviteWithWorkflowMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "InviteWithWorkflow",
-      requestType = trinsic.services.ProviderService.InviteRequest.class,
-      responseType = trinsic.services.ProviderService.InviteResponse.class,
+      requestType = trinsic.services.common.v1.ProviderOuterClass.InviteRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.InviteResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest,
-      trinsic.services.ProviderService.InviteResponse> getInviteWithWorkflowMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.ProviderService.InviteRequest, trinsic.services.ProviderService.InviteResponse> getInviteWithWorkflowMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod;
     if ((getInviteWithWorkflowMethod = ProviderGrpc.getInviteWithWorkflowMethod) == null) {
       synchronized (ProviderGrpc.class) {
         if ((getInviteWithWorkflowMethod = ProviderGrpc.getInviteWithWorkflowMethod) == null) {
           ProviderGrpc.getInviteWithWorkflowMethod = getInviteWithWorkflowMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.ProviderService.InviteRequest, trinsic.services.ProviderService.InviteResponse>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InviteWithWorkflow"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InviteRequest.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InviteRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InviteResponse.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InviteResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("InviteWithWorkflow"))
               .build();
         }
@@ -76,29 +77,29 @@ public final class ProviderGrpc {
     return getInviteWithWorkflowMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.ProviderService.InvitationStatusRequest,
-      trinsic.services.ProviderService.InvitationStatusResponse> getInvitationStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> getInvitationStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "InvitationStatus",
-      requestType = trinsic.services.ProviderService.InvitationStatusRequest.class,
-      responseType = trinsic.services.ProviderService.InvitationStatusResponse.class,
+      requestType = trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.ProviderService.InvitationStatusRequest,
-      trinsic.services.ProviderService.InvitationStatusResponse> getInvitationStatusMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.ProviderService.InvitationStatusRequest, trinsic.services.ProviderService.InvitationStatusResponse> getInvitationStatusMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
+      trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> getInvitationStatusMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest, trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> getInvitationStatusMethod;
     if ((getInvitationStatusMethod = ProviderGrpc.getInvitationStatusMethod) == null) {
       synchronized (ProviderGrpc.class) {
         if ((getInvitationStatusMethod = ProviderGrpc.getInvitationStatusMethod) == null) {
           ProviderGrpc.getInvitationStatusMethod = getInvitationStatusMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.ProviderService.InvitationStatusRequest, trinsic.services.ProviderService.InvitationStatusResponse>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest, trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InvitationStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InvitationStatusRequest.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.ProviderService.InvitationStatusResponse.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("InvitationStatus"))
               .build();
         }
@@ -160,15 +161,15 @@ public final class ProviderGrpc {
      *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
      * </pre>
      */
-    public void invite(trinsic.services.ProviderService.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse> responseObserver) {
+    public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInviteMethod(), responseObserver);
     }
 
     /**
      */
-    public void inviteWithWorkflow(trinsic.services.ProviderService.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse> responseObserver) {
+    public void inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInviteWithWorkflowMethod(), responseObserver);
     }
 
@@ -178,8 +179,8 @@ public final class ProviderGrpc {
      *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
      * </pre>
      */
-    public void invitationStatus(trinsic.services.ProviderService.InvitationStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InvitationStatusResponse> responseObserver) {
+    public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInvitationStatusMethod(), responseObserver);
     }
 
@@ -189,22 +190,22 @@ public final class ProviderGrpc {
             getInviteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.ProviderService.InviteRequest,
-                trinsic.services.ProviderService.InviteResponse>(
+                trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+                trinsic.services.common.v1.ProviderOuterClass.InviteResponse>(
                   this, METHODID_INVITE)))
           .addMethod(
             getInviteWithWorkflowMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.ProviderService.InviteRequest,
-                trinsic.services.ProviderService.InviteResponse>(
+                trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
+                trinsic.services.common.v1.ProviderOuterClass.InviteResponse>(
                   this, METHODID_INVITE_WITH_WORKFLOW)))
           .addMethod(
             getInvitationStatusMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.ProviderService.InvitationStatusRequest,
-                trinsic.services.ProviderService.InvitationStatusResponse>(
+                trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
+                trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse>(
                   this, METHODID_INVITATION_STATUS)))
           .build();
     }
@@ -229,16 +230,16 @@ public final class ProviderGrpc {
      *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
      * </pre>
      */
-    public void invite(trinsic.services.ProviderService.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse> responseObserver) {
+    public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInviteMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void inviteWithWorkflow(trinsic.services.ProviderService.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse> responseObserver) {
+    public void inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInviteWithWorkflowMethod(), getCallOptions()), request, responseObserver);
     }
@@ -249,8 +250,8 @@ public final class ProviderGrpc {
      *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
      * </pre>
      */
-    public void invitationStatus(trinsic.services.ProviderService.InvitationStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InvitationStatusResponse> responseObserver) {
+    public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInvitationStatusMethod(), getCallOptions()), request, responseObserver);
     }
@@ -275,14 +276,14 @@ public final class ProviderGrpc {
      *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
      * </pre>
      */
-    public trinsic.services.ProviderService.InviteResponse invite(trinsic.services.ProviderService.InviteRequest request) {
+    public trinsic.services.common.v1.ProviderOuterClass.InviteResponse invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInviteMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public trinsic.services.ProviderService.InviteResponse inviteWithWorkflow(trinsic.services.ProviderService.InviteRequest request) {
+    public trinsic.services.common.v1.ProviderOuterClass.InviteResponse inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInviteWithWorkflowMethod(), getCallOptions(), request);
     }
@@ -293,7 +294,7 @@ public final class ProviderGrpc {
      *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
      * </pre>
      */
-    public trinsic.services.ProviderService.InvitationStatusResponse invitationStatus(trinsic.services.ProviderService.InvitationStatusRequest request) {
+    public trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInvitationStatusMethod(), getCallOptions(), request);
     }
@@ -318,16 +319,16 @@ public final class ProviderGrpc {
      *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.ProviderService.InviteResponse> invite(
-        trinsic.services.ProviderService.InviteRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> invite(
+        trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInviteMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.ProviderService.InviteResponse> inviteWithWorkflow(
-        trinsic.services.ProviderService.InviteRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> inviteWithWorkflow(
+        trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInviteWithWorkflowMethod(), getCallOptions()), request);
     }
@@ -338,8 +339,8 @@ public final class ProviderGrpc {
      *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.ProviderService.InvitationStatusResponse> invitationStatus(
-        trinsic.services.ProviderService.InvitationStatusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> invitationStatus(
+        trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInvitationStatusMethod(), getCallOptions()), request);
     }
@@ -367,16 +368,16 @@ public final class ProviderGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_INVITE:
-          serviceImpl.invite((trinsic.services.ProviderService.InviteRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse>) responseObserver);
+          serviceImpl.invite((trinsic.services.common.v1.ProviderOuterClass.InviteRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse>) responseObserver);
           break;
         case METHODID_INVITE_WITH_WORKFLOW:
-          serviceImpl.inviteWithWorkflow((trinsic.services.ProviderService.InviteRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InviteResponse>) responseObserver);
+          serviceImpl.inviteWithWorkflow((trinsic.services.common.v1.ProviderOuterClass.InviteRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse>) responseObserver);
           break;
         case METHODID_INVITATION_STATUS:
-          serviceImpl.invitationStatus((trinsic.services.ProviderService.InvitationStatusRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.ProviderService.InvitationStatusResponse>) responseObserver);
+          serviceImpl.invitationStatus((trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -400,7 +401,7 @@ public final class ProviderGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return trinsic.services.ProviderService.getDescriptor();
+      return trinsic.services.common.v1.ProviderOuterClass.getDescriptor();
     }
 
     @java.lang.Override
