@@ -30,7 +30,7 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install pytest pytest-cov
           python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }}
-          python -m pytest --cache-clear ./tests --junitxml=pytest_junit.xml --cov=.
+          python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
         shell: pwsh
         working-directory: python
         env:
