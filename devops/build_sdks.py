@@ -60,7 +60,8 @@ def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
 def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
     for find, replace in replace_lines.items():
         if line.strip().startswith(find.strip()):
-            line = replace + '\n'
+            # Preserve left-side spaces
+            line = f'{" "*(len(line)-len(line.lstrip()))}{replace}\n'
     return line
 
 
@@ -82,7 +83,7 @@ def build_ruby(args) -> None:
     # Update version in setup.cfg
     ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
     update_line(join(ruby_dir, 'lib', 'version.rb'),
-                {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
+                {'VERSION =': f"VERSION = '{get_package_versions(args)}'"})
 
 
 def build_golang(args) -> None:
