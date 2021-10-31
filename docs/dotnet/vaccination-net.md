@@ -65,7 +65,7 @@ File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 ```
 
-Read more about [security profiles](/reference/setup/#authorization) and authentication.
+Read more about [security profiles](/reference/#authorization) and authentication.
 
 ## Certificate issuance
 

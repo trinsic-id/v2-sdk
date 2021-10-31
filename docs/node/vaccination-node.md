@@ -1,8 +1,8 @@
 # Vaccination Use Case for Node.js
 
 --8<----
-walkthrough/snippets/intro-infrastructure.md
-walkthrough/snippets/intro-use-case.md
+snippets/intro-infrastructure.md
+snippets/intro-use-case.md
 --8<----
 
 ## Technical requirements
@@ -63,7 +63,7 @@ let allison = WalletProfile.deserializeBinary(profile);
 !!! note "Loading Profiles"
     In order to load a profile from a saved file you'll need to install google-protobuf with `npm i google-protobuf` in order to use the Struct class and convert the DID Document from JavaScript to the protobuf form.
 
-Read more about [security profiles](../reference/setup/index.md#authorization) and authentication.
+Read more about [security profiles](/reference/index.md#authorization) and authentication.
 
 ## Certificate issuance
 

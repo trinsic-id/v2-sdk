@@ -46,6 +46,10 @@ An ecosystem governance framework is useful because it provides a good basis for
     ```java
     
     ```
+=== "Ruby"
+    ```ruby
+    
+    ```
 ### Register Issuers and Verifiers
 Each entity on the governance framework, whether an issuer or a verifier, is represented by a decentralized identifier. These entities are registered to either issue or verify specific credential types. A credential type is represented as a fully qualified `type` URI, of the kind found in a JSON-LD Verifiable Credential.
 Finally, each entity must be registered on a specific governance framework. 
@@ -77,6 +81,10 @@ Finally, each entity must be registered on a specific governance framework.
     ```
 === "Java"
     ```java
+    
+    ```
+=== "Ruby"
+    ```ruby
     
     ```
 
@@ -112,6 +120,10 @@ To unregister an entity, include the credential type, the did, and the ecosystem
     ```java
     
     ```
+=== "Ruby"
+    ```ruby
+    
+    ```
 ### Check Authoritative Status
 Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.
 
@@ -144,6 +156,10 @@ Check the status of an issuer for a credential type within a given governance fr
     ```java
     
     ```
+=== "Ruby"
+    ```ruby
+    
+    ```
 
 ### Search
 Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
@@ -174,6 +190,10 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     ```java
     
     ```
+=== "Ruby"
+    ```ruby
+    
+    ```
 ### Cache Offline Registry File
 Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
 
@@ -201,5 +221,9 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     ```
 === "Java"
     ```java
+    
+    ```
+=== "Ruby"
+    ```ruby
     
     ```

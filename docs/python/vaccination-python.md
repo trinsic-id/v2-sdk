@@ -42,7 +42,7 @@ If you would like to save the profile for future use, you can simply export the 
 File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 ```
 
-Read more about [security profiles](../reference/setup/index.md#authorization) and authentication.
+Read more about [security profiles](../reference/index.md#authorization) and authentication.
 
 ## Certificate issuance
 
