@@ -1,12 +1,12 @@
-# Okapi CLI
+# Trinsic CLI
 
 ## Installation
 
-### Using Homebrew
+### Using Homebrew for MacOS and Linux
 
 ```
-brew tap trinsic-id/trinsic
-brew install trinsic
+brew tap trinsic-id/trinsic0cli
+brew install trinsic-cli
 ```
 
 ### Using Cargo
