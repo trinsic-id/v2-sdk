@@ -8,5 +8,5 @@ group :test do
 end
 
 source "https://rubygems.pkg.github.com/trinsic-id" do
-  gem "okapi", ">= 0.1.4"
+  gem "okapi", ">= 1.0.0"
 end

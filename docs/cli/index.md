@@ -1,16 +1,25 @@
 # The Trinsic CLI
 
-The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. The Trinsic CLI also supports linux development environment. You can build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli). It contains all the commands of the other SDKs, but makes them interactive. 
-
+The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal.  You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli. It contains all the commands of Trinsic's SDKs and makes them interactive. 
 
 ## Installation
 
-The CLI can be installed directly using the Cargo tool. This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
+The CLI can be installed directly as binary or built from source.
+## Using Homebrew for MacOS and Linux
+
+```
+brew tap trinsic-id/trinsic
+brew install trinsic
+```
+
+## From source using the Rust toolchain
+
+This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
 
 Once installed, run this command in terminal:
 
 ```bash
-cargo install --git https://github.com/trinsic-id/sdk.git --branch main
+cargo +nightly install --git https://github.com/trinsic-id/sdk trinsic
 ```
 
 To verify that the CLI has been installed successfully, try running:

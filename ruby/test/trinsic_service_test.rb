@@ -2,7 +2,7 @@ require "./test/test_helper"
 require 'json'
 require 'okapi'
 require 'uri'
-require_relative '../lib/trinsic/ProviderService_pb'
+require 'trinsic'
 
 class TrinsicServiceTest < Minitest::Test
 
@@ -33,7 +33,7 @@ class TrinsicServiceTest < Minitest::Test
     provider_service = Trinsic::ProviderService.new(server_address)
 
     wallet = wallet_service.create_wallet("")
-    invite_request = Trinsic::Services::InviteRequest.new(:description=>"I dunno",
+    invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
                                                           :email=>"scott.phillips@trinsic.id")
     # invite_request.email = "scott.phillips@trinsic.id"
     invite_response = provider_service.invite_participant(invite_request)

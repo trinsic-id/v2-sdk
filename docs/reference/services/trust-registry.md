@@ -197,7 +197,7 @@ Search the registry for authoritative issuer and verifiers using a custom query 
 
 === "Trinsic CLI"
     ```bash
-    trinsic trust-registry download
+    trinsic trust-registry download 
     ```
 === "TypeScript"
     ```typescript
