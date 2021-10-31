@@ -5,18 +5,10 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
-  - Overview: index.md
-  - Get Started: early-adopter.md
-  - Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
-  - Support: support.md
-  - Learn:
-    - Introduction: concepts/index.md
-    - Credentials: concepts/credentials.md
-    - Presentations: concepts/presentations.md
-    - Ecosystems: concepts/ecosystems.md
-    - Trinsic's Platform: concepts/what-is-trinsic.md
-    - Underlying Tech: concepts/tech.md
-    - Security: concepts/security.md
+  - Welcome: index.md
+  - Join the Beta: early-adopter.md
+  - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
+  - Have a Question?: support.md
   - Build:
     - CLI: cli/index.md
     - Node: node/index.md
@@ -28,6 +20,14 @@ nav:
     - Web: web/index.md
     - iOS: ios/index.md
     - Android: android/index.md
+  - Learn:
+    - Introduction: concepts/index.md
+    - Wallets: concepts/wallets.md
+    - Credentials: concepts/credentials.md
+    - Passes: concepts/passes.md
+    - Ecosystems: concepts/ecosystems.md
+    - Security: concepts/security.md
+    - Underlying Tech: concepts/tech.md
   - Reference:
     - Setup: reference/setup/index.md
     - Wallet Service: reference/services/wallet-service.md
