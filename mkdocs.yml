@@ -10,24 +10,24 @@ nav:
   - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
   - Have a Question?: support.md
   - Build:
-    - CLI: cli/index.md
-    - Node: node/index.md
-    - C#: csharp/index.md
-    - Python: python/index.md
-    - Ruby: ruby/index.md
-    - Go: go/index.md
-    - Java: java/index.md
-    - Web: web/index.md
-    - iOS: ios/index.md
-    - Android: android/index.md
+    - CLI: build/cli/index.md
+    - Node: build/node/index.md
+    - C#: build/dotnet/index.md
+    - Python: build/python/index.md
+    - Ruby: build/ruby/index.md
+    - Go: build/go/index.md
+    - Java: build/java/index.md
+    - Web: build/web/index.md
+    - iOS: build/ios/index.md
+    - Android: build/android/index.md
   - Learn:
-    - Introduction: concepts/index.md
-    - Wallets: concepts/wallets.md
-    - Credentials: concepts/credentials.md
-    - Passes: concepts/passes.md
-    - Ecosystems: concepts/ecosystems.md
-    - Security: concepts/security.md
-    - Underlying Tech: concepts/tech.md
+    - Introduction: learn/index.md
+    - Wallets: learn/wallets.md
+    - Credentials: learn/credentials.md
+    - Passes: learn/passes.md
+    - Ecosystems: learn/ecosystems.md
+    - Security: learn/security.md
+    - Underlying Tech: learn/tech.md
   - Reference:
     - Setup: reference/setup/index.md
     - Wallet Service: reference/services/wallet-service.md
