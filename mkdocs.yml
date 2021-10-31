@@ -8,17 +8,6 @@ nav:
   - Welcome!: index.md
   - Join the Beta: early-adopter.md
   - Ask a Question: support.md
-  - Build:
-    - CLI: cli/index.md
-    - Node: node/index.md
-    - C#: dotnet/index.md
-    - Python: python/index.md
-    - Ruby: ruby/index.md
-    - Go: go/index.md
-    - Java: java/index.md
-    - Web: web/index.md
-    - iOS: ios/index.md
-    - Android: android/index.md
   - Learn:
     - Introduction: learn/index.md
     - Wallets: learn/wallets.md
@@ -27,12 +16,23 @@ nav:
     - Ecosystems: learn/ecosystems.md
     # - Security: learn/security.md TODO
     - Underlying Tech: learn/tech.md
+  - Build:
+    - Trinsic CLI: cli/index.md
+    - Node: node/index.md
+    - C#: dotnet/index.md
+    - Python: python/index.md
+    # - Ruby: ruby/index.md
+    # - Go: go/index.md
+    # - Java: java/index.md
+    # - Web: web/index.md
+    # - iOS: ios/index.md
+    #  - Android: android/index.md
   - Reference:
     - Overview: reference/index.md
     - Wallet Service: reference/services/wallet-service.md
     - Provider Service: reference/services/provider-service.md
     - Trust Registry Service: reference/services/trust-registry.md
-  - Resources:
+  - External Resources:
     - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
     # - Roadmap: roadmap.md TODO 
     # - Changelog: changelog.md TODO

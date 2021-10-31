@@ -1,6 +1,5 @@
 # Trust Registry
 
-## Overview
 In many real-world credential exchange scenarios, a credential holder or verifier has the question “How do I know the issuer of this credential is trustworthy?”
 
 Credential holders may also be uneasy about sharing information with a verifier if trust in the verifier has not been established.
@@ -22,7 +21,7 @@ An ecosystem governance framework is useful because it provides a good basis for
 
 === "Trinsic CLI"
     ```bash
-    
+    trinsic trust-registry register-efg
     ```
 === "TypeScript"
     ```typescript
@@ -166,7 +165,7 @@ Search the registry for authoritative issuer and verifiers using a custom query 
 
 === "Trinsic CLI"
     ```bash
-
+    trinsic trust-registry search --query <SQL query>
     ```
 === "TypeScript"
     ```typescript
@@ -195,11 +194,10 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     
     ```
 ### Cache Offline Registry File
-Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
 
 === "Trinsic CLI"
     ```bash
-    
+    trinsic trust-registry download
     ```
 === "TypeScript"
     ```typescript

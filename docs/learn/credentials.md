@@ -9,4 +9,3 @@ Just like passports and drivers licenses today have interoperability components 
 
 For a technical deep dive, refer to the [Verifiable Credentials Data Model](https://w3c.github.io/vc-data-model)
 
-[:octicons-info-24: Learn More](./credentials.md)

@@ -1,6 +1,6 @@
 # The Trinsic CLI
 
-The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. The Trinsic CLI also supports linux development environment. You can build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli).
+The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. The Trinsic CLI also supports linux development environment. You can build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli). It contains all the commands of the other SDKs, but makes them interactive. 
 
 
 ## Installation
@@ -70,3 +70,4 @@ The following attributes are currently supported:
 Once the CLI is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./vaccination-cli.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](/reference/index.md)
 
 [Start Walkthrough](./vaccination-cli.md){ .md-button .md-button--primary } [Explore API](/reference/index.md){ .md-button }
+

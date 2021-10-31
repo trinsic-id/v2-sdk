@@ -1,7 +1,5 @@
 # Overview
 
-## Use one of the SDKs
-
 If you are ready to begin integrating the SDK, make sure you have an SDK installed and configured. You can install each SDK by following the instructions in each page under **Build** in the sidebar.
 
 When using the SDK, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.

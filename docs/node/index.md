@@ -1,9 +1,6 @@
 # The Trinsic Javascript / Node SDK
 
-The Trinsic Node SDK makes it easy to interact with the Trinsic API from any backend javascript application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/java).
-
-
-
+The Trinsic Node SDK makes it easy to interact with the Trinsic API from any backend javascript application. The most recent version of the library can be found on npm. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/java).
 ## Installation
 Install the package for Node from [npmjs.com :material-open-in-new:](https://www.npmjs.com/package/@trinsic/trinsic){target=_blank}
 
