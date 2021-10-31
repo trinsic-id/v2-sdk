@@ -5,37 +5,37 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
-  - Welcome: index.md
+  - Welcome!: index.md
   - Join the Beta: early-adopter.md
-  - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
-  - Have a Question?: support.md
+  - Ask a Question: support.md
   - Build:
-    - CLI: build/cli/index.md
-    - Node: build/node/index.md
-    - C#: build/dotnet/index.md
-    - Python: build/python/index.md
-    - Ruby: build/ruby/index.md
-    - Go: build/go/index.md
-    - Java: build/java/index.md
-    - Web: build/web/index.md
-    - iOS: build/ios/index.md
-    - Android: build/android/index.md
+    - CLI: cli/index.md
+    - Node: node/index.md
+    - C#: dotnet/index.md
+    - Python: python/index.md
+    - Ruby: ruby/index.md
+    - Go: go/index.md
+    - Java: java/index.md
+    - Web: web/index.md
+    - iOS: ios/index.md
+    - Android: android/index.md
   - Learn:
     - Introduction: learn/index.md
     - Wallets: learn/wallets.md
     - Credentials: learn/credentials.md
     - Passes: learn/passes.md
     - Ecosystems: learn/ecosystems.md
-    - Security: learn/security.md
+    # - Security: learn/security.md TODO
     - Underlying Tech: learn/tech.md
   - Reference:
-    - Setup: reference/setup/index.md
+    - Overview: reference/index.md
     - Wallet Service: reference/services/wallet-service.md
     - Provider Service: reference/services/provider-service.md
-    - Trust Registry: reference/services/trust-registry.md
+    - Trust Registry Service: reference/services/trust-registry.md
   - Resources:
-    - Roadmap: roadmap.md
-    - Changelog: changelog.md
+    - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
+    # - Roadmap: roadmap.md TODO 
+    # - Changelog: changelog.md TODO
     - Github: https://github.com/trinsic-id
 theme:
   name: material

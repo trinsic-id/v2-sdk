@@ -1,8 +1,8 @@
 # Vaccination Use Case for .NET Core
 
 --8<----
-walkthrough/snippets/intro-infrastructure.md
-walkthrough/snippets/intro-use-case.md
+/snippets/intro-infrastructure.md
+/snippets/intro-use-case.md
 --8<----
 
 ## Technical requirements

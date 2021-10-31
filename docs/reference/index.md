@@ -1,9 +1,16 @@
+# Overview
 
-# Security Profiles / Authorization
+## Use one of the SDKs
+
+If you are ready to begin integrating the SDK, make sure you have an SDK installed and configured. You can install each SDK by following the instructions in each page under **Build** in the sidebar.
+
+When using the SDK, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.
+
+## Authorization
 
 Trinsic Ecosystems uses authenticated access for accessing personal data. This is implemented using [Authorization Capabilities for Linked Data :material-open-in-new:](https://w3c-ccg.github.io/zcap-ld/){target=_blank} (ZCAP-LD for short). Zcaps provide a secure way for linked data systems to grant and express authority utilizing the object capability model. Our wallet capabilities are represented as linked data objects which are signed with Linked Data Proofs. LD Proofs represent the core technology of the way we share and exchange authentic data with others.
 
-## Profile Data Format
+### Profile Data Format
 
 Security Profiles are represented as a protobuf message that contains details about the connecting device to the remote cloud wallet. These are sensitive details that contain private key data, and must always be stored in a secure storage. The details of this data contract are expressed with this proto message.
 
@@ -35,4 +42,6 @@ message WalletProfile {
 ---
 
 This profile is always stored in its binary form using the protobuf native serialization. A profile is created by using the [Create Wallet](/reference/services/wallet-service/#create-wallet) functionality in the SDK.
+
+
 
