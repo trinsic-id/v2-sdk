@@ -5,14 +5,14 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
 ## Installation
 
 The CLI can be installed directly as binary or built from source.
-## Using Homebrew for MacOS and Linux
+### Using Homebrew for MacOS and Linux
 
 ```
 brew tap trinsic-id/trinsic
 brew install trinsic
 ```
 
-## From source using the Rust toolchain
+### From source using the Rust toolchain
 
 This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
 
