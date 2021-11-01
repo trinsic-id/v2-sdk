@@ -27,7 +27,7 @@
     <!-- <copyright>Year Software Vendor</copyright> -->
     <!-- If there is a license Url available, it is required for the community feed -->
     <licenseUrl>https://github.com/trinsic-id/sdk/tree/main/LICENSE</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/trinsic-id/sdk/tree/main/cli</projectSourceUrl>
     <docsUrl>https://docs-v2.trinsic.id</docsUrl>
     <!--<mailingListUrl></mailingListUrl>-->
@@ -58,9 +58,6 @@
     <!--<replaces>NOT YET IMPLEMENTED</replaces>-->
   </metadata>
   <files>
-    <!-- this section controls what actually gets packaged into the Chocolatey package -->
-    <file src="tools\**" target="tools" />
-    <!--Building from Linux? You may need this instead: <file src="tools/**" target="tools" />-->
-    <file src="bin\**" target="bin" />
+    <file src="target\release\trinsic.exe" target="bin" />
   </files>
 </package>
