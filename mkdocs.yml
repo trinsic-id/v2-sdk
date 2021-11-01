@@ -18,6 +18,7 @@ nav:
     - Wallet Service: reference/services/wallet-service.md
     - Provider Service: reference/services/provider-service.md
     - Trust Registry: reference/services/trust-registry.md
+    - Protocol Buffers: reference/proto/index.md
   - Support:
     - Join Slack Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
     - Contribute on Github: https://github.com/trinsic-id
