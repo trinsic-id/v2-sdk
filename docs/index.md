@@ -1,31 +1,40 @@
-# Introduction
+---
+hide:
+  - toc
+---
+# Trinsic Documentation
+## Issue and verify universally-accepted digital credentials.
+Learn how to issue and verify universally-accepted digital credentials so that anywhere people go online or in-person, they can simply tap their phone, prove who they are, and get what they need.
 
-## Welcome to Trinsic
-Trinsic is a developer platform to exchange verifiable credentials.
+[**Get started with Trinsic**](learn/index.md) - Learn about Trinsic, work through a basic implementation, plan a full implementation and learn about our tools you can use. 
 
-Verifiable Credentials transform credentials, licenses, passes, and certificates into a W3C standard format that can be exchanged digitally and verified instantly. Unlike a paper document or html form, when information from a verifiable credential is shared, it can be instantly proven to be authentic.
+[**Join the Beta**](early-adopter.md) - Our platform is still in beta. While our docs are public, you'll need a special environment to start using Trinsic at this time. We're excited to help you! Please contact us and we'll help you get started.
+## Connect your app to Trinsic
+Get up and running in the language of your choice or interact with Trinsic through your terminal.
 
-They require no centralized authority or proprietary technology to use - verifiable credentials are built on interoperable standards  designed to be open, privacy-preserving, and distributed like the internet itself.
+[:octicons-terminal-16: **Use the CLI**](cli/index.md)
+### Server-side SDKs
+[:material-nodejs: Node](node/index.md){ .md-button .md-button--primary }
+[:material-language-python: Python](python/index.md){ .md-button .md-button--primary }
+[:material-microsoft: .NET](dotnet/index.md){ .md-button .md-button--primary }
+### Client-side SDKs
 
-Hundreds of organizations of all sizes and industries use Trinsic’s infrastructure and tools to instantly verify information about individuals with technology instead of paper.
+[:fontawesome-brands-js-square: Web](web/index.md){ .md-button .md-button--primary } 
 
-## Available SDKs
+### Coming Soon
 
-- [x] [C#](./walkthrough/vaccination-net.md)
-    - [x] Mobile (Xamarin, MAUI)
-    - [x] .NET Core (MacOS, Windows, Linux)
-    - [ ] Web Assembly (Blazor)
-- [x] TypeScript/JS
-    - [x] [Node.js](./walkthrough/vaccination-node.md)
-    - [x] [Browser](./walkthrough/vaccination-browser.md)
-- [x] Python
-- [x] Go
-- [x] Rust
-- [x] Swift (iOS)
-- [x] Java/Kotlin (Android)
+[:material-menu: Go](#){ .md-button }
+[:material-language-ruby: Ruby](#){ .md-button  }
+[:material-language-java: Java](#){ .md-button }
+[:material-android: Android](#){ .md-button }
+[:material-apple: iOS](#){ .md-button } 
 
-## Up Next
 
-- [ ] React Native
 
-Next: [Learn the Concepts](./concepts/index.md)
+
+
+## Additional Resources
+[**Join the Community**](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) - We have a growing community on Slack of people who are building with Trinsic. Join to ask questions and participate in our community events.
+
+[**Follow our progress on Github**](https://github.com/trinsic-id) - Most of our work is done in the open. We love to collaborate with developers and are always open to feedback.
+
