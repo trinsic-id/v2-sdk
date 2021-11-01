@@ -114,7 +114,7 @@ let allison = WalletProfile.deserializeBinary(localStorage.getItem("allison.bin"
 !!! note "Loading Profiles"
     In order to load a profile from a saved file you'll need to install google-protobuf with `npm i google-protobuf` in order to use the Struct class and convert the DID Document from JavaScript to the protobuf form.
 
-Read more about [security profiles](../reference/setup/index.md/profiles) and authentication.
+Read more about [security profiles](../reference/index.md/profiles) and authentication.
 
 ## Certificate issuance
 

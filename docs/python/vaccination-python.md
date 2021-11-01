@@ -1,8 +1,8 @@
 # Walkthrough for Python
 
 --8<----
-walkthrough/snippets/intro-infrastructure.md
-walkthrough/snippets/intro-use-case.md
+/snippets/intro-infrastructure.md
+/snippets/intro-use-case.md
 --8<----
 
 ## Technical requirements
@@ -13,7 +13,7 @@ You can run this example on your local machine, or you can use our Gitpod setup 
 
 Clone this sdk repository: <link>
 
-In this project, we'll be following along the `trinsic_service_demo`
+In this project, we'll be following along the `test_trinsic_services`
 
 
 ## Configure services
@@ -28,7 +28,7 @@ wallet_service = WalletService(server_address)
 ## Setup wallet profiles
 
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
-To create a new wallet profile, we use the [Create Wallet](/reference/services/wallet-service/#create-wallet) feature.
+To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
 ```python
 allison = await wallet_service.create_wallet()
@@ -42,7 +42,7 @@ If you would like to save the profile for future use, you can simply export the 
 File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 ```
 
-Read more about [security profiles](../reference/setup/index.md#authorization) and authentication.
+Read more about [security profiles](../reference/index.md#authorization) and authentication.
 
 ## Certificate issuance
 
@@ -93,7 +93,7 @@ At this point, the clinic can send the signed credential to Allison using any av
 
 ## Store certificate in personal wallet
 
-Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](/reference/services/wallet-service/#insert-record) function.
+Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](../reference/services/wallet-service/#insert-record) function.
 
 ```python
 wallet_service.set_profile(allison)
@@ -132,7 +132,7 @@ Let's save this request in a file named `vaccination-certificate-frame.jsonld`
 
 This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
 
-Allison can use the [Create Proof](/reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
+Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
 
 ```python
 def vaccine_cert_frame_path(self) -> str:
@@ -146,7 +146,7 @@ credential_proof = await wallet_service.create_proof(document_id=item_id, reveal
 
 ## Verification
 
-Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](/reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
+Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](../reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
 
 ```python
 wallet_service.set_profile(airline)

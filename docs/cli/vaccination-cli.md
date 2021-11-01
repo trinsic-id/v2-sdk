@@ -3,35 +3,10 @@
 It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with the Trinsic CLI. It assumes no prior knowledge to decentralized identity.
 
 --8<----
-walkthrough/snippets/intro-infrastructure.md
-walkthrough/snippets/intro-use-case.md
+/snippets/intro-infrastructure.md
+/snippets/intro-use-case.md
 --8<----
 
-## Install Trinsic CLI
-
---8<-- "setup/installation/install-cli.md"
-
-If you're here to just go through the walkthrough, check out our [Gitpod cloud environment](https://gitpod.io/#https://github.com/trinsic-id/sdk) for easy installation (You'll have to create a free account with gitpod).
-
-To install the CLI locally, clone our sdk github repo and compile the SDK
-```bash 
-git clone https://github.com/trinsic-id/sdk.git
-
-cd sdk/cli
-
-cargo install --path .
-```
-
-Once installed, configure the CLI's server address to your Ecosystem:
-
-=== "Trinsic CLI"
-
-    ```bash
-    trinsic config --server-address https://example.com
-    ```
-
-!!! note
- Reference: [Configuration with CLI](../reference/setup/index.md#configuration-with-cli)
 
 ## Meet Allison
 
