@@ -84,6 +84,15 @@ def update_java():
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
 
+def update_markdown():
+    lang_path = get_language_dir('docs')
+    lang_proto_path = join(lang_path, 'reference', 'proto')
+    # https://github.com/pseudomuto/protoc-gen-doc
+    # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+    # Add to path and rename to `protoc-gen-grpc-java`
+    run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
+
+
 def update_python():
     """
     Generate the protobuf interface files using the python library https://github.com/danielgtaylor/python-betterproto
@@ -111,6 +120,7 @@ def main():
     update_ruby()
     update_java()
     update_python()
+    update_markdown()
 
 
 if __name__ == "__main__":
