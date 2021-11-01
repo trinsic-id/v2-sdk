@@ -59,5 +59,6 @@
   </metadata>
   <files>
     <file src="target\release\trinsic.exe" target="bin" />
+    <file src="*.txt" target="tools" />
   </files>
 </package>
