@@ -18,6 +18,10 @@ server_address = '<SERVER_ADDRESS>'
 wallet_service = WalletService(server_address)
 ```
 
+```
+--8<-- "python/tests/test_trinsic_services.py#L20-L30"
+```
+
 ## Next Steps
 
 Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./vaccination-python.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](/reference/index.md)
