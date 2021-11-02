@@ -5,8 +5,7 @@ from os.path import abspath, join, dirname
 
 import okapi.okapi_utils
 
-from trinsic.proto.services.provider.v1 import ParticipantType
-from trinsic.services import WalletService, create_channel_if_needed, ProviderService
+from trinsic.services import WalletService, _create_channel_if_needed
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
@@ -61,13 +60,11 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         throws_exception = [False, False, False, True, True, True, True]
 
         for ij in range(len(addresses)):
-            try:
-                create_channel_if_needed(service_address=addresses[ij])
-                if throws_exception[ij]:
-                    self.fail(f"URL={addresses[ij]} should throw")
-            except:
-                if not throws_exception[ij]:
-                    self.fail(f"URL={addresses[ij]} should not throw")
+            if throws_exception[ij]:
+                with self.assertRaises(BaseException):
+                    _create_channel_if_needed(addresses[ij])
+            else:
+                _create_channel_if_needed(addresses[ij])
 
     async def test_trinsic_service_demo(self):
         server_address = os.getenv('TRINSIC_SERVER_ADDRESS')

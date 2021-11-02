@@ -98,3 +98,6 @@ extra_css:
 
 extra:
   generator: false
+
+plugins:
+  - codeinclude
