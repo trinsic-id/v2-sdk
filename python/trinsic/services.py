@@ -30,6 +30,7 @@ class ServiceBase:
     """
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
     """
+
     def __init__(self):
         self.cap_invocation: str = ""
 
@@ -69,6 +70,7 @@ class WalletService(ServiceBase):
     Wrapper for the wallet service
     TODO: /reference/services/wallet-service/
     """
+
     def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
         """
         Initialize a connection to the server.
@@ -172,6 +174,7 @@ class ProviderService(ServiceBase):
     Wrapper for the provider service.
     TODO: /reference/services/provider-service
     """
+
     def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
         super().__init__()
         self.channel = _create_channel_if_needed(service_address)
@@ -218,6 +221,11 @@ class ProviderService(ServiceBase):
 
 
 class TrustRegistryService(ServiceBase):
+    """
+    Wrapper for Trust Registry Service
+    TODO: /reference/services/trust-registry/
+    """
+
     def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
         super().__init__()
         self.channel = _create_channel_if_needed(service_address)
@@ -227,12 +235,17 @@ class TrustRegistryService(ServiceBase):
         if self.channel:
             self.channel.close()
 
-    async def register_governance_framework(self, governance_framework: str, description: str):
+    async def register_governance_framework(self, governance_framework: str, description: str) -> None:
+        """
+        TODO: /reference/services/trust-registry/#create-a-ecosystem-governance-framework
+        :param governance_framework:
+        :param description:
+        """
         governance_url = urllib.parse.urlsplit(governance_framework, allow_fragments=False)
         # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
             self.provider_client.metadata = self.metadata
-            response = await self.provider_client.add_framework(governance_framework=GovernanceFramework(
+            await self.provider_client.add_framework(governance_framework=GovernanceFramework(
                 governance_framework_uri=governance_framework,
                 description=description
             ))
@@ -240,7 +253,15 @@ class TrustRegistryService(ServiceBase):
             raise ValueError(f"Invalid URI string={governance_framework}")
 
     async def register_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
-                              valid_from: datetime.datetime, valid_until: datetime.datetime):
+                              valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+        """
+        TODO: /reference/services/trust-registry/#register-issuers-and-verifiers
+        :param issuer_did:
+        :param credential_type:
+        :param governance_framework:
+        :param valid_from:
+        :param valid_until:
+        """
         # TODO - Handle nones for valid_from, valid_until
         self.provider_client.metadata = self.metadata
         await self.provider_client.register_issuer(did_uri=issuer_did,
@@ -250,11 +271,27 @@ class TrustRegistryService(ServiceBase):
                                                    valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
-                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+                                valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+        """
+        TODO: /reference/services/trust-registry/#unregister-issuers-and-verifiers
+        :param issuer_did:
+        :param credential_type:
+        :param governance_framework:
+        :param valid_from:
+        :param valid_until:
+        """
         raise NotImplementedError
 
     async def register_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
-                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+                                valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+        """
+        TODO: /reference/services/trust-registry/#register-issuers-and-verifiers
+        :param verifier_did:
+        :param presentation_type:
+        :param governance_framework:
+        :param valid_from:
+        :param valid_until:
+        """
         self.provider_client.metadata = self.metadata
         await self.provider_client.register_verifier(did_uri=verifier_did,
                                                      presentation_type_uri=presentation_type,
@@ -263,24 +300,53 @@ class TrustRegistryService(ServiceBase):
                                                      valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
-                                valid_from: datetime.datetime, valid_until: datetime.datetime):
+                                  valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+        """
+        TODO: /reference/services/trust-registry/#unregister-issuers-and-verifiers
+        :param verifier_did:
+        :param presentation_type:
+        :param governance_framework:
+        :param valid_from:
+        :param valid_until:
+        """
         raise NotImplementedError
 
-    async def check_issuer_status(self, issuer_did: str, credential_type: str, governance_framework: str) -> RegistrationStatus:
+    async def check_issuer_status(self, issuer_did: str, credential_type: str,
+                                  governance_framework: str) -> RegistrationStatus:
+        """
+        TODO: /reference/services/trust-registry/#check-authoritative-status
+        :param issuer_did:
+        :param credential_type:
+        :param governance_framework:
+        :return: TODO: /reference/proto/#checkissuerstatusresponse
+        """
         self.provider_client.metadata = self.metadata
-        return (await self.provider_client.check_issuer_status(governance_framework_uri= governance_framework,
-                                                              did_uri=issuer_did,
-                                                              credential_type_uri=credential_type)).status
+        return (await self.provider_client.check_issuer_status(governance_framework_uri=governance_framework,
+                                                               did_uri=issuer_did,
+                                                               credential_type_uri=credential_type)).status
 
     async def check_verifier_status(self, issuer_did: str, presentation_type: str,
-                                  governance_framework: str) -> RegistrationStatus:
+                                    governance_framework: str) -> RegistrationStatus:
+        """
+        TODO: /reference/services/trust-registry/#check-authoritative-status
+        :param issuer_did:
+        :param presentation_type:
+        :param governance_framework:
+        :return:TODO: /reference/proto/#checkverifierstatusresponse
+        """
         self.provider_client.metadata = self.metadata
         return (await self.provider_client.check_verifier_status(governance_framework_uri=governance_framework,
                                                                  did_uri=issuer_did,
                                                                  presentation_type_uri=presentation_type)).status
 
-    async def search_registry(self, query:str="SELECT * FROM c") -> List[Dict]:
+    async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
+        """
+        TODO: /reference/services/trust-registry/#search
+        :param query: Search query
+        :return: TODO: /reference/proto/#searchregistryresponse
+        """
         self.provider_client.metadata = self.metadata
-        response = await self.provider_client.search_registry(query=query, options=RequestOptions(response_json_format=JsonFormat.Protobuf))
+        response = await self.provider_client.search_registry(query=query, options=RequestOptions(
+            response_json_format=JsonFormat.Protobuf))
 
         return [item.json_struct.to_dict() for item in response.items]
