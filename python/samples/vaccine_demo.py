@@ -30,12 +30,12 @@ async def vaccine_demo():
     airline = await wallet_service.create_wallet()
 
     # Store profile for later use
-    with open("../tests/allison.bin", "wb") as fid:
+    with open("allison.bin", "wb") as fid:
         fid.write(bytes(allison))
 
     # Create profile from existing data
     allison = WalletProfile()
-    with open("../tests/allison.bin", "rb") as fid:
+    with open("allison.bin", "rb") as fid:
         allison.parse(fid.read())
 
     # ISSUE CREDENTIAL
