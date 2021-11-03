@@ -12,3 +12,4 @@ Hundreds of organizations of all sizes and industries use Trinsic’s infrastruc
 Trinsic is a set of tools and infrastructure that enables decentralized identity for individuals and organizations.
 
 There are many ways that decentralized identity can be used beyond just customer login. This enables digital identity verification anywhere. In person, online, even offline.
+
