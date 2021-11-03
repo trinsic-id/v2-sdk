@@ -39,7 +39,8 @@ airline = await wallet_service.create_wallet()
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
 ```python
-File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+with open("allison.bin", "wb") as fid:
+    fid.write(bytes(allison))
 ```
 
 Read more about [security profiles](../reference/index.md#authorization) and authentication.
