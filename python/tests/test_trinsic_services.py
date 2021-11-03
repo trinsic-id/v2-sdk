@@ -2,29 +2,10 @@ import os
 import unittest
 
 import okapi.okapi_utils
-import pytest
 
+from samples.provider_demo import provider_demo
 from samples.vaccine_demo import vaccine_demo
-from trinsic.services import WalletService, _create_channel_if_needed
-
-
-@pytest.mark.parametrize("url,throws_exception", [
-    ("http://localhost:5000", False),
-    ("https://localhost:5000", False),
-    ("http://20.75.134.127:80", False),
-    ("http://20.75.134.127", True),
-    ("http://localhost", True),
-    ("localhost:5000", True),
-    ("", True),
-])
-def test_url_parse(url, throws_exception):
-    try:
-        _create_channel_if_needed(url)
-        if throws_exception:
-            assert False
-    except:
-        if not throws_exception:
-            raise
+from trinsic.services import WalletService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
@@ -43,15 +24,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         self.assertIsNotNone(wallet_service.metadata)
 
     async def test_providerservice_inviteparticipant(self):
-        # TODO - Fix betterproto field setting defaults-null bug.
-        pass
-        # server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
-        # provider_service = ProviderService(server_address)
-        # invite_response = await provider_service.invite_participant(
-        #     participant=ParticipantType.participant_type_individual,
-        #     description="I dunno",
-        #     email="scott.phillips@trinsic.id")
-        # self.assertIsNotNone(invite_response)
+        await provider_demo()
 
     async def test_vaccine_demo(self):
         await vaccine_demo()
