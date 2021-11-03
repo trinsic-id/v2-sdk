@@ -9,6 +9,16 @@ They require no centralized authority or proprietary technology to use - verifia
 
 Hundreds of organizations of all sizes and industries use Trinsic’s infrastructure and tools to instantly verify information about individuals with technology instead of paper.
 
-Trinsic is a set of tools and infrastructure that enables decentralized identity for individuals and organizations.
+Trinsic is a set of tools and infrastructure that enables credentials to be exchanged between individuals and organizations.
 
-There are many ways that decentralized identity can be used beyond just customer login. This enables digital identity verification anywhere. In person, online, even offline.
+There are many ways that verifiable credentials can be used beyond just customer login. This enables digital identity verification anywhere. In person, online, even offline.
+
+We'll walk through the building blocks of how this is possible.
+
+Next Steps:
+
+- [What are Ecosystems?](./ecosystems.md)
+- [Credentials](./credentials.md)
+- [Passes](./passes.md)
+- [Wallets](./wallets.md)
+- [Underlying Tech](./tech.md)

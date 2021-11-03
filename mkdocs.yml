@@ -10,10 +10,10 @@ nav:
   - Ask a Question: support.md
   - Learn:
     - Introduction: learn/index.md
-    - Wallets: learn/wallets.md
+    - Ecosystems: learn/ecosystems.md
     - Credentials: learn/credentials.md
     - Passes: learn/passes.md
-    - Ecosystems: learn/ecosystems.md
+    - Wallets: learn/wallets.md
     # - Security: learn/security.md TODO
     - Underlying Tech: learn/tech.md
   - Build:
@@ -26,7 +26,7 @@ nav:
     # - Java: java/index.md
     # - Web: web/index.md
     # - iOS: ios/index.md
-    #  - Android: android/index.md
+    #  - Android: android/index.mdw
   - Reference:
     - Overview: reference/index.md
     - Wallet Service: reference/services/wallet-service.md

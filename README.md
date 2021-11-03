@@ -1,4 +1,4 @@
-# Trinsic SDK
+# The Trinsic SDK
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/trinsic-id/sdk)
 [![NET](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/dotnet.yml)
@@ -7,12 +7,13 @@
 
 **Only available for beta customers at this time**
 
-- .NET
-- TypeScript
-- Python
-- Command Line
+## Available SDKs
+- [.NET](https://docs-v2.trinsic.id/dotnet)
+- [TypeScript](https://docs-v2.trinsic.id/node)
+- [Python](https://docs-v2.trinsic.id/python)
+- [Command Line](https://docs-v2.trinsic.id/cli)
 
-## Working with submodules
+
+## Contributing
 
 Immediately after cloning, do `git submodule update --init --recursive` to initialize and update all dependent submodules.
-

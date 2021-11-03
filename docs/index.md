@@ -4,6 +4,8 @@ hide:
 ---
 # Trinsic Documentation
 ## Issue and verify universally-accepted digital credentials.
+Welcome to Trinsic, the proof-of-anything platform. We are the leading developer platform for implementing verifiable credentials and decentralized identifiers, new web standards for building next-gen digital identity systems. 
+
 Learn how to issue and verify universally-accepted digital credentials so that anywhere people go online or in-person, they can simply tap their phone, prove who they are, and get what they need.
 
 [**Get started with Trinsic**](learn/index.md) - Learn about Trinsic, work through a basic implementation, plan a full implementation and learn about our tools you can use. 
