@@ -61,6 +61,42 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
+### Check Invitation Status
+
+User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object. ***TODO: Link to protobuf***.
+
+=== "Trinsic CLI"
+    ```bash
+    TODO
+    ```
+=== "TypeScript"
+    ```typescript
+    import { ProviderService, ParticipantType } from "@trinsic/trinsic";
+
+    const providerService = new ProviderService();
+
+    const inviteResponse = await providerService.invitationStatus("INVITATION ID");
+
+    console.log(inviteResponse.getInvitationId());
+    ```
+=== "C#"
+    ```csharp
+    using Trinsic;
+
+    var providerService = new ProviderService();
+
+    let invitationStatus = await providerService.InvitationStatus("INVITATION ID");
+    ```
+
+=== "Python"
+    ```python
+    from trinsic.services import ProviderService
+  
+    response = await provider_service.invitation_status(invitation_id="INVITATION ID")
+    ```
+
+The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
+
 ## Credential Templates
 
 Credential Templates are json templates that help issuers save context when issuing credentials. 

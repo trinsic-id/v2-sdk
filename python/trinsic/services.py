@@ -67,6 +67,7 @@ class ServiceBase:
 class WalletService(ServiceBase):
     """
     Wrapper for the wallet service
+    TODO: /reference/services/wallet-service/
     """
     def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
         """
@@ -167,6 +168,10 @@ class WalletService(ServiceBase):
 
 
 class ProviderService(ServiceBase):
+    """
+    Wrapper for the provider service.
+    TODO: /reference/services/provider-service
+    """
     def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
         super().__init__()
         self.channel = _create_channel_if_needed(service_address)
@@ -182,6 +187,15 @@ class ProviderService(ServiceBase):
                                  email: str = None,
                                  phone: str = None,
                                  didcomm_invitation: InviteRequestDidCommInvitation = None) -> InviteResponse:
+        """
+        TODO: /reference/services/provider-service/#invite-participants
+        :param participant: TODO: /reference/proto/#participanttype
+        :param description:
+        :param email:
+        :param phone:
+        :param didcomm_invitation: TODO: /reference/proto/#inviterequestdidcomminvitation
+        :return: TODO: /reference/proto/#inviteresponse
+        """
         if not email and not phone:
             raise Exception("Contact method must be set")
 
@@ -192,6 +206,11 @@ class ProviderService(ServiceBase):
                                                  didcomm_invitation=didcomm_invitation)
 
     async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
+        """
+        TODO: /reference/services/provider-service/#check-invitation-status
+        :param invitation_id: invitation id returned from `invite_participant()`
+        :return: TODO: /reference/proto/#invitationstatusresponsestatus
+        """
         if not invitation_id or not invitation_id.strip():
             raise Exception("Onboarding reference ID must be set.")
 
