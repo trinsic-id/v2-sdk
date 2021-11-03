@@ -4,8 +4,28 @@ import os
 from os.path import abspath, join, dirname
 
 import okapi.okapi_utils
+import pytest
 
 from trinsic.services import WalletService, _create_channel_if_needed
+
+
+@pytest.mark.parametrize("url,throws_exception", [
+    ("http://localhost:5000", False),
+    ("https://localhost:5000", False),
+    ("http://20.75.134.127:80", False),
+    ("http://20.75.134.127", True),
+    ("http://localhost", True),
+    ("localhost:5000", True),
+    ("", True),
+])
+def test_url_parse(url, throws_exception):
+    try:
+        _create_channel_if_needed(url)
+        if throws_exception:
+            assert False
+    except:
+        if not throws_exception:
+            raise
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
@@ -45,26 +65,6 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         #     description="I dunno",
         #     email="scott.phillips@trinsic.id")
         # self.assertIsNotNone(invite_response)
-
-    def test_url_parse(self):
-        valid_http_address = "http://localhost:5000"
-        valid_https_address = "https://localhost:5000"
-        valid_ip_address = "http://20.75.134.127:80"
-        missing_port_ip_address = "http://20.75.134.127"
-        missing_port_address = "http://localhost"
-        missing_protocol_address = "localhost:5000"
-        blank_address = ""
-        addresses = [valid_http_address, valid_https_address, valid_ip_address, missing_port_ip_address,
-                     missing_port_address, missing_protocol_address,
-                     blank_address]
-        throws_exception = [False, False, False, True, True, True, True]
-
-        for ij in range(len(addresses)):
-            if throws_exception[ij]:
-                with self.assertRaises(BaseException):
-                    _create_channel_if_needed(addresses[ij])
-            else:
-                _create_channel_if_needed(addresses[ij])
 
     async def test_trinsic_service_demo(self):
         server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
