@@ -7,6 +7,7 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
 - the gitpod environment is already set up with everything need to generate the documentation site.
 - Install mkdocs using a package manager: https://www.mkdocs.org/#installation
 - Install mkdocs-material with `pip`: https://squidfunk.github.io/mkdocs-material/getting-started/#installation
+- Install mkdocs-codeinclude with `pip`: `pip install mkdocs-codeinclude-plugin` https://github.com/rnorth/mkdocs-codeinclude-plugin
 
 ### Running locally
 
