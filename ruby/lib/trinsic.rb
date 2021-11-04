@@ -4,6 +4,7 @@ require 'okapi'
 require 'base64'
 require 'time'
 require 'uri'
+require 'concurrent'
 require 'google/protobuf/well_known_types'
 require 'services/universal-wallet/v1/universal-wallet_services_pb'
 require 'services/provider/v1/provider_services_pb'
@@ -61,6 +62,7 @@ module Trinsic
 
   class WalletService < ServiceBase
     include Concurrent::Async
+
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
 
@@ -109,9 +111,9 @@ module Trinsic
       @wallet_client.insert_item(request, metadata: metadata).item_id
     end
 
-    def send(document, email)
-      request = Trinsic::Services::SendRequest.new(:email => email,
-                                                   :document => Trinsic::Services::JsonPayload.new(:json_string => JSON.generate(document)))
+    def send_document(document, email)
+      request = Credentials_V1::SendRequest.new(:email => email,
+                                                   :document => Common_V1::JsonPayload.new(:json_string => JSON.generate(document)))
       @credential_client.send(request, metadata: metadata)
     end
 
