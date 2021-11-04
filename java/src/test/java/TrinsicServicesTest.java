@@ -1,6 +1,6 @@
 import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
-import io.grpc.stub.StreamObserver;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -37,32 +37,21 @@ class TrinsicServicesTest {
         var walletService = new TrinsicWalletService(serverAddress);
 
         Assertions.assertThrows(IllegalArgumentException.class, walletService::getMetadata);
-        walletService.createWallet("", new StreamObserver<>() {
+        final var done = new CountDownLatch(1);
+        walletService.createWallet("", new TestStreamObserver<>(done) {
             @Override
             public void onNext(UniversalWallet.WalletProfile value) {
                 try {
                     walletService.setProfile(value);
-                    Assertions.assertDoesNotThrow(walletService::getMetadata);
-                } catch (Exception e) {
+                } catch (InvalidProtocolBufferException | DidException e) {
                     e.printStackTrace();
                     Assertions.fail(e);
                 }
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                Assertions.fail(t);
-            }
-
-            @Override
-            public void onCompleted() {
-                try {
-                    walletService.shutdown();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Assertions.assertDoesNotThrow(walletService::getMetadata);
             }
         });
+        done.await();
+        walletService.shutdown();
     }
 
     @Test
