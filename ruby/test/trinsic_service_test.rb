@@ -21,7 +21,7 @@ class TrinsicServiceTest < Minitest::Test
     assert_raises Exception do
       wallet_service.metadata
     end
-    walletProfile = wallet_service.create_wallet("")
+    walletProfile = wallet_service.await.create_wallet("").value
     wallet_service.set_profile(walletProfile)
     metadata = wallet_service.metadata
     assert(metadata != nil, "Valid metadata once profile is set")
@@ -32,11 +32,9 @@ class TrinsicServiceTest < Minitest::Test
     wallet_service = Trinsic::WalletService.new(server_address)
     provider_service = Trinsic::ProviderService.new(server_address)
 
-    wallet = wallet_service.create_wallet("")
     invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
                                                           :email=>"scott.phillips@trinsic.id")
-    # invite_request.email = "scott.phillips@trinsic.id"
-    invite_response = provider_service.invite_participant(invite_request)
+    invite_response = provider_service.await.invite_participant(invite_request)
     assert(invite_response != nil)
     # TODO - Verify invitation status response
   end
@@ -89,9 +87,9 @@ class TrinsicServiceTest < Minitest::Test
 
     # SETUP ACTORS
     # Create 3 different profiles for each participant in the scenario
-    allison = wallet_service.create_wallet("")
-    clinic = wallet_service.create_wallet("")
-    airline = wallet_service.create_wallet("")
+    allison = wallet_service.await.create_wallet("").value
+    clinic = wallet_service.await.create_wallet("").value
+    airline = wallet_service.await.create_wallet("").value
 
     # Store profile for later use
     # File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -105,14 +103,14 @@ class TrinsicServiceTest < Minitest::Test
     text = File.open(self.vaccine_cert_unsigned_path).read
     credential_json = JSON.parse(text)
 
-    credential = wallet_service.issue_credential(credential_json)
+    credential = wallet_service.await.issue_credential(credential_json).value
 
     puts "Credential: #{credential}"
 
     # STORE CREDENTIAL
     # Alice stores the credential in her cloud wallet.
     wallet_service.set_profile(allison)
-    item_id = wallet_service.insert_item(credential)
+    item_id = wallet_service.await.insert_item(credential).value
     puts "item id = #{item_id}"
 
     # SHARE CREDENTIAL
@@ -124,7 +122,7 @@ class TrinsicServiceTest < Minitest::Test
     text2 = File.open(self.vaccine_cert_frame_path).read
     proof_request_json = JSON.parse(text2)
 
-    credential_proof = wallet_service.create_proof(document_id = item_id, reveal_document = proof_request_json)
+    credential_proof = wallet_service.await.create_proof(document_id = item_id, reveal_document = proof_request_json).value
 
     puts "Proof: #{credential_proof}"
 
