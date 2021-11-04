@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "1.0.1"
+def jarVersion = "1.0.2"
 
 apply from: "conf.gradle"
 
@@ -57,8 +57,8 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.1'
-    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.18.1'
-    implementation 'com.google.protobuf:protobuf-java-util:3.18.1'
+    implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.1'
+    implementation 'com.google.protobuf:protobuf-java-util:3.19.1'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
 
     implementation 'io.grpc:protoc-gen-grpc-java:1.41.0'
