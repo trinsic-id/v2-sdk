@@ -12,7 +12,8 @@
       <StartAction>Project</StartAction>
       <ExternalConsole>true</ExternalConsole>
       <EnvironmentVariables>
-        <Variable name="TRINSIC_SERVER_ADDRESS" value="http://localhost:5000" />
+        <Variable name="TEST_SERVER_ENDPOINT" value="localhost" />
+        <Variable name="TEST_SERVER_PORT" value="5000" />
       </EnvironmentVariables>
     </PropertyGroup>
     <ItemGroup>

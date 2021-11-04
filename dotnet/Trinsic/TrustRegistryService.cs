@@ -39,14 +39,15 @@ namespace Trinsic
         {
             if (Uri.TryCreate(governanceFramework, UriKind.Absolute, out _))
             {
-                var response = await Client.AddFrameworkAsync(new AddFrameworkRequest
+                AddFrameworkRequest request = new()
                 {
                     GovernanceFramework = new GovernanceFramework
                     {
                         GovernanceFrameworkUri = governanceFramework,
                         Description = description
                     }
-                }, GetMetadata());
+                };
+                var response = await Client.AddFrameworkAsync(request, GetMetadata(request));
             }
             throw new Exception("Invalid URI string");
         }
@@ -62,14 +63,15 @@ namespace Trinsic
         /// <returns></returns>
         public async Task RegisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
         {
-            var response = await Client.RegisterIssuerAsync(new RegisterIssuerRequest
+            RegisterIssuerRequest request = new()
             {
                 DidUri = issuerDid,
                 CredentialTypeUri = credentialType,
                 GovernanceFrameworkUri = governanceFramework,
                 ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
                 ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
-            }, GetMetadata());
+            };
+            var response = await Client.RegisterIssuerAsync(request, GetMetadata(request));
         }
 
         public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -88,14 +90,15 @@ namespace Trinsic
         /// <returns></returns>
         public async Task RegisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
         {
-            var response = await Client.RegisterVerifierAsync(new RegisterVerifierRequest
+            RegisterVerifierRequest request = new()
             {
                 DidUri = verifierDid,
                 PresentationTypeUri = presentationType,
                 GovernanceFrameworkUri = governanceFramework,
                 ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
                 ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
-            }, GetMetadata());
+            };
+            var response = await Client.RegisterVerifierAsync(request, GetMetadata(request));
         }
 
         public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -112,12 +115,13 @@ namespace Trinsic
         /// <returns>The status of the registration</returns>
         public async Task<RegistrationStatus> CheckIssuerStatus(string issuerDid, string credentialType, string governanceFramework)
         {
-            var response = await Client.CheckIssuerStatusAsync(new CheckIssuerStatusRequest
+            CheckIssuerStatusRequest request = new()
             {
                 DidUri = issuerDid,
                 CredentialTypeUri = credentialType,
                 GovernanceFrameworkUri = governanceFramework
-            }, GetMetadata());
+            };
+            var response = await Client.CheckIssuerStatusAsync(request, GetMetadata(request));
 
             return response.Status;
         }
@@ -131,12 +135,13 @@ namespace Trinsic
         /// <returns>The status of the registration</returns>
         public async Task<RegistrationStatus> CheckVerifierStatus(string verifierDid, string presentationType, string governanceFramework)
         {
-            var response = await Client.CheckVerifierStatusAsync(new CheckVerifierStatusRequest
+            CheckVerifierStatusRequest request = new()
             {
                 DidUri = verifierDid,
                 PresentationTypeUri = presentationType,
                 GovernanceFrameworkUri = governanceFramework
-            }, GetMetadata());
+            };
+            var response = await Client.CheckVerifierStatusAsync(request, GetMetadata(request));
 
             return response.Status;
         }
@@ -148,11 +153,12 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<IEnumerable<JObject>> SearchRegistry(string query = "SELECT * FROM c")
         {
-            var response = await Client.SearchRegistryAsync(new SearchRegistryRequest
+            SearchRegistryRequest request = new()
             {
                 Query = query,
                 Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
-            }, GetMetadata());
+            };
+            var response = await Client.SearchRegistryAsync(request, GetMetadata(request));
 
             return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
         }

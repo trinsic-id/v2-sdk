@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Okapi.Security;
+using Trinsic.Services.Common.V1;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -19,7 +20,7 @@ namespace Trinsic.Tests
         {
             _testOutputHelper = testOutputHelper;
         }
-        
+
         private static string __FILE__([CallerFilePath] string fileName = "") => fileName;
 
         private string TestDataPath =>
@@ -46,23 +47,21 @@ namespace Trinsic.Tests
             else
                 Assert.NotNull(ServiceBase.CreateChannelIfNeeded(url));
         }
-        
+
         [Fact]
         public async Task TestWalletService()
         {
-            var walletService = new WalletService(Environment.GetEnvironmentVariable(ServerAddressName) ?? "http://localhost:5000");
+            var walletService = new WalletService(new ServerConfig
+            {
+                Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
+                Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT"), out int result) ? result : 5000
+            });
 
             // SETUP ACTORS
             // Create 3 different profiles for each participant in the scenario
             var allison = await walletService.CreateWallet();
             var clinic = await walletService.CreateWallet();
             var airline = await walletService.CreateWallet();
-
-            // Store profile for later use
-            // File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
-
-            // Create profile from existing data
-            // var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 
             // ISSUE CREDENTIAL
             // Sign a credential as the clinic and send it to Allison
@@ -108,9 +107,9 @@ namespace Trinsic.Tests
         public void TestTrustRegistry()
         {
             //Given
-                
+
             //When
-            
+
             //Then
         }
 

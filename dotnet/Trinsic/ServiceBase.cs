@@ -16,12 +16,14 @@ using Blake3Core;
 using System.IO;
 using Okapi.Security;
 using Okapi.Security.V1;
+using Trinsic.Services.Common.V1;
+using System.Security.Cryptography;
 
 namespace Trinsic
 {
     public abstract class ServiceBase
     {
-        public string CapInvocation;
+        private readonly HashAlgorithm hasher = new Blake3();
 
         public WalletProfile Profile { get; private set; }
 
@@ -33,7 +35,7 @@ namespace Trinsic
         {
             // compute the hash of the request and capture current timestamp
             using MemoryStream stream = new(request.ToByteArray());
-            var requestHash = new Blake3().ComputeHash(stream);
+            var requestHash = hasher.ComputeHash(stream);
             var timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
             Nonce nonce = new()
@@ -52,9 +54,9 @@ namespace Trinsic
             return new Metadata
             {
                 { "Authorization", $"Oberon " +
-                    $"proof={WebEncoders.Base64UrlEncode(proof.Proof.ToByteArray())}," +
-                    $"data={WebEncoders.Base64UrlEncode(Profile.AuthData.ToByteArray())}," +
-                    $"nonce={WebEncoders.Base64UrlEncode(nonce.ToByteArray())}"
+                    $"proof={Base64UrlEncode(proof.Proof.ToByteArray())}," +
+                    $"data={Base64UrlEncode(Profile.AuthData.ToByteArray())}," +
+                    $"nonce={Base64UrlEncode(nonce.ToByteArray())}"
                 }
             };
         }
@@ -90,5 +92,15 @@ namespace Trinsic
             if (!serviceAddress.TrimEnd('/').StartsWith(rebuiltUri.ToString().TrimEnd('/')))
                 throw new ArgumentException("GRPC Port and scheme required");
         }
+
+        /// <summary>
+        /// Encoded a byte array to base64url string without padding
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
+            .Replace('+', '-')
+            .Replace('/', '_')
+            .Trim('=');
     }
 }
