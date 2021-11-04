@@ -1,8 +1,8 @@
-import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.MetadataUtils;
+import io.grpc.stub.StreamObserver;
 import trinsic.okapi.keys.v1.Keys;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWallet;
@@ -15,28 +15,25 @@ import java.util.HashMap;
 
 public class TrinsicWalletService extends ServiceBase {
     public Channel channel;
-    public WalletGrpc.WalletBlockingStub walletClient;
-    public CredentialGrpc.CredentialBlockingStub credentialClient;
+    public WalletGrpc.WalletStub walletClient;
+    public CredentialGrpc.CredentialStub credentialClient;
 
-    public TrinsicWalletService(String serviceAddress, Channel channel) throws MalformedURLException {
-        channel = Utilities.getChannel(serviceAddress, channel);
-        this.channel = channel;
-        // TODO - Async?
-        this.walletClient = WalletGrpc.newBlockingStub(this.channel);
-        this.credentialClient = CredentialGrpc.newBlockingStub(this.channel);
+    public TrinsicWalletService(String serviceAddress) throws MalformedURLException {
+        this.channel = Utilities.getChannel(serviceAddress);
+        this.walletClient = WalletGrpc.newStub(this.channel);
+        this.credentialClient = CredentialGrpc.newStub(this.channel);
     }
 
     public void shutdown() throws InterruptedException {
         super.shutdown((ManagedChannel) this.channel);
     }
 
-    public void registerOrConnect(String email) {
-        var response = this.walletClient.connectExternalIdentity(UniversalWallet.ConnectRequest.newBuilder()
-                .setEmail(email).build());
-        GrpcException.assertSuccessfulResponse(response.getStatusValue(), response);
+    public void registerOrConnect(String email, StreamObserver<UniversalWallet.ConnectResponse> observer) {
+        this.walletClient.connectExternalIdentity(UniversalWallet.ConnectRequest.newBuilder()
+                .setEmail(email).build(), observer);
     }
 
-    public UniversalWallet.WalletProfile createWallet(String securityCode) throws InvalidProtocolBufferException, DidException {
+    public void createWallet(String securityCode, StreamObserver<UniversalWallet.WalletProfile> observer) throws InvalidProtocolBufferException, DidException {
         securityCode = securityCode == null ? "" : securityCode;
 
         var myKey = DidKey.generate(Keys.GenerateKeyRequest.newBuilder().setKeyType(Keys.KeyType.KEY_TYPE_ED25519).build());
@@ -45,62 +42,73 @@ public class TrinsicWalletService extends ServiceBase {
                 .setController(myDidDocument.get("id").getStringValue())
                 .setSecurityCode(securityCode)
                 .build();
-        var response = walletClient.createWallet(request);
-        return UniversalWallet.WalletProfile.newBuilder()
-                .setWalletId(response.getWalletId())
-                .setCapability(response.getCapability())
-                .setDidDocument(CommonOuterClass.JsonPayload.newBuilder().setJsonStruct(myKey.getDidDocument()))
-                .setInvoker(response.getInvoker())
-                .setInvokerJwk(myKey.getKey(0).toByteString())
-                .build();
+        StreamObserver<UniversalWallet.CreateWalletResponse> createWalletResponseStreamObserver = new StreamObserver<>() {
+            @Override
+            public void onNext(UniversalWallet.CreateWalletResponse value) {
+                var profile = UniversalWallet.WalletProfile.newBuilder()
+                        .setWalletId(value.getWalletId())
+                        .setCapability(value.getCapability())
+                        .setDidDocument(CommonOuterClass.JsonPayload.newBuilder().setJsonStruct(myKey.getDidDocument()))
+                        .setInvoker(value.getInvoker())
+                        .setInvokerJwk(myKey.getKey(0).toByteString())
+                        .build();
+                observer.onNext(profile);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                observer.onError(t);
+            }
+
+            @Override
+            public void onCompleted() {
+                observer.onCompleted();
+            }
+        };
+        walletClient.createWallet(request, createWalletResponseStreamObserver);
     }
 
-    public HashMap issueCredential(HashMap document) {
-        var response = getCredentialClient().issue(VerifiableCredentials.IssueRequest.newBuilder()
-                .setDocument(Utilities.createPayloadString(document)).build());
-        return new Gson().fromJson(response.getDocument().getJsonString(), HashMap.class);
+    public void issueCredential(HashMap document, StreamObserver<VerifiableCredentials.IssueResponse> observer) {
+        getCredentialClient().issue(VerifiableCredentials.IssueRequest.newBuilder()
+                .setDocument(Utilities.createPayloadString(document)).build(), observer);
     }
 
-    public UniversalWallet.SearchResponse search(String query) {
+    public void search(String query, StreamObserver<UniversalWallet.SearchResponse> observer) {
         if (query == null)
             query = "SELECT * from c";
 
-        return getWalletClient().search(UniversalWallet.SearchRequest.newBuilder().setQuery(query).build());
+        getWalletClient().search(UniversalWallet.SearchRequest.newBuilder().setQuery(query).build(), observer);
     }
 
-    public String insertItem(HashMap item) {
-        return getWalletClient().insertItem(UniversalWallet.InsertItemRequest.newBuilder()
-                .setItem(Utilities.createPayloadString(item)).build()).getItemId();
+    public void insertItem(HashMap item, StreamObserver<UniversalWallet.InsertItemResponse> observer) {
+        getWalletClient().insertItem(UniversalWallet.InsertItemRequest.newBuilder()
+                .setItem(Utilities.createPayloadString(item)).build(), observer);
     }
 
-    public void send(HashMap document, String email) {
-        var response  = getCredentialClient().send(VerifiableCredentials.SendRequest.newBuilder()
+    public void send(HashMap document, String email, StreamObserver<VerifiableCredentials.SendResponse> observer) {
+        getCredentialClient().send(VerifiableCredentials.SendRequest.newBuilder()
                         .setEmail(email)
                         .setDocument(Utilities.createPayloadString(document))
-                .build());
-        GrpcException.assertSuccessfulResponse(response.getStatusValue(), response);
+                .build(), observer);
     }
 
-    public HashMap createProof(String documentId, HashMap revealDocument) {
-        return new Gson().fromJson(
+    public void createProof(String documentId, HashMap revealDocument, StreamObserver<VerifiableCredentials.CreateProofResponse> observer) {
           getCredentialClient().createProof(VerifiableCredentials.CreateProofRequest.newBuilder()
                   .setDocumentId(documentId)
                   .setRevealDocument(Utilities.createPayloadString(revealDocument))
-                  .build()).getProofDocument().getJsonString()
-                , HashMap.class
-        );
+                  .build(), observer);
     }
 
-    public boolean verifyProof(HashMap proofDocument) {
-        return getCredentialClient().verifyProof(VerifiableCredentials.VerifyProofRequest.newBuilder()
-                .setProofDocument(Utilities.createPayloadString(proofDocument)).build()).getValid();
+    public void verifyProof(HashMap proofDocument, StreamObserver<VerifiableCredentials.VerifyProofResponse> observer) {
+        getCredentialClient().verifyProof(VerifiableCredentials.VerifyProofRequest.newBuilder()
+                .setProofDocument(Utilities.createPayloadString(proofDocument)).build(), observer);
     }
 
-    private WalletGrpc.WalletBlockingStub getWalletClient() {
+    private WalletGrpc.WalletStub getWalletClient() {
         return this.walletClient.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.getMetadata()));
     }
-    private CredentialGrpc.CredentialBlockingStub getCredentialClient() {
+    private CredentialGrpc.CredentialStub getCredentialClient() {
         return this.credentialClient.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.getMetadata()));
     }

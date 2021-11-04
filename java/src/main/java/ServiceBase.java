@@ -21,9 +21,8 @@ public abstract class ServiceBase {
     protected void shutdown(ManagedChannel channel) throws InterruptedException {
         if (channel == null)
             return;
-        final var managedChannel = (ManagedChannel) channel;
-        managedChannel.shutdownNow();
-        managedChannel.awaitTermination(5, TimeUnit.SECONDS);
+        channel.shutdownNow();
+        channel.awaitTermination(5, TimeUnit.SECONDS);
     }
 
     public Metadata getMetadata() {
@@ -52,7 +51,6 @@ public abstract class ServiceBase {
                         .setDocument(Utilities.hashmapToStruct(capabilityDict))
                         .setSuite(Proofs.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020)
                 .build());
-        var proofJson = proofResponse.getSignedDocument().getFieldsMap();
         var format = JsonFormat.printer().print(proofResponse.getSignedDocument());
         this.capInvocation = new String( Base64.getEncoder().encode(format.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
     }
