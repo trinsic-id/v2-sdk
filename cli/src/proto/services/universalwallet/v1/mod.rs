@@ -1,24 +1,30 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateWalletRequest {
-    #[prost(string, tag = "1")]
-    pub controller: ::prost::alloc::string::String,
+    /// optional description of the wallet
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    /// (Optional) Supply an invitation id to associate this caller profile
-    /// to an existing cloud wallet.
+    /// (Optional) Supply an invitation id to associate this
+    /// caller device to an existing cloud wallet.
     #[prost(string, tag = "3")]
     pub security_code: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateWalletResponse {
+    /// the status code of the response
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
-    #[prost(string, tag = "2")]
-    pub wallet_id: ::prost::alloc::string::String,
-    #[prost(string, tag = "3")]
-    pub capability: ::prost::alloc::string::String,
-    #[prost(string, tag = "4")]
-    pub invoker: ::prost::alloc::string::String,
+    /// authentication data containing info about the cloud
+    /// wallet and device the user is connecting from
+    #[prost(bytes = "vec", tag = "2")]
+    pub auth_data: ::prost::alloc::vec::Vec<u8>,
+    /// authoritative token issued by the server that is
+    /// required to prove knowledge during authentication
+    #[prost(bytes = "vec", tag = "3")]
+    pub auth_token: ::prost::alloc::vec::Vec<u8>,
+    /// indicates if the token issued protected with a
+    /// security code, usually delivered by email or sms
+    #[prost(bool, tag = "4")]
+    pub is_protected: bool,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConnectRequest {
@@ -65,16 +71,16 @@ pub mod invitation_token {
 ///as it contains private key information.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletProfile {
-    #[prost(message, optional, tag = "1")]
-    pub did_document: ::core::option::Option<super::super::common::v1::JsonPayload>,
-    #[prost(string, tag = "2")]
-    pub wallet_id: ::prost::alloc::string::String,
-    #[prost(string, tag = "3")]
-    pub invoker: ::prost::alloc::string::String,
-    #[prost(string, tag = "4")]
-    pub capability: ::prost::alloc::string::String,
-    #[prost(bytes = "vec", tag = "5")]
-    pub invoker_jwk: ::prost::alloc::vec::Vec<u8>,
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(bytes = "vec", tag = "2")]
+    pub auth_data: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bytes = "vec", tag = "3")]
+    pub auth_token: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bool, tag = "4")]
+    pub is_protected: bool,
+    #[prost(message, optional, tag = "5")]
+    pub config: ::core::option::Option<super::super::common::v1::ServerConfig>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GrantAccessRequest {
@@ -258,41 +264,6 @@ pub mod wallet_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.universalwallet.v1.Wallet/CreateWallet",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        pub async fn create_wallet_with_workflow(
-            &mut self,
-            request: impl tonic::IntoRequest<super::CreateWalletRequest>,
-        ) -> Result<tonic::Response<super::CreateWalletResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow",
-            );
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        pub async fn create_wallet_encrypted(
-            &mut self,
-            request: impl tonic::IntoRequest<super::super::super::super::pbmse::v1::EncryptedMessage>,
-        ) -> Result<
-            tonic::Response<super::super::super::super::pbmse::v1::EncryptedMessage>,
-            tonic::Status,
-        > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.Wallet/CreateWalletEncrypted",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

@@ -15,8 +15,19 @@ namespace Trinsic
 {
     public class WalletService : ServiceBase
     {
-        public WalletService(string serviceAddress = "http://localhost:5000")
-            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
+        public WalletService()
+            : this(new ServerConfig
+            {
+                Endpoint = "prod.trinsic.cloud",
+                Port = 443,
+                UseTls = true
+            })
+        {
+
+        }
+
+        public WalletService(ServerConfig config)
+            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
         {
         }
 
@@ -38,26 +49,17 @@ namespace Trinsic
 
         public async Task<WalletProfile> CreateWallet(string securityCode = null)
         {
-            // Generate new DID used by the current device
-            var myKey = DIDKey.Generate(new GenerateKeyRequest { KeyType = KeyType.Ed25519 });
-            var myDidDocument = myKey.DidDocument.ToJObject();
-
-            // Invoke create wallet using encrypted message
-            // Call the server endpoint with encrypted message
             var createWalletResponse = await Client.CreateWalletAsync(new CreateWalletRequest
             {
-                Controller = myDidDocument["id"].ToString(),
                 SecurityCode = securityCode ?? string.Empty
             });
 
             // This profile should be stored and supplied later
             return new WalletProfile
             {
-                WalletId = createWalletResponse.WalletId,
-                Capability = createWalletResponse.Capability,
-                DidDocument = new JsonPayload { JsonStruct = myKey.DidDocument },
-                Invoker = createWalletResponse.Invoker,
-                InvokerJwk = myKey.Key.First().ToByteString()
+                AuthData = createWalletResponse.AuthData,
+                AuthToken = createWalletResponse.AuthToken,
+                IsProtected = createWalletResponse.IsProtected
             };
         }
 
@@ -70,7 +72,11 @@ namespace Trinsic
         {
             try
             {
-                var response = await CredentialClient.IssueAsync(new IssueRequest { Document = new JsonPayload { JsonStruct = document.ToStruct() } }, GetMetadata());
+                IssueRequest request = new()
+                {
+                    Document = new JsonPayload { JsonStruct = document.ToStruct() }
+                };
+                var response = await CredentialClient.IssueAsync(request, GetMetadata(request));
                 return response.Document.JsonStruct.ToJObject();
             }
             catch (Exception e)
@@ -90,7 +96,8 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<SearchResponse> Search(string query = "SELECT * from c")
         {
-            var response = await Client.SearchAsync(new SearchRequest { Query = query }, GetMetadata());
+            SearchRequest request = new() { Query = query };
+            var response = await Client.SearchAsync(request, GetMetadata(request));
             return response;
 
         }
@@ -102,12 +109,13 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<string> InsertItem(JObject item)
         {
+            InsertItemRequest request = new()
+            {
+                Item = new JsonPayload { JsonStruct = item.ToStruct() }
+            };
             var response = await Client.InsertItemAsync(
-                request: new InsertItemRequest
-                {
-                    Item = new JsonPayload { JsonStruct = item.ToStruct() }
-                },
-                headers: GetMetadata());
+                request: request,
+                headers: GetMetadata(request));
             return response.ItemId;
         }
 
@@ -119,13 +127,14 @@ namespace Trinsic
         /// <returns></returns>
         public async Task Send(JObject document, string email)
         {
+            SendRequest request = new()
+            {
+                Email = email,
+                Document = new JsonPayload { JsonStruct = document.ToStruct() }
+            };
             var response = await CredentialClient.SendAsync(
-                request: new SendRequest
-                {
-                    Email = email,
-                    Document = new JsonPayload { JsonStruct = document.ToStruct() }
-                },
-                headers: GetMetadata());
+                request: request,
+                headers: GetMetadata(request));
         }
 
         /// <summary>
@@ -137,13 +146,14 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<JObject> CreateProof(string documentId, JObject revealDocument)
         {
+            CreateProofRequest request = new()
+            {
+                DocumentId = documentId,
+                RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
+            };
             var response = await CredentialClient.CreateProofAsync(
-                request: new CreateProofRequest
-                {
-                    DocumentId = documentId,
-                    RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
-                },
-                headers: GetMetadata());
+                request: request,
+                headers: GetMetadata(request));
 
             return response.ProofDocument.JsonStruct.ToJObject();
         }
@@ -155,12 +165,13 @@ namespace Trinsic
         /// <returns></returns>
         public async Task<bool> VerifyProof(JObject proofDocument)
         {
+            VerifyProofRequest request = new()
+            {
+                ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
+            };
             var response = await CredentialClient.VerifyProofAsync(
-                request: new VerifyProofRequest
-                {
-                    ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
-                },
-                headers: GetMetadata());
+                request: request,
+                headers: GetMetadata(request));
 
             return response.Valid;
         }

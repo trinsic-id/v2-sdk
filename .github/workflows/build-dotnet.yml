@@ -38,7 +38,9 @@ jobs:
           dotnet test -c Release
         working-directory: ./dotnet
         env:
-          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000
+          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
+          TEST_SERVER_PORT: 443
+          TEST_SERVER_USE_TLS: true
       - name: Create Nuget package
         run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
         shell: pwsh

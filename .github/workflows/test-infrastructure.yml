@@ -7,9 +7,17 @@ on:
   workflow_dispatch:
     inputs:
       serverEndpoint:
-        description: 'The endpoint of the server to test (ex. http://localhost:5000)'
+        description: 'The endpoint of the server to test (ex. example.com)'
         required: true
-        default: 'http://localhost:5000'
+        default: 'staging-internal.trinsic.cloud'
+      serverPort:
+        description: 'The service port of the endpoint (ex. 443)'
+        required: true
+        default: 443
+      useTls:
+        description: 'Indicates if TLS should be used'
+        required: true
+        default: true
 
 jobs:
   test_infra:
@@ -24,4 +32,6 @@ jobs:
           dotnet test -c Release -v n
         working-directory: ./dotnet/
         env:
-          TRINSIC_SERVER_ADDRESS: ${{ github.event.inputs.serverEndpoint }}
+          TEST_SERVER_ENDPOINT: ${{ github.event.inputs.serverEndpoint }}
+          TEST_SERVER_PORT: ${{ github.event.inputs.serverPort }}
+          TEST_SERVER_USE_TLS: ${{ github.event.inputs.useTls }}

@@ -7,8 +7,18 @@ namespace Trinsic
 {
     public class ProviderService : ServiceBase
     {
-        public ProviderService(string serviceAddress = "http://localhost:5000")
-            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
+        public ProviderService()
+            : this(new ServerConfig
+            {
+                Endpoint = "prod.trinsic.cloud",
+                Port = 443,
+                UseTls = true
+            })
+        {
+
+        }
+        public ProviderService(ServerConfig config)
+            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
         {
         }
 
@@ -36,7 +46,7 @@ namespace Trinsic
 
             try
             {
-                var response = await ProviderClient.InviteAsync(request, GetMetadata());
+                var response = await ProviderClient.InviteAsync(request, GetMetadata(request));
                 return response;
             }
             catch (Exception e)
@@ -60,7 +70,7 @@ namespace Trinsic
 
             try
             {
-                var response = await ProviderClient.InvitationStatusAsync(request, GetMetadata());
+                var response = await ProviderClient.InvitationStatusAsync(request, GetMetadata(request));
                 return response;
             }
             catch (Exception e)

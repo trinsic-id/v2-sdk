@@ -11,22 +11,55 @@ using Okapi.Keys;
 using Okapi.Keys.V1;
 using Okapi.Proofs.V1;
 using Trinsic.Services.UniversalWallet.V1;
+using Google.Protobuf;
+using Blake3Core;
+using System.IO;
+using Okapi.Security;
+using Okapi.Security.V1;
+using Trinsic.Services.Common.V1;
+using System.Security.Cryptography;
 
 namespace Trinsic
 {
     public abstract class ServiceBase
     {
-        public string CapInvocation;
+        private readonly HashAlgorithm hasher = new Blake3();
+
+        public WalletProfile Profile { get; private set; }
 
         /// <summary>
         /// Create call metadata by setting the required authentication headers
         /// </summary>
         /// <returns></returns>
-        protected Metadata GetMetadata() => new Metadata
+        protected Metadata GetMetadata(IMessage request)
         {
-            { "Capability-Invocation", CapInvocation ?? throw new Exception("Profile not set.") }
-        };
+            // compute the hash of the request and capture current timestamp
+            using MemoryStream stream = new(request.ToByteArray());
+            var requestHash = hasher.ComputeHash(stream);
+            var timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 
+            Nonce nonce = new()
+            {
+                Timestamp = timestamp,
+                RequestHash = ByteString.CopyFrom(requestHash)
+            };
+
+            var proof = Oberon.CreateProof(new CreateOberonProofRequest
+            {
+                Token = Profile.AuthToken,
+                Data = Profile.AuthData,
+                Nonce = nonce.ToByteString()
+            });
+
+            return new Metadata
+            {
+                { "Authorization", $"Oberon " +
+                    $"proof={Base64UrlEncode(proof.Proof.ToByteArray())}," +
+                    $"data={Base64UrlEncode(Profile.AuthData.ToByteArray())}," +
+                    $"nonce={Base64UrlEncode(nonce.ToByteArray())}"
+                }
+            };
+        }
 
         /// <summary>
         /// Set the profile that will be used for authenticated requests
@@ -34,35 +67,10 @@ namespace Trinsic
         /// <param name="profile">The profile data</param>
         public void SetProfile(WalletProfile profile)
         {
-            // Create new capability invocation for this session, that
-            // will be used as authenticated header
-            var capabilityDocument = new JObject
-            {
-                { "@context", "https://w3id.org/security/v2" },
-                { "invocationTarget", profile.WalletId },
-                { "proof", new JObject
-                    {
-                        { "proofPurpose", "capabilityInvocation" },
-                        { "created", DateTimeOffset.UtcNow.ToString("s") },
-                        { "capability", profile.Capability }
-                    }
-                }
-            };
-
-            var proofResponse = LDProofs.CreateProof(new Okapi.Proofs.V1.CreateProofRequest
-            {
-                Key = JsonWebKey.Parser.ParseFrom(profile.InvokerJwk),
-                Document = capabilityDocument.ToStruct(),
-                Suite = LdSuite.Jcsed25519Signature2020
-            });
-
-            // Set the auth field to the signed document by converting it back
-            // to JSON and encoding it in base64
-            CapInvocation = Convert.ToBase64String(Encoding.UTF8.GetBytes(
-                    proofResponse.SignedDocument.ToJObject().ToString()));
+            Profile = profile;
         }
-        
-        public static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
+
+        internal static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
         {
             try
             {
@@ -76,7 +84,7 @@ namespace Trinsic
             }
         }
 
-        private static void AssertPortIsProvided(string serviceAddress, Uri url)
+        protected static void AssertPortIsProvided(string serviceAddress, Uri url)
         {
             // If port not provided, it will mismatch as a string
             var rebuiltUri = new UriBuilder(url.Scheme, url.Host, url.Port, url.AbsolutePath);
@@ -84,5 +92,15 @@ namespace Trinsic
             if (!serviceAddress.TrimEnd('/').StartsWith(rebuiltUri.ToString().TrimEnd('/')))
                 throw new ArgumentException("GRPC Port and scheme required");
         }
+
+        /// <summary>
+        /// Encoded a byte array to base64url string without padding
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
+            .Replace('+', '-')
+            .Replace('/', '_')
+            .Trim('=');
     }
 }

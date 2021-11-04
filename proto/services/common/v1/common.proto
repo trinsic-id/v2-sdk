@@ -35,6 +35,21 @@ message JsonPayload {
     }
 }
 
+message ServerConfig {
+    // service endpoint
+    string endpoint = 1;
+    // service port
+    int32 port = 2;
+    // indicates if tls is used
+    bool use_tls = 3;
+}
+
+// Nonce used to generate an oberon prrof
+message Nonce {
+    int64 timestamp = 1; // UTC unix millisecond timestamp the request was made
+    bytes request_hash = 2; // blake3256 hash of the request body
+}
+
 service Common {
     rpc Request(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
 }
