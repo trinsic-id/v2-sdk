@@ -27,21 +27,18 @@ public class Utilities {
         return CommonOuterClass.JsonPayload.newBuilder().setJsonString(gson.toJson(document)).build();
     }
 
-    public static Channel getChannel(String serviceAddress, Channel channel) throws MalformedURLException {
+    public static Channel getChannel(String serviceAddress) throws MalformedURLException {
         if (serviceAddress == null)
             serviceAddress = "http://localhost:5000";
-        if (channel == null) {
-            var serviceUrl = new URL(serviceAddress);
-            if (serviceUrl.getPort() == -1)
-                throw new MalformedURLException("Port required!");
-            var channelBuilder = ManagedChannelBuilder.forAddress(serviceUrl.getHost(), serviceUrl.getPort());
-            if (serviceUrl.getProtocol().equals("http"))
-                channelBuilder = channelBuilder.usePlaintext();
-            else
-                channelBuilder = channelBuilder.useTransportSecurity();
-            channel = channelBuilder.build();
-        }
-        return channel;
+        var serviceUrl = new URL(serviceAddress);
+        if (serviceUrl.getPort() == -1)
+            throw new MalformedURLException("Port required!");
+        var channelBuilder = ManagedChannelBuilder.forAddress(serviceUrl.getHost(), serviceUrl.getPort());
+        if (serviceUrl.getProtocol().equals("http"))
+            channelBuilder = channelBuilder.usePlaintext();
+        else
+            channelBuilder = channelBuilder.useTransportSecurity();
+        return channelBuilder.build();
     }
 }
 

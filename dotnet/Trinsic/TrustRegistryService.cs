@@ -125,15 +125,15 @@ namespace Trinsic
         /// <summary>
         /// Checks the status of the verifier for a given presentation type in the given governance framework
         /// </summary>
-        /// <param name="issuerDid">The issuer DID</param>
+        /// <param name="verifierDid">The verifier DID</param>
         /// <param name="presentationType">The presentation type URI</param>
         /// <param name="governanceFramework">The governance framework URI</param>
         /// <returns>The status of the registration</returns>
-        public async Task<RegistrationStatus> CheckVerifierStatus(string issuerDid, string presentationType, string governanceFramework)
+        public async Task<RegistrationStatus> CheckVerifierStatus(string verifierDid, string presentationType, string governanceFramework)
         {
             var response = await Client.CheckVerifierStatusAsync(new CheckVerifierStatusRequest
             {
-                DidUri = issuerDid,
+                DidUri = verifierDid,
                 PresentationTypeUri = presentationType,
                 GovernanceFrameworkUri = governanceFramework
             }, GetMetadata());

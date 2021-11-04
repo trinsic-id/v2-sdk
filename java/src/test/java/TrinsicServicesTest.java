@@ -1,8 +1,13 @@
 import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.universalwallet.v1.UniversalWallet;
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +15,14 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.concurrent.CountDownLatch;
 
 class TrinsicServicesTest {
 
     private static String baseTestPath() {
-        return Path.of(new File("").getAbsolutePath(), "..","devops","testdata").toAbsolutePath().toString();
+        return Path.of(new File("").getAbsolutePath(), "..", "devops", "testdata").toAbsolutePath().toString();
     }
+
     private static Path vaccineCertUnsignedPath() {
         return Path.of(baseTestPath(), "vaccination-certificate-unsigned.jsonld");
     }
@@ -27,69 +34,88 @@ class TrinsicServicesTest {
     @Test
     public void testServiceBaseSetProfile() throws IOException, DidException, InterruptedException {
         var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var walletService = new TrinsicWalletService(serverAddress, null);
+        var walletService = new TrinsicWalletService(serverAddress);
 
         Assertions.assertThrows(IllegalArgumentException.class, walletService::getMetadata);
-        var walletProfile = walletService.createWallet("");
-        walletService.setProfile(walletProfile);
-        Assertions.assertDoesNotThrow(walletService::getMetadata);
-
+        final var done = new CountDownLatch(1);
+        walletService.createWallet("", new TestStreamObserver<>(done) {
+            @Override
+            public void onNext(UniversalWallet.WalletProfile value) {
+                try {
+                    walletService.setProfile(value);
+                } catch (InvalidProtocolBufferException | DidException e) {
+                    e.printStackTrace();
+                    Assertions.fail(e);
+                }
+                Assertions.assertDoesNotThrow(walletService::getMetadata);
+            }
+        });
+        done.await();
         walletService.shutdown();
     }
 
     @Test
-    public void testProviderServiceInviteParticipant() throws IOException, DidException, InterruptedException {
+    public void testProviderServiceInviteParticipant() throws IOException, InterruptedException {
         var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var walletService = new TrinsicWalletService(serverAddress, null);
-        var providerService = new TrinsicProviderService(serverAddress, null);
+        var providerService = new TrinsicProviderService(serverAddress);
 
-        var wallet = walletService.createWallet("");
-        var inviteResponse = providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder()
-                        .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
-                        .setDescription("I dunno")
-                        .setEmail("scott.phillips@trinsic.id")
-                .build());
-        Assertions.assertNotNull(inviteResponse);
-        walletService.shutdown();
-        providerService.shutdown();
+        final var done1 = new CountDownLatch(1);
+        providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder()
+                .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
+                .setDescription("I dunno")
+                .setEmail("scott.phillips@trinsic.id")
+                .build(), new TestStreamObserver<>(done1) {
+            @Override
+            public void onNext(ProviderOuterClass.InviteResponse value) {
+                Assertions.assertNotNull(value);
+            }
+        });
+        done1.await();
     }
 
-    @Test
-    public void testInvalidURL() {
-        var validHttpAddress = "http://localhost:5000";
-        var validHttpsAddress = "https://localhost:5000";
-        var missingPortAddress = "http://localhost";
-        var missingProtocolAddress = "localhost:5000";
-        var blankAddress = "";
 
-        final var addresses = new String[] {validHttpAddress, validHttpsAddress, missingPortAddress, missingProtocolAddress, blankAddress};
-        final var throwsException = new Boolean[] {false, false, true, true, true};
+    @ParameterizedTest
+    @ValueSource(strings = {"http://localhost:5000", "https://localhost:5000"})
+    public void validUrlsShouldPass(String url) {
+        Assertions.assertDoesNotThrow(() -> createAndShutdownChannel(url));
+    }
 
-        for (int ij = 0; ij < addresses.length; ij++) {
-            var myAddress = addresses[ij];
-            var myMessage = "URL should throw: " + throwsException[ij] + ": " + myAddress;
-            if (throwsException[ij])
-                Assertions.assertThrows(MalformedURLException.class,  () -> createAndShutdownChannel(myAddress), myMessage);
-            else
-                Assertions.assertDoesNotThrow( () -> createAndShutdownChannel(myAddress), myMessage);
-        }
+    @ParameterizedTest
+    @ValueSource(strings = {"http://localhost", "localhost:5000", ""})
+    public void invalidUrlsShouldFail(String url) {
+        Assertions.assertThrows(MalformedURLException.class, () -> createAndShutdownChannel(url));
     }
 
     private void createAndShutdownChannel(String myAddress) throws MalformedURLException {
-        var channel = (ManagedChannel) Utilities.getChannel(myAddress, null);
+        var channel = (ManagedChannel) Utilities.getChannel(myAddress);
         channel.shutdownNow();
     }
 
     @Test
     public void testTrinsicServiceDemo() throws IOException, DidException, InterruptedException {
         var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var walletService = new TrinsicWalletService(serverAddress, null);
+        var walletService = new TrinsicWalletService(serverAddress);
+
+        final var done = new CountDownLatch(1);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        var allison = walletService.createWallet("");
-        var clinic = walletService.createWallet("");
-        var airline = walletService.createWallet("");
+        final UniversalWallet.WalletProfile[] profiles = new UniversalWallet.WalletProfile[3];
+        var walletObserver = new TestStreamObserver<UniversalWallet.WalletProfile>(done) {
+            @Override
+            public void onNext(UniversalWallet.WalletProfile value) {
+                synchronized (profiles) {
+                    for (int ij = 0; ij < profiles.length; ij++)
+                        if (profiles[ij] == null)
+                            profiles[ij] = value;
+                }
+            }
+        };
+        walletService.createWallet("", walletObserver);
+        walletService.createWallet("", walletObserver);
+        walletService.createWallet("", walletObserver);
+
+        done.await();
 
         // Store profile for later use
         // File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -99,41 +125,68 @@ class TrinsicServicesTest {
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
+        var allison = profiles[0];
+        var clinic = profiles[1];
+        var airline = profiles[2];
         walletService.setProfile(clinic);
         var credentialJson = new Gson().fromJson(Files.readString(vaccineCertUnsignedPath()), HashMap.class);
+        final HashMap[] credential = new HashMap[1];
+        final var done2 = new CountDownLatch(1);
+        walletService.issueCredential(credentialJson, new TestStreamObserver<>(done2) {
+            @Override
+            public void onNext(VerifiableCredentials.IssueResponse value) {
+                credential[0] = (new Gson()).fromJson(value.getDocument().getJsonString(), HashMap.class);
+                System.out.println("Credential: " + credential[0]);
+            }
+        });
 
-        var credential = walletService.issueCredential(credentialJson);
-
-        System.out.println("Credential: " + credential);
+        done2.await();
 
         // STORE CREDENTIAL
         // Alice stores the credential in her cloud wallet.
         walletService.setProfile(allison);
-        var itemId = walletService.insertItem(credential);
-        System.out.println("item id = " + itemId);
+        final String[] itemId = {null};
+        final var done3 = new CountDownLatch(1);
+        walletService.insertItem(credential[0], new TestStreamObserver<>(done3) {
+            @Override
+            public void onNext(UniversalWallet.InsertItemResponse value) {
+                itemId[0] = value.getItemId();
+            }
+        });
 
+        done3.await();
+
+        System.out.println("item id = " + itemId[0]);
         // SHARE CREDENTIAL
         // Allison shares the credential with the venue.
         // The venue has communicated with Allison the details of the credential
         // that they require expressed as a JSON-LD frame.
         walletService.setProfile(allison);
-
         var proofRequestJson = new Gson().fromJson(Files.readString(vaccineCertFramePath()), HashMap.class);
+        final var done4 = new CountDownLatch(1);
+        final var credentialProof = new HashMap[1];
+        walletService.createProof(itemId[0], proofRequestJson, new TestStreamObserver<>(done4) {
+            @Override
+            public void onNext(VerifiableCredentials.CreateProofResponse value) {
+                credentialProof[0] = (new Gson()).fromJson(value.getProofDocument().getJsonString(), HashMap.class);
+            }
+        });
+        done4.await();
 
-        var credentialProof = walletService.createProof(itemId, proofRequestJson);
-
-        System.out.println("Proof: {credential_proof}");
-
+        System.out.println("Proof: " + credentialProof[0]);
         // VERIFY CREDENTIAL
         // The airline verifies the credential
         walletService.setProfile(airline);
-        var valid = walletService.verifyProof(credentialProof);
-
-        System.out.println("Verification result: " + valid);
-
-        Assertions.assertTrue(valid);
-
-        walletService.shutdown();
+        final var done5 = new CountDownLatch(1);
+        final var isValid = new boolean[1];
+        walletService.verifyProof(credentialProof[0], new TestStreamObserver<>(done5) {
+            @Override
+            public void onNext(VerifiableCredentials.VerifyProofResponse value) {
+                isValid[0] = value.getValid();
+            }
+        });
+        done5.await();
+        System.out.println("Verification result: " + isValid[0]);
+        Assertions.assertTrue(isValid[0]);
     }
-
 }
