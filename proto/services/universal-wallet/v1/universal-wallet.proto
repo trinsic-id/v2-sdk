@@ -6,7 +6,6 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.universalwallet.v1";
 
 import "services/common/v1/common.proto";
-import "pbmse/v1/pbmse.proto";
 
 message CreateWalletRequest {
     // optional description of the wallet
@@ -56,11 +55,12 @@ message InvitationToken {
     as it contains private key information.
 */
 message WalletProfile {
-    services.common.v1.JsonPayload did_document = 1;
-    string wallet_id = 2;
-    string invoker = 3;
-    string capability = 4;
-    bytes invoker_jwk = 5;
+    string name = 1;
+    bytes auth_data = 2;
+    bytes auth_token = 3;
+    bool is_protected = 4;
+
+    services.common.v1.ServerConfig config = 5;
 }
 
 message GrantAccessRequest {
@@ -125,10 +125,6 @@ service Wallet {
     rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
 
     rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
-
-    rpc CreateWalletWithWorkflow(CreateWalletRequest) returns (CreateWalletResponse);
-
-    rpc CreateWalletEncrypted(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
 
     rpc Search(SearchRequest) returns (SearchResponse);
 

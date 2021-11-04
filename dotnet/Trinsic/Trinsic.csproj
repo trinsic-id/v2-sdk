@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.37.0" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.37.0" />
+    <PackageReference Include="Blake3Core" Version="0.1.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Trinsic.Protobuf\Trinsic.Protobuf.csproj" />
