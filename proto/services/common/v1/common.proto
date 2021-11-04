@@ -35,6 +35,15 @@ message JsonPayload {
     }
 }
 
+message ServerConfig {
+    // service endpoint
+    string endpoint = 1;
+    // service port
+    int32 port = 2;
+    // indicates if tls is used
+    bool use_tls = 3;
+}
+
 service Common {
     rpc Request(pbmse.v1.EncryptedMessage) returns (pbmse.v1.EncryptedMessage);
 }

@@ -9,20 +9,25 @@ import "services/common/v1/common.proto";
 import "pbmse/v1/pbmse.proto";
 
 message CreateWalletRequest {
-    string controller = 1;
+    // optional description of the wallet
     string description = 2;
-
-    // (Optional) Supply an invitation id to associate this caller profile
-    // to an existing cloud wallet.
+    // (Optional) Supply an invitation id to associate this
+    // caller device to an existing cloud wallet.
     string security_code = 3;
 }
 
 message CreateWalletResponse {
+    // the status code of the response
     services.common.v1.ResponseStatus status = 1;
-
-    string wallet_id = 2;
-    string capability = 3;
-    string invoker = 4;
+    // authentication data containing info about the cloud
+    // wallet and device the user is connecting from
+    bytes auth_data = 2;
+    // authoritative token issued by the server that is
+    // required to prove knowledge during authentication
+    bytes auth_token = 3;
+    // indicates if the token issued protected with a
+    // security code, usually delivered by email or sms
+    bool is_protected = 4;
 }
 
 message ConnectRequest {
