@@ -1,6 +1,6 @@
 namespace Trinsic
 {
-    public class CredentialsService : ServiceBase
+    internal class CredentialsService : ServiceBase
     {
     }
 }

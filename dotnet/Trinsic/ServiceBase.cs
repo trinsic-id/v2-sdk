@@ -70,7 +70,7 @@ namespace Trinsic
             Profile = profile;
         }
 
-        public static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
+        protected static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace Trinsic
             }
         }
 
-        private static void AssertPortIsProvided(string serviceAddress, Uri url)
+        protected static void AssertPortIsProvided(string serviceAddress, Uri url)
         {
             // If port not provided, it will mismatch as a string
             var rebuiltUri = new UriBuilder(url.Scheme, url.Host, url.Port, url.AbsolutePath);

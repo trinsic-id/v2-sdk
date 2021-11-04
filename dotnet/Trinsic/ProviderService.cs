@@ -7,8 +7,18 @@ namespace Trinsic
 {
     public class ProviderService : ServiceBase
     {
-        public ProviderService(string serviceAddress = "http://localhost:5000")
-            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
+        public ProviderService()
+            : this(new ServerConfig
+            {
+                Endpoint = "prod.trinsic.cloud",
+                Port = 443,
+                UseTls = true
+            })
+        {
+
+        }
+        public ProviderService(ServerConfig config)
+            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
         {
         }
 

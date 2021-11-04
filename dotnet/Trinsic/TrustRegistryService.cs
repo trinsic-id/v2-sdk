@@ -12,13 +12,24 @@ namespace Trinsic
 {
     public class TrustRegistryService : ServiceBase
     {
-        public TrustRegistryService(string serviceAddress = "http://localhost:5000")
-            : this(ServiceBase.CreateChannelIfNeeded(serviceAddress))
+        public TrustRegistryService()
+            : this(new ServerConfig
+            {
+                Endpoint = "prod.trinsic.cloud",
+                Port = 443,
+                UseTls = true
+            })
+        {
+
+        }
+        public TrustRegistryService(ServerConfig config)
+            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
         {
         }
 
         public TrustRegistryService(GrpcChannel channel)
         {
+            // We must store a reference to the channel, otherwise it gets collected
             Channel = channel;
             Client = new TrustRegistry.TrustRegistryClient(Channel);
         }
