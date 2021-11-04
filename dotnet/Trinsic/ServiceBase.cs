@@ -70,7 +70,7 @@ namespace Trinsic
             Profile = profile;
         }
 
-        protected static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
+        internal static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
         {
             try
             {
