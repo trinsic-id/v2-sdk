@@ -41,27 +41,30 @@ export class TemplateService extends ServiceBase {
     schema: JSStruct,
     baseUri?: string
   ): Promise<CreateCredentialTemplateResponse> {
-    return new Promise((resolve, reject) => {
-      var jsonSchema = new JsonPayload();
-      jsonSchema.setJsonStruct(Struct.fromJavaScript(schema));
-      let createCredentialTemplateRequest = new CreateCredentialTemplateRequest();
-      createCredentialTemplateRequest.setName(name);
-      createCredentialTemplateRequest.setSchema(jsonSchema);
-      createCredentialTemplateRequest.setBaseUri(baseUri);
+    return new Promise(async (resolve, reject) => {
+      var jsonSchema = new JsonPayload().setJsonStruct(Struct.fromJavaScript(schema));
+      let createCredentialTemplateRequest = new CreateCredentialTemplateRequest()
+        .setName(name)
+        .setSchema(jsonSchema)
+        .setBaseUri(baseUri);
 
-      this.client.create(createCredentialTemplateRequest, this.getMetadata(), (error, response) => {
-        if (error) {
-          reject(error);
+      this.client.create(
+        createCredentialTemplateRequest,
+        await this.getMetadata(createCredentialTemplateRequest),
+        (error, response) => {
+          if (error) {
+            reject(error);
+          }
+          return resolve(response);
         }
-        return resolve(response);
-      });
+      );
     });
   }
 
   public getCredentialTemplate(templateId: string): Promise<CredentialTemplate> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let request = new GetCredentialTemplateRequest().setId(templateId);
-      this.client.get(request, this.getMetadata(), (error, response) => {
+      this.client.get(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -71,9 +74,9 @@ export class TemplateService extends ServiceBase {
   }
 
   public searchCredentialTemplate(query: string = "SELECT * FROM c"): Promise<CredentialTemplate[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let request = new SearchCredentialTemplatesRequest().setQuery(query);
-      this.client.search(request, this.getMetadata(), (error, response) => {
+      this.client.search(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -87,12 +90,13 @@ export class TemplateService extends ServiceBase {
     name?: string,
     schema?: JSStruct
   ): Promise<UpdateCredentialTemplateResponse> {
-    return new Promise((resolve, reject) => {
-      let request = new UpdateCredentialTemplateRequest();
-      request.setId(templateId);
-      request.setName(name);
-      request.setSchema(new JsonPayload().setJsonStruct(Struct.fromJavaScript(schema)));
-      this.client.update(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      let request = new UpdateCredentialTemplateRequest()
+        .setId(templateId)
+        .setName(name)
+        .setSchema(new JsonPayload().setJsonStruct(Struct.fromJavaScript(schema)));
+
+      this.client.update(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -102,9 +106,9 @@ export class TemplateService extends ServiceBase {
   }
 
   public deleteCredentialTemplate(templateId: string): Promise<DeleteCredentialTemplateResponse> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       let request = new DeleteCredentialTemplateRequest().setId(templateId);
-      this.client.delete(request, this.getMetadata(), (error, response) => {
+      this.client.delete(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -114,14 +118,11 @@ export class TemplateService extends ServiceBase {
   }
 
   public issueFromTemplate(templateId: string, attributes: JSStruct): Promise<object> {
-    return new Promise((resolve, reject) => {
-      let jsonPayload = new JsonPayload();
-      jsonPayload.setJsonStruct(Struct.fromJavaScript(attributes));
-      let request = new IssueFromTemplateRequest();
-      request.setTemplateid(templateId);
-      request.setAttributes(jsonPayload);
+    return new Promise(async (resolve, reject) => {
+      let jsonPayload = new JsonPayload().setJsonStruct(Struct.fromJavaScript(attributes));
+      let request = new IssueFromTemplateRequest().setTemplateid(templateId).setAttributes(jsonPayload);
 
-      this.credentialClient.issueFromTemplate(request, this.getMetadata(), (error, response) => {
+      this.credentialClient.issueFromTemplate(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
