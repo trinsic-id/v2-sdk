@@ -119,8 +119,8 @@ def main():
     update_golang()
     update_ruby()
     update_java()
-    update_python()
     update_markdown()
+    update_python()
 
 
 if __name__ == "__main__":

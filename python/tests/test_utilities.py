@@ -3,6 +3,10 @@ import unittest
 from trinsic.services import _create_channel_if_needed
 
 
+def get_test_server_config():
+    return
+
+
 class TestUtilities(unittest.IsolatedAsyncioTestCase):
     url_params = [
         ("http://localhost:5000", False),

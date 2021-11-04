@@ -2,7 +2,7 @@
 # sources: services/universal-wallet/v1/universal-wallet.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
@@ -11,19 +11,26 @@ import grpclib
 
 @dataclass(eq=False, repr=False)
 class CreateWalletRequest(betterproto.Message):
-    controller: str = betterproto.string_field(1)
+    # optional description of the wallet
     description: str = betterproto.string_field(2)
-    # (Optional) Supply an invitation id to associate this caller profile to an
+    # (Optional) Supply an invitation id to associate this caller device to an
     # existing cloud wallet.
     security_code: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class CreateWalletResponse(betterproto.Message):
+    # the status code of the response
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    wallet_id: str = betterproto.string_field(2)
-    capability: str = betterproto.string_field(3)
-    invoker: str = betterproto.string_field(4)
+    # authentication data containing info about the cloud wallet and device the
+    # user is connecting from
+    auth_data: bytes = betterproto.bytes_field(2)
+    # authoritative token issued by the server that is required to prove
+    # knowledge during authentication
+    auth_token: bytes = betterproto.bytes_field(3)
+    # indicates if the token issued protected with a security code, usually
+    # delivered by email or sms
+    is_protected: bool = betterproto.bool_field(4)
 
 
 @dataclass(eq=False, repr=False)
@@ -52,11 +59,11 @@ class WalletProfile(betterproto.Message):
     somewhere safe,as it contains private key information.
     """
 
-    did_document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
-    wallet_id: str = betterproto.string_field(2)
-    invoker: str = betterproto.string_field(3)
-    capability: str = betterproto.string_field(4)
-    invoker_jwk: bytes = betterproto.bytes_field(5)
+    name: str = betterproto.string_field(1)
+    auth_data: bytes = betterproto.bytes_field(2)
+    auth_token: bytes = betterproto.bytes_field(3)
+    is_protected: bool = betterproto.bool_field(4)
+    config: "__common_v1__.ServerConfig" = betterproto.message_field(5)
 
 
 @dataclass(eq=False, repr=False)
@@ -149,11 +156,10 @@ class WalletStub(betterproto.ServiceStub):
         )
 
     async def create_wallet(
-        self, *, controller: str = "", description: str = "", security_code: str = ""
+        self, *, description: str = "", security_code: str = ""
     ) -> "CreateWalletResponse":
 
         request = CreateWalletRequest()
-        request.controller = controller
         request.description = description
         request.security_code = security_code
 
@@ -161,46 +167,6 @@ class WalletStub(betterproto.ServiceStub):
             "/services.universalwallet.v1.Wallet/CreateWallet",
             request,
             CreateWalletResponse,
-        )
-
-    async def create_wallet_with_workflow(
-        self, *, controller: str = "", description: str = "", security_code: str = ""
-    ) -> "CreateWalletResponse":
-
-        request = CreateWalletRequest()
-        request.controller = controller
-        request.description = description
-        request.security_code = security_code
-
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow",
-            request,
-            CreateWalletResponse,
-        )
-
-    async def create_wallet_encrypted(
-        self,
-        *,
-        iv: bytes = b"",
-        aad: bytes = b"",
-        ciphertext: bytes = b"",
-        tag: bytes = b"",
-        recipients: Optional[List["EncryptionRecipient"]] = None,
-    ) -> "___pbmse_v1__.EncryptedMessage":
-        recipients = recipients or []
-
-        request = ___pbmse_v1__.EncryptedMessage()
-        request.iv = iv
-        request.aad = aad
-        request.ciphertext = ciphertext
-        request.tag = tag
-        if recipients is not None:
-            request.recipients = recipients
-
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/CreateWalletEncrypted",
-            request,
-            ___pbmse_v1__.EncryptedMessage,
         )
 
     async def search(
@@ -277,23 +243,8 @@ class WalletBase(ServiceBase):
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def create_wallet(
-        self, controller: str, description: str, security_code: str
+        self, description: str, security_code: str
     ) -> "CreateWalletResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def create_wallet_with_workflow(
-        self, controller: str, description: str, security_code: str
-    ) -> "CreateWalletResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def create_wallet_encrypted(
-        self,
-        iv: bytes,
-        aad: bytes,
-        ciphertext: bytes,
-        tag: bytes,
-        recipients: Optional[List["EncryptionRecipient"]],
-    ) -> "___pbmse_v1__.EncryptedMessage":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def search(
@@ -344,42 +295,11 @@ class WalletBase(ServiceBase):
         request = await stream.recv_message()
 
         request_kwargs = {
-            "controller": request.controller,
             "description": request.description,
             "security_code": request.security_code,
         }
 
         response = await self.create_wallet(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_create_wallet_with_workflow(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "controller": request.controller,
-            "description": request.description,
-            "security_code": request.security_code,
-        }
-
-        response = await self.create_wallet_with_workflow(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_create_wallet_encrypted(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "iv": request.iv,
-            "aad": request.aad,
-            "ciphertext": request.ciphertext,
-            "tag": request.tag,
-            "recipients": request.recipients,
-        }
-
-        response = await self.create_wallet_encrypted(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_search(self, stream: grpclib.server.Stream) -> None:
@@ -447,18 +367,6 @@ class WalletBase(ServiceBase):
                 CreateWalletRequest,
                 CreateWalletResponse,
             ),
-            "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow": grpclib.const.Handler(
-                self.__rpc_create_wallet_with_workflow,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CreateWalletRequest,
-                CreateWalletResponse,
-            ),
-            "/services.universalwallet.v1.Wallet/CreateWalletEncrypted": grpclib.const.Handler(
-                self.__rpc_create_wallet_encrypted,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ___pbmse_v1__.EncryptedMessage,
-                ___pbmse_v1__.EncryptedMessage,
-            ),
             "/services.universalwallet.v1.Wallet/Search": grpclib.const.Handler(
                 self.__rpc_search,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -486,5 +394,4 @@ class WalletBase(ServiceBase):
         }
 
 
-from ....pbmse import v1 as ___pbmse_v1__
 from ...common import v1 as __common_v1__
