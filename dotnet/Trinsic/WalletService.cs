@@ -1,12 +1,8 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using Google.Protobuf;
 using Newtonsoft.Json.Linq;
 using Google.Protobuf.WellKnownTypes;
-using Okapi.Keys;
-using Okapi.Keys.V1;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 using Trinsic.Services.Common.V1;
@@ -27,7 +23,7 @@ namespace Trinsic
         }
 
         public WalletService(ServerConfig config)
-            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
+            : this(ServiceBase.CreateChannelIfNeeded(config.ToAddress()))
         {
         }
 

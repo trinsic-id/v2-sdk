@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Text;
-using Okapi;
-using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Grpc.Net.Client;
-using Newtonsoft.Json.Linq;
-using Trinsic.Services;
-using Okapi.Proofs;
-using Okapi.Keys;
-using Okapi.Keys.V1;
-using Okapi.Proofs.V1;
 using Trinsic.Services.UniversalWallet.V1;
 using Google.Protobuf;
 using Blake3Core;
@@ -102,5 +93,11 @@ namespace Trinsic
             .Replace('+', '-')
             .Replace('/', '_')
             .Trim('=');
+    }
+
+    public static class Extensions
+    {
+        public static String ToAddress(this ServerConfig self) =>
+            $"{(self.UseTls ? "https" : "http")}://{self.Endpoint}:{self.Port}";
     }
 }

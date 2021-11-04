@@ -1,6 +1,5 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
-using System;
 
 namespace Newtonsoft.Json.Linq
 {

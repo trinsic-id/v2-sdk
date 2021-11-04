@@ -2,15 +2,18 @@ import base64
 import datetime
 import json
 import urllib.parse
+from distutils.util import strtobool
+from os import getenv
 from typing import Mapping, Dict, List, Union
 
+from betterproto import Message
+from blake3 import blake3
 from grpclib.client import Channel
-from okapi.wrapper import LDProofs, DIDKey
-from okapi.okapi_utils import dictionary_to_struct, struct_to_dictionary
-from okapi.proto.okapi.keys.v1 import JsonWebKey, GenerateKeyRequest, KeyType
-from okapi.proto.okapi.proofs.v1 import CreateProofRequest, LdSuite
+from okapi.proto.okapi.security.v1 import CreateOberonProofRequest
+from okapi.wrapper import Oberon
 
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
+from trinsic.proto.services.common.v1 import Nonce, ServerConfig
 from trinsic.proto.services.provider.v1 import ProviderStub, InviteRequestDidCommInvitation, InviteResponse, \
     ParticipantType, InvitationStatusResponse
 from trinsic.proto.services.trustregistry.v1 import TrustRegistryStub, GovernanceFramework, RegistrationStatus
@@ -18,12 +21,34 @@ from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub,
 from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 
 
-def _create_channel_if_needed(channel: Union[str, Channel]) -> Channel:
-    if isinstance(channel, str):
-        service_url = urllib.parse.urlsplit(channel)
+def get_test_server_config() -> ServerConfig:
+    endpoint = getenv('TEST_SERVER_ENDPOINT')
+    port = int(getenv('TEST_SERVER_PORT', 443))
+    use_tls = bool(strtobool(getenv('TEST_SERVER_USE_TLS', 'true')))
+    return ServerConfig(endpoint=endpoint, port=port, use_tls=use_tls)
+
+
+def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
+    """
+    Create the channel from the provided URL
+    :param config: Server configuration
+    :return: connected `Channel`
+    """
+    if isinstance(config, Channel):
+        channel = config
+    elif isinstance(config, str):
+        service_url = urllib.parse.urlsplit(config)
         is_https = service_url.scheme == "https"
         channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
+    elif isinstance(config, ServerConfig):
+        channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)
+    else:
+        raise NotImplementedError(f"config type={type(config)} not supported.")
     return channel
+
+
+def trinsic_production_config() -> ServerConfig:
+    return ServerConfig(endpoint="prod.trinsic.cloud", port=443, use_tls=True)
 
 
 class ServiceBase:
@@ -32,37 +57,26 @@ class ServiceBase:
     """
 
     def __init__(self):
-        self.cap_invocation: str = ""
+        self.profile: WalletProfile = None
 
-    @property
-    def metadata(self) -> Mapping[str, str]:
-        """
-        Gets the required wallet profile metadata for certain calls.
-        :return: a dictionary with the required capability-invocation and profile.
-        """
-        if not self.cap_invocation:
-            raise Exception("Profile not set")
-        return {"capability-invocation": self.cap_invocation}
+    def close(self):
+        raise NotImplementedError("Must be overridden in derived class to close GRPC channels")
 
-    def set_profile(self, profile: WalletProfile) -> None:
+    def get_metadata(self, request: Message) -> Mapping[str, str]:
         """
-        Set the `WalletProfile` for `self.metadata` property.
-        :param profile: The `WalletProfile` to use.
+        Create call metadata by setting required authentication headers
+        :return: authentication headers
         """
-        capability_doc = {"@context": "https://w3id.org/security/v2",
-                          "invocationTarget": profile.wallet_id,
-                          "proof": {
-                              "proofPurpose": "capabilityInvocation",
-                              "created": datetime.datetime.now().isoformat(),
-                              "capability": profile.capability
-                          }}
+        if not self.profile:
+            raise ValueError("Profile not set")
 
-        proof_response = LDProofs.create(CreateProofRequest(key=JsonWebKey().parse(profile.invoker_jwk),
-                                                            document=dictionary_to_struct(capability_doc),
-                                                            suite=LdSuite.LD_SUITE_JCSED25519SIGNATURE2020))
-
-        proof_json = json.dumps(struct_to_dictionary(proof_response.signed_document), indent=2)
-        self.cap_invocation = base64.standard_b64encode(proof_json.encode("utf-8")).decode("utf-8")
+        # compute the hash of the request and capture current timestamp
+        request_hash = blake3(bytes(request)).digest()
+        nonce = Nonce(timestamp=int(datetime.datetime.now().timestamp()*1000), request_hash=request_hash)
+        proof = Oberon.create_proof(CreateOberonProofRequest(token=self.profile.auth_token, data=self.profile.auth_data, nonce=bytes(nonce)))
+        return {"Authorization": f"Oberon proof={base64.urlsafe_b64encode(bytes(proof.proof))},"
+                                 f"data={base64.urlsafe_b64encode(bytes(self.profile.auth_data))},"
+                                 f"nonce={base64.urlsafe_b64encode(bytes(nonce))}"}
 
 
 class WalletService(ServiceBase):
@@ -71,17 +85,17 @@ class WalletService(ServiceBase):
     TODO: /reference/services/wallet-service/
     """
 
-    def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
+    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
         :param service_address: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__()
-        self.channel = _create_channel_if_needed(service_address)
+        self.channel = create_channel(service_address)
         self.client = WalletStub(self.channel)
         self.credential_client = CredentialStub(self.channel)
 
-    def __del__(self):
+    def close(self):
         if self.channel:
             self.channel.close()
 
@@ -98,17 +112,10 @@ class WalletService(ServiceBase):
         :param security_code: Optional security code to use from a provider initiated invitation
         :return: `WalletProfile` of the created wallet
         """
-        my_key = DIDKey.generate(GenerateKeyRequest(key_type=KeyType.KEY_TYPE_ED25519))
-        my_did_document = struct_to_dictionary(my_key.did_document)
-
-        create_wallet_response = await self.client.create_wallet(controller=str(my_did_document['id']),
-                                                                 security_code=security_code or "")
-
-        return WalletProfile(wallet_id=create_wallet_response.wallet_id,
-                             capability=create_wallet_response.capability,
-                             did_document=JsonPayload(json_string=json.dumps(my_did_document)),
-                             invoker=create_wallet_response.invoker,
-                             invoker_jwk=bytes(my_key.key[0]))
+        create_wallet_response = await self.client.create_wallet(security_code=security_code or "")
+        return WalletProfile(auth_data=create_wallet_response.auth_data,
+                             auth_token=create_wallet_response.auth_token,
+                             is_protected=create_wallet_response.is_protected)
 
     async def issue_credential(self, document: dict) -> dict:
         """
@@ -175,12 +182,12 @@ class ProviderService(ServiceBase):
     TODO: /reference/services/provider-service
     """
 
-    def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
+    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
-        self.channel = _create_channel_if_needed(service_address)
+        self.channel = create_channel(service_address)
         self.provider_client = ProviderStub(self.channel)
 
-    def __del__(self):
+    def close(self):
         if self.channel:
             self.channel.close()
 
@@ -226,12 +233,12 @@ class TrustRegistryService(ServiceBase):
     TODO: /reference/services/trust-registry/
     """
 
-    def __init__(self, service_address: Union[str, Channel] = "http://localhost:5000"):
+    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
-        self.channel = _create_channel_if_needed(service_address)
+        self.channel = create_channel(service_address)
         self.provider_client = TrustRegistryStub(self.channel)
 
-    def __del__(self):
+    def close(self):
         if self.channel:
             self.channel.close()
 

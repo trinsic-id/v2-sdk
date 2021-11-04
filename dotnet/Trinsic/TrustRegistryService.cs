@@ -23,7 +23,7 @@ namespace Trinsic
 
         }
         public TrustRegistryService(ServerConfig config)
-            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
+            : this(ServiceBase.CreateChannelIfNeeded(config.ToAddress()))
         {
         }
 
