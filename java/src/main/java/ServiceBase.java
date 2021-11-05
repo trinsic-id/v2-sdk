@@ -1,20 +1,20 @@
+import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Value;
-import com.google.protobuf.util.JsonFormat;
+import com.google.protobuf.Message;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
-import trinsic.okapi.keys.v1.Keys;
-import trinsic.okapi.proofs.v1.Proofs;
+import ky.korins.blake3.Blake3;
+import trinsic.okapi.security.v1.Security;
+import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWallet;
 
-import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
 import java.time.Instant;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public abstract class ServiceBase {
-    protected String capInvocation = "";
+    protected UniversalWallet.WalletProfile profile;
 
     public abstract void shutdown() throws InterruptedException;
 
@@ -25,34 +25,34 @@ public abstract class ServiceBase {
         channel.awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public Metadata getMetadata() {
-        if (capInvocation == null || capInvocation.strip().length() == 0)
-            throw new IllegalArgumentException("Profile not set");
+    public Metadata getMetadata(Message message) throws InvalidProtocolBufferException, DidException {
+        if (this.profile == null)
+            throw new RuntimeException("Profile not set");
+
+        var messageBytes = message.toByteArray();
+        var hashArray = ByteBuffer.allocate(messageBytes.length);
+        Blake3.newHasher().update(messageBytes).done(hashArray);
+
+        var nonce = CommonOuterClass.Nonce.newBuilder()
+                .setTimestamp(Instant.now().getEpochSecond())
+                .setRequestHash(ByteString.copyFrom(hashArray)).build();
+        var proof = Oberon.createProof(Security.CreateOberonProofRequest.newBuilder()
+                .setToken(this.profile.getAuthToken())
+                .setData(this.profile.getAuthData())
+                .setNonce(nonce.toByteString()).build());
+
+        var oberonBuilder = "Oberon " +
+                "proof=" + Base64.getUrlEncoder().encodeToString(proof.toByteArray()) +
+                "data=" + Base64.getUrlEncoder().encodeToString(this.profile.getAuthData().toByteArray()) +
+                "nonce=" + Base64.getUrlEncoder().encodeToString(nonce.toByteArray());
+
         var metadata = new Metadata();
-        metadata.put(Metadata.Key.of("capability-invocation", Metadata.ASCII_STRING_MARSHALLER), capInvocation);
-        return  metadata;
+        metadata.put(Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER), oberonBuilder);
+        return metadata;
     }
 
     public void setProfile(UniversalWallet.WalletProfile profile) throws InvalidProtocolBufferException, DidException {
-        var proofDict = new HashMap<String, Value>() {{
-            put("proofPurpose", Utilities.stringValue("capabilityInvocation"));
-            put("created", Utilities.stringValue(Instant.now().toString()));
-            put("capability", Utilities.stringValue(profile.getCapability()));
-        }};
-
-        var capabilityDict = new HashMap<String, com.google.protobuf.Value>() {{
-            put("@context", Utilities.stringValue("https://w3id.org/security/v2"));
-            put("invocationTarget", Utilities.stringValue(profile.getWalletId()));
-            put("proof", Utilities.structValue(proofDict));
-        }};
-
-        var proofResponse = LdProofs.createProof( Proofs.CreateProofRequest.newBuilder()
-                        .setKey(Keys.JsonWebKey.parseFrom(profile.getInvokerJwk()))
-                        .setDocument(Utilities.hashmapToStruct(capabilityDict))
-                        .setSuite(Proofs.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020)
-                .build());
-        var format = JsonFormat.printer().print(proofResponse.getSignedDocument());
-        this.capInvocation = new String( Base64.getEncoder().encode(format.getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
+        this.profile = profile;
     }
 
 }

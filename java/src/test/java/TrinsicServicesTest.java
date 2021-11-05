@@ -1,5 +1,4 @@
 import com.google.gson.Gson;
-import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,32 +31,16 @@ class TrinsicServicesTest {
     }
 
     @Test
-    public void testServiceBaseSetProfile() throws IOException, DidException, InterruptedException {
-        var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var walletService = new TrinsicWalletService(serverAddress);
+    public void testServiceBaseSetProfile() throws InterruptedException {
+        var walletService = new TrinsicWalletService(Utilities.getTestServerConfig());
 
-        Assertions.assertThrows(IllegalArgumentException.class, walletService::getMetadata);
-        final var done = new CountDownLatch(1);
-        walletService.createWallet("", new TestStreamObserver<>(done) {
-            @Override
-            public void onNext(UniversalWallet.WalletProfile value) {
-                try {
-                    walletService.setProfile(value);
-                } catch (InvalidProtocolBufferException | DidException e) {
-                    e.printStackTrace();
-                    Assertions.fail(e);
-                }
-                Assertions.assertDoesNotThrow(walletService::getMetadata);
-            }
-        });
-        done.await();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> walletService.getMetadata(null));
         walletService.shutdown();
     }
 
     @Test
     public void testProviderServiceInviteParticipant() throws IOException, InterruptedException {
-        var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var providerService = new TrinsicProviderService(serverAddress);
+        var providerService = new TrinsicProviderService(Utilities.getTestServerConfig());
 
         final var done1 = new CountDownLatch(1);
         providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder()
@@ -87,14 +70,13 @@ class TrinsicServicesTest {
     }
 
     private void createAndShutdownChannel(String myAddress) throws MalformedURLException {
-        var channel = (ManagedChannel) Utilities.getChannel(myAddress);
+        var channel = (ManagedChannel) Utilities.getChannel(Utilities.getConfigFromUrl(myAddress));
         channel.shutdownNow();
     }
 
     @Test
     public void testTrinsicServiceDemo() throws IOException, DidException, InterruptedException {
-        var serverAddress = System.getenv("TRINSIC_SERVER_ADDRESS");
-        var walletService = new TrinsicWalletService(serverAddress);
+        var walletService = new TrinsicWalletService(Utilities.getTestServerConfig());
 
         final var done = new CountDownLatch(1);
 

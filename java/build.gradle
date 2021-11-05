@@ -65,6 +65,7 @@ dependencies {
     implementation 'io.grpc:grpc-netty-shaded:1.41.0'
     implementation 'io.grpc:grpc-protobuf:1.41.0'
     implementation 'io.grpc:grpc-stub:1.41.0'
+    implementation 'ky.korins:blake3_3:2.9.0'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
     implementation 'id.trinsic:okapi:1.0.0'
