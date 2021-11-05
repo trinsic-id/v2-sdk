@@ -11,11 +11,6 @@
     <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
       <StartAction>Project</StartAction>
       <ExternalConsole>true</ExternalConsole>
-      <EnvironmentVariables>
-        <Variable name="TEST_SERVER_ENDPOINT" value="localhost" />
-        <Variable name="TEST_SERVER_PORT" value="5000" />
-        <Variable name="TEST_SERVER_USE_TLS" value="false" />
-      </EnvironmentVariables>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
