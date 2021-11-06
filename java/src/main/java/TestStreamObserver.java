@@ -11,7 +11,8 @@ public abstract class TestStreamObserver<T> implements StreamObserver<T> {
 
     @Override
     public void onError(Throwable t) {
-        t.printStackTrace();
+        latch.countDown();
+        throw new RuntimeException(t);
     }
 
     @Override

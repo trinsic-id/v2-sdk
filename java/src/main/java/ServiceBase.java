@@ -4,6 +4,7 @@ import com.google.protobuf.Message;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import ky.korins.blake3.Blake3;
+import ky.korins.blake3.Hasher;
 import trinsic.okapi.security.v1.Security;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWallet;
@@ -14,6 +15,7 @@ import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 public abstract class ServiceBase {
+    private static final Hasher hasher = Blake3.newHasher();
     protected UniversalWallet.WalletProfile profile;
 
     public abstract void shutdown() throws InterruptedException;
@@ -25,13 +27,13 @@ public abstract class ServiceBase {
         channel.awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public Metadata getMetadata(Message message) throws InvalidProtocolBufferException, DidException {
+    public Metadata getMetadata(Message request) throws InvalidProtocolBufferException, DidException {
         if (this.profile == null)
             throw new IllegalArgumentException("Profile not set");
 
-        var messageBytes = message.toByteArray();
+        var messageBytes = request.toByteArray();
         var hashArray = ByteBuffer.allocate(messageBytes.length);
-        Blake3.newHasher().update(messageBytes).done(hashArray);
+        hasher.update(request.toByteArray()).done(hashArray);
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
                 .setTimestamp(Instant.now().getEpochSecond())
@@ -42,8 +44,8 @@ public abstract class ServiceBase {
                 .setNonce(nonce.toByteString()).build());
 
         var oberonBuilder = "Oberon " +
-                "proof=" + Base64.getUrlEncoder().encodeToString(proof.toByteArray()) +
-                "data=" + Base64.getUrlEncoder().encodeToString(this.profile.getAuthData().toByteArray()) +
+                "proof=" + Base64.getUrlEncoder().encodeToString(proof.getProof().toByteArray()) +","+
+                "data=" + Base64.getUrlEncoder().encodeToString(this.profile.getAuthData().toByteArray()) +","+
                 "nonce=" + Base64.getUrlEncoder().encodeToString(nonce.toByteArray());
 
         var metadata = new Metadata();
