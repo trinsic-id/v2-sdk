@@ -5,7 +5,7 @@ pub mod services;
 extern crate clap;
 use clap::{App, ArgMatches};
 use parser::Service;
-use services::config::Config;
+use services::config::DefaultConfig;
 use yaml_rust::Yaml;
 
 #[allow(unused_must_use)]
@@ -17,7 +17,7 @@ fn main() {
 }
 
 fn process(yaml: &Yaml, matches: ArgMatches) {
-    let config = Config::from(&matches);
+    let config = DefaultConfig::from(&matches);
     let service = parser::parse(&matches);
 
     if service == Service::Unknown {

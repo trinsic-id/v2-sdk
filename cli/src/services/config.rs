@@ -1,22 +1,26 @@
 use clap::ArgMatches;
+use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use serde::{Deserialize, Serialize};
+use std::time::{SystemTime, UNIX_EPOCH};
 use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::service::Interceptor;
-use trinsic::proto::services::universalwallet::v1::WalletProfile;
-use trinsic::MessageFormatter;
+use trinsic::{
+    proto::services::{common::v1::Nonce, universalwallet::v1::WalletProfile},
+    MessageFormatter,
+};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
-pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "http://localhost:5000/";
+pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "https://prod.trinsic.cloud:443/";
 #[cfg(not(test))]
 pub static CONFIG_FILENAME: &str = "config.toml";
 #[cfg(test)]
 pub static CONFIG_FILENAME: &str = "config.test.toml";
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) struct Config {
+pub(crate) struct DefaultConfig {
     pub server: ConfigServer,
     pub profile: Option<ConfigProfile>,
 }
@@ -70,22 +74,22 @@ impl From<prost::DecodeError> for Error {
     }
 }
 
-impl From<&ArgMatches<'_>> for Config {
+impl From<&ArgMatches<'_>> for DefaultConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
         if matches.is_present("profile") {
-            Config {
+            DefaultConfig {
                 profile: Some(ConfigProfile {
                     default: matches.value_of("profile").unwrap().to_string(),
                 }),
-                ..Config::init().unwrap()
+                ..DefaultConfig::init().unwrap()
             }
         } else {
-            Config::init().unwrap()
+            DefaultConfig::init().unwrap()
         }
     }
 }
 
-impl Config {
+impl DefaultConfig {
     /// Initialize the configuration by reading the default confgiruation file.
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
@@ -94,13 +98,13 @@ impl Config {
 
         // If a default file is not found, create one with default configuration
         if !Path::new(&config_file).exists() {
-            create_file(&config_file, &Config::default())?;
+            create_file(&config_file, &DefaultConfig::default())?;
         };
 
         let mut buffer = String::new();
         let mut file = OpenOptions::new().read(true).open(&config_file)?;
         file.read_to_string(&mut buffer)?;
-        let config: Config = toml::from_str(&buffer)?;
+        let config: DefaultConfig = toml::from_str(&buffer)?;
 
         Ok(config)
     }
@@ -122,16 +126,6 @@ impl Config {
         file.read_to_end(&mut buffer)?;
 
         T::from_vec(&buffer).map_err(|_| Error::SerializationError)
-    }
-
-    pub fn read_capability(&self) -> Result<String, Error> {
-        let filename = data_path().join(format!("{}.json", self.profile.as_ref().unwrap().default));
-        let mut file = OpenOptions::new().read(true).open(filename)?;
-
-        let mut buffer: String = String::new();
-        file.read_to_string(&mut buffer)?;
-
-        Ok(buffer)
     }
 
     pub fn save_profile(
@@ -166,42 +160,6 @@ impl Config {
         }
 
         self.save_config()?;
-        self.save_capability(&profile, name)?;
-
-        Ok(())
-    }
-
-    fn save_capability(&self, profile: &WalletProfile, name: &str) -> Result<(), Error> {
-        // Save capability invocation generated from the input profile
-        use okapi::{
-            proto::{keys::*, proofs::*},
-            *,
-        };
-        use trinsic::utils::*;
-        let capability_filename = data_path().join(format!("{}.json", name));
-        let capability_document = get_capability_document(&profile.wallet_id);
-
-        let res = LdProofs::create_proof(&CreateProofRequest {
-            key: Some(JsonWebKey::from_vec(&profile.invoker_jwk).expect("Invalid key")),
-            document: Some(
-                serde_json::from_str(&capability_document).expect("Invalid capability document"),
-            ),
-            suite: LdSuite::Jcsed25519signature2020 as i32,
-        })
-        .expect("Error creating proof");
-
-        let cap_invocation = base64::encode(
-            serde_json::to_string(&res.signed_document)
-                .expect("Unable to serialize signed document as json"),
-        );
-        let mut caps_file = OpenOptions::new()
-            .create(true)
-            .write(true)
-            .truncate(true)
-            .open(capability_filename)?;
-
-        caps_file.write_all(&cap_invocation.as_bytes().to_vec())?;
-        caps_file.flush()?;
 
         Ok(())
     }
@@ -237,17 +195,46 @@ impl Config {
 //     }
 // }
 
-impl Interceptor for Config {
+impl Interceptor for DefaultConfig {
     fn call(
         &mut self,
         mut request: tonic::Request<()>,
     ) -> Result<tonic::Request<()>, tonic::Status> {
+        // read the currently configured profile
+        let profile: WalletProfile = self.read_profile().unwrap();
+
+        // generate nonce by combining the current unix epoch timestam
+        // and a hash of the request payload
+        let nonce = Nonce {
+            timestamp: SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_millis() as i64,
+            request_hash: blake3::hash(&request.get_ref().to_vec())
+                .as_bytes()
+                .to_vec(),
+        };
+
+        // generate proof of knowledge using the stored token and the generated nonce
+        let proof = Oberon::proof(&CreateOberonProofRequest {
+            data: profile.auth_data,
+            token: profile.auth_token,
+            nonce: todo!(),
+            blinding: vec![],
+        })
+        .unwrap();
+
+        // append auhtorization header
         request.metadata_mut().insert(
-            "capability-invocation",
-            self.read_capability()
-                .expect("couldn't read capability document")
-                .parse()
-                .expect("error parsing capability"),
+            "authorization",
+            format!(
+                "Oberon data={data},proof={proof},nonce={nonce},ver=1",
+                data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
+                proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
+                nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
+            )
+            .parse()
+            .unwrap(),
         );
         Ok(request)
     }
@@ -261,7 +248,7 @@ pub fn execute(args: &Command) {
 fn set_profile_attr(_args: &ProfileArgs) {}
 
 fn set_server_attr(args: &ServerArgs) {
-    let mut config = Config::init().unwrap();
+    let mut config = DefaultConfig::init().unwrap();
     if args.address.is_some() {
         config.server.address = args.address.unwrap().to_string();
     }
@@ -283,7 +270,7 @@ fn data_path() -> PathBuf {
     path
 }
 
-fn create_file(config_dir: &Path, config: &Config) -> Result<(), Error> {
+fn create_file(config_dir: &Path, config: &DefaultConfig) -> Result<(), Error> {
     let mut file = OpenOptions::new()
         .create_new(true)
         .read(true)
@@ -298,7 +285,7 @@ fn create_file(config_dir: &Path, config: &Config) -> Result<(), Error> {
     Ok(())
 }
 
-fn update_file(config_dir: &Path, config: &Config) -> Result<(), Error> {
+fn update_file(config_dir: &Path, config: &DefaultConfig) -> Result<(), Error> {
     let mut file = OpenOptions::new()
         .truncate(true)
         .read(true)
@@ -319,7 +306,7 @@ mod test {
 
     #[test]
     fn open_default_config() {
-        let config = Config::init();
+        let config = DefaultConfig::init();
 
         assert!(matches!(config, Ok(_)));
     }
