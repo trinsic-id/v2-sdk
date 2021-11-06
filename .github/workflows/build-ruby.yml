@@ -1,4 +1,4 @@
-name: Ruby (build)
+name: Ruby
 
 on:
   pull_request:

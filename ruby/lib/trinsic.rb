@@ -4,6 +4,7 @@ require 'okapi'
 require 'base64'
 require 'time'
 require 'uri'
+require 'concurrent'
 require 'google/protobuf/well_known_types'
 require 'services/universal-wallet/v1/universal-wallet_services_pb'
 require 'services/provider/v1/provider_services_pb'
@@ -12,6 +13,13 @@ require 'services/trust-registry/v1/trust-registry_services_pb'
 require 'services/common/v1/common_pb'
 
 module Trinsic
+
+  Common_V1 = Services::Common::V1
+  Wallet_V1 = Services::Universalwallet::V1
+  Credentials_V1 = Services::Verifiablecredentials::V1
+  TrustRegistry_V1 = Services::Trustregistry::V1
+  Provider_V1 = Services::Provider::V1
+
   class Error < StandardError; end
 
   class ServiceBase
@@ -53,6 +61,8 @@ module Trinsic
   end
 
   class WalletService < ServiceBase
+    include Concurrent::Async
+
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
 
@@ -60,8 +70,8 @@ module Trinsic
       unless is_insecure
         throw("https traffic not yet supported")
       end
-      @wallet_client = Services::Universalwallet::V1::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
-      @credential_client = Services::Verifiablecredentials::V1::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
+      @wallet_client = Wallet_V1::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
+      @credential_client = Credentials_V1::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def register_or_connect(email)
@@ -74,19 +84,19 @@ module Trinsic
       my_key = Okapi::DidKey::generate(Okapi::Keys::GenerateKeyRequest.new(:key_type => Okapi::Keys::KeyType::Ed25519))
       my_did_document = my_key.did_document.to_h
 
-      create_request = Services::Universalwallet::V1::CreateWalletRequest.new(:controller => my_did_document['id'], :security_code => security_code)
+      create_request = Wallet_V1::CreateWalletRequest.new(:controller => my_did_document['id'], :security_code => security_code)
       response = @wallet_client.create_wallet(create_request)
 
-      Services::Universalwallet::V1::WalletProfile.new(:wallet_id => response.wallet_id,
+      Wallet_V1::WalletProfile.new(:wallet_id => response.wallet_id,
                                                        :capability => response.capability,
-                                                       :did_document => Services::Common::V1::JsonPayload.new(:json_struct => my_key.did_document),
+                                                       :did_document => Common_V1::JsonPayload.new(:json_struct => my_key.did_document),
                                                        :invoker => response.invoker,
                                                        :invoker_jwk => Okapi::Keys::JsonWebKey.encode(my_key.key[0]))
     end
 
     def issue_credential(document)
-      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(document))
-      request = Services::Verifiablecredentials::V1::IssueRequest.new(:document => payload)
+      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(document))
+      request = Credentials_V1::IssueRequest.new(:document => payload)
       response = @credential_client.issue(request, metadata: self.metadata)
       JSON.parse(response.document.json_string)
     end
@@ -96,39 +106,41 @@ module Trinsic
     end
 
     def insert_item(item)
-      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(item))
-      request = Services::Universalwallet::V1::InsertItemRequest.new(:item => payload)
+      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(item))
+      request = Wallet_V1::InsertItemRequest.new(:item => payload)
       @wallet_client.insert_item(request, metadata: metadata).item_id
     end
 
-    def send(document, email)
-      request = Trinsic::Services::SendRequest.new(:email => email,
-                                                   :document => Trinsic::Services::JsonPayload.new(:json_string => JSON.generate(document)))
+    def send_document(document, email)
+      request = Credentials_V1::SendRequest.new(:email => email,
+                                                   :document => Common_V1::JsonPayload.new(:json_string => JSON.generate(document)))
       @credential_client.send(request, metadata: metadata)
     end
 
     def create_proof(document_id, reveal_document)
-      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(reveal_document))
-      request = Services::Verifiablecredentials::V1::CreateProofRequest.new(:document_id => document_id,
+      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(reveal_document))
+      request = Credentials_V1::CreateProofRequest.new(:document_id => document_id,
                                                                             :reveal_document => payload)
       JSON.parse(@credential_client.create_proof(request, metadata: metadata).proof_document.json_string)
     end
 
     def verify_proof(proof_document)
-      payload = Services::Common::V1::JsonPayload.new(:json_string => JSON.generate(proof_document))
-      request = Services::Verifiablecredentials::V1::VerifyProofRequest.new(:proof_document => payload)
+      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(proof_document))
+      request = Credentials_V1::VerifyProofRequest.new(:proof_document => payload)
       @credential_client.verify_proof(request, metadata: metadata).valid
     end
   end
 
   class ProviderService < ServiceBase
+    include Concurrent::Async
+
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
       grpc_url, is_insecure = parse_url(@service_address)
       unless is_insecure
         throw("https traffic not yet supported")
       end
-      @provider_client = Services::Provider::V1::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
+      @provider_client = Provider_V1::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
     end
 
     def invite_participant(request)
@@ -143,7 +155,7 @@ module Trinsic
   end
 
   class TrustRegistryService < ServiceBase
-    TrustRegistry_V1 = Services::Trustregistry::V1
+    include Concurrent::Async
 
     def initialize(service_address)
       @service_address = (service_address || "http://localhost:5000")
@@ -192,7 +204,7 @@ module Trinsic
 
     def search_registry(query)
       query = query || "SELECT * FROM c"
-      response = @trust_reg_client.search_registry(TrustRegistry_V1::SearchRegistryRequest.new(:query=>query, :options=>Services::Common::V1::RequestOptions(:response_json_format=>Services::Common::V1::JsonFormat.protobuf)), metadata: metadata)
+      response = @trust_reg_client.search_registry(TrustRegistry_V1::SearchRegistryRequest.new(:query=>query, :options=>Common_V1::RequestOptions(:response_json_format=>Common_V1::JsonFormat.protobuf)), metadata: metadata)
       # TODO cast to dictionary object .map { |x| x.json_struct.  }
       response.items
     end

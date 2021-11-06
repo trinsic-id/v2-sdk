@@ -1,4 +1,4 @@
-name: Golang (build)
+name: Go
 
 on:
   workflow_dispatch:

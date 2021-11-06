@@ -29,4 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rake', '~> 13.0', '>= 13.0.6'
   spec.add_dependency 'google-protobuf', '~> 3.17', '>= 3.17.3'
   spec.add_dependency 'grpc', '~> 1.40'
+  spec.add_dependency 'concurrent-ruby', '~> 1.1.9'
 end
