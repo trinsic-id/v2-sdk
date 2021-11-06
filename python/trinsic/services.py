@@ -1,12 +1,14 @@
+import abc
 import base64
 import datetime
 import json
 import urllib.parse
+from abc import ABC
 from distutils.util import strtobool
 from os import getenv
-from typing import Mapping, Dict, List, Union
+from typing import Mapping, Dict, List, Union, Optional, Type
 
-from betterproto import Message
+from betterproto import Message, ServiceStub
 from blake3 import blake3
 from grpclib.client import Channel
 from okapi.proto.okapi.security.v1 import CreateOberonProofRequest
@@ -51,6 +53,33 @@ def trinsic_production_config() -> ServerConfig:
     return ServerConfig(endpoint="prod.trinsic.cloud", port=443, use_tls=True)
 
 
+def get_metadata(profile: WalletProfile, request: Message) -> Mapping[str, str]:
+    """
+    Create call metadata by setting required authentication headers
+    :return: authentication headers
+    """
+    if not profile:
+        raise ValueError("Profile not set")
+
+    # compute the hash of the request and capture current timestamp
+    request_hash = blake3(bytes(request)).digest()
+    nonce = Nonce(timestamp=int(datetime.datetime.now().timestamp() * 1000), request_hash=request_hash)
+    proof = Oberon.create_proof(
+        CreateOberonProofRequest(token=profile.auth_token, data=profile.auth_data, nonce=bytes(nonce)))
+    return {"authorization": f"Oberon proof={base64.urlsafe_b64encode(bytes(proof.proof)).decode('utf-8')},"
+                             f"data={base64.urlsafe_b64encode(bytes(profile.auth_data)).decode('utf-8')},"
+                             f"nonce={base64.urlsafe_b64encode(bytes(nonce)).decode('utf-8')}"}
+
+
+def update_metadata(route: str, skip_routes: List[str], service: "ServiceBase", metadata: "_MetadataLike",
+                    request: "_MessageLike") -> "_MetadataLike":
+    if route in skip_routes:
+        return metadata
+    # if metadata:
+    #     raise NotImplementedError("Cannot combine metadata yet")
+    return service.metadata(request)
+
+
 class ServiceBase:
     """
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
@@ -58,25 +87,86 @@ class ServiceBase:
 
     def __init__(self):
         self.profile: WalletProfile = None
+        self.channel: Channel = None
 
     def close(self):
         raise NotImplementedError("Must be overridden in derived class to close GRPC channels")
 
-    def get_metadata(self, request: Message) -> Mapping[str, str]:
-        """
-        Create call metadata by setting required authentication headers
-        :return: authentication headers
-        """
-        if not self.profile:
-            raise ValueError("Profile not set")
+    def metadata(self, request: Message):
+        return get_metadata(self.profile, request)
 
-        # compute the hash of the request and capture current timestamp
-        request_hash = blake3(bytes(request)).digest()
-        nonce = Nonce(timestamp=int(datetime.datetime.now().timestamp()*1000), request_hash=request_hash)
-        proof = Oberon.create_proof(CreateOberonProofRequest(token=self.profile.auth_token, data=self.profile.auth_data, nonce=bytes(nonce)))
-        return {"Authorization": f"Oberon proof={base64.urlsafe_b64encode(bytes(proof.proof))},"
-                                 f"data={base64.urlsafe_b64encode(bytes(self.profile.auth_data))},"
-                                 f"nonce={base64.urlsafe_b64encode(bytes(nonce))}"}
+
+# TODO - There needs to be a metadata decorator for this
+class WalletStubWithMetadata(WalletStub):
+    skip_metadata = ['/services.universalwallet.v1.Wallet/CreateWallet']
+
+    def __init__(
+            self,
+            service: ServiceBase
+    ) -> None:
+        self.service = service
+        super().__init__(service.channel)
+
+    async def _unary_unary(
+            self,
+            route: str,
+            request: "_MessageLike",
+            response_type: Type["T"],
+            *,
+            timeout: Optional[float] = None,
+            deadline: Optional["Deadline"] = None,
+            metadata: Optional["_MetadataLike"] = None) -> "T":
+        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
+        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
+                                          metadata=metadata)
+
+
+class CredentialStubWithMetadata(CredentialStub):
+    skip_metadata = []
+
+    def __init__(
+            self,
+            service: ServiceBase
+    ) -> None:
+        self.service = service
+        super().__init__(service.channel)
+
+    async def _unary_unary(
+            self,
+            route: str,
+            request: "_MessageLike",
+            response_type: Type["T"],
+            *,
+            timeout: Optional[float] = None,
+            deadline: Optional["Deadline"] = None,
+            metadata: Optional["_MetadataLike"] = None) -> "T":
+        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
+        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
+                                          metadata=metadata)
+
+
+class TrustRegistryStubWithMetadata(TrustRegistryStub):
+    skip_metadata = []
+
+    def __init__(
+            self,
+            service: ServiceBase
+    ) -> None:
+        self.service = service
+        super().__init__(service.channel)
+
+    async def _unary_unary(
+            self,
+            route: str,
+            request: "_MessageLike",
+            response_type: Type["T"],
+            *,
+            timeout: Optional[float] = None,
+            deadline: Optional["Deadline"] = None,
+            metadata: Optional["_MetadataLike"] = None) -> "T":
+        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
+        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
+                                          metadata=metadata)
 
 
 class WalletService(ServiceBase):
@@ -92,8 +182,8 @@ class WalletService(ServiceBase):
         """
         super().__init__()
         self.channel = create_channel(service_address)
-        self.client = WalletStub(self.channel)
-        self.credential_client = CredentialStub(self.channel)
+        self.client = WalletStubWithMetadata(self)
+        self.credential_client = CredentialStubWithMetadata(self)
 
     def close(self):
         if self.channel:
@@ -123,7 +213,6 @@ class WalletService(ServiceBase):
         :param document: Dictionary describing the credential
         :return: Dictionary with the issued credential
         """
-        self.credential_client.metadata = self.metadata
         response = await self.credential_client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return json.loads(response.document.json_string)
 
@@ -133,7 +222,6 @@ class WalletService(ServiceBase):
         :param query: SQL query to use for searching, see the docs for allowed keywords
         :return: The search response object information
         """
-        self.client.metadata = self.metadata
         return await self.client.search(query=query)
 
     async def insert_item(self, item: dict) -> str:
@@ -142,7 +230,6 @@ class WalletService(ServiceBase):
         :param item: Item to insert into the wallet.
         :return: `item_id` of the created record.
         """
-        self.client.metadata = self.metadata
         return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id
 
     async def send(self, document: dict, email: str) -> None:
@@ -151,7 +238,6 @@ class WalletService(ServiceBase):
         :param document: Document to send
         :param email: Email to which the document is sent
         """
-        self.client.metadata = self.metadata
         await self.credential_client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
@@ -160,7 +246,6 @@ class WalletService(ServiceBase):
         :param document_id: document in the wallet that is signed
         :param reveal_document: JSONLD frame describing what data is to be disclosed.
         """
-        self.credential_client.metadata = self.metadata
         return json.loads((await self.credential_client.create_proof(
             document_id=document_id, reveal_document=JsonPayload(
                 json_string=json.dumps(reveal_document)))).proof_document.json_string)
@@ -171,7 +256,6 @@ class WalletService(ServiceBase):
         :param proof_document: Document to verify
         :return: `True` if verified, `False` if not verified
         """
-        self.credential_client.metadata = self.metadata
         return (await self.credential_client.verify_proof(
             proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
 
@@ -236,7 +320,7 @@ class TrustRegistryService(ServiceBase):
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
         self.channel = create_channel(service_address)
-        self.provider_client = TrustRegistryStub(self.channel)
+        self.provider_client = TrustRegistryStubWithMetadata(self)
 
     def close(self):
         if self.channel:
@@ -251,7 +335,7 @@ class TrustRegistryService(ServiceBase):
         governance_url = urllib.parse.urlsplit(governance_framework, allow_fragments=False)
         # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
-            self.provider_client.metadata = self.metadata
+
             await self.provider_client.add_framework(governance_framework=GovernanceFramework(
                 governance_framework_uri=governance_framework,
                 description=description
@@ -270,7 +354,7 @@ class TrustRegistryService(ServiceBase):
         :param valid_until:
         """
         # TODO - Handle nones for valid_from, valid_until
-        self.provider_client.metadata = self.metadata
+
         await self.provider_client.register_issuer(did_uri=issuer_did,
                                                    credential_type_uri=credential_type,
                                                    governance_framework_uri=governance_framework,
@@ -299,7 +383,7 @@ class TrustRegistryService(ServiceBase):
         :param valid_from:
         :param valid_until:
         """
-        self.provider_client.metadata = self.metadata
+
         await self.provider_client.register_verifier(did_uri=verifier_did,
                                                      presentation_type_uri=presentation_type,
                                                      governance_framework_uri=governance_framework,
@@ -327,7 +411,7 @@ class TrustRegistryService(ServiceBase):
         :param governance_framework:
         :return: TODO: /reference/proto/#checkissuerstatusresponse
         """
-        self.provider_client.metadata = self.metadata
+
         return (await self.provider_client.check_issuer_status(governance_framework_uri=governance_framework,
                                                                did_uri=issuer_did,
                                                                credential_type_uri=credential_type)).status
@@ -341,7 +425,7 @@ class TrustRegistryService(ServiceBase):
         :param governance_framework:
         :return:TODO: /reference/proto/#checkverifierstatusresponse
         """
-        self.provider_client.metadata = self.metadata
+
         return (await self.provider_client.check_verifier_status(governance_framework_uri=governance_framework,
                                                                  did_uri=issuer_did,
                                                                  presentation_type_uri=presentation_type)).status
@@ -352,7 +436,7 @@ class TrustRegistryService(ServiceBase):
         :param query: Search query
         :return: TODO: /reference/proto/#searchregistryresponse
         """
-        self.provider_client.metadata = self.metadata
+
         response = await self.provider_client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
 

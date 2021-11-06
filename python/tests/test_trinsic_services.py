@@ -15,13 +15,8 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_servicebase_setprofile(self):
         wallet_service = WalletService(get_test_server_config())
         with self.assertRaises(Exception) as excep:
-            self.assertIsNotNone(wallet_service.get_metadata(None))
+            self.assertIsNotNone(wallet_service.metadata(None))
         self.assertTrue(excep.exception.args[0].lower() == "profile not set")
-
-        wallet = await wallet_service.create_wallet()
-        wallet_service.profile = wallet
-        self.assertIsNotNone(wallet_service.get_metadata(None))
-        wallet_service.close()
 
     async def test_providerservice_inviteparticipant(self):
         await provider_demo()
