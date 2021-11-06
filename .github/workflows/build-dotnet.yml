@@ -1,4 +1,4 @@
-name: ".NET (build)"
+name: ".NET"
 
 on:
   pull_request:

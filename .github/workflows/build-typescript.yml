@@ -1,4 +1,4 @@
-name: "TypeScript (build)"
+name: "TypeScript"
 
 on:
   pull_request:
