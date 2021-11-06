@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.protobuf.InvalidProtocolBufferException;
 import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -64,7 +65,7 @@ class TrinsicServicesTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"http://localhost", "localhost:5000", ""})
+    @ValueSource(strings = {"http://localhost", "localhost:5000"})
     public void invalidUrlsShouldFail(String url) {
         Assertions.assertThrows(MalformedURLException.class, () -> createAndShutdownChannel(url));
     }
@@ -78,26 +79,12 @@ class TrinsicServicesTest {
     public void testTrinsicServiceDemo() throws IOException, DidException, InterruptedException {
         var walletService = new TrinsicWalletService(Utilities.getTestServerConfig());
 
-        final var done = new CountDownLatch(1);
-
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        final UniversalWallet.WalletProfile[] profiles = new UniversalWallet.WalletProfile[3];
-        var walletObserver = new TestStreamObserver<UniversalWallet.WalletProfile>(done) {
-            @Override
-            public void onNext(UniversalWallet.WalletProfile value) {
-                synchronized (profiles) {
-                    for (int ij = 0; ij < profiles.length; ij++)
-                        if (profiles[ij] == null)
-                            profiles[ij] = value;
-                }
-            }
-        };
-        walletService.createWallet("", walletObserver);
-        walletService.createWallet("", walletObserver);
-        walletService.createWallet("", walletObserver);
-
-        done.await();
+        var awaiter = new AwaitService<UniversalWallet.CreateWalletResponse>();
+        var allison = TrinsicWalletService.toWalletProfile(awaiter.awaitCall((observer) -> walletService.createWallet("", observer)));
+        var clinic = TrinsicWalletService.toWalletProfile(awaiter.awaitCall((observer) -> walletService.createWallet("", observer)));
+        var airline = TrinsicWalletService.toWalletProfile(awaiter.awaitCall((observer) -> walletService.createWallet("", observer)));
 
         // Store profile for later use
         // File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -107,29 +94,25 @@ class TrinsicServicesTest {
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
-        var allison = profiles[0];
-        var clinic = profiles[1];
-        var airline = profiles[2];
         walletService.setProfile(clinic);
         var credentialJson = new Gson().fromJson(Files.readString(vaccineCertUnsignedPath()), HashMap.class);
-        final HashMap[] credential = new HashMap[1];
-        final var done2 = new CountDownLatch(1);
-        walletService.issueCredential(credentialJson, new TestStreamObserver<>(done2) {
-            @Override
-            public void onNext(VerifiableCredentials.IssueResponse value) {
-                credential[0] = (new Gson()).fromJson(value.getDocument().getJsonString(), HashMap.class);
-                System.out.println("Credential: " + credential[0]);
+        var result = new AwaitService<VerifiableCredentials.IssueResponse>().awaitCall((observer) -> {
+            try {
+                walletService.issueCredential(credentialJson, observer);
+            } catch (InvalidProtocolBufferException | DidException e) {
+                e.printStackTrace();
             }
         });
 
-        done2.await();
+        var credential = (new Gson()).fromJson(result.getDocument().getJsonString(), HashMap.class);
+        System.out.println("Credential: " + credential);
 
         // STORE CREDENTIAL
         // Alice stores the credential in her cloud wallet.
         walletService.setProfile(allison);
         final String[] itemId = {null};
         final var done3 = new CountDownLatch(1);
-        walletService.insertItem(credential[0], new TestStreamObserver<>(done3) {
+        walletService.insertItem(credential, new TestStreamObserver<>(done3) {
             @Override
             public void onNext(UniversalWallet.InsertItemResponse value) {
                 itemId[0] = value.getItemId();

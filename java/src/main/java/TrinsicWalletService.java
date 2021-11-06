@@ -32,34 +32,22 @@ public class TrinsicWalletService extends ServiceBase {
                 .setEmail(email).build(), observer);
     }
 
-    public void createWallet(String securityCode, StreamObserver<UniversalWallet.WalletProfile> observer) {
+    public void createWallet(String securityCode, StreamObserver<UniversalWallet.CreateWalletResponse> observer) {
         securityCode = securityCode == null ? "" : securityCode;
 
         var request = UniversalWallet.CreateWalletRequest.newBuilder()
                 .setSecurityCode(securityCode)
                 .build();
-        StreamObserver<UniversalWallet.CreateWalletResponse> createWalletResponseStreamObserver = new StreamObserver<>() {
-            @Override
-            public void onNext(UniversalWallet.CreateWalletResponse value) {
-                var profile = UniversalWallet.WalletProfile.newBuilder()
-                        .setAuthData(value.getAuthData())
-                        .setAuthToken(value.getAuthToken())
-                        .setIsProtected(value.getIsProtected())
-                        .build();
-                observer.onNext(profile);
-            }
+        try {this.walletClient.createWallet(request, observer);}catch(Exception e){e.printStackTrace();}
+    }
 
-            @Override
-            public void onError(Throwable t) {
-                observer.onError(t);
-            }
-
-            @Override
-            public void onCompleted() {
-                observer.onCompleted();
-            }
-        };
-        walletClient.createWallet(request, createWalletResponseStreamObserver);
+    public static UniversalWallet.WalletProfile toWalletProfile(UniversalWallet.CreateWalletResponse response)
+    {
+        return UniversalWallet.WalletProfile.newBuilder()
+                .setIsProtected(response.getIsProtected())
+                .setAuthToken(response.getAuthToken())
+                .setAuthData(response.getAuthData())
+                .build();
     }
 
     public void issueCredential(HashMap document, StreamObserver<VerifiableCredentials.IssueResponse> observer) throws InvalidProtocolBufferException, DidException {

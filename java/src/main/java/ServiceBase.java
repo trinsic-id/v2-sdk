@@ -27,7 +27,7 @@ public abstract class ServiceBase {
 
     public Metadata getMetadata(Message message) throws InvalidProtocolBufferException, DidException {
         if (this.profile == null)
-            throw new RuntimeException("Profile not set");
+            throw new IllegalArgumentException("Profile not set");
 
         var messageBytes = message.toByteArray();
         var hashArray = ByteBuffer.allocate(messageBytes.length);
@@ -51,7 +51,7 @@ public abstract class ServiceBase {
         return metadata;
     }
 
-    public void setProfile(UniversalWallet.WalletProfile profile) throws InvalidProtocolBufferException, DidException {
+    public void setProfile(UniversalWallet.WalletProfile profile) {
         this.profile = profile;
     }
 
