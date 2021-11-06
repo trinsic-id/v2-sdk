@@ -1,4 +1,4 @@
-name: Python (build)
+name: Python
 
 on:
   workflow_dispatch:
