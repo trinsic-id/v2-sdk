@@ -1,4 +1,4 @@
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { DEFAULT_SERVICE_ADDRESS } from "./ServiceBase";
 import { TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
@@ -24,15 +24,15 @@ import {
 export class TrustRegistryService extends ServiceBase {
   client: TrustRegistryClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
+  constructor(serviceAddress: string = DEFAULT_SERVICE_ADDRESS) {
     super();
 
     this.client = new TrustRegistryClient(serviceAddress, null, null);
   }
 
   public registerIssuer(request: RegisterIssuerRequest): Promise<RegisterIssuerResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.registerIssuer(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.registerIssuer(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -42,8 +42,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public registerVerifier(request: RegisterVerifierRequest): Promise<RegisterVerifierResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.registerVerifier(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.registerVerifier(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -53,8 +53,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public unregisterIssuer(request: UnregisterIssuerRequest): Promise<UnregisterIssuerResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.unregisterIssuer(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.unregisterIssuer(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -64,8 +64,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public unregisterVerifier(request: UnregisterVerifierRequest): Promise<UnregisterVerifierResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.unregisterVerifier(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.unregisterVerifier(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -75,8 +75,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public checkIssuer(request: CheckIssuerStatusRequest): Promise<CheckIssuerStatusResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.checkIssuerStatus(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.checkIssuerStatus(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -86,8 +86,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public checkVerifier(request: CheckVerifierStatusRequest): Promise<CheckVerifierStatusResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.checkVerifierStatus(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.checkVerifierStatus(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -97,8 +97,9 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public search(query: string): Promise<SearchRegistryResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.searchRegistry(new SearchRegistryRequest().setQuery(query), this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      const request = new SearchRegistryRequest().setQuery(query);
+      this.client.searchRegistry(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -108,8 +109,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public addGovernanceFramework(request: AddFrameworkRequest): Promise<AddFrameworkResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.addFramework(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.addFramework(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -119,8 +120,8 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public removeGovernanceFramework(request: RemoveFrameworkRequest): Promise<RemoveFrameworkResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.removeFramework(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.removeFramework(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }

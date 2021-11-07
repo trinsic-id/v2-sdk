@@ -1,40 +1,42 @@
-import { CreateProofRequest, JsonWebKey, LdProofs, LdSuite } from "@trinsic/okapi";
+import { CreateOberonProofRequest, CreateProofRequest, JsonWebKey, LdProofs, LdSuite, Oberon } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
-import { WalletProfile } from "./proto";
+import { Nonce, ServerConfig, WalletProfile } from "./proto";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import { Buffer } from "buffer";
+import { Message } from "google-protobuf";
+import base64url from "base64url";
+import { hash } from "blake3/browser";
+
+export const DEFAULT_SERVICE_ADDRESS = "https://prod.trinsic.cloud:443";
 
 export default abstract class ServiceBase {
-  capInvocation: string;
+  activeProfile: WalletProfile;
+  serverConfig: ServerConfig;
 
-  getMetadata(): Metadata {
-    if (!this.capInvocation) throw new Error("Profile not set.");
-    let metadata = { "Capability-Invocation": this.capInvocation };
+  async getMetadata(request: Message): Promise<Metadata> {
+    var requestHash = hash(request.serializeBinary());
+    var timestamp = Date.now();
+
+    let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
+
+    let proof = await Oberon.createProof(
+      new CreateOberonProofRequest()
+        .setNonce(nonce.serializeBinary())
+        .setData(this.activeProfile.getAuthData())
+        .setToken(this.activeProfile.getAuthToken())
+    );
+
+    var metadata = {
+      Authorization: `Oberon ver=1,
+              proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},
+              data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},
+              nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`,
+    };
+
     return metadata;
   }
 
-  async setProfile(profile: WalletProfile): Promise<void> {
-    let capabilityDocument = {
-      "@context": "https://wid.org/security/v2",
-      invocationTarget: profile.getWalletId(),
-      proof: {
-        proofPurpose: "capabilityInvocation",
-        created: new Date().toISOString(),
-        capability: profile.getCapability(),
-      },
-    };
-
-    let proofRequest = new CreateProofRequest()
-      .setDocument(Struct.fromJavaScript(capabilityDocument))
-      .setKey(JsonWebKey.deserializeBinary(profile.getInvokerJwk_asU8()))
-      .setSuite(LdSuite.JCSED25519SIGNATURE2020);
-
-    let proofResponse = await LdProofs.generate(proofRequest);
-
-    // Set the auth field to the signed document by converting it back
-    // to JSON and encoding it in base64
-    this.capInvocation = Buffer.from(JSON.stringify(proofResponse.getSignedDocument().toJavaScript())).toString(
-      "base64"
-    );
+  updateActiveProfile(profile: WalletProfile): void {
+    this.activeProfile = profile;
   }
 }

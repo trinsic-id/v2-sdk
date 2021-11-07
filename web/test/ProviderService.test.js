@@ -16,7 +16,7 @@ const createProfile = async () => {
 it("make an invitation", async () => {
   let providerService = new ProviderService(endpoint);
   let profile = await createProfile();
-  await providerService.setProfile(profile);
+  providerService.updateActiveProfile(profile);
   let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
 
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);

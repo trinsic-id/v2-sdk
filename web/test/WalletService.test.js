@@ -1,58 +1,20 @@
-// import okapi from '@trinsic/okapi';
-const okapi = require("@trinsic/okapi");
 const { WalletService } = require("../lib");
-const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 let endpoint = require("./env").env.ENDPOINT;
 const walletService = new WalletService(endpoint);
 
 describe("wallet service tests", () => {
-  it("get provider configuration", async () => {
-    let configuration = await walletService.getProviderConfiguration();
-
-    expect(configuration).not.toBeNull();
-    expect(configuration.getDidDocument()).not.toBeNull();
-    expect(configuration.getKeyAgreementKeyId).not.toBeNull();
-  });
-
   it("create wallet profile", async () => {
     let profile = await walletService.createWallet();
 
     expect(profile).not.toBeNull();
   }, 20000);
 
-  it("generate proof with Jcs", async () => {
-    let capabilityDocument = {
-      "@context": "https://wid.org/security/v2",
-      invocationTarget: "urn:trinsic:wallets:noop",
-      proof: {
-        proofPurpose: "capabilityInvocation",
-        created: new Date().toISOString(),
-        capability: "urn:trinsic:wallets:noop",
-      },
-    };
-
-    let generateKeyRequest = new okapi.GenerateKeyRequest();
-    generateKeyRequest.setKeyType = okapi.KeyType.ED25519;
-    let key = await okapi.DIDKey.generate(generateKeyRequest);
-    let signingKey = key.getKeyList().find((x) => x.getCrv() === "Ed25519");
-
-    let createProofRequest = new okapi.CreateProofRequest();
-    createProofRequest.setKey(signingKey);
-    createProofRequest.setDocument(Struct.fromJavaScript(capabilityDocument));
-    createProofRequest.setSuite(okapi.LdSuite.JCSED25519SIGNATURE2020);
-
-    let proofResponse = await okapi.LdProofs.generate(createProofRequest);
-
-    expect(proofResponse).not.toBeNull();
-    expect(proofResponse.getSignedDocument()).not.toBeNull();
-  });
-
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
     let profile = await walletService.createWallet();
 
     expect(profile).not.toBeNull();
 
-    await walletService.setProfile(profile);
+    walletService.updateActiveProfile(profile);
 
     let unsignedDocument = {
       "@context": "https://w3id.org/security/v3-unstable",
