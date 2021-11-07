@@ -13,15 +13,9 @@ export class TrinsicProviderService extends ServiceBase {
     this.client = new ProviderClient(this.address);
   }
 
-  public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
-    return new Promise(async (resolve, reject) => {
-      this.client.invite(request, await this.getMetadata(request), (error, response) => {
-        if (error) {
-          reject(error);
-        }
-        return resolve(response);
-      });
-    });
+  public async inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
+    let response = await this.client.invite(request, await this.getMetadata(request));
+    return response;
   }
 
   public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {

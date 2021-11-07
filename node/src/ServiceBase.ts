@@ -1,5 +1,4 @@
 const okapi = require("@trinsic/okapi");
-const { CreateProofRequest } = okapi;
 import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
 import { Nonce, ServerConfig, WalletProfile } from "./proto/";
 import { Message } from "google-protobuf";

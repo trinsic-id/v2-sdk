@@ -56,7 +56,7 @@ export class TrinsicWalletService extends ServiceBase {
     });
   }
 
-  public async createWallet(securityCode: string = null): Promise<Any> {
+  public async createWallet(securityCode: string = null): Promise<WalletProfile> {
     let createWalletRequest = new CreateWalletRequest().setDescription("My Cloud Wallet");
     if (!securityCode) securityCode = "";
     createWalletRequest.setSecurityCode(securityCode);
@@ -69,7 +69,7 @@ export class TrinsicWalletService extends ServiceBase {
       .setAuthToken(createWalletResponse.getAuthToken())
       .setIsProtected(createWalletResponse.getIsProtected());
 
-    return new Any().setValue(walletProfile.serializeBinary());
+    return walletProfile;
   }
 
   public issueCredential(document: JSStruct): Promise<object> {

@@ -1,11 +1,8 @@
-import { CreateOberonProofRequest, CreateProofRequest, JsonWebKey, LdProofs, LdSuite, Oberon } from "@trinsic/okapi";
+import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
 import { Nonce, ServerConfig, WalletProfile } from "./proto";
-import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import { Buffer } from "buffer";
 import { Message } from "google-protobuf";
-import base64url from "base64url";
-import { hash } from "blake3/browser";
+import { encode, fromUint8Array } from "js-base64";
 
 export default abstract class ServiceBase {
   activeProfile: WalletProfile;
@@ -24,10 +21,10 @@ export default abstract class ServiceBase {
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
-    var requestHash = hash(request.serializeBinary());
+    var requestHash = await crypto.subtle.digest("SHA-256", request.serializeBinary());
     var timestamp = Date.now();
 
-    let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
+    let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(new Uint8Array(requestHash));
 
     let proof = await Oberon.createProof(
       new CreateOberonProofRequest()
@@ -37,10 +34,12 @@ export default abstract class ServiceBase {
     );
 
     var metadata = {
-      Authorization: `Oberon ver=1,
-              proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},
-              data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},
-              nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`,
+      Authorization:
+        `Oberon ` +
+        `ver=1,` +
+        `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
+        `data=${fromUint8Array(this.activeProfile.getAuthData_asU8(), true)},` +
+        `nonce=${fromUint8Array(nonce.serializeBinary(), true)}`,
     };
 
     return metadata;
