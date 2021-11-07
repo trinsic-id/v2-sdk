@@ -1,6 +1,5 @@
-import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { TrustRegistryClient } from "./proto";
+import { ServerConfig, TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -23,21 +22,12 @@ import {
 } from "./proto";
 
 export class TrustRegistryService extends ServiceBase {
-  channel: Channel;
   client: TrustRegistryClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    let credentials = ChannelCredentials.createInsecure();
-    let channel = new Channel(serviceAddress, credentials, {});
-    this.channel = channel;
-    this.client = new TrustRegistryClient(serviceAddress, credentials);
-  }
-
-  setChannel(channel: Channel) {
-    this.channel = channel;
-    this.client = new TrustRegistryClient(channel.getTarget(), ChannelCredentials.createInsecure());
+    this.client = new TrustRegistryClient(this.address, this.channelCredentials);
   }
 
   public registerIssuer(request: RegisterIssuerRequest): Promise<RegisterIssuerResponse> {

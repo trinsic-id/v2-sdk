@@ -1,19 +1,15 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "./proto";
+import { ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export class TrinsicProviderService extends ServiceBase {
-  channel: Channel;
   client: ProviderClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    let credentials = ChannelCredentials.createInsecure();
-    let channel = new Channel(serviceAddress, credentials, {});
-    this.channel = channel;
-    this.client = new ProviderClient(serviceAddress, credentials);
+    this.client = new ProviderClient(this.address, this.channelCredentials);
   }
 
   setChannel(channel: Channel) {

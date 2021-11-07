@@ -1,23 +1,10 @@
-import {
-  DIDComm,
-  DIDKey,
-  GenerateKeyRequest,
-  KeyType,
-  PackRequest,
-  ResolveRequest,
-  UnpackRequest,
-  EncryptedMessage,
-} from "@trinsic/okapi";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
 import {
   WalletClient,
   CredentialClient,
   ConnectRequest,
-  GetProviderConfigurationResponse,
   CreateWalletRequest,
-  CreateWalletResponse,
   WalletProfile,
   ConnectResponse,
   InsertItemRequest,
@@ -28,42 +15,29 @@ import {
   SendRequest,
   SendResponse,
   VerifyProofRequest,
-  GetProviderConfigurationRequest,
   JsonPayload,
+  ServerConfig,
 } from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
 
 export class TrinsicWalletService extends ServiceBase {
-  channel: Channel;
-  client: WalletClient;
+  walletClient: WalletClient;
   credentialClient: CredentialClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    let credentials = ChannelCredentials.createInsecure();
-    let channel = new Channel(serviceAddress, credentials, {});
-    this.channel = channel;
-    this.client = new WalletClient(serviceAddress, credentials);
-    this.credentialClient = new CredentialClient(
-      serviceAddress,
-      ChannelCredentials.createInsecure(),
-      {}
-    );
-  }
-
-  setChannel(channel: Channel) {
-    this.channel = channel;
-    this.client = new WalletClient(channel.getTarget(), ChannelCredentials.createInsecure());
+    this.walletClient = new WalletClient(this.address, this.channelCredentials);
+    this.credentialClient = new CredentialClient(this.address, this.channelCredentials);
   }
 
   public registerOrConnect(email: string): Promise<ConnectResponse> {
     let request = new ConnectRequest().setEmail(email);
 
     return new Promise((resolve, reject) => {
-      this.client.connectExternalIdentity(request, (error, response) => {
+      this.walletClient.connectExternalIdentity(request, (error, response) => {
         if (error) {
           reject(error);
         } else {
@@ -79,7 +53,7 @@ export class TrinsicWalletService extends ServiceBase {
     createWalletRequest.setSecurityCode(securityCode);
 
     return new Promise((resolve, reject) => {
-      this.client.createWallet(createWalletRequest, (error, response) => {
+      this.walletClient.createWallet(createWalletRequest, (error, response) => {
         if (error) {
           console.error(error.message);
           reject(error.message);
@@ -104,17 +78,13 @@ export class TrinsicWalletService extends ServiceBase {
     return new Promise(async (resolve, reject) => {
       let issueRequest = new IssueRequest().setDocument(request);
 
-      this.credentialClient.issue(
-        issueRequest,
-        await this.getMetadata(issueRequest),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response.getDocument().getJsonStruct().toJavaScript());
-          }
+      this.credentialClient.issue(issueRequest, await this.getMetadata(issueRequest), (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response.getDocument().getJsonStruct().toJavaScript());
         }
-      );
+      });
     });
   }
 
@@ -123,17 +93,13 @@ export class TrinsicWalletService extends ServiceBase {
     return new Promise(async (resolve, reject) => {
       let searchRequest = new SearchRequest().setQuery(query);
 
-      this.client.search(
-        searchRequest,
-        await this.getMetadata(searchRequest),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
+      this.walletClient.search(searchRequest, await this.getMetadata(searchRequest), (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
         }
-      );
+      });
     });
   }
 
@@ -144,17 +110,13 @@ export class TrinsicWalletService extends ServiceBase {
     return new Promise(async (resolve, reject) => {
       let itemRequest = new InsertItemRequest().setItem(request);
 
-      this.client.insertItem(
-        itemRequest,
-        await this.getMetadata(itemRequest),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response.getItemId());
-          }
+      this.walletClient.insertItem(itemRequest, await this.getMetadata(itemRequest), (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response.getItemId());
         }
-      );
+      });
     });
   }
 
@@ -165,17 +127,13 @@ export class TrinsicWalletService extends ServiceBase {
       let sendRequest = new SendRequest();
       sendRequest.setEmail(email);
       sendRequest.setDocument(request);
-      this.credentialClient.send(
-        sendRequest,
-        await this.getMetadata(request),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
+      this.credentialClient.send(sendRequest, await this.getMetadata(request), (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
         }
-      );
+      });
     });
   }
 
@@ -183,9 +141,7 @@ export class TrinsicWalletService extends ServiceBase {
     var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(revealDocument));
 
     return new Promise(async (resolve, reject) => {
-      let createProofRequest = new CreateProofRequest()
-        .setDocumentId(documentId)
-        .setRevealDocument(request);
+      let createProofRequest = new CreateProofRequest().setDocumentId(documentId).setRevealDocument(request);
 
       this.credentialClient.createProof(
         createProofRequest,
@@ -202,12 +158,10 @@ export class TrinsicWalletService extends ServiceBase {
   }
 
   public verifyProof(proofDocument: JSStruct): Promise<boolean> {
-    var request = new JsonPayload()
-      .setJsonStruct(Struct.fromJavaScript(proofDocument));
+    var request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(proofDocument));
 
     return new Promise(async (resolve, reject) => {
-      let verifyProofRequest = new VerifyProofRequest()
-        .setProofDocument(request);
+      let verifyProofRequest = new VerifyProofRequest().setProofDocument(request);
 
       this.credentialClient.verifyProof(
         verifyProofRequest,

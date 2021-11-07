@@ -1,6 +1,6 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { CredentialTemplatesClient } from "./proto";
+import { CredentialTemplatesClient, ServerConfig } from "./proto";
 import {
   CreateCredentialTemplateRequest,
   CreateCredentialTemplateResponse,
@@ -22,18 +22,14 @@ type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
 
 export class TemplateService extends ServiceBase {
-  channel: Channel;
   client: CredentialTemplatesClient;
   credentialClient: CredentialClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    let credentials = ChannelCredentials.createInsecure();
-    let channel = new Channel(serviceAddress, credentials, {});
-    this.channel = channel;
-    this.client = new CredentialTemplatesClient(serviceAddress, credentials);
-    this.credentialClient = new CredentialClient(serviceAddress, credentials);
+    this.client = new CredentialTemplatesClient(this.address, this.channelCredentials);
+    this.credentialClient = new CredentialClient(this.address, this.channelCredentials);
   }
 
   public createCredentialTemplate(

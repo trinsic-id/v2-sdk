@@ -1,29 +1,19 @@
-const fs = require("fs");
-const path = require("path");
 const test = require("ava");
-// import okapi from '@trinsic/okapi';
 const okapi = require("@trinsic/okapi");
-const { WalletService, ProviderService } = require("../lib");
+const { WalletService, ProviderService, ServerConfig } = require("../lib");
 const { GenerateKeyRequest } = require("@trinsic/okapi");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const { InviteRequest } = require("../lib");
 const { randomEmail } = require("./helpers/random");
 
-const endpoint = process.env.TRINSIC_TEST_URL;
+const endpoint = process.env.TEST_SERVER_ENDPOINT;
+const port = process.env.TEST_SERVER_PORT;
+const useTls = process.env.TEST_SERVER_USE_TLS;
 
-test("get provider configuration", async (t) => {
-  console.log("TEST ENDPOINT:", endpoint);
-  let service = new WalletService(endpoint);
-  let configuration = await service.getProviderConfiguration();
-
-  t.not(configuration, null);
-  t.not(configuration.getDidDocument(), null);
-  t.not(configuration.getKeyAgreementKeyId, null);
-  t.pass();
-});
+const config = new ServerConfig().setEndpoint(endpoint).setPort(port).setUseTls(JSON.parse(useTls));
 
 test("create wallet profile", async (t) => {
-  let service = new WalletService(endpoint);
+  let service = new WalletService(config);
   let profile = await service.createWallet();
 
   t.not(profile, null);
@@ -58,13 +48,13 @@ test("generate proof with Jcs", async (t) => {
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-  let walletService = new WalletService(endpoint);
+  let walletService = new WalletService(config);
 
   let profile = await walletService.createWallet();
 
   t.not(profile, null);
 
-  await walletService.setProfile(profile);
+  walletService.updateActiveProfile(profile);
 
   let issueResponse = await walletService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
 
@@ -87,12 +77,12 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 });
 
 test("create wallet with provider invitation", async (t) => {
-  let providerService = new ProviderService(endpoint);
-  let walletService = new WalletService(endpoint);
+  let providerService = new ProviderService(config);
+  let walletService = new WalletService(config);
 
   // Provider creates initial wallet for Alice
   let providerProfile = await walletService.createWallet();
-  await providerService.setProfile(providerProfile);
+  providerService.updateActiveProfile(providerProfile);
 
   let email = randomEmail();
   let inviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(email);
@@ -100,7 +90,7 @@ test("create wallet with provider invitation", async (t) => {
 
   // Alice accepts the invitation and creates the wallet
   let createResponse = await walletService.createWallet(invitationResponse.getInvitationId());
-  await walletService.setProfile(createResponse);
+  walletService.updateActiveProfile(createResponse);
 
   // Alice searches for wallet records
   let search = await walletService.search();
@@ -114,11 +104,11 @@ test("create wallet with provider invitation", async (t) => {
 });
 
 test("send an item to a user's wallet using email", async (t) => {
-  let providerService = new ProviderService(endpoint);
-  let walletService = new WalletService(endpoint);
+  let providerService = new ProviderService(config);
+  let walletService = new WalletService(config);
 
   let providerProfile = await walletService.createWallet();
-  await providerService.setProfile(providerProfile);
+  providerService.updateActiveProfile(providerProfile);
 
   // Provider creates initial wallet for Alice
   let aliceEmail = randomEmail();
@@ -132,10 +122,10 @@ test("send an item to a user's wallet using email", async (t) => {
   let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
   // Alice's searches for wallet records
-  await walletService.setProfile(aliceProfile);
+  walletService.updateActiveProfile(aliceProfile);
   await walletService.send({ test: "value" }, bobEmail);
 
-  await walletService.setProfile(bobProfile);
+  walletService.updateActiveProfile(bobProfile);
   let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
 
   t.not(results.getItemsList(), null);
