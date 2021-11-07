@@ -7,11 +7,21 @@ import { Message } from "google-protobuf";
 import base64url from "base64url";
 import { hash } from "blake3/browser";
 
-export const DEFAULT_SERVICE_ADDRESS = "https://prod.trinsic.cloud:443";
-
 export default abstract class ServiceBase {
   activeProfile: WalletProfile;
   serverConfig: ServerConfig;
+  address: string;
+
+  constructor(
+    profile: WalletProfile = null,
+    config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
+  ) {
+    this.activeProfile = profile;
+    this.serverConfig = config;
+    this.address = `${
+      config.getUseTls() ? "https" : "http"
+    }://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
+  }
 
   async getMetadata(request: Message): Promise<Metadata> {
     var requestHash = hash(request.serializeBinary());

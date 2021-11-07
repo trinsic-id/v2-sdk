@@ -1,5 +1,5 @@
-import ServiceBase, { DEFAULT_SERVICE_ADDRESS } from "./ServiceBase";
-import { ProviderClient } from "./proto";
+import ServiceBase from "./ServiceBase";
+import { ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export * from "grpc-web";
@@ -7,10 +7,10 @@ export * from "grpc-web";
 export class TrinsicProviderService extends ServiceBase {
   client: ProviderClient;
 
-  constructor(serviceAddress: string = DEFAULT_SERVICE_ADDRESS) {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    this.client = new ProviderClient(serviceAddress, {}, {});
+    this.client = new ProviderClient(this.address);
   }
 
   public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {

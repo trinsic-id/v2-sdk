@@ -1,5 +1,5 @@
-import ServiceBase, { DEFAULT_SERVICE_ADDRESS } from "./ServiceBase";
-import { TrustRegistryClient } from "./proto";
+import ServiceBase from "./ServiceBase";
+import { ServerConfig, TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -24,10 +24,10 @@ import {
 export class TrustRegistryService extends ServiceBase {
   client: TrustRegistryClient;
 
-  constructor(serviceAddress: string = DEFAULT_SERVICE_ADDRESS) {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    this.client = new TrustRegistryClient(serviceAddress, null, null);
+    this.client = new TrustRegistryClient(this.address);
   }
 
   public registerIssuer(request: RegisterIssuerRequest): Promise<RegisterIssuerResponse> {

@@ -1,6 +1,6 @@
-const { WalletService } = require("../lib");
-let endpoint = require("./env").env.ENDPOINT;
-const walletService = new WalletService(endpoint);
+import { WalletService } from "../lib";
+import { config } from "./env";
+const walletService = new WalletService(config);
 
 describe("wallet service tests", () => {
   it("create wallet profile", async () => {

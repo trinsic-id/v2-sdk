@@ -1,12 +1,10 @@
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase, { DEFAULT_SERVICE_ADDRESS } from "./ServiceBase";
-import { GetProviderConfigurationRequest, WalletClient } from "./proto";
-import { CredentialClient } from "./proto";
+import ServiceBase from "./ServiceBase";
+import { GetProviderConfigurationRequest, ServerConfig, WalletClient, CredentialClient } from "./proto";
 import {
   ConnectRequest,
   GetProviderConfigurationResponse,
   CreateWalletRequest,
-  CreateWalletResponse,
   WalletProfile,
   ConnectResponse,
   InsertItemRequest,
@@ -25,11 +23,11 @@ export class TrinsicWalletService extends ServiceBase {
   client: WalletClient;
   credentialClient: CredentialClient;
 
-  constructor(serviceAddress: string = DEFAULT_SERVICE_ADDRESS) {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    this.client = new WalletClient(serviceAddress, null, null);
-    this.credentialClient = new CredentialClient(serviceAddress, null, null);
+    this.client = new WalletClient(this.address);
+    this.credentialClient = new CredentialClient(this.address);
   }
 
   public registerOrConnect(email: string): Promise<ConnectResponse> {
