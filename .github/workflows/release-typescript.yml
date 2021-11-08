@@ -6,7 +6,7 @@ on:
     types: [published, prereleased]
   
 env:
-  DEFAULT_TEST_URL: "trinsic-staging.centralus.azurecontainer.io:5000"
+  DEFAULT_TEST_URL: "https://trinsic-staging.centralus.azurecontainer.io:443"
 
 jobs:
   publish_npm:

@@ -1,24 +1,15 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { ProviderClient } from "./proto";
-import {
-  InvitationStatusRequest,
-  InvitationStatusResponse,
-  InviteRequest,
-  InviteResponse,
-} from "./proto";
+import { ProviderClient, ServerConfig } from "./proto";
+import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export class TrinsicProviderService extends ServiceBase {
-  channel: Channel;
   client: ProviderClient;
 
-  constructor(serviceAddress: string = "localhost:5000") {
-    super();
+  constructor(config: ServerConfig = null) {
+    super(null, config);
 
-    let credentials = ChannelCredentials.createInsecure();
-    let channel = new Channel(serviceAddress, credentials, {});
-    this.channel = channel;
-    this.client = new ProviderClient(serviceAddress, credentials);
+    this.client = new ProviderClient(this.address, this.channelCredentials);
   }
 
   setChannel(channel: Channel) {
@@ -27,8 +18,8 @@ export class TrinsicProviderService extends ServiceBase {
   }
 
   public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.invite(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.invite(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
@@ -38,8 +29,8 @@ export class TrinsicProviderService extends ServiceBase {
   }
 
   public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {
-    return new Promise((resolve, reject) => {
-      this.client.invitationStatus(request, this.getMetadata(), (error, response) => {
+    return new Promise(async (resolve, reject) => {
+      this.client.invitationStatus(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }
