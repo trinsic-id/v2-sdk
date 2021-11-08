@@ -1,6 +1,6 @@
 use clap::ArgMatches;
 
-use crate::services::config::Config;
+use crate::services::config::DefaultConfig;
 
 #[derive(Debug, PartialEq, Default)]
 pub struct Command<'a> {
@@ -27,7 +27,7 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
         command.server.address = args.value_of("server-address")
     }
     if args.is_present("show") {
-        Config::init().unwrap().print().unwrap();
+        DefaultConfig::init().unwrap().print().unwrap();
     }
 
     command

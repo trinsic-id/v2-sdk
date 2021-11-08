@@ -69,7 +69,7 @@ pub mod invitation_token {
 ///Stores profile data for accessing a wallet.
 ///This result should be stored somewhere safe,
 ///as it contains private key information.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Copy, Clone, PartialEq, ::prost::Message)]
 pub struct WalletProfile {
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,

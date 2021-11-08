@@ -7,7 +7,7 @@ use trinsic::proto::services::provider::v1::{provider_client::ProviderClient, In
 use trinsic::*;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
     match args {
         Command::Invite(args) => Ok(invite(args, config)),
         _ => Err(Error::UnknownCommand),
@@ -15,7 +15,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn invite(args: &InviteArgs, config: Config) {
+async fn invite(args: &InviteArgs, config: DefaultConfig) {
     let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config);
 
     let request = tonic::Request::new(InviteRequest {

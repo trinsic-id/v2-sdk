@@ -19,6 +19,7 @@ toml = "0.5"
 dirs = "3.0"
 yaml-rust = "0.3"
 colored = "2"
+blake3 = "1.2"
 
 [build-dependencies]
 tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }

@@ -1,10 +1,13 @@
+use std::default::*;
+
 use super::super::parser::wallet::*;
 use crate::services::config::*;
 use okapi::{proto::keys::*, DIDKey, MessageFormatter};
+use tonic::codegen::Body;
 use tonic::transport::Channel;
 use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
-use trinsic::proto::services::common::v1::JsonPayload;
+use trinsic::proto::services::common::v1::{JsonPayload, ServerConfig};
 use trinsic::proto::services::universalwallet::v1::{
     wallet_client::WalletClient, CreateWalletRequest, InsertItemRequest, SearchRequest,
     WalletProfile,
@@ -15,7 +18,7 @@ use trinsic::proto::services::verifiablecredentials::v1::SendRequest;
 use trinsic::{proto::services::universalwallet::v1::*, utils::read_file_as_string};
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
     match args {
         Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
@@ -27,7 +30,7 @@ pub(crate) fn execute(args: &Command, config: Config) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn get_provider_configuration(config: Config) {
+async fn get_provider_configuration(config: DefaultConfig) {
     let mut client = WalletClient::connect(config.server.address)
         .await
         .expect("Unable to connect to server");
@@ -43,25 +46,12 @@ async fn get_provider_configuration(config: Config) {
 }
 
 #[tokio::main]
-async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
+async fn create(args: &CreateArgs, config: DefaultConfig) -> Result<(), Error> {
     let mut new_config = config.clone();
-
-    let key = match &args.key {
-        Some(filename) => {
-            serde_json::from_str(&read_file_as_string(Some(filename))).expect("Unable to parse key")
-        }
-        None => DIDKey::generate(&GenerateKeyRequest {
-            seed: vec![],
-            key_type: KeyType::Ed25519 as i32,
-        })
-        .unwrap(),
-    };
-
-    let did_doc_bytes = &key.did_document.unwrap().to_vec();
 
     let description = match &args.description {
         Some(desc) => desc.to_string(),
-        None => "My Cloud Wallet".to_string(),
+        None => "New Wallet (from CLI)".to_string(),
     };
 
     let channel = Channel::from_shared(config.server.address)
@@ -73,7 +63,6 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
     let mut client = WalletClient::new(channel);
 
     let request = tonic::Request::new(CreateWalletRequest {
-        controller: key.key[0].kid.clone(),
         description,
         security_code: args
             .security_code
@@ -87,22 +76,21 @@ async fn create(args: &CreateArgs, config: Config) -> Result<(), Error> {
         .expect("Create Wallet failed")
         .into_inner();
 
-    use trinsic::MessageFormatter;
     let profile = WalletProfile {
-        wallet_id: response.wallet_id,
-        did_document: Some(JsonPayload {
-            json: Some(Json::JsonStruct(Struct::from_vec(&did_doc_bytes).unwrap())),
+        name: args.profile_name.map_or(String::new(), |x| x.to_string()),
+        auth_data: response.auth_data,
+        auth_token: response.auth_token,
+        is_protected: response.is_protected,
+        config: Some(ServerConfig {
+            ..Default::default()
         }),
-        invoker: key.key[0].kid.clone(),
-        invoker_jwk: key.key[0].to_vec(),
-        capability: response.capability,
     };
 
     new_config.save_profile(profile, args.profile_name.unwrap(), args.set_default)
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: Config) {
+async fn search(args: &SearchArgs, config: DefaultConfig) {
     let query = args
         .query
         .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
@@ -136,7 +124,7 @@ async fn search(args: &SearchArgs, config: Config) {
 }
 
 #[tokio::main]
-async fn insert_item(args: &InsertItemArgs, config: Config) {
+async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
     let item: Struct =
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
@@ -168,7 +156,7 @@ async fn insert_item(args: &InsertItemArgs, config: Config) {
 }
 
 #[tokio::main]
-async fn send(args: &SendArgs, config: Config) {
+async fn send(args: &SendArgs, config: DefaultConfig) {
     let item: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
