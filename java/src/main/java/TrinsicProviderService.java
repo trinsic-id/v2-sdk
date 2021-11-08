@@ -1,7 +1,10 @@
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
+import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.common.v1.ProviderGrpc;
 import trinsic.services.common.v1.ProviderOuterClass;
 
@@ -11,8 +14,8 @@ public class TrinsicProviderService extends ServiceBase {
     public Channel channel;
     public ProviderGrpc.ProviderStub providerClient;
 
-    public TrinsicProviderService(String serviceAddress) throws MalformedURLException {
-        this.channel = Utilities.getChannel(serviceAddress);
+    public TrinsicProviderService(CommonOuterClass.ServerConfig config) throws MalformedURLException {
+        this.channel = Utilities.getChannel(config);
         this.providerClient = ProviderGrpc.newStub(this.channel);
     }
 
@@ -34,8 +37,8 @@ public class TrinsicProviderService extends ServiceBase {
 
         this.providerClient.invitationStatus(request, observer);
     }
-    private ProviderGrpc.ProviderStub getProviderClient() {
+    private ProviderGrpc.ProviderStub getProviderClient(Message message) throws InvalidProtocolBufferException, DidException {
         return this.providerClient.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.getMetadata()));
+                MetadataUtils.newAttachHeadersInterceptor(this.getMetadata(message)));
     }
 }
