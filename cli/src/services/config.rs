@@ -219,7 +219,7 @@ impl Interceptor for DefaultConfig {
         let proof = Oberon::proof(&CreateOberonProofRequest {
             data: profile.auth_data,
             token: profile.auth_token,
-            nonce: todo!(),
+            nonce: nonce.to_vec(),
             blinding: vec![],
         })
         .unwrap();
