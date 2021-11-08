@@ -23,4 +23,4 @@ it("make an invitation", async () => {
 
   expect(inviteResponse).not.toBeNull();
   expect(inviteResponse.getInvitationId()).not.toBeNull();
-});
+}, 20000);

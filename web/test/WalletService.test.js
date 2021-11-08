@@ -32,5 +32,5 @@ describe("wallet service tests", () => {
     let valid = await walletService.verifyProof(proof);
 
     expect(valid).toBe(true);
-  });
+  }, 20000);
 });
