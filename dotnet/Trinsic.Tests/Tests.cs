@@ -51,7 +51,7 @@ namespace Trinsic.Tests
 
             // ISSUE CREDENTIAL
             // Sign a credential as the clinic and send it to Allison
-            walletService.Profile = credentialsService.Profile = allison;
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
             var credential = await credentialsService.IssueCredential(document: JObject.Parse(credentialJson));
@@ -69,7 +69,7 @@ namespace Trinsic.Tests
             // Allison shares the credential with the venue.
             // The venue has communicated with Allison the details of the credential
             // that they require expressed as a JSON-LD frame.
-            walletService.Profile = credentialsService.Profile = allison;
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
             var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
@@ -80,7 +80,7 @@ namespace Trinsic.Tests
 
             // VERIFY CREDENTIAL
             // The airline verifies the credential
-            walletService.Profile = credentialsService.Profile = airline;
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var valid = await credentialsService.VerifyProof(credentialProof);
 
