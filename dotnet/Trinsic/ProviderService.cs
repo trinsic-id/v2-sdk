@@ -2,35 +2,18 @@
 using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic
 {
     public class ProviderService : ServiceBase
     {
-        public ProviderService()
-            : this(new ServerConfig
-            {
-                Endpoint = "prod.trinsic.cloud",
-                Port = 443,
-                UseTls = true
-            })
+        public ProviderService(WalletProfile walletProfile, ServerConfig? serverConfig) : base(walletProfile, serverConfig)
         {
-
-        }
-        public ProviderService(ServerConfig config)
-            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
-        {
+            Client = new Provider.ProviderClient(Channel);
         }
 
-        public ProviderService(GrpcChannel channel)
-        {
-            // We must store a reference to the channel, otherwise it gets collected
-            Channel = channel;
-            ProviderClient = new Provider.ProviderClient(Channel);
-        }
-
-        public GrpcChannel Channel { get; }
-        public Provider.ProviderClient ProviderClient { get; }
+        public Provider.ProviderClient Client { get; }
 
         /// <summary>
         /// Initates the participant onboarding flow using the input contact method
@@ -46,7 +29,7 @@ namespace Trinsic
 
             try
             {
-                var response = await ProviderClient.InviteAsync(request, GetMetadata(request));
+                var response = await Client.InviteAsync(request, BuildMetadata(request));
                 return response;
             }
             catch (Exception e)
@@ -70,7 +53,7 @@ namespace Trinsic
 
             try
             {
-                var response = await ProviderClient.InvitationStatusAsync(request, GetMetadata(request));
+                var response = await Client.InvitationStatusAsync(request, BuildMetadata(request));
                 return response;
             }
             catch (Exception e)

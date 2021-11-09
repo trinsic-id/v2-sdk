@@ -7,34 +7,17 @@ using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
+using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic
 {
     public class TrustRegistryService : ServiceBase
     {
-        public TrustRegistryService()
-            : this(new ServerConfig
-            {
-                Endpoint = "prod.trinsic.cloud",
-                Port = 443,
-                UseTls = true
-            })
+        public TrustRegistryService(WalletProfile walletProfile, ServerConfig serverConfig) : base(walletProfile, serverConfig)
         {
-
-        }
-        public TrustRegistryService(ServerConfig config)
-            : this(ServiceBase.CreateChannelIfNeeded($"{(config.UseTls ? "https" : "http")}://{config.Endpoint}:{config.Port}"))
-        {
-        }
-
-        public TrustRegistryService(GrpcChannel channel)
-        {
-            // We must store a reference to the channel, otherwise it gets collected
-            Channel = channel;
             Client = new TrustRegistry.TrustRegistryClient(Channel);
         }
 
-        public GrpcChannel Channel { get; }
         public TrustRegistry.TrustRegistryClient Client { get; }
 
         /// <summary>
@@ -58,7 +41,7 @@ namespace Trinsic
                         Description = description
                     }
                 };
-                var response = await Client.AddFrameworkAsync(request, GetMetadata(request));
+                var response = await Client.AddFrameworkAsync(request, BuildMetadata(request));
             }
             throw new Exception("Invalid URI string");
         }
@@ -82,7 +65,7 @@ namespace Trinsic
                 ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
                 ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
             };
-            var response = await Client.RegisterIssuerAsync(request, GetMetadata(request));
+            var response = await Client.RegisterIssuerAsync(request, BuildMetadata(request));
         }
 
         public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -109,7 +92,7 @@ namespace Trinsic
                 ValidFromUtc = (ulong)validFrom?.ToUnixTimeSeconds(),
                 ValidUntilUtc = (ulong)validUntil?.ToUnixTimeSeconds()
             };
-            var response = await Client.RegisterVerifierAsync(request, GetMetadata(request));
+            var response = await Client.RegisterVerifierAsync(request, BuildMetadata(request));
         }
 
         public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -132,7 +115,7 @@ namespace Trinsic
                 CredentialTypeUri = credentialType,
                 GovernanceFrameworkUri = governanceFramework
             };
-            var response = await Client.CheckIssuerStatusAsync(request, GetMetadata(request));
+            var response = await Client.CheckIssuerStatusAsync(request, BuildMetadata(request));
 
             return response.Status;
         }
@@ -152,7 +135,7 @@ namespace Trinsic
                 PresentationTypeUri = presentationType,
                 GovernanceFrameworkUri = governanceFramework
             };
-            var response = await Client.CheckVerifierStatusAsync(request, GetMetadata(request));
+            var response = await Client.CheckVerifierStatusAsync(request, BuildMetadata(request));
 
             return response.Status;
         }
@@ -169,7 +152,7 @@ namespace Trinsic
                 Query = query,
                 Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
             };
-            var response = await Client.SearchRegistryAsync(request, GetMetadata(request));
+            var response = await Client.SearchRegistryAsync(request, BuildMetadata(request));
 
             return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
         }

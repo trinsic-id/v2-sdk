@@ -31,32 +31,17 @@ namespace Trinsic.Tests
         private string VaccinationCertificateFrame =>
             Path.GetFullPath(Path.Join(TestDataPath, "vaccination-certificate-frame.jsonld"));
 
-        [Theory]
-        [InlineData("localhost", false)]
-        [InlineData("localhost:5000", false)]
-        [InlineData("http://localhost", false)]
-        [InlineData("http://20.75.134.127", false)]
-        [InlineData("https://localhost:5000", true)]
-        [InlineData("http://localhost:5000", true)]
-        [InlineData("http://localhost:80", true)]
-        [InlineData("http://20.75.134.127:80", true)]
-        public void TestParseURL(string url, bool isValid)
-        {
-            if (!isValid)
-                Assert.Throws<ArgumentException>(() => ServiceBase.CreateChannelIfNeeded(url));
-            else
-                Assert.NotNull(ServiceBase.CreateChannelIfNeeded(url));
-        }
-
         [Fact]
         public async Task TestWalletService()
         {
-            var walletService = new WalletService(new ServerConfig
+            ServerConfig serverConfig = new ()
             {
                 Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
                 Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
                 UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) ? useTls : false
-            });
+            };
+            var walletService = new WalletService(null, serverConfig);
+            var credentialsService = new CredentialsService(null, serverConfig);
 
             // SETUP ACTORS
             // Create 3 different profiles for each participant in the scenario
@@ -66,17 +51,17 @@ namespace Trinsic.Tests
 
             // ISSUE CREDENTIAL
             // Sign a credential as the clinic and send it to Allison
-            walletService.SetProfile(clinic);
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
-            var credential = await walletService.IssueCredential(document: JObject.Parse(credentialJson));
+            var credential = await credentialsService.IssueCredential(document: JObject.Parse(credentialJson));
 
             _testOutputHelper.WriteLine("Credential:");
             _testOutputHelper.WriteLine(credential.ToString(Formatting.Indented));
 
             // STORE CREDENTIAL
             // Alice stores the credential in her cloud wallet.
-            walletService.SetProfile(allison);
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var itemId = await walletService.InsertItem(credential);
 
@@ -84,10 +69,10 @@ namespace Trinsic.Tests
             // Allison shares the credential with the venue.
             // The venue has communicated with Allison the details of the credential
             // that they require expressed as a JSON-LD frame.
-            walletService.SetProfile(allison);
+            walletService.Profile = credentialsService.Profile = clinic;
 
             var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
-            var credentialProof = await walletService.CreateProof(itemId, JObject.Parse(proofRequestJson));
+            var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
 
             _testOutputHelper.WriteLine("Proof:");
             _testOutputHelper.WriteLine(credentialProof.ToString(Formatting.Indented));
@@ -95,9 +80,9 @@ namespace Trinsic.Tests
 
             // VERIFY CREDENTIAL
             // The airline verifies the credential
-            walletService.SetProfile(airline);
+            walletService.Profile = credentialsService.Profile = clinic;
 
-            var valid = await walletService.VerifyProof(credentialProof);
+            var valid = await credentialsService.VerifyProof(credentialProof);
 
             _testOutputHelper.WriteLine($"Verification result: {valid}");
             Assert.True(valid);
