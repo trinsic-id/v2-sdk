@@ -51,7 +51,9 @@ jobs:
           DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
           CGO_LDFLAGS: "-L${{ github.workspace }}/go/services"
           CGO_CFLAGS: "-I${{ github.workspace }}/go/services"
-          TRINSIC_SERVER_ADDRESS: http://20.75.134.127:80/
+          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
+          TEST_SERVER_PORT: 443
+          TEST_SERVER_USE_TLS: true
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails

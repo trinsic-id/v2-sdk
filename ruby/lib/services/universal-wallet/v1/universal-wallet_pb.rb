@@ -4,19 +4,17 @@
 require 'google/protobuf'
 
 require 'services/common/v1/common_pb'
-require 'pbmse/v1/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/universal-wallet/v1/universal-wallet.proto", :syntax => :proto3) do
     add_message "services.universalwallet.v1.CreateWalletRequest" do
-      optional :controller, :string, 1
       optional :description, :string, 2
       optional :security_code, :string, 3
     end
     add_message "services.universalwallet.v1.CreateWalletResponse" do
       optional :status, :enum, 1, "services.common.v1.ResponseStatus"
-      optional :wallet_id, :string, 2
-      optional :capability, :string, 3
-      optional :invoker, :string, 4
+      optional :auth_data, :bytes, 2
+      optional :auth_token, :bytes, 3
+      optional :is_protected, :bool, 4
     end
     add_message "services.universalwallet.v1.ConnectRequest" do
       oneof :contact_method do
@@ -36,11 +34,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.universalwallet.v1.WalletProfile" do
-      optional :did_document, :message, 1, "services.common.v1.JsonPayload"
-      optional :wallet_id, :string, 2
-      optional :invoker, :string, 3
-      optional :capability, :string, 4
-      optional :invoker_jwk, :bytes, 5
+      optional :name, :string, 1
+      optional :auth_data, :bytes, 2
+      optional :auth_token, :bytes, 3
+      optional :is_protected, :bool, 4
+      optional :config, :message, 5, "services.common.v1.ServerConfig"
     end
     add_message "services.universalwallet.v1.GrantAccessRequest" do
       optional :wallet_id, :string, 1

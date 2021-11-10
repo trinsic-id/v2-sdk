@@ -1,19 +1,21 @@
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
+import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
-import java.net.MalformedURLException;
 import java.time.Instant;
 
 public class TrinsicTrustRegistryService extends ServiceBase {
     public Channel channel;
     public TrustRegistryGrpc.TrustRegistryStub trustRegistryClient;
 
-    public TrinsicTrustRegistryService(String url) throws MalformedURLException {
-        this.channel = Utilities.getChannel(url);
+    public TrinsicTrustRegistryService(CommonOuterClass.ServerConfig config) {
+        this.channel = Utilities.getChannel(config);
         this.trustRegistryClient = TrustRegistryGrpc.newStub(this.channel);
     }
 
@@ -27,79 +29,86 @@ public class TrinsicTrustRegistryService extends ServiceBase {
     }
 
     public void registerIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
-                               StreamObserver<TrustRegistryOuterClass.RegisterIssuerResponse> observer) {
+                               StreamObserver<TrustRegistryOuterClass.RegisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
-        getTrustRegistryClient().registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
+        final var request = TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
                 .setGovernanceFrameworkUri(governanceFramework)
                 .setValidFromUtc(validFrom.getEpochSecond())
-                .setValidUntilUtc(validUntil.getEpochSecond()).build(), observer);
+                .setValidUntilUtc(validUntil.getEpochSecond()).build();
+        getTrustRegistryClient(request).registerIssuer(request, observer);
     }
 
     public void unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
-                                 StreamObserver<TrustRegistryOuterClass.UnregisterIssuerResponse> observer) {
+                                 StreamObserver<TrustRegistryOuterClass.UnregisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
-        getTrustRegistryClient().unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder()
+        final var request = TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder()
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
-                .setGovernanceFrameworkUri(governanceFramework).build(), observer);
+                .setGovernanceFrameworkUri(governanceFramework).build();
+        getTrustRegistryClient(request).unregisterIssuer(request, observer);
     }
 
     public void registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil,
-                                 StreamObserver<TrustRegistryOuterClass.RegisterVerifierResponse> observer) {
+                                 StreamObserver<TrustRegistryOuterClass.RegisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
-        getTrustRegistryClient().registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder()
+        final TrustRegistryOuterClass.RegisterVerifierRequest request = TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder()
                 .setDidUri(verifierDid)
                 .setPresentationTypeUri(presentationType)
                 .setGovernanceFrameworkUri(governanceFramework)
                 .setValidFromUtc(validFrom.getEpochSecond())
-                .setValidUntilUtc(validUntil.getEpochSecond()).build(), observer);
+                .setValidUntilUtc(validUntil.getEpochSecond()).build();
+        getTrustRegistryClient(request).registerVerifier(request, observer);
     }
 
     public void unregisterVerifier(String verifierDid, String presentationType, String governanceFramework,
-                                   Instant validFrom, Instant validUntil, StreamObserver<TrustRegistryOuterClass.UnregisterVerifierResponse> observer) {
+                                   Instant validFrom, Instant validUntil, StreamObserver<TrustRegistryOuterClass.UnregisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
-        getTrustRegistryClient().unregisterVerifier(TrustRegistryOuterClass.UnregisterVerifierRequest.newBuilder()
+        final TrustRegistryOuterClass.UnregisterVerifierRequest request = TrustRegistryOuterClass.UnregisterVerifierRequest.newBuilder()
                 .setDidUri(verifierDid)
                 .setPresentationTypeUri(presentationType)
                 .setGovernanceFrameworkUri(governanceFramework)
-                .build(), observer);
+                .build();
+        getTrustRegistryClient(request).unregisterVerifier(request, observer);
     }
 
     public void checkIssuerStatus(String issuerDid, String credentialType, String governanceFramework,
-                                  StreamObserver<TrustRegistryOuterClass.CheckIssuerStatusResponse> observer) {
-        getTrustRegistryClient().checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder()
+                                  StreamObserver<TrustRegistryOuterClass.CheckIssuerStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
+        final TrustRegistryOuterClass.CheckIssuerStatusRequest request = TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder()
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
-                .setGovernanceFrameworkUri(governanceFramework).build(), observer);
+                .setGovernanceFrameworkUri(governanceFramework).build();
+        getTrustRegistryClient(request).checkIssuerStatus(request, observer);
     }
 
     public void checkVerifierStatus(String verifierDid, String presentationType, String governanceFramework,
-                                    StreamObserver<TrustRegistryOuterClass.CheckVerifierStatusResponse> observer) {
-        getTrustRegistryClient().checkVerifierStatus(TrustRegistryOuterClass.CheckVerifierStatusRequest.newBuilder()
+                                    StreamObserver<TrustRegistryOuterClass.CheckVerifierStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
+        final TrustRegistryOuterClass.CheckVerifierStatusRequest request = TrustRegistryOuterClass.CheckVerifierStatusRequest.newBuilder()
                 .setDidUri(verifierDid)
                 .setPresentationTypeUri(presentationType)
-                .setGovernanceFrameworkUri(governanceFramework).build(), observer);
+                .setGovernanceFrameworkUri(governanceFramework).build();
+        getTrustRegistryClient(request).checkVerifierStatus(request, observer);
     }
 
-    public void searchRegistry(String query, StreamObserver<TrustRegistryOuterClass.SearchRegistryResponse> observer) {
+    public void searchRegistry(String query, StreamObserver<TrustRegistryOuterClass.SearchRegistryResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (query == null)
             query = "SELECT * FROM c";
-        getTrustRegistryClient().searchRegistry(TrustRegistryOuterClass.SearchRegistryRequest.newBuilder()
-                .setQuery(query).build(), observer);
+        final TrustRegistryOuterClass.SearchRegistryRequest request = TrustRegistryOuterClass.SearchRegistryRequest.newBuilder()
+                .setQuery(query).build();
+        getTrustRegistryClient(request).searchRegistry(request, observer);
     }
 
-    private TrustRegistryGrpc.TrustRegistryStub getTrustRegistryClient() {
+    private TrustRegistryGrpc.TrustRegistryStub getTrustRegistryClient(Message message) throws InvalidProtocolBufferException, DidException {
         return this.trustRegistryClient.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.getMetadata()));
+                MetadataUtils.newAttachHeadersInterceptor(this.getMetadata(message)));
     }
 }

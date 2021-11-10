@@ -19,23 +19,19 @@ public final class UniversalWallet {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string controller = 1;</code>
-     * @return The controller.
-     */
-    java.lang.String getController();
-    /**
-     * <code>string controller = 1;</code>
-     * @return The bytes for controller.
-     */
-    com.google.protobuf.ByteString
-        getControllerBytes();
-
-    /**
+     * <pre>
+     * optional description of the wallet
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
+     * <pre>
+     * optional description of the wallet
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -44,8 +40,8 @@ public final class UniversalWallet {
 
     /**
      * <pre>
-     * (Optional) Supply an invitation id to associate this caller profile
-     * to an existing cloud wallet.
+     * (Optional) Supply an invitation id to associate this
+     * caller device to an existing cloud wallet.
      * </pre>
      *
      * <code>string security_code = 3;</code>
@@ -54,8 +50,8 @@ public final class UniversalWallet {
     java.lang.String getSecurityCode();
     /**
      * <pre>
-     * (Optional) Supply an invitation id to associate this caller profile
-     * to an existing cloud wallet.
+     * (Optional) Supply an invitation id to associate this
+     * caller device to an existing cloud wallet.
      * </pre>
      *
      * <code>string security_code = 3;</code>
@@ -77,7 +73,6 @@ public final class UniversalWallet {
       super(builder);
     }
     private CreateWalletRequest() {
-      controller_ = "";
       description_ = "";
       securityCode_ = "";
     }
@@ -112,12 +107,6 @@ public final class UniversalWallet {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              controller_ = s;
-              break;
-            }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -162,47 +151,13 @@ public final class UniversalWallet {
               trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.Builder.class);
     }
 
-    public static final int CONTROLLER_FIELD_NUMBER = 1;
-    private volatile java.lang.Object controller_;
-    /**
-     * <code>string controller = 1;</code>
-     * @return The controller.
-     */
-    @java.lang.Override
-    public java.lang.String getController() {
-      java.lang.Object ref = controller_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        controller_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string controller = 1;</code>
-     * @return The bytes for controller.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getControllerBytes() {
-      java.lang.Object ref = controller_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        controller_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
+     * <pre>
+     * optional description of the wallet
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
@@ -220,6 +175,10 @@ public final class UniversalWallet {
       }
     }
     /**
+     * <pre>
+     * optional description of the wallet
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -242,8 +201,8 @@ public final class UniversalWallet {
     private volatile java.lang.Object securityCode_;
     /**
      * <pre>
-     * (Optional) Supply an invitation id to associate this caller profile
-     * to an existing cloud wallet.
+     * (Optional) Supply an invitation id to associate this
+     * caller device to an existing cloud wallet.
      * </pre>
      *
      * <code>string security_code = 3;</code>
@@ -264,8 +223,8 @@ public final class UniversalWallet {
     }
     /**
      * <pre>
-     * (Optional) Supply an invitation id to associate this caller profile
-     * to an existing cloud wallet.
+     * (Optional) Supply an invitation id to associate this
+     * caller device to an existing cloud wallet.
      * </pre>
      *
      * <code>string security_code = 3;</code>
@@ -300,9 +259,6 @@ public final class UniversalWallet {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getControllerBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, controller_);
-      }
       if (!getDescriptionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
@@ -318,9 +274,6 @@ public final class UniversalWallet {
       if (size != -1) return size;
 
       size = 0;
-      if (!getControllerBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, controller_);
-      }
       if (!getDescriptionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
@@ -342,8 +295,6 @@ public final class UniversalWallet {
       }
       trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) obj;
 
-      if (!getController()
-          .equals(other.getController())) return false;
       if (!getDescription()
           .equals(other.getDescription())) return false;
       if (!getSecurityCode()
@@ -359,8 +310,6 @@ public final class UniversalWallet {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CONTROLLER_FIELD_NUMBER;
-      hash = (53 * hash) + getController().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + SECURITY_CODE_FIELD_NUMBER;
@@ -498,8 +447,6 @@ public final class UniversalWallet {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        controller_ = "";
-
         description_ = "";
 
         securityCode_ = "";
@@ -530,7 +477,6 @@ public final class UniversalWallet {
       @java.lang.Override
       public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest buildPartial() {
         trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest(this);
-        result.controller_ = controller_;
         result.description_ = description_;
         result.securityCode_ = securityCode_;
         onBuilt();
@@ -581,10 +527,6 @@ public final class UniversalWallet {
 
       public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest other) {
         if (other == trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.getDefaultInstance()) return this;
-        if (!other.getController().isEmpty()) {
-          controller_ = other.controller_;
-          onChanged();
-        }
         if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
@@ -622,84 +564,12 @@ public final class UniversalWallet {
         return this;
       }
 
-      private java.lang.Object controller_ = "";
-      /**
-       * <code>string controller = 1;</code>
-       * @return The controller.
-       */
-      public java.lang.String getController() {
-        java.lang.Object ref = controller_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          controller_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string controller = 1;</code>
-       * @return The bytes for controller.
-       */
-      public com.google.protobuf.ByteString
-          getControllerBytes() {
-        java.lang.Object ref = controller_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          controller_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string controller = 1;</code>
-       * @param value The controller to set.
-       * @return This builder for chaining.
-       */
-      public Builder setController(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        controller_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string controller = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearController() {
-        
-        controller_ = getDefaultInstance().getController();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string controller = 1;</code>
-       * @param value The bytes for controller to set.
-       * @return This builder for chaining.
-       */
-      public Builder setControllerBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        controller_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object description_ = "";
       /**
+       * <pre>
+       * optional description of the wallet
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The description.
        */
@@ -716,6 +586,10 @@ public final class UniversalWallet {
         }
       }
       /**
+       * <pre>
+       * optional description of the wallet
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The bytes for description.
        */
@@ -733,6 +607,10 @@ public final class UniversalWallet {
         }
       }
       /**
+       * <pre>
+       * optional description of the wallet
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The description to set.
        * @return This builder for chaining.
@@ -748,6 +626,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * optional description of the wallet
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return This builder for chaining.
        */
@@ -758,6 +640,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * optional description of the wallet
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
@@ -777,8 +663,8 @@ public final class UniversalWallet {
       private java.lang.Object securityCode_ = "";
       /**
        * <pre>
-       * (Optional) Supply an invitation id to associate this caller profile
-       * to an existing cloud wallet.
+       * (Optional) Supply an invitation id to associate this
+       * caller device to an existing cloud wallet.
        * </pre>
        *
        * <code>string security_code = 3;</code>
@@ -798,8 +684,8 @@ public final class UniversalWallet {
       }
       /**
        * <pre>
-       * (Optional) Supply an invitation id to associate this caller profile
-       * to an existing cloud wallet.
+       * (Optional) Supply an invitation id to associate this
+       * caller device to an existing cloud wallet.
        * </pre>
        *
        * <code>string security_code = 3;</code>
@@ -820,8 +706,8 @@ public final class UniversalWallet {
       }
       /**
        * <pre>
-       * (Optional) Supply an invitation id to associate this caller profile
-       * to an existing cloud wallet.
+       * (Optional) Supply an invitation id to associate this
+       * caller device to an existing cloud wallet.
        * </pre>
        *
        * <code>string security_code = 3;</code>
@@ -840,8 +726,8 @@ public final class UniversalWallet {
       }
       /**
        * <pre>
-       * (Optional) Supply an invitation id to associate this caller profile
-       * to an existing cloud wallet.
+       * (Optional) Supply an invitation id to associate this
+       * caller device to an existing cloud wallet.
        * </pre>
        *
        * <code>string security_code = 3;</code>
@@ -855,8 +741,8 @@ public final class UniversalWallet {
       }
       /**
        * <pre>
-       * (Optional) Supply an invitation id to associate this caller profile
-       * to an existing cloud wallet.
+       * (Optional) Supply an invitation id to associate this
+       * caller device to an existing cloud wallet.
        * </pre>
        *
        * <code>string security_code = 3;</code>
@@ -932,51 +818,56 @@ public final class UniversalWallet {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * the status code of the response
+     * </pre>
+     *
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
+     * <pre>
+     * the status code of the response
+     * </pre>
+     *
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
     trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
 
     /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
+     * <pre>
+     * authentication data containing info about the cloud
+     * wallet and device the user is connecting from
+     * </pre>
+     *
+     * <code>bytes auth_data = 2;</code>
+     * @return The authData.
      */
-    java.lang.String getWalletId();
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
-     */
-    com.google.protobuf.ByteString
-        getWalletIdBytes();
+    com.google.protobuf.ByteString getAuthData();
 
     /**
-     * <code>string capability = 3;</code>
-     * @return The capability.
+     * <pre>
+     * authoritative token issued by the server that is
+     * required to prove knowledge during authentication
+     * </pre>
+     *
+     * <code>bytes auth_token = 3;</code>
+     * @return The authToken.
      */
-    java.lang.String getCapability();
-    /**
-     * <code>string capability = 3;</code>
-     * @return The bytes for capability.
-     */
-    com.google.protobuf.ByteString
-        getCapabilityBytes();
+    com.google.protobuf.ByteString getAuthToken();
 
     /**
-     * <code>string invoker = 4;</code>
-     * @return The invoker.
+     * <pre>
+     * indicates if the token issued protected with a
+     * security code, usually delivered by email or sms
+     * </pre>
+     *
+     * <code>bool is_protected = 4;</code>
+     * @return The isProtected.
      */
-    java.lang.String getInvoker();
-    /**
-     * <code>string invoker = 4;</code>
-     * @return The bytes for invoker.
-     */
-    com.google.protobuf.ByteString
-        getInvokerBytes();
+    boolean getIsProtected();
   }
   /**
    * Protobuf type {@code services.universalwallet.v1.CreateWalletResponse}
@@ -992,9 +883,8 @@ public final class UniversalWallet {
     }
     private CreateWalletResponse() {
       status_ = 0;
-      walletId_ = "";
-      capability_ = "";
-      invoker_ = "";
+      authData_ = com.google.protobuf.ByteString.EMPTY;
+      authToken_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -1034,21 +924,18 @@ public final class UniversalWallet {
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              walletId_ = s;
+              authData_ = input.readBytes();
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              capability_ = s;
+              authToken_ = input.readBytes();
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 32: {
 
-              invoker_ = s;
+              isProtected_ = input.readBool();
               break;
             }
             default: {
@@ -1086,6 +973,10 @@ public final class UniversalWallet {
     public static final int STATUS_FIELD_NUMBER = 1;
     private int status_;
     /**
+     * <pre>
+     * the status code of the response
+     * </pre>
+     *
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The enum numeric value on the wire for status.
      */
@@ -1093,6 +984,10 @@ public final class UniversalWallet {
       return status_;
     }
     /**
+     * <pre>
+     * the status code of the response
+     * </pre>
+     *
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
@@ -1102,118 +997,52 @@ public final class UniversalWallet {
       return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
     }
 
-    public static final int WALLET_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object walletId_;
+    public static final int AUTH_DATA_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString authData_;
     /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
+     * <pre>
+     * authentication data containing info about the cloud
+     * wallet and device the user is connecting from
+     * </pre>
+     *
+     * <code>bytes auth_data = 2;</code>
+     * @return The authData.
      */
     @java.lang.Override
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        walletId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getAuthData() {
+      return authData_;
     }
 
-    public static final int CAPABILITY_FIELD_NUMBER = 3;
-    private volatile java.lang.Object capability_;
+    public static final int AUTH_TOKEN_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString authToken_;
     /**
-     * <code>string capability = 3;</code>
-     * @return The capability.
+     * <pre>
+     * authoritative token issued by the server that is
+     * required to prove knowledge during authentication
+     * </pre>
+     *
+     * <code>bytes auth_token = 3;</code>
+     * @return The authToken.
      */
     @java.lang.Override
-    public java.lang.String getCapability() {
-      java.lang.Object ref = capability_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        capability_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string capability = 3;</code>
-     * @return The bytes for capability.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCapabilityBytes() {
-      java.lang.Object ref = capability_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        capability_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getAuthToken() {
+      return authToken_;
     }
 
-    public static final int INVOKER_FIELD_NUMBER = 4;
-    private volatile java.lang.Object invoker_;
+    public static final int IS_PROTECTED_FIELD_NUMBER = 4;
+    private boolean isProtected_;
     /**
-     * <code>string invoker = 4;</code>
-     * @return The invoker.
+     * <pre>
+     * indicates if the token issued protected with a
+     * security code, usually delivered by email or sms
+     * </pre>
+     *
+     * <code>bool is_protected = 4;</code>
+     * @return The isProtected.
      */
     @java.lang.Override
-    public java.lang.String getInvoker() {
-      java.lang.Object ref = invoker_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        invoker_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string invoker = 4;</code>
-     * @return The bytes for invoker.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getInvokerBytes() {
-      java.lang.Object ref = invoker_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        invoker_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public boolean getIsProtected() {
+      return isProtected_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1233,14 +1062,14 @@ public final class UniversalWallet {
       if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (!getWalletIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, walletId_);
+      if (!authData_.isEmpty()) {
+        output.writeBytes(2, authData_);
       }
-      if (!getCapabilityBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, capability_);
+      if (!authToken_.isEmpty()) {
+        output.writeBytes(3, authToken_);
       }
-      if (!getInvokerBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, invoker_);
+      if (isProtected_ != false) {
+        output.writeBool(4, isProtected_);
       }
       unknownFields.writeTo(output);
     }
@@ -1255,14 +1084,17 @@ public final class UniversalWallet {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      if (!getWalletIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, walletId_);
+      if (!authData_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, authData_);
       }
-      if (!getCapabilityBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, capability_);
+      if (!authToken_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, authToken_);
       }
-      if (!getInvokerBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, invoker_);
+      if (isProtected_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isProtected_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1280,12 +1112,12 @@ public final class UniversalWallet {
       trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse) obj;
 
       if (status_ != other.status_) return false;
-      if (!getWalletId()
-          .equals(other.getWalletId())) return false;
-      if (!getCapability()
-          .equals(other.getCapability())) return false;
-      if (!getInvoker()
-          .equals(other.getInvoker())) return false;
+      if (!getAuthData()
+          .equals(other.getAuthData())) return false;
+      if (!getAuthToken()
+          .equals(other.getAuthToken())) return false;
+      if (getIsProtected()
+          != other.getIsProtected()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1299,12 +1131,13 @@ public final class UniversalWallet {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
-      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getWalletId().hashCode();
-      hash = (37 * hash) + CAPABILITY_FIELD_NUMBER;
-      hash = (53 * hash) + getCapability().hashCode();
-      hash = (37 * hash) + INVOKER_FIELD_NUMBER;
-      hash = (53 * hash) + getInvoker().hashCode();
+      hash = (37 * hash) + AUTH_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthData().hashCode();
+      hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthToken().hashCode();
+      hash = (37 * hash) + IS_PROTECTED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsProtected());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1440,11 +1273,11 @@ public final class UniversalWallet {
         super.clear();
         status_ = 0;
 
-        walletId_ = "";
+        authData_ = com.google.protobuf.ByteString.EMPTY;
 
-        capability_ = "";
+        authToken_ = com.google.protobuf.ByteString.EMPTY;
 
-        invoker_ = "";
+        isProtected_ = false;
 
         return this;
       }
@@ -1473,9 +1306,9 @@ public final class UniversalWallet {
       public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse buildPartial() {
         trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse(this);
         result.status_ = status_;
-        result.walletId_ = walletId_;
-        result.capability_ = capability_;
-        result.invoker_ = invoker_;
+        result.authData_ = authData_;
+        result.authToken_ = authToken_;
+        result.isProtected_ = isProtected_;
         onBuilt();
         return result;
       }
@@ -1527,17 +1360,14 @@ public final class UniversalWallet {
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
         }
-        if (!other.getWalletId().isEmpty()) {
-          walletId_ = other.walletId_;
-          onChanged();
+        if (other.getAuthData() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthData(other.getAuthData());
         }
-        if (!other.getCapability().isEmpty()) {
-          capability_ = other.capability_;
-          onChanged();
+        if (other.getAuthToken() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthToken(other.getAuthToken());
         }
-        if (!other.getInvoker().isEmpty()) {
-          invoker_ = other.invoker_;
-          onChanged();
+        if (other.getIsProtected() != false) {
+          setIsProtected(other.getIsProtected());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1570,6 +1400,10 @@ public final class UniversalWallet {
 
       private int status_ = 0;
       /**
+       * <pre>
+       * the status code of the response
+       * </pre>
+       *
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @return The enum numeric value on the wire for status.
        */
@@ -1577,6 +1411,10 @@ public final class UniversalWallet {
         return status_;
       }
       /**
+       * <pre>
+       * the status code of the response
+       * </pre>
+       *
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
@@ -1588,6 +1426,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * the status code of the response
+       * </pre>
+       *
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @return The status.
        */
@@ -1598,6 +1440,10 @@ public final class UniversalWallet {
         return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * the status code of the response
+       * </pre>
+       *
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
@@ -1612,6 +1458,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * the status code of the response
+       * </pre>
+       *
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @return This builder for chaining.
        */
@@ -1622,230 +1472,146 @@ public final class UniversalWallet {
         return this;
       }
 
-      private java.lang.Object walletId_ = "";
+      private com.google.protobuf.ByteString authData_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>string wallet_id = 2;</code>
-       * @return The walletId.
+       * <pre>
+       * authentication data containing info about the cloud
+       * wallet and device the user is connecting from
+       * </pre>
+       *
+       * <code>bytes auth_data = 2;</code>
+       * @return The authData.
        */
-      public java.lang.String getWalletId() {
-        java.lang.Object ref = walletId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          walletId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAuthData() {
+        return authData_;
       }
       /**
-       * <code>string wallet_id = 2;</code>
-       * @return The bytes for walletId.
-       */
-      public com.google.protobuf.ByteString
-          getWalletIdBytes() {
-        java.lang.Object ref = walletId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          walletId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The walletId to set.
+       * <pre>
+       * authentication data containing info about the cloud
+       * wallet and device the user is connecting from
+       * </pre>
+       *
+       * <code>bytes auth_data = 2;</code>
+       * @param value The authData to set.
        * @return This builder for chaining.
        */
-      public Builder setWalletId(
-          java.lang.String value) {
+      public Builder setAuthData(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        walletId_ = value;
+        authData_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string wallet_id = 2;</code>
+       * <pre>
+       * authentication data containing info about the cloud
+       * wallet and device the user is connecting from
+       * </pre>
+       *
+       * <code>bytes auth_data = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearWalletId() {
+      public Builder clearAuthData() {
         
-        walletId_ = getDefaultInstance().getWalletId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The bytes for walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        walletId_ = value;
+        authData_ = getDefaultInstance().getAuthData();
         onChanged();
         return this;
       }
 
-      private java.lang.Object capability_ = "";
+      private com.google.protobuf.ByteString authToken_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>string capability = 3;</code>
-       * @return The capability.
+       * <pre>
+       * authoritative token issued by the server that is
+       * required to prove knowledge during authentication
+       * </pre>
+       *
+       * <code>bytes auth_token = 3;</code>
+       * @return The authToken.
        */
-      public java.lang.String getCapability() {
-        java.lang.Object ref = capability_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          capability_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAuthToken() {
+        return authToken_;
       }
       /**
-       * <code>string capability = 3;</code>
-       * @return The bytes for capability.
-       */
-      public com.google.protobuf.ByteString
-          getCapabilityBytes() {
-        java.lang.Object ref = capability_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          capability_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string capability = 3;</code>
-       * @param value The capability to set.
+       * <pre>
+       * authoritative token issued by the server that is
+       * required to prove knowledge during authentication
+       * </pre>
+       *
+       * <code>bytes auth_token = 3;</code>
+       * @param value The authToken to set.
        * @return This builder for chaining.
        */
-      public Builder setCapability(
-          java.lang.String value) {
+      public Builder setAuthToken(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        capability_ = value;
+        authToken_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string capability = 3;</code>
+       * <pre>
+       * authoritative token issued by the server that is
+       * required to prove knowledge during authentication
+       * </pre>
+       *
+       * <code>bytes auth_token = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCapability() {
+      public Builder clearAuthToken() {
         
-        capability_ = getDefaultInstance().getCapability();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string capability = 3;</code>
-       * @param value The bytes for capability to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCapabilityBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        capability_ = value;
+        authToken_ = getDefaultInstance().getAuthToken();
         onChanged();
         return this;
       }
 
-      private java.lang.Object invoker_ = "";
+      private boolean isProtected_ ;
       /**
-       * <code>string invoker = 4;</code>
-       * @return The invoker.
+       * <pre>
+       * indicates if the token issued protected with a
+       * security code, usually delivered by email or sms
+       * </pre>
+       *
+       * <code>bool is_protected = 4;</code>
+       * @return The isProtected.
        */
-      public java.lang.String getInvoker() {
-        java.lang.Object ref = invoker_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          invoker_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public boolean getIsProtected() {
+        return isProtected_;
       }
       /**
-       * <code>string invoker = 4;</code>
-       * @return The bytes for invoker.
-       */
-      public com.google.protobuf.ByteString
-          getInvokerBytes() {
-        java.lang.Object ref = invoker_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          invoker_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string invoker = 4;</code>
-       * @param value The invoker to set.
+       * <pre>
+       * indicates if the token issued protected with a
+       * security code, usually delivered by email or sms
+       * </pre>
+       *
+       * <code>bool is_protected = 4;</code>
+       * @param value The isProtected to set.
        * @return This builder for chaining.
        */
-      public Builder setInvoker(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        invoker_ = value;
+      public Builder setIsProtected(boolean value) {
+        
+        isProtected_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string invoker = 4;</code>
+       * <pre>
+       * indicates if the token issued protected with a
+       * security code, usually delivered by email or sms
+       * </pre>
+       *
+       * <code>bool is_protected = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearInvoker() {
+      public Builder clearIsProtected() {
         
-        invoker_ = getDefaultInstance().getInvoker();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string invoker = 4;</code>
-       * @param value The bytes for invoker to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInvokerBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        invoker_ = value;
+        isProtected_ = false;
         onChanged();
         return this;
       }
@@ -4498,61 +4264,49 @@ public final class UniversalWallet {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return Whether the didDocument field is set.
+     * <code>string name = 1;</code>
+     * @return The name.
      */
-    boolean hasDidDocument();
+    java.lang.String getName();
     /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return The didDocument.
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder();
-
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
-     */
-    java.lang.String getWalletId();
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     com.google.protobuf.ByteString
-        getWalletIdBytes();
+        getNameBytes();
 
     /**
-     * <code>string invoker = 3;</code>
-     * @return The invoker.
+     * <code>bytes auth_data = 2;</code>
+     * @return The authData.
      */
-    java.lang.String getInvoker();
-    /**
-     * <code>string invoker = 3;</code>
-     * @return The bytes for invoker.
-     */
-    com.google.protobuf.ByteString
-        getInvokerBytes();
+    com.google.protobuf.ByteString getAuthData();
 
     /**
-     * <code>string capability = 4;</code>
-     * @return The capability.
+     * <code>bytes auth_token = 3;</code>
+     * @return The authToken.
      */
-    java.lang.String getCapability();
-    /**
-     * <code>string capability = 4;</code>
-     * @return The bytes for capability.
-     */
-    com.google.protobuf.ByteString
-        getCapabilityBytes();
+    com.google.protobuf.ByteString getAuthToken();
 
     /**
-     * <code>bytes invoker_jwk = 5;</code>
-     * @return The invokerJwk.
+     * <code>bool is_protected = 4;</code>
+     * @return The isProtected.
      */
-    com.google.protobuf.ByteString getInvokerJwk();
+    boolean getIsProtected();
+
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     * @return Whether the config field is set.
+     */
+    boolean hasConfig();
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     * @return The config.
+     */
+    trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig();
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     */
+    trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder();
   }
   /**
    * <pre>
@@ -4573,10 +4327,9 @@ public final class UniversalWallet {
       super(builder);
     }
     private WalletProfile() {
-      walletId_ = "";
-      invoker_ = "";
-      capability_ = "";
-      invokerJwk_ = com.google.protobuf.ByteString.EMPTY;
+      name_ = "";
+      authData_ = com.google.protobuf.ByteString.EMPTY;
+      authToken_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -4610,39 +4363,37 @@ public final class UniversalWallet {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (didDocument_ != null) {
-                subBuilder = didDocument_.toBuilder();
-              }
-              didDocument_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(didDocument_);
-                didDocument_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              name_ = s;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              walletId_ = s;
+              authData_ = input.readBytes();
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
 
-              invoker_ = s;
+              authToken_ = input.readBytes();
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 32: {
 
-              capability_ = s;
+              isProtected_ = input.readBool();
               break;
             }
             case 42: {
+              trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder subBuilder = null;
+              if (config_ != null) {
+                subBuilder = config_.toBuilder();
+              }
+              config_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.ServerConfig.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(config_);
+                config_ = subBuilder.buildPartial();
+              }
 
-              invokerJwk_ = input.readBytes();
               break;
             }
             default: {
@@ -4677,155 +4428,101 @@ public final class UniversalWallet {
               trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.class, trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.Builder.class);
     }
 
-    public static final int DID_DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload didDocument_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
     /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return Whether the didDocument field is set.
+     * <code>string name = 1;</code>
+     * @return The name.
      */
     @java.lang.Override
-    public boolean hasDidDocument() {
-      return didDocument_ != null;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return The didDocument.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument() {
-      return didDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder() {
-      return getDidDocument();
-    }
-
-    public static final int WALLET_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object walletId_;
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
-     */
-    @java.lang.Override
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
+        name_ = s;
         return s;
       }
     }
     /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        walletId_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int INVOKER_FIELD_NUMBER = 3;
-    private volatile java.lang.Object invoker_;
+    public static final int AUTH_DATA_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString authData_;
     /**
-     * <code>string invoker = 3;</code>
-     * @return The invoker.
+     * <code>bytes auth_data = 2;</code>
+     * @return The authData.
      */
     @java.lang.Override
-    public java.lang.String getInvoker() {
-      java.lang.Object ref = invoker_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        invoker_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string invoker = 3;</code>
-     * @return The bytes for invoker.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getInvokerBytes() {
-      java.lang.Object ref = invoker_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        invoker_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getAuthData() {
+      return authData_;
     }
 
-    public static final int CAPABILITY_FIELD_NUMBER = 4;
-    private volatile java.lang.Object capability_;
+    public static final int AUTH_TOKEN_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString authToken_;
     /**
-     * <code>string capability = 4;</code>
-     * @return The capability.
+     * <code>bytes auth_token = 3;</code>
+     * @return The authToken.
      */
     @java.lang.Override
-    public java.lang.String getCapability() {
-      java.lang.Object ref = capability_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        capability_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string capability = 4;</code>
-     * @return The bytes for capability.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCapabilityBytes() {
-      java.lang.Object ref = capability_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        capability_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.google.protobuf.ByteString getAuthToken() {
+      return authToken_;
     }
 
-    public static final int INVOKER_JWK_FIELD_NUMBER = 5;
-    private com.google.protobuf.ByteString invokerJwk_;
+    public static final int IS_PROTECTED_FIELD_NUMBER = 4;
+    private boolean isProtected_;
     /**
-     * <code>bytes invoker_jwk = 5;</code>
-     * @return The invokerJwk.
+     * <code>bool is_protected = 4;</code>
+     * @return The isProtected.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getInvokerJwk() {
-      return invokerJwk_;
+    public boolean getIsProtected() {
+      return isProtected_;
+    }
+
+    public static final int CONFIG_FIELD_NUMBER = 5;
+    private trinsic.services.common.v1.CommonOuterClass.ServerConfig config_;
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     * @return Whether the config field is set.
+     */
+    @java.lang.Override
+    public boolean hasConfig() {
+      return config_ != null;
+    }
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     * @return The config.
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig() {
+      return config_ == null ? trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
+    }
+    /**
+     * <code>.services.common.v1.ServerConfig config = 5;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder() {
+      return getConfig();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4842,20 +4539,20 @@ public final class UniversalWallet {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (didDocument_ != null) {
-        output.writeMessage(1, getDidDocument());
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getWalletIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, walletId_);
+      if (!authData_.isEmpty()) {
+        output.writeBytes(2, authData_);
       }
-      if (!getInvokerBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, invoker_);
+      if (!authToken_.isEmpty()) {
+        output.writeBytes(3, authToken_);
       }
-      if (!getCapabilityBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, capability_);
+      if (isProtected_ != false) {
+        output.writeBool(4, isProtected_);
       }
-      if (!invokerJwk_.isEmpty()) {
-        output.writeBytes(5, invokerJwk_);
+      if (config_ != null) {
+        output.writeMessage(5, getConfig());
       }
       unknownFields.writeTo(output);
     }
@@ -4866,22 +4563,24 @@ public final class UniversalWallet {
       if (size != -1) return size;
 
       size = 0;
-      if (didDocument_ != null) {
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (!authData_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDidDocument());
+          .computeBytesSize(2, authData_);
       }
-      if (!getWalletIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, walletId_);
-      }
-      if (!getInvokerBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, invoker_);
-      }
-      if (!getCapabilityBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, capability_);
-      }
-      if (!invokerJwk_.isEmpty()) {
+      if (!authToken_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, invokerJwk_);
+          .computeBytesSize(3, authToken_);
+      }
+      if (isProtected_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isProtected_);
+      }
+      if (config_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getConfig());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4898,19 +4597,19 @@ public final class UniversalWallet {
       }
       trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile other = (trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile) obj;
 
-      if (hasDidDocument() != other.hasDidDocument()) return false;
-      if (hasDidDocument()) {
-        if (!getDidDocument()
-            .equals(other.getDidDocument())) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getAuthData()
+          .equals(other.getAuthData())) return false;
+      if (!getAuthToken()
+          .equals(other.getAuthToken())) return false;
+      if (getIsProtected()
+          != other.getIsProtected()) return false;
+      if (hasConfig() != other.hasConfig()) return false;
+      if (hasConfig()) {
+        if (!getConfig()
+            .equals(other.getConfig())) return false;
       }
-      if (!getWalletId()
-          .equals(other.getWalletId())) return false;
-      if (!getInvoker()
-          .equals(other.getInvoker())) return false;
-      if (!getCapability()
-          .equals(other.getCapability())) return false;
-      if (!getInvokerJwk()
-          .equals(other.getInvokerJwk())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4922,18 +4621,19 @@ public final class UniversalWallet {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDidDocument()) {
-        hash = (37 * hash) + DID_DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getDidDocument().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + AUTH_DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthData().hashCode();
+      hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthToken().hashCode();
+      hash = (37 * hash) + IS_PROTECTED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsProtected());
+      if (hasConfig()) {
+        hash = (37 * hash) + CONFIG_FIELD_NUMBER;
+        hash = (53 * hash) + getConfig().hashCode();
       }
-      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getWalletId().hashCode();
-      hash = (37 * hash) + INVOKER_FIELD_NUMBER;
-      hash = (53 * hash) + getInvoker().hashCode();
-      hash = (37 * hash) + CAPABILITY_FIELD_NUMBER;
-      hash = (53 * hash) + getCapability().hashCode();
-      hash = (37 * hash) + INVOKER_JWK_FIELD_NUMBER;
-      hash = (53 * hash) + getInvokerJwk().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5073,20 +4773,20 @@ public final class UniversalWallet {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = null;
+        name_ = "";
+
+        authData_ = com.google.protobuf.ByteString.EMPTY;
+
+        authToken_ = com.google.protobuf.ByteString.EMPTY;
+
+        isProtected_ = false;
+
+        if (configBuilder_ == null) {
+          config_ = null;
         } else {
-          didDocument_ = null;
-          didDocumentBuilder_ = null;
+          config_ = null;
+          configBuilder_ = null;
         }
-        walletId_ = "";
-
-        invoker_ = "";
-
-        capability_ = "";
-
-        invokerJwk_ = com.google.protobuf.ByteString.EMPTY;
-
         return this;
       }
 
@@ -5113,15 +4813,15 @@ public final class UniversalWallet {
       @java.lang.Override
       public trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile buildPartial() {
         trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile result = new trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile(this);
-        if (didDocumentBuilder_ == null) {
-          result.didDocument_ = didDocument_;
+        result.name_ = name_;
+        result.authData_ = authData_;
+        result.authToken_ = authToken_;
+        result.isProtected_ = isProtected_;
+        if (configBuilder_ == null) {
+          result.config_ = config_;
         } else {
-          result.didDocument_ = didDocumentBuilder_.build();
+          result.config_ = configBuilder_.build();
         }
-        result.walletId_ = walletId_;
-        result.invoker_ = invoker_;
-        result.capability_ = capability_;
-        result.invokerJwk_ = invokerJwk_;
         onBuilt();
         return result;
       }
@@ -5170,23 +4870,21 @@ public final class UniversalWallet {
 
       public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile other) {
         if (other == trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.getDefaultInstance()) return this;
-        if (other.hasDidDocument()) {
-          mergeDidDocument(other.getDidDocument());
-        }
-        if (!other.getWalletId().isEmpty()) {
-          walletId_ = other.walletId_;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
           onChanged();
         }
-        if (!other.getInvoker().isEmpty()) {
-          invoker_ = other.invoker_;
-          onChanged();
+        if (other.getAuthData() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthData(other.getAuthData());
         }
-        if (!other.getCapability().isEmpty()) {
-          capability_ = other.capability_;
-          onChanged();
+        if (other.getAuthToken() != com.google.protobuf.ByteString.EMPTY) {
+          setAuthToken(other.getAuthToken());
         }
-        if (other.getInvokerJwk() != com.google.protobuf.ByteString.EMPTY) {
-          setInvokerJwk(other.getInvokerJwk());
+        if (other.getIsProtected() != false) {
+          setIsProtected(other.getIsProtected());
+        }
+        if (other.hasConfig()) {
+          mergeConfig(other.getConfig());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5217,385 +4915,298 @@ public final class UniversalWallet {
         return this;
       }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload didDocument_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> didDocumentBuilder_;
+      private java.lang.Object name_ = "";
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       * @return Whether the didDocument field is set.
+       * <code>string name = 1;</code>
+       * @return The name.
        */
-      public boolean hasDidDocument() {
-        return didDocumentBuilder_ != null || didDocument_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       * @return The didDocument.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument() {
-        if (didDocumentBuilder_ == null) {
-          return didDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
         } else {
-          return didDocumentBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
        */
-      public Builder setDidDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didDocumentBuilder_ == null) {
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString authData_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes auth_data = 2;</code>
+       * @return The authData.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAuthData() {
+        return authData_;
+      }
+      /**
+       * <code>bytes auth_data = 2;</code>
+       * @param value The authData to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        authData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes auth_data = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthData() {
+        
+        authData_ = getDefaultInstance().getAuthData();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString authToken_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes auth_token = 3;</code>
+       * @return The authToken.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getAuthToken() {
+        return authToken_;
+      }
+      /**
+       * <code>bytes auth_token = 3;</code>
+       * @param value The authToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthToken(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        authToken_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes auth_token = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthToken() {
+        
+        authToken_ = getDefaultInstance().getAuthToken();
+        onChanged();
+        return this;
+      }
+
+      private boolean isProtected_ ;
+      /**
+       * <code>bool is_protected = 4;</code>
+       * @return The isProtected.
+       */
+      @java.lang.Override
+      public boolean getIsProtected() {
+        return isProtected_;
+      }
+      /**
+       * <code>bool is_protected = 4;</code>
+       * @param value The isProtected to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsProtected(boolean value) {
+        
+        isProtected_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_protected = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsProtected() {
+        
+        isProtected_ = false;
+        onChanged();
+        return this;
+      }
+
+      private trinsic.services.common.v1.CommonOuterClass.ServerConfig config_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder> configBuilder_;
+      /**
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
+       * @return Whether the config field is set.
+       */
+      public boolean hasConfig() {
+        return configBuilder_ != null || config_ != null;
+      }
+      /**
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
+       * @return The config.
+       */
+      public trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig() {
+        if (configBuilder_ == null) {
+          return config_ == null ? trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
+        } else {
+          return configBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
+       */
+      public Builder setConfig(trinsic.services.common.v1.CommonOuterClass.ServerConfig value) {
+        if (configBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          didDocument_ = value;
+          config_ = value;
           onChanged();
         } else {
-          didDocumentBuilder_.setMessage(value);
+          configBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
-      public Builder setDidDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = builderForValue.build();
+      public Builder setConfig(
+          trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder builderForValue) {
+        if (configBuilder_ == null) {
+          config_ = builderForValue.build();
           onChanged();
         } else {
-          didDocumentBuilder_.setMessage(builderForValue.build());
+          configBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
-      public Builder mergeDidDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didDocumentBuilder_ == null) {
-          if (didDocument_ != null) {
-            didDocument_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(didDocument_).mergeFrom(value).buildPartial();
+      public Builder mergeConfig(trinsic.services.common.v1.CommonOuterClass.ServerConfig value) {
+        if (configBuilder_ == null) {
+          if (config_ != null) {
+            config_ =
+              trinsic.services.common.v1.CommonOuterClass.ServerConfig.newBuilder(config_).mergeFrom(value).buildPartial();
           } else {
-            didDocument_ = value;
+            config_ = value;
           }
           onChanged();
         } else {
-          didDocumentBuilder_.mergeFrom(value);
+          configBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
-      public Builder clearDidDocument() {
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = null;
+      public Builder clearConfig() {
+        if (configBuilder_ == null) {
+          config_ = null;
           onChanged();
         } else {
-          didDocument_ = null;
-          didDocumentBuilder_ = null;
+          config_ = null;
+          configBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDidDocumentBuilder() {
+      public trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder getConfigBuilder() {
         
         onChanged();
-        return getDidDocumentFieldBuilder().getBuilder();
+        return getConfigFieldBuilder().getBuilder();
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder() {
-        if (didDocumentBuilder_ != null) {
-          return didDocumentBuilder_.getMessageOrBuilder();
+      public trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder() {
+        if (configBuilder_ != null) {
+          return configBuilder_.getMessageOrBuilder();
         } else {
-          return didDocument_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
+          return config_ == null ?
+              trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
+       * <code>.services.common.v1.ServerConfig config = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDidDocumentFieldBuilder() {
-        if (didDocumentBuilder_ == null) {
-          didDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getDidDocument(),
+          trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder> 
+          getConfigFieldBuilder() {
+        if (configBuilder_ == null) {
+          configBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder>(
+                  getConfig(),
                   getParentForChildren(),
                   isClean());
-          didDocument_ = null;
+          config_ = null;
         }
-        return didDocumentBuilder_;
-      }
-
-      private java.lang.Object walletId_ = "";
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return The walletId.
-       */
-      public java.lang.String getWalletId() {
-        java.lang.Object ref = walletId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          walletId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return The bytes for walletId.
-       */
-      public com.google.protobuf.ByteString
-          getWalletIdBytes() {
-        java.lang.Object ref = walletId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          walletId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWalletId() {
-        
-        walletId_ = getDefaultInstance().getWalletId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The bytes for walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object invoker_ = "";
-      /**
-       * <code>string invoker = 3;</code>
-       * @return The invoker.
-       */
-      public java.lang.String getInvoker() {
-        java.lang.Object ref = invoker_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          invoker_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string invoker = 3;</code>
-       * @return The bytes for invoker.
-       */
-      public com.google.protobuf.ByteString
-          getInvokerBytes() {
-        java.lang.Object ref = invoker_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          invoker_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string invoker = 3;</code>
-       * @param value The invoker to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInvoker(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        invoker_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string invoker = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInvoker() {
-        
-        invoker_ = getDefaultInstance().getInvoker();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string invoker = 3;</code>
-       * @param value The bytes for invoker to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInvokerBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        invoker_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object capability_ = "";
-      /**
-       * <code>string capability = 4;</code>
-       * @return The capability.
-       */
-      public java.lang.String getCapability() {
-        java.lang.Object ref = capability_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          capability_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string capability = 4;</code>
-       * @return The bytes for capability.
-       */
-      public com.google.protobuf.ByteString
-          getCapabilityBytes() {
-        java.lang.Object ref = capability_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          capability_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string capability = 4;</code>
-       * @param value The capability to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCapability(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        capability_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string capability = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCapability() {
-        
-        capability_ = getDefaultInstance().getCapability();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string capability = 4;</code>
-       * @param value The bytes for capability to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCapabilityBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        capability_ = value;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString invokerJwk_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes invoker_jwk = 5;</code>
-       * @return The invokerJwk.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getInvokerJwk() {
-        return invokerJwk_;
-      }
-      /**
-       * <code>bytes invoker_jwk = 5;</code>
-       * @param value The invokerJwk to set.
-       * @return This builder for chaining.
-       */
-      public Builder setInvokerJwk(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        invokerJwk_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes invoker_jwk = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearInvokerJwk() {
-        
-        invokerJwk_ = getDefaultInstance().getInvokerJwk();
-        onChanged();
-        return this;
+        return configBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -13070,94 +12681,87 @@ public final class UniversalWallet {
     java.lang.String[] descriptorData = {
       "\n3services/universal-wallet/v1/universal" +
       "-wallet.proto\022\033services.universalwallet." +
-      "v1\032\037services/common/v1/common.proto\032\024pbm" +
-      "se/v1/pbmse.proto\"U\n\023CreateWalletRequest" +
-      "\022\022\n\ncontroller\030\001 \001(\t\022\023\n\013description\030\002 \001(" +
-      "\t\022\025\n\rsecurity_code\030\003 \001(\t\"\202\001\n\024CreateWalle" +
+      "v1\032\037services/common/v1/common.proto\"A\n\023C" +
+      "reateWalletRequest\022\023\n\013description\030\002 \001(\t\022" +
+      "\025\n\rsecurity_code\030\003 \001(\t\"\207\001\n\024CreateWalletR" +
+      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
+      "n.v1.ResponseStatus\022\021\n\tauth_data\030\002 \001(\014\022\022" +
+      "\n\nauth_token\030\003 \001(\014\022\024\n\014is_protected\030\004 \001(\010" +
+      "\"D\n\016ConnectRequest\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005p" +
+      "hone\030\006 \001(\tH\000B\020\n\016contact_method\"E\n\017Connec" +
       "tResponse\0222\n\006status\030\001 \001(\0162\".services.com" +
-      "mon.v1.ResponseStatus\022\021\n\twallet_id\030\002 \001(\t" +
-      "\022\022\n\ncapability\030\003 \001(\t\022\017\n\007invoker\030\004 \001(\t\"D\n" +
-      "\016ConnectRequest\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005phon" +
-      "e\030\006 \001(\tH\000B\020\n\016contact_method\"E\n\017ConnectRe" +
-      "sponse\0222\n\006status\030\001 \001(\0162\".services.common" +
-      ".v1.ResponseStatus\"o\n\017InvitationToken\022\025\n" +
-      "\rsecurity_code\030\001 \001(\t\022\021\n\twallet_id\030\002 \001(\t\022" +
-      "\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000B\020\n\016con" +
-      "tact_method\"\223\001\n\rWalletProfile\0225\n\014did_doc" +
+      "mon.v1.ResponseStatus\"o\n\017InvitationToken" +
+      "\022\025\n\rsecurity_code\030\001 \001(\t\022\021\n\twallet_id\030\002 \001" +
+      "(\t\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000B\020\n\016" +
+      "contact_method\"\214\001\n\rWalletProfile\022\014\n\004name" +
+      "\030\001 \001(\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030" +
+      "\003 \001(\014\022\024\n\014is_protected\030\004 \001(\010\0220\n\006config\030\005 " +
+      "\001(\0132 .services.common.v1.ServerConfig\"4\n" +
+      "\022GrantAccessRequest\022\021\n\twallet_id\030\001 \001(\t\022\013" +
+      "\n\003did\030\002 \001(\t\"I\n\023GrantAccessResponse\0222\n\006st" +
+      "atus\030\001 \001(\0162\".services.common.v1.Response" +
+      "Status\"5\n\023RevokeAccessRequest\022\021\n\twallet_" +
+      "id\030\001 \001(\t\022\013\n\003did\030\002 \001(\t\"J\n\024RevokeAccessRes" +
+      "ponse\0222\n\006status\030\001 \001(\0162\".services.common." +
+      "v1.ResponseStatus\"^\n\037GetProviderConfigur" +
+      "ationRequest\022;\n\017request_options\030\001 \001(\0132\"." +
+      "services.common.v1.RequestOptions\"w\n Get" +
+      "ProviderConfigurationResponse\0225\n\014did_doc" +
       "ument\030\001 \001(\0132\037.services.common.v1.JsonPay" +
-      "load\022\021\n\twallet_id\030\002 \001(\t\022\017\n\007invoker\030\003 \001(\t" +
-      "\022\022\n\ncapability\030\004 \001(\t\022\023\n\013invoker_jwk\030\005 \001(" +
-      "\014\"4\n\022GrantAccessRequest\022\021\n\twallet_id\030\001 \001" +
-      "(\t\022\013\n\003did\030\002 \001(\t\"I\n\023GrantAccessResponse\0222" +
-      "\n\006status\030\001 \001(\0162\".services.common.v1.Resp" +
-      "onseStatus\"5\n\023RevokeAccessRequest\022\021\n\twal" +
-      "let_id\030\001 \001(\t\022\013\n\003did\030\002 \001(\t\"J\n\024RevokeAcces" +
-      "sResponse\0222\n\006status\030\001 \001(\0162\".services.com" +
-      "mon.v1.ResponseStatus\"^\n\037GetProviderConf" +
-      "igurationRequest\022;\n\017request_options\030\001 \001(" +
-      "\0132\".services.common.v1.RequestOptions\"w\n" +
-      " GetProviderConfigurationResponse\0225\n\014did" +
-      "_document\030\001 \001(\0132\037.services.common.v1.Jso" +
-      "nPayload\022\034\n\024key_agreement_key_id\030\002 \001(\t\"o" +
-      "\n\rSearchRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022contin" +
-      "uation_token\030\002 \001(\t\0223\n\007options\030\005 \001(\0132\".se" +
-      "rvices.common.v1.RequestOptions\"}\n\016Searc" +
-      "hResponse\022.\n\005items\030\001 \003(\0132\037.services.comm" +
-      "on.v1.JsonPayload\022\020\n\010has_more\030\002 \001(\010\022\r\n\005c" +
-      "ount\030\003 \001(\005\022\032\n\022continuation_token\030\004 \001(\t\"U" +
-      "\n\021InsertItemRequest\022-\n\004item\030\001 \001(\0132\037.serv" +
-      "ices.common.v1.JsonPayload\022\021\n\titem_type\030" +
-      "\002 \001(\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 " +
-      "\001(\0162\".services.common.v1.ResponseStatus\022" +
-      "\017\n\007item_id\030\002 \001(\t2\230\010\n\006Wallet\022\227\001\n\030GetProvi" +
-      "derConfiguration\022<.services.universalwal" +
-      "let.v1.GetProviderConfigurationRequest\032=" +
-      ".services.universalwallet.v1.GetProvider" +
-      "ConfigurationResponse\022t\n\027ConnectExternal" +
-      "Identity\022+.services.universalwallet.v1.C" +
-      "onnectRequest\032,.services.universalwallet" +
-      ".v1.ConnectResponse\022s\n\014CreateWallet\0220.se" +
-      "rvices.universalwallet.v1.CreateWalletRe" +
-      "quest\0321.services.universalwallet.v1.Crea" +
-      "teWalletResponse\022\177\n\030CreateWalletWithWork" +
-      "flow\0220.services.universalwallet.v1.Creat" +
-      "eWalletRequest\0321.services.universalwalle" +
-      "t.v1.CreateWalletResponse\022O\n\025CreateWalle" +
-      "tEncrypted\022\032.pbmse.v1.EncryptedMessage\032\032" +
-      ".pbmse.v1.EncryptedMessage\022a\n\006Search\022*.s" +
-      "ervices.universalwallet.v1.SearchRequest" +
-      "\032+.services.universalwallet.v1.SearchRes" +
-      "ponse\022m\n\nInsertItem\022..services.universal" +
-      "wallet.v1.InsertItemRequest\032/.services.u" +
-      "niversalwallet.v1.InsertItemResponse\022p\n\013" +
-      "GrantAccess\022/.services.universalwallet.v" +
-      "1.GrantAccessRequest\0320.services.universa" +
-      "lwallet.v1.GrantAccessResponse\022s\n\014Revoke" +
-      "Access\0220.services.universalwallet.v1.Rev" +
-      "okeAccessRequest\0321.services.universalwal" +
-      "let.v1.RevokeAccessResponseBf\n#trinsic.s" +
-      "ervices.universalwallet.v1Z\031github.com/t" +
-      "rinsic-id/sdk\252\002#Trinsic.Services.Univers" +
-      "alWallet.V1b\006proto3"
+      "load\022\034\n\024key_agreement_key_id\030\002 \001(\t\"o\n\rSe" +
+      "archRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continuati" +
+      "on_token\030\002 \001(\t\0223\n\007options\030\005 \001(\0132\".servic" +
+      "es.common.v1.RequestOptions\"}\n\016SearchRes" +
+      "ponse\022.\n\005items\030\001 \003(\0132\037.services.common.v" +
+      "1.JsonPayload\022\020\n\010has_more\030\002 \001(\010\022\r\n\005count" +
+      "\030\003 \001(\005\022\032\n\022continuation_token\030\004 \001(\t\"U\n\021In" +
+      "sertItemRequest\022-\n\004item\030\001 \001(\0132\037.services" +
+      ".common.v1.JsonPayload\022\021\n\titem_type\030\002 \001(" +
+      "\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 \001(\0162" +
+      "\".services.common.v1.ResponseStatus\022\017\n\007i" +
+      "tem_id\030\002 \001(\t2\306\006\n\006Wallet\022\227\001\n\030GetProviderC" +
+      "onfiguration\022<.services.universalwallet." +
+      "v1.GetProviderConfigurationRequest\032=.ser" +
+      "vices.universalwallet.v1.GetProviderConf" +
+      "igurationResponse\022t\n\027ConnectExternalIden" +
+      "tity\022+.services.universalwallet.v1.Conne" +
+      "ctRequest\032,.services.universalwallet.v1." +
+      "ConnectResponse\022s\n\014CreateWallet\0220.servic" +
+      "es.universalwallet.v1.CreateWalletReques" +
+      "t\0321.services.universalwallet.v1.CreateWa" +
+      "lletResponse\022a\n\006Search\022*.services.univer" +
+      "salwallet.v1.SearchRequest\032+.services.un" +
+      "iversalwallet.v1.SearchResponse\022m\n\nInser" +
+      "tItem\022..services.universalwallet.v1.Inse" +
+      "rtItemRequest\032/.services.universalwallet" +
+      ".v1.InsertItemResponse\022p\n\013GrantAccess\022/." +
+      "services.universalwallet.v1.GrantAccessR" +
+      "equest\0320.services.universalwallet.v1.Gra" +
+      "ntAccessResponse\022s\n\014RevokeAccess\0220.servi" +
+      "ces.universalwallet.v1.RevokeAccessReque" +
+      "st\0321.services.universalwallet.v1.RevokeA" +
+      "ccessResponseBf\n#trinsic.services.univer" +
+      "salwallet.v1Z\031github.com/trinsic-id/sdk\252" +
+      "\002#Trinsic.Services.UniversalWallet.V1b\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
-          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
         });
     internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_services_universalwallet_v1_CreateWalletRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor,
-        new java.lang.String[] { "Controller", "Description", "SecurityCode", });
+        new java.lang.String[] { "Description", "SecurityCode", });
     internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_services_universalwallet_v1_CreateWalletResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor,
-        new java.lang.String[] { "Status", "WalletId", "Capability", "Invoker", });
+        new java.lang.String[] { "Status", "AuthData", "AuthToken", "IsProtected", });
     internal_static_services_universalwallet_v1_ConnectRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_services_universalwallet_v1_ConnectRequest_fieldAccessorTable = new
@@ -13181,7 +12785,7 @@ public final class UniversalWallet {
     internal_static_services_universalwallet_v1_WalletProfile_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_WalletProfile_descriptor,
-        new java.lang.String[] { "DidDocument", "WalletId", "Invoker", "Capability", "InvokerJwk", });
+        new java.lang.String[] { "Name", "AuthData", "AuthToken", "IsProtected", "Config", });
     internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_services_universalwallet_v1_GrantAccessRequest_fieldAccessorTable = new
@@ -13243,7 +12847,6 @@ public final class UniversalWallet {
         internal_static_services_universalwallet_v1_InsertItemResponse_descriptor,
         new java.lang.String[] { "Status", "ItemId", });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
-    trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

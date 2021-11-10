@@ -108,68 +108,6 @@ public final class WalletGrpc {
     return getCreateWalletMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest,
-      trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> getCreateWalletWithWorkflowMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateWalletWithWorkflow",
-      requestType = trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.class,
-      responseType = trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest,
-      trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> getCreateWalletWithWorkflowMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> getCreateWalletWithWorkflowMethod;
-    if ((getCreateWalletWithWorkflowMethod = WalletGrpc.getCreateWalletWithWorkflowMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateWalletWithWorkflowMethod = WalletGrpc.getCreateWalletWithWorkflowMethod) == null) {
-          WalletGrpc.getCreateWalletWithWorkflowMethod = getCreateWalletWithWorkflowMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateWalletWithWorkflow"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateWalletWithWorkflow"))
-              .build();
-        }
-      }
-    }
-    return getCreateWalletWithWorkflowMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateWalletEncrypted",
-      requestType = trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class,
-      responseType = trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
-      trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod() {
-    io.grpc.MethodDescriptor<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> getCreateWalletEncryptedMethod;
-    if ((getCreateWalletEncryptedMethod = WalletGrpc.getCreateWalletEncryptedMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateWalletEncryptedMethod = WalletGrpc.getCreateWalletEncryptedMethod) == null) {
-          WalletGrpc.getCreateWalletEncryptedMethod = getCreateWalletEncryptedMethod =
-              io.grpc.MethodDescriptor.<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage, trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateWalletEncrypted"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage.getDefaultInstance()))
-              .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateWalletEncrypted"))
-              .build();
-        }
-      }
-    }
-    return getCreateWalletEncryptedMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest,
       trinsic.services.universalwallet.v1.UniversalWallet.SearchResponse> getSearchMethod;
 
@@ -365,20 +303,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public void createWalletWithWorkflow(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateWalletWithWorkflowMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void createWalletEncrypted(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateWalletEncryptedMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void search(trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.SearchResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSearchMethod(), responseObserver);
@@ -428,20 +352,6 @@ public final class WalletGrpc {
                 trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest,
                 trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse>(
                   this, METHODID_CREATE_WALLET)))
-          .addMethod(
-            getCreateWalletWithWorkflowMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest,
-                trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse>(
-                  this, METHODID_CREATE_WALLET_WITH_WORKFLOW)))
-          .addMethod(
-            getCreateWalletEncryptedMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage,
-                trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage>(
-                  this, METHODID_CREATE_WALLET_ENCRYPTED)))
           .addMethod(
             getSearchMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -514,22 +424,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public void createWalletWithWorkflow(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateWalletWithWorkflowMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void createWalletEncrypted(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage request,
-        io.grpc.stub.StreamObserver<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateWalletEncryptedMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void search(trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.SearchResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -594,20 +488,6 @@ public final class WalletGrpc {
     public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse createWallet(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateWalletMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse createWalletWithWorkflow(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateWalletWithWorkflowMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage createWalletEncrypted(trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateWalletEncryptedMethod(), getCallOptions(), request);
     }
 
     /**
@@ -679,22 +559,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse> createWalletWithWorkflow(
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateWalletWithWorkflowMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage> createWalletEncrypted(
-        trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateWalletEncryptedMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWallet.SearchResponse> search(
         trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -729,12 +593,10 @@ public final class WalletGrpc {
   private static final int METHODID_GET_PROVIDER_CONFIGURATION = 0;
   private static final int METHODID_CONNECT_EXTERNAL_IDENTITY = 1;
   private static final int METHODID_CREATE_WALLET = 2;
-  private static final int METHODID_CREATE_WALLET_WITH_WORKFLOW = 3;
-  private static final int METHODID_CREATE_WALLET_ENCRYPTED = 4;
-  private static final int METHODID_SEARCH = 5;
-  private static final int METHODID_INSERT_ITEM = 6;
-  private static final int METHODID_GRANT_ACCESS = 7;
-  private static final int METHODID_REVOKE_ACCESS = 8;
+  private static final int METHODID_SEARCH = 3;
+  private static final int METHODID_INSERT_ITEM = 4;
+  private static final int METHODID_GRANT_ACCESS = 5;
+  private static final int METHODID_REVOKE_ACCESS = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -764,14 +626,6 @@ public final class WalletGrpc {
         case METHODID_CREATE_WALLET:
           serviceImpl.createWallet((trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse>) responseObserver);
-          break;
-        case METHODID_CREATE_WALLET_WITH_WORKFLOW:
-          serviceImpl.createWalletWithWorkflow((trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse>) responseObserver);
-          break;
-        case METHODID_CREATE_WALLET_ENCRYPTED:
-          serviceImpl.createWalletEncrypted((trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage) request,
-              (io.grpc.stub.StreamObserver<trinsic.okapi.pbmse.v1.Pbmse.EncryptedMessage>) responseObserver);
           break;
         case METHODID_SEARCH:
           serviceImpl.search((trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest) request,
@@ -853,8 +707,6 @@ public final class WalletGrpc {
               .addMethod(getGetProviderConfigurationMethod())
               .addMethod(getConnectExternalIdentityMethod())
               .addMethod(getCreateWalletMethod())
-              .addMethod(getCreateWalletWithWorkflowMethod())
-              .addMethod(getCreateWalletEncryptedMethod())
               .addMethod(getSearchMethod())
               .addMethod(getInsertItemMethod())
               .addMethod(getGrantAccessMethod())

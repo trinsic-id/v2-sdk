@@ -1,8 +1,9 @@
 import unittest
 
-from trinsic.services import _create_channel_if_needed
+from trinsic.services import create_channel
 
 
+# noinspection PyBroadException
 class TestUtilities(unittest.IsolatedAsyncioTestCase):
     url_params = [
         ("http://localhost:5000", False),
@@ -18,7 +19,7 @@ class TestUtilities(unittest.IsolatedAsyncioTestCase):
         for url, throws_exception in self.url_params:
             with self.subTest(f"url={url} throws={throws_exception}"):
                 try:
-                    _create_channel_if_needed(url)
+                    create_channel(url)
                     if throws_exception:
                         assert False
                 except:

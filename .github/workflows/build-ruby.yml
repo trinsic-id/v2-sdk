@@ -40,7 +40,9 @@ jobs:
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
         env:
-          TRINSIC_SERVER_ADDRESS: http://20.75.134.127:80/
+          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
+          TEST_SERVER_PORT: 443
+          TEST_SERVER_USE_TLS: true
       - name: cobertura-report
         if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
         uses: 5monkeys/cobertura-action@v9

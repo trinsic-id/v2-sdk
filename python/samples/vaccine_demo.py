@@ -1,10 +1,9 @@
 import asyncio
 import json
-import os
 from os.path import abspath, join, dirname
 
-from proto.services.universalwallet.v1 import WalletProfile
-from trinsic.services import WalletService
+from trinsic.proto.services.universalwallet.v1 import WalletProfile
+from trinsic.services import WalletService, get_test_server_config
 
 
 def _base_data_path() -> str:
@@ -20,8 +19,7 @@ def _vaccine_cert_frame_path() -> str:
 
 
 async def vaccine_demo():
-    server_address = os.getenv('TRINSIC_SERVER_ADDRESS')
-    wallet_service = WalletService(server_address)
+    wallet_service = WalletService(get_test_server_config())
 
     # SETUP ACTORS
     # Create 3 different profiles for each participant in the scenario
@@ -40,7 +38,7 @@ async def vaccine_demo():
 
     # ISSUE CREDENTIAL
     # Sign a credential as the clinic and send it to Allison
-    wallet_service.set_profile(clinic)
+    wallet_service.profile = clinic
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = json.load(fid)
 
@@ -50,7 +48,7 @@ async def vaccine_demo():
 
     # STORE CREDENTIAL
     # Alice stores the credential in her cloud wallet.
-    wallet_service.set_profile(allison)
+    wallet_service.profile = allison
     item_id = await wallet_service.insert_item(credential)
     print(f"item id = {item_id}")
 
@@ -58,8 +56,7 @@ async def vaccine_demo():
     # Allison shares the credential with the venue.
     # The venue has communicated with Allison the details of the credential
     # that they require expressed as a JSON-LD frame.
-    wallet_service.set_profile(allison)
-
+    wallet_service.profile = allison
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = json.load(fid2)
 
@@ -69,11 +66,13 @@ async def vaccine_demo():
 
     # VERIFY CREDENTIAL
     # The airline verifies the credential
-    wallet_service.set_profile(airline)
+    wallet_service.profile = airline
     valid = await wallet_service.verify_proof(credential_proof)
 
     print(f"Verification result: {valid}")
     assert valid
+
+    wallet_service.close()
 
 
 if __name__ == "__main__":

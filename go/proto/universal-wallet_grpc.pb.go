@@ -4,7 +4,6 @@ package sdk
 
 import (
 	context "context"
- okapiproto "github.com/trinsic-id/okapi/go/okapiproto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,8 +21,6 @@ type WalletClient interface {
 	GetProviderConfiguration(ctx context.Context, in *GetProviderConfigurationRequest, opts ...grpc.CallOption) (*GetProviderConfigurationResponse, error)
 	ConnectExternalIdentity(ctx context.Context, in *ConnectRequest, opts ...grpc.CallOption) (*ConnectResponse, error)
 	CreateWallet(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
-	CreateWalletWithWorkflow(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error)
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
 	GrantAccess(ctx context.Context, in *GrantAccessRequest, opts ...grpc.CallOption) (*GrantAccessResponse, error)
@@ -59,24 +56,6 @@ func (c *walletClient) ConnectExternalIdentity(ctx context.Context, in *ConnectR
 func (c *walletClient) CreateWallet(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error) {
 	out := new(CreateWalletResponse)
 	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWallet", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *walletClient) CreateWalletWithWorkflow(ctx context.Context, in *CreateWalletRequest, opts ...grpc.CallOption) (*CreateWalletResponse, error) {
-	out := new(CreateWalletResponse)
-	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *walletClient) CreateWalletEncrypted(ctx context.Context, in *okapiproto.EncryptedMessage, opts ...grpc.CallOption) (*okapiproto.EncryptedMessage, error) {
-	out := new(okapiproto.EncryptedMessage)
-	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.Wallet/CreateWalletEncrypted", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,8 +105,6 @@ type WalletServer interface {
 	GetProviderConfiguration(context.Context, *GetProviderConfigurationRequest) (*GetProviderConfigurationResponse, error)
 	ConnectExternalIdentity(context.Context, *ConnectRequest) (*ConnectResponse, error)
 	CreateWallet(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
-	CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error)
-	CreateWalletEncrypted(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error)
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
 	GrantAccess(context.Context, *GrantAccessRequest) (*GrantAccessResponse, error)
@@ -147,12 +124,6 @@ func (UnimplementedWalletServer) ConnectExternalIdentity(context.Context, *Conne
 }
 func (UnimplementedWalletServer) CreateWallet(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateWallet not implemented")
-}
-func (UnimplementedWalletServer) CreateWalletWithWorkflow(context.Context, *CreateWalletRequest) (*CreateWalletResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletWithWorkflow not implemented")
-}
-func (UnimplementedWalletServer) CreateWalletEncrypted(context.Context, *okapiproto.EncryptedMessage) (*okapiproto.EncryptedMessage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateWalletEncrypted not implemented")
 }
 func (UnimplementedWalletServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
@@ -229,42 +200,6 @@ func _Wallet_CreateWallet_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(WalletServer).CreateWallet(ctx, req.(*CreateWalletRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Wallet_CreateWalletWithWorkflow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateWalletRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WalletServer).CreateWalletWithWorkflow(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.universalwallet.v1.Wallet/CreateWalletWithWorkflow",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServer).CreateWalletWithWorkflow(ctx, req.(*CreateWalletRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Wallet_CreateWalletEncrypted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(okapiproto.EncryptedMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(WalletServer).CreateWalletEncrypted(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.universalwallet.v1.Wallet/CreateWalletEncrypted",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WalletServer).CreateWalletEncrypted(ctx, req.(*okapiproto.EncryptedMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -359,14 +294,6 @@ var Wallet_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateWallet",
 			Handler:    _Wallet_CreateWallet_Handler,
-		},
-		{
-			MethodName: "CreateWalletWithWorkflow",
-			Handler:    _Wallet_CreateWalletWithWorkflow_Handler,
-		},
-		{
-			MethodName: "CreateWalletEncrypted",
-			Handler:    _Wallet_CreateWalletEncrypted_Handler,
 		},
 		{
 			MethodName: "Search",
