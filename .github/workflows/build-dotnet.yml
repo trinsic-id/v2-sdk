@@ -5,52 +5,38 @@ on:
     branches:
       - main
     paths:
-      - 'dotnet/**'
-      - 'proto/**'
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
   push:
     branches:
       - main
+    paths:
+      - "dotnet/**"
+      - "proto/**"
+      - ".github/workflows/*dotnet*"
   workflow_dispatch:
 
 jobs:
-  build_test_pack:
-    name: Build, Test, Package
+  test:
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-      - name: Generate Package Version
-        run: |
-          $packageVersion = node -p -e "require('./package.json').version"
-          $manualVersion = "${{ github.event.release.tag_name }}"
-          $version = if ($manualVersion) { $manualVersion } else { $packageVersion }
-          $version = $version.TrimStart("v")
-
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
       - run: |
           dotnet restore
           dotnet build -c Release
-          dotnet test -c Release
+          dotnet test -c Release -v n
         working-directory: ./dotnet
         env:
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
-          TEST_SERVER_PORT: 443
-          TEST_SERVER_USE_TLS: true
-      - name: Create Nuget package
-        run: dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
-        shell: pwsh
-        working-directory: ./dotnet
-      - uses: actions/upload-artifact@v2
-        with:
-          name: nuget
-          path: |
-            ./dotnet/**/Release/*.nupkg
-            ./dotnet/**/Release/*.snupkg
-
-
-
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}

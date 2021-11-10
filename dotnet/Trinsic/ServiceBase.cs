@@ -1,57 +1,62 @@
 ﻿using System;
-using System.Text;
-using Okapi;
-using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Grpc.Net.Client;
-using Newtonsoft.Json.Linq;
-using Trinsic.Services;
-using Okapi.Proofs;
-using Okapi.Keys;
-using Okapi.Keys.V1;
-using Okapi.Proofs.V1;
 using Trinsic.Services.UniversalWallet.V1;
 using Google.Protobuf;
 using Blake3Core;
 using System.IO;
 using Okapi.Security;
-using Okapi.Security.V1;
 using Trinsic.Services.Common.V1;
 using System.Security.Cryptography;
 
-namespace Trinsic
+namespace Trinsic;
+
+public abstract class ServiceBase
 {
-    public abstract class ServiceBase
+    protected ServiceBase(WalletProfile? walletProfile, ServerConfig? serverConfig)
     {
-        private readonly HashAlgorithm hasher = new Blake3();
-
-        public WalletProfile Profile { get; private set; }
-
-        /// <summary>
-        /// Create call metadata by setting the required authentication headers
-        /// </summary>
-        /// <returns></returns>
-        protected Metadata GetMetadata(IMessage request)
+        Profile = walletProfile;
+        Configuration = serverConfig ?? new ServerConfig
         {
-            // compute the hash of the request and capture current timestamp
-            using MemoryStream stream = new(request.ToByteArray());
-            var requestHash = hasher.ComputeHash(stream);
-            var timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            Endpoint = "prod.trinsic.cloud",
+            Port = 443,
+            UseTls = true
+        };
+        Channel = GrpcChannel.ForAddress(Configuration.FormatUrl());
+    }
 
-            Nonce nonce = new()
-            {
-                Timestamp = timestamp,
-                RequestHash = ByteString.CopyFrom(requestHash)
-            };
+    private readonly HashAlgorithm hasher = new Blake3();
 
-            var proof = Oberon.CreateProof(new CreateOberonProofRequest
-            {
-                Token = Profile.AuthToken,
-                Data = Profile.AuthData,
-                Nonce = nonce.ToByteString()
-            });
+    public WalletProfile? Profile { get; set; }
+    public ServerConfig Configuration { get; private set; }
+    public GrpcChannel Channel { get; set; }
 
-            return new Metadata
+    /// <summary>
+    /// Create call metadata by setting the required authentication headers
+    /// </summary>
+    /// <returns></returns>
+    protected Metadata BuildMetadata(IMessage request)
+    {
+        if (Profile is null) throw new Exception("Cannot call authenticated endpoint: profile must be set");
+
+        // compute the hash of the request and capture current timestamp
+        using MemoryStream stream = new(request.ToByteArray());
+        byte[] requestHash = hasher.ComputeHash(stream);
+
+        Nonce nonce = new()
+        {
+            Timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
+            RequestHash = ByteString.CopyFrom(requestHash)
+        };
+
+        var proof = Oberon.CreateProof(new()
+        {
+            Token = Profile!.AuthToken,
+            Data = Profile!.AuthData,
+            Nonce = nonce.ToByteString()
+        });
+
+        return new Metadata
             {
                 { "Authorization", $"Oberon " +
                     $"proof={Base64UrlEncode(proof.Proof.ToByteArray())}," +
@@ -59,48 +64,15 @@ namespace Trinsic
                     $"nonce={Base64UrlEncode(nonce.ToByteArray())}"
                 }
             };
-        }
-
-        /// <summary>
-        /// Set the profile that will be used for authenticated requests
-        /// </summary>
-        /// <param name="profile">The profile data</param>
-        public void SetProfile(WalletProfile profile)
-        {
-            Profile = profile;
-        }
-
-        internal static GrpcChannel CreateChannelIfNeeded(string serviceAddress)
-        {
-            try
-            {
-                var url = new Uri(serviceAddress);
-                AssertPortIsProvided(serviceAddress, url);
-                return GrpcChannel.ForAddress(serviceAddress, new GrpcChannelOptions());
-            }
-            catch (UriFormatException ufe)
-            {
-                throw new ArgumentException("Invalid service address", ufe);
-            }
-        }
-
-        protected static void AssertPortIsProvided(string serviceAddress, Uri url)
-        {
-            // If port not provided, it will mismatch as a string
-            var rebuiltUri = new UriBuilder(url.Scheme, url.Host, url.Port, url.AbsolutePath);
-            // Remove trailing '/'
-            if (!serviceAddress.TrimEnd('/').StartsWith(rebuiltUri.ToString().TrimEnd('/')))
-                throw new ArgumentException("GRPC Port and scheme required");
-        }
-
-        /// <summary>
-        /// Encoded a byte array to base64url string without padding
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
-            .Replace('+', '-')
-            .Replace('/', '_')
-            .Trim('=');
     }
+
+    /// <summary>
+    /// Encoded a byte array to base64url string without padding
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
+        .Replace('+', '-')
+        .Replace('/', '_')
+        .Trim('=');
 }

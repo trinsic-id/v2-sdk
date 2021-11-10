@@ -15,6 +15,9 @@ jobs:
       - uses: actions/checkout@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
       - name: Generate Package Version
         run: |
           $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `

@@ -8,22 +8,16 @@ on:
       - 'node/**'
       - 'web/**'
       - 'proto/**'
+      - '.github/workflows/*typescript*'
   push:
     branches:
       - main
+    paths:
+      - 'node/**'
+      - 'web/**'
+      - 'proto/**'
+      - '.github/workflows/*typescript*'
   workflow_dispatch:
-    inputs:
-      packageVersion:
-        description: "Package Version"
-        required: true
-        default: "1.0.0"
-      testUrl:
-        description: "Test Endpoint"
-        required: true
-        default: "trinsic-staging.centralus.azurecontainer.io:5000"
-
-env:
-  DEFAULT_TEST_URL: "trinsic-staging.centralus.azurecontainer.io:5000"
 
 jobs:
   build_test:
@@ -47,10 +41,9 @@ jobs:
           npm run build
           npm test
         env:
-          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || env.DEFAULT_TEST_URL }}
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
-          TEST_SERVER_PORT: 443
-          TEST_SERVER_USE_TLS: true
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
         shell: pwsh
 
 

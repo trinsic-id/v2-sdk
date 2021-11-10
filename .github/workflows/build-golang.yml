@@ -13,7 +13,7 @@ on:
 
 jobs:
   test_go:
-    name: Test Go code
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
