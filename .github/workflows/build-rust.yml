@@ -24,6 +24,7 @@ on:
 
 jobs:
   rust:
+    name: Test
     runs-on: ubuntu-latest
     defaults:
       run:
