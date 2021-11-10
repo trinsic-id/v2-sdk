@@ -11,6 +11,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'node/**'
+      - 'web/**'
+      - 'proto/**'
   workflow_dispatch:
     inputs:
       packageVersion:
