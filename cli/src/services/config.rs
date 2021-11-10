@@ -217,7 +217,7 @@ impl Interceptor for DefaultConfig {
 
         // generate proof of knowledge using the stored token and the generated nonce
         let proof = Oberon::proof(&CreateOberonProofRequest {
-            data: profile.auth_data,
+            data: profile.auth_data.clone(),
             token: profile.auth_token,
             nonce: nonce.to_vec(),
             blinding: vec![],
