@@ -5,11 +5,16 @@ on:
     branches:
       - main
     paths:
-      - 'cli/**'
-      - 'proto/**'
+      - "cli/**"
+      - "proto/**"
+      - ".github/workflows/*rust*"
   push:
     branches:
       - main
+    paths:
+      - "cli/**"
+      - "proto/**"
+      - ".github/workflows/*rust*"
   workflow_dispatch:
     inputs:
       packageVersion:
