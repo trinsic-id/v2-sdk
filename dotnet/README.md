@@ -1,6 +1,6 @@
 # Trinsic SDK for .NET
 
-## Usage
+## Installation
 
 Install latest packages from nuget.org
 
@@ -8,3 +8,7 @@ Install latest packages from nuget.org
 dotnet add package Trinsic.Sdk
 dotnet add package Okapi.Net
 ```
+
+## Usage
+
+See documentation
