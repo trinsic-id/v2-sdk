@@ -22,7 +22,7 @@ public abstract class ServiceBase
             Port = 443,
             UseTls = true
         };
-        Channel = GrpcChannel.ForAddress($"{(Configuration.UseTls ? "https" : "http")}://{Configuration.Endpoint}:{Configuration.Port}");
+        Channel = GrpcChannel.ForAddress(Configuration.FormatUrl());
     }
 
     private readonly HashAlgorithm hasher = new Blake3();

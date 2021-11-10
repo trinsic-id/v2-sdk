@@ -34,7 +34,7 @@ public class Tests
             UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) ? useTls : false
         };
 
-        _testOutputHelper.WriteLine($"Testing endpoint: {(serverConfig.UseTls ? "https" : "http")}://{serverConfig.Endpoint}:{serverConfig.Port}");
+        _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
 
         var walletService = new WalletService(null, serverConfig);
         var credentialsService = new CredentialsService(null, serverConfig);
