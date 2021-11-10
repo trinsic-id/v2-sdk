@@ -1,40 +1,51 @@
-import { CreateProofRequest, JsonWebKey, LdProofs, LdSuite } from "@trinsic/okapi";
+import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
-import { WalletProfile } from "./proto";
-import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import { Buffer } from "buffer";
+import { Nonce, ServerConfig, WalletProfile } from "./proto";
+import { Message } from "google-protobuf";
+import { encode, fromUint8Array } from "js-base64";
 
 export default abstract class ServiceBase {
-  capInvocation: string;
+  activeProfile: WalletProfile;
+  serverConfig: ServerConfig;
+  address: string;
 
-  getMetadata(): Metadata {
-    if (!this.capInvocation) throw new Error("Profile not set.");
-    let metadata = { "Capability-Invocation": this.capInvocation };
+  constructor(
+    profile: WalletProfile = null,
+    config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
+  ) {
+    this.activeProfile = profile;
+    this.serverConfig = config;
+    this.address = `${
+      config.getUseTls() ? "https" : "http"
+    }://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
+  }
+
+  async getMetadata(request: Message): Promise<Metadata> {
+    var requestHash = await crypto.subtle.digest("SHA-256", request.serializeBinary());
+    var timestamp = Date.now();
+
+    let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(new Uint8Array(requestHash));
+
+    let proof = await Oberon.createProof(
+      new CreateOberonProofRequest()
+        .setNonce(nonce.serializeBinary())
+        .setData(this.activeProfile.getAuthData())
+        .setToken(this.activeProfile.getAuthToken())
+    );
+
+    var metadata = {
+      Authorization:
+        `Oberon ` +
+        `ver=1,` +
+        `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
+        `data=${fromUint8Array(this.activeProfile.getAuthData_asU8(), true)},` +
+        `nonce=${fromUint8Array(nonce.serializeBinary(), true)}`,
+    };
+
     return metadata;
   }
 
-  async setProfile(profile: WalletProfile): Promise<void> {
-    let capabilityDocument = {
-      "@context": "https://wid.org/security/v2",
-      invocationTarget: profile.getWalletId(),
-      proof: {
-        proofPurpose: "capabilityInvocation",
-        created: new Date().toISOString(),
-        capability: profile.getCapability(),
-      },
-    };
-
-    let proofRequest = new CreateProofRequest()
-      .setDocument(Struct.fromJavaScript(capabilityDocument))
-      .setKey(JsonWebKey.deserializeBinary(profile.getInvokerJwk_asU8()))
-      .setSuite(LdSuite.JCSED25519SIGNATURE2020);
-
-    let proofResponse = await LdProofs.generate(proofRequest);
-
-    // Set the auth field to the signed document by converting it back
-    // to JSON and encoding it in base64
-    this.capInvocation = Buffer.from(JSON.stringify(proofResponse.getSignedDocument().toJavaScript())).toString(
-      "base64"
-    );
+  updateActiveProfile(profile: WalletProfile): void {
+    this.activeProfile = profile;
   }
 }

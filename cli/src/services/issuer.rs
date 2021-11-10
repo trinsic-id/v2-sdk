@@ -5,11 +5,11 @@ use trinsic::proto::services::verifiablecredentials::v1::{
 use trinsic::utils::{read_file_as_string, write_file};
 use trinsic::{grpc_client_with_auth, *};
 
-use super::{super::parser::issuer::*, config::Config};
+use super::{super::parser::issuer::*, config::DefaultConfig};
 use okapi::MessageFormatter;
 use tonic::transport::Channel;
 
-pub(crate) fn execute(args: &Command, config: Config) {
+pub(crate) fn execute(args: &Command, config: DefaultConfig) {
     match args {
         Command::Issue(args) => issue(args, config),
         Command::CreateProof(args) => create_proof(args, config),
@@ -18,7 +18,7 @@ pub(crate) fn execute(args: &Command, config: Config) {
 }
 
 #[tokio::main]
-async fn issue(args: &IssueArgs, config: Config) {
+async fn issue(args: &IssueArgs, config: DefaultConfig) {
     let document: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.document)).expect("Unable to parse Item");
     let document = document.to_vec();
@@ -49,7 +49,7 @@ async fn issue(args: &IssueArgs, config: Config) {
 }
 
 #[tokio::main]
-async fn create_proof(args: &CreateProofArgs, config: Config) {
+async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
     let document_id = match args.document_id {
         Some(id) => id.to_string(),
         None => panic!("Please include document id"),
@@ -86,7 +86,7 @@ async fn create_proof(args: &CreateProofArgs, config: Config) {
 }
 
 #[tokio::main]
-async fn verify_proof(args: &VerifyProofArgs, config: Config) {
+async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
     let document: okapi::proto::google_protobuf::Struct =
         serde_json::from_str(&read_file_as_string(args.proof_document))
             .expect("Unable to parse Item");

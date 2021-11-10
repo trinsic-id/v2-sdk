@@ -1,33 +1,30 @@
 const test = require("ava");
-const { InviteRequest, WalletProfile, ProviderService, WalletService } = require("../lib");
+const { InviteRequest, WalletProfile, ProviderService, WalletService, ServerConfig } = require("../lib");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const fs = require("fs");
 const path = require("path");
 const { randomEmail } = require("./helpers/random");
 
-const endpoint = process.env.TRINSIC_TEST_URL;
+const endpoint = process.env.TEST_SERVER_ENDPOINT;
+const port = process.env.TEST_SERVER_PORT;
+const useTls = process.env.TEST_SERVER_USE_TLS;
+
+const config = new ServerConfig().setEndpoint(endpoint).setPort(port).setUseTls(JSON.parse(useTls));
 
 const createProfile = async () => {
-  // if you have a profile saved
-  // let homePath = process.env[process.platform === "win32" ? "USERPROFILE" : "HOME"];
-  // let profilePath = path.join(homePath, ".trinsic", "profile.bin");
-  // let profile = WalletProfile.deserializeBinary(fs.readFileSync(profilePath));
-
   // if you don't have a profile saved
-  let walletService = new WalletService(endpoint);
+  let walletService = new WalletService(config);
   let profile = await walletService.createWallet();
 
   return profile;
 };
 
 test("make an invitation", async (t) => {
-  let providerService = new ProviderService(endpoint);
+  let providerService = new ProviderService(config);
   let profile = await createProfile();
-  await providerService.setProfile(profile);
+  providerService.updateActiveProfile(profile);
 
-  let inviteRequest = new InviteRequest()
-    .setEmail(randomEmail())
-    .setDescription("invitation");
+  let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
 
   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 

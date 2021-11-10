@@ -1,8 +1,10 @@
-name: Python (build)
+name: Python
 
 on:
   workflow_dispatch:
   pull_request:
+    branches:
+      - main
     paths:
       - "python/**"
       - "proto/**"
@@ -10,10 +12,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "python/**"
+      - "proto/**"
+      - ".github/workflows/*python*"
 
 jobs:
   build-and-test-python:
-    name: Test Python code
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -46,7 +52,7 @@ jobs:
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
-    name: Publish Python Test Results
+    name: Publish Test Results
     needs: build-and-test-python
     runs-on: ubuntu-latest
     if: always()

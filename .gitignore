@@ -383,3 +383,4 @@ go/services/libokapi.dll.a
 go/services/okapi.dll
 go/services/okapi.h
 python/tests/allison.bin
+go/vendor

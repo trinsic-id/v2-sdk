@@ -1,4 +1,4 @@
-name: Ruby (build)
+name: Ruby
 
 on:
   pull_request:
@@ -12,6 +12,7 @@ on:
 
 jobs:
   build_ruby:
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

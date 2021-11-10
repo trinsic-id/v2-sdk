@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.37.0" />
@@ -9,11 +11,27 @@
     <PackageReference Include="Blake3Core" Version="0.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Trinsic.Protobuf\Trinsic.Protobuf.csproj" />
+    <PackageReference Include="Grpc.Tools" Version="2.36.1" PrivateAssets="All" />
+    <PackageReference Include="Okapi.Net" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
       <_Parameter1>Trinsic.Tests</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
+
+  <ItemGroup>
+    <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
+    <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
+    <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
+    <Protobuf Include="..\..\proto\services\debug\v1\debug.proto" Link="Proto/debug.proto" />
+    <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
+    <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
+    <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />
+
+    <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto" />
+    <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto" />
+  </ItemGroup>
+
 </Project>

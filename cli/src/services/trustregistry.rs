@@ -7,9 +7,9 @@ use trinsic::{
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
 };
 
-use super::config::{Config, Error};
+use super::config::{DefaultConfig, Error};
 
-pub(crate) fn execute(args: &Command, config: &Config) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: &DefaultConfig) -> Result<(), Error> {
     match args {
         Command::Search(args) => Ok(search(args, config)),
         Command::RegisterIssuer(args) => Ok(register_issuer(args, config)),
@@ -22,7 +22,7 @@ pub(crate) fn execute(args: &Command, config: &Config) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: &Config) {
+async fn search(args: &SearchArgs, config: &DefaultConfig) {
     let query = args
         .query
         .as_ref()
@@ -45,7 +45,7 @@ async fn search(args: &SearchArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn register_issuer(args: &RegistrationArgs, config: &Config) {
+async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterIssuerRequest {
@@ -73,7 +73,7 @@ async fn register_issuer(args: &RegistrationArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn check_issuer(args: &RegistrationArgs, config: &Config) {
+async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckIssuerStatusRequest {
@@ -105,7 +105,7 @@ async fn check_issuer(args: &RegistrationArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn check_verifier(args: &RegistrationArgs, config: &Config) {
+async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckVerifierStatusRequest {
@@ -140,7 +140,7 @@ async fn check_verifier(args: &RegistrationArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn unregister_issuer(args: &RegistrationArgs, config: &Config) {
+async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterIssuerRequest {
@@ -168,7 +168,7 @@ async fn unregister_issuer(args: &RegistrationArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn unregister_verifier(args: &RegistrationArgs, config: &Config) {
+async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterVerifierRequest {
@@ -199,7 +199,7 @@ async fn unregister_verifier(args: &RegistrationArgs, config: &Config) {
 }
 
 #[tokio::main]
-async fn register_verifier(args: &RegistrationArgs, config: &Config) {
+async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterVerifierRequest {
