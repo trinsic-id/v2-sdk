@@ -1,5 +1,13 @@
 # Trinsic's Security
 
+## Overview
+
+TODO
+
+## Zero-knowledge Security Architecture
+
+TODO
+
 ## New Account Registration
 
 ```mermaid
@@ -62,7 +70,7 @@ sequenceDiagram
     U-->>U: Input :PIN
     note over U: Optional :PIN or<br/>:KeyChainSecret
     U->>U: Create API :Request<br/>and :RequestHash
-    U->>U: Generate :Proof
+    U->>U: Generate ZKP :Proof
     note over U: Using :WalletProfile and :Nonce
     note over U: :Nonce = { :Timestamp :RequestHash }
     U->>U: Add :Proof to<br/>:Authorization header
