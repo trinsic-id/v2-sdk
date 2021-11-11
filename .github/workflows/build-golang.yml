@@ -10,6 +10,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
 
 jobs:
   test_go:
