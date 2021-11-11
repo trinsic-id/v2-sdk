@@ -8,78 +8,50 @@ on:
 jobs:
   homebrew:
     name: Homebrew Formula
-    runs-on: macos-latest
     environment: homebrew
-    defaults:
-      run:
-        working-directory: ./cli
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-        name: Checkout
-      - name: Generate Archive Version
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Generate Package Version
         run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/okapi/releases/latest' `
             -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          echo "TAG_NAME=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          $version = $json.tag_name.Trim("v")
+          echo "RELEASE_VERSION=$($json.tag_name)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-      - name: Build CLI
+
+      - name: Create Archive
         run: |
-          rustup install nightly
-          rustup default nightly
-          rustup component add rustfmt
-          cargo build --release
-          cargo test --release
-      - name: Codesign Binary File
-        env:
-          MACOS_CERTIFICATE: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE }}
-          MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_PWD }}
-          MACOS_CERTIFICATE_IDENTITY: ${{ secrets.MACOS_DEVELOPER_ID_CERTIFICATE_IDENTITY }}
-        run: |
-          $env:TMP_PASS = [Guid]::NewGuid().ToString()
-          [System.IO.File]::WriteAllBytes([System.IO.Path]::Combine($pwd.Path, "certificate.p12"), [System.Convert]::FromBase64String("$env:MACOS_CERTIFICATE"))
-          security create-keychain -p $env:TMP_PASS build.keychain
-          security default-keychain -s build.keychain
-          security unlock-keychain -p $env:TMP_PASS build.keychain
-          security list-keychains -s build.keychain
-          security import certificate.p12 -k build.keychain -P $env:MACOS_CERTIFICATE_PWD -T /usr/bin/codesign
-          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k $env:TMP_PASS build.keychain
-          /usr/bin/codesign --force -s $env:MACOS_CERTIFICATE_IDENTITY trinsic -v
-        shell: pwsh
-        working-directory: ./cli/target/release
-      - name: Build Archive
-        run: |
-          $file = "trinsic_cli_$($env:TAG_NAME)_macos_x86_64.tar.gz"
-          tar czf $file --directory=./target/release/ trinsic
-          echo "ARTIFACT_FILE=$file" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-      - uses: svenstaro/upload-release-action@v2
-        name: Upload Archive
+          rm cli/build.rs
+          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' cli/Cargo.toml
+          mv cli trinsic-cli
+          tar -czvf trinsic-cli-${{ env.PACKAGE_VERSION }}.tar.gz trinsic-cli
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: archive
+          path: |
+            ./*.tar.gz
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          # this action doesn't respect job 'defaults' and requires
-          # explicit path
-          file: ./cli/${{ env.ARTIFACT_FILE }}
-          asset_name: ${{ env.ARTIFACT_FILE }}
-          tag: ${{ env.TAG_NAME }}
-          overwrite: true
-          body: "Trinsic CLI for MacOS"
+          file: ./trinsic-cli-${{ env.PACKAGE_VERSION }}.tar.gz
+          asset_name: trinsic-cli-${{ env.PACKAGE_VERSION }}.tar.gz
+          tag: ${{ env.RELEASE_VERSION }}
+          overwrite: false
+          body: "Trinsic CLI for Homebrew"
 
   deb:
     name: Debian Package
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     arch: [amd64]
-    #     include:
-    #       - arch: x86_64
-    #         target: x86_64-unknown-linux-gnu
-    #         image: macos-latest
-    #       - arch: amd64
-    #         target: aarch64-unknown-linux-gnu
-    #         image: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -99,7 +71,7 @@ jobs:
         run: |
           cargo install cargo-deb
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
-          sed -i 's/version: "1.0.0"/version: "${{ env.PACKAGE_VERSION }}"/g' src/cly.yaml
+          sed -i 's/version: "1.0.0"/version: "${{ env.PACKAGE_VERSION }}"/g' src/cli.yaml
 
           cargo deb
         working-directory: cli
