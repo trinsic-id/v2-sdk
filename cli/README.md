@@ -5,7 +5,7 @@
 ### Using Homebrew for MacOS and Linux
 
 ```
-brew tap trinsic-id/trinsic-cli
+brew tap trinsic-id/tap
 brew install trinsic-cli
 ```
 

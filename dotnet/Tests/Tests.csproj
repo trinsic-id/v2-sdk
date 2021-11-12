@@ -1,21 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
-      <StartAction>Project</StartAction>
-      <ExternalConsole>true</ExternalConsole>
-      <EnvironmentVariables>
-        <Variable name="TEST_SERVER_ENDPOINT" value="localhost" />
-        <Variable name="TEST_SERVER_PORT" value="5000" />
-        <Variable name="TEST_SERVER_USE_TLS" value="false" />
-      </EnvironmentVariables>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
@@ -37,7 +28,13 @@
       <ProjectReference Include="..\Trinsic\Trinsic.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <None Remove="vaccination-certificate-unsigned.jsonld" />
-      <None Remove="vaccination-certificate-frame.jsonld" />
+      <None Include="..\..\devops\testdata\vaccination-certificate-unsigned.jsonld">
+        <Link>TestData/vaccination-certificate-unsigned.jsonld</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Include="..\..\devops\testdata\vaccination-certificate-frame.jsonld">
+        <Link>TestData/vaccination-certificate-frame.jsonld</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>

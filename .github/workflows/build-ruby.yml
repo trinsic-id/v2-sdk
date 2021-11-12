@@ -1,4 +1,4 @@
-name: Ruby (build)
+name: Ruby
 
 on:
   pull_request:
@@ -9,9 +9,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "ruby/**"
+      - "proto/**"
+      - ".github/workflows/*ruby*"
 
 jobs:
   build_ruby:
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

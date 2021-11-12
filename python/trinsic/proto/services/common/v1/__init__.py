@@ -38,6 +38,24 @@ class JsonPayload(betterproto.Message):
     json_bytes: bytes = betterproto.bytes_field(3, group="json")
 
 
+@dataclass(eq=False, repr=False)
+class ServerConfig(betterproto.Message):
+    # service endpoint
+    endpoint: str = betterproto.string_field(1)
+    # service port
+    port: int = betterproto.int32_field(2)
+    # indicates if tls is used
+    use_tls: bool = betterproto.bool_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class Nonce(betterproto.Message):
+    """Nonce used to generate an oberon prrof"""
+
+    timestamp: int = betterproto.int64_field(1)
+    request_hash: bytes = betterproto.bytes_field(2)
+
+
 class CommonStub(betterproto.ServiceStub):
     async def request(
         self,

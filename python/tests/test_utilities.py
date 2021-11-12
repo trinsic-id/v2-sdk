@@ -1,10 +1,6 @@
 import unittest
 
-from trinsic.services import _create_channel_if_needed
-
-
-def get_test_server_config():
-    return
+from trinsic.services import create_channel
 
 
 class TestUtilities(unittest.IsolatedAsyncioTestCase):
@@ -22,7 +18,7 @@ class TestUtilities(unittest.IsolatedAsyncioTestCase):
         for url, throws_exception in self.url_params:
             with self.subTest(f"url={url} throws={throws_exception}"):
                 try:
-                    _create_channel_if_needed(url)
+                    create_channel(url)
                     if throws_exception:
                         assert False
                 except:

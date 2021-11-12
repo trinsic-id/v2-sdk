@@ -1,4 +1,4 @@
-name: Java (build)
+name: Java
 
 on:
   workflow_dispatch:
@@ -10,9 +10,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "java/**"
+      - "proto/**"
+      - ".github/workflows/*java*"
 
 jobs:
   build:
+    name: Build
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

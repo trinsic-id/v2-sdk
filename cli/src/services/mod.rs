@@ -6,10 +6,10 @@ mod provider;
 mod trustregistry;
 mod wallet;
 
-use self::config::Config;
+use self::config::DefaultConfig;
 use super::parser::Service;
 
-pub(crate) fn execute(args: &Service, config: Config) {
+pub(crate) fn execute(args: &Service, config: DefaultConfig) {
     match args {
         Service::Wallet(args) => wallet::execute(&args, config).unwrap(),
         Service::DIDKey(args) => didkey::execute(&args),

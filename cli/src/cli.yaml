@@ -1,5 +1,5 @@
 name: trinsic
-version: "1.0.1"
+version: "1.0.0"
 author: Trinsic Technologies Inc.
 about: >-
 
@@ -8,138 +8,6 @@ about: >-
    ┴ ┴└─┴┘└┘└─┘┴└─┘
 
 subcommands:
-  - didkey:
-      about: didkey commands
-      subcommands:
-        - generate:
-            about: Generates a Json Web Key
-            version: "0.1"
-            args:
-              - out:
-                  long: out
-                  value_name: STRING
-                  help: File to save Json Web Key in
-                  takes_value: true
-              - kty:
-                  long: kty
-                  value_name: STRING
-                  help: >-
-                    Specify key type. Defaults to X25519. Options are Ed25519,
-                    X25519, P256, Bls12381_G2, and secp256k1.
-                  takes_value: true
-                  possible_values:
-                    - Ed25519
-                    - X25519
-                    - P-256
-                    - Bls12381_G2
-                    - Secp256k1
-        - resolve:
-            about: Resolve a DID
-            version: "0.1"
-            args:
-              - uri:
-                  value_name: STRING
-                  help: DID URI to resolve
-                  takes_value: true
-                  required: true
-  - didcomm:
-      about: didcomm commands
-      subcommands:
-        - pack:
-            about: Packs a plaintext message
-            version: "0.1"
-            short: p
-            args:
-              - sender_key:
-                  value_name: FILE
-                  help: Sender's Json Web Key
-                  takes_value: true
-                  required: true
-              - receiver_key:
-                  value_name: FILE
-                  help: Receiver's Json Web Key
-                  takes_value: true
-                  required: true
-              - associated_data:
-                  value_name: FILE
-                  help: Associated data to be packed
-                  takes_value: true
-                  long: data
-              - plaintext:
-                  value_name: FILE
-                  help: Plaintext message to be packed
-                  takes_value: true
-                  long: text
-              - encryption_mode:
-                  value_name: STRING
-                  long: mode
-                  help: >-
-                    Encryption mode. Default is direct. Options are direct and
-                    content_encryption_key
-                  possible_values:
-                    - direct
-                    - content_encryption_key
-              - encryption_algorithm:
-                  value_name: STRING
-                  long: alg
-                  help: >-
-                    Encryption algorithm. Default is xchacha20poly1305. Options
-                    are xchacha20poly1305 and aes_gcm
-                  possible_values:
-                    - xchacha20poly1305
-                    - aes_gcm
-              - out:
-                  long: out
-                  value_name: FILE
-                  help: output file for your packed message
-        - unpack:
-            about: Unpacks an encrypted message
-            version: "0.1"
-            short: up
-            args:
-              - sender_key:
-                  value_name: FILE
-                  help: Sender's Json Web Key
-                  takes_value: true
-              - receiver_key:
-                  value_name: FILE
-                  help: Receiver's Json Web Key
-                  takes_value: true
-              - encrypted_message:
-                  value_name: FILE
-                  help: Encrypted message to be unpacked
-                  takes_value: true
-        - verify:
-            about: Verify a signed message
-            version: "0.1"
-            short: v
-            args:
-              - key:
-                  value_name: FILE
-                  help: Recepient's Json Web Key
-                  takes_value: true
-              - signed_message:
-                  value_name: FILE
-                  help: Signed message to be verified
-                  takes_value: true
-        - sign:
-            about: Sign a message
-            version: "0.1"
-            args:
-              - key:
-                  value_name: FILE
-                  help: Signer's Json Web Key
-                  takes_value: true
-                  required: true
-              - payload:
-                  value_name: FILE
-                  help: Bytes to be signed
-                  takes_value: true
-                  long: payload
-              - out:
-                  long: out
-                  value_name: FILE
-                  help: output file for your packed message
   - config:
       about: Commands to set configuration parameters
       args:
@@ -165,12 +33,9 @@ subcommands:
   - wallet:
       about: Wallet Service
       subcommands:
-        - provider-configuration:
-            about: Get the provider configuration
-            version: "0.1"
         - create:
             about: Create a new wallet
-            version: "0.1"
+
             args:
               - description:
                   long: description
@@ -216,7 +81,6 @@ subcommands:
                   takes_value: true
         - insert-item:
             about: Insert item into the wallet
-            version: "0.1"
             args:
               - type:
                   long: type
@@ -247,11 +111,10 @@ subcommands:
                   required: true
   - issuer:
       about: Issuer Service
-      version: "0.1"
+
       subcommands:
         - issue:
             about: Issue a credential
-            version: "0.1"
             args:
               - document:
                   long: document
@@ -265,7 +128,6 @@ subcommands:
                   takes_value: true
         - create-proof:
             about: Create a proof
-            version: "0.1"
             args:
               - reveal-document:
                   long: reveal-document
@@ -287,7 +149,7 @@ subcommands:
                   required: true
         - verify-proof:
             about: Verify a proof
-            version: "0.1"
+
             args:
               - proof-document:
                   long: proof-document
@@ -297,11 +159,11 @@ subcommands:
                   required: true
   - provider:
       about: Provider service
-      version: "0.1"
+
       subcommands:
         - create_organization:
             about: "Create an organization"
-            version: "0.1"
+
             args:
               - name:
                   value_name: STRING
@@ -315,7 +177,7 @@ subcommands:
                   required: true
         - invite:
             about: "Send an invitation"
-            version: "0.1"
+
             args:
               - description:
                   long: description
@@ -345,13 +207,13 @@ subcommands:
                   required: false
         - invitation_status:
             about: "Check invitation status"
-            version: "0.1"
+
         - create-credential-template:
             about: "Create credential template"
-            version: "0.1"
+
         - list-credential-templates:
             about: "List credential templates"
-            version: "0.1"
+
   - trust-registry:
       about: Trust Registry
       subcommands:

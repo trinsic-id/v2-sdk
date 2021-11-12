@@ -101,25 +101,22 @@ def build_dotnet(args) -> None:
 
 
 def get_package_versions(args) -> str:
-    return (args.package_version if args.package_version else get_github_version(args.github_token)).lstrip('v')
+    return (args.package_version if args.package_version else get_github_version()).lstrip('v')
 
 
 def get_github_version(github_token: str = None) -> str:
-    try:
-        github_release_request = requests.get('https://api.github.com/repos/trinsic-id/sdk/releases/latest',
-                                              headers={'Authorization': github_token})
-        github_json = github_release_request.json()
-        version = github_json['tag_name']
-        return version
-    except:
-        print(github_json)
-        raise
+    if not github_token:
+        github_token = os.getenv('API_GITHUB_TOKEN')
+    github_release_request = requests.get('https://api.github.com/repos/trinsic-id/sdk/releases/latest',
+                                          headers={'Authorization': github_token})
+    github_json = github_release_request.json()
+    version = github_json['tag_name']
+    return version
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
-    parser.add_argument('--github-token', help='github token', default='')
     parser.add_argument('--run-tests', help='Run unit tests', action='store_true')
     parser.add_argument('--make-package', help='Make the packages', action='store_true')
     # TODO - allow specifying what to build?

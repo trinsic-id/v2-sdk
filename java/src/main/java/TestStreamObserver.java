@@ -17,6 +17,6 @@ public abstract class TestStreamObserver<T> implements StreamObserver<T> {
 
     @Override
     public void onCompleted() {
-
+        latch.countDown();
     }
 }

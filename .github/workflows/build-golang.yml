@@ -1,4 +1,4 @@
-name: Golang (build)
+name: Go
 
 on:
   workflow_dispatch:
@@ -10,10 +10,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "go/**"
+      - "proto/**"
+      - ".github/workflows/*golang*"
 
 jobs:
   test_go:
-    name: Test Go code
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
