@@ -50,3 +50,5 @@ Schemas are nonproprietary; any issuer can view/use the schemas written by any o
 We abstract schema creation away into the same action as creation of a credential template. Keep reading to read how to create a schema and credential template. 
 
 ### How to offer Credentials in Trinsic
+
+## Credential Templates

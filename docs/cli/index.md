@@ -8,8 +8,8 @@ The CLI can be installed directly as binary or built from source.
 ### Using Homebrew for MacOS and Linux
 
 ```
-brew tap trinsic-id/trinsic
-brew install trinsic
+brew tap trinsic-id/homebrew-tap
+brew install trinsic-cli
 ```
 
 ### From source using the Rust toolchain
