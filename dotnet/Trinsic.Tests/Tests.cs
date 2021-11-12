@@ -54,7 +54,7 @@ namespace Trinsic.Tests
             var walletService = new WalletService(new ServerConfig
             {
                 Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-                Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT"), out var port) ? port : 5000,
+                Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
                 UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) ? useTls : false
             });
 

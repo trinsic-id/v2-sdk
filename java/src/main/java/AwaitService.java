@@ -9,6 +9,7 @@ public class AwaitService<T> {
             @Override
             public void onNext(T value) {
                 resultCache.add(value);
+                done.countDown();
             }
         });
 
