@@ -75,8 +75,8 @@ def update_metadata(route: str, skip_routes: List[str], service: "ServiceBase", 
                     request: "_MessageLike") -> "_MetadataLike":
     if route in skip_routes:
         return metadata
-    # if metadata:
-    #     raise NotImplementedError("Cannot combine metadata yet")
+    if metadata:
+        raise NotImplementedError("Cannot combine metadata yet")
     return service.metadata(request)
 
 
@@ -146,6 +146,30 @@ class CredentialStubWithMetadata(CredentialStub):
 
 
 class TrustRegistryStubWithMetadata(TrustRegistryStub):
+    skip_metadata = []
+
+    def __init__(
+            self,
+            service: ServiceBase
+    ) -> None:
+        self.service = service
+        super().__init__(service.channel)
+
+    async def _unary_unary(
+            self,
+            route: str,
+            request: "_MessageLike",
+            response_type: Type["T"],
+            *,
+            timeout: Optional[float] = None,
+            deadline: Optional["Deadline"] = None,
+            metadata: Optional["_MetadataLike"] = None) -> "T":
+        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
+        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
+                                          metadata=metadata)
+
+
+class ProviderStubWithMetadata(ProviderStub):
     skip_metadata = []
 
     def __init__(
@@ -269,7 +293,7 @@ class ProviderService(ServiceBase):
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
         self.channel = create_channel(service_address)
-        self.provider_client = ProviderStub(self.channel)
+        self.provider_client = ProviderStubWithMetadata(self)
 
     def close(self):
         if self.channel:
