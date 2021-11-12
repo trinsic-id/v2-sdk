@@ -12,11 +12,11 @@ import java.time.Instant;
 
 public class TrinsicTrustRegistryService extends ServiceBase {
     public Channel channel;
-    public TrustRegistryGrpc.TrustRegistryStub trustRegistryClient;
+    public TrustRegistryGrpc.TrustRegistryBlockingStub trustRegistryClient;
 
     public TrinsicTrustRegistryService(CommonOuterClass.ServerConfig config) {
         this.channel = Utilities.getChannel(config);
-        this.trustRegistryClient = TrustRegistryGrpc.newStub(this.channel);
+        this.trustRegistryClient = TrustRegistryGrpc.newBlockingStub(this.channel);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setGovernanceFrameworkUri(governanceFramework)
                 .setValidFromUtc(validFrom.getEpochSecond())
                 .setValidUntilUtc(validUntil.getEpochSecond()).build();
-        getTrustRegistryClient(request).registerIssuer(request, observer);
+        getTrustRegistryClient(request).registerIssuer(request);
     }
 
     public void unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
@@ -51,7 +51,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
                 .setGovernanceFrameworkUri(governanceFramework).build();
-        getTrustRegistryClient(request).unregisterIssuer(request, observer);
+        getTrustRegistryClient(request).unregisterIssuer(request);
     }
 
     public void registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil,
@@ -65,7 +65,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setGovernanceFrameworkUri(governanceFramework)
                 .setValidFromUtc(validFrom.getEpochSecond())
                 .setValidUntilUtc(validUntil.getEpochSecond()).build();
-        getTrustRegistryClient(request).registerVerifier(request, observer);
+        getTrustRegistryClient(request).registerVerifier(request);
     }
 
     public void unregisterVerifier(String verifierDid, String presentationType, String governanceFramework,
@@ -78,7 +78,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setPresentationTypeUri(presentationType)
                 .setGovernanceFrameworkUri(governanceFramework)
                 .build();
-        getTrustRegistryClient(request).unregisterVerifier(request, observer);
+        getTrustRegistryClient(request).unregisterVerifier(request);
     }
 
     public void checkIssuerStatus(String issuerDid, String credentialType, String governanceFramework,
@@ -87,7 +87,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
                 .setGovernanceFrameworkUri(governanceFramework).build();
-        getTrustRegistryClient(request).checkIssuerStatus(request, observer);
+        getTrustRegistryClient(request).checkIssuerStatus(request);
     }
 
     public void checkVerifierStatus(String verifierDid, String presentationType, String governanceFramework,
@@ -96,7 +96,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
                 .setDidUri(verifierDid)
                 .setPresentationTypeUri(presentationType)
                 .setGovernanceFrameworkUri(governanceFramework).build();
-        getTrustRegistryClient(request).checkVerifierStatus(request, observer);
+        getTrustRegistryClient(request).checkVerifierStatus(request);
     }
 
     public void searchRegistry(String query, StreamObserver<TrustRegistryOuterClass.SearchRegistryResponse> observer) throws InvalidProtocolBufferException, DidException {
@@ -104,10 +104,10 @@ public class TrinsicTrustRegistryService extends ServiceBase {
             query = "SELECT * FROM c";
         final TrustRegistryOuterClass.SearchRegistryRequest request = TrustRegistryOuterClass.SearchRegistryRequest.newBuilder()
                 .setQuery(query).build();
-        getTrustRegistryClient(request).searchRegistry(request, observer);
+        getTrustRegistryClient(request).searchRegistry(request);
     }
 
-    private TrustRegistryGrpc.TrustRegistryStub getTrustRegistryClient(Message message) throws InvalidProtocolBufferException, DidException {
+    private TrustRegistryGrpc.TrustRegistryBlockingStub getTrustRegistryClient(Message message) throws InvalidProtocolBufferException, DidException {
         return this.trustRegistryClient.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.getMetadata(message)));
     }

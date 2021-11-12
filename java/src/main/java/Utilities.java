@@ -59,7 +59,7 @@ public class Utilities {
 
     public static CommonOuterClass.JsonPayload createPayloadString(HashMap document) {
         var gson = new Gson();
-        return CommonOuterClass.JsonPayload.newBuilder().setJsonString(gson.toJson(document)).build();
+        return CommonOuterClass.JsonPayload.newBuilder().setJsonString(gson.toJson(document, HashMap.class)).build();
     }
 
     public static Channel getChannel(CommonOuterClass.ServerConfig config) {

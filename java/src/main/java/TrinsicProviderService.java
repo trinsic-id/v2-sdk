@@ -3,41 +3,38 @@ import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.MetadataUtils;
-import io.grpc.stub.StreamObserver;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.common.v1.ProviderGrpc;
 import trinsic.services.common.v1.ProviderOuterClass;
 
-import java.net.MalformedURLException;
-
 public class TrinsicProviderService extends ServiceBase {
     public Channel channel;
-    public ProviderGrpc.ProviderStub providerClient;
+    public ProviderGrpc.ProviderBlockingStub providerClient;
 
-    public TrinsicProviderService(CommonOuterClass.ServerConfig config) throws MalformedURLException {
+    public TrinsicProviderService(CommonOuterClass.ServerConfig config) {
         this.channel = Utilities.getChannel(config);
-        this.providerClient = ProviderGrpc.newStub(this.channel);
+        this.providerClient = ProviderGrpc.newBlockingStub(this.channel);
     }
 
     public void shutdown() throws InterruptedException {
         super.shutdown((ManagedChannel) this.channel);
     }
 
-    public void inviteParticipant(ProviderOuterClass.InviteRequest request, StreamObserver<ProviderOuterClass.InviteResponse> observer) {
+    public ProviderOuterClass.InviteResponse inviteParticipant(ProviderOuterClass.InviteRequest request) throws InvalidProtocolBufferException, DidException {
         // Ensure a contact method is set.
         if (request.getContactMethodCase() == ProviderOuterClass.InviteRequest.ContactMethodCase.CONTACTMETHOD_NOT_SET)
             throw new IllegalArgumentException("Contact method must be set.");
 
-        this.providerClient.invite(request, observer);
+        return getProviderClient(request).invite(request);
     }
 
-    public void invitationStatus(ProviderOuterClass.InvitationStatusRequest request, StreamObserver<ProviderOuterClass.InvitationStatusResponse > observer) {
+    public ProviderOuterClass.InvitationStatusResponse invitationStatus(ProviderOuterClass.InvitationStatusRequest request) throws InvalidProtocolBufferException, DidException {
         if (request.getInvitationId().strip().length() == 0)
             throw new IllegalArgumentException("Onboarding reference ID must be set.");
 
-        this.providerClient.invitationStatus(request, observer);
+        return getProviderClient(request).invitationStatus(request);
     }
-    private ProviderGrpc.ProviderStub getProviderClient(Message message) throws InvalidProtocolBufferException, DidException {
+    private ProviderGrpc.ProviderBlockingStub getProviderClient(Message message) throws InvalidProtocolBufferException, DidException {
         return this.providerClient.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.getMetadata(message)));
     }
