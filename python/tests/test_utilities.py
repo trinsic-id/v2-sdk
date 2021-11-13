@@ -3,7 +3,6 @@ import unittest
 from trinsic.services import create_channel
 
 
-# noinspection PyBroadException
 class TestUtilities(unittest.IsolatedAsyncioTestCase):
     url_params = [
         ("http://localhost:5000", False),
