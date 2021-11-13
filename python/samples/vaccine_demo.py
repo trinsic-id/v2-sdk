@@ -3,7 +3,7 @@ import json
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.universalwallet.v1 import WalletProfile
-from trinsic.services import WalletService, get_test_server_config
+from trinsic.services import WalletService, trinsic_test_config
 
 
 def _base_data_path() -> str:
@@ -19,7 +19,7 @@ def _vaccine_cert_frame_path() -> str:
 
 
 async def vaccine_demo():
-    wallet_service = WalletService(get_test_server_config())
+    wallet_service = WalletService(trinsic_test_config())
 
     # SETUP ACTORS
     # Create 3 different profiles for each participant in the scenario

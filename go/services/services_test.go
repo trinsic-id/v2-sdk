@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"runtime"
 	"testing"
@@ -31,7 +30,7 @@ func TestServiceBase_SetProfile(t *testing.T) {
 	assert := assert.New(t)
 	base := ServiceBase{}
 	// No profile set, should be an error
-	ctxt, err := base.GetMetadata()
+	ctxt, err := base.GetMetadata(nil)
 	if !assert.EqualErrorf(err, "profile not set", "profile not set") {
 		return
 	}
@@ -48,11 +47,11 @@ func TestServiceBase_SetProfile(t *testing.T) {
 		return
 	}
 
-	err = base.SetProfile(demoWallet)
+	base.SetProfile(demoWallet)
 	if !assert.NoError(err) {
 		return
 	}
-	ctxt, err = base.GetMetadata()
+	ctxt, err = base.GetMetadata(nil)
 	if !assert.NoError(err) {
 		return
 	}
@@ -61,14 +60,14 @@ func TestServiceBase_SetProfile(t *testing.T) {
 
 func TestCreateChannelIfNeeded(t *testing.T) {
 	const validHttpAddress = "http://localhost:5000"
-	const validHttpsAddress = "https://localhost:5000" // Currently, fails due to lack of HTTPS support.
+	const validHttpsAddress = "https://localhost:5000"
 	const validIpAddress = "http://20.75.134.127:80"
 	const missingPortIpAddress = "http://20.75.134.127"
 	const missingPortAddress = "http://localhost"
 	const missingProtocolAddress = "localhost:5000"
 	const blankAddress = ""
 	testAddresses := []string{validHttpAddress, validHttpsAddress, validIpAddress, missingPortIpAddress, missingPortAddress, missingProtocolAddress, blankAddress}
-	throwsException := []bool{false, true, false, true, true, true, true}
+	throwsException := []bool{false, false, false, true, true, true, true}
 
 	for ij := 0; ij < len(testAddresses); ij++ {
 		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
@@ -119,7 +118,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
-	err = walletService.SetProfile(clinic)
+	walletService.SetProfile(clinic)
 	failError(t, "error setting profile", err)
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
@@ -134,7 +133,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
-	err = walletService.SetProfile(allison)
+	walletService.SetProfile(allison)
 	failError(t, "error setting profile", err)
 	itemId, err := walletService.InsertItem(context.Background(), credential)
 	failError(t, "error inserting item", err)
@@ -144,7 +143,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// Allison shares the credential with the venue.
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
-	err = walletService.SetProfile(allison)
+	walletService.SetProfile(allison)
 	failError(t, "error reading file", err)
 
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
@@ -159,7 +158,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
-	err = walletService.SetProfile(airline)
+	walletService.SetProfile(airline)
 	failError(t, "error setting profile", err)
 	valid, err := walletService.VerifyProof(context.Background(), credentialProof)
 	failError(t, "error verifying proof", err)
@@ -170,21 +169,13 @@ func TestVaccineCredentials(t *testing.T) {
 }
 
 func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
-	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
-	if len(serverAddress) == 0 {
-		serverAddress = "http://127.0.0.1:5000"
-	}
-	walletService, err := CreateWalletService(serverAddress, nil)
+	walletService, err := CreateWalletService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
 	failError(t, "error creating service", err)
 	return walletService, err
 }
 
 func createProviderServiceViaEnvVar(t *testing.T) (ProviderService, error) {
-	serverAddress := os.Getenv("TRINSIC_SERVER_ADDRESS")
-	if len(serverAddress) == 0 {
-		serverAddress = "http://127.0.0.1:5000"
-	}
-	providerService, err := CreateProviderService(serverAddress, nil)
+	providerService, err := CreateProviderService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
 	failError(t, "error creating service", err)
 	return providerService, err
 }

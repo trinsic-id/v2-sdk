@@ -23,7 +23,7 @@ from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub,
 from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 
 
-def get_test_server_config() -> ServerConfig:
+def trinsic_test_config() -> ServerConfig:
     endpoint = getenv('TEST_SERVER_ENDPOINT')
     port = int(getenv('TEST_SERVER_PORT', 443))
     use_tls = bool(strtobool(getenv('TEST_SERVER_USE_TLS', 'true')))

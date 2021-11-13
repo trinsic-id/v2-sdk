@@ -5,7 +5,7 @@ import okapi.okapi_utils
 
 from samples.provider_demo import provider_demo
 from samples.vaccine_demo import vaccine_demo
-from trinsic.services import WalletService, get_test_server_config
+from trinsic.services import WalletService, trinsic_test_config
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
@@ -13,7 +13,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         okapi.okapi_utils.download_binaries(False)
 
     async def test_servicebase_setprofile(self):
-        wallet_service = WalletService(get_test_server_config())
+        wallet_service = WalletService(trinsic_test_config())
         with self.assertRaises(Exception) as excep:
             self.assertIsNotNone(wallet_service.metadata(None))
         self.assertTrue(excep.exception.args[0].lower() == "profile not set")

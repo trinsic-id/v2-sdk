@@ -2,11 +2,16 @@ package services
 
 import (
 	"context"
+	"crypto/x509"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"google.golang.org/grpc/credentials"
+	"lukechampine.com/blake3"
 	"net/url"
+	"os"
+	"strconv"
 	"time"
 
 	"github.com/trinsic-id/okapi/go/okapi"
@@ -15,23 +20,53 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/types/known/structpb"
+	_ "google.golang.org/protobuf/types/known/structpb"
 )
 
 type Document map[string]interface{}
 
+func TrinsicProductionConfig() *sdk.ServerConfig {
+	return &sdk.ServerConfig{
+		Endpoint: "prod.trinsic.cloud",
+		Port:     443,
+		UseTls:   true,
+	}
+}
+
+func TrinsicTestConfig() *sdk.ServerConfig {
+	server := os.Getenv("TEST_SERVER_ENDPOINT")
+	port, err := strconv.Atoi(os.Getenv("TEST_SERVER_PORT"))
+	useTls, err2 := strconv.ParseBool(os.Getenv("TEST_SERVER_USE_TLS"))
+	if err != nil || port <= 0 {
+		port = 443
+	}
+	if err2 != nil {
+		useTls = true
+	}
+
+	return &sdk.ServerConfig{
+		Endpoint: server,
+		Port: int32(port),
+		UseTls:   useTls,
+	}
+}
+
 type ServiceBase struct {
-	capabilityInvocation string
+	profile *sdk.WalletProfile
 }
 
 type Service interface {
-	GetMetadataContext(userContext context.Context) (context.Context, error)
-	GetMetadata() (metadata.MD, error)
-	SetProfile(profile *sdk.WalletProfile) error
+	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
+	GetMetadata(message proto.Message) (metadata.MD, error)
+	SetProfile(profile *sdk.WalletProfile)
 }
 
-func (s *ServiceBase) GetMetadataContext(userContext context.Context) (context.Context, error) {
-	md, err := s.GetMetadata()
+func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
+	s.profile = profile
+}
+
+func (s *ServiceBase) GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error) {
+	md, err := s.GetMetadata(message)
 	if err != nil {
 		return nil, err
 	}
@@ -41,51 +76,39 @@ func (s *ServiceBase) GetMetadataContext(userContext context.Context) (context.C
 	return metadata.NewOutgoingContext(userContext, md), nil
 }
 
-func (s *ServiceBase) GetMetadata() (metadata.MD, error) {
-	if s.capabilityInvocation == "" {
+func (s *ServiceBase) GetMetadata(message proto.Message) (metadata.MD, error) {
+	if s.profile == nil {
 		return nil, errors.New("profile not set")
 	}
+
+	data, err := proto.Marshal(message)
+	if err != nil {
+		return nil, err
+	}
+	requestHash := blake3.Sum256(data)
+	nonce := &sdk.Nonce{
+		Timestamp:   time.Now().UnixMilli(),
+		RequestHash: requestHash[:],
+	}
+	nonceBytes, err := proto.Marshal(nonce)
+	if err != nil {
+		return nil, err
+	}
+
+	proof, err := okapi.Oberon().CreateProof(&okapiproto.CreateOberonProofRequest{
+		Data:  s.profile.AuthData,
+		Token: s.profile.AuthToken,
+		Nonce: nonceBytes,
+	})
+	if err != nil {
+		return nil, err
+	}
 	return metadata.New(map[string]string{
-		"capability-invocation": s.capabilityInvocation,
+		"authorization": fmt.Sprintf("Oberon proof=%s,data=%s,nonce=%s",
+			base64.URLEncoding.EncodeToString(proof.Proof),
+			base64.URLEncoding.EncodeToString(s.profile.AuthData),
+			base64.URLEncoding.EncodeToString(nonceBytes)),
 	}), nil
-}
-
-func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) error {
-	capabilityStruct, err := structpb.NewStruct(map[string]interface{}{
-		"@context":         "https://w3id.org/security/v2",
-		"invocationTarget": profile.WalletId,
-		"proof": map[string]interface{}{
-			"proofPurpose": "capabilityInvocation",
-			"created":      time.Now().Format(time.RFC3339),
-			"capability":   profile.Capability,
-		},
-	})
-	if err != nil {
-		return err
-	}
-
-	invokerKey := okapiproto.JsonWebKey{}
-	err = proto.Unmarshal(profile.InvokerJwk, &invokerKey)
-	if err != nil {
-		return err
-	}
-
-	proofResponse, err := okapi.LdProofs().CreateProof(&okapiproto.CreateProofRequest{
-		Document: capabilityStruct,
-		Key:      &invokerKey,
-		Suite:    okapiproto.LdSuite_LD_SUITE_JCSED25519SIGNATURE2020,
-	})
-	if err != nil {
-		return err
-	}
-
-	proofJson, err := json.Marshal(proofResponse.SignedDocument.AsMap())
-	if err != nil {
-		return err
-	}
-
-	s.capabilityInvocation = base64.StdEncoding.EncodeToString(proofJson)
-	return nil
 }
 
 type WalletService interface {
@@ -116,6 +139,14 @@ func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (Walle
 	return service, nil
 }
 
+func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
+	scheme := "http"
+	if config.UseTls {
+		scheme = "https"
+	}
+	return fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
+}
+
 func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
 	if channel == nil {
 		var serviceUrl, err = url.Parse(serviceAddress)
@@ -134,9 +165,10 @@ func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, bloc
 			dialOptions = append(dialOptions, grpc.WithInsecure())
 		} else {
 			// TODO - Get the credentials bundle
-			//credBundle := credentials.Bundle{}
-			//dialOptions = append(dialOptions, grpc.WithCredentialsBundle(credentials.Bundle()))
-			return nil, errors.New("HTTPS not supported yet due to credential bundle declaration")
+			pool, err := x509.SystemCertPool()
+			if err != nil { return nil, err}
+			creds := credentials.NewClientTLSFromCert(pool, "")
+			dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
 		}
 		channel, err = grpc.Dial(dialUrl, dialOptions...)
 		if err != nil {
@@ -154,15 +186,15 @@ type WalletBase struct {
 }
 
 func (w *WalletBase) RegisterOrConnect(userContext context.Context, email string) error {
-	connectRequest := sdk.ConnectRequest{
+	connectRequest := &sdk.ConnectRequest{
 		ContactMethod: &sdk.ConnectRequest_Email{Email: email},
 	}
 
-	md, err := w.GetMetadataContext(userContext)
+	md, err := w.GetMetadataContext(userContext, connectRequest)
 	if err != nil {
 		return err
 	}
-	_, err = w.walletClient.ConnectExternalIdentity(md, &connectRequest)
+	_, err = w.walletClient.ConnectExternalIdentity(md, connectRequest)
 	if err != nil {
 		return err
 	}
@@ -170,17 +202,7 @@ func (w *WalletBase) RegisterOrConnect(userContext context.Context, email string
 }
 
 func (w *WalletBase) CreateWallet(userContext context.Context, securityCode string) (*sdk.WalletProfile, error) {
-	dk := okapi.DidKey()
-
-	// Generate new DID used by the current device
-	myKey, err := dk.Generate(&okapiproto.GenerateKeyRequest{KeyType: okapiproto.KeyType_KEY_TYPE_ED25519})
-	if err != nil {
-		return nil, err
-	}
-
-	myDidDocument := myKey.DidDocument.AsMap()
 	walletRequest := &sdk.CreateWalletRequest{
-		Controller:   myDidDocument["id"].(string),
 		SecurityCode: securityCode,
 	}
 
@@ -188,17 +210,10 @@ func (w *WalletBase) CreateWallet(userContext context.Context, securityCode stri
 	if err != nil {
 		return nil, err
 	}
-
-	keyBytes, err := proto.Marshal(myKey.Key[0])
-	if err != nil {
-		return nil, err
-	}
 	return &sdk.WalletProfile{
-		DidDocument: &sdk.JsonPayload{Json: &sdk.JsonPayload_JsonStruct{JsonStruct: myKey.DidDocument}},
-		WalletId:    createWalletResponse.WalletId,
-		Invoker:     createWalletResponse.Invoker,
-		Capability:  createWalletResponse.Capability,
-		InvokerJwk:  keyBytes,
+		AuthData:    createWalletResponse.AuthData,
+		AuthToken:   createWalletResponse.AuthToken,
+		IsProtected: createWalletResponse.IsProtected,
 	}, nil
 }
 
@@ -207,7 +222,7 @@ func (w *WalletBase) IssueCredential(userContext context.Context, document Docum
 	if err != nil {
 		return nil, err
 	}
-	issueRequest := sdk.IssueRequest{
+	issueRequest := &sdk.IssueRequest{
 		Document: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonBytes),
@@ -215,11 +230,11 @@ func (w *WalletBase) IssueCredential(userContext context.Context, document Docum
 		},
 	}
 
-	md, err := w.GetMetadataContext(userContext)
+	md, err := w.GetMetadataContext(userContext, issueRequest)
 	if err != nil {
 		return nil, err
 	}
-	response, err := w.credentialClient.Issue(md, &issueRequest)
+	response, err := w.credentialClient.Issue(md, issueRequest)
 	if err != nil {
 		return nil, err
 	}
@@ -232,13 +247,14 @@ func (w *WalletBase) IssueCredential(userContext context.Context, document Docum
 }
 
 func (w *WalletBase) Search(userContext context.Context, query string) (*sdk.SearchResponse, error) {
-	md, err := w.GetMetadataContext(userContext)
+	request := &sdk.SearchRequest{
+		Query: query,
+	}
+	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
-	response, err := w.walletClient.Search(md, &sdk.SearchRequest{
-		Query: query,
-	})
+	response, err := w.walletClient.Search(md, request)
 	if err != nil {
 		return nil, err
 	}
@@ -250,17 +266,18 @@ func (w *WalletBase) InsertItem(userContext context.Context, item Document) (str
 	if err != nil {
 		return "", err
 	}
-	md, err := w.GetMetadataContext(userContext)
-	if err != nil {
-		return "", err
-	}
-	response, err := w.walletClient.InsertItem(md, &sdk.InsertItemRequest{
+	request := &sdk.InsertItemRequest{
 		Item: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
 			},
 		},
-	})
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return "", err
+	}
+	response, err := w.walletClient.InsertItem(md, request)
 	if err != nil {
 		return "", err
 	}
@@ -272,11 +289,7 @@ func (w *WalletBase) Send(userContext context.Context, document Document, email 
 	if err != nil {
 		return err
 	}
-	md, err := w.GetMetadataContext(userContext)
-	if err != nil {
-		return err
-	}
-	_, err = w.credentialClient.Send(md, &sdk.SendRequest{
+	request := &sdk.SendRequest{
 		DeliveryMethod: &sdk.SendRequest_Email{
 			Email: email,
 		},
@@ -285,7 +298,12 @@ func (w *WalletBase) Send(userContext context.Context, document Document, email 
 				JsonString: string(jsonString),
 			},
 		},
-	})
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return err
+	}
+	_, err = w.credentialClient.Send(md, request)
 	if err != nil {
 		return err
 	}
@@ -297,18 +315,19 @@ func (w *WalletBase) CreateProof(userContext context.Context, documentId string,
 	if err != nil {
 		return nil, err
 	}
-	md, err := w.GetMetadataContext(userContext)
-	if err != nil {
-		return nil, err
-	}
-	proof, err := w.credentialClient.CreateProof(md, &sdk.CreateProofRequest{
+	request := &sdk.CreateProofRequest{
 		DocumentId: documentId,
 		RevealDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
 			},
 		},
-	})
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	proof, err := w.credentialClient.CreateProof(md, request)
 	if err != nil {
 		return nil, err
 	}
@@ -325,17 +344,18 @@ func (w *WalletBase) VerifyProof(userContext context.Context, proofDocument Docu
 	if err != nil {
 		return false, err
 	}
-	md, err := w.GetMetadataContext(userContext)
-	if err != nil {
-		return false, err
-	}
-	proof, err := w.credentialClient.VerifyProof(md, &sdk.VerifyProofRequest{
+	request := &sdk.VerifyProofRequest{
 		ProofDocument: &sdk.JsonPayload{
 			Json: &sdk.JsonPayload_JsonString{
 				JsonString: string(jsonString),
 			},
 		},
-	})
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return false, err
+	}
+	proof, err := w.credentialClient.VerifyProof(md, request)
 	if err != nil {
 		return false, err
 	}
