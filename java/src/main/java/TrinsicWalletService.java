@@ -47,9 +47,10 @@ public class TrinsicWalletService extends ServiceBase {
     }
 
     public HashMap issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
-        final VerifiableCredentials.IssueRequest request = VerifiableCredentials.IssueRequest.newBuilder()
+        var request = VerifiableCredentials.IssueRequest.newBuilder()
                 .setDocument(Utilities.createPayloadString(document)).build();
-        return (new Gson()).fromJson(getCredentialClient(request).issue(request).getDocument().getJsonString(), HashMap.class);
+        var response = getCredentialClient(request).issue(request);
+        return new Gson().fromJson(response.getDocument().getJsonString(), HashMap.class);
     }
 
     public UniversalWallet.SearchResponse search(String query) throws InvalidProtocolBufferException, DidException {

@@ -33,7 +33,7 @@ public abstract class ServiceBase {
         var messageHash = hasher.update(request.toByteArray()).done(64);
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
-                .setTimestamp(Instant.now().getEpochSecond())
+                .setTimestamp(Instant.now().getEpochSecond()*1000)
                 .setRequestHash(ByteString.copyFrom(messageHash)).build();
         var proof = Oberon.createProof(Security.CreateOberonProofRequest.newBuilder()
                 .setToken(this.profile.getAuthToken())
@@ -46,7 +46,7 @@ public abstract class ServiceBase {
                 "nonce=" + Base64.getUrlEncoder().encodeToString(nonce.toByteArray());
 
         var metadata = new Metadata();
-        metadata.put(Metadata.Key.of("Authorization", Metadata.ASCII_STRING_MARSHALLER), oberonBuilder);
+        metadata.put(Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER), oberonBuilder);
         return metadata;
     }
 
