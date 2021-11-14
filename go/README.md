@@ -8,7 +8,7 @@ go get https://github.com/trinsic-id/sdk/go
 
 ## Dependencies
 
-This SDK depends on Okapi library which is ditributed as a C-callable library.
+This SDK depends on Okapi library which is distributed as a C-callable library.
 The bindings use `cgo` to call into this native functionality. You must have the Okapi static library in 
 your library search path, including the C headers. You can use the bellow instructons to install them for your platform.
 
