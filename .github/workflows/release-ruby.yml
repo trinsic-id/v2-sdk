@@ -34,7 +34,9 @@ jobs:
         run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
         shell: pwsh
         env:
-          TRINSIC_SERVER_ADDRESS: http://trinsic-staging.centralus.azurecontainer.io:5000/
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - name: Publish gem
         uses: dawidd6/action-publish-gem@v1.2.0
         with:

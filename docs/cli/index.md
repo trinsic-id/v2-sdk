@@ -8,7 +8,7 @@ The CLI can be installed directly as binary or built from source.
 ### Using Homebrew for MacOS and Linux
 
 ```
-brew tap trinsic-id/homebrew-tap
+brew tap trinsic-id/tap
 brew install trinsic-cli
 ```
 
@@ -44,7 +44,7 @@ Typical configuration file may look like this:
 
 ```toml
 [server]
-address = "http://localhost:5000/"
+address = "https://prod.trinsic.cloud:443/"
 
 [profile]
 default = "my_profile"

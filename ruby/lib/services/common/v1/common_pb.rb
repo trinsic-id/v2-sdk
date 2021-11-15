@@ -17,6 +17,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
         optional :json_bytes, :bytes, 3
       end
     end
+    add_message "services.common.v1.ServerConfig" do
+      optional :endpoint, :string, 1
+      optional :port, :int32, 2
+      optional :use_tls, :bool, 3
+    end
+    add_message "services.common.v1.Nonce" do
+      optional :timestamp, :int64, 1
+      optional :request_hash, :bytes, 2
+    end
     add_enum "services.common.v1.ResponseStatus" do
       value :SUCCESS, 0
       value :WALLET_ACCESS_DENIED, 10
@@ -38,6 +47,8 @@ module Services
     module V1
       RequestOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.RequestOptions").msgclass
       JsonPayload = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.JsonPayload").msgclass
+      ServerConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ServerConfig").msgclass
+      Nonce = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.Nonce").msgclass
       ResponseStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ResponseStatus").enummodule
       JsonFormat = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.JsonFormat").enummodule
     end

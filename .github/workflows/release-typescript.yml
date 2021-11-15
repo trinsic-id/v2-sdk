@@ -2,11 +2,12 @@ name: "TypeScript (release)"
 
 on:
   workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Package Version (leave empty for latest release)'
+        required: false
   release:
     types: [published, prereleased]
-  
-env:
-  DEFAULT_TEST_URL: "https://trinsic-staging.centralus.azurecontainer.io:443"
 
 jobs:
   publish_npm:
@@ -36,16 +37,19 @@ jobs:
           npm test
         shell: pwsh
         env:
-          TRINSIC_TEST_URL: ${{ github.event.inputs.testUrl || env.DEFAULT_TEST_URL }}
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
-          TEST_SERVER_PORT: 443
-          TEST_SERVER_USE_TLS: true
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - name: Generate Package Version
         run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' | ConvertFrom-Json
-          $version = $json.tag_name.Trim("v")
+          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
+            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
+          $version = if ([string]::IsNullOrEmpty($env:MANUAL_VERSION)) { $json.tag_name.Trim("v") } else { $env:MANUAL_VERSION.Trim("v") }
           echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
         shell: pwsh
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          MANUAL_VERSION: ${{ github.event.inputs.packageVersion }}"
       # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm version $PACKAGE_VERSION

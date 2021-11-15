@@ -3,6 +3,7 @@ name = "trinsic"
 version = "0.1.0"
 authors = ["Trinsic <support@trinsic.id>"]
 edition = "2021"
+license = "Apache-2.0"
 
 [dependencies]
 tonic = { version = "0.6", features = ["tls", "tls-roots"] }
@@ -32,3 +33,16 @@ path = "src/main.rs"
 name = "trinsic"
 path = "src/lib.rs"
 doctest = false
+
+[package.metadata.deb]
+maintainer = "Tomislav Markovski <tomislav@trinsic.id>"
+copyright = "2021, Trinsic <hello@trinsic.id>"
+license-file = ["../LICENSE", "0"]
+extended-description = """\
+Command-line tool for Trinsic APIs"""
+depends = "$auto"
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/release/trinsic", "usr/local/bin/", "755"],
+]

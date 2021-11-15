@@ -33,3 +33,6 @@ Check out our [dedicated repository with various examples](https://github.com/tr
 - [Ruby](https://docs-v2.trinsic.id/ruby)
 - [Command Line](https://docs-v2.trinsic.id/cli)
 
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/bc28dc54095d6dd65448294e15fc45ff308b65e5.svg "Repobeats analytics image")

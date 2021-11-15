@@ -9,10 +9,6 @@ fn main() {
     config
         .compile_well_known_types(true)
         .type_attribute(
-            "WalletProfile",
-            "#[derive(::serde::Serialize, ::serde::Deserialize, Copy)]",
-        )
-        .type_attribute(
             "JsonPayload",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )

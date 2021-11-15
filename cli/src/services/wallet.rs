@@ -2,8 +2,7 @@ use std::default::*;
 
 use super::super::parser::wallet::*;
 use crate::services::config::*;
-use okapi::{proto::keys::*, DIDKey, MessageFormatter};
-use tonic::codegen::Body;
+use okapi::MessageFormatter;
 use tonic::transport::Channel;
 use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;

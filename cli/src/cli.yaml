@@ -1,5 +1,5 @@
 name: trinsic
-version: "1.0.1"
+version: "1.0.0"
 author: Trinsic Technologies Inc.
 about: >-
 
@@ -35,7 +35,7 @@ subcommands:
       subcommands:
         - create:
             about: Create a new wallet
-            version: "0.1"
+
             args:
               - description:
                   long: description
@@ -81,7 +81,6 @@ subcommands:
                   takes_value: true
         - insert-item:
             about: Insert item into the wallet
-            version: "0.1"
             args:
               - type:
                   long: type
@@ -112,11 +111,10 @@ subcommands:
                   required: true
   - issuer:
       about: Issuer Service
-      version: "0.1"
+
       subcommands:
         - issue:
             about: Issue a credential
-            version: "0.1"
             args:
               - document:
                   long: document
@@ -130,7 +128,6 @@ subcommands:
                   takes_value: true
         - create-proof:
             about: Create a proof
-            version: "0.1"
             args:
               - reveal-document:
                   long: reveal-document
@@ -152,7 +149,7 @@ subcommands:
                   required: true
         - verify-proof:
             about: Verify a proof
-            version: "0.1"
+
             args:
               - proof-document:
                   long: proof-document
@@ -162,11 +159,11 @@ subcommands:
                   required: true
   - provider:
       about: Provider service
-      version: "0.1"
+
       subcommands:
         - create_organization:
             about: "Create an organization"
-            version: "0.1"
+
             args:
               - name:
                   value_name: STRING
@@ -180,7 +177,7 @@ subcommands:
                   required: true
         - invite:
             about: "Send an invitation"
-            version: "0.1"
+
             args:
               - description:
                   long: description
@@ -210,13 +207,13 @@ subcommands:
                   required: false
         - invitation_status:
             about: "Check invitation status"
-            version: "0.1"
+
         - create-credential-template:
             about: "Create credential template"
-            version: "0.1"
+
         - list-credential-templates:
             about: "List credential templates"
-            version: "0.1"
+
   - trust-registry:
       about: Trust Registry
       subcommands:

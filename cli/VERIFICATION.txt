@@ -1,8 +1,0 @@
-﻿VERIFICATION
-Verification is intended to assist the Chocolatey moderators and community
-in verifying that this package's contents are trustworthy.
- 
-This package is developed by Trinsic (https://trinsic.id).
-
-Authors:
-    Tomislav Markovski (tomislav@trinsic.id)

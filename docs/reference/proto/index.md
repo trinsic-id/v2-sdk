@@ -16,7 +16,9 @@
   
 - [services/common/v1/common.proto](#services/common/v1/common.proto)
     - [JsonPayload](#services.common.v1.JsonPayload)
+    - [Nonce](#services.common.v1.Nonce)
     - [RequestOptions](#services.common.v1.RequestOptions)
+    - [ServerConfig](#services.common.v1.ServerConfig)
   
     - [JsonFormat](#services.common.v1.JsonFormat)
     - [ResponseStatus](#services.common.v1.ResponseStatus)
@@ -285,6 +287,22 @@ Protocol buffer message signing and encryption
 
 
 
+<a name="services.common.v1.Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon prrof
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| timestamp | [int64](#int64) |  | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](#bytes) |  | blake3256 hash of the request body |
+
+
+
+
+
+
 <a name="services.common.v1.RequestOptions"></a>
 
 ### RequestOptions
@@ -294,6 +312,23 @@ Protocol buffer message signing and encryption
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | response_json_format | [JsonFormat](#services.common.v1.JsonFormat) |  |  |
+
+
+
+
+
+
+<a name="services.common.v1.ServerConfig"></a>
+
+### ServerConfig
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| endpoint | [string](#string) |  | service endpoint |
+| port | [int32](#int32) |  | service port |
+| use_tls | [bool](#bool) |  | indicates if tls is used |
 
 
 
@@ -954,9 +989,8 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| controller | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| security_code | [string](#string) |  | (Optional) Supply an invitation id to associate this caller profile to an existing cloud wallet. |
+| description | [string](#string) |  | optional description of the wallet |
+| security_code | [string](#string) |  | (Optional) Supply an invitation id to associate this caller device to an existing cloud wallet. |
 
 
 
@@ -971,10 +1005,10 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| wallet_id | [string](#string) |  |  |
-| capability | [string](#string) |  |  |
-| invoker | [string](#string) |  |  |
+| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | the status code of the response |
+| auth_data | [bytes](#bytes) |  | authentication data containing info about the cloud wallet and device the user is connecting from |
+| auth_token | [bytes](#bytes) |  | authoritative token issued by the server that is required to prove knowledge during authentication |
+| is_protected | [bool](#bool) |  | indicates if the token issued protected with a security code, usually delivered by email or sms |
 
 
 
@@ -1169,11 +1203,11 @@ as it contains private key information.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| did_document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| wallet_id | [string](#string) |  |  |
-| invoker | [string](#string) |  |  |
-| capability | [string](#string) |  |  |
-| invoker_jwk | [bytes](#bytes) |  |  |
+| name | [string](#string) |  |  |
+| auth_data | [bytes](#bytes) |  |  |
+| auth_token | [bytes](#bytes) |  |  |
+| is_protected | [bool](#bool) |  |  |
+| config | [services.common.v1.ServerConfig](#services.common.v1.ServerConfig) |  |  |
 
 
 
@@ -1196,8 +1230,6 @@ as it contains private key information.
 | GetProviderConfiguration | [GetProviderConfigurationRequest](#services.universalwallet.v1.GetProviderConfigurationRequest) | [GetProviderConfigurationResponse](#services.universalwallet.v1.GetProviderConfigurationResponse) |  |
 | ConnectExternalIdentity | [ConnectRequest](#services.universalwallet.v1.ConnectRequest) | [ConnectResponse](#services.universalwallet.v1.ConnectResponse) |  |
 | CreateWallet | [CreateWalletRequest](#services.universalwallet.v1.CreateWalletRequest) | [CreateWalletResponse](#services.universalwallet.v1.CreateWalletResponse) |  |
-| CreateWalletWithWorkflow | [CreateWalletRequest](#services.universalwallet.v1.CreateWalletRequest) | [CreateWalletResponse](#services.universalwallet.v1.CreateWalletResponse) |  |
-| CreateWalletEncrypted | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |
 | Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) |  |
 | InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) |  |
 | GrantAccess | [GrantAccessRequest](#services.universalwallet.v1.GrantAccessRequest) | [GrantAccessResponse](#services.universalwallet.v1.GrantAccessResponse) |  |
