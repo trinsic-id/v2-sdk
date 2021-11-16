@@ -24,7 +24,7 @@ nav:
     # - Ruby: ruby/index.md
     # - Go: go/index.md
     # - Java: java/index.md
-    # - Web: web/index.md
+    - Web: web/index.md
     # - iOS: ios/index.md
     #  - Android: android/index.mdw
   - Reference:
