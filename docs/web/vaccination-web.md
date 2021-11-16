@@ -90,7 +90,7 @@ const walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
 ## Setup wallet profiles
 
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
-To create a new wallet profile, we use the [Create Wallet](/reference/services/wallet-service/#create-wallet) feature.
+To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
 ```js
 let allison = await walletService.createWallet();
@@ -118,7 +118,7 @@ Read more about [security profiles](../reference/index.md/profiles) and authenti
 
 ## Certificate issuance
 
-Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This ceritificate is digitially signed by the clinic, acting as an issuer.
+Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
 The certificate is in a JSON form, and for this example, we load the JSON structure directly.
 
 ```js
@@ -159,7 +159,7 @@ At this point, the clinic can send the signed credential to Allison using any av
 
 ## Store certificate in personal wallet
 
-Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](/reference/services/wallet-service/#insert-record) function.
+Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](../reference/services/wallet-service/#insert-record) function.
 
 ```js
 // Set active profile to 'allison' so we can manage her cloud wallet
@@ -176,7 +176,7 @@ This request can be communicated using any exchange protocol. Again, we'll assum
 
 This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
 
-Allison can use the [Create Proof](/reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
+Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
 
 ```js
 // We'll read the request frame from a file and communicate this with Allison
@@ -210,7 +210,7 @@ let credentialProof = await walletService.createProof(itemId, JSON.parse(proofRe
 
 ## Verification
 
-Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](/reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
+Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](../reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
 
 ```js
 // Set active profile to 'airline'

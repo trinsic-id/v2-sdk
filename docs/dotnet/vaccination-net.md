@@ -44,7 +44,7 @@ var walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
 ## Setup wallet profiles
 
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
-To create a new wallet profile, we use the [Create Wallet](/reference/services/wallet-service/#create-wallet) feature.
+To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
 ```csharp
 var allison = await walletService.CreateWallet();
@@ -65,7 +65,7 @@ File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 ```
 
-Read more about [security profiles](/reference/#authorization) and authentication.
+Read more about [security profiles](../reference/#authorization) and authentication.
 
 ## Certificate issuance
 
@@ -119,7 +119,7 @@ Let's save this request in a file named `vaccination-certificate-frame.jsonld`
 
 This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
 
-Allison can use the [Create Proof](/reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
+Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
 
 ```csharp
 // We'll read the request frame from a file and communicate this with Allison
@@ -135,7 +135,7 @@ var credentialProof = await walletService.CreateProof(itemId, JObject.Parse(proo
 
 ## Verification
 
-Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](/reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
+Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](../reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
 
 ```csharp
 // Set active profile to 'airline'
