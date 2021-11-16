@@ -69,7 +69,7 @@ class TrinsicServicesTest {
     }
 
     @Test
-    public void testTrinsicServiceDemo() throws IOException, DidException, InterruptedException {
+    public void testTrinsicServiceDemo() throws IOException, DidException {
         var walletService = new TrinsicWalletService(Utilities.getTestServerConfig());
 
         // SETUP ACTORS

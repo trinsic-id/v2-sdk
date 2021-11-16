@@ -30,10 +30,11 @@ public abstract class ServiceBase {
         if (this.profile == null)
             throw new IllegalArgumentException("Profile not set");
 
-        var messageHash = hasher.update(request.toByteArray()).done(64);
+        var bytes = request.toByteArray();
+        var messageHash = hasher.update(bytes).done(bytes.length / 8);
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
-                .setTimestamp(Instant.now().getEpochSecond()*1000)
+                .setTimestamp(Instant.now().toEpochMilli())
                 .setRequestHash(ByteString.copyFrom(messageHash)).build();
         var proof = Oberon.createProof(Security.CreateOberonProofRequest.newBuilder()
                 .setToken(this.profile.getAuthToken())
