@@ -99,7 +99,7 @@ def update_python():
     :return:
     """
     # Remove everything under output directory
-    python_proto_path = join(get_language_dir('python'), "proto")
+    python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
     clean_proto_dir(python_proto_path)
     # Paths for proto compilation
     file_path = abspath(dirname(abspath(__file__)))
