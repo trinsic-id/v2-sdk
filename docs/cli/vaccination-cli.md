@@ -1,3 +1,9 @@
+[server]
+address = "https://prod.trinsic.cloud:443"
+
+[profile]
+default = "test-prod"
+
 # Vaccination Use Case for CLI
 
 It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with the Trinsic CLI. It assumes no prior knowledge to decentralized identity.

@@ -1,0 +1,12 @@
+{
+  "invocationTarget": "urn:trinsic:wallets:NWR6T2aQjS16z3jipUchfk",
+  "proof": {
+    "signatureValue": "Q412HCfMjK4Xi9SMfFETwWiWbFgj1QcajjZiqtw5WcZhzwT2BPwhhE6c1nt8Bq7GfSN7V6pf8kZRaQ3exJNR5Vs",
+    "verificationMethod": "did:key:z6MkoBxsjsK9k5WUHJzLX7QsiM1cKuGjHv2etncG2PhNpSsa#z6MkoBxsjsK9k5WUHJzLX7QsiM1cKuGjHv2etncG2PhNpSsa",
+    "created": "2021-09-08T16:17:02",
+    "proofPurpose": "capabilityInvocation",
+    "capability": "urn:trinsic:wallets:NWR6T2aQjS16z3jipUchfk",
+    "type": "JcsEd25519Signature2020"
+  },
+  "@context": "https://w3id.org/security/v2"
+}
