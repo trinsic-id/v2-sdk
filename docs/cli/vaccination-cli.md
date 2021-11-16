@@ -7,7 +7,6 @@ It can be challenging to understand how verifiable credentials work until you se
 /snippets/intro-use-case.md
 --8<----
 
-
 ## Meet Allison
 
 Allison's town just received the go ahead to vaccinate everyone.
@@ -38,7 +37,7 @@ These wallets have been created by you, your role is an ecosystem provider. Your
     ```
 
 !!! note
-Reference: [Create Wallet](/reference/services/wallet-service/#create-wallet)
+Reference: [Create Wallet](../reference/services/wallet-service/#create-wallet)
 
 ---
 
@@ -56,7 +55,7 @@ The credential is signed, but not sent. For now, sending the credential should b
     ```
 
 !!! info
-Reference: [Issue a Credential](/reference/services/wallet-service/#issue-credential)
+Reference: [Issue a Credential](../reference/services/wallet-service/#issue-credential)
 
 ---
 
@@ -73,7 +72,7 @@ Once Allison receives the credential, she can store it within her wallet. She ca
 Note down the response `item_id` printed to the console for the next step.
 
 !!! info
-Reference: [Insert Record](/reference/services/wallet-service/#insert-record)
+Reference: [Insert Record](../reference/services/wallet-service/#insert-record)
 
 ---
 
@@ -98,7 +97,7 @@ Take a look at the proof. Notice how only the attributes included in the `frame`
 Allison sends this proof to the airline for them to verify.
 
 !!! info
-Reference: [Create Proof](/reference/services/wallet-service/#create-proof)
+Reference: [Create Proof](../reference/services/wallet-service/#create-proof)
 
 ---
 
@@ -113,4 +112,4 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.
 !!! info
-Reference: [Verify Proof](/reference/services/wallet-service/#verify-proof)
+Reference: [Verify Proof](../reference/services/wallet-service/#verify-proof)

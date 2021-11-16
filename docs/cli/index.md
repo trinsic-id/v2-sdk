@@ -1,82 +1,45 @@
 # The Trinsic CLI
 
-The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal.  You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli. It contains all the commands of Trinsic's SDKs and makes them interactive. 
+The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal.  You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli). It contains all the commands of Trinsic's SDKs and makes them interactive. 
 
 ## Installation
 
-The CLI can be installed directly as binary or built from source.
-### Using Homebrew for MacOS and Linux
+=== "MacOS and Linux"
+    We use homebrew to distribute the CLI packages for MacOS and Linux. Install [Homebrew](https://brew.sh/)
 
-```
-brew tap trinsic-id/tap
-brew install trinsic-cli
-```
-
-### From source using the Rust toolchain
-
-This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
-
-Once installed, run this command in terminal:
-
-```bash
-cargo +nightly install --git https://github.com/trinsic-id/sdk trinsic
-```
-
-To verify that the CLI has been installed successfully, try running:
-
-```bash
-trinsic --help
-```
-
-## Configuration
-
-The CLI stores its configuration in the user's home directory in `~/.trinsic/`. This directory contains the main configuration file `config.toml` and all the profile data.
-
-### Show Configuration
-
-To print the current configuration file in the terminal use:
-
-```bash
-trinsic config --show
-```
-
-Typical configuration file may look like this:
-
-```toml
-[server]
-address = "https://prod.trinsic.cloud:443/"
-
-[profile]
-default = "my_profile"
-```
-
-### Update Configuration Entry
-
-To change the configuration values, use the `config` subcommand with the attribute and it's value.
-
-```bash
-trinsic config <attribute_name> <attribute_value>
-```
-
-The following attributes are currently supported:
-
-`server-address`
-:   Updates the default server address the CLI communicates
-
-    ```bash
-    trinsic config --server-address https://example.com/
+    Then run these commands to install the Trinsic CLI
+    ```
+    brew tap trinsic-id/tap
+    brew install trinsic-cli
     ```
 
-`profile-default`
-:   Updates the default profile used with the CLI
+=== "Windows"
+    Install [Chocolatey](https://chocolatey.org/install)
+
+    ```
+    choco install trinsic-cli
+    ```
+
+=== "From source"
+    The CLI can also be built from source.
+
+    This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
+
+    Once installed, run this command in terminal:
 
     ```bash
-    trinsic config --profile-default alice
+    cargo +nightly install --git https://github.com/trinsic-id/sdk trinsic
+    ```
+
+    To verify that the CLI has been installed successfully, try running:
+
+    ```bash
+    trinsic --help
     ```
 
 ## Next Steps
 
-Once the CLI is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./vaccination-cli.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](/reference/index.md)
+Once the CLI is installed, you're ready to start building! We recommend going through the [walkthrough](./vaccination-cli.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](/reference/index.md). For more information about the CLI, read the [configuration guide](./config.md)
 
-[Start Walkthrough](./vaccination-cli.md){ .md-button .md-button--primary } [Explore API](/reference/index.md){ .md-button }
+[Start Walkthrough](./vaccination-cli.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
 
