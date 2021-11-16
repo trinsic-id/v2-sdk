@@ -24,7 +24,7 @@ nav:
     # - Ruby: ruby/index.md
     # - Go: go/index.md
     # - Java: java/index.md
-    # - Web: web/index.md
+    - Web: web/index.md
     # - iOS: ios/index.md
     #  - Android: android/index.mdw
   - Reference:
@@ -88,7 +88,7 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
   - abbr
-
+custom_dir: overrides
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
   - _static/javascripts/config.js
