@@ -14,7 +14,8 @@ from trinsic.proto.services.common.v1 import ServerConfig
 def trinsic_production_config() -> ServerConfig:
     """
     Default production configuration for the trinsic cloud
-    :return:
+    Returns:
+        [ServerConfig](/reference/proto/#serverconfig)
     """
     return ServerConfig(endpoint="prod.trinsic.cloud", port=443, use_tls=True)
 
@@ -22,7 +23,8 @@ def trinsic_production_config() -> ServerConfig:
 def trinsic_test_config() -> ServerConfig:
     """
     Test server configuration
-    :return:
+    Returns:
+        [ServerConfig](/reference/proto/#serverconfig)
     """
     endpoint = getenv('TEST_SERVER_ENDPOINT')
     port = int(getenv('TEST_SERVER_PORT', 443))
@@ -33,8 +35,10 @@ def trinsic_test_config() -> ServerConfig:
 def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
     """
     Create the channel from the provided URL
-    :param config: Server configuration
-    :return: connected `Channel`
+    Args:
+        config: Server configuration
+    Returns:
+        connected `Channel`
     """
     if isinstance(config, Channel):
         channel = config

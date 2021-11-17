@@ -26,4 +26,4 @@ wallet_service = WalletService(server_address)
 
 Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./vaccination-python.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
-[Start Walkthrough](./vaccination-python.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
+[Start Walkthrough](./vaccination-python.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Python API Reference](../reference/python.md){ .md-button }
