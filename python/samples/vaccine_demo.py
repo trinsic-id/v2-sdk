@@ -50,17 +50,17 @@ async def vaccine_demo():
         credential_json = json.load(fid)
 
     credential = await wallet_service.issue_credential(credential_json)
-
     print(f"Credential: {credential}")
     # }
 
-    # STORE CREDENTIAL
+    # storeCredential() {
     # Alice stores the credential in her cloud wallet.
     wallet_service.profile = allison
     item_id = await wallet_service.insert_item(credential)
     print(f"item id = {item_id}")
+    # }
 
-    # SHARE CREDENTIAL
+    # shareCredential() {
     # Allison shares the credential with the venue.
     # The venue has communicated with Allison the details of the credential
     # that they require expressed as a JSON-LD frame.
@@ -69,16 +69,17 @@ async def vaccine_demo():
         proof_request_json = json.load(fid2)
 
     credential_proof = await wallet_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
-
     print(f"Proof: {credential_proof}")
+    # }
 
-    # VERIFY CREDENTIAL
+    # verifyCredential() {
     # The airline verifies the credential
     wallet_service.profile = airline
     valid = await wallet_service.verify_proof(credential_proof)
 
     print(f"Verification result: {valid}")
     assert valid
+    # }
 
     wallet_service.close()
 
