@@ -46,7 +46,8 @@ class WalletService(ServiceBase):
 
     async def create_wallet(self, security_code: str = None) -> WalletProfile:
         """
-        TODO: /reference/services/wallet-service/#create-wallet
+        TODO: /python/vaccination-python.md
+
         :param security_code: Optional security code to use from a provider initiated invitation
         :return: `WalletProfile` of the created wallet
         """
