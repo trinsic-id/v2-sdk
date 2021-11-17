@@ -6,7 +6,7 @@ from trinsic.proto.services.universalwallet.v1 import WalletProfile
 from trinsic.services import WalletService
 from trinsic.trinsic_util import trinsic_test_config
 
-
+# pathData() {
 def _base_data_path() -> str:
     return abspath(join(dirname(__file__), "..", "..", "devops", "testdata"))
 
@@ -17,17 +17,22 @@ def _vaccine_cert_unsigned_path() -> str:
 
 def _vaccine_cert_frame_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-frame.jsonld"))
+# }
 
 
 async def vaccine_demo():
+    # createService() {
     wallet_service = WalletService(trinsic_test_config())
+    # }
 
-    # SETUP ACTORS
+    # setupActors() {
     # Create 3 different profiles for each participant in the scenario
     allison = await wallet_service.create_wallet()
     clinic = await wallet_service.create_wallet()
     airline = await wallet_service.create_wallet()
+    # }
 
+    # storeAndRecallProfile() {
     # Store profile for later use
     with open("allison.bin", "wb") as fid:
         fid.write(bytes(allison))
@@ -36,8 +41,9 @@ async def vaccine_demo():
     allison = WalletProfile()
     with open("allison.bin", "rb") as fid:
         allison.parse(fid.read())
+    # }
 
-    # ISSUE CREDENTIAL
+    # issueCredential() {
     # Sign a credential as the clinic and send it to Allison
     wallet_service.profile = clinic
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
@@ -46,6 +52,7 @@ async def vaccine_demo():
     credential = await wallet_service.issue_credential(credential_json)
 
     print(f"Credential: {credential}")
+    # }
 
     # STORE CREDENTIAL
     # Alice stores the credential in her cloud wallet.

@@ -13,13 +13,20 @@ You can run this example on your local machine, or you can use our Gitpod setup 
 
 Clone this sdk repository: <link>
 
-In this project, we'll be following along the `test_trinsic_services`
+In this project, we'll be following along the `python/samples/vaccine_demo.py`
 
 
 ## Configure services
 
 Create a reference to the wallet service that points to your ecosystem service. You should have received this URL with your ecosystem setup. 
 
+<!--codeinclude-->
+```python
+[Create Wallet](../../python/samples/vaccine_demo.py) inside_block:createService
+```
+<!--/codeinclude-->
+
+Or, if you want to provide a URL:
 ```python
 server_address = '<SERVER_ADDRESS>'
 wallet_service = WalletService(server_address)
@@ -30,18 +37,19 @@ wallet_service = WalletService(server_address)
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
 To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
+<!--codeinclude-->
 ```python
-allison = await wallet_service.create_wallet()
-clinic = await wallet_service.create_wallet()
-airline = await wallet_service.create_wallet()
+[Setup Wallets](../../python/samples/vaccine_demo.py) inside_block:setupActors
 ```
+<!--/codeinclude-->
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
+<!--codeinclude-->
 ```python
-with open("allison.bin", "wb") as fid:
-    fid.write(bytes(allison))
+[Save and Load Profile](../../python/samples/vaccine_demo.py) inside_block:storeAndRecallProfile
 ```
+<!--/codeinclude-->
 
 Read more about [security profiles](../reference/index.md#authorization) and authentication.
 
