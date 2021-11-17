@@ -100,4 +100,16 @@ extra:
   generator: false
 
 plugins:
+  - search
+  - autorefs
   - codeinclude
+  - mkdocstrings:
+      handlers:
+        python:
+          setup_commands:
+            - import sys
+            - sys.path.append('python')
+          selection:
+            new_path_syntax: true
+      watch:
+        - python
