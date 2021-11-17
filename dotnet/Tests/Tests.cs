@@ -53,8 +53,7 @@ public class Tests
         // issueCredential() {
         // Set active profile to 'clinic' so we can issue credential signed
         // with the clinic's signing keys
-        walletService.SetProfile(clinic);
-        credentialsService.SetProfile(clinic);
+        walletService.Profile = credentialsService.Profile = clinic;
 
         // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
@@ -69,8 +68,7 @@ public class Tests
         // Allison stores the credential in her cloud wallet.
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        walletService.SetProfile(allison);
-        credentialsService.SetProfile(allison);
+        walletService.Profile = credentialsService.Profile = allison;
 
         var itemId = await walletService.InsertItem(credential);
         // }
@@ -81,13 +79,12 @@ public class Tests
         // that they require expressed as a JSON-LD frame.
         // shareCredential() {
         // We'll read the request frame from a file and communicate this with Allison
-        walletService.SetProfile(clinic);
-        credentialsService.SetProfile(clinic);
+        walletService.Profile = credentialsService.Profile = clinic;
 
         var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
 
         // Set the active profile to 'allison'
-        walletService.SetProfile(allison);
+        walletService.Profile = allison;
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
@@ -100,9 +97,8 @@ public class Tests
         // VERIFY CREDENTIAL
         // verifyCredential() {
         // The airline verifies the credential
-        walletService.SetProfile(airline);
-        credentialsService.SetProfile(airline);
-        
+        walletService.Profile = credentialsService.Profile = airline;
+
         // Check for valid signature
         var valid = await credentialsService.VerifyProof(credentialProof);
         // }
