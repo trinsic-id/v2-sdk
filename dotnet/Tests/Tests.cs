@@ -68,7 +68,7 @@ public class Tests
         // Allison stores the credential in her cloud wallet.
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        walletService.Profile = credentialsService.Profile = allison;
+        walletService.Profile = credentialsService.Profile = clinic;
 
         var itemId = await walletService.InsertItem(credential);
         // }
@@ -83,9 +83,6 @@ public class Tests
 
         var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
 
-        // Set the active profile to 'allison'
-        walletService.Profile = allison;
-
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
         var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
@@ -97,7 +94,7 @@ public class Tests
         // VERIFY CREDENTIAL
         // verifyCredential() {
         // The airline verifies the credential
-        walletService.Profile = credentialsService.Profile = airline;
+        walletService.Profile = credentialsService.Profile = clinic;
 
         // Check for valid signature
         var valid = await credentialsService.VerifyProof(credentialProof);
