@@ -1,11 +1,11 @@
-import os
 import unittest
 
 import okapi.okapi_utils
 
 from samples.provider_demo import provider_demo
 from samples.vaccine_demo import vaccine_demo
-from trinsic.services import WalletService, trinsic_test_config
+from trinsic.services import WalletService
+from trinsic.trinsic_util import trinsic_test_config
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):

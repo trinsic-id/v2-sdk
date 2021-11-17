@@ -1,196 +1,20 @@
-import abc
-import base64
 import datetime
 import json
 import urllib.parse
-from abc import ABC
-from distutils.util import strtobool
-from os import getenv
-from typing import Mapping, Dict, List, Union, Optional, Type
+from typing import Dict, List, Union
 
-from betterproto import Message, ServiceStub
-from blake3 import blake3
 from grpclib.client import Channel
-from okapi.proto.okapi.security.v1 import CreateOberonProofRequest
-from okapi.wrapper import Oberon
 
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
-from trinsic.proto.services.common.v1 import Nonce, ServerConfig
-from trinsic.proto.services.provider.v1 import ProviderStub, InviteRequestDidCommInvitation, InviteResponse, \
+from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
     ParticipantType, InvitationStatusResponse
-from trinsic.proto.services.trustregistry.v1 import TrustRegistryStub, GovernanceFramework, RegistrationStatus
-from trinsic.proto.services.universalwallet.v1 import WalletProfile, WalletStub, SearchResponse
-from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
-
-
-def trinsic_test_config() -> ServerConfig:
-    endpoint = getenv('TEST_SERVER_ENDPOINT')
-    port = int(getenv('TEST_SERVER_PORT', 443))
-    use_tls = bool(strtobool(getenv('TEST_SERVER_USE_TLS', 'true')))
-    return ServerConfig(endpoint=endpoint, port=port, use_tls=use_tls)
-
-
-def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
-    """
-    Create the channel from the provided URL
-    :param config: Server configuration
-    :return: connected `Channel`
-    """
-    if isinstance(config, Channel):
-        channel = config
-    elif isinstance(config, str):
-        service_url = urllib.parse.urlsplit(config)
-        is_https = service_url.scheme == "https"
-        channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
-    elif isinstance(config, ServerConfig):
-        channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)
-    else:
-        raise NotImplementedError(f"config type={type(config)} not supported.")
-    return channel
-
-
-def trinsic_production_config() -> ServerConfig:
-    return ServerConfig(endpoint="prod.trinsic.cloud", port=443, use_tls=True)
-
-
-def get_metadata(profile: WalletProfile, request: Message) -> Mapping[str, str]:
-    """
-    Create call metadata by setting required authentication headers
-    :return: authentication headers
-    """
-    if not profile:
-        raise ValueError("Profile not set")
-
-    # compute the hash of the request and capture current timestamp
-    request_hash = blake3(bytes(request)).digest()
-    nonce = Nonce(timestamp=int(datetime.datetime.now().timestamp() * 1000), request_hash=request_hash)
-    proof = Oberon.create_proof(
-        CreateOberonProofRequest(token=profile.auth_token, data=profile.auth_data, nonce=bytes(nonce)))
-    return {"authorization": f"Oberon proof={base64.urlsafe_b64encode(bytes(proof.proof)).decode('utf-8')},"
-                             f"data={base64.urlsafe_b64encode(bytes(profile.auth_data)).decode('utf-8')},"
-                             f"nonce={base64.urlsafe_b64encode(bytes(nonce)).decode('utf-8')}"}
-
-
-def update_metadata(route: str, skip_routes: List[str], service: "ServiceBase", metadata: "_MetadataLike",
-                    request: "_MessageLike") -> "_MetadataLike":
-    if route in skip_routes:
-        return metadata
-    if metadata:
-        raise NotImplementedError("Cannot combine metadata yet")
-    return service.metadata(request)
-
-
-class ServiceBase:
-    """
-    Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
-    """
-
-    def __init__(self):
-        self.profile: WalletProfile = None
-        self.channel: Channel = None
-
-    def close(self):
-        raise NotImplementedError("Must be overridden in derived class to close GRPC channels")
-
-    def metadata(self, request: Message):
-        return get_metadata(self.profile, request)
-
-
-# TODO - There needs to be a metadata decorator for this
-class WalletStubWithMetadata(WalletStub):
-    skip_metadata = ['/services.universalwallet.v1.Wallet/CreateWallet']
-
-    def __init__(
-            self,
-            service: ServiceBase
-    ) -> None:
-        self.service = service
-        super().__init__(service.channel)
-
-    async def _unary_unary(
-            self,
-            route: str,
-            request: "_MessageLike",
-            response_type: Type["T"],
-            *,
-            timeout: Optional[float] = None,
-            deadline: Optional["Deadline"] = None,
-            metadata: Optional["_MetadataLike"] = None) -> "T":
-        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
-        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
-                                          metadata=metadata)
-
-
-class CredentialStubWithMetadata(CredentialStub):
-    skip_metadata = []
-
-    def __init__(
-            self,
-            service: ServiceBase
-    ) -> None:
-        self.service = service
-        super().__init__(service.channel)
-
-    async def _unary_unary(
-            self,
-            route: str,
-            request: "_MessageLike",
-            response_type: Type["T"],
-            *,
-            timeout: Optional[float] = None,
-            deadline: Optional["Deadline"] = None,
-            metadata: Optional["_MetadataLike"] = None) -> "T":
-        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
-        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
-                                          metadata=metadata)
-
-
-class TrustRegistryStubWithMetadata(TrustRegistryStub):
-    skip_metadata = []
-
-    def __init__(
-            self,
-            service: ServiceBase
-    ) -> None:
-        self.service = service
-        super().__init__(service.channel)
-
-    async def _unary_unary(
-            self,
-            route: str,
-            request: "_MessageLike",
-            response_type: Type["T"],
-            *,
-            timeout: Optional[float] = None,
-            deadline: Optional["Deadline"] = None,
-            metadata: Optional["_MetadataLike"] = None) -> "T":
-        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
-        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
-                                          metadata=metadata)
-
-
-class ProviderStubWithMetadata(ProviderStub):
-    skip_metadata = []
-
-    def __init__(
-            self,
-            service: ServiceBase
-    ) -> None:
-        self.service = service
-        super().__init__(service.channel)
-
-    async def _unary_unary(
-            self,
-            route: str,
-            request: "_MessageLike",
-            response_type: Type["T"],
-            *,
-            timeout: Optional[float] = None,
-            deadline: Optional["Deadline"] = None,
-            metadata: Optional["_MetadataLike"] = None) -> "T":
-        metadata = update_metadata(route, self.skip_metadata, self.service, metadata, request)
-        return await super()._unary_unary(route, request, response_type, timeout=timeout, deadline=deadline,
-                                          metadata=metadata)
+from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus
+from trinsic.proto.services.universalwallet.v1 import WalletProfile, SearchResponse
+from trinsic.service_base import ServiceBase
+from trinsic._service_wrappers import _WalletStubWithMetadata, _CredentialStubWithMetadata, _ProviderStubWithMetadata, \
+    _TrustRegistryStubWithMetadata
+from trinsic.trinsic_util import trinsic_production_config, create_channel
 
 
 class WalletService(ServiceBase):
@@ -206,8 +30,8 @@ class WalletService(ServiceBase):
         """
         super().__init__()
         self.channel = create_channel(service_address)
-        self.client = WalletStubWithMetadata(self)
-        self.credential_client = CredentialStubWithMetadata(self)
+        self.client = _WalletStubWithMetadata(self)
+        self.credential_client = _CredentialStubWithMetadata(self)
 
     def close(self):
         if self.channel:
@@ -293,7 +117,7 @@ class ProviderService(ServiceBase):
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
         self.channel = create_channel(service_address)
-        self.provider_client = ProviderStubWithMetadata(self)
+        self.provider_client = _ProviderStubWithMetadata(self)
 
     def close(self):
         if self.channel:
@@ -344,7 +168,7 @@ class TrustRegistryService(ServiceBase):
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         super().__init__()
         self.channel = create_channel(service_address)
-        self.provider_client = TrustRegistryStubWithMetadata(self)
+        self.provider_client = _TrustRegistryStubWithMetadata(self)
 
     def close(self):
         if self.channel:

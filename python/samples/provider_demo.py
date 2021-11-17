@@ -1,7 +1,8 @@
 import asyncio
 
 from trinsic.proto.services.provider.v1 import ParticipantType
-from trinsic.services import ProviderService, trinsic_test_config, WalletService
+from trinsic.services import ProviderService, WalletService
+from trinsic.trinsic_util import trinsic_test_config
 
 
 async def provider_demo():
