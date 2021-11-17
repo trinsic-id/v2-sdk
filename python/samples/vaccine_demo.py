@@ -3,7 +3,8 @@ import json
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.universalwallet.v1 import WalletProfile
-from trinsic.services import WalletService, trinsic_test_config
+from trinsic.services import WalletService
+from trinsic.trinsic_util import trinsic_test_config
 
 
 def _base_data_path() -> str:
