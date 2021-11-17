@@ -1,4 +1,4 @@
-name: Release Documentation
+name: Build/Test Documentation
 
 on:
   # todo: add a staging target for doc builds
@@ -22,5 +22,5 @@ jobs:
           pip install mkdocs-codeinclude-plugin
           pip install -r ./docs/requirements.txt
           pip install -r ./python/requirements.txt
-      - run: mkdocs serve
+      - run: mkdocs build
 
