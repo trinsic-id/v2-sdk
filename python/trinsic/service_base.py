@@ -16,15 +16,6 @@ from trinsic.proto.services.common.v1 import Nonce
 from trinsic.proto.services.universalwallet.v1 import WalletProfile
 
 
-def update_metadata(route: str, skip_routes: List[str], service: "ServiceBase", metadata: "_MetadataLike",
-                    request: "_MessageLike") -> "_MetadataLike":
-    if route in skip_routes:
-        return metadata
-    if metadata:
-        raise NotImplementedError("Cannot combine metadata yet")
-    return service.metadata(request)
-
-
 class ServiceBase(ABC):
     """
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.

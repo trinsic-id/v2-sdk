@@ -1,3 +1,7 @@
+"""
+Trinsic Service wrappers
+"""
+
 import datetime
 import json
 import urllib.parse
@@ -19,14 +23,14 @@ from trinsic.trinsic_util import trinsic_production_config, create_channel
 
 class WalletService(ServiceBase):
     """
-    Wrapper for the wallet service
-    TODO: /reference/services/wallet-service/
+    Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
-        :param service_address: The URL of the server, or a channel which encapsulates the connection already.
+        Args:
+            service_address: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__()
         self.channel = create_channel(service_address)
@@ -34,21 +38,27 @@ class WalletService(ServiceBase):
         self.credential_client = _CredentialStubWithMetadata(self)
 
     def close(self):
+        """
+        Close the channel
+        """
         if self.channel:
             self.channel.close()
 
     async def register_or_connect(self, email: str) -> None:
         """
         Connect to the appropriate external identity by email
-        :param email: Email address
+        Args:
+            email: Email address
         """
         await self.client.connect_external_identity(email=email)
 
     async def create_wallet(self, security_code: str = None) -> WalletProfile:
         """
-        TODO: /reference/services/wallet-service/#create-wallet
-        :param security_code: Optional security code to use from a provider initiated invitation
-        :return: `WalletProfile` of the created wallet
+        [Create a new wallet](/reference/services/wallet-service/#create-wallet)
+        Args:
+            security_code: Optional security code to use from a provider initiated invitation
+        Returns:
+            `WalletProfile` of the created wallet
         """
         create_wallet_response = await self.client.create_wallet(security_code=security_code or "")
         return WalletProfile(auth_data=create_wallet_response.auth_data,
@@ -57,42 +67,52 @@ class WalletService(ServiceBase):
 
     async def issue_credential(self, document: dict) -> dict:
         """
-        TODO: /reference/services/wallet-service/#issue-credential
-        :param document: Dictionary describing the credential
-        :return: Dictionary with the issued credential
+        [Issue a new credential](/reference/services/wallet-service/#issue-credential)
+        Args:
+            document: Dictionary describing the credential
+        Returns:
+            Dictionary with the issued credential
         """
         response = await self.credential_client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return json.loads(response.document.json_string)
 
     async def search(self, query: str = "SELECT * from c") -> SearchResponse:
         """
-        TODO: /reference/services/wallet-service/#search-query
-        :param query: SQL query to use for searching, see the docs for allowed keywords
-        :return: The search response object information
+        [Search for crdentials](/reference/services/wallet-service/#search-query)
+        Args:
+             query: SQL query to use for searching, see the docs for allowed keywords
+        Returns:
+            The search response object information
         """
         return await self.client.search(query=query)
 
     async def insert_item(self, item: dict) -> str:
         """
-        TODO: /reference/services/wallet-service/#insert-record
-        :param item: Item to insert into the wallet.
-        :return: `item_id` of the created record.
+        [Insert a new item](/reference/services/wallet-service/#insert-record)
+        Args:
+            item: Item to insert into the wallet.
+        Returns:
+            `item_id` of the created record.
         """
         return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id
 
     async def send(self, document: dict, email: str) -> None:
         """
-        TODO: /reference/services/wallet-service/#sending-documents-using-email-as-identifier
-        :param document: Document to send
-        :param email: Email to which the document is sent
+        [Send the provided document to the given email](/reference/services/wallet-service/#sending-documents-using-email-as-identifier)
+        Args:
+            document: Document to send
+            email: Email to which the document is sent
         """
         await self.credential_client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         """
-        TODO: /reference/services/wallet-service/#create-proof
-        :param document_id: document in the wallet that is signed
-        :param reveal_document: JSONLD frame describing what data is to be disclosed.
+        [Create a proof](/reference/services/wallet-service/#create-proof)
+        Args:
+            document_id: document in the wallet that is signed
+            reveal_document: JSONLD frame describing what data is to be disclosed.
+        Returns:
+            The JSONLD proof
         """
         return json.loads((await self.credential_client.create_proof(
             document_id=document_id, reveal_document=JsonPayload(
@@ -100,9 +120,11 @@ class WalletService(ServiceBase):
 
     async def verify_proof(self, proof_document: dict) -> bool:
         """
-        TODO: /reference/services/wallet-service/#verify-proof
-        :param proof_document: Document to verify
-        :return: `True` if verified, `False` if not verified
+        [Verify a proof](/reference/services/wallet-service/#verify-proof)
+        Args:
+            proof_document: Document to verify
+        Returns:
+            `True` if verified, `False` if not verified
         """
         return (await self.credential_client.verify_proof(
             proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
@@ -110,16 +132,23 @@ class WalletService(ServiceBase):
 
 class ProviderService(ServiceBase):
     """
-    Wrapper for the provider service.
-    TODO: /reference/services/provider-service
+    Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+        """
+        Initialize the connection
+        Args:
+            service_address: The address of the server to connect, or an already-connected `Channel`
+        """
         super().__init__()
         self.channel = create_channel(service_address)
         self.provider_client = _ProviderStubWithMetadata(self)
 
     def close(self):
+        """
+        Close the underlying channel connection
+        """
         if self.channel:
             self.channel.close()
 
@@ -130,13 +159,15 @@ class ProviderService(ServiceBase):
                                  phone: str = None,
                                  didcomm_invitation: InviteRequestDidCommInvitation = None) -> InviteResponse:
         """
-        TODO: /reference/services/provider-service/#invite-participants
-        :param participant: TODO: /reference/proto/#participanttype
-        :param description:
-        :param email:
-        :param phone:
-        :param didcomm_invitation: TODO: /reference/proto/#inviterequestdidcomminvitation
-        :return: TODO: /reference/proto/#inviteresponse
+        [Invite a new participant to the provider ecosystem](/reference/services/provider-service/#invite-participants)
+        Args:
+            participant: [ParticipantType](/reference/proto/#participanttype)
+            description:
+            email:
+            phone:
+            didcomm_invitation: [InviteRequestDidCommInvitation](/reference/proto/#inviterequestdidcomminvitation)
+        Returns:
+            [InviteResponse](/reference/proto/#inviteresponse)
         """
         if not email and not phone:
             raise Exception("Contact method must be set")
@@ -149,9 +180,11 @@ class ProviderService(ServiceBase):
 
     async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
         """
-        TODO: /reference/services/provider-service/#check-invitation-status
-        :param invitation_id: invitation id returned from `invite_participant()`
-        :return: TODO: /reference/proto/#invitationstatusresponsestatus
+        [Check invitation status](/reference/services/provider-service/#check-invitation-status)
+        Args:
+            invitation_id: invitation id returned from `invite_participant()`
+        Returns:
+            [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
         """
         if not invitation_id or not invitation_id.strip():
             raise Exception("Onboarding reference ID must be set.")
@@ -161,8 +194,7 @@ class ProviderService(ServiceBase):
 
 class TrustRegistryService(ServiceBase):
     """
-    Wrapper for Trust Registry Service
-    TODO: /reference/services/trust-registry/
+    Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
     def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
@@ -171,14 +203,16 @@ class TrustRegistryService(ServiceBase):
         self.provider_client = _TrustRegistryStubWithMetadata(self)
 
     def close(self):
+        """Close the underlying channel"""
         if self.channel:
             self.channel.close()
 
     async def register_governance_framework(self, governance_framework: str, description: str) -> None:
         """
-        TODO: /reference/services/trust-registry/#create-a-ecosystem-governance-framework
-        :param governance_framework:
-        :param description:
+        [Create a governance framework](/reference/services/trust-registry/#create-a-ecosystem-governance-framework)
+        Args:
+            governance_framework:
+            description:
         """
         governance_url = urllib.parse.urlsplit(governance_framework, allow_fragments=False)
         # Verify complete url
@@ -194,14 +228,19 @@ class TrustRegistryService(ServiceBase):
     async def register_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                               valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
         """
-        TODO: /reference/services/trust-registry/#register-issuers-and-verifiers
-        :param issuer_did:
-        :param credential_type:
-        :param governance_framework:
-        :param valid_from:
-        :param valid_until:
+        [Register the issuer](/reference/services/trust-registry/#register-issuers-and-verifiers)
+        Args:
+            issuer_did:
+            credential_type:
+            governance_framework:
+            valid_from:
+            valid_until:
+        Raises:
+            ValueError: if date ranges are not provided
         """
-        # TODO - Handle nones for valid_from, valid_until
+        if not valid_from or not valid_until:
+            # TODO - Handle nones for valid_from, valid_until
+            raise ValueError("Provide valid_from and valid_until ranges")
 
         await self.provider_client.register_issuer(did_uri=issuer_did,
                                                    credential_type_uri=credential_type,
@@ -212,24 +251,28 @@ class TrustRegistryService(ServiceBase):
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                                 valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
         """
-        TODO: /reference/services/trust-registry/#unregister-issuers-and-verifiers
-        :param issuer_did:
-        :param credential_type:
-        :param governance_framework:
-        :param valid_from:
-        :param valid_until:
+        [Unregister the issuer](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
+        Args:
+            issuer_did:
+            credential_type:
+            governance_framework:
+            valid_from:
+            valid_until:
+        Raises:
+            NotImplementedError: Unsupported call
         """
         raise NotImplementedError
 
     async def register_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                 valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
         """
-        TODO: /reference/services/trust-registry/#register-issuers-and-verifiers
-        :param verifier_did:
-        :param presentation_type:
-        :param governance_framework:
-        :param valid_from:
-        :param valid_until:
+        [Register the verifier](/reference/services/trust-registry/#register-issuers-and-verifiers)
+        Args:
+            verifier_did:
+            presentation_type:
+            governance_framework:
+            valid_from:
+            valid_until:
         """
 
         await self.provider_client.register_verifier(did_uri=verifier_did,
@@ -241,23 +284,28 @@ class TrustRegistryService(ServiceBase):
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                   valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
         """
-        TODO: /reference/services/trust-registry/#unregister-issuers-and-verifiers
-        :param verifier_did:
-        :param presentation_type:
-        :param governance_framework:
-        :param valid_from:
-        :param valid_until:
+        [Unregister the verifier](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
+        Args:
+            verifier_did:
+            presentation_type:
+            governance_framework:
+            valid_from:
+            valid_until:
+        Raises:
+            NotImplementedError: Unsupported call
         """
         raise NotImplementedError
 
     async def check_issuer_status(self, issuer_did: str, credential_type: str,
                                   governance_framework: str) -> RegistrationStatus:
         """
-        TODO: /reference/services/trust-registry/#check-authoritative-status
-        :param issuer_did:
-        :param credential_type:
-        :param governance_framework:
-        :return: TODO: /reference/proto/#checkissuerstatusresponse
+        [Check for authoritative status](/reference/services/trust-registry/#check-authoritative-status)
+        Args:
+            issuer_did:
+            credential_type:
+            governance_framework:
+        Returns:
+            [RegistrationStatus](/reference/proto/#checkissuerstatusresponse)
         """
 
         return (await self.provider_client.check_issuer_status(governance_framework_uri=governance_framework,
@@ -267,11 +315,13 @@ class TrustRegistryService(ServiceBase):
     async def check_verifier_status(self, issuer_did: str, presentation_type: str,
                                     governance_framework: str) -> RegistrationStatus:
         """
-        TODO: /reference/services/trust-registry/#check-authoritative-status
-        :param issuer_did:
-        :param presentation_type:
-        :param governance_framework:
-        :return:TODO: /reference/proto/#checkverifierstatusresponse
+        [Check verifier status](/reference/services/trust-registry/#check-authoritative-status)
+        Args
+            issuer_did: Issuer DID
+            presentation_type: Presentation type
+            governance_framework: Governance framework
+        Returns:
+            [RegistrationStatus](/reference/proto/#registrationstatus)
         """
 
         return (await self.provider_client.check_verifier_status(governance_framework_uri=governance_framework,
@@ -280,9 +330,11 @@ class TrustRegistryService(ServiceBase):
 
     async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
         """
-        TODO: /reference/services/trust-registry/#search
-        :param query: Search query
-        :return: TODO: /reference/proto/#searchregistryresponse
+        [Search the registry](/reference/services/trust-registry/#search)
+        Args:
+            query: Search query
+        Returns:
+            [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
 
         response = await self.provider_client.search_registry(query=query, options=RequestOptions(
