@@ -33,24 +33,24 @@ dotnet add package Okapi.Net --prerelease
 
 ## Configure services
 
-Create a reference to the wallet service that points to your ecosystem service. You should have received this URL with your ecosystem setup. In your `Program.cs` file add the following line replacing the placeholder with your URL:
+Create a reference to the wallet service that points to your ecosystem service. You should have received this URL with your ecosystem setup. In your `Program.cs` file add the following line replacing the `null` argument with your URL (ignore the `serverConfig` argument):
 
+<!--codeinclude-->
 ```csharp
-using Trinsic;
-
-var walletService = new WalletService("<ECOSYSTEM SERVICE URL>");
+[Create Wallet](../../dotnet/Tests/Tests.cs) inside_block:createService
 ```
+<!--/codeinclude-->
 
 ## Setup wallet profiles
 
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
 To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
+<!--codeinclude-->
 ```csharp
-var allison = await walletService.CreateWallet();
-var clinic = await walletService.CreateWallet();
-var airline = await walletService.CreateWallet();
+[Setup Wallets](../../dotnet/Tests/Tests.cs) inside_block:setupActors
 ```
+<!--/codeinclude-->
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
@@ -79,17 +79,11 @@ The certificate is in a JSON form, and for this example, we will use the followi
 
 Let's set the active profile to the clinic, and call the issuance endpoint
 
+<!--codeinclude-->
 ```csharp
-// Set active profile to 'clinic' so we can issue credential signed
-// with the clinic's signing keys
-walletService.SetProfile(clinic);
-
-// Read the JSON credential data
-var credentialJson = File.ReadAllText("./vaccination-certificate-unsigned.jsonld");
-
-// Sign the credential using BBS+ signature scheme
-var credential = await walletService.IssueCredential(document: JObject.Parse(credentialJson));
+[Issue Credential](../../dotnet/Tests/Tests.cs) inside_block:issueCredential
 ```
+<!--/codeinclude-->
 
 At this point, the clinic can send the signed credential to Allison using any available methods. These methods can include any message exchange protocol, or a custom transport. In this case, we'll assume that the credential was delivered to Allison in an offline environment.
 
@@ -97,13 +91,11 @@ At this point, the clinic can send the signed credential to Allison using any av
 
 Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](/reference/services/wallet-service/#insert-record) function.
 
+<!--codeinclude-->
 ```csharp
-// Set active profile to 'allison' so we can manage her cloud wallet
-walletService.SetProfile(allison);
-
-// Insert the signed credential
-var itemId = await walletService.InsertItem(credential);
+[Store Credential](../../dotnet/Tests/Tests.cs) inside_block:storeCredential
 ```
+<!--/codeinclude-->
 
 ## Proof of vaccination
 
@@ -121,29 +113,21 @@ This request asks Allison to provide proof of valid vaccination certificate, inc
 
 Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
 
+<!--codeinclude-->
 ```csharp
-// We'll read the request frame from a file and communicate this with Allison
-var proofRequestJson = File.ReadAllText("./vaccination-certificate-frame.jsonld");
-
-// Set the active profile to 'allison'
-walletService.SetProfile(allison);
-
-// Build a proof for the given request and the `itemId` we previously received
-// which points to the stored credential
-var credentialProof = await walletService.CreateProof(itemId, JObject.Parse(proofRequestJson));
+[Share Credential](../../dotnet/Tests/Tests.cs) inside_block:shareCredential
 ```
+<!--/codeinclude-->
 
 ## Verification
 
 Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](../reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
 
+<!--codeinclude-->
 ```csharp
-// Set active profile to 'airline'
-walletService.SetProfile(airline);
-
-// Check for valid signature
-var valid = await walletService.VerifyProof(credentialProof);
+[Verify Credential](../../dotnet/Tests/Tests.cs) inside_block:verifyCredential
 ```
+<!--/codeinclude-->
 
 ## Complete sample code
 

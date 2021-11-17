@@ -32,53 +32,80 @@ public class Tests
             Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
             UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
         };
-
+        
         _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
 
+        // createService() {
         var walletService = new WalletService(null, serverConfig);
+        // }
         var credentialsService = new CredentialsService(null, serverConfig);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
+        // setupActors() {
         var allison = await walletService.CreateWallet();
         var clinic = await walletService.CreateWallet();
         var airline = await walletService.CreateWallet();
+        // }
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
-        walletService.Profile = credentialsService.Profile = clinic;
+        // issueCredential() {
+        // Set active profile to 'clinic' so we can issue credential signed
+        // with the clinic's signing keys
+        walletService.SetProfile(clinic);
+        credentialsService.SetProfile(clinic);
 
+        // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
+        // Sign the credential using BBS+ signature scheme
         var credential = await credentialsService.IssueCredential(document: JObject.Parse(credentialJson));
+        // }
 
         _testOutputHelper.WriteLine("Credential:");
         _testOutputHelper.WriteLine(credential.ToString(Formatting.Indented));
 
         // STORE CREDENTIAL
-        // Alice stores the credential in her cloud wallet.
-        walletService.Profile = credentialsService.Profile = clinic;
+        // Allison stores the credential in her cloud wallet.
+        // storeCredential() {
+        // Set active profile to 'allison' so we can manage her cloud wallet
+        walletService.SetProfile(allison);
+        credentialsService.SetProfile(allison);
 
         var itemId = await walletService.InsertItem(credential);
+        // }
 
         // SHARE CREDENTIAL
         // Allison shares the credential with the venue.
         // The venue has communicated with Allison the details of the credential
         // that they require expressed as a JSON-LD frame.
-        walletService.Profile = credentialsService.Profile = clinic;
+        // shareCredential() {
+        // We'll read the request frame from a file and communicate this with Allison
+        walletService.SetProfile(clinic);
+        credentialsService.SetProfile(clinic);
 
         var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
-        var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
 
+        // Set the active profile to 'allison'
+        walletService.SetProfile(allison);
+
+        // Build a proof for the given request and the `itemId` we previously received
+        // which points to the stored credential
+        var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
+        // }
         _testOutputHelper.WriteLine("Proof:");
         _testOutputHelper.WriteLine(credentialProof.ToString(Formatting.Indented));
 
 
         // VERIFY CREDENTIAL
+        // verifyCredential() {
         // The airline verifies the credential
-        walletService.Profile = credentialsService.Profile = clinic;
-
+        walletService.SetProfile(airline);
+        credentialsService.SetProfile(airline);
+        
+        // Check for valid signature
         var valid = await credentialsService.VerifyProof(credentialProof);
-
+        // }
         _testOutputHelper.WriteLine($"Verification result: {valid}");
         Assert.True(valid);
     }
