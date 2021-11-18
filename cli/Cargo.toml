@@ -29,6 +29,7 @@ tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
 [[bin]]
 name = "trinsic"
 path = "src/main.rs"
+doctest = false
 
 [package.metadata.deb]
 maintainer = "Tomislav Markovski <tomislav@trinsic.id>"

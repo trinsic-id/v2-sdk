@@ -122,15 +122,15 @@ jobs:
         run: |
           sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' Cargo.toml
           sed -i 's/version: "1.0.0"/version: "${{ env.PACKAGE_VERSION }}"/g' src/cli.yaml
-
+          rm build.rs
+          mv .cargo/_config.toml .cargo/config.toml
           cargo vendor
+          cargo build
           cargo clean
         working-directory: cli
 
       - name: Create Archive
         run: |
-          rm cli/build.rs
-          sed -i 's/version = "0.1.0"/version = "${{ env.PACKAGE_VERSION }}"/g' cli/Cargo.toml
           mv cli trinsic-cli
           tar -czvf trinsic-cli-vendor-${{ env.PACKAGE_VERSION }}.tar.gz trinsic-cli
 
