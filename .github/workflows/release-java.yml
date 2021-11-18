@@ -2,7 +2,7 @@ name: "Java (release)"
 
 on:
   workflow_dispatch:
-  inputs:
+    inputs:
       packageVersion:
         description: 'Version to build'
         required: true
