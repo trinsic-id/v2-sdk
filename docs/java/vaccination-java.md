@@ -7,13 +7,13 @@
 
 ## Technical requirements
 
-You can run this example on your local machine, or you can use our Gitpod setup to bootstrap a full development environment. If running locally, you'll only need python 3 installed
+You can run this example on your local machine, or you can use our Gitpod setup to bootstrap a full development environment. If running locally, you'll only need Java (TODO - Specify exact recent version) installed
 
 ## Sample Project
 
 Clone this sdk repository: <link>
 
-In this project, we'll be following along the `python/samples/vaccine_demo.py`
+In this project, we'll be following along the `java/src/test/java/VaccineDemo.java`
 
 
 ## Configure services
@@ -21,13 +21,13 @@ In this project, we'll be following along the `python/samples/vaccine_demo.py`
 Create a reference to the wallet service that points to your ecosystem service. You should have received this URL with your ecosystem setup. 
 
 <!--codeinclude-->
-```python
-[Create Wallet](../../python/samples/vaccine_demo.py) inside_block:createService
+```java
+[Create Wallet](../../java/src/test/java/VaccineDemo.java) inside_block:createService
 ```
 <!--/codeinclude-->
 
 Or, if you want to provide a URL:
-```python
+```java
 server_address = '<SERVER_ADDRESS>'
 wallet_service = WalletService(server_address)
 ```
@@ -38,16 +38,16 @@ Let's create three different profiles, each pointing to a separate wallet. Since
 To create a new wallet profile, we use the [Create Wallet](../reference/services/wallet-service/#create-wallet) feature.
 
 <!--codeinclude-->
-```python
-[Setup Wallets](../../python/samples/vaccine_demo.py) inside_block:setupActors
+```java
+[Setup Wallets](../../java/src/test/java/VaccineDemo.java) inside_block:setupActors
 ```
 <!--/codeinclude-->
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
 <!--codeinclude-->
-```python
-[Save and Load Profile](../../python/samples/vaccine_demo.py) inside_block:storeAndRecallProfile
+```java
+[Save and Load Profile](../../java/src/test/java/VaccineDemo.java) inside_block:storeAndRecallProfile
 ```
 <!--/codeinclude-->
 
@@ -65,15 +65,15 @@ The certificate is in a JSON form, and for this example, we will use the followi
 
 We specify links to the jsonld files:
 <!--codeinclude-->
-```python
-[Data Paths](../../python/samples/vaccine_demo.py) inside_block:pathData
+```java
+[Data Paths](../../java/src/test/java/VaccineDemo.java) inside_block:pathData
 ```
 <!--/codeinclude-->
 
 Let's set the active profile to the clinic, and call the issuance endpoint
 <!--codeinclude-->
-```python
-[Issue Credential](../../python/samples/vaccine_demo.py) inside_block:issueCredential
+```java
+[Issue Credential](../../java/src/test/java/VaccineDemo.java) inside_block:issueCredential
 ```
 <!--/codeinclude-->
 
@@ -84,8 +84,8 @@ At this point, the clinic can send the signed credential to Allison using any av
 Allison can store this credential in her cloud wallet, simply by calling the [Insert Item](../reference/services/wallet-service/#insert-record) function.
 
 <!--codeinclude-->
-```python
-[Store Credential](../../python/samples/vaccine_demo.py) inside_block:storeCredential
+```java
+[Store Credential](../../java/src/test/java/VaccineDemo.java) inside_block:storeCredential
 ```
 <!--/codeinclude-->
 
@@ -106,8 +106,8 @@ This request asks Allison to provide proof of valid vaccination certificate, inc
 Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
 
 <!--codeinclude-->
-```python
-[Share Credential](../../python/samples/vaccine_demo.py) inside_block:shareCredential
+```java
+[Share Credential](../../java/src/test/java/VaccineDemo.java) inside_block:shareCredential
 ```
 <!--/codeinclude-->
 
@@ -116,12 +116,12 @@ Allison can use the [Create Proof](../reference/services/wallet-service/#create-
 Allison shares the proof of credential she created with the airline. The airline can now use [Verify Proof](../reference/services/wallet-service/#verify-proof) functions to check the validity of the proof.
 
 <!--codeinclude-->
-```python
-[Verify Credential](../../python/samples/vaccine_demo.py) inside_block:verifyCredential
+```java
+[Verify Credential](../../java/src/test/java/VaccineDemo.java) inside_block:verifyCredential
 ```
 <!--/codeinclude-->
 
 ## Complete sample code
 
-This sample is available in our [GitHub](https://github.com/trinsic-id/sdk/tree/main/python/samples) repo.
+This sample is available in our [GitHub](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java) repo.
 
