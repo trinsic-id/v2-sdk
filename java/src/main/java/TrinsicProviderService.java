@@ -12,7 +12,7 @@ public class TrinsicProviderService extends ServiceBase {
     public ProviderGrpc.ProviderBlockingStub providerClient;
 
     public TrinsicProviderService(CommonOuterClass.ServerConfig config) {
-        this.channel = Utilities.getChannel(config);
+        this.channel = TrinsicUtilities.getChannel(config);
         this.providerClient = ProviderGrpc.newBlockingStub(this.channel);
     }
 
