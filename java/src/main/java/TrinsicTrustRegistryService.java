@@ -15,7 +15,7 @@ public class TrinsicTrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryBlockingStub trustRegistryClient;
 
     public TrinsicTrustRegistryService(CommonOuterClass.ServerConfig config) {
-        this.channel = Utilities.getChannel(config);
+        this.channel = TrinsicUtilities.getChannel(config);
         this.trustRegistryClient = TrustRegistryGrpc.newBlockingStub(this.channel);
     }
 
