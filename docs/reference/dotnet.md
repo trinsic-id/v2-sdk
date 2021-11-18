@@ -2441,7 +2441,7 @@ Gets the status of the onboarding invitation for a given invitation ID
 
 ##### Summary
 
-Initates the participant onboarding flow using the input contact method
+Initiates the participant onboarding flow using the input contact method
 
 ##### Returns
 

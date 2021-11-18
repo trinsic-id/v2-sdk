@@ -15,7 +15,7 @@ public class ProviderService : ServiceBase
     public Provider.ProviderClient Client { get; }
 
     /// <summary>
-    /// Initates the participant onboarding flow using the input contact method
+    /// Initiates the participant onboarding flow using the input contact method
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>

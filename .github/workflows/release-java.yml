@@ -2,8 +2,13 @@ name: "Java (release)"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
+  inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
+  release:
+    types: [ published ]
 
 jobs:
   build:
