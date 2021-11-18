@@ -29,17 +29,11 @@ tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
 name = "trinsic"
 path = "src/main.rs"
 
-[lib]
-name = "trinsic"
-path = "src/lib.rs"
-doctest = false
-
 [package.metadata.deb]
 maintainer = "Tomislav Markovski <tomislav@trinsic.id>"
 copyright = "2021, Trinsic <hello@trinsic.id>"
 license-file = ["../LICENSE", "0"]
-extended-description = """\
-Command-line tool for Trinsic APIs"""
+extended-description = "Command-line tool for Trinsic APIs"
 depends = "$auto"
 section = "utility"
 priority = "optional"
