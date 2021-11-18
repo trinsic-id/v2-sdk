@@ -5,8 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.universalwallet.v1.UniversalWallet;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -79,10 +82,16 @@ class TrinsicServicesTest {
         var airline = walletService.createWallet("");
 
         // Store profile for later use
-        // File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+        var writeFile = new FileOutputStream("allison.bin");
+        writeFile.write(allison.toByteString().toByteArray());
+        writeFile.close();
 
         // Create profile from existing data
-        // var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
+        var readFile = new FileInputStream("allison.bin");
+        var allisonBin = readFile.readAllBytes();
+        readFile.close();
+
+        allison = UniversalWallet.WalletProfile.newBuilder().mergeFrom(allisonBin).build();
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison

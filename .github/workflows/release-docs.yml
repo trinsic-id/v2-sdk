@@ -2,12 +2,6 @@ name: Release Documentation
 
 on:
   # todo: add a staging target for doc builds
-  # pull_request:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - 'docs/**'
-  #     - 'mkdocs.yml'
   push:
     branches:
       - main
