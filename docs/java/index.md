@@ -1,10 +1,9 @@
 # The Trinsic Java SDK
 
-The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Java application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/java).
+The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Java application. The most recent version of the library can be found on Github Maven Packages. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/java).
 
 ## Installation
 1. Install the Trinsic SDK package from the [Github Packages](https://github.com/trinsic-id/sdk/packages/940563)
-2. 
 
 ## Configuration
 1. Download the Trinsic Okapi binaries for your platform (TODO - this will be handled via winget/brew/deb in the future)
