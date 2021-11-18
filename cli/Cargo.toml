@@ -29,6 +29,8 @@ tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
 [[bin]]
 name = "trinsic"
 path = "src/main.rs"
+
+[lib]
 doctest = false
 
 [package.metadata.deb]
