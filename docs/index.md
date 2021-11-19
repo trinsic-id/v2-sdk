@@ -17,9 +17,10 @@ Get up and running in the language of your choice or interact with Trinsic throu
 
 [:octicons-terminal-16: **Use the CLI**](cli/index.md)
 ### Server-side SDKs
+[:material-language-java: Java](java/index.md){ .md-button .md-button--primary }
+[:material-microsoft: .NET](dotnet/index.md){ .md-button .md-button--primary }
 [:material-nodejs: Node](node/index.md){ .md-button .md-button--primary }
 [:material-language-python: Python](python/index.md){ .md-button .md-button--primary }
-[:material-microsoft: .NET](dotnet/index.md){ .md-button .md-button--primary }
 ### Client-side SDKs
 
 [:fontawesome-brands-js-square: Web](web/index.md){ .md-button .md-button--primary } 
@@ -28,12 +29,8 @@ Get up and running in the language of your choice or interact with Trinsic throu
 
 [:material-menu: Go](#){ .md-button }
 [:material-language-ruby: Ruby](#){ .md-button  }
-[:material-language-java: Java](#){ .md-button }
-[:material-android: Android](#){ .md-button }
 [:material-apple: iOS](#){ .md-button } 
-
-
-
+[:material-android: Android](#){ .md-button }
 
 
 ## Additional Resources
