@@ -22,7 +22,7 @@ jobs:
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}"
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Archive
         run: |
@@ -59,7 +59,7 @@ jobs:
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}"
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Package (.deb)
         run: |
@@ -98,7 +98,7 @@ jobs:
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}"
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
 
       - name: Create Vendored Folders
         run: |
