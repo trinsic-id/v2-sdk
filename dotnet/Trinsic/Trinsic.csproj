@@ -11,8 +11,8 @@
     <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client" Version="2.37.0" />
-    <PackageReference Include="Grpc.Net.Client.Web" Version="2.37.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
     <PackageReference Include="Blake3Core" Version="0.1.0" />
     <PackageReference Include="Multiformats.Base" Version="2.0.2" />
     <PackageReference Include="Vsxmd" Version="1.4.5">
@@ -21,7 +21,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Grpc.Tools" Version="2.36.1" PrivateAssets="All" />
+    <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
     <PackageReference Include="Okapi.Net" Version="1.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
