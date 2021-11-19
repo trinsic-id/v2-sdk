@@ -31,7 +31,7 @@ public class CredentialsService : ServiceBase
             {
                 Document = new JsonPayload { JsonStruct = document.ToStruct() }
             };
-            var response = await Client.IssueAsync(request, BuildMetadata(request));
+            var response = await Client.IssueAsync(request, await BuildMetadataAsync(request));
             return response.Document.JsonStruct.ToJObject();
         }
         catch (Exception e)
@@ -58,7 +58,7 @@ public class CredentialsService : ServiceBase
         };
         var response = await Client.CreateProofAsync(
             request: request,
-            headers: BuildMetadata(request));
+            headers: await BuildMetadataAsync(request));
 
         return response.ProofDocument.JsonStruct.ToJObject();
     }
@@ -76,7 +76,7 @@ public class CredentialsService : ServiceBase
         };
         var response = await Client.VerifyProofAsync(
             request: request,
-            headers: BuildMetadata(request));
+            headers: await BuildMetadataAsync(request));
 
         return response.Valid;
     }
@@ -97,6 +97,6 @@ public class CredentialsService : ServiceBase
         };
         var response = await Client.SendAsync(
             request: request,
-            headers: BuildMetadata(request));
+            headers: await BuildMetadataAsync(request));
     }
 }

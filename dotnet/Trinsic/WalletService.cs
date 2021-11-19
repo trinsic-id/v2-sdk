@@ -27,7 +27,7 @@ public class WalletService : ServiceBase
     public async Task<SearchResponse> Search(string query = "SELECT * FROM c")
     {
         SearchRequest request = new() { Query = query };
-        var response = await Client.SearchAsync(request, BuildMetadata(request));
+        var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
 
     }
@@ -45,7 +45,7 @@ public class WalletService : ServiceBase
         };
         var response = await Client.InsertItemAsync(
             request: request,
-            headers: BuildMetadata(request));
+            headers: await BuildMetadataAsync(request));
         return response.ItemId;
     }
 }

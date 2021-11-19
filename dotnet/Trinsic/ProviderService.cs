@@ -29,7 +29,7 @@ public class ProviderService : ServiceBase
 
         try
         {
-            var response = await Client.InviteAsync(request, BuildMetadata(request));
+            var response = await Client.InviteAsync(request, await BuildMetadataAsync(request));
             return response;
         }
         catch (Exception e)
@@ -53,7 +53,7 @@ public class ProviderService : ServiceBase
 
         try
         {
-            var response = await Client.InvitationStatusAsync(request, BuildMetadata(request));
+            var response = await Client.InvitationStatusAsync(request, await BuildMetadataAsync(request));
             return response;
         }
         catch (Exception e)

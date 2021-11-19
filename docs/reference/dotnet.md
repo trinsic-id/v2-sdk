@@ -221,6 +221,8 @@
   - [TimestampFieldNumber](#F-Trinsic-Services-Common-V1-Nonce-TimestampFieldNumber 'Trinsic.Services.Common.V1.Nonce.TimestampFieldNumber')
   - [RequestHash](#P-Trinsic-Services-Common-V1-Nonce-RequestHash 'Trinsic.Services.Common.V1.Nonce.RequestHash')
   - [Timestamp](#P-Trinsic-Services-Common-V1-Nonce-Timestamp 'Trinsic.Services.Common.V1.Nonce.Timestamp')
+- [OberonSecurityProvider](#T-Trinsic-OberonSecurityProvider 'Trinsic.OberonSecurityProvider')
+  - [Base64UrlEncode(data)](#M-Trinsic-OberonSecurityProvider-Base64UrlEncode-System-Byte[]- 'Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])')
 - [ProtoMessageExtensions](#T-Google-Protobuf-ProtoMessageExtensions 'Google.Protobuf.ProtoMessageExtensions')
   - [As\`\`1(message)](#M-Google-Protobuf-ProtoMessageExtensions-As``1-Google-Protobuf-IMessage- 'Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)')
 - [Provider](#T-Trinsic-Services-Common-V1-Provider 'Trinsic.Services.Common.V1.Provider')
@@ -325,8 +327,7 @@
   - [Port](#P-Trinsic-Services-Common-V1-ServerConfig-Port 'Trinsic.Services.Common.V1.ServerConfig.Port')
   - [UseTls](#P-Trinsic-Services-Common-V1-ServerConfig-UseTls 'Trinsic.Services.Common.V1.ServerConfig.UseTls')
 - [ServiceBase](#T-Trinsic-ServiceBase 'Trinsic.ServiceBase')
-  - [Base64UrlEncode(data)](#M-Trinsic-ServiceBase-Base64UrlEncode-System-Byte[]- 'Trinsic.ServiceBase.Base64UrlEncode(System.Byte[])')
-  - [BuildMetadata()](#M-Trinsic-ServiceBase-BuildMetadata-Google-Protobuf-IMessage- 'Trinsic.ServiceBase.BuildMetadata(Google.Protobuf.IMessage)')
+  - [BuildMetadataAsync()](#M-Trinsic-ServiceBase-BuildMetadataAsync-Google-Protobuf-IMessage- 'Trinsic.ServiceBase.BuildMetadataAsync(Google.Protobuf.IMessage)')
 - [SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest')
   - [DetailsFieldNumber](#F-Trinsic-Services-Account-V1-SignInRequest-DetailsFieldNumber 'Trinsic.Services.Account.V1.SignInRequest.DetailsFieldNumber')
   - [InvitationCodeFieldNumber](#F-Trinsic-Services-Account-V1-SignInRequest-InvitationCodeFieldNumber 'Trinsic.Services.Account.V1.SignInRequest.InvitationCodeFieldNumber')
@@ -606,6 +607,10 @@ File descriptor for services/account/v1/account.proto
 ##### Namespace
 
 Trinsic
+
+##### Summary
+
+Account Service
 
 <a name='T-Trinsic-Services-Account-V1-AccountService'></a>
 ## AccountService `type`
@@ -2639,6 +2644,30 @@ blake3256 hash of the request body
 
 UTC unix millisecond timestamp the request was made
 
+<a name='T-Trinsic-OberonSecurityProvider'></a>
+## OberonSecurityProvider `type`
+
+##### Namespace
+
+Trinsic
+
+<a name='M-Trinsic-OberonSecurityProvider-Base64UrlEncode-System-Byte[]-'></a>
+### Base64UrlEncode(data) `method`
+
+##### Summary
+
+Encoded a byte array to base64url string without padding
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| data | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') |  |
+
 <a name='T-Google-Protobuf-ProtoMessageExtensions'></a>
 ## ProtoMessageExtensions `type`
 
@@ -3587,25 +3616,8 @@ indicates if tls is used
 
 Trinsic
 
-<a name='M-Trinsic-ServiceBase-Base64UrlEncode-System-Byte[]-'></a>
-### Base64UrlEncode(data) `method`
-
-##### Summary
-
-Encoded a byte array to base64url string without padding
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| data | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') |  |
-
-<a name='M-Trinsic-ServiceBase-BuildMetadata-Google-Protobuf-IMessage-'></a>
-### BuildMetadata() `method`
+<a name='M-Trinsic-ServiceBase-BuildMetadataAsync-Google-Protobuf-IMessage-'></a>
+### BuildMetadataAsync() `method`
 
 ##### Summary
 

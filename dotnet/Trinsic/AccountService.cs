@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Grpc.Core;
 using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Services.Account.V1;
@@ -84,7 +85,7 @@ public class AccountService : ServiceBase
     public async Task<InfoResponse> GetInfoAsync()
     {
         InfoRequest request = new();
-        InfoResponse response = await Client.InfoAsync(request, BuildMetadata(request));
+        InfoResponse response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
 
         return response;
     }
