@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
-public class Utilities {
+public class TrinsicUtilities {
 
     private static String getEnvVar(String key, String defaultValue) {
         var envValue = System.getenv(key);

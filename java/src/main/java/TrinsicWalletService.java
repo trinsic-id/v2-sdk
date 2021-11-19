@@ -18,7 +18,7 @@ public class TrinsicWalletService extends ServiceBase {
     public final CredentialGrpc.CredentialBlockingStub credentialClient;
 
     public TrinsicWalletService(CommonOuterClass.ServerConfig config) {
-        this.channel = Utilities.getChannel(config);
+        this.channel = TrinsicUtilities.getChannel(config);
         this.walletClient = WalletGrpc.newBlockingStub(this.channel);
         this.credentialClient = CredentialGrpc.newBlockingStub(this.channel);
     }
@@ -48,7 +48,7 @@ public class TrinsicWalletService extends ServiceBase {
 
     public HashMap issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
         var request = VerifiableCredentials.IssueRequest.newBuilder()
-                .setDocument(Utilities.createPayloadString(document)).build();
+                .setDocument(TrinsicUtilities.createPayloadString(document)).build();
         var response = getCredentialClient(request).issue(request);
         return new Gson().fromJson(response.getDocument().getJsonString(), HashMap.class);
     }
@@ -63,14 +63,14 @@ public class TrinsicWalletService extends ServiceBase {
 
     public String insertItem(HashMap item) throws InvalidProtocolBufferException, DidException {
         final UniversalWallet.InsertItemRequest request = UniversalWallet.InsertItemRequest.newBuilder()
-                .setItem(Utilities.createPayloadString(item)).build();
+                .setItem(TrinsicUtilities.createPayloadString(item)).build();
         return getWalletClient(request).insertItem(request).getItemId();
     }
 
     public VerifiableCredentials.SendResponse send(HashMap document, String email) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.SendRequest request = VerifiableCredentials.SendRequest.newBuilder()
                 .setEmail(email)
-                .setDocument(Utilities.createPayloadString(document))
+                .setDocument(TrinsicUtilities.createPayloadString(document))
                 .build();
         return getCredentialClient(request).send(request);
     }
@@ -78,14 +78,14 @@ public class TrinsicWalletService extends ServiceBase {
     public HashMap createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.CreateProofRequest request = VerifiableCredentials.CreateProofRequest.newBuilder()
                 .setDocumentId(documentId)
-                .setRevealDocument(Utilities.createPayloadString(revealDocument))
+                .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument))
                 .build();
         return (new Gson()).fromJson(getCredentialClient(request).createProof(request).getProofDocument().getJsonString(), HashMap.class);
     }
 
     public boolean verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.VerifyProofRequest request = VerifiableCredentials.VerifyProofRequest.newBuilder()
-                .setProofDocument(Utilities.createPayloadString(proofDocument)).build();
+                .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
         return getCredentialClient(request).verifyProof(request).getValid();
     }
 
