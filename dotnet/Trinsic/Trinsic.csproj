@@ -34,6 +34,7 @@
     <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
     <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
     <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
+    <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" ProtoRoot="..\..\proto" />
     <Protobuf Include="..\..\proto\services\debug\v1\debug.proto" Link="Proto/debug.proto" />
     <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
     <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />

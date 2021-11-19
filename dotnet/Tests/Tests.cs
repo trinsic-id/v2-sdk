@@ -2,7 +2,6 @@ namespace Tests;
 
 using System;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -10,6 +9,7 @@ using Trinsic.Services.Common.V1;
 using Xunit;
 using Xunit.Abstractions;
 using Trinsic;
+using FluentAssertions;
 
 public class Tests
 {
@@ -32,21 +32,28 @@ public class Tests
             Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
             UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
         };
-        
+
         _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
 
-        // createService() {
-        var walletService = new WalletService(null, serverConfig);
-        // }
-        var credentialsService = new CredentialsService(null, serverConfig);
+        var accountService = new AccountService(null, serverConfig);
+        var empty = new Trinsic.Services.Account.V1.AccountProfile();
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await walletService.CreateWallet();
-        var clinic = await walletService.CreateWallet();
-        var airline = await walletService.CreateWallet();
+        var (allison, _) = await accountService.SignInAsync(new());
+        var (clinic, _) = await accountService.SignInAsync(new());
+        var (airline, _) = await accountService.SignInAsync(new());
         // }
+
+        accountService.Profile = clinic;
+        var info = await accountService.GetInfoAsync();
+        info.Should().NotBeNull();
+
+        // createService() {
+        var walletService = new WalletService(allison, serverConfig);
+        // }
+        var credentialsService = new CredentialsService(clinic, serverConfig);
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
@@ -113,5 +120,4 @@ public class Tests
 
         //Then
     }
-
 }

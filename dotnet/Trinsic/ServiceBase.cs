@@ -1,21 +1,22 @@
 ﻿using System;
 using Grpc.Core;
 using Grpc.Net.Client;
-using Trinsic.Services.UniversalWallet.V1;
 using Google.Protobuf;
 using Blake3Core;
 using System.IO;
 using Okapi.Security;
 using Trinsic.Services.Common.V1;
 using System.Security.Cryptography;
+using Trinsic.Services.Account.V1;
+using System.Linq;
 
 namespace Trinsic;
 
 public abstract class ServiceBase
 {
-    protected ServiceBase(WalletProfile? walletProfile, ServerConfig? serverConfig)
+    protected ServiceBase(AccountProfile? accountProfile, ServerConfig? serverConfig)
     {
-        Profile = walletProfile;
+        Profile = accountProfile;
         Configuration = serverConfig ?? new ServerConfig
         {
             Endpoint = "prod.trinsic.cloud",
@@ -27,7 +28,7 @@ public abstract class ServiceBase
 
     private readonly HashAlgorithm hasher = new Blake3();
 
-    public WalletProfile? Profile { get; set; }
+    public AccountProfile? Profile { get; set; }
     public ServerConfig Configuration { get; private set; }
     public GrpcChannel Channel { get; set; }
 
@@ -38,15 +39,22 @@ public abstract class ServiceBase
     protected Metadata BuildMetadata(IMessage request)
     {
         if (Profile is null) throw new Exception("Cannot call authenticated endpoint: profile must be set");
+        if (Profile.Protection?.Enabled ?? false) throw new Exception("The token must be unprotected before use.");
 
         // compute the hash of the request and capture current timestamp
-        using MemoryStream stream = new(request.ToByteArray());
-        byte[] requestHash = hasher.ComputeHash(stream);
+        byte[] requestBytes = request.ToByteArray();
+        ByteString requestHash = ByteString.Empty;
+
+        if (requestBytes.Any())
+        {
+            using MemoryStream stream = new(request.ToByteArray());
+            requestHash = ByteString.CopyFrom(hasher.ComputeHash(stream));
+        }
 
         Nonce nonce = new()
         {
             Timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
-            RequestHash = ByteString.CopyFrom(requestHash)
+            RequestHash = requestHash
         };
 
         var proof = Oberon.CreateProof(new()

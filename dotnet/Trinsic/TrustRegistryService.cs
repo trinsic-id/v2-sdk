@@ -4,20 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
-using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(WalletProfile walletProfile, ServerConfig serverConfig) : base(walletProfile, serverConfig)
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig)
     {
         Client = new TrustRegistry.TrustRegistryClient(Channel);
     }
 
-    public TrustRegistry.TrustRegistryClient Client { get; }
+    internal TrustRegistry.TrustRegistryClient Client { get; }
 
     /// <summary>
     /// Register a Governance Framework with the Trust Registry.

@@ -2,39 +2,19 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.Account.V1;
+using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient;
 
 namespace Trinsic;
 
 public class WalletService : ServiceBase
 {
-    public WalletService(WalletProfile? walletProfile, ServerConfig? serverConfig) : base(walletProfile, serverConfig)
+    public WalletService(AccountProfile walletProfile, ServerConfig? serverConfig) : base(walletProfile, serverConfig)
     {
-        Client = new Wallet.WalletClient(Channel);
+        Client = new WalletServiceClient(Channel);
     }
 
-    public Wallet.WalletClient Client { get; }
-
-    public async Task RegisterOrConnect(string email)
-    {
-        await Client.ConnectExternalIdentityAsync(new ConnectRequest { Email = email });
-    }
-
-    public async Task<WalletProfile> CreateWallet(string? securityCode = null)
-    {
-        var createWalletResponse = await Client.CreateWalletAsync(new CreateWalletRequest
-        {
-            SecurityCode = securityCode ?? string.Empty
-        });
-
-        // This profile should be stored and supplied later
-        return new WalletProfile
-        {
-            AuthData = createWalletResponse.AuthData,
-            AuthToken = createWalletResponse.AuthToken,
-            IsProtected = createWalletResponse.IsProtected
-        };
-    }
-
+    internal WalletServiceClient Client { get; }
 
     /// <summary>
     /// Search the wallet for records matching the specified criteria

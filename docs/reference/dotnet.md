@@ -3,6 +3,60 @@
 
 ## Contents
 
+- [AccountDetails](#T-Trinsic-Services-Account-V1-AccountDetails 'Trinsic.Services.Account.V1.AccountDetails')
+  - [EmailFieldNumber](#F-Trinsic-Services-Account-V1-AccountDetails-EmailFieldNumber 'Trinsic.Services.Account.V1.AccountDetails.EmailFieldNumber')
+  - [NameFieldNumber](#F-Trinsic-Services-Account-V1-AccountDetails-NameFieldNumber 'Trinsic.Services.Account.V1.AccountDetails.NameFieldNumber')
+  - [SmsFieldNumber](#F-Trinsic-Services-Account-V1-AccountDetails-SmsFieldNumber 'Trinsic.Services.Account.V1.AccountDetails.SmsFieldNumber')
+  - [Email](#P-Trinsic-Services-Account-V1-AccountDetails-Email 'Trinsic.Services.Account.V1.AccountDetails.Email')
+  - [Name](#P-Trinsic-Services-Account-V1-AccountDetails-Name 'Trinsic.Services.Account.V1.AccountDetails.Name')
+  - [Sms](#P-Trinsic-Services-Account-V1-AccountDetails-Sms 'Trinsic.Services.Account.V1.AccountDetails.Sms')
+- [AccountProfile](#T-Trinsic-Services-Account-V1-AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')
+  - [AuthDataFieldNumber](#F-Trinsic-Services-Account-V1-AccountProfile-AuthDataFieldNumber 'Trinsic.Services.Account.V1.AccountProfile.AuthDataFieldNumber')
+  - [AuthTokenFieldNumber](#F-Trinsic-Services-Account-V1-AccountProfile-AuthTokenFieldNumber 'Trinsic.Services.Account.V1.AccountProfile.AuthTokenFieldNumber')
+  - [ProfileTypeFieldNumber](#F-Trinsic-Services-Account-V1-AccountProfile-ProfileTypeFieldNumber 'Trinsic.Services.Account.V1.AccountProfile.ProfileTypeFieldNumber')
+  - [ProtectionFieldNumber](#F-Trinsic-Services-Account-V1-AccountProfile-ProtectionFieldNumber 'Trinsic.Services.Account.V1.AccountProfile.ProtectionFieldNumber')
+  - [AuthData](#P-Trinsic-Services-Account-V1-AccountProfile-AuthData 'Trinsic.Services.Account.V1.AccountProfile.AuthData')
+  - [AuthToken](#P-Trinsic-Services-Account-V1-AccountProfile-AuthToken 'Trinsic.Services.Account.V1.AccountProfile.AuthToken')
+  - [ProfileType](#P-Trinsic-Services-Account-V1-AccountProfile-ProfileType 'Trinsic.Services.Account.V1.AccountProfile.ProfileType')
+  - [Protection](#P-Trinsic-Services-Account-V1-AccountProfile-Protection 'Trinsic.Services.Account.V1.AccountProfile.Protection')
+- [AccountReflection](#T-Trinsic-Services-Account-V1-AccountReflection 'Trinsic.Services.Account.V1.AccountReflection')
+  - [Descriptor](#P-Trinsic-Services-Account-V1-AccountReflection-Descriptor 'Trinsic.Services.Account.V1.AccountReflection.Descriptor')
+- [AccountService](#T-Trinsic-AccountService 'Trinsic.AccountService')
+- [AccountService](#T-Trinsic-Services-Account-V1-AccountService 'Trinsic.Services.Account.V1.AccountService')
+  - [Descriptor](#P-Trinsic-Services-Account-V1-AccountService-Descriptor 'Trinsic.Services.Account.V1.AccountService.Descriptor')
+  - [GetInfoAsync()](#M-Trinsic-AccountService-GetInfoAsync 'Trinsic.AccountService.GetInfoAsync')
+  - [Protect(profile,securityCode)](#M-Trinsic-AccountService-Protect-Trinsic-Services-Account-V1-AccountProfile@,System-String- 'Trinsic.AccountService.Protect(Trinsic.Services.Account.V1.AccountProfile@,System.String)')
+  - [SignInAsync(details)](#M-Trinsic-AccountService-SignInAsync-Trinsic-Services-Account-V1-AccountDetails- 'Trinsic.AccountService.SignInAsync(Trinsic.Services.Account.V1.AccountDetails)')
+  - [Unprotect(profile,securityCode)](#M-Trinsic-AccountService-Unprotect-Trinsic-Services-Account-V1-AccountProfile@,System-String- 'Trinsic.AccountService.Unprotect(Trinsic.Services.Account.V1.AccountProfile@,System.String)')
+  - [BindService(serviceImpl)](#M-Trinsic-Services-Account-V1-AccountService-BindService-Trinsic-Services-Account-V1-AccountService-AccountServiceBase- 'Trinsic.Services.Account.V1.AccountService.BindService(Trinsic.Services.Account.V1.AccountService.AccountServiceBase)')
+  - [BindService(serviceBinder,serviceImpl)](#M-Trinsic-Services-Account-V1-AccountService-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-Account-V1-AccountService-AccountServiceBase- 'Trinsic.Services.Account.V1.AccountService.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Account.V1.AccountService.AccountServiceBase)')
+- [AccountServiceBase](#T-Trinsic-Services-Account-V1-AccountService-AccountServiceBase 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase')
+  - [Info(request,context)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase.Info(Trinsic.Services.Account.V1.InfoRequest,Grpc.Core.ServerCallContext)')
+  - [ListDevices(request,context)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.ServerCallContext)')
+  - [RevokeDevice(request,context)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.ServerCallContext)')
+  - [SignIn(request,context)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.ServerCallContext)')
+- [AccountServiceClient](#T-Trinsic-Services-Account-V1-AccountService-AccountServiceClient 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient')
+  - [#ctor(channel)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-ChannelBase- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.#ctor(Grpc.Core.ChannelBase)')
+  - [#ctor(callInvoker)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-CallInvoker- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.#ctor(Grpc.Core.CallInvoker)')
+  - [#ctor()](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.#ctor')
+  - [#ctor(configuration)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)')
+  - [Info(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.Info(Trinsic.Services.Account.V1.InfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [Info(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.Info(Trinsic.Services.Account.V1.InfoRequest,Grpc.Core.CallOptions)')
+  - [InfoAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-InfoAsync-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.InfoAsync(Trinsic.Services.Account.V1.InfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [InfoAsync(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-InfoAsync-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.InfoAsync(Trinsic.Services.Account.V1.InfoRequest,Grpc.Core.CallOptions)')
+  - [ListDevices(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [ListDevices(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.ListDevices(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.CallOptions)')
+  - [ListDevicesAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevicesAsync-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.ListDevicesAsync(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [ListDevicesAsync(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevicesAsync-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.ListDevicesAsync(Trinsic.Services.Account.V1.ListDevicesRequest,Grpc.Core.CallOptions)')
+  - [NewInstance()](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)')
+  - [RevokeDevice(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [RevokeDevice(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.CallOptions)')
+  - [RevokeDeviceAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDeviceAsync-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [RevokeDeviceAsync(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDeviceAsync-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.CallOptions)')
+  - [SignIn(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [SignIn(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.SignIn(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.CallOptions)')
+  - [SignInAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignInAsync-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.SignInAsync(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [SignInAsync(request,options)](#M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignInAsync-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-CallOptions- 'Trinsic.Services.Account.V1.AccountService.AccountServiceClient.SignInAsync(Trinsic.Services.Account.V1.SignInRequest,Grpc.Core.CallOptions)')
 - [AddFrameworkRequest](#T-Trinsic-Services-TrustRegistry-V1-AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')
   - [GovernanceFrameworkFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-AddFrameworkRequest-GovernanceFrameworkFieldNumber 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest.GovernanceFrameworkFieldNumber')
 - [AddFrameworkResponse](#T-Trinsic-Services-TrustRegistry-V1-AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')
@@ -40,14 +94,13 @@
   - [NewInstance()](#M-Trinsic-Services-Common-V1-Common-CommonClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.Common.V1.Common.CommonClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)')
 - [CommonReflection](#T-Trinsic-Services-Common-V1-CommonReflection 'Trinsic.Services.Common.V1.CommonReflection')
   - [Descriptor](#P-Trinsic-Services-Common-V1-CommonReflection-Descriptor 'Trinsic.Services.Common.V1.CommonReflection.Descriptor')
-- [ConnectRequest](#T-Trinsic-Services-UniversalWallet-V1-ConnectRequest 'Trinsic.Services.UniversalWallet.V1.ConnectRequest')
-  - [EmailFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-ConnectRequest-EmailFieldNumber 'Trinsic.Services.UniversalWallet.V1.ConnectRequest.EmailFieldNumber')
-  - [PhoneFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-ConnectRequest-PhoneFieldNumber 'Trinsic.Services.UniversalWallet.V1.ConnectRequest.PhoneFieldNumber')
-- [ConnectResponse](#T-Trinsic-Services-UniversalWallet-V1-ConnectResponse 'Trinsic.Services.UniversalWallet.V1.ConnectResponse')
-  - [StatusFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-ConnectResponse-StatusFieldNumber 'Trinsic.Services.UniversalWallet.V1.ConnectResponse.StatusFieldNumber')
+- [ConfirmationMethod](#T-Trinsic-Services-Account-V1-ConfirmationMethod 'Trinsic.Services.Account.V1.ConfirmationMethod')
+  - [ConnectedDevice](#F-Trinsic-Services-Account-V1-ConfirmationMethod-ConnectedDevice 'Trinsic.Services.Account.V1.ConfirmationMethod.ConnectedDevice')
+  - [Email](#F-Trinsic-Services-Account-V1-ConfirmationMethod-Email 'Trinsic.Services.Account.V1.ConfirmationMethod.Email')
+  - [None](#F-Trinsic-Services-Account-V1-ConfirmationMethod-None 'Trinsic.Services.Account.V1.ConfirmationMethod.None')
+  - [Other](#F-Trinsic-Services-Account-V1-ConfirmationMethod-Other 'Trinsic.Services.Account.V1.ConfirmationMethod.Other')
+  - [Sms](#F-Trinsic-Services-Account-V1-ConfirmationMethod-Sms 'Trinsic.Services.Account.V1.ConfirmationMethod.Sms')
 - [ContactMethodOneofCase](#T-Trinsic-Services-Common-V1-InviteRequest-ContactMethodOneofCase 'Trinsic.Services.Common.V1.InviteRequest.ContactMethodOneofCase')
-- [ContactMethodOneofCase](#T-Trinsic-Services-UniversalWallet-V1-ConnectRequest-ContactMethodOneofCase 'Trinsic.Services.UniversalWallet.V1.ConnectRequest.ContactMethodOneofCase')
-- [ContactMethodOneofCase](#T-Trinsic-Services-UniversalWallet-V1-InvitationToken-ContactMethodOneofCase 'Trinsic.Services.UniversalWallet.V1.InvitationToken.ContactMethodOneofCase')
 - [CreateCredentialTemplateRequest](#T-Trinsic-Services-VerifiableCredentials-Templates-V1-CreateCredentialTemplateRequest 'Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest')
   - [BaseUriFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-CreateCredentialTemplateRequest-BaseUriFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.BaseUriFieldNumber')
   - [NameFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-CreateCredentialTemplateRequest-NameFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.NameFieldNumber')
@@ -60,20 +113,6 @@
   - [RevealDocumentFieldNumber](#F-Trinsic-Services-VerifiableCredentials-V1-CreateProofRequest-RevealDocumentFieldNumber 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentFieldNumber')
 - [CreateProofResponse](#T-Trinsic-Services-VerifiableCredentials-V1-CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')
   - [ProofDocumentFieldNumber](#F-Trinsic-Services-VerifiableCredentials-V1-CreateProofResponse-ProofDocumentFieldNumber 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentFieldNumber')
-- [CreateWalletRequest](#T-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest 'Trinsic.Services.UniversalWallet.V1.CreateWalletRequest')
-  - [DescriptionFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-DescriptionFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.DescriptionFieldNumber')
-  - [SecurityCodeFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-SecurityCodeFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.SecurityCodeFieldNumber')
-  - [Description](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-Description 'Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.Description')
-  - [SecurityCode](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-SecurityCode 'Trinsic.Services.UniversalWallet.V1.CreateWalletRequest.SecurityCode')
-- [CreateWalletResponse](#T-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse')
-  - [AuthDataFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthDataFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthDataFieldNumber')
-  - [AuthTokenFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthTokenFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthTokenFieldNumber')
-  - [IsProtectedFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-IsProtectedFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.IsProtectedFieldNumber')
-  - [StatusFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-StatusFieldNumber 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.StatusFieldNumber')
-  - [AuthData](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthData 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthData')
-  - [AuthToken](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthToken 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.AuthToken')
-  - [IsProtected](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-IsProtected 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.IsProtected')
-  - [Status](#P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-Status 'Trinsic.Services.UniversalWallet.V1.CreateWalletResponse.Status')
 - [Credential](#T-Trinsic-Services-VerifiableCredentials-V1-Credential 'Trinsic.Services.VerifiableCredentials.V1.Credential')
   - [Descriptor](#P-Trinsic-Services-VerifiableCredentials-V1-Credential-Descriptor 'Trinsic.Services.VerifiableCredentials.V1.Credential.Descriptor')
   - [BindService(serviceImpl)](#M-Trinsic-Services-VerifiableCredentials-V1-Credential-BindService-Trinsic-Services-VerifiableCredentials-V1-Credential-CredentialBase- 'Trinsic.Services.VerifiableCredentials.V1.Credential.BindService(Trinsic.Services.VerifiableCredentials.V1.Credential.CredentialBase)')
@@ -122,6 +161,7 @@
   - [NewInstance()](#M-Trinsic-Services-Debug-V1-Debugging-DebuggingClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.Debug.V1.Debugging.DebuggingClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)')
 - [DeleteCredentialTemplateRequest](#T-Trinsic-Services-VerifiableCredentials-Templates-V1-DeleteCredentialTemplateRequest 'Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest')
   - [IdFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-DeleteCredentialTemplateRequest-IdFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest.IdFieldNumber')
+- [DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest')
 - [DeliveryMethodOneofCase](#T-Trinsic-Services-VerifiableCredentials-V1-SendRequest-DeliveryMethodOneofCase 'Trinsic.Services.VerifiableCredentials.V1.SendRequest.DeliveryMethodOneofCase')
 - [FetchDataRequest](#T-Trinsic-Services-TrustRegistry-V1-FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')
   - [GovernanceFrameworkUriFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-FetchDataRequest-GovernanceFrameworkUriFieldNumber 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest.GovernanceFrameworkUriFieldNumber')
@@ -132,36 +172,25 @@
   - [IdFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-GetCredentialTemplateRequest-IdFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest.IdFieldNumber')
 - [GetCredentialTemplateResponse](#T-Trinsic-Services-VerifiableCredentials-Templates-V1-GetCredentialTemplateResponse 'Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateResponse')
   - [TemplateFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-GetCredentialTemplateResponse-TemplateFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateResponse.TemplateFieldNumber')
-- [GetProviderConfigurationRequest](#T-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationRequest 'Trinsic.Services.UniversalWallet.V1.GetProviderConfigurationRequest')
-  - [RequestOptionsFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationRequest-RequestOptionsFieldNumber 'Trinsic.Services.UniversalWallet.V1.GetProviderConfigurationRequest.RequestOptionsFieldNumber')
-- [GetProviderConfigurationResponse](#T-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse 'Trinsic.Services.UniversalWallet.V1.GetProviderConfigurationResponse')
-  - [DidDocumentFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse-DidDocumentFieldNumber 'Trinsic.Services.UniversalWallet.V1.GetProviderConfigurationResponse.DidDocumentFieldNumber')
-  - [KeyAgreementKeyIdFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse-KeyAgreementKeyIdFieldNumber 'Trinsic.Services.UniversalWallet.V1.GetProviderConfigurationResponse.KeyAgreementKeyIdFieldNumber')
 - [GovernanceFramework](#T-Trinsic-Services-TrustRegistry-V1-GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')
   - [DescriptionFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-GovernanceFramework-DescriptionFieldNumber 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework.DescriptionFieldNumber')
   - [GovernanceFrameworkUriFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-GovernanceFramework-GovernanceFrameworkUriFieldNumber 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework.GovernanceFrameworkUriFieldNumber')
   - [TrustRegistryUriFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-GovernanceFramework-TrustRegistryUriFieldNumber 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework.TrustRegistryUriFieldNumber')
-- [GrantAccessRequest](#T-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest 'Trinsic.Services.UniversalWallet.V1.GrantAccessRequest')
-  - [DidFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest-DidFieldNumber 'Trinsic.Services.UniversalWallet.V1.GrantAccessRequest.DidFieldNumber')
-  - [WalletIdFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest-WalletIdFieldNumber 'Trinsic.Services.UniversalWallet.V1.GrantAccessRequest.WalletIdFieldNumber')
-- [GrantAccessResponse](#T-Trinsic-Services-UniversalWallet-V1-GrantAccessResponse 'Trinsic.Services.UniversalWallet.V1.GrantAccessResponse')
-  - [StatusFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-GrantAccessResponse-StatusFieldNumber 'Trinsic.Services.UniversalWallet.V1.GrantAccessResponse.StatusFieldNumber')
+- [InfoResponse](#T-Trinsic-Services-Account-V1-InfoResponse 'Trinsic.Services.Account.V1.InfoResponse')
+  - [DetailsFieldNumber](#F-Trinsic-Services-Account-V1-InfoResponse-DetailsFieldNumber 'Trinsic.Services.Account.V1.InfoResponse.DetailsFieldNumber')
+  - [Details](#P-Trinsic-Services-Account-V1-InfoResponse-Details 'Trinsic.Services.Account.V1.InfoResponse.Details')
 - [InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest')
   - [ItemFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InsertItemRequest-ItemFieldNumber 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemFieldNumber')
   - [ItemTypeFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InsertItemRequest-ItemTypeFieldNumber 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemTypeFieldNumber')
 - [InsertItemResponse](#T-Trinsic-Services-UniversalWallet-V1-InsertItemResponse 'Trinsic.Services.UniversalWallet.V1.InsertItemResponse')
   - [ItemIdFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InsertItemResponse-ItemIdFieldNumber 'Trinsic.Services.UniversalWallet.V1.InsertItemResponse.ItemIdFieldNumber')
   - [StatusFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InsertItemResponse-StatusFieldNumber 'Trinsic.Services.UniversalWallet.V1.InsertItemResponse.StatusFieldNumber')
+  - [ItemId](#P-Trinsic-Services-UniversalWallet-V1-InsertItemResponse-ItemId 'Trinsic.Services.UniversalWallet.V1.InsertItemResponse.ItemId')
 - [InvitationStatusRequest](#T-Trinsic-Services-Common-V1-InvitationStatusRequest 'Trinsic.Services.Common.V1.InvitationStatusRequest')
   - [InvitationIdFieldNumber](#F-Trinsic-Services-Common-V1-InvitationStatusRequest-InvitationIdFieldNumber 'Trinsic.Services.Common.V1.InvitationStatusRequest.InvitationIdFieldNumber')
 - [InvitationStatusResponse](#T-Trinsic-Services-Common-V1-InvitationStatusResponse 'Trinsic.Services.Common.V1.InvitationStatusResponse')
   - [StatusDetailsFieldNumber](#F-Trinsic-Services-Common-V1-InvitationStatusResponse-StatusDetailsFieldNumber 'Trinsic.Services.Common.V1.InvitationStatusResponse.StatusDetailsFieldNumber')
   - [StatusFieldNumber](#F-Trinsic-Services-Common-V1-InvitationStatusResponse-StatusFieldNumber 'Trinsic.Services.Common.V1.InvitationStatusResponse.StatusFieldNumber')
-- [InvitationToken](#T-Trinsic-Services-UniversalWallet-V1-InvitationToken 'Trinsic.Services.UniversalWallet.V1.InvitationToken')
-  - [EmailFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InvitationToken-EmailFieldNumber 'Trinsic.Services.UniversalWallet.V1.InvitationToken.EmailFieldNumber')
-  - [PhoneFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InvitationToken-PhoneFieldNumber 'Trinsic.Services.UniversalWallet.V1.InvitationToken.PhoneFieldNumber')
-  - [SecurityCodeFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InvitationToken-SecurityCodeFieldNumber 'Trinsic.Services.UniversalWallet.V1.InvitationToken.SecurityCodeFieldNumber')
-  - [WalletIdFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-InvitationToken-WalletIdFieldNumber 'Trinsic.Services.UniversalWallet.V1.InvitationToken.WalletIdFieldNumber')
 - [InviteRequest](#T-Trinsic-Services-Common-V1-InviteRequest 'Trinsic.Services.Common.V1.InviteRequest')
   - [DescriptionFieldNumber](#F-Trinsic-Services-Common-V1-InviteRequest-DescriptionFieldNumber 'Trinsic.Services.Common.V1.InviteRequest.DescriptionFieldNumber')
   - [DidcommInvitationFieldNumber](#F-Trinsic-Services-Common-V1-InviteRequest-DidcommInvitationFieldNumber 'Trinsic.Services.Common.V1.InviteRequest.DidcommInvitationFieldNumber')
@@ -253,11 +282,6 @@
   - [StatusFieldNumber](#F-Trinsic-Services-TrustRegistry-V1-RemoveFrameworkResponse-StatusFieldNumber 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse.StatusFieldNumber')
 - [RequestOptions](#T-Trinsic-Services-Common-V1-RequestOptions 'Trinsic.Services.Common.V1.RequestOptions')
   - [ResponseJsonFormatFieldNumber](#F-Trinsic-Services-Common-V1-RequestOptions-ResponseJsonFormatFieldNumber 'Trinsic.Services.Common.V1.RequestOptions.ResponseJsonFormatFieldNumber')
-- [RevokeAccessRequest](#T-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest 'Trinsic.Services.UniversalWallet.V1.RevokeAccessRequest')
-  - [DidFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest-DidFieldNumber 'Trinsic.Services.UniversalWallet.V1.RevokeAccessRequest.DidFieldNumber')
-  - [WalletIdFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest-WalletIdFieldNumber 'Trinsic.Services.UniversalWallet.V1.RevokeAccessRequest.WalletIdFieldNumber')
-- [RevokeAccessResponse](#T-Trinsic-Services-UniversalWallet-V1-RevokeAccessResponse 'Trinsic.Services.UniversalWallet.V1.RevokeAccessResponse')
-  - [StatusFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-RevokeAccessResponse-StatusFieldNumber 'Trinsic.Services.UniversalWallet.V1.RevokeAccessResponse.StatusFieldNumber')
 - [SearchCredentialTemplatesRequest](#T-Trinsic-Services-VerifiableCredentials-Templates-V1-SearchCredentialTemplatesRequest 'Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest')
   - [ContinuationTokenFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-SearchCredentialTemplatesRequest-ContinuationTokenFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.ContinuationTokenFieldNumber')
   - [QueryFieldNumber](#F-Trinsic-Services-VerifiableCredentials-Templates-V1-SearchCredentialTemplatesRequest-QueryFieldNumber 'Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.QueryFieldNumber')
@@ -303,6 +327,18 @@
 - [ServiceBase](#T-Trinsic-ServiceBase 'Trinsic.ServiceBase')
   - [Base64UrlEncode(data)](#M-Trinsic-ServiceBase-Base64UrlEncode-System-Byte[]- 'Trinsic.ServiceBase.Base64UrlEncode(System.Byte[])')
   - [BuildMetadata()](#M-Trinsic-ServiceBase-BuildMetadata-Google-Protobuf-IMessage- 'Trinsic.ServiceBase.BuildMetadata(Google.Protobuf.IMessage)')
+- [SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest')
+  - [DetailsFieldNumber](#F-Trinsic-Services-Account-V1-SignInRequest-DetailsFieldNumber 'Trinsic.Services.Account.V1.SignInRequest.DetailsFieldNumber')
+  - [InvitationCodeFieldNumber](#F-Trinsic-Services-Account-V1-SignInRequest-InvitationCodeFieldNumber 'Trinsic.Services.Account.V1.SignInRequest.InvitationCodeFieldNumber')
+  - [Details](#P-Trinsic-Services-Account-V1-SignInRequest-Details 'Trinsic.Services.Account.V1.SignInRequest.Details')
+  - [InvitationCode](#P-Trinsic-Services-Account-V1-SignInRequest-InvitationCode 'Trinsic.Services.Account.V1.SignInRequest.InvitationCode')
+- [SignInResponse](#T-Trinsic-Services-Account-V1-SignInResponse 'Trinsic.Services.Account.V1.SignInResponse')
+  - [ConfirmationMethodFieldNumber](#F-Trinsic-Services-Account-V1-SignInResponse-ConfirmationMethodFieldNumber 'Trinsic.Services.Account.V1.SignInResponse.ConfirmationMethodFieldNumber')
+  - [ProfileFieldNumber](#F-Trinsic-Services-Account-V1-SignInResponse-ProfileFieldNumber 'Trinsic.Services.Account.V1.SignInResponse.ProfileFieldNumber')
+  - [StatusFieldNumber](#F-Trinsic-Services-Account-V1-SignInResponse-StatusFieldNumber 'Trinsic.Services.Account.V1.SignInResponse.StatusFieldNumber')
+  - [ConfirmationMethod](#P-Trinsic-Services-Account-V1-SignInResponse-ConfirmationMethod 'Trinsic.Services.Account.V1.SignInResponse.ConfirmationMethod')
+  - [Profile](#P-Trinsic-Services-Account-V1-SignInResponse-Profile 'Trinsic.Services.Account.V1.SignInResponse.Profile')
+  - [Status](#P-Trinsic-Services-Account-V1-SignInResponse-Status 'Trinsic.Services.Account.V1.SignInResponse.Status')
 - [Status](#T-Trinsic-Services-Common-V1-InvitationStatusResponse-Types-Status 'Trinsic.Services.Common.V1.InvitationStatusResponse.Types.Status')
   - [Completed](#F-Trinsic-Services-Common-V1-InvitationStatusResponse-Types-Status-Completed 'Trinsic.Services.Common.V1.InvitationStatusResponse.Types.Status.Completed')
   - [Error](#F-Trinsic-Services-Common-V1-InvitationStatusResponse-Types-Status-Error 'Trinsic.Services.Common.V1.InvitationStatusResponse.Types.Status.Error')
@@ -312,6 +348,11 @@
   - [ToJToken(message)](#M-Google-Protobuf-WellKnownTypes-StructExtensions-ToJToken-Google-Protobuf-WellKnownTypes-Struct- 'Google.Protobuf.WellKnownTypes.StructExtensions.ToJToken(Google.Protobuf.WellKnownTypes.Struct)')
 - [TemplatesReflection](#T-Trinsic-Services-VerifiableCredentials-Templates-V1-TemplatesReflection 'Trinsic.Services.VerifiableCredentials.Templates.V1.TemplatesReflection')
   - [Descriptor](#P-Trinsic-Services-VerifiableCredentials-Templates-V1-TemplatesReflection-Descriptor 'Trinsic.Services.VerifiableCredentials.Templates.V1.TemplatesReflection.Descriptor')
+- [TokenProtection](#T-Trinsic-Services-Account-V1-TokenProtection 'Trinsic.Services.Account.V1.TokenProtection')
+  - [EnabledFieldNumber](#F-Trinsic-Services-Account-V1-TokenProtection-EnabledFieldNumber 'Trinsic.Services.Account.V1.TokenProtection.EnabledFieldNumber')
+  - [MethodFieldNumber](#F-Trinsic-Services-Account-V1-TokenProtection-MethodFieldNumber 'Trinsic.Services.Account.V1.TokenProtection.MethodFieldNumber')
+  - [Enabled](#P-Trinsic-Services-Account-V1-TokenProtection-Enabled 'Trinsic.Services.Account.V1.TokenProtection.Enabled')
+  - [Method](#P-Trinsic-Services-Account-V1-TokenProtection-Method 'Trinsic.Services.Account.V1.TokenProtection.Method')
 - [TrustRegistry](#T-Trinsic-Services-TrustRegistry-V1-TrustRegistry 'Trinsic.Services.TrustRegistry.V1.TrustRegistry')
   - [Descriptor](#P-Trinsic-Services-TrustRegistry-V1-TrustRegistry-Descriptor 'Trinsic.Services.TrustRegistry.V1.TrustRegistry.Descriptor')
   - [BindService(serviceImpl)](#M-Trinsic-Services-TrustRegistry-V1-TrustRegistry-BindService-Trinsic-Services-TrustRegistry-V1-TrustRegistry-TrustRegistryBase- 'Trinsic.Services.TrustRegistry.V1.TrustRegistry.BindService(Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase)')
@@ -387,26 +428,749 @@
   - [ProofDocumentFieldNumber](#F-Trinsic-Services-VerifiableCredentials-V1-VerifyProofRequest-ProofDocumentFieldNumber 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest.ProofDocumentFieldNumber')
 - [VerifyProofResponse](#T-Trinsic-Services-VerifiableCredentials-V1-VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')
   - [ValidFieldNumber](#F-Trinsic-Services-VerifiableCredentials-V1-VerifyProofResponse-ValidFieldNumber 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidFieldNumber')
-- [Wallet](#T-Trinsic-Services-UniversalWallet-V1-Wallet 'Trinsic.Services.UniversalWallet.V1.Wallet')
-  - [Descriptor](#P-Trinsic-Services-UniversalWallet-V1-Wallet-Descriptor 'Trinsic.Services.UniversalWallet.V1.Wallet.Descriptor')
-  - [BindService(serviceImpl)](#M-Trinsic-Services-UniversalWallet-V1-Wallet-BindService-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase- 'Trinsic.Services.UniversalWallet.V1.Wallet.BindService(Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase)')
-  - [BindService(serviceBinder,serviceImpl)](#M-Trinsic-Services-UniversalWallet-V1-Wallet-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase- 'Trinsic.Services.UniversalWallet.V1.Wallet.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase)')
-- [WalletBase](#T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase')
-- [WalletClient](#T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient')
-  - [#ctor(channel)](#M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-ChannelBase- 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient.#ctor(Grpc.Core.ChannelBase)')
-  - [#ctor(callInvoker)](#M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-CallInvoker- 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient.#ctor(Grpc.Core.CallInvoker)')
-  - [#ctor()](#M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient.#ctor')
-  - [#ctor(configuration)](#M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)')
-  - [NewInstance()](#M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)')
-- [WalletProfile](#T-Trinsic-Services-UniversalWallet-V1-WalletProfile 'Trinsic.Services.UniversalWallet.V1.WalletProfile')
-  - [AuthDataFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-WalletProfile-AuthDataFieldNumber 'Trinsic.Services.UniversalWallet.V1.WalletProfile.AuthDataFieldNumber')
-  - [AuthTokenFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-WalletProfile-AuthTokenFieldNumber 'Trinsic.Services.UniversalWallet.V1.WalletProfile.AuthTokenFieldNumber')
-  - [ConfigFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-WalletProfile-ConfigFieldNumber 'Trinsic.Services.UniversalWallet.V1.WalletProfile.ConfigFieldNumber')
-  - [IsProtectedFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-WalletProfile-IsProtectedFieldNumber 'Trinsic.Services.UniversalWallet.V1.WalletProfile.IsProtectedFieldNumber')
-  - [NameFieldNumber](#F-Trinsic-Services-UniversalWallet-V1-WalletProfile-NameFieldNumber 'Trinsic.Services.UniversalWallet.V1.WalletProfile.NameFieldNumber')
+- [WalletService](#T-Trinsic-Services-UniversalWallet-V1-WalletService 'Trinsic.Services.UniversalWallet.V1.WalletService')
 - [WalletService](#T-Trinsic-WalletService 'Trinsic.WalletService')
+  - [Descriptor](#P-Trinsic-Services-UniversalWallet-V1-WalletService-Descriptor 'Trinsic.Services.UniversalWallet.V1.WalletService.Descriptor')
+  - [BindService(serviceImpl)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-BindService-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase- 'Trinsic.Services.UniversalWallet.V1.WalletService.BindService(Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase)')
+  - [BindService(serviceBinder,serviceImpl)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase- 'Trinsic.Services.UniversalWallet.V1.WalletService.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase)')
   - [InsertItem(item)](#M-Trinsic-WalletService-InsertItem-Newtonsoft-Json-Linq-JObject- 'Trinsic.WalletService.InsertItem(Newtonsoft.Json.Linq.JObject)')
   - [Search(query)](#M-Trinsic-WalletService-Search-System-String- 'Trinsic.WalletService.Search(System.String)')
+- [WalletServiceBase](#T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase')
+  - [Deleteitem(request,context)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.ServerCallContext)')
+  - [InsertItem(request,context)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.ServerCallContext)')
+  - [Search(request,context)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-ServerCallContext- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.ServerCallContext)')
+- [WalletServiceClient](#T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient')
+  - [#ctor(channel)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-ChannelBase- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.#ctor(Grpc.Core.ChannelBase)')
+  - [#ctor(callInvoker)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-CallInvoker- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.#ctor(Grpc.Core.CallInvoker)')
+  - [#ctor()](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.#ctor')
+  - [#ctor(configuration)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)')
+  - [Deleteitem(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [Deleteitem(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)')
+  - [DeleteitemAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-DeleteitemAsync-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.DeleteitemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [DeleteitemAsync(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-DeleteitemAsync-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.DeleteitemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)')
+  - [InsertItem(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [InsertItem(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.CallOptions)')
+  - [InsertItemAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItemAsync-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [InsertItemAsync(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItemAsync-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.CallOptions)')
+  - [NewInstance()](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)')
+  - [Search(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [Search(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.CallOptions)')
+  - [SearchAsync(request,headers,deadline,cancellationToken)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-SearchAsync-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.SearchAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)')
+  - [SearchAsync(request,options)](#M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-SearchAsync-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-CallOptions- 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient.SearchAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.CallOptions)')
+
+<a name='T-Trinsic-Services-Account-V1-AccountDetails'></a>
+## AccountDetails `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Account Registration Details
+
+<a name='F-Trinsic-Services-Account-V1-AccountDetails-EmailFieldNumber'></a>
+### EmailFieldNumber `constants`
+
+##### Summary
+
+Field number for the "email" field.
+
+<a name='F-Trinsic-Services-Account-V1-AccountDetails-NameFieldNumber'></a>
+### NameFieldNumber `constants`
+
+##### Summary
+
+Field number for the "name" field.
+
+<a name='F-Trinsic-Services-Account-V1-AccountDetails-SmsFieldNumber'></a>
+### SmsFieldNumber `constants`
+
+##### Summary
+
+Field number for the "sms" field.
+
+<a name='P-Trinsic-Services-Account-V1-AccountDetails-Email'></a>
+### Email `property`
+
+##### Summary
+
+Email account (required)
+
+<a name='P-Trinsic-Services-Account-V1-AccountDetails-Name'></a>
+### Name `property`
+
+##### Summary
+
+Account name (optional)
+
+<a name='P-Trinsic-Services-Account-V1-AccountDetails-Sms'></a>
+### Sms `property`
+
+##### Summary
+
+SMS number including country code (optional)
+
+<a name='T-Trinsic-Services-Account-V1-AccountProfile'></a>
+## AccountProfile `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Device profile containing sensitive authentication data.
+This information should be stored securely
+
+<a name='F-Trinsic-Services-Account-V1-AccountProfile-AuthDataFieldNumber'></a>
+### AuthDataFieldNumber `constants`
+
+##### Summary
+
+Field number for the "auth_data" field.
+
+<a name='F-Trinsic-Services-Account-V1-AccountProfile-AuthTokenFieldNumber'></a>
+### AuthTokenFieldNumber `constants`
+
+##### Summary
+
+Field number for the "auth_token" field.
+
+<a name='F-Trinsic-Services-Account-V1-AccountProfile-ProfileTypeFieldNumber'></a>
+### ProfileTypeFieldNumber `constants`
+
+##### Summary
+
+Field number for the "profile_type" field.
+
+<a name='F-Trinsic-Services-Account-V1-AccountProfile-ProtectionFieldNumber'></a>
+### ProtectionFieldNumber `constants`
+
+##### Summary
+
+Field number for the "protection" field.
+
+<a name='P-Trinsic-Services-Account-V1-AccountProfile-AuthData'></a>
+### AuthData `property`
+
+##### Summary
+
+Auth data containg information about the current device access
+
+<a name='P-Trinsic-Services-Account-V1-AccountProfile-AuthToken'></a>
+### AuthToken `property`
+
+##### Summary
+
+Secure token issued by server used to generate zero-knowledge proofs
+
+<a name='P-Trinsic-Services-Account-V1-AccountProfile-ProfileType'></a>
+### ProfileType `property`
+
+##### Summary
+
+The type of profile, used to differentiate between
+protocol schemes or versions
+
+<a name='P-Trinsic-Services-Account-V1-AccountProfile-Protection'></a>
+### Protection `property`
+
+##### Summary
+
+Token security information about the token.
+If token protection is enabled, implementations must supply
+protection secret before using the token for authentication.
+
+<a name='T-Trinsic-Services-Account-V1-AccountReflection'></a>
+## AccountReflection `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Holder for reflection information generated from services/account/v1/account.proto
+
+<a name='P-Trinsic-Services-Account-V1-AccountReflection-Descriptor'></a>
+### Descriptor `property`
+
+##### Summary
+
+File descriptor for services/account/v1/account.proto
+
+<a name='T-Trinsic-AccountService'></a>
+## AccountService `type`
+
+##### Namespace
+
+Trinsic
+
+<a name='T-Trinsic-Services-Account-V1-AccountService'></a>
+## AccountService `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+<a name='P-Trinsic-Services-Account-V1-AccountService-Descriptor'></a>
+### Descriptor `property`
+
+##### Summary
+
+Service descriptor
+
+<a name='M-Trinsic-AccountService-GetInfoAsync'></a>
+### GetInfoAsync() `method`
+
+##### Summary
+
+Return the details about the currently active account
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Trinsic-AccountService-Protect-Trinsic-Services-Account-V1-AccountProfile@,System-String-'></a>
+### Protect(profile,securityCode) `method`
+
+##### Summary
+
+Protects the account profile with a security code.
+The code can be PIN, password, keychain secret, etc.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| profile | [Trinsic.Services.Account.V1.AccountProfile@](#T-Trinsic-Services-Account-V1-AccountProfile@ 'Trinsic.Services.Account.V1.AccountProfile@') |  |
+| securityCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-Trinsic-AccountService-SignInAsync-Trinsic-Services-Account-V1-AccountDetails-'></a>
+### SignInAsync(details) `method`
+
+##### Summary
+
+Perform a sign-in to obtain an account profile. If the [AccountDetails](#T-Trinsic-Services-Account-V1-AccountDetails 'Trinsic.Services.Account.V1.AccountDetails') are
+specified, they will be used to associate
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| details | [Trinsic.Services.Account.V1.AccountDetails](#T-Trinsic-Services-Account-V1-AccountDetails 'Trinsic.Services.Account.V1.AccountDetails') |  |
+
+<a name='M-Trinsic-AccountService-Unprotect-Trinsic-Services-Account-V1-AccountProfile@,System-String-'></a>
+### Unprotect(profile,securityCode) `method`
+
+##### Summary
+
+Unprotects the account profile using a security code.
+The confirmation method field will specify how this code was
+communicated with the account owner.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| profile | [Trinsic.Services.Account.V1.AccountProfile@](#T-Trinsic-Services-Account-V1-AccountProfile@ 'Trinsic.Services.Account.V1.AccountProfile@') |  |
+| securityCode | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-BindService-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-'></a>
+### BindService(serviceImpl) `method`
+
+##### Summary
+
+Creates service definition that can be registered with a server
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| serviceImpl | [Trinsic.Services.Account.V1.AccountService.AccountServiceBase](#T-Trinsic-Services-Account-V1-AccountService-AccountServiceBase 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase') | An object implementing the server-side handling logic. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-Account-V1-AccountService-AccountServiceBase-'></a>
+### BindService(serviceBinder,serviceImpl) `method`
+
+##### Summary
+
+Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+Note: this method is part of an experimental API that can change or be removed without any prior notice.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| serviceBinder | [Grpc.Core.ServiceBinderBase](#T-Grpc-Core-ServiceBinderBase 'Grpc.Core.ServiceBinderBase') | Service methods will be bound by calling `AddMethod` on this object. |
+| serviceImpl | [Trinsic.Services.Account.V1.AccountService.AccountServiceBase](#T-Trinsic-Services-Account-V1-AccountService-AccountServiceBase 'Trinsic.Services.Account.V1.AccountService.AccountServiceBase') | An object implementing the server-side handling logic. |
+
+<a name='T-Trinsic-Services-Account-V1-AccountService-AccountServiceBase'></a>
+## AccountServiceBase `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1.AccountService
+
+##### Summary
+
+Base class for server-side implementations of AccountService
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-ServerCallContext-'></a>
+### Info(request,context) `method`
+
+##### Summary
+
+Get account information
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.InfoRequest](#T-Trinsic-Services-Account-V1-InfoRequest 'Trinsic.Services.Account.V1.InfoRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-ServerCallContext-'></a>
+### ListDevices(request,context) `method`
+
+##### Summary
+
+List all connected devices
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.ListDevicesRequest](#T-Trinsic-Services-Account-V1-ListDevicesRequest 'Trinsic.Services.Account.V1.ListDevicesRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-ServerCallContext-'></a>
+### RevokeDevice(request,context) `method`
+
+##### Summary
+
+Revoke device access to the account's cloud wallet
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.RevokeDeviceRequest](#T-Trinsic-Services-Account-V1-RevokeDeviceRequest 'Trinsic.Services.Account.V1.RevokeDeviceRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceBase-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-ServerCallContext-'></a>
+### SignIn(request,context) `method`
+
+##### Summary
+
+Sign in to an already existing account
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='T-Trinsic-Services-Account-V1-AccountService-AccountServiceClient'></a>
+## AccountServiceClient `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1.AccountService
+
+##### Summary
+
+Client for AccountService
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-ChannelBase-'></a>
+### #ctor(channel) `constructor`
+
+##### Summary
+
+Creates a new client for AccountService
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| channel | [Grpc.Core.ChannelBase](#T-Grpc-Core-ChannelBase 'Grpc.Core.ChannelBase') | The channel to use to make remote calls. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-CallInvoker-'></a>
+### #ctor(callInvoker) `constructor`
+
+##### Summary
+
+Creates a new client for AccountService that uses a custom `CallInvoker`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| callInvoker | [Grpc.Core.CallInvoker](#T-Grpc-Core-CallInvoker 'Grpc.Core.CallInvoker') | The callInvoker to use to make remote calls. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Protected parameterless constructor to allow creation of test doubles.
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
+### #ctor(configuration) `constructor`
+
+##### Summary
+
+Protected constructor to allow creation of configured clients.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Grpc.Core.ClientBase.ClientBaseConfiguration](#T-Grpc-Core-ClientBase-ClientBaseConfiguration 'Grpc.Core.ClientBase.ClientBaseConfiguration') | The client configuration. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### Info(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Get account information
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.InfoRequest](#T-Trinsic-Services-Account-V1-InfoRequest 'Trinsic.Services.Account.V1.InfoRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-Info-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-CallOptions-'></a>
+### Info(request,options) `method`
+
+##### Summary
+
+Get account information
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.InfoRequest](#T-Trinsic-Services-Account-V1-InfoRequest 'Trinsic.Services.Account.V1.InfoRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-InfoAsync-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### InfoAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Get account information
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.InfoRequest](#T-Trinsic-Services-Account-V1-InfoRequest 'Trinsic.Services.Account.V1.InfoRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-InfoAsync-Trinsic-Services-Account-V1-InfoRequest,Grpc-Core-CallOptions-'></a>
+### InfoAsync(request,options) `method`
+
+##### Summary
+
+Get account information
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.InfoRequest](#T-Trinsic-Services-Account-V1-InfoRequest 'Trinsic.Services.Account.V1.InfoRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### ListDevices(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+List all connected devices
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.ListDevicesRequest](#T-Trinsic-Services-Account-V1-ListDevicesRequest 'Trinsic.Services.Account.V1.ListDevicesRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevices-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-CallOptions-'></a>
+### ListDevices(request,options) `method`
+
+##### Summary
+
+List all connected devices
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.ListDevicesRequest](#T-Trinsic-Services-Account-V1-ListDevicesRequest 'Trinsic.Services.Account.V1.ListDevicesRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevicesAsync-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### ListDevicesAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+List all connected devices
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.ListDevicesRequest](#T-Trinsic-Services-Account-V1-ListDevicesRequest 'Trinsic.Services.Account.V1.ListDevicesRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-ListDevicesAsync-Trinsic-Services-Account-V1-ListDevicesRequest,Grpc-Core-CallOptions-'></a>
+### ListDevicesAsync(request,options) `method`
+
+##### Summary
+
+List all connected devices
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.ListDevicesRequest](#T-Trinsic-Services-Account-V1-ListDevicesRequest 'Trinsic.Services.Account.V1.ListDevicesRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
+### NewInstance() `method`
+
+##### Summary
+
+Creates a new instance of client from given `ClientBaseConfiguration`.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### RevokeDevice(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Revoke device access to the account's cloud wallet
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.RevokeDeviceRequest](#T-Trinsic-Services-Account-V1-RevokeDeviceRequest 'Trinsic.Services.Account.V1.RevokeDeviceRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDevice-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-CallOptions-'></a>
+### RevokeDevice(request,options) `method`
+
+##### Summary
+
+Revoke device access to the account's cloud wallet
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.RevokeDeviceRequest](#T-Trinsic-Services-Account-V1-RevokeDeviceRequest 'Trinsic.Services.Account.V1.RevokeDeviceRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDeviceAsync-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### RevokeDeviceAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Revoke device access to the account's cloud wallet
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.RevokeDeviceRequest](#T-Trinsic-Services-Account-V1-RevokeDeviceRequest 'Trinsic.Services.Account.V1.RevokeDeviceRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-RevokeDeviceAsync-Trinsic-Services-Account-V1-RevokeDeviceRequest,Grpc-Core-CallOptions-'></a>
+### RevokeDeviceAsync(request,options) `method`
+
+##### Summary
+
+Revoke device access to the account's cloud wallet
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.RevokeDeviceRequest](#T-Trinsic-Services-Account-V1-RevokeDeviceRequest 'Trinsic.Services.Account.V1.RevokeDeviceRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### SignIn(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Sign in to an already existing account
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignIn-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-CallOptions-'></a>
+### SignIn(request,options) `method`
+
+##### Summary
+
+Sign in to an already existing account
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignInAsync-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### SignInAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Sign in to an already existing account
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-Account-V1-AccountService-AccountServiceClient-SignInAsync-Trinsic-Services-Account-V1-SignInRequest,Grpc-Core-CallOptions-'></a>
+### SignInAsync(request,options) `method`
+
+##### Summary
+
+Sign in to an already existing account
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.Account.V1.SignInRequest](#T-Trinsic-Services-Account-V1-SignInRequest 'Trinsic.Services.Account.V1.SignInRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
 
 <a name='T-Trinsic-Services-TrustRegistry-V1-AddFrameworkRequest'></a>
 ## AddFrameworkRequest `type`
@@ -735,40 +1499,51 @@ Holder for reflection information generated from services/common/v1/common.proto
 
 File descriptor for services/common/v1/common.proto
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-ConnectRequest'></a>
-## ConnectRequest `type`
+<a name='T-Trinsic-Services-Account-V1-ConfirmationMethod'></a>
+## ConfirmationMethod `type`
 
 ##### Namespace
 
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-ConnectRequest-EmailFieldNumber'></a>
-### EmailFieldNumber `constants`
+Trinsic.Services.Account.V1
 
 ##### Summary
 
-Field number for the "email" field.
+Confirmation method type for two-factor workflows
 
-<a name='F-Trinsic-Services-UniversalWallet-V1-ConnectRequest-PhoneFieldNumber'></a>
-### PhoneFieldNumber `constants`
-
-##### Summary
-
-Field number for the "phone" field.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-ConnectResponse'></a>
-## ConnectResponse `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-ConnectResponse-StatusFieldNumber'></a>
-### StatusFieldNumber `constants`
+<a name='F-Trinsic-Services-Account-V1-ConfirmationMethod-ConnectedDevice'></a>
+### ConnectedDevice `constants`
 
 ##### Summary
 
-Field number for the "status" field.
+Confirmation from a connected device is required
+
+<a name='F-Trinsic-Services-Account-V1-ConfirmationMethod-Email'></a>
+### Email `constants`
+
+##### Summary
+
+Email confirmation required
+
+<a name='F-Trinsic-Services-Account-V1-ConfirmationMethod-None'></a>
+### None `constants`
+
+##### Summary
+
+No confirmation required
+
+<a name='F-Trinsic-Services-Account-V1-ConfirmationMethod-Other'></a>
+### Other `constants`
+
+##### Summary
+
+Indicates third-party method of confirmation is required
+
+<a name='F-Trinsic-Services-Account-V1-ConfirmationMethod-Sms'></a>
+### Sms `constants`
+
+##### Summary
+
+SMS confirmation required
 
 <a name='T-Trinsic-Services-Common-V1-InviteRequest-ContactMethodOneofCase'></a>
 ## ContactMethodOneofCase `type`
@@ -776,28 +1551,6 @@ Field number for the "status" field.
 ##### Namespace
 
 Trinsic.Services.Common.V1.InviteRequest
-
-##### Summary
-
-Enum of possible cases for the "contact_method" oneof.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-ConnectRequest-ContactMethodOneofCase'></a>
-## ContactMethodOneofCase `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1.ConnectRequest
-
-##### Summary
-
-Enum of possible cases for the "contact_method" oneof.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-InvitationToken-ContactMethodOneofCase'></a>
-## ContactMethodOneofCase `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1.InvitationToken
 
 ##### Summary
 
@@ -890,108 +1643,6 @@ Trinsic.Services.VerifiableCredentials.V1
 ##### Summary
 
 Field number for the "proof_document" field.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest'></a>
-## CreateWalletRequest `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-DescriptionFieldNumber'></a>
-### DescriptionFieldNumber `constants`
-
-##### Summary
-
-Field number for the "description" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-SecurityCodeFieldNumber'></a>
-### SecurityCodeFieldNumber `constants`
-
-##### Summary
-
-Field number for the "security_code" field.
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-Description'></a>
-### Description `property`
-
-##### Summary
-
-optional description of the wallet
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletRequest-SecurityCode'></a>
-### SecurityCode `property`
-
-##### Summary
-
-(Optional) Supply an invitation id to associate this
-caller device to an existing cloud wallet.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse'></a>
-## CreateWalletResponse `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthDataFieldNumber'></a>
-### AuthDataFieldNumber `constants`
-
-##### Summary
-
-Field number for the "auth_data" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthTokenFieldNumber'></a>
-### AuthTokenFieldNumber `constants`
-
-##### Summary
-
-Field number for the "auth_token" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-IsProtectedFieldNumber'></a>
-### IsProtectedFieldNumber `constants`
-
-##### Summary
-
-Field number for the "is_protected" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-StatusFieldNumber'></a>
-### StatusFieldNumber `constants`
-
-##### Summary
-
-Field number for the "status" field.
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthData'></a>
-### AuthData `property`
-
-##### Summary
-
-authentication data containing info about the cloud
-wallet and device the user is connecting from
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-AuthToken'></a>
-### AuthToken `property`
-
-##### Summary
-
-authoritative token issued by the server that is
-required to prove knowledge during authentication
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-IsProtected'></a>
-### IsProtected `property`
-
-##### Summary
-
-indicates if the token issued protected with a
-security code, usually delivered by email or sms
-
-<a name='P-Trinsic-Services-UniversalWallet-V1-CreateWalletResponse-Status'></a>
-### Status `property`
-
-##### Summary
-
-the status code of the response
 
 <a name='T-Trinsic-Services-VerifiableCredentials-V1-Credential'></a>
 ## Credential `type`
@@ -1520,6 +2171,17 @@ Trinsic.Services.VerifiableCredentials.Templates.V1
 
 Field number for the "id" field.
 
+<a name='T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest'></a>
+## DeleteItemRequest `type`
+
+##### Namespace
+
+Trinsic.Services.UniversalWallet.V1
+
+##### Summary
+
+Delete item request
+
 <a name='T-Trinsic-Services-VerifiableCredentials-V1-SendRequest-DeliveryMethodOneofCase'></a>
 ## DeliveryMethodOneofCase `type`
 
@@ -1594,41 +2256,6 @@ Trinsic.Services.VerifiableCredentials.Templates.V1
 
 Field number for the "template" field.
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationRequest'></a>
-## GetProviderConfigurationRequest `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationRequest-RequestOptionsFieldNumber'></a>
-### RequestOptionsFieldNumber `constants`
-
-##### Summary
-
-Field number for the "request_options" field.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse'></a>
-## GetProviderConfigurationResponse `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse-DidDocumentFieldNumber'></a>
-### DidDocumentFieldNumber `constants`
-
-##### Summary
-
-Field number for the "did_document" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-GetProviderConfigurationResponse-KeyAgreementKeyIdFieldNumber'></a>
-### KeyAgreementKeyIdFieldNumber `constants`
-
-##### Summary
-
-Field number for the "key_agreement_key_id" field.
-
 <a name='T-Trinsic-Services-TrustRegistry-V1-GovernanceFramework'></a>
 ## GovernanceFramework `type`
 
@@ -1657,40 +2284,27 @@ Field number for the "governance_framework_uri" field.
 
 Field number for the "trust_registry_uri" field.
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest'></a>
-## GrantAccessRequest `type`
+<a name='T-Trinsic-Services-Account-V1-InfoResponse'></a>
+## InfoResponse `type`
 
 ##### Namespace
 
-Trinsic.Services.UniversalWallet.V1
+Trinsic.Services.Account.V1
 
-<a name='F-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest-DidFieldNumber'></a>
-### DidFieldNumber `constants`
-
-##### Summary
-
-Field number for the "did" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-GrantAccessRequest-WalletIdFieldNumber'></a>
-### WalletIdFieldNumber `constants`
+<a name='F-Trinsic-Services-Account-V1-InfoResponse-DetailsFieldNumber'></a>
+### DetailsFieldNumber `constants`
 
 ##### Summary
 
-Field number for the "wallet_id" field.
+Field number for the "details" field.
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-GrantAccessResponse'></a>
-## GrantAccessResponse `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-GrantAccessResponse-StatusFieldNumber'></a>
-### StatusFieldNumber `constants`
+<a name='P-Trinsic-Services-Account-V1-InfoResponse-Details'></a>
+### Details `property`
 
 ##### Summary
 
-Field number for the "status" field.
+The account details associated with
+the calling request context
 
 <a name='T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest'></a>
 ## InsertItemRequest `type`
@@ -1698,6 +2312,10 @@ Field number for the "status" field.
 ##### Namespace
 
 Trinsic.Services.UniversalWallet.V1
+
+##### Summary
+
+Insert item request
 
 <a name='F-Trinsic-Services-UniversalWallet-V1-InsertItemRequest-ItemFieldNumber'></a>
 ### ItemFieldNumber `constants`
@@ -1720,6 +2338,10 @@ Field number for the "item_type" field.
 
 Trinsic.Services.UniversalWallet.V1
 
+##### Summary
+
+Insert item response
+
 <a name='F-Trinsic-Services-UniversalWallet-V1-InsertItemResponse-ItemIdFieldNumber'></a>
 ### ItemIdFieldNumber `constants`
 
@@ -1733,6 +2355,13 @@ Field number for the "item_id" field.
 ##### Summary
 
 Field number for the "status" field.
+
+<a name='P-Trinsic-Services-UniversalWallet-V1-InsertItemResponse-ItemId'></a>
+### ItemId `property`
+
+##### Summary
+
+The item identifier of the inserted record
 
 <a name='T-Trinsic-Services-Common-V1-InvitationStatusRequest'></a>
 ## InvitationStatusRequest `type`
@@ -1775,41 +2404,6 @@ Field number for the "status_details" field.
 ##### Summary
 
 Field number for the "status" field.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-InvitationToken'></a>
-## InvitationToken `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-InvitationToken-EmailFieldNumber'></a>
-### EmailFieldNumber `constants`
-
-##### Summary
-
-Field number for the "email" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-InvitationToken-PhoneFieldNumber'></a>
-### PhoneFieldNumber `constants`
-
-##### Summary
-
-Field number for the "phone" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-InvitationToken-SecurityCodeFieldNumber'></a>
-### SecurityCodeFieldNumber `constants`
-
-##### Summary
-
-Field number for the "security_code" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-InvitationToken-WalletIdFieldNumber'></a>
-### WalletIdFieldNumber `constants`
-
-##### Summary
-
-Field number for the "wallet_id" field.
 
 <a name='T-Trinsic-Services-Common-V1-InviteRequest'></a>
 ## InviteRequest `type`
@@ -2015,7 +2609,7 @@ Trinsic.Services.Common.V1
 
 ##### Summary
 
-Nonce used to generate an oberon prrof
+Nonce used to generate an oberon proof
 
 <a name='F-Trinsic-Services-Common-V1-Nonce-RequestHashFieldNumber'></a>
 ### RequestHashFieldNumber `constants`
@@ -2684,41 +3278,6 @@ Trinsic.Services.Common.V1
 
 Field number for the "response_json_format" field.
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest'></a>
-## RevokeAccessRequest `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest-DidFieldNumber'></a>
-### DidFieldNumber `constants`
-
-##### Summary
-
-Field number for the "did" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-RevokeAccessRequest-WalletIdFieldNumber'></a>
-### WalletIdFieldNumber `constants`
-
-##### Summary
-
-Field number for the "wallet_id" field.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-RevokeAccessResponse'></a>
-## RevokeAccessResponse `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-RevokeAccessResponse-StatusFieldNumber'></a>
-### StatusFieldNumber `constants`
-
-##### Summary
-
-Field number for the "status" field.
-
 <a name='T-Trinsic-Services-VerifiableCredentials-Templates-V1-SearchCredentialTemplatesRequest'></a>
 ## SearchCredentialTemplatesRequest `type`
 
@@ -2859,6 +3418,10 @@ Field number for the "items" field.
 
 Trinsic.Services.UniversalWallet.V1
 
+##### Summary
+
+Search request object
+
 <a name='F-Trinsic-Services-UniversalWallet-V1-SearchRequest-ContinuationTokenFieldNumber'></a>
 ### ContinuationTokenFieldNumber `constants`
 
@@ -2886,6 +3449,10 @@ Field number for the "query" field.
 ##### Namespace
 
 Trinsic.Services.UniversalWallet.V1
+
+##### Summary
+
+Search response object
 
 <a name='F-Trinsic-Services-UniversalWallet-V1-SearchResponse-ContinuationTokenFieldNumber'></a>
 ### ContinuationTokenFieldNumber `constants`
@@ -3052,6 +3619,107 @@ Create call metadata by setting the required authentication headers
 
 This method has no parameters.
 
+<a name='T-Trinsic-Services-Account-V1-SignInRequest'></a>
+## SignInRequest `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Request for creating new account
+
+<a name='F-Trinsic-Services-Account-V1-SignInRequest-DetailsFieldNumber'></a>
+### DetailsFieldNumber `constants`
+
+##### Summary
+
+Field number for the "details" field.
+
+<a name='F-Trinsic-Services-Account-V1-SignInRequest-InvitationCodeFieldNumber'></a>
+### InvitationCodeFieldNumber `constants`
+
+##### Summary
+
+Field number for the "invitation_code" field.
+
+<a name='P-Trinsic-Services-Account-V1-SignInRequest-Details'></a>
+### Details `property`
+
+##### Summary
+
+Account registration details
+
+<a name='P-Trinsic-Services-Account-V1-SignInRequest-InvitationCode'></a>
+### InvitationCode `property`
+
+##### Summary
+
+Invitation code associated with this registration
+This field is optional.
+
+<a name='T-Trinsic-Services-Account-V1-SignInResponse'></a>
+## SignInResponse `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Response for creating new account
+This object will indicate if a confirmation code
+was sent to one of the users two-factor methods
+like email, SMS, etc.
+
+<a name='F-Trinsic-Services-Account-V1-SignInResponse-ConfirmationMethodFieldNumber'></a>
+### ConfirmationMethodFieldNumber `constants`
+
+##### Summary
+
+Field number for the "confirmation_method" field.
+
+<a name='F-Trinsic-Services-Account-V1-SignInResponse-ProfileFieldNumber'></a>
+### ProfileFieldNumber `constants`
+
+##### Summary
+
+Field number for the "profile" field.
+
+<a name='F-Trinsic-Services-Account-V1-SignInResponse-StatusFieldNumber'></a>
+### StatusFieldNumber `constants`
+
+##### Summary
+
+Field number for the "status" field.
+
+<a name='P-Trinsic-Services-Account-V1-SignInResponse-ConfirmationMethod'></a>
+### ConfirmationMethod `property`
+
+##### Summary
+
+Indicates if confirmation of account is required.
+This settings is configured globally by the server administrator.
+
+<a name='P-Trinsic-Services-Account-V1-SignInResponse-Profile'></a>
+### Profile `property`
+
+##### Summary
+
+Contains authentication data for use with the current device.
+This object must be stored in a secure place. It can also be
+protected with a PIN, but this is optional.
+See the docs at https://docs.trinsic.id for more information
+on working with authentication data.
+
+<a name='P-Trinsic-Services-Account-V1-SignInResponse-Status'></a>
+### Status `property`
+
+##### Summary
+
+The status of the response
+
 <a name='T-Trinsic-Services-Common-V1-InvitationStatusResponse-Types-Status'></a>
 ## Status `type`
 
@@ -3138,6 +3806,46 @@ Holder for reflection information generated from services/verifiable-credentials
 ##### Summary
 
 File descriptor for services/verifiable-credentials/templates/v1/templates.proto
+
+<a name='T-Trinsic-Services-Account-V1-TokenProtection'></a>
+## TokenProtection `type`
+
+##### Namespace
+
+Trinsic.Services.Account.V1
+
+##### Summary
+
+Token protection info
+
+<a name='F-Trinsic-Services-Account-V1-TokenProtection-EnabledFieldNumber'></a>
+### EnabledFieldNumber `constants`
+
+##### Summary
+
+Field number for the "enabled" field.
+
+<a name='F-Trinsic-Services-Account-V1-TokenProtection-MethodFieldNumber'></a>
+### MethodFieldNumber `constants`
+
+##### Summary
+
+Field number for the "method" field.
+
+<a name='P-Trinsic-Services-Account-V1-TokenProtection-Enabled'></a>
+### Enabled `property`
+
+##### Summary
+
+Indicates if token is protected using a PIN,
+security code, HSM secret, etc.
+
+<a name='P-Trinsic-Services-Account-V1-TokenProtection-Method'></a>
+### Method `property`
+
+##### Summary
+
+The method used to protect the token
 
 <a name='T-Trinsic-Services-TrustRegistry-V1-TrustRegistry'></a>
 ## TrustRegistry `type`
@@ -4108,21 +4816,28 @@ Trinsic.Services.VerifiableCredentials.V1
 
 Field number for the "valid" field.
 
-<a name='T-Trinsic-Services-UniversalWallet-V1-Wallet'></a>
-## Wallet `type`
+<a name='T-Trinsic-Services-UniversalWallet-V1-WalletService'></a>
+## WalletService `type`
 
 ##### Namespace
 
 Trinsic.Services.UniversalWallet.V1
 
-<a name='P-Trinsic-Services-UniversalWallet-V1-Wallet-Descriptor'></a>
+<a name='T-Trinsic-WalletService'></a>
+## WalletService `type`
+
+##### Namespace
+
+Trinsic
+
+<a name='P-Trinsic-Services-UniversalWallet-V1-WalletService-Descriptor'></a>
 ### Descriptor `property`
 
 ##### Summary
 
 Service descriptor
 
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-BindService-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase-'></a>
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-BindService-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-'></a>
 ### BindService(serviceImpl) `method`
 
 ##### Summary
@@ -4133,9 +4848,9 @@ Creates service definition that can be registered with a server
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| serviceImpl | [Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase](#T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase') | An object implementing the server-side handling logic. |
+| serviceImpl | [Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase](#T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase') | An object implementing the server-side handling logic. |
 
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase-'></a>
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-BindService-Grpc-Core-ServiceBinderBase,Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-'></a>
 ### BindService(serviceBinder,serviceImpl) `method`
 
 ##### Summary
@@ -4148,145 +4863,7 @@ Note: this method is part of an experimental API that can change or be removed w
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | serviceBinder | [Grpc.Core.ServiceBinderBase](#T-Grpc-Core-ServiceBinderBase 'Grpc.Core.ServiceBinderBase') | Service methods will be bound by calling `AddMethod` on this object. |
-| serviceImpl | [Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase](#T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase 'Trinsic.Services.UniversalWallet.V1.Wallet.WalletBase') | An object implementing the server-side handling logic. |
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletBase'></a>
-## WalletBase `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1.Wallet
-
-##### Summary
-
-Base class for server-side implementations of Wallet
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient'></a>
-## WalletClient `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1.Wallet
-
-##### Summary
-
-Client for Wallet
-
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-ChannelBase-'></a>
-### #ctor(channel) `constructor`
-
-##### Summary
-
-Creates a new client for Wallet
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| channel | [Grpc.Core.ChannelBase](#T-Grpc-Core-ChannelBase 'Grpc.Core.ChannelBase') | The channel to use to make remote calls. |
-
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-CallInvoker-'></a>
-### #ctor(callInvoker) `constructor`
-
-##### Summary
-
-Creates a new client for Wallet that uses a custom `CallInvoker`.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| callInvoker | [Grpc.Core.CallInvoker](#T-Grpc-Core-CallInvoker 'Grpc.Core.CallInvoker') | The callInvoker to use to make remote calls. |
-
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor'></a>
-### #ctor() `constructor`
-
-##### Summary
-
-Protected parameterless constructor to allow creation of test doubles.
-
-##### Parameters
-
-This constructor has no parameters.
-
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
-### #ctor(configuration) `constructor`
-
-##### Summary
-
-Protected constructor to allow creation of configured clients.
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| configuration | [Grpc.Core.ClientBase.ClientBaseConfiguration](#T-Grpc-Core-ClientBase-ClientBaseConfiguration 'Grpc.Core.ClientBase.ClientBaseConfiguration') | The client configuration. |
-
-<a name='M-Trinsic-Services-UniversalWallet-V1-Wallet-WalletClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
-### NewInstance() `method`
-
-##### Summary
-
-Creates a new instance of client from given `ClientBaseConfiguration`.
-
-##### Parameters
-
-This method has no parameters.
-
-<a name='T-Trinsic-Services-UniversalWallet-V1-WalletProfile'></a>
-## WalletProfile `type`
-
-##### Namespace
-
-Trinsic.Services.UniversalWallet.V1
-
-##### Summary
-
-Stores profile data for accessing a wallet.
-This result should be stored somewhere safe,
-as it contains private key information.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-WalletProfile-AuthDataFieldNumber'></a>
-### AuthDataFieldNumber `constants`
-
-##### Summary
-
-Field number for the "auth_data" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-WalletProfile-AuthTokenFieldNumber'></a>
-### AuthTokenFieldNumber `constants`
-
-##### Summary
-
-Field number for the "auth_token" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-WalletProfile-ConfigFieldNumber'></a>
-### ConfigFieldNumber `constants`
-
-##### Summary
-
-Field number for the "config" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-WalletProfile-IsProtectedFieldNumber'></a>
-### IsProtectedFieldNumber `constants`
-
-##### Summary
-
-Field number for the "is_protected" field.
-
-<a name='F-Trinsic-Services-UniversalWallet-V1-WalletProfile-NameFieldNumber'></a>
-### NameFieldNumber `constants`
-
-##### Summary
-
-Field number for the "name" field.
-
-<a name='T-Trinsic-WalletService'></a>
-## WalletService `type`
-
-##### Namespace
-
-Trinsic
+| serviceImpl | [Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase](#T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase 'Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceBase') | An object implementing the server-side handling logic. |
 
 <a name='M-Trinsic-WalletService-InsertItem-Newtonsoft-Json-Linq-JObject-'></a>
 ### InsertItem(item) `method`
@@ -4325,3 +4902,368 @@ Search the wallet for records matching the specified criteria
 ##### Remarks
 
 See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+
+<a name='T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase'></a>
+## WalletServiceBase `type`
+
+##### Namespace
+
+Trinsic.Services.UniversalWallet.V1.WalletService
+
+##### Summary
+
+Base class for server-side implementations of WalletService
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-ServerCallContext-'></a>
+### Deleteitem(request,context) `method`
+
+##### Summary
+
+Delete an item from the wallet permanently
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-ServerCallContext-'></a>
+### InsertItem(request,context) `method`
+
+##### Summary
+
+Insert an item into the wallet
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceBase-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-ServerCallContext-'></a>
+### Search(request,context) `method`
+
+##### Summary
+
+Search the wallet using a SQL-like syntax
+
+##### Returns
+
+The response to send back to the client (wrapped by a task).
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.SearchRequest](#T-Trinsic-Services-UniversalWallet-V1-SearchRequest 'Trinsic.Services.UniversalWallet.V1.SearchRequest') | The request received from the client. |
+| context | [Grpc.Core.ServerCallContext](#T-Grpc-Core-ServerCallContext 'Grpc.Core.ServerCallContext') | The context of the server-side call handler being invoked. |
+
+<a name='T-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient'></a>
+## WalletServiceClient `type`
+
+##### Namespace
+
+Trinsic.Services.UniversalWallet.V1.WalletService
+
+##### Summary
+
+Client for WalletService
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-ChannelBase-'></a>
+### #ctor(channel) `constructor`
+
+##### Summary
+
+Creates a new client for WalletService
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| channel | [Grpc.Core.ChannelBase](#T-Grpc-Core-ChannelBase 'Grpc.Core.ChannelBase') | The channel to use to make remote calls. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-CallInvoker-'></a>
+### #ctor(callInvoker) `constructor`
+
+##### Summary
+
+Creates a new client for WalletService that uses a custom `CallInvoker`.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| callInvoker | [Grpc.Core.CallInvoker](#T-Grpc-Core-CallInvoker 'Grpc.Core.CallInvoker') | The callInvoker to use to make remote calls. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Protected parameterless constructor to allow creation of test doubles.
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-#ctor-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
+### #ctor(configuration) `constructor`
+
+##### Summary
+
+Protected constructor to allow creation of configured clients.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| configuration | [Grpc.Core.ClientBase.ClientBaseConfiguration](#T-Grpc-Core-ClientBase-ClientBaseConfiguration 'Grpc.Core.ClientBase.ClientBaseConfiguration') | The client configuration. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### Deleteitem(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Delete an item from the wallet permanently
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Deleteitem-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-CallOptions-'></a>
+### Deleteitem(request,options) `method`
+
+##### Summary
+
+Delete an item from the wallet permanently
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-DeleteitemAsync-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### DeleteitemAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Delete an item from the wallet permanently
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-DeleteitemAsync-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest,Grpc-Core-CallOptions-'></a>
+### DeleteitemAsync(request,options) `method`
+
+##### Summary
+
+Delete an item from the wallet permanently
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.DeleteItemRequest](#T-Trinsic-Services-UniversalWallet-V1-DeleteItemRequest 'Trinsic.Services.UniversalWallet.V1.DeleteItemRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### InsertItem(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Insert an item into the wallet
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItem-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-CallOptions-'></a>
+### InsertItem(request,options) `method`
+
+##### Summary
+
+Insert an item into the wallet
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItemAsync-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### InsertItemAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Insert an item into the wallet
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-InsertItemAsync-Trinsic-Services-UniversalWallet-V1-InsertItemRequest,Grpc-Core-CallOptions-'></a>
+### InsertItemAsync(request,options) `method`
+
+##### Summary
+
+Insert an item into the wallet
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.InsertItemRequest](#T-Trinsic-Services-UniversalWallet-V1-InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-NewInstance-Grpc-Core-ClientBase-ClientBaseConfiguration-'></a>
+### NewInstance() `method`
+
+##### Summary
+
+Creates a new instance of client from given `ClientBaseConfiguration`.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### Search(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Search the wallet using a SQL-like syntax
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.SearchRequest](#T-Trinsic-Services-UniversalWallet-V1-SearchRequest 'Trinsic.Services.UniversalWallet.V1.SearchRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-Search-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-CallOptions-'></a>
+### Search(request,options) `method`
+
+##### Summary
+
+Search the wallet using a SQL-like syntax
+
+##### Returns
+
+The response received from the server.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.SearchRequest](#T-Trinsic-Services-UniversalWallet-V1-SearchRequest 'Trinsic.Services.UniversalWallet.V1.SearchRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-SearchAsync-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-Metadata,System-Nullable{System-DateTime},System-Threading-CancellationToken-'></a>
+### SearchAsync(request,headers,deadline,cancellationToken) `method`
+
+##### Summary
+
+Search the wallet using a SQL-like syntax
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.SearchRequest](#T-Trinsic-Services-UniversalWallet-V1-SearchRequest 'Trinsic.Services.UniversalWallet.V1.SearchRequest') | The request to send to the server. |
+| headers | [Grpc.Core.Metadata](#T-Grpc-Core-Metadata 'Grpc.Core.Metadata') | The initial metadata to send with the call. This parameter is optional. |
+| deadline | [System.Nullable{System.DateTime}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Nullable 'System.Nullable{System.DateTime}') | An optional deadline for the call. The call will be cancelled if deadline is hit. |
+| cancellationToken | [System.Threading.CancellationToken](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Threading.CancellationToken 'System.Threading.CancellationToken') | An optional token for canceling the call. |
+
+<a name='M-Trinsic-Services-UniversalWallet-V1-WalletService-WalletServiceClient-SearchAsync-Trinsic-Services-UniversalWallet-V1-SearchRequest,Grpc-Core-CallOptions-'></a>
+### SearchAsync(request,options) `method`
+
+##### Summary
+
+Search the wallet using a SQL-like syntax
+
+##### Returns
+
+The call object.
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| request | [Trinsic.Services.UniversalWallet.V1.SearchRequest](#T-Trinsic-Services-UniversalWallet-V1-SearchRequest 'Trinsic.Services.UniversalWallet.V1.SearchRequest') | The request to send to the server. |
+| options | [Grpc.Core.CallOptions](#T-Grpc-Core-CallOptions 'Grpc.Core.CallOptions') | The options for the call. |
