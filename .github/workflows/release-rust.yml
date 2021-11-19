@@ -61,11 +61,6 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
 
-      - name: Echo
-        run: |
-          echo "packageVersion: ${{ steps.fetchversion.outputs.packageVersion }}"
-          echo "releaseVersion: ${{ steps.fetchversion.outputs.releaseVersion }}"
-
       - name: Create Package (.deb)
         run: |
           cargo install cargo-deb
@@ -105,11 +100,6 @@ jobs:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
 
-      - name: Echo
-        run: |
-          echo "packageVersion: ${{ steps.setversion.outputs.packageVersion }}"
-          echo "releaseVersion: ${{ steps.setversion.outputs.releaseVersion }}"
-
       - name: Create Vendored Folders
         run: |
           export CARGO_HOME=`pwd`
@@ -135,11 +125,6 @@ jobs:
           name: nix
           path: |
             ./*.tar.gz
-
-      - name: Echo
-        run: |
-          echo "packageVersion: ${{ steps.setversion.outputs.packageVersion }}"
-          echo "releaseVersion: ${{ steps.setversion.outputs.releaseVersion }}"
 
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
