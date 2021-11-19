@@ -112,14 +112,17 @@ jobs:
 
       - name: Create Vendored Folders
         run: |
+          export CARGO_HOME=`pwd`
+          cd cli
+
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
           sed -i 's/version: "1.0.0"/version: "${{ steps.setversion.outputs.packageVersion }}"/g' src/cli.yaml
           rm build.rs
           mv .cargo/_config.toml .cargo/config.toml
+
           cargo vendor
           cargo build
           cargo clean
-        working-directory: cli
 
       - name: Create Archive
         run: |
