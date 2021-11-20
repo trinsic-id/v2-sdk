@@ -41,6 +41,7 @@ nav:
 theme:
   name: material
   logo: _static/logo-title.svg
+  custom_dir: overrides
   favicon: _static/logo.png
   features:
     - content.tabs.link
@@ -88,7 +89,6 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
   - abbr
-custom_dir: overrides
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
   - _static/javascripts/config.js
