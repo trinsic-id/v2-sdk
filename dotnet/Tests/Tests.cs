@@ -68,7 +68,7 @@ public class Tests
         // Allison stores the credential in her cloud wallet.
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        walletService.Profile = credentialsService.Profile = clinic;
+        walletService.Profile = credentialsService.Profile = allison;
 
         var itemId = await walletService.InsertItem(credential);
         // }
@@ -79,7 +79,7 @@ public class Tests
         // that they require expressed as a JSON-LD frame.
         // shareCredential() {
         // We'll read the request frame from a file and communicate this with Allison
-        walletService.Profile = credentialsService.Profile = clinic;
+        walletService.Profile = credentialsService.Profile = allison;
 
         var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
 
@@ -94,7 +94,7 @@ public class Tests
         // VERIFY CREDENTIAL
         // verifyCredential() {
         // The airline verifies the credential
-        walletService.Profile = credentialsService.Profile = clinic;
+        walletService.Profile = credentialsService.Profile = airline;
 
         // Check for valid signature
         var valid = await credentialsService.VerifyProof(credentialProof);

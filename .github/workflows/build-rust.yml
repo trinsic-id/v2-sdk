@@ -32,8 +32,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - run: |
-          rustup install nightly
-          rustup default nightly
           rustup component add rustfmt
           cargo build
           cargo test
