@@ -14,7 +14,7 @@ journey
       Verify: 5: Airline
 ```
 
-If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basics](https://trinsic.id/trinsic-basics-the-verifiable-credentials-model/).
+If you haven't learned about verifiable credentials already, first read [Verifiable Credential Basics](https://docs-v2.trinsic.id/learn/credentials).
 
 In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.
 
