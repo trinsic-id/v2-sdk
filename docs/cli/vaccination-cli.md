@@ -8,11 +8,10 @@ You can also use a [cloud environment](./demo.md) we host on repl.it to get star
 
 If you'd rather run the CLI on your machine, you can install the CLI using the [installation instructions](./index.md)
 
-Once the CLI is installed, clone our examples repository on Github and go to the `cli` directory:
+Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough
 ```
 git clone https://github.com/trinsic-id/cli-example && cd cli-example
 ```
-
 
 --8<--
 <!-- snippets/intro-infrastructure.md -->
@@ -55,8 +54,8 @@ These wallets have been created by you, your role is an ecosystem provider. Your
 
 ## Issue a Credential
 
-Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
-The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. Because this sample is on the same file system, our communication method is simply moving it to allison's directory :)
+Each credential is a JSON document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
+The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods.
 
 === "Trinsic CLI"
 
