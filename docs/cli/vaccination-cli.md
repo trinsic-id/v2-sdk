@@ -1,14 +1,14 @@
 # Vaccination Use Case for CLI
 
-It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with the Trinsic CLI. It assumes no prior knowledge to decentralized identity.
+This walkthrough will show how a vaccination card can be issued, held, and proven using verifiable credentials with the Trinsic CLI.
 
 ## Installation
 
-You can also use a [cloud environment](./demo.md) we host on repl.it to get started in one click. You can use this demo environment alongside this walkthrough using two tabs in your browser.
+In a new tab, open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
 
-If you'd rather run the CLI on your machine, you can install the CLI using the [installation instructions](./index.md)
+If you'd rather run the CLI on your machine, you can install the CLI locally using our [installation instructions](./index.md)
 
-Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough
+Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough.
 ```
 git clone https://github.com/trinsic-id/cli-example && cd cli-example
 ```

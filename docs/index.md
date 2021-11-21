@@ -2,38 +2,28 @@
 hide:
   - toc
 ---
-# Trinsic Documentation
+# Introduction
 ## Issue and verify universally-accepted digital credentials.
-Welcome to Trinsic, the proof-of-anything platform. We are the leading developer platform for implementing verifiable credentials and decentralized identifiers, new web standards for building next-gen digital identity systems. 
+Trinsic is the proof of anything platform. We make it easy for people and organizations to prove things about themselves with technology instead of paper documents. Our software is based on Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs), a new digital identity standard. 
+
+With Trinsic, organizations and their customers share data between each other in a trustworthy, standardized, and privacy-preserving way. 
+
+We make all of this possible through the exchange of verified data contained within Verifiable Credentials. These credentials are carried on an individual's device, and people can easily share them with others to prove things about themselves anywhere.
 
 Learn how to issue and verify universally-accepted digital credentials so that anywhere people go online or in-person, they can simply tap their phone, prove who they are, and get what they need.
 
-[**Join the Beta**](early-adopter.md) - Our platform is still in beta. While our docs are public, you'll need a special environment to start using Trinsic at this time. We're excited to help you! Please contact us and we'll help you get started.
+[:octicons-terminal-16: **Try the Tutorial**](cli/vaccination-cli.md)
+## Our Products
+### Trinsic Core 
+Trinsic Core is infrastructure for digital trust. It's our set of APIs for sending verifiable data between digital identity wallets. Core gives people and organizations the ability to easily and securely prove things about themselves with digital credentials.
 
-[**Get started with Trinsic**](learn/index.md) - Learn about Trinsic, work through a basic implementation, plan a full implementation and learn about our tools you can use. 
+With Core, you can transform credentials, licenses, passes, and certificates into a W3C standard format that can be exchanged digitally and verified instantly by anyone called a "verifiable credential".
 
-## Connect your app to Trinsic
-Get up and running in the language of your choice or interact with Trinsic through your terminal.
+### Trinsic Ecosystems
+A layer built on top of Core, Trinsic Ecosystems is a product for organizations that want to build an ecosystem of different issuers, holders, and verifiers of credentials. By ecosystem, we mean a network of companies and consumers that need to be able to securely share and instantly verify data. 
 
-[:octicons-terminal-16: **Use the CLI**](cli/index.md)
-### Server-side SDKs
-[:material-language-java: Java](java/index.md){ .md-button .md-button--primary }
-[:material-microsoft: .NET](dotnet/index.md){ .md-button .md-button--primary }
-[:material-nodejs: Node](node/index.md){ .md-button .md-button--primary }
-[:material-language-python: Python](python/index.md){ .md-button .md-button--primary }
-### Client-side SDKs
+At Trinsic, we call the organizations that bring together these ecosystems of companies and customers "providers" since they are providing digital trust to the ecosystem through Trinsic's infrastructure.
 
-[:fontawesome-brands-js-square: Web](web/index.md){ .md-button .md-button--primary } 
-[:material-android: Android](#){ .md-button .md-button--primary } 
-
-### Coming Soon
-
-[:material-menu: Go](#){ .md-button }
-[:material-language-ruby: Ruby](#){ .md-button  }
-[:material-apple: iOS](#){ .md-button } 
-
-## Additional Resources
-[**Join the Community**](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) - We have a growing community on Slack of people who are building with Trinsic. Join to ask questions and participate in our community events.
-
-[**Follow our progress on Github**](https://github.com/trinsic-id) - Most of our work is done in the open. We love to collaborate with developers and are always open to feedback.
-
+!!! Note "Get Started in 15 Minutes"
+    Want to get started using digital credentials quickly? Try our [tutorial](cli/vaccination-cli.md) to get a conceptual walkthrough of a common use case.
+  

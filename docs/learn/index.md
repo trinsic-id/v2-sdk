@@ -13,9 +13,4 @@ Take advantage of our SDK to embed issuance and verifications into apps with you
 
 Embed credential issuance and verification directly into your applications. 
 
-Next Steps:
-- [What are Ecosystems?](./ecosystems.md)
-- [Credentials](./credentials.md)
-- [Passes](./passes.md)
-- [Wallets](./wallets.md)
-- [Underlying Tech](./tech.md)
+
