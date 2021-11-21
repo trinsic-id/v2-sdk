@@ -8,7 +8,6 @@ nav:
   - Introduction: index.md
   - Tutorial: cli/vaccination-cli.md
   - Learn:
-    - Basics: learn/index.md
     - Wallets: learn/wallets.md
     - Credentials: learn/credentials.md
     - Passes: learn/passes.md
@@ -42,7 +41,7 @@ nav:
 theme:
   name: material
   logo: _static/logo-title.svg
-  custom_dir: overrides
+  # custom_dir: overrides
   favicon: _static/logo.png
   features:
     - content.tabs.link

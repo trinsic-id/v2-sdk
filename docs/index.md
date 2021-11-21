@@ -26,4 +26,3 @@ At Trinsic, we call the organizations that bring together these ecosystems of co
 
 !!! Note "Get Started in 15 Minutes"
     Want to get started using digital credentials quickly? Try our [tutorial](cli/vaccination-cli.md) to get a conceptual walkthrough of a common use case.
-  
