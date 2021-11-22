@@ -1,4 +1,5 @@
 use clap::ArgMatches;
+use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -74,6 +75,9 @@ impl From<prost::DecodeError> for Error {
 
 impl From<&ArgMatches<'_>> for DefaultConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
+        if matches.is_present("debug") {
+            unsafe { crate::DEBUG = true }
+        }
         if matches.is_present("profile") {
             DefaultConfig {
                 profile: Some(ConfigProfile {
@@ -222,18 +226,23 @@ impl Interceptor for DefaultConfig {
         })
         .unwrap();
 
-        // append auhtorization header
-        request.metadata_mut().insert(
-            "authorization",
-            format!(
-                "Oberon data={data},proof={proof},nonce={nonce},ver=1",
-                data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
-                proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
-                nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
-            )
-            .parse()
-            .unwrap(),
+        let header = format!(
+            "Oberon data={data},proof={proof},nonce={nonce},ver=1",
+            data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
+            proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
+            nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
         );
+
+        unsafe {
+            if crate::DEBUG {
+                println!("DEBUG: Authorization: {}", header.purple())
+            }
+        }
+
+        // append auhtorization header
+        request
+            .metadata_mut()
+            .insert("authorization", header.parse().unwrap());
         Ok(request)
     }
 }

@@ -9,6 +9,8 @@ use parser::Service;
 use services::config::DefaultConfig;
 use yaml_rust::Yaml;
 
+pub static mut DEBUG: bool = false;
+
 #[allow(unused_must_use)]
 fn main() {
     let yaml = load_yaml!("cli.yaml");
