@@ -243,7 +243,16 @@ pub fn execute(args: &Command) {
     set_profile_attr(&args.profile);
 }
 
-fn set_profile_attr(_args: &ProfileArgs) {}
+fn set_profile_attr(args: &ProfileArgs) {
+    let mut config = DefaultConfig::init().unwrap();
+    if args.default.is_some() {
+        config.profile = Some(ConfigProfile {
+            default: args.default.unwrap().to_string(),
+        });
+    }
+
+    config.save_config().unwrap()
+}
 
 fn set_server_attr(args: &ServerArgs) {
     let mut config = DefaultConfig::init().unwrap();

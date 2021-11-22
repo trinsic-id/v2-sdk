@@ -1,5 +1,7 @@
 use clap::ArgMatches;
 
+use crate::services::config::Error;
+
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("sign-in") {
         return sign_in(

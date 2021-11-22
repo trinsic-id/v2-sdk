@@ -47,7 +47,7 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
     let response = client
         .search(request)
         .await
-        .expect("Get Provider Configuration failed")
+        .expect("Search failed")
         .into_inner();
     use colored::*;
     println!("Search results for query '{}'", query.cyan().bold());

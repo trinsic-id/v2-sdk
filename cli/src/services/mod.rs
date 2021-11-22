@@ -18,6 +18,6 @@ pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error
         Service::Provider(args) => provider::execute(&args, config),
         Service::Config(args) => Ok(config::execute(&args)),
         Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
-        _ => todo!("Not yet implemented"),
+        _ => Err(Error::UnknownCommand),
     }
 }

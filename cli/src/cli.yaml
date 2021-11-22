@@ -29,46 +29,53 @@ subcommands:
             takes_value: false
             required: false
             help: Show the current configuration file
-
-  - wallet:
-      about: Wallet Service
+  - account:
+      about: Account Service
       subcommands:
-        - create:
+        - sign-in:
             about: Create a new wallet
 
             args:
-              - description:
-                  long: description
+              - name:
+                  long: name
                   value_name: STRING
                   help: (Optional) Description for new cloud wallet
                   takes_value: true
                   required: false
-              - security-code:
-                  long: security-code
-                  value_name: CODE
-                  help: (Optional) Security code for authenticating with external identity
+              - email:
+                  long: email
+                  value_name: STRING
+                  help: (Optional) Email to associate with this account
                   takes_value: true
                   required: false
-              - name:
-                  long: name
+              - sms:
+                  long: sms
+                  value_name: STRING
+                  help: (Optional) SMS to associate with this account
+                  takes_value: true
+                  required: false
+              - invitation-code:
+                  long: invitation-code
+                  value_name: CODE
+                  help: (Optional) Invitation code provided by authorized entity
+                  takes_value: true
+                  required: false
+              - alias:
+                  long: alias
                   value_name: PROFILE_NAME
-                  help: (Required) Name of the local profile to use to store the response
+                  help: (Required) Alias of the local profile to use to store authentication data
                   takes_value: true
                   required: true
-              - encrypted:
-                  long: encrypted
-                  help: create wallet encrypted
-              - key:
-                  long: key
-                  value_name: FILE
-                  help: >-
-                    Optional key to be used. If not specified, key will be
-                    generated.
-                  takes_value: true
               - default:
                   long: default
                   takes_value: false
-                  help: Set this profile as default
+                  required: false
+                  help: (Optional) Set this profile as default
+
+
+  - wallet:
+      about: Wallet Service
+      subcommands:
         - search:
             about: Search the wallet using SQL queries
             args:
