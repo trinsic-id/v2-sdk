@@ -6,6 +6,7 @@
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
   <PropertyGroup>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <DocumentationFile>Trinsic.xml</DocumentationFile>
     <DocumentationMarkdown>..\..\docs\reference\dotnet.md</DocumentationMarkdown>
     <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
