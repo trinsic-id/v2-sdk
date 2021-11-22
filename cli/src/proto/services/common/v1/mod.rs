@@ -32,7 +32,7 @@ pub struct ServerConfig {
     #[prost(bool, tag = "3")]
     pub use_tls: bool,
 }
-/// Nonce used to generate an oberon prrof
+/// Nonce used to generate an oberon proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Nonce {
     /// UTC unix millisecond timestamp the request was made

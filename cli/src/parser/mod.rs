@@ -1,5 +1,6 @@
 use clap::ArgMatches;
 
+pub mod account;
 pub mod config;
 pub mod didcomm;
 pub mod didkey;
@@ -39,8 +40,12 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .subcommand_matches("issuer")
                 .expect("Error parsing request"),
         ));
-    } else if args.is_present("authentication") {
-        return Service::Authentication;
+    } else if args.is_present("account") {
+        return Service::Account(account::parse(
+            &args
+                .subcommand_matches("account")
+                .expect("Error parsing request"),
+        ));
     } else if args.is_present("provider") {
         return Service::Provider(provider::parse(
             &args
@@ -66,7 +71,7 @@ pub enum Service<'a> {
     Issuer(issuer::Command<'a>),
     Provider(provider::Command<'a>),
     Config(config::Command<'a>),
-    Authentication,
+    Account(account::Command<'a>),
     TrustRegistry(trustregistry::Command),
     Unknown,
 }

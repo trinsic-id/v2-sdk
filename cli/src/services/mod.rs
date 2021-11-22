@@ -1,3 +1,4 @@
+mod account;
 pub(crate) mod config;
 mod didcomm;
 mod didkey;
@@ -6,18 +7,17 @@ mod provider;
 mod trustregistry;
 mod wallet;
 
-use self::config::DefaultConfig;
+use self::config::{DefaultConfig, Error};
 use super::parser::Service;
 
-pub(crate) fn execute(args: &Service, config: DefaultConfig) {
+pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error> {
     match args {
-        Service::Wallet(args) => wallet::execute(&args, config).unwrap(),
-        Service::DIDKey(args) => didkey::execute(&args),
-        Service::DIDComm(args) => didcomm::execute(&args),
-        Service::Issuer(args) => issuer::execute(&args, config),
-        Service::Provider(args) => provider::execute(&args, config).unwrap(),
-        Service::Config(args) => config::execute(&args),
-        Service::TrustRegistry(args) => trustregistry::execute(&args, &config).unwrap(),
-        _ => println!("Not yet implemented"),
+        Service::Wallet(args) => wallet::execute(&args, config),
+        Service::Account(args) => account::execute(&args, config),
+        Service::Issuer(args) => Ok(issuer::execute(&args, config)),
+        Service::Provider(args) => provider::execute(&args, config),
+        Service::Config(args) => Ok(config::execute(&args)),
+        Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
+        _ => todo!("Not yet implemented"),
     }
 }

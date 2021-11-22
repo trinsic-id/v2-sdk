@@ -388,3 +388,10 @@ args:
         (Optional) Name of the profile to use with this command. If not set, it will use the default configured.
       takes_value: true
       required: false
+  - debug:
+      long: debug
+      short: d
+      help: >-
+        (Optional) Print debug information.
+      takes_value: false
+      required: false

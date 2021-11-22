@@ -24,6 +24,7 @@ fn main() {
                 "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
                 "../proto/services/universal-wallet/v1/universal-wallet.proto",
                 "../proto/services/provider/v1/provider.proto",
+                "../proto/services/account/v1/account.proto",
                 "../proto/services/trust-registry/v1/trust-registry.proto",
             ],
             &["../proto"],
@@ -46,6 +47,10 @@ fn main() {
     move_file!(
         "./src/proto/services.provider.v1.rs",
         "./src/proto/services/provider/v1/mod.rs"
+    );
+    move_file!(
+        "./src/proto/services.account.v1.rs",
+        "./src/proto/services/account/v1/mod.rs"
     );
     move_file!(
         "./src/proto/services.trustregistry.v1.rs",

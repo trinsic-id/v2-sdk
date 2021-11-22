@@ -6,10 +6,8 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::service::Interceptor;
-use trinsic::{
-    proto::services::{common::v1::Nonce, universalwallet::v1::WalletProfile},
-    MessageFormatter,
-};
+use trinsic::proto::services::account::v1::AccountProfile;
+use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -130,7 +128,7 @@ impl DefaultConfig {
 
     pub fn save_profile(
         &mut self,
-        profile: WalletProfile,
+        profile: AccountProfile,
         name: &str,
         default: bool,
     ) -> Result<(), Error> {
@@ -201,7 +199,7 @@ impl Interceptor for DefaultConfig {
         mut request: tonic::Request<()>,
     ) -> Result<tonic::Request<()>, tonic::Status> {
         // read the currently configured profile
-        let profile: WalletProfile = self.read_profile().unwrap();
+        let profile: AccountProfile = self.read_profile().unwrap();
 
         // generate nonce by combining the current unix epoch timestam
         // and a hash of the request payload
