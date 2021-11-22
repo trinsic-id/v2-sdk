@@ -8,7 +8,4 @@ hide:
 ### Steps to Run
 - Click the green Run button
 - Follow [walkthrough](./vaccination-cli.md)
-
-** A couple of gotchas:**
-
-- If you resize this window, make sure to reload the page. If not, the CLI will have display problems.
+- Note: If you resize this window, make sure to reload the page. If not, the CLI will have display problems.
