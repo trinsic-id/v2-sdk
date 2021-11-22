@@ -1,0 +1,112 @@
+syntax = "proto3";
+package services.account.v1;
+
+option csharp_namespace = "Trinsic.Services.Account.V1";
+option go_package = "github.com/trinsic-id/sdk";
+option java_package = "trinsic.services.account.v1";
+
+import "services/common/v1/common.proto";
+
+// Request for creating new account
+message SignInRequest {
+    // Account registration details
+    AccountDetails details = 1;
+    // Invitation code associated with this registration
+    // This field is optional.
+    string invitation_code = 2;
+}
+
+// Account Registration Details
+message AccountDetails
+{
+    // Account name (optional)
+    string name = 1;
+    // Email account (required)
+    string email = 2;
+    // SMS number including country code (optional)
+    string sms = 3;
+}
+
+// Response for creating new account
+// This object will indicate if a confirmation code
+// was sent to one of the users two-factor methods
+// like email, SMS, etc.
+message SignInResponse {
+    // The status of the response
+    services.common.v1.ResponseStatus status = 1;
+    // Indicates if confirmation of account is required.
+    // This settings is configured globally by the server administrator.
+    ConfirmationMethod confirmation_method = 3;
+    // Contains authentication data for use with the current device.
+    // This object must be stored in a secure place. It can also be
+    // protected with a PIN, but this is optional.
+    // See the docs at https://docs.trinsic.id for more information
+    // on working with authentication data.
+    AccountProfile profile = 4;
+}
+
+// Confirmation method type for two-factor workflows
+enum ConfirmationMethod {
+    // No confirmation required
+    None = 0;
+    // Email confirmation required
+    Email = 1;
+    // SMS confirmation required
+    Sms = 2;
+    // Confirmation from a connected device is required
+    ConnectedDevice = 3;
+    // Indicates third-party method of confirmation is required
+    Other = 10;
+}
+
+// Device profile containing sensitive authentication data.
+// This information should be stored securely
+message AccountProfile {
+    // The type of profile, used to differentiate between
+    // protocol schemes or versions
+    string profile_type = 1;
+    // Auth data containg information about the current device access
+    bytes auth_data = 2;
+    // Secure token issued by server used to generate zero-knowledge proofs
+    bytes auth_token = 3;
+    // Token security information about the token.
+    // If token protection is enabled, implementations must supply
+    // protection secret before using the token for authentication.
+    TokenProtection protection = 4;
+    
+}
+
+// Token protection info
+message TokenProtection {
+    // Indicates if token is protected using a PIN,
+    // security code, HSM secret, etc.
+    bool enabled = 1;
+    // The method used to protect the token
+    ConfirmationMethod method = 2;
+}
+
+message InfoRequest {}
+message InfoResponse {
+    // The account details associated with
+    // the calling request context
+    AccountDetails details = 1;
+}
+
+message ListDevicesRequest {}
+message ListDevicesResponse {}
+
+message RevokeDeviceRequest {}
+message RevokeDeviceResponse {}
+
+service AccountService {
+    // Sign in to an already existing account
+    rpc SignIn              (SignInRequest)             returns (SignInResponse);
+    // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);
+
+    // Get account information
+    rpc Info                (InfoRequest)               returns (InfoResponse);
+    // List all connected devices
+    rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
+    // Revoke device access to the account's cloud wallet
+    rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
+}

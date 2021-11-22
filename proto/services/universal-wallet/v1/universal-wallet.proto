@@ -7,92 +7,9 @@ option java_package = "trinsic.services.universalwallet.v1";
 
 import "services/common/v1/common.proto";
 
-message CreateWalletRequest {
-    // optional description of the wallet
-    string description = 2;
-    // (Optional) Supply an invitation id to associate this
-    // caller device to an existing cloud wallet.
-    string security_code = 3;
-}
-
-message CreateWalletResponse {
-    // the status code of the response
-    services.common.v1.ResponseStatus status = 1;
-    // authentication data containing info about the cloud
-    // wallet and device the user is connecting from
-    bytes auth_data = 2;
-    // authoritative token issued by the server that is
-    // required to prove knowledge during authentication
-    bytes auth_token = 3;
-    // indicates if the token issued protected with a
-    // security code, usually delivered by email or sms
-    bool is_protected = 4;
-}
-
-message ConnectRequest {
-    oneof contact_method {
-        string email = 5;
-        string phone = 6;
-    }
-}
-
-message ConnectResponse {
-    services.common.v1.ResponseStatus status = 1;
-}
-
-message InvitationToken {
-    string security_code = 1;
-    string wallet_id = 2;
-    oneof contact_method {
-        string email = 5;
-        string phone = 6;
-    }
-}
-
-/*
-    Stores profile data for accessing a wallet.
-    This result should be stored somewhere safe,
-    as it contains private key information.
-*/
-message WalletProfile {
-    string name = 1;
-    bytes auth_data = 2;
-    bytes auth_token = 3;
-    bool is_protected = 4;
-
-    services.common.v1.ServerConfig config = 5;
-}
-
-message GrantAccessRequest {
-    string wallet_id = 1;
-    string did = 2;
-}
-message GrantAccessResponse {
-    services.common.v1.ResponseStatus status = 1;
-}
-
-message RevokeAccessRequest {
-    string wallet_id = 1;
-    string did = 2;
-}
-
-message RevokeAccessResponse {
-    services.common.v1.ResponseStatus status = 1;
-}
-
-// GetProviderConfiguration
-
-message GetProviderConfigurationRequest {
-    services.common.v1.RequestOptions request_options = 1;
-}
-
-message GetProviderConfigurationResponse {
-    services.common.v1.JsonPayload did_document = 1;
-    string key_agreement_key_id = 2;
-}
-
 // Search
 
+// Search request object
 message SearchRequest {
     string query = 1;
     string continuation_token = 2;
@@ -100,6 +17,7 @@ message SearchRequest {
     services.common.v1.RequestOptions options = 5;
 }
 
+// Search response object
 message SearchResponse {
     repeated services.common.v1.JsonPayload items = 1;
     bool has_more = 2;
@@ -109,29 +27,33 @@ message SearchResponse {
 
 // InsertItem
 
+// Insert item request
 message InsertItemRequest {
     services.common.v1.JsonPayload item = 1;
     string item_type = 2;
 }
 
+// Insert item response
 message InsertItemResponse {
     services.common.v1.ResponseStatus status = 1;
+    // The item identifier of the inserted record
     string item_id = 2;
 }
 
-service Wallet {
-    rpc GetProviderConfiguration(GetProviderConfigurationRequest) returns (GetProviderConfigurationResponse);
+// Delete item request
+message DeleteItemRequest {}
+message DeleteItemResponse {}
 
-    rpc ConnectExternalIdentity(ConnectRequest) returns (ConnectResponse);
+service WalletService {
 
-    rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
-
+    // Search the wallet using a SQL-like syntax
     rpc Search(SearchRequest) returns (SearchResponse);
 
+    // Insert an item into the wallet
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
 
-    rpc GrantAccess(GrantAccessRequest) returns (GrantAccessResponse);
+    // Delete an item from the wallet permanently
+    rpc Deleteitem(DeleteItemRequest) returns (DeleteItemResponse);
 
-    rpc RevokeAccess(RevokeAccessRequest) returns (RevokeAccessResponse);
 }
 

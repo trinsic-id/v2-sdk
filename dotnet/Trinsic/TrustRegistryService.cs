@@ -4,20 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
-using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(WalletProfile walletProfile, ServerConfig serverConfig) : base(walletProfile, serverConfig)
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig)
     {
         Client = new TrustRegistry.TrustRegistryClient(Channel);
     }
 
-    public TrustRegistry.TrustRegistryClient Client { get; }
+    internal TrustRegistry.TrustRegistryClient Client { get; }
 
     /// <summary>
     /// Register a Governance Framework with the Trust Registry.
@@ -40,7 +41,7 @@ public class TrustRegistryService : ServiceBase
                     Description = description
                 }
             };
-            var response = await Client.AddFrameworkAsync(request, BuildMetadata(request));
+            var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
         }
         throw new Exception("Invalid URI string");
     }
@@ -64,7 +65,7 @@ public class TrustRegistryService : ServiceBase
             ValidFromUtc = (ulong)(validFrom?.ToUnixTimeSeconds() ?? default),
             ValidUntilUtc = (ulong)(validUntil?.ToUnixTimeSeconds() ?? default)
         };
-        var response = await Client.RegisterIssuerAsync(request, BuildMetadata(request));
+        var response = await Client.RegisterIssuerAsync(request, await BuildMetadataAsync(request));
     }
 
     public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -91,7 +92,7 @@ public class TrustRegistryService : ServiceBase
             ValidFromUtc = (ulong)(validFrom?.ToUnixTimeSeconds() ?? default),
             ValidUntilUtc = (ulong)(validUntil?.ToUnixTimeSeconds() ?? default),
         };
-        var response = await Client.RegisterVerifierAsync(request, BuildMetadata(request));
+        var response = await Client.RegisterVerifierAsync(request, await BuildMetadataAsync(request));
     }
 
     public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
@@ -114,7 +115,7 @@ public class TrustRegistryService : ServiceBase
             CredentialTypeUri = credentialType,
             GovernanceFrameworkUri = governanceFramework
         };
-        var response = await Client.CheckIssuerStatusAsync(request, BuildMetadata(request));
+        var response = await Client.CheckIssuerStatusAsync(request, await BuildMetadataAsync(request));
 
         return response.Status;
     }
@@ -134,7 +135,7 @@ public class TrustRegistryService : ServiceBase
             PresentationTypeUri = presentationType,
             GovernanceFrameworkUri = governanceFramework
         };
-        var response = await Client.CheckVerifierStatusAsync(request, BuildMetadata(request));
+        var response = await Client.CheckVerifierStatusAsync(request, await BuildMetadataAsync(request));
 
         return response.Status;
     }
@@ -151,7 +152,7 @@ public class TrustRegistryService : ServiceBase
             Query = query,
             Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
         };
-        var response = await Client.SearchRegistryAsync(request, BuildMetadata(request));
+        var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
 
         return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
     }

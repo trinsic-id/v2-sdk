@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
-using Trinsic.Services.UniversalWallet.V1;
 
 namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(WalletProfile walletProfile, ServerConfig? serverConfig) : base(walletProfile, serverConfig)
+    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig)
+        : base(accountProfile, serverConfig)
     {
         Client = new Provider.ProviderClient(Channel);
     }
 
-    public Provider.ProviderClient Client { get; }
+    internal Provider.ProviderClient Client { get; }
 
     /// <summary>
     /// Initiates the participant onboarding flow using the input contact method
@@ -28,7 +29,7 @@ public class ProviderService : ServiceBase
 
         try
         {
-            var response = await Client.InviteAsync(request, BuildMetadata(request));
+            var response = await Client.InviteAsync(request, await BuildMetadataAsync(request));
             return response;
         }
         catch (Exception e)
@@ -52,7 +53,7 @@ public class ProviderService : ServiceBase
 
         try
         {
-            var response = await Client.InvitationStatusAsync(request, BuildMetadata(request));
+            var response = await Client.InvitationStatusAsync(request, await BuildMetadataAsync(request));
             return response;
         }
         catch (Exception e)

@@ -44,7 +44,7 @@ message ServerConfig {
     bool use_tls = 3;
 }
 
-// Nonce used to generate an oberon prrof
+// Nonce used to generate an oberon proof
 message Nonce {
     int64 timestamp = 1; // UTC unix millisecond timestamp the request was made
     bytes request_hash = 2; // blake3256 hash of the request body

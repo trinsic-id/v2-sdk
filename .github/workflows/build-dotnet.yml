@@ -20,10 +20,7 @@ on:
 jobs:
   test:
     name: Test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
         with:
@@ -32,6 +29,7 @@ jobs:
         with:
           dotnet-version: '6.0.x'
       - run: |
+          dotnet workload install ios
           dotnet restore
           dotnet build -c Release
           dotnet test -c Release -v n
