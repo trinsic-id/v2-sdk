@@ -1,11 +1,22 @@
 # Vaccination Use Case for CLI
 
-It can be challenging to understand how verifiable credentials work until you see some examples. This walkthrough will show how a vaccination card might be issued, held, and proven using verifiable credentials with the Trinsic CLI. It assumes no prior knowledge to decentralized identity.
+This walkthrough will show how a vaccination card can be issued, held, and proven using verifiable credentials with the Trinsic CLI.
 
---8<----
-/snippets/intro-infrastructure.md
-/snippets/intro-use-case.md
---8<----
+## Installation
+
+In a new tab, open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
+
+If you'd rather run the CLI on your machine, you can install the CLI locally using our [installation instructions](./index.md)
+
+Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough.
+```
+git clone https://github.com/trinsic-id/cli-example && cd cli-example
+```
+
+--8<--
+<!-- snippets/intro-infrastructure.md -->
+snippets/intro-use-case.md
+--8<--
 
 ## Meet Allison
 
@@ -37,45 +48,53 @@ These wallets have been created by you, your role is an ecosystem provider. Your
     ```
 
 !!! note
-Reference: [Create Wallet](../reference/services/wallet-service/#create-wallet)
+    Reference: [Create Wallet](../reference/services/wallet-service.md#create-wallet)
 
 ---
 
 ## Issue a Credential
 
-Each credential is a JSON-LD document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
-The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods. Because this sample is on the same file system, our communication method is simply moving it to allison's directory :)
+Each credential is a JSON document that is signed with a special digital signature to makes each piece of data in the credential separately verifiable. This is a called bbs+ signature scheme.
+The credential is signed, but not sent. For now, sending the credential should be done through existing communication methods.
 
 === "Trinsic CLI"
 
     ```bash
-        trinsic --profile clinic issuer issue --document vaccination-certificate-unsigned.jsonld --out ./clinic/vaccination-certificate-signed.jsonld
-
-        mv ./vaccination-certificate-signed.jsonld allison
+    trinsic  --profile clinic issuer issue --document data/vaccination-certificate-unsigned.json --out vaccination-certificate-signed.json
     ```
 
 !!! info
-Reference: [Issue a Credential](../reference/services/wallet-service/#issue-credential)
+    Reference: [Issue a Credential](../reference/services/wallet-service.md#issue-credential)
 
 ---
 
 ## Store Credential in Wallet
-
 Once Allison receives the credential, she can store it within her wallet. She can use any device that she's authorized to use with her wallet.
+
 
 === "Trinsic CLI"
 
     ```bash
-        trinsic --profile allison wallet insert-item --item ./allison/vaccination-certificate-signed.jsonld
+    trinsic --profile allison wallet insert-item --item vaccination-certificate-signed.json
     ```
 
 Note down the response `item_id` printed to the console for the next step.
 
 !!! info
-Reference: [Insert Record](../reference/services/wallet-service/#insert-record)
+    Reference: [Insert Record](../reference/services/wallet-service.md#insert-record)l
 
 ---
 
+## Search Wallet for Credential
+If you'd like to check the credential in Allison's wallet to see if it arrived, you can search the wallet for the `id` of the credential.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic --profile allison wallet search --query "SELECT * FROM c WHERE c.id='<item_id>'"
+    ```
+
+!!! info
+    Reference: [Search Wallet](../reference/services/wallet-service.md#search-query)
 ## Create Proof
 Now let's create a proof for Allison. She may choose to generate this proof before going to the airport, or might generate it right as she boards.
 
@@ -85,11 +104,7 @@ Replace the `<item_id>` in the generate proof command below with the output from
 === "Trinsic CLI"
 
     ```bash
-        trinsic --profile allison issuer create-proof --document-id "<item-id>" --out ./vaccination-certificate-partial-proof.jsonld --reveal-document ./vaccination-certificate-frame.jsonld
-
-        more vaccination-certificate-partial-proof.jsonld
-
-        mv vaccination-certificate-partial-proof.json ../airline
+    trinsic --profile allison issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
     ```
 
 Take a look at the proof. Notice how only the attributes included in the `frame` are included with the proof.
@@ -97,7 +112,7 @@ Take a look at the proof. Notice how only the attributes included in the `frame`
 Allison sends this proof to the airline for them to verify.
 
 !!! info
-Reference: [Create Proof](../reference/services/wallet-service/#create-proof)
+    Reference: [Create Proof](../reference/services/wallet-service.md#create-proof)
 
 ---
 
@@ -107,9 +122,8 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Trinsic CLI"
 
     ```bash
-        trinsic --profile airline issuer verify-proof --proof-document ./airline/vaccination-certificate-partial-proof.jsonld
+    trinsic --profile airline issuer verify-proof --proof-document vaccination-certificate-partial-proof.json
     ```
-
 Watch for the output of `true` to know that the credential successfully passed all of the verification processes.
 !!! info
-Reference: [Verify Proof](../reference/services/wallet-service/#verify-proof)
+    Reference: [Verify Proof](../reference/services/wallet-service.md#verify-proof)
