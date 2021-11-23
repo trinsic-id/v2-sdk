@@ -71,7 +71,8 @@ subcommands:
                   takes_value: false
                   required: false
                   help: (Optional) Set this profile as default
-
+        - info:
+            about: Show account information
 
   - wallet:
       about: Wallet Service
