@@ -29,7 +29,7 @@ fn create_organization<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     };
 
     loop {
-        println!("{:?}", organization);
+        println!("{:#?}", organization);
         let input = read_line(Some("Type 'member' to add a member, 'capability' to add a capability, or 'done' when your organization is ready"));
 
         match &input[..] {

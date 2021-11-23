@@ -68,7 +68,6 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
     use trinsic::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
-    //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()
         .connect()
@@ -88,7 +87,7 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
         .expect("Insert item failed")
         .into_inner();
 
-    println!("{:?}", response);
+    println!("{:#?}", response);
 }
 
 #[tokio::main]
@@ -121,5 +120,5 @@ async fn send(args: &SendArgs, config: DefaultConfig) {
         .expect("Send item failed")
         .into_inner();
 
-    println!("{:?}", response);
+    println!("{:#?}", response);
 }
