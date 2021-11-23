@@ -1,5 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { ServerConfig, TrustRegistryClient } from "./proto";
+import { AccountProfile, ServerConfig, TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -24,8 +24,8 @@ import {
 export class TrustRegistryService extends ServiceBase {
   client: TrustRegistryClient;
 
-  constructor(config: ServerConfig = null) {
-    super(null, config);
+  constructor(profile: AccountProfile, config: ServerConfig = null) {
+    super(profile, config);
 
     this.client = new TrustRegistryClient(this.address);
   }
@@ -96,7 +96,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public search(query: string): Promise<SearchRegistryResponse> {
+  public search(query: string = "SELECT * FROM c"): Promise<SearchRegistryResponse> {
     return new Promise(async (resolve, reject) => {
       const request = new SearchRegistryRequest().setQuery(query);
       this.client.searchRegistry(request, await this.getMetadata(request), (error, response) => {

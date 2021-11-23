@@ -1,20 +1,14 @@
-import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
 import ServiceBase from "./ServiceBase";
-import { ProviderClient, ServerConfig } from "./proto";
+import { AccountProfile, ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
-export class TrinsicProviderService extends ServiceBase {
+export class ProviderService extends ServiceBase {
   client: ProviderClient;
 
-  constructor(config: ServerConfig = null) {
-    super(null, config);
+  constructor(profile: AccountProfile, config: ServerConfig = null) {
+    super(profile, config);
 
     this.client = new ProviderClient(this.address, this.channelCredentials);
-  }
-
-  setChannel(channel: Channel) {
-    this.channel = channel;
-    this.client = new ProviderClient(channel.getTarget(), ChannelCredentials.createInsecure());
   }
 
   public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {

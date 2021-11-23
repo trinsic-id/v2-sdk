@@ -1,36 +1,56 @@
-import { WalletService } from "../lib";
+import { AccountService, CredentialService, WalletService } from "../lib";
 import { config } from "./env";
-const walletService = new WalletService(config);
+
+let accountService;
+let profile;
+let walletService;
+let credentialService;
 
 describe("wallet service tests", () => {
+
+  beforeAll(async () => {
+    accountService = new AccountService(null, config);
+    const response = await accountService.signIn();
+    profile = response.getProfile();
+
+    walletService = new WalletService(profile, config);
+    credentialService = new CredentialService(profile, config);
+
+    console.log("before all ran");
+  });
+
+  it("can retrieve account info", async () => {
+    accountService.updateActiveProfile(profile);
+
+    const info = await accountService.info();
+    expect(info).not.toBeNull();
+
+  });
+
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-    let profile = await walletService.createWallet();
 
     expect(profile).not.toBeNull();
-
-    walletService.updateActiveProfile(profile);
 
     let unsignedDocument = {
       "@context": "https://w3id.org/security/v3-unstable",
       id: "https://issuer.oidp.uscis.gov/credentials/83627465",
     };
 
-    let issueResponse = await walletService.issueCredential(unsignedDocument);
+    let issueResponse = await credentialService.issue(unsignedDocument);
+    expect(issueResponse).not.toBeNull();
 
     let itemId = await walletService.insertItem(issueResponse);
-
     expect(itemId).not.toBeNull();
     expect(itemId).not.toBe("");
 
     let items = await walletService.search();
-
     expect(items).not.toBeNull();
     expect(items.getItemsList().length).toBeGreaterThan(0);
 
-    let proof = await walletService.createProof(itemId, { "@context": "http://w3id.org/security/v3-unstable" });
+    let proof = await credentialService.createProof(itemId, { "@context": "http://w3id.org/security/v3-unstable" });
+    expect(proof).not.toBeNull();
 
-    let valid = await walletService.verifyProof(proof);
-
+    let valid = await credentialService.verify(proof);
     expect(valid).toBe(true);
   }, 20000);
 });

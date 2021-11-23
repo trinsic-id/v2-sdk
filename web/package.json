@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/trinsic-web",
-  "version": "1.0.0-preview.27",
+  "version": "1.0.0",
   "description": "verifiable credentials",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -37,6 +37,7 @@
     "@types/node": "^15.12.0",
     "chromedriver": "^95.0.0",
     "copyfiles": "^2.4.1",
+    "dotenv": "^10.0.0",
     "geckodriver": "^2.0.0",
     "grpc-tools": "1.11.1",
     "jasmine-browser-runner": "^0.8.0",

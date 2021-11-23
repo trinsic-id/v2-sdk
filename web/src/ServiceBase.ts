@@ -1,27 +1,30 @@
 import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
-import { Nonce, ServerConfig, WalletProfile } from "./proto";
+import { Nonce, ServerConfig, AccountProfile } from "./proto";
 import { Message } from "google-protobuf";
 import { encode, fromUint8Array } from "js-base64";
 
 export default abstract class ServiceBase {
-  activeProfile: WalletProfile;
+  activeProfile: AccountProfile;
   serverConfig: ServerConfig;
   address: string;
 
   constructor(
-    profile: WalletProfile = null,
+    profile: AccountProfile = null,
     config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
   ) {
     this.activeProfile = profile;
     this.serverConfig = config;
-    this.address = `${
-      config.getUseTls() ? "https" : "http"
-    }://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
+    this.address = `${this.serverConfig.getUseTls() ? "https" : "http"}://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
-    var requestHash = await crypto.subtle.digest("SHA-256", request.serializeBinary());
+    var requestData = request.serializeBinary();
+    var requestHash = new ArrayBuffer(0);
+
+    if (requestData.length > 0) {
+      requestHash = await crypto.subtle.digest("SHA-256", request.serializeBinary());
+    }
     var timestamp = Date.now();
 
     let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(new Uint8Array(requestHash));
@@ -45,7 +48,7 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
-  updateActiveProfile(profile: WalletProfile): void {
+  updateActiveProfile(profile: AccountProfile): void {
     this.activeProfile = profile;
   }
 }
