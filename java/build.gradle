@@ -61,14 +61,15 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java-util:3.19.1'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
 
-    implementation 'io.grpc:protoc-gen-grpc-java:1.41.0'
-    implementation 'io.grpc:grpc-netty-shaded:1.41.0'
-    implementation 'io.grpc:grpc-protobuf:1.41.0'
-    implementation 'io.grpc:grpc-stub:1.41.0'
+    implementation 'io.grpc:protoc-gen-grpc-java:1.42.1'
+    implementation 'io.grpc:grpc-netty-shaded:1.42.1'
+    implementation 'io.grpc:grpc-protobuf:1.42.1'
+    implementation 'io.grpc:grpc-stub:1.42.1'
     implementation 'ky.korins:blake3_3:2.9.0'
+    implementation 'io.leonard:base58:0.0.2'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    implementation 'id.trinsic:okapi:1.0.0'
+    implementation 'id.trinsic:okapi:1.0.3'
 }
 
 test {

@@ -1,7 +1,7 @@
 import com.google.gson.Gson;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
-import io.grpc.Channel;
+import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import trinsic.services.common.v1.CommonOuterClass;
 
@@ -62,7 +62,7 @@ public class TrinsicUtilities {
         return CommonOuterClass.JsonPayload.newBuilder().setJsonString(gson.toJson(document, HashMap.class)).build();
     }
 
-    public static Channel getChannel(CommonOuterClass.ServerConfig config) {
+    public static ManagedChannel getChannel(CommonOuterClass.ServerConfig config) {
         var channelBuilder = ManagedChannelBuilder.forAddress(config.getEndpoint(), config.getPort());
         if (!config.getUseTls())
             channelBuilder = channelBuilder.usePlaintext();

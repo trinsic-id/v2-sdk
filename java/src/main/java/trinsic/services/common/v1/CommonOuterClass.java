@@ -2633,7 +2633,7 @@ public final class CommonOuterClass {
   }
   /**
    * <pre>
-   * Nonce used to generate an oberon prrof
+   * Nonce used to generate an oberon proof
    * </pre>
    *
    * Protobuf type {@code services.common.v1.Nonce}
@@ -2922,7 +2922,7 @@ public final class CommonOuterClass {
     }
     /**
      * <pre>
-     * Nonce used to generate an oberon prrof
+     * Nonce used to generate an oberon proof
      * </pre>
      *
      * Protobuf type {@code services.common.v1.Nonce}
