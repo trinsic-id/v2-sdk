@@ -1,4 +1,5 @@
 use clap::ArgMatches;
+use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -6,10 +7,8 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::service::Interceptor;
-use trinsic::{
-    proto::services::{common::v1::Nonce, universalwallet::v1::WalletProfile},
-    MessageFormatter,
-};
+use trinsic::proto::services::account::v1::AccountProfile;
+use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -76,6 +75,9 @@ impl From<prost::DecodeError> for Error {
 
 impl From<&ArgMatches<'_>> for DefaultConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
+        if matches.is_present("debug") {
+            unsafe { crate::DEBUG = true }
+        }
         if matches.is_present("profile") {
             DefaultConfig {
                 profile: Some(ConfigProfile {
@@ -130,7 +132,7 @@ impl DefaultConfig {
 
     pub fn save_profile(
         &mut self,
-        profile: WalletProfile,
+        profile: AccountProfile,
         name: &str,
         default: bool,
     ) -> Result<(), Error> {
@@ -201,7 +203,7 @@ impl Interceptor for DefaultConfig {
         mut request: tonic::Request<()>,
     ) -> Result<tonic::Request<()>, tonic::Status> {
         // read the currently configured profile
-        let profile: WalletProfile = self.read_profile().unwrap();
+        let profile: AccountProfile = self.read_profile().unwrap();
 
         // generate nonce by combining the current unix epoch timestam
         // and a hash of the request payload
@@ -224,18 +226,23 @@ impl Interceptor for DefaultConfig {
         })
         .unwrap();
 
-        // append auhtorization header
-        request.metadata_mut().insert(
-            "authorization",
-            format!(
-                "Oberon data={data},proof={proof},nonce={nonce},ver=1",
-                data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
-                proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
-                nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
-            )
-            .parse()
-            .unwrap(),
+        let header = format!(
+            "Oberon data={data},proof={proof},nonce={nonce},ver=1",
+            data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
+            proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
+            nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
         );
+
+        unsafe {
+            if crate::DEBUG {
+                println!("DEBUG: Authorization: {}", header.purple())
+            }
+        }
+
+        // append auhtorization header
+        request
+            .metadata_mut()
+            .insert("authorization", header.parse().unwrap());
         Ok(request)
     }
 }
@@ -245,7 +252,16 @@ pub fn execute(args: &Command) {
     set_profile_attr(&args.profile);
 }
 
-fn set_profile_attr(_args: &ProfileArgs) {}
+fn set_profile_attr(args: &ProfileArgs) {
+    let mut config = DefaultConfig::init().unwrap();
+    if args.default.is_some() {
+        config.profile = Some(ConfigProfile {
+            default: args.default.unwrap().to_string(),
+        });
+    }
+
+    config.save_config().unwrap()
+}
 
 fn set_server_attr(args: &ServerArgs) {
     let mut config = DefaultConfig::init().unwrap();

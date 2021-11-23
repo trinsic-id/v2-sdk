@@ -1,11 +1,19 @@
-use self::google::protobuf::{value::Kind, *};
+use crate::proto::services::common::v1::json_payload::Json;
+
+use self::{
+    google::protobuf::{value::Kind, *},
+    services::common::v1::JsonPayload,
+};
 use google::protobuf::{ListValue, Value};
 use serde::{
     de::{self, Error, SeqAccess, Visitor},
     ser::{SerializeMap, SerializeSeq},
     Deserialize, Deserializer, Serialize, Serializer,
 };
-use std::{collections::HashMap, fmt::Formatter};
+use std::{
+    collections::HashMap,
+    fmt::{Display, Formatter},
+};
 
 pub mod google;
 pub mod pbmse;
@@ -173,14 +181,22 @@ impl<'de> Visitor<'de> for Value {
     }
 }
 
-// pub(crate) mod google {
-//     pub mod protobuf {
-//         pub use crate::proto::google::protobuf::*;
-//     }
-// }
+pub trait JsonPretty {
+    fn to_string_pretty(&self) -> String;
+}
 
-// pub(crate) mod common {
-//     pub mod v1 {
-//         pub use crate::proto::services::common::v1::*;
-//     }
-// }
+impl JsonPretty for JsonPayload {
+    fn to_string_pretty(&self) -> String {
+        match &self.json {
+            Some(json) => match json {
+                Json::JsonStruct(x) => serde_json::to_string_pretty(x).unwrap(),
+                Json::JsonString(x) => x.clone(),
+                Json::JsonBytes(x) => {
+                    let x = serde_json::from_slice::<Value>(x).unwrap();
+                    serde_json::to_string_pretty(&x).unwrap()
+                }
+            },
+            None => String::default(),
+        }
+    }
+}

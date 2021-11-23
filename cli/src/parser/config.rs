@@ -23,11 +23,15 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
         ..Default::default()
     };
 
-    if args.is_present("server-address") {
-        command.server.address = args.value_of("server-address")
-    }
     if args.is_present("show") {
         DefaultConfig::init().unwrap().print().unwrap();
+    } else {
+        if args.is_present("server-address") {
+            command.server.address = args.value_of("server-address")
+        }
+        if args.is_present("profile-default") {
+            command.profile.default = args.value_of("profile-default")
+        }
     }
 
     command
