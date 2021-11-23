@@ -32,8 +32,8 @@ subcommands:
   - account:
       about: Account Service
       subcommands:
-        - sign-in:
-            about: Create a new wallet
+        - login:
+            about: Create login credentials by signing into an existing account or creating a new one.
 
             args:
               - name:

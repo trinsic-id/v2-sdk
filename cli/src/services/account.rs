@@ -1,7 +1,10 @@
 use std::env::args;
 
 use tonic::transport::Channel;
-use trinsic::proto::services::account::v1::{AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection, account_service_client::AccountServiceClient};
+use trinsic::proto::services::account::v1::{
+    account_service_client::AccountServiceClient, AccountDetails, AccountProfile,
+    ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection,
+};
 
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 
@@ -59,7 +62,6 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
     new_config.save_profile(profile, args.alias.unwrap(), args.set_default)
 }
 
-
 #[tokio::main]
 async fn info(a_rgs: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
     let channel = Channel::from_shared(config.server.address.clone())
@@ -68,9 +70,9 @@ async fn info(a_rgs: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
         .await
         .unwrap();
 
-        let mut client = AccountServiceClient::with_interceptor(channel, config);
+    let mut client = AccountServiceClient::with_interceptor(channel, config);
 
-    let request = tonic::Request::new(InfoRequest{});
+    let request = tonic::Request::new(InfoRequest {});
 
     let response = client
         .info(request)

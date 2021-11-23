@@ -21,7 +21,10 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .expect("Error parsing request"),
         );
     } else {
-        println!("{}", format!("invalid subcommand. see 'trinsic vc -h' for details").red());
+        println!(
+            "{}",
+            format!("invalid subcommand. see 'trinsic vc -h' for details").red()
+        );
         panic!();
     }
 }
