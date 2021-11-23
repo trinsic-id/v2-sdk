@@ -26,8 +26,7 @@ public abstract class ServiceBase
         };
         Channel = GrpcChannel.ForAddress(Configuration.FormatUrl());
     }
-
-    private readonly HashAlgorithm hasher = new Blake3();
+    
     private ISecurityProvider securityProvider = new OberonSecurityProvider();
 
     public AccountProfile? Profile { get; set; }
