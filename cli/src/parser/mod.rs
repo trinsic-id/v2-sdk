@@ -34,10 +34,10 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .subcommand_matches("config")
                 .expect("Error parsing request"),
         ))
-    } else if args.is_present("issuer") {
-        return Service::Issuer(issuer::parse(
+    } else if args.is_present("vc") {
+        return Service::VerifiableCredential(issuer::parse(
             &args
-                .subcommand_matches("issuer")
+                .subcommand_matches("vc")
                 .expect("Error parsing request"),
         ));
     } else if args.is_present("account") {
@@ -68,7 +68,7 @@ pub enum Service<'a> {
     DIDComm(didcomm::Command<'a>),
     DIDKey(didkey::Command<'a>),
     Wallet(wallet::Command<'a>),
-    Issuer(issuer::Command<'a>),
+    VerifiableCredential(issuer::Command<'a>),
     Provider(provider::Command<'a>),
     Config(config::Command<'a>),
     Account(account::Command<'a>),

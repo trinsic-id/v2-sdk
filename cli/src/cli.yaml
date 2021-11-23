@@ -116,8 +116,8 @@ subcommands:
                   help: Path to file containing item data
                   takes_value: true
                   required: true
-  - issuer:
-      about: Issuer Service
+  - vc:
+      about: Verifiable Credentials Service
 
       subcommands:
         - issue:
@@ -220,7 +220,6 @@ subcommands:
 
         - list-credential-templates:
             about: "List credential templates"
-
   - trust-registry:
       about: Trust Registry
       subcommands:

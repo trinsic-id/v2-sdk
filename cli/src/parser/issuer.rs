@@ -1,4 +1,5 @@
 use clap::ArgMatches;
+use colored::Colorize;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("issue") {
@@ -20,7 +21,8 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .expect("Error parsing request"),
         );
     } else {
-        panic!("Unrecognized command")
+        println!("{}", format!("invalid subcommand. see 'trinsic vc -h' for details").red());
+        panic!();
     }
 }
 
