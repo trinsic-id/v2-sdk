@@ -1,19 +1,7 @@
 use clap::ArgMatches;
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    if args.is_present("provider-configuration") {
-        return get_provider_configuration(
-            &args
-                .subcommand_matches("provider-configuration")
-                .expect("Error parsing request"),
-        );
-    } else if args.is_present("create") {
-        return create(
-            &args
-                .subcommand_matches("create")
-                .expect("Error parsing request"),
-        );
-    } else if args.is_present("search") {
+    if args.is_present("search") {
         return search(
             &args
                 .subcommand_matches("search")
@@ -36,17 +24,6 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     }
 }
 
-fn create<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::Create(CreateArgs {
-        description: args.value_of("description"),
-        profile_name: args.value_of("name"),
-        encrypted: args.value_of("encrypted").is_some(),
-        key: args.value_of("key"),
-        set_default: args.is_present("default"),
-        security_code: args.value_of("security-code"),
-    })
-}
-
 fn search<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Search(SearchArgs {
         query: args.value_of("query"),
@@ -67,29 +44,11 @@ fn send<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
-fn get_provider_configuration<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::GetProviderConfiguration
-}
-
 #[derive(Debug, PartialEq)]
 pub enum Command<'a> {
-    Create(CreateArgs<'a>),
     Search(SearchArgs<'a>),
     InsertItem(InsertItemArgs<'a>),
     Send(SendArgs<'a>),
-    GrantAccess,
-    RevokeAccess,
-    GetProviderConfiguration,
-}
-
-#[derive(Debug, PartialEq)]
-pub struct CreateArgs<'a> {
-    pub description: Option<&'a str>,
-    pub profile_name: Option<&'a str>,
-    pub security_code: Option<&'a str>,
-    pub encrypted: bool,
-    pub key: Option<&'a str>,
-    pub set_default: bool,
 }
 
 #[derive(Debug, PartialEq)]

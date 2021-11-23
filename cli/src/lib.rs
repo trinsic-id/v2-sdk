@@ -53,12 +53,6 @@ pub mod utils;
 #[macro_use]
 pub(crate) mod macros;
 
-// pub mod google {
-//     pub mod protobuf {
-//         pub use crate::proto::google::protobuf::*;
-//     }
-// }
-
 use proto::services::common::v1::json_payload;
 use proto::services::common::v1::JsonPayload;
 use serde_json::Value;

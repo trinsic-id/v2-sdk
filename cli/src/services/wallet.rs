@@ -8,84 +8,21 @@ use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
 use trinsic::proto::services::common::v1::{JsonPayload, ServerConfig};
 use trinsic::proto::services::universalwallet::v1::{
-    wallet_client::WalletClient, CreateWalletRequest, InsertItemRequest, SearchRequest,
-    WalletProfile,
+    wallet_service_client::WalletServiceClient, InsertItemRequest, SearchRequest,
 };
 use trinsic::proto::services::verifiablecredentials::v1::credential_client::CredentialClient;
 use trinsic::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
 use trinsic::proto::services::verifiablecredentials::v1::SendRequest;
-use trinsic::{proto::services::universalwallet::v1::*, utils::read_file_as_string};
+use trinsic::utils::read_file_as_string;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
     match args {
-        Command::Create(args) => create(args, config),
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
         Command::Send(args) => Ok(send(args, config)),
-        Command::GetProviderConfiguration => Ok(get_provider_configuration(config)),
         _ => Err(Error::UnknownCommand),
     }
-}
-
-#[tokio::main]
-async fn get_provider_configuration(config: DefaultConfig) {
-    let mut client = WalletClient::connect(config.server.address)
-        .await
-        .expect("Unable to connect to server");
-    let request = tonic::Request::new(GetProviderConfigurationRequest {
-        ..Default::default()
-    });
-    let response = client
-        .get_provider_configuration(request)
-        .await
-        .expect("Get Provider Configuration failed");
-
-    println!("Received Response: {:?}", response);
-}
-
-#[tokio::main]
-async fn create(args: &CreateArgs, config: DefaultConfig) -> Result<(), Error> {
-    let mut new_config = config.clone();
-
-    let description = match &args.description {
-        Some(desc) => desc.to_string(),
-        None => "New Wallet (from CLI)".to_string(),
-    };
-
-    let channel = Channel::from_shared(config.server.address)
-        .unwrap()
-        .connect()
-        .await
-        .unwrap();
-
-    let mut client = WalletClient::new(channel);
-
-    let request = tonic::Request::new(CreateWalletRequest {
-        description,
-        security_code: args
-            .security_code
-            .map_or(String::default(), |x| x.to_string()),
-        ..Default::default()
-    });
-
-    let response = client
-        .create_wallet(request)
-        .await
-        .expect("Create Wallet failed")
-        .into_inner();
-
-    let profile = WalletProfile {
-        name: args.profile_name.map_or(String::new(), |x| x.to_string()),
-        auth_data: response.auth_data,
-        auth_token: response.auth_token,
-        is_protected: response.is_protected,
-        config: Some(ServerConfig {
-            ..Default::default()
-        }),
-    };
-
-    new_config.save_profile(profile, args.profile_name.unwrap(), args.set_default)
 }
 
 #[tokio::main]
@@ -100,7 +37,7 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletClient::with_interceptor(channel, config);
+    let mut client = WalletServiceClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(SearchRequest {
         query: query.clone(),
@@ -110,7 +47,7 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
     let response = client
         .search(request)
         .await
-        .expect("Get Provider Configuration failed")
+        .expect("Search failed")
         .into_inner();
     use colored::*;
     println!("Search results for query '{}'", query.cyan().bold());
@@ -131,14 +68,13 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
     use trinsic::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
-    //println!("{:?}", item);
     let channel = Channel::from_shared(config.server.address.to_string())
         .unwrap()
         .connect()
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletClient::with_interceptor(channel, config);
+    let mut client = WalletServiceClient::with_interceptor(channel, config);
 
     let response = client
         .insert_item(InsertItemRequest {
@@ -151,7 +87,7 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
         .expect("Insert item failed")
         .into_inner();
 
-    println!("{:?}", response);
+    println!("{:#?}", response);
 }
 
 #[tokio::main]
@@ -184,5 +120,5 @@ async fn send(args: &SendArgs, config: DefaultConfig) {
         .expect("Send item failed")
         .into_inner();
 
-    println!("{:?}", response);
+    println!("{:#?}", response);
 }
