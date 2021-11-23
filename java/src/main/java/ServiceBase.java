@@ -4,6 +4,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import security.ISecurityProvider;
 import security.OberonSecurityProvider;
+import trinsic.okapi.DidException;
 import trinsic.services.account.v1.Account;
 import trinsic.services.common.v1.CommonOuterClass;
 

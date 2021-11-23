@@ -69,7 +69,7 @@ dependencies {
     implementation 'io.leonard:base58:0.0.2'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    implementation 'id.trinsic:okapi:1.0.1'
+    implementation 'id.trinsic:okapi:1.0.3'
 }
 
 test {

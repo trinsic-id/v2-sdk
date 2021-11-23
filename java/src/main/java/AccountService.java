@@ -2,6 +2,8 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;
+import trinsic.okapi.DidException;
+import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.services.account.v1.Account;
 import trinsic.services.account.v1.AccountServiceGrpc;

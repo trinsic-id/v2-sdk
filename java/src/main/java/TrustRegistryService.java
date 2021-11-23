@@ -2,6 +2,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
+import trinsic.okapi.DidException;
 import trinsic.services.account.v1.Account;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;

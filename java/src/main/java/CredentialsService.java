@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;
+import trinsic.okapi.DidException;
 import trinsic.services.account.v1.Account;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.verifiablecredentials.v1.CredentialGrpc;
