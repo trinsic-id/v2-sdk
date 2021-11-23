@@ -35,9 +35,12 @@ jobs:
           branch: main
           repo: trinsic-id/okapi
       - name: Publish package
-        run: gradle publish
+        run: |
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          gradle publish
         working-directory: java
         env:
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
           TEST_SERVER_PORT: 443

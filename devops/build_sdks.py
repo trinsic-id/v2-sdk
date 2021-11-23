@@ -96,10 +96,6 @@ def build_golang(args) -> None:
         pass
 
 
-def build_dotnet(args) -> None:
-    os.system(f'echo "PACKAGE_VERSION={get_package_versions(args)}" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append')
-
-
 def get_package_versions(args) -> str:
     return (args.package_version if args.package_version else get_github_version()).lstrip('v')
 
@@ -131,7 +127,6 @@ def main():
     build_java(args)
     build_ruby(args)
     build_golang(args)
-    build_dotnet(args)
     # Build and upload
     pass
 

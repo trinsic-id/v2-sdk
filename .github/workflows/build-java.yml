@@ -1,4 +1,4 @@
-name: Java
+name: Build Java SDK
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ on:
       - ".github/workflows/*java*"
 
 jobs:
-  build:
+  build-and-test-java:
     name: Build
     runs-on: ${{ matrix.os }}
     strategy:
@@ -40,15 +40,35 @@ jobs:
           repo: trinsic-id/okapi
       - name: Build with Gradle
         run: |
-          ./devops/BuildJava.ps1 -GitTag ${{ github.ref }} -TestOutput "test_output_${{ matrix.os }}.xml" -ArtifactName "${{ matrix.artifact_name }}"
+          python ../devops/build_sdks.py
+          gradle build
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
           TEST_SERVER_PORT: 443
           TEST_SERVER_USE_TLS: true
-      - uses: actions/upload-artifact@v2
-        if: (${{ matrix.os }} == 'ubuntu-latest')
+      - name: Upload Unit Test Results - Java
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          name: Package
-          path: java/build/libs
+          name: Java Unit Test Results (${{ matrix.os-artifact[0] }})
+          path: 'java/build/test-results/test/TEST-*.xml'
+
+  publish-test-results-java:
+    name: Publish Java Test Results
+    needs: build-and-test-java
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Publish Test Report - Java
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'artifacts/**/*.xml'
+          check_name: Java Test Report

@@ -14,9131 +14,6 @@ public final class UniversalWallet {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface CreateWalletRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.CreateWalletRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * optional description of the wallet
-     * </pre>
-     *
-     * <code>string description = 2;</code>
-     * @return The description.
-     */
-    java.lang.String getDescription();
-    /**
-     * <pre>
-     * optional description of the wallet
-     * </pre>
-     *
-     * <code>string description = 2;</code>
-     * @return The bytes for description.
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
-
-    /**
-     * <pre>
-     * (Optional) Supply an invitation id to associate this
-     * caller device to an existing cloud wallet.
-     * </pre>
-     *
-     * <code>string security_code = 3;</code>
-     * @return The securityCode.
-     */
-    java.lang.String getSecurityCode();
-    /**
-     * <pre>
-     * (Optional) Supply an invitation id to associate this
-     * caller device to an existing cloud wallet.
-     * </pre>
-     *
-     * <code>string security_code = 3;</code>
-     * @return The bytes for securityCode.
-     */
-    com.google.protobuf.ByteString
-        getSecurityCodeBytes();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.CreateWalletRequest}
-   */
-  public static final class CreateWalletRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.CreateWalletRequest)
-      CreateWalletRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use CreateWalletRequest.newBuilder() to construct.
-    private CreateWalletRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private CreateWalletRequest() {
-      description_ = "";
-      securityCode_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new CreateWalletRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CreateWalletRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              description_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              securityCode_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.Builder.class);
-    }
-
-    public static final int DESCRIPTION_FIELD_NUMBER = 2;
-    private volatile java.lang.Object description_;
-    /**
-     * <pre>
-     * optional description of the wallet
-     * </pre>
-     *
-     * <code>string description = 2;</code>
-     * @return The description.
-     */
-    @java.lang.Override
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        description_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * optional description of the wallet
-     * </pre>
-     *
-     * <code>string description = 2;</code>
-     * @return The bytes for description.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int SECURITY_CODE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object securityCode_;
-    /**
-     * <pre>
-     * (Optional) Supply an invitation id to associate this
-     * caller device to an existing cloud wallet.
-     * </pre>
-     *
-     * <code>string security_code = 3;</code>
-     * @return The securityCode.
-     */
-    @java.lang.Override
-    public java.lang.String getSecurityCode() {
-      java.lang.Object ref = securityCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        securityCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * (Optional) Supply an invitation id to associate this
-     * caller device to an existing cloud wallet.
-     * </pre>
-     *
-     * <code>string security_code = 3;</code>
-     * @return The bytes for securityCode.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSecurityCodeBytes() {
-      java.lang.Object ref = securityCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        securityCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getDescriptionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
-      }
-      if (!getSecurityCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, securityCode_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getDescriptionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
-      }
-      if (!getSecurityCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, securityCode_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) obj;
-
-      if (!getDescription()
-          .equals(other.getDescription())) return false;
-      if (!getSecurityCode()
-          .equals(other.getSecurityCode())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
-      hash = (53 * hash) + getDescription().hashCode();
-      hash = (37 * hash) + SECURITY_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getSecurityCode().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.CreateWalletRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.CreateWalletRequest)
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        description_ = "";
-
-        securityCode_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest(this);
-        result.description_ = description_;
-        result.securityCode_ = securityCode_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest.getDefaultInstance()) return this;
-        if (!other.getDescription().isEmpty()) {
-          description_ = other.description_;
-          onChanged();
-        }
-        if (!other.getSecurityCode().isEmpty()) {
-          securityCode_ = other.securityCode_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object description_ = "";
-      /**
-       * <pre>
-       * optional description of the wallet
-       * </pre>
-       *
-       * <code>string description = 2;</code>
-       * @return The description.
-       */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * optional description of the wallet
-       * </pre>
-       *
-       * <code>string description = 2;</code>
-       * @return The bytes for description.
-       */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * optional description of the wallet
-       * </pre>
-       *
-       * <code>string description = 2;</code>
-       * @param value The description to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        description_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * optional description of the wallet
-       * </pre>
-       *
-       * <code>string description = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDescription() {
-        
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * optional description of the wallet
-       * </pre>
-       *
-       * <code>string description = 2;</code>
-       * @param value The bytes for description to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        description_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object securityCode_ = "";
-      /**
-       * <pre>
-       * (Optional) Supply an invitation id to associate this
-       * caller device to an existing cloud wallet.
-       * </pre>
-       *
-       * <code>string security_code = 3;</code>
-       * @return The securityCode.
-       */
-      public java.lang.String getSecurityCode() {
-        java.lang.Object ref = securityCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          securityCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * (Optional) Supply an invitation id to associate this
-       * caller device to an existing cloud wallet.
-       * </pre>
-       *
-       * <code>string security_code = 3;</code>
-       * @return The bytes for securityCode.
-       */
-      public com.google.protobuf.ByteString
-          getSecurityCodeBytes() {
-        java.lang.Object ref = securityCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          securityCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * (Optional) Supply an invitation id to associate this
-       * caller device to an existing cloud wallet.
-       * </pre>
-       *
-       * <code>string security_code = 3;</code>
-       * @param value The securityCode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSecurityCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        securityCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * (Optional) Supply an invitation id to associate this
-       * caller device to an existing cloud wallet.
-       * </pre>
-       *
-       * <code>string security_code = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSecurityCode() {
-        
-        securityCode_ = getDefaultInstance().getSecurityCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * (Optional) Supply an invitation id to associate this
-       * caller device to an existing cloud wallet.
-       * </pre>
-       *
-       * <code>string security_code = 3;</code>
-       * @param value The bytes for securityCode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSecurityCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        securityCode_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.CreateWalletRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.CreateWalletRequest)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<CreateWalletRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateWalletRequest>() {
-      @java.lang.Override
-      public CreateWalletRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateWalletRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<CreateWalletRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CreateWalletRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface CreateWalletResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.CreateWalletResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * the status code of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <pre>
-     * the status code of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
-
-    /**
-     * <pre>
-     * authentication data containing info about the cloud
-     * wallet and device the user is connecting from
-     * </pre>
-     *
-     * <code>bytes auth_data = 2;</code>
-     * @return The authData.
-     */
-    com.google.protobuf.ByteString getAuthData();
-
-    /**
-     * <pre>
-     * authoritative token issued by the server that is
-     * required to prove knowledge during authentication
-     * </pre>
-     *
-     * <code>bytes auth_token = 3;</code>
-     * @return The authToken.
-     */
-    com.google.protobuf.ByteString getAuthToken();
-
-    /**
-     * <pre>
-     * indicates if the token issued protected with a
-     * security code, usually delivered by email or sms
-     * </pre>
-     *
-     * <code>bool is_protected = 4;</code>
-     * @return The isProtected.
-     */
-    boolean getIsProtected();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.CreateWalletResponse}
-   */
-  public static final class CreateWalletResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.CreateWalletResponse)
-      CreateWalletResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use CreateWalletResponse.newBuilder() to construct.
-    private CreateWalletResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private CreateWalletResponse() {
-      status_ = 0;
-      authData_ = com.google.protobuf.ByteString.EMPTY;
-      authToken_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new CreateWalletResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CreateWalletResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            case 18: {
-
-              authData_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              authToken_ = input.readBytes();
-              break;
-            }
-            case 32: {
-
-              isProtected_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <pre>
-     * the status code of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <pre>
-     * the status code of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
-    public static final int AUTH_DATA_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString authData_;
-    /**
-     * <pre>
-     * authentication data containing info about the cloud
-     * wallet and device the user is connecting from
-     * </pre>
-     *
-     * <code>bytes auth_data = 2;</code>
-     * @return The authData.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAuthData() {
-      return authData_;
-    }
-
-    public static final int AUTH_TOKEN_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString authToken_;
-    /**
-     * <pre>
-     * authoritative token issued by the server that is
-     * required to prove knowledge during authentication
-     * </pre>
-     *
-     * <code>bytes auth_token = 3;</code>
-     * @return The authToken.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAuthToken() {
-      return authToken_;
-    }
-
-    public static final int IS_PROTECTED_FIELD_NUMBER = 4;
-    private boolean isProtected_;
-    /**
-     * <pre>
-     * indicates if the token issued protected with a
-     * security code, usually delivered by email or sms
-     * </pre>
-     *
-     * <code>bool is_protected = 4;</code>
-     * @return The isProtected.
-     */
-    @java.lang.Override
-    public boolean getIsProtected() {
-      return isProtected_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
-      if (!authData_.isEmpty()) {
-        output.writeBytes(2, authData_);
-      }
-      if (!authToken_.isEmpty()) {
-        output.writeBytes(3, authToken_);
-      }
-      if (isProtected_ != false) {
-        output.writeBool(4, isProtected_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
-      if (!authData_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, authData_);
-      }
-      if (!authToken_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, authToken_);
-      }
-      if (isProtected_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, isProtected_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse) obj;
-
-      if (status_ != other.status_) return false;
-      if (!getAuthData()
-          .equals(other.getAuthData())) return false;
-      if (!getAuthToken()
-          .equals(other.getAuthToken())) return false;
-      if (getIsProtected()
-          != other.getIsProtected()) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-      hash = (37 * hash) + AUTH_DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthData().hashCode();
-      hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthToken().hashCode();
-      hash = (37 * hash) + IS_PROTECTED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsProtected());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.CreateWalletResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.CreateWalletResponse)
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        status_ = 0;
-
-        authData_ = com.google.protobuf.ByteString.EMPTY;
-
-        authToken_ = com.google.protobuf.ByteString.EMPTY;
-
-        isProtected_ = false;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse(this);
-        result.status_ = status_;
-        result.authData_ = authData_;
-        result.authToken_ = authToken_;
-        result.isProtected_ = isProtected_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
-        if (other.getAuthData() != com.google.protobuf.ByteString.EMPTY) {
-          setAuthData(other.getAuthData());
-        }
-        if (other.getAuthToken() != com.google.protobuf.ByteString.EMPTY) {
-          setAuthToken(other.getAuthToken());
-        }
-        if (other.getIsProtected() != false) {
-          setIsProtected(other.getIsProtected());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <pre>
-       * the status code of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <pre>
-       * the status code of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * the status code of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <pre>
-       * the status code of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * the status code of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString authData_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * authentication data containing info about the cloud
-       * wallet and device the user is connecting from
-       * </pre>
-       *
-       * <code>bytes auth_data = 2;</code>
-       * @return The authData.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAuthData() {
-        return authData_;
-      }
-      /**
-       * <pre>
-       * authentication data containing info about the cloud
-       * wallet and device the user is connecting from
-       * </pre>
-       *
-       * <code>bytes auth_data = 2;</code>
-       * @param value The authData to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAuthData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        authData_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * authentication data containing info about the cloud
-       * wallet and device the user is connecting from
-       * </pre>
-       *
-       * <code>bytes auth_data = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAuthData() {
-        
-        authData_ = getDefaultInstance().getAuthData();
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString authToken_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <pre>
-       * authoritative token issued by the server that is
-       * required to prove knowledge during authentication
-       * </pre>
-       *
-       * <code>bytes auth_token = 3;</code>
-       * @return The authToken.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAuthToken() {
-        return authToken_;
-      }
-      /**
-       * <pre>
-       * authoritative token issued by the server that is
-       * required to prove knowledge during authentication
-       * </pre>
-       *
-       * <code>bytes auth_token = 3;</code>
-       * @param value The authToken to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAuthToken(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        authToken_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * authoritative token issued by the server that is
-       * required to prove knowledge during authentication
-       * </pre>
-       *
-       * <code>bytes auth_token = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAuthToken() {
-        
-        authToken_ = getDefaultInstance().getAuthToken();
-        onChanged();
-        return this;
-      }
-
-      private boolean isProtected_ ;
-      /**
-       * <pre>
-       * indicates if the token issued protected with a
-       * security code, usually delivered by email or sms
-       * </pre>
-       *
-       * <code>bool is_protected = 4;</code>
-       * @return The isProtected.
-       */
-      @java.lang.Override
-      public boolean getIsProtected() {
-        return isProtected_;
-      }
-      /**
-       * <pre>
-       * indicates if the token issued protected with a
-       * security code, usually delivered by email or sms
-       * </pre>
-       *
-       * <code>bool is_protected = 4;</code>
-       * @param value The isProtected to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsProtected(boolean value) {
-        
-        isProtected_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * indicates if the token issued protected with a
-       * security code, usually delivered by email or sms
-       * </pre>
-       *
-       * <code>bool is_protected = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsProtected() {
-        
-        isProtected_ = false;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.CreateWalletResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.CreateWalletResponse)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<CreateWalletResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateWalletResponse>() {
-      @java.lang.Override
-      public CreateWalletResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateWalletResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<CreateWalletResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CreateWalletResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.CreateWalletResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ConnectRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.ConnectRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
-     */
-    boolean hasEmail();
-    /**
-     * <code>string email = 5;</code>
-     * @return The email.
-     */
-    java.lang.String getEmail();
-    /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
-     */
-    com.google.protobuf.ByteString
-        getEmailBytes();
-
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    boolean hasPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    java.lang.String getPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    com.google.protobuf.ByteString
-        getPhoneBytes();
-
-    public trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.ContactMethodCase getContactMethodCase();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.ConnectRequest}
-   */
-  public static final class ConnectRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.ConnectRequest)
-      ConnectRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ConnectRequest.newBuilder() to construct.
-    private ConnectRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ConnectRequest() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ConnectRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ConnectRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 5;
-              contactMethod_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 6;
-              contactMethod_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.Builder.class);
-    }
-
-    private int contactMethodCase_ = 0;
-    private java.lang.Object contactMethod_;
-    public enum ContactMethodCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      EMAIL(5),
-      PHONE(6),
-      CONTACTMETHOD_NOT_SET(0);
-      private final int value;
-      private ContactMethodCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static ContactMethodCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static ContactMethodCase forNumber(int value) {
-        switch (value) {
-          case 5: return EMAIL;
-          case 6: return PHONE;
-          case 0: return CONTACTMETHOD_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public ContactMethodCase
-    getContactMethodCase() {
-      return ContactMethodCase.forNumber(
-          contactMethodCase_);
-    }
-
-    public static final int EMAIL_FIELD_NUMBER = 5;
-    /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
-     */
-    public boolean hasEmail() {
-      return contactMethodCase_ == 5;
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The email.
-     */
-    public java.lang.String getEmail() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
-     */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PHONE_FIELD_NUMBER = 6;
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    public boolean hasPhone() {
-      return contactMethodCase_ == 6;
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    public java.lang.String getPhone() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    public com.google.protobuf.ByteString
-        getPhoneBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (contactMethodCase_ == 5) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, contactMethod_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (contactMethodCase_ == 5) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, contactMethod_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest) obj;
-
-      if (!getContactMethodCase().equals(other.getContactMethodCase())) return false;
-      switch (contactMethodCase_) {
-        case 5:
-          if (!getEmail()
-              .equals(other.getEmail())) return false;
-          break;
-        case 6:
-          if (!getPhone()
-              .equals(other.getPhone())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      switch (contactMethodCase_) {
-        case 5:
-          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-          hash = (53 * hash) + getEmail().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + PHONE_FIELD_NUMBER;
-          hash = (53 * hash) + getPhone().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.ConnectRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.ConnectRequest)
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest(this);
-        if (contactMethodCase_ == 5) {
-          result.contactMethod_ = contactMethod_;
-        }
-        if (contactMethodCase_ == 6) {
-          result.contactMethod_ = contactMethod_;
-        }
-        result.contactMethodCase_ = contactMethodCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest.getDefaultInstance()) return this;
-        switch (other.getContactMethodCase()) {
-          case EMAIL: {
-            contactMethodCase_ = 5;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case PHONE: {
-            contactMethodCase_ = 6;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case CONTACTMETHOD_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int contactMethodCase_ = 0;
-      private java.lang.Object contactMethod_;
-      public ContactMethodCase
-          getContactMethodCase() {
-        return ContactMethodCase.forNumber(
-            contactMethodCase_);
-      }
-
-      public Builder clearContactMethod() {
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
-        onChanged();
-        return this;
-      }
-
-
-      /**
-       * <code>string email = 5;</code>
-       * @return Whether the email field is set.
-       */
-      @java.lang.Override
-      public boolean hasEmail() {
-        return contactMethodCase_ == 5;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The email.
-       */
-      @java.lang.Override
-      public java.lang.String getEmail() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The bytes for email.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmail(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEmail() {
-        if (contactMethodCase_ == 5) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The bytes for email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmailBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string phone = 6;</code>
-       * @return Whether the phone field is set.
-       */
-      @java.lang.Override
-      public boolean hasPhone() {
-        return contactMethodCase_ == 6;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The phone.
-       */
-      @java.lang.Override
-      public java.lang.String getPhone() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The bytes for phone.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getPhoneBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhone(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPhone() {
-        if (contactMethodCase_ == 6) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The bytes for phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhoneBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.ConnectRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.ConnectRequest)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ConnectRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ConnectRequest>() {
-      @java.lang.Override
-      public ConnectRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ConnectRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ConnectRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ConnectRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.ConnectRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ConnectResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.ConnectResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.ConnectResponse}
-   */
-  public static final class ConnectResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.ConnectResponse)
-      ConnectResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ConnectResponse.newBuilder() to construct.
-    private ConnectResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ConnectResponse() {
-      status_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ConnectResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ConnectResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse) obj;
-
-      if (status_ != other.status_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.ConnectResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.ConnectResponse)
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        status_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_ConnectResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse(this);
-        result.status_ = status_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.ConnectResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.ConnectResponse)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ConnectResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ConnectResponse>() {
-      @java.lang.Override
-      public ConnectResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ConnectResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ConnectResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ConnectResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.ConnectResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface InvitationTokenOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.InvitationToken)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string security_code = 1;</code>
-     * @return The securityCode.
-     */
-    java.lang.String getSecurityCode();
-    /**
-     * <code>string security_code = 1;</code>
-     * @return The bytes for securityCode.
-     */
-    com.google.protobuf.ByteString
-        getSecurityCodeBytes();
-
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
-     */
-    java.lang.String getWalletId();
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
-     */
-    com.google.protobuf.ByteString
-        getWalletIdBytes();
-
-    /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
-     */
-    boolean hasEmail();
-    /**
-     * <code>string email = 5;</code>
-     * @return The email.
-     */
-    java.lang.String getEmail();
-    /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
-     */
-    com.google.protobuf.ByteString
-        getEmailBytes();
-
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    boolean hasPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    java.lang.String getPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    com.google.protobuf.ByteString
-        getPhoneBytes();
-
-    public trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.ContactMethodCase getContactMethodCase();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.InvitationToken}
-   */
-  public static final class InvitationToken extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.InvitationToken)
-      InvitationTokenOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use InvitationToken.newBuilder() to construct.
-    private InvitationToken(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private InvitationToken() {
-      securityCode_ = "";
-      walletId_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new InvitationToken();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private InvitationToken(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              securityCode_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              walletId_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 5;
-              contactMethod_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 6;
-              contactMethod_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_InvitationToken_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_InvitationToken_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.class, trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.Builder.class);
-    }
-
-    private int contactMethodCase_ = 0;
-    private java.lang.Object contactMethod_;
-    public enum ContactMethodCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      EMAIL(5),
-      PHONE(6),
-      CONTACTMETHOD_NOT_SET(0);
-      private final int value;
-      private ContactMethodCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static ContactMethodCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static ContactMethodCase forNumber(int value) {
-        switch (value) {
-          case 5: return EMAIL;
-          case 6: return PHONE;
-          case 0: return CONTACTMETHOD_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public ContactMethodCase
-    getContactMethodCase() {
-      return ContactMethodCase.forNumber(
-          contactMethodCase_);
-    }
-
-    public static final int SECURITY_CODE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object securityCode_;
-    /**
-     * <code>string security_code = 1;</code>
-     * @return The securityCode.
-     */
-    @java.lang.Override
-    public java.lang.String getSecurityCode() {
-      java.lang.Object ref = securityCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        securityCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string security_code = 1;</code>
-     * @return The bytes for securityCode.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSecurityCodeBytes() {
-      java.lang.Object ref = securityCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        securityCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int WALLET_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object walletId_;
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The walletId.
-     */
-    @java.lang.Override
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string wallet_id = 2;</code>
-     * @return The bytes for walletId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        walletId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int EMAIL_FIELD_NUMBER = 5;
-    /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
-     */
-    public boolean hasEmail() {
-      return contactMethodCase_ == 5;
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The email.
-     */
-    public java.lang.String getEmail() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
-     */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PHONE_FIELD_NUMBER = 6;
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    public boolean hasPhone() {
-      return contactMethodCase_ == 6;
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    public java.lang.String getPhone() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    public com.google.protobuf.ByteString
-        getPhoneBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getSecurityCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, securityCode_);
-      }
-      if (!getWalletIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, walletId_);
-      }
-      if (contactMethodCase_ == 5) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, contactMethod_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getSecurityCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, securityCode_);
-      }
-      if (!getWalletIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, walletId_);
-      }
-      if (contactMethodCase_ == 5) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, contactMethod_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken other = (trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken) obj;
-
-      if (!getSecurityCode()
-          .equals(other.getSecurityCode())) return false;
-      if (!getWalletId()
-          .equals(other.getWalletId())) return false;
-      if (!getContactMethodCase().equals(other.getContactMethodCase())) return false;
-      switch (contactMethodCase_) {
-        case 5:
-          if (!getEmail()
-              .equals(other.getEmail())) return false;
-          break;
-        case 6:
-          if (!getPhone()
-              .equals(other.getPhone())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + SECURITY_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getSecurityCode().hashCode();
-      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getWalletId().hashCode();
-      switch (contactMethodCase_) {
-        case 5:
-          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-          hash = (53 * hash) + getEmail().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + PHONE_FIELD_NUMBER;
-          hash = (53 * hash) + getPhone().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.InvitationToken}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.InvitationToken)
-        trinsic.services.universalwallet.v1.UniversalWallet.InvitationTokenOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_InvitationToken_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_InvitationToken_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.class, trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        securityCode_ = "";
-
-        walletId_ = "";
-
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_InvitationToken_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken result = new trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken(this);
-        result.securityCode_ = securityCode_;
-        result.walletId_ = walletId_;
-        if (contactMethodCase_ == 5) {
-          result.contactMethod_ = contactMethod_;
-        }
-        if (contactMethodCase_ == 6) {
-          result.contactMethod_ = contactMethod_;
-        }
-        result.contactMethodCase_ = contactMethodCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken.getDefaultInstance()) return this;
-        if (!other.getSecurityCode().isEmpty()) {
-          securityCode_ = other.securityCode_;
-          onChanged();
-        }
-        if (!other.getWalletId().isEmpty()) {
-          walletId_ = other.walletId_;
-          onChanged();
-        }
-        switch (other.getContactMethodCase()) {
-          case EMAIL: {
-            contactMethodCase_ = 5;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case PHONE: {
-            contactMethodCase_ = 6;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case CONTACTMETHOD_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int contactMethodCase_ = 0;
-      private java.lang.Object contactMethod_;
-      public ContactMethodCase
-          getContactMethodCase() {
-        return ContactMethodCase.forNumber(
-            contactMethodCase_);
-      }
-
-      public Builder clearContactMethod() {
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
-        onChanged();
-        return this;
-      }
-
-
-      private java.lang.Object securityCode_ = "";
-      /**
-       * <code>string security_code = 1;</code>
-       * @return The securityCode.
-       */
-      public java.lang.String getSecurityCode() {
-        java.lang.Object ref = securityCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          securityCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string security_code = 1;</code>
-       * @return The bytes for securityCode.
-       */
-      public com.google.protobuf.ByteString
-          getSecurityCodeBytes() {
-        java.lang.Object ref = securityCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          securityCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string security_code = 1;</code>
-       * @param value The securityCode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSecurityCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        securityCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string security_code = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearSecurityCode() {
-        
-        securityCode_ = getDefaultInstance().getSecurityCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string security_code = 1;</code>
-       * @param value The bytes for securityCode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setSecurityCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        securityCode_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object walletId_ = "";
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return The walletId.
-       */
-      public java.lang.String getWalletId() {
-        java.lang.Object ref = walletId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          walletId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return The bytes for walletId.
-       */
-      public com.google.protobuf.ByteString
-          getWalletIdBytes() {
-        java.lang.Object ref = walletId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          walletId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWalletId() {
-        
-        walletId_ = getDefaultInstance().getWalletId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 2;</code>
-       * @param value The bytes for walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string email = 5;</code>
-       * @return Whether the email field is set.
-       */
-      @java.lang.Override
-      public boolean hasEmail() {
-        return contactMethodCase_ == 5;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The email.
-       */
-      @java.lang.Override
-      public java.lang.String getEmail() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The bytes for email.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmail(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEmail() {
-        if (contactMethodCase_ == 5) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The bytes for email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmailBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string phone = 6;</code>
-       * @return Whether the phone field is set.
-       */
-      @java.lang.Override
-      public boolean hasPhone() {
-        return contactMethodCase_ == 6;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The phone.
-       */
-      @java.lang.Override
-      public java.lang.String getPhone() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The bytes for phone.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getPhoneBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhone(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPhone() {
-        if (contactMethodCase_ == 6) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The bytes for phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhoneBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.InvitationToken)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.InvitationToken)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<InvitationToken>
-        PARSER = new com.google.protobuf.AbstractParser<InvitationToken>() {
-      @java.lang.Override
-      public InvitationToken parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new InvitationToken(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<InvitationToken> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InvitationToken> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.InvitationToken getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface WalletProfileOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.WalletProfile)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    java.lang.String getName();
-    /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    /**
-     * <code>bytes auth_data = 2;</code>
-     * @return The authData.
-     */
-    com.google.protobuf.ByteString getAuthData();
-
-    /**
-     * <code>bytes auth_token = 3;</code>
-     * @return The authToken.
-     */
-    com.google.protobuf.ByteString getAuthToken();
-
-    /**
-     * <code>bool is_protected = 4;</code>
-     * @return The isProtected.
-     */
-    boolean getIsProtected();
-
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     * @return Whether the config field is set.
-     */
-    boolean hasConfig();
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     * @return The config.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig();
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder();
-  }
-  /**
-   * <pre>
-   *Stores profile data for accessing a wallet.
-   *This result should be stored somewhere safe,
-   *as it contains private key information.
-   * </pre>
-   *
-   * Protobuf type {@code services.universalwallet.v1.WalletProfile}
-   */
-  public static final class WalletProfile extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.WalletProfile)
-      WalletProfileOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use WalletProfile.newBuilder() to construct.
-    private WalletProfile(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private WalletProfile() {
-      name_ = "";
-      authData_ = com.google.protobuf.ByteString.EMPTY;
-      authToken_ = com.google.protobuf.ByteString.EMPTY;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new WalletProfile();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private WalletProfile(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 18: {
-
-              authData_ = input.readBytes();
-              break;
-            }
-            case 26: {
-
-              authToken_ = input.readBytes();
-              break;
-            }
-            case 32: {
-
-              isProtected_ = input.readBool();
-              break;
-            }
-            case 42: {
-              trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder subBuilder = null;
-              if (config_ != null) {
-                subBuilder = config_.toBuilder();
-              }
-              config_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.ServerConfig.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(config_);
-                config_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_WalletProfile_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_WalletProfile_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.class, trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.Builder.class);
-    }
-
-    public static final int NAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object name_;
-    /**
-     * <code>string name = 1;</code>
-     * @return The name.
-     */
-    @java.lang.Override
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string name = 1;</code>
-     * @return The bytes for name.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int AUTH_DATA_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString authData_;
-    /**
-     * <code>bytes auth_data = 2;</code>
-     * @return The authData.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAuthData() {
-      return authData_;
-    }
-
-    public static final int AUTH_TOKEN_FIELD_NUMBER = 3;
-    private com.google.protobuf.ByteString authToken_;
-    /**
-     * <code>bytes auth_token = 3;</code>
-     * @return The authToken.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getAuthToken() {
-      return authToken_;
-    }
-
-    public static final int IS_PROTECTED_FIELD_NUMBER = 4;
-    private boolean isProtected_;
-    /**
-     * <code>bool is_protected = 4;</code>
-     * @return The isProtected.
-     */
-    @java.lang.Override
-    public boolean getIsProtected() {
-      return isProtected_;
-    }
-
-    public static final int CONFIG_FIELD_NUMBER = 5;
-    private trinsic.services.common.v1.CommonOuterClass.ServerConfig config_;
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     * @return Whether the config field is set.
-     */
-    @java.lang.Override
-    public boolean hasConfig() {
-      return config_ != null;
-    }
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     * @return The config.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig() {
-      return config_ == null ? trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
-    }
-    /**
-     * <code>.services.common.v1.ServerConfig config = 5;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder() {
-      return getConfig();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-      }
-      if (!authData_.isEmpty()) {
-        output.writeBytes(2, authData_);
-      }
-      if (!authToken_.isEmpty()) {
-        output.writeBytes(3, authToken_);
-      }
-      if (isProtected_ != false) {
-        output.writeBool(4, isProtected_);
-      }
-      if (config_ != null) {
-        output.writeMessage(5, getConfig());
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-      }
-      if (!authData_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, authData_);
-      }
-      if (!authToken_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, authToken_);
-      }
-      if (isProtected_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(4, isProtected_);
-      }
-      if (config_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getConfig());
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile other = (trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile) obj;
-
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (!getAuthData()
-          .equals(other.getAuthData())) return false;
-      if (!getAuthToken()
-          .equals(other.getAuthToken())) return false;
-      if (getIsProtected()
-          != other.getIsProtected()) return false;
-      if (hasConfig() != other.hasConfig()) return false;
-      if (hasConfig()) {
-        if (!getConfig()
-            .equals(other.getConfig())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + AUTH_DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthData().hashCode();
-      hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthToken().hashCode();
-      hash = (37 * hash) + IS_PROTECTED_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsProtected());
-      if (hasConfig()) {
-        hash = (37 * hash) + CONFIG_FIELD_NUMBER;
-        hash = (53 * hash) + getConfig().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     *Stores profile data for accessing a wallet.
-     *This result should be stored somewhere safe,
-     *as it contains private key information.
-     * </pre>
-     *
-     * Protobuf type {@code services.universalwallet.v1.WalletProfile}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.WalletProfile)
-        trinsic.services.universalwallet.v1.UniversalWallet.WalletProfileOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_WalletProfile_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_WalletProfile_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.class, trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        name_ = "";
-
-        authData_ = com.google.protobuf.ByteString.EMPTY;
-
-        authToken_ = com.google.protobuf.ByteString.EMPTY;
-
-        isProtected_ = false;
-
-        if (configBuilder_ == null) {
-          config_ = null;
-        } else {
-          config_ = null;
-          configBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_WalletProfile_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile result = new trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile(this);
-        result.name_ = name_;
-        result.authData_ = authData_;
-        result.authToken_ = authToken_;
-        result.isProtected_ = isProtected_;
-        if (configBuilder_ == null) {
-          result.config_ = config_;
-        } else {
-          result.config_ = configBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile.getDefaultInstance()) return this;
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
-        }
-        if (other.getAuthData() != com.google.protobuf.ByteString.EMPTY) {
-          setAuthData(other.getAuthData());
-        }
-        if (other.getAuthToken() != com.google.protobuf.ByteString.EMPTY) {
-          setAuthToken(other.getAuthToken());
-        }
-        if (other.getIsProtected() != false) {
-          setIsProtected(other.getIsProtected());
-        }
-        if (other.hasConfig()) {
-          mergeConfig(other.getConfig());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object name_ = "";
-      /**
-       * <code>string name = 1;</code>
-       * @return The name.
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return The bytes for name.
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 1;</code>
-       * @param value The bytes for name to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString authData_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes auth_data = 2;</code>
-       * @return The authData.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAuthData() {
-        return authData_;
-      }
-      /**
-       * <code>bytes auth_data = 2;</code>
-       * @param value The authData to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAuthData(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        authData_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes auth_data = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAuthData() {
-        
-        authData_ = getDefaultInstance().getAuthData();
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString authToken_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes auth_token = 3;</code>
-       * @return The authToken.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAuthToken() {
-        return authToken_;
-      }
-      /**
-       * <code>bytes auth_token = 3;</code>
-       * @param value The authToken to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAuthToken(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        authToken_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes auth_token = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearAuthToken() {
-        
-        authToken_ = getDefaultInstance().getAuthToken();
-        onChanged();
-        return this;
-      }
-
-      private boolean isProtected_ ;
-      /**
-       * <code>bool is_protected = 4;</code>
-       * @return The isProtected.
-       */
-      @java.lang.Override
-      public boolean getIsProtected() {
-        return isProtected_;
-      }
-      /**
-       * <code>bool is_protected = 4;</code>
-       * @param value The isProtected to set.
-       * @return This builder for chaining.
-       */
-      public Builder setIsProtected(boolean value) {
-        
-        isProtected_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool is_protected = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearIsProtected() {
-        
-        isProtected_ = false;
-        onChanged();
-        return this;
-      }
-
-      private trinsic.services.common.v1.CommonOuterClass.ServerConfig config_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder> configBuilder_;
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       * @return Whether the config field is set.
-       */
-      public boolean hasConfig() {
-        return configBuilder_ != null || config_ != null;
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       * @return The config.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfig getConfig() {
-        if (configBuilder_ == null) {
-          return config_ == null ? trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
-        } else {
-          return configBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public Builder setConfig(trinsic.services.common.v1.CommonOuterClass.ServerConfig value) {
-        if (configBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          config_ = value;
-          onChanged();
-        } else {
-          configBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public Builder setConfig(
-          trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder builderForValue) {
-        if (configBuilder_ == null) {
-          config_ = builderForValue.build();
-          onChanged();
-        } else {
-          configBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public Builder mergeConfig(trinsic.services.common.v1.CommonOuterClass.ServerConfig value) {
-        if (configBuilder_ == null) {
-          if (config_ != null) {
-            config_ =
-              trinsic.services.common.v1.CommonOuterClass.ServerConfig.newBuilder(config_).mergeFrom(value).buildPartial();
-          } else {
-            config_ = value;
-          }
-          onChanged();
-        } else {
-          configBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public Builder clearConfig() {
-        if (configBuilder_ == null) {
-          config_ = null;
-          onChanged();
-        } else {
-          config_ = null;
-          configBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder getConfigBuilder() {
-        
-        onChanged();
-        return getConfigFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder getConfigOrBuilder() {
-        if (configBuilder_ != null) {
-          return configBuilder_.getMessageOrBuilder();
-        } else {
-          return config_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance() : config_;
-        }
-      }
-      /**
-       * <code>.services.common.v1.ServerConfig config = 5;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder> 
-          getConfigFieldBuilder() {
-        if (configBuilder_ == null) {
-          configBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.ServerConfig, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder, trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder>(
-                  getConfig(),
-                  getParentForChildren(),
-                  isClean());
-          config_ = null;
-        }
-        return configBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.WalletProfile)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.WalletProfile)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<WalletProfile>
-        PARSER = new com.google.protobuf.AbstractParser<WalletProfile>() {
-      @java.lang.Override
-      public WalletProfile parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new WalletProfile(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<WalletProfile> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<WalletProfile> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.WalletProfile getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GrantAccessRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.GrantAccessRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The walletId.
-     */
-    java.lang.String getWalletId();
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The bytes for walletId.
-     */
-    com.google.protobuf.ByteString
-        getWalletIdBytes();
-
-    /**
-     * <code>string did = 2;</code>
-     * @return The did.
-     */
-    java.lang.String getDid();
-    /**
-     * <code>string did = 2;</code>
-     * @return The bytes for did.
-     */
-    com.google.protobuf.ByteString
-        getDidBytes();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.GrantAccessRequest}
-   */
-  public static final class GrantAccessRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.GrantAccessRequest)
-      GrantAccessRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GrantAccessRequest.newBuilder() to construct.
-    private GrantAccessRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GrantAccessRequest() {
-      walletId_ = "";
-      did_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GrantAccessRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GrantAccessRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              walletId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              did_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.Builder.class);
-    }
-
-    public static final int WALLET_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object walletId_;
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The walletId.
-     */
-    @java.lang.Override
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The bytes for walletId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        walletId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object did_;
-    /**
-     * <code>string did = 2;</code>
-     * @return The did.
-     */
-    @java.lang.Override
-    public java.lang.String getDid() {
-      java.lang.Object ref = did_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        did_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string did = 2;</code>
-     * @return The bytes for did.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDidBytes() {
-      java.lang.Object ref = did_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        did_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getWalletIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, walletId_);
-      }
-      if (!getDidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, did_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getWalletIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, walletId_);
-      }
-      if (!getDidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, did_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest) obj;
-
-      if (!getWalletId()
-          .equals(other.getWalletId())) return false;
-      if (!getDid()
-          .equals(other.getDid())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getWalletId().hashCode();
-      hash = (37 * hash) + DID_FIELD_NUMBER;
-      hash = (53 * hash) + getDid().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.GrantAccessRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.GrantAccessRequest)
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        walletId_ = "";
-
-        did_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest(this);
-        result.walletId_ = walletId_;
-        result.did_ = did_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest.getDefaultInstance()) return this;
-        if (!other.getWalletId().isEmpty()) {
-          walletId_ = other.walletId_;
-          onChanged();
-        }
-        if (!other.getDid().isEmpty()) {
-          did_ = other.did_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object walletId_ = "";
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return The walletId.
-       */
-      public java.lang.String getWalletId() {
-        java.lang.Object ref = walletId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          walletId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return The bytes for walletId.
-       */
-      public com.google.protobuf.ByteString
-          getWalletIdBytes() {
-        java.lang.Object ref = walletId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          walletId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @param value The walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWalletId() {
-        
-        walletId_ = getDefaultInstance().getWalletId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @param value The bytes for walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object did_ = "";
-      /**
-       * <code>string did = 2;</code>
-       * @return The did.
-       */
-      public java.lang.String getDid() {
-        java.lang.Object ref = did_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          did_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @return The bytes for did.
-       */
-      public com.google.protobuf.ByteString
-          getDidBytes() {
-        java.lang.Object ref = did_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          did_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @param value The did to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDid(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        did_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDid() {
-        
-        did_ = getDefaultInstance().getDid();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @param value The bytes for did to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        did_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.GrantAccessRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.GrantAccessRequest)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GrantAccessRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GrantAccessRequest>() {
-      @java.lang.Override
-      public GrantAccessRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GrantAccessRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GrantAccessRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GrantAccessRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GrantAccessResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.GrantAccessResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.GrantAccessResponse}
-   */
-  public static final class GrantAccessResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.GrantAccessResponse)
-      GrantAccessResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GrantAccessResponse.newBuilder() to construct.
-    private GrantAccessResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GrantAccessResponse() {
-      status_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GrantAccessResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GrantAccessResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse) obj;
-
-      if (status_ != other.status_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.GrantAccessResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.GrantAccessResponse)
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        status_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse(this);
-        result.status_ = status_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.GrantAccessResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.GrantAccessResponse)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GrantAccessResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GrantAccessResponse>() {
-      @java.lang.Override
-      public GrantAccessResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GrantAccessResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GrantAccessResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GrantAccessResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.GrantAccessResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface RevokeAccessRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.RevokeAccessRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The walletId.
-     */
-    java.lang.String getWalletId();
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The bytes for walletId.
-     */
-    com.google.protobuf.ByteString
-        getWalletIdBytes();
-
-    /**
-     * <code>string did = 2;</code>
-     * @return The did.
-     */
-    java.lang.String getDid();
-    /**
-     * <code>string did = 2;</code>
-     * @return The bytes for did.
-     */
-    com.google.protobuf.ByteString
-        getDidBytes();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.RevokeAccessRequest}
-   */
-  public static final class RevokeAccessRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.RevokeAccessRequest)
-      RevokeAccessRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use RevokeAccessRequest.newBuilder() to construct.
-    private RevokeAccessRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private RevokeAccessRequest() {
-      walletId_ = "";
-      did_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new RevokeAccessRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RevokeAccessRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              walletId_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              did_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.Builder.class);
-    }
-
-    public static final int WALLET_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object walletId_;
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The walletId.
-     */
-    @java.lang.Override
-    public java.lang.String getWalletId() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        walletId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string wallet_id = 1;</code>
-     * @return The bytes for walletId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
-      java.lang.Object ref = walletId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        walletId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object did_;
-    /**
-     * <code>string did = 2;</code>
-     * @return The did.
-     */
-    @java.lang.Override
-    public java.lang.String getDid() {
-      java.lang.Object ref = did_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        did_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string did = 2;</code>
-     * @return The bytes for did.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDidBytes() {
-      java.lang.Object ref = did_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        did_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getWalletIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, walletId_);
-      }
-      if (!getDidBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, did_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getWalletIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, walletId_);
-      }
-      if (!getDidBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, did_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest) obj;
-
-      if (!getWalletId()
-          .equals(other.getWalletId())) return false;
-      if (!getDid()
-          .equals(other.getDid())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getWalletId().hashCode();
-      hash = (37 * hash) + DID_FIELD_NUMBER;
-      hash = (53 * hash) + getDid().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.RevokeAccessRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.RevokeAccessRequest)
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        walletId_ = "";
-
-        did_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest(this);
-        result.walletId_ = walletId_;
-        result.did_ = did_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest.getDefaultInstance()) return this;
-        if (!other.getWalletId().isEmpty()) {
-          walletId_ = other.walletId_;
-          onChanged();
-        }
-        if (!other.getDid().isEmpty()) {
-          did_ = other.did_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object walletId_ = "";
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return The walletId.
-       */
-      public java.lang.String getWalletId() {
-        java.lang.Object ref = walletId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          walletId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return The bytes for walletId.
-       */
-      public com.google.protobuf.ByteString
-          getWalletIdBytes() {
-        java.lang.Object ref = walletId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          walletId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @param value The walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWalletId() {
-        
-        walletId_ = getDefaultInstance().getWalletId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string wallet_id = 1;</code>
-       * @param value The bytes for walletId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWalletIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        walletId_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object did_ = "";
-      /**
-       * <code>string did = 2;</code>
-       * @return The did.
-       */
-      public java.lang.String getDid() {
-        java.lang.Object ref = did_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          did_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @return The bytes for did.
-       */
-      public com.google.protobuf.ByteString
-          getDidBytes() {
-        java.lang.Object ref = did_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          did_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @param value The did to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDid(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        did_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDid() {
-        
-        did_ = getDefaultInstance().getDid();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did = 2;</code>
-       * @param value The bytes for did to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        did_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.RevokeAccessRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.RevokeAccessRequest)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RevokeAccessRequest>
-        PARSER = new com.google.protobuf.AbstractParser<RevokeAccessRequest>() {
-      @java.lang.Override
-      public RevokeAccessRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RevokeAccessRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<RevokeAccessRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RevokeAccessRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface RevokeAccessResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.RevokeAccessResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.RevokeAccessResponse}
-   */
-  public static final class RevokeAccessResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.RevokeAccessResponse)
-      RevokeAccessResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use RevokeAccessResponse.newBuilder() to construct.
-    private RevokeAccessResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private RevokeAccessResponse() {
-      status_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new RevokeAccessResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RevokeAccessResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse) obj;
-
-      if (status_ != other.status_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.RevokeAccessResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.RevokeAccessResponse)
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        status_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse(this);
-        result.status_ = status_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.RevokeAccessResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.RevokeAccessResponse)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RevokeAccessResponse>
-        PARSER = new com.google.protobuf.AbstractParser<RevokeAccessResponse>() {
-      @java.lang.Override
-      public RevokeAccessResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RevokeAccessResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<RevokeAccessResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RevokeAccessResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.RevokeAccessResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GetProviderConfigurationRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.GetProviderConfigurationRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     * @return Whether the requestOptions field is set.
-     */
-    boolean hasRequestOptions();
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     * @return The requestOptions.
-     */
-    trinsic.services.common.v1.CommonOuterClass.RequestOptions getRequestOptions();
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getRequestOptionsOrBuilder();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.GetProviderConfigurationRequest}
-   */
-  public static final class GetProviderConfigurationRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.GetProviderConfigurationRequest)
-      GetProviderConfigurationRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetProviderConfigurationRequest.newBuilder() to construct.
-    private GetProviderConfigurationRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetProviderConfigurationRequest() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetProviderConfigurationRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetProviderConfigurationRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder subBuilder = null;
-              if (requestOptions_ != null) {
-                subBuilder = requestOptions_.toBuilder();
-              }
-              requestOptions_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.RequestOptions.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(requestOptions_);
-                requestOptions_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.Builder.class);
-    }
-
-    public static final int REQUEST_OPTIONS_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.RequestOptions requestOptions_;
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     * @return Whether the requestOptions field is set.
-     */
-    @java.lang.Override
-    public boolean hasRequestOptions() {
-      return requestOptions_ != null;
-    }
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     * @return The requestOptions.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.RequestOptions getRequestOptions() {
-      return requestOptions_ == null ? trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : requestOptions_;
-    }
-    /**
-     * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getRequestOptionsOrBuilder() {
-      return getRequestOptions();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (requestOptions_ != null) {
-        output.writeMessage(1, getRequestOptions());
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (requestOptions_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRequestOptions());
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest) obj;
-
-      if (hasRequestOptions() != other.hasRequestOptions()) return false;
-      if (hasRequestOptions()) {
-        if (!getRequestOptions()
-            .equals(other.getRequestOptions())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRequestOptions()) {
-        hash = (37 * hash) + REQUEST_OPTIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getRequestOptions().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.GetProviderConfigurationRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.GetProviderConfigurationRequest)
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (requestOptionsBuilder_ == null) {
-          requestOptions_ = null;
-        } else {
-          requestOptions_ = null;
-          requestOptionsBuilder_ = null;
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest(this);
-        if (requestOptionsBuilder_ == null) {
-          result.requestOptions_ = requestOptions_;
-        } else {
-          result.requestOptions_ = requestOptionsBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest.getDefaultInstance()) return this;
-        if (other.hasRequestOptions()) {
-          mergeRequestOptions(other.getRequestOptions());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private trinsic.services.common.v1.CommonOuterClass.RequestOptions requestOptions_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> requestOptionsBuilder_;
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       * @return Whether the requestOptions field is set.
-       */
-      public boolean hasRequestOptions() {
-        return requestOptionsBuilder_ != null || requestOptions_ != null;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       * @return The requestOptions.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptions getRequestOptions() {
-        if (requestOptionsBuilder_ == null) {
-          return requestOptions_ == null ? trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : requestOptions_;
-        } else {
-          return requestOptionsBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public Builder setRequestOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value) {
-        if (requestOptionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          requestOptions_ = value;
-          onChanged();
-        } else {
-          requestOptionsBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public Builder setRequestOptions(
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder builderForValue) {
-        if (requestOptionsBuilder_ == null) {
-          requestOptions_ = builderForValue.build();
-          onChanged();
-        } else {
-          requestOptionsBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public Builder mergeRequestOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value) {
-        if (requestOptionsBuilder_ == null) {
-          if (requestOptions_ != null) {
-            requestOptions_ =
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.newBuilder(requestOptions_).mergeFrom(value).buildPartial();
-          } else {
-            requestOptions_ = value;
-          }
-          onChanged();
-        } else {
-          requestOptionsBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public Builder clearRequestOptions() {
-        if (requestOptionsBuilder_ == null) {
-          requestOptions_ = null;
-          onChanged();
-        } else {
-          requestOptions_ = null;
-          requestOptionsBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder getRequestOptionsBuilder() {
-        
-        onChanged();
-        return getRequestOptionsFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getRequestOptionsOrBuilder() {
-        if (requestOptionsBuilder_ != null) {
-          return requestOptionsBuilder_.getMessageOrBuilder();
-        } else {
-          return requestOptions_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : requestOptions_;
-        }
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions request_options = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> 
-          getRequestOptionsFieldBuilder() {
-        if (requestOptionsBuilder_ == null) {
-          requestOptionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder>(
-                  getRequestOptions(),
-                  getParentForChildren(),
-                  isClean());
-          requestOptions_ = null;
-        }
-        return requestOptionsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.GetProviderConfigurationRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.GetProviderConfigurationRequest)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GetProviderConfigurationRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetProviderConfigurationRequest>() {
-      @java.lang.Override
-      public GetProviderConfigurationRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetProviderConfigurationRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetProviderConfigurationRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetProviderConfigurationRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GetProviderConfigurationResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.GetProviderConfigurationResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return Whether the didDocument field is set.
-     */
-    boolean hasDidDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return The didDocument.
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder();
-
-    /**
-     * <code>string key_agreement_key_id = 2;</code>
-     * @return The keyAgreementKeyId.
-     */
-    java.lang.String getKeyAgreementKeyId();
-    /**
-     * <code>string key_agreement_key_id = 2;</code>
-     * @return The bytes for keyAgreementKeyId.
-     */
-    com.google.protobuf.ByteString
-        getKeyAgreementKeyIdBytes();
-  }
-  /**
-   * Protobuf type {@code services.universalwallet.v1.GetProviderConfigurationResponse}
-   */
-  public static final class GetProviderConfigurationResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.GetProviderConfigurationResponse)
-      GetProviderConfigurationResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetProviderConfigurationResponse.newBuilder() to construct.
-    private GetProviderConfigurationResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetProviderConfigurationResponse() {
-      keyAgreementKeyId_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new GetProviderConfigurationResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetProviderConfigurationResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (didDocument_ != null) {
-                subBuilder = didDocument_.toBuilder();
-              }
-              didDocument_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(didDocument_);
-                didDocument_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              keyAgreementKeyId_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.Builder.class);
-    }
-
-    public static final int DID_DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload didDocument_;
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return Whether the didDocument field is set.
-     */
-    @java.lang.Override
-    public boolean hasDidDocument() {
-      return didDocument_ != null;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     * @return The didDocument.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument() {
-      return didDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder() {
-      return getDidDocument();
-    }
-
-    public static final int KEY_AGREEMENT_KEY_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object keyAgreementKeyId_;
-    /**
-     * <code>string key_agreement_key_id = 2;</code>
-     * @return The keyAgreementKeyId.
-     */
-    @java.lang.Override
-    public java.lang.String getKeyAgreementKeyId() {
-      java.lang.Object ref = keyAgreementKeyId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        keyAgreementKeyId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string key_agreement_key_id = 2;</code>
-     * @return The bytes for keyAgreementKeyId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getKeyAgreementKeyIdBytes() {
-      java.lang.Object ref = keyAgreementKeyId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        keyAgreementKeyId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (didDocument_ != null) {
-        output.writeMessage(1, getDidDocument());
-      }
-      if (!getKeyAgreementKeyIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, keyAgreementKeyId_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (didDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDidDocument());
-      }
-      if (!getKeyAgreementKeyIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, keyAgreementKeyId_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse) obj;
-
-      if (hasDidDocument() != other.hasDidDocument()) return false;
-      if (hasDidDocument()) {
-        if (!getDidDocument()
-            .equals(other.getDidDocument())) return false;
-      }
-      if (!getKeyAgreementKeyId()
-          .equals(other.getKeyAgreementKeyId())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDidDocument()) {
-        hash = (37 * hash) + DID_DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getDidDocument().hashCode();
-      }
-      hash = (37 * hash) + KEY_AGREEMENT_KEY_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getKeyAgreementKeyId().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.universalwallet.v1.GetProviderConfigurationResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.GetProviderConfigurationResponse)
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = null;
-        } else {
-          didDocument_ = null;
-          didDocumentBuilder_ = null;
-        }
-        keyAgreementKeyId_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse getDefaultInstanceForType() {
-        return trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse build() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse buildPartial() {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse(this);
-        if (didDocumentBuilder_ == null) {
-          result.didDocument_ = didDocument_;
-        } else {
-          result.didDocument_ = didDocumentBuilder_.build();
-        }
-        result.keyAgreementKeyId_ = keyAgreementKeyId_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse) {
-          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse other) {
-        if (other == trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse.getDefaultInstance()) return this;
-        if (other.hasDidDocument()) {
-          mergeDidDocument(other.getDidDocument());
-        }
-        if (!other.getKeyAgreementKeyId().isEmpty()) {
-          keyAgreementKeyId_ = other.keyAgreementKeyId_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload didDocument_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> didDocumentBuilder_;
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       * @return Whether the didDocument field is set.
-       */
-      public boolean hasDidDocument() {
-        return didDocumentBuilder_ != null || didDocument_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       * @return The didDocument.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidDocument() {
-        if (didDocumentBuilder_ == null) {
-          return didDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
-        } else {
-          return didDocumentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public Builder setDidDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didDocumentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          didDocument_ = value;
-          onChanged();
-        } else {
-          didDocumentBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public Builder setDidDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = builderForValue.build();
-          onChanged();
-        } else {
-          didDocumentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public Builder mergeDidDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didDocumentBuilder_ == null) {
-          if (didDocument_ != null) {
-            didDocument_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(didDocument_).mergeFrom(value).buildPartial();
-          } else {
-            didDocument_ = value;
-          }
-          onChanged();
-        } else {
-          didDocumentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public Builder clearDidDocument() {
-        if (didDocumentBuilder_ == null) {
-          didDocument_ = null;
-          onChanged();
-        } else {
-          didDocument_ = null;
-          didDocumentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDidDocumentBuilder() {
-        
-        onChanged();
-        return getDidDocumentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidDocumentOrBuilder() {
-        if (didDocumentBuilder_ != null) {
-          return didDocumentBuilder_.getMessageOrBuilder();
-        } else {
-          return didDocument_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : didDocument_;
-        }
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload did_document = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDidDocumentFieldBuilder() {
-        if (didDocumentBuilder_ == null) {
-          didDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getDidDocument(),
-                  getParentForChildren(),
-                  isClean());
-          didDocument_ = null;
-        }
-        return didDocumentBuilder_;
-      }
-
-      private java.lang.Object keyAgreementKeyId_ = "";
-      /**
-       * <code>string key_agreement_key_id = 2;</code>
-       * @return The keyAgreementKeyId.
-       */
-      public java.lang.String getKeyAgreementKeyId() {
-        java.lang.Object ref = keyAgreementKeyId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          keyAgreementKeyId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string key_agreement_key_id = 2;</code>
-       * @return The bytes for keyAgreementKeyId.
-       */
-      public com.google.protobuf.ByteString
-          getKeyAgreementKeyIdBytes() {
-        java.lang.Object ref = keyAgreementKeyId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          keyAgreementKeyId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string key_agreement_key_id = 2;</code>
-       * @param value The keyAgreementKeyId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKeyAgreementKeyId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        keyAgreementKeyId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string key_agreement_key_id = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearKeyAgreementKeyId() {
-        
-        keyAgreementKeyId_ = getDefaultInstance().getKeyAgreementKeyId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string key_agreement_key_id = 2;</code>
-       * @param value The bytes for keyAgreementKeyId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setKeyAgreementKeyIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        keyAgreementKeyId_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.GetProviderConfigurationResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.GetProviderConfigurationResponse)
-    private static final trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse();
-    }
-
-    public static trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GetProviderConfigurationResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GetProviderConfigurationResponse>() {
-      @java.lang.Override
-      public GetProviderConfigurationResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetProviderConfigurationResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetProviderConfigurationResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetProviderConfigurationResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.universalwallet.v1.UniversalWallet.GetProviderConfigurationResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface SearchRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.SearchRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -9183,6 +58,10 @@ public final class UniversalWallet {
     trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder();
   }
   /**
+   * <pre>
+   * Search request object
+   * </pre>
+   *
    * Protobuf type {@code services.universalwallet.v1.SearchRequest}
    */
   public static final class SearchRequest extends
@@ -9569,6 +448,10 @@ public final class UniversalWallet {
       return builder;
     }
     /**
+     * <pre>
+     * Search request object
+     * </pre>
+     *
      * Protobuf type {@code services.universalwallet.v1.SearchRequest}
      */
     public static final class Builder extends
@@ -10113,6 +996,10 @@ public final class UniversalWallet {
         getContinuationTokenBytes();
   }
   /**
+   * <pre>
+   * Search response object
+   * </pre>
+   *
    * Protobuf type {@code services.universalwallet.v1.SearchResponse}
    */
   public static final class SearchResponse extends
@@ -10511,6 +1398,10 @@ public final class UniversalWallet {
       return builder;
     }
     /**
+     * <pre>
+     * Search response object
+     * </pre>
+     *
      * Protobuf type {@code services.universalwallet.v1.SearchResponse}
      */
     public static final class Builder extends
@@ -11176,6 +2067,10 @@ public final class UniversalWallet {
         getItemTypeBytes();
   }
   /**
+   * <pre>
+   * Insert item request
+   * </pre>
+   *
    * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
    */
   public static final class InsertItemRequest extends
@@ -11507,6 +2402,10 @@ public final class UniversalWallet {
       return builder;
     }
     /**
+     * <pre>
+     * Insert item request
+     * </pre>
+     *
      * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
      */
     public static final class Builder extends
@@ -11931,11 +2830,19 @@ public final class UniversalWallet {
     trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
 
     /**
+     * <pre>
+     * The item identifier of the inserted record
+     * </pre>
+     *
      * <code>string item_id = 2;</code>
      * @return The itemId.
      */
     java.lang.String getItemId();
     /**
+     * <pre>
+     * The item identifier of the inserted record
+     * </pre>
+     *
      * <code>string item_id = 2;</code>
      * @return The bytes for itemId.
      */
@@ -11943,6 +2850,10 @@ public final class UniversalWallet {
         getItemIdBytes();
   }
   /**
+   * <pre>
+   * Insert item response
+   * </pre>
+   *
    * Protobuf type {@code services.universalwallet.v1.InsertItemResponse}
    */
   public static final class InsertItemResponse extends
@@ -12055,6 +2966,10 @@ public final class UniversalWallet {
     public static final int ITEM_ID_FIELD_NUMBER = 2;
     private volatile java.lang.Object itemId_;
     /**
+     * <pre>
+     * The item identifier of the inserted record
+     * </pre>
+     *
      * <code>string item_id = 2;</code>
      * @return The itemId.
      */
@@ -12072,6 +2987,10 @@ public final class UniversalWallet {
       }
     }
     /**
+     * <pre>
+     * The item identifier of the inserted record
+     * </pre>
+     *
      * <code>string item_id = 2;</code>
      * @return The bytes for itemId.
      */
@@ -12255,6 +3174,10 @@ public final class UniversalWallet {
       return builder;
     }
     /**
+     * <pre>
+     * Insert item response
+     * </pre>
+     *
      * Protobuf type {@code services.universalwallet.v1.InsertItemResponse}
      */
     public static final class Builder extends
@@ -12464,6 +3387,10 @@ public final class UniversalWallet {
 
       private java.lang.Object itemId_ = "";
       /**
+       * <pre>
+       * The item identifier of the inserted record
+       * </pre>
+       *
        * <code>string item_id = 2;</code>
        * @return The itemId.
        */
@@ -12480,6 +3407,10 @@ public final class UniversalWallet {
         }
       }
       /**
+       * <pre>
+       * The item identifier of the inserted record
+       * </pre>
+       *
        * <code>string item_id = 2;</code>
        * @return The bytes for itemId.
        */
@@ -12497,6 +3428,10 @@ public final class UniversalWallet {
         }
       }
       /**
+       * <pre>
+       * The item identifier of the inserted record
+       * </pre>
+       *
        * <code>string item_id = 2;</code>
        * @param value The itemId to set.
        * @return This builder for chaining.
@@ -12512,6 +3447,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * The item identifier of the inserted record
+       * </pre>
+       *
        * <code>string item_id = 2;</code>
        * @return This builder for chaining.
        */
@@ -12522,6 +3461,10 @@ public final class UniversalWallet {
         return this;
       }
       /**
+       * <pre>
+       * The item identifier of the inserted record
+       * </pre>
+       *
        * <code>string item_id = 2;</code>
        * @param value The bytes for itemId to set.
        * @return This builder for chaining.
@@ -12590,66 +3533,850 @@ public final class UniversalWallet {
 
   }
 
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_CreateWalletRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_CreateWalletResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_ConnectRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_ConnectRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_ConnectResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_ConnectResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_InvitationToken_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_InvitationToken_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_WalletProfile_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_WalletProfile_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_GrantAccessRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_GrantAccessResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_RevokeAccessRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_RevokeAccessResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_fieldAccessorTable;
+  public interface DeleteItemRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.DeleteItemRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * <pre>
+   * Delete item request
+   * </pre>
+   *
+   * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
+   */
+  public static final class DeleteItemRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.DeleteItemRequest)
+      DeleteItemRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DeleteItemRequest.newBuilder() to construct.
+    private DeleteItemRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteItemRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DeleteItemRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DeleteItemRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest)) {
+        return super.equals(obj);
+      }
+      trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest other = (trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Delete item request
+     * </pre>
+     *
+     * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.DeleteItemRequest)
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.class, trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.Builder.class);
+      }
+
+      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest getDefaultInstanceForType() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest build() {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest buildPartial() {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest result = new trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest) {
+          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest other) {
+        if (other == trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.DeleteItemRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.DeleteItemRequest)
+    private static final trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest();
+    }
+
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteItemRequest>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteItemRequest>() {
+      @java.lang.Override
+      public DeleteItemRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DeleteItemRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteItemRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteItemRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DeleteItemResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.DeleteItemResponse)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
+   */
+  public static final class DeleteItemResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.universalwallet.v1.DeleteItemResponse)
+      DeleteItemResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use DeleteItemResponse.newBuilder() to construct.
+    private DeleteItemResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private DeleteItemResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new DeleteItemResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DeleteItemResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse)) {
+        return super.equals(obj);
+      }
+      trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse other = (trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.DeleteItemResponse)
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.class, trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.Builder.class);
+      }
+
+      // Construct using trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse getDefaultInstanceForType() {
+        return trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse build() {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse buildPartial() {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse result = new trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse) {
+          return mergeFrom((trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse other) {
+        if (other == trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.DeleteItemResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.universalwallet.v1.DeleteItemResponse)
+    private static final trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse();
+    }
+
+    public static trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DeleteItemResponse>
+        PARSER = new com.google.protobuf.AbstractParser<DeleteItemResponse>() {
+      @java.lang.Override
+      public DeleteItemResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DeleteItemResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DeleteItemResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DeleteItemResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.universalwallet.v1.UniversalWallet.DeleteItemResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_services_universalwallet_v1_SearchRequest_descriptor;
   private static final 
@@ -12670,6 +4397,16 @@ public final class UniversalWallet {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_universalwallet_v1_InsertItemResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12681,171 +4418,72 @@ public final class UniversalWallet {
     java.lang.String[] descriptorData = {
       "\n3services/universal-wallet/v1/universal" +
       "-wallet.proto\022\033services.universalwallet." +
-      "v1\032\037services/common/v1/common.proto\"A\n\023C" +
-      "reateWalletRequest\022\023\n\013description\030\002 \001(\t\022" +
-      "\025\n\rsecurity_code\030\003 \001(\t\"\207\001\n\024CreateWalletR" +
-      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
-      "n.v1.ResponseStatus\022\021\n\tauth_data\030\002 \001(\014\022\022" +
-      "\n\nauth_token\030\003 \001(\014\022\024\n\014is_protected\030\004 \001(\010" +
-      "\"D\n\016ConnectRequest\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005p" +
-      "hone\030\006 \001(\tH\000B\020\n\016contact_method\"E\n\017Connec" +
-      "tResponse\0222\n\006status\030\001 \001(\0162\".services.com" +
-      "mon.v1.ResponseStatus\"o\n\017InvitationToken" +
-      "\022\025\n\rsecurity_code\030\001 \001(\t\022\021\n\twallet_id\030\002 \001" +
-      "(\t\022\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000B\020\n\016" +
-      "contact_method\"\214\001\n\rWalletProfile\022\014\n\004name" +
-      "\030\001 \001(\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030" +
-      "\003 \001(\014\022\024\n\014is_protected\030\004 \001(\010\0220\n\006config\030\005 " +
-      "\001(\0132 .services.common.v1.ServerConfig\"4\n" +
-      "\022GrantAccessRequest\022\021\n\twallet_id\030\001 \001(\t\022\013" +
-      "\n\003did\030\002 \001(\t\"I\n\023GrantAccessResponse\0222\n\006st" +
-      "atus\030\001 \001(\0162\".services.common.v1.Response" +
-      "Status\"5\n\023RevokeAccessRequest\022\021\n\twallet_" +
-      "id\030\001 \001(\t\022\013\n\003did\030\002 \001(\t\"J\n\024RevokeAccessRes" +
-      "ponse\0222\n\006status\030\001 \001(\0162\".services.common." +
-      "v1.ResponseStatus\"^\n\037GetProviderConfigur" +
-      "ationRequest\022;\n\017request_options\030\001 \001(\0132\"." +
-      "services.common.v1.RequestOptions\"w\n Get" +
-      "ProviderConfigurationResponse\0225\n\014did_doc" +
-      "ument\030\001 \001(\0132\037.services.common.v1.JsonPay" +
-      "load\022\034\n\024key_agreement_key_id\030\002 \001(\t\"o\n\rSe" +
-      "archRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continuati" +
-      "on_token\030\002 \001(\t\0223\n\007options\030\005 \001(\0132\".servic" +
-      "es.common.v1.RequestOptions\"}\n\016SearchRes" +
-      "ponse\022.\n\005items\030\001 \003(\0132\037.services.common.v" +
-      "1.JsonPayload\022\020\n\010has_more\030\002 \001(\010\022\r\n\005count" +
-      "\030\003 \001(\005\022\032\n\022continuation_token\030\004 \001(\t\"U\n\021In" +
-      "sertItemRequest\022-\n\004item\030\001 \001(\0132\037.services" +
-      ".common.v1.JsonPayload\022\021\n\titem_type\030\002 \001(" +
-      "\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 \001(\0162" +
-      "\".services.common.v1.ResponseStatus\022\017\n\007i" +
-      "tem_id\030\002 \001(\t2\306\006\n\006Wallet\022\227\001\n\030GetProviderC" +
-      "onfiguration\022<.services.universalwallet." +
-      "v1.GetProviderConfigurationRequest\032=.ser" +
-      "vices.universalwallet.v1.GetProviderConf" +
-      "igurationResponse\022t\n\027ConnectExternalIden" +
-      "tity\022+.services.universalwallet.v1.Conne" +
-      "ctRequest\032,.services.universalwallet.v1." +
-      "ConnectResponse\022s\n\014CreateWallet\0220.servic" +
-      "es.universalwallet.v1.CreateWalletReques" +
-      "t\0321.services.universalwallet.v1.CreateWa" +
-      "lletResponse\022a\n\006Search\022*.services.univer" +
-      "salwallet.v1.SearchRequest\032+.services.un" +
-      "iversalwallet.v1.SearchResponse\022m\n\nInser" +
-      "tItem\022..services.universalwallet.v1.Inse" +
-      "rtItemRequest\032/.services.universalwallet" +
-      ".v1.InsertItemResponse\022p\n\013GrantAccess\022/." +
-      "services.universalwallet.v1.GrantAccessR" +
-      "equest\0320.services.universalwallet.v1.Gra" +
-      "ntAccessResponse\022s\n\014RevokeAccess\0220.servi" +
-      "ces.universalwallet.v1.RevokeAccessReque" +
-      "st\0321.services.universalwallet.v1.RevokeA" +
-      "ccessResponseBf\n#trinsic.services.univer" +
-      "salwallet.v1Z\031github.com/trinsic-id/sdk\252" +
-      "\002#Trinsic.Services.UniversalWallet.V1b\006p" +
-      "roto3"
+      "v1\032\037services/common/v1/common.proto\"o\n\rS" +
+      "earchRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continuat" +
+      "ion_token\030\002 \001(\t\0223\n\007options\030\005 \001(\0132\".servi" +
+      "ces.common.v1.RequestOptions\"}\n\016SearchRe" +
+      "sponse\022.\n\005items\030\001 \003(\0132\037.services.common." +
+      "v1.JsonPayload\022\020\n\010has_more\030\002 \001(\010\022\r\n\005coun" +
+      "t\030\003 \001(\005\022\032\n\022continuation_token\030\004 \001(\t\"U\n\021I" +
+      "nsertItemRequest\022-\n\004item\030\001 \001(\0132\037.service" +
+      "s.common.v1.JsonPayload\022\021\n\titem_type\030\002 \001" +
+      "(\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 \001(\016" +
+      "2\".services.common.v1.ResponseStatus\022\017\n\007" +
+      "item_id\030\002 \001(\t\"\023\n\021DeleteItemRequest\"\024\n\022De" +
+      "leteItemResponse2\320\002\n\rWalletService\022a\n\006Se" +
+      "arch\022*.services.universalwallet.v1.Searc" +
+      "hRequest\032+.services.universalwallet.v1.S" +
+      "earchResponse\022m\n\nInsertItem\022..services.u" +
+      "niversalwallet.v1.InsertItemRequest\032/.se" +
+      "rvices.universalwallet.v1.InsertItemResp" +
+      "onse\022m\n\nDeleteitem\022..services.universalw" +
+      "allet.v1.DeleteItemRequest\032/.services.un" +
+      "iversalwallet.v1.DeleteItemResponseBf\n#t" +
+      "rinsic.services.universalwallet.v1Z\031gith" +
+      "ub.com/trinsic-id/sdk\252\002#Trinsic.Services" +
+      ".UniversalWallet.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
         });
-    internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_services_universalwallet_v1_CreateWalletRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_CreateWalletRequest_descriptor,
-        new java.lang.String[] { "Description", "SecurityCode", });
-    internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_services_universalwallet_v1_CreateWalletResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_CreateWalletResponse_descriptor,
-        new java.lang.String[] { "Status", "AuthData", "AuthToken", "IsProtected", });
-    internal_static_services_universalwallet_v1_ConnectRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_services_universalwallet_v1_ConnectRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_ConnectRequest_descriptor,
-        new java.lang.String[] { "Email", "Phone", "ContactMethod", });
-    internal_static_services_universalwallet_v1_ConnectResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_services_universalwallet_v1_ConnectResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_ConnectResponse_descriptor,
-        new java.lang.String[] { "Status", });
-    internal_static_services_universalwallet_v1_InvitationToken_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_services_universalwallet_v1_InvitationToken_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_InvitationToken_descriptor,
-        new java.lang.String[] { "SecurityCode", "WalletId", "Email", "Phone", "ContactMethod", });
-    internal_static_services_universalwallet_v1_WalletProfile_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_services_universalwallet_v1_WalletProfile_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_WalletProfile_descriptor,
-        new java.lang.String[] { "Name", "AuthData", "AuthToken", "IsProtected", "Config", });
-    internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_services_universalwallet_v1_GrantAccessRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_GrantAccessRequest_descriptor,
-        new java.lang.String[] { "WalletId", "Did", });
-    internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_services_universalwallet_v1_GrantAccessResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_GrantAccessResponse_descriptor,
-        new java.lang.String[] { "Status", });
-    internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_services_universalwallet_v1_RevokeAccessRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_RevokeAccessRequest_descriptor,
-        new java.lang.String[] { "WalletId", "Did", });
-    internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_services_universalwallet_v1_RevokeAccessResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_RevokeAccessResponse_descriptor,
-        new java.lang.String[] { "Status", });
-    internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_GetProviderConfigurationRequest_descriptor,
-        new java.lang.String[] { "RequestOptions", });
-    internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_universalwallet_v1_GetProviderConfigurationResponse_descriptor,
-        new java.lang.String[] { "DidDocument", "KeyAgreementKeyId", });
     internal_static_services_universalwallet_v1_SearchRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_services_universalwallet_v1_SearchRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_SearchRequest_descriptor,
         new java.lang.String[] { "Query", "ContinuationToken", "Options", });
     internal_static_services_universalwallet_v1_SearchResponse_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_services_universalwallet_v1_SearchResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_SearchResponse_descriptor,
         new java.lang.String[] { "Items", "HasMore", "Count", "ContinuationToken", });
     internal_static_services_universalwallet_v1_InsertItemRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_services_universalwallet_v1_InsertItemRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_InsertItemRequest_descriptor,
         new java.lang.String[] { "Item", "ItemType", });
     internal_static_services_universalwallet_v1_InsertItemResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_services_universalwallet_v1_InsertItemResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_InsertItemResponse_descriptor,
         new java.lang.String[] { "Status", "ItemId", });
+    internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor,
+        new java.lang.String[] { });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
   }
 
