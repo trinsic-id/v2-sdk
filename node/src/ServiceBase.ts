@@ -25,12 +25,12 @@ export default abstract class ServiceBase {
 
   async getMetadata(request: Message): Promise<Metadata> {
     let requestData = request.serializeBinary();
-    let requestHash: Buffer | string = Buffer.from([]);
+    let requestHash: Buffer | string = Buffer.from('');
 
     if (requestData.length > 0) {
       requestHash = hash(requestData);
-      var timestamp = Date.now();
     }
+    var timestamp = Date.now();
 
     let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
 
