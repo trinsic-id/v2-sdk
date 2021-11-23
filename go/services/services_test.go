@@ -38,11 +38,11 @@ func TestServiceBase_SetProfile(t *testing.T) {
 		return
 	}
 
-	walletService, err := createWalletServiceViaEnvVar(t)
+	accountService, err := CreateAccountService(TrinsicTestConfig(), nil)
 	if !assert.Nil(err) {
 		return
 	}
-	demoWallet, err := walletService.CreateWallet(context.Background(), "")
+	demoWallet, _, err := accountService.SignIn(context.Background(), &sdk.AccountDetails{})
 	if !assert.Nil(err) {
 		return
 	}
@@ -70,43 +70,44 @@ func TestCreateChannelIfNeeded(t *testing.T) {
 	throwsException := []bool{false, false, false, true, true, true, true}
 
 	for ij := 0; ij < len(testAddresses); ij++ {
-		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
+		_, err := CreateConfigFromUrl(testAddresses[ij])
 		if (err != nil) != throwsException[ij] {
 			t.Fatalf("URL=%s should fail=%v\nerror=%v", testAddresses[ij], throwsException[ij], err)
-		}
-		if channel != nil {
-			_ = channel.Close()
-			// Cannot have error and channel.
-			if err != nil {
-				t.Fail()
-			}
 		}
 	}
 }
 
 func TestVaccineCredentials(t *testing.T) {
-	assert := assert.New(t)
-	walletService, err := createWalletServiceViaEnvVar(t)
-	if !assert.Nil(err) {
+	myAssert := assert.New(t)
+	accountService, err := CreateAccountService(TrinsicTestConfig(), nil)
+	if !myAssert.Nil(err) {
+		return
+	}
+	walletService, err := CreateWalletService(TrinsicTestConfig(), nil)
+	if !myAssert.Nil(err) {
+		return
+	}
+	credentialService, err := CreateCredentialService(TrinsicTestConfig(), nil)
+	if !myAssert.Nil(err) {
 		return
 	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
-	allison, err := walletService.CreateWallet(context.Background(), "")
+	allison, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating wallet", err)
-	if !assert.NotNil(allison) {
+	if !myAssert.NotNil(allison) {
 		return
 	}
 
-	clinic, err := walletService.CreateWallet(context.Background(), "")
+	clinic,_, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating wallet", err)
-	if !assert.NotNil(clinic) {
+	if !myAssert.NotNil(clinic) {
 		return
 	}
 
-	airline, err := walletService.CreateWallet(context.Background(), "")
+	airline,_, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating wallet", err)
-	if !assert.NotNil(airline) {
+	if !myAssert.NotNil(airline) {
 		return
 	}
 
@@ -118,7 +119,7 @@ func TestVaccineCredentials(t *testing.T) {
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
-	walletService.SetProfile(clinic)
+	credentialService.SetProfile(clinic)
 	failError(t, "error setting profile", err)
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
@@ -126,7 +127,7 @@ func TestVaccineCredentials(t *testing.T) {
 	err = json.Unmarshal(fileContent, &credentialJson)
 	failError(t, "error parsing JSON", err)
 
-	credential, err := walletService.IssueCredential(context.Background(), credentialJson)
+	credential, err := credentialService.IssueCredential(context.Background(), credentialJson)
 	failError(t, "error issuing credential", err)
 
 	fmt.Printf("Credential:%s\n", credential)
@@ -143,7 +144,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// Allison shares the credential with the venue.
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
-	walletService.SetProfile(allison)
+	credentialService.SetProfile(allison)
 	failError(t, "error reading file", err)
 
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
@@ -152,15 +153,15 @@ func TestVaccineCredentials(t *testing.T) {
 	err = json.Unmarshal(fileContent2, &proofRequestJson)
 	failError(t, "error parsing JSON", err)
 
-	credentialProof, err := walletService.CreateProof(context.Background(), itemId, proofRequestJson)
+	credentialProof, err := credentialService.CreateProof(context.Background(), itemId, proofRequestJson)
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
-	walletService.SetProfile(airline)
+	credentialService.SetProfile(airline)
 	failError(t, "error setting profile", err)
-	valid, err := walletService.VerifyProof(context.Background(), credentialProof)
+	valid, err := credentialService.VerifyProof(context.Background(), credentialProof)
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
@@ -168,35 +169,23 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 }
 
-func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
-	walletService, err := CreateWalletService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
-	failError(t, "error creating service", err)
-	return walletService, err
-}
-
-func createProviderServiceViaEnvVar(t *testing.T) (ProviderService, error) {
-	providerService, err := CreateProviderService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
-	failError(t, "error creating service", err)
-	return providerService, err
-}
-
 func TestProviderService_InviteParticipant(t *testing.T) {
 	assert := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	walletService, err := createWalletServiceViaEnvVar(t)
+	accountService, err := CreateAccountService(TrinsicTestConfig(), nil)
 	if !assert.Nil(err) {
 		return
 	}
 
-	fmt.Printf("%+v\n", walletService)
+	fmt.Printf("%+v\n", accountService)
 
-	wallet, err := walletService.CreateWallet(context.Background(), "")
+	wallet, _, err := accountService.SignIn(context.Background(), nil)
 	if !assert.Nil(err) || !assert.NotNil(wallet) {
 		return
 	}
 	fmt.Printf("%+v\n", wallet)
 
-	providerService, err := createProviderServiceViaEnvVar(t)
+	providerService, err := CreateProviderService(TrinsicTestConfig(), nil)
 	if !assert.Nil(err) {
 		return
 	}

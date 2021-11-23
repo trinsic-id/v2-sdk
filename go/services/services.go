@@ -51,17 +51,61 @@ func TrinsicTestConfig() *sdk.ServerConfig {
 	}
 }
 
+func CreateConfigFromUrl(serviceAddress string) (*sdk.ServerConfig, error) {
+	var serviceUrl, err = url.Parse(serviceAddress)
+	if err != nil {
+		return nil, err
+	}
+	if serviceUrl.Port() == "" {
+		return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
+	}
+	port, err := strconv.ParseInt(serviceUrl.Port(), 10, 32)
+	return &sdk.ServerConfig{
+		Endpoint: serviceUrl.Hostname(),
+		Port:     int32(port),
+		UseTls:   serviceUrl.Scheme != "http",
+	}, nil
+}
+
+func CreateChannelIfNeeded(config *sdk.ServerConfig, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
+	if channel == nil {
+		if config == nil {
+			config = TrinsicProductionConfig()
+		}
+		dialUrl := config.Endpoint + ":" + string(config.Port)
+		var dialOptions []grpc.DialOption
+		if blockOnOpen {
+			dialOptions = append(dialOptions, grpc.WithBlock())
+		}
+		if !config.UseTls {
+			dialOptions = append(dialOptions, grpc.WithInsecure())
+		} else {
+			// TODO - Get the credentials bundle
+			pool, err := x509.SystemCertPool()
+			if err != nil { return nil, err}
+			creds := credentials.NewClientTLSFromCert(pool, "")
+			dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
+		}
+		channel1, err := grpc.Dial(dialUrl, dialOptions...)
+		if err != nil {
+			return nil, err
+		}
+		channel = channel1
+	}
+	return channel, nil
+}
+
 type ServiceBase struct {
-	profile *sdk.WalletProfile
+	profile *sdk.AccountProfile
 }
 
 type Service interface {
 	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
 	GetMetadata(message proto.Message) (metadata.MD, error)
-	SetProfile(profile *sdk.WalletProfile)
+	SetProfile(profile *sdk.AccountProfile)
 }
 
-func (s *ServiceBase) SetProfile(profile *sdk.WalletProfile) {
+func (s *ServiceBase) SetProfile(profile *sdk.AccountProfile) {
 	s.profile = profile
 }
 
@@ -111,113 +155,127 @@ func (s *ServiceBase) GetMetadata(message proto.Message) (metadata.MD, error) {
 	}), nil
 }
 
-type WalletService interface {
-	Service
-	RegisterOrConnect(userContext context.Context, email string) error
-	CreateWallet(userContext context.Context, securityCode string) (*sdk.WalletProfile, error)
-	IssueCredential(userContext context.Context, document Document) (Document, error)
-	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
-	InsertItem(userContext context.Context, item Document) (string, error)
-	Send(userContext context.Context, document Document, email string) error
-	CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error)
-	VerifyProof(userContext context.Context, proofDocument Document) (bool, error)
+type AccountBase struct {
+	*ServiceBase
+	channel          *grpc.ClientConn
+	client     sdk.AccountServiceClient
 }
 
-func CreateWalletService(serviceAddress string, channel *grpc.ClientConn) (WalletService, error) {
-	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+type AccountService interface {
+	Service
+	SignIn(userContext context.Context, details *sdk.AccountDetails) (*sdk.AccountProfile, sdk.ConfirmationMethod, error)
+	Unprotect(profile *sdk.AccountProfile, securityCode string) error
+	Protect(profile *sdk.AccountProfile, securityCode string) error
+	GetInfo(userContext context.Context) (*sdk.InfoResponse, error)
+}
+
+func CreateAccountService(serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
+	channel, err := CreateChannelIfNeeded(serverConfig, channel, true)
 	if err != nil {
 		return nil, err
 	}
 
-	service := &WalletBase{
+	service := &AccountBase{
 		ServiceBase:      &ServiceBase{},
 		channel:          channel,
-		walletClient:     sdk.NewWalletClient(channel),
-		credentialClient: sdk.NewCredentialClient(channel),
+		client:     sdk.NewAccountServiceClient(channel),
 	}
 
 	return service, nil
 }
 
-func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
-	scheme := "http"
-	if config.UseTls {
-		scheme = "https"
+func (a *AccountBase) SignIn(userContext context.Context, details *sdk.AccountDetails) (*sdk.AccountProfile, sdk.ConfirmationMethod, error) {
+	if details == nil {
+		details = &sdk.AccountDetails{}
 	}
-	return fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
+	request := &sdk.SignInRequest{
+		Details:        details,
+		InvitationCode: "",
+	}
+	response, err := a.client.SignIn(userContext, request)
+	if err != nil {
+		return nil, -1, err
+	}
+	return response.Profile, response.ConfirmationMethod, nil
 }
 
-func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
-	if channel == nil {
-		var serviceUrl, err = url.Parse(serviceAddress)
-		if err != nil {
-			return nil, err
-		}
-		if serviceUrl.Port() == "" {
-			return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
-		}
-		dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
-		var dialOptions []grpc.DialOption
-		if blockOnOpen {
-			dialOptions = append(dialOptions, grpc.WithBlock())
-		}
-		if serviceUrl.Scheme == "http" {
-			dialOptions = append(dialOptions, grpc.WithInsecure())
-		} else {
-			// TODO - Get the credentials bundle
-			pool, err := x509.SystemCertPool()
-			if err != nil { return nil, err}
-			creds := credentials.NewClientTLSFromCert(pool, "")
-			dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
-		}
-		channel, err = grpc.Dial(dialUrl, dialOptions...)
-		if err != nil {
-			return nil, err
-		}
+func (a *AccountBase) Unprotect(profile *sdk.AccountProfile, securityCode string) error {
+	request := &okapiproto.UnBlindOberonTokenRequest{
+		Token:    profile.AuthToken,
 	}
-	return channel, nil
-}
-
-type WalletBase struct {
-	*ServiceBase
-	channel          *grpc.ClientConn
-	walletClient     sdk.WalletClient
-	credentialClient sdk.CredentialClient
-}
-
-func (w *WalletBase) RegisterOrConnect(userContext context.Context, email string) error {
-	connectRequest := &sdk.ConnectRequest{
-		ContactMethod: &sdk.ConnectRequest_Email{Email: email},
-	}
-
-	md, err := w.GetMetadataContext(userContext, connectRequest)
+	request.Blinding = append(request.Blinding, []byte(securityCode))
+	result, err := okapi.Oberon().UnblindToken(request)
 	if err != nil {
 		return err
 	}
-	_, err = w.walletClient.ConnectExternalIdentity(md, connectRequest)
-	if err != nil {
-		return err
+	profile.AuthToken = result.Token
+	profile.Protection = &sdk.TokenProtection{
+		Enabled: false,
+		Method:  sdk.ConfirmationMethod_None,
 	}
 	return nil
 }
 
-func (w *WalletBase) CreateWallet(userContext context.Context, securityCode string) (*sdk.WalletProfile, error) {
-	walletRequest := &sdk.CreateWalletRequest{
-		SecurityCode: securityCode,
+func (a *AccountBase) Protect(profile *sdk.AccountProfile, securityCode string) error {
+	request := &okapiproto.BlindOberonTokenRequest{
+		Token:    profile.AuthToken,
 	}
+	request.Blinding = append(request.Blinding, []byte(securityCode))
+	result, err := okapi.Oberon().BlindToken(request)
+	if err != nil {
+		return err
+	}
+	profile.AuthToken = result.Token
+	profile.Protection = &sdk.TokenProtection{
+		Enabled: true,
+		Method:  sdk.ConfirmationMethod_Other,
+	}
+	return nil
+}
 
-	createWalletResponse, err := w.walletClient.CreateWallet(userContext, walletRequest)
+func (a *AccountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, error) {
+	request := &sdk.InfoRequest{
+	}
+	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
-	return &sdk.WalletProfile{
-		AuthData:    createWalletResponse.AuthData,
-		AuthToken:   createWalletResponse.AuthToken,
-		IsProtected: createWalletResponse.IsProtected,
-	}, nil
+	response, err := a.client.Info(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
 
-func (w *WalletBase) IssueCredential(userContext context.Context, document Document) (Document, error) {
+type CredentialBase struct {
+	*ServiceBase
+	channel             *grpc.ClientConn
+	credentialClient     sdk.CredentialClient
+}
+
+type CredentialService interface {
+	Service
+	IssueCredential(userContext context.Context, document Document) (Document, error)
+	Send(userContext context.Context, document Document, email string) error
+	CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error)
+	VerifyProof(userContext context.Context, proofDocument Document) (bool, error)
+}
+
+func CreateCredentialService(serviceAddress *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
+	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		return nil, err
+	}
+
+	service := &CredentialBase{
+		ServiceBase:    &ServiceBase{},
+		channel:        channel,
+		credentialClient: sdk.NewCredentialClient(channel),
+	}
+	return service, nil
+}
+
+func (w *CredentialBase) IssueCredential(userContext context.Context, document Document) (Document, error) {
 	jsonBytes, err := json.Marshal(document)
 	if err != nil {
 		return nil, err
@@ -244,6 +302,158 @@ func (w *WalletBase) IssueCredential(userContext context.Context, document Docum
 		return nil, err
 	}
 	return doc, nil
+}
+
+func (w *CredentialBase) Send(userContext context.Context, document Document, email string) error {
+	jsonString, err := json.Marshal(document)
+	if err != nil {
+		return err
+	}
+	request := &sdk.SendRequest{
+		DeliveryMethod: &sdk.SendRequest_Email{
+			Email: email,
+		},
+		Document: &sdk.JsonPayload{
+			Json: &sdk.JsonPayload_JsonString{
+				JsonString: string(jsonString),
+			},
+		},
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return err
+	}
+	_, err = w.credentialClient.Send(md, request)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (w *CredentialBase) CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error) {
+	jsonString, err := json.Marshal(revealDocument)
+	if err != nil {
+		return nil, err
+	}
+	request := &sdk.CreateProofRequest{
+		DocumentId: documentId,
+		RevealDocument: &sdk.JsonPayload{
+			Json: &sdk.JsonPayload_JsonString{
+				JsonString: string(jsonString),
+			},
+		},
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	proof, err := w.credentialClient.CreateProof(md, request)
+	if err != nil {
+		return nil, err
+	}
+	var proofMap map[string]interface{}
+	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
+	if err != nil {
+		return nil, err
+	}
+	return proofMap, nil
+}
+
+func (w *CredentialBase) VerifyProof(userContext context.Context, proofDocument Document) (bool, error) {
+	jsonString, err := json.Marshal(proofDocument)
+	if err != nil {
+		return false, err
+	}
+	request := &sdk.VerifyProofRequest{
+		ProofDocument: &sdk.JsonPayload{
+			Json: &sdk.JsonPayload_JsonString{
+				JsonString: string(jsonString),
+			},
+		},
+	}
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return false, err
+	}
+	proof, err := w.credentialClient.VerifyProof(md, request)
+	if err != nil {
+		return false, err
+	}
+	return proof.Valid, nil
+}
+
+type ProviderService interface {
+	Service
+	InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error)
+	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
+}
+
+type ProviderBase struct {
+	*ServiceBase
+	channel        *grpc.ClientConn
+	providerClient sdk.ProviderClient
+}
+
+func CreateProviderService(serviceAddress *sdk.ServerConfig, channel *grpc.ClientConn) (ProviderService, error) {
+	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
+	if err != nil {
+		return nil, err
+	}
+
+	service := &ProviderBase{
+		ServiceBase:    &ServiceBase{},
+		channel:        channel,
+		providerClient: sdk.NewProviderClient(channel),
+	}
+	return service, nil
+}
+
+func (p *ProviderBase) InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
+	// Verify contact method is set
+	switch request.ContactMethod.(type) {
+	case nil:
+		return nil, fmt.Errorf("unset contact method")
+	}
+	response, err := p.providerClient.Invite(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (p *ProviderBase) InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
+	response, err := p.providerClient.InvitationStatus(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+type WalletService interface {
+	Service
+	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
+	InsertItem(userContext context.Context, item Document) (string, error)
+}
+
+type WalletBase struct {
+	*ServiceBase
+	channel          *grpc.ClientConn
+	walletClient     sdk.WalletServiceClient
+}
+
+func CreateWalletService(serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (WalletService, error) {
+	channel, err := CreateChannelIfNeeded(serverConfig, channel, true)
+	if err != nil {
+		return nil, err
+	}
+
+	service := &WalletBase{
+		ServiceBase:      &ServiceBase{},
+		channel:          channel,
+		walletClient:     sdk.NewWalletServiceClient(channel),
+	}
+
+	return service, nil
 }
 
 func (w *WalletBase) Search(userContext context.Context, query string) (*sdk.SearchResponse, error) {
@@ -282,129 +492,4 @@ func (w *WalletBase) InsertItem(userContext context.Context, item Document) (str
 		return "", err
 	}
 	return response.ItemId, nil
-}
-
-func (w *WalletBase) Send(userContext context.Context, document Document, email string) error {
-	jsonString, err := json.Marshal(document)
-	if err != nil {
-		return err
-	}
-	request := &sdk.SendRequest{
-		DeliveryMethod: &sdk.SendRequest_Email{
-			Email: email,
-		},
-		Document: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
-	md, err := w.GetMetadataContext(userContext, request)
-	if err != nil {
-		return err
-	}
-	_, err = w.credentialClient.Send(md, request)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func (w *WalletBase) CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error) {
-	jsonString, err := json.Marshal(revealDocument)
-	if err != nil {
-		return nil, err
-	}
-	request := &sdk.CreateProofRequest{
-		DocumentId: documentId,
-		RevealDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
-	md, err := w.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	proof, err := w.credentialClient.CreateProof(md, request)
-	if err != nil {
-		return nil, err
-	}
-	var proofMap map[string]interface{}
-	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
-	if err != nil {
-		return nil, err
-	}
-	return proofMap, nil
-}
-
-func (w *WalletBase) VerifyProof(userContext context.Context, proofDocument Document) (bool, error) {
-	jsonString, err := json.Marshal(proofDocument)
-	if err != nil {
-		return false, err
-	}
-	request := &sdk.VerifyProofRequest{
-		ProofDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
-	md, err := w.GetMetadataContext(userContext, request)
-	if err != nil {
-		return false, err
-	}
-	proof, err := w.credentialClient.VerifyProof(md, request)
-	if err != nil {
-		return false, err
-	}
-	return proof.Valid, nil
-}
-
-type ProviderService interface {
-	Service
-	InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error)
-	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
-}
-
-type ProviderBase struct {
-	*ServiceBase
-	channel        *grpc.ClientConn
-	providerClient sdk.ProviderClient
-}
-
-func CreateProviderService(serviceAddress string, channel *grpc.ClientConn) (ProviderService, error) {
-	channel, err := CreateChannelIfNeeded(serviceAddress, channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	service := &ProviderBase{
-		ServiceBase:    &ServiceBase{},
-		channel:        channel,
-		providerClient: sdk.NewProviderClient(channel),
-	}
-	return service, nil
-}
-
-func (p *ProviderBase) InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
-	// Verify contact method is set
-	switch request.ContactMethod.(type) {
-	case nil:
-		return nil, fmt.Errorf("unset contact method")
-	}
-	response, err := p.providerClient.Invite(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
-}
-
-func (p *ProviderBase) InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
-	response, err := p.providerClient.InvitationStatus(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	return response, nil
 }
