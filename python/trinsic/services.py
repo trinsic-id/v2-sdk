@@ -8,8 +8,8 @@ import urllib.parse
 from typing import Dict, List, Union, Tuple
 
 from grpclib.client import Channel
-from okapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
-from okapi.wrapper import Oberon
+from trinsicokapi import oberon
+from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
 from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, ConfirmationMethod, InfoResponse, \
     AccountServiceStub
@@ -58,7 +58,7 @@ class AccountService(ServiceBase):
         """
         request = UnBlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
-        result = Oberon.unblind_token(request)
+        result = oberon.unblind_token(request)
         profile.auth_token = result.token
         profile.protection.enabled = False
         profile.protection.method = ConfirmationMethod.None_
@@ -75,7 +75,7 @@ class AccountService(ServiceBase):
         """
         request = BlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
-        result = Oberon.blind_token(request)
+        result = oberon.blind_token(request)
         profile.auth_token = result.token
         profile.protection.enabled = True
         profile.protection.method = ConfirmationMethod.Other

@@ -1,7 +1,5 @@
 import unittest
 
-import okapi.okapi_utils
-
 from samples.provider_demo import provider_demo
 from samples.vaccine_demo import vaccine_demo
 from trinsic.services import WalletService
@@ -9,9 +7,6 @@ from trinsic.trinsic_util import trinsic_test_config
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
-    def setUp(self) -> None:
-        okapi.okapi_utils.download_binaries(False)
-
     async def test_servicebase_setprofile(self):
         wallet_service = WalletService(None, trinsic_test_config())
         with self.assertRaises(Exception) as excep:

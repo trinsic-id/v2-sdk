@@ -4,8 +4,8 @@ from datetime import datetime
 
 import betterproto
 from blake3 import blake3
-from okapi.proto.okapi.security.v1 import CreateOberonProofRequest
-from okapi.wrapper import Oberon
+from trinsicokapi import oberon
+from trinsicokapi.proto.okapi.security.v1 import CreateOberonProofRequest
 
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import Nonce
@@ -26,7 +26,7 @@ class OberonSecurityProvider(SecurityProvider):
         request_hash = blake3(bytes(message)).digest(64)
 
         nonce = Nonce(timestamp=int(datetime.now().timestamp() * 1000), request_hash=request_hash)
-        proof = Oberon.create_proof(
+        proof = oberon.create_proof(
             CreateOberonProofRequest(token=account_profile.auth_token, data=account_profile.auth_data,
                                      nonce=bytes(nonce)))
         return (f"Oberon ver={1},"
