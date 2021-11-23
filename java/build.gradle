@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "1.0.2"
+def jarVersion = "1.1.1"
 
 apply from: "conf.gradle"
 
@@ -47,7 +47,7 @@ repositories {
         url = "https://maven.pkg.github.com/trinsic-id/okapi"
         credentials {
             username = System.getenv("GITHUB_ACTOR")  
-            password = System.getenv("GITHUB_TOKEN")  
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
 }
