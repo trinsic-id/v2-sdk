@@ -1,6 +1,9 @@
+package trinsic.services;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.account.v1.Account;
 import trinsic.services.common.v1.CommonOuterClass;

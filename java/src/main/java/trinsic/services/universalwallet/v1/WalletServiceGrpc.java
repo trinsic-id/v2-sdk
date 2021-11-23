@@ -12,7 +12,7 @@ public final class WalletServiceGrpc {
 
   private WalletServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "services.universalwallet.v1.WalletService";
+  public static final String SERVICE_NAME = "services.universalwallet.v1.trinsic.services.WalletService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest,
@@ -414,7 +414,7 @@ public final class WalletServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("WalletService");
+      return getFileDescriptor().findServiceByName("trinsic.services.WalletService");
     }
   }
 

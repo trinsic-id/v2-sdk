@@ -1,3 +1,5 @@
+package trinsic;
+
 import com.google.gson.Gson;
 import com.google.protobuf.Struct;
 import com.google.protobuf.Value;
