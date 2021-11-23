@@ -20,7 +20,7 @@ def parse_version_tag():
     raise NotImplementedError
 
 
-def get_os_arch_path(extract_dir, windows_path='windows'):
+def get_os_arch_path(extract_dir, windows_path):
     copy_from = ''
     libs_dir = join(extract_dir, 'libs')
     os_name = platform.system().lower()
