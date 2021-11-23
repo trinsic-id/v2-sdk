@@ -2,6 +2,7 @@ use trinsic::proto::services::common::v1::{json_payload::Json, JsonPayload};
 use trinsic::proto::services::verifiablecredentials::v1::{
     credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
+use trinsic::proto::JsonPretty;
 use trinsic::utils::{read_file_as_string, write_file};
 use trinsic::{grpc_client_with_auth, *};
 
@@ -42,9 +43,7 @@ async fn issue(args: &IssueArgs, config: DefaultConfig) {
         .into_inner();
     write_file(
         args.out,
-        &serde_json::to_string_pretty(&response.document)
-            .unwrap()
-            .as_bytes(),
+        &response.document.unwrap().to_string_pretty().as_bytes(),
     );
 }
 
@@ -79,8 +78,10 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
         .into_inner();
     write_file(
         args.out,
-        &serde_json::to_string_pretty(&response.proof_document)
+        response
+            .proof_document
             .unwrap()
+            .to_string_pretty()
             .as_bytes(),
     );
 }

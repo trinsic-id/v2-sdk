@@ -12,6 +12,7 @@ fn main() {
             "JsonPayload",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
+        .field_attribute("JsonPayload.json", "#[serde(flatten)]")
         .type_attribute(
             "JsonPayload.json",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",

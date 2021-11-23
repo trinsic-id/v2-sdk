@@ -1,7 +1,7 @@
 mod account;
 pub(crate) mod config;
-mod didcomm;
-mod didkey;
+// mod didcomm;
+// mod didkey;
 mod issuer;
 mod provider;
 mod trustregistry;

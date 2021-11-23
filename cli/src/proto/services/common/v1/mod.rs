@@ -6,6 +6,7 @@ pub struct RequestOptions {
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct JsonPayload {
     #[prost(oneof = "json_payload::Json", tags = "1, 2, 3")]
+    #[serde(flatten)]
     pub json: ::core::option::Option<json_payload::Json>,
 }
 /// Nested message and enum types in `JsonPayload`.
