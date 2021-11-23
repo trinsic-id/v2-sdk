@@ -14,6 +14,23 @@
     - [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm)
     - [EncryptionMode](#pbmse.v1.EncryptionMode)
   
+- [services/account/v1/account.proto](#services/account/v1/account.proto)
+    - [AccountDetails](#services.account.v1.AccountDetails)
+    - [AccountProfile](#services.account.v1.AccountProfile)
+    - [InfoRequest](#services.account.v1.InfoRequest)
+    - [InfoResponse](#services.account.v1.InfoResponse)
+    - [ListDevicesRequest](#services.account.v1.ListDevicesRequest)
+    - [ListDevicesResponse](#services.account.v1.ListDevicesResponse)
+    - [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest)
+    - [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse)
+    - [SignInRequest](#services.account.v1.SignInRequest)
+    - [SignInResponse](#services.account.v1.SignInResponse)
+    - [TokenProtection](#services.account.v1.TokenProtection)
+  
+    - [ConfirmationMethod](#services.account.v1.ConfirmationMethod)
+  
+    - [AccountService](#services.account.v1.AccountService)
+  
 - [services/common/v1/common.proto](#services/common/v1/common.proto)
     - [JsonPayload](#services.common.v1.JsonPayload)
     - [Nonce](#services.common.v1.Nonce)
@@ -68,24 +85,14 @@
     - [TrustRegistry](#services.trustregistry.v1.TrustRegistry)
   
 - [services/universal-wallet/v1/universal-wallet.proto](#services/universal-wallet/v1/universal-wallet.proto)
-    - [ConnectRequest](#services.universalwallet.v1.ConnectRequest)
-    - [ConnectResponse](#services.universalwallet.v1.ConnectResponse)
-    - [CreateWalletRequest](#services.universalwallet.v1.CreateWalletRequest)
-    - [CreateWalletResponse](#services.universalwallet.v1.CreateWalletResponse)
-    - [GetProviderConfigurationRequest](#services.universalwallet.v1.GetProviderConfigurationRequest)
-    - [GetProviderConfigurationResponse](#services.universalwallet.v1.GetProviderConfigurationResponse)
-    - [GrantAccessRequest](#services.universalwallet.v1.GrantAccessRequest)
-    - [GrantAccessResponse](#services.universalwallet.v1.GrantAccessResponse)
+    - [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest)
+    - [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse)
     - [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest)
     - [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse)
-    - [InvitationToken](#services.universalwallet.v1.InvitationToken)
-    - [RevokeAccessRequest](#services.universalwallet.v1.RevokeAccessRequest)
-    - [RevokeAccessResponse](#services.universalwallet.v1.RevokeAccessResponse)
     - [SearchRequest](#services.universalwallet.v1.SearchRequest)
     - [SearchResponse](#services.universalwallet.v1.SearchResponse)
-    - [WalletProfile](#services.universalwallet.v1.WalletProfile)
   
-    - [Wallet](#services.universalwallet.v1.Wallet)
+    - [WalletService](#services.universalwallet.v1.WalletService)
   
 - [services/verifiable-credentials/templates/v1/templates.proto](#services/verifiable-credentials/templates/v1/templates.proto)
     - [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
@@ -263,6 +270,205 @@ Protocol buffer message signing and encryption
 
 
 
+<a name="services/account/v1/account.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/account/v1/account.proto
+
+
+
+<a name="services.account.v1.AccountDetails"></a>
+
+### AccountDetails
+Account Registration Details
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  | Account name (optional) |
+| email | [string](#string) |  | Email account (required) |
+| sms | [string](#string) |  | SMS number including country code (optional) |
+
+
+
+
+
+
+<a name="services.account.v1.AccountProfile"></a>
+
+### AccountProfile
+Device profile containing sensitive authentication data.
+This information should be stored securely
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| profile_type | [string](#string) |  | The type of profile, used to differentiate between protocol schemes or versions |
+| auth_data | [bytes](#bytes) |  | Auth data containg information about the current device access |
+| auth_token | [bytes](#bytes) |  | Secure token issued by server used to generate zero-knowledge proofs |
+| protection | [TokenProtection](#services.account.v1.TokenProtection) |  | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
+
+
+
+
+
+
+<a name="services.account.v1.InfoRequest"></a>
+
+### InfoRequest
+
+
+
+
+
+
+
+<a name="services.account.v1.InfoResponse"></a>
+
+### InfoResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| details | [AccountDetails](#services.account.v1.AccountDetails) |  | The account details associated with the calling request context |
+
+
+
+
+
+
+<a name="services.account.v1.ListDevicesRequest"></a>
+
+### ListDevicesRequest
+
+
+
+
+
+
+
+<a name="services.account.v1.ListDevicesResponse"></a>
+
+### ListDevicesResponse
+
+
+
+
+
+
+
+<a name="services.account.v1.RevokeDeviceRequest"></a>
+
+### RevokeDeviceRequest
+
+
+
+
+
+
+
+<a name="services.account.v1.RevokeDeviceResponse"></a>
+
+### RevokeDeviceResponse
+
+
+
+
+
+
+
+<a name="services.account.v1.SignInRequest"></a>
+
+### SignInRequest
+Request for creating new account
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| details | [AccountDetails](#services.account.v1.AccountDetails) |  | Account registration details |
+| invitation_code | [string](#string) |  | Invitation code associated with this registration This field is optional. |
+
+
+
+
+
+
+<a name="services.account.v1.SignInResponse"></a>
+
+### SignInResponse
+Response for creating new account
+This object will indicate if a confirmation code
+was sent to one of the users two-factor methods
+like email, SMS, etc.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | The status of the response |
+| confirmation_method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
+| profile | [AccountProfile](#services.account.v1.AccountProfile) |  | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
+
+
+
+
+
+
+<a name="services.account.v1.TokenProtection"></a>
+
+### TokenProtection
+Token protection info
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| enabled | [bool](#bool) |  | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
+| method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | The method used to protect the token |
+
+
+
+
+
+ 
+
+
+<a name="services.account.v1.ConfirmationMethod"></a>
+
+### ConfirmationMethod
+Confirmation method type for two-factor workflows
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| None | 0 | No confirmation required |
+| Email | 1 | Email confirmation required |
+| Sms | 2 | SMS confirmation required |
+| ConnectedDevice | 3 | Confirmation from a connected device is required |
+| Other | 10 | Indicates third-party method of confirmation is required |
+
+
+ 
+
+ 
+
+
+<a name="services.account.v1.AccountService"></a>
+
+### AccountService
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SignIn | [SignInRequest](#services.account.v1.SignInRequest) | [SignInResponse](#services.account.v1.SignInResponse) | Sign in to an already existing account
+
+rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
+| Info | [InfoRequest](#services.account.v1.InfoRequest) | [InfoResponse](#services.account.v1.InfoResponse) | Get account information |
+| ListDevices | [ListDevicesRequest](#services.account.v1.ListDevicesRequest) | [ListDevicesResponse](#services.account.v1.ListDevicesResponse) | List all connected devices |
+| RevokeDevice | [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest) | [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse) | Revoke device access to the account&#39;s cloud wallet |
+
+ 
+
+
+
 <a name="services/common/v1/common.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -290,7 +496,7 @@ Protocol buffer message signing and encryption
 <a name="services.common.v1.Nonce"></a>
 
 ### Nonce
-Nonce used to generate an oberon prrof
+Nonce used to generate an oberon proof
 
 
 | Field | Type | Label | Description |
@@ -950,127 +1156,20 @@ The referenece_id passed is the response from the
 
 
 
-<a name="services.universalwallet.v1.ConnectRequest"></a>
+<a name="services.universalwallet.v1.DeleteItemRequest"></a>
 
-### ConnectRequest
+### DeleteItemRequest
+Delete item request
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
-| phone | [string](#string) |  |  |
 
 
 
+<a name="services.universalwallet.v1.DeleteItemResponse"></a>
 
+### DeleteItemResponse
 
-
-<a name="services.universalwallet.v1.ConnectResponse"></a>
-
-### ConnectResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.CreateWalletRequest"></a>
-
-### CreateWalletRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| description | [string](#string) |  | optional description of the wallet |
-| security_code | [string](#string) |  | (Optional) Supply an invitation id to associate this caller device to an existing cloud wallet. |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.CreateWalletResponse"></a>
-
-### CreateWalletResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | the status code of the response |
-| auth_data | [bytes](#bytes) |  | authentication data containing info about the cloud wallet and device the user is connecting from |
-| auth_token | [bytes](#bytes) |  | authoritative token issued by the server that is required to prove knowledge during authentication |
-| is_protected | [bool](#bool) |  | indicates if the token issued protected with a security code, usually delivered by email or sms |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.GetProviderConfigurationRequest"></a>
-
-### GetProviderConfigurationRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| request_options | [services.common.v1.RequestOptions](#services.common.v1.RequestOptions) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.GetProviderConfigurationResponse"></a>
-
-### GetProviderConfigurationResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| key_agreement_key_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.GrantAccessRequest"></a>
-
-### GrantAccessRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| wallet_id | [string](#string) |  |  |
-| did | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.GrantAccessResponse"></a>
-
-### GrantAccessResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
 
 
 
@@ -1080,7 +1179,7 @@ The referenece_id passed is the response from the
 <a name="services.universalwallet.v1.InsertItemRequest"></a>
 
 ### InsertItemRequest
-
+Insert item request
 
 
 | Field | Type | Label | Description |
@@ -1096,62 +1195,13 @@ The referenece_id passed is the response from the
 <a name="services.universalwallet.v1.InsertItemResponse"></a>
 
 ### InsertItemResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| item_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.InvitationToken"></a>
-
-### InvitationToken
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| security_code | [string](#string) |  |  |
-| wallet_id | [string](#string) |  |  |
-| email | [string](#string) |  |  |
-| phone | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.RevokeAccessRequest"></a>
-
-### RevokeAccessRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| wallet_id | [string](#string) |  |  |
-| did | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.universalwallet.v1.RevokeAccessResponse"></a>
-
-### RevokeAccessResponse
-
+Insert item response
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| item_id | [string](#string) |  | The item identifier of the inserted record |
 
 
 
@@ -1161,7 +1211,7 @@ The referenece_id passed is the response from the
 <a name="services.universalwallet.v1.SearchRequest"></a>
 
 ### SearchRequest
-
+Search request object
 
 
 | Field | Type | Label | Description |
@@ -1178,7 +1228,7 @@ The referenece_id passed is the response from the
 <a name="services.universalwallet.v1.SearchResponse"></a>
 
 ### SearchResponse
-
+Search response object
 
 
 | Field | Type | Label | Description |
@@ -1192,27 +1242,6 @@ The referenece_id passed is the response from the
 
 
 
-
-<a name="services.universalwallet.v1.WalletProfile"></a>
-
-### WalletProfile
-Stores profile data for accessing a wallet.
-This result should be stored somewhere safe,
-as it contains private key information.
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| auth_data | [bytes](#bytes) |  |  |
-| auth_token | [bytes](#bytes) |  |  |
-| is_protected | [bool](#bool) |  |  |
-| config | [services.common.v1.ServerConfig](#services.common.v1.ServerConfig) |  |  |
-
-
-
-
-
  
 
  
@@ -1220,20 +1249,16 @@ as it contains private key information.
  
 
 
-<a name="services.universalwallet.v1.Wallet"></a>
+<a name="services.universalwallet.v1.WalletService"></a>
 
-### Wallet
+### WalletService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetProviderConfiguration | [GetProviderConfigurationRequest](#services.universalwallet.v1.GetProviderConfigurationRequest) | [GetProviderConfigurationResponse](#services.universalwallet.v1.GetProviderConfigurationResponse) |  |
-| ConnectExternalIdentity | [ConnectRequest](#services.universalwallet.v1.ConnectRequest) | [ConnectResponse](#services.universalwallet.v1.ConnectResponse) |  |
-| CreateWallet | [CreateWalletRequest](#services.universalwallet.v1.CreateWalletRequest) | [CreateWalletResponse](#services.universalwallet.v1.CreateWalletResponse) |  |
-| Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) |  |
-| InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) |  |
-| GrantAccess | [GrantAccessRequest](#services.universalwallet.v1.GrantAccessRequest) | [GrantAccessResponse](#services.universalwallet.v1.GrantAccessResponse) |  |
-| RevokeAccess | [RevokeAccessRequest](#services.universalwallet.v1.RevokeAccessRequest) | [RevokeAccessResponse](#services.universalwallet.v1.RevokeAccessResponse) |  |
+| Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) | Search the wallet using a SQL-like syntax |
+| InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) | Insert an item into the wallet |
+| Deleteitem | [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest) | [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse) | Delete an item from the wallet permanently |
 
  
 

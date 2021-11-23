@@ -60,7 +60,7 @@ public class AccountService : ServiceBase
 
     /// <summary>
     /// Protects the account profile with a security code.
-    /// The code can be PIN, password, keychain secret, etc.
+    /// The code can be a PIN, password, keychain secret, etc.
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="securityCode"></param>

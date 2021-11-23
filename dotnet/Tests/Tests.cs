@@ -52,8 +52,8 @@ public class Tests
 
         // createService() {
         var walletService = new WalletService(allison, serverConfig);
-        // }
         var credentialsService = new CredentialsService(clinic, serverConfig);
+        // }
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
@@ -66,10 +66,8 @@ public class Tests
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
         // Sign the credential using BBS+ signature scheme
         var credential = await credentialsService.IssueCredential(document: JObject.Parse(credentialJson));
+        _testOutputHelper.WriteLine($"Credential:\n{credential.ToString(Formatting.Indented)}");
         // }
-
-        _testOutputHelper.WriteLine("Credential:");
-        _testOutputHelper.WriteLine(credential.ToString(Formatting.Indented));
 
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
