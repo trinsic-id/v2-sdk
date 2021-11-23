@@ -1,13 +1,17 @@
-import { TrinsicWalletService } from './WalletService';
-import { TrinsicProviderService } from './ProviderService';
+import { WalletService } from './WalletService';
+import { ProviderService } from './ProviderService';
 import { TrustRegistryService } from './TrustRegistryService';
 import { TemplateService } from './TemplateService';
+import { AccountService } from './AccountService';
+import { CredentialService } from './CredentialService';
 
 export * from "./proto/index";
 
 export {
-    TrinsicWalletService as WalletService,
-    TrinsicProviderService as ProviderService,
+    WalletService,
+    CredentialService,
+    ProviderService,
     TrustRegistryService,
+    AccountService,
     TemplateService
 }

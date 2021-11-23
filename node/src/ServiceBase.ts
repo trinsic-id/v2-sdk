@@ -1,20 +1,20 @@
 const okapi = require("@trinsic/okapi");
 import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
-import { Nonce, ServerConfig, WalletProfile } from "./proto/";
+import { Nonce, ServerConfig, AccountProfile } from "./proto/";
 import { Message } from "google-protobuf";
 import base64url from "base64url";
 import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { hash } from "mini-blake3/src/dist/node";
 
 export default abstract class ServiceBase {
-  activeProfile: WalletProfile;
+  activeProfile: AccountProfile;
   serverConfig: ServerConfig;
   channel: Channel;
   channelCredentials: ChannelCredentials;
   address: string;
 
   constructor(
-    profile: WalletProfile = null,
+    profile: AccountProfile = null,
     config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
   ) {
     this.activeProfile = profile;
@@ -24,8 +24,13 @@ export default abstract class ServiceBase {
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
-    var requestHash = hash(request.serializeBinary());
-    var timestamp = Date.now();
+    let requestData = request.serializeBinary();
+    let requestHash: Buffer | string = Buffer.from([]);
+
+    if (requestData.length > 0) {
+      requestHash = hash(requestData);
+      var timestamp = Date.now();
+    }
 
     let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
 
@@ -49,7 +54,7 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
-  updateActiveProfile(profile: WalletProfile): void {
+  updateActiveProfile(profile: AccountProfile): void {
     this.activeProfile = profile;
   }
 }

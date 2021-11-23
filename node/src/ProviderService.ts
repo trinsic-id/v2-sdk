@@ -3,7 +3,7 @@ import ServiceBase from "./ServiceBase";
 import { ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
-export class TrinsicProviderService extends ServiceBase {
+export class ProviderService extends ServiceBase {
   client: ProviderClient;
 
   constructor(config: ServerConfig = null) {
