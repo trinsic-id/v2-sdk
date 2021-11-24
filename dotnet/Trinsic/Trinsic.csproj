@@ -5,6 +5,18 @@
     <Nullable>enable</Nullable>
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
+  <!--
+    https://github.com/novotnyllc/MSBuildSdkExtras/issues/176
+    https://githubmemory.com/repo/xamarin/xamarin-macios/issues/12631
+
+    required, as it won't pack without the below action
+   -->
+  <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
+    <ItemGroup>
+      <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+      <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+    </ItemGroup>
+  </Target>
   <PropertyGroup>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <DocumentationFile>Trinsic.xml</DocumentationFile>
