@@ -2,6 +2,7 @@ package trinsic.services;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import trinsic.TrinsicUtilities;
@@ -50,7 +51,7 @@ public abstract class ServiceBase {
         return this.configuration;
     }
 
-    public ManagedChannel getChannel() {
+    public Channel getChannel() {
         return this.channel;
     }
 
