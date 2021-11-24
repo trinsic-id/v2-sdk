@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 class TrinsicServicesTest {
 
     @Test
-    public void testServiceBaseSetProfile() throws InterruptedException {
+    public void testServiceBaseSetProfile() {
         var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.buildMetadata(null));

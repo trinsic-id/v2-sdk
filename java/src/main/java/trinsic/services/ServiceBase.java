@@ -15,7 +15,7 @@ public abstract class ServiceBase {
     private Account.AccountProfile profile = null;
     private CommonOuterClass.ServerConfig configuration = null;
     private ManagedChannel channel = null;
-    private ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
     protected ServiceBase(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this.profile = accountProfile;
