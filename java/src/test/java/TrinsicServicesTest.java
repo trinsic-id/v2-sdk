@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.services.AccountService;
+import trinsic.services.ProviderService;
 import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.io.IOException;

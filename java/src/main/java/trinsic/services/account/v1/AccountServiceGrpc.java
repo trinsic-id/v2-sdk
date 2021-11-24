@@ -12,7 +12,7 @@ public final class AccountServiceGrpc {
 
   private AccountServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "services.account.v1.AccountService";
+  public static final String SERVICE_NAME = "services.account.v1.trinsic.services.AccountService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<trinsic.services.account.v1.Account.SignInRequest,
@@ -499,7 +499,7 @@ public final class AccountServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("AccountService");
+      return getFileDescriptor().findServiceByName("trinsic.services.AccountService");
     }
   }
 

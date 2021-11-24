@@ -1,3 +1,5 @@
+package trinsic.services;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;

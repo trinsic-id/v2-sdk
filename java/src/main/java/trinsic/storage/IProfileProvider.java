@@ -1,4 +1,4 @@
-package storage;
+package trinsic.storage;
 
 import trinsic.services.account.v1.Account;
 

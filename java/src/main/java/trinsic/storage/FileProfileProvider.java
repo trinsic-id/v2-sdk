@@ -1,4 +1,4 @@
-package storage;
+package trinsic.storage;
 
 import io.leonard.Base58;
 import org.jetbrains.annotations.NotNull;

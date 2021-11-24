@@ -1,4 +1,4 @@
-package security;
+package trinsic.security;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;

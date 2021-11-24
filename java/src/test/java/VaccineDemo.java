@@ -1,6 +1,10 @@
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.services.AccountService;
+import trinsic.services.CredentialsService;
+import trinsic.services.WalletService;
 import trinsic.services.account.v1.Account;
 
 import java.io.File;
