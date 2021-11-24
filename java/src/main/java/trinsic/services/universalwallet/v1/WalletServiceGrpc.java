@@ -5,14 +5,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.41.0)",
+    value = "by gRPC proto compiler (version 1.42.1)",
     comments = "Source: services/universal-wallet/v1/universal-wallet.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class WalletServiceGrpc {
 
   private WalletServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "services.universalwallet.v1.trinsic.services.WalletService";
+  public static final String SERVICE_NAME = "services.universalwallet.v1.WalletService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWallet.SearchRequest,
@@ -414,7 +414,7 @@ public final class WalletServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("trinsic.services.WalletService");
+      return getFileDescriptor().findServiceByName("WalletService");
     }
   }
 

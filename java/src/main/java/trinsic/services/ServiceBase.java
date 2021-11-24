@@ -2,6 +2,7 @@ package trinsic.services;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import trinsic.TrinsicUtilities;
@@ -15,7 +16,7 @@ public abstract class ServiceBase {
     private Account.AccountProfile profile = null;
     private CommonOuterClass.ServerConfig configuration = null;
     private ManagedChannel channel = null;
-    private ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
     protected ServiceBase(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this.profile = accountProfile;
@@ -50,7 +51,7 @@ public abstract class ServiceBase {
         return this.configuration;
     }
 
-    public ManagedChannel getChannel() {
+    public Channel getChannel() {
         return this.channel;
     }
 

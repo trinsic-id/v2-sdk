@@ -4430,7 +4430,7 @@ public final class UniversalWallet {
       "(\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 \001(\016" +
       "2\".services.common.v1.ResponseStatus\022\017\n\007" +
       "item_id\030\002 \001(\t\"\023\n\021DeleteItemRequest\"\024\n\022De" +
-      "leteItemResponse2\320\002\n\rtrinsic.services.WalletService\022a\n\006Se" +
+      "leteItemResponse2\320\002\n\rWalletService\022a\n\006Se" +
       "arch\022*.services.universalwallet.v1.Searc" +
       "hRequest\032+.services.universalwallet.v1.S" +
       "earchResponse\022m\n\nInsertItem\022..services.u" +

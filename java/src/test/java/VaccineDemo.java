@@ -25,6 +25,7 @@ public class VaccineDemo {
     public static void run() throws IOException, DidException {
         // createService() {
         var serverConfig = TrinsicUtilities.getTestServerConfig();
+        System.out.println("Connecting to:\n" + serverConfig);
         var accountService = new AccountService(null, serverConfig);
         // }
 
@@ -82,6 +83,10 @@ public class VaccineDemo {
         System.out.println("Verification result: " + isValid);
         Assertions.assertTrue(isValid);
         // }
+
+        accountService.shutdown();
+        credentialsService.shutdown();
+        walletService.shutdown();
     }
 
     // pathData() {

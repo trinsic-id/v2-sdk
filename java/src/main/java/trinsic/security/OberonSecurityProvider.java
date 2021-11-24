@@ -3,7 +3,7 @@ package trinsic.security;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import ky.korins.blake3.Blake3;
+import io.github.rctcwyvrn.blake3.Blake3;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
@@ -21,7 +21,9 @@ public class OberonSecurityProvider implements ISecurityProvider {
 
         // compute the hash of the request and return the result
         var bytes = message.toByteArray();
-        var messageHash = Blake3.newHasher().update(bytes).done(64);
+        var hasher = Blake3.newInstance();
+        hasher.update(bytes);
+        var messageHash = hasher.digest(64);
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
                 .setTimestamp(Instant.now().toEpochMilli())

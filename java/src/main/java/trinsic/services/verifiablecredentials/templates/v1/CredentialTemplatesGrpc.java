@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.41.0)",
+    value = "by gRPC proto compiler (version 1.42.1)",
     comments = "Source: services/verifiable-credentials/templates/v1/templates.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class CredentialTemplatesGrpc {
