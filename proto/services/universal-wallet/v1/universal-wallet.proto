@@ -44,18 +44,6 @@ message InsertItemResponse {
 message DeleteItemRequest {}
 message DeleteItemResponse {}
 
-service WalletService {
-
-    // Search the wallet using a SQL-like syntax
-    rpc Search(SearchRequest) returns (SearchResponse);
-
-    // Insert an item into the wallet
-    rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
-
-    // Delete an item from the wallet permanently
-    rpc Deleteitem(DeleteItemRequest) returns (DeleteItemResponse);
-}
-
 service UniversalWallet {
 
     // Search the wallet using a SQL-like syntax

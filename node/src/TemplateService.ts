@@ -14,7 +14,7 @@ import {
   UpdateCredentialTemplateRequest,
   UpdateCredentialTemplateResponse,
 } from "./proto";
-import { CredentialClient } from "./proto";
+import { VerifiableCredentialClient } from "./proto";
 import { IssueFromTemplateRequest, IssueResponse, JsonPayload } from "./proto";
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 
@@ -23,13 +23,13 @@ type JSStruct = { [key: string]: JavaScriptValue };
 
 export class TemplateService extends ServiceBase {
   client: CredentialTemplatesClient;
-  credentialClient: CredentialClient;
+  credentialClient: VerifiableCredentialClient;
 
   constructor(config: ServerConfig = null) {
     super(null, config);
 
     this.client = new CredentialTemplatesClient(this.address, this.channelCredentials);
-    this.credentialClient = new CredentialClient(this.address, this.channelCredentials);
+    this.credentialClient = new VerifiableCredentialClient(this.address, this.channelCredentials);
   }
 
   public createCredentialTemplate(

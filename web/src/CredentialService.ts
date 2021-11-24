@@ -1,7 +1,7 @@
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import ServiceBase from "./ServiceBase";
 import {
-  CredentialClient,
+  VerifiableCredentialClient,
   AccountProfile,
   CreateProofRequest,
   IssueRequest,
@@ -16,12 +16,12 @@ type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
 
 export class CredentialService extends ServiceBase {
-  credentialClient: CredentialClient;
+  credentialClient: VerifiableCredentialClient;
 
   constructor(profile: AccountProfile, config: ServerConfig = null) {
     super(profile, config);
 
-    this.credentialClient = new CredentialClient(this.address);
+    this.credentialClient = new VerifiableCredentialClient(this.address);
   }
 
   public issue(document: any): Promise<any> {

@@ -1,24 +1,22 @@
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
 import ServiceBase from "./ServiceBase";
 import {
-  CredentialClient,
   InsertItemRequest,
   SearchResponse,
   SearchRequest,
   JsonPayload,
   ServerConfig,
   AccountProfile,
-  WalletServiceClient,
+  UniversalWalletClient,
 } from "./proto";
 
 export class WalletService extends ServiceBase {
-  walletClient: WalletServiceClient;
-  credentialClient: CredentialClient;
+  walletClient: UniversalWalletClient;
 
   constructor(profile: AccountProfile, config: ServerConfig = null) {
     super(profile, config);
 
-    this.walletClient = new WalletServiceClient(this.address);
+    this.walletClient = new UniversalWalletClient(this.address);
   }
 
   // must be authorized
