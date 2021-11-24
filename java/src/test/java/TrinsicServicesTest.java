@@ -59,6 +59,6 @@ class TrinsicServicesTest {
 
     @Test
     public void testTrinsicServiceDemo() throws IOException, DidException {
-        new VaccineDemo().run();
+        VaccineDemo.run();
     }
 }

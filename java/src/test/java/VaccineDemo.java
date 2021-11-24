@@ -82,6 +82,10 @@ public class VaccineDemo {
         System.out.println("Verification result: " + isValid);
         Assertions.assertTrue(isValid);
         // }
+
+        accountService.shutdown();
+        credentialsService.shutdown();
+        walletService.shutdown();
     }
 
     // pathData() {
