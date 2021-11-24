@@ -5,7 +5,7 @@ using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
-using AccountServiceClient = Trinsic.Services.Account.V1.AccountService.AccountServiceClient;
+using AccountServiceClient = Trinsic.Services.Account.V1.Account.AccountClient;
 
 namespace Trinsic;
 

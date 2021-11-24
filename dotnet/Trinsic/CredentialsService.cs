@@ -13,10 +13,10 @@ public class CredentialsService : ServiceBase
     public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null)
         : base(accountProfile, serverConfig)
     {
-        Client = new Credential.CredentialClient(Channel);
+        Client = new VerifiableCredential.VerifiableCredentialClient(Channel);
     }
 
-    internal Credential.CredentialClient Client { get; }
+    internal VerifiableCredential.VerifiableCredentialClient Client { get; }
 
     /// <summary>
     /// Signs an input credential
