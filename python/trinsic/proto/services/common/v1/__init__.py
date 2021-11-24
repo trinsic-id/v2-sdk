@@ -50,7 +50,7 @@ class ServerConfig(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class Nonce(betterproto.Message):
-    """Nonce used to generate an oberon prrof"""
+    """Nonce used to generate an oberon proof"""
 
     timestamp: int = betterproto.int64_field(1)
     request_hash: bytes = betterproto.bytes_field(2)

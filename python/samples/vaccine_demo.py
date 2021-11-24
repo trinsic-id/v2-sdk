@@ -2,8 +2,8 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.universalwallet.v1 import WalletProfile
-from trinsic.services import WalletService
+from trinsic.proto.services.account.v1 import AccountProfile
+from trinsic.services import WalletService, AccountService, CredentialsService
 from trinsic.trinsic_util import trinsic_test_config
 
 # pathData() {
@@ -22,14 +22,23 @@ def _vaccine_cert_frame_path() -> str:
 
 async def vaccine_demo():
     # createService() {
-    wallet_service = WalletService(trinsic_test_config())
+    account_service = AccountService(service_address=trinsic_test_config())
     # }
 
     # setupActors() {
     # Create 3 different profiles for each participant in the scenario
-    allison = await wallet_service.create_wallet()
-    clinic = await wallet_service.create_wallet()
-    airline = await wallet_service.create_wallet()
+    allison, _ = await account_service.sign_in()
+    clinic, _ = await account_service.sign_in()
+    airline, _ = await account_service.sign_in()
+    # }
+
+    account_service.profile = clinic
+    info = await account_service.get_info()
+    assert info
+
+    # createService() {
+    wallet_service = WalletService(allison, trinsic_test_config())
+    credentials_service = CredentialsService(clinic, trinsic_test_config())
     # }
 
     # storeAndRecallProfile() {
@@ -38,18 +47,17 @@ async def vaccine_demo():
         fid.write(bytes(allison))
 
     # Create profile from existing data
-    allison = WalletProfile()
+    allison = AccountProfile()
     with open("allison.bin", "rb") as fid:
         allison.parse(fid.read())
     # }
 
     # issueCredential() {
     # Sign a credential as the clinic and send it to Allison
-    wallet_service.profile = clinic
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = json.load(fid)
 
-    credential = await wallet_service.issue_credential(credential_json)
+    credential = await credential_service.issue_credential(credential_json)
     print(f"Credential: {credential}")
     # }
 
