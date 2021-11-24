@@ -37,7 +37,7 @@ class AccountService(ServiceBase):
         super().__init__(profile, server_config)
         self.client: AccountServiceStub = self.stub_with_metadata(AccountServiceStub)
 
-    async def sign_in(self, details: AccountDetails = AccountDetails()) -> Tuple[AccountProfile, ConfirmationMethod]:
+    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:

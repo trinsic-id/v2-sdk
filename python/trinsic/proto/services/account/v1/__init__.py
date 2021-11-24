@@ -138,6 +138,8 @@ class AccountServiceStub(betterproto.ServiceStub):
             request.details = details
         request.invitation_code = invitation_code
 
+        b = bytes(request)
+
         return await self._unary_unary(
             "/services.account.v1.AccountService/SignIn", request, SignInResponse
         )

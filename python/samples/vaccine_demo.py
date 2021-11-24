@@ -2,7 +2,7 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.account.v1 import AccountProfile
+from trinsic.proto.services.account.v1 import AccountProfile, AccountDetails
 from trinsic.services import WalletService, AccountService, CredentialsService
 from trinsic.trinsic_util import trinsic_test_config
 
@@ -34,7 +34,6 @@ async def vaccine_demo():
 
     account_service.profile = clinic
     info = await account_service.get_info()
-    assert info
 
     # createService() {
     wallet_service = WalletService(allison, trinsic_test_config())
@@ -72,18 +71,18 @@ async def vaccine_demo():
     # Allison shares the credential with the venue.
     # The venue has communicated with Allison the details of the credential
     # that they require expressed as a JSON-LD frame.
-    wallet_service.profile = allison
+    credentials_service.profile = allison
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = json.load(fid2)
 
-    credential_proof = await wallet_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
+    credential_proof = await credentials_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
     print(f"Proof: {credential_proof}")
     # }
 
     # verifyCredential() {
     # The airline verifies the credential
-    wallet_service.profile = airline
-    valid = await wallet_service.verify_proof(credential_proof)
+    credentials_service.profile = airline
+    valid = await credentials_service.verify_proof(credential_proof)
 
     print(f"Verification result: {valid}")
     assert valid
