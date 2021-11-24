@@ -64,14 +64,14 @@ pub struct SendResponse {
     pub status: i32,
 }
 #[doc = r" Generated client implementations."]
-pub mod credential_client {
+pub mod verifiable_credential_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
-    pub struct CredentialClient<T> {
+    pub struct VerifiableCredentialClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl CredentialClient<tonic::transport::Channel> {
+    impl VerifiableCredentialClient<tonic::transport::Channel> {
         #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -82,7 +82,7 @@ pub mod credential_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> CredentialClient<T>
+    impl<T> VerifiableCredentialClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::ResponseBody: Body + Send + 'static,
@@ -96,7 +96,7 @@ pub mod credential_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> CredentialClient<InterceptedService<T, F>>
+        ) -> VerifiableCredentialClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
@@ -108,7 +108,7 @@ pub mod credential_client {
             <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
                 Into<StdError> + Send + Sync,
         {
-            CredentialClient::new(InterceptedService::new(inner, interceptor))
+            VerifiableCredentialClient::new(InterceptedService::new(inner, interceptor))
         }
         #[doc = r" Compress requests with `gzip`."]
         #[doc = r""]
@@ -135,7 +135,7 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.Credential/Issue",
+                "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -151,7 +151,7 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.Credential/IssueFromTemplate",
+                "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -167,7 +167,7 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.Credential/CreateProof",
+                "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -183,7 +183,7 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.Credential/VerifyProof",
+                "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -199,7 +199,7 @@ pub mod credential_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.v1.Credential/Send",
+                "/services.verifiablecredentials.v1.VerifiableCredential/Send",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
