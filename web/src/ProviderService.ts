@@ -1,21 +1,25 @@
 import ServiceBase from "./ServiceBase";
-import { ProviderClient, ServerConfig } from "./proto";
+import { AccountProfile, ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
-export * from "grpc-web";
-
-export class TrinsicProviderService extends ServiceBase {
+export class ProviderService extends ServiceBase {
   client: ProviderClient;
 
-  constructor(config: ServerConfig = null) {
-    super(null, config);
+  constructor(profile: AccountProfile, config: ServerConfig = null) {
+    super(profile, config);
 
     this.client = new ProviderClient(this.address);
   }
 
-  public async inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
-    let response = await this.client.invite(request, await this.getMetadata(request));
-    return response;
+  public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
+    return new Promise(async (resolve, reject) => {
+      this.client.invite(request, await this.getMetadata(request), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
   }
 
   public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {

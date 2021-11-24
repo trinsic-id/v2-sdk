@@ -1,6 +1,6 @@
 {
   "name": "@trinsic/trinsic",
-  "version": "1.0.0-preview.27",
+  "version": "1.0.0",
   "description": "verifiable credentials",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -34,6 +34,7 @@
     "@types/google-protobuf": "^3.15.2",
     "ava": "^3.15.0",
     "copyfiles": "^2.4.1",
+    "dotenv": "^10.0.0",
     "grpc_tools_node_protoc_ts": "^5.3.0",
     "grpc-tools": "^1.11.1",
     "jest": "^26.6.3",

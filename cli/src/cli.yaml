@@ -1,12 +1,10 @@
 name: trinsic
 version: "1.0.0"
 author: Trinsic Technologies Inc.
-about: >-
-
+about: |-
   ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
    │ ├┬┘││││└─┐││
    ┴ ┴└─┴┘└┘└─┘┴└─┘
-
 subcommands:
   - config:
       about: Commands to set configuration parameters

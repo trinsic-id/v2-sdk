@@ -1,5 +1,5 @@
 import ServiceBase from "./ServiceBase";
-import { ServerConfig, TrustRegistryClient } from "./proto";
+import { AccountProfile, ServerConfig, TrustRegistryClient } from "./proto";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
@@ -24,8 +24,8 @@ import {
 export class TrustRegistryService extends ServiceBase {
   client: TrustRegistryClient;
 
-  constructor(config: ServerConfig = null) {
-    super(null, config);
+  constructor(profile: AccountProfile, config: ServerConfig = null) {
+    super(profile, config);
 
     this.client = new TrustRegistryClient(this.address, this.channelCredentials);
   }

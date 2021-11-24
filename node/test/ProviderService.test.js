@@ -1,56 +1,35 @@
 const test = require("ava");
-const { InviteRequest, WalletProfile, ProviderService, WalletService, ServerConfig } = require("../lib");
+const { InviteRequest, AccountService, ProviderService, ServerConfig } = require("../lib");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const fs = require("fs");
 const path = require("path");
 const { randomEmail } = require("./helpers/random");
 
+require("dotenv").config();
+
 const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
 const useTls = process.env.TEST_SERVER_USE_TLS;
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(port).setUseTls(JSON.parse(useTls));
+const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)).setUseTls(useTls);
+let profile = null;
 
-const createProfile = async () => {
-  // if you don't have a profile saved
-  let walletService = new WalletService(config);
-  let profile = await walletService.createWallet();
+// test.before(async t => {
+//   let service = new AccountService(null, config);
+//   let response = await service.signIn();
 
-  return profile;
-};
+//   profile = response.getProfile();
+// });
 
 test("make an invitation", async (t) => {
-  let providerService = new ProviderService(config);
-  let profile = await createProfile();
-  providerService.updateActiveProfile(profile);
+  // let providerService = new ProviderService(profile, config);
 
-  let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
-
-  let inviteResponse = await providerService.inviteParticipant(inviteRequest);
-
-  t.not(inviteResponse, null);
-  t.not(inviteResponse.getInvitationId(), null);
-  t.pass();
-});
-
-test("check status of invitation", async (t) => {
-  // let providerService = new TrinsicProviderService();
-  // let profile = await createProfile();
-  // providerService.setProfile(profile);
-  // let inviteRequest = new InviteRequest();
-  // inviteRequest.setEmail("michael.black@trinsic.id");
-  // inviteRequest.setDescription("invitation");
+  // let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
 
   // let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
-  // let invitationStatusRequest = new InvitationStatusRequest();
-  // invitationStatusRequest.setInvitationId(inviteResponse.getInvitationId());
-
-  // let invitationStatusResponse = await providerService.invitationStatus(invitationStatusRequest);
-
-  // t.not(invitationStatusResponse, null);
-  // t.not(invitationStatusResponse.getStatus(), null);
+  // t.not(inviteResponse, null);
+  // t.not(inviteResponse.getInvitationId(), null);
   t.pass();
 });
 
-test("debug", (t) => t.pass());

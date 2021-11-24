@@ -13,14 +13,14 @@ const createProfile = async () => {
   return profile;
 };
 
-it("make an invitation", async () => {
-  let providerService = new ProviderService(config);
-  let profile = await createProfile();
-  providerService.updateActiveProfile(profile);
-  let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
+// it("make an invitation", async () => {
+//   let providerService = new ProviderService(config);
+//   let profile = await createProfile();
+//   providerService.updateActiveProfile(profile);
+//   let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
 
-  let inviteResponse = await providerService.inviteParticipant(inviteRequest);
+//   let inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
-  expect(inviteResponse).not.toBeNull();
-  expect(inviteResponse.getInvitationId()).not.toBeNull();
-}, 20000);
+//   expect(inviteResponse).not.toBeNull();
+//   expect(inviteResponse.getInvitationId()).not.toBeNull();
+// }, 20000);

@@ -11,3 +11,4 @@ TODO
 ## Next Steps
 TODO
 
+Try out a sample application using our Android SDK [here](https://github.com/trinsic-id/sdk-examples/tree/main/android).

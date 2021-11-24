@@ -1,62 +1,55 @@
 const test = require("ava");
-const okapi = require("@trinsic/okapi");
-const { WalletService, ProviderService, ServerConfig } = require("../lib");
+const { WalletService, ProviderService, ServerConfig, AccountService, CredentialService, AccountProfile } = require("../lib");
 const { GenerateKeyRequest } = require("@trinsic/okapi");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const { InviteRequest } = require("../lib");
 const { randomEmail } = require("./helpers/random");
 
+require("dotenv").config();
+
 const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
 const useTls = process.env.TEST_SERVER_USE_TLS;
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(port).setUseTls(JSON.parse(useTls));
+const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)).setUseTls(useTls);
 
-test("create wallet profile", async (t) => {
-  let service = new WalletService(config);
-  let profile = await service.createWallet();
+let profile = null;
 
-  t.not(profile, null);
-  t.pass();
+test.before(async t => {
+  let service = new AccountService(null, config);
+  let response = await service.signIn();
+
+  profile = response.getProfile();
 });
 
-test("generate proof with Jcs", async (t) => {
-  let capabilityDocument = {
-    "@context": "https://wid.org/security/v2",
-    invocationTarget: "urn:trinsic:wallets:noop",
-    proof: {
-      proofPurpose: "capabilityInvocation",
-      created: new Date().toISOString(),
-      capability: "urn:trinsic:wallets:noop",
-    },
-  };
+test("get account info", async t => {
+  let service = new AccountService(profile, config);
+  let info = await service.info();
 
-  let generateKeyRequest = new GenerateKeyRequest().setKeyType(okapi.KeyType.KEY_TYPE_ED25519);
-  let key = await okapi.DIDKey.generate(generateKeyRequest);
-  let signingKey = key.getKeyList().find((x) => x.getCrv() === "Ed25519");
+  t.not(info, null);
+});
 
-  let createProofRequest = new okapi.CreateProofRequest()
-    .setKey(signingKey)
-    .setDocument(Struct.fromJavaScript(capabilityDocument))
-    .setSuite(okapi.LdSuite.LD_SUITE_JCSED25519SIGNATURE2020);
+test("create new account", async (t) => {
+  let service = new AccountService(null, config);
+  let response = await service.signIn();
 
-  let proofResponse = await okapi.LdProofs.generate(createProofRequest);
+  service.updateActiveProfile(response.getProfile());
 
-  t.not(proofResponse, null);
-  t.not(proofResponse.getSignedDocument(), null);
+  t.not(profile, null);
   t.pass();
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-  let walletService = new WalletService(config);
+  let accountService = new AccountService(profile, config);
 
-  let profile = await walletService.createWallet();
+  // let info = await accountService.info();
 
-  t.not(profile, null);
+  // t.not(info, null);
 
-  walletService.updateActiveProfile(profile);
+  let credentialService = new CredentialService(profile, config);
+  let walletService = new WalletService(profile, config);
 
-  let issueResponse = await walletService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
+  let issueResponse = await credentialService.issue(require("./data/vaccination-certificate-unsigned.json"));
 
   let itemId = await walletService.insertItem(issueResponse);
 
@@ -68,69 +61,67 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   t.not(items, null);
   t.true(items.getItemsList().length > 0);
 
-  let proof = await walletService.createProof(itemId, require("./data/vaccination-certificate-frame.json"));
+  let proof = await credentialService.createProof(itemId, require("./data/vaccination-certificate-frame.json"));
 
-  let valid = await walletService.verifyProof(proof);
+  let valid = await credentialService.verify(proof);
 
   t.true(valid);
   t.pass();
 });
 
-test("create wallet with provider invitation", async (t) => {
-  let providerService = new ProviderService(config);
-  let walletService = new WalletService(config);
+// test("create wallet with provider invitation", async (t) => {
+//   let providerService = new ProviderService(profile, config);
+//   let walletService = new WalletService(profile, config);
 
-  // Provider creates initial wallet for Alice
-  let providerProfile = await walletService.createWallet();
-  providerService.updateActiveProfile(providerProfile);
+//   // Provider creates initial wallet for Alice
+//   let providerProfile = await walletService.createWallet();
+//   providerService.updateActiveProfile(providerProfile);
 
-  let email = randomEmail();
-  let inviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(email);
-  let invitationResponse = await providerService.inviteParticipant(inviteRequest);
+//   let email = randomEmail();
+//   let inviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(email);
+//   let invitationResponse = await providerService.inviteParticipant(inviteRequest);
 
-  // Alice accepts the invitation and creates the wallet
-  let createResponse = await walletService.createWallet(invitationResponse.getInvitationId());
-  walletService.updateActiveProfile(createResponse);
+//   // Alice accepts the invitation and creates the wallet
+//   let createResponse = await walletService.createWallet(invitationResponse.getInvitationId());
+//   walletService.updateActiveProfile(createResponse);
 
-  // Alice searches for wallet records
-  let search = await walletService.search();
-  t.not(search, null);
-  t.true(search.getItemsList().length === 0);
+//   // Alice searches for wallet records
+//   let search = await walletService.search();
+//   t.not(search, null);
+//   t.true(search.getItemsList().length === 0);
 
-  // Send the document to an existing email
-  await walletService.send({ test: "value" }, email);
+//   // Send the document to an existing email
+//   await walletService.send({ test: "value" }, email);
 
-  t.pass();
-});
+//   t.pass();
+// });
 
-test("send an item to a user's wallet using email", async (t) => {
-  let providerService = new ProviderService(config);
-  let walletService = new WalletService(config);
+// test("send an item to a user's wallet using email", async (t) => {
+//   let providerService = new ProviderService(config);
+//   let walletService = new WalletService(config);
 
-  let providerProfile = await walletService.createWallet();
-  providerService.updateActiveProfile(providerProfile);
+//   let providerProfile = await walletService.createWallet();
+//   providerService.updateActiveProfile(providerProfile);
 
-  // Provider creates initial wallet for Alice
-  let aliceEmail = randomEmail();
-  let aliceInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(aliceEmail);
-  let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
-  let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+//   // Provider creates initial wallet for Alice
+//   let aliceEmail = randomEmail();
+//   let aliceInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(aliceEmail);
+//   let invitationResponse = await providerService.inviteParticipant(aliceInviteRequest);
+//   let aliceProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
-  let bobEmail = randomEmail();
-  let bobInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(bobEmail);
-  invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
-  let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
+//   let bobEmail = randomEmail();
+//   let bobInviteRequest = new InviteRequest().setDescription("Test Wallet").setEmail(bobEmail);
+//   invitationResponse = await providerService.inviteParticipant(bobInviteRequest);
+//   let bobProfile = await walletService.createWallet(invitationResponse.getInvitationId());
 
-  // Alice's searches for wallet records
-  walletService.updateActiveProfile(aliceProfile);
-  await walletService.send({ test: "value" }, bobEmail);
+//   // Alice's searches for wallet records
+//   walletService.updateActiveProfile(aliceProfile);
+//   await walletService.send({ test: "value" }, bobEmail);
 
-  walletService.updateActiveProfile(bobProfile);
-  let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
+//   walletService.updateActiveProfile(bobProfile);
+//   let results = await walletService.search("SELECT * from c WHERE c.test = 'value' AND c._new = true");
 
-  t.not(results.getItemsList(), null);
-  t.true(results.getItemsList().length > 0);
-  t.pass();
-});
-
-test("debug", (t) => t.pass());
+//   t.not(results.getItemsList(), null);
+//   t.true(results.getItemsList().length > 0);
+//   t.pass();
+// });
