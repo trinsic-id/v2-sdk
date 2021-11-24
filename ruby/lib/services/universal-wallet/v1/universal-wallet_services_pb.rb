@@ -7,22 +7,21 @@ require 'services/universal-wallet/v1/universal-wallet_pb'
 module Services
   module Universalwallet
     module V1
-      module Wallet
+      module WalletService
         class Service
 
           include ::GRPC::GenericService
 
           self.marshal_class_method = :encode
           self.unmarshal_class_method = :decode
-          self.service_name = 'services.universalwallet.v1.Wallet'
+          self.service_name = 'services.universalwallet.v1.WalletService'
 
-          rpc :GetProviderConfiguration, ::Services::Universalwallet::V1::GetProviderConfigurationRequest, ::Services::Universalwallet::V1::GetProviderConfigurationResponse
-          rpc :ConnectExternalIdentity, ::Services::Universalwallet::V1::ConnectRequest, ::Services::Universalwallet::V1::ConnectResponse
-          rpc :CreateWallet, ::Services::Universalwallet::V1::CreateWalletRequest, ::Services::Universalwallet::V1::CreateWalletResponse
+          # Search the wallet using a SQL-like syntax
           rpc :Search, ::Services::Universalwallet::V1::SearchRequest, ::Services::Universalwallet::V1::SearchResponse
+          # Insert an item into the wallet
           rpc :InsertItem, ::Services::Universalwallet::V1::InsertItemRequest, ::Services::Universalwallet::V1::InsertItemResponse
-          rpc :GrantAccess, ::Services::Universalwallet::V1::GrantAccessRequest, ::Services::Universalwallet::V1::GrantAccessResponse
-          rpc :RevokeAccess, ::Services::Universalwallet::V1::RevokeAccessRequest, ::Services::Universalwallet::V1::RevokeAccessResponse
+          # Delete an item from the wallet permanently
+          rpc :Deleteitem, ::Services::Universalwallet::V1::DeleteItemRequest, ::Services::Universalwallet::V1::DeleteItemResponse
         end
 
         Stub = Service.rpc_stub_class
