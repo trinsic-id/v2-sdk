@@ -60,32 +60,4 @@ service Provider {
   rpc Invite(InviteRequest) returns (InviteResponse);
   rpc InviteWithWorkflow(InviteRequest) returns (InviteResponse);
   rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
-//   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-//   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
 }
-
-//service Attributes {
-//  rpc Create(Attribute) returns (AttributeId);
-//  rpc Retrieve(AttributeId) returns (Attribute);
-//  rpc List(google.protobuf.Empty) returns (ListAttributesResponse);
-//}
-
-//service Credentials {
-//  rpc Issue(IssueCredentialRequest) returns (IssueCredentialResponse);
-//  rpc List(ListCredentialRequest) returns (ListCredentialResponse);
-//}
-
-//service Organizations {
-//  rpc Create(CreateOrgRequest) returns (CreateOrgResponse);
-//  rpc List(ListOrgRequest) returns (ListOrgResponse);
-//}
-//
-//service Presentations {
-//  rpc GeneratePresentation(GeneratePresentationRequest) returns (GeneratePresentationResponse);
-//  rpc SubmitPresentation(SubmitPresentationRequest) returns (SubmitPresentationResponse);
-//}
-//
-//service PresentationTemplates {
-//  rpc Create(CreatePresentationTemplateRequest) returns (CreatePresentationTemplateResponse);
-//  rpc List(ListPresentationTemplateRequest) returns (ListPresentationTemplateResponse);
-//}

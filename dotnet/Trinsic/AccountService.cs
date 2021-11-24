@@ -5,7 +5,7 @@ using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
-using AccountServiceClient = Trinsic.Services.Account.V1.AccountService.AccountServiceClient;
+using AccountServiceClient = Trinsic.Services.Account.V1.Account.AccountClient;
 
 namespace Trinsic;
 
@@ -14,6 +14,11 @@ namespace Trinsic;
 /// </summary>
 public class AccountService : ServiceBase
 {
+    public AccountService(ServerConfig? serverConfig)
+        : this(null, serverConfig)
+    {
+    }
+
     public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig)
         : base(accountProfile, serverConfig)
     {
@@ -28,9 +33,9 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="details"></param>
     /// <returns></returns>
-    public async Task<(AccountProfile accountProfile, ConfirmationMethod confirmationMethod)> SignInAsync(AccountDetails details)
+    public async Task<(AccountProfile accountProfile, ConfirmationMethod confirmationMethod)> SignInAsync(AccountDetails? details = null)
     {
-        SignInRequest request = new() { Details = details };
+        SignInRequest request = new() { Details = details ?? new AccountDetails() };
 
         SignInResponse response = await Client.SignInAsync(request);
 
@@ -44,18 +49,22 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="securityCode"></param>
-    public void Unprotect(ref AccountProfile profile, string securityCode)
+    public static AccountProfile Unprotect(AccountProfile profile, string securityCode)
     {
-        UnBlindOberonTokenRequest request = new() { Token = profile.AuthToken };
+        var cloned = profile.Clone();
+
+        UnBlindOberonTokenRequest request = new() { Token = cloned.AuthToken };
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.UnblindToken(request);
 
-        profile.AuthToken = result.Token;
-        profile.Protection = new()
+        cloned.AuthToken = result.Token;
+        cloned.Protection = new()
         {
             Enabled = false,
             Method = ConfirmationMethod.None
         };
+
+        return cloned;
     }
 
     /// <summary>
@@ -64,18 +73,22 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="securityCode"></param>
-    public void Protect(ref AccountProfile profile, string securityCode)
+    public static AccountProfile Protect(AccountProfile profile, string securityCode)
     {
-        BlindOberonTokenRequest request = new() { Token = profile.AuthToken };
+        var cloned = profile.Clone();
+
+        BlindOberonTokenRequest request = new() { Token = cloned.AuthToken };
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.BlindToken(request);
 
-        profile.AuthToken = result.Token;
-        profile.Protection = new()
+        cloned.AuthToken = result.Token;
+        cloned.Protection = new()
         {
             Enabled = true,
             Method = ConfirmationMethod.Other
         };
+
+        return cloned;
     }
 
     /// <summary>

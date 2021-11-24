@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
-using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.WalletService.WalletServiceClient;
+using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient;
 
 namespace Trinsic;
 
