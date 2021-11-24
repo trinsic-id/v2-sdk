@@ -1,6 +1,6 @@
 import unittest
 
-from trinsic.services import create_channel
+from trinsic.trinsic_util import create_channel
 
 
 class TestUtilities(unittest.IsolatedAsyncioTestCase):

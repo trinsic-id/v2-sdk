@@ -19,14 +19,14 @@ public class VaccineDemo {
 
     public static void run() throws IOException, DidException {
         // createService() {
-        var walletService = new TrinsicWalletService(TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
         // }
 
         // setupActors() {
         // Create 3 different profiles for each participant in the scenario
-        var allison = walletService.createWallet("");
-        var clinic = walletService.createWallet("");
-        var airline = walletService.createWallet("");
+        var allison = accountService.signIn(null).getProfile();
+        var clinic = accountService.signIn(null).getProfile();
+        var airline = accountService.signIn(null).getProfile();
         // }
 
         // storeAndRecallProfile() {

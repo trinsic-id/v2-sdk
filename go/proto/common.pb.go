@@ -336,7 +336,7 @@ func (x *ServerConfig) GetUseTls() bool {
 	return false
 }
 
-// Nonce used to generate an oberon prrof
+// Nonce used to generate an oberon proof
 type Nonce struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

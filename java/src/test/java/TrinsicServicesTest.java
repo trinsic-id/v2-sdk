@@ -12,18 +12,18 @@ class TrinsicServicesTest {
 
     @Test
     public void testServiceBaseSetProfile() throws InterruptedException {
-        var walletService = new TrinsicWalletService(TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> walletService.getMetadata(null));
-        walletService.shutdown();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.buildMetadata(null));
+        accountService.shutdown();
     }
 
     @Test
     public void testProviderServiceInviteParticipant() throws IOException, DidException {
-        var walletService = new TrinsicWalletService(TrinsicUtilities.getTestServerConfig());
-        var walletProfile = walletService.createWallet("");
-        var providerService = new TrinsicProviderService(TrinsicUtilities.getTestServerConfig());
-        providerService.profile = walletProfile;
+        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
+        var account = accountService.signIn(null).getProfile();
+
+        var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
         var invitation = ProviderOuterClass.InviteRequest.newBuilder()
                 .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
                 .setDescription("I dunno")

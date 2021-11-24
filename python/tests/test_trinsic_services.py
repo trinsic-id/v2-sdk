@@ -13,10 +13,10 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         okapi.okapi_utils.download_binaries(False)
 
     async def test_servicebase_setprofile(self):
-        wallet_service = WalletService(trinsic_test_config())
+        wallet_service = WalletService(None, trinsic_test_config())
         with self.assertRaises(Exception) as excep:
-            self.assertIsNotNone(wallet_service.metadata(None))
-        self.assertTrue(excep.exception.args[0].lower() == "profile not set")
+            self.assertIsNotNone(wallet_service.build_metadata(None))
+        self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
 
     async def test_providerservice_inviteparticipant(self):
         await provider_demo()
