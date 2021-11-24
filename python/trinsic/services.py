@@ -5,105 +5,115 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import Dict, List, Union
+from typing import Dict, List, Union, Tuple
 
 from grpclib.client import Channel
+from trinsicokapi import oberon
+from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
+from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, ConfirmationMethod, InfoResponse, \
+    AccountServiceStub
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
-    ParticipantType, InvitationStatusResponse
-from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus
-from trinsic.proto.services.universalwallet.v1 import WalletProfile, SearchResponse
+    ParticipantType, InvitationStatusResponse, ProviderStub
+from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub
+from trinsic.proto.services.universalwallet.v1 import SearchResponse, WalletServiceStub
+from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
 from trinsic.service_base import ServiceBase
-from trinsic._service_wrappers import _WalletStubWithMetadata, _CredentialStubWithMetadata, _ProviderStubWithMetadata, \
-    _TrustRegistryStubWithMetadata
-from trinsic.trinsic_util import trinsic_production_config, create_channel
+from trinsic.trinsic_util import trinsic_production_config
 
 
-class WalletService(ServiceBase):
-    """
-    Wrapper for the [Wallet Service](/reference/services/wallet-service/)
-    """
+class AccountService(ServiceBase):
+    """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
-    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile = None,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
             service_address: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__()
-        self.channel = create_channel(service_address)
-        self.client = _WalletStubWithMetadata(self)
-        self.credential_client = _CredentialStubWithMetadata(self)
+        super().__init__(profile, server_config)
+        self.client: AccountServiceStub = self.stub_with_metadata(AccountServiceStub)
 
-    def close(self):
+    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
         """
-        Close the channel
-        """
-        if self.channel:
-            self.channel.close()
-
-    async def register_or_connect(self, email: str) -> None:
-        """
-        Connect to the appropriate external identity by email
+        Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
-            email: Email address
-        """
-        await self.client.connect_external_identity(email=email)
-
-    async def create_wallet(self, security_code: str = None) -> WalletProfile:
-        """
-        [Create a new wallet](/reference/services/wallet-service/#create-wallet)
-        Args:
-            security_code: Optional security code to use from a provider initiated invitation
+            details:
         Returns:
-            `WalletProfile` of the created wallet
         """
-        create_wallet_response = await self.client.create_wallet(security_code=security_code or "")
-        return WalletProfile(auth_data=create_wallet_response.auth_data,
-                             auth_token=create_wallet_response.auth_token,
-                             is_protected=create_wallet_response.is_protected)
+        response = await self.client.sign_in(details=details)
+        return response.profile, response.confirmation_method
+
+    @staticmethod
+    def unprotect(profile: AccountProfile, security_code: str) -> AccountProfile:
+        """
+        Unprotects the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
+        Args:
+            profile:
+            security_code:
+        Returns:
+            The in-place modified profile
+        """
+        request = UnBlindOberonTokenRequest(token=profile.auth_token)
+        request.blinding.append(bytes(security_code))
+        result = oberon.unblind_token(request)
+        profile.auth_token = result.token
+        profile.protection.enabled = False
+        profile.protection.method = ConfirmationMethod.None_
+        return profile
+
+    @staticmethod
+    def protect(profile: AccountProfile, security_code: str) -> AccountProfile:
+        """
+        Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
+        Args:
+            profile:
+            security_code:
+        Returns:
+        """
+        request = BlindOberonTokenRequest(token=profile.auth_token)
+        request.blinding.append(bytes(security_code))
+        result = oberon.blind_token(request)
+        profile.auth_token = result.token
+        profile.protection.enabled = True
+        profile.protection.method = ConfirmationMethod.Other
+        return profile
+
+    async def get_info(self) -> InfoResponse:
+        """
+        Return the details about the currently active account.
+        Returns:
+            The `InfoResponse`
+        """
+        return await self.client.info()
+
+
+class CredentialsService(ServiceBase):
+    """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
+
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+        """
+        Initialize a connection to the server.
+        Args:
+            service_address: The URL of the server, or a channel which encapsulates the connection already.
+        """
+        super().__init__(profile, server_config)
+        self.client: CredentialStub = self.stub_with_metadata(CredentialStub)
 
     async def issue_credential(self, document: dict) -> dict:
         """
-        [Issue a new credential](/reference/services/wallet-service/#issue-credential)
+        [Issue a new credential](/reference/services/credentials-service/#issue-credential)
         Args:
             document: Dictionary describing the credential
         Returns:
             Dictionary with the issued credential
         """
-        response = await self.credential_client.issue(document=JsonPayload(json_string=json.dumps(document)))
+        response = await self.client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return json.loads(response.document.json_string)
-
-    async def search(self, query: str = "SELECT * from c") -> SearchResponse:
-        """
-        [Search for crdentials](/reference/services/wallet-service/#search-query)
-        Args:
-             query: SQL query to use for searching, see the docs for allowed keywords
-        Returns:
-            The search response object information
-        """
-        return await self.client.search(query=query)
-
-    async def insert_item(self, item: dict) -> str:
-        """
-        [Insert a new item](/reference/services/wallet-service/#insert-record)
-        Args:
-            item: Item to insert into the wallet.
-        Returns:
-            `item_id` of the created record.
-        """
-        return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id
-
-    async def send(self, document: dict, email: str) -> None:
-        """
-        [Send the provided document to the given email](/reference/services/wallet-service/#sending-documents-using-email-as-identifier)
-        Args:
-            document: Document to send
-            email: Email to which the document is sent
-        """
-        await self.credential_client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         """
@@ -114,7 +124,7 @@ class WalletService(ServiceBase):
         Returns:
             The JSONLD proof
         """
-        return json.loads((await self.credential_client.create_proof(
+        return json.loads((await self.client.create_proof(
             document_id=document_id, reveal_document=JsonPayload(
                 json_string=json.dumps(reveal_document)))).proof_document.json_string)
 
@@ -126,8 +136,17 @@ class WalletService(ServiceBase):
         Returns:
             `True` if verified, `False` if not verified
         """
-        return (await self.credential_client.verify_proof(
+        return (await self.client.verify_proof(
             proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
+
+    async def send(self, document: dict, email: str) -> None:
+        """
+        [Send the provided document to the given email](/reference/services/wallet-service/#sending-documents-using-email-as-identifier)
+        Args:
+            document: Document to send
+            email: Email to which the document is sent
+        """
+        await self.client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
 
 
 class ProviderService(ServiceBase):
@@ -135,22 +154,15 @@ class ProviderService(ServiceBase):
     Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
-    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize the connection
         Args:
             service_address: The address of the server to connect, or an already-connected `Channel`
         """
-        super().__init__()
-        self.channel = create_channel(service_address)
-        self.provider_client = _ProviderStubWithMetadata(self)
-
-    def close(self):
-        """
-        Close the underlying channel connection
-        """
-        if self.channel:
-            self.channel.close()
+        super().__init__(profile, server_config)
+        self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
 
     async def invite_participant(self,
                                  participant: ParticipantType = None,
@@ -172,11 +184,11 @@ class ProviderService(ServiceBase):
         if not email and not phone:
             raise Exception("Contact method must be set")
 
-        return await self.provider_client.invite(participant=participant,
-                                                 description=description,
-                                                 phone=phone,
-                                                 email=email,
-                                                 didcomm_invitation=didcomm_invitation)
+        return await self.client.invite(participant=participant,
+                                        description=description,
+                                        phone=phone,
+                                        email=email,
+                                        didcomm_invitation=didcomm_invitation)
 
     async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
         """
@@ -189,7 +201,7 @@ class ProviderService(ServiceBase):
         if not invitation_id or not invitation_id.strip():
             raise Exception("Onboarding reference ID must be set.")
 
-        return await self.provider_client.invitation_status(invitation_id=invitation_id)
+        return await self.client.invitation_status(invitation_id=invitation_id)
 
 
 class TrustRegistryService(ServiceBase):
@@ -197,15 +209,10 @@ class TrustRegistryService(ServiceBase):
     Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
-    def __init__(self, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
-        super().__init__()
-        self.channel = create_channel(service_address)
-        self.provider_client = _TrustRegistryStubWithMetadata(self)
-
-    def close(self):
-        """Close the underlying channel"""
-        if self.channel:
-            self.channel.close()
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+        super().__init__(profile, server_config)
+        self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
     async def register_governance_framework(self, governance_framework: str, description: str) -> None:
         """
@@ -218,7 +225,7 @@ class TrustRegistryService(ServiceBase):
         # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
 
-            await self.provider_client.add_framework(governance_framework=GovernanceFramework(
+            await self.client.add_framework(governance_framework=GovernanceFramework(
                 governance_framework_uri=governance_framework,
                 description=description
             ))
@@ -242,11 +249,11 @@ class TrustRegistryService(ServiceBase):
             # TODO - Handle nones for valid_from, valid_until
             raise ValueError("Provide valid_from and valid_until ranges")
 
-        await self.provider_client.register_issuer(did_uri=issuer_did,
-                                                   credential_type_uri=credential_type,
-                                                   governance_framework_uri=governance_framework,
-                                                   valid_from_utc=int(valid_from.timestamp()),
-                                                   valid_until_utc=int(valid_until.timestamp()))
+        await self.client.register_issuer(did_uri=issuer_did,
+                                          credential_type_uri=credential_type,
+                                          governance_framework_uri=governance_framework,
+                                          valid_from_utc=int(valid_from.timestamp()),
+                                          valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                                 valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
@@ -275,11 +282,11 @@ class TrustRegistryService(ServiceBase):
             valid_until:
         """
 
-        await self.provider_client.register_verifier(did_uri=verifier_did,
-                                                     presentation_type_uri=presentation_type,
-                                                     governance_framework_uri=governance_framework,
-                                                     valid_from_utc=int(valid_from.timestamp()),
-                                                     valid_until_utc=int(valid_until.timestamp()))
+        await self.client.register_verifier(did_uri=verifier_did,
+                                            presentation_type_uri=presentation_type,
+                                            governance_framework_uri=governance_framework,
+                                            valid_from_utc=int(valid_from.timestamp()),
+                                            valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                   valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
@@ -308,9 +315,9 @@ class TrustRegistryService(ServiceBase):
             [RegistrationStatus](/reference/proto/#checkissuerstatusresponse)
         """
 
-        return (await self.provider_client.check_issuer_status(governance_framework_uri=governance_framework,
-                                                               did_uri=issuer_did,
-                                                               credential_type_uri=credential_type)).status
+        return (await self.client.check_issuer_status(governance_framework_uri=governance_framework,
+                                                      did_uri=issuer_did,
+                                                      credential_type_uri=credential_type)).status
 
     async def check_verifier_status(self, issuer_did: str, presentation_type: str,
                                     governance_framework: str) -> RegistrationStatus:
@@ -324,9 +331,9 @@ class TrustRegistryService(ServiceBase):
             [RegistrationStatus](/reference/proto/#registrationstatus)
         """
 
-        return (await self.provider_client.check_verifier_status(governance_framework_uri=governance_framework,
-                                                                 did_uri=issuer_did,
-                                                                 presentation_type_uri=presentation_type)).status
+        return (await self.client.check_verifier_status(governance_framework_uri=governance_framework,
+                                                        did_uri=issuer_did,
+                                                        presentation_type_uri=presentation_type)).status
 
     async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
         """
@@ -337,7 +344,50 @@ class TrustRegistryService(ServiceBase):
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
 
-        response = await self.provider_client.search_registry(query=query, options=RequestOptions(
+        response = await self.client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
 
         return [item.json_struct.to_dict() for item in response.items]
+
+
+class WalletService(ServiceBase):
+    """
+    Wrapper for the [Wallet Service](/reference/services/wallet-service/)
+    """
+
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+        """
+        Initialize a connection to the server.
+        Args:
+            server_config: The URL of the server, or a channel which encapsulates the connection already.
+        """
+        super().__init__(profile, server_config)
+        self.client: WalletServiceStub = self.stub_with_metadata(WalletServiceStub)
+
+    def close(self):
+        """
+        Close the channel
+        """
+        if self.channel:
+            self.channel.close()
+
+    async def search(self, query: str = "SELECT * from c") -> SearchResponse:
+        """
+        [Search for crdentials](/reference/services/wallet-service/#search-query)
+        Args:
+             query: SQL query to use for searching, see the docs for allowed keywords
+        Returns:
+            The search response object information
+        """
+        return await self.client.search(query=query)
+
+    async def insert_item(self, item: dict) -> str:
+        """
+        [Insert a new item](/reference/services/wallet-service/#insert-record)
+        Args:
+            item: Item to insert into the wallet.
+        Returns:
+            `item_id` of the created record.
+        """
+        return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id

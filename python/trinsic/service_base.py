@@ -1,19 +1,28 @@
 """
 Base class and helper methods for the Service wrappers
 """
-import base64
-from abc import ABC, abstractmethod
-from datetime import datetime
-from typing import Mapping, List
+import types
+from abc import ABC
+from typing import Union, Optional, Type, T
 
-from betterproto import Message
-from blake3 import blake3
+from betterproto import Message, ServiceStub
 from grpclib.client import Channel
-from okapi.proto.okapi.security.v1 import CreateOberonProofRequest
-from okapi.wrapper import Oberon
 
-from trinsic.proto.services.common.v1 import Nonce
-from trinsic.proto.services.universalwallet.v1 import WalletProfile
+from trinsic.proto.services.account.v1 import AccountProfile
+from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
+from trinsic.trinsic_util import trinsic_production_config, create_channel
+
+_skip_routes = ['/services.account.v1.AccountService/SignIn']
+
+
+def _update_metadata(route: str, service: "ServiceBase", metadata: "_MetadataLike",
+                     request: "_MessageLike") -> "_MetadataLike":
+    if route in _skip_routes:
+        return metadata
+    if metadata:
+        raise NotImplementedError("Cannot combine metadata yet")
+    return service.build_metadata(request)
 
 
 class ServiceBase(ABC):
@@ -21,27 +30,53 @@ class ServiceBase(ABC):
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
     """
 
-    def __init__(self):
-        self.profile: WalletProfile = None
-        self.channel: Channel = None
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = None):
+        if not server_config:
+            server_config = trinsic_production_config()
+        self.profile: AccountProfile = profile
+        self._channel: Channel = create_channel(server_config)
+        self._security_provider: SecurityProvider = OberonSecurityProvider()
+        # TODO - ServerConfiguration property?
 
-    @abstractmethod
-    def close(self):
-        raise NotImplementedError("Must be overridden in derived class to close GRPC channels")
+    def __del__(self):
+        self._channel.close()
 
-    def metadata(self, request: Message):
+    def build_metadata(self, request: Message):
         """
-        Create call metadata by setting required authentication headers
+        Create call metadata by setting required authentication headers via `AccountProfile`
         :return: authentication headers with base-64 encoded Oberon
         """
         if not self.profile:
-            raise ValueError("Profile not set")
+            raise ValueError("Cannot call authenticated endpoint: profile must be set")
 
-        # compute the hash of the request and capture current timestamp
-        request_hash = blake3(bytes(request)).digest(64)
-        nonce = Nonce(timestamp=int(datetime.now().timestamp() * 1000), request_hash=request_hash)
-        proof = Oberon.create_proof(
-            CreateOberonProofRequest(token=self.profile.auth_token, data=self.profile.auth_data, nonce=bytes(nonce)))
-        return {"authorization": f"Oberon proof={base64.urlsafe_b64encode(bytes(proof.proof)).decode('utf-8')},"
-                                 f"data={base64.urlsafe_b64encode(bytes(self.profile.auth_data)).decode('utf-8')},"
-                                 f"nonce={base64.urlsafe_b64encode(bytes(nonce)).decode('utf-8')}"}
+        return {"authorization": self._security_provider.get_auth_header(self.profile, request)}
+
+    def stub_with_metadata(self, stub_type: Type[T]) -> T:
+        return self.with_call_metadata(stub_type(self.channel))
+
+    def with_call_metadata(self, stub: ServiceStub) -> ServiceStub:
+        # Find the _unary_unary() method
+        _cls_unary_unary = getattr(stub, '_unary_unary')
+
+        # Wrap it
+        async def wrapped_unary(this,
+                                route: str,
+                                request: "_MessageLike",
+                                response_type: Type[T],
+                                *,
+                                timeout: Optional[float] = None,
+                                deadline: Optional["Deadline"] = None,
+                                metadata: Optional["_MetadataLike"] = None) -> Type[T]:
+            metadata = _update_metadata(route, self, metadata, request)
+            return await this._unary_unary_1(route, request, response_type, timeout=timeout, deadline=deadline,
+                                             metadata=metadata)
+
+        stub._unary_unary = types.MethodType(wrapped_unary, stub)
+        stub._unary_unary_1 = _cls_unary_unary
+        return stub
+
+    @property
+    def channel(self):
+        """Underlying channel"""
+        return self._channel

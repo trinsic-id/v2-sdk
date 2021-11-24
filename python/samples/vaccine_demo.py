@@ -2,8 +2,8 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.universalwallet.v1 import WalletProfile
-from trinsic.services import WalletService
+from trinsic.proto.services.account.v1 import AccountProfile, AccountDetails
+from trinsic.services import WalletService, AccountService, CredentialsService
 from trinsic.trinsic_util import trinsic_test_config
 
 # pathData() {
@@ -22,14 +22,22 @@ def _vaccine_cert_frame_path() -> str:
 
 async def vaccine_demo():
     # createService() {
-    wallet_service = WalletService(trinsic_test_config())
+    account_service = AccountService(server_config=trinsic_test_config())
     # }
 
     # setupActors() {
     # Create 3 different profiles for each participant in the scenario
-    allison = await wallet_service.create_wallet()
-    clinic = await wallet_service.create_wallet()
-    airline = await wallet_service.create_wallet()
+    allison, _ = await account_service.sign_in()
+    clinic, _ = await account_service.sign_in()
+    airline, _ = await account_service.sign_in()
+    # }
+
+    account_service.profile = clinic
+    info = await account_service.get_info()
+
+    # createService() {
+    wallet_service = WalletService(allison, trinsic_test_config())
+    credentials_service = CredentialsService(clinic, trinsic_test_config())
     # }
 
     # storeAndRecallProfile() {
@@ -38,18 +46,17 @@ async def vaccine_demo():
         fid.write(bytes(allison))
 
     # Create profile from existing data
-    allison = WalletProfile()
+    allison = AccountProfile()
     with open("allison.bin", "rb") as fid:
         allison.parse(fid.read())
     # }
 
     # issueCredential() {
     # Sign a credential as the clinic and send it to Allison
-    wallet_service.profile = clinic
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = json.load(fid)
 
-    credential = await wallet_service.issue_credential(credential_json)
+    credential = await credentials_service.issue_credential(credential_json)
     print(f"Credential: {credential}")
     # }
 
@@ -64,18 +71,18 @@ async def vaccine_demo():
     # Allison shares the credential with the venue.
     # The venue has communicated with Allison the details of the credential
     # that they require expressed as a JSON-LD frame.
-    wallet_service.profile = allison
+    credentials_service.profile = allison
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = json.load(fid2)
 
-    credential_proof = await wallet_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
+    credential_proof = await credentials_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
     print(f"Proof: {credential_proof}")
     # }
 
     # verifyCredential() {
     # The airline verifies the credential
-    wallet_service.profile = airline
-    valid = await wallet_service.verify_proof(credential_proof)
+    credentials_service.profile = airline
+    valid = await credentials_service.verify_proof(credential_proof)
 
     print(f"Verification result: {valid}")
     assert valid
