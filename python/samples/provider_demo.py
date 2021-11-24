@@ -6,7 +6,7 @@ from trinsic.trinsic_util import trinsic_test_config
 
 
 async def provider_demo():
-    account_service = AccountService(service_address=trinsic_test_config())
+    account_service = AccountService(server_config=trinsic_test_config())
     account_profile, _ = await account_service.sign_in()
     provider_service = ProviderService(account_profile, trinsic_test_config())
     invite_response = await provider_service.invite_participant(
@@ -14,7 +14,6 @@ async def provider_demo():
         description="I dunno",
         email="scott.phillips@trinsic.id")
     assert invite_response
-    provider_service.close()
 
 
 if __name__ == "__main__":

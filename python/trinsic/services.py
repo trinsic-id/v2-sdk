@@ -27,16 +27,17 @@ from trinsic.trinsic_util import trinsic_production_config
 class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
-    def __init__(self, profile: AccountProfile = None, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile = None,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
             service_address: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, service_address)
+        super().__init__(profile, server_config)
         self.client: AccountServiceStub = self.stub_with_metadata(AccountServiceStub)
 
-    async def sign_in(self, details: AccountDetails = AccountDetails) -> Tuple[AccountProfile, ConfirmationMethod]:
+    async def sign_in(self, details: AccountDetails = AccountDetails()) -> Tuple[AccountProfile, ConfirmationMethod]:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
@@ -93,13 +94,14 @@ class AccountService(ServiceBase):
 class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
-    def __init__(self, profile: AccountProfile, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
             service_address: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, service_address)
+        super().__init__(profile, server_config)
         self.client: CredentialStub = self.stub_with_metadata(CredentialStub)
 
     async def issue_credential(self, document: dict) -> dict:
@@ -152,13 +154,14 @@ class ProviderService(ServiceBase):
     Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
-    def __init__(self, profile: AccountProfile, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize the connection
         Args:
             service_address: The address of the server to connect, or an already-connected `Channel`
         """
-        super().__init__(profile, service_address)
+        super().__init__(profile, server_config)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
 
     async def invite_participant(self,
@@ -182,10 +185,10 @@ class ProviderService(ServiceBase):
             raise Exception("Contact method must be set")
 
         return await self.client.invite(participant=participant,
-                                                 description=description,
-                                                 phone=phone,
-                                                 email=email,
-                                                 didcomm_invitation=didcomm_invitation)
+                                        description=description,
+                                        phone=phone,
+                                        email=email,
+                                        didcomm_invitation=didcomm_invitation)
 
     async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
         """
@@ -206,8 +209,9 @@ class TrustRegistryService(ServiceBase):
     Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
-    def __init__(self, profile: AccountProfile, service_address: Union[str, ServerConfig, Channel] = trinsic_production_config()):
-        super().__init__(profile, service_address)
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+        super().__init__(profile, server_config)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
     async def register_governance_framework(self, governance_framework: str, description: str) -> None:
@@ -246,10 +250,10 @@ class TrustRegistryService(ServiceBase):
             raise ValueError("Provide valid_from and valid_until ranges")
 
         await self.client.register_issuer(did_uri=issuer_did,
-                                                   credential_type_uri=credential_type,
-                                                   governance_framework_uri=governance_framework,
-                                                   valid_from_utc=int(valid_from.timestamp()),
-                                                   valid_until_utc=int(valid_until.timestamp()))
+                                          credential_type_uri=credential_type,
+                                          governance_framework_uri=governance_framework,
+                                          valid_from_utc=int(valid_from.timestamp()),
+                                          valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                                 valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
@@ -279,10 +283,10 @@ class TrustRegistryService(ServiceBase):
         """
 
         await self.client.register_verifier(did_uri=verifier_did,
-                                                     presentation_type_uri=presentation_type,
-                                                     governance_framework_uri=governance_framework,
-                                                     valid_from_utc=int(valid_from.timestamp()),
-                                                     valid_until_utc=int(valid_until.timestamp()))
+                                            presentation_type_uri=presentation_type,
+                                            governance_framework_uri=governance_framework,
+                                            valid_from_utc=int(valid_from.timestamp()),
+                                            valid_until_utc=int(valid_until.timestamp()))
 
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                   valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
@@ -312,8 +316,8 @@ class TrustRegistryService(ServiceBase):
         """
 
         return (await self.client.check_issuer_status(governance_framework_uri=governance_framework,
-                                                               did_uri=issuer_did,
-                                                               credential_type_uri=credential_type)).status
+                                                      did_uri=issuer_did,
+                                                      credential_type_uri=credential_type)).status
 
     async def check_verifier_status(self, issuer_did: str, presentation_type: str,
                                     governance_framework: str) -> RegistrationStatus:
@@ -328,8 +332,8 @@ class TrustRegistryService(ServiceBase):
         """
 
         return (await self.client.check_verifier_status(governance_framework_uri=governance_framework,
-                                                                 did_uri=issuer_did,
-                                                                 presentation_type_uri=presentation_type)).status
+                                                        did_uri=issuer_did,
+                                                        presentation_type_uri=presentation_type)).status
 
     async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
         """
@@ -351,7 +355,8 @@ class WalletService(ServiceBase):
     Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile,
+                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:

@@ -22,7 +22,7 @@ def _vaccine_cert_frame_path() -> str:
 
 async def vaccine_demo():
     # createService() {
-    account_service = AccountService(service_address=trinsic_test_config())
+    account_service = AccountService(server_config=trinsic_test_config())
     # }
 
     # setupActors() {
@@ -57,7 +57,7 @@ async def vaccine_demo():
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = json.load(fid)
 
-    credential = await credential_service.issue_credential(credential_json)
+    credential = await credentials_service.issue_credential(credential_json)
     print(f"Credential: {credential}")
     # }
 
