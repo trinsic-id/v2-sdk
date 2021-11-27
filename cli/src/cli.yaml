@@ -9,13 +9,24 @@ subcommands:
   - config:
       about: Commands to set configuration parameters
       args:
-        - server-address:
-            value_name: HOST_ADDRESS
-            help: "(Optional) Address of the server host. (default: http://localhost:5000/)"
+        - server-endpoint:
+            value_name: HOSTNAME
+            help: "(Optional) Address of the server endpoint. (default: prod.trinsic.cloud)"
             takes_value: true
             required: false
-            long: server-address
-            short: a
+            long: server-endpoint
+        - server-port:
+            value_name: NUMBER
+            help: "(Optional) Port of the server endpoint. (default: 443)"
+            takes_value: true
+            required: false
+            long: server-port
+        - server-use-tls:
+            value_name: BOOL
+            help: "(Optional) Indicates if TLS should be used. (default: true)"
+            takes_value: true
+            required: false
+            long: server-use-tls
         - profile-default:
             long: profile-default
             value_name: NAME

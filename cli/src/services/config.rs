@@ -1,3 +1,4 @@
+use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
@@ -13,6 +14,9 @@ use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
 pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "https://prod.trinsic.cloud:443/";
+pub(crate) static DEFAULT_SERVER_ENDPOINT: &str = "prod.trinsic.cloud";
+pub(crate) static DEFAULT_SERVER_PORT: u16 = 443;
+pub(crate) static DEFAULT_SERVER_USE_TLS: bool = true;
 #[cfg(not(test))]
 pub static CONFIG_FILENAME: &str = "config.toml";
 #[cfg(test)]
@@ -26,7 +30,9 @@ pub(crate) struct DefaultConfig {
 
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct ConfigServer {
-    pub address: String,
+    pub endpoint: String,
+    pub port: u16,
+    pub use_tls: bool,
 }
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -37,8 +43,21 @@ pub(crate) struct ConfigProfile {
 impl Default for ConfigServer {
     fn default() -> Self {
         ConfigServer {
-            address: DEFAULT_SERVER_ADDRESS.into(),
+            endpoint: DEFAULT_SERVER_ENDPOINT.into(),
+            port: DEFAULT_SERVER_PORT,
+            use_tls: DEFAULT_SERVER_USE_TLS,
         }
+    }
+}
+
+impl Into<Bytes> for &ConfigServer {
+    fn into(self) -> Bytes {
+        Bytes::from(format!(
+            "{tls}://{endpoint}:{port}",
+            tls = if self.use_tls { "https" } else { "http" },
+            endpoint = self.endpoint,
+            port = self.port
+        ))
     }
 }
 
@@ -174,8 +193,13 @@ impl DefaultConfig {
         file.read_to_string(&mut buffer)?;
 
         use colored::*;
-        println!("{}", config_file.to_string_lossy().cyan());
-        println!("{}", buffer.yellow());
+        println!("{}", "Path:".bold());
+        println!("{}", config_file.to_string_lossy().yellow());
+        println!("{}", "Contents:".bold());
+        buffer
+            .lines()
+            .into_iter()
+            .for_each(|x| println!("{}", x.yellow()));
 
         Ok(())
     }
@@ -265,8 +289,14 @@ fn set_profile_attr(args: &ProfileArgs) {
 
 fn set_server_attr(args: &ServerArgs) {
     let mut config = DefaultConfig::init().unwrap();
-    if args.address.is_some() {
-        config.server.address = args.address.unwrap().to_string();
+    if args.endpoint.is_some() {
+        config.server.endpoint = args.endpoint.unwrap().to_string();
+    }
+    if args.port.is_some() {
+        config.server.port = args.port.unwrap();
+    }
+    if args.use_tls.is_some() {
+        config.server.use_tls = args.use_tls.unwrap();
     }
 
     config.save_config().unwrap()
