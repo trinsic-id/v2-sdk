@@ -13,7 +13,6 @@ use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
-pub(crate) static DEFAULT_SERVER_ADDRESS: &str = "https://prod.trinsic.cloud:443/";
 pub(crate) static DEFAULT_SERVER_ENDPOINT: &str = "prod.trinsic.cloud";
 pub(crate) static DEFAULT_SERVER_PORT: u16 = 443;
 pub(crate) static DEFAULT_SERVER_USE_TLS: bool = true;
@@ -125,7 +124,10 @@ impl DefaultConfig {
         let mut buffer = String::new();
         let mut file = OpenOptions::new().read(true).open(&config_file)?;
         file.read_to_string(&mut buffer)?;
-        let config: DefaultConfig = toml::from_str(&buffer)?;
+        let config: DefaultConfig = toml::from_str(&buffer).unwrap_or({
+            create_file(&config_file, &DefaultConfig::default())?;
+            toml::from_str(&buffer).unwrap()
+        });
 
         Ok(config)
     }

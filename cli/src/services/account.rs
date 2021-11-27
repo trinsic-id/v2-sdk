@@ -49,7 +49,7 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
         .expect("Create Wallet failed")
         .into_inner();
 
-    let protected = ConfirmationMethod::from_i32(response.confirmation_method)
+    let _protected = ConfirmationMethod::from_i32(response.confirmation_method)
         .unwrap_or(ConfirmationMethod::None);
 
     let profile = response.profile.unwrap();
@@ -58,7 +58,7 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
 }
 
 #[tokio::main]
-async fn info(a_rgs: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(AccountServiceClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InfoRequest {});
