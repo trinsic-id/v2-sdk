@@ -397,11 +397,11 @@ subcommands:
 
 args:
   - profile:
-      long: profile
-      short: p
+      long: alias
+      short: a
       value_name: NAME
       help: >-
-        (Optional) Name of the profile to use with this command. If not set, it will use the default configured.
+        (Optional) Account alias to use for authentication. If not set, it will use the default configured.
       takes_value: true
       required: false
   - debug:

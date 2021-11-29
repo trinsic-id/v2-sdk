@@ -3,13 +3,7 @@ use std::io;
 use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
 use tonic::transport::Channel;
-use trinsic::{
-    grpc_channel, grpc_client, grpc_client_with_auth,
-    proto::services::account::v1::{
-        account_service_client::AccountServiceClient, AccountDetails, AccountProfile,
-        ConfirmationMethod, InfoRequest, SignInRequest,
-    },
-};
+use trinsic::{grpc_channel, grpc_client, grpc_client_with_auth, proto::services::account::v1::{AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection, account_client::AccountClient}};
 
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 
@@ -28,14 +22,12 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
 async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> {
     let mut new_config = config.clone();
 
-    println!("Config: {:?}", new_config);
-
     let name = match &args.name {
         Some(desc) => desc.to_string(),
         None => "New Wallet (from CLI)".to_string(),
     };
 
-    let mut client = grpc_client!(AccountServiceClient<Channel>, config.to_owned());
+    let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(SignInRequest {
         details: Some(AccountDetails {
@@ -55,11 +47,11 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
         .expect("Create Wallet failed")
         .into_inner();
 
-    let profile = response.profile.unwrap();
-    let protection = profile.protection.clone().unwrap();
+    let pr = response.profile.unwrap();
+    let protection = pr.protection.clone().unwrap();
 
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
-        ConfirmationMethod::None => profile,
+        ConfirmationMethod::None => pr,
         ConfirmationMethod::Email => {
             println!(
                 "{}",
@@ -69,25 +61,30 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
             let mut buffer = String::new();
             io::stdin().read_line(&mut buffer)?;
 
-            let mut profile = profile.clone();
-            unprotect(&mut profile, buffer.as_bytes().to_vec());
+            // strips new line characters at the end
+            let code = buffer.lines().next().unwrap();
 
-            profile
+            let mut p = pr.clone();
+            unprotect(&mut p, code.as_bytes().to_vec());
+
+            p
         }
         ConfirmationMethod::Sms => {
             println!("{}", "SMS confirmation is not yet supported.".red());
-            profile
+            pr
         }
-        ConfirmationMethod::ConnectedDevice => profile,
-        ConfirmationMethod::Other => profile,
+        ConfirmationMethod::ConnectedDevice => pr,
+        ConfirmationMethod::Other => pr,
     };
+
+    // println!("Profile: {:#?}", profile);
 
     new_config.save_profile(profile, args.alias.unwrap(), args.set_default)
 }
 
 #[tokio::main]
 async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
-    let mut client = grpc_client_with_auth!(AccountServiceClient<Channel>, config.to_owned());
+    let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InfoRequest {});
 
@@ -111,4 +108,8 @@ fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
     let response = Oberon::unblind(&request).unwrap();
 
     profile.auth_token = response.token;
+    profile.protection = Some(TokenProtection {
+        enabled: false,
+        method: ConfirmationMethod::None as i32,
+    })
 }

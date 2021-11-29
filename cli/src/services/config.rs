@@ -96,10 +96,10 @@ impl From<&ArgMatches<'_>> for DefaultConfig {
         if matches.is_present("debug") {
             unsafe { crate::DEBUG = true }
         }
-        if matches.is_present("profile") {
+        if matches.is_present("alias") {
             DefaultConfig {
                 profile: Some(ConfigProfile {
-                    default: matches.value_of("profile").unwrap().to_string(),
+                    default: matches.value_of("alias").unwrap().to_string(),
                 }),
                 ..DefaultConfig::init().unwrap()
             }
@@ -127,8 +127,6 @@ impl DefaultConfig {
         let config: DefaultConfig = match toml::from_str(&buffer) {
             Ok(x) => x,
             Err(err) => {
-                 println!("{}", err);
-
                 let mut file = OpenOptions::new()
                 .create_new(false)
                 .read(true)
