@@ -7,14 +7,14 @@ require 'services/universal-wallet/v1/universal-wallet_pb'
 module Services
   module Universalwallet
     module V1
-      module WalletService
+      module UniversalWallet
         class Service
 
           include ::GRPC::GenericService
 
           self.marshal_class_method = :encode
           self.unmarshal_class_method = :decode
-          self.service_name = 'services.universalwallet.v1.WalletService'
+          self.service_name = 'services.universalwallet.v1.UniversalWallet'
 
           # Search the wallet using a SQL-like syntax
           rpc :Search, ::Services::Universalwallet::V1::SearchRequest, ::Services::Universalwallet::V1::SearchResponse

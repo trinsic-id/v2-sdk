@@ -7,14 +7,14 @@ require 'services/verifiable-credentials/v1/verifiable-credentials_pb'
 module Services
   module Verifiablecredentials
     module V1
-      module Credential
+      module VerifiableCredential
         class Service
 
           include ::GRPC::GenericService
 
           self.marshal_class_method = :encode
           self.unmarshal_class_method = :decode
-          self.service_name = 'services.verifiablecredentials.v1.Credential'
+          self.service_name = 'services.verifiablecredentials.v1.VerifiableCredential'
 
           rpc :Issue, ::Services::Verifiablecredentials::V1::IssueRequest, ::Services::Verifiablecredentials::V1::IssueResponse
           rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueResponse

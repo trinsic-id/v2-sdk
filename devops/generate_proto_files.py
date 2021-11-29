@@ -77,7 +77,7 @@ def update_java():
     java_path = get_language_dir('java')
     java_proto_path = join(java_path, 'src', 'main', 'java')
     # TODO - clean_proto_dir(java_proto_path)
-    # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.41.0/
+    # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.42.1/
     # Add to path and rename to `protoc-gen-grpc-java`
     run_protoc({'java_out': java_proto_path, 'grpc-java_out': java_proto_path}, {}, get_proto_files())
     # remove okapi pbmse

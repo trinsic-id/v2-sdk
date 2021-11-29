@@ -29,6 +29,7 @@
   
     - [ConfirmationMethod](#services.account.v1.ConfirmationMethod)
   
+    - [Account](#services.account.v1.Account)
     - [AccountService](#services.account.v1.AccountService)
   
 - [services/common/v1/common.proto](#services/common/v1/common.proto)
@@ -92,7 +93,7 @@
     - [SearchRequest](#services.universalwallet.v1.SearchRequest)
     - [SearchResponse](#services.universalwallet.v1.SearchResponse)
   
-    - [WalletService](#services.universalwallet.v1.WalletService)
+    - [UniversalWallet](#services.universalwallet.v1.UniversalWallet)
   
 - [services/verifiable-credentials/templates/v1/templates.proto](#services/verifiable-credentials/templates/v1/templates.proto)
     - [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
@@ -120,7 +121,7 @@
     - [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest)
     - [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse)
   
-    - [Credential](#services.verifiablecredentials.v1.Credential)
+    - [VerifiableCredential](#services.verifiablecredentials.v1.VerifiableCredential)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -451,6 +452,21 @@ Confirmation method type for two-factor workflows
  
 
 
+<a name="services.account.v1.Account"></a>
+
+### Account
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| SignIn | [SignInRequest](#services.account.v1.SignInRequest) | [SignInResponse](#services.account.v1.SignInResponse) | Sign in to an already existing account
+
+rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
+| Info | [InfoRequest](#services.account.v1.InfoRequest) | [InfoResponse](#services.account.v1.InfoResponse) | Get account information |
+| ListDevices | [ListDevicesRequest](#services.account.v1.ListDevicesRequest) | [ListDevicesResponse](#services.account.v1.ListDevicesResponse) | List all connected devices |
+| RevokeDevice | [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest) | [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse) | Revoke device access to the account&#39;s cloud wallet |
+
+
 <a name="services.account.v1.AccountService"></a>
 
 ### AccountService
@@ -742,7 +758,7 @@ The referenece_id passed is the response from the
 | ----------- | ------------ | ------------- | ------------|
 | Invite | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) | rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse); |
 | InviteWithWorkflow | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) |  |
-| InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) | rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse); rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse); |
+| InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) |  |
 
  
 
@@ -1249,9 +1265,9 @@ Search response object
  
 
 
-<a name="services.universalwallet.v1.WalletService"></a>
+<a name="services.universalwallet.v1.UniversalWallet"></a>
 
-### WalletService
+### UniversalWallet
 
 
 | Method Name | Request Type | Response Type | Description |
@@ -1620,9 +1636,9 @@ Verify Proof
  
 
 
-<a name="services.verifiablecredentials.v1.Credential"></a>
+<a name="services.verifiablecredentials.v1.VerifiableCredential"></a>
 
-### Credential
+### VerifiableCredential
 
 
 | Method Name | Request Type | Response Type | Description |
