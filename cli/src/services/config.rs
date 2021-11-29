@@ -125,8 +125,19 @@ impl DefaultConfig {
         let mut file = OpenOptions::new().read(true).open(&config_file)?;
         file.read_to_string(&mut buffer)?;
         let config: DefaultConfig = toml::from_str(&buffer).unwrap_or({
-            create_file(&config_file, &DefaultConfig::default())?;
-            toml::from_str(&buffer).unwrap()
+            let mut file = OpenOptions::new()
+                .create_new(false)
+                .read(true)
+                .truncate(true)
+                .write(true)
+                .append(false)
+                .open(config_file)?;
+
+            let buffer = toml::to_vec(&DefaultConfig::default())?;
+            file.write_all(&buffer)?;
+            file.flush()?;
+
+            DefaultConfig::default()
         });
 
         Ok(config)
