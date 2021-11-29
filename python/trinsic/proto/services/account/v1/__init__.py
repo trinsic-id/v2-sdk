@@ -128,49 +128,6 @@ class RevokeDeviceResponse(betterproto.Message):
     pass
 
 
-class AccountServiceStub(betterproto.ServiceStub):
-    async def sign_in(
-        self, *, details: "AccountDetails" = None, invitation_code: str = ""
-    ) -> "SignInResponse":
-
-        request = SignInRequest()
-        if details is not None:
-            request.details = details
-        request.invitation_code = invitation_code
-
-        return await self._unary_unary(
-            "/services.account.v1.AccountService/SignIn", request, SignInResponse
-        )
-
-    async def info(self) -> "InfoResponse":
-
-        request = InfoRequest()
-
-        return await self._unary_unary(
-            "/services.account.v1.AccountService/Info", request, InfoResponse
-        )
-
-    async def list_devices(self) -> "ListDevicesResponse":
-
-        request = ListDevicesRequest()
-
-        return await self._unary_unary(
-            "/services.account.v1.AccountService/ListDevices",
-            request,
-            ListDevicesResponse,
-        )
-
-    async def revoke_device(self) -> "RevokeDeviceResponse":
-
-        request = RevokeDeviceRequest()
-
-        return await self._unary_unary(
-            "/services.account.v1.AccountService/RevokeDevice",
-            request,
-            RevokeDeviceResponse,
-        )
-
-
 class AccountStub(betterproto.ServiceStub):
     async def sign_in(
         self, *, details: "AccountDetails" = None, invitation_code: str = ""
@@ -208,85 +165,6 @@ class AccountStub(betterproto.ServiceStub):
         return await self._unary_unary(
             "/services.account.v1.Account/RevokeDevice", request, RevokeDeviceResponse
         )
-
-
-class AccountServiceBase(ServiceBase):
-    async def sign_in(
-        self, details: "AccountDetails", invitation_code: str
-    ) -> "SignInResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def info(self) -> "InfoResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def list_devices(self) -> "ListDevicesResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def revoke_device(self) -> "RevokeDeviceResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "details": request.details,
-            "invitation_code": request.invitation_code,
-        }
-
-        response = await self.sign_in(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.info(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_list_devices(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.list_devices(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.revoke_device(**request_kwargs)
-        await stream.send_message(response)
-
-    def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
-        return {
-            "/services.account.v1.AccountService/SignIn": grpclib.const.Handler(
-                self.__rpc_sign_in,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                SignInRequest,
-                SignInResponse,
-            ),
-            "/services.account.v1.AccountService/Info": grpclib.const.Handler(
-                self.__rpc_info,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                InfoRequest,
-                InfoResponse,
-            ),
-            "/services.account.v1.AccountService/ListDevices": grpclib.const.Handler(
-                self.__rpc_list_devices,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ListDevicesRequest,
-                ListDevicesResponse,
-            ),
-            "/services.account.v1.AccountService/RevokeDevice": grpclib.const.Handler(
-                self.__rpc_revoke_device,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RevokeDeviceRequest,
-                RevokeDeviceResponse,
-            ),
-        }
 
 
 class AccountBase(ServiceBase):
