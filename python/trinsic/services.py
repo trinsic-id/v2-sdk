@@ -11,7 +11,7 @@ from trinsicokapi import oberon
 from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
 from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, ConfirmationMethod, InfoResponse, \
-    AccountServiceStub
+    AccountStub
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
@@ -34,7 +34,7 @@ class AccountService(ServiceBase):
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__(profile, server_config)
-        self.client: AccountServiceStub = self.stub_with_metadata(AccountServiceStub)
+        self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
     async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
         """
