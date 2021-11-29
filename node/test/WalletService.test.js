@@ -1,6 +1,5 @@
 const test = require("ava");
-const { WalletService, ProviderService, ServerConfig, AccountService, CredentialService, AccountProfile } = require("../lib");
-const { GenerateKeyRequest } = require("@trinsic/okapi");
+const { WalletService, ServerConfig, AccountService, CredentialService } = require("../lib");
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const { InviteRequest } = require("../lib");
 const { randomEmail } = require("./helpers/random");
@@ -15,7 +14,7 @@ const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)
 
 let profile = null;
 
-test.before(async t => {
+test.before(async () => {
   let service = new AccountService(null, config);
   let response = await service.signIn();
 
@@ -40,7 +39,6 @@ test("create new account", async (t) => {
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-  let accountService = new AccountService(profile, config);
 
   // let info = await accountService.info();
 

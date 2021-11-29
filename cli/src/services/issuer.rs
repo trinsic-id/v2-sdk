@@ -1,6 +1,6 @@
 use trinsic::proto::services::common::v1::{json_payload::Json, JsonPayload};
 use trinsic::proto::services::verifiablecredentials::v1::{
-    credential_client::CredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
+    verifiable_credential_client::VerifiableCredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
 };
 use trinsic::proto::JsonPretty;
 use trinsic::utils::{read_file_as_string, write_file};
@@ -28,7 +28,7 @@ async fn issue(args: &IssueArgs, config: DefaultConfig) {
     let document: trinsic::proto::google::protobuf::Struct =
         trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
+    let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(IssueRequest {
         document: Some(JsonPayload {
@@ -62,7 +62,7 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
     let document: trinsic::proto::google::protobuf::Struct =
         trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
+    let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CreateProofRequest {
         reveal_document: Some(JsonPayload {
@@ -97,7 +97,7 @@ async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
     let document: trinsic::proto::google::protobuf::Struct =
         trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
-    let mut client = grpc_client_with_auth!(CredentialClient<Channel>, config);
+    let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(VerifyProofRequest {
         proof_document: Some(JsonPayload {

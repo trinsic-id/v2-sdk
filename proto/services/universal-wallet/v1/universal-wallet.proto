@@ -44,7 +44,7 @@ message InsertItemResponse {
 message DeleteItemRequest {}
 message DeleteItemResponse {}
 
-service WalletService {
+service UniversalWallet {
 
     // Search the wallet using a SQL-like syntax
     rpc Search(SearchRequest) returns (SearchResponse);
@@ -54,6 +54,5 @@ service WalletService {
 
     // Delete an item from the wallet permanently
     rpc Deleteitem(DeleteItemRequest) returns (DeleteItemResponse);
-
 }
 

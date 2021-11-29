@@ -110,3 +110,16 @@ service AccountService {
     // Revoke device access to the account's cloud wallet
     rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
 }
+
+service Account {
+    // Sign in to an already existing account
+    rpc SignIn              (SignInRequest)             returns (SignInResponse);
+    // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);
+
+    // Get account information
+    rpc Info                (InfoRequest)               returns (InfoResponse);
+    // List all connected devices
+    rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
+    // Revoke device access to the account's cloud wallet
+    rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
+}

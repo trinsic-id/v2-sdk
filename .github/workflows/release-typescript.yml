@@ -49,7 +49,7 @@ jobs:
         shell: pwsh
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          MANUAL_VERSION: ${{ github.event.inputs.packageVersion }}"
+          MANUAL_VERSION: ${{ github.event.inputs.packageVersion }}
       # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm version $PACKAGE_VERSION

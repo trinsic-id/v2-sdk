@@ -8,9 +8,9 @@ use trinsic::proto::google::protobuf::Struct;
 use trinsic::proto::services::common::v1::json_payload::Json;
 use trinsic::proto::services::common::v1::{JsonPayload, ServerConfig};
 use trinsic::proto::services::universalwallet::v1::{
-    wallet_service_client::WalletServiceClient, InsertItemRequest, SearchRequest,
+    universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
 };
-use trinsic::proto::services::verifiablecredentials::v1::credential_client::CredentialClient;
+use trinsic::proto::services::verifiablecredentials::v1::verifiable_credential_client::VerifiableCredentialClient;
 use trinsic::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
 use trinsic::proto::services::verifiablecredentials::v1::SendRequest;
 use trinsic::utils::read_file_as_string;
@@ -37,7 +37,7 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletServiceClient::with_interceptor(channel, config);
+    let mut client = UniversalWalletClient::with_interceptor(channel, config);
 
     let request = tonic::Request::new(SearchRequest {
         query: query.clone(),
@@ -74,7 +74,7 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
         .await
         .expect("Unable to connect to server");
 
-    let mut client = WalletServiceClient::with_interceptor(channel, config);
+    let mut client = UniversalWalletClient::with_interceptor(channel, config);
 
     let response = client
         .insert_item(InsertItemRequest {
@@ -105,7 +105,7 @@ async fn send(args: &SendArgs, config: DefaultConfig) {
         .await
         .expect("Unable to connect to server");
 
-    let mut client = CredentialClient::with_interceptor(channel, config);
+    let mut client = VerifiableCredentialClient::with_interceptor(channel, config);
 
     let response = client
         .send(SendRequest {

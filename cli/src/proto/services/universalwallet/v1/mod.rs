@@ -47,14 +47,14 @@ pub struct DeleteItemRequest {}
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {}
 #[doc = r" Generated client implementations."]
-pub mod wallet_service_client {
+pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
-    pub struct WalletServiceClient<T> {
+    pub struct UniversalWalletClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl WalletServiceClient<tonic::transport::Channel> {
+    impl UniversalWalletClient<tonic::transport::Channel> {
         #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -65,7 +65,7 @@ pub mod wallet_service_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> WalletServiceClient<T>
+    impl<T> UniversalWalletClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::ResponseBody: Body + Send + 'static,
@@ -79,7 +79,7 @@ pub mod wallet_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> WalletServiceClient<InterceptedService<T, F>>
+        ) -> UniversalWalletClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
@@ -91,7 +91,7 @@ pub mod wallet_service_client {
             <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
                 Into<StdError> + Send + Sync,
         {
-            WalletServiceClient::new(InterceptedService::new(inner, interceptor))
+            UniversalWalletClient::new(InterceptedService::new(inner, interceptor))
         }
         #[doc = r" Compress requests with `gzip`."]
         #[doc = r""]
@@ -119,7 +119,7 @@ pub mod wallet_service_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.WalletService/Search",
+                "/services.universalwallet.v1.UniversalWallet/Search",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -136,7 +136,7 @@ pub mod wallet_service_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.WalletService/InsertItem",
+                "/services.universalwallet.v1.UniversalWallet/InsertItem",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -153,7 +153,7 @@ pub mod wallet_service_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.WalletService/Deleteitem",
+                "/services.universalwallet.v1.UniversalWallet/Deleteitem",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

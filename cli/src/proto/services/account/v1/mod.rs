@@ -234,3 +234,127 @@ pub mod account_service_client {
         }
     }
 }
+#[doc = r" Generated client implementations."]
+pub mod account_client {
+    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::*;
+    #[derive(Debug, Clone)]
+    pub struct AccountClient<T> {
+        inner: tonic::client::Grpc<T>,
+    }
+    impl AccountClient<tonic::transport::Channel> {
+        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
+        where
+            D: std::convert::TryInto<tonic::transport::Endpoint>,
+            D::Error: Into<StdError>,
+        {
+            let conn = tonic::transport::Endpoint::new(dst)?.connect().await?;
+            Ok(Self::new(conn))
+        }
+    }
+    impl<T> AccountClient<T>
+    where
+        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T::ResponseBody: Body + Send + 'static,
+        T::Error: Into<StdError>,
+        <T::ResponseBody as Body>::Error: Into<StdError> + Send,
+    {
+        pub fn new(inner: T) -> Self {
+            let inner = tonic::client::Grpc::new(inner);
+            Self { inner }
+        }
+        pub fn with_interceptor<F>(
+            inner: T,
+            interceptor: F,
+        ) -> AccountClient<InterceptedService<T, F>>
+        where
+            F: tonic::service::Interceptor,
+            T: tonic::codegen::Service<
+                http::Request<tonic::body::BoxBody>,
+                Response = http::Response<
+                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
+                >,
+            >,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
+                Into<StdError> + Send + Sync,
+        {
+            AccountClient::new(InterceptedService::new(inner, interceptor))
+        }
+        #[doc = r" Compress requests with `gzip`."]
+        #[doc = r""]
+        #[doc = r" This requires the server to support it otherwise it might respond with an"]
+        #[doc = r" error."]
+        pub fn send_gzip(mut self) -> Self {
+            self.inner = self.inner.send_gzip();
+            self
+        }
+        #[doc = r" Enable decompressing responses with `gzip`."]
+        pub fn accept_gzip(mut self) -> Self {
+            self.inner = self.inner.accept_gzip();
+            self
+        }
+        #[doc = " Sign in to an already existing account"]
+        pub async fn sign_in(
+            &mut self,
+            request: impl tonic::IntoRequest<super::SignInRequest>,
+        ) -> Result<tonic::Response<super::SignInResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Get account information"]
+        pub async fn info(
+            &mut self,
+            request: impl tonic::IntoRequest<super::InfoRequest>,
+        ) -> Result<tonic::Response<super::InfoResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " List all connected devices"]
+        pub async fn list_devices(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListDevicesRequest>,
+        ) -> Result<tonic::Response<super::ListDevicesResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/services.account.v1.Account/ListDevices");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Revoke device access to the account's cloud wallet"]
+        pub async fn revoke_device(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RevokeDeviceRequest>,
+        ) -> Result<tonic::Response<super::RevokeDeviceResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+    }
+}
