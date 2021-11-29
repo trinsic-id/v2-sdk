@@ -128,7 +128,7 @@ class RevokeDeviceResponse(betterproto.Message):
     pass
 
 
-class AccountServiceStub(betterproto.ServiceStub):
+class AccountStub(betterproto.ServiceStub):
     async def sign_in(
         self, *, details: "AccountDetails" = None, invitation_code: str = ""
     ) -> "SignInResponse":
@@ -139,7 +139,7 @@ class AccountServiceStub(betterproto.ServiceStub):
         request.invitation_code = invitation_code
 
         return await self._unary_unary(
-            "/services.account.v1.AccountService/SignIn", request, SignInResponse
+            "/services.account.v1.Account/SignIn", request, SignInResponse
         )
 
     async def info(self) -> "InfoResponse":
@@ -147,7 +147,7 @@ class AccountServiceStub(betterproto.ServiceStub):
         request = InfoRequest()
 
         return await self._unary_unary(
-            "/services.account.v1.AccountService/Info", request, InfoResponse
+            "/services.account.v1.Account/Info", request, InfoResponse
         )
 
     async def list_devices(self) -> "ListDevicesResponse":
@@ -155,9 +155,7 @@ class AccountServiceStub(betterproto.ServiceStub):
         request = ListDevicesRequest()
 
         return await self._unary_unary(
-            "/services.account.v1.AccountService/ListDevices",
-            request,
-            ListDevicesResponse,
+            "/services.account.v1.Account/ListDevices", request, ListDevicesResponse
         )
 
     async def revoke_device(self) -> "RevokeDeviceResponse":
@@ -165,13 +163,11 @@ class AccountServiceStub(betterproto.ServiceStub):
         request = RevokeDeviceRequest()
 
         return await self._unary_unary(
-            "/services.account.v1.AccountService/RevokeDevice",
-            request,
-            RevokeDeviceResponse,
+            "/services.account.v1.Account/RevokeDevice", request, RevokeDeviceResponse
         )
 
 
-class AccountServiceBase(ServiceBase):
+class AccountBase(ServiceBase):
     async def sign_in(
         self, details: "AccountDetails", invitation_code: str
     ) -> "SignInResponse":
@@ -223,25 +219,25 @@ class AccountServiceBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.account.v1.AccountService/SignIn": grpclib.const.Handler(
+            "/services.account.v1.Account/SignIn": grpclib.const.Handler(
                 self.__rpc_sign_in,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SignInRequest,
                 SignInResponse,
             ),
-            "/services.account.v1.AccountService/Info": grpclib.const.Handler(
+            "/services.account.v1.Account/Info": grpclib.const.Handler(
                 self.__rpc_info,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 InfoRequest,
                 InfoResponse,
             ),
-            "/services.account.v1.AccountService/ListDevices": grpclib.const.Handler(
+            "/services.account.v1.Account/ListDevices": grpclib.const.Handler(
                 self.__rpc_list_devices,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 ListDevicesRequest,
                 ListDevicesResponse,
             ),
-            "/services.account.v1.AccountService/RevokeDevice": grpclib.const.Handler(
+            "/services.account.v1.Account/RevokeDevice": grpclib.const.Handler(
                 self.__rpc_revoke_device,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 RevokeDeviceRequest,

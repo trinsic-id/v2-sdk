@@ -57,7 +57,7 @@ class DeleteItemResponse(betterproto.Message):
     pass
 
 
-class WalletServiceStub(betterproto.ServiceStub):
+class UniversalWalletStub(betterproto.ServiceStub):
     async def search(
         self,
         *,
@@ -73,7 +73,9 @@ class WalletServiceStub(betterproto.ServiceStub):
             request.options = options
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.WalletService/Search", request, SearchResponse
+            "/services.universalwallet.v1.UniversalWallet/Search",
+            request,
+            SearchResponse,
         )
 
     async def insert_item(
@@ -86,7 +88,7 @@ class WalletServiceStub(betterproto.ServiceStub):
         request.item_type = item_type
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.WalletService/InsertItem",
+            "/services.universalwallet.v1.UniversalWallet/InsertItem",
             request,
             InsertItemResponse,
         )
@@ -96,13 +98,13 @@ class WalletServiceStub(betterproto.ServiceStub):
         request = DeleteItemRequest()
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.WalletService/Deleteitem",
+            "/services.universalwallet.v1.UniversalWallet/Deleteitem",
             request,
             DeleteItemResponse,
         )
 
 
-class WalletServiceBase(ServiceBase):
+class UniversalWalletBase(ServiceBase):
     async def search(
         self,
         query: str,
@@ -152,19 +154,19 @@ class WalletServiceBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.universalwallet.v1.WalletService/Search": grpclib.const.Handler(
+            "/services.universalwallet.v1.UniversalWallet/Search": grpclib.const.Handler(
                 self.__rpc_search,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SearchRequest,
                 SearchResponse,
             ),
-            "/services.universalwallet.v1.WalletService/InsertItem": grpclib.const.Handler(
+            "/services.universalwallet.v1.UniversalWallet/InsertItem": grpclib.const.Handler(
                 self.__rpc_insert_item,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 InsertItemRequest,
                 InsertItemResponse,
             ),
-            "/services.universalwallet.v1.WalletService/Deleteitem": grpclib.const.Handler(
+            "/services.universalwallet.v1.UniversalWallet/Deleteitem": grpclib.const.Handler(
                 self.__rpc_deleteitem,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 DeleteItemRequest,
