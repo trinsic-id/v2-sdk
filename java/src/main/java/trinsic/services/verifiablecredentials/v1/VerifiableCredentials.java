@@ -6462,25 +6462,26 @@ public final class VerifiableCredentials {
       "2\037.services.common.v1.JsonPayloadB\021\n\017del" +
       "ivery_method\"B\n\014SendResponse\0222\n\006status\030\001" +
       " \001(\0162\".services.common.v1.ResponseStatus" +
-      "2\342\004\n\nCredential\022j\n\005Issue\022/.services.veri" +
-      "fiablecredentials.v1.IssueRequest\0320.serv" +
-      "ices.verifiablecredentials.v1.IssueRespo" +
-      "nse\022\202\001\n\021IssueFromTemplate\022;.services.ver" +
-      "ifiablecredentials.v1.IssueFromTemplateR" +
-      "equest\0320.services.verifiablecredentials." +
-      "v1.IssueResponse\022|\n\013CreateProof\0225.servic" +
-      "es.verifiablecredentials.v1.CreateProofR" +
-      "equest\0326.services.verifiablecredentials." +
-      "v1.CreateProofResponse\022|\n\013VerifyProof\0225." +
-      "services.verifiablecredentials.v1.Verify" +
-      "ProofRequest\0326.services.verifiablecreden" +
-      "tials.v1.VerifyProofResponse\022g\n\004Send\022..s" +
-      "ervices.verifiablecredentials.v1.SendReq" +
-      "uest\032/.services.verifiablecredentials.v1" +
-      ".SendResponseB\204\001\n)trinsic.services.verif" +
-      "iablecredentials.v1Z\031github.com/trinsic-" +
-      "id/sdk\242\002\017TrinsicServices\252\002)Trinsic.Servi" +
-      "ces.VerifiableCredentials.V1b\006proto3"
+      "2\354\004\n\024VerifiableCredential\022j\n\005Issue\022/.ser" +
+      "vices.verifiablecredentials.v1.IssueRequ" +
+      "est\0320.services.verifiablecredentials.v1." +
+      "IssueResponse\022\202\001\n\021IssueFromTemplate\022;.se" +
+      "rvices.verifiablecredentials.v1.IssueFro" +
+      "mTemplateRequest\0320.services.verifiablecr" +
+      "edentials.v1.IssueResponse\022|\n\013CreateProo" +
+      "f\0225.services.verifiablecredentials.v1.Cr" +
+      "eateProofRequest\0326.services.verifiablecr" +
+      "edentials.v1.CreateProofResponse\022|\n\013Veri" +
+      "fyProof\0225.services.verifiablecredentials" +
+      ".v1.VerifyProofRequest\0326.services.verifi" +
+      "ablecredentials.v1.VerifyProofResponse\022g" +
+      "\n\004Send\022..services.verifiablecredentials." +
+      "v1.SendRequest\032/.services.verifiablecred" +
+      "entials.v1.SendResponseB\204\001\n)trinsic.serv" +
+      "ices.verifiablecredentials.v1Z\031github.co" +
+      "m/trinsic-id/sdk\242\002\017TrinsicServices\252\002)Tri" +
+      "nsic.Services.VerifiableCredentials.V1b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

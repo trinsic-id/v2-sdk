@@ -5,7 +5,7 @@ import com.google.protobuf.Message;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
@@ -15,7 +15,7 @@ import java.time.Instant;
 public class TrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryBlockingStub stub;
 
-    public TrustRegistryService(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         super(accountProfile, serverConfig);
         this.stub = TrustRegistryGrpc.newBlockingStub(this.getChannel());
     }
