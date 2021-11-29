@@ -1,6 +1,5 @@
 import unittest
 
-from samples.provider_demo import provider_demo
 from samples.vaccine_demo import vaccine_demo
 from trinsic.services import WalletService
 from trinsic.trinsic_util import trinsic_test_config

@@ -31,13 +31,11 @@ class ServiceBase(ABC):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = None):
-        if not server_config:
-            server_config = trinsic_production_config()
+                 server_config: ServerConfig):
         self.profile: AccountProfile = profile
+        self._server_config: ServerConfig = server_config
         self._channel: Channel = create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
-        # TODO - ServerConfiguration property?
 
     def __del__(self):
         self._channel.close()

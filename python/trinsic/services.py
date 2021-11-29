@@ -5,9 +5,8 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import Dict, List, Union, Tuple
+from typing import Dict, List, Tuple
 
-from grpclib.client import Channel
 from trinsicokapi import oberon
 from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
@@ -18,8 +17,8 @@ from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
     ParticipantType, InvitationStatusResponse, ProviderStub
 from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub
-from trinsic.proto.services.universalwallet.v1 import SearchResponse, WalletServiceStub
-from trinsic.proto.services.verifiablecredentials.v1 import CredentialStub
+from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub
+from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub
 from trinsic.service_base import ServiceBase
 from trinsic.trinsic_util import trinsic_production_config
 
@@ -28,11 +27,11 @@ class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
     def __init__(self, profile: AccountProfile = None,
-                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+                 server_config: ServerConfig = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
-            service_address: The URL of the server, or a channel which encapsulates the connection already.
+            server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__(profile, server_config)
         self.client: AccountServiceStub = self.stub_with_metadata(AccountServiceStub)
@@ -95,14 +94,14 @@ class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+                 server_config: ServerConfig = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
-            service_address: The URL of the server, or a channel which encapsulates the connection already.
+            server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__(profile, server_config)
-        self.client: CredentialStub = self.stub_with_metadata(CredentialStub)
+        self.client: VerifiableCredentialStub = self.stub_with_metadata(VerifiableCredentialStub)
 
     async def issue_credential(self, document: dict) -> dict:
         """
@@ -155,11 +154,11 @@ class ProviderService(ServiceBase):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+                 server_config: ServerConfig = trinsic_production_config()):
         """
         Initialize the connection
         Args:
-            service_address: The address of the server to connect, or an already-connected `Channel`
+            server_config: The address of the server to connect, or an already-connected `Channel`
         """
         super().__init__(profile, server_config)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
@@ -210,7 +209,7 @@ class TrustRegistryService(ServiceBase):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+                 server_config: ServerConfig = trinsic_production_config()):
         super().__init__(profile, server_config)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
@@ -356,14 +355,14 @@ class WalletService(ServiceBase):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = trinsic_production_config()):
+                 server_config: ServerConfig = trinsic_production_config()):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
         super().__init__(profile, server_config)
-        self.client: WalletServiceStub = self.stub_with_metadata(WalletServiceStub)
+        self.client: UniversalWalletStub = self.stub_with_metadata(UniversalWalletStub)
 
     def close(self):
         """
