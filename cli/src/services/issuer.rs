@@ -1,6 +1,7 @@
 use trinsic::proto::services::common::v1::{json_payload::Json, JsonPayload};
 use trinsic::proto::services::verifiablecredentials::v1::{
-    verifiable_credential_client::VerifiableCredentialClient, CreateProofRequest, IssueRequest, VerifyProofRequest,
+    verifiable_credential_client::VerifiableCredentialClient, CreateProofRequest, IssueRequest,
+    VerifyProofRequest,
 };
 use trinsic::proto::JsonPretty;
 use trinsic::utils::{read_file_as_string, write_file};
