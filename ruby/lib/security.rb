@@ -13,21 +13,26 @@ module Trinsic
 
   class OberonSecurityProvider
     include ISecurityProvider
+
+    def base64_binary_encode(message)
+      Base64.strict_encode64(Google::Protobuf::encode(message))
+    end
+
     def get_auth_header(account_profile, message)
       if account_profile.protection.enabled
         raise "The token must be unprotected before use"
       end
 
-      request_bytes = message.bytes
+      request_bytes = Google::Protobuf::encode(message)
       request_hash = Digest::BLAKE3.digest(request_bytes)
-      nonce = Trinsic::Common_V1::Nonce.new(:timestamp => Time.now.utc.to_i*1000, :request_hash => request_hash)
-      request = Okapi::Security::V1::CreateOberonProofRequest.new(:token => account_profile.auth_token,
-                                                                  :data => account_profile.auth_data,
-                                                                  :nonce => nonce.bytes)
+      nonce = Trinsic::Common_V1::Nonce.new(timestamp: Time.now.utc.to_i*1000, request_hash: request_hash)
+      request = Okapi::Security::V1::CreateOberonProofRequest.new(token: account_profile.auth_token,
+                                                                  data: account_profile.auth_data,
+                                                                  nonce: Google::Protobuf::encode(nonce))
       proof = Okapi::Oberon.create_proof(request)
 
       # Convert to base-64
-      "Oberon ver=#{1},proof=#{Base64.strict_encode64(proof.proof.to_s)},data=#{Base64.strict_encode64(account_profile.auth_data.to_s)},nonce=#{Base64.strict_encode64(nonce.to_s)}"
+      "Oberon ver=#{1},proof=#{Base64.strict_encode64(proof.proof)},data=#{Base64.strict_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
     end
   end
 end

@@ -27,11 +27,11 @@ module Trinsic
     server_endpoint = ENV["TEST_SERVER_ENDPOINT"]
     server_port = ENV["TEST_SERVER_PORT"] || "443"
     server_usetls = ENV["TEST_SERVER_USETLS"] || "true"
-    Common_V1::ServerConfig.new(:endpoint => server_endpoint, :port => server_port.to_i, :use_tls => server_usetls.downcase == "true")
+    Common_V1::ServerConfig.new(endpoint: server_endpoint, port: server_port.to_i, use_tls: server_usetls.downcase == "true")
   end
 
   def self.trinsic_prod_server
-    Common_V1::ServerConfig.new(:endpoint => "prod.trinsic.cloud", :port => 443, :use_tls => true)
+    Common_V1::ServerConfig.new(endpoint: "prod.trinsic.cloud", port: 443, use_tls: true)
   end
 
   class Error < StandardError; end
@@ -67,7 +67,7 @@ module Trinsic
         return url
       end
       uri = URI.parse(url)
-      Common_V1::ServerConfig.new(:endpoint => uri.host, :port => uri.port.to_i, :use_tls => uri.scheme != "http")
+      Common_V1::ServerConfig.new(endpoint: uri.host, port: uri.port.to_i, use_tls: uri.scheme != "http")
     end
   end
 
@@ -79,28 +79,28 @@ module Trinsic
     end
 
     def sign_in(account_details)
-      request = Account_V1::SignInRequest.new(:details => account_details || Account_V1::AccountDetails.new)
+      request = Account_V1::SignInRequest.new(details: account_details || Account_V1::AccountDetails.new)
       response = @client.sign_in(request)
       response
     end
 
     def unprotect(profile, security_code)
       cloned = profile.clone
-      request = Okapi::Security::V1::UnBlindOberonTokenRequest.new(:token => cloned.auth_token)
+      request = Okapi::Security::V1::UnBlindOberonTokenRequest.new(token: cloned.auth_token)
       request.blinding += [security_code]
       result = Okapi::Oberon.unblind_token request
       cloned.auth_token = result.token
-      cloned.protection = Account_V1::TokenProtection.new(:enabled => false, :method => Account_V1::ConfirmationMethod.None)
+      cloned.protection = Account_V1::TokenProtection.new(enabled: false, method: Account_V1::ConfirmationMethod.None)
       cloned
     end
 
     def protect(profile, security_code)
       cloned = profile.clone
-      request = Okapi::Security::V1::BlindOberonTokenRequest.new(:token => cloned.auth_token)
+      request = Okapi::Security::V1::BlindOberonTokenRequest.new(token: cloned.auth_token)
       request.blinding += [security_code]
       result = Okapi::Oberon.blind_token request
       cloned.auth_token = result.token
-      cloned.protection = Account_V1::TokenProtection.new(:enabled => true, :method => Account_V1::ConfirmationMethod.Other)
+      cloned.protection = Account_V1::TokenProtection.new(enabled: true, method: Account_V1::ConfirmationMethod.Other)
       cloned
     end
 
@@ -119,28 +119,28 @@ module Trinsic
     end
 
     def issue_credential(document)
-      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(document))
-      request = Credentials_V1::IssueRequest.new(:document => payload)
-      response = client.issue(request, metadata: self.metadata(request))
+      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(document))
+      request = Credentials_V1::IssueRequest.new(document: payload)
+      response = client.issue(request, metadata: metadata(request))
       JSON.parse(response.document.json_string)
     end
 
     def send_document(document, email)
-      request = Credentials_V1::SendRequest.new(:email => email,
-                                                :document => Common_V1::JsonPayload.new(:json_string => JSON.generate(document)))
+      request = Credentials_V1::SendRequest.new(email: email,
+                                                document: Common_V1::JsonPayload.new(json_string: JSON.generate(document)))
       client.send(request, metadata: metadata(request))
     end
 
     def create_proof(document_id, reveal_document)
-      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(reveal_document))
-      request = Credentials_V1::CreateProofRequest.new(:document_id => document_id,
-                                                       :reveal_document => payload)
+      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(reveal_document))
+      request = Credentials_V1::CreateProofRequest.new(document_id: document_id,
+                                                       reveal_document: payload)
       JSON.parse(client.create_proof(request, metadata: metadata(request)).proof_document.json_string)
     end
 
     def verify_proof(proof_document)
-      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(proof_document))
-      request = Credentials_V1::VerifyProofRequest.new(:proof_document => payload)
+      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(proof_document))
+      request = Credentials_V1::VerifyProofRequest.new(proof_document: payload)
       client.verify_proof(request, metadata: metadata(request)).valid
     end
   end
@@ -172,48 +172,48 @@ module Trinsic
 
     def register_governance_framework(governance_framework, description)
       # TODO - verify uri
-      request = TrustRegistry_V1::AddFrameworkRequest.new(:governance_framework => governance_framework,
-                                                          :description => description)
+      request = TrustRegistry_V1::AddFrameworkRequest.new(governance_framework: governance_framework,
+                                                          description: description)
       @trust_reg_client.add_framework(request, metadata: metadata(request))
     end
 
     def register_issuer(issuer_did, credential_type, governance_framework, valid_from, valid_until)
-      request = TrustRegistry_V1::RegisterIssuerRequest.new(:did_uri => issuer_did,
-                                                            :credential_type_uri => credential_type,
-                                                            :governance_framework_uri => governance_framework,
-                                                            :valid_from_utc => valid_from.to_time.to_i,
-                                                            :valid_until_utc => valid_until.to_time.to_i)
+      request = TrustRegistry_V1::RegisterIssuerRequest.new(did_uri: issuer_did,
+                                                            credential_type_uri: credential_type,
+                                                            governance_framework_uri: governance_framework,
+                                                            valid_from_utc: valid_from.to_time.to_i,
+                                                            valid_until_utc: valid_until.to_time.to_i)
       @trust_reg_client.register_issuer(request, metadata: metadata(request))
     end
 
     def register_verifier(verifier_did, presentation_type, governance_framework, valid_from, valid_until)
-      request = TrustRegistry_V1::RegisterVerifierRequest.new(:did_uri => verifier_did,
-                                                              :presentation_type_uri => presentation_type,
-                                                              :governance_framework_uri => governance_framework,
-                                                              :valid_from_utc => valid_from.to_time.to_i,
-                                                              :valid_until_utc => valid_until.to_time.to_i)
+      request = TrustRegistry_V1::RegisterVerifierRequest.new(did_uri: verifier_did,
+                                                              presentation_type_uri: presentation_type,
+                                                              governance_framework_uri: governance_framework,
+                                                              valid_from_utc: valid_from.to_time.to_i,
+                                                              valid_until_utc: valid_until.to_time.to_i)
       @trust_reg_client.register_verifier(request, metadata: metadata(request))
     end
 
     def check_issuer_status(issuer_did, presentation_type, governance_framework)
-      request = TrustRegistry_V1::CheckIssuerStatusRequest.new(:did_uri => issuer_did,
-                                                               :presentation_type_uri => presentation_type,
-                                                               :governance_framework_uri => governance_framework)
+      request = TrustRegistry_V1::CheckIssuerStatusRequest.new(did_uri: issuer_did,
+                                                               presentation_type_uri: presentation_type,
+                                                               governance_framework_uri: governance_framework)
       response = @trust_reg_client.check_issuer_status(request, metadata: metadata(request))
       response.status
     end
 
     def check_verifier_status(verifier_did, presentation_type, governance_framework)
-      request = TrustRegistry_V1::CheckVerifierStatusRequest.new(:did_uri => verifier_did,
-                                                                 :presentation_type_uri => presentation_type,
-                                                                 :governance_framework_uri => governance_framework)
+      request = TrustRegistry_V1::CheckVerifierStatusRequest.new(did_uri: verifier_did,
+                                                                 presentation_type_uri: presentation_type,
+                                                                 governance_framework_uri: governance_framework)
       response = @trust_reg_client.check_verifier_status(request, metadata: metadata(request))
       response.status
     end
 
     def search_registry(query)
       query = query || "SELECT * FROM c"
-      request = TrustRegistry_V1::SearchRegistryRequest.new(:query => query, :options => Common_V1::RequestOptions(:response_json_format => Common_V1::JsonFormat.protobuf))
+      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions(response_json_format: Common_V1::JsonFormat.protobuf))
       response = @trust_reg_client.search_registry(request, metadata: metadata(request))
       # TODO cast to dictionary object .map { |x| x.json_struct.  }
       response.items
@@ -228,13 +228,13 @@ module Trinsic
     end
 
     def search(query)
-      request = Wallet_V1::SearchRequest.new(:query => query)
+      request = Wallet_V1::SearchRequest.new(query: query)
       @wallet_client.search(request, metadata: metadata(request))
     end
 
     def insert_item(item)
-      payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(item))
-      request = Wallet_V1::InsertItemRequest.new(:item => payload)
+      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(item))
+      request = Wallet_V1::InsertItemRequest.new(item: payload)
       @wallet_client.insert_item(request, metadata: metadata(request)).item_id
     end
   end
