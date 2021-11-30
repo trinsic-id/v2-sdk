@@ -24,7 +24,7 @@ nav:
     - Java: java/index.md
     - Web: web/index.md
     # - iOS: ios/index.md
-    # - Android: android/index.mdw
+    - Android: android/index.md
   - Reference:
     - Overview: reference/index.md
     - Wallet Service: reference/services/wallet-service.md
@@ -41,7 +41,7 @@ nav:
 theme:
   name: material
   logo: _static/logo-title.svg
-  # custom_dir: overrides
+  custom_dir: overrides
   favicon: _static/logo.png
   features:
     - content.tabs.link
