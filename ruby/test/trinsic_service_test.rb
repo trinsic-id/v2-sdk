@@ -2,16 +2,16 @@ require "./test/test_helper"
 require 'json'
 require 'okapi'
 require 'uri'
-require 'trinsic'
+require 'trinsic_services'
 
 class TrinsicServiceTest < Minitest::Test
 
   def get_library_path
-    return File.expand_path(File.join(File.dirname(__FILE__), 'libs'))
+    File.expand_path(File.join(File.dirname(__FILE__), 'libs'))
   end
 
   def before_setup
-    Okapi::set_library_path(get_library_path)
+    # Okapi::set_library_path(get_library_path)
     Okapi::load_native_library
   end
 
