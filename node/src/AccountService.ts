@@ -1,6 +1,6 @@
 import ServiceBase from "./ServiceBase";
 import {
-  AccountServiceClient,
+  AccountClient,
   ServerConfig,
   AccountProfile,
   AccountDetails,
@@ -11,12 +11,12 @@ import {
 } from "./proto";
 
 export class AccountService extends ServiceBase {
-  client: AccountServiceClient;
+  client: AccountClient;
 
   constructor(profile: AccountProfile = null, config: ServerConfig = null) {
     super(profile, config);
 
-    this.client = new AccountServiceClient(this.address, this.channelCredentials);
+    this.client = new AccountClient(this.address, this.channelCredentials);
   }
 
   public signIn(details?: AccountDetails, invitationCode?: string): Promise<SignInResponse> {

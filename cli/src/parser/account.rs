@@ -29,7 +29,7 @@ fn sign_in<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
-fn info<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+fn info<'a>(_args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Info(InfoArgs {})
 }
 

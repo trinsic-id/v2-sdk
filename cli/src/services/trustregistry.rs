@@ -1,4 +1,5 @@
 use crate::parser::trustregistry::*;
+use bytes::Bytes;
 use colored::Colorize;
 use tonic::transport::Channel;
 use trinsic::proto::services::common::v1::ResponseStatus;

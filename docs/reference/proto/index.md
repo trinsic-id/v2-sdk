@@ -30,7 +30,6 @@
     - [ConfirmationMethod](#services.account.v1.ConfirmationMethod)
   
     - [Account](#services.account.v1.Account)
-    - [AccountService](#services.account.v1.AccountService)
   
 - [services/common/v1/common.proto](#services/common/v1/common.proto)
     - [JsonPayload](#services.common.v1.JsonPayload)
@@ -455,21 +454,6 @@ Confirmation method type for two-factor workflows
 <a name="services.account.v1.Account"></a>
 
 ### Account
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| SignIn | [SignInRequest](#services.account.v1.SignInRequest) | [SignInResponse](#services.account.v1.SignInResponse) | Sign in to an already existing account
-
-rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
-| Info | [InfoRequest](#services.account.v1.InfoRequest) | [InfoResponse](#services.account.v1.InfoResponse) | Get account information |
-| ListDevices | [ListDevicesRequest](#services.account.v1.ListDevicesRequest) | [ListDevicesResponse](#services.account.v1.ListDevicesResponse) | List all connected devices |
-| RevokeDevice | [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest) | [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse) | Revoke device access to the account&#39;s cloud wallet |
-
-
-<a name="services.account.v1.AccountService"></a>
-
-### AccountService
 
 
 | Method Name | Request Type | Response Type | Description |

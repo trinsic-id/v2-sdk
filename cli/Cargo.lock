@@ -2386,6 +2386,7 @@ version = "0.1.0"
 dependencies = [
  "base64 0.13.0",
  "blake3",
+ "bytes",
  "chrono",
  "clap",
  "colored",
