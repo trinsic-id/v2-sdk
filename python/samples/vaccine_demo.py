@@ -2,9 +2,10 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.proto.services.account.v1 import AccountProfile, AccountDetails
+from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.services import WalletService, AccountService, CredentialsService
 from trinsic.trinsic_util import trinsic_test_config
+
 
 # pathData() {
 def _base_data_path() -> str:

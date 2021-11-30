@@ -5,7 +5,7 @@ import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.CredentialsService;
 import trinsic.services.WalletService;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,7 +50,7 @@ public class VaccineDemo {
         var readFile = new FileInputStream("allison.bin");
         var allisonBin = readFile.readAllBytes();
         readFile.close();
-        allison = Account.AccountProfile.newBuilder().mergeFrom(allisonBin).build();
+        allison = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(allisonBin).build();
         // }
 
         // issueCredential() {

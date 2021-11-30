@@ -3,8 +3,8 @@
 
 package trinsic.services.account.v1;
 
-public final class Account {
-  private Account() {}
+public final class AccountOuterClass {
+  private AccountOuterClass() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -167,7 +167,7 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.getDescriptor().getEnumTypes().get(0);
+      return trinsic.services.account.v1.AccountOuterClass.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final ConfirmationMethod[] VALUES = values();
@@ -214,7 +214,7 @@ public final class Account {
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      * @return The details.
      */
-    trinsic.services.account.v1.Account.AccountDetails getDetails();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails();
     /**
      * <pre>
      * Account registration details
@@ -222,7 +222,7 @@ public final class Account {
      *
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      */
-    trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
 
     /**
      * <pre>
@@ -297,11 +297,11 @@ public final class Account {
               done = true;
               break;
             case 10: {
-              trinsic.services.account.v1.Account.AccountDetails.Builder subBuilder = null;
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder subBuilder = null;
               if (details_ != null) {
                 subBuilder = details_.toBuilder();
               }
-              details_ = input.readMessage(trinsic.services.account.v1.Account.AccountDetails.parser(), extensionRegistry);
+              details_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountDetails.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(details_);
                 details_ = subBuilder.buildPartial();
@@ -336,19 +336,19 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInRequest_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInRequest_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.SignInRequest.class, trinsic.services.account.v1.Account.SignInRequest.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.SignInRequest.class, trinsic.services.account.v1.AccountOuterClass.SignInRequest.Builder.class);
     }
 
     public static final int DETAILS_FIELD_NUMBER = 1;
-    private trinsic.services.account.v1.Account.AccountDetails details_;
+    private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
     /**
      * <pre>
      * Account registration details
@@ -370,8 +370,8 @@ public final class Account {
      * @return The details.
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountDetails getDetails() {
-      return details_ == null ? trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+      return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
     }
     /**
      * <pre>
@@ -381,7 +381,7 @@ public final class Account {
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder() {
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
       return getDetails();
     }
 
@@ -479,10 +479,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.SignInRequest)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.SignInRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.SignInRequest other = (trinsic.services.account.v1.Account.SignInRequest) obj;
+      trinsic.services.account.v1.AccountOuterClass.SignInRequest other = (trinsic.services.account.v1.AccountOuterClass.SignInRequest) obj;
 
       if (hasDetails() != other.hasDetails()) return false;
       if (hasDetails()) {
@@ -513,69 +513,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -588,7 +588,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.SignInRequest prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.SignInRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -613,21 +613,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.SignInRequest)
-        trinsic.services.account.v1.Account.SignInRequestOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.SignInRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInRequest_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.SignInRequest.class, trinsic.services.account.v1.Account.SignInRequest.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.SignInRequest.class, trinsic.services.account.v1.AccountOuterClass.SignInRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.SignInRequest.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.SignInRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -659,17 +659,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInRequest getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.SignInRequest.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.SignInRequest getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.SignInRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInRequest build() {
-        trinsic.services.account.v1.Account.SignInRequest result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.SignInRequest build() {
+        trinsic.services.account.v1.AccountOuterClass.SignInRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -677,8 +677,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInRequest buildPartial() {
-        trinsic.services.account.v1.Account.SignInRequest result = new trinsic.services.account.v1.Account.SignInRequest(this);
+      public trinsic.services.account.v1.AccountOuterClass.SignInRequest buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.SignInRequest result = new trinsic.services.account.v1.AccountOuterClass.SignInRequest(this);
         if (detailsBuilder_ == null) {
           result.details_ = details_;
         } else {
@@ -723,16 +723,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.SignInRequest) {
-          return mergeFrom((trinsic.services.account.v1.Account.SignInRequest)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.SignInRequest) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.SignInRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.SignInRequest other) {
-        if (other == trinsic.services.account.v1.Account.SignInRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.SignInRequest other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.SignInRequest.getDefaultInstance()) return this;
         if (other.hasDetails()) {
           mergeDetails(other.getDetails());
         }
@@ -755,11 +755,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.SignInRequest parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.SignInRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.SignInRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.SignInRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -769,9 +769,9 @@ public final class Account {
         return this;
       }
 
-      private trinsic.services.account.v1.Account.AccountDetails details_;
+      private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder> detailsBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> detailsBuilder_;
       /**
        * <pre>
        * Account registration details
@@ -791,9 +791,9 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        * @return The details.
        */
-      public trinsic.services.account.v1.Account.AccountDetails getDetails() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
         if (detailsBuilder_ == null) {
-          return details_ == null ? trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+          return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         } else {
           return detailsBuilder_.getMessage();
         }
@@ -805,7 +805,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public Builder setDetails(trinsic.services.account.v1.Account.AccountDetails value) {
+      public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -826,7 +826,7 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
       public Builder setDetails(
-          trinsic.services.account.v1.Account.AccountDetails.Builder builderForValue) {
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue) {
         if (detailsBuilder_ == null) {
           details_ = builderForValue.build();
           onChanged();
@@ -843,11 +843,11 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public Builder mergeDetails(trinsic.services.account.v1.Account.AccountDetails value) {
+      public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
           if (details_ != null) {
             details_ =
-              trinsic.services.account.v1.Account.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
           } else {
             details_ = value;
           }
@@ -883,7 +883,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public trinsic.services.account.v1.Account.AccountDetails.Builder getDetailsBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder() {
         
         onChanged();
         return getDetailsFieldBuilder().getBuilder();
@@ -895,12 +895,12 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
         if (detailsBuilder_ != null) {
           return detailsBuilder_.getMessageOrBuilder();
         } else {
           return details_ == null ?
-              trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         }
       }
       /**
@@ -911,11 +911,11 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder> 
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> 
           getDetailsFieldBuilder() {
         if (detailsBuilder_ == null) {
           detailsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder>(
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder>(
                   getDetails(),
                   getParentForChildren(),
                   isClean());
@@ -1041,12 +1041,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.SignInRequest)
-    private static final trinsic.services.account.v1.Account.SignInRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.SignInRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.SignInRequest();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.SignInRequest();
     }
 
-    public static trinsic.services.account.v1.Account.SignInRequest getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.SignInRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1071,7 +1071,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.SignInRequest getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.SignInRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1232,15 +1232,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountDetails_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountDetails_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountDetails_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountDetails_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.AccountDetails.class, trinsic.services.account.v1.Account.AccountDetails.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.class, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder.class);
     }
 
     public static final int NAME_FIELD_NUMBER = 1;
@@ -1432,10 +1432,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.AccountDetails)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.AccountDetails)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.AccountDetails other = (trinsic.services.account.v1.Account.AccountDetails) obj;
+      trinsic.services.account.v1.AccountOuterClass.AccountDetails other = (trinsic.services.account.v1.AccountOuterClass.AccountDetails) obj;
 
       if (!getName()
           .equals(other.getName())) return false;
@@ -1465,69 +1465,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountDetails parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1540,7 +1540,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.AccountDetails prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.AccountDetails prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1565,21 +1565,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.AccountDetails)
-        trinsic.services.account.v1.Account.AccountDetailsOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountDetails_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountDetails_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountDetails_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountDetails_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.AccountDetails.class, trinsic.services.account.v1.Account.AccountDetails.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.AccountDetails.class, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.AccountDetails.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.AccountDetails.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1609,17 +1609,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountDetails_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountDetails_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountDetails getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountDetails build() {
-        trinsic.services.account.v1.Account.AccountDetails result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails build() {
+        trinsic.services.account.v1.AccountOuterClass.AccountDetails result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1627,8 +1627,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountDetails buildPartial() {
-        trinsic.services.account.v1.Account.AccountDetails result = new trinsic.services.account.v1.Account.AccountDetails(this);
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.AccountDetails result = new trinsic.services.account.v1.AccountOuterClass.AccountDetails(this);
         result.name_ = name_;
         result.email_ = email_;
         result.sms_ = sms_;
@@ -1670,16 +1670,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.AccountDetails) {
-          return mergeFrom((trinsic.services.account.v1.Account.AccountDetails)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.AccountDetails) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.AccountDetails)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.AccountDetails other) {
-        if (other == trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.AccountDetails other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
@@ -1707,11 +1707,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.AccountDetails parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.AccountDetails parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.AccountDetails) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.AccountDetails) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2025,12 +2025,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.AccountDetails)
-    private static final trinsic.services.account.v1.Account.AccountDetails DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.AccountDetails DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.AccountDetails();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.AccountDetails();
     }
 
-    public static trinsic.services.account.v1.Account.AccountDetails getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.AccountDetails getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2055,7 +2055,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountDetails getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2103,7 +2103,7 @@ public final class Account {
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
      * @return The confirmationMethod.
      */
-    trinsic.services.account.v1.Account.ConfirmationMethod getConfirmationMethod();
+    trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod();
 
     /**
      * <pre>
@@ -2130,7 +2130,7 @@ public final class Account {
      * <code>.services.account.v1.AccountProfile profile = 4;</code>
      * @return The profile.
      */
-    trinsic.services.account.v1.Account.AccountProfile getProfile();
+    trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile();
     /**
      * <pre>
      * Contains authentication data for use with the current device.
@@ -2142,7 +2142,7 @@ public final class Account {
      *
      * <code>.services.account.v1.AccountProfile profile = 4;</code>
      */
-    trinsic.services.account.v1.Account.AccountProfileOrBuilder getProfileOrBuilder();
+    trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder();
   }
   /**
    * <pre>
@@ -2211,11 +2211,11 @@ public final class Account {
               break;
             }
             case 34: {
-              trinsic.services.account.v1.Account.AccountProfile.Builder subBuilder = null;
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder subBuilder = null;
               if (profile_ != null) {
                 subBuilder = profile_.toBuilder();
               }
-              profile_ = input.readMessage(trinsic.services.account.v1.Account.AccountProfile.parser(), extensionRegistry);
+              profile_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(profile_);
                 profile_ = subBuilder.buildPartial();
@@ -2244,15 +2244,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInResponse_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInResponse_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.SignInResponse.class, trinsic.services.account.v1.Account.SignInResponse.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.SignInResponse.class, trinsic.services.account.v1.AccountOuterClass.SignInResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -2305,14 +2305,14 @@ public final class Account {
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
      * @return The confirmationMethod.
      */
-    @java.lang.Override public trinsic.services.account.v1.Account.ConfirmationMethod getConfirmationMethod() {
+    @java.lang.Override public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod() {
       @SuppressWarnings("deprecation")
-      trinsic.services.account.v1.Account.ConfirmationMethod result = trinsic.services.account.v1.Account.ConfirmationMethod.valueOf(confirmationMethod_);
-      return result == null ? trinsic.services.account.v1.Account.ConfirmationMethod.UNRECOGNIZED : result;
+      trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(confirmationMethod_);
+      return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
     }
 
     public static final int PROFILE_FIELD_NUMBER = 4;
-    private trinsic.services.account.v1.Account.AccountProfile profile_;
+    private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
     /**
      * <pre>
      * Contains authentication data for use with the current device.
@@ -2342,8 +2342,8 @@ public final class Account {
      * @return The profile.
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountProfile getProfile() {
-      return profile_ == null ? trinsic.services.account.v1.Account.AccountProfile.getDefaultInstance() : profile_;
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
+      return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
     }
     /**
      * <pre>
@@ -2357,7 +2357,7 @@ public final class Account {
      * <code>.services.account.v1.AccountProfile profile = 4;</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountProfileOrBuilder getProfileOrBuilder() {
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
       return getProfile();
     }
 
@@ -2378,7 +2378,7 @@ public final class Account {
       if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (confirmationMethod_ != trinsic.services.account.v1.Account.ConfirmationMethod.None.getNumber()) {
+      if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         output.writeEnum(3, confirmationMethod_);
       }
       if (profile_ != null) {
@@ -2397,7 +2397,7 @@ public final class Account {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      if (confirmationMethod_ != trinsic.services.account.v1.Account.ConfirmationMethod.None.getNumber()) {
+      if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, confirmationMethod_);
       }
@@ -2415,10 +2415,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.SignInResponse)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.SignInResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.SignInResponse other = (trinsic.services.account.v1.Account.SignInResponse) obj;
+      trinsic.services.account.v1.AccountOuterClass.SignInResponse other = (trinsic.services.account.v1.AccountOuterClass.SignInResponse) obj;
 
       if (status_ != other.status_) return false;
       if (confirmationMethod_ != other.confirmationMethod_) return false;
@@ -2451,69 +2451,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.SignInResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2526,7 +2526,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.SignInResponse prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.SignInResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2554,21 +2554,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.SignInResponse)
-        trinsic.services.account.v1.Account.SignInResponseOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.SignInResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInResponse_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.SignInResponse.class, trinsic.services.account.v1.Account.SignInResponse.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.SignInResponse.class, trinsic.services.account.v1.AccountOuterClass.SignInResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.SignInResponse.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.SignInResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2602,17 +2602,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_SignInResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInResponse getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.SignInResponse.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.SignInResponse getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.SignInResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInResponse build() {
-        trinsic.services.account.v1.Account.SignInResponse result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.SignInResponse build() {
+        trinsic.services.account.v1.AccountOuterClass.SignInResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2620,8 +2620,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.SignInResponse buildPartial() {
-        trinsic.services.account.v1.Account.SignInResponse result = new trinsic.services.account.v1.Account.SignInResponse(this);
+      public trinsic.services.account.v1.AccountOuterClass.SignInResponse buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.SignInResponse result = new trinsic.services.account.v1.AccountOuterClass.SignInResponse(this);
         result.status_ = status_;
         result.confirmationMethod_ = confirmationMethod_;
         if (profileBuilder_ == null) {
@@ -2667,16 +2667,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.SignInResponse) {
-          return mergeFrom((trinsic.services.account.v1.Account.SignInResponse)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.SignInResponse) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.SignInResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.SignInResponse other) {
-        if (other == trinsic.services.account.v1.Account.SignInResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.SignInResponse other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.SignInResponse.getDefaultInstance()) return this;
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
         }
@@ -2701,11 +2701,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.SignInResponse parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.SignInResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.SignInResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.SignInResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2828,10 +2828,10 @@ public final class Account {
        * @return The confirmationMethod.
        */
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ConfirmationMethod getConfirmationMethod() {
+      public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod() {
         @SuppressWarnings("deprecation")
-        trinsic.services.account.v1.Account.ConfirmationMethod result = trinsic.services.account.v1.Account.ConfirmationMethod.valueOf(confirmationMethod_);
-        return result == null ? trinsic.services.account.v1.Account.ConfirmationMethod.UNRECOGNIZED : result;
+        trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(confirmationMethod_);
+        return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
       }
       /**
        * <pre>
@@ -2843,7 +2843,7 @@ public final class Account {
        * @param value The confirmationMethod to set.
        * @return This builder for chaining.
        */
-      public Builder setConfirmationMethod(trinsic.services.account.v1.Account.ConfirmationMethod value) {
+      public Builder setConfirmationMethod(trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2868,9 +2868,9 @@ public final class Account {
         return this;
       }
 
-      private trinsic.services.account.v1.Account.AccountProfile profile_;
+      private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountProfile, trinsic.services.account.v1.Account.AccountProfile.Builder, trinsic.services.account.v1.Account.AccountProfileOrBuilder> profileBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> profileBuilder_;
       /**
        * <pre>
        * Contains authentication data for use with the current device.
@@ -2898,9 +2898,9 @@ public final class Account {
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        * @return The profile.
        */
-      public trinsic.services.account.v1.Account.AccountProfile getProfile() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
         if (profileBuilder_ == null) {
-          return profile_ == null ? trinsic.services.account.v1.Account.AccountProfile.getDefaultInstance() : profile_;
+          return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
         } else {
           return profileBuilder_.getMessage();
         }
@@ -2916,7 +2916,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
-      public Builder setProfile(trinsic.services.account.v1.Account.AccountProfile value) {
+      public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
         if (profileBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2941,7 +2941,7 @@ public final class Account {
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
       public Builder setProfile(
-          trinsic.services.account.v1.Account.AccountProfile.Builder builderForValue) {
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue) {
         if (profileBuilder_ == null) {
           profile_ = builderForValue.build();
           onChanged();
@@ -2962,11 +2962,11 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
-      public Builder mergeProfile(trinsic.services.account.v1.Account.AccountProfile value) {
+      public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
         if (profileBuilder_ == null) {
           if (profile_ != null) {
             profile_ =
-              trinsic.services.account.v1.Account.AccountProfile.newBuilder(profile_).mergeFrom(value).buildPartial();
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.newBuilder(profile_).mergeFrom(value).buildPartial();
           } else {
             profile_ = value;
           }
@@ -3010,7 +3010,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
-      public trinsic.services.account.v1.Account.AccountProfile.Builder getProfileBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder() {
         
         onChanged();
         return getProfileFieldBuilder().getBuilder();
@@ -3026,12 +3026,12 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
-      public trinsic.services.account.v1.Account.AccountProfileOrBuilder getProfileOrBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
         if (profileBuilder_ != null) {
           return profileBuilder_.getMessageOrBuilder();
         } else {
           return profile_ == null ?
-              trinsic.services.account.v1.Account.AccountProfile.getDefaultInstance() : profile_;
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
         }
       }
       /**
@@ -3046,11 +3046,11 @@ public final class Account {
        * <code>.services.account.v1.AccountProfile profile = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountProfile, trinsic.services.account.v1.Account.AccountProfile.Builder, trinsic.services.account.v1.Account.AccountProfileOrBuilder> 
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> 
           getProfileFieldBuilder() {
         if (profileBuilder_ == null) {
           profileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.account.v1.Account.AccountProfile, trinsic.services.account.v1.Account.AccountProfile.Builder, trinsic.services.account.v1.Account.AccountProfileOrBuilder>(
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder>(
                   getProfile(),
                   getParentForChildren(),
                   isClean());
@@ -3075,12 +3075,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.SignInResponse)
-    private static final trinsic.services.account.v1.Account.SignInResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.SignInResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.SignInResponse();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.SignInResponse();
     }
 
-    public static trinsic.services.account.v1.Account.SignInResponse getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.SignInResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3105,7 +3105,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.SignInResponse getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.SignInResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3178,7 +3178,7 @@ public final class Account {
      * <code>.services.account.v1.TokenProtection protection = 4;</code>
      * @return The protection.
      */
-    trinsic.services.account.v1.Account.TokenProtection getProtection();
+    trinsic.services.account.v1.AccountOuterClass.TokenProtection getProtection();
     /**
      * <pre>
      * Token security information about the token.
@@ -3188,7 +3188,7 @@ public final class Account {
      *
      * <code>.services.account.v1.TokenProtection protection = 4;</code>
      */
-    trinsic.services.account.v1.Account.TokenProtectionOrBuilder getProtectionOrBuilder();
+    trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder getProtectionOrBuilder();
   }
   /**
    * <pre>
@@ -3260,11 +3260,11 @@ public final class Account {
               break;
             }
             case 34: {
-              trinsic.services.account.v1.Account.TokenProtection.Builder subBuilder = null;
+              trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder subBuilder = null;
               if (protection_ != null) {
                 subBuilder = protection_.toBuilder();
               }
-              protection_ = input.readMessage(trinsic.services.account.v1.Account.TokenProtection.parser(), extensionRegistry);
+              protection_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.TokenProtection.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(protection_);
                 protection_ = subBuilder.buildPartial();
@@ -3293,15 +3293,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountProfile_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountProfile_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountProfile_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountProfile_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.AccountProfile.class, trinsic.services.account.v1.Account.AccountProfile.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.class, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder.class);
     }
 
     public static final int PROFILE_TYPE_FIELD_NUMBER = 1;
@@ -3383,7 +3383,7 @@ public final class Account {
     }
 
     public static final int PROTECTION_FIELD_NUMBER = 4;
-    private trinsic.services.account.v1.Account.TokenProtection protection_;
+    private trinsic.services.account.v1.AccountOuterClass.TokenProtection protection_;
     /**
      * <pre>
      * Token security information about the token.
@@ -3409,8 +3409,8 @@ public final class Account {
      * @return The protection.
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.TokenProtection getProtection() {
-      return protection_ == null ? trinsic.services.account.v1.Account.TokenProtection.getDefaultInstance() : protection_;
+    public trinsic.services.account.v1.AccountOuterClass.TokenProtection getProtection() {
+      return protection_ == null ? trinsic.services.account.v1.AccountOuterClass.TokenProtection.getDefaultInstance() : protection_;
     }
     /**
      * <pre>
@@ -3422,7 +3422,7 @@ public final class Account {
      * <code>.services.account.v1.TokenProtection protection = 4;</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.TokenProtectionOrBuilder getProtectionOrBuilder() {
+    public trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder getProtectionOrBuilder() {
       return getProtection();
     }
 
@@ -3486,10 +3486,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.AccountProfile)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.AccountProfile)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.AccountProfile other = (trinsic.services.account.v1.Account.AccountProfile) obj;
+      trinsic.services.account.v1.AccountOuterClass.AccountProfile other = (trinsic.services.account.v1.AccountOuterClass.AccountProfile) obj;
 
       if (!getProfileType()
           .equals(other.getProfileType())) return false;
@@ -3528,69 +3528,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.AccountProfile parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3603,7 +3603,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.AccountProfile prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.AccountProfile prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3629,21 +3629,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.AccountProfile)
-        trinsic.services.account.v1.Account.AccountProfileOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountProfile_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountProfile_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountProfile_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountProfile_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.AccountProfile.class, trinsic.services.account.v1.Account.AccountProfile.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.AccountProfile.class, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.AccountProfile.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.AccountProfile.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3679,17 +3679,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_AccountProfile_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountProfile_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountProfile getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.AccountProfile.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountProfile build() {
-        trinsic.services.account.v1.Account.AccountProfile result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile build() {
+        trinsic.services.account.v1.AccountOuterClass.AccountProfile result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3697,8 +3697,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.AccountProfile buildPartial() {
-        trinsic.services.account.v1.Account.AccountProfile result = new trinsic.services.account.v1.Account.AccountProfile(this);
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.AccountProfile result = new trinsic.services.account.v1.AccountOuterClass.AccountProfile(this);
         result.profileType_ = profileType_;
         result.authData_ = authData_;
         result.authToken_ = authToken_;
@@ -3745,16 +3745,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.AccountProfile) {
-          return mergeFrom((trinsic.services.account.v1.Account.AccountProfile)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.AccountProfile) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.AccountProfile)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.AccountProfile other) {
-        if (other == trinsic.services.account.v1.Account.AccountProfile.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.AccountProfile other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance()) return this;
         if (!other.getProfileType().isEmpty()) {
           profileType_ = other.profileType_;
           onChanged();
@@ -3783,11 +3783,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.AccountProfile parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.AccountProfile parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.AccountProfile) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.AccountProfile) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3990,9 +3990,9 @@ public final class Account {
         return this;
       }
 
-      private trinsic.services.account.v1.Account.TokenProtection protection_;
+      private trinsic.services.account.v1.AccountOuterClass.TokenProtection protection_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.TokenProtection, trinsic.services.account.v1.Account.TokenProtection.Builder, trinsic.services.account.v1.Account.TokenProtectionOrBuilder> protectionBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.TokenProtection, trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder, trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder> protectionBuilder_;
       /**
        * <pre>
        * Token security information about the token.
@@ -4016,9 +4016,9 @@ public final class Account {
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        * @return The protection.
        */
-      public trinsic.services.account.v1.Account.TokenProtection getProtection() {
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtection getProtection() {
         if (protectionBuilder_ == null) {
-          return protection_ == null ? trinsic.services.account.v1.Account.TokenProtection.getDefaultInstance() : protection_;
+          return protection_ == null ? trinsic.services.account.v1.AccountOuterClass.TokenProtection.getDefaultInstance() : protection_;
         } else {
           return protectionBuilder_.getMessage();
         }
@@ -4032,7 +4032,7 @@ public final class Account {
        *
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
-      public Builder setProtection(trinsic.services.account.v1.Account.TokenProtection value) {
+      public Builder setProtection(trinsic.services.account.v1.AccountOuterClass.TokenProtection value) {
         if (protectionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4055,7 +4055,7 @@ public final class Account {
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
       public Builder setProtection(
-          trinsic.services.account.v1.Account.TokenProtection.Builder builderForValue) {
+          trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder builderForValue) {
         if (protectionBuilder_ == null) {
           protection_ = builderForValue.build();
           onChanged();
@@ -4074,11 +4074,11 @@ public final class Account {
        *
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
-      public Builder mergeProtection(trinsic.services.account.v1.Account.TokenProtection value) {
+      public Builder mergeProtection(trinsic.services.account.v1.AccountOuterClass.TokenProtection value) {
         if (protectionBuilder_ == null) {
           if (protection_ != null) {
             protection_ =
-              trinsic.services.account.v1.Account.TokenProtection.newBuilder(protection_).mergeFrom(value).buildPartial();
+              trinsic.services.account.v1.AccountOuterClass.TokenProtection.newBuilder(protection_).mergeFrom(value).buildPartial();
           } else {
             protection_ = value;
           }
@@ -4118,7 +4118,7 @@ public final class Account {
        *
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
-      public trinsic.services.account.v1.Account.TokenProtection.Builder getProtectionBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder getProtectionBuilder() {
         
         onChanged();
         return getProtectionFieldBuilder().getBuilder();
@@ -4132,12 +4132,12 @@ public final class Account {
        *
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
-      public trinsic.services.account.v1.Account.TokenProtectionOrBuilder getProtectionOrBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder getProtectionOrBuilder() {
         if (protectionBuilder_ != null) {
           return protectionBuilder_.getMessageOrBuilder();
         } else {
           return protection_ == null ?
-              trinsic.services.account.v1.Account.TokenProtection.getDefaultInstance() : protection_;
+              trinsic.services.account.v1.AccountOuterClass.TokenProtection.getDefaultInstance() : protection_;
         }
       }
       /**
@@ -4150,11 +4150,11 @@ public final class Account {
        * <code>.services.account.v1.TokenProtection protection = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.TokenProtection, trinsic.services.account.v1.Account.TokenProtection.Builder, trinsic.services.account.v1.Account.TokenProtectionOrBuilder> 
+          trinsic.services.account.v1.AccountOuterClass.TokenProtection, trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder, trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder> 
           getProtectionFieldBuilder() {
         if (protectionBuilder_ == null) {
           protectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.account.v1.Account.TokenProtection, trinsic.services.account.v1.Account.TokenProtection.Builder, trinsic.services.account.v1.Account.TokenProtectionOrBuilder>(
+              trinsic.services.account.v1.AccountOuterClass.TokenProtection, trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder, trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder>(
                   getProtection(),
                   getParentForChildren(),
                   isClean());
@@ -4179,12 +4179,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.AccountProfile)
-    private static final trinsic.services.account.v1.Account.AccountProfile DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.AccountProfile DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.AccountProfile();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.AccountProfile();
     }
 
-    public static trinsic.services.account.v1.Account.AccountProfile getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.AccountProfile getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4209,7 +4209,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountProfile getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfile getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4247,7 +4247,7 @@ public final class Account {
      * <code>.services.account.v1.ConfirmationMethod method = 2;</code>
      * @return The method.
      */
-    trinsic.services.account.v1.Account.ConfirmationMethod getMethod();
+    trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getMethod();
   }
   /**
    * <pre>
@@ -4331,15 +4331,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_TokenProtection_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_TokenProtection_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_TokenProtection_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_TokenProtection_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.TokenProtection.class, trinsic.services.account.v1.Account.TokenProtection.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.TokenProtection.class, trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder.class);
     }
 
     public static final int ENABLED_FIELD_NUMBER = 1;
@@ -4379,10 +4379,10 @@ public final class Account {
      * <code>.services.account.v1.ConfirmationMethod method = 2;</code>
      * @return The method.
      */
-    @java.lang.Override public trinsic.services.account.v1.Account.ConfirmationMethod getMethod() {
+    @java.lang.Override public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getMethod() {
       @SuppressWarnings("deprecation")
-      trinsic.services.account.v1.Account.ConfirmationMethod result = trinsic.services.account.v1.Account.ConfirmationMethod.valueOf(method_);
-      return result == null ? trinsic.services.account.v1.Account.ConfirmationMethod.UNRECOGNIZED : result;
+      trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(method_);
+      return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4402,7 +4402,7 @@ public final class Account {
       if (enabled_ != false) {
         output.writeBool(1, enabled_);
       }
-      if (method_ != trinsic.services.account.v1.Account.ConfirmationMethod.None.getNumber()) {
+      if (method_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         output.writeEnum(2, method_);
       }
       unknownFields.writeTo(output);
@@ -4418,7 +4418,7 @@ public final class Account {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, enabled_);
       }
-      if (method_ != trinsic.services.account.v1.Account.ConfirmationMethod.None.getNumber()) {
+      if (method_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, method_);
       }
@@ -4432,10 +4432,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.TokenProtection)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.TokenProtection)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.TokenProtection other = (trinsic.services.account.v1.Account.TokenProtection) obj;
+      trinsic.services.account.v1.AccountOuterClass.TokenProtection other = (trinsic.services.account.v1.AccountOuterClass.TokenProtection) obj;
 
       if (getEnabled()
           != other.getEnabled()) return false;
@@ -4461,69 +4461,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.TokenProtection parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4536,7 +4536,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.TokenProtection prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.TokenProtection prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4561,21 +4561,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.TokenProtection)
-        trinsic.services.account.v1.Account.TokenProtectionOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.TokenProtectionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_TokenProtection_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_TokenProtection_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_TokenProtection_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_TokenProtection_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.TokenProtection.class, trinsic.services.account.v1.Account.TokenProtection.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.TokenProtection.class, trinsic.services.account.v1.AccountOuterClass.TokenProtection.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.TokenProtection.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.TokenProtection.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4603,17 +4603,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_TokenProtection_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_TokenProtection_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.TokenProtection getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.TokenProtection.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtection getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.TokenProtection.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.TokenProtection build() {
-        trinsic.services.account.v1.Account.TokenProtection result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtection build() {
+        trinsic.services.account.v1.AccountOuterClass.TokenProtection result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4621,8 +4621,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.TokenProtection buildPartial() {
-        trinsic.services.account.v1.Account.TokenProtection result = new trinsic.services.account.v1.Account.TokenProtection(this);
+      public trinsic.services.account.v1.AccountOuterClass.TokenProtection buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.TokenProtection result = new trinsic.services.account.v1.AccountOuterClass.TokenProtection(this);
         result.enabled_ = enabled_;
         result.method_ = method_;
         onBuilt();
@@ -4663,16 +4663,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.TokenProtection) {
-          return mergeFrom((trinsic.services.account.v1.Account.TokenProtection)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.TokenProtection) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.TokenProtection)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.TokenProtection other) {
-        if (other == trinsic.services.account.v1.Account.TokenProtection.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.TokenProtection other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.TokenProtection.getDefaultInstance()) return this;
         if (other.getEnabled() != false) {
           setEnabled(other.getEnabled());
         }
@@ -4694,11 +4694,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.TokenProtection parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.TokenProtection parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.TokenProtection) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.TokenProtection) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4790,10 +4790,10 @@ public final class Account {
        * @return The method.
        */
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ConfirmationMethod getMethod() {
+      public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getMethod() {
         @SuppressWarnings("deprecation")
-        trinsic.services.account.v1.Account.ConfirmationMethod result = trinsic.services.account.v1.Account.ConfirmationMethod.valueOf(method_);
-        return result == null ? trinsic.services.account.v1.Account.ConfirmationMethod.UNRECOGNIZED : result;
+        trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(method_);
+        return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
       }
       /**
        * <pre>
@@ -4804,7 +4804,7 @@ public final class Account {
        * @param value The method to set.
        * @return This builder for chaining.
        */
-      public Builder setMethod(trinsic.services.account.v1.Account.ConfirmationMethod value) {
+      public Builder setMethod(trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -4844,12 +4844,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.TokenProtection)
-    private static final trinsic.services.account.v1.Account.TokenProtection DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.TokenProtection DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.TokenProtection();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.TokenProtection();
     }
 
-    public static trinsic.services.account.v1.Account.TokenProtection getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.TokenProtection getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4874,7 +4874,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.TokenProtection getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.TokenProtection getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4950,15 +4950,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoRequest_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoRequest_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.InfoRequest.class, trinsic.services.account.v1.Account.InfoRequest.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.InfoRequest.class, trinsic.services.account.v1.AccountOuterClass.InfoRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4994,10 +4994,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.InfoRequest)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.InfoRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.InfoRequest other = (trinsic.services.account.v1.Account.InfoRequest) obj;
+      trinsic.services.account.v1.AccountOuterClass.InfoRequest other = (trinsic.services.account.v1.AccountOuterClass.InfoRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -5015,69 +5015,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5090,7 +5090,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.InfoRequest prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.InfoRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5111,21 +5111,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.InfoRequest)
-        trinsic.services.account.v1.Account.InfoRequestOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.InfoRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoRequest_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.InfoRequest.class, trinsic.services.account.v1.Account.InfoRequest.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.InfoRequest.class, trinsic.services.account.v1.AccountOuterClass.InfoRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.InfoRequest.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.InfoRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5149,17 +5149,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoRequest getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.InfoRequest.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.InfoRequest getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.InfoRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoRequest build() {
-        trinsic.services.account.v1.Account.InfoRequest result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.InfoRequest build() {
+        trinsic.services.account.v1.AccountOuterClass.InfoRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5167,8 +5167,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoRequest buildPartial() {
-        trinsic.services.account.v1.Account.InfoRequest result = new trinsic.services.account.v1.Account.InfoRequest(this);
+      public trinsic.services.account.v1.AccountOuterClass.InfoRequest buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.InfoRequest result = new trinsic.services.account.v1.AccountOuterClass.InfoRequest(this);
         onBuilt();
         return result;
       }
@@ -5207,16 +5207,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.InfoRequest) {
-          return mergeFrom((trinsic.services.account.v1.Account.InfoRequest)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.InfoRequest) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.InfoRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.InfoRequest other) {
-        if (other == trinsic.services.account.v1.Account.InfoRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.InfoRequest other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.InfoRequest.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5232,11 +5232,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.InfoRequest parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.InfoRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.InfoRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.InfoRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5262,12 +5262,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.InfoRequest)
-    private static final trinsic.services.account.v1.Account.InfoRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.InfoRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.InfoRequest();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.InfoRequest();
     }
 
-    public static trinsic.services.account.v1.Account.InfoRequest getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.InfoRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5292,7 +5292,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.InfoRequest getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.InfoRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5321,7 +5321,7 @@ public final class Account {
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      * @return The details.
      */
-    trinsic.services.account.v1.Account.AccountDetails getDetails();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails();
     /**
      * <pre>
      * The account details associated with
@@ -5330,7 +5330,7 @@ public final class Account {
      *
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      */
-    trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
   }
   /**
    * Protobuf type {@code services.account.v1.InfoResponse}
@@ -5378,11 +5378,11 @@ public final class Account {
               done = true;
               break;
             case 10: {
-              trinsic.services.account.v1.Account.AccountDetails.Builder subBuilder = null;
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder subBuilder = null;
               if (details_ != null) {
                 subBuilder = details_.toBuilder();
               }
-              details_ = input.readMessage(trinsic.services.account.v1.Account.AccountDetails.parser(), extensionRegistry);
+              details_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountDetails.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(details_);
                 details_ = subBuilder.buildPartial();
@@ -5411,19 +5411,19 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoResponse_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoResponse_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.InfoResponse.class, trinsic.services.account.v1.Account.InfoResponse.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.InfoResponse.class, trinsic.services.account.v1.AccountOuterClass.InfoResponse.Builder.class);
     }
 
     public static final int DETAILS_FIELD_NUMBER = 1;
-    private trinsic.services.account.v1.Account.AccountDetails details_;
+    private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
     /**
      * <pre>
      * The account details associated with
@@ -5447,8 +5447,8 @@ public final class Account {
      * @return The details.
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountDetails getDetails() {
-      return details_ == null ? trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+      return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
     }
     /**
      * <pre>
@@ -5459,7 +5459,7 @@ public final class Account {
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder() {
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
       return getDetails();
     }
 
@@ -5503,10 +5503,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.InfoResponse)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.InfoResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.InfoResponse other = (trinsic.services.account.v1.Account.InfoResponse) obj;
+      trinsic.services.account.v1.AccountOuterClass.InfoResponse other = (trinsic.services.account.v1.AccountOuterClass.InfoResponse) obj;
 
       if (hasDetails() != other.hasDetails()) return false;
       if (hasDetails()) {
@@ -5533,69 +5533,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.InfoResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5608,7 +5608,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.InfoResponse prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.InfoResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5629,21 +5629,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.InfoResponse)
-        trinsic.services.account.v1.Account.InfoResponseOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.InfoResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoResponse_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.InfoResponse.class, trinsic.services.account.v1.Account.InfoResponse.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.InfoResponse.class, trinsic.services.account.v1.AccountOuterClass.InfoResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.InfoResponse.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.InfoResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5673,17 +5673,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_InfoResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_InfoResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoResponse getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.InfoResponse.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.InfoResponse getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.InfoResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoResponse build() {
-        trinsic.services.account.v1.Account.InfoResponse result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.InfoResponse build() {
+        trinsic.services.account.v1.AccountOuterClass.InfoResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5691,8 +5691,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.InfoResponse buildPartial() {
-        trinsic.services.account.v1.Account.InfoResponse result = new trinsic.services.account.v1.Account.InfoResponse(this);
+      public trinsic.services.account.v1.AccountOuterClass.InfoResponse buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.InfoResponse result = new trinsic.services.account.v1.AccountOuterClass.InfoResponse(this);
         if (detailsBuilder_ == null) {
           result.details_ = details_;
         } else {
@@ -5736,16 +5736,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.InfoResponse) {
-          return mergeFrom((trinsic.services.account.v1.Account.InfoResponse)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.InfoResponse) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.InfoResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.InfoResponse other) {
-        if (other == trinsic.services.account.v1.Account.InfoResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.InfoResponse other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.InfoResponse.getDefaultInstance()) return this;
         if (other.hasDetails()) {
           mergeDetails(other.getDetails());
         }
@@ -5764,11 +5764,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.InfoResponse parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.InfoResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.InfoResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.InfoResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5778,9 +5778,9 @@ public final class Account {
         return this;
       }
 
-      private trinsic.services.account.v1.Account.AccountDetails details_;
+      private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder> detailsBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> detailsBuilder_;
       /**
        * <pre>
        * The account details associated with
@@ -5802,9 +5802,9 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        * @return The details.
        */
-      public trinsic.services.account.v1.Account.AccountDetails getDetails() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
         if (detailsBuilder_ == null) {
-          return details_ == null ? trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+          return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         } else {
           return detailsBuilder_.getMessage();
         }
@@ -5817,7 +5817,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public Builder setDetails(trinsic.services.account.v1.Account.AccountDetails value) {
+      public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5839,7 +5839,7 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
       public Builder setDetails(
-          trinsic.services.account.v1.Account.AccountDetails.Builder builderForValue) {
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue) {
         if (detailsBuilder_ == null) {
           details_ = builderForValue.build();
           onChanged();
@@ -5857,11 +5857,11 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public Builder mergeDetails(trinsic.services.account.v1.Account.AccountDetails value) {
+      public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
           if (details_ != null) {
             details_ =
-              trinsic.services.account.v1.Account.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
           } else {
             details_ = value;
           }
@@ -5899,7 +5899,7 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public trinsic.services.account.v1.Account.AccountDetails.Builder getDetailsBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder() {
         
         onChanged();
         return getDetailsFieldBuilder().getBuilder();
@@ -5912,12 +5912,12 @@ public final class Account {
        *
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
-      public trinsic.services.account.v1.Account.AccountDetailsOrBuilder getDetailsOrBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
         if (detailsBuilder_ != null) {
           return detailsBuilder_.getMessageOrBuilder();
         } else {
           return details_ == null ?
-              trinsic.services.account.v1.Account.AccountDetails.getDefaultInstance() : details_;
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         }
       }
       /**
@@ -5929,11 +5929,11 @@ public final class Account {
        * <code>.services.account.v1.AccountDetails details = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder> 
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> 
           getDetailsFieldBuilder() {
         if (detailsBuilder_ == null) {
           detailsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.account.v1.Account.AccountDetails, trinsic.services.account.v1.Account.AccountDetails.Builder, trinsic.services.account.v1.Account.AccountDetailsOrBuilder>(
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder>(
                   getDetails(),
                   getParentForChildren(),
                   isClean());
@@ -5958,12 +5958,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.InfoResponse)
-    private static final trinsic.services.account.v1.Account.InfoResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.InfoResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.InfoResponse();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.InfoResponse();
     }
 
-    public static trinsic.services.account.v1.Account.InfoResponse getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.InfoResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5988,7 +5988,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.InfoResponse getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.InfoResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6064,15 +6064,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesRequest_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.ListDevicesRequest.class, trinsic.services.account.v1.Account.ListDevicesRequest.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.class, trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6108,10 +6108,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.ListDevicesRequest)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.ListDevicesRequest other = (trinsic.services.account.v1.Account.ListDevicesRequest) obj;
+      trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest other = (trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -6129,69 +6129,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6204,7 +6204,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.ListDevicesRequest prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6225,21 +6225,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.ListDevicesRequest)
-        trinsic.services.account.v1.Account.ListDevicesRequestOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.ListDevicesRequest.class, trinsic.services.account.v1.Account.ListDevicesRequest.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.class, trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.ListDevicesRequest.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6263,17 +6263,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesRequest getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.ListDevicesRequest.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesRequest build() {
-        trinsic.services.account.v1.Account.ListDevicesRequest result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest build() {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6281,8 +6281,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesRequest buildPartial() {
-        trinsic.services.account.v1.Account.ListDevicesRequest result = new trinsic.services.account.v1.Account.ListDevicesRequest(this);
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest result = new trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest(this);
         onBuilt();
         return result;
       }
@@ -6321,16 +6321,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.ListDevicesRequest) {
-          return mergeFrom((trinsic.services.account.v1.Account.ListDevicesRequest)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.ListDevicesRequest other) {
-        if (other == trinsic.services.account.v1.Account.ListDevicesRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6346,11 +6346,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.ListDevicesRequest parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.ListDevicesRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6376,12 +6376,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.ListDevicesRequest)
-    private static final trinsic.services.account.v1.Account.ListDevicesRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.ListDevicesRequest();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest();
     }
 
-    public static trinsic.services.account.v1.Account.ListDevicesRequest getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6406,7 +6406,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.ListDevicesRequest getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6482,15 +6482,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesResponse_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.ListDevicesResponse.class, trinsic.services.account.v1.Account.ListDevicesResponse.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.class, trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6526,10 +6526,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.ListDevicesResponse)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.ListDevicesResponse other = (trinsic.services.account.v1.Account.ListDevicesResponse) obj;
+      trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse other = (trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -6547,69 +6547,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.ListDevicesResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6622,7 +6622,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.ListDevicesResponse prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6643,21 +6643,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.ListDevicesResponse)
-        trinsic.services.account.v1.Account.ListDevicesResponseOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.ListDevicesResponse.class, trinsic.services.account.v1.Account.ListDevicesResponse.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.class, trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.ListDevicesResponse.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6681,17 +6681,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_ListDevicesResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_ListDevicesResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesResponse getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.ListDevicesResponse.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesResponse build() {
-        trinsic.services.account.v1.Account.ListDevicesResponse result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse build() {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6699,8 +6699,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.ListDevicesResponse buildPartial() {
-        trinsic.services.account.v1.Account.ListDevicesResponse result = new trinsic.services.account.v1.Account.ListDevicesResponse(this);
+      public trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse result = new trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse(this);
         onBuilt();
         return result;
       }
@@ -6739,16 +6739,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.ListDevicesResponse) {
-          return mergeFrom((trinsic.services.account.v1.Account.ListDevicesResponse)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.ListDevicesResponse other) {
-        if (other == trinsic.services.account.v1.Account.ListDevicesResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6764,11 +6764,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.ListDevicesResponse parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.ListDevicesResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6794,12 +6794,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.ListDevicesResponse)
-    private static final trinsic.services.account.v1.Account.ListDevicesResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.ListDevicesResponse();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse();
     }
 
-    public static trinsic.services.account.v1.Account.ListDevicesResponse getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6824,7 +6824,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.ListDevicesResponse getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.ListDevicesResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6900,15 +6900,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.RevokeDeviceRequest.class, trinsic.services.account.v1.Account.RevokeDeviceRequest.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.class, trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6944,10 +6944,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.RevokeDeviceRequest)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.RevokeDeviceRequest other = (trinsic.services.account.v1.Account.RevokeDeviceRequest) obj;
+      trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest other = (trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -6965,69 +6965,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7040,7 +7040,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.RevokeDeviceRequest prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7061,21 +7061,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.RevokeDeviceRequest)
-        trinsic.services.account.v1.Account.RevokeDeviceRequestOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.RevokeDeviceRequest.class, trinsic.services.account.v1.Account.RevokeDeviceRequest.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.class, trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.RevokeDeviceRequest.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7099,17 +7099,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceRequest getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.RevokeDeviceRequest.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceRequest build() {
-        trinsic.services.account.v1.Account.RevokeDeviceRequest result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest build() {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7117,8 +7117,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceRequest buildPartial() {
-        trinsic.services.account.v1.Account.RevokeDeviceRequest result = new trinsic.services.account.v1.Account.RevokeDeviceRequest(this);
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest result = new trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest(this);
         onBuilt();
         return result;
       }
@@ -7157,16 +7157,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.RevokeDeviceRequest) {
-          return mergeFrom((trinsic.services.account.v1.Account.RevokeDeviceRequest)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.RevokeDeviceRequest other) {
-        if (other == trinsic.services.account.v1.Account.RevokeDeviceRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7182,11 +7182,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.RevokeDeviceRequest parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.RevokeDeviceRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7212,12 +7212,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.RevokeDeviceRequest)
-    private static final trinsic.services.account.v1.Account.RevokeDeviceRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.RevokeDeviceRequest();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest();
     }
 
-    public static trinsic.services.account.v1.Account.RevokeDeviceRequest getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7242,7 +7242,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.RevokeDeviceRequest getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7318,15 +7318,15 @@ public final class Account {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.Account.RevokeDeviceResponse.class, trinsic.services.account.v1.Account.RevokeDeviceResponse.Builder.class);
+              trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.class, trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7362,10 +7362,10 @@ public final class Account {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.account.v1.Account.RevokeDeviceResponse)) {
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.account.v1.Account.RevokeDeviceResponse other = (trinsic.services.account.v1.Account.RevokeDeviceResponse) obj;
+      trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse other = (trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7383,69 +7383,69 @@ public final class Account {
       return hash;
     }
 
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(byte[] data)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseDelimitedFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse parseFrom(
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7458,7 +7458,7 @@ public final class Account {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.account.v1.Account.RevokeDeviceResponse prototype) {
+    public static Builder newBuilder(trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7479,21 +7479,21 @@ public final class Account {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.account.v1.RevokeDeviceResponse)
-        trinsic.services.account.v1.Account.RevokeDeviceResponseOrBuilder {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.account.v1.Account.RevokeDeviceResponse.class, trinsic.services.account.v1.Account.RevokeDeviceResponse.Builder.class);
+                trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.class, trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.account.v1.Account.RevokeDeviceResponse.newBuilder()
+      // Construct using trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7517,17 +7517,17 @@ public final class Account {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.account.v1.Account.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
+        return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_RevokeDeviceResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceResponse getDefaultInstanceForType() {
-        return trinsic.services.account.v1.Account.RevokeDeviceResponse.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceResponse build() {
-        trinsic.services.account.v1.Account.RevokeDeviceResponse result = buildPartial();
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse build() {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7535,8 +7535,8 @@ public final class Account {
       }
 
       @java.lang.Override
-      public trinsic.services.account.v1.Account.RevokeDeviceResponse buildPartial() {
-        trinsic.services.account.v1.Account.RevokeDeviceResponse result = new trinsic.services.account.v1.Account.RevokeDeviceResponse(this);
+      public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse result = new trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse(this);
         onBuilt();
         return result;
       }
@@ -7575,16 +7575,16 @@ public final class Account {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.account.v1.Account.RevokeDeviceResponse) {
-          return mergeFrom((trinsic.services.account.v1.Account.RevokeDeviceResponse)other);
+        if (other instanceof trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse) {
+          return mergeFrom((trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.account.v1.Account.RevokeDeviceResponse other) {
-        if (other == trinsic.services.account.v1.Account.RevokeDeviceResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse other) {
+        if (other == trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7600,11 +7600,11 @@ public final class Account {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.account.v1.Account.RevokeDeviceResponse parsedMessage = null;
+        trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.account.v1.Account.RevokeDeviceResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7630,12 +7630,12 @@ public final class Account {
     }
 
     // @@protoc_insertion_point(class_scope:services.account.v1.RevokeDeviceResponse)
-    private static final trinsic.services.account.v1.Account.RevokeDeviceResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.account.v1.Account.RevokeDeviceResponse();
+      DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse();
     }
 
-    public static trinsic.services.account.v1.Account.RevokeDeviceResponse getDefaultInstance() {
+    public static trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7660,7 +7660,7 @@ public final class Account {
     }
 
     @java.lang.Override
-    public trinsic.services.account.v1.Account.RevokeDeviceResponse getDefaultInstanceForType() {
+    public trinsic.services.account.v1.AccountOuterClass.RevokeDeviceResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7753,19 +7753,18 @@ public final class Account {
       "e\"\025\n\023RevokeDeviceRequest\"\026\n\024RevokeDevice" +
       "Response*R\n\022ConfirmationMethod\022\010\n\004None\020\000" +
       "\022\t\n\005Email\020\001\022\007\n\003Sms\020\002\022\023\n\017ConnectedDevice\020" +
-      "\003\022\t\n\005Other\020\n2\367\002\n\016AccountService\022Q\n\006SignI" +
-      "n\022\".services.account.v1.SignInRequest\032#." +
-      "services.account.v1.SignInResponse\022K\n\004In" +
-      "fo\022 .services.account.v1.InfoRequest\032!.s" +
-      "ervices.account.v1.InfoResponse\022`\n\013ListD" +
-      "evices\022\'.services.account.v1.ListDevices" +
-      "Request\032(.services.account.v1.ListDevice" +
-      "sResponse\022c\n\014RevokeDevice\022(.services.acc" +
-      "ount.v1.RevokeDeviceRequest\032).services.a" +
-      "ccount.v1.RevokeDeviceResponseBV\n\033trinsi" +
-      "c.services.account.v1Z\031github.com/trinsi" +
-      "c-id/sdk\252\002\033Trinsic.Services.Account.V1b\006" +
-      "proto3"
+      "\003\022\t\n\005Other\020\n2\360\002\n\007Account\022Q\n\006SignIn\022\".ser" +
+      "vices.account.v1.SignInRequest\032#.service" +
+      "s.account.v1.SignInResponse\022K\n\004Info\022 .se" +
+      "rvices.account.v1.InfoRequest\032!.services" +
+      ".account.v1.InfoResponse\022`\n\013ListDevices\022" +
+      "\'.services.account.v1.ListDevicesRequest" +
+      "\032(.services.account.v1.ListDevicesRespon" +
+      "se\022c\n\014RevokeDevice\022(.services.account.v1" +
+      ".RevokeDeviceRequest\032).services.account." +
+      "v1.RevokeDeviceResponseBV\n\033trinsic.servi" +
+      "ces.account.v1Z\031github.com/trinsic-id/sd" +
+      "k\252\002\033Trinsic.Services.Account.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

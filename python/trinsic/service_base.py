@@ -3,7 +3,7 @@ Base class and helper methods for the Service wrappers
 """
 import types
 from abc import ABC
-from typing import Union, Optional, Type, T
+from typing import Optional, Type, T, List
 
 from betterproto import Message, ServiceStub
 from grpclib.client import Channel
@@ -11,9 +11,9 @@ from grpclib.client import Channel
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
-from trinsic.trinsic_util import trinsic_production_config, create_channel
+from trinsic.trinsic_util import create_channel
 
-_skip_routes = ['/services.account.v1.AccountService/SignIn']
+_skip_routes = ["/services.account.v1.Account/SignIn"]
 
 
 def _update_metadata(route: str, service: "ServiceBase", metadata: "_MetadataLike",
@@ -31,13 +31,11 @@ class ServiceBase(ABC):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: Union[str, ServerConfig, Channel] = None):
-        if not server_config:
-            server_config = trinsic_production_config()
+                 server_config: ServerConfig):
         self.profile: AccountProfile = profile
+        self._server_config: ServerConfig = server_config
         self._channel: Channel = create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
-        # TODO - ServerConfiguration property?
 
     def __del__(self):
         self._channel.close()

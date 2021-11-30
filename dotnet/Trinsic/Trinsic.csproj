@@ -17,21 +17,21 @@
       <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
     </ItemGroup>
   </Target>
-  <PropertyGroup>
-    <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <DocumentationFile>Trinsic.xml</DocumentationFile>
-    <DocumentationMarkdown>..\..\docs\reference\dotnet.md</DocumentationMarkdown>
-    <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>
-  </PropertyGroup>
+<!--  <PropertyGroup>-->
+<!--    <GenerateDocumentationFile>false</GenerateDocumentationFile>-->
+<!--    <DocumentationFile>Trinsic.xml</DocumentationFile>-->
+<!--    <DocumentationMarkdown>..\..\docs\reference\dotnet.md</DocumentationMarkdown>-->
+<!--    <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>-->
+<!--  </PropertyGroup>-->
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
     <PackageReference Include="Blake3Core" Version="0.1.0" />
     <PackageReference Include="Multiformats.Base" Version="2.0.2" />
-    <PackageReference Include="Vsxmd" Version="1.4.5">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+<!--    <PackageReference Include="Vsxmd" Version="1.4.5">-->
+<!--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
+<!--      <PrivateAssets>all</PrivateAssets>-->
+<!--    </PackageReference>-->
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />

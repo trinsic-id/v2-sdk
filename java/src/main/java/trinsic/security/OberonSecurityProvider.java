@@ -7,7 +7,7 @@ import io.github.rctcwyvrn.blake3.Blake3;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 import java.time.Instant;
@@ -15,7 +15,7 @@ import java.util.Base64;
 
 public class OberonSecurityProvider implements ISecurityProvider {
     @Override
-    public String GetAuthHeader(Account.AccountProfile accountProfile, Message message) throws InvalidProtocolBufferException, DidException {
+    public String GetAuthHeader(AccountOuterClass.AccountProfile accountProfile, Message message) throws InvalidProtocolBufferException, DidException {
         if (accountProfile.hasProtection() && accountProfile.getProtection().getEnabled())
             throw new RuntimeException("the token must be unprotected before use.");
 
