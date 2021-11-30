@@ -90,6 +90,8 @@ async def vaccine_demo():
     # }
 
     wallet_service.close()
+    account_service.close()
+    credentials_service.close()
 
 
 if __name__ == "__main__":
