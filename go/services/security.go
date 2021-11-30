@@ -46,7 +46,8 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, messa
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("Oberon proof=%s,data=%s,nonce=%s",
+	return fmt.Sprintf("Oberon ver=%d,proof=%s,data=%s,nonce=%s",
+		1,
 		base64.URLEncoding.EncodeToString(proof.Proof),
 		base64.URLEncoding.EncodeToString(profile.AuthData),
 		base64.URLEncoding.EncodeToString(nonceBytes)), nil
