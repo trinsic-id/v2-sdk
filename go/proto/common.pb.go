@@ -7,7 +7,7 @@
 package sdk
 
 import (
-	okapiproto "github.com/trinsic-id/okapi/go/okapiproto"
+	okapiproto "github.com/trinsic-id/sdk/go/okapiproto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
