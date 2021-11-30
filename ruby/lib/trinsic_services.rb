@@ -12,6 +12,7 @@ require 'services/provider/v1/provider_services_pb'
 require 'services/verifiable-credentials/v1/verifiable-credentials_services_pb'
 require 'services/trust-registry/v1/trust-registry_services_pb'
 require 'services/common/v1/common_pb'
+require 'security'
 
 module Trinsic
 
@@ -22,106 +23,133 @@ module Trinsic
   TrustRegistry_V1 = Services::Trustregistry::V1
   Wallet_V1 = Services::Universalwallet::V1
 
+  def self.trinsic_test_server
+    server_endpoint = ENV["TEST_SERVER_ENDPOINT"]
+    server_port = ENV["TEST_SERVER_PORT"] || "443"
+    server_usetls = ENV["TEST_SERVER_USETLS"] || "true"
+    Common_V1::ServerConfig.new(:endpoint => server_endpoint, :port => server_port.to_i, :use_tls => server_usetls.downcase == "true")
+  end
+
+  def self.trinsic_prod_server
+    Common_V1::ServerConfig.new(:endpoint => "prod.trinsic.cloud", :port => 443, :use_tls => true)
+  end
+
   class Error < StandardError; end
 
   class ServiceBase
-    def initialize
-      @profile = nil
-      @configuration = Common_V1::ServerConfig.new(:endpoint => "prod.trinsic.cloud", :port => 443, :use_tls => true )
+    def initialize(account_profile, server_config)
+      @profile = account_profile
+      @configuration = server_config || trinsic_prod_server
       @security_provider = OberonSecurityProvider.new
     end
 
-    def metadata
-      if @cap_invocation == nil
-        raise Error.new("Profile not set")
+    def metadata(message)
+      if @profile == nil
+        raise Error.new("Cannot call authenticated endpoint: profile must be set")
       end
-      { 'capability-invocation' => @cap_invocation }
+      { 'authorization' => @security_provider.get_auth_header(@profile, message) }
     end
 
-    def set_profile(profile)
-      capability_dict = { "@context" => "https://w3id.org/security/v2",
-                          "invocationTarget" => profile.wallet_id,
-                          "proof" => {
-                            "proofPurpose" => "capabilityInvocation",
-                            "created" => Time.now.iso8601,
-                            "capability" => profile.capability
-                          } }
-      request = Okapi::Proofs::CreateProofRequest.new(:key => Okapi::Keys::JsonWebKey.decode(profile.invoker_jwk),
-                                                      :document => Google::Protobuf::Struct.from_hash(capability_dict),
-                                                      :suite => Okapi::Proofs::LdSuite::JcsEd25519Signature2020)
-      proof_response = Okapi::LdProofs::create(request)
-      proof_json = Google::Protobuf::Struct.encode_json(proof_response.signed_document)
-      @cap_invocation = Base64.strict_encode64(proof_json)
+    def profile=(new_profile)
+      @profile = new_profile
     end
 
-    def parse_url(url)
+    def profile
+      @profile
+    end
+
+    def get_url
+      "#{@configuration.endpoint}:#{@configuration.port}"
+    end
+
+    def self.parse_url(url)
+      if url.is_a? Common_V1::ServerConfig
+        return url
+      end
       uri = URI.parse(url)
-      grpc_uri = "#{uri.host}:#{uri.port}"
-      unless url.include? grpc_uri
-        raise Exception("Port not provided")
-      end
-      unless uri.scheme == "http"
-        throw("https traffic not yet supported")
-      end
-      grpc_uri
+      Common_V1::ServerConfig.new(:endpoint => uri.host, :port => uri.port.to_i, :use_tls => uri.scheme != "http")
     end
   end
 
   class AccountService < ServiceBase
-    include Concurrent::Async
 
-    def initialize(service_address)
-      @service_address = (service_address || "http://localhost:5000")
+    def initialize(account_profile, server_config)
+      super
+      @client = Account_V1::Account::Stub.new(get_url, :this_channel_is_insecure)
+    end
 
-      grpc_url = parse_url(@service_address)
-      @client = Account_V1::Account::Stub.new(grpc_url, :this_channel_is_insecure)
+    def sign_in(account_details)
+      request = Account_V1::SignInRequest.new(:details => account_details || Account_V1::AccountDetails.new)
+      response = @client.sign_in(request)
+      response
+    end
+
+    def unprotect(profile, security_code)
+      cloned = profile.clone
+      request = Okapi::Security::V1::UnBlindOberonTokenRequest.new(:token => cloned.auth_token)
+      request.blinding += [security_code]
+      result = Okapi::Oberon.unblind_token request
+      cloned.auth_token = result.token
+      cloned.protection = Account_V1::TokenProtection.new(:enabled => false, :method => Account_V1::ConfirmationMethod.None)
+      cloned
+    end
+
+    def protect(profile, security_code)
+      cloned = profile.clone
+      request = Okapi::Security::V1::BlindOberonTokenRequest.new(:token => cloned.auth_token)
+      request.blinding += [security_code]
+      result = Okapi::Oberon.blind_token request
+      cloned.auth_token = result.token
+      cloned.protection = Account_V1::TokenProtection.new(:enabled => true, :method => Account_V1::ConfirmationMethod.Other)
+      cloned
+    end
+
+    def get_info
+      request = Account_V1::InfoRequest.new
+      response = @client.info(request, metadata: metadata(request))
+      response
     end
   end
 
   class CredentialService < ServiceBase
-    include Concurrent::Async
 
-    def initialize(service_address)
-      @service_address = (service_address || "http://localhost:5000")
-
-      grpc_url = parse_url(@service_address)
-      @credential_client = Credentials_V1::Credential::Stub.new(grpc_url, :this_channel_is_insecure)
+    def initialize(account_profile, server_config)
+      super
+      @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def issue_credential(document)
       payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(document))
       request = Credentials_V1::IssueRequest.new(:document => payload)
-      response = @credential_client.issue(request, metadata: self.metadata)
+      response = client.issue(request, metadata: self.metadata(request))
       JSON.parse(response.document.json_string)
     end
 
     def send_document(document, email)
       request = Credentials_V1::SendRequest.new(:email => email,
                                                 :document => Common_V1::JsonPayload.new(:json_string => JSON.generate(document)))
-      @credential_client.send(request, metadata: metadata)
+      client.send(request, metadata: metadata(request))
     end
 
     def create_proof(document_id, reveal_document)
       payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(reveal_document))
       request = Credentials_V1::CreateProofRequest.new(:document_id => document_id,
                                                        :reveal_document => payload)
-      JSON.parse(@credential_client.create_proof(request, metadata: metadata).proof_document.json_string)
+      JSON.parse(client.create_proof(request, metadata: metadata(request)).proof_document.json_string)
     end
 
     def verify_proof(proof_document)
       payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(proof_document))
       request = Credentials_V1::VerifyProofRequest.new(:proof_document => payload)
-      @credential_client.verify_proof(request, metadata: metadata).valid
+      client.verify_proof(request, metadata: metadata(request)).valid
     end
   end
 
   class ProviderService < ServiceBase
-    include Concurrent::Async
 
-    def initialize(service_address)
-      @service_address = (service_address || "http://localhost:5000")
-      grpc_url = parse_url(@service_address)
-      @provider_client = Provider_V1::Provider::Stub.new(grpc_url, :this_channel_is_insecure)
+    def initialize(account_profile, server_config)
+      super
+      @provider_client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def invite_participant(request)
@@ -136,76 +164,78 @@ module Trinsic
   end
 
   class TrustRegistryService < ServiceBase
-    include Concurrent::Async
 
-    def initialize(service_address)
-      @service_address = (service_address || "http://localhost:5000")
-      grpc_url = parse_url(@service_address)
-      @trust_reg_client = TrustRegistry_V1::TrustRegistry::Stub.new(grpc_url, :this_channel_is_insecure)
+    def initialize(account_profile, server_config)
+      super
+      @trust_reg_client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def register_governance_framework(governance_framework, description)
       # TODO - verify uri
-      @trust_reg_client.add_framework(TrustRegistry_V1::AddFrameworkRequest.new(:governance_framework => governance_framework,
-                                                                                :description => description), metadata: metadata)
+      request = TrustRegistry_V1::AddFrameworkRequest.new(:governance_framework => governance_framework,
+                                                          :description => description)
+      @trust_reg_client.add_framework(request, metadata: metadata(request))
     end
 
     def register_issuer(issuer_did, credential_type, governance_framework, valid_from, valid_until)
-      @trust_reg_client.register_issuer(TrustRegistry_V1::RegisterIssuerRequest.new(:did_uri => issuer_did,
-                                                                                    :credential_type_uri => credential_type,
-                                                                                    :governance_framework_uri => governance_framework,
-                                                                                    :valid_from_utc => valid_from.to_time.to_i,
-                                                                                    :valid_until_utc => valid_until.to_time.to_i), metadata: metadata)
+      request = TrustRegistry_V1::RegisterIssuerRequest.new(:did_uri => issuer_did,
+                                                            :credential_type_uri => credential_type,
+                                                            :governance_framework_uri => governance_framework,
+                                                            :valid_from_utc => valid_from.to_time.to_i,
+                                                            :valid_until_utc => valid_until.to_time.to_i)
+      @trust_reg_client.register_issuer(request, metadata: metadata(request))
     end
 
     def register_verifier(verifier_did, presentation_type, governance_framework, valid_from, valid_until)
-      @trust_reg_client.register_verifier(TrustRegistry_V1::RegisterVerifierRequest.new(:did_uri => verifier_did,
-                                                                                        :presentation_type_uri => presentation_type,
-                                                                                        :governance_framework_uri => governance_framework,
-                                                                                        :valid_from_utc => valid_from.to_time.to_i,
-                                                                                        :valid_until_utc => valid_until.to_time.to_i), metadata: metadata)
+      request = TrustRegistry_V1::RegisterVerifierRequest.new(:did_uri => verifier_did,
+                                                              :presentation_type_uri => presentation_type,
+                                                              :governance_framework_uri => governance_framework,
+                                                              :valid_from_utc => valid_from.to_time.to_i,
+                                                              :valid_until_utc => valid_until.to_time.to_i)
+      @trust_reg_client.register_verifier(request, metadata: metadata(request))
     end
 
     def check_issuer_status(issuer_did, presentation_type, governance_framework)
-      response = @trust_reg_client.check_issuer_status(TrustRegistry_V1::CheckIssuerStatusRequest.new(:did_uri => issuer_did,
-                                                                                                      :presentation_type_uri => presentation_type,
-                                                                                                      :governance_framework_uri => governance_framework), metadata: metadata)
+      request = TrustRegistry_V1::CheckIssuerStatusRequest.new(:did_uri => issuer_did,
+                                                               :presentation_type_uri => presentation_type,
+                                                               :governance_framework_uri => governance_framework)
+      response = @trust_reg_client.check_issuer_status(request, metadata: metadata(request))
       response.status
     end
 
     def check_verifier_status(verifier_did, presentation_type, governance_framework)
-      response = @trust_reg_client.check_verifier_status(TrustRegistry_V1::CheckVerifierStatusRequest.new(:did_uri => verifier_did,
-                                                                                                          :presentation_type_uri => presentation_type,
-                                                                                                          :governance_framework_uri => governance_framework), metadata: metadata)
+      request = TrustRegistry_V1::CheckVerifierStatusRequest.new(:did_uri => verifier_did,
+                                                                 :presentation_type_uri => presentation_type,
+                                                                 :governance_framework_uri => governance_framework)
+      response = @trust_reg_client.check_verifier_status(request, metadata: metadata(request))
       response.status
     end
 
     def search_registry(query)
       query = query || "SELECT * FROM c"
-      response = @trust_reg_client.search_registry(TrustRegistry_V1::SearchRegistryRequest.new(:query => query, :options => Common_V1::RequestOptions(:response_json_format => Common_V1::JsonFormat.protobuf)), metadata: metadata)
+      request = TrustRegistry_V1::SearchRegistryRequest.new(:query => query, :options => Common_V1::RequestOptions(:response_json_format => Common_V1::JsonFormat.protobuf))
+      response = @trust_reg_client.search_registry(request, metadata: metadata(request))
       # TODO cast to dictionary object .map { |x| x.json_struct.  }
       response.items
     end
   end
 
   class WalletService < ServiceBase
-    include Concurrent::Async
 
-    def initialize(service_address)
-      @service_address = (service_address || "http://localhost:5000")
-
-      grpc_url = parse_url(@service_address)
-      @wallet_client = Wallet_V1::Wallet::Stub.new(grpc_url, :this_channel_is_insecure)
+    def initialize(account_profile, server_config)
+      super
+      @wallet_client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def search(query)
-      @wallet_client.search(query, metadata: metadata)
+      request = Wallet_V1::SearchRequest.new(:query => query)
+      @wallet_client.search(request, metadata: metadata(request))
     end
 
     def insert_item(item)
       payload = Common_V1::JsonPayload.new(:json_string => JSON.generate(item))
       request = Wallet_V1::InsertItemRequest.new(:item => payload)
-      @wallet_client.insert_item(request, metadata: metadata).item_id
+      @wallet_client.insert_item(request, metadata: metadata(request)).item_id
     end
   end
 end
