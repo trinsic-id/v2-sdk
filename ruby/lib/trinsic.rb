@@ -31,7 +31,7 @@ module Trinsic
       if @cap_invocation == nil
         raise Error.new("Profile not set")
       end
-      return { 'capability-invocation' => @cap_invocation }
+      { 'capability-invocation' => @cap_invocation }
     end
 
     def set_profile(profile)
