@@ -25,17 +25,17 @@ class TrinsicServiceTest < Minitest::Test
     assert(metadata != nil, "Valid metadata once profile is set")
   end
 
-  # def test_providerservice_inviteparticipant
-  #   account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-  #   account_profile = account_service.sign_in(nil).profile
-  #   provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
-  #
-  #   invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
-  #                                                         :email=>"scott.phillips@trinsic.id")
-  #   invite_response = provider_service.invite_participant(invite_request)
-  #   assert(invite_response != nil)
-  #   # TODO - Verify invitation status response
-  # end
+  def test_providerservice_inviteparticipant
+    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account_profile = account_service.sign_in(nil).profile
+    provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
+
+    invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
+                                                          :email=>"scott.phillips@trinsic.id")
+    # invite_response = provider_service.invite_participant(invite_request)
+    # assert(invite_response != nil)
+    # TODO - Verify invitation status response
+  end
 
   def test_that_it_has_a_version_number
     refute_nil ::Trinsic::VERSION
@@ -106,7 +106,7 @@ class TrinsicServiceTest < Minitest::Test
     # The airline verifies the credential
     wallet_service.profile = airline
     credential_service.profile = airline
-    valid = credential_proof.verify_proof(credential_proof)
+    valid = credential_service.verify_proof(credential_proof)
 
     puts "Verification result: #{valid}"
 

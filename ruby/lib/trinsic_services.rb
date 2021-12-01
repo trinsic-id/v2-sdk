@@ -121,27 +121,27 @@ module Trinsic
     def issue_credential(document)
       payload = Common_V1::JsonPayload.new(json_string: JSON.generate(document))
       request = Credentials_V1::IssueRequest.new(document: payload)
-      response = client.issue(request, metadata: metadata(request))
+      response = @client.issue(request, metadata: metadata(request))
       JSON.parse(response.document.json_string)
     end
 
     def send_document(document, email)
       request = Credentials_V1::SendRequest.new(email: email,
                                                 document: Common_V1::JsonPayload.new(json_string: JSON.generate(document)))
-      client.send(request, metadata: metadata(request))
+      @client.send(request, metadata: metadata(request))
     end
 
     def create_proof(document_id, reveal_document)
       payload = Common_V1::JsonPayload.new(json_string: JSON.generate(reveal_document))
       request = Credentials_V1::CreateProofRequest.new(document_id: document_id,
                                                        reveal_document: payload)
-      JSON.parse(client.create_proof(request, metadata: metadata(request)).proof_document.json_string)
+      JSON.parse(@client.create_proof(request, metadata: metadata(request)).proof_document.json_string)
     end
 
     def verify_proof(proof_document)
       payload = Common_V1::JsonPayload.new(json_string: JSON.generate(proof_document))
       request = Credentials_V1::VerifyProofRequest.new(proof_document: payload)
-      client.verify_proof(request, metadata: metadata(request)).valid
+      @client.verify_proof(request, metadata: metadata(request)).valid
     end
   end
 
@@ -149,17 +149,17 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @provider_client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
+      @client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def invite_participant(request)
       # TODO - Ensure a field has been set
-      @provider_client.invite(request)
+      @client.invite(request, metadata: metadata(request))
     end
 
     def invitation_status(request)
       # TODO - Onboarding reference ID must be set
-      @provider_client.invitation_status(request)
+      @client.invitation_status(request, metadata: metadata(request))
     end
   end
 
@@ -167,14 +167,14 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @trust_reg_client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
+      @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def register_governance_framework(governance_framework, description)
       # TODO - verify uri
       request = TrustRegistry_V1::AddFrameworkRequest.new(governance_framework: governance_framework,
                                                           description: description)
-      @trust_reg_client.add_framework(request, metadata: metadata(request))
+      @client.add_framework(request, metadata: metadata(request))
     end
 
     def register_issuer(issuer_did, credential_type, governance_framework, valid_from, valid_until)
@@ -183,7 +183,7 @@ module Trinsic
                                                             governance_framework_uri: governance_framework,
                                                             valid_from_utc: valid_from.to_time.to_i,
                                                             valid_until_utc: valid_until.to_time.to_i)
-      @trust_reg_client.register_issuer(request, metadata: metadata(request))
+      @client.register_issuer(request, metadata: metadata(request))
     end
 
     def register_verifier(verifier_did, presentation_type, governance_framework, valid_from, valid_until)
@@ -192,14 +192,14 @@ module Trinsic
                                                               governance_framework_uri: governance_framework,
                                                               valid_from_utc: valid_from.to_time.to_i,
                                                               valid_until_utc: valid_until.to_time.to_i)
-      @trust_reg_client.register_verifier(request, metadata: metadata(request))
+      @client.register_verifier(request, metadata: metadata(request))
     end
 
     def check_issuer_status(issuer_did, presentation_type, governance_framework)
       request = TrustRegistry_V1::CheckIssuerStatusRequest.new(did_uri: issuer_did,
                                                                presentation_type_uri: presentation_type,
                                                                governance_framework_uri: governance_framework)
-      response = @trust_reg_client.check_issuer_status(request, metadata: metadata(request))
+      response = @client.check_issuer_status(request, metadata: metadata(request))
       response.status
     end
 
@@ -207,14 +207,14 @@ module Trinsic
       request = TrustRegistry_V1::CheckVerifierStatusRequest.new(did_uri: verifier_did,
                                                                  presentation_type_uri: presentation_type,
                                                                  governance_framework_uri: governance_framework)
-      response = @trust_reg_client.check_verifier_status(request, metadata: metadata(request))
+      response = @client.check_verifier_status(request, metadata: metadata(request))
       response.status
     end
 
     def search_registry(query)
       query = query || "SELECT * FROM c"
       request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions(response_json_format: Common_V1::JsonFormat.protobuf))
-      response = @trust_reg_client.search_registry(request, metadata: metadata(request))
+      response = @client.search_registry(request, metadata: metadata(request))
       # TODO cast to dictionary object .map { |x| x.json_struct.  }
       response.items
     end
@@ -224,18 +224,18 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @wallet_client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
+      @client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
     end
 
     def search(query)
       request = Wallet_V1::SearchRequest.new(query: query)
-      @wallet_client.search(request, metadata: metadata(request))
+      @client.search(request, metadata: metadata(request))
     end
 
     def insert_item(item)
       payload = Common_V1::JsonPayload.new(json_string: JSON.generate(item))
       request = Wallet_V1::InsertItemRequest.new(item: payload)
-      @wallet_client.insert_item(request, metadata: metadata(request)).item_id
+      @client.insert_item(request, metadata: metadata(request)).item_id
     end
   end
 end
