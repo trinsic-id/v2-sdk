@@ -20,8 +20,6 @@ module Services
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
           rpc :InviteWithWorkflow, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
-          #   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-          #   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
         end
 
         Stub = Service.rpc_stub_class

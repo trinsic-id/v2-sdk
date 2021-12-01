@@ -6,7 +6,3 @@ group :test do
   gem "simplecov-cobertura", require: false
   gem "minitest", "~> 5.0", require: false
 end
-
-source "https://rubygems.pkg.github.com/trinsic-id" do
-  gem "okapi", ">= 1.0.0"
-end
