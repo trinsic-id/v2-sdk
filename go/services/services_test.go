@@ -170,7 +170,7 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 
 	// The issue was not throwing an error that the profile isn't set, but we don't need a wallet profile, so use a
 	// context without metadata attached. See method definition.
-	inviteResponse, err := providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
+	_, err = providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
 		Participant: sdk.ParticipantType_participant_type_individual,
 		Description: "I dunno",
 		ContactMethod: &sdk.InviteRequest_Email{
