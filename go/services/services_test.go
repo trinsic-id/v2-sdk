@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/connectivity"
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
@@ -26,9 +28,17 @@ func GetVaccineCertFramePath() string {
 	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
 }
 
+func GetTestServerChannel() *grpc.ClientConn {
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
+	if err != nil {
+		panic(err)
+	}
+	return channel
+}
+
 func TestServiceBase_SetProfile(t *testing.T) {
 	assert := assert.New(t)
-	base, err := CreateServiceBase(nil, TrinsicTestConfig())
+	base, err := CreateServiceBase(nil,TrinsicTestConfig(), GetTestServerChannel())
 	failError(t, "error creating service base", err)
 	// No profile set, should be an error
 	md, err := base.BuildMetadata(nil)
@@ -39,7 +49,7 @@ func TestServiceBase_SetProfile(t *testing.T) {
 		return
 	}
 
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), GetTestServerChannel())
 	if !assert.Nil(err) {
 		return
 	}
@@ -61,9 +71,14 @@ func TestServiceBase_SetProfile(t *testing.T) {
 
 func TestVaccineCredentials(t *testing.T) {
 	assert := assert.New(t)
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	// Open in background
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), channel)
 	if !assert.Nil(err) {
 		return
+	}
+	if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
+		t.Fail()
 	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
@@ -91,9 +106,9 @@ func TestVaccineCredentials(t *testing.T) {
 	// Create profile from existing data
 	// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 
-	walletService, err := CreateWalletService(allison, TrinsicTestConfig(), nil)
+	walletService, err := CreateWalletService(clinic, TrinsicTestConfig(), channel)
 	failError(t, "error creating wallet service", err)
-	credentialService, err := CreateCredentialService(airline, TrinsicTestConfig(), nil)
+	credentialService, err := CreateCredentialService(clinic, TrinsicTestConfig(), channel)
 	failError(t, "error creating credential service", err)
 
 	// ISSUE CREDENTIAL
@@ -150,7 +165,7 @@ func TestVaccineCredentials(t *testing.T) {
 func TestProviderService_InviteParticipant(t *testing.T) {
 	assert := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), nil)
 	if !assert.Nil(err) {
 		return
 	}
@@ -163,7 +178,7 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 	}
 	fmt.Printf("%+v\n", wallet)
 
-	providerService, err := CreateProviderService(wallet, TrinsicTestConfig(), nil)
+	providerService, err := CreateProviderService(nil,TrinsicTestConfig(), GetTestServerChannel())
 	if !assert.Nil(err) {
 		return
 	}

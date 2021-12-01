@@ -44,96 +44,71 @@ func TrinsicTestConfig() *sdk.ServerConfig {
 
 	return &sdk.ServerConfig{
 		Endpoint: server,
-		Port: int32(port),
+		Port:     int32(port),
 		UseTls:   useTls,
 	}
 }
 
 func CreateAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	base, err := CreateServiceBase(profile, serverConfig)
+	base, err := CreateServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
 	service := &AccountBase{
 		ServiceBase: base,
-		client:     sdk.NewAccountClient(base.channel),
+		client:      sdk.NewAccountClient(base.channel),
 	}
 
 	return service, nil
 }
 
 func CreateCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	base, err := CreateServiceBase(profile, serverConfig)
+	base, err := CreateServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
 	service := &CredentialBase{
 		ServiceBase: base,
-		client:     sdk.NewVerifiableCredentialClient(base.channel),
+		client:      sdk.NewVerifiableCredentialClient(base.channel),
 	}
 
 	return service, nil
 }
 
 func CreateProviderService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (ProviderService, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	base, err := CreateServiceBase(profile, serverConfig)
+	base, err := CreateServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
 	service := &ProviderBase{
 		ServiceBase: base,
-		client:     sdk.NewProviderClient(base.channel),
+		client:      sdk.NewProviderClient(base.channel),
 	}
 
 	return service, nil
 }
 
 func CreateTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	base, err := CreateServiceBase(profile, serverConfig)
+	base, err := CreateServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
 	service := &TrustRegistryBase{
 		ServiceBase: base,
-		client:     sdk.NewTrustRegistryClient(base.channel),
+		client:      sdk.NewTrustRegistryClient(base.channel),
 	}
 
 	return service, nil
 }
 
 func CreateWalletService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (WalletService, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), channel, true)
-	if err != nil {
-		return nil, err
-	}
-
-	base, err := CreateServiceBase(profile, serverConfig)
+	base, err := CreateServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
 	service := &WalletBase{
 		ServiceBase: base,
-		client:     sdk.NewUniversalWalletClient(base.channel),
+		client:      sdk.NewUniversalWalletClient(base.channel),
 	}
 
 	return service, nil
@@ -147,42 +122,46 @@ func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
 	return fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
 }
 
-func CreateChannelIfNeeded(serviceAddress string, channel *grpc.ClientConn, blockOnOpen bool) (*grpc.ClientConn, error) {
-	if channel == nil {
-		var serviceUrl, err = url.Parse(serviceAddress)
+func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, error) {
+	var serviceUrl, err = url.Parse(serviceAddress)
+	if err != nil {
+		return nil, err
+	}
+	if serviceUrl.Port() == "" {
+		return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
+	}
+	dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
+	var dialOptions []grpc.DialOption
+	if blockOnOpen {
+		dialOptions = append(dialOptions, grpc.WithBlock())
+	}
+	if serviceUrl.Scheme == "http" {
+		dialOptions = append(dialOptions, grpc.WithInsecure())
+	} else {
+		// TODO - Get the credentials bundle
+		pool, err := x509.SystemCertPool()
 		if err != nil {
 			return nil, err
 		}
-		if serviceUrl.Port() == "" {
-			return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
-		}
-		dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
-		var dialOptions []grpc.DialOption
-		if blockOnOpen {
-			dialOptions = append(dialOptions, grpc.WithBlock())
-		}
-		if serviceUrl.Scheme == "http" {
-			dialOptions = append(dialOptions, grpc.WithInsecure())
-		} else {
-			// TODO - Get the credentials bundle
-			pool, err := x509.SystemCertPool()
-			if err != nil { return nil, err}
-			creds := credentials.NewClientTLSFromCert(pool, "")
-			dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
-		}
-		channel, err = grpc.Dial(dialUrl, dialOptions...)
-		if err != nil {
-			return nil, err
-		}
+		creds := credentials.NewClientTLSFromCert(pool, "")
+		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
+	}
+	channel, err := grpc.Dial(dialUrl, dialOptions...)
+	if err != nil {
+		return nil, err
 	}
 	return channel, nil
 }
 
-func CreateServiceBase(profile *sdk.AccountProfile, serverConfig*sdk.ServerConfig) (*ServiceBase, error) {
-	channel, err := CreateChannelIfNeeded(CreateChannelUrlFromConfig(serverConfig), nil, true)
-	if err != nil {
-		return nil, err
+func CreateServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
+	if channel == nil {
+		channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
+		if err != nil {
+			return nil, err
+		}
+		channel = channel2
 	}
+	channel.Connect()
 	service := &ServiceBase{
 		profile:              profile,
 		configuration:        serverConfig,
@@ -193,9 +172,9 @@ func CreateServiceBase(profile *sdk.AccountProfile, serverConfig*sdk.ServerConfi
 }
 
 type ServiceBase struct {
-	profile *sdk.AccountProfile
-	configuration *sdk.ServerConfig
-	channel *grpc.ClientConn
+	profile              *sdk.AccountProfile
+	configuration        *sdk.ServerConfig
+	channel              *grpc.ClientConn
 	securityProviderImpl *OberonSecurityProvider
 }
 
@@ -204,6 +183,11 @@ type Service interface {
 	BuildMetadata(message proto.Message) (metadata.MD, error)
 	SetProfile(profile *sdk.AccountProfile)
 	SetChannel(channel *grpc.ClientConn)
+	GetChannel() *grpc.ClientConn
+}
+
+func (s *ServiceBase) GetChannel() *grpc.ClientConn {
+	return s.channel
 }
 
 func (s *ServiceBase) SetChannel(channel *grpc.ClientConn) {
@@ -229,7 +213,7 @@ func (s *ServiceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 	if s.profile == nil {
 		return nil, fmt.Errorf("cannot call authenticated endpoint: profile must be set")
 	}
-	authString, err :=  s.securityProviderImpl.GetAuthHeader(s.profile, message)
+	authString, err := s.securityProviderImpl.GetAuthHeader(s.profile, message)
 	if err != nil {
 		return nil, err
 	}
@@ -256,7 +240,7 @@ func (a *AccountBase) SignIn(userContext context.Context, details *sdk.AccountDe
 		details = &sdk.AccountDetails{}
 	}
 	request := &sdk.SignInRequest{
-		Details:        details,
+		Details: details,
 	}
 	response, err := a.client.SignIn(userContext, request)
 	if err != nil {
@@ -449,8 +433,8 @@ type ProviderService interface {
 
 type ProviderBase struct {
 	*ServiceBase
-	channel        *grpc.ClientConn
-	client sdk.ProviderClient
+	channel *grpc.ClientConn
+	client  sdk.ProviderClient
 }
 
 func (p *ProviderBase) InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
@@ -513,8 +497,8 @@ func (t *TrustRegistryBase) RegisterGovernanceFramework(userContext context.Cont
 
 func (t *TrustRegistryBase) RegisterIssuer(userContext context.Context, issuerDid string, credentialType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
 	request := &sdk.RegisterIssuerRequest{
-		Authority: &sdk.RegisterIssuerRequest_DidUri{DidUri: issuerDid},
-		CredentialTypeUri:    credentialType,
+		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: issuerDid},
+		CredentialTypeUri:      credentialType,
 		ValidFromUtc:           uint64(validFrom.UnixMilli()),
 		ValidUntilUtc:          uint64(validUntil.UnixMilli()),
 		GovernanceFrameworkUri: governanceFramework,
@@ -537,7 +521,7 @@ func (t *TrustRegistryBase) UnregisterIssuer(userContext context.Context, issuer
 
 func (t *TrustRegistryBase) RegisterVerifier(userContext context.Context, verifierDid string, presentationType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
 	request := &sdk.RegisterVerifierRequest{
-		Authority: &sdk.RegisterVerifierRequest_DidUri{DidUri: verifierDid},
+		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: verifierDid},
 		PresentationTypeUri:    presentationType,
 		ValidFromUtc:           uint64(validFrom.UnixMilli()),
 		ValidUntilUtc:          uint64(validUntil.UnixMilli()),
@@ -562,8 +546,8 @@ func (t *TrustRegistryBase) UnregisterVerifier(userContext context.Context, veri
 func (t *TrustRegistryBase) CheckIssuerStatus(userContext context.Context, issuerDid string, credentialType string, governanceFramework string) (sdk.RegistrationStatus, error) {
 	request := &sdk.CheckIssuerStatusRequest{
 		GovernanceFrameworkUri: governanceFramework,
-		Member: &sdk.CheckIssuerStatusRequest_DidUri{DidUri: issuerDid},
-		CredentialTypeUri:    credentialType,
+		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: issuerDid},
+		CredentialTypeUri:      credentialType,
 	}
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
@@ -579,7 +563,7 @@ func (t *TrustRegistryBase) CheckIssuerStatus(userContext context.Context, issue
 func (t *TrustRegistryBase) CheckVerifierStatus(userContext context.Context, verifierDid string, presentationType string, governanceFramework string) (sdk.RegistrationStatus, error) {
 	request := &sdk.CheckVerifierStatusRequest{
 		GovernanceFrameworkUri: governanceFramework,
-		Member: &sdk.CheckVerifierStatusRequest_DidUri{DidUri: verifierDid},
+		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: verifierDid},
 		PresentationTypeUri:    presentationType,
 	}
 	md, err := t.GetMetadataContext(userContext, request)
@@ -595,8 +579,8 @@ func (t *TrustRegistryBase) CheckVerifierStatus(userContext context.Context, ver
 
 func (t *TrustRegistryBase) SearchRegistry(userContext context.Context, query string) (*sdk.SearchRegistryResponse, error) {
 	request := &sdk.SearchRegistryRequest{
-		Query:             query,
-		Options:           &sdk.RequestOptions{ ResponseJsonFormat: sdk.JsonFormat_Protobuf},
+		Query:   query,
+		Options: &sdk.RequestOptions{ResponseJsonFormat: sdk.JsonFormat_Protobuf},
 	}
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
@@ -614,13 +598,12 @@ type WalletService interface {
 
 	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
 	InsertItem(userContext context.Context, item Document) (string, error)
-
 }
 
 type WalletBase struct {
 	*ServiceBase
-	channel          *grpc.ClientConn
-	client sdk.UniversalWalletClient
+	channel *grpc.ClientConn
+	client  sdk.UniversalWalletClient
 }
 
 func (w *WalletBase) Search(userContext context.Context, query string) (*sdk.SearchResponse, error) {
