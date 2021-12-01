@@ -14,10 +14,10 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// CredentialClient is the client API for Credential service.
+// VerifiableCredentialClient is the client API for VerifiableCredential service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CredentialClient interface {
+type VerifiableCredentialClient interface {
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error)
@@ -25,219 +25,219 @@ type CredentialClient interface {
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
 }
 
-type credentialClient struct {
+type verifiableCredentialClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCredentialClient(cc grpc.ClientConnInterface) CredentialClient {
-	return &credentialClient{cc}
+func NewVerifiableCredentialClient(cc grpc.ClientConnInterface) VerifiableCredentialClient {
+	return &verifiableCredentialClient{cc}
 }
 
-func (c *credentialClient) Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
+func (c *verifiableCredentialClient) Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
 	out := new(IssueResponse)
-	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/Issue", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/Issue", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *credentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
+func (c *verifiableCredentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
 	out := new(IssueResponse)
-	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/IssueFromTemplate", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *credentialClient) CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error) {
+func (c *verifiableCredentialClient) CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error) {
 	out := new(CreateProofResponse)
-	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/CreateProof", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *credentialClient) VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error) {
+func (c *verifiableCredentialClient) VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error) {
 	out := new(VerifyProofResponse)
-	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/VerifyProof", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *credentialClient) Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error) {
+func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error) {
 	out := new(SendResponse)
-	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.Credential/Send", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/Send", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CredentialServer is the server API for Credential service.
-// All implementations must embed UnimplementedCredentialServer
+// VerifiableCredentialServer is the server API for VerifiableCredential service.
+// All implementations must embed UnimplementedVerifiableCredentialServer
 // for forward compatibility
-type CredentialServer interface {
+type VerifiableCredentialServer interface {
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
 	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error)
 	CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error)
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
-	mustEmbedUnimplementedCredentialServer()
+	mustEmbedUnimplementedVerifiableCredentialServer()
 }
 
-// UnimplementedCredentialServer must be embedded to have forward compatible implementations.
-type UnimplementedCredentialServer struct {
+// UnimplementedVerifiableCredentialServer must be embedded to have forward compatible implementations.
+type UnimplementedVerifiableCredentialServer struct {
 }
 
-func (UnimplementedCredentialServer) Issue(context.Context, *IssueRequest) (*IssueResponse, error) {
+func (UnimplementedVerifiableCredentialServer) Issue(context.Context, *IssueRequest) (*IssueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Issue not implemented")
 }
-func (UnimplementedCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error) {
+func (UnimplementedVerifiableCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueFromTemplate not implemented")
 }
-func (UnimplementedCredentialServer) CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error) {
+func (UnimplementedVerifiableCredentialServer) CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProof not implemented")
 }
-func (UnimplementedCredentialServer) VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error) {
+func (UnimplementedVerifiableCredentialServer) VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyProof not implemented")
 }
-func (UnimplementedCredentialServer) Send(context.Context, *SendRequest) (*SendResponse, error) {
+func (UnimplementedVerifiableCredentialServer) Send(context.Context, *SendRequest) (*SendResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
 }
-func (UnimplementedCredentialServer) mustEmbedUnimplementedCredentialServer() {}
+func (UnimplementedVerifiableCredentialServer) mustEmbedUnimplementedVerifiableCredentialServer() {}
 
-// UnsafeCredentialServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CredentialServer will
+// UnsafeVerifiableCredentialServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to VerifiableCredentialServer will
 // result in compilation errors.
-type UnsafeCredentialServer interface {
-	mustEmbedUnimplementedCredentialServer()
+type UnsafeVerifiableCredentialServer interface {
+	mustEmbedUnimplementedVerifiableCredentialServer()
 }
 
-func RegisterCredentialServer(s grpc.ServiceRegistrar, srv CredentialServer) {
-	s.RegisterService(&Credential_ServiceDesc, srv)
+func RegisterVerifiableCredentialServer(s grpc.ServiceRegistrar, srv VerifiableCredentialServer) {
+	s.RegisterService(&VerifiableCredential_ServiceDesc, srv)
 }
 
-func _Credential_Issue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _VerifiableCredential_Issue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IssueRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialServer).Issue(ctx, in)
+		return srv.(VerifiableCredentialServer).Issue(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.verifiablecredentials.v1.Credential/Issue",
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialServer).Issue(ctx, req.(*IssueRequest))
+		return srv.(VerifiableCredentialServer).Issue(ctx, req.(*IssueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Credential_IssueFromTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _VerifiableCredential_IssueFromTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(IssueFromTemplateRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialServer).IssueFromTemplate(ctx, in)
+		return srv.(VerifiableCredentialServer).IssueFromTemplate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.verifiablecredentials.v1.Credential/IssueFromTemplate",
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialServer).IssueFromTemplate(ctx, req.(*IssueFromTemplateRequest))
+		return srv.(VerifiableCredentialServer).IssueFromTemplate(ctx, req.(*IssueFromTemplateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Credential_CreateProof_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _VerifiableCredential_CreateProof_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateProofRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialServer).CreateProof(ctx, in)
+		return srv.(VerifiableCredentialServer).CreateProof(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.verifiablecredentials.v1.Credential/CreateProof",
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialServer).CreateProof(ctx, req.(*CreateProofRequest))
+		return srv.(VerifiableCredentialServer).CreateProof(ctx, req.(*CreateProofRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Credential_VerifyProof_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _VerifiableCredential_VerifyProof_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(VerifyProofRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialServer).VerifyProof(ctx, in)
+		return srv.(VerifiableCredentialServer).VerifyProof(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.verifiablecredentials.v1.Credential/VerifyProof",
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialServer).VerifyProof(ctx, req.(*VerifyProofRequest))
+		return srv.(VerifiableCredentialServer).VerifyProof(ctx, req.(*VerifyProofRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Credential_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _VerifiableCredential_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CredentialServer).Send(ctx, in)
+		return srv.(VerifiableCredentialServer).Send(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.verifiablecredentials.v1.Credential/Send",
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/Send",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CredentialServer).Send(ctx, req.(*SendRequest))
+		return srv.(VerifiableCredentialServer).Send(ctx, req.(*SendRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// Credential_ServiceDesc is the grpc.ServiceDesc for Credential service.
+// VerifiableCredential_ServiceDesc is the grpc.ServiceDesc for VerifiableCredential service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var Credential_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "services.verifiablecredentials.v1.Credential",
-	HandlerType: (*CredentialServer)(nil),
+var VerifiableCredential_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "services.verifiablecredentials.v1.VerifiableCredential",
+	HandlerType: (*VerifiableCredentialServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "Issue",
-			Handler:    _Credential_Issue_Handler,
+			Handler:    _VerifiableCredential_Issue_Handler,
 		},
 		{
 			MethodName: "IssueFromTemplate",
-			Handler:    _Credential_IssueFromTemplate_Handler,
+			Handler:    _VerifiableCredential_IssueFromTemplate_Handler,
 		},
 		{
 			MethodName: "CreateProof",
-			Handler:    _Credential_CreateProof_Handler,
+			Handler:    _VerifiableCredential_CreateProof_Handler,
 		},
 		{
 			MethodName: "VerifyProof",
-			Handler:    _Credential_VerifyProof_Handler,
+			Handler:    _VerifiableCredential_VerifyProof_Handler,
 		},
 		{
 			MethodName: "Send",
-			Handler:    _Credential_Send_Handler,
+			Handler:    _VerifiableCredential_Send_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
