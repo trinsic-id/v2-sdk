@@ -19,7 +19,7 @@ type OberonSecurityProvider struct {
 }
 
 func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error) {
-	if profile.Protection.Enabled {
+	if profile != nil && profile.Protection.Enabled {
 		return "", fmt.Errorf("The token must be unprotected before use")
 	}
 
@@ -38,9 +38,15 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, messa
 		return "", err
 	}
 
+	var authData, authToken []byte
+	if profile != nil {
+		authData = profile.AuthData
+		authToken = profile.AuthToken
+	}
+
 	proof, err := okapi.Oberon().CreateProof(&okapiproto.CreateOberonProofRequest{
-		Data:  profile.AuthData,
-		Token: profile.AuthToken,
+		Data:  authData,
+		Token: authToken,
 		Nonce: nonceBytes,
 	})
 	if err != nil {

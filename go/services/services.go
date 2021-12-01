@@ -226,6 +226,9 @@ func (s *ServiceBase) GetMetadataContext(userContext context.Context, message pr
 }
 
 func (s *ServiceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
+	if s.profile == nil {
+		return nil, fmt.Errorf("cannot call authenticated endpoint: profile must be set")
+	}
 	authString, err :=  s.securityProviderImpl.GetAuthHeader(s.profile, message)
 	if err != nil {
 		return nil, err
