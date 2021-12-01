@@ -364,13 +364,6 @@ class WalletService(ServiceBase):
         super().__init__(profile, server_config)
         self.client: UniversalWalletStub = self.stub_with_metadata(UniversalWalletStub)
 
-    def close(self):
-        """
-        Close the channel
-        """
-        if self.channel:
-            self.channel.close()
-
     async def search(self, query: str = "SELECT * from c") -> SearchResponse:
         """
         [Search for crdentials](/reference/services/wallet-service/#search-query)
