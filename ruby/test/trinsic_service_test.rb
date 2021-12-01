@@ -25,32 +25,32 @@ class TrinsicServiceTest < Minitest::Test
     assert(metadata != nil, "Valid metadata once profile is set")
   end
 
-  def test_providerservice_inviteparticipant
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-    account_profile = account_service.sign_in(nil).profile
-    provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
-
-    invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
+  # def test_providerservice_inviteparticipant
+  #   account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+  #   account_profile = account_service.sign_in(nil).profile
+  #   provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
+  #
+  #   invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
                                                           :email=>"does.not.exist@trinsic.id")
     # invite_response = provider_service.invite_participant(invite_request)
     # assert(invite_response != nil)
     # TODO - Verify invitation status response
-  end
+  # end
 
-  def test_that_it_has_a_version_number
+  def test_has_a_version_number
     refute_nil ::Trinsic::VERSION
   end
 
   def data_base_path
-    return File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "devops", "testdata"))
+    File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "devops", "testdata"))
   end
 
   def vaccine_cert_unsigned_path
-    return File.expand_path(File.join(data_base_path, "vaccination-certificate-unsigned.jsonld"))
+    File.expand_path(File.join(data_base_path, "vaccination-certificate-unsigned.jsonld"))
   end
 
   def vaccine_cert_frame_path
-    return File.expand_path(File.join(data_base_path, "vaccination-certificate-frame.jsonld"))
+    File.expand_path(File.join(data_base_path, "vaccination-certificate-frame.jsonld"))
   end
 
   def test_trinsic_services_demo

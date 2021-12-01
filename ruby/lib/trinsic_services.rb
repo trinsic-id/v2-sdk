@@ -80,8 +80,7 @@ module Trinsic
 
     def sign_in(account_details)
       request = Account_V1::SignInRequest.new(details: account_details || Account_V1::AccountDetails.new)
-      response = @client.sign_in(request)
-      response
+      @client.sign_in(request)
     end
 
     def unprotect(profile, security_code)
@@ -106,8 +105,7 @@ module Trinsic
 
     def get_info
       request = Account_V1::InfoRequest.new
-      response = @client.info(request, metadata: metadata(request))
-      response
+      @client.info(request, metadata: metadata(request))
     end
   end
 

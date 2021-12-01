@@ -32,8 +32,7 @@ module Trinsic
       proof = Okapi::Oberon.create_proof(request)
 
       # Convert to base-64
-      auth_data = "Oberon ver=#{1},proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
-      auth_data
+      "Oberon ver=#{1},proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
     end
   end
 end
