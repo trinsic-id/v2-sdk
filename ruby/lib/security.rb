@@ -23,8 +23,8 @@ module Trinsic
         raise "The token must be unprotected before use"
       end
 
-      request_bytes = Google::Protobuf::encode(message)
-      request_hash = Digest::BLAKE3.digest(request_bytes)
+      request_hash = Google::Protobuf::encode(message)
+      request_hash = Digest::BLAKE3.digest(request_hash) unless request_hash.length == 0 # skip hashing if empty
       nonce = Trinsic::Common_V1::Nonce.new(timestamp: (Time.now.to_f*1000).to_int, request_hash: request_hash)
       request = Okapi::Security::V1::CreateOberonProofRequest.new(token: account_profile.auth_token,
                                                                   data: account_profile.auth_data,
