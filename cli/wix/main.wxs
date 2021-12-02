@@ -77,27 +77,25 @@
                                   KeyPath='yes'/>
                         </Component>
 
-                        <Directory Id='Bin' Name='bin'>
-                            <Component Id='Path' Guid='8086007E-D480-45E3-99BF-70EB689B722B' Win64='$(var.Win64)'
-                                       KeyPath='yes'>
-                                <Environment
-                                        Id='PATH'
-                                        Name='PATH'
-                                        Value='[Bin]'
-                                        Permanent='no'
-                                        Part='last'
-                                        Action='set'
-                                        System='yes'/>
-                            </Component>
-                            <Component Id='binary0' Guid='*' Win64='$(var.Win64)'>
-                                <File
-                                        Id='exe0'
-                                        Name='trinsic.exe'
-                                        DiskId='1'
-                                        Source='target\$(var.Profile)\trinsic.exe'
-                                        KeyPath='yes'/>
-                            </Component>
-                        </Directory>
+                        <Component Id='Path' Guid='8086007E-D480-45E3-99BF-70EB689B722B' Win64='$(var.Win64)'
+                                   KeyPath='yes'>
+                            <Environment
+                                    Id='PATH'
+                                    Name='PATH'
+                                    Value='[Bin]'
+                                    Permanent='no'
+                                    Part='last'
+                                    Action='set'
+                                    System='yes'/>
+                        </Component>
+                        <Component Id='binary0' Guid='*' Win64='$(var.Win64)'>
+                            <File
+                                    Id='exe0'
+                                    Name='trinsic.exe'
+                                    DiskId='1'
+                                    Source='target\$(var.Profile)\trinsic.exe'
+                                    KeyPath='yes'/>
+                        </Component>
                     </Directory>
                 </Directory>
             </Directory>
