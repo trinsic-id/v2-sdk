@@ -3,7 +3,7 @@ Base class and helper methods for the Service wrappers
 """
 import types
 from abc import ABC
-from typing import Optional, Type, T, List
+from typing import Optional, Type, T
 
 from betterproto import Message, ServiceStub
 from grpclib.client import Channel
@@ -31,10 +31,11 @@ class ServiceBase(ABC):
     """
 
     def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig):
+                 server_config: ServerConfig,
+                 channel: Channel):
         self.profile: AccountProfile = profile
         self._server_config: ServerConfig = server_config
-        self._channel: Channel = create_channel(server_config)
+        self._channel: Channel = channel or create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
 
     def close(self):
