@@ -1,10 +1,10 @@
 ﻿using System;
 using Grpc.Core;
-using Grpc.Net.Client;
 using Google.Protobuf;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
 
 namespace Trinsic;
 

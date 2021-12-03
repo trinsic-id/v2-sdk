@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Grpc.Net.Client;
+using Google.Protobuf.WellKnownTypes;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 
@@ -8,7 +8,7 @@ namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig, GrpcChannel? existingChannel = null)
+    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new Provider.ProviderClient(Channel);

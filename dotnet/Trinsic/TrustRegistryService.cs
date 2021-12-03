@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Grpc.Net.Client;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -12,7 +12,7 @@ namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig, GrpcChannel? existingChannel = null)
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new TrustRegistry.TrustRegistryClient(Channel);
