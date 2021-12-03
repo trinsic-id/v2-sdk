@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Google.Protobuf.WellKnownTypes;
+using Grpc.Net.Client;
 using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Services.Account.V1;
@@ -14,12 +14,12 @@ namespace Trinsic;
 /// </summary>
 public class AccountService : ServiceBase
 {
-    public AccountService(ServerConfig? serverConfig)
+    public AccountService(ServerConfig? serverConfig = null)
         : this(null, serverConfig)
     {
     }
 
-    public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+    public AccountService(AccountProfile? accountProfile = null, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new AccountServiceClient(Channel);
@@ -33,13 +33,13 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="details"></param>
     /// <returns></returns>
-    public async Task<(AccountProfile accountProfile, ConfirmationMethod confirmationMethod)> SignInAsync(AccountDetails? details = null)
+    public async Task<AccountProfile> SignInAsync(AccountDetails? details = null)
     {
         SignInRequest request = new() { Details = details ?? new AccountDetails() };
 
         SignInResponse response = await Client.SignInAsync(request);
 
-        return (response.Profile, response.ConfirmationMethod);
+        return response.Profile;
     }
 
     /// <summary>
