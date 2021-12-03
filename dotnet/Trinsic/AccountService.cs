@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Grpc.Core;
+using Google.Protobuf.WellKnownTypes;
 using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Services.Account.V1;
@@ -19,8 +19,8 @@ public class AccountService : ServiceBase
     {
     }
 
-    public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig)
-        : base(accountProfile, serverConfig)
+    public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new AccountServiceClient(Channel);
     }

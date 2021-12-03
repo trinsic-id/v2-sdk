@@ -2,6 +2,7 @@ package trinsic.services;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
@@ -16,7 +17,12 @@ public class WalletService extends ServiceBase {
     private final UniversalWalletGrpc.UniversalWalletBlockingStub stub;
 
     public WalletService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+        super(accountProfile, serverConfig, null);
+        this.stub = UniversalWalletGrpc.newBlockingStub(this.getChannel());
+    }
+
+    public WalletService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
         this.stub = UniversalWalletGrpc.newBlockingStub(this.getChannel());
     }
 

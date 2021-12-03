@@ -3,6 +3,7 @@ package trinsic.services;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
@@ -14,8 +15,14 @@ import trinsic.services.common.v1.CommonOuterClass;
 public class AccountService extends ServiceBase {
     private final AccountGrpc.AccountBlockingStub stub;
 
+
     public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+        super(accountProfile, serverConfig, null);
+        this.stub = AccountGrpc.newBlockingStub(this.getChannel());
+    }
+
+    public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
         this.stub = AccountGrpc.newBlockingStub(this.getChannel());
     }
 

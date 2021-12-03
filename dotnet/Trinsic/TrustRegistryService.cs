@@ -12,8 +12,8 @@ namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig)
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new TrustRegistry.TrustRegistryClient(Channel);
     }

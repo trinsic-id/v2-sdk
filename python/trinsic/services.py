@@ -7,6 +7,7 @@ import json
 import urllib.parse
 from typing import Dict, List, Tuple
 
+from grpclib.client import Channel
 from trinsicokapi import oberon
 from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
@@ -26,14 +27,13 @@ from trinsic.trinsic_util import trinsic_production_config
 class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
-    def __init__(self, profile: AccountProfile = None,
-                 server_config: ServerConfig = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile = None, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, server_config)
+        super().__init__(profile, server_config, channel)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
     async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
@@ -93,14 +93,13 @@ class AccountService(ServiceBase):
 class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
-    def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, server_config)
+        super().__init__(profile, server_config, channel)
         self.client: VerifiableCredentialStub = self.stub_with_metadata(VerifiableCredentialStub)
 
     async def issue_credential(self, document: dict) -> dict:
@@ -153,14 +152,13 @@ class ProviderService(ServiceBase):
     Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
-    def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
         """
         Initialize the connection
         Args:
             server_config: The address of the server to connect, or an already-connected `Channel`
         """
-        super().__init__(profile, server_config)
+        super().__init__(profile, server_config, channel)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
 
     async def invite_participant(self,
@@ -208,9 +206,8 @@ class TrustRegistryService(ServiceBase):
     Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
-    def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig = trinsic_production_config()):
-        super().__init__(profile, server_config)
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+        super().__init__(profile, server_config, channel)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
     async def register_governance_framework(self, governance_framework: str, description: str) -> None:
@@ -245,8 +242,8 @@ class TrustRegistryService(ServiceBase):
             ValueError: if date ranges are not provided
         """
         if not valid_from or not valid_until:
-            # TODO - Handle nones for valid_from, valid_until
-            raise ValueError("Provide valid_from and valid_until ranges")
+            valid_from = datetime.datetime(0000, 00, 00)
+            valid_until = datetime.datetime(9999, 12, 31)
 
         await self.client.register_issuer(did_uri=issuer_did,
                                           credential_type_uri=credential_type,
@@ -354,14 +351,13 @@ class WalletService(ServiceBase):
     Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
-    def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig = trinsic_production_config()):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, server_config)
+        super().__init__(profile, server_config, channel)
         self.client: UniversalWalletStub = self.stub_with_metadata(UniversalWalletStub)
 
     async def search(self, query: str = "SELECT * from c") -> SearchResponse:

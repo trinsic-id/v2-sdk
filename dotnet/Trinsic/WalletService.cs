@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.Common.V1;
@@ -9,7 +10,8 @@ namespace Trinsic;
 
 public class WalletService : ServiceBase
 {
-    public WalletService(AccountProfile walletProfile, ServerConfig? serverConfig) : base(walletProfile, serverConfig)
+    public WalletService(AccountProfile accountProfile, ServerConfig? serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new WalletServiceClient(Channel);
     }

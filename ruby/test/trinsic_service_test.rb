@@ -31,7 +31,7 @@ class TrinsicServiceTest < Minitest::Test
   #   provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
   #
   #   invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
-                                                          :email=>"does.not.exist@trinsic.id")
+  #                                                         :email=>"does.not.exist@trinsic.id")
     # invite_response = provider_service.invite_participant(invite_request)
     # assert(invite_response != nil)
     # TODO - Verify invitation status response

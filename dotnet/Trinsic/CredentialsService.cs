@@ -10,8 +10,8 @@ namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null)
-        : base(accountProfile, serverConfig)
+    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new VerifiableCredential.VerifiableCredentialClient(Channel);
     }

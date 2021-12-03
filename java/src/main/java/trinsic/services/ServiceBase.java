@@ -15,19 +15,23 @@ import trinsic.services.common.v1.CommonOuterClass;
 public abstract class ServiceBase {
     private AccountOuterClass.AccountProfile profile = null;
     private CommonOuterClass.ServerConfig configuration = null;
-    private ManagedChannel channel = null;
+    private Channel channel = null;
+    private boolean createdChannel = false;
     private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
-    protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+    protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
         this.profile = accountProfile;
         this.configuration = serverConfig;
         if (this.configuration == null)
             this.configuration = TrinsicUtilities.getProductionConfig();
-        this.channel = TrinsicUtilities.getChannel(this.configuration);
+        // Note if we should clean up the channel in the end.
+        this.createdChannel = channel == null;
+        this.channel = this.createdChannel ? TrinsicUtilities.getChannel(this.configuration) : channel;
     }
 
     public void shutdown() {
-        this.channel.shutdownNow();
+        if (channel instanceof ManagedChannel && createdChannel)
+            ((ManagedChannel)this.channel).shutdownNow();
     }
 
     public Metadata buildMetadata(Message request) throws InvalidProtocolBufferException, DidException {

@@ -2,6 +2,7 @@ package trinsic.services;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
 import trinsic.okapi.DidException;
@@ -16,7 +17,11 @@ public class TrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryBlockingStub stub;
 
     public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+        super(accountProfile, serverConfig, null);
+        this.stub = TrustRegistryGrpc.newBlockingStub(this.getChannel());
+    }
+    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
         this.stub = TrustRegistryGrpc.newBlockingStub(this.getChannel());
     }
 
