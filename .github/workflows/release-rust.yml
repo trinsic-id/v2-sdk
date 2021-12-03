@@ -155,19 +155,19 @@ jobs:
           cargo install cargo-wix
           cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
         shell: pwsh
-        working-directory: native
+        working-directory: cli
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: wix
           path: |
-            ./native/target/wix/trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+            ./cli/target/wix/trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
       - name: Upload to Release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./native/target/wix/trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
+          file: ./cli/target/wix/trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           asset_name: trinsic-${{ steps.setversion.outputs.packageVersion }}-x86_64.msi
           tag: ${{ steps.setversion.outputs.releaseVersion }}
           overwrite: false
