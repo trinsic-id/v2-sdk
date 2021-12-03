@@ -35,15 +35,14 @@ public class Tests
 
         _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
 
-        var accountService = new AccountService(null, serverConfig);
-        var empty = new Trinsic.Services.Account.V1.AccountProfile();
+        var accountService = new AccountService(serverConfig);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var (allison, _) = await accountService.SignInAsync(new());
-        var (clinic, _) = await accountService.SignInAsync(new());
-        var (airline, _) = await accountService.SignInAsync(new());
+        var allison = await accountService.SignInAsync();
+        var clinic = await accountService.SignInAsync();
+        var airline = await accountService.SignInAsync();
         // }
 
         accountService.Profile = clinic;
