@@ -3,6 +3,7 @@ package trinsic.services;
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
@@ -17,7 +18,13 @@ public class CredentialsService extends ServiceBase {
     private final VerifiableCredentialGrpc.VerifiableCredentialBlockingStub stub;
 
     public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+        super(accountProfile, serverConfig, null);
+
+        this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
+    }
+
+    public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
 
         this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
     }
