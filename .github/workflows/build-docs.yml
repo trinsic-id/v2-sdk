@@ -2,6 +2,7 @@ name: Build/Test Documentation
 
 on:
   # todo: add a staging target for doc builds
+  workflow_call:
   pull_request:
     branches:
       - main
