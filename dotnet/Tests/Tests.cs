@@ -36,7 +36,6 @@ public class Tests
         _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
 
         var accountService = new AccountService(null, serverConfig);
-        var empty = new Trinsic.Services.Account.V1.AccountProfile();
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
