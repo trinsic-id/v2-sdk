@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;net6.0-ios</TargetFrameworks>
+    <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
     <Nullable>enable</Nullable>
     <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
@@ -35,12 +35,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-    <PackageReference Include="Okapi.Net" Version="1.0.1" />
+    <PackageReference Include="Okapi.Net" Version="1.2.1" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>Trinsic.Tests</_Parameter1>
+      <_Parameter1>Tests</_Parameter1>
     </AssemblyAttribute>
   </ItemGroup>
 
