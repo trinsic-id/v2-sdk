@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
+using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -10,8 +10,8 @@ namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null)
-        : base(accountProfile, serverConfig)
+    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new VerifiableCredential.VerifiableCredentialClient(Channel);
     }

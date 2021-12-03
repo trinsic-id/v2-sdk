@@ -2,20 +2,15 @@
 using Grpc.Core;
 using Grpc.Net.Client;
 using Google.Protobuf;
-using Blake3Core;
-using System.IO;
-using Okapi.Security;
 using Trinsic.Services.Common.V1;
-using System.Security.Cryptography;
 using Trinsic.Services.Account.V1;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Trinsic;
 
 public abstract class ServiceBase
 {
-    protected ServiceBase(AccountProfile? accountProfile, ServerConfig? serverConfig)
+    protected ServiceBase(AccountProfile? accountProfile, ServerConfig? serverConfig, GrpcChannel? existingChannel)
     {
         Profile = accountProfile;
         Configuration = serverConfig ?? new ServerConfig
@@ -24,7 +19,7 @@ public abstract class ServiceBase
             Port = 443,
             UseTls = true
         };
-        Channel = GrpcChannel.ForAddress(Configuration.FormatUrl());
+        Channel = existingChannel ?? GrpcChannel.ForAddress(Configuration.FormatUrl());
     }
     
     private ISecurityProvider securityProvider = new OberonSecurityProvider();
