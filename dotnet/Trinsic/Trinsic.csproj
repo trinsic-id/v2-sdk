@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
     <Nullable>enable</Nullable>
-    <Protobuf_ToolsOs Condition="'$([MSBuild]::IsOsPlatform(OSX))'">macosx</Protobuf_ToolsOs>
   </PropertyGroup>
   <!--
     https://github.com/novotnyllc/MSBuildSdkExtras/issues/176
@@ -35,7 +34,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-    <PackageReference Include="Okapi.Net" Version="1.2.1" PrivateAssets="native" />
+    <PackageReference Include="Okapi.Net" Version="1.2.2">
+      <PrivateAssets>none</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
