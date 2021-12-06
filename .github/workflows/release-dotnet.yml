@@ -36,7 +36,8 @@ jobs:
           dotnet workload install ios
           dotnet restore
           dotnet build -c Release
-          dotnet pack -c Release -p:PackageVersion=$env:PACKAGE_VERSION
+          dotnet pack -p:Configuration=Release -p:PackageVersion=$env:PACKAGE_VERSION
+          dotnet pack -p:Configuration=Release -p:PackageVersion=$env:PACKAGE_VERSION -p:IsBrowser=true -p:PackageId=Trinsic.Web
         working-directory: ./dotnet/Trinsic
         shell: pwsh
       - uses: actions/upload-artifact@v2
