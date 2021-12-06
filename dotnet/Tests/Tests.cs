@@ -64,7 +64,7 @@ public class Tests
         // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
         // Sign the credential using BBS+ signature scheme
-        var credential = await credentialsService.IssueCredential(document: JObject.Parse(credentialJson));
+        var credential = await credentialsService.IssueCredentialAsync(document: JObject.Parse(credentialJson));
         _testOutputHelper.WriteLine($"Credential:\n{credential.ToString(Formatting.Indented)}");
         // }
 
@@ -74,7 +74,7 @@ public class Tests
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Profile = credentialsService.Profile = allison;
 
-        var itemId = await walletService.InsertItem(credential);
+        var itemId = await walletService.InsertItemAsync(credential);
         // }
 
         // SHARE CREDENTIAL
@@ -89,7 +89,7 @@ public class Tests
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
-        var credentialProof = await credentialsService.CreateProof(itemId, JObject.Parse(proofRequestJson));
+        var credentialProof = await credentialsService.CreateProofAsync(itemId, JObject.Parse(proofRequestJson));
         // }
         _testOutputHelper.WriteLine("Proof:");
         _testOutputHelper.WriteLine(credentialProof.ToString(Formatting.Indented));
@@ -101,7 +101,7 @@ public class Tests
         walletService.Profile = credentialsService.Profile = airline;
 
         // Check for valid signature
-        var valid = await credentialsService.VerifyProof(credentialProof);
+        var valid = await credentialsService.VerifyAsync(credentialProof);
         // }
         _testOutputHelper.WriteLine($"Verification result: {valid}");
         Assert.True(valid);
