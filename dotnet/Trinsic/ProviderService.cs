@@ -8,7 +8,7 @@ namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new Provider.ProviderClient(Channel);

@@ -12,7 +12,7 @@ namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new TrustRegistry.TrustRegistryClient(Channel);
@@ -29,7 +29,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="governanceFramework">The governance framework URI</param>
     /// <param name="description">The framework description</param>
     /// <returns></returns>
-    public async Task RegisterGovernanceFramework(string governanceFramework, string description)
+    public async Task RegisterGovernanceFrameworkAsync(string governanceFramework, string description)
     {
         if (Uri.TryCreate(governanceFramework, UriKind.Absolute, out _))
         {
@@ -55,7 +55,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="validFrom">Valid from (UTC)</param>
     /// <param name="validUntil">Valid until (UTC)</param>
     /// <returns></returns>
-    public async Task RegisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
+    public async Task RegisterIssuerAsync(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
     {
         RegisterIssuerRequest request = new()
         {
@@ -82,7 +82,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="validFrom">Valid from (UTC)</param>
     /// <param name="validUntil">Valid until (UTC)</param>
     /// <returns></returns>
-    public async Task RegisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
+    public async Task RegisterVerifierAsync(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
     {
         RegisterVerifierRequest request = new()
         {
@@ -107,7 +107,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="credentialType"></param>
     /// <param name="governanceFramework"></param>
     /// <returns>The status of the registration</returns>
-    public async Task<RegistrationStatus> CheckIssuerStatus(string issuerDid, string credentialType, string governanceFramework)
+    public async Task<RegistrationStatus> CheckIssuerStatusAsync(string issuerDid, string credentialType, string governanceFramework)
     {
         CheckIssuerStatusRequest request = new()
         {
@@ -127,7 +127,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="presentationType">The presentation type URI</param>
     /// <param name="governanceFramework">The governance framework URI</param>
     /// <returns>The status of the registration</returns>
-    public async Task<RegistrationStatus> CheckVerifierStatus(string verifierDid, string presentationType, string governanceFramework)
+    public async Task<RegistrationStatus> CheckVerifierStatusAsync(string verifierDid, string presentationType, string governanceFramework)
     {
         CheckVerifierStatusRequest request = new()
         {
@@ -145,7 +145,7 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<JObject>> SearchRegistry(string query = "SELECT * FROM c")
+    public async Task<IEnumerable<JObject>> SearchRegistryAsync(string query = "SELECT * FROM c")
     {
         SearchRegistryRequest request = new()
         {
@@ -153,6 +153,18 @@ public class TrustRegistryService : ServiceBase
             Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
         };
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
+
+        return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
+    }
+
+    public IEnumerable<JObject> SearchRegistry(string query = "SELECT * FROM c")
+    {
+        SearchRegistryRequest request = new()
+        {
+            Query = query,
+            Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
+        };
+        var response = Client.SearchRegistry(request, BuildMetadata(request));
 
         return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
     }

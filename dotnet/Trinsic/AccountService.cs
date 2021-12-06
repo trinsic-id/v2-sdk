@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Grpc.Net.Client;
@@ -14,18 +15,29 @@ namespace Trinsic;
 /// </summary>
 public class AccountService : ServiceBase
 {
-    public AccountService(ServerConfig? serverConfig = null)
-        : this(null, serverConfig)
+    private AccountProfile? profile;
+
+    public AccountService(ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
+        : base(null, serverConfig, existingChannel)
     {
+        Client = new AccountServiceClient(Channel);
+        profile = null;
     }
 
-    public AccountService(AccountProfile? accountProfile = null, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
+    public AccountService(AccountProfile accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
         Client = new AccountServiceClient(Channel);
+        profile = accountProfile;
     }
 
     internal AccountServiceClient Client { get; }
+
+    public override AccountProfile? Profile
+    {
+        get => profile;
+        set => profile = value ?? throw new ArgumentNullException(nameof(Profile), "Profile cannot be null");
+    }
 
     /// <summary>
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
@@ -38,6 +50,21 @@ public class AccountService : ServiceBase
         SignInRequest request = new() { Details = details ?? new AccountDetails() };
 
         SignInResponse response = await Client.SignInAsync(request);
+
+        return response.Profile;
+    }
+
+    /// <summary>
+    /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
+    /// specified, they will be used to associate
+    /// </summary>
+    /// <param name="details"></param>
+    /// <returns></returns>
+    public AccountProfile SignIn(AccountDetails? details = null)
+    {
+        SignInRequest request = new() { Details = details ?? new AccountDetails() };
+
+        SignInResponse response = Client.SignIn(request);
 
         return response.Profile;
     }
@@ -99,6 +126,18 @@ public class AccountService : ServiceBase
     {
         InfoRequest request = new();
         InfoResponse response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
+
+        return response;
+    }
+
+    /// <summary>
+    /// Return the details about the currently active account
+    /// </summary>
+    /// <returns></returns>
+    public InfoResponse GetInfo()
+    {
+        InfoRequest request = new();
+        InfoResponse response = Client.Info(request, BuildMetadata(request));
 
         return response;
     }
