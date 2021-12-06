@@ -16,7 +16,7 @@ public abstract class ServiceBase
 {
     protected ServiceBase(AccountProfile? accountProfile, ServerConfig? serverConfig, GrpcChannel? existingChannel)
     {
-        Profile = accountProfile;
+        profile = accountProfile;
         Configuration = serverConfig ?? new ServerConfig
         {
             Endpoint = "prod.trinsic.cloud",
@@ -33,8 +33,9 @@ public abstract class ServiceBase
     }
 
     private readonly ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private AccountProfile? profile;
 
-    public AccountProfile? Profile { get; set; }
+    public virtual AccountProfile? Profile { get => profile; set => profile = value; }
     public ServerConfig Configuration { get; private set; }
     public GrpcChannel Channel { get; set; }
 
@@ -49,6 +50,20 @@ public abstract class ServiceBase
         return new Metadata
         {
             { "Authorization", await securityProvider.GetAuthHeaderAsync(Profile, request) }
+        };
+    }
+
+    /// <summary>
+    /// Create call metadata by setting the required authentication headers
+    /// </summary>
+    /// <returns></returns>
+    protected Metadata BuildMetadata(IMessage request)
+    {
+        if (Profile is null) throw new Exception("Cannot call authenticated endpoint: profile must be set");
+
+        return new Metadata
+        {
+            { "Authorization", securityProvider.GetAuthHeader(Profile, request) }
         };
     }
 }
