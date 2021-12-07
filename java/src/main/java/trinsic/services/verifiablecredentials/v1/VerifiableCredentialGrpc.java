@@ -5,14 +5,14 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.41.0)",
+    value = "by gRPC proto compiler (version 1.42.1)",
     comments = "Source: services/verifiable-credentials/v1/verifiable-credentials.proto")
 @io.grpc.stub.annotations.GrpcGenerated
-public final class CredentialGrpc {
+public final class VerifiableCredentialGrpc {
 
-  private CredentialGrpc() {}
+  private VerifiableCredentialGrpc() {}
 
-  public static final String SERVICE_NAME = "services.verifiablecredentials.v1.Credential";
+  public static final String SERVICE_NAME = "services.verifiablecredentials.v1.VerifiableCredential";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
@@ -26,10 +26,10 @@ public final class CredentialGrpc {
   public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> getIssueMethod() {
     io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> getIssueMethod;
-    if ((getIssueMethod = CredentialGrpc.getIssueMethod) == null) {
-      synchronized (CredentialGrpc.class) {
-        if ((getIssueMethod = CredentialGrpc.getIssueMethod) == null) {
-          CredentialGrpc.getIssueMethod = getIssueMethod =
+    if ((getIssueMethod = VerifiableCredentialGrpc.getIssueMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getIssueMethod = VerifiableCredentialGrpc.getIssueMethod) == null) {
+          VerifiableCredentialGrpc.getIssueMethod = getIssueMethod =
               io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Issue"))
@@ -38,7 +38,7 @@ public final class CredentialGrpc {
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialMethodDescriptorSupplier("Issue"))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("Issue"))
               .build();
         }
       }
@@ -57,10 +57,10 @@ public final class CredentialGrpc {
   public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> getIssueFromTemplateMethod() {
     io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> getIssueFromTemplateMethod;
-    if ((getIssueFromTemplateMethod = CredentialGrpc.getIssueFromTemplateMethod) == null) {
-      synchronized (CredentialGrpc.class) {
-        if ((getIssueFromTemplateMethod = CredentialGrpc.getIssueFromTemplateMethod) == null) {
-          CredentialGrpc.getIssueFromTemplateMethod = getIssueFromTemplateMethod =
+    if ((getIssueFromTemplateMethod = VerifiableCredentialGrpc.getIssueFromTemplateMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getIssueFromTemplateMethod = VerifiableCredentialGrpc.getIssueFromTemplateMethod) == null) {
+          VerifiableCredentialGrpc.getIssueFromTemplateMethod = getIssueFromTemplateMethod =
               io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "IssueFromTemplate"))
@@ -69,7 +69,7 @@ public final class CredentialGrpc {
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialMethodDescriptorSupplier("IssueFromTemplate"))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("IssueFromTemplate"))
               .build();
         }
       }
@@ -88,10 +88,10 @@ public final class CredentialGrpc {
   public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> getCreateProofMethod() {
     io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> getCreateProofMethod;
-    if ((getCreateProofMethod = CredentialGrpc.getCreateProofMethod) == null) {
-      synchronized (CredentialGrpc.class) {
-        if ((getCreateProofMethod = CredentialGrpc.getCreateProofMethod) == null) {
-          CredentialGrpc.getCreateProofMethod = getCreateProofMethod =
+    if ((getCreateProofMethod = VerifiableCredentialGrpc.getCreateProofMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getCreateProofMethod = VerifiableCredentialGrpc.getCreateProofMethod) == null) {
+          VerifiableCredentialGrpc.getCreateProofMethod = getCreateProofMethod =
               io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateProof"))
@@ -100,7 +100,7 @@ public final class CredentialGrpc {
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialMethodDescriptorSupplier("CreateProof"))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("CreateProof"))
               .build();
         }
       }
@@ -119,10 +119,10 @@ public final class CredentialGrpc {
   public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse> getVerifyProofMethod() {
     io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse> getVerifyProofMethod;
-    if ((getVerifyProofMethod = CredentialGrpc.getVerifyProofMethod) == null) {
-      synchronized (CredentialGrpc.class) {
-        if ((getVerifyProofMethod = CredentialGrpc.getVerifyProofMethod) == null) {
-          CredentialGrpc.getVerifyProofMethod = getVerifyProofMethod =
+    if ((getVerifyProofMethod = VerifiableCredentialGrpc.getVerifyProofMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getVerifyProofMethod = VerifiableCredentialGrpc.getVerifyProofMethod) == null) {
+          VerifiableCredentialGrpc.getVerifyProofMethod = getVerifyProofMethod =
               io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "VerifyProof"))
@@ -131,7 +131,7 @@ public final class CredentialGrpc {
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialMethodDescriptorSupplier("VerifyProof"))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("VerifyProof"))
               .build();
         }
       }
@@ -150,10 +150,10 @@ public final class CredentialGrpc {
   public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse> getSendMethod() {
     io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse> getSendMethod;
-    if ((getSendMethod = CredentialGrpc.getSendMethod) == null) {
-      synchronized (CredentialGrpc.class) {
-        if ((getSendMethod = CredentialGrpc.getSendMethod) == null) {
-          CredentialGrpc.getSendMethod = getSendMethod =
+    if ((getSendMethod = VerifiableCredentialGrpc.getSendMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getSendMethod = VerifiableCredentialGrpc.getSendMethod) == null) {
+          VerifiableCredentialGrpc.getSendMethod = getSendMethod =
               io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Send"))
@@ -162,7 +162,7 @@ public final class CredentialGrpc {
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialMethodDescriptorSupplier("Send"))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("Send"))
               .build();
         }
       }
@@ -173,50 +173,50 @@ public final class CredentialGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static CredentialStub newStub(io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<CredentialStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialStub>() {
+  public static VerifiableCredentialStub newStub(io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialStub>() {
         @java.lang.Override
-        public CredentialStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialStub(channel, callOptions);
+        public VerifiableCredentialStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new VerifiableCredentialStub(channel, callOptions);
         }
       };
-    return CredentialStub.newStub(factory, channel);
+    return VerifiableCredentialStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static CredentialBlockingStub newBlockingStub(
+  public static VerifiableCredentialBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<CredentialBlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialBlockingStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialBlockingStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialBlockingStub>() {
         @java.lang.Override
-        public CredentialBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialBlockingStub(channel, callOptions);
+        public VerifiableCredentialBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new VerifiableCredentialBlockingStub(channel, callOptions);
         }
       };
-    return CredentialBlockingStub.newStub(factory, channel);
+    return VerifiableCredentialBlockingStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static CredentialFutureStub newFutureStub(
+  public static VerifiableCredentialFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<CredentialFutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialFutureStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialFutureStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<VerifiableCredentialFutureStub>() {
         @java.lang.Override
-        public CredentialFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialFutureStub(channel, callOptions);
+        public VerifiableCredentialFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new VerifiableCredentialFutureStub(channel, callOptions);
         }
       };
-    return CredentialFutureStub.newStub(factory, channel);
+    return VerifiableCredentialFutureStub.newStub(factory, channel);
   }
 
   /**
    */
-  public static abstract class CredentialImplBase implements io.grpc.BindableService {
+  public static abstract class VerifiableCredentialImplBase implements io.grpc.BindableService {
 
     /**
      */
@@ -296,16 +296,16 @@ public final class CredentialGrpc {
 
   /**
    */
-  public static final class CredentialStub extends io.grpc.stub.AbstractAsyncStub<CredentialStub> {
-    private CredentialStub(
+  public static final class VerifiableCredentialStub extends io.grpc.stub.AbstractAsyncStub<VerifiableCredentialStub> {
+    private VerifiableCredentialStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CredentialStub build(
+    protected VerifiableCredentialStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new CredentialStub(channel, callOptions);
+      return new VerifiableCredentialStub(channel, callOptions);
     }
 
     /**
@@ -351,16 +351,16 @@ public final class CredentialGrpc {
 
   /**
    */
-  public static final class CredentialBlockingStub extends io.grpc.stub.AbstractBlockingStub<CredentialBlockingStub> {
-    private CredentialBlockingStub(
+  public static final class VerifiableCredentialBlockingStub extends io.grpc.stub.AbstractBlockingStub<VerifiableCredentialBlockingStub> {
+    private VerifiableCredentialBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CredentialBlockingStub build(
+    protected VerifiableCredentialBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new CredentialBlockingStub(channel, callOptions);
+      return new VerifiableCredentialBlockingStub(channel, callOptions);
     }
 
     /**
@@ -401,16 +401,16 @@ public final class CredentialGrpc {
 
   /**
    */
-  public static final class CredentialFutureStub extends io.grpc.stub.AbstractFutureStub<CredentialFutureStub> {
-    private CredentialFutureStub(
+  public static final class VerifiableCredentialFutureStub extends io.grpc.stub.AbstractFutureStub<VerifiableCredentialFutureStub> {
+    private VerifiableCredentialFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected CredentialFutureStub build(
+    protected VerifiableCredentialFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new CredentialFutureStub(channel, callOptions);
+      return new VerifiableCredentialFutureStub(channel, callOptions);
     }
 
     /**
@@ -465,10 +465,10 @@ public final class CredentialGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final CredentialImplBase serviceImpl;
+    private final VerifiableCredentialImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(CredentialImplBase serviceImpl, int methodId) {
+    MethodHandlers(VerifiableCredentialImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -513,9 +513,9 @@ public final class CredentialGrpc {
     }
   }
 
-  private static abstract class CredentialBaseDescriptorSupplier
+  private static abstract class VerifiableCredentialBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    CredentialBaseDescriptorSupplier() {}
+    VerifiableCredentialBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -524,21 +524,21 @@ public final class CredentialGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Credential");
+      return getFileDescriptor().findServiceByName("VerifiableCredential");
     }
   }
 
-  private static final class CredentialFileDescriptorSupplier
-      extends CredentialBaseDescriptorSupplier {
-    CredentialFileDescriptorSupplier() {}
+  private static final class VerifiableCredentialFileDescriptorSupplier
+      extends VerifiableCredentialBaseDescriptorSupplier {
+    VerifiableCredentialFileDescriptorSupplier() {}
   }
 
-  private static final class CredentialMethodDescriptorSupplier
-      extends CredentialBaseDescriptorSupplier
+  private static final class VerifiableCredentialMethodDescriptorSupplier
+      extends VerifiableCredentialBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    CredentialMethodDescriptorSupplier(String methodName) {
+    VerifiableCredentialMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -553,11 +553,11 @@ public final class CredentialGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (CredentialGrpc.class) {
+      synchronized (VerifiableCredentialGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new CredentialFileDescriptorSupplier())
+              .setSchemaDescriptor(new VerifiableCredentialFileDescriptorSupplier())
               .addMethod(getIssueMethod())
               .addMethod(getIssueFromTemplateMethod())
               .addMethod(getCreateProofMethod())

@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.services.AccountService;
+import trinsic.services.ProviderService;
 import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.io.IOException;
@@ -13,7 +16,7 @@ import java.net.MalformedURLException;
 class TrinsicServicesTest {
 
     @Test
-    public void testServiceBaseSetProfile() throws InterruptedException {
+    public void testServiceBaseSetProfile() {
         var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.buildMetadata(null));
@@ -56,6 +59,6 @@ class TrinsicServicesTest {
 
     @Test
     public void testTrinsicServiceDemo() throws IOException, DidException {
-        new VaccineDemo().run();
+        VaccineDemo.run();
     }
 }

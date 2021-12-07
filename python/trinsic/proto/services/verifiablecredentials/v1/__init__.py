@@ -65,7 +65,7 @@ class SendResponse(betterproto.Message):
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
 
 
-class CredentialStub(betterproto.ServiceStub):
+class VerifiableCredentialStub(betterproto.ServiceStub):
     async def issue(
         self, *, document: "__common_v1__.JsonPayload" = None
     ) -> "IssueResponse":
@@ -75,7 +75,7 @@ class CredentialStub(betterproto.ServiceStub):
             request.document = document
 
         return await self._unary_unary(
-            "/services.verifiablecredentials.v1.Credential/Issue",
+            "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
             request,
             IssueResponse,
         )
@@ -90,7 +90,7 @@ class CredentialStub(betterproto.ServiceStub):
             request.attributes = attributes
 
         return await self._unary_unary(
-            "/services.verifiablecredentials.v1.Credential/IssueFromTemplate",
+            "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
             request,
             IssueResponse,
         )
@@ -108,7 +108,7 @@ class CredentialStub(betterproto.ServiceStub):
         request.document_id = document_id
 
         return await self._unary_unary(
-            "/services.verifiablecredentials.v1.Credential/CreateProof",
+            "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
             request,
             CreateProofResponse,
         )
@@ -122,7 +122,7 @@ class CredentialStub(betterproto.ServiceStub):
             request.proof_document = proof_document
 
         return await self._unary_unary(
-            "/services.verifiablecredentials.v1.Credential/VerifyProof",
+            "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
             request,
             VerifyProofResponse,
         )
@@ -145,11 +145,13 @@ class CredentialStub(betterproto.ServiceStub):
             request.document = document
 
         return await self._unary_unary(
-            "/services.verifiablecredentials.v1.Credential/Send", request, SendResponse
+            "/services.verifiablecredentials.v1.VerifiableCredential/Send",
+            request,
+            SendResponse,
         )
 
 
-class CredentialBase(ServiceBase):
+class VerifiableCredentialBase(ServiceBase):
     async def issue(self, document: "__common_v1__.JsonPayload") -> "IssueResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -234,31 +236,31 @@ class CredentialBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.verifiablecredentials.v1.Credential/Issue": grpclib.const.Handler(
+            "/services.verifiablecredentials.v1.VerifiableCredential/Issue": grpclib.const.Handler(
                 self.__rpc_issue,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 IssueRequest,
                 IssueResponse,
             ),
-            "/services.verifiablecredentials.v1.Credential/IssueFromTemplate": grpclib.const.Handler(
+            "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate": grpclib.const.Handler(
                 self.__rpc_issue_from_template,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 IssueFromTemplateRequest,
                 IssueResponse,
             ),
-            "/services.verifiablecredentials.v1.Credential/CreateProof": grpclib.const.Handler(
+            "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof": grpclib.const.Handler(
                 self.__rpc_create_proof,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 CreateProofRequest,
                 CreateProofResponse,
             ),
-            "/services.verifiablecredentials.v1.Credential/VerifyProof": grpclib.const.Handler(
+            "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof": grpclib.const.Handler(
                 self.__rpc_verify_proof,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 VerifyProofRequest,
                 VerifyProofResponse,
             ),
-            "/services.verifiablecredentials.v1.Credential/Send": grpclib.const.Handler(
+            "/services.verifiablecredentials.v1.VerifiableCredential/Send": grpclib.const.Handler(
                 self.__rpc_send,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SendRequest,

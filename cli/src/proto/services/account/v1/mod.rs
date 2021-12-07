@@ -107,14 +107,14 @@ pub enum ConfirmationMethod {
     Other = 10,
 }
 #[doc = r" Generated client implementations."]
-pub mod account_service_client {
+pub mod account_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
-    pub struct AccountServiceClient<T> {
+    pub struct AccountClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl AccountServiceClient<tonic::transport::Channel> {
+    impl AccountClient<tonic::transport::Channel> {
         #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -125,7 +125,7 @@ pub mod account_service_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> AccountServiceClient<T>
+    impl<T> AccountClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
         T::ResponseBody: Body + Send + 'static,
@@ -139,7 +139,7 @@ pub mod account_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> AccountServiceClient<InterceptedService<T, F>>
+        ) -> AccountClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
@@ -151,7 +151,7 @@ pub mod account_service_client {
             <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
                 Into<StdError> + Send + Sync,
         {
-            AccountServiceClient::new(InterceptedService::new(inner, interceptor))
+            AccountClient::new(InterceptedService::new(inner, interceptor))
         }
         #[doc = r" Compress requests with `gzip`."]
         #[doc = r""]
@@ -178,8 +178,7 @@ pub mod account_service_client {
                 )
             })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.account.v1.AccountService/SignIn");
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Get account information"]
@@ -194,8 +193,7 @@ pub mod account_service_client {
                 )
             })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.account.v1.AccountService/Info");
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " List all connected devices"]
@@ -210,9 +208,8 @@ pub mod account_service_client {
                 )
             })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.AccountService/ListDevices",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/services.account.v1.Account/ListDevices");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Revoke device access to the account's cloud wallet"]
@@ -227,9 +224,8 @@ pub mod account_service_client {
                 )
             })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.account.v1.AccountService/RevokeDevice",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

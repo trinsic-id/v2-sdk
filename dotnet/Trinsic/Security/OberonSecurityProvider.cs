@@ -17,6 +17,21 @@ internal class OberonSecurityProvider : ISecurityProvider
 
     public Task<string> GetAuthHeaderAsync(AccountProfile accountProfile, IMessage message)
     {
+        return Task.FromResult(GetAuthHeader(accountProfile, message));
+    }
+
+    /// <summary>
+    /// Encoded a byte array to base64url string without padding
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
+        .Replace('+', '-')
+        .Replace('/', '_')
+        .Trim('=');
+
+    public string GetAuthHeader(AccountProfile accountProfile, IMessage message)
+    {
         if (accountProfile.Protection?.Enabled ?? false) throw new Exception("The token must be unprotected before use.");
 
         // compute the hash of the request and capture current timestamp
@@ -48,17 +63,6 @@ internal class OberonSecurityProvider : ISecurityProvider
             $"data={Base64UrlEncode(accountProfile.AuthData.ToByteArray())}," +
             $"nonce={Base64UrlEncode(nonce.ToByteArray())}";
 
-        return Task.FromResult(header);
+        return header;
     }
-
-
-    /// <summary>
-    /// Encoded a byte array to base64url string without padding
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
-        .Replace('+', '-')
-        .Replace('/', '_')
-        .Trim('=');
 }

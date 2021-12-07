@@ -1,10 +1,9 @@
-use std::env::args;
+use std::io;
 
+use colored::Colorize;
+use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
 use tonic::transport::Channel;
-use trinsic::proto::services::account::v1::{
-    account_service_client::AccountServiceClient, AccountDetails, AccountProfile,
-    ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection,
-};
+use trinsic::{grpc_channel, grpc_client, grpc_client_with_auth, proto::services::account::v1::{AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection, account_client::AccountClient}};
 
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 
@@ -28,19 +27,13 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
         None => "New Wallet (from CLI)".to_string(),
     };
 
-    let channel = Channel::from_shared(config.server.address)
-        .unwrap()
-        .connect()
-        .await
-        .unwrap();
-
-    let mut client = AccountServiceClient::new(channel);
+    let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(SignInRequest {
         details: Some(AccountDetails {
             name: name,
-            email: String::default(),
-            sms: String::default(),
+            email: args.email.map_or(String::default(), |x| x.to_string()),
+            sms: args.sms.map_or(String::default(), |x| x.to_string()),
         }),
         invitation_code: args
             .invitation_code
@@ -54,23 +47,44 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
         .expect("Create Wallet failed")
         .into_inner();
 
-    let protected = ConfirmationMethod::from_i32(response.confirmation_method)
-        .unwrap_or(ConfirmationMethod::None);
+    let pr = response.profile.unwrap();
+    let protection = pr.protection.clone().unwrap();
 
-    let profile = response.profile.unwrap();
+    let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
+        ConfirmationMethod::None => pr,
+        ConfirmationMethod::Email => {
+            println!(
+                "{}",
+                "Confirmation required. Check your email for security code.".blue()
+            );
+            println!("{}", "Enter Code:".bold());
+            let mut buffer = String::new();
+            io::stdin().read_line(&mut buffer)?;
+
+            // strips new line characters at the end
+            let code = buffer.lines().next().unwrap();
+
+            let mut p = pr.clone();
+            unprotect(&mut p, code.as_bytes().to_vec());
+
+            p
+        }
+        ConfirmationMethod::Sms => {
+            println!("{}", "SMS confirmation is not yet supported.".red());
+            pr
+        }
+        ConfirmationMethod::ConnectedDevice => pr,
+        ConfirmationMethod::Other => pr,
+    };
+
+    // println!("Profile: {:#?}", profile);
 
     new_config.save_profile(profile, args.alias.unwrap(), args.set_default)
 }
 
 #[tokio::main]
-async fn info(a_rgs: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
-    let channel = Channel::from_shared(config.server.address.clone())
-        .unwrap()
-        .connect()
-        .await
-        .unwrap();
-
-    let mut client = AccountServiceClient::with_interceptor(channel, config);
+async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
+    let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InfoRequest {});
 
@@ -83,4 +97,19 @@ async fn info(a_rgs: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
     println!("{:#?}", response);
 
     Ok(())
+}
+
+fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
+    let request = UnBlindOberonTokenRequest {
+        blinding: vec![code],
+        token: profile.auth_token.clone(),
+    };
+
+    let response = Oberon::unblind(&request).unwrap();
+
+    profile.auth_token = response.token;
+    profile.protection = Some(TokenProtection {
+        enabled: false,
+        method: ConfirmationMethod::None as i32,
+    })
 }

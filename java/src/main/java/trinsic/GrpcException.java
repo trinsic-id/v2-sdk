@@ -1,3 +1,5 @@
+package trinsic;
+
 public class GrpcException extends RuntimeException {
     public Object response;
 

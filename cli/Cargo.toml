@@ -1,3 +1,4 @@
+cargo-features = ["edition2021"]
 [package]
 name = "trinsic"
 version = "0.1.0"
@@ -22,6 +23,7 @@ dirs = "3.0"
 yaml-rust = "0.3"
 colored = "2"
 blake3 = "1.2"
+bytes = "1.1"
 
 [build-dependencies]
 tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }

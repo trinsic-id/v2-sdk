@@ -1,8 +1,11 @@
+package trinsic.services;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.common.v1.ProviderGrpc;
 import trinsic.services.common.v1.ProviderOuterClass;
@@ -10,8 +13,13 @@ import trinsic.services.common.v1.ProviderOuterClass;
 public class ProviderService extends ServiceBase {
     public ProviderGrpc.ProviderBlockingStub stub;
 
-    public ProviderService(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+    public ProviderService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+        super(accountProfile, serverConfig, null);
+        this.stub = ProviderGrpc.newBlockingStub(this.getChannel());
+    }
+
+    public ProviderService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
         this.stub = ProviderGrpc.newBlockingStub(this.getChannel());
     }
 

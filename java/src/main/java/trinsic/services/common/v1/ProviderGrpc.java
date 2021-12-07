@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.41.0)",
+    value = "by gRPC proto compiler (version 1.42.1)",
     comments = "Source: services/provider/v1/provider.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class ProviderGrpc {
@@ -174,10 +174,6 @@ public final class ProviderGrpc {
     }
 
     /**
-     * <pre>
-     *   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-     *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
-     * </pre>
      */
     public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
@@ -245,10 +241,6 @@ public final class ProviderGrpc {
     }
 
     /**
-     * <pre>
-     *   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-     *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
-     * </pre>
      */
     public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
@@ -289,10 +281,6 @@ public final class ProviderGrpc {
     }
 
     /**
-     * <pre>
-     *   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-     *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
-     * </pre>
      */
     public trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -334,10 +322,6 @@ public final class ProviderGrpc {
     }
 
     /**
-     * <pre>
-     *   rpc CreateCredentialTemplate(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-     *   rpc ListCredentialTemplates(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> invitationStatus(
         trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {

@@ -7,8 +7,6 @@ on:
         description: 'Version to build'
         required: true
         default: ''
-  release:
-    types: [ published ]
 
 jobs:
   release_testpypi:
@@ -24,10 +22,16 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
           python -m pip install build
-          python ../devops/build_sdks.py --github-token=${{ secrets.API_GITHUB_TOKEN }} --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
           python -m build --sdist --wheel --outdir dist/ .
         shell: pwsh
         working-directory: python
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:

@@ -10,97 +10,9 @@ import grpclib
 
 
 @dataclass(eq=False, repr=False)
-class CreateWalletRequest(betterproto.Message):
-    # optional description of the wallet
-    description: str = betterproto.string_field(2)
-    # (Optional) Supply an invitation id to associate this caller device to an
-    # existing cloud wallet.
-    security_code: str = betterproto.string_field(3)
-
-
-@dataclass(eq=False, repr=False)
-class CreateWalletResponse(betterproto.Message):
-    # the status code of the response
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    # authentication data containing info about the cloud wallet and device the
-    # user is connecting from
-    auth_data: bytes = betterproto.bytes_field(2)
-    # authoritative token issued by the server that is required to prove
-    # knowledge during authentication
-    auth_token: bytes = betterproto.bytes_field(3)
-    # indicates if the token issued protected with a security code, usually
-    # delivered by email or sms
-    is_protected: bool = betterproto.bool_field(4)
-
-
-@dataclass(eq=False, repr=False)
-class ConnectRequest(betterproto.Message):
-    email: str = betterproto.string_field(5, group="contact_method")
-    phone: str = betterproto.string_field(6, group="contact_method")
-
-
-@dataclass(eq=False, repr=False)
-class ConnectResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class InvitationToken(betterproto.Message):
-    security_code: str = betterproto.string_field(1)
-    wallet_id: str = betterproto.string_field(2)
-    email: str = betterproto.string_field(5, group="contact_method")
-    phone: str = betterproto.string_field(6, group="contact_method")
-
-
-@dataclass(eq=False, repr=False)
-class WalletProfile(betterproto.Message):
-    """
-    Stores profile data for accessing a wallet.This result should be stored
-    somewhere safe,as it contains private key information.
-    """
-
-    name: str = betterproto.string_field(1)
-    auth_data: bytes = betterproto.bytes_field(2)
-    auth_token: bytes = betterproto.bytes_field(3)
-    is_protected: bool = betterproto.bool_field(4)
-    config: "__common_v1__.ServerConfig" = betterproto.message_field(5)
-
-
-@dataclass(eq=False, repr=False)
-class GrantAccessRequest(betterproto.Message):
-    wallet_id: str = betterproto.string_field(1)
-    did: str = betterproto.string_field(2)
-
-
-@dataclass(eq=False, repr=False)
-class GrantAccessResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class RevokeAccessRequest(betterproto.Message):
-    wallet_id: str = betterproto.string_field(1)
-    did: str = betterproto.string_field(2)
-
-
-@dataclass(eq=False, repr=False)
-class RevokeAccessResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class GetProviderConfigurationRequest(betterproto.Message):
-    request_options: "__common_v1__.RequestOptions" = betterproto.message_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class GetProviderConfigurationResponse(betterproto.Message):
-    did_document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
-    key_agreement_key_id: str = betterproto.string_field(2)
-
-
-@dataclass(eq=False, repr=False)
 class SearchRequest(betterproto.Message):
+    """Search request object"""
+
     query: str = betterproto.string_field(1)
     continuation_token: str = betterproto.string_field(2)
     options: "__common_v1__.RequestOptions" = betterproto.message_field(5)
@@ -108,6 +20,8 @@ class SearchRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class SearchResponse(betterproto.Message):
+    """Search response object"""
+
     items: List["__common_v1__.JsonPayload"] = betterproto.message_field(1)
     has_more: bool = betterproto.bool_field(2)
     count: int = betterproto.int32_field(3)
@@ -116,59 +30,34 @@ class SearchResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InsertItemRequest(betterproto.Message):
+    """Insert item request"""
+
     item: "__common_v1__.JsonPayload" = betterproto.message_field(1)
     item_type: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemResponse(betterproto.Message):
+    """Insert item response"""
+
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    # The item identifier of the inserted record
     item_id: str = betterproto.string_field(2)
 
 
-class WalletStub(betterproto.ServiceStub):
-    async def get_provider_configuration(
-        self, *, request_options: "__common_v1__.RequestOptions" = None
-    ) -> "GetProviderConfigurationResponse":
+@dataclass(eq=False, repr=False)
+class DeleteItemRequest(betterproto.Message):
+    """Delete item request"""
 
-        request = GetProviderConfigurationRequest()
-        if request_options is not None:
-            request.request_options = request_options
+    pass
 
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/GetProviderConfiguration",
-            request,
-            GetProviderConfigurationResponse,
-        )
 
-    async def connect_external_identity(
-        self, *, email: str = "", phone: str = ""
-    ) -> "ConnectResponse":
+@dataclass(eq=False, repr=False)
+class DeleteItemResponse(betterproto.Message):
+    pass
 
-        request = ConnectRequest()
-        request.email = email
-        request.phone = phone
 
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/ConnectExternalIdentity",
-            request,
-            ConnectResponse,
-        )
-
-    async def create_wallet(
-        self, *, description: str = "", security_code: str = ""
-    ) -> "CreateWalletResponse":
-
-        request = CreateWalletRequest()
-        request.description = description
-        request.security_code = security_code
-
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/CreateWallet",
-            request,
-            CreateWalletResponse,
-        )
-
+class UniversalWalletStub(betterproto.ServiceStub):
     async def search(
         self,
         *,
@@ -184,7 +73,9 @@ class WalletStub(betterproto.ServiceStub):
             request.options = options
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/Search", request, SearchResponse
+            "/services.universalwallet.v1.UniversalWallet/Search",
+            request,
+            SearchResponse,
         )
 
     async def insert_item(
@@ -197,56 +88,23 @@ class WalletStub(betterproto.ServiceStub):
         request.item_type = item_type
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/InsertItem",
+            "/services.universalwallet.v1.UniversalWallet/InsertItem",
             request,
             InsertItemResponse,
         )
 
-    async def grant_access(
-        self, *, wallet_id: str = "", did: str = ""
-    ) -> "GrantAccessResponse":
+    async def deleteitem(self) -> "DeleteItemResponse":
 
-        request = GrantAccessRequest()
-        request.wallet_id = wallet_id
-        request.did = did
+        request = DeleteItemRequest()
 
         return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/GrantAccess",
+            "/services.universalwallet.v1.UniversalWallet/Deleteitem",
             request,
-            GrantAccessResponse,
-        )
-
-    async def revoke_access(
-        self, *, wallet_id: str = "", did: str = ""
-    ) -> "RevokeAccessResponse":
-
-        request = RevokeAccessRequest()
-        request.wallet_id = wallet_id
-        request.did = did
-
-        return await self._unary_unary(
-            "/services.universalwallet.v1.Wallet/RevokeAccess",
-            request,
-            RevokeAccessResponse,
+            DeleteItemResponse,
         )
 
 
-class WalletBase(ServiceBase):
-    async def get_provider_configuration(
-        self, request_options: "__common_v1__.RequestOptions"
-    ) -> "GetProviderConfigurationResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def connect_external_identity(
-        self, email: str, phone: str
-    ) -> "ConnectResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def create_wallet(
-        self, description: str, security_code: str
-    ) -> "CreateWalletResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
+class UniversalWalletBase(ServiceBase):
     async def search(
         self,
         query: str,
@@ -260,47 +118,8 @@ class WalletBase(ServiceBase):
     ) -> "InsertItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def grant_access(self, wallet_id: str, did: str) -> "GrantAccessResponse":
+    async def deleteitem(self) -> "DeleteItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def revoke_access(self, wallet_id: str, did: str) -> "RevokeAccessResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_get_provider_configuration(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "request_options": request.request_options,
-        }
-
-        response = await self.get_provider_configuration(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_connect_external_identity(
-        self, stream: grpclib.server.Stream
-    ) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "email": request.email,
-            "phone": request.phone,
-        }
-
-        response = await self.connect_external_identity(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_create_wallet(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "description": request.description,
-            "security_code": request.security_code,
-        }
-
-        response = await self.create_wallet(**request_kwargs)
-        await stream.send_message(response)
 
     async def __rpc_search(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -325,71 +144,33 @@ class WalletBase(ServiceBase):
         response = await self.insert_item(**request_kwargs)
         await stream.send_message(response)
 
-    async def __rpc_grant_access(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_deleteitem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
 
-        request_kwargs = {
-            "wallet_id": request.wallet_id,
-            "did": request.did,
-        }
+        request_kwargs = {}
 
-        response = await self.grant_access(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_revoke_access(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "wallet_id": request.wallet_id,
-            "did": request.did,
-        }
-
-        response = await self.revoke_access(**request_kwargs)
+        response = await self.deleteitem(**request_kwargs)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
-            "/services.universalwallet.v1.Wallet/GetProviderConfiguration": grpclib.const.Handler(
-                self.__rpc_get_provider_configuration,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                GetProviderConfigurationRequest,
-                GetProviderConfigurationResponse,
-            ),
-            "/services.universalwallet.v1.Wallet/ConnectExternalIdentity": grpclib.const.Handler(
-                self.__rpc_connect_external_identity,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ConnectRequest,
-                ConnectResponse,
-            ),
-            "/services.universalwallet.v1.Wallet/CreateWallet": grpclib.const.Handler(
-                self.__rpc_create_wallet,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CreateWalletRequest,
-                CreateWalletResponse,
-            ),
-            "/services.universalwallet.v1.Wallet/Search": grpclib.const.Handler(
+            "/services.universalwallet.v1.UniversalWallet/Search": grpclib.const.Handler(
                 self.__rpc_search,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SearchRequest,
                 SearchResponse,
             ),
-            "/services.universalwallet.v1.Wallet/InsertItem": grpclib.const.Handler(
+            "/services.universalwallet.v1.UniversalWallet/InsertItem": grpclib.const.Handler(
                 self.__rpc_insert_item,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 InsertItemRequest,
                 InsertItemResponse,
             ),
-            "/services.universalwallet.v1.Wallet/GrantAccess": grpclib.const.Handler(
-                self.__rpc_grant_access,
+            "/services.universalwallet.v1.UniversalWallet/Deleteitem": grpclib.const.Handler(
+                self.__rpc_deleteitem,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                GrantAccessRequest,
-                GrantAccessResponse,
-            ),
-            "/services.universalwallet.v1.Wallet/RevokeAccess": grpclib.const.Handler(
-                self.__rpc_revoke_access,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                RevokeAccessRequest,
-                RevokeAccessResponse,
+                DeleteItemRequest,
+                DeleteItemResponse,
             ),
         }
 

@@ -10,20 +10,20 @@ namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null)
-        : base(accountProfile, serverConfig)
+    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
     {
-        Client = new Credential.CredentialClient(Channel);
+        Client = new VerifiableCredential.VerifiableCredentialClient(Channel);
     }
 
-    internal Credential.CredentialClient Client { get; }
+    internal VerifiableCredential.VerifiableCredentialClient Client { get; }
 
     /// <summary>
     /// Signs an input credential
     /// </summary>
     /// <param name="document"></param>
     /// <returns></returns>
-    public async Task<JObject> IssueCredential(JObject document)
+    public async Task<JObject> IssueCredentialAsync(JObject document)
     {
         try
         {
@@ -41,6 +41,24 @@ public class CredentialsService : ServiceBase
         }
     }
 
+    public JObject IssueCredential(JObject document)
+    {
+        try
+        {
+            IssueRequest request = new()
+            {
+                Document = new JsonPayload { JsonStruct = document.ToStruct() }
+            };
+            var response = Client.Issue(request, BuildMetadata(request));
+            return response.Document.JsonStruct.ToJObject();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
 
     /// <summary>
     /// Derive a proof from an existing document in the wallet using
@@ -49,7 +67,7 @@ public class CredentialsService : ServiceBase
     /// <param name="documentId"></param>
     /// <param name="revealDocument"></param>
     /// <returns></returns>
-    public async Task<JObject> CreateProof(string documentId, JObject revealDocument)
+    public async Task<JObject> CreateProofAsync(string documentId, JObject revealDocument)
     {
         CreateProofRequest request = new()
         {
@@ -63,12 +81,26 @@ public class CredentialsService : ServiceBase
         return response.ProofDocument.JsonStruct.ToJObject();
     }
 
+    public JObject CreateProof(string documentId, JObject revealDocument)
+    {
+        CreateProofRequest request = new()
+        {
+            DocumentId = documentId,
+            RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
+        };
+        var response = Client.CreateProof(
+            request: request,
+            headers: BuildMetadata(request));
+
+        return response.ProofDocument.JsonStruct.ToJObject();
+    }
+
     /// <summary>
     /// Verifies a proof document
     /// </summary>
     /// <param name="proofDocument"></param>
     /// <returns></returns>
-    public async Task<bool> VerifyProof(JObject proofDocument)
+    public async Task<bool> VerifyAsync(JObject proofDocument)
     {
         VerifyProofRequest request = new()
         {
@@ -81,6 +113,19 @@ public class CredentialsService : ServiceBase
         return response.Valid;
     }
 
+    public bool Verify(JObject proofDocument)
+    {
+        VerifyProofRequest request = new()
+        {
+            ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
+        };
+        var response = Client.VerifyProof(
+            request: request,
+            headers: BuildMetadata(request));
+
+        return response.Valid;
+    }
+
 
     /// <summary>
     /// Sends a document to the specified destination
@@ -88,7 +133,7 @@ public class CredentialsService : ServiceBase
     /// <param name="document"></param>
     /// <param name="email"></param>
     /// <returns></returns>
-    public async Task Send(JObject document, string email)
+    public async Task SendAsync(JObject document, string email)
     {
         SendRequest request = new()
         {
@@ -98,5 +143,17 @@ public class CredentialsService : ServiceBase
         var response = await Client.SendAsync(
             request: request,
             headers: await BuildMetadataAsync(request));
+    }
+
+    public void Send(JObject document, string email)
+    {
+        SendRequest request = new()
+        {
+            Email = email,
+            Document = new JsonPayload { JsonStruct = document.ToStruct() }
+        };
+        var response = Client.Send(
+            request: request,
+            headers: BuildMetadata(request));
     }
 }

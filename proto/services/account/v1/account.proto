@@ -98,7 +98,7 @@ message ListDevicesResponse {}
 message RevokeDeviceRequest {}
 message RevokeDeviceResponse {}
 
-service AccountService {
+service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
     // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);

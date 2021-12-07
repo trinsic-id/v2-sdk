@@ -12,7 +12,7 @@ plugins {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "1.1.1"
+def jarVersion = "1.2.0"
 
 apply from: "conf.gradle"
 
@@ -61,11 +61,11 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java-util:3.19.1'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
 
-    implementation 'io.grpc:protoc-gen-grpc-java:1.42.1'
     implementation 'io.grpc:grpc-netty-shaded:1.42.1'
     implementation 'io.grpc:grpc-protobuf:1.42.1'
-    implementation 'io.grpc:grpc-stub:1.42.1'
-    implementation 'ky.korins:blake3_3:2.9.0'
+    implementation 'io.grpc:grpc-stub:1.42.1' // This has to match the version of protoc-gen-grpc-java used in `sdk/devops/generate_proto_files.py`
+    // https://mvnrepository.com/artifact/io.github.rctcwyvrn/blake3
+    implementation 'io.github.rctcwyvrn:blake3:1.3'
     implementation 'io.leonard:base58:0.0.2'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 

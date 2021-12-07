@@ -22,16 +22,17 @@ on:
 jobs:
   test_infra:
     name: Run .NET SDK Tests
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
       - run: |
+          dotnet workload install ios
           dotnet restore
-          dotnet build -c Release
-          dotnet test -c Release -v n
+          dotnet build -c Release -f net6.0
+          dotnet test -c Release -f net6.0 -v n
         working-directory: ./dotnet/
         env:
           TEST_SERVER_ENDPOINT: ${{ github.event.inputs.serverEndpoint }}

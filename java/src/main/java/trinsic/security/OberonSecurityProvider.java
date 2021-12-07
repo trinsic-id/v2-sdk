@@ -1,13 +1,13 @@
-package security;
+package trinsic.security;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import ky.korins.blake3.Blake3;
+import io.github.rctcwyvrn.blake3.Blake3;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 import java.time.Instant;
@@ -15,13 +15,15 @@ import java.util.Base64;
 
 public class OberonSecurityProvider implements ISecurityProvider {
     @Override
-    public String GetAuthHeader(Account.AccountProfile accountProfile, Message message) throws InvalidProtocolBufferException, DidException {
+    public String GetAuthHeader(AccountOuterClass.AccountProfile accountProfile, Message message) throws InvalidProtocolBufferException, DidException {
         if (accountProfile.hasProtection() && accountProfile.getProtection().getEnabled())
             throw new RuntimeException("the token must be unprotected before use.");
 
         // compute the hash of the request and return the result
         var bytes = message.toByteArray();
-        var messageHash = Blake3.newHasher().update(bytes).done(64);
+        var hasher = Blake3.newInstance();
+        hasher.update(bytes);
+        var messageHash = hasher.digest(64);
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
                 .setTimestamp(Instant.now().toEpochMilli())

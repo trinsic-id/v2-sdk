@@ -7,4 +7,6 @@ namespace Trinsic;
 public interface ISecurityProvider
 {
     Task<string> GetAuthHeaderAsync(AccountProfile accountProfile, IMessage message);
+
+    string GetAuthHeader(AccountProfile accountProfile, IMessage message);
 }

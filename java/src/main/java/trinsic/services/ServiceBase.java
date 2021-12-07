@@ -1,29 +1,37 @@
+package trinsic.services;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
-import security.ISecurityProvider;
-import security.OberonSecurityProvider;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.Account;
+import trinsic.security.ISecurityProvider;
+import trinsic.security.OberonSecurityProvider;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 public abstract class ServiceBase {
-    private Account.AccountProfile profile = null;
+    private AccountOuterClass.AccountProfile profile = null;
     private CommonOuterClass.ServerConfig configuration = null;
-    private ManagedChannel channel = null;
-    private ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private Channel channel = null;
+    private boolean createdChannel = false;
+    private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
-    protected ServiceBase(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+    protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
         this.profile = accountProfile;
         this.configuration = serverConfig;
         if (this.configuration == null)
             this.configuration = TrinsicUtilities.getProductionConfig();
-        this.channel = TrinsicUtilities.getChannel(this.configuration);
+        // Note if we should clean up the channel in the end.
+        this.createdChannel = channel == null;
+        this.channel = this.createdChannel ? TrinsicUtilities.getChannel(this.configuration) : channel;
     }
 
     public void shutdown() {
-        this.channel.shutdownNow();
+        if (channel instanceof ManagedChannel && createdChannel)
+            ((ManagedChannel)this.channel).shutdownNow();
     }
 
     public Metadata buildMetadata(Message request) throws InvalidProtocolBufferException, DidException {
@@ -35,11 +43,11 @@ public abstract class ServiceBase {
         return metadata;
     }
 
-    public void setProfile(Account.AccountProfile profile) {
+    public void setProfile(AccountOuterClass.AccountProfile profile) {
         this.profile = profile;
     }
 
-    public Account.AccountProfile getProfile() {
+    public AccountOuterClass.AccountProfile getProfile() {
         return this.profile;
     }
 
@@ -47,7 +55,7 @@ public abstract class ServiceBase {
         return this.configuration;
     }
 
-    public ManagedChannel getChannel() {
+    public Channel getChannel() {
         return this.channel;
     }
 

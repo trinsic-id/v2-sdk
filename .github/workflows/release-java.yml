@@ -1,4 +1,4 @@
-name: "Java (release)"
+name: "Java (Release)"
 
 on:
   workflow_dispatch:

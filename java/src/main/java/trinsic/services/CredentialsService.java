@@ -1,22 +1,32 @@
+package trinsic.services;
+
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import io.grpc.Channel;
 import io.grpc.stub.MetadataUtils;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
-import trinsic.services.verifiablecredentials.v1.CredentialGrpc;
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 import java.util.HashMap;
 
 public class CredentialsService extends ServiceBase {
-    private final CredentialGrpc.CredentialBlockingStub stub;
+    private final VerifiableCredentialGrpc.VerifiableCredentialBlockingStub stub;
 
-    public CredentialsService(Account.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig);
+    public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+        super(accountProfile, serverConfig, null);
 
-        this.stub = CredentialGrpc.newBlockingStub(this.getChannel());
+        this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
+    }
+
+    public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+        super(accountProfile, serverConfig, existingChannel);
+
+        this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
     }
 
     public HashMap issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
@@ -48,7 +58,7 @@ public class CredentialsService extends ServiceBase {
         return clientWithMetadata(request).send(request);
     }
 
-    private CredentialGrpc.CredentialBlockingStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
+    private VerifiableCredentialGrpc.VerifiableCredentialBlockingStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
         return this.stub.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }

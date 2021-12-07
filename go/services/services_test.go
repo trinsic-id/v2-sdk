@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/connectivity"
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
@@ -26,23 +28,32 @@ func GetVaccineCertFramePath() string {
 	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
 }
 
+func GetTestServerChannel() *grpc.ClientConn {
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
+	if err != nil {
+		panic(err)
+	}
+	return channel
+}
+
 func TestServiceBase_SetProfile(t *testing.T) {
 	assert := assert.New(t)
-	base := ServiceBase{}
+	base, err := CreateServiceBase(nil,TrinsicTestConfig(), GetTestServerChannel())
+	failError(t, "error creating service base", err)
 	// No profile set, should be an error
-	ctxt, err := base.GetMetadata(nil)
-	if !assert.EqualErrorf(err, "profile not set", "profile not set") {
+	md, err := base.BuildMetadata(nil)
+	if !assert.EqualErrorf(err, "cannot call authenticated endpoint: profile must be set", "cannot call authenticated endpoint: profile must be set") {
 		return
 	}
-	if !assert.Nil(ctxt) {
+	if !assert.Nil(md) {
 		return
 	}
 
-	walletService, err := createWalletServiceViaEnvVar(t)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), GetTestServerChannel())
 	if !assert.Nil(err) {
 		return
 	}
-	demoWallet, err := walletService.CreateWallet(context.Background(), "")
+	demoWallet, _, err := accountService.SignIn(context.Background(), nil)
 	if !assert.Nil(err) {
 		return
 	}
@@ -51,61 +62,40 @@ func TestServiceBase_SetProfile(t *testing.T) {
 	if !assert.NoError(err) {
 		return
 	}
-	ctxt, err = base.GetMetadata(nil)
+	md, err = base.BuildMetadata(nil)
 	if !assert.NoError(err) {
 		return
 	}
-	assert.NotNil(ctxt)
-}
-
-func TestCreateChannelIfNeeded(t *testing.T) {
-	const validHttpAddress = "http://localhost:5000"
-	const validHttpsAddress = "https://localhost:5000"
-	const validIpAddress = "http://20.75.134.127:80"
-	const missingPortIpAddress = "http://20.75.134.127"
-	const missingPortAddress = "http://localhost"
-	const missingProtocolAddress = "localhost:5000"
-	const blankAddress = ""
-	testAddresses := []string{validHttpAddress, validHttpsAddress, validIpAddress, missingPortIpAddress, missingPortAddress, missingProtocolAddress, blankAddress}
-	throwsException := []bool{false, false, false, true, true, true, true}
-
-	for ij := 0; ij < len(testAddresses); ij++ {
-		channel, err := CreateChannelIfNeeded(testAddresses[ij], nil, false)
-		if (err != nil) != throwsException[ij] {
-			t.Fatalf("URL=%s should fail=%v\nerror=%v", testAddresses[ij], throwsException[ij], err)
-		}
-		if channel != nil {
-			_ = channel.Close()
-			// Cannot have error and channel.
-			if err != nil {
-				t.Fail()
-			}
-		}
-	}
+	assert.NotNil(md)
 }
 
 func TestVaccineCredentials(t *testing.T) {
 	assert := assert.New(t)
-	walletService, err := createWalletServiceViaEnvVar(t)
+	// Open in background
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), channel)
 	if !assert.Nil(err) {
 		return
 	}
+	if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
+		t.Fail()
+	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
-	allison, err := walletService.CreateWallet(context.Background(), "")
-	failError(t, "error creating wallet", err)
+	allison, _, err := accountService.SignIn(context.Background(), nil)
+	failError(t, "error creating profile", err)
 	if !assert.NotNil(allison) {
 		return
 	}
 
-	clinic, err := walletService.CreateWallet(context.Background(), "")
-	failError(t, "error creating wallet", err)
+	clinic, _, err := accountService.SignIn(context.Background(), nil)
+	failError(t, "error creating profile", err)
 	if !assert.NotNil(clinic) {
 		return
 	}
 
-	airline, err := walletService.CreateWallet(context.Background(), "")
-	failError(t, "error creating wallet", err)
+	airline, _, err := accountService.SignIn(context.Background(), nil)
+	failError(t, "error creating profile", err)
 	if !assert.NotNil(airline) {
 		return
 	}
@@ -116,17 +106,20 @@ func TestVaccineCredentials(t *testing.T) {
 	// Create profile from existing data
 	// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 
+	walletService, err := CreateWalletService(clinic, TrinsicTestConfig(), channel)
+	failError(t, "error creating wallet service", err)
+	credentialService, err := CreateCredentialService(clinic, TrinsicTestConfig(), channel)
+	failError(t, "error creating credential service", err)
+
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
-	walletService.SetProfile(clinic)
-	failError(t, "error setting profile", err)
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
 	var credentialJson Document
 	err = json.Unmarshal(fileContent, &credentialJson)
 	failError(t, "error parsing JSON", err)
 
-	credential, err := walletService.IssueCredential(context.Background(), credentialJson)
+	credential, err := credentialService.IssueCredential(context.Background(), credentialJson)
 	failError(t, "error issuing credential", err)
 
 	fmt.Printf("Credential:%s\n", credential)
@@ -152,7 +145,8 @@ func TestVaccineCredentials(t *testing.T) {
 	err = json.Unmarshal(fileContent2, &proofRequestJson)
 	failError(t, "error parsing JSON", err)
 
-	credentialProof, err := walletService.CreateProof(context.Background(), itemId, proofRequestJson)
+	credentialService.SetProfile(allison)
+	credentialProof, err := credentialService.CreateProof(context.Background(), itemId, proofRequestJson)
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 
@@ -160,7 +154,7 @@ func TestVaccineCredentials(t *testing.T) {
 	// The airline verifies the credential
 	walletService.SetProfile(airline)
 	failError(t, "error setting profile", err)
-	valid, err := walletService.VerifyProof(context.Background(), credentialProof)
+	valid, err := credentialService.VerifyProof(context.Background(), credentialProof)
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
@@ -168,56 +162,45 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 }
 
-func createWalletServiceViaEnvVar(t *testing.T) (WalletService, error) {
-	walletService, err := CreateWalletService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
-	failError(t, "error creating service", err)
-	return walletService, err
-}
-
-func createProviderServiceViaEnvVar(t *testing.T) (ProviderService, error) {
-	providerService, err := CreateProviderService(CreateChannelUrlFromConfig(TrinsicTestConfig()), nil)
-	failError(t, "error creating service", err)
-	return providerService, err
-}
-
 func TestProviderService_InviteParticipant(t *testing.T) {
 	assert := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	walletService, err := createWalletServiceViaEnvVar(t)
+	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), nil)
 	if !assert.Nil(err) {
 		return
 	}
 
-	fmt.Printf("%+v\n", walletService)
+	fmt.Printf("%+v\n", accountService)
 
-	wallet, err := walletService.CreateWallet(context.Background(), "")
+	wallet, _, err := accountService.SignIn(context.Background(), nil)
 	if !assert.Nil(err) || !assert.NotNil(wallet) {
 		return
 	}
 	fmt.Printf("%+v\n", wallet)
 
-	providerService, err := createProviderServiceViaEnvVar(t)
+	providerService, err := CreateProviderService(nil,TrinsicTestConfig(), GetTestServerChannel())
 	if !assert.Nil(err) {
 		return
 	}
 
 	// The issue was not throwing an error that the profile isn't set, but we don't need a wallet profile, so use a
 	// context without metadata attached. See method definition.
-	inviteResponse, err := providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
+	_, err = providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
 		Participant: sdk.ParticipantType_participant_type_individual,
 		Description: "I dunno",
 		ContactMethod: &sdk.InviteRequest_Email{
-			Email: "scott.phillips@trinsic.id",
+			Email: "does.not.exist@trinsic.id",
 		},
 	})
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%+v\n", inviteResponse)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Printf("%+v\n", inviteResponse)
 }
 
 func failError(t *testing.T, message string, err error) {
 	if err != nil {
+		t.Helper()
 		t.Errorf("%s: %v", message, err)
 	}
 }

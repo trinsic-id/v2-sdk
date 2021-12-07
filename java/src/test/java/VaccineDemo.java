@@ -1,7 +1,11 @@
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.Account;
+import trinsic.services.AccountService;
+import trinsic.services.CredentialsService;
+import trinsic.services.WalletService;
+import trinsic.services.account.v1.AccountOuterClass;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +25,7 @@ public class VaccineDemo {
     public static void run() throws IOException, DidException {
         // createService() {
         var serverConfig = TrinsicUtilities.getTestServerConfig();
+        System.out.println("Connecting to:\n" + serverConfig);
         var accountService = new AccountService(null, serverConfig);
         // }
 
@@ -45,7 +50,7 @@ public class VaccineDemo {
         var readFile = new FileInputStream("allison.bin");
         var allisonBin = readFile.readAllBytes();
         readFile.close();
-        allison = Account.AccountProfile.newBuilder().mergeFrom(allisonBin).build();
+        allison = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(allisonBin).build();
         // }
 
         // issueCredential() {
@@ -78,6 +83,10 @@ public class VaccineDemo {
         System.out.println("Verification result: " + isValid);
         Assertions.assertTrue(isValid);
         // }
+
+        accountService.shutdown();
+        credentialsService.shutdown();
+        walletService.shutdown();
     }
 
     // pathData() {

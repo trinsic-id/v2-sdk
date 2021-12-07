@@ -1,8 +1,8 @@
-package storage;
+package trinsic.storage;
 
 import io.leonard.Base58;
 import org.jetbrains.annotations.NotNull;
-import trinsic.services.account.v1.Account;
+import trinsic.services.account.v1.AccountOuterClass;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,11 +14,11 @@ import java.security.NoSuchAlgorithmException;
 
 public class FileProfileProvider implements IProfileProvider {
     @Override
-    public Account.AccountProfile get(String name) throws NoSuchAlgorithmException, IOException {
+    public AccountOuterClass.AccountProfile get(String name) throws NoSuchAlgorithmException, IOException {
         // TODO - Location application data
         Path filename = getFilename(name);
         var readFile = new FileInputStream(String.valueOf(filename));
-        return Account.AccountProfile.newBuilder().mergeFrom(readFile.readAllBytes()).build();
+        return AccountOuterClass.AccountProfile.newBuilder().mergeFrom(readFile.readAllBytes()).build();
     }
 
     @NotNull
@@ -29,7 +29,7 @@ public class FileProfileProvider implements IProfileProvider {
     }
 
     @Override
-    public void save(String name, Account.AccountProfile accountProfile) throws NoSuchAlgorithmException, IOException {
+    public void save(String name, AccountOuterClass.AccountProfile accountProfile) throws NoSuchAlgorithmException, IOException {
         // TODO - Location application data
         Path filename = getFilename(name);
         var writeFile = new FileOutputStream(String.valueOf(filename));

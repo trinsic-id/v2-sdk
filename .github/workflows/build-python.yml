@@ -1,6 +1,7 @@
 name: Python
 
 on:
+  workflow_call:
   workflow_dispatch:
   pull_request:
     branches:
@@ -19,18 +20,25 @@ on:
 
 jobs:
   build-and-test-python:
-    name: Test
+    name: Test Python code
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: [3.8, 3.9]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        python-version: [3.8, 3.9 ]  # '3.10' has issues for now
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Download workflow artifact
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs
+          repo: trinsic-id/okapi
+      - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.9
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
@@ -41,14 +49,15 @@ jobs:
         working-directory: python
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
-          TEST_SERVER_PORT: 443
-          TEST_SERVER_USE_TLS: true
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - name: Upload Unit Test Results - Python
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
+          name: Python Unit Test Results (${{ matrix.os }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
