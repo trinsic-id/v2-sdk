@@ -19,6 +19,7 @@ on:
 jobs:
   build-and-test-golang:
     name: Build, Test
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
