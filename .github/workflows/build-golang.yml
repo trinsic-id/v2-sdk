@@ -50,18 +50,18 @@ jobs:
           golint
           go test -v | go-junit-report > test_output.xml
         shell: pwsh
-        working-directory: go/okapi
+        working-directory: go/services
         env:
-          LD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/okapi"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/go/services"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
       - name: Upload Unit Test Results - Golang
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: Golang Unit Test Results (${{ matrix.os }})
-          path: 'go/okapi/test_output*.xml'
+          path: 'go/services/test_output*.xml'
 
   publish-test-results-golang:
     name: Publish Test Results
