@@ -8,17 +8,17 @@ import (
 	"fmt"
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
-	"google.golang.org/grpc/credentials"
-	"net/url"
-	"os"
-	"strconv"
-	"time"
-
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	_ "google.golang.org/protobuf/types/known/structpb"
+	"net/url"
+	"os"
+	"runtime"
+	"strconv"
+	"time"
 )
 
 type Document map[string]interface{}
@@ -138,12 +138,17 @@ func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, e
 	if serviceUrl.Scheme == "http" {
 		dialOptions = append(dialOptions, grpc.WithInsecure())
 	} else {
-		// TODO - Get the credentials bundle
-		pool, err := x509.SystemCertPool()
-		if err != nil {
+		rootCAs, err := x509.SystemCertPool()
+		if err != nil && runtime.GOOS == "windows" {
+			rootCAs = x509.NewCertPool()
+			windowsCerts := loadWindowsCerts()
+			for _, cert := range windowsCerts {
+				rootCAs.AddCert(cert)
+			}
+		} else if err != nil {
 			return nil, err
 		}
-		creds := credentials.NewClientTLSFromCert(pool, "")
+		creds := credentials.NewClientTLSFromCert(rootCAs, "")
 		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
 	}
 	channel, err := grpc.Dial(dialUrl, dialOptions...)
