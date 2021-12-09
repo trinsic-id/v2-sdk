@@ -78,8 +78,12 @@ def update_java():
     java_proto_path = join(java_path, 'src', 'main', 'java')
     # TODO - clean_proto_dir(java_proto_path)
     # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.42.1/
+    # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.2.0/
     # Add to path and rename to `protoc-gen-grpc-java`
     run_protoc({'java_out': java_proto_path, 'grpc-java_out': java_proto_path}, {}, get_proto_files())
+    # For Kotlin, you need the jar file, and a batch file on the path called: `protoc-gen-grpc-kotlin`
+    # Containing: @"C:\Program Files\Java\jre1.8.0_311\bin\java.exe" -jar "%~dp0/protoc-gen-grpc-kotlin-1.2.0-jdk7.jar" %*
+    run_protoc({'grpc-kotlin_out': java_proto_path}, {}, get_proto_files())
     # remove okapi pbmse
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
 
