@@ -2752,10 +2752,10 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
       }
       if (options_ != null) {
@@ -2770,10 +2770,10 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
       }
       if (options_ != null) {
@@ -3713,7 +3713,7 @@ public final class TrustRegistryOuterClass {
       if (count_ != 0) {
         output.writeInt32(3, count_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
       }
       unknownFields.writeTo(output);
@@ -3737,7 +3737,7 @@ public final class TrustRegistryOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, count_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
       }
       size += unknownFields.getSerializedSize();
@@ -4780,13 +4780,13 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
-      if (!getTrustRegistryUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trustRegistryUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, trustRegistryUri_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
       }
       unknownFields.writeTo(output);
@@ -4798,13 +4798,13 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
-      if (!getTrustRegistryUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trustRegistryUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, trustRegistryUri_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
       }
       size += unknownFields.getSerializedSize();
@@ -5888,7 +5888,7 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, credentialTypeUri_);
       }
       if (validFromUtc_ != 0L) {
@@ -5897,7 +5897,7 @@ public final class TrustRegistryOuterClass {
       if (validUntilUtc_ != 0L) {
         output.writeUInt64(12, validUntilUtc_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
       }
       if (options_ != null) {
@@ -5918,7 +5918,7 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, credentialTypeUri_);
       }
       if (validFromUtc_ != 0L) {
@@ -5929,7 +5929,7 @@ public final class TrustRegistryOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(12, validUntilUtc_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
       }
       if (options_ != null) {
@@ -8144,7 +8144,7 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, presentationTypeUri_);
       }
       if (validFromUtc_ != 0L) {
@@ -8153,7 +8153,7 @@ public final class TrustRegistryOuterClass {
       if (validUntilUtc_ != 0L) {
         output.writeUInt64(12, validUntilUtc_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
       }
       if (options_ != null) {
@@ -8174,7 +8174,7 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, presentationTypeUri_);
       }
       if (validFromUtc_ != 0L) {
@@ -8185,7 +8185,7 @@ public final class TrustRegistryOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(12, validUntilUtc_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
       }
       if (options_ != null) {
@@ -10302,10 +10302,10 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, credentialTypeUri_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
       }
       unknownFields.writeTo(output);
@@ -10323,10 +10323,10 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, credentialTypeUri_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
       }
       size += unknownFields.getSerializedSize();
@@ -12010,10 +12010,10 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, presentationTypeUri_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
       }
       unknownFields.writeTo(output);
@@ -12031,10 +12031,10 @@ public final class TrustRegistryOuterClass {
       if (authorityCase_ == 2) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, presentationTypeUri_);
       }
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
       }
       size += unknownFields.getSerializedSize();
@@ -13712,7 +13712,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
       if (memberCase_ == 2) {
@@ -13721,7 +13721,7 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, credentialTypeUri_);
       }
       unknownFields.writeTo(output);
@@ -13733,7 +13733,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
       if (memberCase_ == 2) {
@@ -13742,7 +13742,7 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
       }
-      if (!getCredentialTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, credentialTypeUri_);
       }
       size += unknownFields.getSerializedSize();
@@ -14682,7 +14682,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
       if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
@@ -14697,7 +14697,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
       if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
@@ -15570,7 +15570,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
       if (memberCase_ == 2) {
@@ -15579,7 +15579,7 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, presentationTypeUri_);
       }
       unknownFields.writeTo(output);
@@ -15591,7 +15591,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
       if (memberCase_ == 2) {
@@ -15600,7 +15600,7 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
       }
-      if (!getPresentationTypeUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, presentationTypeUri_);
       }
       size += unknownFields.getSerializedSize();
@@ -16540,7 +16540,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
       if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
@@ -16555,7 +16555,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
       if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
@@ -17235,10 +17235,10 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
       }
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, query_);
       }
       unknownFields.writeTo(output);
@@ -17250,10 +17250,10 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getGovernanceFrameworkUriBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
       }
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, query_);
       }
       size += unknownFields.getSerializedSize();

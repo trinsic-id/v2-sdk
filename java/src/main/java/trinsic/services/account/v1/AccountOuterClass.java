@@ -450,7 +450,7 @@ public final class AccountOuterClass {
       if (details_ != null) {
         output.writeMessage(1, getDetails());
       }
-      if (!getInvitationCodeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, invitationCode_);
       }
       unknownFields.writeTo(output);
@@ -466,7 +466,7 @@ public final class AccountOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getDetails());
       }
-      if (!getInvitationCodeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, invitationCode_);
       }
       size += unknownFields.getSerializedSize();
@@ -1395,13 +1395,13 @@ public final class AccountOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      if (!getEmailBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, email_);
       }
-      if (!getSmsBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sms_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sms_);
       }
       unknownFields.writeTo(output);
@@ -1413,13 +1413,13 @@ public final class AccountOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getNameBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      if (!getEmailBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
       }
-      if (!getSmsBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sms_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sms_);
       }
       size += unknownFields.getSerializedSize();
@@ -3440,7 +3440,7 @@ public final class AccountOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getProfileTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(profileType_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, profileType_);
       }
       if (!authData_.isEmpty()) {
@@ -3461,7 +3461,7 @@ public final class AccountOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getProfileTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(profileType_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, profileType_);
       }
       if (!authData_.isEmpty()) {
