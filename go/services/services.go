@@ -6,6 +6,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"net/url"
+	"os"
+	"runtime"
+	"strconv"
+	"time"
+
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -14,11 +20,6 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	_ "google.golang.org/protobuf/types/known/structpb"
-	"net/url"
-	"os"
-	"runtime"
-	"strconv"
-	"time"
 )
 
 type Document map[string]interface{}
@@ -177,6 +178,7 @@ func CreateServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConf
 }
 
 type ServiceBase struct {
+	ecosystemId          string
 	profile              *sdk.AccountProfile
 	configuration        *sdk.ServerConfig
 	channel              *grpc.ClientConn
@@ -224,6 +226,7 @@ func (s *ServiceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 	}
 	return metadata.New(map[string]string{
 		"authorization": authString,
+		"ecosystem":     s.ecosystemId,
 	}), nil
 }
 
@@ -434,6 +437,9 @@ type ProviderService interface {
 	Service
 	InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error)
 	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
+	AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error)
+	CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error)
+	SetEcosystem(ecosystemId string)
 }
 
 type ProviderBase struct {
@@ -442,25 +448,71 @@ type ProviderBase struct {
 	client  sdk.ProviderClient
 }
 
-func (p *ProviderBase) InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
+func (p *ProviderBase) SetEcosystem(ecosystemId string) {
+	p.ecosystemId = ecosystemId
+}
+
+func (p *ProviderBase) CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := p.client.CreateEcosystem(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return &sdk.CreateEcosystemResponse{Id: resp.Id}, nil
+}
+
+func (p *ProviderBase) InviteParticipant(ctx context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
 	// Verify contact method is set
 	switch request.ContactMethod.(type) {
 	case nil:
 		return nil, fmt.Errorf("unset contact method")
 	}
-	response, err := p.client.Invite(userContext, request)
+
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.Invite(md, request)
 	if err != nil {
 		return nil, err
 	}
 	return response, nil
 }
 
-func (p *ProviderBase) InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
-	response, err := p.client.InvitationStatus(userContext, request)
+func (p *ProviderBase) InvitationStatus(ctx context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
 	if err != nil {
 		return nil, err
 	}
+
+	response, err := p.client.InvitationStatus(md, request)
+	if err != nil {
+		return nil, err
+	}
+
 	return response, nil
+}
+
+func (p *ProviderBase) AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error) {
+	request := &sdk.InfoRequest{}
+
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.AcceptInvite(md, &sdk.AcceptInviteRequest{Code: code})
+	if err != nil {
+		return nil, err
+	}
+
+	return response, err
 }
 
 type TrustRegistryService interface {
