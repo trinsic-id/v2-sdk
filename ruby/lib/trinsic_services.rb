@@ -75,7 +75,12 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @client = Account_V1::Account::Stub.new(get_url, :this_channel_is_insecure)
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = Account_V1::Account::Stub.new(get_url, channel_creds)
+      else
+        @client = Account_V1::Account::Stub.new(get_url, :this_channel_is_insecure)
+      end
     end
 
     def sign_in(account_details)
@@ -113,7 +118,12 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, :this_channel_is_insecure)
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, channel_creds)
+      else
+        @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, :this_channel_is_insecure)
+      end
     end
 
     def issue_credential(document)
@@ -147,7 +157,12 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = Provider_V1::Provider::Stub.new(get_url, channel_creds)
+      else
+        @client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
+      end
     end
 
     def invite_participant(request)
@@ -165,7 +180,12 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, channel_creds)
+      else
+        @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
+      end
     end
 
     def register_governance_framework(governance_framework, description)
@@ -222,7 +242,12 @@ module Trinsic
 
     def initialize(account_profile, server_config)
       super
-      @client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = Wallet_V1::UniversalWallet::Stub.new(get_url, channel_creds)
+      else
+        @client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
+      end
     end
 
     def search(query)
