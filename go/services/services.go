@@ -11,8 +11,11 @@ import (
 	"google.golang.org/grpc/credentials"
 	"net/url"
 	"os"
+	"runtime"
 	"strconv"
+	"syscall"
 	"time"
+	"unsafe"
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
@@ -138,12 +141,17 @@ func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, e
 	if serviceUrl.Scheme == "http" {
 		dialOptions = append(dialOptions, grpc.WithInsecure())
 	} else {
-		// TODO - Get the credentials bundle
-		pool, err := x509.SystemCertPool()
-		if err != nil {
+		rootCAs, err := x509.SystemCertPool()
+		if err != nil && runtime.GOOS == "windows" {
+			rootCAs = x509.NewCertPool()
+			windowsCerts := loadWindowsCerts()
+			for _, cert := range windowsCerts {
+				rootCAs.AddCert(cert)
+			}
+		} else if err != nil {
 			return nil, err
 		}
-		creds := credentials.NewClientTLSFromCert(pool, "")
+		creds := credentials.NewClientTLSFromCert(rootCAs, "")
 		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
 	}
 	channel, err := grpc.Dial(dialUrl, dialOptions...)
@@ -151,6 +159,41 @@ func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, e
 		return nil, err
 	}
 	return channel, nil
+}
+
+func loadWindowsCerts() []*x509.Certificate {
+	const CRYPT_E_NOT_FOUND = 0x80092004
+	// Copied from: https://github.com/golang/go/issues/16736#issuecomment-540373689
+	// Because golang team apparently doesn't believe that Windows deserves security.
+	storeHandle, err := syscall.CertOpenSystemStore(0, syscall.StringToUTF16Ptr("Root"))
+	if err != nil {
+		fmt.Println(syscall.GetLastError())
+	}
+
+	var certs []*x509.Certificate
+	var cert *syscall.CertContext
+	for {
+		cert, err = syscall.CertEnumCertificatesInStore(storeHandle, cert)
+		if err != nil {
+			if errno, ok := err.(syscall.Errno); ok {
+				if errno == CRYPT_E_NOT_FOUND {
+					break
+				}
+			}
+			fmt.Println(syscall.GetLastError())
+		}
+		if cert == nil {
+			break
+		}
+		// Copy the buf, since ParseCertificate does not create its own copy.
+		buf := (*[1 << 20]byte)(unsafe.Pointer(cert.EncodedCert))[:]
+		buf2 := make([]byte, cert.Length)
+		copy(buf2, buf)
+		if c, err := x509.ParseCertificate(buf2); err == nil {
+			certs = append(certs, c)
+		}
+	}
+	return certs
 }
 
 func CreateServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
