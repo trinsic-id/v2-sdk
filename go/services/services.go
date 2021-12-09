@@ -8,20 +8,17 @@ import (
 	"fmt"
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
+	sdk "github.com/trinsic-id/sdk/go/proto"
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/proto"
+	_ "google.golang.org/protobuf/types/known/structpb"
 	"net/url"
 	"os"
 	"runtime"
 	"strconv"
-	"syscall"
 	"time"
-	"unsafe"
-
-	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
-	"google.golang.org/protobuf/proto"
-	_ "google.golang.org/protobuf/types/known/structpb"
 )
 
 type Document map[string]interface{}
@@ -159,41 +156,6 @@ func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, e
 		return nil, err
 	}
 	return channel, nil
-}
-
-func loadWindowsCerts() []*x509.Certificate {
-	const CRYPT_E_NOT_FOUND = 0x80092004
-	// Copied from: https://github.com/golang/go/issues/16736#issuecomment-540373689
-	// Because golang team apparently doesn't believe that Windows deserves security.
-	storeHandle, err := syscall.CertOpenSystemStore(0, syscall.StringToUTF16Ptr("Root"))
-	if err != nil {
-		fmt.Println(syscall.GetLastError())
-	}
-
-	var certs []*x509.Certificate
-	var cert *syscall.CertContext
-	for {
-		cert, err = syscall.CertEnumCertificatesInStore(storeHandle, cert)
-		if err != nil {
-			if errno, ok := err.(syscall.Errno); ok {
-				if errno == CRYPT_E_NOT_FOUND {
-					break
-				}
-			}
-			fmt.Println(syscall.GetLastError())
-		}
-		if cert == nil {
-			break
-		}
-		// Copy the buf, since ParseCertificate does not create its own copy.
-		buf := (*[1 << 20]byte)(unsafe.Pointer(cert.EncodedCert))[:]
-		buf2 := make([]byte, cert.Length)
-		copy(buf2, buf)
-		if c, err := x509.ParseCertificate(buf2); err == nil {
-			certs = append(certs, c)
-		}
-	}
-	return certs
 }
 
 func CreateServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
