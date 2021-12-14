@@ -281,10 +281,10 @@ public final class UniversalWalletOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
       }
       if (options_ != null) {
@@ -299,10 +299,10 @@ public final class UniversalWalletOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getQueryBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
       }
       if (options_ != null) {
@@ -1230,7 +1230,7 @@ public final class UniversalWalletOuterClass {
       if (count_ != 0) {
         output.writeInt32(3, count_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
       }
       unknownFields.writeTo(output);
@@ -1254,7 +1254,7 @@ public final class UniversalWalletOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, count_);
       }
-      if (!getContinuationTokenBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
       }
       size += unknownFields.getSerializedSize();
@@ -2248,7 +2248,7 @@ public final class UniversalWalletOuterClass {
       if (item_ != null) {
         output.writeMessage(1, getItem());
       }
-      if (!getItemTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemType_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, itemType_);
       }
       unknownFields.writeTo(output);
@@ -2264,7 +2264,7 @@ public final class UniversalWalletOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getItem());
       }
-      if (!getItemTypeBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemType_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, itemType_);
       }
       size += unknownFields.getSerializedSize();
@@ -3026,7 +3026,7 @@ public final class UniversalWalletOuterClass {
       if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (!getItemIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, itemId_);
       }
       unknownFields.writeTo(output);
@@ -3042,7 +3042,7 @@ public final class UniversalWalletOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      if (!getItemIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, itemId_);
       }
       size += unknownFields.getSerializedSize();

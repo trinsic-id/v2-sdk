@@ -82,7 +82,7 @@
                             <Environment
                                     Id='PATH'
                                     Name='PATH'
-                                    Value='[Bin]'
+                                    Value='[cli]'
                                     Permanent='no'
                                     Part='last'
                                     Action='set'

@@ -1462,7 +1462,7 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getTemplateIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(templateId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, templateId_);
       }
       if (attributes_ != null) {
@@ -1477,7 +1477,7 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (!getTemplateIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(templateId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, templateId_);
       }
       if (attributes_ != null) {
@@ -2240,7 +2240,7 @@ public final class VerifiableCredentials {
       if (revealDocument_ != null) {
         output.writeMessage(1, getRevealDocument());
       }
-      if (!getDocumentIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, documentId_);
       }
       unknownFields.writeTo(output);
@@ -2256,7 +2256,7 @@ public final class VerifiableCredentials {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getRevealDocument());
       }
-      if (!getDocumentIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, documentId_);
       }
       size += unknownFields.getSerializedSize();

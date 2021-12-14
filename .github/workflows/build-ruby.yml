@@ -16,14 +16,14 @@ on:
       - ".github/workflows/*ruby*"
 
 jobs:
-  build_ruby:
-    name: Test
+  build-and-test-ruby:
+    name: Build, Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby-version: [ 2.7, '3.0' ]
+        ruby-version: [ '3.0' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -31,28 +31,56 @@ jobs:
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: ${{ matrix.ruby-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
-      - name: Install dependencies
-        run: |
-          bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-        working-directory: ruby
       - name: Build and run tests
-        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        run: |
+          gem install bundler
+          gem install rspec
+          bundle install
+          python ../devops/build_sdks.py
+          bundle exec rake
+          rake test
+          exit 0
         shell: pwsh
+        working-directory: ruby
         env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          RUBY_DLL_PATH: "${{ github.workspace }}/libs"  # Required for Ruby on Windows
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
           TEST_SERVER_PORT: 443
           TEST_SERVER_USE_TLS: true
-      - name: cobertura-report
-        if: ( ${{ matrix.os }} == 'windows-latest' && ${{ matrix.ruby-version }} = '2.7' )
-        uses: 5monkeys/cobertura-action@v9
+      - name: Upload Unit Test Results - Ruby
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          path: ruby/coverage/coverage.xml
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          minimum_coverage: 75
-          show_class_names: true
+          name:  Ruby ${{ matrix.ruby-version }} Unit Test Results (${{ matrix.os }})
+          path: 'ruby/test/reports/TEST-*.xml'
+
+  publish-test-results-ruby:
+    name: Publish Test Results
+    needs: build-and-test-ruby
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: ruby_artifacts
+      - name: Publish Test Report - Ruby
+        uses: EnricoMi/publish-unit-test-result-action@v1.23
+        with:
+          files: 'ruby_artifacts/**/*.xml'
+          check_name: Ruby Test Report

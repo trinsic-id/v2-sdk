@@ -987,7 +987,7 @@ public final class ProviderOuterClass {
       if (participant_ != trinsic.services.common.v1.ProviderOuterClass.ParticipantType.participant_type_individual.getNumber()) {
         output.writeEnum(1, participant_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
       if (contactMethodCase_ == 5) {
@@ -1012,7 +1012,7 @@ public final class ProviderOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, participant_);
       }
-      if (!getDescriptionBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
       if (contactMethodCase_ == 5) {
@@ -2101,7 +2101,7 @@ public final class ProviderOuterClass {
       if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (!getInvitationIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, invitationId_);
       }
       unknownFields.writeTo(output);
@@ -2117,7 +2117,7 @@ public final class ProviderOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      if (!getInvitationIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, invitationId_);
       }
       size += unknownFields.getSerializedSize();
@@ -2743,7 +2743,7 @@ public final class ProviderOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getInvitationIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, invitationId_);
       }
       unknownFields.writeTo(output);
@@ -2755,7 +2755,7 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!getInvitationIdBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, invitationId_);
       }
       size += unknownFields.getSerializedSize();
@@ -3499,7 +3499,7 @@ public final class ProviderOuterClass {
       if (status_ != trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse.Status.Error.getNumber()) {
         output.writeEnum(1, status_);
       }
-      if (!getStatusDetailsBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(statusDetails_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, statusDetails_);
       }
       unknownFields.writeTo(output);
@@ -3515,7 +3515,7 @@ public final class ProviderOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
-      if (!getStatusDetailsBytes().isEmpty()) {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(statusDetails_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, statusDetails_);
       }
       size += unknownFields.getSerializedSize();

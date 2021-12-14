@@ -91,7 +91,7 @@ def build_ruby(args) -> None:
 
 def build_golang(args) -> None:
     # Update version in setup.cfg
-    golang_dir = abspath(join(dirname(__file__), '..', 'go', 'okapi'))
+    golang_dir = abspath(join(dirname(__file__), '..', 'go', 'services'))
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
