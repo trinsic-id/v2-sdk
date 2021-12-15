@@ -1,3 +1,3 @@
-# Okapi Documentation
+# Service SDK Documentation
 
 TODO
