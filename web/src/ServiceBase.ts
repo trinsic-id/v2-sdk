@@ -15,13 +15,14 @@ export default abstract class ServiceBase {
   serverConfig: ServerConfig;
   address: string;
 
-  constructor(options: ServiceOptions = {
-    profile: undefined,
-    server: new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true),
-    ecosystem: undefined
-  }) {
+  constructor(options: ServiceOptions = {}) {
+    options.server = options.server || new ServerConfig()
+      .setEndpoint("prod.trinsic.cloud")
+      .setPort(443)
+      .setUseTls(true);
+
     this.activeProfile = options.profile;
-    this.serverConfig = options.server!;
+    this.serverConfig = options.server;
     this.address = `${this.serverConfig.getUseTls() ? "https" : "http"}://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
   }
 

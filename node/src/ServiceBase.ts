@@ -19,15 +19,19 @@ export default abstract class ServiceBase {
   channelCredentials: ChannelCredentials;
   address: string;
 
-  constructor(options: ServiceOptions = {
-    profile: undefined,
-    server: new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true),
-    ecosystem: undefined
-  }) {
+  constructor(options: ServiceOptions = {}) {
+    options.server = options.server || new ServerConfig()
+      .setEndpoint("prod.trinsic.cloud")
+      .setPort(443)
+      .setUseTls(true);
+
+
     this.activeProfile = options.profile;
-    this.serverConfig = options.server!;
+    this.serverConfig = options.server;
     this.address = `${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
-    this.channelCredentials = this.serverConfig.getUseTls() ? ChannelCredentials.createSsl() : ChannelCredentials.createInsecure();
+    this.channelCredentials = this.serverConfig.getUseTls()
+      ? ChannelCredentials.createSsl()
+      : ChannelCredentials.createInsecure();
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
@@ -56,10 +60,10 @@ export default abstract class ServiceBase {
     metadata.add(
       "Authorization",
       `Oberon ` +
-        `ver=1,` +
-        `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
-        `data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},` +
-        `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
+      `ver=1,` +
+      `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
+      `data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},` +
+      `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
     );
 
     return metadata;
