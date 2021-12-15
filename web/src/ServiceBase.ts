@@ -4,21 +4,32 @@ import { Nonce, ServerConfig, AccountProfile } from "./proto";
 import { Message } from "google-protobuf";
 import { encode, fromUint8Array } from "js-base64";
 
+export interface ServiceOptions {
+  profile?: AccountProfile;
+  server?: ServerConfig;
+  ecosystem?: string
+}
+
 export default abstract class ServiceBase {
-  activeProfile: AccountProfile;
+  activeProfile?: AccountProfile;
   serverConfig: ServerConfig;
   address: string;
 
-  constructor(
-    profile: AccountProfile = null,
-    config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
-  ) {
-    this.activeProfile = profile;
-    this.serverConfig = config;
+  constructor(options: ServiceOptions = {
+    profile: undefined,
+    server: new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true),
+    ecosystem: undefined
+  }) {
+    this.activeProfile = options.profile;
+    this.serverConfig = options.server!;
     this.address = `${this.serverConfig.getUseTls() ? "https" : "http"}://${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
+    if (!this.activeProfile) {
+      throw new Error("profile must be set");
+    }
+
     var requestData = request.serializeBinary();
     var requestHash = new ArrayBuffer(0);
 
