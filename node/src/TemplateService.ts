@@ -1,5 +1,5 @@
 import { credentials as ChannelCredentials, Channel } from "@grpc/grpc-js";
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { ServiceOptions } from "./ServiceBase";
 import { CredentialTemplatesClient, ServerConfig } from "./proto";
 import {
   CreateCredentialTemplateRequest,
@@ -25,8 +25,8 @@ export class TemplateService extends ServiceBase {
   client: CredentialTemplatesClient;
   credentialClient: VerifiableCredentialClient;
 
-  constructor(config: ServerConfig = null) {
-    super(null, config);
+  constructor(options?: ServiceOptions) {
+    super(options);
 
     this.client = new CredentialTemplatesClient(this.address, this.channelCredentials);
     this.credentialClient = new VerifiableCredentialClient(this.address, this.channelCredentials);
@@ -42,7 +42,7 @@ export class TemplateService extends ServiceBase {
       let createCredentialTemplateRequest = new CreateCredentialTemplateRequest()
         .setName(name)
         .setSchema(jsonSchema)
-        .setBaseUri(baseUri);
+        .setBaseUri(baseUri!);
 
       this.client.create(
         createCredentialTemplateRequest,
@@ -64,7 +64,7 @@ export class TemplateService extends ServiceBase {
         if (error) {
           reject(error);
         }
-        return resolve(response.getTemplate());
+        return resolve(response.getTemplate()!);
       });
     });
   }
@@ -89,8 +89,8 @@ export class TemplateService extends ServiceBase {
     return new Promise(async (resolve, reject) => {
       let request = new UpdateCredentialTemplateRequest()
         .setId(templateId)
-        .setName(name)
-        .setSchema(new JsonPayload().setJsonStruct(Struct.fromJavaScript(schema)));
+        .setName(name!)
+        .setSchema(new JsonPayload().setJsonStruct(Struct.fromJavaScript(schema!)));
 
       this.client.update(request, await this.getMetadata(request), (error, response) => {
         if (error) {
@@ -122,7 +122,7 @@ export class TemplateService extends ServiceBase {
         if (error) {
           reject(error);
         }
-        return resolve(response.getDocument().getJsonStruct().toJavaScript());
+        return resolve(response.getDocument()!.getJsonStruct()!.toJavaScript());
       });
     });
   }

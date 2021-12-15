@@ -15,21 +15,21 @@ const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)
 let profile = null;
 
 test.before(async () => {
-  let service = new AccountService(null, config);
+  let service = new AccountService({ server: config });
   let response = await service.signIn();
 
   profile = response.getProfile();
 });
 
-test("get account info", async t => {
-  let service = new AccountService(profile, config);
+test("get account info", async (t) => {
+  let service = new AccountService({ profile, server: config });
   let info = await service.info();
 
   t.not(info, null);
 });
 
 test("create new account", async (t) => {
-  let service = new AccountService(null, config);
+  let service = new AccountService({ server: config });
   let response = await service.signIn();
 
   service.updateActiveProfile(response.getProfile());
@@ -39,13 +39,12 @@ test("create new account", async (t) => {
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-
   // let info = await accountService.info();
 
   // t.not(info, null);
 
-  let credentialService = new CredentialService(profile, config);
-  let walletService = new WalletService(profile, config);
+  let credentialService = new CredentialService({ profile, server: config });
+  let walletService = new WalletService({ profile, server: config });
 
   let issueResponse = await credentialService.issue(require("./data/vaccination-certificate-unsigned.json"));
 

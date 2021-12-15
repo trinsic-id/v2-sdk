@@ -6,24 +6,39 @@ import base64url from "base64url";
 import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { hash } from "mini-blake3/src/dist/node";
 
+export interface ServiceOptions {
+  profile?: AccountProfile;
+  server?: ServerConfig;
+  ecosystem?: string
+}
+
 export default abstract class ServiceBase {
-  activeProfile: AccountProfile;
+  activeProfile?: AccountProfile;
   serverConfig: ServerConfig;
-  channel: Channel;
+  channel?: Channel;
   channelCredentials: ChannelCredentials;
   address: string;
 
-  constructor(
-    profile: AccountProfile = null,
-    config: ServerConfig = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(443).setUseTls(true)
-  ) {
-    this.activeProfile = profile;
-    this.serverConfig = config;
+  constructor(options: ServiceOptions = {}) {
+    options.server = options.server || new ServerConfig()
+      .setEndpoint("prod.trinsic.cloud")
+      .setPort(443)
+      .setUseTls(true);
+
+
+    this.activeProfile = options.profile;
+    this.serverConfig = options.server;
     this.address = `${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
-    this.channelCredentials = config.getUseTls() ? ChannelCredentials.createSsl() : ChannelCredentials.createInsecure();
+    this.channelCredentials = this.serverConfig.getUseTls()
+      ? ChannelCredentials.createSsl()
+      : ChannelCredentials.createInsecure();
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
+    if (!this.activeProfile) {
+      throw new Error("profile must be set")
+    }
+
     let requestData = request.serializeBinary();
     let requestHash: Buffer | string = Buffer.from('');
 
@@ -45,10 +60,10 @@ export default abstract class ServiceBase {
     metadata.add(
       "Authorization",
       `Oberon ` +
-        `ver=1,` +
-        `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
-        `data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},` +
-        `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
+      `ver=1,` +
+      `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
+      `data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},` +
+      `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
     );
 
     return metadata;

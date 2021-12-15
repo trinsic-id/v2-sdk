@@ -7,14 +7,13 @@ let walletService;
 let credentialService;
 
 describe("wallet service tests", () => {
-
   beforeAll(async () => {
-    accountService = new AccountService(null, config);
+    accountService = new AccountService({ server: config });
     const response = await accountService.signIn();
     profile = response.getProfile();
 
-    walletService = new WalletService(profile, config);
-    credentialService = new CredentialService(profile, config);
+    walletService = new WalletService({ profile, server: config });
+    credentialService = new CredentialService({ profile, server: config });
 
     console.log("before all ran");
   });
@@ -24,11 +23,9 @@ describe("wallet service tests", () => {
 
     const info = await accountService.info();
     expect(info).not.toBeNull();
-
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-
     expect(profile).not.toBeNull();
 
     let unsignedDocument = {

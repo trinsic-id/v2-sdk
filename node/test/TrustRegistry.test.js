@@ -18,14 +18,14 @@ const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)
 let profile = null;
 
 test.before(async t => {
-  let service = new AccountService(null, config);
+  let service = new AccountService({ server: config});
   let response = await service.signIn();
 
   profile = response.getProfile();
 });
 
 test("add governance framework", async (t) => {
-  let trustRegistryService = new TrustRegistryService(profile, config);
+  let trustRegistryService = new TrustRegistryService({ profile, server: config});
 
   let response = await trustRegistryService.addGovernanceFramework(
     new AddFrameworkRequest().setGovernanceFramework(

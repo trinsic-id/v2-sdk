@@ -1,4 +1,4 @@
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { ServiceOptions } from "./ServiceBase";
 import {
   AccountClient,
   ServerConfig,
@@ -13,8 +13,8 @@ import {
 export class AccountService extends ServiceBase {
   client: AccountClient;
 
-  constructor(profile: AccountProfile = null, config: ServerConfig = null) {
-    super(profile, config);
+  constructor(options?: ServiceOptions) {
+    super(options);
 
     this.client = new AccountClient(this.address, this.channelCredentials);
   }

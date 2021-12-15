@@ -1,12 +1,12 @@
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { ServiceOptions } from "./ServiceBase";
 import { AccountProfile, ProviderClient, ServerConfig } from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export class ProviderService extends ServiceBase {
   client: ProviderClient;
 
-  constructor(profile: AccountProfile, config: ServerConfig = null) {
-    super(profile, config);
+  constructor(options?: ServiceOptions) {
+    super(options);
 
     this.client = new ProviderClient(this.address);
   }
