@@ -31,7 +31,7 @@ internal class KeychainProfileProvider : IProfileProvider
 			throw new Exception("Profile not found");
 		}
 
-		return Task.FromResult(AccountProfile.Parser.ParseFrom(rec.ValueData.ToArray()));
+		return Task.FromResult(AccountProfile.Parser.ParseFrom(rec.ValueData!.ToArray()));
 	}
 
     public Task SaveAsync(string name, AccountProfile accountProfile, CancellationToken cancellationToken = default)
