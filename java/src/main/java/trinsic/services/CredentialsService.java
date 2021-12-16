@@ -4,9 +4,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
 import io.grpc.Channel;
-import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.account.v1.AccountOuterClass;
@@ -36,7 +34,7 @@ public class CredentialsService extends ServiceBase {
         var response = withMetadata(stub, request).issue(request);
         return Futures.transform(response, input -> {
             if (input == null) return null;
-            return (HashMap) new Gson().fromJson(input.getDocument().getJsonString(), HashMap.class);
+            return new Gson().fromJson(input.getDocument().getJsonString(), HashMap.class);
         }, Executors.newSingleThreadExecutor());
     }
 
@@ -48,7 +46,7 @@ public class CredentialsService extends ServiceBase {
         var response = withMetadata(stub, request).createProof(request);
         return Futures.transform(response, input -> {
             if (input == null) return null;
-            return (HashMap) new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
+            return new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
         }, Executors.newSingleThreadExecutor());
     }
 

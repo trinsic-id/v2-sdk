@@ -29,16 +29,14 @@ public class WalletService extends ServiceBase {
     }
 
     public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search(String query) throws InvalidProtocolBufferException, DidException {
-        if (query == null)
-            query = "SELECT * from c";
+        if (query == null) query = "SELECT * from c";
 
         final UniversalWalletOuterClass.SearchRequest request = UniversalWalletOuterClass.SearchRequest.newBuilder().setQuery(query).build();
         return clientWithMetadata(request).search(request);
     }
 
     public ListenableFuture<String> insertItem(HashMap item) throws InvalidProtocolBufferException, DidException {
-        final UniversalWalletOuterClass.InsertItemRequest request = UniversalWalletOuterClass.InsertItemRequest.newBuilder()
-                .setItem(TrinsicUtilities.createPayloadString(item)).build();
+        final UniversalWalletOuterClass.InsertItemRequest request = UniversalWalletOuterClass.InsertItemRequest.newBuilder().setItem(TrinsicUtilities.createPayloadString(item)).build();
         var response = clientWithMetadata(request).insertItem(request);
 
         return Futures.transform(response, input -> {
@@ -48,8 +46,7 @@ public class WalletService extends ServiceBase {
     }
 
     private UniversalWalletGrpc.UniversalWalletFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
-        return this.stub.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
+        return this.stub.withInterceptors(MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }
 }
 

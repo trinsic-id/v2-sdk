@@ -14,25 +14,23 @@ import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 public abstract class ServiceBase {
+    private final ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private final Channel channel;
+    private final boolean createdChannel;
     private AccountOuterClass.AccountProfile profile;
     private CommonOuterClass.ServerConfig configuration;
-    private Channel channel;
-    private boolean createdChannel;
-    private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
     protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
         this.profile = accountProfile;
         this.configuration = serverConfig;
-        if (this.configuration == null)
-            this.configuration = TrinsicUtilities.getProductionConfig();
+        if (this.configuration == null) this.configuration = TrinsicUtilities.getProductionConfig();
         // Note if we should clean up the channel in the end.
         this.createdChannel = channel == null;
         this.channel = this.createdChannel ? TrinsicUtilities.getChannel(this.configuration) : channel;
     }
 
     public void shutdown() {
-        if (channel instanceof ManagedChannel && createdChannel)
-            ((ManagedChannel) this.channel).shutdownNow();
+        if (channel instanceof ManagedChannel && createdChannel) ((ManagedChannel) this.channel).shutdownNow();
     }
 
     public Metadata buildMetadata(Message request) throws InvalidProtocolBufferException, DidException {
@@ -44,12 +42,12 @@ public abstract class ServiceBase {
         return metadata;
     }
 
-    public void setProfile(AccountOuterClass.AccountProfile profile) {
-        this.profile = profile;
-    }
-
     public AccountOuterClass.AccountProfile getProfile() {
         return this.profile;
+    }
+
+    public void setProfile(AccountOuterClass.AccountProfile profile) {
+        this.profile = profile;
     }
 
     public CommonOuterClass.ServerConfig getConfiguration() {
@@ -61,8 +59,7 @@ public abstract class ServiceBase {
     }
 
     protected <T extends io.grpc.stub.AbstractStub<T>> T withMetadata(T stub, Message message) throws InvalidProtocolBufferException, DidException {
-        return stub.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
+        return stub.withInterceptors(MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }
 
 }

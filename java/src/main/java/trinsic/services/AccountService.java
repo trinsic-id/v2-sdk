@@ -3,14 +3,12 @@ package trinsic.services;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
 import io.grpc.Channel;
-import io.grpc.stub.MetadataUtils;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
-import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.account.v1.AccountGrpc;
+import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 public class AccountService extends ServiceBase {
