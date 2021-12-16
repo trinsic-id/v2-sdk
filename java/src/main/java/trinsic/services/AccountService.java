@@ -1,5 +1,6 @@
 package trinsic.services;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -13,20 +14,19 @@ import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.common.v1.CommonOuterClass;
 
 public class AccountService extends ServiceBase {
-    private final AccountGrpc.AccountBlockingStub stub;
+    private final AccountGrpc.AccountFutureStub stub;
 
 
     public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig, null);
-        this.stub = AccountGrpc.newBlockingStub(this.getChannel());
+        this(accountProfile, serverConfig, null);
     }
 
     public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
-        this.stub = AccountGrpc.newBlockingStub(this.getChannel());
+        this.stub = AccountGrpc.newFutureStub(this.getChannel());
     }
 
-    public AccountOuterClass.SignInResponse signIn(AccountOuterClass.AccountDetails details) {
+    public ListenableFuture<AccountOuterClass.SignInResponse> signIn(AccountOuterClass.AccountDetails details) {
         if (details == null)
             details = AccountOuterClass.AccountDetails.newBuilder().build();
         var request = AccountOuterClass.SignInRequest.newBuilder().setDetails(details).build();
@@ -67,12 +67,12 @@ public class AccountService extends ServiceBase {
                 .build();
     }
 
-    public AccountOuterClass.InfoResponse getInfo() throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<AccountOuterClass.InfoResponse> getInfo() throws InvalidProtocolBufferException, DidException {
         var request = AccountOuterClass.InfoRequest.newBuilder().build();
         return clientWithMetadata(request).info(request);
     }
 
-    private AccountGrpc.AccountBlockingStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
+    private AccountGrpc.AccountFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
         return this.stub.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }
