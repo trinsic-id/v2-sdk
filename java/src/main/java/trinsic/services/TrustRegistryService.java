@@ -1,5 +1,6 @@
 package trinsic.services;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.Channel;
@@ -14,23 +15,22 @@ import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 import java.time.Instant;
 
 public class TrustRegistryService extends ServiceBase {
-    public TrustRegistryGrpc.TrustRegistryBlockingStub stub;
+    public TrustRegistryGrpc.TrustRegistryFutureStub stub;
 
     public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig, null);
-        this.stub = TrustRegistryGrpc.newBlockingStub(this.getChannel());
+        this(accountProfile, serverConfig, null);
     }
     public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
-        this.stub = TrustRegistryGrpc.newBlockingStub(this.getChannel());
+        this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     }
 
     public void registerGovernanceFramework(String governanceFramework, String description) {
         throw new RuntimeException();
     }
 
-    public TrustRegistryOuterClass.RegisterIssuerResponse registerIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
-                                                                         StreamObserver<TrustRegistryOuterClass.RegisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.RegisterIssuerResponse> registerIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
+                                                                                           StreamObserver<TrustRegistryOuterClass.RegisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
@@ -43,8 +43,8 @@ public class TrustRegistryService extends ServiceBase {
         return getTrustRegistryClient(request).registerIssuer(request);
     }
 
-    public TrustRegistryOuterClass.UnregisterIssuerResponse unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
-                                                                             StreamObserver<TrustRegistryOuterClass.UnregisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil,
+                                                                                               StreamObserver<TrustRegistryOuterClass.UnregisterIssuerResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
@@ -55,8 +55,8 @@ public class TrustRegistryService extends ServiceBase {
         return getTrustRegistryClient(request).unregisterIssuer(request);
     }
 
-    public TrustRegistryOuterClass.RegisterVerifierResponse registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil,
-                                                                             StreamObserver<TrustRegistryOuterClass.RegisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.RegisterVerifierResponse> registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil,
+                                                                                               StreamObserver<TrustRegistryOuterClass.RegisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
@@ -69,8 +69,8 @@ public class TrustRegistryService extends ServiceBase {
         return getTrustRegistryClient(request).registerVerifier(request);
     }
 
-    public TrustRegistryOuterClass.UnregisterVerifierResponse unregisterVerifier(String verifierDid, String presentationType, String governanceFramework,
-                                                                                 Instant validFrom, Instant validUntil, StreamObserver<TrustRegistryOuterClass.UnregisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.UnregisterVerifierResponse> unregisterVerifier(String verifierDid, String presentationType, String governanceFramework,
+                                                                                                   Instant validFrom, Instant validUntil, StreamObserver<TrustRegistryOuterClass.UnregisterVerifierResponse> observer) throws InvalidProtocolBufferException, DidException {
         if (validFrom == null) validFrom = Instant.EPOCH;
         if (validUntil == null) validUntil = Instant.EPOCH;
 
@@ -82,8 +82,8 @@ public class TrustRegistryService extends ServiceBase {
         return getTrustRegistryClient(request).unregisterVerifier(request);
     }
 
-    public TrustRegistryOuterClass.CheckIssuerStatusResponse checkIssuerStatus(String issuerDid, String credentialType, String governanceFramework,
-                                                                               StreamObserver<TrustRegistryOuterClass.CheckIssuerStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(String issuerDid, String credentialType, String governanceFramework,
+                                                                                                 StreamObserver<TrustRegistryOuterClass.CheckIssuerStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
         final TrustRegistryOuterClass.CheckIssuerStatusRequest request = TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder()
                 .setDidUri(issuerDid)
                 .setCredentialTypeUri(credentialType)
@@ -91,8 +91,8 @@ public class TrustRegistryService extends ServiceBase {
         return getTrustRegistryClient(request).checkIssuerStatus(request);
     }
 
-    public TrustRegistryOuterClass.CheckVerifierStatusResponse checkVerifierStatus(String verifierDid, String presentationType, String governanceFramework,
-                                                                                   StreamObserver<TrustRegistryOuterClass.CheckVerifierStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.CheckVerifierStatusResponse> checkVerifierStatus(String verifierDid, String presentationType, String governanceFramework,
+                                                                                                     StreamObserver<TrustRegistryOuterClass.CheckVerifierStatusResponse> observer) throws InvalidProtocolBufferException, DidException {
         final TrustRegistryOuterClass.CheckVerifierStatusRequest request = TrustRegistryOuterClass.CheckVerifierStatusRequest.newBuilder()
                 .setDidUri(verifierDid)
                 .setPresentationTypeUri(presentationType)
@@ -108,7 +108,7 @@ public class TrustRegistryService extends ServiceBase {
         getTrustRegistryClient(request).searchRegistry(request);
     }
 
-    private TrustRegistryGrpc.TrustRegistryBlockingStub getTrustRegistryClient(Message message) throws InvalidProtocolBufferException, DidException {
+    private TrustRegistryGrpc.TrustRegistryFutureStub getTrustRegistryClient(Message message) throws InvalidProtocolBufferException, DidException {
         return this.stub.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }

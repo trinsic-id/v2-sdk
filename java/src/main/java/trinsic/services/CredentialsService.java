@@ -1,5 +1,7 @@
 package trinsic.services;
 
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
@@ -13,44 +15,51 @@ import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 import java.util.HashMap;
+import java.util.concurrent.Executors;
 
 public class CredentialsService extends ServiceBase {
-    private final VerifiableCredentialGrpc.VerifiableCredentialBlockingStub stub;
+    private final VerifiableCredentialGrpc.VerifiableCredentialFutureStub stub;
 
     public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        super(accountProfile, serverConfig, null);
-
-        this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
+        this(accountProfile, serverConfig, null);
     }
 
     public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
 
-        this.stub = VerifiableCredentialGrpc.newBlockingStub(this.getChannel());
+        this.stub = VerifiableCredentialGrpc.newFutureStub(this.getChannel());
     }
 
-    public HashMap issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<HashMap> issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
         var request = VerifiableCredentials.IssueRequest.newBuilder()
                 .setDocument(TrinsicUtilities.createPayloadString(document)).build();
         var response = clientWithMetadata(request).issue(request);
-        return new Gson().fromJson(response.getDocument().getJsonString(), HashMap.class);
+        return Futures.transform(response, input -> {
+            if (input == null) return null;
+            return (HashMap) new Gson().fromJson(input.getDocument().getJsonString(), HashMap.class);
+        }, Executors.newSingleThreadExecutor());
     }
 
-    public HashMap createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<HashMap> createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.CreateProofRequest request = VerifiableCredentials.CreateProofRequest.newBuilder()
                 .setDocumentId(documentId)
                 .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument))
                 .build();
-        return (new Gson()).fromJson(clientWithMetadata(request).createProof(request).getProofDocument().getJsonString(), HashMap.class);
+        var response = clientWithMetadata(request).createProof(request);
+        return Futures.transform(response, input -> {
+            if (input == null) return null;
+            return (HashMap) new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
+        }, Executors.newSingleThreadExecutor());
     }
 
-    public boolean verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<Boolean> verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.VerifyProofRequest request = VerifiableCredentials.VerifyProofRequest.newBuilder()
                 .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
-        return clientWithMetadata(request).verifyProof(request).getValid();
+        var response = clientWithMetadata(request).verifyProof(request);
+        return Futures.transform(response, VerifiableCredentials.VerifyProofResponse::getValid, Executors.newSingleThreadExecutor());
     }
 
-    public VerifiableCredentials.SendResponse send(HashMap document, String email) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<VerifiableCredentials.SendResponse> send(HashMap document, String email) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.SendRequest request = VerifiableCredentials.SendRequest.newBuilder()
                 .setEmail(email)
                 .setDocument(TrinsicUtilities.createPayloadString(document))
@@ -58,7 +67,7 @@ public class CredentialsService extends ServiceBase {
         return clientWithMetadata(request).send(request);
     }
 
-    private VerifiableCredentialGrpc.VerifiableCredentialBlockingStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
+    private VerifiableCredentialGrpc.VerifiableCredentialFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
         return this.stub.withInterceptors(
                 MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }

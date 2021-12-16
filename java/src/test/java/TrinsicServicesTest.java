@@ -12,6 +12,7 @@ import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.concurrent.ExecutionException;
 
 class TrinsicServicesTest {
 
@@ -25,9 +26,9 @@ class TrinsicServicesTest {
 
     @Test
     @Disabled("Fails because too many invites sent")
-    public void testProviderServiceInviteParticipant() throws IOException, DidException {
+    public void testProviderServiceInviteParticipant() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
-        var account = accountService.signIn(null).getProfile();
+        var account = accountService.signIn(null).get().getProfile();
 
         var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
         var invitation = ProviderOuterClass.InviteRequest.newBuilder()
@@ -58,7 +59,7 @@ class TrinsicServicesTest {
     }
 
     @Test
-    public void testTrinsicServiceDemo() throws IOException, DidException {
+    public void testTrinsicServiceDemo() throws IOException, DidException, ExecutionException, InterruptedException {
         VaccineDemo.run();
     }
 }
