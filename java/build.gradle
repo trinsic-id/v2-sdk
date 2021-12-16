@@ -6,6 +6,7 @@ buildscript {
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?

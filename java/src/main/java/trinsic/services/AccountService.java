@@ -69,11 +69,6 @@ public class AccountService extends ServiceBase {
 
     public ListenableFuture<AccountOuterClass.InfoResponse> getInfo() throws InvalidProtocolBufferException, DidException {
         var request = AccountOuterClass.InfoRequest.newBuilder().build();
-        return clientWithMetadata(request).info(request);
-    }
-
-    private AccountGrpc.AccountFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
-        return this.stub.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
+        return withMetadata(stub, request).info(request);
     }
 }

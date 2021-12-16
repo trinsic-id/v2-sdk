@@ -33,7 +33,7 @@ public class CredentialsService extends ServiceBase {
     public ListenableFuture<HashMap> issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
         var request = VerifiableCredentials.IssueRequest.newBuilder()
                 .setDocument(TrinsicUtilities.createPayloadString(document)).build();
-        var response = clientWithMetadata(request).issue(request);
+        var response = withMetadata(stub, request).issue(request);
         return Futures.transform(response, input -> {
             if (input == null) return null;
             return (HashMap) new Gson().fromJson(input.getDocument().getJsonString(), HashMap.class);
@@ -45,7 +45,7 @@ public class CredentialsService extends ServiceBase {
                 .setDocumentId(documentId)
                 .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument))
                 .build();
-        var response = clientWithMetadata(request).createProof(request);
+        var response = withMetadata(stub, request).createProof(request);
         return Futures.transform(response, input -> {
             if (input == null) return null;
             return (HashMap) new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
@@ -55,7 +55,7 @@ public class CredentialsService extends ServiceBase {
     public ListenableFuture<Boolean> verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.VerifyProofRequest request = VerifiableCredentials.VerifyProofRequest.newBuilder()
                 .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
-        var response = clientWithMetadata(request).verifyProof(request);
+        var response = withMetadata(stub, request).verifyProof(request);
         return Futures.transform(response, VerifiableCredentials.VerifyProofResponse::getValid, Executors.newSingleThreadExecutor());
     }
 
@@ -64,11 +64,6 @@ public class CredentialsService extends ServiceBase {
                 .setEmail(email)
                 .setDocument(TrinsicUtilities.createPayloadString(document))
                 .build();
-        return clientWithMetadata(request).send(request);
-    }
-
-    private VerifiableCredentialGrpc.VerifiableCredentialFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
-        return this.stub.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
+        return withMetadata(stub, request).send(request);
     }
 }

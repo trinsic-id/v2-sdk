@@ -28,17 +28,13 @@ public class ProviderService extends ServiceBase {
         if (request.getContactMethodCase() == ProviderOuterClass.InviteRequest.ContactMethodCase.CONTACTMETHOD_NOT_SET)
             throw new IllegalArgumentException("Contact method must be set.");
 
-        return clientWithMetadata(request).invite(request);
+        return withMetadata(stub, request).invite(request);
     }
 
     public ListenableFuture<ProviderOuterClass.InvitationStatusResponse> invitationStatus(ProviderOuterClass.InvitationStatusRequest request) throws InvalidProtocolBufferException, DidException {
         if (request.getInvitationId().strip().length() == 0)
             throw new IllegalArgumentException("Onboarding reference ID must be set.");
 
-        return clientWithMetadata(request).invitationStatus(request);
-    }
-    private ProviderGrpc.ProviderFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
-        return this.stub.withInterceptors(
-                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
+        return withMetadata(stub, request).invitationStatus(request);
     }
 }

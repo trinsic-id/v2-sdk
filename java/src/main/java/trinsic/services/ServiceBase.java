@@ -5,6 +5,7 @@ import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
+import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.security.ISecurityProvider;
@@ -13,10 +14,10 @@ import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.CommonOuterClass;
 
 public abstract class ServiceBase {
-    private AccountOuterClass.AccountProfile profile = null;
-    private CommonOuterClass.ServerConfig configuration = null;
-    private Channel channel = null;
-    private boolean createdChannel = false;
+    private AccountOuterClass.AccountProfile profile;
+    private CommonOuterClass.ServerConfig configuration;
+    private Channel channel;
+    private boolean createdChannel;
     private final ISecurityProvider securityProvider = new OberonSecurityProvider();
 
     protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
@@ -31,7 +32,7 @@ public abstract class ServiceBase {
 
     public void shutdown() {
         if (channel instanceof ManagedChannel && createdChannel)
-            ((ManagedChannel)this.channel).shutdownNow();
+            ((ManagedChannel) this.channel).shutdownNow();
     }
 
     public Metadata buildMetadata(Message request) throws InvalidProtocolBufferException, DidException {
@@ -57,6 +58,11 @@ public abstract class ServiceBase {
 
     public Channel getChannel() {
         return this.channel;
+    }
+
+    protected <T extends io.grpc.stub.AbstractStub<T>> T withMetadata(T stub, Message message) throws InvalidProtocolBufferException, DidException {
+        return stub.withInterceptors(
+                MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }
 
 }
