@@ -36,7 +36,7 @@ public class WalletService extends ServiceBase {
         return clientWithMetadata(request).search(request);
     }
 
-    public ListenableFuture<String> insertItem(HashMap<String, Object> item) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<String> insertItem(HashMap item) throws InvalidProtocolBufferException, DidException {
         final UniversalWalletOuterClass.InsertItemRequest request = UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                 .setItem(TrinsicUtilities.createPayloadString(item)).build();
         var response = clientWithMetadata(request).insertItem(request);

@@ -59,7 +59,7 @@ class TrinsicServicesTest {
     }
 
     @Test
-    public void testTrinsicServiceDemo() throws IOException, DidException {
+    public void testTrinsicServiceDemo() throws IOException, DidException, ExecutionException, InterruptedException {
         VaccineDemo.run();
     }
 }

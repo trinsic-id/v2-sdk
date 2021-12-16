@@ -14,15 +14,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
-    public static void main(String[] args) throws IOException, DidException {
+    public static void main(String[] args) throws IOException, DidException, ExecutionException, InterruptedException {
         // Make sure you set the TEST_SERVER_ENDPOINT environment variable
         run();
     }
 
-    public static void run() throws IOException, DidException {
+    public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
         // createService() {
         var serverConfig = TrinsicUtilities.getTestServerConfig();
         System.out.println("Connecting to:\n" + serverConfig);
@@ -31,9 +32,9 @@ public class VaccineDemo {
 
         // setupActors() {
         // Create 3 different profiles for each participant in the scenario
-        var allison = accountService.signIn(null).getProfile();
-        var clinic = accountService.signIn(null).getProfile();
-        var airline = accountService.signIn(null).getProfile();
+        var allison = accountService.signIn(null).get().getProfile();
+        var clinic = accountService.signIn(null).get().getProfile();
+        var airline = accountService.signIn(null).get().getProfile();
         // }
 
         // createService() {
@@ -56,13 +57,13 @@ public class VaccineDemo {
         // issueCredential() {
         // Sign a credential as the clinic and send it to Allison
         var credentialJson = new Gson().fromJson(Files.readString(vaccineCertUnsignedPath()), HashMap.class);
-        var credential = credentialsService.issueCredential(credentialJson);
+        var credential = credentialsService.issueCredential(credentialJson).get();
         System.out.println("Credential: " + credential);
         // }
 
         // storeCredential() {
         // Alice stores the credential in her cloud wallet.
-        var itemId = walletService.insertItem(credential);
+        var itemId = walletService.insertItem(credential).get();
         System.out.println("item id = " + itemId);
         // }
 
@@ -72,14 +73,14 @@ public class VaccineDemo {
         // that they require expressed as a JSON-LD frame.
         credentialsService.setProfile(allison);
         var proofRequestJson = new Gson().fromJson(Files.readString(vaccineCertFramePath()), HashMap.class);
-        var credentialProof = credentialsService.createProof(itemId, proofRequestJson);
+        var credentialProof = credentialsService.createProof(itemId, proofRequestJson).get();
         System.out.println("Proof: " + credentialProof);
         // }
 
         // verifyCredential() {
         // The airline verifies the credential
         credentialsService.setProfile(airline);
-        var isValid = credentialsService.verifyProof(credentialProof);
+        var isValid = credentialsService.verifyProof(credentialProof).get();
         System.out.println("Verification result: " + isValid);
         Assertions.assertTrue(isValid);
         // }
