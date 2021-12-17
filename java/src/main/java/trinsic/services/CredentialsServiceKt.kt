@@ -1,8 +1,5 @@
 package trinsic.services
 
-import com.google.common.base.Function
-import com.google.common.util.concurrent.Futures
-import com.google.common.util.concurrent.ListenableFuture
 import com.google.gson.Gson
 import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
@@ -10,10 +7,8 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc.VerifiableCredentialFutureStub
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
-import java.util.concurrent.Executors
 
 class CredentialsServiceKt(
     accountProfile: AccountOuterClass.AccountProfile?,
@@ -35,7 +30,10 @@ class CredentialsServiceKt(
             .setDocumentId(documentId)
             .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument))
             .build()
-        return Gson().fromJson(withMetadata(stub, request).createProof(request).proofDocument.jsonString, HashMap::class.java)
+        return Gson().fromJson(
+            withMetadata(stub, request).createProof(request).proofDocument.jsonString,
+            HashMap::class.java
+        )
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

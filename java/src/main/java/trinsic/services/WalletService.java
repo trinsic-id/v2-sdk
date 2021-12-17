@@ -3,9 +3,7 @@ package trinsic.services;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
 import io.grpc.Channel;
-import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.account.v1.AccountOuterClass;
@@ -32,21 +30,17 @@ public class WalletService extends ServiceBase {
         if (query == null) query = "SELECT * from c";
 
         final UniversalWalletOuterClass.SearchRequest request = UniversalWalletOuterClass.SearchRequest.newBuilder().setQuery(query).build();
-        return clientWithMetadata(request).search(request);
+        return withMetadata(stub, request).search(request);
     }
 
     public ListenableFuture<String> insertItem(HashMap item) throws InvalidProtocolBufferException, DidException {
         final UniversalWalletOuterClass.InsertItemRequest request = UniversalWalletOuterClass.InsertItemRequest.newBuilder().setItem(TrinsicUtilities.createPayloadString(item)).build();
-        var response = clientWithMetadata(request).insertItem(request);
+        var response = withMetadata(stub, request).insertItem(request);
 
         return Futures.transform(response, input -> {
             if (input == null) return null;
             return input.getItemId();
         }, Executors.newSingleThreadExecutor());
-    }
-
-    private UniversalWalletGrpc.UniversalWalletFutureStub clientWithMetadata(Message message) throws InvalidProtocolBufferException, DidException {
-        return this.stub.withInterceptors(MetadataUtils.newAttachHeadersInterceptor(this.buildMetadata(message)));
     }
 }
 
