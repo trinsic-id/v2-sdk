@@ -6,6 +6,7 @@ buildscript {
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?
@@ -60,6 +61,8 @@ dependencies {
     implementation 'io.grpc:grpc-kotlin-stub:1.2.0'
     implementation 'io.grpc:grpc-protobuf:1.42.1'
     implementation 'com.google.protobuf:protobuf-kotlin:3.19.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
