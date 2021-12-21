@@ -26,7 +26,6 @@ def _update_metadata(route: str, service: "ServiceBase", metadata: "_MetadataLik
     return metadata
 
 
-
 class ServiceBase(ABC):
     """
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
