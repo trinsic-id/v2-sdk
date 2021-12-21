@@ -18,6 +18,10 @@ import java.util.concurrent.Executors;
 public class CredentialsService extends ServiceBase {
     private final VerifiableCredentialGrpc.VerifiableCredentialFutureStub stub;
 
+    public CredentialsService(AccountOuterClass.AccountProfile accountProfile) {
+        this(accountProfile, null, null);
+    }
+
     public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);
     }

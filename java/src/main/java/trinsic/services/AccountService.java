@@ -14,6 +14,9 @@ import trinsic.services.common.v1.CommonOuterClass;
 public class AccountService extends ServiceBase {
     private final AccountGrpc.AccountFutureStub stub;
 
+    public AccountService(AccountOuterClass.AccountProfile accountProfile) {
+        this(accountProfile, null, null);
+    }
 
     public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);

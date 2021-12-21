@@ -12,6 +12,10 @@ import trinsic.services.common.v1.ProviderOuterClass;
 public class ProviderService extends ServiceBase {
     public ProviderGrpc.ProviderFutureStub stub;
 
+    public ProviderService(AccountOuterClass.AccountProfile accountProfile) {
+        this(accountProfile, null, null);
+    }
+
     public ProviderService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);
     }

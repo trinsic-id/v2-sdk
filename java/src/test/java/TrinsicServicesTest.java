@@ -62,4 +62,18 @@ class TrinsicServicesTest {
     public void testTrinsicServiceDemo() throws IOException, DidException, ExecutionException, InterruptedException {
         VaccineDemo.run();
     }
+
+    @Test
+    public void testProviderServiceInputValidation() {
+        var providerService = new ProviderService(null, TrinsicUtilities.getTestServerConfig());
+        Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().build()));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.invitationStatus(ProviderOuterClass.InvitationStatusRequest.newBuilder().build()));
+    }
+
+    @Test
+    public void testDefaultIsTrinsicProductionConfig() {
+        var service = new AccountService(null);
+        Assertions.assertEquals(TrinsicUtilities.getProductionConfig(), service.getConfiguration());
+        service.shutdown();
+    }
 }
