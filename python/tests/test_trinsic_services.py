@@ -25,7 +25,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
             await cred_service.invite_participant()
 
         with self.assertRaises(ValueError) as ve:
-            await  cred_service.invitation_status()
+            await cred_service.invitation_status()
 
     async def test_trustregistryservice_input_validation(self):
         cred_service = TrustRegistryService(None, trinsic_test_config())
