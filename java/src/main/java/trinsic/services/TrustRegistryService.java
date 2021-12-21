@@ -14,6 +14,10 @@ import java.time.Instant;
 public class TrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryFutureStub stub;
 
+    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile) {
+        this(accountProfile, null, null);
+    }
+
     public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);
     }
@@ -28,32 +32,32 @@ public class TrustRegistryService extends ServiceBase {
     }
 
     public ListenableFuture<TrustRegistryOuterClass.RegisterIssuerResponse> registerIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.EPOCH;
-        if (validUntil == null) validUntil = Instant.EPOCH;
+        if (validFrom == null) validFrom = Instant.MIN;
+        if (validUntil == null) validUntil = Instant.MAX;
 
         final var request = TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType).setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(validFrom.getEpochSecond()).setValidUntilUtc(validUntil.getEpochSecond()).build();
         return withMetadata(stub, request).registerIssuer(request);
     }
 
     public ListenableFuture<TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.EPOCH;
-        if (validUntil == null) validUntil = Instant.EPOCH;
+        if (validFrom == null) validFrom = Instant.MIN;
+        if (validUntil == null) validUntil = Instant.MAX;
 
         final var request = TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType).setGovernanceFrameworkUri(governanceFramework).build();
         return withMetadata(stub, request).unregisterIssuer(request);
     }
 
     public ListenableFuture<TrustRegistryOuterClass.RegisterVerifierResponse> registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.EPOCH;
-        if (validUntil == null) validUntil = Instant.EPOCH;
+        if (validFrom == null) validFrom = Instant.MIN;
+        if (validUntil == null) validUntil = Instant.MAX;
 
         final TrustRegistryOuterClass.RegisterVerifierRequest request = TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType).setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(validFrom.getEpochSecond()).setValidUntilUtc(validUntil.getEpochSecond()).build();
         return withMetadata(stub, request).registerVerifier(request);
     }
 
     public ListenableFuture<TrustRegistryOuterClass.UnregisterVerifierResponse> unregisterVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.EPOCH;
-        if (validUntil == null) validUntil = Instant.EPOCH;
+        if (validFrom == null) validFrom = Instant.MIN;
+        if (validUntil == null) validUntil = Instant.MAX;
 
         final TrustRegistryOuterClass.UnregisterVerifierRequest request = TrustRegistryOuterClass.UnregisterVerifierRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType).setGovernanceFrameworkUri(governanceFramework).build();
         return withMetadata(stub, request).unregisterVerifier(request);

@@ -17,6 +17,10 @@ import java.util.concurrent.Executors;
 public class WalletService extends ServiceBase {
     private final UniversalWalletGrpc.UniversalWalletFutureStub stub;
 
+    public WalletService(AccountOuterClass.AccountProfile accountProfile) {
+        this(accountProfile, null, null);
+    }
+
     public WalletService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);
     }
