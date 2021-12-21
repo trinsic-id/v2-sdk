@@ -37,7 +37,7 @@ async def vaccine_demo():
     info = await account_service.get_info()
 
     # createService() {
-    wallet_service = WalletService(allison, trinsic_test_config())
+    wallet_service = WalletService(allison, account_service.channel)
     credentials_service = CredentialsService(clinic, trinsic_test_config())
     # }
 
@@ -89,7 +89,7 @@ async def vaccine_demo():
     assert valid
     # }
 
-    wallet_service.close()
+    # wallet_service.close() - not required, because wallet shares channel with account
     account_service.close()
     credentials_service.close()
 

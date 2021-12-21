@@ -179,7 +179,7 @@ class ProviderService(ServiceBase):
             [InviteResponse](/reference/proto/#inviteresponse)
         """
         if not email and not phone:
-            raise Exception("Contact method must be set")
+            raise ValueError("Contact method must be set")
 
         return await self.client.invite(participant=participant,
                                         description=description,
@@ -196,7 +196,7 @@ class ProviderService(ServiceBase):
             [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
         """
         if not invitation_id or not invitation_id.strip():
-            raise Exception("Onboarding reference ID must be set.")
+            raise ValueError("Onboarding reference ID must be set.")
 
         return await self.client.invitation_status(invitation_id=invitation_id)
 
