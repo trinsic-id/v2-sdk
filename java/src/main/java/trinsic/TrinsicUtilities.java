@@ -1,8 +1,6 @@
 package trinsic;
 
 import com.google.gson.Gson;
-import com.google.protobuf.Struct;
-import com.google.protobuf.Value;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import trinsic.services.common.v1.CommonOuterClass;
@@ -45,18 +43,6 @@ public class TrinsicUtilities {
                 .setEndpoint(serviceUrl.getHost())
                 .setPort(serviceUrl.getPort())
                 .setUseTls(serviceUrl.getProtocol().equals("https")).build();
-    }
-
-    public static Value stringValue(String s) {
-        return Value.newBuilder().setStringValue(s).build();
-    }
-
-    public static Value structValue(HashMap<String, Value> h) {
-        return Value.newBuilder().setStructValue(hashmapToStruct(h)).build();
-    }
-
-    public static Struct hashmapToStruct(HashMap<String, Value> h) {
-        return Struct.newBuilder().putAllFields(h).build();
     }
 
     public static CommonOuterClass.JsonPayload createPayloadString(HashMap document) {
