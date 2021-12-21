@@ -1,3 +1,5 @@
+using Trinsic.Services.Provider.V1;
+
 namespace Tests;
 
 using System;
@@ -14,10 +16,20 @@ using FluentAssertions;
 public class Tests
 {
     private readonly ITestOutputHelper _testOutputHelper;
+    private readonly ServerConfig _serverConfig;
 
     public Tests(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
+
+        _serverConfig = new ServerConfig()
+        {
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "dev-internal.trinsic.cloud",
+            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
+            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || true
+        };
+
+        _testOutputHelper.WriteLine($"Testing endpoint: {_serverConfig.FormatUrl()}");
     }
 
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
@@ -26,16 +38,7 @@ public class Tests
     [Fact]
     public async Task TestWalletService()
     {
-        ServerConfig serverConfig = new()
-        {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
-        };
-
-        _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
-
-        var accountService = new AccountService(serverConfig);
+        var accountService = new AccountService(_serverConfig);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
@@ -50,8 +53,8 @@ public class Tests
         info.Should().NotBeNull();
 
         // createService() {
-        var walletService = new WalletService(allison, serverConfig);
-        var credentialsService = new CredentialsService(clinic, serverConfig);
+        var walletService = new WalletService(allison, _serverConfig);
+        var credentialsService = new CredentialsService(clinic, _serverConfig);
         // }
 
         // ISSUE CREDENTIAL
@@ -85,7 +88,7 @@ public class Tests
         // We'll read the request frame from a file and communicate this with Allison
         walletService.Profile = credentialsService.Profile = allison;
 
-        var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
+        var proofRequestJson = await File.ReadAllTextAsync(VaccinationCertificateFrame);
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
@@ -116,5 +119,24 @@ public class Tests
         //When
 
         //Then
+    }
+
+    [Fact]
+    public async Task CreateEcosystem()
+    {
+        var accountService = new AccountService(_serverConfig);
+        var account = await accountService.SignInAsync();
+
+        var service = new ProviderService(account, _serverConfig);
+
+        var actual = await service.CreateEcosystemAsync(new CreateEcosystemRequest
+        {
+            Description = "My ecosystem",
+            Name = "Test Ecosystem", 
+            Uri = "https://example.com"
+        });
+
+        actual.Should().NotBeNull();
+        actual.Id.Should().NotBeNull();
     }
 }

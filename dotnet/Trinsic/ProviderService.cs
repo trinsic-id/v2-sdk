@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.Provider.V1;
 
 namespace Trinsic;
 
@@ -62,5 +62,16 @@ public class ProviderService : ServiceBase
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    /// <summary>
+    /// Creates new ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<CreateEcosystemResponse> CreateEcosystemAsync(CreateEcosystemRequest request)
+    {
+        var response = await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
+        return response;
     }
 }

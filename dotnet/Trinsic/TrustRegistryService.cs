@@ -145,27 +145,14 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    public async Task<IEnumerable<JObject>> SearchRegistryAsync(string query = "SELECT * FROM c")
+    public async Task<SearchRegistryResponse> SearchRegistryAsync(string query = "SELECT * FROM c")
     {
         SearchRegistryRequest request = new()
         {
-            Query = query,
-            Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
+            Query = query
         };
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
 
-        return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
-    }
-
-    public IEnumerable<JObject> SearchRegistry(string query = "SELECT * FROM c")
-    {
-        SearchRegistryRequest request = new()
-        {
-            Query = query,
-            Options = new RequestOptions { ResponseJsonFormat = JsonFormat.Protobuf }
-        };
-        var response = Client.SearchRegistry(request, BuildMetadata(request));
-
-        return response.Items.Select(x => x.JsonStruct.ToJObject()).ToList();
+        return response;
     }
 }
