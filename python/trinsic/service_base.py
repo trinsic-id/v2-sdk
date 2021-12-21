@@ -20,9 +20,11 @@ def _update_metadata(route: str, service: "ServiceBase", metadata: "_MetadataLik
                      request: "_MessageLike") -> "_MetadataLike":
     if route in _skip_routes:
         return metadata
-    if metadata:
-        raise NotImplementedError("Cannot combine metadata yet")
-    return service.build_metadata(request)
+    metadata = metadata or {}
+    new_metadata = service.build_metadata(request)
+    metadata.update(new_metadata)
+    return metadata
+
 
 
 class ServiceBase(ABC):
