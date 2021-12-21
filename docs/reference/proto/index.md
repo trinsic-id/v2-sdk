@@ -14,6 +14,10 @@
     - [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm)
     - [EncryptionMode](#pbmse.v1.EncryptionMode)
   
+- [sdk/options/v1/options.proto](#sdk/options/v1/options.proto)
+    - [ServerConfiguration](#sdk.options.v1.ServerConfiguration)
+    - [ServiceOptions](#sdk.options.v1.ServiceOptions)
+  
 - [services/account/v1/account.proto](#services/account/v1/account.proto)
     - [AccountDetails](#services.account.v1.AccountDetails)
     - [AccountProfile](#services.account.v1.AccountProfile)
@@ -261,6 +265,56 @@ Protocol buffer message signing and encryption
 | ENCRYPTION_MODE_DIRECT | 1 |  |
 | ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
 
+
+ 
+
+ 
+
+ 
+
+
+
+<a name="sdk/options/v1/options.proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## sdk/options/v1/options.proto
+
+
+
+<a name="sdk.options.v1.ServerConfiguration"></a>
+
+### ServerConfiguration
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| endpoint | [string](#string) |  | service endpoint |
+| port | [int32](#int32) |  | service port |
+| use_tls | [bool](#bool) |  | indicates if tls is used |
+
+
+
+
+
+
+<a name="sdk.options.v1.ServiceOptions"></a>
+
+### ServiceOptions
+service options
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| server | [ServerConfiguration](#sdk.options.v1.ServerConfiguration) |  | server configuration |
+| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | account profile to use for authentication |
+| ecosystem | [string](#string) |  | ecosystem to use with endpoints that require it |
+
+
+
+
+
+ 
 
  
 
