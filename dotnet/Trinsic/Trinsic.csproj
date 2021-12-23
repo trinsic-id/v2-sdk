@@ -67,5 +67,9 @@
     <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto" />
     <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto" />
   </ItemGroup>
+    
+  <ItemGroup>
+    <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/trust-registry.proto" ProtoRoot="..\..\proto" />
+  </ItemGroup>
 
 </Project>

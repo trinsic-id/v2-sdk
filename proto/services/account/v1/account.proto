@@ -6,6 +6,8 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
 import "services/common/v1/common.proto";
+import "services/provider/v1/provider.proto";
+
 
 // Request for creating new account
 message SignInRequest {
@@ -90,6 +92,8 @@ message InfoResponse {
     // The account details associated with
     // the calling request context
     AccountDetails details = 1;
+    // any ecosystems the account has access to
+    repeated services.provider.v1.Ecosystem ecosystems = 2;
 }
 
 message ListDevicesRequest {}

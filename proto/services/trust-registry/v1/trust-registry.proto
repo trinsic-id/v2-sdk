@@ -31,7 +31,7 @@ message SearchRegistryRequest {
 }
 
 message SearchRegistryResponse {
-    repeated services.common.v1.JsonPayload items = 1;
+    string items_json = 1;
     bool has_more = 2;
     int32 count = 3;
     string continuation_token = 4;
@@ -53,14 +53,10 @@ message RegisterIssuerRequest {
     uint64 valid_from_utc = 11;
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
-
-    services.common.v1.RequestOptions options = 100;
 }
 
 message RegisterIssuerResponse {
     services.common.v1.ResponseStatus status = 1;
-
-    services.common.v1.JsonPayload response_data = 2;
 }
 
 message RegisterVerifierRequest {
@@ -73,14 +69,10 @@ message RegisterVerifierRequest {
     uint64 valid_from_utc = 11;
     uint64 valid_until_utc = 12;
     string governance_framework_uri = 20;
-
-    services.common.v1.RequestOptions options = 100;
 }
 
 message RegisterVerifierResponse {
     services.common.v1.ResponseStatus status = 1;
-
-    services.common.v1.JsonPayload response_data = 2;
 }
 
 message UnregisterIssuerRequest {
@@ -121,8 +113,7 @@ message CheckIssuerStatusRequest {
 }
 
 message CheckIssuerStatusResponse {
-    string governance_framework_uri = 1;
-    RegistrationStatus status = 4;
+    RegistrationStatus status = 1;
 }
 
 message CheckVerifierStatusRequest {
@@ -135,8 +126,7 @@ message CheckVerifierStatusRequest {
 }
 
 message CheckVerifierStatusResponse {
-    string governance_framework_uri = 1;
-    RegistrationStatus status = 4;
+    RegistrationStatus status = 1;
 }
 
 enum RegistrationStatus {
@@ -153,7 +143,9 @@ message FetchDataRequest {
 }
 
 message FetchDataResponse {
-    services.common.v1.JsonPayload response = 1;
+    string response_json = 1;
+    bool has_more_results = 2;
+    string continuation_token = 3;
 }
 
 service TrustRegistry {

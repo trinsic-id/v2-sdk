@@ -14,7 +14,7 @@ public class WalletService : ServiceBase
     public WalletService(AccountProfile accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
         : base(accountProfile, serverConfig, existingChannel)
     {
-        Client = new WalletServiceClient(Channel);
+        Client = new(Channel);
     }
 
     internal WalletServiceClient Client { get; }
@@ -58,7 +58,7 @@ public class WalletService : ServiceBase
     {
         InsertItemRequest request = new()
         {
-            Item = new JsonPayload { JsonStruct = item.ToStruct() }
+            Item = new() { JsonStruct = item.ToStruct() }
         };
 
         var response = await Client.InsertItemAsync(
@@ -76,7 +76,7 @@ public class WalletService : ServiceBase
     {
         InsertItemRequest request = new()
         {
-            Item = new JsonPayload { JsonStruct = item.ToStruct() }
+            Item = new() { JsonStruct = item.ToStruct() }
         };
 
         var response = Client.InsertItem(

@@ -32,7 +32,7 @@ internal class OberonSecurityProvider : ISecurityProvider
 
     public string GetAuthHeader(AccountProfile accountProfile, IMessage message)
     {
-        if (accountProfile.Protection?.Enabled ?? false) throw new Exception("The token must be unprotected before use.");
+        if (accountProfile.Protection?.Enabled ?? false) throw new("The token must be unprotected before use.");
 
         // compute the hash of the request and capture current timestamp
         byte[] requestBytes = message.ToByteArray();
