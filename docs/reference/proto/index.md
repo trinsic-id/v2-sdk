@@ -50,11 +50,19 @@
     - [Debugging](#services.debug.v1.Debugging)
   
 - [services/provider/v1/provider.proto](#services/provider/v1/provider.proto)
+    - [AcceptInviteRequest](#services.provider.v1.AcceptInviteRequest)
+    - [AcceptInviteResponse](#services.provider.v1.AcceptInviteResponse)
+    - [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest)
+    - [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse)
+    - [Ecosystem](#services.provider.v1.Ecosystem)
     - [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest)
     - [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse)
+    - [Invite](#services.provider.v1.Invite)
     - [InviteRequest](#services.provider.v1.InviteRequest)
     - [InviteRequest.DidCommInvitation](#services.provider.v1.InviteRequest.DidCommInvitation)
     - [InviteResponse](#services.provider.v1.InviteResponse)
+    - [ListEcosystemsRequest](#services.provider.v1.ListEcosystemsRequest)
+    - [ListEcosystemsResponse](#services.provider.v1.ListEcosystemsResponse)
   
     - [InvitationStatusResponse.Status](#services.provider.v1.InvitationStatusResponse.Status)
     - [ParticipantType](#services.provider.v1.ParticipantType)
@@ -100,16 +108,25 @@
   
 - [services/verifiable-credentials/templates/v1/templates.proto](#services/verifiable-credentials/templates/v1/templates.proto)
     - [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
+    - [CreateCredentialTemplateRequest.FieldsEntry](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry)
     - [CreateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
-    - [CredentialTemplate](#services.verifiablecredentials.templates.v1.CredentialTemplate)
     - [DeleteCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
     - [DeleteCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
     - [GetCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
     - [GetCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
+    - [GetTemplateRequest](#services.verifiablecredentials.templates.v1.GetTemplateRequest)
+    - [GetTemplateResponse](#services.verifiablecredentials.templates.v1.GetTemplateResponse)
+    - [ListCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
+    - [ListCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
+    - [ListTemplatesRequest](#services.verifiablecredentials.templates.v1.ListTemplatesRequest)
+    - [ListTemplatesResponse](#services.verifiablecredentials.templates.v1.ListTemplatesResponse)
     - [SearchCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
     - [SearchCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
-    - [UpdateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest)
-    - [UpdateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse)
+    - [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData)
+    - [TemplateData.FieldsEntry](#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry)
+    - [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField)
+  
+    - [FieldType](#services.verifiablecredentials.templates.v1.FieldType)
   
     - [CredentialTemplates](#services.verifiablecredentials.templates.v1.CredentialTemplates)
   
@@ -117,6 +134,7 @@
     - [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest)
     - [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse)
     - [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest)
+    - [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse)
     - [IssueRequest](#services.verifiablecredentials.v1.IssueRequest)
     - [IssueResponse](#services.verifiablecredentials.v1.IssueResponse)
     - [SendRequest](#services.verifiablecredentials.v1.SendRequest)
@@ -386,6 +404,7 @@ This information should be stored securely
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | details | [AccountDetails](#services.account.v1.AccountDetails) |  | The account details associated with the calling request context |
+| ecosystems | [services.provider.v1.Ecosystem](#services.provider.v1.Ecosystem) | repeated | any ecosystems the account has access to |
 
 
 
@@ -677,6 +696,87 @@ Nonce used to generate an oberon proof
 
 
 
+<a name="services.provider.v1.AcceptInviteRequest"></a>
+
+### AcceptInviteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| code | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.provider.v1.AcceptInviteResponse"></a>
+
+### AcceptInviteResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) |  |  |
+
+
+
+
+
+
+<a name="services.provider.v1.CreateEcosystemRequest"></a>
+
+### CreateEcosystemRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| uri | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.provider.v1.CreateEcosystemResponse"></a>
+
+### CreateEcosystemResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.provider.v1.Ecosystem"></a>
+
+### Ecosystem
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| uri | [string](#string) |  |  |
+
+
+
+
+
+
 <a name="services.provider.v1.InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
@@ -705,6 +805,25 @@ The referenece_id passed is the response from the
 | ----- | ---- | ----- | ----------- |
 | status | [InvitationStatusResponse.Status](#services.provider.v1.InvitationStatusResponse.Status) |  |  |
 | status_details | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.provider.v1.Invite"></a>
+
+### Invite
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| code | [string](#string) |  |  |
+| created | [string](#string) |  |  |
+| accepted | [string](#string) |  |  |
+| expires | [string](#string) |  |  |
 
 
 
@@ -755,6 +874,31 @@ The referenece_id passed is the response from the
 
 
 
+
+<a name="services.provider.v1.ListEcosystemsRequest"></a>
+
+### ListEcosystemsRequest
+
+
+
+
+
+
+
+<a name="services.provider.v1.ListEcosystemsResponse"></a>
+
+### ListEcosystemsResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) | repeated |  |
+
+
+
+
+
  
 
 
@@ -768,6 +912,7 @@ The referenece_id passed is the response from the
 | Error | 0 | Onboarding resulted in error |
 | InvitationSent | 1 | The participant has been invited |
 | Completed | 2 | The participant has been onboarded |
+| Expired | 3 | The invite has expired |
 
 
 
@@ -794,9 +939,11 @@ The referenece_id passed is the response from the
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Invite | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) | rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse); |
-| InviteWithWorkflow | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) |  |
-| InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) |  |
+| CreateEcosystem | [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest) | [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| ListEcosystems | [ListEcosystemsRequest](#services.provider.v1.ListEcosystemsRequest) | [ListEcosystemsResponse](#services.provider.v1.ListEcosystemsResponse) | List all ecosystems assigned to the authenticated account |
+| Invite | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) | Invite a user to the ecosystem |
+| AcceptInvite | [AcceptInviteRequest](#services.provider.v1.AcceptInviteRequest) | [AcceptInviteResponse](#services.provider.v1.AcceptInviteResponse) | Accept an invite to the ecosystem |
+| InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) | Check the invitation status |
 
  
 
@@ -865,7 +1012,6 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
 | status | [RegistrationStatus](#services.trustregistry.v1.RegistrationStatus) |  |  |
 
 
@@ -899,7 +1045,6 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
 | status | [RegistrationStatus](#services.trustregistry.v1.RegistrationStatus) |  |  |
 
 
@@ -931,7 +1076,9 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| response | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| response_json | [string](#string) |  |  |
+| has_more_results | [bool](#bool) |  |  |
+| continuation_token | [string](#string) |  |  |
 
 
 
@@ -969,7 +1116,6 @@ The referenece_id passed is the response from the
 | valid_from_utc | [uint64](#uint64) |  |  |
 | valid_until_utc | [uint64](#uint64) |  |  |
 | governance_framework_uri | [string](#string) |  |  |
-| options | [services.common.v1.RequestOptions](#services.common.v1.RequestOptions) |  |  |
 
 
 
@@ -985,7 +1131,6 @@ The referenece_id passed is the response from the
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| response_data | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
 
 
 
@@ -1006,7 +1151,6 @@ The referenece_id passed is the response from the
 | valid_from_utc | [uint64](#uint64) |  |  |
 | valid_until_utc | [uint64](#uint64) |  |  |
 | governance_framework_uri | [string](#string) |  |  |
-| options | [services.common.v1.RequestOptions](#services.common.v1.RequestOptions) |  |  |
 
 
 
@@ -1022,7 +1166,6 @@ The referenece_id passed is the response from the
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| response_data | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
 
 
 
@@ -1084,7 +1227,7 @@ The referenece_id passed is the response from the
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| items | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) | repeated |  |
+| items_json | [string](#string) |  |  |
 | has_more | [bool](#bool) |  |  |
 | count | [int32](#int32) |  |  |
 | continuation_token | [string](#string) |  |  |
@@ -1328,14 +1471,30 @@ Search response object
 <a name="services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest"></a>
 
 ### CreateCredentialTemplateRequest
-
+Request to create new template
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | name | [string](#string) |  |  |
-| schema | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| base_uri | [string](#string) |  |  |
+| fields | [CreateCredentialTemplateRequest.FieldsEntry](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry) | repeated |  |
+| allow_additional_fields | [bool](#bool) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry"></a>
+
+### CreateCredentialTemplateRequest.FieldsEntry
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) |  |  |
+| value | [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField) |  |  |
 
 
 
@@ -1350,27 +1509,7 @@ Search response object
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| uri | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.verifiablecredentials.templates.v1.CredentialTemplate"></a>
-
-### CredentialTemplate
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| version | [string](#string) |  |  |
-| schema | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| uri | [string](#string) |  |  |
+| data | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
 
 
 
@@ -1425,7 +1564,95 @@ Search response object
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| template | [CredentialTemplate](#services.verifiablecredentials.templates.v1.CredentialTemplate) |  |  |
+| template | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.GetTemplateRequest"></a>
+
+### GetTemplateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.GetTemplateResponse"></a>
+
+### GetTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| data | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest"></a>
+
+### ListCredentialTemplatesRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| query | [string](#string) |  | SELECT * FROM c WHERE c.name = &#39;Diploma&#39; |
+| continuation_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse"></a>
+
+### ListCredentialTemplatesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| templates | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) | repeated |  |
+| has_more_results | [bool](#bool) |  |  |
+| continuation_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.ListTemplatesRequest"></a>
+
+### ListTemplatesRequest
+
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.ListTemplatesResponse"></a>
+
+### ListTemplatesResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| templates | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) | repeated |  |
 
 
 
@@ -1456,7 +1683,7 @@ Search response object
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| templates | [CredentialTemplate](#services.verifiablecredentials.templates.v1.CredentialTemplate) | repeated |  |
+| items_json | [string](#string) |  |  |
 | has_more | [bool](#bool) |  |  |
 | count | [int32](#int32) |  |  |
 | continuation_token | [string](#string) |  |  |
@@ -1466,9 +1693,9 @@ Search response object
 
 
 
-<a name="services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest"></a>
+<a name="services.verifiablecredentials.templates.v1.TemplateData"></a>
 
-### UpdateCredentialTemplateRequest
+### TemplateData
 
 
 
@@ -1476,28 +1703,66 @@ Search response object
 | ----- | ---- | ----- | ----------- |
 | id | [string](#string) |  |  |
 | name | [string](#string) |  |  |
-| schema | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| version | [int32](#int32) |  |  |
+| fields | [TemplateData.FieldsEntry](#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry) | repeated |  |
+| allow_additional_fields | [bool](#bool) |  |  |
+| schema_uri | [string](#string) |  |  |
+| context_uri | [string](#string) |  |  |
+| ecosystem_id | [string](#string) |  |  |
+| type | [string](#string) |  |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse"></a>
+<a name="services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry"></a>
 
-### UpdateCredentialTemplateResponse
+### TemplateData.FieldsEntry
 
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| template | [CredentialTemplate](#services.verifiablecredentials.templates.v1.CredentialTemplate) |  |  |
+| key | [string](#string) |  |  |
+| value | [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.templates.v1.TemplateField"></a>
+
+### TemplateField
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| description | [string](#string) |  |  |
+| optional | [bool](#bool) |  |  |
+| type | [FieldType](#services.verifiablecredentials.templates.v1.FieldType) |  |  |
 
 
 
 
 
  
+
+
+<a name="services.verifiablecredentials.templates.v1.FieldType"></a>
+
+### FieldType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| STRING | 0 |  |
+| NUMBER | 1 |  |
+| BOOL | 2 |  |
+| DATETIME | 4 |  |
+
 
  
 
@@ -1513,8 +1778,8 @@ Search response object
 | ----------- | ------------ | ------------- | ------------|
 | Create | [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse) |  |
 | Get | [GetCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse) |  |
+| List | [ListCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse) |  |
 | Search | [SearchCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse) |  |
-| Update | [UpdateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.UpdateCredentialTemplateRequest) | [UpdateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.UpdateCredentialTemplateResponse) |  |
 | Delete | [DeleteCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse) |  |
 
  
@@ -1567,8 +1832,23 @@ Create Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| templateId | [string](#string) |  |  |
-| attributes | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| template_id | [string](#string) |  |  |
+| values_json | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.v1.IssueFromTemplateResponse"></a>
+
+### IssueFromTemplateResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| document_json | [string](#string) |  |  |
 
 
 
@@ -1682,7 +1962,7 @@ Verify Proof
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Issue | [IssueRequest](#services.verifiablecredentials.v1.IssueRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) |  |
-| IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) |  |
+| IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse) |  |
 | CreateProof | [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest) | [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse) |  |
 | VerifyProof | [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest) | [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse) |  |
 | Send | [SendRequest](#services.verifiablecredentials.v1.SendRequest) | [SendResponse](#services.verifiablecredentials.v1.SendResponse) |  |
