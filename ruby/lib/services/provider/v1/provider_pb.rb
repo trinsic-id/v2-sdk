@@ -6,6 +6,13 @@ require 'google/protobuf'
 require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/provider.proto", :syntax => :proto3) do
+    add_message "services.provider.v1.Invite" do
+      optional :id, :string, 1
+      optional :code, :string, 2
+      optional :created, :string, 3
+      optional :accepted, :string, 4
+      optional :expires, :string, 5
+    end
     add_message "services.provider.v1.InviteRequest" do
       optional :participant, :enum, 1, "services.provider.v1.ParticipantType"
       optional :description, :string, 2
@@ -32,6 +39,33 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :Error, 0
       value :InvitationSent, 1
       value :Completed, 2
+      value :Expired, 3
+    end
+    add_message "services.provider.v1.Ecosystem" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :description, :string, 3
+      optional :uri, :string, 4
+    end
+    add_message "services.provider.v1.CreateEcosystemRequest" do
+      optional :name, :string, 1
+      optional :description, :string, 2
+      optional :uri, :string, 3
+    end
+    add_message "services.provider.v1.CreateEcosystemResponse" do
+      optional :id, :string, 1
+    end
+    add_message "services.provider.v1.ListEcosystemsRequest" do
+    end
+    add_message "services.provider.v1.ListEcosystemsResponse" do
+      repeated :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
+    end
+    add_message "services.provider.v1.AcceptInviteRequest" do
+      optional :id, :string, 1
+      optional :code, :string, 2
+    end
+    add_message "services.provider.v1.AcceptInviteResponse" do
+      optional :ecosystem, :message, 2, "services.provider.v1.Ecosystem"
     end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
@@ -43,12 +77,20 @@ end
 module Services
   module Provider
     module V1
+      Invite = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Invite").msgclass
       InviteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteRequest").msgclass
       InviteRequest::DidCommInvitation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteRequest.DidCommInvitation").msgclass
       InviteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteResponse").msgclass
       InvitationStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InvitationStatusRequest").msgclass
       InvitationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InvitationStatusResponse").msgclass
       InvitationStatusResponse::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InvitationStatusResponse.Status").enummodule
+      Ecosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Ecosystem").msgclass
+      CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
+      CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
+      ListEcosystemsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListEcosystemsRequest").msgclass
+      ListEcosystemsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListEcosystemsResponse").msgclass
+      AcceptInviteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AcceptInviteRequest").msgclass
+      AcceptInviteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AcceptInviteResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end

@@ -16,9 +16,15 @@ module Services
           self.unmarshal_class_method = :decode
           self.service_name = 'services.provider.v1.Provider'
 
-          #   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+          # Create new ecosystem and assign the authenticated user as owner
+          rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest, ::Services::Provider::V1::CreateEcosystemResponse
+          # List all ecosystems assigned to the authenticated account
+          rpc :ListEcosystems, ::Services::Provider::V1::ListEcosystemsRequest, ::Services::Provider::V1::ListEcosystemsResponse
+          # Invite a user to the ecosystem
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
-          rpc :InviteWithWorkflow, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
+          # Accept an invite to the ecosystem
+          rpc :AcceptInvite, ::Services::Provider::V1::AcceptInviteRequest, ::Services::Provider::V1::AcceptInviteResponse
+          # Check the invitation status
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
         end
 
