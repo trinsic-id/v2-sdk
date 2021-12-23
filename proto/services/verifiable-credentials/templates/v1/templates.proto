@@ -5,25 +5,12 @@ option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
 option java_package = "trinsic.services.verifiablecredentials.templates.v1";
 option go_package = "github.com/trinsic-id/sdk";
 
-import "services/common/v1/common.proto";
-
-message CreateCredentialTemplateRequest {
-  string name = 1;
-  services.common.v1.JsonPayload schema = 2;
-  string base_uri = 3; 
-}
-
-message CreateCredentialTemplateResponse {
-  string id = 1;
-  string uri = 2;
-}
-
 message GetCredentialTemplateRequest {
   string id = 1;
 }
 
 message GetCredentialTemplateResponse {
-  CredentialTemplate template = 1;
+  TemplateData template = 1;
 }
 
 message SearchCredentialTemplatesRequest {
@@ -32,20 +19,21 @@ message SearchCredentialTemplatesRequest {
 }
 
 message SearchCredentialTemplatesResponse {
-  repeated CredentialTemplate templates = 1;
+  string items_json = 1;
   bool has_more = 2;
   int32 count = 3;
   string continuation_token = 4;
 }
 
-message UpdateCredentialTemplateRequest {
-  string id = 1;
-  string name = 2;
-  services.common.v1.JsonPayload schema = 3;
+message ListCredentialTemplatesRequest {
+  string query = 1; // SELECT * FROM c WHERE c.name = 'Diploma'
+  string continuation_token = 2;
 }
 
-message UpdateCredentialTemplateResponse {
-  CredentialTemplate template = 1;
+message ListCredentialTemplatesResponse {
+  repeated TemplateData templates = 1;
+  bool has_more_results = 2;
+  string continuation_token = 3;
 }
 
 message DeleteCredentialTemplateRequest {
@@ -54,19 +42,56 @@ message DeleteCredentialTemplateRequest {
 
 message DeleteCredentialTemplateResponse {}
 
-message CredentialTemplate {
-  string id = 1;
-  string name = 2;
-  string version = 3;
-  services.common.v1.JsonPayload schema = 4;
-  string uri = 5;
-}
-
 service CredentialTemplates {
   rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
   rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+  rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
   rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
-  rpc Update(UpdateCredentialTemplateRequest) returns (UpdateCredentialTemplateResponse);
   rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
 }
 
+// Request to create new template
+message CreateCredentialTemplateRequest {
+  string name = 1;
+  map<string, TemplateField> fields = 2;
+  bool allow_additional_fields = 3;
+}
+message CreateCredentialTemplateResponse {
+  TemplateData data = 1;
+}
+
+message TemplateField {
+  string description = 2;
+  bool optional = 3;
+  FieldType type = 4;
+}
+
+enum FieldType {
+  STRING = 0;
+  NUMBER = 1;
+  BOOL = 2;
+  DATETIME = 4;
+}
+
+message GetTemplateRequest {
+  string id = 1;
+}
+message GetTemplateResponse {
+  TemplateData data = 1;
+}
+message ListTemplatesRequest {}
+message ListTemplatesResponse {
+  repeated TemplateData templates = 1;
+}
+
+message TemplateData {
+  string id = 1           [json_name="id"];
+  string name = 2;
+  int32 version = 3;
+  map<string, TemplateField> fields = 4;
+  bool allow_additional_fields = 5;
+  string schema_uri = 6;
+  string context_uri = 7;
+  string ecosystem_id = 8 [json_name="_ecosystemId"];
+  string type = 9         [json_name="type"];
+}

@@ -2,11 +2,19 @@ syntax = "proto3";
 
 package services.provider.v1;
 
-option csharp_namespace = "Trinsic.Services.Common.V1";
+option csharp_namespace = "Trinsic.Services.Provider.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.common.v1";
 
 import "services/common/v1/common.proto";
+
+message Invite {
+    string id = 1;
+    string code = 2;
+    string created = 3;
+    string accepted = 4;
+    string expires = 5;
+}
 
 message InviteRequest {
     ParticipantType participant = 1;
@@ -48,16 +56,60 @@ message InvitationStatusResponse {
 
         // The participant has been onboarded
         Completed = 2;
+
+        // The invite has expired
+        Expired = 3;
     }
 
     Status status = 1;
     string status_details = 2;
 }
 
-service Provider {
+message Ecosystem {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    string uri = 4;
+}
 
-//   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
-  rpc Invite(InviteRequest) returns (InviteResponse);
-  rpc InviteWithWorkflow(InviteRequest) returns (InviteResponse);
-  rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
+message CreateEcosystemRequest {
+    string name = 1;
+    string description = 2;
+    string uri = 3;
+}
+
+message CreateEcosystemResponse {
+    string id = 1;
+}
+
+message ListEcosystemsRequest {}
+
+message ListEcosystemsResponse {
+    repeated Ecosystem ecosystem = 1;
+}
+
+message AcceptInviteRequest {
+    string id = 1;
+    string code = 2;
+}
+
+message AcceptInviteResponse {
+    Ecosystem ecosystem = 2;
+}
+
+service Provider {
+    // Create new ecosystem and assign the authenticated user as owner
+    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
+
+    // List all ecosystems assigned to the authenticated account
+    rpc ListEcosystems(ListEcosystemsRequest) returns (ListEcosystemsResponse);
+
+    // Invite a user to the ecosystem
+    rpc Invite(InviteRequest) returns (InviteResponse);
+
+    // Accept an invite to the ecosystem
+    rpc AcceptInvite(AcceptInviteRequest) returns (AcceptInviteResponse);
+
+    // Check the invitation status
+    rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
 }

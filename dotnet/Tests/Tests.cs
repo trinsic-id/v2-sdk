@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Grpc.Net.Client;
+using Trinsic.Services.Provider.V1;
+using Trinsic.Services.TrustRegistry.V1;
 
 namespace Tests;
 
@@ -18,10 +20,20 @@ using FluentAssertions;
 public class Tests
 {
     private readonly ITestOutputHelper _testOutputHelper;
+    private readonly ServerConfig _serverConfig;
 
     public Tests(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
+
+        _serverConfig = new()
+        {
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "dev-internal.trinsic.cloud",
+            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
+            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || true
+        };
+
+        _testOutputHelper.WriteLine($"Testing endpoint: {_serverConfig.FormatUrl()}");
     }
 
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
@@ -30,8 +42,7 @@ public class Tests
     [Fact]
     public async Task TestWalletService()
     {
-        var serverConfig = GetTestServerConfig();
-        var accountService = new AccountService(serverConfig);
+        var accountService = new AccountService(_serverConfig);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
@@ -46,8 +57,8 @@ public class Tests
         info.Should().NotBeNull();
 
         // createService() {
-        var walletService = new WalletService(allison, serverConfig);
-        var credentialsService = new CredentialsService(clinic, serverConfig);
+        var walletService = new WalletService(allison, _serverConfig);
+        var credentialsService = new CredentialsService(clinic, _serverConfig);
         // }
 
         // ISSUE CREDENTIAL
@@ -81,7 +92,7 @@ public class Tests
         // We'll read the request frame from a file and communicate this with Allison
         walletService.Profile = credentialsService.Profile = allison;
 
-        var proofRequestJson = File.ReadAllText(VaccinationCertificateFrame);
+        var proofRequestJson = await File.ReadAllTextAsync(VaccinationCertificateFrame);
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
@@ -103,22 +114,91 @@ public class Tests
         Assert.True(valid);
     }
 
-    // TODO - Create trust registry unit test and then add commands to documentation reference
     [Fact]
-    public void TestTrustRegistry()
+    public async Task TestTrustRegistry()
     {
-        //Given
+        // setup
+        var accountService = new AccountService(_serverConfig);
+        var account = await accountService.SignInAsync();
+        var service = new TrustRegistryService(account, _serverConfig);
 
-        //When
+        // register issuer
+        var register = service.RegisterIssuerAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+        await register;
 
-        //Then
+        register.Should().NotBeNull();
+        register.Status.Should().Be(TaskStatus.RanToCompletion);
+        
+        // register verifier
+        register = service.RegisterVerifierAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+        await register;
+
+        register.Should().NotBeNull();
+        register.Status.Should().Be(TaskStatus.RanToCompletion);
+        
+        // check issuer status
+        var issuerStatus = await service.CheckIssuerStatusAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+
+        issuerStatus.Should().Be(RegistrationStatus.Current);
+        
+        // check verifier status
+        var verifierStatus = await service.CheckVerifierStatusAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+
+        verifierStatus.Should().Be(RegistrationStatus.Current);
+        
+        // search registry
+        var searchResult = await service.SearchRegistryAsync();
+
+        searchResult.Should().NotBeNull();
+        searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
+    }
+
+    [Fact(DisplayName = "Ecosystem creation and listing succeeds")]
+    public async Task EcosystemTests()
+    {
+        // setup
+        var accountService = new AccountService(_serverConfig);
+        var account = await accountService.SignInAsync();
+        var service = new ProviderService(account, _serverConfig);
+
+        // test create ecosystem
+        var actualCreate = await service.CreateEcosystemAsync(new() {
+            Description = "My ecosystem",
+            Name = "Test Ecosystem", 
+            Uri = "https://example.com"
+        });
+
+        actualCreate.Should().NotBeNull();
+        actualCreate.Id.Should().NotBeNull();
+        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
+        
+        // test list ecosystems
+        var actualList = await service.ListEcosystemsAsync();
+
+        actualList.Should().NotBeNull();
+        actualList.Should().NotBeEmpty();
     }
 
     [Fact]
     public async Task TestProtectUnprotectProfile()
     {
-        var serverConfig = GetTestServerConfig();
-        var myAccountService = new AccountService(serverConfig);
+        var myAccountService = new AccountService(_serverConfig);
         
         var myProfile = await myAccountService.SignInAsync();
         myAccountService.Profile = myProfile;
@@ -140,8 +220,7 @@ public class Tests
     [Fact]
     public async Task TestVerifyProfileSet()
     {
-        var serverConfig = GetTestServerConfig();
-        var myAccountService = new AccountService(serverConfig);
+        var myAccountService = new AccountService(_serverConfig);
         
         // Using non-async to ensure coverage behavior
         myAccountService.SignIn();
@@ -153,8 +232,7 @@ public class Tests
     [Fact]
     public async Task TestInvitationIdSet()
     {
-        var serverConfig = GetTestServerConfig();
-        var myAccountService = new AccountService(serverConfig);
+        var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
@@ -164,8 +242,7 @@ public class Tests
     [Fact]
     public async Task TestInviteParticipant()
     {
-        var serverConfig = GetTestServerConfig();
-        var myAccountService = new AccountService(serverConfig);
+        var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
         var invite = new InviteRequest() { Email = "info@trinsic.id", Description = "Test invitation" };
@@ -180,23 +257,9 @@ public class Tests
     [Fact]
     public async Task TestGovernanceFrameworkUriParse()
     {
-        var serverConfig = GetTestServerConfig();
-        var myAccountService = new AccountService(serverConfig);
+        var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myTrustRegistryService = new TrustRegistryService(myProfile, serverConfig, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
-    }
-
-    private ServerConfig GetTestServerConfig()
-    {
-        ServerConfig serverConfig = new()
-        {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
-        };
-
-        _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
-        return serverConfig;
     }
 }
