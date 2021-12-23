@@ -2,7 +2,7 @@
 # sources: services/provider/v1/provider.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict
+from typing import Dict, List
 
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
@@ -18,6 +18,16 @@ class InvitationStatusResponseStatus(betterproto.Enum):
     Error = 0
     InvitationSent = 1
     Completed = 2
+    Expired = 3
+
+
+@dataclass(eq=False, repr=False)
+class Invite(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    code: str = betterproto.string_field(2)
+    created: str = betterproto.string_field(3)
+    accepted: str = betterproto.string_field(4)
+    expires: str = betterproto.string_field(5)
 
 
 @dataclass(eq=False, repr=False)
@@ -58,7 +68,73 @@ class InvitationStatusResponse(betterproto.Message):
     status_details: str = betterproto.string_field(2)
 
 
+@dataclass(eq=False, repr=False)
+class Ecosystem(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    name: str = betterproto.string_field(2)
+    description: str = betterproto.string_field(3)
+    uri: str = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class CreateEcosystemRequest(betterproto.Message):
+    name: str = betterproto.string_field(1)
+    description: str = betterproto.string_field(2)
+    uri: str = betterproto.string_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class CreateEcosystemResponse(betterproto.Message):
+    id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class ListEcosystemsRequest(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class ListEcosystemsResponse(betterproto.Message):
+    ecosystem: List["Ecosystem"] = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AcceptInviteRequest(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    code: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class AcceptInviteResponse(betterproto.Message):
+    ecosystem: "Ecosystem" = betterproto.message_field(2)
+
+
 class ProviderStub(betterproto.ServiceStub):
+    async def create_ecosystem(
+        self, *, name: str = "", description: str = "", uri: str = ""
+    ) -> "CreateEcosystemResponse":
+
+        request = CreateEcosystemRequest()
+        request.name = name
+        request.description = description
+        request.uri = uri
+
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/CreateEcosystem",
+            request,
+            CreateEcosystemResponse,
+        )
+
+    async def list_ecosystems(self) -> "ListEcosystemsResponse":
+
+        request = ListEcosystemsRequest()
+
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/ListEcosystems",
+            request,
+            ListEcosystemsResponse,
+        )
+
     async def invite(
         self,
         *,
@@ -81,26 +157,16 @@ class ProviderStub(betterproto.ServiceStub):
             "/services.provider.v1.Provider/Invite", request, InviteResponse
         )
 
-    async def invite_with_workflow(
-        self,
-        *,
-        participant: "ParticipantType" = None,
-        description: str = "",
-        email: str = "",
-        phone: str = "",
-        didcomm_invitation: "InviteRequestDidCommInvitation" = None,
-    ) -> "InviteResponse":
+    async def accept_invite(
+        self, *, id: str = "", code: str = ""
+    ) -> "AcceptInviteResponse":
 
-        request = InviteRequest()
-        request.participant = participant
-        request.description = description
-        request.email = email
-        request.phone = phone
-        if didcomm_invitation is not None:
-            request.didcomm_invitation = didcomm_invitation
+        request = AcceptInviteRequest()
+        request.id = id
+        request.code = code
 
         return await self._unary_unary(
-            "/services.provider.v1.Provider/InviteWithWorkflow", request, InviteResponse
+            "/services.provider.v1.Provider/AcceptInvite", request, AcceptInviteResponse
         )
 
     async def invitation_status(
@@ -118,6 +184,14 @@ class ProviderStub(betterproto.ServiceStub):
 
 
 class ProviderBase(ServiceBase):
+    async def create_ecosystem(
+        self, name: str, description: str, uri: str
+    ) -> "CreateEcosystemResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_ecosystems(self) -> "ListEcosystemsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def invite(
         self,
         participant: "ParticipantType",
@@ -128,18 +202,31 @@ class ProviderBase(ServiceBase):
     ) -> "InviteResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def invite_with_workflow(
-        self,
-        participant: "ParticipantType",
-        description: str,
-        email: str,
-        phone: str,
-        didcomm_invitation: "InviteRequestDidCommInvitation",
-    ) -> "InviteResponse":
+    async def accept_invite(self, id: str, code: str) -> "AcceptInviteResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def invitation_status(self, invitation_id: str) -> "InvitationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "name": request.name,
+            "description": request.description,
+            "uri": request.uri,
+        }
+
+        response = await self.create_ecosystem(**request_kwargs)
+        await stream.send_message(response)
+
+    async def __rpc_list_ecosystems(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {}
+
+        response = await self.list_ecosystems(**request_kwargs)
+        await stream.send_message(response)
 
     async def __rpc_invite(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -155,18 +242,15 @@ class ProviderBase(ServiceBase):
         response = await self.invite(**request_kwargs)
         await stream.send_message(response)
 
-    async def __rpc_invite_with_workflow(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_accept_invite(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
 
         request_kwargs = {
-            "participant": request.participant,
-            "description": request.description,
-            "email": request.email,
-            "phone": request.phone,
-            "didcomm_invitation": request.didcomm_invitation,
+            "id": request.id,
+            "code": request.code,
         }
 
-        response = await self.invite_with_workflow(**request_kwargs)
+        response = await self.accept_invite(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_invitation_status(self, stream: grpclib.server.Stream) -> None:
@@ -181,17 +265,29 @@ class ProviderBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
+            "/services.provider.v1.Provider/CreateEcosystem": grpclib.const.Handler(
+                self.__rpc_create_ecosystem,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CreateEcosystemRequest,
+                CreateEcosystemResponse,
+            ),
+            "/services.provider.v1.Provider/ListEcosystems": grpclib.const.Handler(
+                self.__rpc_list_ecosystems,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListEcosystemsRequest,
+                ListEcosystemsResponse,
+            ),
             "/services.provider.v1.Provider/Invite": grpclib.const.Handler(
                 self.__rpc_invite,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 InviteRequest,
                 InviteResponse,
             ),
-            "/services.provider.v1.Provider/InviteWithWorkflow": grpclib.const.Handler(
-                self.__rpc_invite_with_workflow,
+            "/services.provider.v1.Provider/AcceptInvite": grpclib.const.Handler(
+                self.__rpc_accept_invite,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                InviteRequest,
-                InviteResponse,
+                AcceptInviteRequest,
+                AcceptInviteResponse,
             ),
             "/services.provider.v1.Provider/InvitationStatus": grpclib.const.Handler(
                 self.__rpc_invitation_status,

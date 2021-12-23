@@ -2,7 +2,7 @@
 # sources: services/account/v1/account.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict
+from typing import Dict, List
 
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
@@ -106,6 +106,8 @@ class InfoRequest(betterproto.Message):
 class InfoResponse(betterproto.Message):
     # The account details associated with the calling request context
     details: "AccountDetails" = betterproto.message_field(1)
+    # any ecosystems the account has access to
+    ecosystems: List["__provider_v1__.Ecosystem"] = betterproto.message_field(2)
 
 
 @dataclass(eq=False, repr=False)
@@ -247,3 +249,4 @@ class AccountBase(ServiceBase):
 
 
 from ...common import v1 as __common_v1__
+from ...provider import v1 as __provider_v1__

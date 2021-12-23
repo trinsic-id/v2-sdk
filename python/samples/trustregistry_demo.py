@@ -1,0 +1,43 @@
+import asyncio
+
+from trinsic.proto.services.trustregistry.v1 import RegistrationStatus
+from trinsic.services import AccountService, TrustRegistryService
+from trinsic.trinsic_util import trinsic_test_config
+
+
+async def trustregistry_demo():
+    # setup
+    account_service = AccountService(server_config=trinsic_test_config())
+    account, _ = await account_service.sign_in()
+    service = TrustRegistryService(account, trinsic_test_config())
+
+    # data
+    https_schema_org = "https://schema.org/Card"
+    https_example_com = "https://example.com"
+    did_example_test = "did:example:test"
+    # register issuer
+    await service.register_issuer(issuer_did=did_example_test, governance_framework=https_example_com,
+                                  credential_type=https_schema_org)
+
+    # register verifier
+    await service.register_verifier(verifier_did=did_example_test, governance_framework=https_example_com,
+                                    presentation_type=https_schema_org)
+
+    # check issuer status
+    issuer_status = await service.check_issuer_status(issuer_did=did_example_test,
+                                                      governance_framework=https_example_com,
+                                                      credential_type=https_schema_org)
+    assert issuer_status == RegistrationStatus.CURRENT
+
+    # check verifier status
+    verifier_status = await service.check_verifier_status(did_example_test, https_example_com, https_schema_org)
+    assert verifier_status == RegistrationStatus.CURRENT
+
+    # search registry
+    search_result = await service.search_registry()
+    assert search_result is not None
+    assert len(search_result) > 0
+
+
+if __name__ == "__main__":
+    asyncio.run(trustregistry_demo())

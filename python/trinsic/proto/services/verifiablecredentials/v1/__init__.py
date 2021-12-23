@@ -22,7 +22,12 @@ class IssueResponse(betterproto.Message):
 @dataclass(eq=False, repr=False)
 class IssueFromTemplateRequest(betterproto.Message):
     template_id: str = betterproto.string_field(1)
-    attributes: "__common_v1__.JsonPayload" = betterproto.message_field(2)
+    values_json: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class IssueFromTemplateResponse(betterproto.Message):
+    document_json: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -81,18 +86,17 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
         )
 
     async def issue_from_template(
-        self, *, template_id: str = "", attributes: "__common_v1__.JsonPayload" = None
-    ) -> "IssueResponse":
+        self, *, template_id: str = "", values_json: str = ""
+    ) -> "IssueFromTemplateResponse":
 
         request = IssueFromTemplateRequest()
         request.template_id = template_id
-        if attributes is not None:
-            request.attributes = attributes
+        request.values_json = values_json
 
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
             request,
-            IssueResponse,
+            IssueFromTemplateResponse,
         )
 
     async def create_proof(
@@ -156,8 +160,8 @@ class VerifiableCredentialBase(ServiceBase):
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def issue_from_template(
-        self, template_id: str, attributes: "__common_v1__.JsonPayload"
-    ) -> "IssueResponse":
+        self, template_id: str, values_json: str
+    ) -> "IssueFromTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def create_proof(
@@ -194,7 +198,7 @@ class VerifiableCredentialBase(ServiceBase):
 
         request_kwargs = {
             "template_id": request.template_id,
-            "attributes": request.attributes,
+            "values_json": request.values_json,
         }
 
         response = await self.issue_from_template(**request_kwargs)
@@ -246,7 +250,7 @@ class VerifiableCredentialBase(ServiceBase):
                 self.__rpc_issue_from_template,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 IssueFromTemplateRequest,
-                IssueResponse,
+                IssueFromTemplateResponse,
             ),
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof": grpclib.const.Handler(
                 self.__rpc_create_proof,
