@@ -17,7 +17,7 @@ func (f FileProfileProvider) Get(name string) (sdk.AccountProfile, error) {
 	panic("implement me")
 }
 
-func (f FileProfileProvider) Save(name string, profile sdk.AccountProfile) error {
+func (f FileProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
 	panic("implement me")
 }
 
@@ -25,6 +25,6 @@ func (k KeychainProfileProvider) Get(name string) (sdk.AccountProfile, error) {
 	panic("implement me")
 }
 
-func (k KeychainProfileProvider) Save(name string, profile sdk.AccountProfile) error {
+func (k KeychainProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
 	panic("implement me")
 }

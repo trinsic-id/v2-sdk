@@ -20,7 +20,7 @@ type OberonSecurityProvider struct {
 
 func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error) {
 	if profile != nil && profile.Protection.Enabled {
-		return "", fmt.Errorf("The token must be unprotected before use")
+		return "", fmt.Errorf("the token must be unprotected before use")
 	}
 
 	requestBytes, err := proto.Marshal(message)
@@ -52,9 +52,5 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, messa
 	if err != nil {
 		return "", err
 	}
-	return fmt.Sprintf("Oberon ver=%d,proof=%s,data=%s,nonce=%s",
-		1,
-		base64.URLEncoding.EncodeToString(proof.Proof),
-		base64.URLEncoding.EncodeToString(profile.AuthData),
-		base64.URLEncoding.EncodeToString(nonceBytes)), nil
+	return fmt.Sprintf("Oberon ver=%d,proof=%s,data=%s,nonce=%s", 1, base64.URLEncoding.EncodeToString(proof.Proof), base64.URLEncoding.EncodeToString(profile.AuthData), base64.URLEncoding.EncodeToString(nonceBytes)), nil
 }
