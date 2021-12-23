@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using Grpc.Net.Client;
+
 namespace Tests;
 
 using System;
@@ -26,15 +30,7 @@ public class Tests
     [Fact]
     public async Task TestWalletService()
     {
-        ServerConfig serverConfig = new()
-        {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
-        };
-
-        _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
-
+        var serverConfig = GetTestServerConfig();
         var accountService = new AccountService(serverConfig);
 
         // SETUP ACTORS
@@ -116,5 +112,91 @@ public class Tests
         //When
 
         //Then
+    }
+
+    [Fact]
+    public async Task TestProtectUnprotectProfile()
+    {
+        var serverConfig = GetTestServerConfig();
+        var myAccountService = new AccountService(serverConfig);
+        
+        var myProfile = await myAccountService.SignInAsync();
+        myAccountService.Profile = myProfile;
+        var output = await myAccountService.GetInfoAsync();
+        Assert.NotNull(output);
+
+        var securityCode = "1234";
+        var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
+
+        myAccountService.Profile = myProtectedProfile;
+        await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
+            
+        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
+        myAccountService.Profile = myUnprotectedProfile;
+        Assert.NotNull(await myAccountService.GetInfoAsync());
+        Assert.NotNull(myAccountService.GetInfo());
+    }
+    
+    [Fact]
+    public async Task TestVerifyProfileSet()
+    {
+        var serverConfig = GetTestServerConfig();
+        var myAccountService = new AccountService(serverConfig);
+        
+        // Using non-async to ensure coverage behavior
+        myAccountService.SignIn();
+        await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
+
+        Assert.Throws<Exception>(myAccountService.GetInfo);
+    }
+    
+    [Fact]
+    public async Task TestInvitationIdSet()
+    {
+        var serverConfig = GetTestServerConfig();
+        var myAccountService = new AccountService(serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
+    }
+    
+    [Fact]
+    public async Task TestInviteParticipant()
+    {
+        var serverConfig = GetTestServerConfig();
+        var myAccountService = new AccountService(serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        var invite = new InviteRequest() { Email = "info@trinsic.id", Description = "Test invitation" };
+        var response = await myProviderService.InviteParticipant(invite);
+        Assert.NotNull(response);
+
+        var statusResponse = await myProviderService.InvitationStatus(new InvitationStatusRequest()
+            { InvitationId = response.InvitationId });
+        Assert.NotNull(statusResponse);
+    }
+
+    [Fact]
+    public async Task TestGovernanceFrameworkUriParse()
+    {
+        var serverConfig = GetTestServerConfig();
+        var myAccountService = new AccountService(serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myTrustRegistryService = new TrustRegistryService(myProfile, serverConfig, myAccountService.Channel);
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
+    }
+
+    private ServerConfig GetTestServerConfig()
+    {
+        ServerConfig serverConfig = new()
+        {
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
+            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
+            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) && useTls
+        };
+
+        _testOutputHelper.WriteLine($"Testing endpoint: {serverConfig.FormatUrl()}");
+        return serverConfig;
     }
 }
