@@ -1,6 +1,8 @@
+package trinsic;
+
+
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
-import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.CredentialsService;

@@ -1,17 +1,13 @@
-import io.grpc.ManagedChannel;
+package trinsic;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
 import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.concurrent.ExecutionException;
 
 class TrinsicServicesTest {
@@ -25,37 +21,17 @@ class TrinsicServicesTest {
     }
 
     @Test
-    @Disabled("Fails because too many invites sent")
     public void testProviderServiceInviteParticipant() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
         var account = accountService.signIn(null).get().getProfile();
 
         var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
-        var invitation = ProviderOuterClass.InviteRequest.newBuilder()
-                .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
-                .setDescription("I dunno")
-                .setEmail("scott.phillips@trinsic.id")
-                .build();
-        var response = providerService.inviteParticipant(invitation);
+        var invitation = ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDescription("I dunno").setEmail("info@trinsic.id").build();
+        var response = providerService.inviteParticipant(invitation).get();
         Assertions.assertNotNull(response);
-    }
 
-
-    @ParameterizedTest
-    @ValueSource(strings = {"http://localhost:5000", "https://localhost:5000"})
-    public void validUrlsShouldPass(String url) {
-        Assertions.assertDoesNotThrow(() -> createAndShutdownChannel(url));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"http://localhost", "localhost:5000"})
-    public void invalidUrlsShouldFail(String url) {
-        Assertions.assertThrows(MalformedURLException.class, () -> createAndShutdownChannel(url));
-    }
-
-    private void createAndShutdownChannel(String myAddress) throws MalformedURLException {
-        var channel = (ManagedChannel) TrinsicUtilities.getChannel(TrinsicUtilities.getConfigFromUrl(myAddress));
-        channel.shutdownNow();
+        var status = providerService.invitationStatus(ProviderOuterClass.InvitationStatusRequest.newBuilder().setInvitationId(response.getInvitationId()).build()).get();
+        Assertions.assertNotNull(status);
     }
 
     @Test
@@ -64,16 +40,14 @@ class TrinsicServicesTest {
     }
 
     @Test
+    public void testTrustRegistryDemo() throws IOException, DidException, ExecutionException, InterruptedException {
+        TrustRegistryDemo.run();
+    }
+
+    @Test
     public void testProviderServiceInputValidation() {
         var providerService = new ProviderService(null, TrinsicUtilities.getTestServerConfig());
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().build()));
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.invitationStatus(ProviderOuterClass.InvitationStatusRequest.newBuilder().build()));
-    }
-
-    @Test
-    public void testDefaultIsTrinsicProductionConfig() {
-        var service = new AccountService(null);
-        Assertions.assertEquals(TrinsicUtilities.getProductionConfig(), service.getConfiguration());
-        service.shutdown();
     }
 }
