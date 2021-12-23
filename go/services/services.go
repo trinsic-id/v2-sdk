@@ -533,7 +533,11 @@ type TrustRegistryBase struct {
 }
 
 func (t *TrustRegistryBase) RegisterGovernanceFramework(userContext context.Context, governanceFramework string, description string) error {
-	// TODO - Verify that it is a valid uri
+	// Verify that it is a valid uri
+	_, err := url.Parse(governanceFramework)
+	if err != nil {
+		return err
+	}
 	request := &sdk.AddFrameworkRequest{
 		GovernanceFramework: &sdk.GovernanceFramework{
 			GovernanceFrameworkUri: governanceFramework,
