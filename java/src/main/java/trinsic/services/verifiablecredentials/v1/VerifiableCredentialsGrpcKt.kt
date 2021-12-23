@@ -42,7 +42,7 @@ object VerifiableCredentialGrpcKt {
     get() = VerifiableCredentialGrpc.getIssueMethod()
 
   val issueFromTemplateMethod: MethodDescriptor<VerifiableCredentials.IssueFromTemplateRequest,
-      VerifiableCredentials.IssueResponse>
+      VerifiableCredentials.IssueFromTemplateResponse>
     @JvmStatic
     get() = VerifiableCredentialGrpc.getIssueFromTemplateMethod()
 
@@ -106,7 +106,7 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun issueFromTemplate(request: VerifiableCredentials.IssueFromTemplateRequest,
-        headers: Metadata = Metadata()): VerifiableCredentials.IssueResponse = unaryRpc(
+        headers: Metadata = Metadata()): VerifiableCredentials.IssueFromTemplateResponse = unaryRpc(
       channel,
       VerifiableCredentialGrpc.getIssueFromTemplateMethod(),
       request,
@@ -210,7 +210,7 @@ object VerifiableCredentialGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun issueFromTemplate(request: VerifiableCredentials.IssueFromTemplateRequest):
-        VerifiableCredentials.IssueResponse = throw
+        VerifiableCredentials.IssueFromTemplateResponse = throw
         StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate is unimplemented"))
 
     /**

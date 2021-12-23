@@ -1963,9 +1963,9 @@ public final class Options {
       "file\030\002 \001(\0132#.services.account.v1.Account" +
       "Profile\022\021\n\tecosystem\030\003 \001(\t\"F\n\023ServerConf" +
       "iguration\022\020\n\010endpoint\030\001 \001(\t\022\014\n\004port\030\002 \001(" +
-      "\005\022\017\n\007use_tls\030\003 \001(\010B6\n\016trinsic.sdk.v1Z$gi" +
-      "thub.com/trinsic-id/sdk/go/optionsb\006prot" +
-      "o3"
+      "\005\022\017\n\007use_tls\030\003 \001(\010BO\n\016trinsic.sdk.v1Z$gi" +
+      "thub.com/trinsic-id/sdk/go/options\252\002\026Tri" +
+      "nsic.Sdk.Options.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
