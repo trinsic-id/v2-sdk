@@ -234,7 +234,7 @@ public class Tests
     {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        var myProviderService = new ProviderService(myProfile, _serverConfig, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
     }
@@ -244,7 +244,7 @@ public class Tests
     {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        var myProviderService = new ProviderService(myProfile, _serverConfig, myAccountService.Channel);
         var invite = new InviteRequest() { Email = "info@trinsic.id", Description = "Test invitation" };
         var response = await myProviderService.InviteParticipant(invite);
         Assert.NotNull(response);
@@ -259,7 +259,7 @@ public class Tests
     {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myTrustRegistryService = new TrustRegistryService(myProfile, serverConfig, myAccountService.Channel);
+        var myTrustRegistryService = new TrustRegistryService(myProfile, _serverConfig, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
     }
 }

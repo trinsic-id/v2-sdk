@@ -1,5 +1,8 @@
 import unittest
 
+from samples.ecosystem_demo import ecosystem_demo
+from samples.provider_demo import provider_demo
+from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
 from trinsic.services import WalletService, ProviderService, TrustRegistryService, AccountService
 from trinsic.trinsic_util import trinsic_test_config
@@ -12,12 +15,17 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
             self.assertIsNotNone(wallet_service.build_metadata(None))
         self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
 
-    async def test_providerservice_inviteparticipant(self):
-        # await provider_demo()
-        pass
+    async def test_providerservice_demo(self):
+        await provider_demo()
 
     async def test_vaccine_demo(self):
         await vaccine_demo()
+
+    async def test_trustregistry_demo(self):
+        await trustregistry_demo()
+
+    async def test_ecosystem_demo(self):
+        await ecosystem_demo()
 
     async def test_providerservice_input_validation(self):
         cred_service = ProviderService(None, trinsic_test_config())

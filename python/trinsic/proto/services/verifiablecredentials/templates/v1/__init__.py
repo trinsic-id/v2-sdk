@@ -9,17 +9,11 @@ from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
 
 
-@dataclass(eq=False, repr=False)
-class CreateCredentialTemplateRequest(betterproto.Message):
-    name: str = betterproto.string_field(1)
-    schema: "___common_v1__.JsonPayload" = betterproto.message_field(2)
-    base_uri: str = betterproto.string_field(3)
-
-
-@dataclass(eq=False, repr=False)
-class CreateCredentialTemplateResponse(betterproto.Message):
-    id: str = betterproto.string_field(1)
-    uri: str = betterproto.string_field(2)
+class FieldType(betterproto.Enum):
+    STRING = 0
+    NUMBER = 1
+    BOOL = 2
+    DATETIME = 4
 
 
 @dataclass(eq=False, repr=False)
@@ -29,7 +23,7 @@ class GetCredentialTemplateRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateResponse(betterproto.Message):
-    template: "CredentialTemplate" = betterproto.message_field(1)
+    template: "TemplateData" = betterproto.message_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -40,22 +34,23 @@ class SearchCredentialTemplatesRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class SearchCredentialTemplatesResponse(betterproto.Message):
-    templates: List["CredentialTemplate"] = betterproto.message_field(1)
+    items_json: str = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
     count: int = betterproto.int32_field(3)
     continuation_token: str = betterproto.string_field(4)
 
 
 @dataclass(eq=False, repr=False)
-class UpdateCredentialTemplateRequest(betterproto.Message):
-    id: str = betterproto.string_field(1)
-    name: str = betterproto.string_field(2)
-    schema: "___common_v1__.JsonPayload" = betterproto.message_field(3)
+class ListCredentialTemplatesRequest(betterproto.Message):
+    query: str = betterproto.string_field(1)
+    continuation_token: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
-class UpdateCredentialTemplateResponse(betterproto.Message):
-    template: "CredentialTemplate" = betterproto.message_field(1)
+class ListCredentialTemplatesResponse(betterproto.Message):
+    templates: List["TemplateData"] = betterproto.message_field(1)
+    has_more_results: bool = betterproto.bool_field(2)
+    continuation_token: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
@@ -69,12 +64,61 @@ class DeleteCredentialTemplateResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class CredentialTemplate(betterproto.Message):
+class CreateCredentialTemplateRequest(betterproto.Message):
+    """Request to create new template"""
+
+    name: str = betterproto.string_field(1)
+    fields: Dict[str, "TemplateField"] = betterproto.map_field(
+        2, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    allow_additional_fields: bool = betterproto.bool_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class CreateCredentialTemplateResponse(betterproto.Message):
+    data: "TemplateData" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class TemplateField(betterproto.Message):
+    description: str = betterproto.string_field(2)
+    optional: bool = betterproto.bool_field(3)
+    type: "FieldType" = betterproto.enum_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class GetTemplateRequest(betterproto.Message):
+    id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetTemplateResponse(betterproto.Message):
+    data: "TemplateData" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class ListTemplatesRequest(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class ListTemplatesResponse(betterproto.Message):
+    templates: List["TemplateData"] = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class TemplateData(betterproto.Message):
     id: str = betterproto.string_field(1)
     name: str = betterproto.string_field(2)
-    version: str = betterproto.string_field(3)
-    schema: "___common_v1__.JsonPayload" = betterproto.message_field(4)
-    uri: str = betterproto.string_field(5)
+    version: int = betterproto.int32_field(3)
+    fields: Dict[str, "TemplateField"] = betterproto.map_field(
+        4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
+    )
+    allow_additional_fields: bool = betterproto.bool_field(5)
+    schema_uri: str = betterproto.string_field(6)
+    context_uri: str = betterproto.string_field(7)
+    ecosystem_id: str = betterproto.string_field(8)
+    type: str = betterproto.string_field(9)
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):
@@ -82,15 +126,14 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
         self,
         *,
         name: str = "",
-        schema: "___common_v1__.JsonPayload" = None,
-        base_uri: str = "",
+        fields: Dict[str, "TemplateField"] = None,
+        allow_additional_fields: bool = False,
     ) -> "CreateCredentialTemplateResponse":
 
         request = CreateCredentialTemplateRequest()
         request.name = name
-        if schema is not None:
-            request.schema = schema
-        request.base_uri = base_uri
+        request.fields = fields
+        request.allow_additional_fields = allow_additional_fields
 
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
@@ -109,6 +152,20 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
             GetCredentialTemplateResponse,
         )
 
+    async def list(
+        self, *, query: str = "", continuation_token: str = ""
+    ) -> "ListCredentialTemplatesResponse":
+
+        request = ListCredentialTemplatesRequest()
+        request.query = query
+        request.continuation_token = continuation_token
+
+        return await self._unary_unary(
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
+            request,
+            ListCredentialTemplatesResponse,
+        )
+
     async def search(
         self, *, query: str = "", continuation_token: str = ""
     ) -> "SearchCredentialTemplatesResponse":
@@ -121,26 +178,6 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
             request,
             SearchCredentialTemplatesResponse,
-        )
-
-    async def update(
-        self,
-        *,
-        id: str = "",
-        name: str = "",
-        schema: "___common_v1__.JsonPayload" = None,
-    ) -> "UpdateCredentialTemplateResponse":
-
-        request = UpdateCredentialTemplateRequest()
-        request.id = id
-        request.name = name
-        if schema is not None:
-            request.schema = schema
-
-        return await self._unary_unary(
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update",
-            request,
-            UpdateCredentialTemplateResponse,
         )
 
     async def delete(self, *, id: str = "") -> "DeleteCredentialTemplateResponse":
@@ -157,21 +194,24 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
 
 class CredentialTemplatesBase(ServiceBase):
     async def create(
-        self, name: str, schema: "___common_v1__.JsonPayload", base_uri: str
+        self,
+        name: str,
+        fields: Dict[str, "TemplateField"],
+        allow_additional_fields: bool,
     ) -> "CreateCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def get(self, id: str) -> "GetCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def list(
+        self, query: str, continuation_token: str
+    ) -> "ListCredentialTemplatesResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def search(
         self, query: str, continuation_token: str
     ) -> "SearchCredentialTemplatesResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def update(
-        self, id: str, name: str, schema: "___common_v1__.JsonPayload"
-    ) -> "UpdateCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def delete(self, id: str) -> "DeleteCredentialTemplateResponse":
@@ -182,8 +222,8 @@ class CredentialTemplatesBase(ServiceBase):
 
         request_kwargs = {
             "name": request.name,
-            "schema": request.schema,
-            "base_uri": request.base_uri,
+            "fields": request.fields,
+            "allow_additional_fields": request.allow_additional_fields,
         }
 
         response = await self.create(**request_kwargs)
@@ -199,6 +239,17 @@ class CredentialTemplatesBase(ServiceBase):
         response = await self.get(**request_kwargs)
         await stream.send_message(response)
 
+    async def __rpc_list(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "query": request.query,
+            "continuation_token": request.continuation_token,
+        }
+
+        response = await self.list(**request_kwargs)
+        await stream.send_message(response)
+
     async def __rpc_search(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
 
@@ -208,18 +259,6 @@ class CredentialTemplatesBase(ServiceBase):
         }
 
         response = await self.search(**request_kwargs)
-        await stream.send_message(response)
-
-    async def __rpc_update(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-
-        request_kwargs = {
-            "id": request.id,
-            "name": request.name,
-            "schema": request.schema,
-        }
-
-        response = await self.update(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_delete(self, stream: grpclib.server.Stream) -> None:
@@ -246,17 +285,17 @@ class CredentialTemplatesBase(ServiceBase):
                 GetCredentialTemplateRequest,
                 GetCredentialTemplateResponse,
             ),
+            "/services.verifiablecredentials.templates.v1.CredentialTemplates/List": grpclib.const.Handler(
+                self.__rpc_list,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListCredentialTemplatesRequest,
+                ListCredentialTemplatesResponse,
+            ),
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search": grpclib.const.Handler(
                 self.__rpc_search,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SearchCredentialTemplatesRequest,
                 SearchCredentialTemplatesResponse,
-            ),
-            "/services.verifiablecredentials.templates.v1.CredentialTemplates/Update": grpclib.const.Handler(
-                self.__rpc_update,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UpdateCredentialTemplateRequest,
-                UpdateCredentialTemplateResponse,
             ),
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete": grpclib.const.Handler(
                 self.__rpc_delete,
@@ -265,6 +304,3 @@ class CredentialTemplatesBase(ServiceBase):
                 DeleteCredentialTemplateResponse,
             ),
         }
-
-
-from ....common import v1 as ___common_v1__

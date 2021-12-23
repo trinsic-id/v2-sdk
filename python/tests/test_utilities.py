@@ -17,10 +17,8 @@ class TestUtilities(unittest.IsolatedAsyncioTestCase):
     async def test_url_parse(self):
         for url, throws_exception in self.url_params:
             with self.subTest(f"url={url} throws={throws_exception}"):
-                try:
+                if throws_exception:
+                    with self.assertRaises(RuntimeError, lambda: create_channel(url)):
+                        pass
+                else:
                     create_channel(url)
-                    if throws_exception:
-                        assert False
-                except:
-                    if not throws_exception:
-                        raise
