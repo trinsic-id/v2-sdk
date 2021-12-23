@@ -37,44 +37,48 @@ func GetTestServerChannel() *grpc.ClientConn {
 }
 
 func TestServiceBase_SetProfile(t *testing.T) {
-	assert := assert.New(t)
-	base, err := CreateServiceBase(nil,TrinsicTestConfig(), GetTestServerChannel())
+	assert2 := assert.New(t)
+	base, err := CreateServiceBase(nil, TrinsicTestConfig(), GetTestServerChannel())
 	failError(t, "error creating service base", err)
-	// No profile set, should be an error
-	md, err := base.BuildMetadata(nil)
-	if !assert.EqualErrorf(err, "cannot call authenticated endpoint: profile must be set", "cannot call authenticated endpoint: profile must be set") {
+
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), GetTestServerChannel())
+	if !assert2.Nil(err) {
 		return
 	}
-	if !assert.Nil(md) {
+	demoProfile, _, err := accountService.SignIn(context.Background(), nil)
+	if !assert2.Nil(err) {
 		return
 	}
 
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), GetTestServerChannel())
-	if !assert.Nil(err) {
-		return
-	}
-	demoWallet, _, err := accountService.SignIn(context.Background(), nil)
-	if !assert.Nil(err) {
-		return
-	}
-
-	base.SetProfile(demoWallet)
-	if !assert.NoError(err) {
-		return
-	}
-	md, err = base.BuildMetadata(nil)
-	if !assert.NoError(err) {
-		return
-	}
-	assert.NotNil(md)
+	t.Run("Profile not set throws error", func(t *testing.T) {
+		// No profile set, should be an error
+		md, err := base.BuildMetadata(nil)
+		if !assert2.EqualErrorf(err, "cannot call authenticated endpoint: profile must be set", "cannot call authenticated endpoint: profile must be set") {
+			return
+		}
+		if !assert2.Nil(md) {
+			return
+		}
+	})
+	t.Run("Profile set does not throw", func(t *testing.T) {
+		base.SetProfile(demoProfile)
+		if !assert2.NoError(err) {
+			return
+		}
+		md, err := base.BuildMetadata(nil)
+		if !assert2.NoError(err) {
+			return
+		}
+		assert2.NotNil(md)
+	})
 }
 
 func TestVaccineCredentials(t *testing.T) {
-	assert := assert.New(t)
+	assert2 := assert.New(t)
 	// Open in background
 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), channel)
-	if !assert.Nil(err) {
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
 		return
 	}
 	if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
@@ -84,19 +88,19 @@ func TestVaccineCredentials(t *testing.T) {
 	// Create 3 different profiles for each participant in the scenario
 	allison, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(allison) {
+	if !assert2.NotNil(allison) {
 		return
 	}
 
 	clinic, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(clinic) {
+	if !assert2.NotNil(clinic) {
 		return
 	}
 
 	airline, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(airline) {
+	if !assert2.NotNil(airline) {
 		return
 	}
 
@@ -163,23 +167,23 @@ func TestVaccineCredentials(t *testing.T) {
 }
 
 func TestProviderService_InviteParticipant(t *testing.T) {
-	assert := assert.New(t)
+	assert2 := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), nil)
-	if !assert.Nil(err) {
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	if !assert2.Nil(err) {
 		return
 	}
 
 	fmt.Printf("%+v\n", accountService)
 
 	wallet, _, err := accountService.SignIn(context.Background(), nil)
-	if !assert.Nil(err) || !assert.NotNil(wallet) {
+	if !assert2.Nil(err) || !assert2.NotNil(wallet) {
 		return
 	}
 	fmt.Printf("%+v\n", wallet)
 
-	providerService, err := CreateProviderService(nil,TrinsicTestConfig(), GetTestServerChannel())
-	if !assert.Nil(err) {
+	providerService, err := CreateProviderService(nil, TrinsicTestConfig(), GetTestServerChannel())
+	if !assert2.Nil(err) {
 		return
 	}
 
@@ -196,6 +200,71 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 	//	panic(err)
 	//}
 	//fmt.Printf("%+v\n", inviteResponse)
+}
+
+func TestCreateChannelUrlFromConfig(t *testing.T) {
+	assert2 := assert.New(t)
+	if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), "Default is production stack") {
+		return
+	}
+}
+
+func TestProtectUnprotectProfile(t *testing.T) {
+	assert2 := assert.New(t)
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	if !assert2.Nil(err) {
+		return
+	}
+	profile, _, err := accountService.SignIn(context.Background(), nil)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	securityCode := "1234"
+	protectedProfile, err := accountService.Protect(profile, securityCode)
+	if !assert2.Nil(err) {
+		return
+	}
+	unprotectedProfile, err := accountService.Unprotect(protectedProfile, securityCode)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	t.Run("Protected profile should fail", func(t *testing.T) {
+		accountService.SetProfile(protectedProfile)
+		info2, err2 := accountService.GetInfo(context.Background())
+		if !assert2.NotNil(err2) {
+			return
+		}
+		if !assert2.Nil(info2) {
+			return
+		}
+	})
+
+	t.Run("Unprotected profile should work", func(t *testing.T) {
+		accountService.SetProfile(unprotectedProfile)
+		info2, err2 := accountService.GetInfo(context.Background())
+		if !assert2.Nil(err2) {
+			return
+		}
+		if !assert2.NotNil(info2) {
+			return
+		}
+	})
+}
+
+func TestProviderBase_InviteParticipant(t *testing.T) {
+	assert2 := assert.New(t)
+	t.Run("Contact method unset throws", func(t *testing.T) {
+		providerService, err := CreateProviderService(nil, TrinsicTestConfig(), nil)
+		if !assert2.Nil(err) {
+			return
+		}
+		_, err = providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{})
+		if !assert2.NotNil(err) {
+			return
+		}
+	})
 }
 
 func failError(t *testing.T, message string, err error) {

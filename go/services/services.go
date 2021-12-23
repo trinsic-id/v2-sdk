@@ -116,6 +116,9 @@ func CreateWalletService(profile *sdk.AccountProfile, serverConfig *sdk.ServerCo
 }
 
 func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
+	if config == nil {
+		config = TrinsicProductionConfig()
+	}
 	scheme := "http"
 	if config.UseTls {
 		scheme = "https"
@@ -437,9 +440,9 @@ type ProviderService interface {
 	Service
 	InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error)
 	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
-	AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error)
-	CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error)
-	SetEcosystem(ecosystemId string)
+	//AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error)
+	//CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error)
+	//SetEcosystem(ecosystemId string)
 }
 
 type ProviderBase struct {
@@ -452,19 +455,19 @@ func (p *ProviderBase) SetEcosystem(ecosystemId string) {
 	p.ecosystemId = ecosystemId
 }
 
-func (p *ProviderBase) CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error) {
-	md, err := p.GetMetadataContext(ctx, request)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := p.client.CreateEcosystem(md, request)
-	if err != nil {
-		return nil, err
-	}
-
-	return &sdk.CreateEcosystemResponse{Id: resp.Id}, nil
-}
+//func (p *ProviderBase) CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error) {
+//	md, err := p.GetMetadataContext(ctx, request)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	resp, err := p.client.CreateEcosystem(md, request)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	return &sdk.CreateEcosystemResponse{Id: resp.Id}, nil
+//}
 
 func (p *ProviderBase) InviteParticipant(ctx context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
 	// Verify contact method is set
@@ -499,21 +502,21 @@ func (p *ProviderBase) InvitationStatus(ctx context.Context, request *sdk.Invita
 	return response, nil
 }
 
-func (p *ProviderBase) AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error) {
-	request := &sdk.InfoRequest{}
-
-	md, err := p.GetMetadataContext(ctx, request)
-	if err != nil {
-		return nil, err
-	}
-
-	response, err := p.client.AcceptInvite(md, &sdk.AcceptInviteRequest{Code: code})
-	if err != nil {
-		return nil, err
-	}
-
-	return response, err
-}
+//func (p *ProviderBase) AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error) {
+//	request := &sdk.InfoRequest{}
+//
+//	md, err := p.GetMetadataContext(ctx, request)
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	response, err := p.client.AcceptInvite(md, &sdk.AcceptInviteRequest{Code: code})
+//	if err != nil {
+//		return nil, err
+//	}
+//
+//	return response, err
+//}
 
 type TrustRegistryService interface {
 	Service
@@ -533,7 +536,11 @@ type TrustRegistryBase struct {
 }
 
 func (t *TrustRegistryBase) RegisterGovernanceFramework(userContext context.Context, governanceFramework string, description string) error {
-	// TODO - Verify that it is a valid uri
+	// Verify that it is a valid uri
+	_, err := url.Parse(governanceFramework)
+	if err != nil {
+		return err
+	}
 	request := &sdk.AddFrameworkRequest{
 		GovernanceFramework: &sdk.GovernanceFramework{
 			GovernanceFrameworkUri: governanceFramework,
