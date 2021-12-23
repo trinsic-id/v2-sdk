@@ -82,6 +82,12 @@ message CreateEcosystemResponse {
     string id = 1;
 }
 
+message ListEcosystemsRequest {}
+
+message ListEcosystemsResponse {
+    repeated Ecosystem ecosystem = 1;
+}
+
 message AcceptInviteRequest {
     string id = 1;
     string code = 2;
@@ -92,15 +98,18 @@ message AcceptInviteResponse {
 }
 
 service Provider {
-  rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
+    // Create new ecosystem and assign the authenticated user as owner
+    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
 
-  // Invite a user to the ecosystem
-  rpc Invite(InviteRequest) returns (InviteResponse);
+    // List all ecosystems assigned to the authenticated account
+    rpc ListEcosystems(ListEcosystemsRequest) returns (ListEcosystemsResponse);
 
-  // Accept an invite to the ecosystem
-  rpc AcceptInvite(AcceptInviteRequest) returns (AcceptInviteResponse);
+    // Invite a user to the ecosystem
+    rpc Invite(InviteRequest) returns (InviteResponse);
 
-  rpc InviteWithWorkflow(InviteRequest) returns (InviteResponse);
-  
-  rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
+    // Accept an invite to the ecosystem
+    rpc AcceptInvite(AcceptInviteRequest) returns (AcceptInviteResponse);
+
+    // Check the invitation status
+    rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
 }

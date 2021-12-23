@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Newtonsoft.Json.Linq;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
@@ -13,12 +9,11 @@ namespace Trinsic;
 public class TrustRegistryService : ServiceBase
 {
     public TrustRegistryService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel)
-    {
-        Client = new TrustRegistry.TrustRegistryClient(Channel);
+        : base(accountProfile, serverConfig, existingChannel) {
+        Client = new(Channel);
     }
 
-    internal TrustRegistry.TrustRegistryClient Client { get; }
+    private TrustRegistry.TrustRegistryClient Client { get; }
 
     /// <summary>
     /// Register a Governance Framework with the Trust Registry.
@@ -29,92 +24,57 @@ public class TrustRegistryService : ServiceBase
     /// <param name="governanceFramework">The governance framework URI</param>
     /// <param name="description">The framework description</param>
     /// <returns></returns>
-    public async Task RegisterGovernanceFrameworkAsync(string governanceFramework, string description)
-    {
-        if (Uri.TryCreate(governanceFramework, UriKind.Absolute, out _))
-        {
-            AddFrameworkRequest request = new()
-            {
-                GovernanceFramework = new GovernanceFramework
-                {
-                    GovernanceFrameworkUri = governanceFramework,
-                    Description = description
-                }
-            };
-            var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
+    public async Task RegisterGovernanceFrameworkAsync(string governanceFramework, string description) {
+        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) {
+            throw new("Invalid URI string");
         }
-        throw new Exception("Invalid URI string");
+
+        AddFrameworkRequest request = new() {
+            GovernanceFramework = new() {
+                GovernanceFrameworkUri = governanceFramework,
+                Description = description
+            }
+        };
+        var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
     /// <summary>
     /// Register a DID as authoritative issuer with the configured governance framework.
     /// </summary>
-    /// <param name="issuerDid">The issuer DID</param>
-    /// <param name="credentialType">The full credential type URI</param>
-    /// <param name="governanceFramework">The governance framework URI</param>
-    /// <param name="validFrom">Valid from (UTC)</param>
-    /// <param name="validUntil">Valid until (UTC)</param>
+    /// <param name="request">The request object</param>
     /// <returns></returns>
-    public async Task RegisterIssuerAsync(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
-    {
-        RegisterIssuerRequest request = new()
-        {
-            DidUri = issuerDid,
-            CredentialTypeUri = credentialType,
-            GovernanceFrameworkUri = governanceFramework,
-            ValidFromUtc = (ulong)(validFrom?.ToUnixTimeSeconds() ?? default),
-            ValidUntilUtc = (ulong)(validUntil?.ToUnixTimeSeconds() ?? default)
-        };
+    public async Task RegisterIssuerAsync(RegisterIssuerRequest request) {
         var response = await Client.RegisterIssuerAsync(request, await BuildMetadataAsync(request));
+        if (response.Status != ResponseStatus.Success) {
+            throw new($"cannot register issuer: code {response.Status}");
+        }
     }
 
-    public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
-    {
+    public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
         throw new NotImplementedException();
     }
 
     /// <summary>
     /// Register a DID as authoritative verifier with the configured governance framework.
     /// </summary>
-    /// <param name="verifierDid">The verifier DID</param>
-    /// <param name="presentationType">The full presentation type URI</param>
-    /// <param name="governanceFramework">The governance framework URI</param>
-    /// <param name="validFrom">Valid from (UTC)</param>
-    /// <param name="validUntil">Valid until (UTC)</param>
+    /// <param name="request">The request object</param>
     /// <returns></returns>
-    public async Task RegisterVerifierAsync(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
-    {
-        RegisterVerifierRequest request = new()
-        {
-            DidUri = verifierDid,
-            PresentationTypeUri = presentationType,
-            GovernanceFrameworkUri = governanceFramework,
-            ValidFromUtc = (ulong)(validFrom?.ToUnixTimeSeconds() ?? default),
-            ValidUntilUtc = (ulong)(validUntil?.ToUnixTimeSeconds() ?? default),
-        };
+    public async Task RegisterVerifierAsync(RegisterVerifierRequest request) {
         var response = await Client.RegisterVerifierAsync(request, await BuildMetadataAsync(request));
+        if (response.Status != ResponseStatus.Success) {
+            throw new($"cannot register verifier: code {response.Status}");
+        }
     }
 
-    public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil)
-    {
+    public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
         throw new NotImplementedException();
     }
 
     /// <summary>
     /// Checks the status of the issuer for a given credential type in the given governance framework
     /// </summary>
-    /// <param name="issuerDid">The issuer DID</param>
-    /// <param name="credentialType"></param>
-    /// <param name="governanceFramework"></param>
-    /// <returns>The status of the registration</returns>
-    public async Task<RegistrationStatus> CheckIssuerStatusAsync(string issuerDid, string credentialType, string governanceFramework)
-    {
-        CheckIssuerStatusRequest request = new()
-        {
-            DidUri = issuerDid,
-            CredentialTypeUri = credentialType,
-            GovernanceFrameworkUri = governanceFramework
-        };
+    /// <param name="request">The request object</param>
+    public async Task<RegistrationStatus> CheckIssuerStatusAsync(CheckIssuerStatusRequest request) {
         var response = await Client.CheckIssuerStatusAsync(request, await BuildMetadataAsync(request));
 
         return response.Status;
@@ -123,18 +83,9 @@ public class TrustRegistryService : ServiceBase
     /// <summary>
     /// Checks the status of the verifier for a given presentation type in the given governance framework
     /// </summary>
-    /// <param name="verifierDid">The verifier DID</param>
-    /// <param name="presentationType">The presentation type URI</param>
-    /// <param name="governanceFramework">The governance framework URI</param>
+    /// <param name="request">The request object</param>
     /// <returns>The status of the registration</returns>
-    public async Task<RegistrationStatus> CheckVerifierStatusAsync(string verifierDid, string presentationType, string governanceFramework)
-    {
-        CheckVerifierStatusRequest request = new()
-        {
-            DidUri = verifierDid,
-            PresentationTypeUri = presentationType,
-            GovernanceFrameworkUri = governanceFramework
-        };
+    public async Task<RegistrationStatus> CheckVerifierStatusAsync(CheckVerifierStatusRequest request) {
         var response = await Client.CheckVerifierStatusAsync(request, await BuildMetadataAsync(request));
 
         return response.Status;
@@ -145,14 +96,12 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    public async Task<SearchRegistryResponse> SearchRegistryAsync(string query = "SELECT * FROM c")
-    {
-        SearchRegistryRequest request = new()
-        {
-            Query = query
+    public async Task<SearchRegistryResponse> SearchRegistryAsync(string query = "SELECT * FROM c", string? continuationToken = null) {
+        SearchRegistryRequest request = new() {
+            Query = query,
+            ContinuationToken = continuationToken ?? string.Empty
         };
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
-
         return response;
     }
 }

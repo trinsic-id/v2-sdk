@@ -1,4 +1,5 @@
 using Trinsic.Services.Provider.V1;
+using Trinsic.Services.TrustRegistry.V1;
 
 namespace Tests;
 
@@ -22,7 +23,7 @@ public class Tests
     {
         _testOutputHelper = testOutputHelper;
 
-        _serverConfig = new ServerConfig()
+        _serverConfig = new()
         {
             Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "dev-internal.trinsic.cloud",
             Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
@@ -110,33 +111,84 @@ public class Tests
         Assert.True(valid);
     }
 
-    // TODO - Create trust registry unit test and then add commands to documentation reference
     [Fact]
-    public void TestTrustRegistry()
+    public async Task TestTrustRegistry()
     {
-        //Given
-
-        //When
-
-        //Then
-    }
-
-    [Fact]
-    public async Task CreateEcosystem()
-    {
+        // setup
         var accountService = new AccountService(_serverConfig);
         var account = await accountService.SignInAsync();
+        var service = new TrustRegistryService(account, _serverConfig);
 
+        // register issuer
+        var register = service.RegisterIssuerAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+        await register;
+
+        register.Should().NotBeNull();
+        register.Status.Should().Be(TaskStatus.RanToCompletion);
+        
+        // register verifier
+        register = service.RegisterVerifierAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+        await register;
+
+        register.Should().NotBeNull();
+        register.Status.Should().Be(TaskStatus.RanToCompletion);
+        
+        // check issuer status
+        var issuerStatus = await service.CheckIssuerStatusAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+
+        issuerStatus.Should().Be(RegistrationStatus.Current);
+        
+        // check verifier status
+        var verifierStatus = await service.CheckVerifierStatusAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+
+        verifierStatus.Should().Be(RegistrationStatus.Current);
+        
+        // search registry
+        var searchResult = await service.SearchRegistryAsync();
+
+        searchResult.Should().NotBeNull();
+        searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
+    }
+
+    [Fact(DisplayName = "Ecosystem creation and listing succeeds")]
+    public async Task EcosystemTests()
+    {
+        // setup
+        var accountService = new AccountService(_serverConfig);
+        var account = await accountService.SignInAsync();
         var service = new ProviderService(account, _serverConfig);
 
-        var actual = await service.CreateEcosystemAsync(new CreateEcosystemRequest
-        {
+        // test create ecosystem
+        var actualCreate = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
             Name = "Test Ecosystem", 
             Uri = "https://example.com"
         });
 
-        actual.Should().NotBeNull();
-        actual.Id.Should().NotBeNull();
+        actualCreate.Should().NotBeNull();
+        actualCreate.Id.Should().NotBeNull();
+        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
+        
+        // test list ecosystems
+        var actualList = await service.ListEcosystemsAsync();
+
+        actualList.Should().NotBeNull();
+        actualList.Should().NotBeEmpty();
     }
 }

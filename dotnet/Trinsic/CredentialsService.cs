@@ -11,9 +11,8 @@ namespace Trinsic;
 public class CredentialsService : ServiceBase
 {
     public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel)
-    {
-        Client = new VerifiableCredential.VerifiableCredentialClient(Channel);
+        : base(accountProfile, serverConfig, existingChannel) {
+        Client = new(Channel);
     }
 
     internal VerifiableCredential.VerifiableCredentialClient Client { get; }
@@ -23,37 +22,27 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="document"></param>
     /// <returns></returns>
-    public async Task<JObject> IssueCredentialAsync(JObject document)
-    {
-        try
-        {
-            IssueRequest request = new()
-            {
-                Document = new JsonPayload { JsonStruct = document.ToStruct() }
+    public async Task<JObject> IssueCredentialAsync(JObject document) {
+        try {
+            IssueRequest request = new() {
+                Document = new() {JsonStruct = document.ToStruct()}
             };
             var response = await Client.IssueAsync(request, await BuildMetadataAsync(request));
             return response.Document.JsonStruct.ToJObject();
-        }
-        catch (Exception e)
-        {
+        } catch(Exception e) {
             Console.WriteLine(e);
             throw;
         }
     }
 
-    public JObject IssueCredential(JObject document)
-    {
-        try
-        {
-            IssueRequest request = new()
-            {
-                Document = new JsonPayload { JsonStruct = document.ToStruct() }
+    public JObject IssueCredential(JObject document) {
+        try {
+            IssueRequest request = new() {
+                Document = new() {JsonStruct = document.ToStruct()}
             };
             var response = Client.Issue(request, BuildMetadata(request));
             return response.Document.JsonStruct.ToJObject();
-        }
-        catch (Exception e)
-        {
+        } catch(Exception e) {
             Console.WriteLine(e);
             throw;
         }
@@ -67,12 +56,10 @@ public class CredentialsService : ServiceBase
     /// <param name="documentId"></param>
     /// <param name="revealDocument"></param>
     /// <returns></returns>
-    public async Task<JObject> CreateProofAsync(string documentId, JObject revealDocument)
-    {
-        CreateProofRequest request = new()
-        {
+    public async Task<JObject> CreateProofAsync(string documentId, JObject revealDocument) {
+        CreateProofRequest request = new() {
             DocumentId = documentId,
-            RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
+            RevealDocument = new() {JsonStruct = revealDocument.ToStruct()}
         };
         var response = await Client.CreateProofAsync(
             request: request,
@@ -81,12 +68,10 @@ public class CredentialsService : ServiceBase
         return response.ProofDocument.JsonStruct.ToJObject();
     }
 
-    public JObject CreateProof(string documentId, JObject revealDocument)
-    {
-        CreateProofRequest request = new()
-        {
+    public JObject CreateProof(string documentId, JObject revealDocument) {
+        CreateProofRequest request = new() {
             DocumentId = documentId,
-            RevealDocument = new JsonPayload { JsonStruct = revealDocument.ToStruct() }
+            RevealDocument = new() {JsonStruct = revealDocument.ToStruct()}
         };
         var response = Client.CreateProof(
             request: request,
@@ -100,11 +85,9 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="proofDocument"></param>
     /// <returns></returns>
-    public async Task<bool> VerifyAsync(JObject proofDocument)
-    {
-        VerifyProofRequest request = new()
-        {
-            ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
+    public async Task<bool> VerifyAsync(JObject proofDocument) {
+        VerifyProofRequest request = new() {
+            ProofDocument = new() {JsonString = proofDocument.ToString()}
         };
         var response = await Client.VerifyProofAsync(
             request: request,
@@ -113,11 +96,9 @@ public class CredentialsService : ServiceBase
         return response.Valid;
     }
 
-    public bool Verify(JObject proofDocument)
-    {
-        VerifyProofRequest request = new()
-        {
-            ProofDocument = new JsonPayload { JsonString = proofDocument.ToString() }
+    public bool Verify(JObject proofDocument) {
+        VerifyProofRequest request = new() {
+            ProofDocument = new() {JsonString = proofDocument.ToString()}
         };
         var response = Client.VerifyProof(
             request: request,
@@ -133,24 +114,20 @@ public class CredentialsService : ServiceBase
     /// <param name="document"></param>
     /// <param name="email"></param>
     /// <returns></returns>
-    public async Task SendAsync(JObject document, string email)
-    {
-        SendRequest request = new()
-        {
+    public async Task SendAsync(JObject document, string email) {
+        SendRequest request = new() {
             Email = email,
-            Document = new JsonPayload { JsonStruct = document.ToStruct() }
+            Document = new() {JsonStruct = document.ToStruct()}
         };
         var response = await Client.SendAsync(
             request: request,
             headers: await BuildMetadataAsync(request));
     }
 
-    public void Send(JObject document, string email)
-    {
-        SendRequest request = new()
-        {
+    public void Send(JObject document, string email) {
+        SendRequest request = new() {
             Email = email,
-            Document = new JsonPayload { JsonStruct = document.ToStruct() }
+            Document = new() {JsonStruct = document.ToStruct()}
         };
         var response = Client.Send(
             request: request,

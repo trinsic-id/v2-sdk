@@ -11,11 +11,9 @@ namespace Trinsic;
 /// </summary>
 public class TemplateService : ServiceBase
 {
-    public TemplateService(AccountProfile? accountProfile, ServerConfig? serverConfig, GrpcChannel? existingChannel) :
-        base(accountProfile, serverConfig, existingChannel)
-    {
-        Client = new CredentialTemplates.CredentialTemplatesClient(
-                Channel);
+    public TemplateService(AccountProfile? accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel) {
+        Client = new(Channel);
     }
 
     private CredentialTemplates.CredentialTemplatesClient Client { get; set; }
@@ -25,23 +23,21 @@ public class TemplateService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<CreateCredentialTemplateResponse> CreateAsync(CreateCredentialTemplateRequest request)
-    {
+    public async Task<CreateCredentialTemplateResponse> CreateAsync(CreateCredentialTemplateRequest request) {
         var response = await Client.CreateAsync(request, await BuildMetadataAsync(request));
         return response;
     }
-    
+
     /// <summary>
     /// Returns the template object for the given identifier
     /// </summary>
     /// <param name="request">The request object</param>
     /// <returns></returns>
-    public async Task<GetCredentialTemplateResponse> GetAsync(GetCredentialTemplateRequest request)
-    {
+    public async Task<GetCredentialTemplateResponse> GetAsync(GetCredentialTemplateRequest request) {
         var response = await Client.GetAsync(request, await BuildMetadataAsync(request));
         return response;
     }
-    
+
     /// <summary>
     /// Search the registry for any data in the given ecosystem.
     /// Results can be customized using a SQL query.
@@ -54,12 +50,11 @@ public class TemplateService : ServiceBase
     /// <returns>
     /// The search response and continuation token, if available
     /// </returns>
-    public async Task<SearchCredentialTemplatesResponse> SearchAsync(SearchCredentialTemplatesRequest request)
-    {
+    public async Task<SearchCredentialTemplatesResponse> SearchAsync(SearchCredentialTemplatesRequest request) {
         var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
     }
-    
+
     /// <summary>
     /// List the available templates for the given ecosystem.
     /// Results can be customized using a SQL query.
@@ -72,8 +67,7 @@ public class TemplateService : ServiceBase
     /// <returns>
     /// The search response and continuation token, if available
     /// </returns>
-    public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request)
-    {
+    public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
         var response = await Client.ListAsync(request, await BuildMetadataAsync(request));
         return response;
     }
