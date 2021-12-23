@@ -45,6 +45,11 @@ class TrinsicServicesTest {
     }
 
     @Test
+    public void testEcosystemsDemo() throws IOException, DidException, ExecutionException, InterruptedException {
+        EcosystemsDemo.run();
+    }
+
+    @Test
     public void testProviderServiceInputValidation() {
         var providerService = new ProviderService(null, TrinsicUtilities.getTestServerConfig());
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().build()));
