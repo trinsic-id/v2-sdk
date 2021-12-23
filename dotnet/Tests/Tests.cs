@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using Grpc.Net.Client;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 
@@ -190,5 +193,73 @@ public class Tests
 
         actualList.Should().NotBeNull();
         actualList.Should().NotBeEmpty();
+    }
+
+    [Fact]
+    public async Task TestProtectUnprotectProfile()
+    {
+        var myAccountService = new AccountService(_serverConfig);
+        
+        var myProfile = await myAccountService.SignInAsync();
+        myAccountService.Profile = myProfile;
+        var output = await myAccountService.GetInfoAsync();
+        Assert.NotNull(output);
+
+        var securityCode = "1234";
+        var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
+
+        myAccountService.Profile = myProtectedProfile;
+        await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
+            
+        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
+        myAccountService.Profile = myUnprotectedProfile;
+        Assert.NotNull(await myAccountService.GetInfoAsync());
+        Assert.NotNull(myAccountService.GetInfo());
+    }
+    
+    [Fact]
+    public async Task TestVerifyProfileSet()
+    {
+        var myAccountService = new AccountService(_serverConfig);
+        
+        // Using non-async to ensure coverage behavior
+        myAccountService.SignIn();
+        await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
+
+        Assert.Throws<Exception>(myAccountService.GetInfo);
+    }
+    
+    [Fact]
+    public async Task TestInvitationIdSet()
+    {
+        var myAccountService = new AccountService(_serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
+    }
+    
+    [Fact]
+    public async Task TestInviteParticipant()
+    {
+        var myAccountService = new AccountService(_serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myProviderService = new ProviderService(myProfile, serverConfig, myAccountService.Channel);
+        var invite = new InviteRequest() { Email = "info@trinsic.id", Description = "Test invitation" };
+        var response = await myProviderService.InviteParticipant(invite);
+        Assert.NotNull(response);
+
+        var statusResponse = await myProviderService.InvitationStatus(new InvitationStatusRequest()
+            { InvitationId = response.InvitationId });
+        Assert.NotNull(statusResponse);
+    }
+
+    [Fact]
+    public async Task TestGovernanceFrameworkUriParse()
+    {
+        var myAccountService = new AccountService(_serverConfig);
+        var myProfile = await myAccountService.SignInAsync();
+        var myTrustRegistryService = new TrustRegistryService(myProfile, serverConfig, myAccountService.Channel);
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
     }
 }

@@ -18,13 +18,13 @@ public class AccountService : ServiceBase
     private AccountProfile? profile;
 
     public AccountService(ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : base(null, serverConfig, existingChannel) {
-        Client = new(Channel);
-        profile = null;
+        : this(null, serverConfig, existingChannel)
+    {
     }
 
-    public AccountService(AccountProfile accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel) {
+    public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
+        : base(accountProfile, serverConfig, existingChannel)
+    {
         Client = new(Channel);
         profile = accountProfile;
     }
