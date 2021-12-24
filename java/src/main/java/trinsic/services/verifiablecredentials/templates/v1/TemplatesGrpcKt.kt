@@ -46,15 +46,15 @@ object CredentialTemplatesGrpcKt {
     @JvmStatic
     get() = CredentialTemplatesGrpc.getGetMethod()
 
+  val listMethod: MethodDescriptor<Templates.ListCredentialTemplatesRequest,
+      Templates.ListCredentialTemplatesResponse>
+    @JvmStatic
+    get() = CredentialTemplatesGrpc.getListMethod()
+
   val searchMethod: MethodDescriptor<Templates.SearchCredentialTemplatesRequest,
       Templates.SearchCredentialTemplatesResponse>
     @JvmStatic
     get() = CredentialTemplatesGrpc.getSearchMethod()
-
-  val updateMethod: MethodDescriptor<Templates.UpdateCredentialTemplateRequest,
-      Templates.UpdateCredentialTemplateResponse>
-    @JvmStatic
-    get() = CredentialTemplatesGrpc.getUpdateMethod()
 
   val deleteMethod: MethodDescriptor<Templates.DeleteCredentialTemplateRequest,
       Templates.DeleteCredentialTemplateResponse>
@@ -125,10 +125,10 @@ object CredentialTemplatesGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun search(request: Templates.SearchCredentialTemplatesRequest, headers: Metadata =
-        Metadata()): Templates.SearchCredentialTemplatesResponse = unaryRpc(
+    suspend fun list(request: Templates.ListCredentialTemplatesRequest, headers: Metadata =
+        Metadata()): Templates.ListCredentialTemplatesResponse = unaryRpc(
       channel,
-      CredentialTemplatesGrpc.getSearchMethod(),
+      CredentialTemplatesGrpc.getListMethod(),
       request,
       callOptions,
       headers
@@ -145,10 +145,10 @@ object CredentialTemplatesGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun update(request: Templates.UpdateCredentialTemplateRequest, headers: Metadata =
-        Metadata()): Templates.UpdateCredentialTemplateResponse = unaryRpc(
+    suspend fun search(request: Templates.SearchCredentialTemplatesRequest, headers: Metadata =
+        Metadata()): Templates.SearchCredentialTemplatesResponse = unaryRpc(
       channel,
-      CredentialTemplatesGrpc.getUpdateMethod(),
+      CredentialTemplatesGrpc.getSearchMethod(),
       request,
       callOptions,
       headers
@@ -215,6 +215,22 @@ object CredentialTemplatesGrpcKt {
 
     /**
      * Returns the response to an RPC for
+     * services.verifiablecredentials.templates.v1.CredentialTemplates.List.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun list(request: Templates.ListCredentialTemplatesRequest):
+        Templates.ListCredentialTemplatesResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.templates.v1.CredentialTemplates.List is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
      * services.verifiablecredentials.templates.v1.CredentialTemplates.Search.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -228,22 +244,6 @@ object CredentialTemplatesGrpcKt {
     open suspend fun search(request: Templates.SearchCredentialTemplatesRequest):
         Templates.SearchCredentialTemplatesResponse = throw
         StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.templates.v1.CredentialTemplates.Search is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for
-     * services.verifiablecredentials.templates.v1.CredentialTemplates.Update.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail
-     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
-     * fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun update(request: Templates.UpdateCredentialTemplateRequest):
-        Templates.UpdateCredentialTemplateResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.templates.v1.CredentialTemplates.Update is unimplemented"))
 
     /**
      * Returns the response to an RPC for
@@ -274,13 +274,13 @@ object CredentialTemplatesGrpcKt {
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = CredentialTemplatesGrpc.getSearchMethod(),
-      implementation = ::search
+      descriptor = CredentialTemplatesGrpc.getListMethod(),
+      implementation = ::list
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = CredentialTemplatesGrpc.getUpdateMethod(),
-      implementation = ::update
+      descriptor = CredentialTemplatesGrpc.getSearchMethod(),
+      implementation = ::search
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,

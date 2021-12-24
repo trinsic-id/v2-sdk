@@ -10,6 +10,7 @@ import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
 import java.time.Instant;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryFutureStub stub;
@@ -31,12 +32,10 @@ public class TrustRegistryService extends ServiceBase {
         throw new RuntimeException();
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.RegisterIssuerResponse> registerIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.MIN;
-        if (validUntil == null) validUntil = Instant.MAX;
-
-        final var request = TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType).setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(validFrom.getEpochSecond()).setValidUntilUtc(validUntil.getEpochSecond()).build();
-        return withMetadata(stub, request).registerIssuer(request);
+    public void registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        var response = withMetadata(stub, request).registerIssuer(request).get();
+        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
+            throw new RuntimeException("cannot register issuer: code " + response.getStatus());
     }
 
     public ListenableFuture<TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
@@ -47,12 +46,10 @@ public class TrustRegistryService extends ServiceBase {
         return withMetadata(stub, request).unregisterIssuer(request);
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.RegisterVerifierResponse> registerVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.MIN;
-        if (validUntil == null) validUntil = Instant.MAX;
-
-        final TrustRegistryOuterClass.RegisterVerifierRequest request = TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType).setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(validFrom.getEpochSecond()).setValidUntilUtc(validUntil.getEpochSecond()).build();
-        return withMetadata(stub, request).registerVerifier(request);
+    public void registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        var response = withMetadata(stub, request).registerVerifier(request).get();
+        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
+            throw new RuntimeException("cannot register issuer: code " + response.getStatus());
     }
 
     public ListenableFuture<TrustRegistryOuterClass.UnregisterVerifierResponse> unregisterVerifier(String verifierDid, String presentationType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
@@ -63,13 +60,11 @@ public class TrustRegistryService extends ServiceBase {
         return withMetadata(stub, request).unregisterVerifier(request);
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(String issuerDid, String credentialType, String governanceFramework) throws InvalidProtocolBufferException, DidException {
-        final TrustRegistryOuterClass.CheckIssuerStatusRequest request = TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType).setGovernanceFrameworkUri(governanceFramework).build();
+    public ListenableFuture<TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest request) throws InvalidProtocolBufferException, DidException {
         return withMetadata(stub, request).checkIssuerStatus(request);
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.CheckVerifierStatusResponse> checkVerifierStatus(String verifierDid, String presentationType, String governanceFramework) throws InvalidProtocolBufferException, DidException {
-        final TrustRegistryOuterClass.CheckVerifierStatusRequest request = TrustRegistryOuterClass.CheckVerifierStatusRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType).setGovernanceFrameworkUri(governanceFramework).build();
+    public ListenableFuture<TrustRegistryOuterClass.CheckVerifierStatusResponse> checkVerifierStatus(TrustRegistryOuterClass.CheckVerifierStatusRequest request) throws InvalidProtocolBufferException, DidException {
         return withMetadata(stub, request).checkVerifierStatus(request);
     }
 

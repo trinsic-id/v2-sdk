@@ -35,7 +35,7 @@ public class TrinsicUtilities {
     }
     public static CommonOuterClass.ServerConfig getConfigFromUrl(String url) throws MalformedURLException {
         if (url == null || url.trim().length() == 0)
-            url = "http://localhost:5000";
+            return getProductionConfig();
         var serviceUrl = new URL(url);
         if (serviceUrl.getPort() == -1)
             throw new MalformedURLException("Port required!");

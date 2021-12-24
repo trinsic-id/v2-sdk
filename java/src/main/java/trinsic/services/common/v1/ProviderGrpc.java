@@ -15,6 +15,68 @@ public final class ProviderGrpc {
   public static final String SERVICE_NAME = "services.provider.v1.Provider";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest,
+      trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> getCreateEcosystemMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateEcosystem",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest,
+      trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> getCreateEcosystemMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> getCreateEcosystemMethod;
+    if ((getCreateEcosystemMethod = ProviderGrpc.getCreateEcosystemMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getCreateEcosystemMethod = ProviderGrpc.getCreateEcosystemMethod) == null) {
+          ProviderGrpc.getCreateEcosystemMethod = getCreateEcosystemMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateEcosystem"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("CreateEcosystem"))
+              .build();
+        }
+      }
+    }
+    return getCreateEcosystemMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
+      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ListEcosystems",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
+      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod;
+    if ((getListEcosystemsMethod = ProviderGrpc.getListEcosystemsMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getListEcosystemsMethod = ProviderGrpc.getListEcosystemsMethod) == null) {
+          ProviderGrpc.getListEcosystemsMethod = getListEcosystemsMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListEcosystems"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("ListEcosystems"))
+              .build();
+        }
+      }
+    }
+    return getListEcosystemsMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
       trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteMethod;
 
@@ -46,35 +108,35 @@ public final class ProviderGrpc {
     return getInviteMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
-      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "InviteWithWorkflow",
-      requestType = trinsic.services.common.v1.ProviderOuterClass.InviteRequest.class,
-      responseType = trinsic.services.common.v1.ProviderOuterClass.InviteResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "AcceptInvite",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
-      trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse> getInviteWithWorkflowMethod;
-    if ((getInviteWithWorkflowMethod = ProviderGrpc.getInviteWithWorkflowMethod) == null) {
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
+      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod;
+    if ((getAcceptInviteMethod = ProviderGrpc.getAcceptInviteMethod) == null) {
       synchronized (ProviderGrpc.class) {
-        if ((getInviteWithWorkflowMethod = ProviderGrpc.getInviteWithWorkflowMethod) == null) {
-          ProviderGrpc.getInviteWithWorkflowMethod = getInviteWithWorkflowMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.InviteRequest, trinsic.services.common.v1.ProviderOuterClass.InviteResponse>newBuilder()
+        if ((getAcceptInviteMethod = ProviderGrpc.getAcceptInviteMethod) == null) {
+          ProviderGrpc.getAcceptInviteMethod = getAcceptInviteMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "InviteWithWorkflow"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AcceptInvite"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.InviteRequest.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.InviteResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("InviteWithWorkflow"))
+                  trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("AcceptInvite"))
               .build();
         }
       }
     }
-    return getInviteWithWorkflowMethod;
+    return getAcceptInviteMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
@@ -158,7 +220,27 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+     * Create new ecosystem and assign the authenticated user as owner
+     * </pre>
+     */
+    public void createEcosystem(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateEcosystemMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * List all ecosystems assigned to the authenticated account
+     * </pre>
+     */
+    public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListEcosystemsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Invite a user to the ecosystem
      * </pre>
      */
     public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
@@ -167,13 +249,19 @@ public final class ProviderGrpc {
     }
 
     /**
+     * <pre>
+     * Accept an invite to the ecosystem
+     * </pre>
      */
-    public void inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInviteWithWorkflowMethod(), responseObserver);
+    public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAcceptInviteMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Check the invitation status
+     * </pre>
      */
     public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
@@ -183,6 +271,20 @@ public final class ProviderGrpc {
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
+            getCreateEcosystemMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest,
+                trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse>(
+                  this, METHODID_CREATE_ECOSYSTEM)))
+          .addMethod(
+            getListEcosystemsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
+                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>(
+                  this, METHODID_LIST_ECOSYSTEMS)))
+          .addMethod(
             getInviteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
@@ -190,12 +292,12 @@ public final class ProviderGrpc {
                 trinsic.services.common.v1.ProviderOuterClass.InviteResponse>(
                   this, METHODID_INVITE)))
           .addMethod(
-            getInviteWithWorkflowMethod(),
+            getAcceptInviteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
-                trinsic.services.common.v1.ProviderOuterClass.InviteResponse>(
-                  this, METHODID_INVITE_WITH_WORKFLOW)))
+                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
+                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>(
+                  this, METHODID_ACCEPT_INVITE)))
           .addMethod(
             getInvitationStatusMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -223,7 +325,29 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+     * Create new ecosystem and assign the authenticated user as owner
+     * </pre>
+     */
+    public void createEcosystem(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateEcosystemMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * List all ecosystems assigned to the authenticated account
+     * </pre>
+     */
+    public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListEcosystemsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Invite a user to the ecosystem
      * </pre>
      */
     public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
@@ -233,14 +357,20 @@ public final class ProviderGrpc {
     }
 
     /**
+     * <pre>
+     * Accept an invite to the ecosystem
+     * </pre>
      */
-    public void inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
+    public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getInviteWithWorkflowMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getAcceptInviteMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Check the invitation status
+     * </pre>
      */
     public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver) {
@@ -265,7 +395,27 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+     * Create new ecosystem and assign the authenticated user as owner
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse createEcosystem(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateEcosystemMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * List all ecosystems assigned to the authenticated account
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getListEcosystemsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Invite a user to the ecosystem
      * </pre>
      */
     public trinsic.services.common.v1.ProviderOuterClass.InviteResponse invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
@@ -274,13 +424,19 @@ public final class ProviderGrpc {
     }
 
     /**
+     * <pre>
+     * Accept an invite to the ecosystem
+     * </pre>
      */
-    public trinsic.services.common.v1.ProviderOuterClass.InviteResponse inviteWithWorkflow(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
+    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getInviteWithWorkflowMethod(), getCallOptions(), request);
+          getChannel(), getAcceptInviteMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Check the invitation status
+     * </pre>
      */
     public trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -304,7 +460,29 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     *   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);
+     * Create new ecosystem and assign the authenticated user as owner
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse> createEcosystem(
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateEcosystemMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * List all ecosystems assigned to the authenticated account
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> listEcosystems(
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListEcosystemsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Invite a user to the ecosystem
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> invite(
@@ -314,14 +492,20 @@ public final class ProviderGrpc {
     }
 
     /**
+     * <pre>
+     * Accept an invite to the ecosystem
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> inviteWithWorkflow(
-        trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> acceptInvite(
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getInviteWithWorkflowMethod(), getCallOptions()), request);
+          getChannel().newCall(getAcceptInviteMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Check the invitation status
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> invitationStatus(
         trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
@@ -330,9 +514,11 @@ public final class ProviderGrpc {
     }
   }
 
-  private static final int METHODID_INVITE = 0;
-  private static final int METHODID_INVITE_WITH_WORKFLOW = 1;
-  private static final int METHODID_INVITATION_STATUS = 2;
+  private static final int METHODID_CREATE_ECOSYSTEM = 0;
+  private static final int METHODID_LIST_ECOSYSTEMS = 1;
+  private static final int METHODID_INVITE = 2;
+  private static final int METHODID_ACCEPT_INVITE = 3;
+  private static final int METHODID_INVITATION_STATUS = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -351,13 +537,21 @@ public final class ProviderGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CREATE_ECOSYSTEM:
+          serviceImpl.createEcosystem((trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse>) responseObserver);
+          break;
+        case METHODID_LIST_ECOSYSTEMS:
+          serviceImpl.listEcosystems((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>) responseObserver);
+          break;
         case METHODID_INVITE:
           serviceImpl.invite((trinsic.services.common.v1.ProviderOuterClass.InviteRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse>) responseObserver);
           break;
-        case METHODID_INVITE_WITH_WORKFLOW:
-          serviceImpl.inviteWithWorkflow((trinsic.services.common.v1.ProviderOuterClass.InviteRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse>) responseObserver);
+        case METHODID_ACCEPT_INVITE:
+          serviceImpl.acceptInvite((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>) responseObserver);
           break;
         case METHODID_INVITATION_STATUS:
           serviceImpl.invitationStatus((trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest) request,
@@ -424,8 +618,10 @@ public final class ProviderGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ProviderFileDescriptorSupplier())
+              .addMethod(getCreateEcosystemMethod())
+              .addMethod(getListEcosystemsMethod())
               .addMethod(getInviteMethod())
-              .addMethod(getInviteWithWorkflowMethod())
+              .addMethod(getAcceptInviteMethod())
               .addMethod(getInvitationStatusMethod())
               .build();
         }
