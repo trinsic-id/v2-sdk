@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Grpc.Net.Client;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
-
-namespace Tests;
-
 using System;
 using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,21 +13,24 @@ using Xunit;
 using Xunit.Abstractions;
 using Trinsic;
 using FluentAssertions;
+using Trinsic.Services.VerifiableCredentials.Templates.V1;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
+namespace Tests;
+
+[SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServerConfig _serverConfig;
 
-    public Tests(ITestOutputHelper testOutputHelper)
-    {
+    public Tests(ITestOutputHelper testOutputHelper) {
         _testOutputHelper = testOutputHelper;
 
-        _serverConfig = new()
-        {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "dev-internal.trinsic.cloud",
+        _serverConfig = new() {
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "staging-internal.trinsic.cloud",
             Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
-            UseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || true
+            UseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || useTls
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_serverConfig.FormatUrl()}");
@@ -40,8 +40,7 @@ public class Tests
     private const string VaccinationCertificateFrame = "TestData/vaccination-certificate-frame.jsonld";
 
     [Fact]
-    public async Task TestWalletService()
-    {
+    public async Task TestWalletService() {
         var accountService = new AccountService(_serverConfig);
 
         // SETUP ACTORS
@@ -114,9 +113,8 @@ public class Tests
         Assert.True(valid);
     }
 
-    [Fact]
-    public async Task TestTrustRegistry()
-    {
+    [Fact(DisplayName = "Demo: trust registries")]
+    public async Task TestTrustRegistry() {
         // setup
         var accountService = new AccountService(_serverConfig);
         var account = await accountService.SignInAsync();
@@ -132,7 +130,7 @@ public class Tests
 
         register.Should().NotBeNull();
         register.Status.Should().Be(TaskStatus.RanToCompletion);
-        
+
         // register verifier
         register = service.RegisterVerifierAsync(new() {
             DidUri = "did:example:test",
@@ -143,7 +141,7 @@ public class Tests
 
         register.Should().NotBeNull();
         register.Status.Should().Be(TaskStatus.RanToCompletion);
-        
+
         // check issuer status
         var issuerStatus = await service.CheckIssuerStatusAsync(new() {
             DidUri = "did:example:test",
@@ -152,7 +150,7 @@ public class Tests
         });
 
         issuerStatus.Should().Be(RegistrationStatus.Current);
-        
+
         // check verifier status
         var verifierStatus = await service.CheckVerifierStatusAsync(new() {
             DidUri = "did:example:test",
@@ -161,7 +159,7 @@ public class Tests
         });
 
         verifierStatus.Should().Be(RegistrationStatus.Current);
-        
+
         // search registry
         var searchResult = await service.SearchRegistryAsync();
 
@@ -169,9 +167,8 @@ public class Tests
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
     }
 
-    [Fact(DisplayName = "Ecosystem creation and listing succeeds")]
-    public async Task EcosystemTests()
-    {
+    [Fact(DisplayName = "Demo: ecosystem creation and listing")]
+    public async Task EcosystemTests() {
         // setup
         var accountService = new AccountService(_serverConfig);
         var account = await accountService.SignInAsync();
@@ -180,26 +177,26 @@ public class Tests
         // test create ecosystem
         var actualCreate = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Name = "Test Ecosystem", 
+            Name = "Test Ecosystem",
             Uri = "https://example.com"
         });
 
         actualCreate.Should().NotBeNull();
         actualCreate.Id.Should().NotBeNull();
         actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
-        
+
         // test list ecosystems
         var actualList = await service.ListEcosystemsAsync();
 
-        actualList.Should().NotBeNull();
-        actualList.Should().NotBeEmpty();
+        var ecosystems = actualList as Ecosystem[] ?? actualList.ToArray();
+        ecosystems.Should().NotBeNull();
+        ecosystems.Should().NotBeEmpty();
     }
 
     [Fact]
-    public async Task TestProtectUnprotectProfile()
-    {
+    public async Task TestProtectUnprotectProfile() {
         var myAccountService = new AccountService(_serverConfig);
-        
+
         var myProfile = await myAccountService.SignInAsync();
         myAccountService.Profile = myProfile;
         var output = await myAccountService.GetInfoAsync();
@@ -210,56 +207,95 @@ public class Tests
 
         myAccountService.Profile = myProtectedProfile;
         await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
-            
+
         var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
         myAccountService.Profile = myUnprotectedProfile;
         Assert.NotNull(await myAccountService.GetInfoAsync());
         Assert.NotNull(myAccountService.GetInfo());
     }
-    
+
     [Fact]
-    public async Task TestVerifyProfileSet()
-    {
+    public async Task TestVerifyProfileSet() {
         var myAccountService = new AccountService(_serverConfig);
-        
+
         // Using non-async to ensure coverage behavior
         myAccountService.SignIn();
         await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
 
         Assert.Throws<Exception>(myAccountService.GetInfo);
     }
-    
+
     [Fact]
-    public async Task TestInvitationIdSet()
-    {
+    public async Task TestInvitationIdSet() {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, _serverConfig, myAccountService.Channel);
+        var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
     }
-    
+
     [Fact]
-    public async Task TestInviteParticipant()
-    {
+    public async Task TestInviteParticipant() {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, _serverConfig, myAccountService.Channel);
-        var invite = new InviteRequest() { Email = "info@trinsic.id", Description = "Test invitation" };
+        var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
+        var invite = new InviteRequest() {Email = "info@trinsic.id", Description = "Test invitation"};
         var response = await myProviderService.InviteParticipant(invite);
         Assert.NotNull(response);
 
         var statusResponse = await myProviderService.InvitationStatus(new InvitationStatusRequest()
-            { InvitationId = response.InvitationId });
+            {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
     [Fact]
-    public async Task TestGovernanceFrameworkUriParse()
-    {
+    public async Task TestGovernanceFrameworkUriParse() {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
-        var myTrustRegistryService = new TrustRegistryService(myProfile, _serverConfig, myAccountService.Channel);
+        var myTrustRegistryService = new TrustRegistryService(myProfile, myAccountService.Channel);
         await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
+    }
+
+    [Fact(DisplayName = "Demo: template management and credential issuance from template")]
+    public async Task DemoTemplatesWithIssuance() {
+        var accountService = new AccountService(_serverConfig);
+        var profile = await accountService.SignInAsync();
+        var templateService = new TemplateService(profile, accountService.Channel);
+        var credentialService = new CredentialsService(profile, accountService.Channel);
+        
+        // create example template
+        CreateCredentialTemplateRequest templateRequest = new() {
+            Name = "My Example Credential",
+            AllowAdditionalFields = false
+        };
+        templateRequest.Fields.Add("firstName", new(){ Description = "Given name"});
+        templateRequest.Fields.Add("lastName", new());
+        templateRequest.Fields.Add("age", new(){ Type = FieldType.Number, Optional = true});
+        
+        var template = await templateService.CreateAsync(templateRequest);
+
+        template.Should().NotBeNull();
+        template.Data.Should().NotBeNull();
+        template.Data.Id.Should().NotBeNull();
+        template.Data.SchemaUri.Should().NotBeNull();
+
+        // issue credential from this template
+        var values = JsonSerializer.Serialize(new {
+            firstName = "Jane",
+            lastName = "Doe",
+            age = 42
+        });
+
+        var credentialJson = await credentialService.IssueAsync(new() {
+            TemplateId = template.Data.Id,
+            ValuesJson = values
+        });
+
+        credentialJson.Should().NotBeNull();
+
+        var jsonDocument = JsonDocument.Parse(credentialJson).RootElement.EnumerateObject();
+
+        jsonDocument.Should().Contain(x => x.Name == "id");
+        jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
     }
 }

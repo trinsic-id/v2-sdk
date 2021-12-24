@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
@@ -8,8 +9,18 @@ namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel) {
+    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
+        Client = new(Channel);
+    }
+
+    public TrustRegistryService(AccountProfile accountProfile)
+        : base(accountProfile) {
+        Client = new(Channel);
+    }
+    
+    public TrustRegistryService(AccountProfile accountProfile, GrpcChannel channel)
+        : base(accountProfile, channel) {
         Client = new(Channel);
     }
 

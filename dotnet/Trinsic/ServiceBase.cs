@@ -14,33 +14,52 @@ namespace Trinsic;
 
 public abstract class ServiceBase
 {
-    protected internal ServiceBase(AccountProfile? accountProfile, ServerConfig? serverConfig, GrpcChannel? existingChannel) {
-        profile = accountProfile;
-        Configuration = serverConfig ?? new ServerConfig {
-            Endpoint = "prod.trinsic.cloud",
-            Port = 443,
-            UseTls = true
-        };
+    protected internal ServiceBase(ServerConfig serverConfig) {
+        Channel = CreateChannel(serverConfig);
+    }
+    protected internal ServiceBase(AccountProfile accountProfile) {
+        Channel = CreateChannel();
+        Profile = accountProfile;
+    }
+    protected internal ServiceBase(AccountProfile accountProfile, ServerConfig serverConfig) {
+        Profile = accountProfile;
+        Channel = CreateChannel(serverConfig);
+    }
 
+    protected internal ServiceBase(GrpcChannel existingChannel) {
+        Channel = existingChannel;
+    }
+
+    protected internal ServiceBase(AccountProfile accountProfile, GrpcChannel existingChannel) {
+        Profile = accountProfile;
+        Channel = existingChannel;
+    }
+
+    private static GrpcChannel CreateChannel(ServerConfig? serverConfig = null) {
+        serverConfig ??= DefaultServerConfig();
 #if __BROWSER__
         var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-        Channel = existingChannel ?? GrpcChannel.ForAddress(Configuration.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
+        return GrpcChannel.ForAddress(Configuration.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
 #else
-        Channel = existingChannel ?? GrpcChannel.ForAddress(Configuration.FormatUrl());
+        return GrpcChannel.ForAddress(serverConfig.FormatUrl());
 #endif
     }
 
+    protected static ServerConfig DefaultServerConfig() => new() {
+        Endpoint = "prod.trinsic.cloud",
+        Port = 443,
+        UseTls = true
+    };
+
     private readonly ISecurityProvider securityProvider = new OberonSecurityProvider();
-    private AccountProfile? profile;
 
-    public virtual AccountProfile? Profile
-    {
-        get => profile;
-        set => profile = value;
-    }
+    public virtual AccountProfile? Profile { get; set; }
 
-    public ServerConfig Configuration { get; private set; }
-    public GrpcChannel Channel { get; set; }
+    /// <summary>
+    /// Gets the gRPC channel used by this service. This channel can be reused
+    /// by passing this instance to other service constructors.
+    /// </summary>
+    public GrpcChannel Channel { get; private set; }
 
     /// <summary>
     /// Create call metadata by setting the required authentication headers
