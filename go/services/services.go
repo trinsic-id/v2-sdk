@@ -6,12 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/url"
-	"os"
-	"runtime"
-	"strconv"
-	"time"
-
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -20,6 +14,10 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	_ "google.golang.org/protobuf/types/known/structpb"
+	"net/url"
+	"os"
+	"runtime"
+	"strconv"
 )
 
 type Document map[string]interface{}
@@ -521,12 +519,12 @@ func (p *ProviderBase) InvitationStatus(ctx context.Context, request *sdk.Invita
 type TrustRegistryService interface {
 	Service
 	RegisterGovernanceFramework(userContext context.Context, governanceFramework string, description string) error
-	RegisterIssuer(userContext context.Context, issuerDid string, credentialType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error
-	UnregisterIssuer(userContext context.Context, issuerDid string, credentialType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error
-	RegisterVerifier(userContext context.Context, verifierDid string, presentationType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error
-	UnregisterVerifier(userContext context.Context, verifierDid string, presentationType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error
-	CheckIssuerStatus(userContext context.Context, issuerDid string, credentialType string, governanceFramework string) (sdk.RegistrationStatus, error)
-	CheckVerifierStatus(userContext context.Context, verifierDid string, presentationType string, governanceFramework string) (sdk.RegistrationStatus, error)
+	RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) error
+	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error
+	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error
+	UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error
+	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) error
+	CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) error
 	SearchRegistry(userContext context.Context, query string) (*sdk.SearchRegistryResponse, error)
 }
 
