@@ -559,15 +559,7 @@ func (t *TrustRegistryBase) RegisterGovernanceFramework(userContext context.Cont
 	return nil
 }
 
-func (t *TrustRegistryBase) RegisterIssuer(userContext context.Context, issuerDid string, credentialType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
-	request := &sdk.RegisterIssuerRequest{
-		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: issuerDid},
-		CredentialTypeUri:      credentialType,
-		ValidFromUtc:           uint64(validFrom.UnixMilli()),
-		ValidUntilUtc:          uint64(validUntil.UnixMilli()),
-		GovernanceFrameworkUri: governanceFramework,
-		Options:                nil,
-	}
+func (t *TrustRegistryBase) RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) error {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return err
@@ -579,19 +571,11 @@ func (t *TrustRegistryBase) RegisterIssuer(userContext context.Context, issuerDi
 	return nil
 }
 
-func (t *TrustRegistryBase) UnregisterIssuer(userContext context.Context, issuerDid string, credentialType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
+func (t *TrustRegistryBase) UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error {
 	panic("implement me")
 }
 
-func (t *TrustRegistryBase) RegisterVerifier(userContext context.Context, verifierDid string, presentationType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
-	request := &sdk.RegisterVerifierRequest{
-		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: verifierDid},
-		PresentationTypeUri:    presentationType,
-		ValidFromUtc:           uint64(validFrom.UnixMilli()),
-		ValidUntilUtc:          uint64(validUntil.UnixMilli()),
-		GovernanceFrameworkUri: governanceFramework,
-		Options:                nil,
-	}
+func (t *TrustRegistryBase) RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return err
@@ -603,16 +587,11 @@ func (t *TrustRegistryBase) RegisterVerifier(userContext context.Context, verifi
 	return nil
 }
 
-func (t *TrustRegistryBase) UnregisterVerifier(userContext context.Context, verifierDid string, presentationType string, governanceFramework string, validFrom time.Time, validUntil time.Time) error {
+func (t *TrustRegistryBase) UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error {
 	panic("implement me")
 }
 
-func (t *TrustRegistryBase) CheckIssuerStatus(userContext context.Context, issuerDid string, credentialType string, governanceFramework string) (sdk.RegistrationStatus, error) {
-	request := &sdk.CheckIssuerStatusRequest{
-		GovernanceFrameworkUri: governanceFramework,
-		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: issuerDid},
-		CredentialTypeUri:      credentialType,
-	}
+func (t *TrustRegistryBase) CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return sdk.RegistrationStatus_NOT_FOUND, err
@@ -624,12 +603,7 @@ func (t *TrustRegistryBase) CheckIssuerStatus(userContext context.Context, issue
 	return response.Status, nil
 }
 
-func (t *TrustRegistryBase) CheckVerifierStatus(userContext context.Context, verifierDid string, presentationType string, governanceFramework string) (sdk.RegistrationStatus, error) {
-	request := &sdk.CheckVerifierStatusRequest{
-		GovernanceFrameworkUri: governanceFramework,
-		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: verifierDid},
-		PresentationTypeUri:    presentationType,
-	}
+func (t *TrustRegistryBase) CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) (sdk.RegistrationStatus, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return sdk.RegistrationStatus_NOT_FOUND, err
