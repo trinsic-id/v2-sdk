@@ -27,4 +27,15 @@ class ProviderServiceKt(
         require(request.invitationId.isNotEmpty()) { "Onboarding reference ID must be set." }
         return withMetadata(stub, request).invitationStatus(request)
     }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse {
+        return withMetadata(stub, request).createEcosystem(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun listEcosystems(request: ListEcosystemsRequest): List<Ecosystem> {
+        val response = withMetadata(stub, request).listEcosystems(request)
+        return response.ecosystemList
+    }
 }

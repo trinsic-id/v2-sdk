@@ -7,12 +7,9 @@ import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
-import java.time.Instant
 
 class TrustRegistryServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?,
-    serverConfig: CommonOuterClass.ServerConfig?,
-    channel: Channel?
+    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
 ) : ServiceBase(accountProfile, serverConfig, channel) {
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
@@ -22,98 +19,43 @@ class TrustRegistryServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun registerIssuer(
-        issuerDid: String?,
-        credentialType: String?,
-        governanceFramework: String?,
-        validFrom: Instant?,
-        validUntil: Instant?
+        request: RegisterIssuerRequest
     ): RegisterIssuerResponse {
-        var validFrom = validFrom
-        var validUntil = validUntil
-        if (validFrom == null) validFrom = Instant.EPOCH
-        if (validUntil == null) validUntil = Instant.EPOCH
-        val request = RegisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType)
-            .setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(
-                validFrom!!.epochSecond
-            ).setValidUntilUtc(validUntil!!.epochSecond).build()
         return withMetadata(stub, request).registerIssuer(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun unregisterIssuer(
-        issuerDid: String?,
-        credentialType: String?,
-        governanceFramework: String?,
-        validFrom: Instant?,
-        validUntil: Instant?
+        request: UnregisterIssuerRequest
     ): UnregisterIssuerResponse {
-        var validFrom = validFrom
-        var validUntil = validUntil
-        if (validFrom == null) validFrom = Instant.EPOCH
-        if (validUntil == null) validUntil = Instant.EPOCH
-        val request = UnregisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType)
-            .setGovernanceFrameworkUri(governanceFramework).build()
         return withMetadata(stub, request).unregisterIssuer(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun registerVerifier(
-        verifierDid: String?,
-        presentationType: String?,
-        governanceFramework: String?,
-        validFrom: Instant?,
-        validUntil: Instant?
+        request: RegisterVerifierRequest
     ): RegisterVerifierResponse {
-        var validFrom = validFrom
-        var validUntil = validUntil
-        if (validFrom == null) validFrom = Instant.EPOCH
-        if (validUntil == null) validUntil = Instant.EPOCH
-        val request =
-            RegisterVerifierRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType)
-                .setGovernanceFrameworkUri(governanceFramework).setValidFromUtc(
-                    validFrom!!.epochSecond
-                ).setValidUntilUtc(validUntil!!.epochSecond).build()
         return withMetadata(stub, request).registerVerifier(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun unregisterVerifier(
-        verifierDid: String?,
-        presentationType: String?,
-        governanceFramework: String?,
-        validFrom: Instant?,
-        validUntil: Instant?
+        request: UnregisterVerifierRequest
     ): UnregisterVerifierResponse {
-        var validFrom = validFrom
-        var validUntil = validUntil
-        if (validFrom == null) validFrom = Instant.EPOCH
-        if (validUntil == null) validUntil = Instant.EPOCH
-        val request =
-            UnregisterVerifierRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType)
-                .setGovernanceFrameworkUri(governanceFramework).build()
         return withMetadata(stub, request).unregisterVerifier(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun checkIssuerStatus(
-        issuerDid: String?,
-        credentialType: String?,
-        governanceFramework: String?
+        request: CheckIssuerStatusRequest
     ): CheckIssuerStatusResponse {
-        val request = CheckIssuerStatusRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType)
-            .setGovernanceFrameworkUri(governanceFramework).build()
         return withMetadata(stub, request).checkIssuerStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun checkVerifierStatus(
-        verifierDid: String?,
-        presentationType: String?,
-        governanceFramework: String?
+        request: CheckVerifierStatusRequest
     ): CheckVerifierStatusResponse {
-        val request =
-            CheckVerifierStatusRequest.newBuilder().setDidUri(verifierDid).setPresentationTypeUri(presentationType)
-                .setGovernanceFrameworkUri(governanceFramework).build()
         return withMetadata(stub, request).checkVerifierStatus(request)
     }
 
