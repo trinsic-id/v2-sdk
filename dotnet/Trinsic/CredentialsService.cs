@@ -1,21 +1,33 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
+using Grpc.Net.Client;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 
 namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel) {
+    public CredentialsService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 
-    internal VerifiableCredential.VerifiableCredentialClient Client { get; }
+    public CredentialsService(AccountProfile accountProfile)
+        : base(accountProfile) {
+        Client = new(Channel);
+    }
+    
+    public CredentialsService(AccountProfile accountProfile, GrpcChannel channel)
+        : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+
+    private VerifiableCredential.VerifiableCredentialClient Client { get; }
 
     /// <summary>
     /// Signs an input credential
@@ -46,6 +58,26 @@ public class CredentialsService : ServiceBase
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    /// <summary>
+    /// Issue a verifiable credential from a predefined <see cref="TemplateData"/>.
+    /// </summary>
+    /// <param name="request">The request object with the template identifier and the values</param>
+    /// <returns>Verifiable credential as JSON</returns>
+    public async Task<string> IssueAsync(IssueFromTemplateRequest request) {
+        var response = await Client.IssueFromTemplateAsync(request, await BuildMetadataAsync(request));
+        return response.DocumentJson;
+    }
+    
+    /// <summary>
+    /// Issue a verifiable credential from a predefined <see cref="TemplateData"/>.
+    /// </summary>
+    /// <param name="request">The request object with the template identifier and the values</param>
+    /// <returns>Verifiable credential as JSON</returns>
+    public string Issue(IssueFromTemplateRequest request) {
+        var response = Client.IssueFromTemplate(request, BuildMetadata(request));
+        return response.DocumentJson;
     }
 
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Grpc.Net.Client;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Provider.V1;
@@ -11,12 +12,22 @@ namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig? serverConfig = null, Grpc.Net.Client.GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel) {
+    public ProviderService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 
-    internal Provider.ProviderClient Client { get; }
+    public ProviderService(AccountProfile accountProfile)
+        : base(accountProfile) {
+        Client = new(Channel);
+    }
+    
+    public ProviderService(AccountProfile accountProfile, GrpcChannel channel)
+        : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+
+    private Provider.ProviderClient Client { get; }
 
     /// <summary>
     /// Initiates the participant onboarding flow using the input contact method

@@ -17,19 +17,32 @@ public class AccountService : ServiceBase
 {
     private AccountProfile? profile;
 
-    public AccountService(ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : this(null, serverConfig, existingChannel)
-    {
-    }
-
-    public AccountService(AccountProfile? accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel)
-    {
+    public AccountService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
-        profile = accountProfile;
     }
 
-    internal AccountServiceClient Client { get; }
+    public AccountService()
+        : base(DefaultServerConfig()) {
+        Client = new(Channel);
+    }
+
+    public AccountService(ServerConfig serverConfig)
+        : base(serverConfig) {
+        Client = new(Channel);
+    }
+
+    public AccountService(AccountProfile accountProfile)
+        : base(accountProfile) {
+        Client = new(Channel);
+    }
+
+    public AccountService(AccountProfile accountProfile, GrpcChannel channel)
+        : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+
+    private AccountServiceClient Client { get; }
 
     public override AccountProfile? Profile
     {
@@ -46,7 +59,7 @@ public class AccountService : ServiceBase
     public async Task<AccountProfile> SignInAsync(AccountDetails? details = null) {
         SignInRequest request = new() {Details = details ?? new AccountDetails()};
 
-        SignInResponse response = await Client.SignInAsync(request);
+        var response = await Client.SignInAsync(request);
 
         return response.Profile;
     }
@@ -59,9 +72,7 @@ public class AccountService : ServiceBase
     /// <returns></returns>
     public AccountProfile SignIn(AccountDetails? details = null) {
         SignInRequest request = new() {Details = details ?? new AccountDetails()};
-
-        SignInResponse response = Client.SignIn(request);
-
+        var response = Client.SignIn(request);
         return response.Profile;
     }
 
@@ -116,7 +127,7 @@ public class AccountService : ServiceBase
     /// <returns></returns>
     public async Task<InfoResponse> GetInfoAsync() {
         InfoRequest request = new();
-        InfoResponse response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
+        var response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
 
         return response;
     }
@@ -127,7 +138,7 @@ public class AccountService : ServiceBase
     /// <returns></returns>
     public InfoResponse GetInfo() {
         InfoRequest request = new();
-        InfoResponse response = Client.Info(request, BuildMetadata(request));
+        var response = Client.Info(request, BuildMetadata(request));
 
         return response;
     }
