@@ -8,7 +8,7 @@ import java.io.IOException
 import java.util.concurrent.ExecutionException
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
-fun main(args: Array<String>) {
+suspend fun main(args: Array<String>) {
     // Make sure you set the TEST_SERVER_ENDPOINT environment variable
     runTrustRegistryDemo()
 }
@@ -29,12 +29,12 @@ suspend fun runTrustRegistryDemo() {
     val issuerStatus = service.checkIssuerStatus(
         TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test")
             .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
-    ).get()
+    )
     Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.status)
     val verifierStatus = service.checkIssuerStatus(
         TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test")
             .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
-    ).get()
+    )
     Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, verifierStatus.status)
     val searchResult = service.searchRegistry(null)
     Assertions.assertNotNull(searchResult)
