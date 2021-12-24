@@ -12,11 +12,11 @@ import java.nio.file.Path
 import java.util.concurrent.ExecutionException
 
 suspend fun main(args: Array<String>) {
-    run()
+    runVaccineDemo()
 }
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
-suspend fun run() {
+suspend fun runVaccineDemo() {
     // createService() {
     val serverConfig = TrinsicUtilities.getTestServerConfig()
     println("Connecting to:\n$serverConfig")
