@@ -31,9 +31,21 @@ jobs:
           bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
         working-directory: ruby
       - name: Build and run tests
-        run: ./devops/BuildRuby.ps1 -GitTag ${{ github.ref }}
+        run: |
+          gem install bundler
+          gem install rspec
+          bundle install
+          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          bundle exec rake
+          rake test
+          exit 0
         shell: pwsh
         env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          RUBY_DLL_PATH: "${{ github.workspace }}/libs"  # Required for Ruby on Windows
+          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+          LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
