@@ -523,8 +523,8 @@ type TrustRegistryService interface {
 	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error
 	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error
 	UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error
-	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) error
-	CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) error
+	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error)
+	CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) (sdk.RegistrationStatus, error)
 	SearchRegistry(userContext context.Context, query string) (*sdk.SearchRegistryResponse, error)
 }
 

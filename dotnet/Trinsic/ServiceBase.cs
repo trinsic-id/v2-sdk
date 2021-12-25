@@ -51,7 +51,7 @@ public abstract class ServiceBase
         UseTls = true
     };
 
-    private readonly ISecurityProvider securityProvider = new OberonSecurityProvider();
+    private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
 
     public virtual AccountProfile? Profile { get; set; }
 
@@ -69,7 +69,7 @@ public abstract class ServiceBase
         if (Profile is null) throw new("Cannot call authenticated endpoint: profile must be set");
 
         return new() {
-            {"Authorization", await securityProvider.GetAuthHeaderAsync(Profile, request)}
+            {"Authorization", await _securityProvider.GetAuthHeaderAsync(Profile, request)}
         };
     }
 
@@ -81,7 +81,7 @@ public abstract class ServiceBase
         if (Profile is null) throw new("Cannot call authenticated endpoint: profile must be set");
 
         return new() {
-            {"Authorization", securityProvider.GetAuthHeader(Profile, request)}
+            {"Authorization", _securityProvider.GetAuthHeader(Profile, request)}
         };
     }
 }

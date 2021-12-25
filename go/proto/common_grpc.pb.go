@@ -4,7 +4,7 @@ package sdk
 
 import (
 	context "context"
-	okapiproto "github.com/trinsic-id/sdk/go/okapiproto"
+	okapiproto "github.com/trinsic-id/okapi/go/okapiproto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
