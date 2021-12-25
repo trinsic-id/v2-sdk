@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"fmt"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"net/url"
@@ -66,9 +67,12 @@ func (t *TrustRegistryBase) RegisterIssuer(userContext context.Context, request 
 	if err != nil {
 		return err
 	}
-	_, err = t.client.RegisterIssuer(md, request)
+	response, err := t.client.RegisterIssuer(md, request)
 	if err != nil {
 		return err
+	}
+	if response.Status != sdk.ResponseStatus_SUCCESS {
+		return fmt.Errorf("cannot register issuer: code %s", response.Status)
 	}
 	return nil
 }
@@ -82,9 +86,12 @@ func (t *TrustRegistryBase) RegisterVerifier(userContext context.Context, reques
 	if err != nil {
 		return err
 	}
-	_, err = t.client.RegisterVerifier(md, request)
+	response, err := t.client.RegisterVerifier(md, request)
 	if err != nil {
 		return err
+	}
+	if response.Status != sdk.ResponseStatus_SUCCESS {
+		return fmt.Errorf("cannot register verifier: code %s", response.Status)
 	}
 	return nil
 }
@@ -118,6 +125,9 @@ func (t *TrustRegistryBase) CheckVerifierStatus(userContext context.Context, req
 }
 
 func (t *TrustRegistryBase) SearchRegistry(userContext context.Context, query string) (*sdk.SearchRegistryResponse, error) {
+	if query == "" {
+		query = "SELECT * FROM c"
+	}
 	request := &sdk.SearchRegistryRequest{
 		Query:   query,
 		Options: &sdk.RequestOptions{ResponseJsonFormat: sdk.JsonFormat_Protobuf},

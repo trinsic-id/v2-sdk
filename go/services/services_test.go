@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
 	"io/ioutil"
@@ -126,6 +127,73 @@ func TestVaccineCredentials(t *testing.T) {
 	if valid != true {
 		t.Fail()
 	}
+}
+
+func TestTrustRegistry(t *testing.T) {
+	assert2 := assert.New(t)
+	// Open in background
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
+	if !assert2.Nil(err) {
+		return
+	}
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return
+	}
+	profile, _, err := accountService.SignIn(context.Background(), nil)
+	if !assert2.Nil(err) {
+		return
+	}
+	service, err := CreateTrustRegistryService(profile, TrinsicTestConfig(), channel)
+
+	// register issuer
+	didUri := "did:example:test"
+	typeUri := "https://schema.org/Card"
+	frameworkUri := "https://example.com"
+	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
+		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didUri},
+		CredentialTypeUri:      typeUri,
+		GovernanceFrameworkUri: frameworkUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+
+	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
+		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didUri},
+		PresentationTypeUri:    typeUri,
+		GovernanceFrameworkUri: frameworkUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+
+	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
+		GovernanceFrameworkUri: frameworkUri,
+		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didUri},
+		CredentialTypeUri:      typeUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
+
+	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
+		GovernanceFrameworkUri: frameworkUri,
+		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didUri},
+		PresentationTypeUri:    typeUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
+
+	ecosystemList, err := service.SearchRegistry(context.Background(), "")
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(ecosystemList)
+	assert2.NotEmpty(ecosystemList)
 }
 
 func TestCreateChannelUrlFromConfig(t *testing.T) {
