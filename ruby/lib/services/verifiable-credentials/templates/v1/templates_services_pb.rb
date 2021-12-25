@@ -19,8 +19,8 @@ module Services
 
             rpc :Create, ::Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateResponse
             rpc :Get, ::Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateResponse
+            rpc :List, ::Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRequest, ::Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesResponse
             rpc :Search, ::Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesRequest, ::Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesResponse
-            rpc :Update, ::Services::Verifiablecredentials::Templates::V1::UpdateCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::UpdateCredentialTemplateResponse
             rpc :Delete, ::Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateResponse
           end
 

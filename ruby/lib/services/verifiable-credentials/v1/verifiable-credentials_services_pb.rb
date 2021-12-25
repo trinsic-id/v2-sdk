@@ -17,7 +17,7 @@ module Services
           self.service_name = 'services.verifiablecredentials.v1.VerifiableCredential'
 
           rpc :Issue, ::Services::Verifiablecredentials::V1::IssueRequest, ::Services::Verifiablecredentials::V1::IssueResponse
-          rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueResponse
+          rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueFromTemplateResponse
           rpc :CreateProof, ::Services::Verifiablecredentials::V1::CreateProofRequest, ::Services::Verifiablecredentials::V1::CreateProofResponse
           rpc :VerifyProof, ::Services::Verifiablecredentials::V1::VerifyProofRequest, ::Services::Verifiablecredentials::V1::VerifyProofResponse
           rpc :Send, ::Services::Verifiablecredentials::V1::SendRequest, ::Services::Verifiablecredentials::V1::SendResponse

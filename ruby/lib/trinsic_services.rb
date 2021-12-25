@@ -167,12 +167,26 @@ module Trinsic
 
     def invite_participant(request)
       # TODO - Ensure a field has been set
+      # raise("Contact method must be set") unless request.
       @client.invite(request, metadata: metadata(request))
     end
 
     def invitation_status(request)
       # TODO - Onboarding reference ID must be set
+      # raise("reference id must be set") unless request.reference_id.nil?
       @client.invitation_status(request, metadata: metadata(request))
+    end
+
+    def create_ecosystem(request)
+      @client.create_ecosystem(request, metadata: metadata(request))
+    end
+
+    def list_ecosystems(request = nil)
+      if request == nil
+        request = Provider_V1::ListEcosystemsRequest.new
+      end
+      response = @client.list_ecosystems(request, metadata: metadata(request))
+      response.ecosystem
     end
   end
 
@@ -195,46 +209,30 @@ module Trinsic
       @client.add_framework(request, metadata: metadata(request))
     end
 
-    def register_issuer(issuer_did, credential_type, governance_framework, valid_from, valid_until)
-      request = TrustRegistry_V1::RegisterIssuerRequest.new(did_uri: issuer_did,
-                                                            credential_type_uri: credential_type,
-                                                            governance_framework_uri: governance_framework,
-                                                            valid_from_utc: valid_from.to_time.to_i,
-                                                            valid_until_utc: valid_until.to_time.to_i)
-      @client.register_issuer(request, metadata: metadata(request))
+    def register_issuer(request)
+      response = @client.register_issuer(request, metadata: metadata(request))
+      raise("cannot register issuer: code #{response.status}") unless response.status == :SUCCESS
     end
 
-    def register_verifier(verifier_did, presentation_type, governance_framework, valid_from, valid_until)
-      request = TrustRegistry_V1::RegisterVerifierRequest.new(did_uri: verifier_did,
-                                                              presentation_type_uri: presentation_type,
-                                                              governance_framework_uri: governance_framework,
-                                                              valid_from_utc: valid_from.to_time.to_i,
-                                                              valid_until_utc: valid_until.to_time.to_i)
-      @client.register_verifier(request, metadata: metadata(request))
+    def register_verifier(request)
+      response = @client.register_verifier(request, metadata: metadata(request))
+      raise("cannot register verifier: code #{response.status}") unless response.status == :SUCCESS
     end
 
-    def check_issuer_status(issuer_did, presentation_type, governance_framework)
-      request = TrustRegistry_V1::CheckIssuerStatusRequest.new(did_uri: issuer_did,
-                                                               presentation_type_uri: presentation_type,
-                                                               governance_framework_uri: governance_framework)
+    def check_issuer_status(request)
       response = @client.check_issuer_status(request, metadata: metadata(request))
       response.status
     end
 
-    def check_verifier_status(verifier_did, presentation_type, governance_framework)
-      request = TrustRegistry_V1::CheckVerifierStatusRequest.new(did_uri: verifier_did,
-                                                                 presentation_type_uri: presentation_type,
-                                                                 governance_framework_uri: governance_framework)
+    def check_verifier_status(request)
       response = @client.check_verifier_status(request, metadata: metadata(request))
       response.status
     end
 
-    def search_registry(query)
-      query = query || "SELECT * FROM c"
-      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions(response_json_format: Common_V1::JsonFormat.protobuf))
+    def search_registry(query = "SELECT * FROM c")
+      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions.new(response_json_format: Common_V1::JsonFormat::Protobuf))
       response = @client.search_registry(request, metadata: metadata(request))
-      # TODO cast to dictionary object .map { |x| x.json_struct.  }
-      response.items
+      JSON.parse(response.items_json)
     end
   end
 
