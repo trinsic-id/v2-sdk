@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -36,7 +37,7 @@ func GetTestServerChannel() *grpc.ClientConn {
 	return channel
 }
 
-func TestVaccineCredentials(t *testing.T) {
+func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
 	// Open in background
 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
@@ -129,19 +130,9 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 }
 
-func TestTrustRegistry(t *testing.T) {
-	assert2 := assert.New(t)
-	// Open in background
-	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
-	if !assert2.Nil(err) {
-		return
-	}
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
-	if !assert2.Nil(err) {
-		return
-	}
-	profile, _, err := accountService.SignIn(context.Background(), nil)
-	if !assert2.Nil(err) {
+func TestTrustRegistryDemo(t *testing.T) {
+	assert2, channel, err, profile, done := createAccountAndSignIn(t)
+	if done {
 		return
 	}
 	service, err := CreateTrustRegistryService(profile, TrinsicTestConfig(), channel)
@@ -196,6 +187,51 @@ func TestTrustRegistry(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 }
 
+func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn, error, *sdk.AccountProfile, bool) {
+	assert2 := assert.New(t)
+	// Open in background
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	profile, _, err := accountService.SignIn(context.Background(), nil)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	return assert2, channel, err, profile, false
+}
+
+func TestEcosystemDemo(t *testing.T) {
+	assert2, channel, err, profile, done := createAccountAndSignIn(t)
+	if done {
+		return
+	}
+	service, err := CreateProviderService(profile, TrinsicTestConfig(), channel)
+
+	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
+		Name:        "Test Ecosystem",
+		Description: "My ecosystem",
+		Uri:         "https://example.com",
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(actualCreate)
+	assert2.NotNil(actualCreate.Id)
+	assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
+
+	// test list ecosystems
+	actualList, err := service.ListEcosystems(context.Background())
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(actualList)
+	assert2.NotEmpty(actualList)
+}
 func TestCreateChannelUrlFromConfig(t *testing.T) {
 	assert2 := assert.New(t)
 	if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), "Default is production stack") {
