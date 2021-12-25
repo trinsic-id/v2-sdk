@@ -25,17 +25,17 @@ class TrinsicServiceTest < Minitest::Test
     assert(metadata != nil, "Valid metadata once profile is set")
   end
 
-  # def test_providerservice_inviteparticipant
-  #   account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-  #   account_profile = account_service.sign_in(nil).profile
-  #   provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
-  #
-  #   invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
-  #                                                         :email=>"does.not.exist@trinsic.id")
-    # invite_response = provider_service.invite_participant(invite_request)
-    # assert(invite_response != nil)
+  def test_providerservice_inviteparticipant
+    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account_profile = account_service.sign_in(nil).profile
+    provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
+
+    invite_request = Services::Provider::V1::InviteRequest.new(:description=>"I dunno",
+                                                          :email=>"does.not.exist@trinsic.id")
+    invite_response = provider_service.invite_participant(invite_request)
+    assert(invite_response != nil)
     # TODO - Verify invitation status response
-  # end
+  end
 
   def test_has_a_version_number
     refute_nil ::Trinsic::VERSION
@@ -111,5 +111,14 @@ class TrinsicServiceTest < Minitest::Test
     puts "Verification result: #{valid}"
 
     assert(valid, "Credential is valid!")
+  end
+
+  def TestEcosystemDemo
+    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account = account_service.sign_in(nil).profile
+    service = Trinsic::ProviderService.new(account, Trinsic::trinsic_test_server)
+
+    # test create ecosystem
+    actual_create = service.create_ecosystem()``
   end
 end

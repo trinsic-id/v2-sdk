@@ -174,6 +174,15 @@ module Trinsic
       # TODO - Onboarding reference ID must be set
       @client.invitation_status(request, metadata: metadata(request))
     end
+
+    def create_ecosystem(request)
+      @client.create_ecosystem(request, metadata: metadata(request))
+    end
+
+    def list_ecosystems(request)
+      response = @client.list_ecosystems(request, metadata: metadata(request))
+      response.ecosystem
+    end
   end
 
   class TrustRegistryService < ServiceBase
