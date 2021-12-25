@@ -179,7 +179,10 @@ module Trinsic
       @client.create_ecosystem(request, metadata: metadata(request))
     end
 
-    def list_ecosystems(request)
+    def list_ecosystems(request = nil)
+      if request == nil
+        request = Provider_V1::ListEcosystemsRequest.new
+      end
       response = @client.list_ecosystems(request, metadata: metadata(request))
       response.ecosystem
     end

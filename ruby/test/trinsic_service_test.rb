@@ -113,12 +113,22 @@ class TrinsicServiceTest < Minitest::Test
     assert(valid, "Credential is valid!")
   end
 
-  def TestEcosystemDemo
+  def test_ecosystem_demo
     account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
     account = account_service.sign_in(nil).profile
     service = Trinsic::ProviderService.new(account, Trinsic::trinsic_test_server)
 
     # test create ecosystem
-    actual_create = service.create_ecosystem()``
+    actual_create = service.create_ecosystem(Services::Provider::V1::CreateEcosystemRequest.new(:description=>"My ecosystem",
+                                                                                                :name=>"Test Ecosystem",
+                                                                                                :uri=>"did:example:test"))
+    assert(actual_create != nil, "Ecosystem should be created")
+    assert(actual_create.id != nil, "Id should exist")
+    assert(actual_create.id.start_with?("urn:trinsic:ecosystems:"))
+
+    # test list ecosystems
+    actual_list = service.list_ecosystems
+    assert(actual_list.nil? == false)
+    assert(actual_list.length > 0)
   end
 end
