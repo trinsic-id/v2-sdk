@@ -93,8 +93,24 @@ def update_markdown():
     lang_proto_path = join(lang_path, 'reference', 'proto')
     # https://github.com/pseudomuto/protoc-gen-doc
     # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
-    # Add to path and rename to `protoc-gen-grpc-java`
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
+
+
+def update_node():
+    lang_path = get_language_dir('node')
+    lang_proto_path = join(lang_path,'src', 'proto')
+    clean_proto_dir(lang_proto_path)
+
+    # executable paths
+    node_protoc_executable = join(lang_path,'node_modules','.bin','grpc_tools_node_protoc.cmd')
+    typescript_protoc_executable = join(lang_path,'node_modules','.bin','protoc-gen-ts.cmd')
+
+    # JavaScript code generation
+    run_protoc({'grpc_out': f'grpc_js:{lang_proto_path}'}, {'js_out': f'import_style=commonjs,binary:{lang_proto_path}'}, get_proto_files(), 
+        protoc_executable=node_protoc_executable)
+    # TypeScript definitions
+    run_protoc({'ts_out': f'grpc_js:{lang_proto_path}'}, {}, get_proto_files(), plugin=f'protoc-gen-ts={typescript_protoc_executable}',
+        protoc_executable=typescript_protoc_executable)
 
 
 def update_python():
@@ -120,11 +136,12 @@ def update_python():
 
 
 def main():
-    update_golang()
-    update_ruby()
-    update_java()
-    update_markdown()
-    update_python()
+    # update_golang()
+    # update_ruby()
+    # update_java()
+    # update_markdown()
+    # update_python()
+    update_node()
 
 
 if __name__ == "__main__":
