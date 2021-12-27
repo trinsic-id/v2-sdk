@@ -50,7 +50,8 @@ export class ProviderService extends ServiceBase {
         });
     }
 
-    public listEcosystems(request: ListEcosystemsRequest): Promise<ListEcosystemsResponse> {
+    public listEcosystems(): Promise<ListEcosystemsResponse> {
+        let request = new ListEcosystemsRequest();
         return new Promise(async (resolve, reject) => {
             this.client.listEcosystems(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
