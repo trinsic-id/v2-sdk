@@ -11,7 +11,7 @@ const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
 const useTls = process.env.TEST_SERVER_USE_TLS;
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)).setUseTls(useTls);
+const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
 let profile = null;
 
 // test.before(async t => {
