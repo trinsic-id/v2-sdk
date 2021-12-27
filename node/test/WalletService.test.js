@@ -46,7 +46,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   let credentialService = new CredentialService({ profile, server: config });
   let walletService = new WalletService({ profile, server: config });
 
-  let issueResponse = await credentialService.issue(require("./data/vaccination-certificate-unsigned.json"));
+  let issueResponse = await credentialService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
 
   let itemId = await walletService.insertItem(issueResponse);
 
