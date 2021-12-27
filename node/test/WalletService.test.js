@@ -10,7 +10,7 @@ const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
 const useTls = process.env.TEST_SERVER_USE_TLS;
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)).setUseTls(useTls);
+const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
 
 let profile = null;
 
@@ -46,7 +46,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   let credentialService = new CredentialService({ profile, server: config });
   let walletService = new WalletService({ profile, server: config });
 
-  let issueResponse = await credentialService.issue(require("./data/vaccination-certificate-unsigned.json"));
+  let issueResponse = await credentialService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
 
   let itemId = await walletService.insertItem(issueResponse);
 
