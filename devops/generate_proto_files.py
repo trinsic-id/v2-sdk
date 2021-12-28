@@ -136,11 +136,11 @@ def update_python():
 
 
 def main():
-    # update_golang()
-    # update_ruby()
-    # update_java()
-    # update_markdown()
-    # update_python()
+    update_golang()
+    update_ruby()
+    update_java()
+    update_markdown()
+    update_python()
     update_node()
 
 
