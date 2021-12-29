@@ -3,8 +3,8 @@
 /dotnet/    @tmarkovski
 /go/        @fundthmcalculus
 /java/      @fundthmcalculus
-/node/      @tmarkovski
+/node/      @tmarkovski @MichaelEdwardBlack
 /proto/     @fundthmcalculus @tmarkovski
 /python/    @fundthmcalculus
 /ruby/      @fundthmcalculus
-/web/      @tmarkovski
+/web/       @tmarkovski @MichaelEdwardBlack
