@@ -46,6 +46,7 @@ jobs:
         working-directory: java
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           JAVA_LIBRARY_PATH: "${{ github.workspace }}/libs" # https://stackoverflow.com/a/60128194 - MacOS doesn't allow LD_LIBRARY_PATH.
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud

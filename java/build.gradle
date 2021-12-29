@@ -24,7 +24,7 @@ publishing {
             url = "https://maven.pkg.github.com/trinsic-id/sdk"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("API_GITHUB_TOKEN")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
@@ -48,7 +48,7 @@ repositories {
         url = "https://maven.pkg.github.com/trinsic-id/okapi"
         credentials {
             username = System.getenv("GITHUB_ACTOR")  
-            password = System.getenv("API_GITHUB_TOKEN")
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
 }
