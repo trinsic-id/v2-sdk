@@ -26,7 +26,15 @@ class TrinsicServicesTest {
         var account = accountService.signIn(null).get().getProfile();
 
         var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
-        var invitation = ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDescription("I dunno").setEmail("info@trinsic.id").build();
+        var ecosystem = providerService.createEcosystem(
+                ProviderOuterClass.CreateEcosystemRequest.newBuilder()
+                        .setName("Test Ecosystem").build()
+        ).get();
+        var invitation = ProviderOuterClass.InviteRequest.newBuilder()
+                .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
+                .setDescription("I dunno")
+                .setEmail("info@trinsic.id")
+                .build();
         var response = providerService.inviteParticipant(invitation).get();
         Assertions.assertNotNull(response);
 
