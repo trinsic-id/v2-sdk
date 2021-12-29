@@ -24,7 +24,7 @@ publishing {
             url = "https://maven.pkg.github.com/trinsic-id/sdk"
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                password = System.getenv("API_GITHUB_TOKEN")
             }
         }
     }
@@ -48,7 +48,7 @@ repositories {
         url = "https://maven.pkg.github.com/trinsic-id/okapi"
         credentials {
             username = System.getenv("GITHUB_ACTOR")  
-            password = System.getenv("GITHUB_TOKEN")
+            password = System.getenv("API_GITHUB_TOKEN")
         }
     }
 }
@@ -76,7 +76,7 @@ dependencies {
     implementation 'io.leonard:base58:0.0.2'
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
 
-    implementation 'id.trinsic:okapi:1.2.0'
+    implementation 'id.trinsic:okapi:1.2.2'
 }
 
 test {
