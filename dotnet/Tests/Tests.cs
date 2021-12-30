@@ -234,7 +234,7 @@ public class Tests
         await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
     }
 
-    [Fact]
+    [Fact(Skip = "Ecosystem support not complete yet")]
     public async Task TestInviteParticipant() {
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();

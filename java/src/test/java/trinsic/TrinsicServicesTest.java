@@ -1,6 +1,7 @@
 package trinsic;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
@@ -21,20 +22,14 @@ class TrinsicServicesTest {
     }
 
     @Test
+    @Disabled
     public void testProviderServiceInviteParticipant() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
         var account = accountService.signIn(null).get().getProfile();
 
         var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
-        var ecosystem = providerService.createEcosystem(
-                ProviderOuterClass.CreateEcosystemRequest.newBuilder()
-                        .setName("Test Ecosystem").build()
-        ).get();
-        var invitation = ProviderOuterClass.InviteRequest.newBuilder()
-                .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
-                .setDescription("I dunno")
-                .setEmail("info@trinsic.id")
-                .build();
+        var ecosystem = providerService.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").build()).get();
+        var invitation = ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDescription("I dunno").setEmail("info@trinsic.id").build();
         var response = providerService.inviteParticipant(invitation).get();
         Assertions.assertNotNull(response);
 
