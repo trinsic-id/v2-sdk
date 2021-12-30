@@ -20,15 +20,18 @@ public class TrustRegistryDemo {
         var account = accountService.signIn(null).get().getProfile();
         var service = new TrustRegistryService(account, TrinsicUtilities.getTestServerConfig());
 
+        final String didUri = "did:example:test";
+        final String frameworkUri = "https://example.com";
+        final String typeUri = "https://schema.org/Card";
         service.registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
-                .setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build());
+                .setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build());
 
-        service.registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card").build());
+        service.registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setPresentationTypeUri(typeUri).build());
 
-        var issuerStatus = service.checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()).get();
+        var issuerStatus = service.checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build()).get();
         Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
-        var verifierStatus = service.checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()).get();
+        var verifierStatus = service.checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build()).get();
         Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, verifierStatus.getStatus());
 
         var searchResult = service.searchRegistry(null).get();
