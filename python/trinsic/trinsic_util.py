@@ -46,6 +46,8 @@ def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
     elif isinstance(config, str):
         service_url = urllib.parse.urlsplit(config)
         is_https = service_url.scheme == "https"
+        if not service_url.hostname:
+            raise ValueError(f'Invalid url="{config}"')
         channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
     elif isinstance(config, ServerConfig):
         channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)

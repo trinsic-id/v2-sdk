@@ -30,13 +30,14 @@ async def trustregistry_demo():
     assert issuer_status == RegistrationStatus.CURRENT
 
     # check verifier status
-    verifier_status = await service.check_verifier_status(did_example_test, https_example_com, https_schema_org)
+    verifier_status = await service.check_verifier_status(issuer_did=did_example_test, governance_framework=https_example_com, presentation_type=https_schema_org)
     assert verifier_status == RegistrationStatus.CURRENT
 
     # search registry
     search_result = await service.search_registry()
     assert search_result is not None
-    assert len(search_result) > 0
+    assert search_result.items_json is not None
+    assert len(search_result.items_json) > 0
 
 
 if __name__ == "__main__":
