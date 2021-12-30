@@ -82,6 +82,9 @@ pub struct InfoResponse {
     /// the calling request context
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
+    /// any ecosystems the account has access to
+    #[prost(message, repeated, tag = "2")]
+    pub ecosystems: ::prost::alloc::vec::Vec<super::super::provider::v1::Ecosystem>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}
