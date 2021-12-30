@@ -15,6 +15,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
             self.assertIsNotNone(wallet_service.build_metadata(None))
         self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
 
+    @unittest.skip("Ecosystem support not implemented")
     async def test_providerservice_demo(self):
         await provider_demo()
 
