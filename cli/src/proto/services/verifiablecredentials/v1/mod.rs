@@ -12,8 +12,13 @@ pub struct IssueResponse {
 pub struct IssueFromTemplateRequest {
     #[prost(string, tag = "1")]
     pub template_id: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "2")]
-    pub attributes: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "2")]
+    pub values_json: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct IssueFromTemplateResponse {
+    #[prost(string, tag = "1")]
+    pub document_json: ::prost::alloc::string::String,
 }
 /// Create Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -142,7 +147,7 @@ pub mod verifiable_credential_client {
         pub async fn issue_from_template(
             &mut self,
             request: impl tonic::IntoRequest<super::IssueFromTemplateRequest>,
-        ) -> Result<tonic::Response<super::IssueResponse>, tonic::Status> {
+        ) -> Result<tonic::Response<super::IssueFromTemplateResponse>, tonic::Status> {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
                     tonic::Code::Unknown,

@@ -42,7 +42,7 @@ async fn search(args: &SearchArgs, config: &DefaultConfig) {
         .expect("search registry command failed")
         .into_inner();
 
-    response.items.iter().for_each(|x| println!("{}", x));
+    println!("{}", response.items_json);
 }
 
 #[tokio::main]
@@ -69,7 +69,7 @@ async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
 
     println!(
         "{}",
-        serde_json::to_string_pretty(&response.response_data.unwrap_or_default()).unwrap()
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
 }
 
@@ -226,6 +226,6 @@ async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
 
     println!(
         "{}",
-        serde_json::to_string_pretty(&response.response_data).unwrap()
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
 }

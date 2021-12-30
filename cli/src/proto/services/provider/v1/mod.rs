@@ -1,4 +1,17 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Invite {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub code: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub created: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub accepted: ::prost::alloc::string::String,
+    #[prost(string, tag = "5")]
+    pub expires: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
     #[prost(enumeration = "ParticipantType", tag = "1")]
     pub participant: i32,
@@ -55,7 +68,53 @@ pub mod invitation_status_response {
         InvitationSent = 1,
         /// The participant has been onboarded
         Completed = 2,
+        /// The invite has expired
+        Expired = 3,
     }
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Ecosystem {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub description: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub uri: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateEcosystemRequest {
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub description: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub uri: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateEcosystemResponse {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListEcosystemsRequest {}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListEcosystemsResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub ecosystem: ::prost::alloc::vec::Vec<Ecosystem>,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AcceptInviteRequest {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub code: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AcceptInviteResponse {
+    #[prost(message, optional, tag = "2")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -123,7 +182,41 @@ pub mod provider_client {
             self.inner = self.inner.accept_gzip();
             self
         }
-        #[doc = "   rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse);"]
+        #[doc = " Create new ecosystem and assign the authenticated user as owner"]
+        pub async fn create_ecosystem(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateEcosystemRequest>,
+        ) -> Result<tonic::Response<super::CreateEcosystemResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/CreateEcosystem",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " List all ecosystems assigned to the authenticated account"]
+        pub async fn list_ecosystems(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListEcosystemsRequest>,
+        ) -> Result<tonic::Response<super::ListEcosystemsResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.provider.v1.Provider/ListEcosystems",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Invite a user to the ecosystem"]
         pub async fn invite(
             &mut self,
             request: impl tonic::IntoRequest<super::InviteRequest>,
@@ -139,10 +232,11 @@ pub mod provider_client {
                 http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        pub async fn invite_with_workflow(
+        #[doc = " Accept an invite to the ecosystem"]
+        pub async fn accept_invite(
             &mut self,
-            request: impl tonic::IntoRequest<super::InviteRequest>,
-        ) -> Result<tonic::Response<super::InviteResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::AcceptInviteRequest>,
+        ) -> Result<tonic::Response<super::AcceptInviteResponse>, tonic::Status> {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
                     tonic::Code::Unknown,
@@ -150,11 +244,11 @@ pub mod provider_client {
                 )
             })?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/InviteWithWorkflow",
-            );
+            let path =
+                http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/AcceptInvite");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Check the invitation status"]
         pub async fn invitation_status(
             &mut self,
             request: impl tonic::IntoRequest<super::InvitationStatusRequest>,
