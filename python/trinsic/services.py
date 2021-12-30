@@ -17,7 +17,8 @@ from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFo
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
     ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemRequest, CreateEcosystemResponse, Ecosystem
-from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub
+from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub, \
+    SearchRegistryResponse
 from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub
 from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub
 from trinsic.service_base import ServiceBase
@@ -364,7 +365,7 @@ class TrustRegistryService(ServiceBase):
                                                         did_uri=issuer_did,
                                                         presentation_type_uri=presentation_type)).status
 
-    async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
+    async def search_registry(self, query: str = "SELECT * FROM c") -> SearchRegistryResponse:
         """
         [Search the registry](/reference/services/trust-registry/#search)
         Args:
@@ -373,10 +374,8 @@ class TrustRegistryService(ServiceBase):
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
 
-        response = await self.client.search_registry(query=query, options=RequestOptions(
+        return await self.client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
-
-        return [item.json_struct.to_dict() for item in response.items]
 
 
 class WalletService(ServiceBase):
