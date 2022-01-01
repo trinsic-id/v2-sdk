@@ -2,7 +2,7 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import AsyncIterator, Dict, List
+from typing import AsyncIterator, Dict
 
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
@@ -46,7 +46,7 @@ class SearchRegistryRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class SearchRegistryResponse(betterproto.Message):
-    items: List["__common_v1__.JsonPayload"] = betterproto.message_field(1)
+    items_json: str = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
     count: int = betterproto.int32_field(3)
     continuation_token: str = betterproto.string_field(4)
@@ -67,13 +67,11 @@ class RegisterIssuerRequest(betterproto.Message):
     valid_from_utc: int = betterproto.uint64_field(11)
     valid_until_utc: int = betterproto.uint64_field(12)
     governance_framework_uri: str = betterproto.string_field(20)
-    options: "__common_v1__.RequestOptions" = betterproto.message_field(100)
 
 
 @dataclass(eq=False, repr=False)
 class RegisterIssuerResponse(betterproto.Message):
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    response_data: "__common_v1__.JsonPayload" = betterproto.message_field(2)
 
 
 @dataclass(eq=False, repr=False)
@@ -84,13 +82,11 @@ class RegisterVerifierRequest(betterproto.Message):
     valid_from_utc: int = betterproto.uint64_field(11)
     valid_until_utc: int = betterproto.uint64_field(12)
     governance_framework_uri: str = betterproto.string_field(20)
-    options: "__common_v1__.RequestOptions" = betterproto.message_field(100)
 
 
 @dataclass(eq=False, repr=False)
 class RegisterVerifierResponse(betterproto.Message):
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    response_data: "__common_v1__.JsonPayload" = betterproto.message_field(2)
 
 
 @dataclass(eq=False, repr=False)
@@ -129,8 +125,7 @@ class CheckIssuerStatusRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class CheckIssuerStatusResponse(betterproto.Message):
-    governance_framework_uri: str = betterproto.string_field(1)
-    status: "RegistrationStatus" = betterproto.enum_field(4)
+    status: "RegistrationStatus" = betterproto.enum_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -143,8 +138,7 @@ class CheckVerifierStatusRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class CheckVerifierStatusResponse(betterproto.Message):
-    governance_framework_uri: str = betterproto.string_field(1)
-    status: "RegistrationStatus" = betterproto.enum_field(4)
+    status: "RegistrationStatus" = betterproto.enum_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -155,7 +149,9 @@ class FetchDataRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class FetchDataResponse(betterproto.Message):
-    response: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    response_json: str = betterproto.string_field(1)
+    has_more_results: bool = betterproto.bool_field(2)
+    continuation_token: str = betterproto.string_field(3)
 
 
 class TrustRegistryStub(betterproto.ServiceStub):
@@ -216,18 +212,17 @@ class TrustRegistryStub(betterproto.ServiceStub):
         valid_from_utc: int = 0,
         valid_until_utc: int = 0,
         governance_framework_uri: str = "",
-        options: "__common_v1__.RequestOptions" = None,
     ) -> "RegisterIssuerResponse":
 
         request = RegisterIssuerRequest()
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
         request.valid_from_utc = valid_from_utc
         request.valid_until_utc = valid_until_utc
         request.governance_framework_uri = governance_framework_uri
-        if options is not None:
-            request.options = options
 
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
@@ -244,18 +239,17 @@ class TrustRegistryStub(betterproto.ServiceStub):
         valid_from_utc: int = 0,
         valid_until_utc: int = 0,
         governance_framework_uri: str = "",
-        options: "__common_v1__.RequestOptions" = None,
     ) -> "RegisterVerifierResponse":
 
         request = RegisterVerifierRequest()
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
         request.valid_from_utc = valid_from_utc
         request.valid_until_utc = valid_until_utc
         request.governance_framework_uri = governance_framework_uri
-        if options is not None:
-            request.options = options
 
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
@@ -273,8 +267,10 @@ class TrustRegistryStub(betterproto.ServiceStub):
     ) -> "UnregisterIssuerResponse":
 
         request = UnregisterIssuerRequest()
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
         request.governance_framework_uri = governance_framework_uri
 
@@ -294,8 +290,10 @@ class TrustRegistryStub(betterproto.ServiceStub):
     ) -> "UnregisterVerifierResponse":
 
         request = UnregisterVerifierRequest()
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
         request.governance_framework_uri = governance_framework_uri
 
@@ -316,8 +314,10 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = CheckIssuerStatusRequest()
         request.governance_framework_uri = governance_framework_uri
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
 
         return await self._unary_unary(
@@ -337,8 +337,10 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = CheckVerifierStatusRequest()
         request.governance_framework_uri = governance_framework_uri
-        request.did_uri = did_uri
-        request.x509_cert = x509_cert
+        if did_uri:
+            request.did_uri = did_uri
+        if x509_cert:
+            request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
 
         return await self._unary_unary(
@@ -390,7 +392,6 @@ class TrustRegistryBase(ServiceBase):
         valid_from_utc: int,
         valid_until_utc: int,
         governance_framework_uri: str,
-        options: "__common_v1__.RequestOptions",
     ) -> "RegisterIssuerResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -402,7 +403,6 @@ class TrustRegistryBase(ServiceBase):
         valid_from_utc: int,
         valid_until_utc: int,
         governance_framework_uri: str,
-        options: "__common_v1__.RequestOptions",
     ) -> "RegisterVerifierResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -489,7 +489,6 @@ class TrustRegistryBase(ServiceBase):
             "valid_from_utc": request.valid_from_utc,
             "valid_until_utc": request.valid_until_utc,
             "governance_framework_uri": request.governance_framework_uri,
-            "options": request.options,
         }
 
         response = await self.register_issuer(**request_kwargs)
@@ -505,7 +504,6 @@ class TrustRegistryBase(ServiceBase):
             "valid_from_utc": request.valid_from_utc,
             "valid_until_utc": request.valid_until_utc,
             "governance_framework_uri": request.governance_framework_uri,
-            "options": request.options,
         }
 
         response = await self.register_verifier(**request_kwargs)

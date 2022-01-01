@@ -1,20 +1,12 @@
-import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase from "./ServiceBase";
-import {
-    InsertItemRequest,
-    SearchResponse,
-    SearchRequest,
-    JsonPayload,
-    ServerConfig,
-    AccountProfile,
-    UniversalWalletClient,
-} from "./proto";
+import {Struct} from "google-protobuf/google/protobuf/struct_pb";
+import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import {InsertItemRequest, JsonPayload, SearchRequest, SearchResponse, UniversalWalletClient,} from "./proto";
 
 export class WalletService extends ServiceBase {
     walletClient: UniversalWalletClient;
 
-    constructor(profile: AccountProfile, config: ServerConfig = null) {
-        super(profile, config);
+    constructor(options?: ServiceOptions) {
+        super(options);
 
         this.walletClient = new UniversalWalletClient(
             this.address,

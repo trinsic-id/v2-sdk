@@ -17,21 +17,32 @@ public class AccountService : ServiceBase
 {
     private AccountProfile? profile;
 
-    public AccountService(ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : base(null, serverConfig, existingChannel)
-    {
-        Client = new AccountServiceClient(Channel);
-        profile = null;
+    public AccountService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
+        Client = new(Channel);
     }
 
-    public AccountService(AccountProfile accountProfile, ServerConfig? serverConfig = null, GrpcChannel? existingChannel = null)
-        : base(accountProfile, serverConfig, existingChannel)
-    {
-        Client = new AccountServiceClient(Channel);
-        profile = accountProfile;
+    public AccountService()
+        : base(DefaultServerConfig()) {
+        Client = new(Channel);
     }
 
-    internal AccountServiceClient Client { get; }
+    public AccountService(ServerConfig serverConfig)
+        : base(serverConfig) {
+        Client = new(Channel);
+    }
+
+    public AccountService(AccountProfile accountProfile)
+        : base(accountProfile) {
+        Client = new(Channel);
+    }
+
+    public AccountService(AccountProfile accountProfile, GrpcChannel channel)
+        : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+
+    private AccountServiceClient Client { get; }
 
     public override AccountProfile? Profile
     {
@@ -45,11 +56,10 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="details"></param>
     /// <returns></returns>
-    public async Task<AccountProfile> SignInAsync(AccountDetails? details = null)
-    {
-        SignInRequest request = new() { Details = details ?? new AccountDetails() };
+    public async Task<AccountProfile> SignInAsync(AccountDetails? details = null) {
+        SignInRequest request = new() {Details = details ?? new AccountDetails()};
 
-        SignInResponse response = await Client.SignInAsync(request);
+        var response = await Client.SignInAsync(request);
 
         return response.Profile;
     }
@@ -60,12 +70,9 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="details"></param>
     /// <returns></returns>
-    public AccountProfile SignIn(AccountDetails? details = null)
-    {
-        SignInRequest request = new() { Details = details ?? new AccountDetails() };
-
-        SignInResponse response = Client.SignIn(request);
-
+    public AccountProfile SignIn(AccountDetails? details = null) {
+        SignInRequest request = new() {Details = details ?? new AccountDetails()};
+        var response = Client.SignIn(request);
         return response.Profile;
     }
 
@@ -76,17 +83,15 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="securityCode"></param>
-    public static AccountProfile Unprotect(AccountProfile profile, string securityCode)
-    {
+    public static AccountProfile Unprotect(AccountProfile profile, string securityCode) {
         var cloned = profile.Clone();
 
-        UnBlindOberonTokenRequest request = new() { Token = cloned.AuthToken };
+        UnBlindOberonTokenRequest request = new() {Token = cloned.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.UnblindToken(request);
 
         cloned.AuthToken = result.Token;
-        cloned.Protection = new()
-        {
+        cloned.Protection = new() {
             Enabled = false,
             Method = ConfirmationMethod.None
         };
@@ -100,17 +105,15 @@ public class AccountService : ServiceBase
     /// </summary>
     /// <param name="profile"></param>
     /// <param name="securityCode"></param>
-    public static AccountProfile Protect(AccountProfile profile, string securityCode)
-    {
+    public static AccountProfile Protect(AccountProfile profile, string securityCode) {
         var cloned = profile.Clone();
 
-        BlindOberonTokenRequest request = new() { Token = cloned.AuthToken };
+        BlindOberonTokenRequest request = new() {Token = cloned.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.BlindToken(request);
 
         cloned.AuthToken = result.Token;
-        cloned.Protection = new()
-        {
+        cloned.Protection = new() {
             Enabled = true,
             Method = ConfirmationMethod.Other
         };
@@ -122,10 +125,9 @@ public class AccountService : ServiceBase
     /// Return the details about the currently active account
     /// </summary>
     /// <returns></returns>
-    public async Task<InfoResponse> GetInfoAsync()
-    {
+    public async Task<InfoResponse> GetInfoAsync() {
         InfoRequest request = new();
-        InfoResponse response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
+        var response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
 
         return response;
     }
@@ -134,10 +136,9 @@ public class AccountService : ServiceBase
     /// Return the details about the currently active account
     /// </summary>
     /// <returns></returns>
-    public InfoResponse GetInfo()
-    {
+    public InfoResponse GetInfo() {
         InfoRequest request = new();
-        InfoResponse response = Client.Info(request, BuildMetadata(request));
+        var response = Client.Info(request, BuildMetadata(request));
 
         return response;
     }

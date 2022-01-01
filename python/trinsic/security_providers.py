@@ -14,7 +14,7 @@ from trinsic.proto.services.common.v1 import Nonce
 class SecurityProvider(ABC):
     @abstractmethod
     def get_auth_header(self, account_profile: AccountProfile, message: betterproto.Message) -> str:
-        raise NotImplementedError
+        pass
 
 
 class OberonSecurityProvider(SecurityProvider):

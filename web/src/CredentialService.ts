@@ -1,5 +1,5 @@
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { ServiceOptions } from "./ServiceBase";
 import {
   VerifiableCredentialClient,
   AccountProfile,
@@ -18,8 +18,8 @@ type JSStruct = { [key: string]: JavaScriptValue };
 export class CredentialService extends ServiceBase {
   credentialClient: VerifiableCredentialClient;
 
-  constructor(profile: AccountProfile, config: ServerConfig = null) {
-    super(profile, config);
+  constructor(options?: ServiceOptions) {
+    super(options);
 
     this.credentialClient = new VerifiableCredentialClient(this.address);
   }
@@ -34,7 +34,7 @@ export class CredentialService extends ServiceBase {
         if (error) {
           reject(error);
         } else {
-          resolve(response.getDocument().getJsonStruct().toJavaScript());
+          resolve(response.getDocument()!.getJsonStruct()!.toJavaScript());
         }
       });
     });
@@ -70,7 +70,7 @@ export class CredentialService extends ServiceBase {
           if (error) {
             reject(error);
           } else {
-            resolve(response.getProofDocument().getJsonStruct().toJavaScript());
+            resolve(response.getProofDocument()!.getJsonStruct()!.toJavaScript());
           }
         }
       );

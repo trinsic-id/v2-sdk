@@ -5331,6 +5331,50 @@ public final class AccountOuterClass {
      * <code>.services.account.v1.AccountDetails details = 1;</code>
      */
     trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
+
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> 
+        getEcosystemsList();
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index);
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    int getEcosystemsCount();
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+        getEcosystemsOrBuilderList();
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code services.account.v1.InfoResponse}
@@ -5345,6 +5389,7 @@ public final class AccountOuterClass {
       super(builder);
     }
     private InfoResponse() {
+      ecosystems_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -5367,6 +5412,7 @@ public final class AccountOuterClass {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -5390,6 +5436,15 @@ public final class AccountOuterClass {
 
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                ecosystems_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              ecosystems_.add(
+                  input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -5405,6 +5460,9 @@ public final class AccountOuterClass {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          ecosystems_ = java.util.Collections.unmodifiableList(ecosystems_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -5463,6 +5521,66 @@ public final class AccountOuterClass {
       return getDetails();
     }
 
+    public static final int ECOSYSTEMS_FIELD_NUMBER = 2;
+    private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystems_;
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemsList() {
+      return ecosystems_;
+    }
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+        getEcosystemsOrBuilderList() {
+      return ecosystems_;
+    }
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    @java.lang.Override
+    public int getEcosystemsCount() {
+      return ecosystems_.size();
+    }
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index) {
+      return ecosystems_.get(index);
+    }
+    /**
+     * <pre>
+     * any ecosystems the account has access to
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder(
+        int index) {
+      return ecosystems_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5480,6 +5598,9 @@ public final class AccountOuterClass {
       if (details_ != null) {
         output.writeMessage(1, getDetails());
       }
+      for (int i = 0; i < ecosystems_.size(); i++) {
+        output.writeMessage(2, ecosystems_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5492,6 +5613,10 @@ public final class AccountOuterClass {
       if (details_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getDetails());
+      }
+      for (int i = 0; i < ecosystems_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, ecosystems_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5513,6 +5638,8 @@ public final class AccountOuterClass {
         if (!getDetails()
             .equals(other.getDetails())) return false;
       }
+      if (!getEcosystemsList()
+          .equals(other.getEcosystemsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5527,6 +5654,10 @@ public final class AccountOuterClass {
       if (hasDetails()) {
         hash = (37 * hash) + DETAILS_FIELD_NUMBER;
         hash = (53 * hash) + getDetails().hashCode();
+      }
+      if (getEcosystemsCount() > 0) {
+        hash = (37 * hash) + ECOSYSTEMS_FIELD_NUMBER;
+        hash = (53 * hash) + getEcosystemsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5656,6 +5787,7 @@ public final class AccountOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getEcosystemsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -5666,6 +5798,12 @@ public final class AccountOuterClass {
         } else {
           details_ = null;
           detailsBuilder_ = null;
+        }
+        if (ecosystemsBuilder_ == null) {
+          ecosystems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ecosystemsBuilder_.clear();
         }
         return this;
       }
@@ -5693,10 +5831,20 @@ public final class AccountOuterClass {
       @java.lang.Override
       public trinsic.services.account.v1.AccountOuterClass.InfoResponse buildPartial() {
         trinsic.services.account.v1.AccountOuterClass.InfoResponse result = new trinsic.services.account.v1.AccountOuterClass.InfoResponse(this);
+        int from_bitField0_ = bitField0_;
         if (detailsBuilder_ == null) {
           result.details_ = details_;
         } else {
           result.details_ = detailsBuilder_.build();
+        }
+        if (ecosystemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            ecosystems_ = java.util.Collections.unmodifiableList(ecosystems_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.ecosystems_ = ecosystems_;
+        } else {
+          result.ecosystems_ = ecosystemsBuilder_.build();
         }
         onBuilt();
         return result;
@@ -5749,6 +5897,32 @@ public final class AccountOuterClass {
         if (other.hasDetails()) {
           mergeDetails(other.getDetails());
         }
+        if (ecosystemsBuilder_ == null) {
+          if (!other.ecosystems_.isEmpty()) {
+            if (ecosystems_.isEmpty()) {
+              ecosystems_ = other.ecosystems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEcosystemsIsMutable();
+              ecosystems_.addAll(other.ecosystems_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.ecosystems_.isEmpty()) {
+            if (ecosystemsBuilder_.isEmpty()) {
+              ecosystemsBuilder_.dispose();
+              ecosystemsBuilder_ = null;
+              ecosystems_ = other.ecosystems_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              ecosystemsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEcosystemsFieldBuilder() : null;
+            } else {
+              ecosystemsBuilder_.addAllMessages(other.ecosystems_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5777,6 +5951,7 @@ public final class AccountOuterClass {
         }
         return this;
       }
+      private int bitField0_;
 
       private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -5940,6 +6115,318 @@ public final class AccountOuterClass {
           details_ = null;
         }
         return detailsBuilder_;
+      }
+
+      private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystems_ =
+        java.util.Collections.emptyList();
+      private void ensureEcosystemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          ecosystems_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>(ecosystems_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemsBuilder_;
+
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemsList() {
+        if (ecosystemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(ecosystems_);
+        } else {
+          return ecosystemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public int getEcosystemsCount() {
+        if (ecosystemsBuilder_ == null) {
+          return ecosystems_.size();
+        } else {
+          return ecosystemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index) {
+        if (ecosystemsBuilder_ == null) {
+          return ecosystems_.get(index);
+        } else {
+          return ecosystemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder setEcosystems(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemsIsMutable();
+          ecosystems_.set(index, value);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder setEcosystems(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemsBuilder_ == null) {
+          ensureEcosystemsIsMutable();
+          ecosystems_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder addEcosystems(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemsIsMutable();
+          ecosystems_.add(value);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder addEcosystems(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemsIsMutable();
+          ecosystems_.add(index, value);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder addEcosystems(
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemsBuilder_ == null) {
+          ensureEcosystemsIsMutable();
+          ecosystems_.add(builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder addEcosystems(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemsBuilder_ == null) {
+          ensureEcosystemsIsMutable();
+          ecosystems_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder addAllEcosystems(
+          java.lang.Iterable<? extends trinsic.services.common.v1.ProviderOuterClass.Ecosystem> values) {
+        if (ecosystemsBuilder_ == null) {
+          ensureEcosystemsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, ecosystems_);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder clearEcosystems() {
+        if (ecosystemsBuilder_ == null) {
+          ecosystems_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public Builder removeEcosystems(int index) {
+        if (ecosystemsBuilder_ == null) {
+          ensureEcosystemsIsMutable();
+          ecosystems_.remove(index);
+          onChanged();
+        } else {
+          ecosystemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemsBuilder(
+          int index) {
+        return getEcosystemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder(
+          int index) {
+        if (ecosystemsBuilder_ == null) {
+          return ecosystems_.get(index);  } else {
+          return ecosystemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+           getEcosystemsOrBuilderList() {
+        if (ecosystemsBuilder_ != null) {
+          return ecosystemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(ecosystems_);
+        }
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemsBuilder() {
+        return getEcosystemsFieldBuilder().addBuilder(
+            trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemsBuilder(
+          int index) {
+        return getEcosystemsFieldBuilder().addBuilder(
+            index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * any ecosystems the account has access to
+       * </pre>
+       *
+       * <code>repeated .services.provider.v1.Ecosystem ecosystems = 2;</code>
+       */
+      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder> 
+           getEcosystemsBuilderList() {
+        return getEcosystemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+          getEcosystemsFieldBuilder() {
+        if (ecosystemsBuilder_ == null) {
+          ecosystemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
+                  ecosystems_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          ecosystems_ = null;
+        }
+        return ecosystemsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7732,44 +8219,48 @@ public final class AccountOuterClass {
     java.lang.String[] descriptorData = {
       "\n!services/account/v1/account.proto\022\023ser" +
       "vices.account.v1\032\037services/common/v1/com" +
-      "mon.proto\"^\n\rSignInRequest\0224\n\007details\030\001 " +
-      "\001(\0132#.services.account.v1.AccountDetails" +
-      "\022\027\n\017invitation_code\030\002 \001(\t\":\n\016AccountDeta" +
-      "ils\022\014\n\004name\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\013\n\003sms\030" +
-      "\003 \001(\t\"\300\001\n\016SignInResponse\0222\n\006status\030\001 \001(\016" +
-      "2\".services.common.v1.ResponseStatus\022D\n\023" +
-      "confirmation_method\030\003 \001(\0162\'.services.acc" +
-      "ount.v1.ConfirmationMethod\0224\n\007profile\030\004 " +
-      "\001(\0132#.services.account.v1.AccountProfile" +
-      "\"\207\001\n\016AccountProfile\022\024\n\014profile_type\030\001 \001(" +
-      "\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030\003 \001(\014" +
-      "\0228\n\nprotection\030\004 \001(\0132$.services.account." +
-      "v1.TokenProtection\"[\n\017TokenProtection\022\017\n" +
-      "\007enabled\030\001 \001(\010\0227\n\006method\030\002 \001(\0162\'.service" +
-      "s.account.v1.ConfirmationMethod\"\r\n\013InfoR" +
-      "equest\"D\n\014InfoResponse\0224\n\007details\030\001 \001(\0132" +
-      "#.services.account.v1.AccountDetails\"\024\n\022" +
-      "ListDevicesRequest\"\025\n\023ListDevicesRespons" +
-      "e\"\025\n\023RevokeDeviceRequest\"\026\n\024RevokeDevice" +
-      "Response*R\n\022ConfirmationMethod\022\010\n\004None\020\000" +
-      "\022\t\n\005Email\020\001\022\007\n\003Sms\020\002\022\023\n\017ConnectedDevice\020" +
-      "\003\022\t\n\005Other\020\n2\360\002\n\007Account\022Q\n\006SignIn\022\".ser" +
-      "vices.account.v1.SignInRequest\032#.service" +
-      "s.account.v1.SignInResponse\022K\n\004Info\022 .se" +
-      "rvices.account.v1.InfoRequest\032!.services" +
-      ".account.v1.InfoResponse\022`\n\013ListDevices\022" +
-      "\'.services.account.v1.ListDevicesRequest" +
-      "\032(.services.account.v1.ListDevicesRespon" +
-      "se\022c\n\014RevokeDevice\022(.services.account.v1" +
-      ".RevokeDeviceRequest\032).services.account." +
-      "v1.RevokeDeviceResponseBV\n\033trinsic.servi" +
-      "ces.account.v1Z\031github.com/trinsic-id/sd" +
-      "k\252\002\033Trinsic.Services.Account.V1b\006proto3"
+      "mon.proto\032#services/provider/v1/provider" +
+      ".proto\"^\n\rSignInRequest\0224\n\007details\030\001 \001(\013" +
+      "2#.services.account.v1.AccountDetails\022\027\n" +
+      "\017invitation_code\030\002 \001(\t\":\n\016AccountDetails" +
+      "\022\014\n\004name\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\013\n\003sms\030\003 \001" +
+      "(\t\"\300\001\n\016SignInResponse\0222\n\006status\030\001 \001(\0162\"." +
+      "services.common.v1.ResponseStatus\022D\n\023con" +
+      "firmation_method\030\003 \001(\0162\'.services.accoun" +
+      "t.v1.ConfirmationMethod\0224\n\007profile\030\004 \001(\013" +
+      "2#.services.account.v1.AccountProfile\"\207\001" +
+      "\n\016AccountProfile\022\024\n\014profile_type\030\001 \001(\t\022\021" +
+      "\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030\003 \001(\014\0228\n" +
+      "\nprotection\030\004 \001(\0132$.services.account.v1." +
+      "TokenProtection\"[\n\017TokenProtection\022\017\n\007en" +
+      "abled\030\001 \001(\010\0227\n\006method\030\002 \001(\0162\'.services.a" +
+      "ccount.v1.ConfirmationMethod\"\r\n\013InfoRequ" +
+      "est\"y\n\014InfoResponse\0224\n\007details\030\001 \001(\0132#.s" +
+      "ervices.account.v1.AccountDetails\0223\n\neco" +
+      "systems\030\002 \003(\0132\037.services.provider.v1.Eco" +
+      "system\"\024\n\022ListDevicesRequest\"\025\n\023ListDevi" +
+      "cesResponse\"\025\n\023RevokeDeviceRequest\"\026\n\024Re" +
+      "vokeDeviceResponse*R\n\022ConfirmationMethod" +
+      "\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003Sms\020\002\022\023\n\017Connec" +
+      "tedDevice\020\003\022\t\n\005Other\020\n2\360\002\n\007Account\022Q\n\006Si" +
+      "gnIn\022\".services.account.v1.SignInRequest" +
+      "\032#.services.account.v1.SignInResponse\022K\n" +
+      "\004Info\022 .services.account.v1.InfoRequest\032" +
+      "!.services.account.v1.InfoResponse\022`\n\013Li" +
+      "stDevices\022\'.services.account.v1.ListDevi" +
+      "cesRequest\032(.services.account.v1.ListDev" +
+      "icesResponse\022c\n\014RevokeDevice\022(.services." +
+      "account.v1.RevokeDeviceRequest\032).service" +
+      "s.account.v1.RevokeDeviceResponseBV\n\033tri" +
+      "nsic.services.account.v1Z\031github.com/tri" +
+      "nsic-id/sdk\252\002\033Trinsic.Services.Account.V" +
+      "1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
+          trinsic.services.common.v1.ProviderOuterClass.getDescriptor(),
         });
     internal_static_services_account_v1_SignInRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -7812,7 +8303,7 @@ public final class AccountOuterClass {
     internal_static_services_account_v1_InfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_InfoResponse_descriptor,
-        new java.lang.String[] { "Details", });
+        new java.lang.String[] { "Details", "Ecosystems", });
     internal_static_services_account_v1_ListDevicesRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable = new
@@ -7838,6 +8329,7 @@ public final class AccountOuterClass {
         internal_static_services_account_v1_RevokeDeviceResponse_descriptor,
         new java.lang.String[] { });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
+    trinsic.services.common.v1.ProviderOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

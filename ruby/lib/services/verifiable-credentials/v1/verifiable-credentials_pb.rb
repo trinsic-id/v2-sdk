@@ -13,8 +13,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :document, :message, 1, "services.common.v1.JsonPayload"
     end
     add_message "services.verifiablecredentials.v1.IssueFromTemplateRequest" do
-      optional :templateId, :string, 1
-      optional :attributes, :message, 2, "services.common.v1.JsonPayload"
+      optional :template_id, :string, 1
+      optional :values_json, :string, 2
+    end
+    add_message "services.verifiablecredentials.v1.IssueFromTemplateResponse" do
+      optional :document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.CreateProofRequest" do
       optional :reveal_document, :message, 1, "services.common.v1.JsonPayload"
@@ -49,6 +52,7 @@ module Services
       IssueRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.IssueRequest").msgclass
       IssueResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.IssueResponse").msgclass
       IssueFromTemplateRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.IssueFromTemplateRequest").msgclass
+      IssueFromTemplateResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.IssueFromTemplateResponse").msgclass
       CreateProofRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.CreateProofRequest").msgclass
       CreateProofResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.CreateProofResponse").msgclass
       VerifyProofRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.VerifyProofRequest").msgclass

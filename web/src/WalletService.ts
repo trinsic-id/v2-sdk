@@ -1,5 +1,5 @@
 import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase from "./ServiceBase";
+import ServiceBase, { ServiceOptions } from "./ServiceBase";
 import {
   InsertItemRequest,
   SearchResponse,
@@ -13,8 +13,8 @@ import {
 export class WalletService extends ServiceBase {
   walletClient: UniversalWalletClient;
 
-  constructor(profile: AccountProfile, config: ServerConfig = null) {
-    super(profile, config);
+  constructor(options?: ServiceOptions) {
+    super(options);
 
     this.walletClient = new UniversalWalletClient(this.address);
   }

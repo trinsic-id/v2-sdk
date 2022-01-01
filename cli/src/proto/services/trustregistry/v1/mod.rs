@@ -30,8 +30,8 @@ pub struct SearchRegistryRequest {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryResponse {
-    #[prost(message, repeated, tag = "1")]
-    pub items: ::prost::alloc::vec::Vec<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub items_json: ::prost::alloc::string::String,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
     #[prost(int32, tag = "3")]
@@ -58,8 +58,6 @@ pub struct RegisterIssuerRequest {
     pub valid_until_utc: u64,
     #[prost(string, tag = "20")]
     pub governance_framework_uri: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "100")]
-    pub options: ::core::option::Option<super::super::common::v1::RequestOptions>,
     #[prost(oneof = "register_issuer_request::Authority", tags = "1, 2")]
     pub authority: ::core::option::Option<register_issuer_request::Authority>,
 }
@@ -77,8 +75,6 @@ pub mod register_issuer_request {
 pub struct RegisterIssuerResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
-    #[prost(message, optional, tag = "2")]
-    pub response_data: ::core::option::Option<super::super::common::v1::JsonPayload>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RegisterVerifierRequest {
@@ -90,8 +86,6 @@ pub struct RegisterVerifierRequest {
     pub valid_until_utc: u64,
     #[prost(string, tag = "20")]
     pub governance_framework_uri: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "100")]
-    pub options: ::core::option::Option<super::super::common::v1::RequestOptions>,
     #[prost(oneof = "register_verifier_request::Authority", tags = "1, 2")]
     pub authority: ::core::option::Option<register_verifier_request::Authority>,
 }
@@ -109,8 +103,6 @@ pub mod register_verifier_request {
 pub struct RegisterVerifierResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
-    #[prost(message, optional, tag = "2")]
-    pub response_data: ::core::option::Option<super::super::common::v1::JsonPayload>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterIssuerRequest {
@@ -181,9 +173,7 @@ pub mod check_issuer_status_request {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CheckIssuerStatusResponse {
-    #[prost(string, tag = "1")]
-    pub governance_framework_uri: ::prost::alloc::string::String,
-    #[prost(enumeration = "RegistrationStatus", tag = "4")]
+    #[prost(enumeration = "RegistrationStatus", tag = "1")]
     pub status: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -207,9 +197,7 @@ pub mod check_verifier_status_request {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CheckVerifierStatusResponse {
-    #[prost(string, tag = "1")]
-    pub governance_framework_uri: ::prost::alloc::string::String,
-    #[prost(enumeration = "RegistrationStatus", tag = "4")]
+    #[prost(enumeration = "RegistrationStatus", tag = "1")]
     pub status: i32,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -221,8 +209,12 @@ pub struct FetchDataRequest {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FetchDataResponse {
-    #[prost(message, optional, tag = "1")]
-    pub response: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub response_json: ::prost::alloc::string::String,
+    #[prost(bool, tag = "2")]
+    pub has_more_results: bool,
+    #[prost(string, tag = "3")]
+    pub continuation_token: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

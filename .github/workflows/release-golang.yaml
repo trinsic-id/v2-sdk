@@ -1,0 +1,22 @@
+name: "Golang (release)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: 'v1.0.0'
+  release:
+    types: [ published ]
+
+jobs:
+  publish_go_tag:
+    name: Tag golang
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create tag
+        run: |
+          git tag "go/${{ github.event.inputs.packageVersion }}" master
+          git push "go/${{ github.event.inputs.packageVersion }}" origin

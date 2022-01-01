@@ -2,7 +2,7 @@ import glob
 import os
 import shutil
 from os.path import abspath, join, dirname
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 import pkg_resources
 from grpc_tools import protoc
@@ -34,14 +34,14 @@ def join_args(args: Dict[str, str]) -> str:
 
 def run_protoc(language_options: Dict[str, str] = None,
                custom_options: Dict[str, str] = None,
-               proto_files: List[str] = None,
+               proto_files: Tuple[List[str], str] = None,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
     language_arg_string = join_args(language_options)
     proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
     custom_options_string = join_args(custom_options)
-    proto_files_string = " ".join(proto_files)
-    plugin_string = f'--plugin={plugin}' if plugin else ''
+    proto_files_string = " ".join(proto_files) if isinstance(proto_files, list) else proto_files
+    plugin_string = f'--plugin="{plugin}"' if plugin else ''
     protoc_command = f'{protoc_executable} {plugin_string} {proto_path_string} {language_arg_string} {custom_options_string} {proto_files_string}'
     print(protoc_command)
     if os.system(protoc_command) != 0:
@@ -93,8 +93,24 @@ def update_markdown():
     lang_proto_path = join(lang_path, 'reference', 'proto')
     # https://github.com/pseudomuto/protoc-gen-doc
     # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
-    # Add to path and rename to `protoc-gen-grpc-java`
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
+
+
+def update_node():
+    lang_path = get_language_dir('node')
+    lang_proto_path = join(lang_path,'src', 'proto')
+    clean_proto_dir(lang_proto_path)
+
+    # executable paths
+    node_protoc_executable = join(lang_path,'node_modules','.bin','grpc_tools_node_protoc.cmd')
+    typescript_protoc_executable = join(lang_path,'node_modules','.bin','protoc-gen-ts.cmd')
+
+    # JavaScript code generation
+    run_protoc({'grpc_out': f'grpc_js:{lang_proto_path}'}, {'js_out': f'import_style=commonjs,binary:{lang_proto_path}'}, get_proto_files(), 
+        protoc_executable=node_protoc_executable)
+    # TypeScript definitions
+    run_protoc({'ts_out': f'grpc_js:{lang_proto_path}'}, {'plugin': f'protoc-gen-ts={typescript_protoc_executable}'}, get_proto_files(),
+        protoc_executable=node_protoc_executable)
 
 
 def update_python():
@@ -125,6 +141,7 @@ def main():
     update_java()
     update_markdown()
     update_python()
+    update_node()
 
 
 if __name__ == "__main__":

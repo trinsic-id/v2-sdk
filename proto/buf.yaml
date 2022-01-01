@@ -1,0 +1,15 @@
+version: v1
+deps:
+  - buf.build/trinsic/okapi
+  - buf.build/trinsic/services
+lint:
+  use:
+    - DEFAULT
+breaking:
+  use:
+    - FILE
+name: buf.build/trinsic/sdk
+build:
+  excludes:
+    - pbmse
+    - services

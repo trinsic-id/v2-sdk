@@ -5,7 +5,7 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, SupportsBytes
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
@@ -13,21 +13,23 @@ from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, Blin
 
 from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, ConfirmationMethod, InfoResponse, \
     AccountStub
-from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat
+from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat, ResponseStatus
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
-    ParticipantType, InvitationStatusResponse, ProviderStub
-from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub
+    ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemRequest, CreateEcosystemResponse, Ecosystem
+from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub, \
+    SearchRegistryResponse
 from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub
 from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub
 from trinsic.service_base import ServiceBase
-from trinsic.trinsic_util import trinsic_production_config
+from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_seconds
 
 
 class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
-    def __init__(self, profile: AccountProfile = None, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+    def __init__(self, profile: AccountProfile = None, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:
@@ -36,7 +38,8 @@ class AccountService(ServiceBase):
         super().__init__(profile, server_config, channel)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
-    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
+    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[
+        AccountProfile, ConfirmationMethod]:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
@@ -65,7 +68,7 @@ class AccountService(ServiceBase):
         return profile
 
     @staticmethod
-    def protect(profile: AccountProfile, security_code: str) -> AccountProfile:
+    def protect(profile: AccountProfile, security_code: SupportsBytes) -> AccountProfile:
         """
         Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
         Args:
@@ -93,7 +96,8 @@ class AccountService(ServiceBase):
 class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:
@@ -152,7 +156,8 @@ class ProviderService(ServiceBase):
     Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
         """
         Initialize the connection
         Args:
@@ -179,7 +184,7 @@ class ProviderService(ServiceBase):
             [InviteResponse](/reference/proto/#inviteresponse)
         """
         if not email and not phone:
-            raise Exception("Contact method must be set")
+            raise ValueError("Contact method must be set")
 
         return await self.client.invite(participant=participant,
                                         description=description,
@@ -196,9 +201,29 @@ class ProviderService(ServiceBase):
             [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
         """
         if not invitation_id or not invitation_id.strip():
-            raise Exception("Onboarding reference ID must be set.")
+            raise ValueError("Onboarding reference ID must be set.")
 
         return await self.client.invitation_status(invitation_id=invitation_id)
+
+    async def create_ecosystem(self, name: str = '', description: str = '', uri: str = '') -> CreateEcosystemResponse:
+        """
+        Creates a new ecosystem
+        Args:
+            name:
+            description:
+            uri:
+
+        Returns:
+
+        """
+        return await self.client.create_ecosystem(name=name, description=description, uri=uri)
+
+    async def list_ecosystems(self) -> List[Ecosystem]:
+        """
+        Lists all ecosystems that are owned by the authorized user
+        Returns:
+        """
+        return (await self.client.list_ecosystems()).ecosystem
 
 
 class TrustRegistryService(ServiceBase):
@@ -206,7 +231,8 @@ class TrustRegistryService(ServiceBase):
     Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
         super().__init__(profile, server_config, channel)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
@@ -221,15 +247,18 @@ class TrustRegistryService(ServiceBase):
         # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
 
-            await self.client.add_framework(governance_framework=GovernanceFramework(
+            response = await self.client.add_framework(governance_framework=GovernanceFramework(
                 governance_framework_uri=governance_framework,
                 description=description
             ))
+            if response.status != response.status.SUCCESS:
+                raise RuntimeError(f"cannot register verifier: code {response.status}")
         else:
             raise ValueError(f"Invalid URI string={governance_framework}")
 
     async def register_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
-                              valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+                              valid_from: datetime.datetime = None,
+                              valid_until: datetime.datetime = None) -> None:
         """
         [Register the issuer](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
@@ -241,18 +270,19 @@ class TrustRegistryService(ServiceBase):
         Raises:
             ValueError: if date ranges are not provided
         """
-        if not valid_from or not valid_until:
-            valid_from = datetime.datetime(0000, 00, 00)
-            valid_until = datetime.datetime(9999, 12, 31)
+        valid_from_epoch, valid_until_epoch = convert_to_epoch_seconds(valid_from, valid_until)
 
-        await self.client.register_issuer(did_uri=issuer_did,
-                                          credential_type_uri=credential_type,
-                                          governance_framework_uri=governance_framework,
-                                          valid_from_utc=int(valid_from.timestamp()),
-                                          valid_until_utc=int(valid_until.timestamp()))
+        response = await self.client.register_issuer(did_uri=issuer_did,
+                                                     credential_type_uri=credential_type,
+                                                     governance_framework_uri=governance_framework,
+                                                     valid_from_utc=int(valid_from_epoch),
+                                                     valid_until_utc=int(valid_until_epoch))
+
+        if response.status != ResponseStatus.SUCCESS:
+            raise RuntimeError(f"cannot register verifier: code {response.status}")
 
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
-                                valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+                                valid_from: datetime.datetime = None, valid_until: datetime.datetime = None) -> None:
         """
         [Unregister the issuer](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
         Args:
@@ -267,7 +297,8 @@ class TrustRegistryService(ServiceBase):
         raise NotImplementedError
 
     async def register_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
-                                valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
+                                valid_from: datetime.datetime = None,
+                                valid_until: datetime.datetime = None) -> None:
         """
         [Register the verifier](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
@@ -277,12 +308,15 @@ class TrustRegistryService(ServiceBase):
             valid_from:
             valid_until:
         """
+        valid_from_epoch, valid_until_epoch = convert_to_epoch_seconds(valid_from, valid_until)
 
-        await self.client.register_verifier(did_uri=verifier_did,
-                                            presentation_type_uri=presentation_type,
-                                            governance_framework_uri=governance_framework,
-                                            valid_from_utc=int(valid_from.timestamp()),
-                                            valid_until_utc=int(valid_until.timestamp()))
+        response = await self.client.register_verifier(did_uri=verifier_did,
+                                                       presentation_type_uri=presentation_type,
+                                                       governance_framework_uri=governance_framework,
+                                                       valid_from_utc=int(valid_from_epoch),
+                                                       valid_until_utc=int(valid_until_epoch))
+        if response.status != ResponseStatus.SUCCESS:
+            raise RuntimeError(f"cannot register verifier: code {response.status}")
 
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                   valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:
@@ -331,7 +365,7 @@ class TrustRegistryService(ServiceBase):
                                                         did_uri=issuer_did,
                                                         presentation_type_uri=presentation_type)).status
 
-    async def search_registry(self, query: str = "SELECT * FROM c") -> List[Dict]:
+    async def search_registry(self, query: str = "SELECT * FROM c") -> SearchRegistryResponse:
         """
         [Search the registry](/reference/services/trust-registry/#search)
         Args:
@@ -340,10 +374,8 @@ class TrustRegistryService(ServiceBase):
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
 
-        response = await self.client.search_registry(query=query, options=RequestOptions(
+        return await self.client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
-
-        return [item.json_struct.to_dict() for item in response.items]
 
 
 class WalletService(ServiceBase):
@@ -351,7 +383,8 @@ class WalletService(ServiceBase):
     Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(), channel: Channel = None):
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
         """
         Initialize a connection to the server.
         Args:

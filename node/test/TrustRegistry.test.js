@@ -1,12 +1,16 @@
 const test = require("ava");
 const {
-  TrustRegistryService,
-  AddFrameworkRequest,
-  GovernanceFramework,
-  AccountService,
-  ServerConfig,
+    TrustRegistryService,
+    AddFrameworkRequest,
+    GovernanceFramework,
+    AccountService,
+    ServerConfig,
+    RegisterIssuerRequest,
+    ResponseStatus,
+    RegisterVerifierRequest, CheckIssuerStatusRequest, CheckVerifierStatusRequest, RegistrationStatus,
+    SearchRegistryRequest,
 } = require("../lib");
-const { v4: uuid } = require("uuid");
+const {v4: uuid} = require("uuid");
 
 require("dotenv").config();
 
@@ -14,23 +18,44 @@ const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
 const useTls = process.env.TEST_SERVER_USE_TLS;
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(new Number(port)).setUseTls(useTls);
+const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
 let profile = null;
 
 test.before(async t => {
-  let service = new AccountService(null, config);
-  let response = await service.signIn();
+    let service = new AccountService({server: config});
+    let response = await service.signIn();
 
-  profile = response.getProfile();
+    profile = response.getProfile();
 });
 
 test("add governance framework", async (t) => {
-  let trustRegistryService = new TrustRegistryService(profile, config);
+    let trustRegistryService = new TrustRegistryService({profile, server: config});
 
-  let response = await trustRegistryService.addGovernanceFramework(
-    new AddFrameworkRequest().setGovernanceFramework(
-      new GovernanceFramework().setGovernanceFrameworkUri(`urn:egf:${uuid()}`)
-    )
-  );
-  t.not(response, null);
+    let response = await trustRegistryService.addGovernanceFramework(new AddFrameworkRequest().setGovernanceFramework(new GovernanceFramework().setGovernanceFrameworkUri(`urn:egf:${uuid()}`)));
+    t.not(response, null);
+});
+
+test("Demo: Trust Registry", async (t) => {
+    let trustRegistryService = new TrustRegistryService({profile, server: config});
+
+    let response = await trustRegistryService.registerIssuer(new RegisterIssuerRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card"));
+    t.not(response, null);
+    t.is(response.getStatus(), ResponseStatus.SUCCESS)
+
+    let response2 = await trustRegistryService.registerVerifier(new RegisterVerifierRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card"));
+    t.not(response, null);
+    t.is(response.getStatus(), ResponseStatus.SUCCESS)
+
+    let issuerStatus = await trustRegistryService.checkIssuerStatus(new CheckIssuerStatusRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card"));
+    t.not(issuerStatus, null);
+    t.is(issuerStatus.getStatus(), RegistrationStatus.CURRENT)
+
+    let veriferStatus = await trustRegistryService.checkVerifierStatus(new CheckVerifierStatusRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card"));
+    t.not(veriferStatus, null);
+    t.is(veriferStatus.getStatus(), RegistrationStatus.CURRENT)
+
+    let searchResult = await trustRegistryService.searchRegistry();
+    t.not(searchResult, null);
+    t.not(searchResult.getItemsJson(), null)
+    t.true(searchResult.getItemsJson().length > 0)
 });

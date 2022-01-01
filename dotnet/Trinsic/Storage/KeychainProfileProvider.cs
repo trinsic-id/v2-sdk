@@ -28,10 +28,10 @@ internal class KeychainProfileProvider : IProfileProvider
 		var match = SecKeyChain.QueryAsRecord(rec, out SecStatusCode res);
 		if (res != SecStatusCode.Success)
 		{
-			throw new Exception("Profile not found");
+			throw new("Profile not found");
 		}
 
-		return Task.FromResult(AccountProfile.Parser.ParseFrom(rec.ValueData.ToArray()));
+		return Task.FromResult(AccountProfile.Parser.ParseFrom(rec.ValueData!.ToArray()));
 	}
 
     public Task SaveAsync(string name, AccountProfile accountProfile, CancellationToken cancellationToken = default)
@@ -60,7 +60,7 @@ internal class KeychainProfileProvider : IProfileProvider
 		}
 		else
         {
-			throw new Exception("Profile already exists");
+			throw new("Profile already exists");
         }
 
 		return Task.CompletedTask;

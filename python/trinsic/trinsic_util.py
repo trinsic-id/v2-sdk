@@ -2,9 +2,10 @@
 Utility functions for the Trinsic services SDK
 """
 import urllib.parse
+from datetime import datetime
 from distutils.util import strtobool
 from os import getenv
-from typing import Union
+from typing import Union, Tuple
 
 from grpclib.client import Channel
 
@@ -45,9 +46,29 @@ def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
     elif isinstance(config, str):
         service_url = urllib.parse.urlsplit(config)
         is_https = service_url.scheme == "https"
+        if not service_url.hostname:
+            raise ValueError(f'Invalid url="{config}"')
         channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
     elif isinstance(config, ServerConfig):
         channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)
     else:
         raise NotImplementedError(f"config type={type(config)} not supported.")
     return channel
+
+
+def convert_to_epoch_seconds(valid_from: datetime, valid_until: datetime) -> Tuple[float, float]:
+    """
+    Convert provided datetime objects to seconds since the UNIX epoch - this works around windows strptime() limitations.
+    Args:
+        valid_from:
+        valid_until:
+
+    Returns:
+
+    """
+    valid_from = valid_from or datetime(1, 1, 1)
+    valid_until = valid_until or datetime(9999, 12, 31)
+    epoch = datetime(1970, 1, 1)
+    valid_from_epoch = (valid_from - epoch).total_seconds()
+    valid_until_epoch = (valid_until - epoch).total_seconds()
+    return valid_from_epoch, valid_until_epoch

@@ -122,6 +122,1174 @@ public final class ProviderOuterClass {
     // @@protoc_insertion_point(enum_scope:services.provider.v1.ParticipantType)
   }
 
+  public interface InviteOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.Invite)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string code = 2;</code>
+     * @return The code.
+     */
+    java.lang.String getCode();
+    /**
+     * <code>string code = 2;</code>
+     * @return The bytes for code.
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes();
+
+    /**
+     * <code>string created = 3;</code>
+     * @return The created.
+     */
+    java.lang.String getCreated();
+    /**
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
+     */
+    com.google.protobuf.ByteString
+        getCreatedBytes();
+
+    /**
+     * <code>string accepted = 4;</code>
+     * @return The accepted.
+     */
+    java.lang.String getAccepted();
+    /**
+     * <code>string accepted = 4;</code>
+     * @return The bytes for accepted.
+     */
+    com.google.protobuf.ByteString
+        getAcceptedBytes();
+
+    /**
+     * <code>string expires = 5;</code>
+     * @return The expires.
+     */
+    java.lang.String getExpires();
+    /**
+     * <code>string expires = 5;</code>
+     * @return The bytes for expires.
+     */
+    com.google.protobuf.ByteString
+        getExpiresBytes();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.Invite}
+   */
+  public static final class Invite extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.Invite)
+      InviteOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Invite.newBuilder() to construct.
+    private Invite(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Invite() {
+      id_ = "";
+      code_ = "";
+      created_ = "";
+      accepted_ = "";
+      expires_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Invite();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Invite(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              code_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              created_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              accepted_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              expires_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Invite_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Invite_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.Invite.class, trinsic.services.common.v1.ProviderOuterClass.Invite.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object code_;
+    /**
+     * <code>string code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public java.lang.String getCode() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        code_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string code = 2;</code>
+     * @return The bytes for code.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCodeBytes() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        code_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CREATED_FIELD_NUMBER = 3;
+    private volatile java.lang.Object created_;
+    /**
+     * <code>string created = 3;</code>
+     * @return The created.
+     */
+    @java.lang.Override
+    public java.lang.String getCreated() {
+      java.lang.Object ref = created_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        created_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string created = 3;</code>
+     * @return The bytes for created.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCreatedBytes() {
+      java.lang.Object ref = created_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        created_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ACCEPTED_FIELD_NUMBER = 4;
+    private volatile java.lang.Object accepted_;
+    /**
+     * <code>string accepted = 4;</code>
+     * @return The accepted.
+     */
+    @java.lang.Override
+    public java.lang.String getAccepted() {
+      java.lang.Object ref = accepted_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        accepted_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string accepted = 4;</code>
+     * @return The bytes for accepted.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAcceptedBytes() {
+      java.lang.Object ref = accepted_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        accepted_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int EXPIRES_FIELD_NUMBER = 5;
+    private volatile java.lang.Object expires_;
+    /**
+     * <code>string expires = 5;</code>
+     * @return The expires.
+     */
+    @java.lang.Override
+    public java.lang.String getExpires() {
+      java.lang.Object ref = expires_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        expires_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string expires = 5;</code>
+     * @return The bytes for expires.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getExpiresBytes() {
+      java.lang.Object ref = expires_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        expires_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, code_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, created_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(accepted_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accepted_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expires_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, expires_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, code_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(created_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, created_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(accepted_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accepted_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expires_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, expires_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.Invite)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.Invite other = (trinsic.services.common.v1.ProviderOuterClass.Invite) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getCode()
+          .equals(other.getCode())) return false;
+      if (!getCreated()
+          .equals(other.getCreated())) return false;
+      if (!getAccepted()
+          .equals(other.getAccepted())) return false;
+      if (!getExpires()
+          .equals(other.getExpires())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode().hashCode();
+      hash = (37 * hash) + CREATED_FIELD_NUMBER;
+      hash = (53 * hash) + getCreated().hashCode();
+      hash = (37 * hash) + ACCEPTED_FIELD_NUMBER;
+      hash = (53 * hash) + getAccepted().hashCode();
+      hash = (37 * hash) + EXPIRES_FIELD_NUMBER;
+      hash = (53 * hash) + getExpires().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.Invite prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.Invite}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.Invite)
+        trinsic.services.common.v1.ProviderOuterClass.InviteOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Invite_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Invite_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.Invite.class, trinsic.services.common.v1.ProviderOuterClass.Invite.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.Invite.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        code_ = "";
+
+        created_ = "";
+
+        accepted_ = "";
+
+        expires_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Invite_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Invite getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.Invite.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Invite build() {
+        trinsic.services.common.v1.ProviderOuterClass.Invite result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Invite buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.Invite result = new trinsic.services.common.v1.ProviderOuterClass.Invite(this);
+        result.id_ = id_;
+        result.code_ = code_;
+        result.created_ = created_;
+        result.accepted_ = accepted_;
+        result.expires_ = expires_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.Invite) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.Invite)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.Invite other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.Invite.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getCode().isEmpty()) {
+          code_ = other.code_;
+          onChanged();
+        }
+        if (!other.getCreated().isEmpty()) {
+          created_ = other.created_;
+          onChanged();
+        }
+        if (!other.getAccepted().isEmpty()) {
+          accepted_ = other.accepted_;
+          onChanged();
+        }
+        if (!other.getExpires().isEmpty()) {
+          expires_ = other.expires_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.Invite parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.Invite) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object code_ = "";
+      /**
+       * <code>string code = 2;</code>
+       * @return The code.
+       */
+      public java.lang.String getCode() {
+        java.lang.Object ref = code_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          code_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @return The bytes for code.
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes() {
+        java.lang.Object ref = code_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          code_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = getDefaultInstance().getCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @param value The bytes for code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object created_ = "";
+      /**
+       * <code>string created = 3;</code>
+       * @return The created.
+       */
+      public java.lang.String getCreated() {
+        java.lang.Object ref = created_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          created_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string created = 3;</code>
+       * @return The bytes for created.
+       */
+      public com.google.protobuf.ByteString
+          getCreatedBytes() {
+        java.lang.Object ref = created_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          created_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string created = 3;</code>
+       * @param value The created to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreated(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        created_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string created = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreated() {
+        
+        created_ = getDefaultInstance().getCreated();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string created = 3;</code>
+       * @param value The bytes for created to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreatedBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        created_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object accepted_ = "";
+      /**
+       * <code>string accepted = 4;</code>
+       * @return The accepted.
+       */
+      public java.lang.String getAccepted() {
+        java.lang.Object ref = accepted_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          accepted_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string accepted = 4;</code>
+       * @return The bytes for accepted.
+       */
+      public com.google.protobuf.ByteString
+          getAcceptedBytes() {
+        java.lang.Object ref = accepted_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          accepted_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string accepted = 4;</code>
+       * @param value The accepted to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccepted(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        accepted_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string accepted = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccepted() {
+        
+        accepted_ = getDefaultInstance().getAccepted();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string accepted = 4;</code>
+       * @param value The bytes for accepted to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAcceptedBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        accepted_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object expires_ = "";
+      /**
+       * <code>string expires = 5;</code>
+       * @return The expires.
+       */
+      public java.lang.String getExpires() {
+        java.lang.Object ref = expires_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          expires_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string expires = 5;</code>
+       * @return The bytes for expires.
+       */
+      public com.google.protobuf.ByteString
+          getExpiresBytes() {
+        java.lang.Object ref = expires_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          expires_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string expires = 5;</code>
+       * @param value The expires to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExpires(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        expires_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string expires = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearExpires() {
+        
+        expires_ = getDefaultInstance().getExpires();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string expires = 5;</code>
+       * @param value The bytes for expires to set.
+       * @return This builder for chaining.
+       */
+      public Builder setExpiresBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        expires_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.Invite)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.Invite)
+    private static final trinsic.services.common.v1.ProviderOuterClass.Invite DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.Invite();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.Invite getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Invite>
+        PARSER = new com.google.protobuf.AbstractParser<Invite>() {
+      @java.lang.Override
+      public Invite parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Invite(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Invite> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Invite> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.Invite getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface InviteRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.provider.v1.InviteRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -3313,6 +4481,14 @@ public final class ProviderOuterClass {
        * <code>Completed = 2;</code>
        */
       Completed(2),
+      /**
+       * <pre>
+       * The invite has expired
+       * </pre>
+       *
+       * <code>Expired = 3;</code>
+       */
+      Expired(3),
       UNRECOGNIZED(-1),
       ;
 
@@ -3340,6 +4516,14 @@ public final class ProviderOuterClass {
        * <code>Completed = 2;</code>
        */
       public static final int Completed_VALUE = 2;
+      /**
+       * <pre>
+       * The invite has expired
+       * </pre>
+       *
+       * <code>Expired = 3;</code>
+       */
+      public static final int Expired_VALUE = 3;
 
 
       public final int getNumber() {
@@ -3369,6 +4553,7 @@ public final class ProviderOuterClass {
           case 0: return Error;
           case 1: return InvitationSent;
           case 2: return Completed;
+          case 3: return Expired;
           default: return null;
         }
       }
@@ -3982,6 +5167,5015 @@ public final class ProviderOuterClass {
 
   }
 
+  public interface EcosystemOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.Ecosystem)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>string uri = 4;</code>
+     * @return The uri.
+     */
+    java.lang.String getUri();
+    /**
+     * <code>string uri = 4;</code>
+     * @return The bytes for uri.
+     */
+    com.google.protobuf.ByteString
+        getUriBytes();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.Ecosystem}
+   */
+  public static final class Ecosystem extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.Ecosystem)
+      EcosystemOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Ecosystem.newBuilder() to construct.
+    private Ecosystem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Ecosystem() {
+      id_ = "";
+      name_ = "";
+      description_ = "";
+      uri_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Ecosystem();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Ecosystem(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              uri_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Ecosystem_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Ecosystem_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.class, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int URI_FIELD_NUMBER = 4;
+    private volatile java.lang.Object uri_;
+    /**
+     * <code>string uri = 4;</code>
+     * @return The uri.
+     */
+    @java.lang.Override
+    public java.lang.String getUri() {
+      java.lang.Object ref = uri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uri_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string uri = 4;</code>
+     * @return The bytes for uri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUriBytes() {
+      java.lang.Object ref = uri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, uri_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, uri_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.Ecosystem)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.Ecosystem other = (trinsic.services.common.v1.ProviderOuterClass.Ecosystem) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getUri()
+          .equals(other.getUri())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + URI_FIELD_NUMBER;
+      hash = (53 * hash) + getUri().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.Ecosystem prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.Ecosystem}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.Ecosystem)
+        trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Ecosystem_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Ecosystem_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.Ecosystem.class, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.Ecosystem.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        name_ = "";
+
+        description_ = "";
+
+        uri_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_Ecosystem_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem build() {
+        trinsic.services.common.v1.ProviderOuterClass.Ecosystem result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.Ecosystem result = new trinsic.services.common.v1.ProviderOuterClass.Ecosystem(this);
+        result.id_ = id_;
+        result.name_ = name_;
+        result.description_ = description_;
+        result.uri_ = uri_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.Ecosystem) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.Ecosystem)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.Ecosystem other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        if (!other.getUri().isEmpty()) {
+          uri_ = other.uri_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.Ecosystem parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.Ecosystem) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 3;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object uri_ = "";
+      /**
+       * <code>string uri = 4;</code>
+       * @return The uri.
+       */
+      public java.lang.String getUri() {
+        java.lang.Object ref = uri_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          uri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string uri = 4;</code>
+       * @return The bytes for uri.
+       */
+      public com.google.protobuf.ByteString
+          getUriBytes() {
+        java.lang.Object ref = uri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string uri = 4;</code>
+       * @param value The uri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        uri_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uri = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUri() {
+        
+        uri_ = getDefaultInstance().getUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uri = 4;</code>
+       * @param value The bytes for uri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        uri_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.Ecosystem)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.Ecosystem)
+    private static final trinsic.services.common.v1.ProviderOuterClass.Ecosystem DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.Ecosystem();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.Ecosystem getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Ecosystem>
+        PARSER = new com.google.protobuf.AbstractParser<Ecosystem>() {
+      @java.lang.Override
+      public Ecosystem parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Ecosystem(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Ecosystem> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Ecosystem> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CreateEcosystemRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.CreateEcosystemRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string description = 2;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
+
+    /**
+     * <code>string uri = 3;</code>
+     * @return The uri.
+     */
+    java.lang.String getUri();
+    /**
+     * <code>string uri = 3;</code>
+     * @return The bytes for uri.
+     */
+    com.google.protobuf.ByteString
+        getUriBytes();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
+   */
+  public static final class CreateEcosystemRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.CreateEcosystemRequest)
+      CreateEcosystemRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CreateEcosystemRequest.newBuilder() to construct.
+    private CreateEcosystemRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CreateEcosystemRequest() {
+      name_ = "";
+      description_ = "";
+      uri_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CreateEcosystemRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CreateEcosystemRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              uri_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.class, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 2;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 2;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 2;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int URI_FIELD_NUMBER = 3;
+    private volatile java.lang.Object uri_;
+    /**
+     * <code>string uri = 3;</code>
+     * @return The uri.
+     */
+    @java.lang.Override
+    public java.lang.String getUri() {
+      java.lang.Object ref = uri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uri_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string uri = 3;</code>
+     * @return The bytes for uri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUriBytes() {
+      java.lang.Object ref = uri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, uri_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, uri_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest other = (trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest) obj;
+
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getUri()
+          .equals(other.getUri())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + URI_FIELD_NUMBER;
+      hash = (53 * hash) + getUri().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.CreateEcosystemRequest)
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.class, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        description_ = "";
+
+        uri_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest build() {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest result = new trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest(this);
+        result.name_ = name_;
+        result.description_ = description_;
+        result.uri_ = uri_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
+        }
+        if (!other.getUri().isEmpty()) {
+          uri_ = other.uri_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 2;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 2;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 2;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 2;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object uri_ = "";
+      /**
+       * <code>string uri = 3;</code>
+       * @return The uri.
+       */
+      public java.lang.String getUri() {
+        java.lang.Object ref = uri_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          uri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string uri = 3;</code>
+       * @return The bytes for uri.
+       */
+      public com.google.protobuf.ByteString
+          getUriBytes() {
+        java.lang.Object ref = uri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          uri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string uri = 3;</code>
+       * @param value The uri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        uri_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uri = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUri() {
+        
+        uri_ = getDefaultInstance().getUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string uri = 3;</code>
+       * @param value The bytes for uri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        uri_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.CreateEcosystemRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.CreateEcosystemRequest)
+    private static final trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CreateEcosystemRequest>
+        PARSER = new com.google.protobuf.AbstractParser<CreateEcosystemRequest>() {
+      @java.lang.Override
+      public CreateEcosystemRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CreateEcosystemRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CreateEcosystemRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateEcosystemRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CreateEcosystemResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.CreateEcosystemResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+   */
+  public static final class CreateEcosystemResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.CreateEcosystemResponse)
+      CreateEcosystemResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use CreateEcosystemResponse.newBuilder() to construct.
+    private CreateEcosystemResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private CreateEcosystemResponse() {
+      id_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new CreateEcosystemResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CreateEcosystemResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.class, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse other = (trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.CreateEcosystemResponse)
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.class, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_CreateEcosystemResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse build() {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse result = new trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse(this);
+        result.id_ = id_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.CreateEcosystemResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.CreateEcosystemResponse)
+    private static final trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CreateEcosystemResponse>
+        PARSER = new com.google.protobuf.AbstractParser<CreateEcosystemResponse>() {
+      @java.lang.Override
+      public CreateEcosystemResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CreateEcosystemResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<CreateEcosystemResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CreateEcosystemResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ListEcosystemsRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.ListEcosystemsRequest)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
+   */
+  public static final class ListEcosystemsRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.ListEcosystemsRequest)
+      ListEcosystemsRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ListEcosystemsRequest.newBuilder() to construct.
+    private ListEcosystemsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ListEcosystemsRequest() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ListEcosystemsRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ListEcosystemsRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest other = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.ListEcosystemsRequest)
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest build() {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest result = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.ListEcosystemsRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.ListEcosystemsRequest)
+    private static final trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ListEcosystemsRequest>
+        PARSER = new com.google.protobuf.AbstractParser<ListEcosystemsRequest>() {
+      @java.lang.Override
+      public ListEcosystemsRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ListEcosystemsRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ListEcosystemsRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListEcosystemsRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ListEcosystemsResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.ListEcosystemsResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> 
+        getEcosystemList();
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index);
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    int getEcosystemCount();
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+        getEcosystemOrBuilderList();
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
+   */
+  public static final class ListEcosystemsResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.ListEcosystemsResponse)
+      ListEcosystemsResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ListEcosystemsResponse.newBuilder() to construct.
+    private ListEcosystemsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ListEcosystemsResponse() {
+      ecosystem_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ListEcosystemsResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ListEcosystemsResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                ecosystem_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              ecosystem_.add(
+                  input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          ecosystem_ = java.util.Collections.unmodifiableList(ecosystem_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.Builder.class);
+    }
+
+    public static final int ECOSYSTEM_FIELD_NUMBER = 1;
+    private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystem_;
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList() {
+      return ecosystem_;
+    }
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+        getEcosystemOrBuilderList() {
+      return ecosystem_;
+    }
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public int getEcosystemCount() {
+      return ecosystem_.size();
+    }
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index) {
+      return ecosystem_.get(index);
+    }
+    /**
+     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
+        int index) {
+      return ecosystem_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < ecosystem_.size(); i++) {
+        output.writeMessage(1, ecosystem_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < ecosystem_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, ecosystem_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse other = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) obj;
+
+      if (!getEcosystemList()
+          .equals(other.getEcosystemList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEcosystemCount() > 0) {
+        hash = (37 * hash) + ECOSYSTEM_FIELD_NUMBER;
+        hash = (53 * hash) + getEcosystemList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.ListEcosystemsResponse)
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getEcosystemFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ecosystemBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse build() {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse result = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse(this);
+        int from_bitField0_ = bitField0_;
+        if (ecosystemBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            ecosystem_ = java.util.Collections.unmodifiableList(ecosystem_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.ecosystem_ = ecosystem_;
+        } else {
+          result.ecosystem_ = ecosystemBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance()) return this;
+        if (ecosystemBuilder_ == null) {
+          if (!other.ecosystem_.isEmpty()) {
+            if (ecosystem_.isEmpty()) {
+              ecosystem_ = other.ecosystem_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEcosystemIsMutable();
+              ecosystem_.addAll(other.ecosystem_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.ecosystem_.isEmpty()) {
+            if (ecosystemBuilder_.isEmpty()) {
+              ecosystemBuilder_.dispose();
+              ecosystemBuilder_ = null;
+              ecosystem_ = other.ecosystem_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              ecosystemBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getEcosystemFieldBuilder() : null;
+            } else {
+              ecosystemBuilder_.addAllMessages(other.ecosystem_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystem_ =
+        java.util.Collections.emptyList();
+      private void ensureEcosystemIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          ecosystem_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>(ecosystem_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemBuilder_;
+
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList() {
+        if (ecosystemBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(ecosystem_);
+        } else {
+          return ecosystemBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public int getEcosystemCount() {
+        if (ecosystemBuilder_ == null) {
+          return ecosystem_.size();
+        } else {
+          return ecosystemBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index) {
+        if (ecosystemBuilder_ == null) {
+          return ecosystem_.get(index);
+        } else {
+          return ecosystemBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder setEcosystem(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemIsMutable();
+          ecosystem_.set(index, value);
+          onChanged();
+        } else {
+          ecosystemBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder setEcosystem(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemBuilder_ == null) {
+          ensureEcosystemIsMutable();
+          ecosystem_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder addEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemIsMutable();
+          ecosystem_.add(value);
+          onChanged();
+        } else {
+          ecosystemBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder addEcosystem(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEcosystemIsMutable();
+          ecosystem_.add(index, value);
+          onChanged();
+        } else {
+          ecosystemBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder addEcosystem(
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemBuilder_ == null) {
+          ensureEcosystemIsMutable();
+          ecosystem_.add(builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder addEcosystem(
+          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemBuilder_ == null) {
+          ensureEcosystemIsMutable();
+          ecosystem_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          ecosystemBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder addAllEcosystem(
+          java.lang.Iterable<? extends trinsic.services.common.v1.ProviderOuterClass.Ecosystem> values) {
+        if (ecosystemBuilder_ == null) {
+          ensureEcosystemIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, ecosystem_);
+          onChanged();
+        } else {
+          ecosystemBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder clearEcosystem() {
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          ecosystemBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder removeEcosystem(int index) {
+        if (ecosystemBuilder_ == null) {
+          ensureEcosystemIsMutable();
+          ecosystem_.remove(index);
+          onChanged();
+        } else {
+          ecosystemBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder(
+          int index) {
+        return getEcosystemFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
+          int index) {
+        if (ecosystemBuilder_ == null) {
+          return ecosystem_.get(index);  } else {
+          return ecosystemBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+           getEcosystemOrBuilderList() {
+        if (ecosystemBuilder_ != null) {
+          return ecosystemBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(ecosystem_);
+        }
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder() {
+        return getEcosystemFieldBuilder().addBuilder(
+            trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder(
+          int index) {
+        return getEcosystemFieldBuilder().addBuilder(
+            index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder> 
+           getEcosystemBuilderList() {
+        return getEcosystemFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+          getEcosystemFieldBuilder() {
+        if (ecosystemBuilder_ == null) {
+          ecosystemBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
+                  ecosystem_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          ecosystem_ = null;
+        }
+        return ecosystemBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.ListEcosystemsResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.ListEcosystemsResponse)
+    private static final trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ListEcosystemsResponse>
+        PARSER = new com.google.protobuf.AbstractParser<ListEcosystemsResponse>() {
+      @java.lang.Override
+      public ListEcosystemsResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ListEcosystemsResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ListEcosystemsResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ListEcosystemsResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AcceptInviteRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.AcceptInviteRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string code = 2;</code>
+     * @return The code.
+     */
+    java.lang.String getCode();
+    /**
+     * <code>string code = 2;</code>
+     * @return The bytes for code.
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.AcceptInviteRequest}
+   */
+  public static final class AcceptInviteRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.AcceptInviteRequest)
+      AcceptInviteRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AcceptInviteRequest.newBuilder() to construct.
+    private AcceptInviteRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AcceptInviteRequest() {
+      id_ = "";
+      code_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AcceptInviteRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AcceptInviteRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              code_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object code_;
+    /**
+     * <code>string code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public java.lang.String getCode() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        code_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string code = 2;</code>
+     * @return The bytes for code.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCodeBytes() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        code_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, code_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, code_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest other = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getCode()
+          .equals(other.getCode())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.AcceptInviteRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.AcceptInviteRequest)
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        id_ = "";
+
+        code_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest build() {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest result = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest(this);
+        result.id_ = id_;
+        result.code_ = code_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getCode().isEmpty()) {
+          code_ = other.code_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object code_ = "";
+      /**
+       * <code>string code = 2;</code>
+       * @return The code.
+       */
+      public java.lang.String getCode() {
+        java.lang.Object ref = code_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          code_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @return The bytes for code.
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes() {
+        java.lang.Object ref = code_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          code_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = getDefaultInstance().getCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string code = 2;</code>
+       * @param value The bytes for code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.AcceptInviteRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.AcceptInviteRequest)
+    private static final trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcceptInviteRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AcceptInviteRequest>() {
+      @java.lang.Override
+      public AcceptInviteRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AcceptInviteRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcceptInviteRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcceptInviteRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AcceptInviteResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.AcceptInviteResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * @return Whether the ecosystem field is set.
+     */
+    boolean hasEcosystem();
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * @return The ecosystem.
+     */
+    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem();
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder();
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+   */
+  public static final class AcceptInviteResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:services.provider.v1.AcceptInviteResponse)
+      AcceptInviteResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AcceptInviteResponse.newBuilder() to construct.
+    private AcceptInviteResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AcceptInviteResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AcceptInviteResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AcceptInviteResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 18: {
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder subBuilder = null;
+              if (ecosystem_ != null) {
+                subBuilder = ecosystem_.toBuilder();
+              }
+              ecosystem_ = input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ecosystem_);
+                ecosystem_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.Builder.class);
+    }
+
+    public static final int ECOSYSTEM_FIELD_NUMBER = 2;
+    private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * @return Whether the ecosystem field is set.
+     */
+    @java.lang.Override
+    public boolean hasEcosystem() {
+      return ecosystem_ != null;
+    }
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * @return The ecosystem.
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
+      return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+    }
+    /**
+     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
+      return getEcosystem();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ecosystem_ != null) {
+        output.writeMessage(2, getEcosystem());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ecosystem_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getEcosystem());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse)) {
+        return super.equals(obj);
+      }
+      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse other = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) obj;
+
+      if (hasEcosystem() != other.hasEcosystem()) return false;
+      if (hasEcosystem()) {
+        if (!getEcosystem()
+            .equals(other.getEcosystem())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEcosystem()) {
+        hash = (37 * hash) + ECOSYSTEM_FIELD_NUMBER;
+        hash = (53 * hash) + getEcosystem().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.AcceptInviteResponse)
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.Builder.class);
+      }
+
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = null;
+        } else {
+          ecosystem_ = null;
+          ecosystemBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse build() {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse result = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse(this);
+        if (ecosystemBuilder_ == null) {
+          result.ecosystem_ = ecosystem_;
+        } else {
+          result.ecosystem_ = ecosystemBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance()) return this;
+        if (other.hasEcosystem()) {
+          mergeEcosystem(other.getEcosystem());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemBuilder_;
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * @return Whether the ecosystem field is set.
+       */
+      public boolean hasEcosystem() {
+        return ecosystemBuilder_ != null || ecosystem_ != null;
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * @return The ecosystem.
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
+        if (ecosystemBuilder_ == null) {
+          return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+        } else {
+          return ecosystemBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public Builder setEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ecosystem_ = value;
+          onChanged();
+        } else {
+          ecosystemBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public Builder setEcosystem(
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = builderForValue.build();
+          onChanged();
+        } else {
+          ecosystemBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public Builder mergeEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (ecosystem_ != null) {
+            ecosystem_ =
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.newBuilder(ecosystem_).mergeFrom(value).buildPartial();
+          } else {
+            ecosystem_ = value;
+          }
+          onChanged();
+        } else {
+          ecosystemBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public Builder clearEcosystem() {
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = null;
+          onChanged();
+        } else {
+          ecosystem_ = null;
+          ecosystemBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder() {
+        
+        onChanged();
+        return getEcosystemFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
+        if (ecosystemBuilder_ != null) {
+          return ecosystemBuilder_.getMessageOrBuilder();
+        } else {
+          return ecosystem_ == null ?
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+        }
+      }
+      /**
+       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+          getEcosystemFieldBuilder() {
+        if (ecosystemBuilder_ == null) {
+          ecosystemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
+                  getEcosystem(),
+                  getParentForChildren(),
+                  isClean());
+          ecosystem_ = null;
+        }
+        return ecosystemBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.AcceptInviteResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.provider.v1.AcceptInviteResponse)
+    private static final trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse();
+    }
+
+    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcceptInviteResponse>
+        PARSER = new com.google.protobuf.AbstractParser<AcceptInviteResponse>() {
+      @java.lang.Override
+      public AcceptInviteResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AcceptInviteResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcceptInviteResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcceptInviteResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_Invite_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_Invite_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_services_provider_v1_InviteRequest_descriptor;
   private static final 
@@ -4007,6 +10201,41 @@ public final class ProviderOuterClass {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_Ecosystem_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_Ecosystem_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_CreateEcosystemRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_CreateEcosystemRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_CreateEcosystemResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4018,42 +10247,66 @@ public final class ProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n#services/provider/v1/provider.proto\022\024s" +
       "ervices.provider.v1\032\037services/common/v1/" +
-      "common.proto\"\376\001\n\rInviteRequest\022:\n\013partic" +
-      "ipant\030\001 \001(\0162%.services.provider.v1.Parti" +
-      "cipantType\022\023\n\013description\030\002 \001(\t\022\017\n\005email" +
-      "\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000\022S\n\022didcomm_inv" +
-      "itation\030\007 \001(\01325.services.provider.v1.Inv" +
-      "iteRequest.DidCommInvitationH\000\032\023\n\021DidCom" +
-      "mInvitationB\020\n\016contact_method\"[\n\016InviteR" +
-      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
-      "n.v1.ResponseStatus\022\025\n\rinvitation_id\030\n \001" +
-      "(\t\"0\n\027InvitationStatusRequest\022\025\n\rinvitat" +
-      "ion_id\030\001 \001(\t\"\261\001\n\030InvitationStatusRespons" +
-      "e\022E\n\006status\030\001 \001(\01625.services.provider.v1" +
-      ".InvitationStatusResponse.Status\022\026\n\016stat" +
-      "us_details\030\002 \001(\t\"6\n\006Status\022\t\n\005Error\020\000\022\022\n" +
-      "\016InvitationSent\020\001\022\r\n\tCompleted\020\002*U\n\017Part" +
-      "icipantType\022\037\n\033participant_type_individu" +
-      "al\020\000\022!\n\035participant_type_organization\020\0012" +
-      "\263\002\n\010Provider\022S\n\006Invite\022#.services.provid" +
-      "er.v1.InviteRequest\032$.services.provider." +
-      "v1.InviteResponse\022_\n\022InviteWithWorkflow\022" +
-      "#.services.provider.v1.InviteRequest\032$.s" +
-      "ervices.provider.v1.InviteResponse\022q\n\020In" +
-      "vitationStatus\022-.services.provider.v1.In" +
-      "vitationStatusRequest\032..services.provide" +
-      "r.v1.InvitationStatusResponseBT\n\032trinsic" +
-      ".services.common.v1Z\031github.com/trinsic-" +
-      "id/sdk\252\002\032Trinsic.Services.Common.V1b\006pro" +
-      "to3"
+      "common.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004co" +
+      "de\030\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 " +
+      "\001(\t\022\017\n\007expires\030\005 \001(\t\"\376\001\n\rInviteRequest\022:" +
+      "\n\013participant\030\001 \001(\0162%.services.provider." +
+      "v1.ParticipantType\022\023\n\013description\030\002 \001(\t\022" +
+      "\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000\022S\n\022did" +
+      "comm_invitation\030\007 \001(\01325.services.provide" +
+      "r.v1.InviteRequest.DidCommInvitationH\000\032\023" +
+      "\n\021DidCommInvitationB\020\n\016contact_method\"[\n" +
+      "\016InviteResponse\0222\n\006status\030\001 \001(\0162\".servic" +
+      "es.common.v1.ResponseStatus\022\025\n\rinvitatio" +
+      "n_id\030\n \001(\t\"0\n\027InvitationStatusRequest\022\025\n" +
+      "\rinvitation_id\030\001 \001(\t\"\276\001\n\030InvitationStatu" +
+      "sResponse\022E\n\006status\030\001 \001(\01625.services.pro" +
+      "vider.v1.InvitationStatusResponse.Status" +
+      "\022\026\n\016status_details\030\002 \001(\t\"C\n\006Status\022\t\n\005Er" +
+      "ror\020\000\022\022\n\016InvitationSent\020\001\022\r\n\tCompleted\020\002" +
+      "\022\013\n\007Expired\020\003\"G\n\tEcosystem\022\n\n\002id\030\001 \001(\t\022\014" +
+      "\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\013\n\003uri" +
+      "\030\004 \001(\t\"H\n\026CreateEcosystemRequest\022\014\n\004name" +
+      "\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\013\n\003uri\030\003 \001(\t" +
+      "\"%\n\027CreateEcosystemResponse\022\n\n\002id\030\001 \001(\t\"" +
+      "\027\n\025ListEcosystemsRequest\"L\n\026ListEcosyste" +
+      "msResponse\0222\n\tecosystem\030\001 \003(\0132\037.services" +
+      ".provider.v1.Ecosystem\"/\n\023AcceptInviteRe" +
+      "quest\022\n\n\002id\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"J\n\024Accep" +
+      "tInviteResponse\0222\n\tecosystem\030\002 \001(\0132\037.ser" +
+      "vices.provider.v1.Ecosystem*U\n\017Participa" +
+      "ntType\022\037\n\033participant_type_individual\020\000\022" +
+      "!\n\035participant_type_organization\020\0012\226\004\n\010P" +
+      "rovider\022n\n\017CreateEcosystem\022,.services.pr" +
+      "ovider.v1.CreateEcosystemRequest\032-.servi" +
+      "ces.provider.v1.CreateEcosystemResponse\022" +
+      "k\n\016ListEcosystems\022+.services.provider.v1" +
+      ".ListEcosystemsRequest\032,.services.provid" +
+      "er.v1.ListEcosystemsResponse\022S\n\006Invite\022#" +
+      ".services.provider.v1.InviteRequest\032$.se" +
+      "rvices.provider.v1.InviteResponse\022e\n\014Acc" +
+      "eptInvite\022).services.provider.v1.AcceptI" +
+      "nviteRequest\032*.services.provider.v1.Acce" +
+      "ptInviteResponse\022q\n\020InvitationStatus\022-.s" +
+      "ervices.provider.v1.InvitationStatusRequ" +
+      "est\032..services.provider.v1.InvitationSta" +
+      "tusResponseBV\n\032trinsic.services.common.v" +
+      "1Z\031github.com/trinsic-id/sdk\252\002\034Trinsic.S" +
+      "ervices.Provider.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
         });
-    internal_static_services_provider_v1_InviteRequest_descriptor =
+    internal_static_services_provider_v1_Invite_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_services_provider_v1_Invite_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_Invite_descriptor,
+        new java.lang.String[] { "Id", "Code", "Created", "Accepted", "Expires", });
+    internal_static_services_provider_v1_InviteRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_services_provider_v1_InviteRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InviteRequest_descriptor,
@@ -4065,23 +10318,65 @@ public final class ProviderOuterClass {
         internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor,
         new java.lang.String[] { });
     internal_static_services_provider_v1_InviteResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_services_provider_v1_InviteResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InviteResponse_descriptor,
         new java.lang.String[] { "Status", "InvitationId", });
     internal_static_services_provider_v1_InvitationStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_services_provider_v1_InvitationStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InvitationStatusRequest_descriptor,
         new java.lang.String[] { "InvitationId", });
     internal_static_services_provider_v1_InvitationStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InvitationStatusResponse_descriptor,
         new java.lang.String[] { "Status", "StatusDetails", });
+    internal_static_services_provider_v1_Ecosystem_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_services_provider_v1_Ecosystem_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_Ecosystem_descriptor,
+        new java.lang.String[] { "Id", "Name", "Description", "Uri", });
+    internal_static_services_provider_v1_CreateEcosystemRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_services_provider_v1_CreateEcosystemRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_CreateEcosystemRequest_descriptor,
+        new java.lang.String[] { "Name", "Description", "Uri", });
+    internal_static_services_provider_v1_CreateEcosystemResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_CreateEcosystemResponse_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_services_provider_v1_ListEcosystemsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_ListEcosystemsRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_services_provider_v1_ListEcosystemsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_ListEcosystemsResponse_descriptor,
+        new java.lang.String[] { "Ecosystem", });
+    internal_static_services_provider_v1_AcceptInviteRequest_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_AcceptInviteRequest_descriptor,
+        new java.lang.String[] { "Id", "Code", });
+    internal_static_services_provider_v1_AcceptInviteResponse_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_provider_v1_AcceptInviteResponse_descriptor,
+        new java.lang.String[] { "Ecosystem", });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
   }
 

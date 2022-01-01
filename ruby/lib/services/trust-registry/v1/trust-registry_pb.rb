@@ -24,7 +24,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :options, :message, 5, "services.common.v1.RequestOptions"
     end
     add_message "services.trustregistry.v1.SearchRegistryResponse" do
-      repeated :items, :message, 1, "services.common.v1.JsonPayload"
+      optional :items_json, :string, 1
       optional :has_more, :bool, 2
       optional :count, :int32, 3
       optional :continuation_token, :string, 4
@@ -39,7 +39,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :valid_from_utc, :uint64, 11
       optional :valid_until_utc, :uint64, 12
       optional :governance_framework_uri, :string, 20
-      optional :options, :message, 100, "services.common.v1.RequestOptions"
       oneof :authority do
         optional :did_uri, :string, 1
         optional :x509_cert, :string, 2
@@ -47,14 +46,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.trustregistry.v1.RegisterIssuerResponse" do
       optional :status, :enum, 1, "services.common.v1.ResponseStatus"
-      optional :response_data, :message, 2, "services.common.v1.JsonPayload"
     end
     add_message "services.trustregistry.v1.RegisterVerifierRequest" do
       optional :presentation_type_uri, :string, 10
       optional :valid_from_utc, :uint64, 11
       optional :valid_until_utc, :uint64, 12
       optional :governance_framework_uri, :string, 20
-      optional :options, :message, 100, "services.common.v1.RequestOptions"
       oneof :authority do
         optional :did_uri, :string, 1
         optional :x509_cert, :string, 2
@@ -62,7 +59,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.trustregistry.v1.RegisterVerifierResponse" do
       optional :status, :enum, 1, "services.common.v1.ResponseStatus"
-      optional :response_data, :message, 2, "services.common.v1.JsonPayload"
     end
     add_message "services.trustregistry.v1.UnregisterIssuerRequest" do
       optional :credential_type_uri, :string, 10
@@ -95,8 +91,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.CheckIssuerStatusResponse" do
-      optional :governance_framework_uri, :string, 1
-      optional :status, :enum, 4, "services.trustregistry.v1.RegistrationStatus"
+      optional :status, :enum, 1, "services.trustregistry.v1.RegistrationStatus"
     end
     add_message "services.trustregistry.v1.CheckVerifierStatusRequest" do
       optional :governance_framework_uri, :string, 1
@@ -107,15 +102,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.CheckVerifierStatusResponse" do
-      optional :governance_framework_uri, :string, 1
-      optional :status, :enum, 4, "services.trustregistry.v1.RegistrationStatus"
+      optional :status, :enum, 1, "services.trustregistry.v1.RegistrationStatus"
     end
     add_message "services.trustregistry.v1.FetchDataRequest" do
       optional :governance_framework_uri, :string, 1
       optional :query, :string, 2
     end
     add_message "services.trustregistry.v1.FetchDataResponse" do
-      optional :response, :message, 1, "services.common.v1.JsonPayload"
+      optional :response_json, :string, 1
+      optional :has_more_results, :bool, 2
+      optional :continuation_token, :string, 3
     end
     add_enum "services.trustregistry.v1.RegistrationStatus" do
       value :CURRENT, 0

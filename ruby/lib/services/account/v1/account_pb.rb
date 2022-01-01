@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'services/common/v1/common_pb'
+require 'services/provider/v1/provider_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/account/v1/account.proto", :syntax => :proto3) do
     add_message "services.account.v1.SignInRequest" do
@@ -34,6 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.account.v1.InfoResponse" do
       optional :details, :message, 1, "services.account.v1.AccountDetails"
+      repeated :ecosystems, :message, 2, "services.provider.v1.Ecosystem"
     end
     add_message "services.account.v1.ListDevicesRequest" do
     end

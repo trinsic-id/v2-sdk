@@ -4,15 +4,16 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
 func GetBasePath() string {
@@ -36,45 +37,12 @@ func GetTestServerChannel() *grpc.ClientConn {
 	return channel
 }
 
-func TestServiceBase_SetProfile(t *testing.T) {
-	assert := assert.New(t)
-	base, err := CreateServiceBase(nil,TrinsicTestConfig(), GetTestServerChannel())
-	failError(t, "error creating service base", err)
-	// No profile set, should be an error
-	md, err := base.BuildMetadata(nil)
-	if !assert.EqualErrorf(err, "cannot call authenticated endpoint: profile must be set", "cannot call authenticated endpoint: profile must be set") {
-		return
-	}
-	if !assert.Nil(md) {
-		return
-	}
-
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), GetTestServerChannel())
-	if !assert.Nil(err) {
-		return
-	}
-	demoWallet, _, err := accountService.SignIn(context.Background(), nil)
-	if !assert.Nil(err) {
-		return
-	}
-
-	base.SetProfile(demoWallet)
-	if !assert.NoError(err) {
-		return
-	}
-	md, err = base.BuildMetadata(nil)
-	if !assert.NoError(err) {
-		return
-	}
-	assert.NotNil(md)
-}
-
-func TestVaccineCredentials(t *testing.T) {
-	assert := assert.New(t)
+func TestVaccineCredentialsDemo(t *testing.T) {
+	assert2 := assert.New(t)
 	// Open in background
 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), channel)
-	if !assert.Nil(err) {
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
 		return
 	}
 	if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
@@ -84,19 +52,19 @@ func TestVaccineCredentials(t *testing.T) {
 	// Create 3 different profiles for each participant in the scenario
 	allison, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(allison) {
+	if !assert2.NotNil(allison) {
 		return
 	}
 
 	clinic, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(clinic) {
+	if !assert2.NotNil(clinic) {
 		return
 	}
 
 	airline, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
-	if !assert.NotNil(airline) {
+	if !assert2.NotNil(airline) {
 		return
 	}
 
@@ -162,40 +130,113 @@ func TestVaccineCredentials(t *testing.T) {
 	}
 }
 
-func TestProviderService_InviteParticipant(t *testing.T) {
-	assert := assert.New(t)
-	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	accountService, err := CreateAccountService(nil,TrinsicTestConfig(), nil)
-	if !assert.Nil(err) {
+func TestTrustRegistryDemo(t *testing.T) {
+	assert2, channel, err, profile, done := createAccountAndSignIn(t)
+	if done {
 		return
 	}
+	service, err := CreateTrustRegistryService(profile, TrinsicTestConfig(), channel)
 
-	fmt.Printf("%+v\n", accountService)
-
-	wallet, _, err := accountService.SignIn(context.Background(), nil)
-	if !assert.Nil(err) || !assert.NotNil(wallet) {
-		return
-	}
-	fmt.Printf("%+v\n", wallet)
-
-	providerService, err := CreateProviderService(nil,TrinsicTestConfig(), GetTestServerChannel())
-	if !assert.Nil(err) {
-		return
-	}
-
-	// The issue was not throwing an error that the profile isn't set, but we don't need a wallet profile, so use a
-	// context without metadata attached. See method definition.
-	_, err = providerService.InviteParticipant(context.Background(), &sdk.InviteRequest{
-		Participant: sdk.ParticipantType_participant_type_individual,
-		Description: "I dunno",
-		ContactMethod: &sdk.InviteRequest_Email{
-			Email: "does.not.exist@trinsic.id",
-		},
+	// register issuer
+	didUri := "did:example:test"
+	typeUri := "https://schema.org/Card"
+	frameworkUri := "https://example.com"
+	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
+		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didUri},
+		CredentialTypeUri:      typeUri,
+		GovernanceFrameworkUri: frameworkUri,
 	})
-	//if err != nil {
-	//	panic(err)
-	//}
-	//fmt.Printf("%+v\n", inviteResponse)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
+		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didUri},
+		PresentationTypeUri:    typeUri,
+		GovernanceFrameworkUri: frameworkUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+
+	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
+		GovernanceFrameworkUri: frameworkUri,
+		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didUri},
+		CredentialTypeUri:      typeUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
+
+	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
+		GovernanceFrameworkUri: frameworkUri,
+		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didUri},
+		PresentationTypeUri:    typeUri,
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
+
+	ecosystemList, err := service.SearchRegistry(context.Background(), "")
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(ecosystemList)
+	assert2.NotEmpty(ecosystemList)
+}
+
+func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn, error, *sdk.AccountProfile, bool) {
+	assert2 := assert.New(t)
+	// Open in background
+	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	profile, _, err := accountService.SignIn(context.Background(), nil)
+	if !assert2.Nil(err) {
+		return nil, nil, nil, nil, true
+	}
+	return assert2, channel, err, profile, false
+}
+
+func TestEcosystemDemo(t *testing.T) {
+	assert2, channel, err, profile, done := createAccountAndSignIn(t)
+	if done {
+		return
+	}
+	service, err := CreateProviderService(profile, TrinsicTestConfig(), channel)
+
+	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
+		Name:        "Test Ecosystem",
+		Description: "My ecosystem",
+		Uri:         "https://example.com",
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(actualCreate)
+	assert2.NotNil(actualCreate.Id)
+	assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
+
+	// test list ecosystems
+	actualList, err := service.ListEcosystems(context.Background())
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(actualList)
+	assert2.NotEmpty(actualList)
+}
+func TestCreateChannelUrlFromConfig(t *testing.T) {
+	assert2 := assert.New(t)
+	if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), "Default is production stack") {
+		return
+	}
 }
 
 func failError(t *testing.T, message string, err error) {

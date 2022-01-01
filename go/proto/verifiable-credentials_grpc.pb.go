@@ -19,7 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VerifiableCredentialClient interface {
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
-	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error)
+	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error)
 	CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error)
 	VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
@@ -42,8 +42,8 @@ func (c *verifiableCredentialClient) Issue(ctx context.Context, in *IssueRequest
 	return out, nil
 }
 
-func (c *verifiableCredentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueResponse, error) {
-	out := new(IssueResponse)
+func (c *verifiableCredentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error) {
+	out := new(IssueFromTemplateResponse)
 	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -83,7 +83,7 @@ func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, 
 // for forward compatibility
 type VerifiableCredentialServer interface {
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
-	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error)
+	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error)
 	CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error)
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
@@ -97,7 +97,7 @@ type UnimplementedVerifiableCredentialServer struct {
 func (UnimplementedVerifiableCredentialServer) Issue(context.Context, *IssueRequest) (*IssueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Issue not implemented")
 }
-func (UnimplementedVerifiableCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueResponse, error) {
+func (UnimplementedVerifiableCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueFromTemplate not implemented")
 }
 func (UnimplementedVerifiableCredentialServer) CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error) {
