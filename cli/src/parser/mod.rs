@@ -1,3 +1,4 @@
+use crate::services::Service;
 use clap::ArgMatches;
 
 pub mod account;
@@ -6,6 +7,7 @@ pub mod didcomm;
 pub mod didkey;
 pub mod issuer;
 pub mod provider;
+pub mod template;
 pub mod trustregistry;
 pub mod wallet;
 
@@ -58,20 +60,13 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .subcommand_matches("trust-registry")
                 .expect("Error parsing request"),
         ));
+    } else if args.is_present("template") {
+        return Service::Template(template::parse(
+            &args
+                .subcommand_matches("template")
+                .expect("Error parsing request"),
+        ));
     } else {
         Service::Unknown
     }
-}
-
-#[derive(Debug, PartialEq)]
-pub enum Service<'a> {
-    DIDComm(didcomm::Command<'a>),
-    DIDKey(didkey::Command<'a>),
-    Wallet(wallet::Command<'a>),
-    VerifiableCredential(issuer::Command<'a>),
-    Provider(provider::Command<'a>),
-    Config(config::Command<'a>),
-    Account(account::Command<'a>),
-    TrustRegistry(trustregistry::Command),
-    Unknown,
 }

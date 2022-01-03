@@ -5,8 +5,7 @@ pub mod services;
 extern crate clap;
 use clap::{App, ArgMatches};
 use colored::Colorize;
-use parser::Service;
-use services::config::DefaultConfig;
+use services::{config::DefaultConfig, Service};
 use yaml_rust::Yaml;
 
 pub static mut DEBUG: bool = false;
@@ -49,7 +48,12 @@ mod test {
     fn run_custom_command() {
         let yaml = load_yaml!("cli.yaml");
         let matches = App::from_yaml(yaml)
-            .get_matches_from_safe(vec!["trinsic", "config", "--server-endpoint", "example.com"])
+            .get_matches_from_safe(vec![
+                "trinsic",
+                "config",
+                "--server-endpoint",
+                "example.com",
+            ])
             .unwrap();
 
         process(yaml, matches)
