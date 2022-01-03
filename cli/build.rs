@@ -23,6 +23,7 @@ fn main() {
                 "../proto/services/debug/v1/debug.proto",
                 "../proto/services/common/v1/common.proto",
                 "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
+                "../proto/services/verifiable-credentials/templates/v1/templates.proto",
                 "../proto/services/universal-wallet/v1/universal-wallet.proto",
                 "../proto/services/provider/v1/provider.proto",
                 "../proto/services/account/v1/account.proto",
@@ -64,6 +65,10 @@ fn main() {
     move_file!(
         "./src/proto/services.verifiablecredentials.v1.rs",
         "./src/proto/services/verifiablecredentials/v1/mod.rs"
+    );
+    move_file!(
+        "./src/proto/services.verifiablecredentials.templates.v1.rs",
+        "./src/proto/services/verifiablecredentials/templates/v1/mod.rs"
     );
 }
 
