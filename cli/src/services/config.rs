@@ -65,7 +65,7 @@ impl Into<Bytes> for &ConfigServer {
 pub enum Error {
     IOError,
     SerializationError,
-    APIError(Status),
+    APIError(String),
     UnknownCommand,
 }
 
@@ -255,7 +255,7 @@ impl Interceptor for DefaultConfig {
         // read the currently configured profile
         let profile: AccountProfile = self.read_profile().unwrap();
 
-        // generate nonce by combining the current unix epoch timestam
+        // generate nonce by combining the current unix epoch timestamp
         // and a hash of the request payload
         let nonce = Nonce {
             timestamp: SystemTime::now()

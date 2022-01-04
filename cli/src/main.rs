@@ -70,10 +70,10 @@ impl Display for JsonPayload {
 #[allow(unused_must_use)]
 fn main() {
     let yaml = load_yaml!("cli.yaml");
-    let matches = App::from_yaml(yaml)
+    let app = App::from_yaml(yaml)
         .setting(AppSettings::SubcommandRequiredElseHelp)
-        .subcommand(template::subcommand())
-        .get_matches();
+        .subcommand(template::subcommand());
+    let matches = app.get_matches();
 
     let config = DefaultConfig::from(&matches);
     let service = parser::parse(&matches);
@@ -85,12 +85,10 @@ fn main() {
             services::config::Error::SerializationError => {
                 println!("{}", format!("serialization error").red())
             }
-            services::config::Error::UnknownCommand => app.print_help().unwrap(),
-            Error::APIError(grpc_status) => println!(
-                "api error: [{}] {}",
-                format!("{}", grpc_status.code()).red(),
-                format!("{}", grpc_status.message()).red()
-            ),
+            services::config::Error::UnknownCommand => unimplemented!("should not be hit"),
+            Error::APIError(grpc_status) => {
+                println!("api error: {}", format!("{}", grpc_status).red())
+            }
         },
     }
 }

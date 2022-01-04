@@ -35,19 +35,11 @@ async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(),
         },
     };
 
-    let mut req = CreateCredentialTemplateRequest {
+    let req = CreateCredentialTemplateRequest {
         name: args.name.clone(),
         fields: to_map(fields?),
         allow_additional_fields: args.allow_additional,
     };
-    req.fields.insert(
-        "asd".to_string(),
-        TemplateField {
-            r#type: FieldType::String as i32,
-            optional: true,
-            description: "sample field".to_string(),
-        },
-    );
     let request = tonic::Request::new(req);
 
     let response = client
@@ -75,7 +67,7 @@ async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error
         .expect("create template failed")
         .into_inner();
 
-    println!("{:#?}", response.template.unwrap());
+    println!("{:#?}", response.template);
 
     Ok(())
 }
