@@ -132,7 +132,7 @@ fn create(args: &ArgMatches) -> TemplateCommand {
 fn get(args: &ArgMatches) -> TemplateCommand {
     TemplateCommand::Get(GetTemplateArgs {
         id: args
-            .value_of("name")
+            .value_of("id")
             .map_or(String::default(), |x| x.to_string()),
     })
 }
@@ -145,17 +145,18 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
             SubCommand::with_name("create")
                 .setting(AppSettings::ArgRequiredElseHelp)
                 .about("Create new template")
-                .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data='{\"firstName\":{}}'")
-                .arg(Arg::from_usage("-n --name=<TEMPLATE NAME> 'Sets the name of the template'").required(true))
-                .arg(Arg::from_usage("--fields-data=<JSON DATA> 'Sets the fields of the template formatted as JSON'").required(false))
-                .arg(Arg::from_usage("--fields-file=<INPUT FILE> 'Sets the file containing fields JSON data'").required(false))
+                .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\"firstName\":{}}'")
+                .arg(Arg::from_usage("-n --name <TEMPLATE_NAME> 'Sets the name of the template'").required(true))
+                .arg(Arg::from_usage("--fields-data <JSON> 'Sets the fields of the template formatted as JSON'").required(false))
+                .arg(Arg::from_usage("--fields-file <FILE> 'Sets the file containing fields JSON data'").required(false))
                 .arg(Arg::from_usage("--allow-additional 'Sets if additional fields are allowed when issuing credentials from this template'").required(false)),
         )
         .subcommand(
             SubCommand::with_name("get")
                 .setting(AppSettings::ArgRequiredElseHelp)
                 .about("Get template data")
-                .arg(Arg::from_usage("-i --id=<TEMPLATE ID> 'Sets the id of the template'").required(true)),
+                .after_help("EXAMPLES:\r\n\ttrinsic template get --id <TEMPLATE_ID>")
+                .arg(Arg::from_usage("-i --id <TEMPLATE_ID> 'Sets the id of the template'").required(true)),
         )
         .subcommand(SubCommand::with_name("list").about("List all templates"))
         .subcommand(SubCommand::with_name("search").about("Search credential templates"))
