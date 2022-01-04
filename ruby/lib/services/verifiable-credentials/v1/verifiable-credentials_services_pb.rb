@@ -18,6 +18,10 @@ module Services
 
           rpc :Issue, ::Services::Verifiablecredentials::V1::IssueRequest, ::Services::Verifiablecredentials::V1::IssueResponse
           rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueFromTemplateResponse
+          # Check credential status by setting the revocation value
+          rpc :CheckStatus, ::Services::Verifiablecredentials::V1::CheckStatusRequest, ::Services::Verifiablecredentials::V1::CheckStatusResponse
+          # Update credential status by setting the revocation value
+          rpc :UpdateStatus, ::Services::Verifiablecredentials::V1::UpdateStatusRequest, ::Services::Verifiablecredentials::V1::UpdateStatusResponse
           rpc :CreateProof, ::Services::Verifiablecredentials::V1::CreateProofRequest, ::Services::Verifiablecredentials::V1::CreateProofResponse
           rpc :VerifyProof, ::Services::Verifiablecredentials::V1::VerifyProofRequest, ::Services::Verifiablecredentials::V1::VerifyProofResponse
           rpc :Send, ::Services::Verifiablecredentials::V1::SendRequest, ::Services::Verifiablecredentials::V1::SendResponse

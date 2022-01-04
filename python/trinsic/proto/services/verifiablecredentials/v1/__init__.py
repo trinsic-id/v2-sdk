@@ -70,6 +70,39 @@ class SendResponse(betterproto.Message):
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
 
 
+@dataclass(eq=False, repr=False)
+class UpdateStatusRequest(betterproto.Message):
+    """request object to update the status of the revocation entry"""
+
+    # the credential status id
+    credential_status_id: str = betterproto.string_field(1)
+    # indicates if the status is revoked
+    revoked: bool = betterproto.bool_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateStatusResponse(betterproto.Message):
+    """response object for update of status of revocation entry"""
+
+    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class CheckStatusRequest(betterproto.Message):
+    """request object to update the status of the revocation entry"""
+
+    # the credential status id
+    credential_status_id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class CheckStatusResponse(betterproto.Message):
+    """response object for update of status of revocation entry"""
+
+    # indicates if the status is revoked
+    revoked: bool = betterproto.bool_field(1)
+
+
 class VerifiableCredentialStub(betterproto.ServiceStub):
     async def issue(
         self, *, document: "__common_v1__.JsonPayload" = None
@@ -97,6 +130,33 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
             request,
             IssueFromTemplateResponse,
+        )
+
+    async def check_status(
+        self, *, credential_status_id: str = ""
+    ) -> "CheckStatusResponse":
+
+        request = CheckStatusRequest()
+        request.credential_status_id = credential_status_id
+
+        return await self._unary_unary(
+            "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
+            request,
+            CheckStatusResponse,
+        )
+
+    async def update_status(
+        self, *, credential_status_id: str = "", revoked: bool = False
+    ) -> "UpdateStatusResponse":
+
+        request = UpdateStatusRequest()
+        request.credential_status_id = credential_status_id
+        request.revoked = revoked
+
+        return await self._unary_unary(
+            "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
+            request,
+            UpdateStatusResponse,
         )
 
     async def create_proof(
@@ -164,6 +224,14 @@ class VerifiableCredentialBase(ServiceBase):
     ) -> "IssueFromTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def check_status(self, credential_status_id: str) -> "CheckStatusResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def update_status(
+        self, credential_status_id: str, revoked: bool
+    ) -> "UpdateStatusResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def create_proof(
         self, reveal_document: "__common_v1__.JsonPayload", document_id: str
     ) -> "CreateProofResponse":
@@ -202,6 +270,27 @@ class VerifiableCredentialBase(ServiceBase):
         }
 
         response = await self.issue_from_template(**request_kwargs)
+        await stream.send_message(response)
+
+    async def __rpc_check_status(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "credential_status_id": request.credential_status_id,
+        }
+
+        response = await self.check_status(**request_kwargs)
+        await stream.send_message(response)
+
+    async def __rpc_update_status(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "credential_status_id": request.credential_status_id,
+            "revoked": request.revoked,
+        }
+
+        response = await self.update_status(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_create_proof(self, stream: grpclib.server.Stream) -> None:
@@ -251,6 +340,18 @@ class VerifiableCredentialBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 IssueFromTemplateRequest,
                 IssueFromTemplateResponse,
+            ),
+            "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus": grpclib.const.Handler(
+                self.__rpc_check_status,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                CheckStatusRequest,
+                CheckStatusResponse,
+            ),
+            "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus": grpclib.const.Handler(
+                self.__rpc_update_status,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateStatusRequest,
+                UpdateStatusResponse,
             ),
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof": grpclib.const.Handler(
                 self.__rpc_create_proof,

@@ -61,7 +61,7 @@ def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
 
 def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
     for find, replace in replace_lines.items():
-        if line.startswith(find):
+        if line.strip().startswith(find):
             line = replace + '\n'
     return line
 

@@ -77,6 +77,68 @@ public final class VerifiableCredentialGrpc {
     return getIssueFromTemplateMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
+      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> getCheckStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CheckStatus",
+      requestType = trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
+      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> getCheckStatusMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> getCheckStatusMethod;
+    if ((getCheckStatusMethod = VerifiableCredentialGrpc.getCheckStatusMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getCheckStatusMethod = VerifiableCredentialGrpc.getCheckStatusMethod) == null) {
+          VerifiableCredentialGrpc.getCheckStatusMethod = getCheckStatusMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("CheckStatus"))
+              .build();
+        }
+      }
+    }
+    return getCheckStatusMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
+      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> getUpdateStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateStatus",
+      requestType = trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
+      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> getUpdateStatusMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> getUpdateStatusMethod;
+    if ((getUpdateStatusMethod = VerifiableCredentialGrpc.getUpdateStatusMethod) == null) {
+      synchronized (VerifiableCredentialGrpc.class) {
+        if ((getUpdateStatusMethod = VerifiableCredentialGrpc.getUpdateStatusMethod) == null) {
+          VerifiableCredentialGrpc.getUpdateStatusMethod = getUpdateStatusMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("UpdateStatus"))
+              .build();
+        }
+      }
+    }
+    return getUpdateStatusMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest,
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> getCreateProofMethod;
 
@@ -233,6 +295,26 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Check credential status by setting the revocation value
+     * </pre>
+     */
+    public void checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckStatusMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Update credential status by setting the revocation value
+     * </pre>
+     */
+    public void updateStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateStatusMethod(), responseObserver);
+    }
+
+    /**
      */
     public void createProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> responseObserver) {
@@ -269,6 +351,20 @@ public final class VerifiableCredentialGrpc {
                 trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest,
                 trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse>(
                   this, METHODID_ISSUE_FROM_TEMPLATE)))
+          .addMethod(
+            getCheckStatusMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
+                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>(
+                  this, METHODID_CHECK_STATUS)))
+          .addMethod(
+            getUpdateStatusMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
+                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>(
+                  this, METHODID_UPDATE_STATUS)))
           .addMethod(
             getCreateProofMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -325,6 +421,28 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Check credential status by setting the revocation value
+     * </pre>
+     */
+    public void checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCheckStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Update credential status by setting the revocation value
+     * </pre>
+     */
+    public void updateStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
      */
     public void createProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> responseObserver) {
@@ -375,6 +493,26 @@ public final class VerifiableCredentialGrpc {
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse issueFromTemplate(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getIssueFromTemplateMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Check credential status by setting the revocation value
+     * </pre>
+     */
+    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCheckStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Update credential status by setting the revocation value
+     * </pre>
+     */
+    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse updateStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateStatusMethod(), getCallOptions(), request);
     }
 
     /**
@@ -430,6 +568,28 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Check credential status by setting the revocation value
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> checkStatus(
+        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCheckStatusMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Update credential status by setting the revocation value
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse> updateStatus(
+        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateStatusMethod(), getCallOptions()), request);
+    }
+
+    /**
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> createProof(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request) {
@@ -456,9 +616,11 @@ public final class VerifiableCredentialGrpc {
 
   private static final int METHODID_ISSUE = 0;
   private static final int METHODID_ISSUE_FROM_TEMPLATE = 1;
-  private static final int METHODID_CREATE_PROOF = 2;
-  private static final int METHODID_VERIFY_PROOF = 3;
-  private static final int METHODID_SEND = 4;
+  private static final int METHODID_CHECK_STATUS = 2;
+  private static final int METHODID_UPDATE_STATUS = 3;
+  private static final int METHODID_CREATE_PROOF = 4;
+  private static final int METHODID_VERIFY_PROOF = 5;
+  private static final int METHODID_SEND = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -484,6 +646,14 @@ public final class VerifiableCredentialGrpc {
         case METHODID_ISSUE_FROM_TEMPLATE:
           serviceImpl.issueFromTemplate((trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse>) responseObserver);
+          break;
+        case METHODID_CHECK_STATUS:
+          serviceImpl.checkStatus((trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_STATUS:
+          serviceImpl.updateStatus((trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>) responseObserver);
           break;
         case METHODID_CREATE_PROOF:
           serviceImpl.createProof((trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest) request,
@@ -560,6 +730,8 @@ public final class VerifiableCredentialGrpc {
               .setSchemaDescriptor(new VerifiableCredentialFileDescriptorSupplier())
               .addMethod(getIssueMethod())
               .addMethod(getIssueFromTemplateMethod())
+              .addMethod(getCheckStatusMethod())
+              .addMethod(getUpdateStatusMethod())
               .addMethod(getCreateProofMethod())
               .addMethod(getVerifyProofMethod())
               .addMethod(getSendMethod())
