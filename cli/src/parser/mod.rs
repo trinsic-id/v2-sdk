@@ -37,35 +37,35 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .expect("Error parsing request"),
         ))
     } else if args.is_present("vc") {
-        return Service::VerifiableCredential(issuer::parse(
+        Service::VerifiableCredential(issuer::parse(
             &args
                 .subcommand_matches("vc")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("account") {
-        return Service::Account(account::parse(
+        Service::Account(account::parse(
             &args
                 .subcommand_matches("account")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("provider") {
-        return Service::Provider(provider::parse(
+        Service::Provider(provider::parse(
             &args
                 .subcommand_matches("provider")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("trust-registry") {
-        return Service::TrustRegistry(trustregistry::parse(
+        Service::TrustRegistry(trustregistry::parse(
             &args
                 .subcommand_matches("trust-registry")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("template") {
-        return Service::Template(template::parse(
+        Service::Template(template::parse(
             &args
                 .subcommand_matches("template")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else {
         Service::Unknown
     }

@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 use std::io::Stdin;
+use std::ops::Sub;
 
-use clap::ArgMatches;
+use clap::{App, ArgMatches, SubCommand};
 use serde::*;
 
 #[derive(Debug, PartialEq)]
@@ -159,4 +160,11 @@ pub mod test {
 
         println!("{}", json.unwrap());
     }
+}
+
+pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
+    SubCommand::with_name("template")
+        .help("Manage templates and schemas for Verifiable Credentials")
+        .subcommand(SubCommand::with_name("create"))
+        .subcommand(SubCommand::with_name("get"))
 }

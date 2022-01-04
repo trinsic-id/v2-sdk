@@ -10,8 +10,10 @@ extern crate clap;
 use std::fmt::Display;
 
 use crate::proto::services::common::v1::{json_payload, JsonPayload};
-use clap::{App, ArgMatches};
+use crate::services::config::Error;
+use clap::{App, AppSettings, ArgMatches};
 use colored::Colorize;
+use parser::template;
 use prost::{DecodeError, Message};
 use serde_json::Value;
 use services::{config::DefaultConfig, Service};
@@ -68,30 +70,28 @@ impl Display for JsonPayload {
 #[allow(unused_must_use)]
 fn main() {
     let yaml = load_yaml!("cli.yaml");
-    let matches = App::from_yaml(yaml).get_matches();
+    let matches = App::from_yaml(yaml)
+        .setting(AppSettings::SubcommandRequiredElseHelp)
+        .subcommand(template::subcommand())
+        .get_matches();
 
-    process(yaml, matches)
-}
-
-fn process(yaml: &Yaml, matches: ArgMatches) {
     let config = DefaultConfig::from(&matches);
     let service = parser::parse(&matches);
 
-    let mut app = App::from_yaml(yaml);
-
-    if service == Service::Unknown {
-        app.print_help().unwrap();
-    } else {
-        match services::execute(&service, config) {
-            Ok(_) => {}
-            Err(err) => match err {
-                services::config::Error::IOError => println!("{}", format!("io error").red()),
-                services::config::Error::SerializationError => {
-                    println!("{}", format!("serialization error").red())
-                }
-                services::config::Error::UnknownCommand => app.print_help().unwrap(),
-            },
-        }
+    match services::execute(&service, config) {
+        Ok(_) => {}
+        Err(err) => match err {
+            services::config::Error::IOError => println!("{}", format!("io error").red()),
+            services::config::Error::SerializationError => {
+                println!("{}", format!("serialization error").red())
+            }
+            services::config::Error::UnknownCommand => app.print_help().unwrap(),
+            Error::APIError(grpc_status) => println!(
+                "api error: [{}] {}",
+                format!("{}", grpc_status.code()).red(),
+                format!("{}", grpc_status.message()).red()
+            ),
+        },
     }
 }
 

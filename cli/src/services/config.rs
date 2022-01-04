@@ -10,6 +10,7 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::service::Interceptor;
+use tonic::Status;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -64,6 +65,7 @@ impl Into<Bytes> for &ConfigServer {
 pub enum Error {
     IOError,
     SerializationError,
+    APIError(Status),
     UnknownCommand,
 }
 
