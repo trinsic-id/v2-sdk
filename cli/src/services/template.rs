@@ -1,11 +1,17 @@
+use std::collections::HashMap;
+
 use crate::parser::template::*;
+
+use crate::proto::services::verifiablecredentials::templates::v1::{
+    credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest,
+    DeleteCredentialTemplateRequest, FieldType, GetCredentialTemplateRequest,
+    ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest, TemplateField,
+};
 use crate::services::config::Error;
-use crate::DefaultConfig;
+use crate::services::DefaultConfig;
+use crate::utils::read_file_as_string;
+use crate::{grpc_channel, grpc_client_with_auth};
 use tonic::transport::Channel;
-use trinsic::proto::services::verifiablecredentials::templates::v1::credential_templates_client::CredentialTemplatesClient;
-use trinsic::proto::services::verifiablecredentials::templates::v1::{CreateCredentialTemplateRequest, FieldType, GetTemplateRequest, ListTemplatesRequest, TemplateField};
-use trinsic::{grpc_channel, grpc_client_with_auth};
-use trinsic::proto::services::trustregistry::v1::SearchRegistryRequest;
 
 pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<(), Error> {
     match args {
@@ -13,6 +19,7 @@ pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<
         TemplateCommand::Get(args) => get(args, config),
         TemplateCommand::List(args) => list(args, config),
         TemplateCommand::Search(args) => search(args, config),
+        TemplateCommand::Delete(args) => delete(args, config),
     }
 }
 
@@ -20,10 +27,18 @@ pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<
 async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
+    let fields: Result<HashMap<String, Field>, _> = match &args.fields_data {
+        Some(data) => serde_json::from_str(&data),
+        None => match &args.fields_file {
+            Some(file) => serde_json::from_str(&read_file_as_string(Some(&file))),
+            None => panic!("you must specify fields data or file"),
+        },
+    };
+
     let mut req = CreateCredentialTemplateRequest {
-        name: "".to_string(),
-        fields: Default::default(),
-        allow_additional_fields: false,
+        name: args.name.clone(),
+        fields: to_map(fields?),
+        allow_additional_fields: args.allow_additional,
     };
     req.fields.insert(
         "asd".to_string(),
@@ -33,11 +48,7 @@ async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(),
             description: "sample field".to_string(),
         },
     );
-    let request = tonic::Request::new(CreateCredentialTemplateRequest {
-        name: "".to_string(),
-        fields: Default::default(),
-        allow_additional_fields: false,
-    });
+    let request = tonic::Request::new(req);
 
     let response = client
         .create(request)
@@ -54,7 +65,7 @@ async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(),
 async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(GetTemplateRequest {
+    let request = tonic::Request::new(GetCredentialTemplateRequest {
         id: args.id.clone(),
     });
 
@@ -73,7 +84,10 @@ async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error
 async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(ListTemplatesRequest {});
+    let request = tonic::Request::new(ListCredentialTemplatesRequest {
+        query: args.query.clone(),
+        ..Default::default()
+    });
 
     let response = client
         .list(request)
@@ -81,7 +95,7 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
         .expect("create template failed")
         .into_inner();
 
-    println!("{:#?}", response.template.unwrap());
+    println!("{:#?}", response.templates);
 
     Ok(())
 }
@@ -90,10 +104,9 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
 async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(SearchRegistryRequest {
-        query: "SELECT * FROM c".to_string(),
-        continuation_token: "".to_string(),
-        options: None
+    let request = tonic::Request::new(SearchCredentialTemplatesRequest {
+        query: args.query.clone(),
+        ..Default::default()
     });
 
     let response = client
@@ -102,7 +115,26 @@ async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<()
         .expect("search templates failed")
         .into_inner();
 
-    println!("{:#?}", response.template.unwrap());
+    println!("{:#?}", response.items_json);
+
+    Ok(())
+}
+
+#[tokio::main]
+async fn delete(args: &DeleteTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
+    let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(DeleteCredentialTemplateRequest {
+        id: args.id.clone(),
+    });
+
+    let response = client
+        .delete(request)
+        .await
+        .expect("search templates failed")
+        .into_inner();
+
+    println!("{:#?}", response);
 
     Ok(())
 }

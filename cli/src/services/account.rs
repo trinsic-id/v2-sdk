@@ -1,15 +1,15 @@
 use std::io;
 
-use colored::Colorize;
-use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
-use tonic::transport::Channel;
-use trinsic::{
+use crate::{
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
         account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod,
         InfoRequest, SignInRequest, TokenProtection,
     },
 };
+use colored::Colorize;
+use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
+use tonic::transport::Channel;
 
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 

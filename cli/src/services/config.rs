@@ -1,3 +1,5 @@
+use crate::proto::services::account::v1::AccountProfile;
+use crate::{proto::services::common::v1::Nonce, MessageFormatter};
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
@@ -8,8 +10,6 @@ use std::{env::var, path::Path};
 use std::{fs, io::prelude::*};
 use std::{fs::OpenOptions, path::PathBuf};
 use tonic::service::Interceptor;
-use trinsic::proto::services::account::v1::AccountProfile;
-use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -85,16 +85,24 @@ impl From<std::io::Error> for Error {
     }
 }
 
+impl From<serde_json::Error> for Error {
+    fn from(_: serde_json::Error) -> Self {
+        Error::SerializationError
+    }
+}
+
 impl From<prost::DecodeError> for Error {
     fn from(_: prost::DecodeError) -> Self {
         Error::SerializationError
     }
 }
 
+use crate::DEBUG;
+
 impl From<&ArgMatches<'_>> for DefaultConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
         if matches.is_present("debug") {
-            unsafe { crate::DEBUG = true }
+            unsafe { DEBUG = true }
         }
         if matches.is_present("alias") {
             DefaultConfig {
@@ -154,7 +162,7 @@ impl DefaultConfig {
     #[allow(dead_code)]
     pub fn read_profile<T>(&self) -> Result<T, Error>
     where
-        T: trinsic::MessageFormatter + prost::Message + Default,
+        T: crate::MessageFormatter + prost::Message + Default,
     {
         let filename = data_path().join(format!("{}.bin", self.profile.as_ref().unwrap().default));
         let mut file = OpenOptions::new().read(true).open(filename)?;

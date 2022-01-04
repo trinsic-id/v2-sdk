@@ -1,11 +1,11 @@
-use trinsic::proto::services::common::v1::{json_payload::Json, JsonPayload};
-use trinsic::proto::services::verifiablecredentials::v1::{
+use crate::proto::services::common::v1::{json_payload::Json, JsonPayload};
+use crate::proto::services::verifiablecredentials::v1::{
     verifiable_credential_client::VerifiableCredentialClient, CreateProofRequest, IssueRequest,
     VerifyProofRequest,
 };
-use trinsic::proto::JsonPretty;
-use trinsic::utils::{read_file_as_string, write_file};
-use trinsic::{grpc_client_with_auth, *};
+use crate::proto::JsonPretty;
+use crate::utils::{read_file_as_string, write_file};
+use crate::{grpc_client_with_auth, *};
 
 use super::{super::parser::issuer::*, config::DefaultConfig};
 use okapi::MessageFormatter;
@@ -25,9 +25,9 @@ async fn issue(args: &IssueArgs, config: DefaultConfig) {
         serde_json::from_str(&read_file_as_string(args.document)).expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use trinsic::MessageFormatter;
-    let document: trinsic::proto::google::protobuf::Struct =
-        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    use crate::MessageFormatter;
+    let document: crate::proto::google::protobuf::Struct =
+        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
@@ -59,9 +59,9 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
             .expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use trinsic::MessageFormatter;
-    let document: trinsic::proto::google::protobuf::Struct =
-        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    use crate::MessageFormatter;
+    let document: crate::proto::google::protobuf::Struct =
+        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
@@ -94,9 +94,9 @@ async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
             .expect("Unable to parse Item");
     let document = document.to_vec();
 
-    use trinsic::MessageFormatter;
-    let document: trinsic::proto::google::protobuf::Struct =
-        trinsic::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    use crate::MessageFormatter;
+    let document: crate::proto::google::protobuf::Struct =
+        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 

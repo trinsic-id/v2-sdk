@@ -1,20 +1,20 @@
 use std::default::*;
 
 use super::super::parser::wallet::*;
-use crate::services::config::*;
-use okapi::MessageFormatter;
-use tonic::transport::Channel;
-use trinsic::proto::google::protobuf::Struct;
-use trinsic::proto::services::common::v1::json_payload::Json;
-use trinsic::proto::services::common::v1::{JsonPayload, ServerConfig};
-use trinsic::proto::services::universalwallet::v1::{
+use crate::proto::google::protobuf::Struct;
+use crate::proto::services::common::v1::json_payload::Json;
+use crate::proto::services::common::v1::{JsonPayload, ServerConfig};
+use crate::proto::services::universalwallet::v1::{
     universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
 };
-use trinsic::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
-use trinsic::proto::services::verifiablecredentials::v1::verifiable_credential_client::VerifiableCredentialClient;
-use trinsic::proto::services::verifiablecredentials::v1::SendRequest;
-use trinsic::utils::read_file_as_string;
-use trinsic::{grpc_channel, grpc_client_with_auth};
+use crate::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
+use crate::proto::services::verifiablecredentials::v1::verifiable_credential_client::VerifiableCredentialClient;
+use crate::proto::services::verifiablecredentials::v1::SendRequest;
+use crate::services::config::*;
+use crate::utils::read_file_as_string;
+use crate::{grpc_channel, grpc_client_with_auth};
+use okapi::MessageFormatter;
+use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
@@ -59,7 +59,7 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 
-    use trinsic::MessageFormatter;
+    use crate::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
@@ -83,7 +83,7 @@ async fn send(args: &SendArgs, config: DefaultConfig) {
         serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
     let item_bytes = item.to_vec();
 
-    use trinsic::MessageFormatter;
+    use crate::MessageFormatter;
     let item: Struct = Struct::from_vec(&item_bytes).unwrap();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());

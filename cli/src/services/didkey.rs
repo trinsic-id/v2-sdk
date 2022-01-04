@@ -1,7 +1,7 @@
 use super::super::parser::didkey::*;
 use okapi::proto::keys::{GenerateKeyRequest, ResolveRequest};
 use okapi::DIDKey;
-use trinsic::utils::write_file;
+use crate::utils::write_file;
 
 pub fn execute(args: &Command) {
     match args {
