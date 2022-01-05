@@ -131,6 +131,8 @@
     - [CredentialTemplates](#services.verifiablecredentials.templates.v1.CredentialTemplates)
   
 - [services/verifiable-credentials/v1/verifiable-credentials.proto](#services/verifiable-credentials/v1/verifiable-credentials.proto)
+    - [CheckStatusRequest](#services.verifiablecredentials.v1.CheckStatusRequest)
+    - [CheckStatusResponse](#services.verifiablecredentials.v1.CheckStatusResponse)
     - [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest)
     - [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse)
     - [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest)
@@ -139,6 +141,8 @@
     - [IssueResponse](#services.verifiablecredentials.v1.IssueResponse)
     - [SendRequest](#services.verifiablecredentials.v1.SendRequest)
     - [SendResponse](#services.verifiablecredentials.v1.SendResponse)
+    - [UpdateStatusRequest](#services.verifiablecredentials.v1.UpdateStatusRequest)
+    - [UpdateStatusResponse](#services.verifiablecredentials.v1.UpdateStatusResponse)
     - [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest)
     - [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse)
   
@@ -1793,6 +1797,36 @@ Request to create new template
 
 
 
+<a name="services.verifiablecredentials.v1.CheckStatusRequest"></a>
+
+### CheckStatusRequest
+request object to update the status of the revocation entry
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| credential_status_id | [string](#string) |  | the credential status id |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.v1.CheckStatusResponse"></a>
+
+### CheckStatusResponse
+response object for update of status of revocation entry
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| revoked | [bool](#bool) |  | indicates if the status is revoked |
+
+
+
+
+
+
 <a name="services.verifiablecredentials.v1.CreateProofRequest"></a>
 
 ### CreateProofRequest
@@ -1918,6 +1952,37 @@ Create Proof
 
 
 
+<a name="services.verifiablecredentials.v1.UpdateStatusRequest"></a>
+
+### UpdateStatusRequest
+request object to update the status of the revocation entry
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| credential_status_id | [string](#string) |  | the credential status id |
+| revoked | [bool](#bool) |  | indicates if the status is revoked |
+
+
+
+
+
+
+<a name="services.verifiablecredentials.v1.UpdateStatusResponse"></a>
+
+### UpdateStatusResponse
+response object for update of status of revocation entry
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+
+
+
+
+
+
 <a name="services.verifiablecredentials.v1.VerifyProofRequest"></a>
 
 ### VerifyProofRequest
@@ -1963,6 +2028,8 @@ Verify Proof
 | ----------- | ------------ | ------------- | ------------|
 | Issue | [IssueRequest](#services.verifiablecredentials.v1.IssueRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) |  |
 | IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse) |  |
+| CheckStatus | [CheckStatusRequest](#services.verifiablecredentials.v1.CheckStatusRequest) | [CheckStatusResponse](#services.verifiablecredentials.v1.CheckStatusResponse) | Check credential status by setting the revocation value |
+| UpdateStatus | [UpdateStatusRequest](#services.verifiablecredentials.v1.UpdateStatusRequest) | [UpdateStatusResponse](#services.verifiablecredentials.v1.UpdateStatusResponse) | Update credential status by setting the revocation value |
 | CreateProof | [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest) | [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse) |  |
 | VerifyProof | [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest) | [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse) |  |
 | Send | [SendRequest](#services.verifiablecredentials.v1.SendRequest) | [SendResponse](#services.verifiablecredentials.v1.SendResponse) |  |

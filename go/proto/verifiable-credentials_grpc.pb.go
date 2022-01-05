@@ -20,6 +20,10 @@ const _ = grpc.SupportPackageIsVersion7
 type VerifiableCredentialClient interface {
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error)
+	// Check credential status by setting the revocation value
+	CheckStatus(ctx context.Context, in *CheckStatusRequest, opts ...grpc.CallOption) (*CheckStatusResponse, error)
+	// Update credential status by setting the revocation value
+	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error)
 	CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error)
 	VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error)
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
@@ -45,6 +49,24 @@ func (c *verifiableCredentialClient) Issue(ctx context.Context, in *IssueRequest
 func (c *verifiableCredentialClient) IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error) {
 	out := new(IssueFromTemplateResponse)
 	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *verifiableCredentialClient) CheckStatus(ctx context.Context, in *CheckStatusRequest, opts ...grpc.CallOption) (*CheckStatusResponse, error) {
+	out := new(CheckStatusResponse)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *verifiableCredentialClient) UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error) {
+	out := new(UpdateStatusResponse)
+	err := c.cc.Invoke(ctx, "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,6 +106,10 @@ func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, 
 type VerifiableCredentialServer interface {
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
 	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error)
+	// Check credential status by setting the revocation value
+	CheckStatus(context.Context, *CheckStatusRequest) (*CheckStatusResponse, error)
+	// Update credential status by setting the revocation value
+	UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error)
 	CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error)
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
 	Send(context.Context, *SendRequest) (*SendResponse, error)
@@ -99,6 +125,12 @@ func (UnimplementedVerifiableCredentialServer) Issue(context.Context, *IssueRequ
 }
 func (UnimplementedVerifiableCredentialServer) IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IssueFromTemplate not implemented")
+}
+func (UnimplementedVerifiableCredentialServer) CheckStatus(context.Context, *CheckStatusRequest) (*CheckStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckStatus not implemented")
+}
+func (UnimplementedVerifiableCredentialServer) UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStatus not implemented")
 }
 func (UnimplementedVerifiableCredentialServer) CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProof not implemented")
@@ -154,6 +186,42 @@ func _VerifiableCredential_IssueFromTemplate_Handler(srv interface{}, ctx contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(VerifiableCredentialServer).IssueFromTemplate(ctx, req.(*IssueFromTemplateRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VerifiableCredential_CheckStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VerifiableCredentialServer).CheckStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VerifiableCredentialServer).CheckStatus(ctx, req.(*CheckStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _VerifiableCredential_UpdateStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VerifiableCredentialServer).UpdateStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VerifiableCredentialServer).UpdateStatus(ctx, req.(*UpdateStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -226,6 +294,14 @@ var VerifiableCredential_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "IssueFromTemplate",
 			Handler:    _VerifiableCredential_IssueFromTemplate_Handler,
+		},
+		{
+			MethodName: "CheckStatus",
+			Handler:    _VerifiableCredential_CheckStatus_Handler,
+		},
+		{
+			MethodName: "UpdateStatus",
+			Handler:    _VerifiableCredential_UpdateStatus_Handler,
 		},
 		{
 			MethodName: "CreateProof",
