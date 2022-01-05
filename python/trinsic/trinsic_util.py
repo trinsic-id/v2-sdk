@@ -60,11 +60,10 @@ def convert_to_epoch_seconds(valid_from: datetime, valid_until: datetime) -> Tup
     """
     Convert provided datetime objects to seconds since the UNIX epoch - this works around windows strptime() limitations.
     Args:
-        valid_from:
-        valid_until:
-
+        valid_from: start time, or 1970-01-01
+        valid_until: end time, or 9999-12-31
     Returns:
-
+        valid_from, valid_until as floating point seconds.
     """
     valid_from = valid_from or datetime(1, 1, 1)
     valid_until = valid_until or datetime(9999, 12, 31)
