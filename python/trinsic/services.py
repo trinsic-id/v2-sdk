@@ -5,7 +5,7 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import Dict, List, Tuple, SupportsBytes
+from typing import Dict, List, Tuple, SupportsBytes, Union
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
@@ -50,7 +50,7 @@ class AccountService(ServiceBase):
         return response.profile, response.confirmation_method
 
     @staticmethod
-    def unprotect(profile: AccountProfile, security_code: str) -> AccountProfile:
+    def unprotect(profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]) -> AccountProfile:
         """
         Unprotects the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
         Args:
@@ -68,7 +68,7 @@ class AccountService(ServiceBase):
         return profile
 
     @staticmethod
-    def protect(profile: AccountProfile, security_code: SupportsBytes) -> AccountProfile:
+    def protect(profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]) -> AccountProfile:
         """
         Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
         Args:
