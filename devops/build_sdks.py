@@ -113,9 +113,6 @@ def get_github_version(github_token: str = None) -> str:
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
-    parser.add_argument('--run-tests', help='Run unit tests', action='store_true')
-    parser.add_argument('--make-package', help='Make the packages', action='store_true')
-    # TODO - allow specifying what to build?
     return parser.parse_args()
 
 

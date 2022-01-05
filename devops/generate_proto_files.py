@@ -51,8 +51,8 @@ def download_protoc_plugins() -> None:
     # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
     os.system(f'go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@{protoc_plugin_versions("mkdocs")}')
     os.system(f'go install google.golang.org/protobuf@latest')
+    os.system(f'go install github.com/coinbase/protoc-gen-rbi@latest')
     # TODO - Ruby grpc protoc tools install
-    # TODO - Ruby RBS protoc tools install
     # TODO - Node grpc protoc tools install
 
 
@@ -129,6 +129,7 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # TODO - Ruby type specifications
+    run_protoc({'rbi_out': ruby_proto_path}, {}, get_proto_files())
 
 
 def update_java():
