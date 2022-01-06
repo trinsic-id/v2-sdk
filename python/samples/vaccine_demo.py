@@ -61,6 +61,12 @@ async def vaccine_demo():
     print(f"Credential: {credential}")
     # }
 
+    # checkCredentialStatus() {
+    # status_id = credential['id']
+    # credential_status = await credentials_service.check_status(credential_status_id=status_id)
+    # print(f"Credential_status: {credential_status}")
+    # }
+
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
     wallet_service.profile = allison
@@ -87,6 +93,14 @@ async def vaccine_demo():
 
     print(f"Verification result: {valid}")
     assert valid
+    # }
+
+    # revokeCredential() {
+    # update_status_response = await credentials_service.update_status(credential_status_id=status_id, revoked=True)
+    # print(f"UpdateStatusResponse: {update_status_response}")
+    # credential_status = await credentials_service.check_status(credential_status_id=status_id)
+    # print(f"Credential_status: {credential_status}")
+    # assert credential_status.revoked is True
     # }
 
     # wallet_service.close() - not required, because wallet shares channel with account
