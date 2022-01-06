@@ -65,7 +65,7 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="request">The request object with the template identifier and the values</param>
     /// <returns>Verifiable credential as JSON</returns>
-    public async Task<string> IssueAsync(IssueFromTemplateRequest request) {
+    public async Task<string> IssueFromTemplateAsync(IssueFromTemplateRequest request) {
         var response = await Client.IssueFromTemplateAsync(request, await BuildMetadataAsync(request));
         return response.DocumentJson;
     }
@@ -75,7 +75,7 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="request">The request object with the template identifier and the values</param>
     /// <returns>Verifiable credential as JSON</returns>
-    public string Issue(IssueFromTemplateRequest request) {
+    public string IssueFromTemplate(IssueFromTemplateRequest request) {
         var response = Client.IssueFromTemplate(request, BuildMetadata(request));
         return response.DocumentJson;
     }
@@ -137,6 +137,37 @@ public class CredentialsService : ServiceBase
             headers: BuildMetadata(request));
 
         return response.Valid;
+    }
+
+    /// <summary>
+    /// Check credential template status
+    /// </summary>
+    /// <param name="credentialStatusId"></param>
+    /// <returns></returns>
+    public async Task<CheckStatusResponse> CheckStatusAsync(string credentialStatusId) {
+        CheckStatusRequest request = new() {CredentialStatusId = credentialStatusId};
+        return await Client.CheckStatusAsync(request, await BuildMetadataAsync(request));
+    }
+    
+    public CheckStatusResponse CheckStatus(string credentialStatusId) {
+        CheckStatusRequest request = new() {CredentialStatusId = credentialStatusId};
+        return Client.CheckStatus(request, BuildMetadata(request));
+    }
+    
+    /// <summary>
+    /// Update credential template revocation status
+    /// </summary>
+    /// <param name="credentialStatusId"></param>
+    /// <param name="revoked"></param>
+    /// <returns></returns>
+    public async Task<UpdateStatusResponse> UpdateStatusAsync(string credentialStatusId, bool revoked) {
+        UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked=revoked};
+        return await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
+    }
+    
+    public UpdateStatusResponse UpdateStatus(string credentialStatusId, bool revoked) {
+        UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked=revoked};
+        return Client.UpdateStatus(request, BuildMetadata(request));
     }
 
 
