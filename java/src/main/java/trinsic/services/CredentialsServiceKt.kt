@@ -1,5 +1,6 @@
 package trinsic.services
 
+import com.google.common.util.concurrent.ListenableFuture
 import com.google.gson.Gson
 import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
@@ -7,6 +8,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc.VerifiableCredentialFutureStub
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
 
@@ -22,6 +24,11 @@ class CredentialsServiceKt(
         val request = IssueRequest.newBuilder()
             .setDocument(TrinsicUtilities.createPayloadString(document)).build()
         return Gson().fromJson(withMetadata(stub, request).issue(request).document.jsonString, HashMap::class.java)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun issueCredentialFromTemplate(request: IssueFromTemplateRequest): IssueFromTemplateResponse {
+        return withMetadata(stub, request).issueFromTemplate(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -41,6 +48,20 @@ class CredentialsServiceKt(
         val request = VerifyProofRequest.newBuilder()
             .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build()
         return withMetadata(stub, request).verifyProof(request).valid
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun checkStatus(credentialStatusId: String?): CheckStatusResponse {
+        val request = CheckStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).build()
+        return withMetadata(stub, request).checkStatus(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun updateStatus(credentialStatusId: String?, revoked: Boolean?): UpdateStatusResponse {
+        val request = UpdateStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).setRevoked(
+            revoked!!
+        ).build()
+        return withMetadata(stub, request).updateStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
