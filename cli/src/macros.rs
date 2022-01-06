@@ -14,7 +14,7 @@ macro_rules! grpc_channel {
 #[macro_export]
 macro_rules! grpc_client_with_auth {
     ($c:ty,$x:expr) => {
-        <$c>::with_interceptor(grpc_channel!($x), $x);
+        <$c>::with_interceptor(grpc_channel!($x), $x)
     };
 }
 
@@ -23,6 +23,6 @@ macro_rules! grpc_client_with_auth {
 #[macro_export]
 macro_rules! grpc_client {
     ($c:ty,$x:expr) => {
-        <$c>::new(grpc_channel!($x));
+        <$c>::new(grpc_channel!($x))
     };
 }

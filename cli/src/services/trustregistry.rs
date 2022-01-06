@@ -4,7 +4,7 @@ use crate::{
     grpc_channel, grpc_client_with_auth,
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
 };
-use bytes::Bytes;
+
 use colored::Colorize;
 use tonic::transport::Channel;
 

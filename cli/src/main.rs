@@ -11,13 +11,12 @@ use std::fmt::Display;
 
 use crate::proto::services::common::v1::{json_payload, JsonPayload};
 use crate::services::config::Error;
-use clap::{App, AppSettings, ArgMatches};
+use clap::{App, AppSettings};
 use colored::Colorize;
 use parser::template;
 use prost::{DecodeError, Message};
 use serde_json::Value;
-use services::{config::DefaultConfig, Service};
-use yaml_rust::Yaml;
+use services::config::DefaultConfig;
 
 pub static mut DEBUG: bool = false;
 
@@ -109,6 +108,6 @@ mod test {
             ])
             .unwrap();
 
-        process(yaml, matches)
+        // process(yaml, matches)
     }
 }

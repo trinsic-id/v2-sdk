@@ -1,6 +1,4 @@
 use std::collections::HashMap;
-use std::io::Stdin;
-use std::ops::Sub;
 
 use clap::{App, AppSettings, Arg, ArgMatches, SubCommand};
 use serde::*;
@@ -63,7 +61,6 @@ pub enum FieldType {
 
 use crate::proto::services::verifiablecredentials::templates::v1::FieldType as ProtoFieldType;
 use crate::proto::services::verifiablecredentials::templates::v1::TemplateField as ProtoField;
-use crate::template::TemplateCommand::Create;
 
 impl Default for FieldType {
     fn default() -> Self {

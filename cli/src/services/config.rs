@@ -7,10 +7,12 @@ use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::{env::var, path::Path};
-use std::{fs, io::prelude::*};
-use std::{fs::OpenOptions, path::PathBuf};
+use std::{
+    fs::{self, OpenOptions},
+    io::prelude::*,
+    path::PathBuf,
+};
 use tonic::service::Interceptor;
-use tonic::Status;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -136,7 +138,7 @@ impl DefaultConfig {
         file.read_to_string(&mut buffer)?;
         let config: DefaultConfig = match toml::from_str(&buffer) {
             Ok(x) => x,
-            Err(err) => {
+            Err(_err) => {
                 let mut file = OpenOptions::new()
                     .create_new(false)
                     .read(true)

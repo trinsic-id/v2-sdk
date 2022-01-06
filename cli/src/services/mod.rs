@@ -1,15 +1,12 @@
 mod account;
 pub(crate) mod config;
-// mod didcomm;
-// mod didkey;
-pub mod issuer;
-pub mod provider;
-pub mod template;
-pub mod trustregistry;
-pub mod wallet;
+mod issuer;
+mod provider;
+mod template;
+mod trustregistry;
+mod wallet;
 
 use self::config::{DefaultConfig, Error};
-use crate::parser::{didcomm, didkey};
 
 pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error> {
     match args {

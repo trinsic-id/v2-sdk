@@ -1,18 +1,24 @@
 use std::default::*;
 
 use super::super::parser::wallet::*;
-use crate::proto::google::protobuf::Struct;
-use crate::proto::services::common::v1::json_payload::Json;
-use crate::proto::services::common::v1::{JsonPayload, ServerConfig};
-use crate::proto::services::universalwallet::v1::{
-    universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
-};
-use crate::proto::services::verifiablecredentials::v1::send_request::DeliveryMethod;
-use crate::proto::services::verifiablecredentials::v1::verifiable_credential_client::VerifiableCredentialClient;
-use crate::proto::services::verifiablecredentials::v1::SendRequest;
-use crate::services::config::*;
 use crate::utils::read_file_as_string;
 use crate::{grpc_channel, grpc_client_with_auth};
+use crate::{
+    proto::{
+        google::protobuf::Struct,
+        services::{
+            common::v1::{json_payload::Json, JsonPayload},
+            universalwallet::v1::{
+                universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
+            },
+            verifiablecredentials::v1::{
+                send_request::DeliveryMethod,
+                verifiable_credential_client::VerifiableCredentialClient, SendRequest,
+            },
+        },
+    },
+    services::config::*,
+};
 use okapi::MessageFormatter;
 use tonic::transport::Channel;
 
@@ -22,7 +28,6 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
         Command::Send(args) => Ok(send(args, config)),
-        _ => Err(Error::UnknownCommand),
     }
 }
 

@@ -4,8 +4,8 @@ use crate::parser::template::*;
 
 use crate::proto::services::verifiablecredentials::templates::v1::{
     credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest,
-    DeleteCredentialTemplateRequest, FieldType, GetCredentialTemplateRequest,
-    ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest, TemplateField,
+    DeleteCredentialTemplateRequest, GetCredentialTemplateRequest, ListCredentialTemplatesRequest,
+    SearchCredentialTemplatesRequest,
 };
 use crate::services::config::Error;
 use crate::services::DefaultConfig;
