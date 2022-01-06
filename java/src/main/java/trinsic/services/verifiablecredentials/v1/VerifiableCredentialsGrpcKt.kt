@@ -46,6 +46,16 @@ object VerifiableCredentialGrpcKt {
     @JvmStatic
     get() = VerifiableCredentialGrpc.getIssueFromTemplateMethod()
 
+  val checkStatusMethod: MethodDescriptor<VerifiableCredentials.CheckStatusRequest,
+      VerifiableCredentials.CheckStatusResponse>
+    @JvmStatic
+    get() = VerifiableCredentialGrpc.getCheckStatusMethod()
+
+  val updateStatusMethod: MethodDescriptor<VerifiableCredentials.UpdateStatusRequest,
+      VerifiableCredentials.UpdateStatusResponse>
+    @JvmStatic
+    get() = VerifiableCredentialGrpc.getUpdateStatusMethod()
+
   val createProofMethod: MethodDescriptor<VerifiableCredentials.CreateProofRequest,
       VerifiableCredentials.CreateProofResponse>
     @JvmStatic
@@ -109,6 +119,46 @@ object VerifiableCredentialGrpcKt {
         headers: Metadata = Metadata()): VerifiableCredentials.IssueFromTemplateResponse = unaryRpc(
       channel,
       VerifiableCredentialGrpc.getIssueFromTemplateMethod(),
+      request,
+      callOptions,
+      headers
+    )
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes
+     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
+     * with the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun checkStatus(request: VerifiableCredentials.CheckStatusRequest, headers: Metadata =
+        Metadata()): VerifiableCredentials.CheckStatusResponse = unaryRpc(
+      channel,
+      VerifiableCredentialGrpc.getCheckStatusMethod(),
+      request,
+      callOptions,
+      headers
+    )
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes
+     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
+     * with the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun updateStatus(request: VerifiableCredentials.UpdateStatusRequest, headers: Metadata =
+        Metadata()): VerifiableCredentials.UpdateStatusResponse = unaryRpc(
+      channel,
+      VerifiableCredentialGrpc.getUpdateStatusMethod(),
       request,
       callOptions,
       headers
@@ -215,6 +265,38 @@ object VerifiableCredentialGrpcKt {
 
     /**
      * Returns the response to an RPC for
+     * services.verifiablecredentials.v1.VerifiableCredential.CheckStatus.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun checkStatus(request: VerifiableCredentials.CheckStatusRequest):
+        VerifiableCredentials.CheckStatusResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.v1.VerifiableCredential.CheckStatus is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
+     * services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun updateStatus(request: VerifiableCredentials.UpdateStatusRequest):
+        VerifiableCredentials.UpdateStatusResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for
      * services.verifiablecredentials.v1.VerifiableCredential.CreateProof.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -271,6 +353,16 @@ object VerifiableCredentialGrpcKt {
       context = this.context,
       descriptor = VerifiableCredentialGrpc.getIssueFromTemplateMethod(),
       implementation = ::issueFromTemplate
+    ))
+      .addMethod(unaryServerMethodDefinition(
+      context = this.context,
+      descriptor = VerifiableCredentialGrpc.getCheckStatusMethod(),
+      implementation = ::checkStatus
+    ))
+      .addMethod(unaryServerMethodDefinition(
+      context = this.context,
+      descriptor = VerifiableCredentialGrpc.getUpdateStatusMethod(),
+      implementation = ::updateStatus
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,

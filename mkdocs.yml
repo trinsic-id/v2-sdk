@@ -109,6 +109,7 @@ plugins:
           setup_commands:
             - import sys
             - sys.path.append('python')
+            - sys.path.append('python/trinsic')
           selection:
             new_path_syntax: true
       watch:
