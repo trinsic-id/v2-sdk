@@ -4,7 +4,7 @@ from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
-from trinsic.services import WalletService, ProviderService, TrustRegistryService, AccountService
+from trinsic.services import WalletService, ProviderService, TrustRegistryService, AccountService, CredentialsService
 from trinsic.trinsic_util import trinsic_test_config
 
 

@@ -6,10 +6,14 @@ import {
     IssueRequest,
     JsonPayload,
     SendRequest,
-    SendResponse,
+    SendResponse, UpdateStatusRequest, UpdateStatusResponse,
     VerifiableCredentialClient,
     VerifyProofRequest,
 } from "./proto";
+import {
+    CheckStatusRequest,
+    CheckStatusResponse
+} from "./proto/services/verifiable-credentials/v1/verifiable-credentials_pb";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
@@ -71,7 +75,7 @@ export class CredentialService extends ServiceBase {
         });
     }
 
-    public verify(proofDocument: any): Promise<boolean> {
+    public verifyProof(proofDocument: any): Promise<boolean> {
         const request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(proofDocument));
 
         return new Promise(async (resolve, reject) => {
@@ -88,6 +92,34 @@ export class CredentialService extends ServiceBase {
                     }
                 }
             );
+        });
+    }
+
+    public checkStatus(credentialStatusId: string): Promise<CheckStatusResponse> {
+        const request = new CheckStatusRequest().setCredentialStatusId(credentialStatusId);
+
+        return new Promise(async (resolve, reject) => {
+            this.credentialClient.checkStatus(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(response);
+                }
+            })
+        });
+    }
+
+    public updateStatus(credentialStatusId: string, revoked: boolean): Promise<UpdateStatusResponse> {
+        const request = new UpdateStatusRequest().setCredentialStatusId(credentialStatusId).setRevoked(revoked);
+
+        return new Promise(async (resolve, reject) => {
+            this.credentialClient.updateStatus(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(response);
+                }
+            })
         });
     }
 

@@ -60,7 +60,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
   let proof = await credentialService.createProof(itemId, require("./data/vaccination-certificate-frame.json"));
 
-  let valid = await credentialService.verify(proof);
+  let valid = await credentialService.verifyProof(proof);
 
   t.true(valid);
   t.pass();
