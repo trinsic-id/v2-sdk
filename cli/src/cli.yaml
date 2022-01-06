@@ -143,6 +143,41 @@ subcommands:
                   value_name: FILE
                   help: output location for issue response
                   takes_value: true
+        - issue-from-template:
+            about: Issue a credential from template
+            args:
+              - template-id:
+                  long: template-id
+                  value_name: ID
+                  help: The template id to use for issuance
+                  takes_value: true
+                  required: true
+              - input:
+                  long: input
+                  value_name: JSON
+                  help: The JSON values of the credential subject
+                  takes_value: true
+              - input-file:
+                  long: input-file
+                  value_name: FILE
+                  help: The file with JSON values of the credential subject
+                  takes_value: true
+        - update-status:
+            about: Update the credential status (revocation) of an issued credential
+            args:
+              - credential-status-id:
+                  long: credential-status-id
+                  value_name: ID
+                  takes_value: true
+                  required: true
+              - revoked:
+                  help: Revoke the credential
+                  long: revoked
+                  takes_value: false
+              - unrevoked:
+                  help: Unrevoke the credential
+                  long: unrevoked
+                  takes_value: false
         - create-proof:
             about: Create a proof
             args:
