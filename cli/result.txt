@@ -1,0 +1,156 @@
+[
+    TemplateData {
+        id: "urn:template::__default:template-fixture-credential:context",
+        name: "Template Fixture Credential",
+        version: 1,
+        fields: {
+            "name": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+            "age": TemplateField {
+                description: "The Age",
+                optional: true,
+                r#type: Number,
+            },
+        },
+        allow_additional_fields: false,
+        schema_uri: "/__default/template-fixture-credential",
+        context_uri: "/__default/template-fixture-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:template-fixture-credential:context",
+        name: "Template Fixture Credential",
+        version: 1,
+        fields: {
+            "name": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+            "age": TemplateField {
+                description: "The Age",
+                optional: true,
+                r#type: Number,
+            },
+        },
+        allow_additional_fields: false,
+        schema_uri: "/__default/template-fixture-credential",
+        context_uri: "/__default/template-fixture-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:test-credential:context",
+        name: "Test Credential",
+        version: 1,
+        fields: {
+            "name": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+            "age": TemplateField {
+                description: "The Age",
+                optional: true,
+                r#type: Number,
+            },
+        },
+        allow_additional_fields: true,
+        schema_uri: "/__default/test-credential",
+        context_uri: "/__default/test-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:template-fixture-credential",
+        name: "Template Fixture Credential",
+        version: 1,
+        fields: {
+            "age": TemplateField {
+                description: "The Age",
+                optional: true,
+                r#type: Number,
+            },
+            "name": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+        },
+        allow_additional_fields: false,
+        schema_uri: "https://dev-schema.trinsic.cloud/__default/template-fixture-credential",
+        context_uri: "https://dev-schema.trinsic.cloud/__default/template-fixture-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:test-credential",
+        name: "Test Credential",
+        version: 1,
+        fields: {
+            "age": TemplateField {
+                description: "The Age",
+                optional: true,
+                r#type: Number,
+            },
+            "name": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+        },
+        allow_additional_fields: true,
+        schema_uri: "https://dev-schema.trinsic.cloud/__default/test-credential",
+        context_uri: "https://dev-schema.trinsic.cloud/__default/test-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:my-example-credential",
+        name: "My Example Credential",
+        version: 1,
+        fields: {
+            "age": TemplateField {
+                description: "",
+                optional: true,
+                r#type: Number,
+            },
+            "firstName": TemplateField {
+                description: "Given name",
+                optional: false,
+                r#type: String,
+            },
+            "lastName": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+        },
+        allow_additional_fields: false,
+        schema_uri: "https://dev-schema.trinsic.cloud/__default/my-example-credential",
+        context_uri: "https://dev-schema.trinsic.cloud/__default/my-example-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+    TemplateData {
+        id: "urn:template:__default:my-credential",
+        name: "My Credential",
+        version: 1,
+        fields: {
+            "firstName": TemplateField {
+                description: "",
+                optional: false,
+                r#type: String,
+            },
+        },
+        allow_additional_fields: false,
+        schema_uri: "https://dev-schema.trinsic.cloud/__default/my-credential",
+        context_uri: "https://dev-schema.trinsic.cloud/__default/my-credential/context",
+        ecosystem_id: "__default",
+        r#type: "VerifiableCredential",
+    },
+]

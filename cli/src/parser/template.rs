@@ -110,6 +110,12 @@ pub fn parse(args: &ArgMatches) -> TemplateCommand {
         return get(&args
             .subcommand_matches("get")
             .expect("Error parsing request"));
+    } else if args.is_present("list") {
+        return list(
+            &args
+                .subcommand_matches("list")
+                .expect("Error parsing request"),
+        );
     } else {
         panic!("Unrecognized command")
     }
@@ -131,6 +137,14 @@ fn get(args: &ArgMatches) -> TemplateCommand {
         id: args
             .value_of("id")
             .map_or(String::default(), |x| x.to_string()),
+    })
+}
+
+fn list(args: &ArgMatches) -> TemplateCommand {
+    TemplateCommand::List(ListTemplatesArgs {
+        query: args
+            .value_of("query")
+            .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
     })
 }
 
