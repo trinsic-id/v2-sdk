@@ -96,7 +96,7 @@ def run_protoc(language_options: Dict[str, str] = None,
     proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
     custom_options_string = join_args(custom_options)
     proto_files_string = " ".join(proto_files) if isinstance(proto_files, list) else proto_files
-    plugin_string = f'--plugin="{plugin}"' if plugin else ''
+    plugin_string = f'--plugin={plugin}' if plugin else ''
     protoc_command = f'{protoc_executable} {plugin_string} {proto_path_string} {language_arg_string} {custom_options_string} {proto_files_string}'
     print(protoc_command)
     if os.system(protoc_command) != 0:
@@ -152,6 +152,7 @@ def update_node():
     lang_path = get_language_dir('node')
     lang_proto_path = join(lang_path, 'src', 'proto')
     clean_dir(lang_proto_path)
+    # TODO - Keep the index.ts file and index.d.ts file
 
     # TODO - Make this cross-platform
     node_protoc_executable = join(lang_path, 'node_modules', '.bin', 'grpc_tools_node_protoc.cmd')
@@ -165,6 +166,19 @@ def update_node():
     run_protoc({'ts_out': f'grpc_js:{lang_proto_path}'}, {'plugin': f'protoc-gen-ts={typescript_protoc_executable}'},
                get_proto_files(),
                protoc_executable=node_protoc_executable)
+
+
+def update_web():
+    lang_path = get_language_dir('web')
+    lang_proto_path = join(lang_path, 'src', 'proto')
+    clean_dir(lang_proto_path)
+    # TODO - Keep the index.ts file and index.d.ts file
+    # TODO - Make this cross-platform
+
+    # code generation
+    run_protoc({'grpc-web_out': f'import_style=typescript,mode=grpcwebtext:{lang_proto_path}'},
+               {'js_out': f'import_style=commonjs,binary:{lang_proto_path}'}, get_proto_files(),
+               plugin='protoc-gen-grpc-web.exe')
 
 
 def update_python():
@@ -197,6 +211,7 @@ def main():
     update_markdown()
     update_python()
     update_node()
+    update_web()
     # update_dotnet()
 
 
