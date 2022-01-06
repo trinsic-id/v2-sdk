@@ -169,7 +169,10 @@ class CredentialsService(ServiceBase):
             revoked:
         Returns:
         """
-        return await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
+        response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
+        if response.status == ResponseStatus.SUCCESS:
+            return
+        raise Exception(f"update status did not complete, status={response.status}")
 
     async def send(self, document: dict, email: str) -> None:
         """

@@ -160,14 +160,18 @@ public class CredentialsService : ServiceBase
     /// <param name="credentialStatusId"></param>
     /// <param name="revoked"></param>
     /// <returns></returns>
-    public async Task<UpdateStatusResponse> UpdateStatusAsync(string credentialStatusId, bool revoked) {
+    public async Task UpdateStatusAsync(string credentialStatusId, bool revoked) {
         UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked=revoked};
-        return await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
+        var response = await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
+        if (response.Status == ResponseStatus.Success) return;
+        throw new Exception($"Status not completely updated {response.Status}");
     }
     
-    public UpdateStatusResponse UpdateStatus(string credentialStatusId, bool revoked) {
+    public void UpdateStatus(string credentialStatusId, bool revoked) {
         UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked=revoked};
-        return Client.UpdateStatus(request, BuildMetadata(request));
+        var response = Client.UpdateStatus(request, BuildMetadata(request));
+        if (response.Status == ResponseStatus.Success) return;
+        throw new Exception($"Status not completely updated {response.Status}");  
     }
 
 

@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 )
@@ -112,6 +113,40 @@ func (c *CredentialBase) VerifyProof(userContext context.Context, proofDocument 
 		return false, err
 	}
 	return proof.Valid, nil
+}
+
+func (c *CredentialBase) CheckStatus(userContext context.Context, credentialStatusId string) (bool, error) {
+	request := &sdk.CheckStatusRequest{
+		CredentialStatusId: credentialStatusId,
+	}
+	md, err := c.GetMetadataContext(userContext, request)
+	if err != nil {
+		return false, err
+	}
+	response, err := c.client.CheckStatus(md, request)
+	if err != nil {
+		return false, err
+	}
+	return response.Revoked, nil
+}
+
+func (c *CredentialBase) UpdateStatus(userContext context.Context, credentialStatusId string, revoked bool) error {
+	request := &sdk.UpdateStatusRequest{
+		CredentialStatusId: credentialStatusId,
+		Revoked:            revoked,
+	}
+	md, err := c.GetMetadataContext(userContext, request)
+	if err != nil {
+		return err
+	}
+	response, err := c.client.UpdateStatus(md, request)
+	if err != nil {
+		return err
+	}
+	if response.Status == sdk.ResponseStatus_SUCCESS {
+		return nil
+	}
+	return fmt.Errorf("error - did not run to completion %s", response.Status)
 }
 
 func (c *CredentialBase) Send(userContext context.Context, document Document, email string) error {
