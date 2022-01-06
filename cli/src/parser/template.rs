@@ -28,11 +28,13 @@ pub struct GetTemplateArgs {
 #[derive(Debug, PartialEq)]
 pub struct ListTemplatesArgs {
     pub query: String,
+    pub continuation_token: String,
 }
 
 #[derive(Debug, PartialEq)]
 pub struct SearchTemplatesArgs {
     pub query: String,
+    pub continuation_token: String,
 }
 
 #[derive(Debug, PartialEq)]
@@ -116,6 +118,12 @@ pub fn parse(args: &ArgMatches) -> TemplateCommand {
                 .subcommand_matches("list")
                 .expect("Error parsing request"),
         );
+    } else if args.is_present("search") {
+        return search(
+            &args
+                .subcommand_matches("search")
+                .expect("Error parsing request"),
+        );
     } else {
         panic!("Unrecognized command")
     }
@@ -145,6 +153,20 @@ fn list(args: &ArgMatches) -> TemplateCommand {
         query: args
             .value_of("query")
             .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
+        continuation_token: args
+            .value_of("continuation-token")
+            .map_or(String::default(), |x| x.to_string()),
+    })
+}
+
+fn search(args: &ArgMatches) -> TemplateCommand {
+    TemplateCommand::Search(SearchTemplatesArgs {
+        query: args
+            .value_of("query")
+            .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
+        continuation_token: args
+            .value_of("continuation-token")
+            .map_or(String::default(), |x| x.to_string()),
     })
 }
 
@@ -154,23 +176,33 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
         .setting(AppSettings::SubcommandRequiredElseHelp)
         .subcommand(
             SubCommand::with_name("create")
-                .setting(AppSettings::ArgRequiredElseHelp)
-                .about("Create new template")
-                .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\"firstName\":{}}'")
-                .arg(Arg::from_usage("-n --name <TEMPLATE_NAME> 'Sets the name of the template'").required(true))
-                .arg(Arg::from_usage("--fields-data <JSON> 'Sets the fields of the template formatted as JSON'").required(false))
-                .arg(Arg::from_usage("--fields-file <FILE> 'Sets the file containing fields JSON data'").required(false))
-                .arg(Arg::from_usage("--allow-additional 'Sets if additional fields are allowed when issuing credentials from this template'").required(false)),
+            .setting(AppSettings::ArgRequiredElseHelp)
+            .about("Create new template")
+            .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\"firstName\":{}}'")
+            .arg(Arg::from_usage("-n --name <TEMPLATE_NAME> 'Sets the name of the template'").required(true))
+            .arg(Arg::from_usage("--fields-data <JSON> 'Sets the fields of the template formatted as JSON'").required(false))
+            .arg(Arg::from_usage("--fields-file <FILE> 'Sets the file containing fields JSON data'").required(false))
+            .arg(Arg::from_usage("--allow-additional 'Sets if additional fields are allowed when issuing credentials from this template'").required(false)),
         )
         .subcommand(
             SubCommand::with_name("get")
-                .setting(AppSettings::ArgRequiredElseHelp)
-                .about("Get template data")
-                .after_help("EXAMPLES:\r\n\ttrinsic template get --id <TEMPLATE_ID>")
-                .arg(Arg::from_usage("-i --id <TEMPLATE_ID> 'Sets the id of the template'").required(true)),
+            .setting(AppSettings::ArgRequiredElseHelp)
+            .about("Get template data")
+            .after_help("EXAMPLES:\r\n\ttrinsic template get --id <TEMPLATE_ID>")
+            .arg(Arg::from_usage("-i --id <TEMPLATE_ID> 'Sets the id of the template'").required(true)),
         )
-        .subcommand(SubCommand::with_name("list").about("List all templates"))
-        .subcommand(SubCommand::with_name("search").about("Search credential templates"))
+        .subcommand(
+            SubCommand::with_name("list")
+            .about("List all templates")
+            .arg(Arg::from_usage("--query <SQL> 'Sets custom query to use'").required(false))
+            .arg(Arg::from_usage("--continuation-token <TOKEN> 'Sets the continuation token of a previous result set'").required(false))
+        )
+        .subcommand(
+            SubCommand::with_name("search")
+            .about("Search credential templates")
+            .arg(Arg::from_usage("--query <SQL> 'Sets custom query to use'").required(false))
+            .arg(Arg::from_usage("--continuation-token <TOKEN> 'Sets the continuation token of a previous result set'").required(false))
+        )
         .subcommand(
             SubCommand::with_name("delete")
                 .setting(AppSettings::ArgRequiredElseHelp)

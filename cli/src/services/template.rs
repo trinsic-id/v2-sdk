@@ -11,6 +11,7 @@ use crate::services::config::Error;
 use crate::services::DefaultConfig;
 use crate::utils::read_file_as_string;
 use crate::{grpc_channel, grpc_client_with_auth};
+use colored::Colorize;
 use tonic::transport::Channel;
 
 pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<(), Error> {
@@ -78,7 +79,7 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
 
     let request = tonic::Request::new(ListCredentialTemplatesRequest {
         query: args.query.clone(),
-        ..Default::default()
+        continuation_token: args.continuation_token.clone(),
     });
 
     let response = client
@@ -89,6 +90,13 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
 
     println!("{:#?}", response.templates);
 
+    if response.has_more_results {
+        println!(
+            "More results available. Use argument '{}'",
+            format!("--continuation-token {}", response.continuation_token).cyan()
+        )
+    }
+
     Ok(())
 }
 
@@ -98,7 +106,7 @@ async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<()
 
     let request = tonic::Request::new(SearchCredentialTemplatesRequest {
         query: args.query.clone(),
-        ..Default::default()
+        continuation_token: args.continuation_token.clone(),
     });
 
     let response = client
@@ -108,6 +116,13 @@ async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<()
         .into_inner();
 
     println!("{:#?}", response.items_json);
+
+    if response.has_more {
+        println!(
+            "More results available. Use argument '{}'",
+            format!("--continuation-token {}", response.continuation_token).cyan()
+        )
+    }
 
     Ok(())
 }
