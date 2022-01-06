@@ -1,13 +1,31 @@
 use clap::ArgMatches;
 use colored::Colorize;
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     if args.is_present("issue") {
-        return issue(
+        issue(
             &args
                 .subcommand_matches("issue")
                 .expect("Error parsing request"),
-        );
+        )
+    } else if args.is_present("issue-from-template") {
+        issue_from_template(
+            &args
+                .subcommand_matches("issue-from-template")
+                .expect("Error parsing request"),
+        )
+    } else if args.is_present("get-status") {
+        get_status(
+            &args
+                .subcommand_matches("get-status")
+                .expect("Error parsing request"),
+        )
+    } else if args.is_present("update-status") {
+        update_status(
+            &args
+                .subcommand_matches("update-status")
+                .expect("Error parsing request"),
+        )
     } else if args.is_present("create-proof") {
         return create_proof(
             &args
@@ -36,6 +54,33 @@ fn issue<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
+fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    Command::IssueFromTemplate(IssueFromTemplateArgs {
+        template_id: args
+            .value_of("template-id")
+            .map_or(String::default(), |x| x.to_string()),
+        values_json: args.value_of("values-json").map(|x| x.to_string()),
+        values_file: args.value_of("values-file").map(|x| x.to_string()),
+    })
+}
+
+fn get_status<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    Command::GetStatus(GetStatusArgs {
+        credential_status_id: args
+            .value_of("credential-status-id")
+            .map_or(String::default(), |x| x.to_string()),
+    })
+}
+
+fn update_status<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    Command::UpdateStatus(UpdateStatusArgs {
+        credential_status_id: args
+            .value_of("credential-status-id")
+            .map_or(String::default(), |x| x.to_string()),
+        revoked: args.is_present("revoked"),
+    })
+}
+
 fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::CreateProof(CreateProofArgs {
         reveal_document: args.value_of("reveal-document"),
@@ -51,8 +96,11 @@ fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 }
 
 #[derive(Debug, PartialEq)]
-pub enum Command<'a> {
+pub(crate) enum Command<'a> {
     Issue(IssueArgs<'a>),
+    IssueFromTemplate(IssueFromTemplateArgs),
+    GetStatus(GetStatusArgs),
+    UpdateStatus(UpdateStatusArgs),
     CreateProof(CreateProofArgs<'a>),
     VerifyProof(VerifyProofArgs<'a>),
 }
@@ -61,6 +109,24 @@ pub enum Command<'a> {
 pub struct IssueArgs<'a> {
     pub document: Option<&'a str>,
     pub out: Option<&'a str>,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct IssueFromTemplateArgs {
+    pub template_id: String,
+    pub values_json: Option<String>,
+    pub values_file: Option<String>,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct GetStatusArgs {
+    pub credential_status_id: String,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct UpdateStatusArgs {
+    pub credential_status_id: String,
+    pub revoked: bool,
 }
 
 #[derive(Debug, PartialEq)]

@@ -1,5 +1,5 @@
 name: trinsic
-version: "1.0.0"
+version: 1.0.0
 author: Trinsic Technologies Inc.
 about: |-
   ┌┬┐┬─┐┬┌┐┌┌─┐┬┌─┐
@@ -11,7 +11,9 @@ subcommands:
       args:
         - server-endpoint:
             value_name: HOSTNAME
-            help: "(Optional) Address of the server endpoint. (default: prod.trinsic.cloud)"
+            help: >-
+              (Optional) Address of the server endpoint. (default:
+              prod.trinsic.cloud)
             takes_value: true
             required: false
             long: server-endpoint
@@ -42,8 +44,9 @@ subcommands:
       about: Account Service
       subcommands:
         - login:
-            about: Create login credentials by signing into an existing account or creating a new one.
-
+            about: >-
+              Create login credentials by signing into an existing account or
+              creating a new one.
             args:
               - name:
                   long: name
@@ -72,7 +75,9 @@ subcommands:
               - alias:
                   long: alias
                   value_name: PROFILE_NAME
-                  help: (Required) Alias of the local profile to use to store authentication data
+                  help: >-
+                    (Required) Alias of the local profile to use to store
+                    authentication data
                   takes_value: true
                   required: true
               - default:
@@ -82,7 +87,6 @@ subcommands:
                   help: (Optional) Set this profile as default
         - info:
             about: Show account information
-
   - wallet:
       about: Wallet Service
       subcommands:
@@ -93,8 +97,9 @@ subcommands:
                   long: query
                   value_name: SQL_QUERY
                   help: >-
-                    (Optional) Search query to execute (Default is "SELECT * FROM c").
-                    To see all available query options, please check https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+                    (Optional) Search query to execute (Default is "SELECT *
+                    FROM c"). To see all available query options, please check
+                    https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
                   takes_value: true
         - insert-item:
             about: Insert item into the wallet
@@ -128,7 +133,6 @@ subcommands:
                   required: true
   - vc:
       about: Verifiable Credentials Service
-
       subcommands:
         - issue:
             about: Issue a credential
@@ -178,6 +182,14 @@ subcommands:
                   help: Unrevoke the credential
                   long: unrevoked
                   takes_value: false
+        - get-status:
+            about: Get the credential status (revocation) of an issued credential
+            args:
+              - credential-status-id:
+                  long: credential-status-id
+                  value_name: ID
+                  takes_value: true
+                  required: true
         - create-proof:
             about: Create a proof
             args:
@@ -201,7 +213,6 @@ subcommands:
                   required: true
         - verify-proof:
             about: Verify a proof
-
             args:
               - proof-document:
                   long: proof-document
@@ -211,11 +222,9 @@ subcommands:
                   required: true
   - provider:
       about: Provider service
-
       subcommands:
         - create_organization:
-            about: "Create an organization"
-
+            about: Create an organization
             args:
               - name:
                   value_name: STRING
@@ -228,8 +237,7 @@ subcommands:
                   takes_value: true
                   required: true
         - invite:
-            about: "Send an invitation"
-
+            about: Send an invitation
             args:
               - description:
                   long: description
@@ -258,13 +266,11 @@ subcommands:
                   help: Invite participant as organization
                   required: false
         - invitation_status:
-            about: "Check invitation status"
-
+            about: Check invitation status
         - create-credential-template:
-            about: "Create credential template"
-
+            about: Create credential template
         - list-credential-templates:
-            about: "List credential templates"
+            about: List credential templates
   - trust-registry:
       about: Trust Registry
       subcommands:
@@ -335,6 +341,7 @@ subcommands:
               The data will be formatted in JSON using the standardized
               schema and vocabulary for all issuers and verifiers.
         - register-egf:
+            about: Create an Ecosystem Governance Framework
         - register-issuer:
             about: |
               Register an Issuer DID as authoritative issuer for the
@@ -429,20 +436,19 @@ subcommands:
                   help: The URI of the Ecosystem Governance Framework
                   takes_value: true
                   required: true
-
 args:
   - profile:
       long: alias
       short: a
       value_name: NAME
       help: >-
-        (Optional) Account alias to use for authentication. If not set, it will use the default configured.
+        (Optional) Account alias to use for authentication. If not set, it will
+        use the default configured.
       takes_value: true
       required: false
   - debug:
       long: debug
       short: d
-      help: >-
-        (Optional) Print debug information.
+      help: (Optional) Print debug information.
       takes_value: false
       required: false

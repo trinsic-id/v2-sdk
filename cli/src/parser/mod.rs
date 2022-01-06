@@ -11,7 +11,7 @@ pub mod template;
 pub mod trustregistry;
 pub mod wallet;
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
     if args.is_present("didkey") {
         Service::DIDKey(didkey::parse(
             &args

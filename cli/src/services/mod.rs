@@ -22,7 +22,7 @@ pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error
 }
 
 #[derive(Debug, PartialEq)]
-pub enum Service<'a> {
+pub(crate) enum Service<'a> {
     DIDComm(crate::parser::didcomm::Command<'a>),
     DIDKey(crate::parser::didkey::Command<'a>),
     Wallet(crate::parser::wallet::Command<'a>),
