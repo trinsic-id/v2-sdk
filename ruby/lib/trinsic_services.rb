@@ -151,6 +151,16 @@ module Trinsic
       request = Credentials_V1::VerifyProofRequest.new(proof_document: payload)
       @client.verify_proof(request, metadata: metadata(request)).valid
     end
+
+    def check_status(credential_status_id)
+      request = Credentials_V1::CheckStatusRequest.new(credential_status_id: credential_status_id)
+      @client.check_status(request, metadata: metadata(request))
+    end
+
+    def update_status(credential_status_id, revoked)
+      request = Credentials_V1::UpdateStatusRequest.new(credential_status_id: credential_status_id, revoked: revoked)
+      @client.update_status(request, metadata: metadata(request))
+    end
   end
 
   class ProviderService < ServiceBase
