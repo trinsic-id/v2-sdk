@@ -5,23 +5,25 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import List, Tuple, SupportsBytes, Union
+from typing import List, Tuple, SupportsBytes, Union, Optional, AsyncIterator
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
 from trinsicokapi.proto.okapi.security.v1 import UnBlindOberonTokenRequest, BlindOberonTokenRequest
 
 from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, ConfirmationMethod, InfoResponse, \
-    AccountStub
+    AccountStub, ListDevicesRequest, ListDevicesResponse, RevokeDeviceRequest, RevokeDeviceResponse
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat, ResponseStatus
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
-    ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemResponse, Ecosystem
+    ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemResponse, Ecosystem, AcceptInviteResponse
 from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub, \
-    SearchRegistryResponse
-from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub
-from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub, CheckStatusResponse, \
-    UpdateStatusResponse, IssueFromTemplateResponse
+    SearchRegistryResponse, RemoveFrameworkResponse, FetchDataResponse
+from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub, DeleteItemResponse
+from trinsic.proto.services.verifiablecredentials.templates.v1 import CredentialTemplatesStub, \
+    CreateCredentialTemplateResponse, GetCredentialTemplateResponse, \
+    ListCredentialTemplatesResponse, TemplateField, SearchCredentialTemplatesResponse, DeleteCredentialTemplateResponse
+from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub, CheckStatusResponse
 from trinsic.service_base import ServiceBase
 from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_seconds
 
@@ -93,6 +95,12 @@ class AccountService(ServiceBase):
         """
         return await self.client.info()
 
+    async def list_devices(self, request: ListDevicesRequest) -> ListDevicesResponse:
+        return await self.client.list_devices()
+
+    async def revoke_device(self, request: RevokeDeviceRequest) -> RevokeDeviceResponse:
+        return await self.client.revoke_device()
+
 
 class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
@@ -118,7 +126,7 @@ class CredentialsService(ServiceBase):
         response = await self.client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return json.loads(response.document.json_string)
 
-    async def issue_from_template(self, template_id: str, values_json: str) -> IssueFromTemplateResponse:
+    async def issue_from_template(self, template_id: str, values_json: str) -> str:
         """
         Issue a credential from the previously stored template.
         Args:
@@ -126,7 +134,29 @@ class CredentialsService(ServiceBase):
             values_json:
         Returns:
         """
-        return await self.client.issue_from_template(template_id=template_id, values_json=values_json)
+        return (await self.client.issue_from_template(template_id=template_id, values_json=values_json)).document_json
+
+    async def check_status(self, credential_status_id: str) -> CheckStatusResponse:
+        """
+        Check status of a credential
+        Args:
+            credential_status_id:
+        Returns:
+        """
+        return await self.client.check_status(credential_status_id=credential_status_id)
+
+    async def update_status(self, credential_status_id: str, revoked: bool) -> None:
+        """
+        Update the status of a credential
+        Args:
+            credential_status_id:
+            revoked:
+        Returns:
+        """
+        response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
+        if response.status == ResponseStatus.SUCCESS:
+            return
+        raise Exception(f"update status did not complete, status={response.status}")
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         """
@@ -152,28 +182,6 @@ class CredentialsService(ServiceBase):
         return (await self.client.verify_proof(
             proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
 
-    async def check_status(self, credential_status_id: str) -> CheckStatusResponse:
-        """
-        Check status of a credential
-        Args:
-            credential_status_id:
-        Returns:
-        """
-        return await self.client.check_status(credential_status_id=credential_status_id)
-
-    async def update_status(self, credential_status_id: str, revoked: bool) -> UpdateStatusResponse:
-        """
-        Update the status of a credential
-        Args:
-            credential_status_id:
-            revoked:
-        Returns:
-        """
-        response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
-        if response.status == ResponseStatus.SUCCESS:
-            return
-        raise Exception(f"update status did not complete, status={response.status}")
-
     async def send(self, document: dict, email: str) -> None:
         """
         [Send the provided document to the given email](/reference/services/wallet-service/#sending-documents-using-email-as-identifier)
@@ -182,6 +190,36 @@ class CredentialsService(ServiceBase):
             email: Email to which the document is sent
         """
         await self.client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
+
+
+class CredentialTemplatesService(ServiceBase):
+    """Wrapper for the [Credential Templates Service](/reference/services/CredentialTemplates-service/)"""
+
+    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+                 channel: Channel = None):
+        """
+        Initialize a connection to the server.
+        Args:
+            server_config: The URL of the server, or a channel which encapsulates the connection already.
+        """
+        super().__init__(profile, server_config, channel)
+        self.client: CredentialTemplatesStub = self.stub_with_metadata(CredentialTemplatesStub)
+
+    async def create(self, name: str, fields: Optional[dict[str, TemplateField]],
+                     allow_additional_fields: bool) -> CreateCredentialTemplateResponse:
+        return await self.client.create(name=name, fields=fields, allow_additional_fields=allow_additional_fields)
+
+    async def get(self, cred_id: str) -> GetCredentialTemplateResponse:
+        return await self.client.get(id=cred_id)
+
+    async def list(self, query: str, continuation_token: str) -> ListCredentialTemplatesResponse:
+        return await self.client.list(query=query, continuation_token=continuation_token)
+
+    async def search(self, query: str, continuation_token: str) -> SearchCredentialTemplatesResponse:
+        return await self.client.search(query=query, continuation_token=continuation_token)
+
+    async def delete(self, cred_id: str) -> DeleteCredentialTemplateResponse:
+        return await self.client.delete(id=cred_id)
 
 
 class ProviderService(ServiceBase):
@@ -224,6 +262,9 @@ class ProviderService(ServiceBase):
                                         phone=phone,
                                         email=email,
                                         didcomm_invitation=didcomm_invitation)
+
+    async def accept_invite(self, invite_id: str = None, code: str = None) -> AcceptInviteResponse:
+        return await self.client.accept_invite(id=invite_id, code=code)
 
     async def invitation_status(self, invitation_id: str = '') -> InvitationStatusResponse:
         """
@@ -288,6 +329,10 @@ class TrustRegistryService(ServiceBase):
                 raise RuntimeError(f"cannot register verifier: code {response.status}")
         else:
             raise ValueError(f"Invalid URI string={governance_framework}")
+
+    async def remove_governance_framework(self,
+                                          governance_framework: GovernanceFramework = None) -> RemoveFrameworkResponse:
+        return await self.client.remove_framework(governance_framework=governance_framework)
 
     async def register_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                               valid_from: datetime.datetime = None,
@@ -410,6 +455,9 @@ class TrustRegistryService(ServiceBase):
         return await self.client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
 
+    async def fetch_data(self, governance_framework_uri: str = None, query: str = None) -> AsyncIterator[FetchDataResponse]:
+        return self.client.fetch_data(governance_framework_uri=governance_framework_uri, query=query)
+
 
 class WalletService(ServiceBase):
     """
@@ -445,3 +493,6 @@ class WalletService(ServiceBase):
             `item_id` of the created record.
         """
         return (await self.client.insert_item(item=JsonPayload(json_string=json.dumps(item)))).item_id
+
+    async def delete_item(self) -> DeleteItemResponse:
+        return await self.client.deleteitem()
