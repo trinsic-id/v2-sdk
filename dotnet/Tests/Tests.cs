@@ -286,7 +286,7 @@ public class Tests
             age = 42
         });
 
-        var credentialJson = await credentialService.IssueAsync(new() {
+        var credentialJson = await credentialService.IssueFromTemplateAsync(new() {
             TemplateId = template.Data.Id,
             ValuesJson = values
         });

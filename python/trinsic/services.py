@@ -5,7 +5,7 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import Dict, List, Tuple, SupportsBytes
+from typing import List, Tuple, SupportsBytes, Union
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
@@ -16,11 +16,12 @@ from trinsic.proto.services.account.v1 import AccountDetails, AccountProfile, Co
 from trinsic.proto.services.common.v1 import JsonPayload, RequestOptions, JsonFormat, ResponseStatus
 from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.provider.v1 import InviteRequestDidCommInvitation, InviteResponse, \
-    ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemRequest, CreateEcosystemResponse, Ecosystem
+    ParticipantType, InvitationStatusResponse, ProviderStub, CreateEcosystemResponse, Ecosystem
 from trinsic.proto.services.trustregistry.v1 import GovernanceFramework, RegistrationStatus, TrustRegistryStub, \
     SearchRegistryResponse
 from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalWalletStub
-from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub
+from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub, CheckStatusResponse, \
+    UpdateStatusResponse, IssueFromTemplateResponse
 from trinsic.service_base import ServiceBase
 from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_seconds
 
@@ -50,7 +51,7 @@ class AccountService(ServiceBase):
         return response.profile, response.confirmation_method
 
     @staticmethod
-    def unprotect(profile: AccountProfile, security_code: str) -> AccountProfile:
+    def unprotect(profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]) -> AccountProfile:
         """
         Unprotects the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
         Args:
@@ -68,7 +69,7 @@ class AccountService(ServiceBase):
         return profile
 
     @staticmethod
-    def protect(profile: AccountProfile, security_code: SupportsBytes) -> AccountProfile:
+    def protect(profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]) -> AccountProfile:
         """
         Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
         Args:
@@ -117,6 +118,16 @@ class CredentialsService(ServiceBase):
         response = await self.client.issue(document=JsonPayload(json_string=json.dumps(document)))
         return json.loads(response.document.json_string)
 
+    async def issue_from_template(self, template_id: str, values_json: str) -> IssueFromTemplateResponse:
+        """
+        Issue a credential from the previously stored template.
+        Args:
+            template_id:
+            values_json:
+        Returns:
+        """
+        return await self.client.issue_from_template(template_id=template_id, values_json=values_json)
+
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         """
         [Create a proof](/reference/services/wallet-service/#create-proof)
@@ -140,6 +151,28 @@ class CredentialsService(ServiceBase):
         """
         return (await self.client.verify_proof(
             proof_document=JsonPayload(json_string=json.dumps(proof_document)))).valid
+
+    async def check_status(self, credential_status_id: str) -> CheckStatusResponse:
+        """
+        Check status of a credential
+        Args:
+            credential_status_id:
+        Returns:
+        """
+        return await self.client.check_status(credential_status_id=credential_status_id)
+
+    async def update_status(self, credential_status_id: str, revoked: bool) -> UpdateStatusResponse:
+        """
+        Update the status of a credential
+        Args:
+            credential_status_id:
+            revoked:
+        Returns:
+        """
+        response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
+        if response.status == ResponseStatus.SUCCESS:
+            return
+        raise Exception(f"update status did not complete, status={response.status}")
 
     async def send(self, document: dict, email: str) -> None:
         """

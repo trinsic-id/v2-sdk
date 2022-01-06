@@ -25,6 +25,11 @@ class CredentialsServiceKt(
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun issueCredentialFromTemplate(request: IssueFromTemplateRequest): IssueFromTemplateResponse {
+        return withMetadata(stub, request).issueFromTemplate(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun createProof(documentId: String?, revealDocument: HashMap<*, *>?): java.util.HashMap<*, *>? {
         val request = CreateProofRequest.newBuilder()
             .setDocumentId(documentId)
@@ -41,6 +46,20 @@ class CredentialsServiceKt(
         val request = VerifyProofRequest.newBuilder()
             .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build()
         return withMetadata(stub, request).verifyProof(request).valid
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun checkStatus(credentialStatusId: String?): CheckStatusResponse {
+        val request = CheckStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).build()
+        return withMetadata(stub, request).checkStatus(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun updateStatus(credentialStatusId: String?, revoked: Boolean?): UpdateStatusResponse {
+        val request = UpdateStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).setRevoked(
+            revoked!!
+        ).build()
+        return withMetadata(stub, request).updateStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

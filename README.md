@@ -33,6 +33,10 @@ Check out our [dedicated repository with various examples](https://github.com/tr
 - [Ruby](https://docs-v2.trinsic.id/ruby)
 - [Command Line](https://docs-v2.trinsic.id/cli)
 
+## Updating Proto-Generated Files
+
+There is a python script which does the proto file generation for all languages (except dotnet and rust) in the `devops` folder. dotnet and rust are handled well by their respective build systems. You will need all language-specific plugins configured on your machine.
+
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/bc28dc54095d6dd65448294e15fc45ff308b65e5.svg "Repobeats analytics image")

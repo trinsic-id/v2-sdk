@@ -1,16 +1,67 @@
+"""
+Generate the language bindings from the proto files.
+"""
 import glob
 import os
 import shutil
+import urllib.request
 from os.path import abspath, join, dirname
-from typing import List, Dict, Tuple
+from typing import List, Dict, Union
 
 import pkg_resources
-from grpc_tools import protoc
 
 from build_sdks import update_line
 
 
+def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
+    version_dict = {'java': '1.42.1', 'kotlin': '1.2.0', 'mkdocs': 'v1.5.0'}
+    if key:
+        return version_dict[key]
+    else:
+        return version_dict
+
+
+def plugin_path() -> str:
+    return join(dirname(__file__), 'protoc-plugins')
+
+
+def java_plugin() -> str:
+    return join(plugin_path(), 'protoc-gen-grpc-java.exe')
+
+
+def kotlin_plugin() -> str:
+    return join(plugin_path(), 'protoc-gen-grpc-kotlin.cmd')
+
+
+def download_protoc_plugins() -> None:
+    clean_dir(plugin_path())
+    kotlin_jar = join(plugin_path(), 'protoc-gen-grpc-kotlin.jar')
+
+    java_plugin_version = protoc_plugin_versions("java")
+    kotlin_plugin_version = protoc_plugin_versions("kotlin")
+    urllib.request.urlretrieve(
+        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-windows-x86_64.exe',
+        java_plugin())
+    urllib.request.urlretrieve(
+        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/{kotlin_plugin_version}/protoc-gen-grpc-kotlin-{kotlin_plugin_version}-jdk7.jar',
+        kotlin_jar)
+
+    with open(kotlin_plugin(), 'w') as fid:
+        fid.write(f'@java.exe -jar "%~dp0/{kotlin_jar}" %*')
+    # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+    os.system(f'go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@{protoc_plugin_versions("mkdocs")}')
+    os.system(f'go install google.golang.org/protobuf@latest')
+    os.system(f'go install github.com/coinbase/protoc-gen-rbi@latest')
+    # TODO - Ruby grpc protoc tools install
+    # TODO - Node grpc protoc tools install
+
+
 def get_language_dir(language_name: str) -> str:
+    """
+    Get the directory for the given language SDK
+    :param language_name: The language directory
+    :return: Absolute path to the given language SDK
+    """
     return abspath(join(dirname(abspath(__file__)), '..', language_name))
 
 
@@ -20,21 +71,25 @@ def get_proto_files(dir_name: str = None) -> List[str]:
     return [abspath(file_path) for file_path in glob.glob(proto_search_glob, recursive=True)]
 
 
-def clean_proto_dir(language_proto_dir: str) -> None:
+def clean_dir(language_dir: str) -> None:
+    print(f"Cleaning directory={language_dir}")
     try:
-        shutil.rmtree(language_proto_dir)
-    except:
-        pass
-    os.mkdir(language_proto_dir)
+        shutil.rmtree(language_dir)
+    except Exception as e:
+        print(e)
+    os.mkdir(language_dir)
 
 
-def join_args(args: Dict[str, str]) -> str:
-    return " ".join([f'--{key}="{value}"' for (key, value) in args.items()]) if args else ''
+def join_args(args: Union[List[str], Dict[str, str]]) -> str:
+    if isinstance(args, dict):
+        return " ".join([f'--{key}="{value}"' for (key, value) in args.items()]) if args else ''
+    else:
+        return " ".join(args)
 
 
 def run_protoc(language_options: Dict[str, str] = None,
-               custom_options: Dict[str, str] = None,
-               proto_files: Tuple[List[str], str] = None,
+               custom_options: Union[List[str], Dict[str, str]] = None,
+               proto_files: Union[List[str], str] = None,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
     language_arg_string = join_args(language_options)
@@ -51,15 +106,15 @@ def run_protoc(language_options: Dict[str, str] = None,
 def update_golang():
     go_path = get_language_dir('go')
     go_proto_path = join(go_path, 'proto')
-    clean_proto_dir(go_proto_path)
+    clean_dir(go_proto_path)
     run_protoc({'go_out': go_proto_path, 'go-grpc_out': go_proto_path},
                {'go_opt': 'module=github.com/trinsic-id/sdk', 'go-grpc_opt': 'module=github.com/trinsic-id/sdk'},
                get_proto_files())
     # Remove okapi proto folder
     shutil.rmtree(join(go_proto_path, 'go'))
     # find and replace the sdk proto with okapi proto
-    replace_pairs = {'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"':
-                     'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"'}
+    replace_pairs = {
+        'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"'}
     for file_name in glob.glob(join(go_proto_path, '*.go')):
         update_line(file_name, replace_pairs)
 
@@ -67,22 +122,21 @@ def update_golang():
 def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
-    # TODO - clean selectively
+    # Clean selectively
+    clean_dir(join(ruby_proto_path, 'services'))
+    clean_dir(join(ruby_proto_path, 'sdk'))
+    clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # TODO - Ruby type specifications
+    run_protoc({'rbi_out': ruby_proto_path}, {}, get_proto_files())
 
 
 def update_java():
     java_path = get_language_dir('java')
     java_proto_path = join(java_path, 'src', 'main', 'java')
-    # TODO - clean_proto_dir(java_proto_path)
-    # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.42.1/
-    # Download: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/1.2.0/
-    # Add to path and rename to `protoc-gen-grpc-java`
+    # TODO - clean_dir(java_proto_path)
     run_protoc({'java_out': java_proto_path, 'grpc-java_out': java_proto_path}, {}, get_proto_files())
-    # For Kotlin, you need the jar file, and a batch file on the path called: `protoc-gen-grpc-kotlin`
-    # Containing: @"C:\Program Files\Java\jre1.8.0_311\bin\java.exe" -jar "%~dp0/protoc-gen-grpc-kotlin-1.2.0-jdk7.jar" %*
     run_protoc({'grpc-kotlin_out': java_proto_path}, {}, get_proto_files())
     # remove okapi pbmse
     shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
@@ -91,26 +145,26 @@ def update_java():
 def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
-    # https://github.com/pseudomuto/protoc-gen-doc
-    # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
 
 
 def update_node():
     lang_path = get_language_dir('node')
-    lang_proto_path = join(lang_path,'src', 'proto')
-    clean_proto_dir(lang_proto_path)
+    lang_proto_path = join(lang_path, 'src', 'proto')
+    clean_dir(lang_proto_path)
 
-    # executable paths
-    node_protoc_executable = join(lang_path,'node_modules','.bin','grpc_tools_node_protoc.cmd')
-    typescript_protoc_executable = join(lang_path,'node_modules','.bin','protoc-gen-ts.cmd')
+    # TODO - Make this cross-platform
+    node_protoc_executable = join(lang_path, 'node_modules', '.bin', 'grpc_tools_node_protoc.cmd')
+    typescript_protoc_executable = join(lang_path, 'node_modules', '.bin', 'protoc-gen-ts.cmd')
 
     # JavaScript code generation
-    run_protoc({'grpc_out': f'grpc_js:{lang_proto_path}'}, {'js_out': f'import_style=commonjs,binary:{lang_proto_path}'}, get_proto_files(), 
-        protoc_executable=node_protoc_executable)
+    run_protoc({'grpc_out': f'grpc_js:{lang_proto_path}'},
+               {'js_out': f'import_style=commonjs,binary:{lang_proto_path}'}, get_proto_files(),
+               protoc_executable=node_protoc_executable)
     # TypeScript definitions
-    run_protoc({'ts_out': f'grpc_js:{lang_proto_path}'}, {'plugin': f'protoc-gen-ts={typescript_protoc_executable}'}, get_proto_files(),
-        protoc_executable=node_protoc_executable)
+    run_protoc({'ts_out': f'grpc_js:{lang_proto_path}'}, {'plugin': f'protoc-gen-ts={typescript_protoc_executable}'},
+               get_proto_files(),
+               protoc_executable=node_protoc_executable)
 
 
 def update_python():
@@ -120,28 +174,30 @@ def update_python():
     """
     # Remove everything under output directory
     python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
-    clean_proto_dir(python_proto_path)
-    # Paths for proto compilation
-    file_path = abspath(dirname(abspath(__file__)))
-    base_path = abspath(join(file_path, '..', 'proto'))
-    proto_file_path = abspath(join(base_path, "**", "*.proto"))
+    clean_dir(python_proto_path)
     # Come up with better locations, import google defaults from the package location (see code in protoc.main)
     proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
     # Inject an empty python code file path to mimic the first argument.
-    base_command = ['', '-I', get_language_dir('proto'), f'--python_betterproto_out={python_proto_path}']
-    base_command.extend(get_proto_files())
-    base_command.append(f'-I{proto_include}')
-    print(base_command)
-    protoc.main(base_command)
+    run_protoc({'python_betterproto_out': python_proto_path}, [f'-I{proto_include}'],
+               proto_files=get_proto_files())
+
+
+def update_dotnet():
+    lang_path = get_language_dir('dotnet')
+    lang_proto_path = join(lang_path, 'Trinsic', 'proto')
+    clean_dir(lang_path)
+    run_protoc({'csharp_out': lang_path, 'grpc-csharp_out': lang_proto_path}, {}, get_proto_files())
 
 
 def main():
+    download_protoc_plugins()
     update_golang()
     update_ruby()
     update_java()
     update_markdown()
     update_python()
     update_node()
+    # update_dotnet()
 
 
 if __name__ == "__main__":
