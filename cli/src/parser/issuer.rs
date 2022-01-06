@@ -59,8 +59,8 @@ fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
         template_id: args
             .value_of("template-id")
             .map_or(String::default(), |x| x.to_string()),
-        values_json: args.value_of("values-json").map(|x| x.to_string()),
-        values_file: args.value_of("values-file").map(|x| x.to_string()),
+        values_json: args.value_of("input").map(|x| x.to_string()),
+        values_file: args.value_of("input-file").map(|x| x.to_string()),
     })
 }
 

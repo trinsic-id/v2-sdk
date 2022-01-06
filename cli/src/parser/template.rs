@@ -134,8 +134,8 @@ fn create(args: &ArgMatches) -> TemplateCommand {
         name: args
             .value_of("name")
             .map_or(String::default(), |x| x.to_string()),
-        fields_file: args.value_of("fields-file").map(|x| x.to_string()),
-        fields_data: args.value_of("fields-data").map(|x| x.to_string()),
+        fields_file: args.value_of("input-file").map(|x| x.to_string()),
+        fields_data: args.value_of("input").map(|x| x.to_string()),
         allow_additional: args.is_present("allow-additional"),
     })
 }

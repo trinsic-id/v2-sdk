@@ -1,4 +1,5 @@
 use crate::parser::issuer::{IssueFromTemplateArgs, UpdateStatusArgs};
+use crate::proto::services::common::v1::ResponseStatus;
 use crate::proto::{
     services::{
         common::v1::{json_payload::Json, JsonPayload},
@@ -82,7 +83,9 @@ async fn issue_from_template(args: &IssueFromTemplateArgs, config: DefaultConfig
         .expect("Issue failed")
         .into_inner();
 
-    println!("{:#?}", response.document_json)
+    // parse and format, to get pretty print *shrug*
+    let json: Value = serde_json::from_str(&response.document_json).unwrap();
+    println!("{}", serde_json::to_string_pretty(&json).unwrap())
 }
 
 #[tokio::main]
@@ -99,7 +102,7 @@ async fn get_status(args: &GetStatusArgs, config: DefaultConfig) {
         .expect("get status failed")
         .into_inner();
 
-    println!("Revoked: {}", response.revoked)
+    println!("Revoked = {}", response.revoked)
 }
 
 #[tokio::main]
@@ -117,7 +120,7 @@ async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) {
         .expect("update status failed")
         .into_inner();
 
-    println!("{:#?}", response.status)
+    println!("{:#?}", ResponseStatus::from_i32(response.status).unwrap())
 }
 
 #[tokio::main]
