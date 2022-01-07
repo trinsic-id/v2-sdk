@@ -37,6 +37,10 @@ public class ProviderService extends ServiceBase {
         return withMetadata(stub, request).invite(request);
     }
 
+    public ListenableFuture<ProviderOuterClass.AcceptInviteResponse> acceptInvite(ProviderOuterClass.AcceptInviteRequest request) throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).acceptInvite(request);
+    }
+
     public ListenableFuture<ProviderOuterClass.InvitationStatusResponse> invitationStatus(ProviderOuterClass.InvitationStatusRequest request) throws InvalidProtocolBufferException, DidException {
         if (request.getInvitationId().strip().length() == 0)
             throw new IllegalArgumentException("Onboarding reference ID must be set.");

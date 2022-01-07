@@ -28,8 +28,12 @@ public class TrustRegistryService extends ServiceBase {
         this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     }
 
-    public void registerGovernanceFramework(String governanceFramework, String description) {
-        throw new RuntimeException();
+    public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).addFramework(request);
+    }
+
+    public ListenableFuture<TrustRegistryOuterClass.RemoveFrameworkResponse> removeGovernanceFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).removeFramework(request);
     }
 
     public void registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
@@ -38,11 +42,7 @@ public class TrustRegistryService extends ServiceBase {
             throw new RuntimeException("cannot register issuer: code " + response.getStatus());
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(String issuerDid, String credentialType, String governanceFramework, Instant validFrom, Instant validUntil) throws InvalidProtocolBufferException, DidException {
-        if (validFrom == null) validFrom = Instant.MIN;
-        if (validUntil == null) validUntil = Instant.MAX;
-
-        final var request = TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder().setDidUri(issuerDid).setCredentialTypeUri(credentialType).setGovernanceFrameworkUri(governanceFramework).build();
+    public ListenableFuture<TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest request) throws InvalidProtocolBufferException, DidException {
         return withMetadata(stub, request).unregisterIssuer(request);
     }
 
@@ -72,5 +72,9 @@ public class TrustRegistryService extends ServiceBase {
         if (query == null) query = "SELECT * FROM c";
         final TrustRegistryOuterClass.SearchRegistryRequest request = TrustRegistryOuterClass.SearchRegistryRequest.newBuilder().setQuery(query).build();
         return withMetadata(stub, request).searchRegistry(request);
+    }
+
+    public void fetchData(TrustRegistryOuterClass.FetchDataRequest request) {
+        throw new UnsupportedOperationException("Fetch data streaming call not supported on listenable future");
     }
 }
