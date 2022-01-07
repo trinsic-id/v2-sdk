@@ -11,7 +11,7 @@ import (
 func TestProviderBase_InviteParticipant(t *testing.T) {
 	assert2 := assert.New(t)
 	t.Run("Contact method unset throws", func(t *testing.T) {
-		providerService, err := CreateProviderService(nil, TrinsicTestConfig(), nil)
+		providerService, err := NewProviderService(nil, TrinsicTestConfig(), nil)
 		if !assert2.Nil(err) {
 			return
 		}
@@ -25,7 +25,7 @@ func TestProviderBase_InviteParticipant(t *testing.T) {
 func TestProviderService_InviteParticipant(t *testing.T) {
 	assert2 := assert.New(t)
 	// Credit for this bug goes to Roman Levin (https://github.com/romanlevin)
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	accountService, err := NewAccountService(nil, TrinsicTestConfig(), nil)
 	if !assert2.Nil(err) {
 		return
 	}
@@ -38,7 +38,7 @@ func TestProviderService_InviteParticipant(t *testing.T) {
 	}
 	fmt.Printf("%+v\n", wallet)
 
-	providerService, err := CreateProviderService(nil, TrinsicTestConfig(), GetTestServerChannel())
+	providerService, err := NewProviderService(nil, TrinsicTestConfig(), GetTestServerChannel())
 	if !assert2.Nil(err) {
 		return
 	}

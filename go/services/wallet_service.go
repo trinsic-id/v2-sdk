@@ -8,7 +8,7 @@ import (
 )
 
 func CreateWalletService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (WalletService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}

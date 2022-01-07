@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CreateCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+func NewCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
