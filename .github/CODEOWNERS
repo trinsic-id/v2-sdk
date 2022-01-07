@@ -1,7 +1,8 @@
 /.github/   @fundthmcalculus @tmarkovski
+/cli/       @tmarkovski
 /docs/      @michaeldboyd
-/dotnet/    @tmarkovski
-/go/        @fundthmcalculus
+/dotnet/    @tmarkovski @fundthmcalculus
+/go/        @fundthmcalculus @sethjback
 /java/      @fundthmcalculus
 /node/      @tmarkovski @MichaelEdwardBlack
 /proto/     @fundthmcalculus @tmarkovski
