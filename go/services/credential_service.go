@@ -24,6 +24,9 @@ func CreateCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.Serv
 type CredentialService interface {
 	Service
 	IssueCredential(userContext context.Context, document Document) (Document, error)
+	IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error)
+	CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error)
+	UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error)
 	CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error)
 	VerifyProof(userContext context.Context, proofDocument Document) (bool, error)
 	Send(userContext context.Context, document Document, email string) error
@@ -61,6 +64,18 @@ func (c *CredentialBase) IssueCredential(userContext context.Context, document D
 		return nil, err
 	}
 	return doc, nil
+}
+
+func (c *CredentialBase) IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error) {
+	md, err := c.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := c.client.IssueFromTemplate(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
 
 func (c *CredentialBase) CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error) {
@@ -115,38 +130,31 @@ func (c *CredentialBase) VerifyProof(userContext context.Context, proofDocument 
 	return proof.Valid, nil
 }
 
-func (c *CredentialBase) CheckStatus(userContext context.Context, credentialStatusId string) (bool, error) {
-	request := &sdk.CheckStatusRequest{
-		CredentialStatusId: credentialStatusId,
-	}
+func (c *CredentialBase) CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 	response, err := c.client.CheckStatus(md, request)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
-	return response.Revoked, nil
+	return response, nil
 }
 
-func (c *CredentialBase) UpdateStatus(userContext context.Context, credentialStatusId string, revoked bool) error {
-	request := &sdk.UpdateStatusRequest{
-		CredentialStatusId: credentialStatusId,
-		Revoked:            revoked,
-	}
+func (c *CredentialBase) UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	response, err := c.client.UpdateStatus(md, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if response.Status == sdk.ResponseStatus_SUCCESS {
-		return nil
+		return response, nil
 	}
-	return fmt.Errorf("error - did not run to completion %s", response.Status)
+	return response, fmt.Errorf("error - did not run to completion %s", response.Status)
 }
 
 func (c *CredentialBase) Send(userContext context.Context, document Document, email string) error {
