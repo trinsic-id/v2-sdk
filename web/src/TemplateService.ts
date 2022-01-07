@@ -3,14 +3,15 @@ import {
     CreateCredentialTemplateRequest,
     CreateCredentialTemplateResponse,
     CredentialTemplatesClient,
-    DeleteCredentialTemplateRequest,
-    DeleteCredentialTemplateResponse,
     GetCredentialTemplateRequest,
     GetCredentialTemplateResponse,
     ListCredentialTemplatesRequest,
     ListCredentialTemplatesResponse,
     SearchCredentialTemplatesRequest,
     SearchCredentialTemplatesResponse,
+    VerifiableCredentialClient,
+    DeleteCredentialTemplateRequest,
+    DeleteCredentialTemplateResponse,
 } from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
@@ -22,7 +23,7 @@ export class TemplateService extends ServiceBase {
     constructor(options?: ServiceOptions) {
         super(options);
 
-        this.client = new CredentialTemplatesClient(this.address, this.channelCredentials);
+        this.client = new CredentialTemplatesClient(this.address);
     }
 
     public createCredentialTemplate(

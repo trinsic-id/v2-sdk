@@ -1,5 +1,14 @@
 import ServiceBase, { ServiceOptions } from "./ServiceBase";
-import { AccountProfile, ProviderClient, ServerConfig } from "./proto";
+import {
+  AcceptInviteRequest,
+  AcceptInviteResponse,
+  AccountProfile,
+  CreateEcosystemRequest,
+  CreateEcosystemResponse,
+  ListEcosystemsRequest, ListEcosystemsResponse,
+  ProviderClient,
+  ServerConfig
+} from "./proto";
 import { InvitationStatusRequest, InvitationStatusResponse, InviteRequest, InviteResponse } from "./proto";
 
 export class ProviderService extends ServiceBase {
@@ -22,9 +31,43 @@ export class ProviderService extends ServiceBase {
     });
   }
 
+  public acceptInvite(request: AcceptInviteRequest): Promise<AcceptInviteResponse> {
+    return new Promise(async (resolve, reject) => {
+      this.client.acceptInvite(request, await this.getMetadata(request), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
   public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {
     return new Promise(async (resolve, reject) => {
       this.client.invitationStatus(request, await this.getMetadata(request), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
+  public createEcosystem(request: CreateEcosystemRequest): Promise<CreateEcosystemResponse> {
+    return new Promise(async (resolve, reject) => {
+      this.client.createEcosystem(request, await this.getMetadata(request), (error, response) => {
+        if (error) {
+          reject(error);
+        }
+        return resolve(response);
+      });
+    });
+  }
+
+  public listEcosystems(): Promise<ListEcosystemsResponse> {
+    let request = new ListEcosystemsRequest();
+    return new Promise(async (resolve, reject) => {
+      this.client.listEcosystems(request, await this.getMetadata(request), (error, response) => {
         if (error) {
           reject(error);
         }

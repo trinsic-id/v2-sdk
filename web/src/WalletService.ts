@@ -1,63 +1,77 @@
-import { Struct } from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase, { ServiceOptions } from "./ServiceBase";
+import {Struct} from "google-protobuf/google/protobuf/struct_pb";
+import ServiceBase, {ServiceOptions} from "./ServiceBase";
 import {
-  InsertItemRequest,
-  SearchResponse,
-  SearchRequest,
-  JsonPayload,
-  ServerConfig,
-  AccountProfile,
-  UniversalWalletClient,
+    DeleteItemRequest,
+    DeleteItemResponse,
+    InsertItemRequest,
+    JsonPayload,
+    SearchRequest,
+    SearchResponse,
+    UniversalWalletClient,
 } from "./proto";
 
 export class WalletService extends ServiceBase {
-  walletClient: UniversalWalletClient;
+    walletClient: UniversalWalletClient;
 
-  constructor(options?: ServiceOptions) {
-    super(options);
+    constructor(options?: ServiceOptions) {
+        super(options);
 
-    this.walletClient = new UniversalWalletClient(this.address);
-  }
+        this.walletClient = new UniversalWalletClient(this.address);
+    }
 
-  // must be authorized
-  public search(query: string = "SELECT * from c"): Promise<SearchResponse> {
-    return new Promise(async (resolve, reject) => {
-      let searchRequest = new SearchRequest().setQuery(query);
+    // must be authorized
+    public search(query: string = "SELECT * from c"): Promise<SearchResponse> {
+        return new Promise(async (resolve, reject) => {
+            let searchRequest = new SearchRequest().setQuery(query);
 
-      this.walletClient.search(
-        searchRequest,
-        await this.getMetadata(searchRequest),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        }
-      );
-    });
-  }
+            this.walletClient.search(
+                searchRequest,
+                await this.getMetadata(searchRequest),
+                (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
+                    }
+                }
+            );
+        });
+    }
 
-  // must be authorized
-  public insertItem(item: any): Promise<string> {
-    var request = new JsonPayload().setJsonStruct(
-      Struct.fromJavaScript(item)
-    );
+    // must be authorized
+    public insertItem(item: any): Promise<string> {
+        var request = new JsonPayload().setJsonStruct(
+            Struct.fromJavaScript(item)
+        );
 
-    return new Promise(async (resolve, reject) => {
-      let itemRequest = new InsertItemRequest().setItem(request);
+        return new Promise(async (resolve, reject) => {
+            let itemRequest = new InsertItemRequest().setItem(request);
 
-      this.walletClient.insertItem(
-        itemRequest,
-        await this.getMetadata(itemRequest),
-        (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response.getItemId());
-          }
-        }
-      );
-    });
-  }
+            this.walletClient.insertItem(
+                itemRequest,
+                await this.getMetadata(itemRequest),
+                (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response.getItemId());
+                    }
+                }
+            );
+        });
+    }
+
+    public deleteItem(request: DeleteItemRequest): Promise<DeleteItemResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.walletClient.deleteitem(request, await this.getMetadata(request),
+                (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
+                    }
+                }
+            );
+        });
+    }
 }

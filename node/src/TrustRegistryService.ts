@@ -5,7 +5,7 @@ import {
     CheckIssuerStatusRequest,
     CheckIssuerStatusResponse,
     CheckVerifierStatusRequest,
-    CheckVerifierStatusResponse,
+    CheckVerifierStatusResponse, FetchDataRequest, FetchDataResponse,
     RegisterIssuerRequest,
     RegisterIssuerResponse,
     RegisterVerifierRequest,
@@ -127,6 +127,12 @@ export class TrustRegistryService extends ServiceBase {
                 }
                 return resolve(response);
             });
+        });
+    }
+
+    public fetchData(request: FetchDataRequest): Promise<FetchDataResponse> {
+        return new Promise(async (resolve, reject) => {
+            return this.client.fetchData(request, await this.getMetadata(request));
         });
     }
 }

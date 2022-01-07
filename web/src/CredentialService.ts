@@ -3,7 +3,7 @@ import ServiceBase, {ServiceOptions} from "./ServiceBase";
 import {
     CheckStatusRequest,
     CheckStatusResponse,
-    CreateProofRequest,
+    CreateProofRequest, IssueFromTemplateRequest, IssueFromTemplateResponse,
     IssueRequest,
     JsonPayload,
     SendRequest,
@@ -35,6 +35,18 @@ export class CredentialService extends ServiceBase {
                     reject(error);
                 } else {
                     resolve(response.getDocument()!.getJsonStruct()!.toJavaScript());
+                }
+            });
+        });
+    }
+
+    public issueFromTemplate(request: IssueFromTemplateRequest): Promise<IssueFromTemplateResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.credentialClient.issueFromTemplate(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(response);
                 }
             });
         });
