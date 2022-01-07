@@ -93,4 +93,12 @@ public class WalletService : ServiceBase
             headers: BuildMetadata(request));
         return response.ItemId;
     }
+
+    public async Task<DeleteItemResponse> DeleteItemAsync(DeleteItemRequest request) {
+        return await Client.DeleteitemAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public DeleteItemResponse DeleteItem(DeleteItemRequest request) {
+        return Client.Deleteitem(request, BuildMetadata(request));
+    }
 }

@@ -142,4 +142,24 @@ public class AccountService : ServiceBase
 
         return response;
     }
+
+    public async Task<ListDevicesResponse> ListDevicesAsync() {
+        ListDevicesRequest request = new();
+        return await Client.ListDevicesAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public ListDevicesResponse ListDevices() {
+        ListDevicesRequest request = new();
+        return Client.ListDevices(request, BuildMetadata(request));
+    }
+
+    public async Task<RevokeDeviceResponse> RevokeDeviceAsync() {
+        RevokeDeviceRequest request = new();
+        return await Client.RevokeDeviceAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public RevokeDeviceResponse RevokeDevice() {
+        RevokeDeviceRequest request = new();
+        return Client.RevokeDevice(request, BuildMetadata(request));
+    }
 }
