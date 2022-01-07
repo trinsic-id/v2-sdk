@@ -23,7 +23,7 @@ export class TemplateService extends ServiceBase {
     constructor(options?: ServiceOptions) {
         super(options);
 
-        this.client = new CredentialTemplatesClient(this.address, this.channelCredentials);
+        this.client = new CredentialTemplatesClient(this.address);
     }
 
     public createCredentialTemplate(
