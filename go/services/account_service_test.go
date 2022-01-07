@@ -8,7 +8,7 @@ import (
 
 func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), nil)
+	accountService, err := NewAccountService(nil, TrinsicTestConfig(), nil)
 	if !assert2.Nil(err) {
 		return
 	}

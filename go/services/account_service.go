@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CreateAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+func NewAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
