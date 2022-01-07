@@ -1,9 +1,15 @@
 use std::io;
 
+use crate::{
+    grpc_channel, grpc_client, grpc_client_with_auth,
+    proto::services::account::v1::{
+        account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod,
+        InfoRequest, SignInRequest, TokenProtection,
+    },
+};
 use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
 use tonic::transport::Channel;
-use trinsic::{grpc_channel, grpc_client, grpc_client_with_auth, proto::services::account::v1::{AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection, account_client::AccountClient}};
 
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 
@@ -14,7 +20,6 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
     match args {
         Command::SignIn(args) => sign_in(args, config),
         Command::Info(args) => info(args, config),
-        _ => Err(Error::UnknownCommand),
     }
 }
 

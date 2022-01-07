@@ -385,3 +385,6 @@ go/services/okapi.h
 python/tests/allison.bin
 go/vendor
 java/allison.bin
+devops/protoc-plugins/
+
+*.code-workspace

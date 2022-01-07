@@ -1,12 +1,12 @@
 use crate::parser::trustregistry::*;
-use bytes::Bytes;
-use colored::Colorize;
-use tonic::transport::Channel;
-use trinsic::proto::services::common::v1::ResponseStatus;
-use trinsic::{
+use crate::proto::services::common::v1::ResponseStatus;
+use crate::{
     grpc_channel, grpc_client_with_auth,
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
 };
+
+use colored::Colorize;
+use tonic::transport::Channel;
 
 use super::config::{DefaultConfig, Error};
 

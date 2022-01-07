@@ -42,6 +42,10 @@ public class CredentialsService extends ServiceBase {
         }, Executors.newSingleThreadExecutor());
     }
 
+    public ListenableFuture<VerifiableCredentials.IssueFromTemplateResponse> issueCredentialFromTemplate(VerifiableCredentials.IssueFromTemplateRequest request) throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).issueFromTemplate(request);
+    }
+
     public ListenableFuture<HashMap> createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
         final VerifiableCredentials.CreateProofRequest request = VerifiableCredentials.CreateProofRequest.newBuilder()
                 .setDocumentId(documentId)
@@ -59,6 +63,16 @@ public class CredentialsService extends ServiceBase {
                 .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
         var response = withMetadata(stub, request).verifyProof(request);
         return Futures.transform(response, VerifiableCredentials.VerifyProofResponse::getValid, Executors.newSingleThreadExecutor());
+    }
+
+    public ListenableFuture<VerifiableCredentials.CheckStatusResponse> checkStatus(String credentialStatusId) throws InvalidProtocolBufferException, DidException {
+        var request = VerifiableCredentials.CheckStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).build();
+        return withMetadata(stub, request).checkStatus(request);
+    }
+
+    public ListenableFuture<VerifiableCredentials.UpdateStatusResponse> updateStatus(String credentialStatusId, Boolean revoked) throws InvalidProtocolBufferException, DidException {
+        var request = VerifiableCredentials.UpdateStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).setRevoked(revoked).build();
+        return withMetadata(stub, request).updateStatus(request);
     }
 
     public ListenableFuture<VerifiableCredentials.SendResponse> send(HashMap document, String email) throws InvalidProtocolBufferException, DidException {

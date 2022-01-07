@@ -1,3 +1,4 @@
+use crate::services::Service;
 use clap::ArgMatches;
 
 pub mod account;
@@ -6,10 +7,11 @@ pub mod didcomm;
 pub mod didkey;
 pub mod issuer;
 pub mod provider;
+pub mod template;
 pub mod trustregistry;
 pub mod wallet;
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
     if args.is_present("didkey") {
         Service::DIDKey(didkey::parse(
             &args
@@ -35,43 +37,36 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
                 .expect("Error parsing request"),
         ))
     } else if args.is_present("vc") {
-        return Service::VerifiableCredential(issuer::parse(
+        Service::VerifiableCredential(issuer::parse(
             &args
                 .subcommand_matches("vc")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("account") {
-        return Service::Account(account::parse(
+        Service::Account(account::parse(
             &args
                 .subcommand_matches("account")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("provider") {
-        return Service::Provider(provider::parse(
+        Service::Provider(provider::parse(
             &args
                 .subcommand_matches("provider")
                 .expect("Error parsing request"),
-        ));
+        ))
     } else if args.is_present("trust-registry") {
-        return Service::TrustRegistry(trustregistry::parse(
+        Service::TrustRegistry(trustregistry::parse(
             &args
                 .subcommand_matches("trust-registry")
                 .expect("Error parsing request"),
-        ));
+        ))
+    } else if args.is_present("template") {
+        Service::Template(template::parse(
+            &args
+                .subcommand_matches("template")
+                .expect("Error parsing request"),
+        ))
     } else {
         Service::Unknown
     }
-}
-
-#[derive(Debug, PartialEq)]
-pub enum Service<'a> {
-    DIDComm(didcomm::Command<'a>),
-    DIDKey(didkey::Command<'a>),
-    Wallet(wallet::Command<'a>),
-    VerifiableCredential(issuer::Command<'a>),
-    Provider(provider::Command<'a>),
-    Config(config::Command<'a>),
-    Account(account::Command<'a>),
-    TrustRegistry(trustregistry::Command),
-    Unknown,
 }
