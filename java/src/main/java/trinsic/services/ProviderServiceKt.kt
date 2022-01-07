@@ -23,6 +23,11 @@ class ProviderServiceKt(
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun acceptInvite(request: AcceptInviteRequest): AcceptInviteResponse {
+        return withMetadata(stub, request).acceptInvite(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse {
         require(request.invitationId.isNotEmpty()) { "Onboarding reference ID must be set." }
         return withMetadata(stub, request).invitationStatus(request)

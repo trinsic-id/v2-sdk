@@ -25,6 +25,7 @@ type WalletService interface {
 
 	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
 	InsertItem(userContext context.Context, item Document) (string, error)
+	DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) (*sdk.DeleteItemResponse, error)
 }
 
 type WalletBase struct {
@@ -69,4 +70,16 @@ func (w *WalletBase) InsertItem(userContext context.Context, item Document) (str
 		return "", err
 	}
 	return response.ItemId, nil
+}
+
+func (w *WalletBase) DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) (*sdk.DeleteItemResponse, error) {
+	md, err := w.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := w.client.Deleteitem(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
 }
