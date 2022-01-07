@@ -5,7 +5,7 @@ import {
     CheckIssuerStatusRequest,
     CheckIssuerStatusResponse,
     CheckVerifierStatusRequest,
-    CheckVerifierStatusResponse,
+    CheckVerifierStatusResponse, FetchDataRequest, FetchDataResponse,
     RegisterIssuerRequest,
     RegisterIssuerResponse,
     RegisterVerifierRequest,
@@ -20,7 +20,6 @@ import {
     UnregisterVerifierRequest,
     UnregisterVerifierResponse
 } from "./proto";
-import {FetchDataRequest, FetchDataResponse} from "../lib";
 
 export class TrustRegistryService extends ServiceBase {
     client: TrustRegistryClient;
@@ -133,12 +132,7 @@ export class TrustRegistryService extends ServiceBase {
 
     public fetchData(request: FetchDataRequest): Promise<FetchDataResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.fetch(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                }
-                return resolve(response);
-            });
+            return this.client.fetchData(request, await this.getMetadata(request));
         });
     }
 }

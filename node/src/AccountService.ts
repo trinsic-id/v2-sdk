@@ -9,9 +9,9 @@ import {
     SignInRequest,
     SignInResponse,
     TokenProtection,
+    ListDevicesRequest, ListDevicesResponse, RevokeDeviceRequest, RevokeDeviceResponse,
 } from "./proto";
 import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
-import {ListDevicesRequest, ListDevicesResponse, RevokeDeviceRequest, RevokeDeviceResponse} from "../lib";
 
 export class AccountService extends ServiceBase {
     client: AccountClient;

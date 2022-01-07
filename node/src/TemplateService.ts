@@ -3,15 +3,14 @@ import {
     CreateCredentialTemplateRequest,
     CreateCredentialTemplateResponse,
     CredentialTemplatesClient,
+    DeleteCredentialTemplateRequest,
+    DeleteCredentialTemplateResponse,
     GetCredentialTemplateRequest,
     GetCredentialTemplateResponse,
     ListCredentialTemplatesRequest,
     ListCredentialTemplatesResponse,
     SearchCredentialTemplatesRequest,
     SearchCredentialTemplatesResponse,
-    VerifiableCredentialClient,
-    DeleteCredentialTemplateRequest,
-    DeleteCredentialTemplateResponse,
 } from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];

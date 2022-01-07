@@ -1,5 +1,6 @@
 import ServiceBase, {ServiceOptions} from "./ServiceBase";
 import {
+    AcceptInviteRequest, AcceptInviteResponse,
     CreateEcosystemRequest, CreateEcosystemResponse,
     InvitationStatusRequest,
     InvitationStatusResponse,
@@ -7,7 +8,6 @@ import {
     InviteResponse, ListEcosystemsRequest, ListEcosystemsResponse,
     ProviderClient
 } from "./proto";
-import {AcceptInviteRequest, AcceptInviteResponse} from "../lib";
 
 export class ProviderService extends ServiceBase {
     client: ProviderClient;

@@ -20,6 +20,7 @@ import {
   UnregisterVerifierRequest,
   UnregisterVerifierResponse
 } from "./proto";
+import {ClientReadableStream} from "grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
     client: TrustRegistryClient;
@@ -130,14 +131,7 @@ export class TrustRegistryService extends ServiceBase {
         });
     }
 
-    public fetchData(request: FetchDataRequest): Promise<FetchDataResponse> {
-        return new Promise(async (resolve, reject) => {
-            this.client.fetch(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                }
-                return resolve(response);
-            });
-        });
+    public async fetchData(request: FetchDataRequest): Promise<ClientReadableStream<unknown>> {
+        return this.client.fetchData(request, await this.getMetadata(request));
     }
 }
