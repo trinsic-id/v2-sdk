@@ -31,7 +31,7 @@ pub struct RegistrationArgs {
     pub valid_to: u64,
 }
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command {
+pub fn parse(args: &ArgMatches) -> Command {
     if args.is_present("search") {
         search(
             &args

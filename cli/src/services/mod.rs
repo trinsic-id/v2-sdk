@@ -1,14 +1,12 @@
 mod account;
 pub(crate) mod config;
-// mod didcomm;
-// mod didkey;
 mod issuer;
 mod provider;
+mod template;
 mod trustregistry;
 mod wallet;
 
 use self::config::{DefaultConfig, Error};
-use super::parser::Service;
 
 pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error> {
     match args {
@@ -18,6 +16,21 @@ pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error
         Service::Provider(args) => provider::execute(&args, config),
         Service::Config(args) => Ok(config::execute(&args)),
         Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
+        Service::Template(args) => template::execute(&args, &config),
         _ => Err(Error::UnknownCommand),
     }
+}
+
+#[derive(Debug, PartialEq)]
+pub(crate) enum Service<'a> {
+    DIDComm(crate::parser::didcomm::Command<'a>),
+    DIDKey(crate::parser::didkey::Command<'a>),
+    Wallet(crate::parser::wallet::Command<'a>),
+    VerifiableCredential(crate::parser::issuer::Command<'a>),
+    Provider(crate::parser::provider::Command<'a>),
+    Config(crate::parser::config::Command<'a>),
+    Account(crate::parser::account::Command<'a>),
+    TrustRegistry(crate::parser::trustregistry::Command),
+    Template(crate::parser::template::TemplateCommand),
+    Unknown,
 }

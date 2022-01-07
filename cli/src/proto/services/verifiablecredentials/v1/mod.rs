@@ -68,6 +68,36 @@ pub struct SendResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
+/// request object to update the status of the revocation entry
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateStatusRequest {
+    /// the credential status id
+    #[prost(string, tag = "1")]
+    pub credential_status_id: ::prost::alloc::string::String,
+    /// indicates if the status is revoked
+    #[prost(bool, tag = "2")]
+    pub revoked: bool,
+}
+/// response object for update of status of revocation entry
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateStatusResponse {
+    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
+    pub status: i32,
+}
+/// request object to update the status of the revocation entry
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CheckStatusRequest {
+    /// the credential status id
+    #[prost(string, tag = "1")]
+    pub credential_status_id: ::prost::alloc::string::String,
+}
+/// response object for update of status of revocation entry
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CheckStatusResponse {
+    /// indicates if the status is revoked
+    #[prost(bool, tag = "1")]
+    pub revoked: bool,
+}
 #[doc = r" Generated client implementations."]
 pub mod verifiable_credential_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -157,6 +187,40 @@ pub mod verifiable_credential_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Check credential status by setting the revocation value"]
+        pub async fn check_status(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CheckStatusRequest>,
+        ) -> Result<tonic::Response<super::CheckStatusResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Update credential status by setting the revocation value"]
+        pub async fn update_status(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateStatusRequest>,
+        ) -> Result<tonic::Response<super::UpdateStatusResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

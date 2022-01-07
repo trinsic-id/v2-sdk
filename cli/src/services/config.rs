@@ -1,3 +1,5 @@
+use crate::proto::services::account::v1::AccountProfile;
+use crate::{proto::services::common::v1::Nonce, MessageFormatter};
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
@@ -5,11 +7,12 @@ use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::{env::var, path::Path};
-use std::{fs, io::prelude::*};
-use std::{fs::OpenOptions, path::PathBuf};
+use std::{
+    fs::{self, OpenOptions},
+    io::prelude::*,
+    path::PathBuf,
+};
 use tonic::service::Interceptor;
-use trinsic::proto::services::account::v1::AccountProfile;
-use trinsic::{proto::services::common::v1::Nonce, MessageFormatter};
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -64,6 +67,7 @@ impl Into<Bytes> for &ConfigServer {
 pub enum Error {
     IOError,
     SerializationError,
+    APIError(String),
     UnknownCommand,
 }
 
@@ -85,16 +89,24 @@ impl From<std::io::Error> for Error {
     }
 }
 
+impl From<serde_json::Error> for Error {
+    fn from(_: serde_json::Error) -> Self {
+        Error::SerializationError
+    }
+}
+
 impl From<prost::DecodeError> for Error {
     fn from(_: prost::DecodeError) -> Self {
         Error::SerializationError
     }
 }
 
+use crate::DEBUG;
+
 impl From<&ArgMatches<'_>> for DefaultConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
         if matches.is_present("debug") {
-            unsafe { crate::DEBUG = true }
+            unsafe { DEBUG = true }
         }
         if matches.is_present("alias") {
             DefaultConfig {
@@ -126,21 +138,21 @@ impl DefaultConfig {
         file.read_to_string(&mut buffer)?;
         let config: DefaultConfig = match toml::from_str(&buffer) {
             Ok(x) => x,
-            Err(err) => {
+            Err(_err) => {
                 let mut file = OpenOptions::new()
-                .create_new(false)
-                .read(true)
-                .truncate(true)
-                .write(true)
-                .append(false)
-                .open(config_file)?;
+                    .create_new(false)
+                    .read(true)
+                    .truncate(true)
+                    .write(true)
+                    .append(false)
+                    .open(config_file)?;
 
-            let buffer = toml::to_vec(&DefaultConfig::default())?;
-            file.write_all(&buffer)?;
-            file.flush()?;
+                let buffer = toml::to_vec(&DefaultConfig::default())?;
+                file.write_all(&buffer)?;
+                file.flush()?;
 
-            DefaultConfig::default()
-            },
+                DefaultConfig::default()
+            }
         };
 
         Ok(config)
@@ -154,7 +166,7 @@ impl DefaultConfig {
     #[allow(dead_code)]
     pub fn read_profile<T>(&self) -> Result<T, Error>
     where
-        T: trinsic::MessageFormatter + prost::Message + Default,
+        T: crate::MessageFormatter + prost::Message + Default,
     {
         let filename = data_path().join(format!("{}.bin", self.profile.as_ref().unwrap().default));
         let mut file = OpenOptions::new().read(true).open(filename)?;
@@ -245,7 +257,7 @@ impl Interceptor for DefaultConfig {
         // read the currently configured profile
         let profile: AccountProfile = self.read_profile().unwrap();
 
-        // generate nonce by combining the current unix epoch timestam
+        // generate nonce by combining the current unix epoch timestamp
         // and a hash of the request payload
         let nonce = Nonce {
             timestamp: SystemTime::now()
