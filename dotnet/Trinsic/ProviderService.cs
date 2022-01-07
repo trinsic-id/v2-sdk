@@ -34,7 +34,7 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<InviteResponse> InviteParticipant(InviteRequest request) {
+    public async Task<InviteResponse> InviteParticipantAsync(InviteRequest request) {
         if (request.ContactMethodCase == InviteRequest.ContactMethodOneofCase.None) {
             throw new("Contact method must be set.");
         }
@@ -48,12 +48,16 @@ public class ProviderService : ServiceBase
         }
     }
 
+    public async Task<AcceptInviteResponse> AcceptInviteAsync(AcceptInviteRequest request) {
+        return await Client.AcceptInviteAsync(request, await BuildMetadataAsync(request));
+    }
+
     /// <summary>
     /// Gets the status of the onboarding invitation for a given invitation ID
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<InvitationStatusResponse> InvitationStatus(InvitationStatusRequest request) {
+    public async Task<InvitationStatusResponse> InvitationStatusAsync(InvitationStatusRequest request) {
         if (string.IsNullOrWhiteSpace(request.InvitationId)) {
             throw new("Onboarding reference ID must be set.");
         }
@@ -72,7 +76,7 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<CreateEcosystemResponse> CreateEcosystemAsync(CreateEcosystemRequest request) {
+    public async Task<CreateEcosystemResponse> CreateEcosystemAsyncAsync(CreateEcosystemRequest request) {
         var response = await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
         return response;
     }

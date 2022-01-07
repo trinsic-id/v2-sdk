@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -49,6 +50,10 @@ public class TrustRegistryService : ServiceBase
         var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
+    public async Task<RemoveFrameworkResponse> RemoveGovernanceFrameworkAsync(RemoveFrameworkRequest request) {
+        return await Client.RemoveFrameworkAsync(request, await BuildMetadataAsync(request));
+    }
+
     /// <summary>
     /// Register a DID as authoritative issuer with the configured governance framework.
     /// </summary>
@@ -61,8 +66,8 @@ public class TrustRegistryService : ServiceBase
         }
     }
 
-    public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
-        throw new NotImplementedException();
+    public async Task<UnregisterIssuerResponse> UnregisterIssuerAsync(UnregisterIssuerRequest request) {
+        return await Client.UnregisterIssuerAsync(request, await BuildMetadataAsync(request));
     }
 
     /// <summary>
@@ -77,8 +82,8 @@ public class TrustRegistryService : ServiceBase
         }
     }
 
-    public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
-        throw new NotImplementedException();
+    public async Task<UnregisterVerifierResponse> UnregisterVerifierAsync(UnregisterVerifierRequest request) {
+        return await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
     }
 
     /// <summary>
@@ -114,5 +119,9 @@ public class TrustRegistryService : ServiceBase
         };
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
         return response;
+    }
+
+    public IAsyncStreamReader<FetchDataResponse> FetchData(FetchDataRequest request) {
+        return Client.FetchData(request, BuildMetadata(request)).ResponseStream;
     }
 }

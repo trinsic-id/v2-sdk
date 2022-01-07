@@ -47,6 +47,23 @@ public class TemplateService : ServiceBase
         var response = await Client.GetAsync(request, await BuildMetadataAsync(request));
         return response;
     }
+    
+    /// <summary>
+    /// List the available templates for the given ecosystem.
+    /// Results can be customized using a SQL query.
+    /// </summary>
+    /// <remarks>
+    /// This endpoint returns strongly typed result set. If your query uses projections,
+    /// use the <see cref="SearchAsync"/> method instead and parse the result JSON as needed.
+    /// </remarks>
+    /// <param name="request">The request object</param>
+    /// <returns>
+    /// The search response and continuation token, if available
+    /// </returns>
+    public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
+        var response = await Client.ListAsync(request, await BuildMetadataAsync(request));
+        return response;
+    }
 
     /// <summary>
     /// Search the registry for any data in the given ecosystem.
@@ -65,20 +82,7 @@ public class TemplateService : ServiceBase
         return response;
     }
 
-    /// <summary>
-    /// List the available templates for the given ecosystem.
-    /// Results can be customized using a SQL query.
-    /// </summary>
-    /// <remarks>
-    /// This endpoint returns strongly typed result set. If your query uses projections,
-    /// use the <see cref="SearchAsync"/> method instead and parse the result JSON as needed.
-    /// </remarks>
-    /// <param name="request">The request object</param>
-    /// <returns>
-    /// The search response and continuation token, if available
-    /// </returns>
-    public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
-        var response = await Client.ListAsync(request, await BuildMetadataAsync(request));
-        return response;
+    public async Task<DeleteCredentialTemplateResponse> DeleteAsync(DeleteCredentialTemplateRequest request) {
+        return await Client.DeleteAsync(request, await BuildMetadataAsync(request));
     }
 }

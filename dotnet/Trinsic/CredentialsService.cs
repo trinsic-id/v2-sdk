@@ -117,7 +117,7 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="proofDocument"></param>
     /// <returns></returns>
-    public async Task<bool> VerifyAsync(JObject proofDocument) {
+    public async Task<bool> VerifyProofAsync(JObject proofDocument) {
         VerifyProofRequest request = new() {
             ProofDocument = new() {JsonString = proofDocument.ToString()}
         };
@@ -128,7 +128,7 @@ public class CredentialsService : ServiceBase
         return response.Valid;
     }
 
-    public bool Verify(JObject proofDocument) {
+    public bool VerifyProof(JObject proofDocument) {
         VerifyProofRequest request = new() {
             ProofDocument = new() {JsonString = proofDocument.ToString()}
         };
