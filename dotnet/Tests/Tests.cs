@@ -107,7 +107,7 @@ public class Tests
         walletService.Profile = credentialsService.Profile = airline;
 
         // Check for valid signature
-        var valid = await credentialsService.VerifyAsync(credentialProof);
+        var valid = await credentialsService.VerifyProofAsync(credentialProof);
         // }
         _testOutputHelper.WriteLine($"Verification result: {valid}");
         Assert.True(valid);
@@ -230,8 +230,8 @@ public class Tests
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipant(new InviteRequest()));
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatus(new InvitationStatusRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipantAsync(new InviteRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
@@ -240,10 +240,10 @@ public class Tests
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
         var invite = new InviteRequest() {Email = "info@trinsic.id", Description = "Test invitation"};
-        var response = await myProviderService.InviteParticipant(invite);
+        var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatus(new InvitationStatusRequest()
+        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()
             {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }

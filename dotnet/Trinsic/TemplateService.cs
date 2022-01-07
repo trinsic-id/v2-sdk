@@ -34,8 +34,11 @@ public class TemplateService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<CreateCredentialTemplateResponse> CreateAsync(CreateCredentialTemplateRequest request) {
-        var response = await Client.CreateAsync(request, await BuildMetadataAsync(request));
-        return response;
+        return await Client.CreateAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public CreateCredentialTemplateResponse Create(CreateCredentialTemplateRequest request) {
+        return Client.Create(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -44,8 +47,11 @@ public class TemplateService : ServiceBase
     /// <param name="request">The request object</param>
     /// <returns></returns>
     public async Task<GetCredentialTemplateResponse> GetAsync(GetCredentialTemplateRequest request) {
-        var response = await Client.GetAsync(request, await BuildMetadataAsync(request));
-        return response;
+        return await Client.GetAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public GetCredentialTemplateResponse Get(GetCredentialTemplateRequest request) {
+        return Client.Get(request, BuildMetadata(request));
     }
     
     /// <summary>
@@ -61,8 +67,11 @@ public class TemplateService : ServiceBase
     /// The search response and continuation token, if available
     /// </returns>
     public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
-        var response = await Client.ListAsync(request, await BuildMetadataAsync(request));
-        return response;
+        return await Client.ListAsync(request, await BuildMetadataAsync(request));
+    }
+    
+    public ListCredentialTemplatesResponse List(ListCredentialTemplatesRequest request) {
+        return Client.List(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -78,11 +87,18 @@ public class TemplateService : ServiceBase
     /// The search response and continuation token, if available
     /// </returns>
     public async Task<SearchCredentialTemplatesResponse> SearchAsync(SearchCredentialTemplatesRequest request) {
-        var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
-        return response;
+        return await Client.SearchAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public SearchCredentialTemplatesResponse Search(SearchCredentialTemplatesRequest request) {
+        return Client.Search(request, BuildMetadata(request));
     }
 
     public async Task<DeleteCredentialTemplateResponse> DeleteAsync(DeleteCredentialTemplateRequest request) {
         return await Client.DeleteAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public DeleteCredentialTemplateResponse Delete(DeleteCredentialTemplateRequest request) {
+        return Client.Delete(request, BuildMetadata(request));
     }
 }
