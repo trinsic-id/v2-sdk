@@ -20,6 +20,7 @@ import {
     UnregisterVerifierRequest,
     UnregisterVerifierResponse
 } from "./proto";
+import {FetchDataRequest, FetchDataResponse} from "../lib";
 
 export class TrustRegistryService extends ServiceBase {
     client: TrustRegistryClient;
@@ -122,6 +123,17 @@ export class TrustRegistryService extends ServiceBase {
     public removeGovernanceFramework(request: RemoveFrameworkRequest): Promise<RemoveFrameworkResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.removeFramework(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                }
+                return resolve(response);
+            });
+        });
+    }
+
+    public fetchData(request: FetchDataRequest): Promise<FetchDataResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.client.fetch(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
                 }

@@ -11,6 +11,7 @@ import {
     SearchCredentialTemplatesResponse,
     VerifiableCredentialClient
 } from "./proto";
+import {DeleteCredentialTemplateRequest, DeleteCredentialTemplateResponse} from "../lib";
 
 type JavaScriptValue = string | number | boolean | {} | any[];
 type JSStruct = { [key: string]: JavaScriptValue };
@@ -74,5 +75,16 @@ export class TemplateService extends ServiceBase {
                 return resolve(response)
             })
         })
+    }
+
+    public deleteCredentialTemplate(request: DeleteCredentialTemplateRequest): Promise<DeleteCredentialTemplateResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.client.delete(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                }
+                return resolve(response);
+            });
+        });
     }
 }
