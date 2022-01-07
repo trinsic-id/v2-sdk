@@ -47,7 +47,7 @@ describe("wallet service tests", () => {
     let proof = await credentialService.createProof(itemId, { "@context": "http://w3id.org/security/v3-unstable" });
     expect(proof).not.toBeNull();
 
-    let valid = await credentialService.verify(proof);
+    let valid = await credentialService.verifyProof(proof);
     expect(valid).toBe(true);
   }, 20000);
 });
