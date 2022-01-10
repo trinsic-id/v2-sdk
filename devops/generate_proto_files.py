@@ -67,8 +67,14 @@ def get_language_dir(language_name: str) -> str:
 
 def get_proto_files(dir_name: str = None) -> List[str]:
     dir_name = dir_name or get_language_dir('proto')
-    proto_search_glob = join(dir_name, '**', '*.proto')
-    return [abspath(file_path) for file_path in glob.glob(proto_search_glob, recursive=True)]
+    return get_matching_files(dir_name, '*.proto')
+
+
+def get_matching_files(dir_name: str, extension: str) -> List[str]:
+    if not extension.startswith('*.'):
+        extension = f'*.{extension}'
+    search_glob = join(dir_name, '**', extension)
+    return [abspath(file_path) for file_path in glob.glob(search_glob, recursive=True)]
 
 
 def clean_dir(language_dir: str) -> None:
@@ -128,7 +134,7 @@ def update_ruby():
     clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
-    # TODO - Ruby type specifications
+    # Ruby type specifications
     run_protoc({'rbi_out': ruby_proto_path}, {}, get_proto_files())
 
 
@@ -151,8 +157,10 @@ def update_markdown():
 def update_node():
     lang_path = get_language_dir('node')
     lang_proto_path = join(lang_path, 'src', 'proto')
-    clean_dir(lang_proto_path)
-    # TODO - Keep the index.ts file and index.d.ts file
+    # Clean selectively
+    clean_dir(join(lang_proto_path, 'services'))
+    clean_dir(join(lang_proto_path, 'sdk'))
+    clean_dir(join(lang_proto_path, 'pbmse'))
 
     # TODO - Make this cross-platform
     node_protoc_executable = join(lang_path, 'node_modules', '.bin', 'grpc_tools_node_protoc.cmd')
@@ -171,8 +179,10 @@ def update_node():
 def update_web():
     lang_path = get_language_dir('web')
     lang_proto_path = join(lang_path, 'src', 'proto')
-    clean_dir(lang_proto_path)
-    # TODO - Keep the index.ts file and index.d.ts file
+    # Clean selectively
+    clean_dir(join(lang_proto_path, 'services'))
+    clean_dir(join(lang_proto_path, 'sdk'))
+    clean_dir(join(lang_proto_path, 'pbmse'))
     # TODO - Make this cross-platform
 
     # code generation
@@ -204,14 +214,14 @@ def update_dotnet():
 
 
 def main():
-    download_protoc_plugins()
-    update_golang()
+    # download_protoc_plugins()
+    # update_golang()
     update_ruby()
-    update_java()
-    update_markdown()
-    update_python()
-    update_node()
-    update_web()
+    # update_java()
+    # update_markdown()
+    # update_python()
+    # update_node()
+    # update_web()
     # update_dotnet()
 
 
