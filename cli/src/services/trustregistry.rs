@@ -19,6 +19,8 @@ pub(crate) fn execute(args: &Command, config: &DefaultConfig) -> Result<(), Erro
         Command::UnregisterVerifier(args) => Ok(unregister_verifier(args, config)),
         Command::CheckIssuer(args) => Ok(check_issuer(args, config)),
         Command::CheckVerifier(args) => Ok(check_verifier(args, config)),
+        Command::RegisterEgf(args) => Ok(add_framework(args, config)),
+        Command::UnregisterEgf(args) => Ok(remove_framework(args, config)),
     }
 }
 
@@ -222,6 +224,56 @@ async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         .register_verifier(request)
         .await
         .expect("register verifier command failed")
+        .into_inner();
+
+    println!(
+        "{}",
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
+    );
+}
+
+#[tokio::main]
+async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) {
+    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(AddFrameworkRequest {
+        governance_framework: Some(GovernanceFramework {
+            governance_framework_uri: args.governance_framework_uri.clone(),
+            description: args
+                .description
+                .as_ref()
+                .map_or(String::default(), |x| x.clone()),
+            ..Default::default()
+        }),
+    });
+
+    let response = client
+        .add_framework(request)
+        .await
+        .expect("add framework command failed")
+        .into_inner();
+
+    println!(
+        "{}",
+        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
+    );
+}
+
+#[tokio::main]
+async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) {
+    let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(RemoveFrameworkRequest {
+        governance_framework: Some(GovernanceFramework {
+            governance_framework_uri: args.governance_framework_uri.clone(),
+            ..Default::default()
+        }),
+    });
+
+    let response = client
+        .remove_framework(request)
+        .await
+        .expect("add framework command failed")
         .into_inner();
 
     println!(

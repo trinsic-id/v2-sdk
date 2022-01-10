@@ -341,7 +341,29 @@ subcommands:
               The data will be formatted in JSON using the standardized
               schema and vocabulary for all issuers and verifiers.
         - register-egf:
-            about: Create an Ecosystem Governance Framework
+            about: Register an Ecosystem Governance Framework
+            args:
+              - uri:
+                  long: uri
+                  value_name: URI
+                  help: Sets the Ecosystem Governance Framework URI
+                  takes_value: true
+                  required: true
+              - description:
+                  long: description
+                  value_name: STRING
+                  help: EGF Description
+                  takes_value: true
+                  required: false
+        - unregister-egf:
+            about: Unregister an Ecosystem Governance Framework
+            args:
+              - uri:
+                  long: uri
+                  value_name: URI
+                  help: Sets the Ecosystem Governance Framework URI
+                  takes_value: true
+                  required: true
         - register-issuer:
             about: |
               Register an Issuer DID as authoritative issuer for the
