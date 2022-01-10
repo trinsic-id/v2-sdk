@@ -176,14 +176,14 @@ module Trinsic
     end
 
     def invite_participant(request)
-      # TODO - Ensure a field has been set
-      # raise("Contact method must be set") unless request.
+      # Ensure a field has been set
+      raise("Contact method must be set") if request.email.nil? and request.phone.nil? and request.didcomm_invitation.nil?
       @client.invite(request, metadata: metadata(request))
     end
 
     def invitation_status(request)
-      # TODO - Onboarding reference ID must be set
-      # raise("reference id must be set") unless request.reference_id.nil?
+      # Onboarding reference ID must be set
+      raise("invitation id must be set") if request.invitation_id.nil?
       @client.invitation_status(request, metadata: metadata(request))
     end
 
