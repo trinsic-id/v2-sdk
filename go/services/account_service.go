@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CreateAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+func NewAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
@@ -27,6 +27,8 @@ type AccountService interface {
 	Unprotect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error)
 	Protect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error)
 	GetInfo(userContext context.Context) (*sdk.InfoResponse, error)
+	ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error)
+	RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error)
 }
 
 type AccountBase struct {
@@ -98,6 +100,30 @@ func (a *AccountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, e
 		return nil, err
 	}
 	response, err := a.client.Info(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (a *AccountBase) ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error) {
+	md, err := a.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := a.client.ListDevices(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (a *AccountBase) RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error) {
+	md, err := a.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := a.client.RevokeDevice(md, request)
 	if err != nil {
 		return nil, err
 	}

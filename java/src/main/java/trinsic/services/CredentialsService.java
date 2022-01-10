@@ -33,8 +33,7 @@ public class CredentialsService extends ServiceBase {
     }
 
     public ListenableFuture<HashMap> issueCredential(HashMap document) throws InvalidProtocolBufferException, DidException {
-        var request = VerifiableCredentials.IssueRequest.newBuilder()
-                .setDocument(TrinsicUtilities.createPayloadString(document)).build();
+        var request = VerifiableCredentials.IssueRequest.newBuilder().setDocument(TrinsicUtilities.createPayloadString(document)).build();
         var response = withMetadata(stub, request).issue(request);
         return Futures.transform(response, input -> {
             if (input == null) return null;
@@ -44,25 +43,6 @@ public class CredentialsService extends ServiceBase {
 
     public ListenableFuture<VerifiableCredentials.IssueFromTemplateResponse> issueCredentialFromTemplate(VerifiableCredentials.IssueFromTemplateRequest request) throws InvalidProtocolBufferException, DidException {
         return withMetadata(stub, request).issueFromTemplate(request);
-    }
-
-    public ListenableFuture<HashMap> createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
-        final VerifiableCredentials.CreateProofRequest request = VerifiableCredentials.CreateProofRequest.newBuilder()
-                .setDocumentId(documentId)
-                .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument))
-                .build();
-        var response = withMetadata(stub, request).createProof(request);
-        return Futures.transform(response, input -> {
-            if (input == null) return null;
-            return new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
-        }, Executors.newSingleThreadExecutor());
-    }
-
-    public ListenableFuture<Boolean> verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
-        final VerifiableCredentials.VerifyProofRequest request = VerifiableCredentials.VerifyProofRequest.newBuilder()
-                .setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
-        var response = withMetadata(stub, request).verifyProof(request);
-        return Futures.transform(response, VerifiableCredentials.VerifyProofResponse::getValid, Executors.newSingleThreadExecutor());
     }
 
     public ListenableFuture<VerifiableCredentials.CheckStatusResponse> checkStatus(String credentialStatusId) throws InvalidProtocolBufferException, DidException {
@@ -75,11 +55,23 @@ public class CredentialsService extends ServiceBase {
         return withMetadata(stub, request).updateStatus(request);
     }
 
+    public ListenableFuture<HashMap> createProof(String documentId, HashMap revealDocument) throws InvalidProtocolBufferException, DidException {
+        final VerifiableCredentials.CreateProofRequest request = VerifiableCredentials.CreateProofRequest.newBuilder().setDocumentId(documentId).setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument)).build();
+        var response = withMetadata(stub, request).createProof(request);
+        return Futures.transform(response, input -> {
+            if (input == null) return null;
+            return new Gson().fromJson(input.getProofDocument().getJsonString(), HashMap.class);
+        }, Executors.newSingleThreadExecutor());
+    }
+
+    public ListenableFuture<Boolean> verifyProof(HashMap proofDocument) throws InvalidProtocolBufferException, DidException {
+        final VerifiableCredentials.VerifyProofRequest request = VerifiableCredentials.VerifyProofRequest.newBuilder().setProofDocument(TrinsicUtilities.createPayloadString(proofDocument)).build();
+        var response = withMetadata(stub, request).verifyProof(request);
+        return Futures.transform(response, VerifiableCredentials.VerifyProofResponse::getValid, Executors.newSingleThreadExecutor());
+    }
+
     public ListenableFuture<VerifiableCredentials.SendResponse> send(HashMap document, String email) throws InvalidProtocolBufferException, DidException {
-        final VerifiableCredentials.SendRequest request = VerifiableCredentials.SendRequest.newBuilder()
-                .setEmail(email)
-                .setDocument(TrinsicUtilities.createPayloadString(document))
-                .build();
+        final VerifiableCredentials.SendRequest request = VerifiableCredentials.SendRequest.newBuilder().setEmail(email).setDocument(TrinsicUtilities.createPayloadString(document)).build();
         return withMetadata(stub, request).send(request);
     }
 }

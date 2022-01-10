@@ -8,8 +8,8 @@ import (
 	"net/url"
 )
 
-func CreateTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+func NewTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
@@ -24,6 +24,7 @@ func CreateTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.S
 type TrustRegistryService interface {
 	Service
 	RegisterGovernanceFramework(userContext context.Context, governanceFramework string, description string) error
+	RemoveGovernanceFramework(userContext context.Context, request *sdk.RemoveFrameworkRequest) (*sdk.RemoveFrameworkResponse, error)
 	RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) error
 	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error
 	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error
@@ -31,6 +32,7 @@ type TrustRegistryService interface {
 	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error)
 	CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) (sdk.RegistrationStatus, error)
 	SearchRegistry(userContext context.Context, query string) (*sdk.SearchRegistryResponse, error)
+	FetchData(userContext context.Context, request *sdk.FetchDataRequest) (sdk.TrustRegistry_FetchDataClient, error)
 }
 
 type TrustRegistryBase struct {
@@ -137,6 +139,30 @@ func (t *TrustRegistryBase) SearchRegistry(userContext context.Context, query st
 		return nil, err
 	}
 	response, err := t.client.SearchRegistry(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (t *TrustRegistryBase) RemoveGovernanceFramework(userContext context.Context, request *sdk.RemoveFrameworkRequest) (*sdk.RemoveFrameworkResponse, error) {
+	md, err := t.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := t.client.RemoveFramework(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (t *TrustRegistryBase) FetchData(userContext context.Context, request *sdk.FetchDataRequest) (sdk.TrustRegistry_FetchDataClient, error) {
+	md, err := t.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := t.client.FetchData(md, request)
 	if err != nil {
 		return nil, err
 	}

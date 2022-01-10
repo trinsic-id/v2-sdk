@@ -7,8 +7,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CreateProviderService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (ProviderService, error) {
-	base, err := CreateServiceBase(profile, serverConfig, channel)
+func NewProviderService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (ProviderService, error) {
+	base, err := NewServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
@@ -26,7 +26,7 @@ type ProviderService interface {
 	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
 	CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error)
 	ListEcosystems(ctx context.Context) ([]*sdk.Ecosystem, error)
-	//AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error)
+	AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error)
 	//SetEcosystem(ecosystemId string)
 }
 
@@ -102,18 +102,18 @@ func (p *ProviderBase) ListEcosystems(ctx context.Context) ([]*sdk.Ecosystem, er
 	return resp.Ecosystem, nil
 }
 
-//func (p *ProviderBase) AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error) {
-//	request := &sdk.InfoRequest{}
-//
-//	md, err := p.GetMetadataContext(ctx, request)
-//	if err != nil {
-//		return nil, err
-//	}
-//
-//	response, err := p.client.AcceptInvite(md, &sdk.AcceptInviteRequest{Code: code})
-//	if err != nil {
-//		return nil, err
-//	}
-//
-//	return response, err
-//}
+func (p *ProviderBase) AcceptInvite(ctx context.Context, code string) (*sdk.AcceptInviteResponse, error) {
+	request := &sdk.InfoRequest{}
+
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.AcceptInvite(md, &sdk.AcceptInviteRequest{Code: code})
+	if err != nil {
+		return nil, err
+	}
+
+	return response, err
+}

@@ -9,6 +9,8 @@ pub enum Command {
     CheckVerifier(RegistrationArgs),
     UnregisterIssuer(RegistrationArgs),
     UnregisterVerifier(RegistrationArgs),
+    RegisterEgf(AddFrameworkArgs),
+    UnregisterEgf(RemoveFrameworkArgs),
 }
 
 #[derive(Debug, PartialEq, Clone)]
@@ -29,6 +31,17 @@ pub struct RegistrationArgs {
     pub governance_framework_uri: Option<String>,
     pub valid_from: u64,
     pub valid_to: u64,
+}
+
+#[derive(Debug, PartialEq, Default)]
+pub struct AddFrameworkArgs {
+    pub governance_framework_uri: String,
+    pub description: Option<String>,
+}
+
+#[derive(Debug, PartialEq, Default)]
+pub struct RemoveFrameworkArgs {
+    pub governance_framework_uri: String,
 }
 
 pub fn parse(args: &ArgMatches) -> Command {
@@ -72,6 +85,18 @@ pub fn parse(args: &ArgMatches) -> Command {
         check_verifier(
             &args
                 .subcommand_matches("check-verifier")
+                .expect("Error parsing request"),
+        )
+    } else if args.is_present("register-egf") {
+        add_egf(
+            &args
+                .subcommand_matches("register-egf")
+                .expect("Error parsing request"),
+        )
+    } else if args.is_present("unregister-egf") {
+        remove_egf(
+            &args
+                .subcommand_matches("unregister-egf")
                 .expect("Error parsing request"),
         )
     } else {
@@ -136,5 +161,18 @@ fn check_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
+    })
+}
+
+fn add_egf<'a>(args: &'a ArgMatches<'_>) -> Command {
+    Command::RegisterEgf(AddFrameworkArgs {
+        governance_framework_uri: args.value_of("uri").map_or(String::default(), |q| q.into()),
+        description: args.value_of("description").map(|x| x.into()),
+    })
+}
+
+fn remove_egf<'a>(args: &'a ArgMatches<'_>) -> Command {
+    Command::UnregisterEgf(RemoveFrameworkArgs {
+        governance_framework_uri: args.value_of("uri").map_or(String::default(), |q| q.into()),
     })
 }

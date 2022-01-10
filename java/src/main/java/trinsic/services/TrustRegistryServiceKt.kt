@@ -2,6 +2,7 @@ package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
+import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
@@ -13,8 +14,14 @@ class TrustRegistryServiceKt(
 ) : ServiceBase(accountProfile, serverConfig, channel) {
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
-    fun registerGovernanceFramework(governanceFramework: String?, description: String?) {
-        throw RuntimeException()
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {
+        return withMetadata(stub, request).addFramework(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
+        return withMetadata(stub, request).removeFramework(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -65,5 +72,9 @@ class TrustRegistryServiceKt(
         if (query == null) query = "SELECT * FROM c"
         val request = SearchRegistryRequest.newBuilder().setQuery(query).build()
         return withMetadata(stub, request).searchRegistry(request)
+    }
+
+    fun fetchData(request: FetchDataRequest): Flow<FetchDataResponse> {
+        return withMetadata(stub, request).fetchData(request)
     }
 }

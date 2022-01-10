@@ -41,7 +41,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
 	// Open in background
 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	accountService, err := NewAccountService(nil, TrinsicTestConfig(), channel)
 	if !assert2.Nil(err) {
 		return
 	}
@@ -76,7 +76,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	walletService, err := CreateWalletService(clinic, TrinsicTestConfig(), channel)
 	failError(t, "error creating wallet service", err)
-	credentialService, err := CreateCredentialService(clinic, TrinsicTestConfig(), channel)
+	credentialService, err := NewCredentialService(clinic, TrinsicTestConfig(), channel)
 	failError(t, "error creating credential service", err)
 
 	// ISSUE CREDENTIAL
@@ -135,7 +135,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	if done {
 		return
 	}
-	service, err := CreateTrustRegistryService(profile, TrinsicTestConfig(), channel)
+	service, err := NewTrustRegistryService(profile, TrinsicTestConfig(), channel)
 
 	// register issuer
 	didUri := "did:example:test"
@@ -194,7 +194,7 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn,
 	if !assert2.Nil(err) {
 		return nil, nil, nil, nil, true
 	}
-	accountService, err := CreateAccountService(nil, TrinsicTestConfig(), channel)
+	accountService, err := NewAccountService(nil, TrinsicTestConfig(), channel)
 	if !assert2.Nil(err) {
 		return nil, nil, nil, nil, true
 	}
@@ -210,7 +210,7 @@ func TestEcosystemDemo(t *testing.T) {
 	if done {
 		return
 	}
-	service, err := CreateProviderService(profile, TrinsicTestConfig(), channel)
+	service, err := NewProviderService(profile, TrinsicTestConfig(), channel)
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
 		Name:        "Test Ecosystem",

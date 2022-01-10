@@ -9,6 +9,7 @@ import {
     SignInRequest,
     SignInResponse,
     TokenProtection,
+    ListDevicesRequest, ListDevicesResponse, RevokeDeviceRequest, RevokeDeviceResponse,
 } from "./proto";
 import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
 
@@ -61,5 +62,25 @@ export class AccountService extends ServiceBase {
         const request = new UnBlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
         const result = await Oberon.unblindToken(request);
         return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+    }
+
+    public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.client.listDevices(request, await this.getMetadata(request), (error, response) => {
+                if (error)
+                    reject(error);
+                resolve(response);
+            })
+        })
+    }
+
+    public revokeDevice(request: RevokeDeviceRequest): Promise<RevokeDeviceResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.client.revokeDevice(request, await this.getMetadata(request), (error, response) => {
+                if (error)
+                    reject(error);
+                resolve(response);
+            })
+        })
     }
 }

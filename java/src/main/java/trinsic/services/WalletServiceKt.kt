@@ -29,4 +29,9 @@ class WalletServiceKt(
         val request = InsertItemRequest.newBuilder().setItem(TrinsicUtilities.createPayloadString(item)).build()
         return withMetadata(stub, request).insertItem(request).itemId
     }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun deleteItem(request: DeleteItemRequest): DeleteItemResponse {
+        return withMetadata(stub, request).deleteitem(request)
+    }
 }

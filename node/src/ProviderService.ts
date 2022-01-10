@@ -1,5 +1,6 @@
 import ServiceBase, {ServiceOptions} from "./ServiceBase";
 import {
+    AcceptInviteRequest, AcceptInviteResponse,
     CreateEcosystemRequest, CreateEcosystemResponse,
     InvitationStatusRequest,
     InvitationStatusResponse,
@@ -20,6 +21,17 @@ export class ProviderService extends ServiceBase {
     public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.invite(request, await this.getMetadata(request), (error, response) => {
+                if (error) {
+                    reject(error);
+                }
+                return resolve(response);
+            });
+        });
+    }
+
+    public acceptInvite(request: AcceptInviteRequest): Promise<AcceptInviteResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.client.acceptInvite(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
                 }

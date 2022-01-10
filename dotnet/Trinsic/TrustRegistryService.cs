@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Grpc.Net.Client;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -49,6 +50,27 @@ public class TrustRegistryService : ServiceBase
         var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
+    public void RegisterGovernanceFramework(string governanceFramework, string description) {
+        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) {
+            throw new("Invalid URI string");
+        }
+        AddFrameworkRequest request = new() {
+            GovernanceFramework = new() {
+                GovernanceFrameworkUri = governanceFramework,
+                Description = description
+            }
+        };
+        Client.AddFramework(request, BuildMetadata(request));
+    }
+
+    public async Task<RemoveFrameworkResponse> RemoveGovernanceFrameworkAsync(RemoveFrameworkRequest request) {
+        return await Client.RemoveFrameworkAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public RemoveFrameworkResponse RemoveGovernanceFramework(RemoveFrameworkRequest request) {
+        return Client.RemoveFramework(request, BuildMetadata(request));
+    }
+
     /// <summary>
     /// Register a DID as authoritative issuer with the configured governance framework.
     /// </summary>
@@ -61,8 +83,19 @@ public class TrustRegistryService : ServiceBase
         }
     }
 
-    public Task UnregisterIssuer(string issuerDid, string credentialType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
-        throw new NotImplementedException();
+    public void RegisterIssuer(RegisterIssuerRequest request) {
+        var response = Client.RegisterIssuer(request, BuildMetadata(request));
+        if (response.Status != ResponseStatus.Success) {
+            throw new($"cannot register issuer: code {response.Status}");
+        }
+    }
+
+    public async Task<UnregisterIssuerResponse> UnregisterIssuerAsync(UnregisterIssuerRequest request) {
+        return await Client.UnregisterIssuerAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public UnregisterIssuerResponse UnregisterIssuer(UnregisterIssuerRequest request) {
+        return Client.UnregisterIssuer(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -77,8 +110,19 @@ public class TrustRegistryService : ServiceBase
         }
     }
 
-    public Task UnregisterVerifier(string verifierDid, string presentationType, string governanceFramework, DateTimeOffset? validFrom, DateTimeOffset? validUntil) {
-        throw new NotImplementedException();
+    public void RegisterVerifier(RegisterVerifierRequest request) {
+        var response = Client.RegisterVerifier(request, BuildMetadata(request));
+        if (response.Status != ResponseStatus.Success) {
+            throw new($"cannot register verifier: code {response.Status}");
+        }
+    }
+
+    public async Task<UnregisterVerifierResponse> UnregisterVerifierAsync(UnregisterVerifierRequest request) {
+        return await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
+    }
+
+    public UnregisterVerifierResponse UnregisterVerifier(UnregisterVerifierRequest request) {
+        return Client.UnregisterVerifier(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -91,6 +135,10 @@ public class TrustRegistryService : ServiceBase
         return response.Status;
     }
 
+    public RegistrationStatus CheckIssuerStatus(CheckIssuerStatusRequest request) {
+        return Client.CheckIssuerStatus(request, BuildMetadata(request)).Status;
+    }
+
     /// <summary>
     /// Checks the status of the verifier for a given presentation type in the given governance framework
     /// </summary>
@@ -100,6 +148,10 @@ public class TrustRegistryService : ServiceBase
         var response = await Client.CheckVerifierStatusAsync(request, await BuildMetadataAsync(request));
 
         return response.Status;
+    }
+    
+    public RegistrationStatus CheckVerifierStatus(CheckVerifierStatusRequest request) {
+        return Client.CheckVerifierStatus(request, BuildMetadata(request)).Status;
     }
 
     /// <summary>
@@ -114,5 +166,17 @@ public class TrustRegistryService : ServiceBase
         };
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
         return response;
+    }
+
+    public SearchRegistryResponse SearchRegistry(string query = "SELECT * FROM c", string? continuationToken = null) {
+        SearchRegistryRequest request = new() {
+            Query = query,
+            ContinuationToken = continuationToken ?? string.Empty
+        };
+        return Client.SearchRegistry(request, BuildMetadata(request));
+    }
+
+    public IAsyncStreamReader<FetchDataResponse> FetchData(FetchDataRequest request) {
+        return Client.FetchData(request, BuildMetadata(request)).ResponseStream;
     }
 }

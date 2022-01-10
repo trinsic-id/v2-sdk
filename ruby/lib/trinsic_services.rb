@@ -10,6 +10,7 @@ require 'services/account/v1/account_services_pb'
 require 'services/universal-wallet/v1/universal-wallet_services_pb'
 require 'services/provider/v1/provider_services_pb'
 require 'services/verifiable-credentials/v1/verifiable-credentials_services_pb'
+require 'services/verifiable-credentials/templates/v1/templates_services_pb'
 require 'services/trust-registry/v1/trust-registry_services_pb'
 require 'services/common/v1/common_pb'
 require 'security'
@@ -20,6 +21,7 @@ module Trinsic
   Account_V1 = Services::Account::V1
   Credentials_V1 = Services::Verifiablecredentials::V1
   Provider_V1 = Services::Provider::V1
+  Template_V1 = Services::Verifiablecredentials::Templates::V1
   TrustRegistry_V1 = Services::Trustregistry::V1
   Wallet_V1 = Services::Universalwallet::V1
 
@@ -112,6 +114,14 @@ module Trinsic
       request = Account_V1::InfoRequest.new
       @client.info(request, metadata: metadata(request))
     end
+
+    def list_devices(request)
+      @client.list_devices(request, metadata: metadata(request))
+    end
+
+    def revoke_device(request)
+      @client.revoke_device(request, metadata: metadata(request))
+    end
   end
 
   class CredentialService < ServiceBase
@@ -131,6 +141,10 @@ module Trinsic
       request = Credentials_V1::IssueRequest.new(document: payload)
       response = @client.issue(request, metadata: metadata(request))
       JSON.parse(response.document.json_string)
+    end
+
+    def issue_from_template(request)
+      @client.issue_from_template(request)
     end
 
     def send_document(document, email)
@@ -181,6 +195,10 @@ module Trinsic
       @client.invite(request, metadata: metadata(request))
     end
 
+    def accept_invite(request)
+      @client.accept_invite(request, metadata: metadata(request))
+    end
+
     def invitation_status(request)
       # TODO - Onboarding reference ID must be set
       # raise("reference id must be set") unless request.reference_id.nil?
@@ -197,6 +215,39 @@ module Trinsic
       end
       response = @client.list_ecosystems(request, metadata: metadata(request))
       response.ecosystem
+    end
+  end
+
+  class TemplateService < ServiceBase
+
+    def initialize(account_profile, server_config)
+      super
+      if server_config.use_tls
+        channel_creds = GRPC::Core::ChannelCredentials.new
+        @client = Template_V1::CredentialTemplates::Stub.new(get_url, channel_creds)
+      else
+        @client = Template_V1::CredentialTemplates::Stub.new(get_url, :this_channel_is_insecure)
+      end
+    end
+
+    def create(request)
+      @client.create(request)
+    end
+
+    def get(request)
+      @client.get(request)
+    end
+
+    def list(request)
+      @client.list(request)
+    end
+
+    def search(request)
+      @client.search(request)
+    end
+
+    def delete(request)
+      @client.delete(request)
     end
   end
 
@@ -219,6 +270,10 @@ module Trinsic
       @client.add_framework(request, metadata: metadata(request))
     end
 
+    def remove_framework(request)
+      @client.remove_framework(request, metadata: metadata(request))
+    end
+
     def register_issuer(request)
       response = @client.register_issuer(request, metadata: metadata(request))
       raise("cannot register issuer: code #{response.status}") unless response.status == :SUCCESS
@@ -227,6 +282,16 @@ module Trinsic
     def register_verifier(request)
       response = @client.register_verifier(request, metadata: metadata(request))
       raise("cannot register verifier: code #{response.status}") unless response.status == :SUCCESS
+    end
+
+    def unregister_issuer(request)
+      response = @client.unregister_issuer(request, metadata: metadata(request))
+      raise("cannot unregister issuer: code #{response.status}") unless response.status == :SUCCESS
+    end
+
+    def unregister_verifier(request)
+      response = @client.unregister_verifier(request, metadata: metadata(request))
+      raise("cannot unregister verifier: code #{response.status}") unless response.status == :SUCCESS
     end
 
     def check_issuer_status(request)
@@ -243,6 +308,10 @@ module Trinsic
       request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions.new(response_json_format: Common_V1::JsonFormat::Protobuf))
       response = @client.search_registry(request, metadata: metadata(request))
       JSON.parse(response.items_json)
+    end
+
+    def fetch_data(request)
+      @client.fetch_data(request, metadata: metadata(request))
     end
   end
 
@@ -267,6 +336,10 @@ module Trinsic
       payload = Common_V1::JsonPayload.new(json_string: JSON.generate(item))
       request = Wallet_V1::InsertItemRequest.new(item: payload)
       @client.insert_item(request, metadata: metadata(request)).item_id
+    end
+
+    def delete_item(request)
+      @client.delete_item(request, metadata: metadata(request))
     end
   end
 end

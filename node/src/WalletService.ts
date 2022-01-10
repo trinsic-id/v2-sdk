@@ -1,6 +1,14 @@
 import {Struct} from "google-protobuf/google/protobuf/struct_pb";
 import ServiceBase, {ServiceOptions} from "./ServiceBase";
-import {InsertItemRequest, JsonPayload, SearchRequest, SearchResponse, UniversalWalletClient,} from "./proto";
+import {
+    DeleteItemRequest,
+    DeleteItemResponse,
+    InsertItemRequest,
+    JsonPayload,
+    SearchRequest,
+    SearchResponse,
+    UniversalWalletClient,
+} from "./proto";
 
 export class WalletService extends ServiceBase {
     walletClient: UniversalWalletClient;
@@ -35,7 +43,7 @@ export class WalletService extends ServiceBase {
 
     // must be authorized
     public insertItem(item: any): Promise<string> {
-        var request = new JsonPayload().setJsonStruct(
+        const request = new JsonPayload().setJsonStruct(
             Struct.fromJavaScript(item)
         );
 
@@ -50,6 +58,20 @@ export class WalletService extends ServiceBase {
                         reject(error);
                     } else {
                         resolve(response.getItemId());
+                    }
+                }
+            );
+        });
+    }
+
+    public deleteItem(request: DeleteItemRequest): Promise<DeleteItemResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.walletClient.deleteitem(request, await this.getMetadata(request),
+                (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
                     }
                 }
             );
