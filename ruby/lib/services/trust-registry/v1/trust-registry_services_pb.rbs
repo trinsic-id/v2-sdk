@@ -36,7 +36,7 @@ module Services::Trustregistry::V1::TrustRegistry
     def check_verifier_status: (Services::Trustregistry::V1::CheckVerifierStatusRequest) -> Services::Trustregistry::V1::CheckVerifierStatusResponse
     
 
-    def fetch_data: (Services::Trustregistry::V1::FetchDataRequest) -> T::Enumerable[Services::Trustregistry::V1::FetchDataResponse]
+    def fetch_data: (Services::Trustregistry::V1::FetchDataRequest) -> Enumerable[Services::Trustregistry::V1::FetchDataResponse]
     
   end
 end
