@@ -1,7 +1,7 @@
 require_relative 'lib/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "trinsic"
+  spec.name          = "trinsic-services"
   spec.version       = Trinsic::VERSION
   spec.authors       = ["Scott Phillips"]
   spec.email         = ["polygonguru@gmail.com"]
