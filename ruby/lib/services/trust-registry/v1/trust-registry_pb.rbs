@@ -9,9 +9,6 @@ module Services::Trustregistry::V1
 end
 
 class Services::Trustregistry::V1::AddFrameworkRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::AddFrameworkRequest
 
@@ -27,17 +24,17 @@ class Services::Trustregistry::V1::AddFrameworkRequest
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    governance_framework: T.nilable(Services::Trustregistry::V1::GovernanceFramework)
+    governance_framework: Services::Trustregistry::V1::GovernanceFramework?
   ) -> void
 
 
-  def governance_framework: () -> T.nilable(Services::Trustregistry::V1::GovernanceFramework)
+  def governance_framework: () -> Services::Trustregistry::V1::GovernanceFramework?
 
-  def governance_framework=: (T.nilable(Services::Trustregistry::V1::GovernanceFramework)) -> void
+  def governance_framework=: (Services::Trustregistry::V1::GovernanceFramework?) -> void
 
   def clear_governance_framework: () -> void
 
-  def has_governance_framework?: () -> Boolean
+  def has_governance_framework?: () -> bool
 
   def []: (String) -> untyped
 
@@ -47,9 +44,6 @@ class Services::Trustregistry::V1::AddFrameworkRequest
 end
 
 class Services::Trustregistry::V1::AddFrameworkResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::AddFrameworkResponse
 
@@ -65,17 +59,17 @@ class Services::Trustregistry::V1::AddFrameworkResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -85,9 +79,6 @@ class Services::Trustregistry::V1::AddFrameworkResponse
 end
 
 class Services::Trustregistry::V1::RemoveFrameworkRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RemoveFrameworkRequest
 
@@ -103,17 +94,17 @@ class Services::Trustregistry::V1::RemoveFrameworkRequest
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    governance_framework: T.nilable(Services::Trustregistry::V1::GovernanceFramework)
+    governance_framework: Services::Trustregistry::V1::GovernanceFramework?
   ) -> void
 
 
-  def governance_framework: () -> T.nilable(Services::Trustregistry::V1::GovernanceFramework)
+  def governance_framework: () -> Services::Trustregistry::V1::GovernanceFramework?
 
-  def governance_framework=: (T.nilable(Services::Trustregistry::V1::GovernanceFramework)) -> void
+  def governance_framework=: (Services::Trustregistry::V1::GovernanceFramework?) -> void
 
   def clear_governance_framework: () -> void
 
-  def has_governance_framework?: () -> Boolean
+  def has_governance_framework?: () -> bool
 
   def []: (String) -> untyped
 
@@ -123,9 +114,6 @@ class Services::Trustregistry::V1::RemoveFrameworkRequest
 end
 
 class Services::Trustregistry::V1::RemoveFrameworkResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RemoveFrameworkResponse
 
@@ -141,17 +129,17 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -161,9 +149,6 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
 end
 
 class Services::Trustregistry::V1::SearchRegistryRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::SearchRegistryRequest
 
@@ -181,7 +166,7 @@ class Services::Trustregistry::V1::SearchRegistryRequest
   def initialize: (
     query: String?,
     continuation_token: String?,
-    options: T.nilable(Services::Common::V1::RequestOptions)
+    options: Services::Common::V1::RequestOptions?
   ) -> void
 
 
@@ -191,7 +176,7 @@ class Services::Trustregistry::V1::SearchRegistryRequest
 
   def clear_query: () -> void
 
-  def has_query?: () -> Boolean
+  def has_query?: () -> bool
 
   def continuation_token: () -> String
 
@@ -199,15 +184,15 @@ class Services::Trustregistry::V1::SearchRegistryRequest
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
-  def options: () -> T.nilable(Services::Common::V1::RequestOptions)
+  def options: () -> Services::Common::V1::RequestOptions?
 
-  def options=: (T.nilable(Services::Common::V1::RequestOptions)) -> void
+  def options=: (Services::Common::V1::RequestOptions?) -> void
 
   def clear_options: () -> void
 
-  def has_options?: () -> Boolean
+  def has_options?: () -> bool
 
   def []: (String) -> untyped
 
@@ -217,9 +202,6 @@ class Services::Trustregistry::V1::SearchRegistryRequest
 end
 
 class Services::Trustregistry::V1::SearchRegistryResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::SearchRegistryResponse
 
@@ -236,7 +218,7 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 
   def initialize: (
     items_json: String?,
-    has_more: T::Boolean?,
+    has_more: bool?,
     count: Integer?,
     continuation_token: String?
   ) -> void
@@ -248,15 +230,15 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 
   def clear_items_json: () -> void
 
-  def has_items_json?: () -> Boolean
+  def has_items_json?: () -> bool
 
-  def has_more: () -> T::Boolean
+  def has_more: () -> bool
 
-  def has_more=: (T::Boolean) -> void
+  def has_more=: (bool) -> void
 
   def clear_has_more: () -> void
 
-  def has_has_more?: () -> Boolean
+  def has_has_more?: () -> bool
 
   def count: () -> Integer
 
@@ -264,7 +246,7 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 
   def clear_count: () -> void
 
-  def has_count?: () -> Boolean
+  def has_count?: () -> bool
 
   def continuation_token: () -> String
 
@@ -272,7 +254,7 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -282,9 +264,6 @@ class Services::Trustregistry::V1::SearchRegistryResponse
 end
 
 class Services::Trustregistry::V1::GovernanceFramework
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::GovernanceFramework
 
@@ -312,7 +291,7 @@ class Services::Trustregistry::V1::GovernanceFramework
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def trust_registry_uri: () -> String
 
@@ -320,7 +299,7 @@ class Services::Trustregistry::V1::GovernanceFramework
 
   def clear_trust_registry_uri: () -> void
 
-  def has_trust_registry_uri?: () -> Boolean
+  def has_trust_registry_uri?: () -> bool
 
   def description: () -> String
 
@@ -328,7 +307,7 @@ class Services::Trustregistry::V1::GovernanceFramework
 
   def clear_description: () -> void
 
-  def has_description?: () -> Boolean
+  def has_description?: () -> bool
 
   def []: (String) -> untyped
 
@@ -338,9 +317,6 @@ class Services::Trustregistry::V1::GovernanceFramework
 end
 
 class Services::Trustregistry::V1::RegisterIssuerRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RegisterIssuerRequest
 
@@ -371,7 +347,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -379,7 +355,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def credential_type_uri: () -> String
 
@@ -387,7 +363,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_credential_type_uri: () -> void
 
-  def has_credential_type_uri?: () -> Boolean
+  def has_credential_type_uri?: () -> bool
 
   def valid_from_utc: () -> Integer
 
@@ -395,7 +371,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_valid_from_utc: () -> void
 
-  def has_valid_from_utc?: () -> Boolean
+  def has_valid_from_utc?: () -> bool
 
   def valid_until_utc: () -> Integer
 
@@ -403,7 +379,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_valid_until_utc: () -> void
 
-  def has_valid_until_utc?: () -> Boolean
+  def has_valid_until_utc?: () -> bool
 
   def governance_framework_uri: () -> String
 
@@ -411,7 +387,7 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def authority: () -> Symbol?
 
@@ -423,9 +399,6 @@ class Services::Trustregistry::V1::RegisterIssuerRequest
 end
 
 class Services::Trustregistry::V1::RegisterIssuerResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RegisterIssuerResponse
 
@@ -441,17 +414,17 @@ class Services::Trustregistry::V1::RegisterIssuerResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -461,9 +434,6 @@ class Services::Trustregistry::V1::RegisterIssuerResponse
 end
 
 class Services::Trustregistry::V1::RegisterVerifierRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RegisterVerifierRequest
 
@@ -494,7 +464,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -502,7 +472,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def presentation_type_uri: () -> String
 
@@ -510,7 +480,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_presentation_type_uri: () -> void
 
-  def has_presentation_type_uri?: () -> Boolean
+  def has_presentation_type_uri?: () -> bool
 
   def valid_from_utc: () -> Integer
 
@@ -518,7 +488,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_valid_from_utc: () -> void
 
-  def has_valid_from_utc?: () -> Boolean
+  def has_valid_from_utc?: () -> bool
 
   def valid_until_utc: () -> Integer
 
@@ -526,7 +496,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_valid_until_utc: () -> void
 
-  def has_valid_until_utc?: () -> Boolean
+  def has_valid_until_utc?: () -> bool
 
   def governance_framework_uri: () -> String
 
@@ -534,7 +504,7 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def authority: () -> Symbol?
 
@@ -546,9 +516,6 @@ class Services::Trustregistry::V1::RegisterVerifierRequest
 end
 
 class Services::Trustregistry::V1::RegisterVerifierResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::RegisterVerifierResponse
 
@@ -564,17 +531,17 @@ class Services::Trustregistry::V1::RegisterVerifierResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -584,9 +551,6 @@ class Services::Trustregistry::V1::RegisterVerifierResponse
 end
 
 class Services::Trustregistry::V1::UnregisterIssuerRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::UnregisterIssuerRequest
 
@@ -615,7 +579,7 @@ class Services::Trustregistry::V1::UnregisterIssuerRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -623,7 +587,7 @@ class Services::Trustregistry::V1::UnregisterIssuerRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def credential_type_uri: () -> String
 
@@ -631,7 +595,7 @@ class Services::Trustregistry::V1::UnregisterIssuerRequest
 
   def clear_credential_type_uri: () -> void
 
-  def has_credential_type_uri?: () -> Boolean
+  def has_credential_type_uri?: () -> bool
 
   def governance_framework_uri: () -> String
 
@@ -639,7 +603,7 @@ class Services::Trustregistry::V1::UnregisterIssuerRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def authority: () -> Symbol?
 
@@ -651,9 +615,6 @@ class Services::Trustregistry::V1::UnregisterIssuerRequest
 end
 
 class Services::Trustregistry::V1::UnregisterIssuerResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::UnregisterIssuerResponse
 
@@ -669,17 +630,17 @@ class Services::Trustregistry::V1::UnregisterIssuerResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -689,9 +650,6 @@ class Services::Trustregistry::V1::UnregisterIssuerResponse
 end
 
 class Services::Trustregistry::V1::UnregisterVerifierRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::UnregisterVerifierRequest
 
@@ -720,7 +678,7 @@ class Services::Trustregistry::V1::UnregisterVerifierRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -728,7 +686,7 @@ class Services::Trustregistry::V1::UnregisterVerifierRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def presentation_type_uri: () -> String
 
@@ -736,7 +694,7 @@ class Services::Trustregistry::V1::UnregisterVerifierRequest
 
   def clear_presentation_type_uri: () -> void
 
-  def has_presentation_type_uri?: () -> Boolean
+  def has_presentation_type_uri?: () -> bool
 
   def governance_framework_uri: () -> String
 
@@ -744,7 +702,7 @@ class Services::Trustregistry::V1::UnregisterVerifierRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def authority: () -> Symbol?
 
@@ -756,9 +714,6 @@ class Services::Trustregistry::V1::UnregisterVerifierRequest
 end
 
 class Services::Trustregistry::V1::UnregisterVerifierResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::UnregisterVerifierResponse
 
@@ -774,17 +729,17 @@ class Services::Trustregistry::V1::UnregisterVerifierResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -794,9 +749,6 @@ class Services::Trustregistry::V1::UnregisterVerifierResponse
 end
 
 class Services::Trustregistry::V1::CheckIssuerStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::CheckIssuerStatusRequest
 
@@ -825,7 +777,7 @@ class Services::Trustregistry::V1::CheckIssuerStatusRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def did_uri: () -> String
 
@@ -833,7 +785,7 @@ class Services::Trustregistry::V1::CheckIssuerStatusRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -841,7 +793,7 @@ class Services::Trustregistry::V1::CheckIssuerStatusRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def credential_type_uri: () -> String
 
@@ -849,7 +801,7 @@ class Services::Trustregistry::V1::CheckIssuerStatusRequest
 
   def clear_credential_type_uri: () -> void
 
-  def has_credential_type_uri?: () -> Boolean
+  def has_credential_type_uri?: () -> bool
 
   def member: () -> Symbol?
 
@@ -861,9 +813,6 @@ class Services::Trustregistry::V1::CheckIssuerStatusRequest
 end
 
 class Services::Trustregistry::V1::CheckIssuerStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::CheckIssuerStatusResponse
 
@@ -879,17 +828,17 @@ class Services::Trustregistry::V1::CheckIssuerStatusResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -899,9 +848,6 @@ class Services::Trustregistry::V1::CheckIssuerStatusResponse
 end
 
 class Services::Trustregistry::V1::CheckVerifierStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::CheckVerifierStatusRequest
 
@@ -930,7 +876,7 @@ class Services::Trustregistry::V1::CheckVerifierStatusRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def did_uri: () -> String
 
@@ -938,7 +884,7 @@ class Services::Trustregistry::V1::CheckVerifierStatusRequest
 
   def clear_did_uri: () -> void
 
-  def has_did_uri?: () -> Boolean
+  def has_did_uri?: () -> bool
 
   def x509_cert: () -> String
 
@@ -946,7 +892,7 @@ class Services::Trustregistry::V1::CheckVerifierStatusRequest
 
   def clear_x509_cert: () -> void
 
-  def has_x509_cert?: () -> Boolean
+  def has_x509_cert?: () -> bool
 
   def presentation_type_uri: () -> String
 
@@ -954,7 +900,7 @@ class Services::Trustregistry::V1::CheckVerifierStatusRequest
 
   def clear_presentation_type_uri: () -> void
 
-  def has_presentation_type_uri?: () -> Boolean
+  def has_presentation_type_uri?: () -> bool
 
   def member: () -> Symbol?
 
@@ -966,9 +912,6 @@ class Services::Trustregistry::V1::CheckVerifierStatusRequest
 end
 
 class Services::Trustregistry::V1::CheckVerifierStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::CheckVerifierStatusResponse
 
@@ -984,17 +927,17 @@ class Services::Trustregistry::V1::CheckVerifierStatusResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?
+    status: (Symbol | String | Integer)?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def []: (String) -> untyped
 
@@ -1004,9 +947,6 @@ class Services::Trustregistry::V1::CheckVerifierStatusResponse
 end
 
 class Services::Trustregistry::V1::FetchDataRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::FetchDataRequest
 
@@ -1033,7 +973,7 @@ class Services::Trustregistry::V1::FetchDataRequest
 
   def clear_governance_framework_uri: () -> void
 
-  def has_governance_framework_uri?: () -> Boolean
+  def has_governance_framework_uri?: () -> bool
 
   def query: () -> String
 
@@ -1041,7 +981,7 @@ class Services::Trustregistry::V1::FetchDataRequest
 
   def clear_query: () -> void
 
-  def has_query?: () -> Boolean
+  def has_query?: () -> bool
 
   def []: (String) -> untyped
 
@@ -1051,9 +991,6 @@ class Services::Trustregistry::V1::FetchDataRequest
 end
 
 class Services::Trustregistry::V1::FetchDataResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Trustregistry::V1::FetchDataResponse
 
@@ -1070,7 +1007,7 @@ class Services::Trustregistry::V1::FetchDataResponse
 
   def initialize: (
     response_json: String?,
-    has_more_results: T::Boolean?,
+    has_more_results: bool?,
     continuation_token: String?
   ) -> void
 
@@ -1081,15 +1018,15 @@ class Services::Trustregistry::V1::FetchDataResponse
 
   def clear_response_json: () -> void
 
-  def has_response_json?: () -> Boolean
+  def has_response_json?: () -> bool
 
-  def has_more_results: () -> T::Boolean
+  def has_more_results: () -> bool
 
-  def has_more_results=: (T::Boolean) -> void
+  def has_more_results=: (bool) -> void
 
   def clear_has_more_results: () -> void
 
-  def has_has_more_results?: () -> Boolean
+  def has_has_more_results?: () -> bool
 
   def continuation_token: () -> String
 
@@ -1097,7 +1034,7 @@ class Services::Trustregistry::V1::FetchDataResponse
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -1109,19 +1046,19 @@ end
 module Services::Trustregistry::V1::RegistrationStatus
   # TODO - Not sure how to represent this
   # self::CURRENT = T.let(0, Integer)
-  self::CURRENT = : (0, Integer)
+  def CURRENT: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::EXPIRED = T.let(1, Integer)
-  self::EXPIRED = : (1, Integer)
+  def EXPIRED: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::TERMINATED = T.let(2, Integer)
-  self::TERMINATED = : (2, Integer)
+  def TERMINATED: () -> Integer # = 2
   # TODO - Not sure how to represent this
   # self::REVOKED = T.let(3, Integer)
-  self::REVOKED = : (3, Integer)
+  def REVOKED: () -> Integer # = 3
   # TODO - Not sure how to represent this
   # self::NOT_FOUND = T.let(10, Integer)
-  self::NOT_FOUND = : (10, Integer)
+  def NOT_FOUND: () -> Integer # = 10
 
   def self.lookup: (value: Integer) -> Symbol?
 

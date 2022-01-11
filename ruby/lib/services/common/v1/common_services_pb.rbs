@@ -3,7 +3,6 @@
 
 module Services::Common::V1::Common
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

@@ -3,7 +3,6 @@
 
 module Services::Provider::V1::Provider
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

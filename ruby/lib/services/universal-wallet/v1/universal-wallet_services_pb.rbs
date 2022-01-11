@@ -3,7 +3,6 @@
 
 module Services::Universalwallet::V1::UniversalWallet
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

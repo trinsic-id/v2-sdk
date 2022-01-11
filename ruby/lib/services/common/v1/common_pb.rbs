@@ -9,9 +9,6 @@ module Services::Common::V1
 end
 
 class Services::Common::V1::RequestOptions
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Common::V1::RequestOptions
 
@@ -27,17 +24,17 @@ class Services::Common::V1::RequestOptions
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    response_json_format: T.any(Symbol, String, Integer)?
+    response_json_format: (Symbol | String | Integer)?
   ) -> void
 
 
   def response_json_format: () -> Symbol
 
-  def response_json_format=: (T.any(Symbol, String, Integer)) -> void
+  def response_json_format=: ((Symbol | String | Integer)) -> void
 
   def clear_response_json_format: () -> void
 
-  def has_response_json_format?: () -> Boolean
+  def has_response_json_format?: () -> bool
 
   def []: (String) -> untyped
 
@@ -47,9 +44,6 @@ class Services::Common::V1::RequestOptions
 end
 
 class Services::Common::V1::JsonPayload
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Common::V1::JsonPayload
 
@@ -65,19 +59,19 @@ class Services::Common::V1::JsonPayload
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    json_struct: T.nilable(Google::Protobuf::Struct),
+    json_struct: Google::Protobuf::Struct?,
     json_string: String?,
     json_bytes: String?
   ) -> void
 
 
-  def json_struct: () -> T.nilable(Google::Protobuf::Struct)
+  def json_struct: () -> Google::Protobuf::Struct?
 
-  def json_struct=: (T.nilable(Google::Protobuf::Struct)) -> void
+  def json_struct=: (Google::Protobuf::Struct?) -> void
 
   def clear_json_struct: () -> void
 
-  def has_json_struct?: () -> Boolean
+  def has_json_struct?: () -> bool
 
   def json_string: () -> String
 
@@ -85,7 +79,7 @@ class Services::Common::V1::JsonPayload
 
   def clear_json_string: () -> void
 
-  def has_json_string?: () -> Boolean
+  def has_json_string?: () -> bool
 
   def json_bytes: () -> String
 
@@ -93,7 +87,7 @@ class Services::Common::V1::JsonPayload
 
   def clear_json_bytes: () -> void
 
-  def has_json_bytes?: () -> Boolean
+  def has_json_bytes?: () -> bool
 
   def json: () -> Symbol?
 
@@ -105,9 +99,6 @@ class Services::Common::V1::JsonPayload
 end
 
 class Services::Common::V1::ServerConfig
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Common::V1::ServerConfig
 
@@ -125,7 +116,7 @@ class Services::Common::V1::ServerConfig
   def initialize: (
     endpoint: String?,
     port: Integer?,
-    use_tls: T::Boolean?
+    use_tls: bool?
   ) -> void
 
 
@@ -135,7 +126,7 @@ class Services::Common::V1::ServerConfig
 
   def clear_endpoint: () -> void
 
-  def has_endpoint?: () -> Boolean
+  def has_endpoint?: () -> bool
 
   def port: () -> Integer
 
@@ -143,15 +134,15 @@ class Services::Common::V1::ServerConfig
 
   def clear_port: () -> void
 
-  def has_port?: () -> Boolean
+  def has_port?: () -> bool
 
-  def use_tls: () -> T::Boolean
+  def use_tls: () -> bool
 
-  def use_tls=: (T::Boolean) -> void
+  def use_tls=: (bool) -> void
 
   def clear_use_tls: () -> void
 
-  def has_use_tls?: () -> Boolean
+  def has_use_tls?: () -> bool
 
   def []: (String) -> untyped
 
@@ -161,9 +152,6 @@ class Services::Common::V1::ServerConfig
 end
 
 class Services::Common::V1::Nonce
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Common::V1::Nonce
 
@@ -190,7 +178,7 @@ class Services::Common::V1::Nonce
 
   def clear_timestamp: () -> void
 
-  def has_timestamp?: () -> Boolean
+  def has_timestamp?: () -> bool
 
   def request_hash: () -> String
 
@@ -198,7 +186,7 @@ class Services::Common::V1::Nonce
 
   def clear_request_hash: () -> void
 
-  def has_request_hash?: () -> Boolean
+  def has_request_hash?: () -> bool
 
   def []: (String) -> untyped
 
@@ -210,22 +198,22 @@ end
 module Services::Common::V1::ResponseStatus
   # TODO - Not sure how to represent this
   # self::SUCCESS = T.let(0, Integer)
-  self::SUCCESS = : (0, Integer)
+  def SUCCESS: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::WALLET_ACCESS_DENIED = T.let(10, Integer)
-  self::WALLET_ACCESS_DENIED = : (10, Integer)
+  def WALLET_ACCESS_DENIED: () -> Integer # = 10
   # TODO - Not sure how to represent this
   # self::WALLET_EXISTS = T.let(11, Integer)
-  self::WALLET_EXISTS = : (11, Integer)
+  def WALLET_EXISTS: () -> Integer # = 11
   # TODO - Not sure how to represent this
   # self::ITEM_NOT_FOUND = T.let(20, Integer)
-  self::ITEM_NOT_FOUND = : (20, Integer)
+  def ITEM_NOT_FOUND: () -> Integer # = 20
   # TODO - Not sure how to represent this
   # self::SERIALIZATION_ERROR = T.let(200, Integer)
-  self::SERIALIZATION_ERROR = : (200, Integer)
+  def SERIALIZATION_ERROR: () -> Integer # = 200
   # TODO - Not sure how to represent this
   # self::UNKNOWN_ERROR = T.let(100, Integer)
-  self::UNKNOWN_ERROR = : (100, Integer)
+  def UNKNOWN_ERROR: () -> Integer # = 100
 
   def self.lookup: (value: Integer) -> Symbol?
 
@@ -237,13 +225,13 @@ end
 module Services::Common::V1::JsonFormat
   # TODO - Not sure how to represent this
   # self::Protobuf = T.let(0, Integer)
-  self::Protobuf = : (0, Integer)
+  def Protobuf: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::Binary = T.let(1, Integer)
-  self::Binary = : (1, Integer)
+  def Binary: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::String = T.let(2, Integer)
-  self::String = : (2, Integer)
+  def String: () -> Integer # = 2
 
   def self.lookup: (value: Integer) -> Symbol?
 

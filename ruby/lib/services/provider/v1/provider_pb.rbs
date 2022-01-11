@@ -9,9 +9,6 @@ module Services::Provider::V1
 end
 
 class Services::Provider::V1::Invite
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::Invite
 
@@ -41,7 +38,7 @@ class Services::Provider::V1::Invite
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def code: () -> String
 
@@ -49,7 +46,7 @@ class Services::Provider::V1::Invite
 
   def clear_code: () -> void
 
-  def has_code?: () -> Boolean
+  def has_code?: () -> bool
 
   def created: () -> String
 
@@ -57,7 +54,7 @@ class Services::Provider::V1::Invite
 
   def clear_created: () -> void
 
-  def has_created?: () -> Boolean
+  def has_created?: () -> bool
 
   def accepted: () -> String
 
@@ -65,7 +62,7 @@ class Services::Provider::V1::Invite
 
   def clear_accepted: () -> void
 
-  def has_accepted?: () -> Boolean
+  def has_accepted?: () -> bool
 
   def expires: () -> String
 
@@ -73,7 +70,7 @@ class Services::Provider::V1::Invite
 
   def clear_expires: () -> void
 
-  def has_expires?: () -> Boolean
+  def has_expires?: () -> bool
 
   def []: (String) -> untyped
 
@@ -83,9 +80,6 @@ class Services::Provider::V1::Invite
 end
 
 class Services::Provider::V1::InviteRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::InviteRequest
 
@@ -101,21 +95,21 @@ class Services::Provider::V1::InviteRequest
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    participant: T.any(Symbol, String, Integer)?,
+    participant: (Symbol | String | Integer)?,
     description: String?,
     email: String?,
     phone: String?,
-    didcomm_invitation: T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)
+    didcomm_invitation: Services::Provider::V1::InviteRequest::DidCommInvitation?
   ) -> void
 
 
   def participant: () -> Symbol
 
-  def participant=: (T.any(Symbol, String, Integer)) -> void
+  def participant=: ((Symbol | String | Integer)) -> void
 
   def clear_participant: () -> void
 
-  def has_participant?: () -> Boolean
+  def has_participant?: () -> bool
 
   def description: () -> String
 
@@ -123,7 +117,7 @@ class Services::Provider::V1::InviteRequest
 
   def clear_description: () -> void
 
-  def has_description?: () -> Boolean
+  def has_description?: () -> bool
 
   def email: () -> String
 
@@ -131,7 +125,7 @@ class Services::Provider::V1::InviteRequest
 
   def clear_email: () -> void
 
-  def has_email?: () -> Boolean
+  def has_email?: () -> bool
 
   def phone: () -> String
 
@@ -139,15 +133,15 @@ class Services::Provider::V1::InviteRequest
 
   def clear_phone: () -> void
 
-  def has_phone?: () -> Boolean
+  def has_phone?: () -> bool
 
-  def didcomm_invitation: () -> T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)
+  def didcomm_invitation: () -> Services::Provider::V1::InviteRequest::DidCommInvitation?
 
-  def didcomm_invitation=: (T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)) -> void
+  def didcomm_invitation=: (Services::Provider::V1::InviteRequest::DidCommInvitation?) -> void
 
   def clear_didcomm_invitation: () -> void
 
-  def has_didcomm_invitation?: () -> Boolean
+  def has_didcomm_invitation?: () -> bool
 
   def contact_method: () -> Symbol?
 
@@ -159,9 +153,6 @@ class Services::Provider::V1::InviteRequest
 end
 
 class Services::Provider::V1::InviteResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::InviteResponse
 
@@ -177,18 +168,18 @@ class Services::Provider::V1::InviteResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?,
+    status: (Symbol | String | Integer)?,
     invitation_id: String?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def invitation_id: () -> String
 
@@ -196,7 +187,7 @@ class Services::Provider::V1::InviteResponse
 
   def clear_invitation_id: () -> void
 
-  def has_invitation_id?: () -> Boolean
+  def has_invitation_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -206,9 +197,6 @@ class Services::Provider::V1::InviteResponse
 end
 
 class Services::Provider::V1::InvitationStatusRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::InvitationStatusRequest
 
@@ -234,7 +222,7 @@ class Services::Provider::V1::InvitationStatusRequest
 
   def clear_invitation_id: () -> void
 
-  def has_invitation_id?: () -> Boolean
+  def has_invitation_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -244,9 +232,6 @@ class Services::Provider::V1::InvitationStatusRequest
 end
 
 class Services::Provider::V1::InvitationStatusResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::InvitationStatusResponse
 
@@ -262,18 +247,18 @@ class Services::Provider::V1::InvitationStatusResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?,
+    status: (Symbol | String | Integer)?,
     status_details: String?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def status_details: () -> String
 
@@ -281,7 +266,7 @@ class Services::Provider::V1::InvitationStatusResponse
 
   def clear_status_details: () -> void
 
-  def has_status_details?: () -> Boolean
+  def has_status_details?: () -> bool
 
   def []: (String) -> untyped
 
@@ -291,9 +276,6 @@ class Services::Provider::V1::InvitationStatusResponse
 end
 
 class Services::Provider::V1::Ecosystem
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::Ecosystem
 
@@ -322,7 +304,7 @@ class Services::Provider::V1::Ecosystem
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def name: () -> String
 
@@ -330,7 +312,7 @@ class Services::Provider::V1::Ecosystem
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
   def description: () -> String
 
@@ -338,7 +320,7 @@ class Services::Provider::V1::Ecosystem
 
   def clear_description: () -> void
 
-  def has_description?: () -> Boolean
+  def has_description?: () -> bool
 
   def uri: () -> String
 
@@ -346,7 +328,7 @@ class Services::Provider::V1::Ecosystem
 
   def clear_uri: () -> void
 
-  def has_uri?: () -> Boolean
+  def has_uri?: () -> bool
 
   def []: (String) -> untyped
 
@@ -356,9 +338,6 @@ class Services::Provider::V1::Ecosystem
 end
 
 class Services::Provider::V1::CreateEcosystemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::CreateEcosystemRequest
 
@@ -386,7 +365,7 @@ class Services::Provider::V1::CreateEcosystemRequest
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
   def description: () -> String
 
@@ -394,7 +373,7 @@ class Services::Provider::V1::CreateEcosystemRequest
 
   def clear_description: () -> void
 
-  def has_description?: () -> Boolean
+  def has_description?: () -> bool
 
   def uri: () -> String
 
@@ -402,7 +381,7 @@ class Services::Provider::V1::CreateEcosystemRequest
 
   def clear_uri: () -> void
 
-  def has_uri?: () -> Boolean
+  def has_uri?: () -> bool
 
   def []: (String) -> untyped
 
@@ -412,9 +391,6 @@ class Services::Provider::V1::CreateEcosystemRequest
 end
 
 class Services::Provider::V1::CreateEcosystemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::CreateEcosystemResponse
 
@@ -440,7 +416,7 @@ class Services::Provider::V1::CreateEcosystemResponse
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -450,9 +426,6 @@ class Services::Provider::V1::CreateEcosystemResponse
 end
 
 class Services::Provider::V1::ListEcosystemsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::ListEcosystemsRequest
 
@@ -479,9 +452,6 @@ class Services::Provider::V1::ListEcosystemsRequest
 end
 
 class Services::Provider::V1::ListEcosystemsResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::ListEcosystemsResponse
 
@@ -497,17 +467,17 @@ class Services::Provider::V1::ListEcosystemsResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    ecosystem: T::Array[T.nilable(Services::Provider::V1::Ecosystem)]?
+    ecosystem: Array[Services::Provider::V1::Ecosystem?]?
   ) -> void
 
 
-  def ecosystem: () -> T::Array[T.nilable(Services::Provider::V1::Ecosystem)]
+  def ecosystem: () -> Array[Services::Provider::V1::Ecosystem?]
 
   def ecosystem=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_ecosystem: () -> void
 
-  def has_ecosystem?: () -> Boolean
+  def has_ecosystem?: () -> bool
 
   def []: (String) -> untyped
 
@@ -517,9 +487,6 @@ class Services::Provider::V1::ListEcosystemsResponse
 end
 
 class Services::Provider::V1::AcceptInviteRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::AcceptInviteRequest
 
@@ -546,7 +513,7 @@ class Services::Provider::V1::AcceptInviteRequest
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def code: () -> String
 
@@ -554,7 +521,7 @@ class Services::Provider::V1::AcceptInviteRequest
 
   def clear_code: () -> void
 
-  def has_code?: () -> Boolean
+  def has_code?: () -> bool
 
   def []: (String) -> untyped
 
@@ -564,9 +531,6 @@ class Services::Provider::V1::AcceptInviteRequest
 end
 
 class Services::Provider::V1::AcceptInviteResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::AcceptInviteResponse
 
@@ -582,17 +546,17 @@ class Services::Provider::V1::AcceptInviteResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    ecosystem: T.nilable(Services::Provider::V1::Ecosystem)
+    ecosystem: Services::Provider::V1::Ecosystem?
   ) -> void
 
 
-  def ecosystem: () -> T.nilable(Services::Provider::V1::Ecosystem)
+  def ecosystem: () -> Services::Provider::V1::Ecosystem?
 
-  def ecosystem=: (T.nilable(Services::Provider::V1::Ecosystem)) -> void
+  def ecosystem=: (Services::Provider::V1::Ecosystem?) -> void
 
   def clear_ecosystem: () -> void
 
-  def has_ecosystem?: () -> Boolean
+  def has_ecosystem?: () -> bool
 
   def []: (String) -> untyped
 
@@ -602,9 +566,6 @@ class Services::Provider::V1::AcceptInviteResponse
 end
 
 class Services::Provider::V1::InviteRequest::DidCommInvitation
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Provider::V1::InviteRequest::DidCommInvitation
 
@@ -633,10 +594,10 @@ end
 module Services::Provider::V1::ParticipantType
   # TODO - Not sure how to represent this
   # self::participant_type_individual = T.let(0, Integer)
-  self::participant_type_individual = : (0, Integer)
+  def participant_type_individual: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::participant_type_organization = T.let(1, Integer)
-  self::participant_type_organization = : (1, Integer)
+  def participant_type_organization: () -> Integer # = 1
 
   def self.lookup: (value: Integer) -> Symbol?
 
@@ -648,16 +609,16 @@ end
 module Services::Provider::V1::InvitationStatusResponse::Status
   # TODO - Not sure how to represent this
   # self::Error = T.let(0, Integer)
-  self::Error = : (0, Integer)
+  def Error: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::InvitationSent = T.let(1, Integer)
-  self::InvitationSent = : (1, Integer)
+  def InvitationSent: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::Completed = T.let(2, Integer)
-  self::Completed = : (2, Integer)
+  def Completed: () -> Integer # = 2
   # TODO - Not sure how to represent this
   # self::Expired = T.let(3, Integer)
-  self::Expired = : (3, Integer)
+  def Expired: () -> Integer # = 3
 
   def self.lookup: (value: Integer) -> Symbol?
 

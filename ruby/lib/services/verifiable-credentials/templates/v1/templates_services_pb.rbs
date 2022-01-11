@@ -3,7 +3,6 @@
 
 module Services::Verifiablecredentials::Templates::V1::CredentialTemplates
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

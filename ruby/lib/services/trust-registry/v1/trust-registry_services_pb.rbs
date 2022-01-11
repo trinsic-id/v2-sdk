@@ -3,7 +3,6 @@
 
 module Services::Trustregistry::V1::TrustRegistry
   class Service
-    include GRPC::GenericService
   end
 
   class Stub < GRPC::ClientStub

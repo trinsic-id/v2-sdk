@@ -9,9 +9,6 @@ module Services::Universalwallet::V1
 end
 
 class Services::Universalwallet::V1::SearchRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::SearchRequest
 
@@ -29,7 +26,7 @@ class Services::Universalwallet::V1::SearchRequest
   def initialize: (
     query: String?,
     continuation_token: String?,
-    options: T.nilable(Services::Common::V1::RequestOptions)
+    options: Services::Common::V1::RequestOptions?
   ) -> void
 
 
@@ -39,7 +36,7 @@ class Services::Universalwallet::V1::SearchRequest
 
   def clear_query: () -> void
 
-  def has_query?: () -> Boolean
+  def has_query?: () -> bool
 
   def continuation_token: () -> String
 
@@ -47,15 +44,15 @@ class Services::Universalwallet::V1::SearchRequest
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
-  def options: () -> T.nilable(Services::Common::V1::RequestOptions)
+  def options: () -> Services::Common::V1::RequestOptions?
 
-  def options=: (T.nilable(Services::Common::V1::RequestOptions)) -> void
+  def options=: (Services::Common::V1::RequestOptions?) -> void
 
   def clear_options: () -> void
 
-  def has_options?: () -> Boolean
+  def has_options?: () -> bool
 
   def []: (String) -> untyped
 
@@ -65,9 +62,6 @@ class Services::Universalwallet::V1::SearchRequest
 end
 
 class Services::Universalwallet::V1::SearchResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::SearchResponse
 
@@ -83,28 +77,28 @@ class Services::Universalwallet::V1::SearchResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    items: T::Array[T.nilable(Services::Common::V1::JsonPayload)]?,
-    has_more: T::Boolean?,
+    items: Array[Services::Common::V1::JsonPayload?]?,
+    has_more: bool?,
     count: Integer?,
     continuation_token: String?
   ) -> void
 
 
-  def items: () -> T::Array[T.nilable(Services::Common::V1::JsonPayload)]
+  def items: () -> Array[Services::Common::V1::JsonPayload?]
 
   def items=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_items: () -> void
 
-  def has_items?: () -> Boolean
+  def has_items?: () -> bool
 
-  def has_more: () -> T::Boolean
+  def has_more: () -> bool
 
-  def has_more=: (T::Boolean) -> void
+  def has_more=: (bool) -> void
 
   def clear_has_more: () -> void
 
-  def has_has_more?: () -> Boolean
+  def has_has_more?: () -> bool
 
   def count: () -> Integer
 
@@ -112,7 +106,7 @@ class Services::Universalwallet::V1::SearchResponse
 
   def clear_count: () -> void
 
-  def has_count?: () -> Boolean
+  def has_count?: () -> bool
 
   def continuation_token: () -> String
 
@@ -120,7 +114,7 @@ class Services::Universalwallet::V1::SearchResponse
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -130,9 +124,6 @@ class Services::Universalwallet::V1::SearchResponse
 end
 
 class Services::Universalwallet::V1::InsertItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::InsertItemRequest
 
@@ -148,18 +139,18 @@ class Services::Universalwallet::V1::InsertItemRequest
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    item: T.nilable(Services::Common::V1::JsonPayload),
+    item: Services::Common::V1::JsonPayload?,
     item_type: String?
   ) -> void
 
 
-  def item: () -> T.nilable(Services::Common::V1::JsonPayload)
+  def item: () -> Services::Common::V1::JsonPayload?
 
-  def item=: (T.nilable(Services::Common::V1::JsonPayload)) -> void
+  def item=: (Services::Common::V1::JsonPayload?) -> void
 
   def clear_item: () -> void
 
-  def has_item?: () -> Boolean
+  def has_item?: () -> bool
 
   def item_type: () -> String
 
@@ -167,7 +158,7 @@ class Services::Universalwallet::V1::InsertItemRequest
 
   def clear_item_type: () -> void
 
-  def has_item_type?: () -> Boolean
+  def has_item_type?: () -> bool
 
   def []: (String) -> untyped
 
@@ -177,9 +168,6 @@ class Services::Universalwallet::V1::InsertItemRequest
 end
 
 class Services::Universalwallet::V1::InsertItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::InsertItemResponse
 
@@ -195,18 +183,18 @@ class Services::Universalwallet::V1::InsertItemResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    status: T.any(Symbol, String, Integer)?,
+    status: (Symbol | String | Integer)?,
     item_id: String?
   ) -> void
 
 
   def status: () -> Symbol
 
-  def status=: (T.any(Symbol, String, Integer)) -> void
+  def status=: ((Symbol | String | Integer)) -> void
 
   def clear_status: () -> void
 
-  def has_status?: () -> Boolean
+  def has_status?: () -> bool
 
   def item_id: () -> String
 
@@ -214,7 +202,7 @@ class Services::Universalwallet::V1::InsertItemResponse
 
   def clear_item_id: () -> void
 
-  def has_item_id?: () -> Boolean
+  def has_item_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -224,9 +212,6 @@ class Services::Universalwallet::V1::InsertItemResponse
 end
 
 class Services::Universalwallet::V1::DeleteItemRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::DeleteItemRequest
 
@@ -253,9 +238,6 @@ class Services::Universalwallet::V1::DeleteItemRequest
 end
 
 class Services::Universalwallet::V1::DeleteItemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Universalwallet::V1::DeleteItemResponse
 

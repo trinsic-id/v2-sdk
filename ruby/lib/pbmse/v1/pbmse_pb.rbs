@@ -7,9 +7,6 @@ module Pbmse::V1
 end
 
 class Pbmse::V1::SignedMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::SignedMessage
 
@@ -26,7 +23,7 @@ class Pbmse::V1::SignedMessage
 
   def initialize: (
     payload: String?,
-    signatures: T::Array[T.nilable(Pbmse::V1::Signature)]?
+    signatures: Array[Pbmse::V1::Signature?]?
   ) -> void
 
 
@@ -36,15 +33,15 @@ class Pbmse::V1::SignedMessage
 
   def clear_payload: () -> void
 
-  def has_payload?: () -> Boolean
+  def has_payload?: () -> bool
 
-  def signatures: () -> T::Array[T.nilable(Pbmse::V1::Signature)]
+  def signatures: () -> Array[Pbmse::V1::Signature?]
 
   def signatures=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_signatures: () -> void
 
-  def has_signatures?: () -> Boolean
+  def has_signatures?: () -> bool
 
   def []: (String) -> untyped
 
@@ -54,9 +51,6 @@ class Pbmse::V1::SignedMessage
 end
 
 class Pbmse::V1::Signature
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::Signature
 
@@ -83,7 +77,7 @@ class Pbmse::V1::Signature
 
   def clear_header: () -> void
 
-  def has_header?: () -> Boolean
+  def has_header?: () -> bool
 
   def signature: () -> String
 
@@ -91,7 +85,7 @@ class Pbmse::V1::Signature
 
   def clear_signature: () -> void
 
-  def has_signature?: () -> Boolean
+  def has_signature?: () -> bool
 
   def []: (String) -> untyped
 
@@ -101,9 +95,6 @@ class Pbmse::V1::Signature
 end
 
 class Pbmse::V1::SignatureHeader
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::SignatureHeader
 
@@ -130,7 +121,7 @@ class Pbmse::V1::SignatureHeader
 
   def clear_algorithm: () -> void
 
-  def has_algorithm?: () -> Boolean
+  def has_algorithm?: () -> bool
 
   def key_id: () -> String
 
@@ -138,7 +129,7 @@ class Pbmse::V1::SignatureHeader
 
   def clear_key_id: () -> void
 
-  def has_key_id?: () -> Boolean
+  def has_key_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -148,9 +139,6 @@ class Pbmse::V1::SignatureHeader
 end
 
 class Pbmse::V1::EncryptedMessage
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::EncryptedMessage
 
@@ -170,7 +158,7 @@ class Pbmse::V1::EncryptedMessage
     aad: String?,
     ciphertext: String?,
     tag: String?,
-    recipients: T::Array[T.nilable(Pbmse::V1::EncryptionRecipient)]?
+    recipients: Array[Pbmse::V1::EncryptionRecipient?]?
   ) -> void
 
 
@@ -180,7 +168,7 @@ class Pbmse::V1::EncryptedMessage
 
   def clear_iv: () -> void
 
-  def has_iv?: () -> Boolean
+  def has_iv?: () -> bool
 
   def aad: () -> String
 
@@ -188,7 +176,7 @@ class Pbmse::V1::EncryptedMessage
 
   def clear_aad: () -> void
 
-  def has_aad?: () -> Boolean
+  def has_aad?: () -> bool
 
   def ciphertext: () -> String
 
@@ -196,7 +184,7 @@ class Pbmse::V1::EncryptedMessage
 
   def clear_ciphertext: () -> void
 
-  def has_ciphertext?: () -> Boolean
+  def has_ciphertext?: () -> bool
 
   def tag: () -> String
 
@@ -204,15 +192,15 @@ class Pbmse::V1::EncryptedMessage
 
   def clear_tag: () -> void
 
-  def has_tag?: () -> Boolean
+  def has_tag?: () -> bool
 
-  def recipients: () -> T::Array[T.nilable(Pbmse::V1::EncryptionRecipient)]
+  def recipients: () -> Array[Pbmse::V1::EncryptionRecipient?]
 
   def recipients=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_recipients: () -> void
 
-  def has_recipients?: () -> Boolean
+  def has_recipients?: () -> bool
 
   def []: (String) -> untyped
 
@@ -222,9 +210,6 @@ class Pbmse::V1::EncryptedMessage
 end
 
 class Pbmse::V1::EncryptionHeader
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::EncryptionHeader
 
@@ -240,8 +225,8 @@ class Pbmse::V1::EncryptionHeader
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    mode: T.any(Symbol, String, Integer)?,
-    algorithm: T.any(Symbol, String, Integer)?,
+    mode: (Symbol | String | Integer)?,
+    algorithm: (Symbol | String | Integer)?,
     key_id: String?,
     sender_key_id: String?
   ) -> void
@@ -249,19 +234,19 @@ class Pbmse::V1::EncryptionHeader
 
   def mode: () -> Symbol
 
-  def mode=: (T.any(Symbol, String, Integer)) -> void
+  def mode=: ((Symbol | String | Integer)) -> void
 
   def clear_mode: () -> void
 
-  def has_mode?: () -> Boolean
+  def has_mode?: () -> bool
 
   def algorithm: () -> Symbol
 
-  def algorithm=: (T.any(Symbol, String, Integer)) -> void
+  def algorithm=: ((Symbol | String | Integer)) -> void
 
   def clear_algorithm: () -> void
 
-  def has_algorithm?: () -> Boolean
+  def has_algorithm?: () -> bool
 
   def key_id: () -> String
 
@@ -269,7 +254,7 @@ class Pbmse::V1::EncryptionHeader
 
   def clear_key_id: () -> void
 
-  def has_key_id?: () -> Boolean
+  def has_key_id?: () -> bool
 
   def sender_key_id: () -> String
 
@@ -277,7 +262,7 @@ class Pbmse::V1::EncryptionHeader
 
   def clear_sender_key_id: () -> void
 
-  def has_sender_key_id?: () -> Boolean
+  def has_sender_key_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -287,9 +272,6 @@ class Pbmse::V1::EncryptionHeader
 end
 
 class Pbmse::V1::EncryptionRecipient
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Pbmse::V1::EncryptionRecipient
 
@@ -305,18 +287,18 @@ class Pbmse::V1::EncryptionRecipient
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    header: T.nilable(Pbmse::V1::EncryptionHeader),
+    header: Pbmse::V1::EncryptionHeader?,
     content_encryption_key: String?
   ) -> void
 
 
-  def header: () -> T.nilable(Pbmse::V1::EncryptionHeader)
+  def header: () -> Pbmse::V1::EncryptionHeader?
 
-  def header=: (T.nilable(Pbmse::V1::EncryptionHeader)) -> void
+  def header=: (Pbmse::V1::EncryptionHeader?) -> void
 
   def clear_header: () -> void
 
-  def has_header?: () -> Boolean
+  def has_header?: () -> bool
 
   def content_encryption_key: () -> String
 
@@ -324,7 +306,7 @@ class Pbmse::V1::EncryptionRecipient
 
   def clear_content_encryption_key: () -> void
 
-  def has_content_encryption_key?: () -> Boolean
+  def has_content_encryption_key?: () -> bool
 
   def []: (String) -> untyped
 
@@ -336,13 +318,13 @@ end
 module Pbmse::V1::EncryptionMode
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_MODE_UNSPECIFIED = T.let(0, Integer)
-  self::ENCRYPTION_MODE_UNSPECIFIED = : (0, Integer)
+  def ENCRYPTION_MODE_UNSPECIFIED: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_MODE_DIRECT = T.let(1, Integer)
-  self::ENCRYPTION_MODE_DIRECT = : (1, Integer)
+  def ENCRYPTION_MODE_DIRECT: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = T.let(2, Integer)
-  self::ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY = : (2, Integer)
+  def ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY: () -> Integer # = 2
 
   def self.lookup: (value: Integer) -> Symbol?
 
@@ -354,13 +336,13 @@ end
 module Pbmse::V1::EncryptionAlgorithm
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_ALGORITHM_UNSPECIFIED = T.let(0, Integer)
-  self::ENCRYPTION_ALGORITHM_UNSPECIFIED = : (0, Integer)
+  def ENCRYPTION_ALGORITHM_UNSPECIFIED: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = T.let(1, Integer)
-  self::ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 = : (1, Integer)
+  def ENCRYPTION_ALGORITHM_XCHACHA20POLY1305: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::ENCRYPTION_ALGORITHM_AES_GCM = T.let(2, Integer)
-  self::ENCRYPTION_ALGORITHM_AES_GCM = : (2, Integer)
+  def ENCRYPTION_ALGORITHM_AES_GCM: () -> Integer # = 2
 
   def self.lookup: (value: Integer) -> Symbol?
 

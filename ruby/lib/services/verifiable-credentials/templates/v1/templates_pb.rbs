@@ -11,9 +11,6 @@ module Services::Verifiablecredentials::Templates::V1
 end
 
 class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest
 
@@ -39,7 +36,7 @@ class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateReque
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -49,9 +46,6 @@ class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateReque
 end
 
 class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateResponse
 
@@ -67,17 +61,17 @@ class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRespo
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    template: T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+    template: Services::Verifiablecredentials::Templates::V1::TemplateData?
   ) -> void
 
 
-  def template: () -> T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+  def template: () -> Services::Verifiablecredentials::Templates::V1::TemplateData?
 
-  def template=: (T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)) -> void
+  def template=: (Services::Verifiablecredentials::Templates::V1::TemplateData?) -> void
 
   def clear_template: () -> void
 
-  def has_template?: () -> Boolean
+  def has_template?: () -> bool
 
   def []: (String) -> untyped
 
@@ -87,9 +81,6 @@ class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRespo
 end
 
 class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesRequest
 
@@ -116,7 +107,7 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def clear_query: () -> void
 
-  def has_query?: () -> Boolean
+  def has_query?: () -> bool
 
   def continuation_token: () -> String
 
@@ -124,7 +115,7 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -134,9 +125,6 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 end
 
 class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesResponse
 
@@ -153,7 +141,7 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def initialize: (
     items_json: String?,
-    has_more: T::Boolean?,
+    has_more: bool?,
     count: Integer?,
     continuation_token: String?
   ) -> void
@@ -165,15 +153,15 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def clear_items_json: () -> void
 
-  def has_items_json?: () -> Boolean
+  def has_items_json?: () -> bool
 
-  def has_more: () -> T::Boolean
+  def has_more: () -> bool
 
-  def has_more=: (T::Boolean) -> void
+  def has_more=: (bool) -> void
 
   def clear_has_more: () -> void
 
-  def has_has_more?: () -> Boolean
+  def has_has_more?: () -> bool
 
   def count: () -> Integer
 
@@ -181,7 +169,7 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def clear_count: () -> void
 
-  def has_count?: () -> Boolean
+  def has_count?: () -> bool
 
   def continuation_token: () -> String
 
@@ -189,7 +177,7 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -199,9 +187,6 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 end
 
 class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRequest
 
@@ -228,7 +213,7 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesReq
 
   def clear_query: () -> void
 
-  def has_query?: () -> Boolean
+  def has_query?: () -> bool
 
   def continuation_token: () -> String
 
@@ -236,7 +221,7 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesReq
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -246,9 +231,6 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesReq
 end
 
 class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesResponse
 
@@ -264,27 +246,27 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRes
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    templates: T::Array[T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)]?,
-    has_more_results: T::Boolean?,
+    templates: Array[Services::Verifiablecredentials::Templates::V1::TemplateData?]?,
+    has_more_results: bool?,
     continuation_token: String?
   ) -> void
 
 
-  def templates: () -> T::Array[T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)]
+  def templates: () -> Array[Services::Verifiablecredentials::Templates::V1::TemplateData?]
 
   def templates=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_templates: () -> void
 
-  def has_templates?: () -> Boolean
+  def has_templates?: () -> bool
 
-  def has_more_results: () -> T::Boolean
+  def has_more_results: () -> bool
 
-  def has_more_results=: (T::Boolean) -> void
+  def has_more_results=: (bool) -> void
 
   def clear_has_more_results: () -> void
 
-  def has_has_more_results?: () -> Boolean
+  def has_has_more_results?: () -> bool
 
   def continuation_token: () -> String
 
@@ -292,7 +274,7 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRes
 
   def clear_continuation_token: () -> void
 
-  def has_continuation_token?: () -> Boolean
+  def has_continuation_token?: () -> bool
 
   def []: (String) -> untyped
 
@@ -302,9 +284,6 @@ class Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRes
 end
 
 class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRequest
 
@@ -330,7 +309,7 @@ class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRe
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -340,9 +319,6 @@ class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRe
 end
 
 class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateResponse
 
@@ -369,9 +345,6 @@ class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRe
 end
 
 class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRequest
 
@@ -388,8 +361,8 @@ class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRe
 
   def initialize: (
     name: String?,
-    fields: T::Hash[String, T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateField)]?,
-    allow_additional_fields: T::Boolean?
+    fields: ::Hash[String, Services::Verifiablecredentials::Templates::V1::TemplateField?]?,
+    allow_additional_fields: bool?
   ) -> void
 
 
@@ -399,23 +372,23 @@ class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRe
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
-  def fields: () -> T::Hash[String, T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateField)]
+  def fields: () -> ::Hash[String, Services::Verifiablecredentials::Templates::V1::TemplateField?]
 
   def fields=: (Google::Protobuf::Map) -> void
 
   def clear_fields: () -> void
 
-  def has_fields?: () -> Boolean
+  def has_fields?: () -> bool
 
-  def allow_additional_fields: () -> T::Boolean
+  def allow_additional_fields: () -> bool
 
-  def allow_additional_fields=: (T::Boolean) -> void
+  def allow_additional_fields=: (bool) -> void
 
   def clear_allow_additional_fields: () -> void
 
-  def has_allow_additional_fields?: () -> Boolean
+  def has_allow_additional_fields?: () -> bool
 
   def []: (String) -> untyped
 
@@ -425,9 +398,6 @@ class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRe
 end
 
 class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateResponse
 
@@ -443,17 +413,17 @@ class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRe
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    data: T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+    data: Services::Verifiablecredentials::Templates::V1::TemplateData?
   ) -> void
 
 
-  def data: () -> T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+  def data: () -> Services::Verifiablecredentials::Templates::V1::TemplateData?
 
-  def data=: (T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)) -> void
+  def data=: (Services::Verifiablecredentials::Templates::V1::TemplateData?) -> void
 
   def clear_data: () -> void
 
-  def has_data?: () -> Boolean
+  def has_data?: () -> bool
 
   def []: (String) -> untyped
 
@@ -463,9 +433,6 @@ class Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRe
 end
 
 class Services::Verifiablecredentials::Templates::V1::TemplateField
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::TemplateField
 
@@ -482,8 +449,8 @@ class Services::Verifiablecredentials::Templates::V1::TemplateField
 
   def initialize: (
     description: String?,
-    optional: T::Boolean?,
-    type: T.any(Symbol, String, Integer)?
+    optional: bool?,
+    type: (Symbol | String | Integer)?
   ) -> void
 
 
@@ -493,23 +460,23 @@ class Services::Verifiablecredentials::Templates::V1::TemplateField
 
   def clear_description: () -> void
 
-  def has_description?: () -> Boolean
+  def has_description?: () -> bool
 
-  def optional: () -> T::Boolean
+  def optional: () -> bool
 
-  def optional=: (T::Boolean) -> void
+  def optional=: (bool) -> void
 
   def clear_optional: () -> void
 
-  def has_optional?: () -> Boolean
+  def has_optional?: () -> bool
 
   def type: () -> Symbol
 
-  def type=: (T.any(Symbol, String, Integer)) -> void
+  def type=: ((Symbol | String | Integer)) -> void
 
   def clear_type: () -> void
 
-  def has_type?: () -> Boolean
+  def has_type?: () -> bool
 
   def []: (String) -> untyped
 
@@ -519,9 +486,6 @@ class Services::Verifiablecredentials::Templates::V1::TemplateField
 end
 
 class Services::Verifiablecredentials::Templates::V1::GetTemplateRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::GetTemplateRequest
 
@@ -547,7 +511,7 @@ class Services::Verifiablecredentials::Templates::V1::GetTemplateRequest
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def []: (String) -> untyped
 
@@ -557,9 +521,6 @@ class Services::Verifiablecredentials::Templates::V1::GetTemplateRequest
 end
 
 class Services::Verifiablecredentials::Templates::V1::GetTemplateResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::GetTemplateResponse
 
@@ -575,17 +536,17 @@ class Services::Verifiablecredentials::Templates::V1::GetTemplateResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    data: T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+    data: Services::Verifiablecredentials::Templates::V1::TemplateData?
   ) -> void
 
 
-  def data: () -> T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)
+  def data: () -> Services::Verifiablecredentials::Templates::V1::TemplateData?
 
-  def data=: (T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)) -> void
+  def data=: (Services::Verifiablecredentials::Templates::V1::TemplateData?) -> void
 
   def clear_data: () -> void
 
-  def has_data?: () -> Boolean
+  def has_data?: () -> bool
 
   def []: (String) -> untyped
 
@@ -595,9 +556,6 @@ class Services::Verifiablecredentials::Templates::V1::GetTemplateResponse
 end
 
 class Services::Verifiablecredentials::Templates::V1::ListTemplatesRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::ListTemplatesRequest
 
@@ -624,9 +582,6 @@ class Services::Verifiablecredentials::Templates::V1::ListTemplatesRequest
 end
 
 class Services::Verifiablecredentials::Templates::V1::ListTemplatesResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::ListTemplatesResponse
 
@@ -642,17 +597,17 @@ class Services::Verifiablecredentials::Templates::V1::ListTemplatesResponse
   def initialize: (::Hash[untyped, untyped]) -> void
 
   def initialize: (
-    templates: T::Array[T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)]?
+    templates: Array[Services::Verifiablecredentials::Templates::V1::TemplateData?]?
   ) -> void
 
 
-  def templates: () -> T::Array[T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateData)]
+  def templates: () -> Array[Services::Verifiablecredentials::Templates::V1::TemplateData?]
 
   def templates=: (Google::Protobuf::RepeatedField) -> void
 
   def clear_templates: () -> void
 
-  def has_templates?: () -> Boolean
+  def has_templates?: () -> bool
 
   def []: (String) -> untyped
 
@@ -662,9 +617,6 @@ class Services::Verifiablecredentials::Templates::V1::ListTemplatesResponse
 end
 
 class Services::Verifiablecredentials::Templates::V1::TemplateData
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
 
   def self.decode: (String) -> Services::Verifiablecredentials::Templates::V1::TemplateData
 
@@ -683,8 +635,8 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
     id: String?,
     name: String?,
     version: Integer?,
-    fields: T::Hash[String, T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateField)]?,
-    allow_additional_fields: T::Boolean?,
+    fields: ::Hash[String, Services::Verifiablecredentials::Templates::V1::TemplateField?]?,
+    allow_additional_fields: bool?,
     schema_uri: String?,
     context_uri: String?,
     ecosystem_id: String?,
@@ -698,7 +650,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_id: () -> void
 
-  def has_id?: () -> Boolean
+  def has_id?: () -> bool
 
   def name: () -> String
 
@@ -706,7 +658,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_name: () -> void
 
-  def has_name?: () -> Boolean
+  def has_name?: () -> bool
 
   def version: () -> Integer
 
@@ -714,23 +666,23 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_version: () -> void
 
-  def has_version?: () -> Boolean
+  def has_version?: () -> bool
 
-  def fields: () -> T::Hash[String, T.nilable(Services::Verifiablecredentials::Templates::V1::TemplateField)]
+  def fields: () -> ::Hash[String, Services::Verifiablecredentials::Templates::V1::TemplateField?]
 
   def fields=: (Google::Protobuf::Map) -> void
 
   def clear_fields: () -> void
 
-  def has_fields?: () -> Boolean
+  def has_fields?: () -> bool
 
-  def allow_additional_fields: () -> T::Boolean
+  def allow_additional_fields: () -> bool
 
-  def allow_additional_fields=: (T::Boolean) -> void
+  def allow_additional_fields=: (bool) -> void
 
   def clear_allow_additional_fields: () -> void
 
-  def has_allow_additional_fields?: () -> Boolean
+  def has_allow_additional_fields?: () -> bool
 
   def schema_uri: () -> String
 
@@ -738,7 +690,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_schema_uri: () -> void
 
-  def has_schema_uri?: () -> Boolean
+  def has_schema_uri?: () -> bool
 
   def context_uri: () -> String
 
@@ -746,7 +698,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_context_uri: () -> void
 
-  def has_context_uri?: () -> Boolean
+  def has_context_uri?: () -> bool
 
   def ecosystem_id: () -> String
 
@@ -754,7 +706,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_ecosystem_id: () -> void
 
-  def has_ecosystem_id?: () -> Boolean
+  def has_ecosystem_id?: () -> bool
 
   def type: () -> String
 
@@ -762,7 +714,7 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   def clear_type: () -> void
 
-  def has_type?: () -> Boolean
+  def has_type?: () -> bool
 
   def []: (String) -> untyped
 
@@ -774,16 +726,16 @@ end
 module Services::Verifiablecredentials::Templates::V1::FieldType
   # TODO - Not sure how to represent this
   # self::STRING = T.let(0, Integer)
-  self::STRING = : (0, Integer)
+  def STRING: () -> Integer # = 0
   # TODO - Not sure how to represent this
   # self::NUMBER = T.let(1, Integer)
-  self::NUMBER = : (1, Integer)
+  def NUMBER: () -> Integer # = 1
   # TODO - Not sure how to represent this
   # self::BOOL = T.let(2, Integer)
-  self::BOOL = : (2, Integer)
+  def BOOL: () -> Integer # = 2
   # TODO - Not sure how to represent this
   # self::DATETIME = T.let(4, Integer)
-  self::DATETIME = : (4, Integer)
+  def DATETIME: () -> Integer # = 4
 
   def self.lookup: (value: Integer) -> Symbol?
 
