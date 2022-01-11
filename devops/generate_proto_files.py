@@ -135,7 +135,7 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # Ruby type specifications
-    run_protoc({'rbi_out': ruby_proto_path}, {}, get_proto_files())
+    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files(), plugin="protoc-gen-rbi=C:\personal\protoc-gen-rbi\protoc-gen-rbi.exe")
 
 
 def update_java():
