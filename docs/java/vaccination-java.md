@@ -26,12 +26,6 @@ Create a reference to the wallet service that points to your ecosystem service. 
 ```
 <!--/codeinclude-->
 
-Or, if you want to provide a URL:
-```java
-server_address = '<SERVER_ADDRESS>'
-wallet_service = WalletService(server_address)
-```
-
 ## Setup wallet profiles
 
 Let's create three different profiles, each pointing to a separate wallet. Since we are using a single console app for this demo, we will simply set the active profile before each interaction to designate which actor is currently taking action.
