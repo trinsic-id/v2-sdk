@@ -2,8 +2,11 @@ name: "Ruby (release)"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
+    inputs:
+      packageVersion:
+        description: 'Version to build'
+        required: true
+        default: ''
 
 jobs:
   build:
