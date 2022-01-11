@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Ruby 2.6
+      - name: Set up Ruby 2.7
         uses: ruby/setup-ruby@v1.76.0
         with:
           ruby-version: 2.7
@@ -29,10 +29,6 @@ jobs:
           path: ./libs
           branch: main
           repo: trinsic-id/okapi
-      - name: Install dependencies
-        run: |
-          bundle config set rubygems.pkg.github.com ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
-        working-directory: ruby
       - name: Build and run tests
         run: |
           gem install bundler
