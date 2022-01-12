@@ -73,7 +73,8 @@ markdown_extensions:
         - name: mermaid
           class: mermaid-experimental
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: false
   - pymdownx.snippets:
       base_path: [".", "docs"]
   - pymdownx.emoji:
@@ -102,7 +103,8 @@ extra:
 plugins:
   - search
   - autorefs
-  - codeinclude
+  - codeinclude:
+      title_mode: pymdownx.tabbed
   - mkdocstrings:
       handlers:
         python:

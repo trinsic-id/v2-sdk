@@ -22,7 +22,7 @@ def _vaccine_cert_frame_path() -> str:
 
 
 async def vaccine_demo():
-    # createService() {
+    # createAccountService() {
     account_service = AccountService(server_config=trinsic_test_config())
     # }
 
