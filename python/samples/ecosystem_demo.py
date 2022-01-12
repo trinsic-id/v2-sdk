@@ -1,6 +1,5 @@
 import asyncio
 
-from trinsic.proto.services.provider.v1 import ParticipantType
 from trinsic.services import ProviderService, AccountService
 from trinsic.trinsic_util import trinsic_test_config
 

@@ -454,8 +454,7 @@ class TrustRegistryService(ServiceBase):
         return await self.client.search_registry(query=query, options=RequestOptions(
             response_json_format=JsonFormat.Protobuf))
 
-    async def fetch_data(self, governance_framework_uri: str = None, query: str = None) -> AsyncIterator[
-        FetchDataResponse]:
+    async def fetch_data(self, governance_framework_uri: str = None, query: str = None) -> AsyncIterator[FetchDataResponse]:
         return self.client.fetch_data(governance_framework_uri=governance_framework_uri, query=query)
 
 

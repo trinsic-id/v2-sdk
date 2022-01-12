@@ -39,10 +39,6 @@ async def trustregistry_demo():
     assert search_result.items_json is not None
     assert len(search_result.items_json) > 0
 
-    # clean up
-    service.close()
-    account_service.close()
-
 
 if __name__ == "__main__":
     asyncio.run(trustregistry_demo())
