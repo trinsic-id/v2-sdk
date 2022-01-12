@@ -1,3 +1,4 @@
+import asyncio
 import unittest
 
 import asynctest as asynctest
@@ -10,55 +11,67 @@ from trinsic.services import WalletService, ProviderService, TrustRegistryServic
 from trinsic.trinsic_util import trinsic_test_config
 
 
-class TestServices(asynctest.TestCase):
-    async def test_servicebase_setprofile(self):
-        wallet_service = WalletService(None, trinsic_test_config())
-        with self.assertRaises(Exception) as excep:
-            self.assertIsNotNone(wallet_service.build_metadata(None))
-        self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
+# Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
+
+class TestServices(unittest.TestCase):
+    def test_servicebase_setprofile(self):
+        async def test_code():
+            wallet_service = WalletService(None, trinsic_test_config())
+            with self.assertRaises(Exception) as excep:
+                self.assertIsNotNone(wallet_service.build_metadata(None))
+            self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
+        asyncio.run(test_code())
 
     @unittest.skip("Ecosystem support not implemented")
-    async def test_providerservice_demo(self):
-        await provider_demo()
+    def test_providerservice_demo(self):
+        asyncio.run(provider_demo())
 
-    async def test_vaccine_demo(self):
-        await vaccine_demo()
+    def test_vaccine_demo(self):
+        asyncio.run(vaccine_demo())
 
-    async def test_trustregistry_demo(self):
-        await trustregistry_demo()
+    def test_trustregistry_demo(self):
+        asyncio.run(trustregistry_demo())
 
-    async def test_ecosystem_demo(self):
-        await ecosystem_demo()
+    def test_ecosystem_demo(self):
+        asyncio.run(ecosystem_demo())
 
-    async def test_providerservice_input_validation(self):
-        cred_service = ProviderService(None, trinsic_test_config())
-        with self.assertRaises(ValueError) as ve:
-            await cred_service.invite_participant()
+    def test_providerservice_input_validation(self):
+        async def test_code():
+            cred_service = ProviderService(None, trinsic_test_config())
+            with self.assertRaises(ValueError) as ve:
+                await cred_service.invite_participant()
+            with self.assertRaises(ValueError) as ve:
+                await cred_service.invitation_status()
+            cred_service.close()
 
-        with self.assertRaises(ValueError) as ve:
-            await cred_service.invitation_status()
+        asyncio.run(test_code())
 
-    async def test_trustregistryservice_input_validation(self):
-        cred_service = TrustRegistryService(None, trinsic_test_config())
-        with self.assertRaises(ValueError) as ve:
-            await cred_service.register_governance_framework("", "Invalid framework")
+    def test_trustregistryservice_input_validation(self):
+        async def test_code():
+            cred_service = TrustRegistryService(None, trinsic_test_config())
+            with self.assertRaises(ValueError) as ve:
+                await cred_service.register_governance_framework("", "Invalid framework")
 
-        cred_service.close()
+            cred_service.close()
 
-    async def test_protect_unprotect_account(self):
-        account_service = AccountService(None, trinsic_test_config())
-        my_profile, _ = await account_service.sign_in()
-        await self.print_get_info(account_service, my_profile)
+        asyncio.run(test_code())
 
-        code = b"1234"
-        my_protected_profile = account_service.protect(my_profile, code)
-        with self.assertRaises(ValueError) as ve:
-            await self.print_get_info(account_service, my_protected_profile)
+    def test_protect_unprotect_account(self):
+        async def test_code():
+            account_service = AccountService(None, trinsic_test_config())
+            my_profile, _ = await account_service.sign_in()
+            await self.print_get_info(account_service, my_profile)
 
-        my_unprotected_profile = account_service.unprotect(my_profile, code)
-        await self.print_get_info(account_service, my_unprotected_profile)
+            code = b"1234"
+            my_protected_profile = account_service.protect(my_profile, code)
+            with self.assertRaises(ValueError) as ve:
+                await self.print_get_info(account_service, my_protected_profile)
 
-        account_service.close()
+            my_unprotected_profile = account_service.unprotect(my_profile, code)
+            await self.print_get_info(account_service, my_unprotected_profile)
+
+            account_service.close()
+        asyncio.run(test_code())
 
     @staticmethod
     async def print_get_info(account_service, my_profile):
