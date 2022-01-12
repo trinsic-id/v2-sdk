@@ -1,5 +1,7 @@
 import unittest
 
+import asynctest as asynctest
+
 from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
 from samples.trustregistry_demo import trustregistry_demo
@@ -8,7 +10,7 @@ from trinsic.services import WalletService, ProviderService, TrustRegistryServic
 from trinsic.trinsic_util import trinsic_test_config
 
 
-class TestServices(unittest.IsolatedAsyncioTestCase):
+class TestServices(asynctest.TestCase):
     async def test_servicebase_setprofile(self):
         wallet_service = WalletService(None, trinsic_test_config())
         with self.assertRaises(Exception) as excep:
@@ -41,6 +43,8 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ValueError) as ve:
             await cred_service.register_governance_framework("", "Invalid framework")
 
+        cred_service.close()
+
     async def test_protect_unprotect_account(self):
         account_service = AccountService(None, trinsic_test_config())
         my_profile, _ = await account_service.sign_in()
@@ -53,6 +57,8 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
         my_unprotected_profile = account_service.unprotect(my_profile, code)
         await self.print_get_info(account_service, my_unprotected_profile)
+
+        account_service.close()
 
     @staticmethod
     async def print_get_info(account_service, my_profile):

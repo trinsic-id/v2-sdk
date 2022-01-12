@@ -103,10 +103,6 @@ async def vaccine_demo():
     # assert credential_status.revoked is True
     # }
 
-    # wallet_service.close() - not required, because wallet shares channel with account
-    account_service.close()
-    credentials_service.close()
-
 
 if __name__ == "__main__":
     asyncio.run(vaccine_demo())

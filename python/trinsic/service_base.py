@@ -39,10 +39,16 @@ class ServiceBase(ABC):
         self._channel: Channel = channel or create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+
     def close(self):
         """Close the underlying channel"""
-        self._channel.close()
-        del self._channel
+        if self._channel is not None:
+            self._channel.close()
 
     def build_metadata(self, request: Message):
         """
