@@ -3,7 +3,7 @@
 ## Usage
 
 ```
-go get https://github.com/trinsic-id/sdk/go
+go get github.com/trinsic-id/sdk/go
 ```
 
 ## Dependencies
