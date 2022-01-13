@@ -254,7 +254,7 @@ func TestTemplatesDemo(t *testing.T) {
 	}
 
 	// create example template
-	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: "My Example Credential", AllowAdditionalFields: false}
+	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: "My Example Credential", AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
 	templateRequest.Fields["firstName"] = &sdk.TemplateField{Description: "Given name"}
 	templateRequest.Fields["lastName"] = &sdk.TemplateField{}
 	templateRequest.Fields["age"] = &sdk.TemplateField{Type: sdk.FieldType_NUMBER, Optional: true}
@@ -288,7 +288,7 @@ func TestTemplatesDemo(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-	var jsonDocument = map[string]interface{}{}
+	var jsonDocument = make(map[string]interface{})
 	err = json.Unmarshal([]byte(credentialJson.DocumentJson), &jsonDocument)
 	if !assert2.Nil(err) {
 		return
