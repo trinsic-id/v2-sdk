@@ -5,7 +5,7 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import List, Tuple, SupportsBytes, Union, Optional, AsyncIterator
+from typing import List, Tuple, SupportsBytes, Union, Optional, AsyncIterator, Dict
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
@@ -41,8 +41,7 @@ class AccountService(ServiceBase):
         super().__init__(profile, server_config, channel)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
-    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[
-        AccountProfile, ConfirmationMethod]:
+    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[AccountProfile, ConfirmationMethod]:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
@@ -205,7 +204,7 @@ class CredentialTemplatesService(ServiceBase):
         super().__init__(profile, server_config, channel)
         self.client: CredentialTemplatesStub = self.stub_with_metadata(CredentialTemplatesStub)
 
-    async def create(self, name: str, fields: Optional[dict[str, TemplateField]],
+    async def create(self, name: str, fields: Optional[Dict[str, TemplateField]],
                      allow_additional_fields: bool) -> CreateCredentialTemplateResponse:
         return await self.client.create(name=name, fields=fields, allow_additional_fields=allow_additional_fields)
 
