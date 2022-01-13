@@ -57,7 +57,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Python Unit Test Results (${{ matrix.os }} / ${{ matrix.python-version }})
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:
