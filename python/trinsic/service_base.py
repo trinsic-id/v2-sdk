@@ -94,8 +94,13 @@ class ServiceBase(ABC):
 
 
 class ResponseStatusException(Exception):
+    """
+    Exception raised when an action has a non-success reponse status.
+    """
+
     def __init__(self, action: str, status: ResponseStatus):
-        super(f"{action} failed, status={status}")
+        super().__init__(f"{action} failed, status={status}")
+        self.status = status
 
     @staticmethod
     def assert_success(status: ResponseStatus, action: str) -> None:

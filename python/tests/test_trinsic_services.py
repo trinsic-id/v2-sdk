@@ -6,6 +6,8 @@ from samples.provider_demo import provider_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
 from samples.templates_demo import templates_demo
+from trinsic.proto.services.common.v1 import ResponseStatus
+from trinsic.service_base import ResponseStatusException
 from trinsic.services import WalletService, ProviderService, TrustRegistryService, AccountService
 from trinsic.trinsic_util import trinsic_test_config
 
@@ -21,6 +23,12 @@ class TestServices(unittest.TestCase):
             self.assertEqual("cannot call authenticated endpoint: profile must be set", excep.exception.args[0].lower())
 
         asyncio.run(test_code())
+
+    def test_responsestatus_exception(self):
+        with self.assertRaises(ResponseStatusException) as rse:
+            ResponseStatusException.assert_success(ResponseStatus.UNKNOWN_ERROR, "test should fail")
+        self.assertEqual(f"test should fail failed, status={ResponseStatus.UNKNOWN_ERROR}", str(rse.exception))
+        ResponseStatusException.assert_success(ResponseStatus.SUCCESS, "This should NOT fail")
 
     @unittest.skip("Ecosystem support not implemented")
     def test_providerservice_demo(self):
