@@ -119,7 +119,7 @@ class TrinsicServiceTest < Minitest::Test
     service = Trinsic::ProviderService.new(account, Trinsic::trinsic_test_server)
 
     # test create ecosystem
-    actual_create = service.create_ecosystem(Services::Provider::V1::CreateEcosystemRequest.new(:description => "My ecosystem", :name => "Test Ecosystem", :uri => "did:example:test"))
+    actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :name => "Test Ecosystem", :uri => "did:example:test"))
     assert(actual_create != nil, "Ecosystem should be created")
     assert(actual_create.id != nil, "Id should exist")
     assert(actual_create.id.start_with?("urn:trinsic:ecosystems:"))
@@ -128,6 +128,35 @@ class TrinsicServiceTest < Minitest::Test
     actual_list = service.list_ecosystems
     assert(actual_list.nil? == false)
     assert(actual_list.length > 0)
+  end
+
+  def test_templates_demo
+    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account = account_service.sign_in(nil).profile
+    credential_service = Trinsic::CredentialService.new(account, Trinsic::trinsic_test_server)
+    template_service = Trinsic::TemplateService.new(account, Trinsic::trinsic_test_server)
+
+    # create example template
+    template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(:name => "My Example Credential", :allow_additional_fields => false)
+    template_request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(:description => "Given name")
+    template_request.fields['lastName'] = Trinsic::Template_V1::TemplateField.new
+    template_request.fields['age'] = Trinsic::Template_V1::TemplateField.new(:type => Trinsic::Template_V1::FieldType::NUMBER, :optional => true)
+    template = template_service.create(template_request)
+
+    assert(template.nil? == false)
+    assert(template.data.nil? == false)
+    assert(template.data.id.nil? == false)
+    assert(template.data.schema_uri.nil? == false)
+
+    # issue credential from this template
+    values = JSON.generate({ 'firstName': 'Jane', 'lastName': 'Doe', 'age': 42 })
+    credential_json = credential_service.issue_from_template(Trinsic::Credentials_V1::IssueFromTemplateRequest.new(:template_id=>template.data.id, :values_json=>values))
+    assert(credential_json.document_json.nil? == false)
+
+    json_document = JSON.parse(credential_json.document_json)
+
+    assert(json_document.key?('id'))
+    assert(json_document.key?('credentialSubject'))
   end
 
   def test_trustregistry_demo

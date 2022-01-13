@@ -144,7 +144,7 @@ module Trinsic
     end
 
     def issue_from_template(request)
-      @client.issue_from_template(request)
+      @client.issue_from_template(request, metadata: metadata(request))
     end
 
     def send_document(document, email)
@@ -231,23 +231,23 @@ module Trinsic
     end
 
     def create(request)
-      @client.create(request)
+      @client.create(request, metadata: metadata(request))
     end
 
     def get(request)
-      @client.get(request)
+      @client.get(request, metadata: metadata(request))
     end
 
     def list(request)
-      @client.list(request)
+      @client.list(request, metadata: metadata(request))
     end
 
     def search(request)
-      @client.search(request)
+      @client.search(request, metadata: metadata(request))
     end
 
     def delete(request)
-      @client.delete(request)
+      @client.delete(request, metadata: metadata(request))
     end
   end
 

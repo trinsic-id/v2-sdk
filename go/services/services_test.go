@@ -211,6 +211,9 @@ func TestEcosystemDemo(t *testing.T) {
 		return
 	}
 	service, err := NewProviderService(profile, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return
+	}
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
 		Name:        "Test Ecosystem",
@@ -232,6 +235,69 @@ func TestEcosystemDemo(t *testing.T) {
 	assert2.NotNil(actualList)
 	assert2.NotEmpty(actualList)
 }
+
+func TestTemplatesDemo(t *testing.T) {
+	assert2, channel, err, profile, done := createAccountAndSignIn(t)
+	if !assert2.Nil(err) {
+		return
+	}
+	if done {
+		return
+	}
+	templateService, err := NewCredentialTemplateService(profile, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return
+	}
+	credentialService, err := NewCredentialService(profile, TrinsicTestConfig(), channel)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	// create example template
+	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: "My Example Credential", AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
+	templateRequest.Fields["firstName"] = &sdk.TemplateField{Description: "Given name"}
+	templateRequest.Fields["lastName"] = &sdk.TemplateField{}
+	templateRequest.Fields["age"] = &sdk.TemplateField{Type: sdk.FieldType_NUMBER, Optional: true}
+
+	template, err := templateService.Create(context.Background(), templateRequest)
+
+	assert2.NotNil(template)
+	assert2.NotNil(template.Data)
+	assert2.NotNil(template.Data.Id)
+	assert2.NotNil(template.Data.SchemaUri)
+
+	// issue credential from this template
+	values := struct {
+		FirstName string
+		LastName  string
+		Age       int
+	}{
+		FirstName: "Jane",
+		LastName:  "Doe",
+		Age:       42,
+	}
+	valuesString, err := json.Marshal(values)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	credentialJson, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
+		TemplateId: template.Data.Id,
+		ValuesJson: string(valuesString),
+	})
+	if !assert2.Nil(err) {
+		return
+	}
+	var jsonDocument = make(map[string]interface{})
+	err = json.Unmarshal([]byte(credentialJson.DocumentJson), &jsonDocument)
+	if !assert2.Nil(err) {
+		return
+	}
+	assert2.NotNil(jsonDocument)
+	assert2.NotNil(jsonDocument["id"])
+	assert2.NotNil(jsonDocument["credentialSubject"])
+}
+
 func TestCreateChannelUrlFromConfig(t *testing.T) {
 	assert2 := assert.New(t)
 	if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), "Default is production stack") {
