@@ -1,10 +1,13 @@
 import { AccountService, CredentialService, WalletService } from "../lib";
 import { config } from "./env";
+import {TemplateService} from "../lib/TemplateService";
+import {CreateCredentialTemplateRequest} from "../src";
 
 let accountService;
 let profile;
 let walletService;
 let credentialService;
+let templateService;
 
 describe("wallet service tests", () => {
   beforeAll(async () => {
@@ -14,6 +17,7 @@ describe("wallet service tests", () => {
 
     walletService = new WalletService({ profile, server: config });
     credentialService = new CredentialService({ profile, server: config });
+    templateService = new TemplateService({ profile, server: config });
 
     console.log("before all ran");
   });
@@ -49,5 +53,39 @@ describe("wallet service tests", () => {
 
     let valid = await credentialService.verifyProof(proof);
     expect(valid).toBe(true);
+  }, 20000);
+
+  it("Demo: template management and credential issuance from template", async () => {
+    expect(profile).not.toBeNull();
+
+    // create example template
+    let templateRequest = new CreateCredentialTemplateRequest().setName("My Example Credential").setAllowAdditionalFields(false);
+    templateRequest.getFieldsMap().set("firstName", new TemplateField().setDescription("Given name"));
+    templateRequest.getFieldsMap().set("lastName", new TemplateField());
+    templateRequest.getFieldsMap().set("age", new TemplateField().setType(FieldType.NUMBER).setOptional(true));
+
+    let template = await templateService.createCredentialTemplate(templateRequest);
+
+    expect(template).not.toBeNull();
+    expect(template.getData()).not.toBeNull();
+    expect(template.getData().getId()).not.toBeNull();
+    expect(template.getData().getSchemaUri()).not.toBeNull();
+
+    // issue credential from this template
+    let values = JSON.stringify({
+      firstName: "Jane",
+      lastName: "Doe",
+      age: 42
+    });
+
+    let credentialJson = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
+
+    t.not(credentialJson, null);
+
+    let jsonDocument = JSON.parse(credentialJson);
+    expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
+    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
+
+    t.pass();
   }, 20000);
 });
