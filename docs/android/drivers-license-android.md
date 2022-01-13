@@ -116,7 +116,7 @@ fun saveCredential(credential: HashMap<*, *>): String {
 
 ## Proof of Driver's License
 
-If Allison is ever stoped by a police officer, she must show her driver's license. The request for this proof also comes in a form of JSON frame.
+If Allison is ever stopped by a police officer, she must show her driver's license. The request for this proof also comes in a form of JSON frame.
 This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.
 
 Let's save this request in a file named `drivers-license-frame.json`
