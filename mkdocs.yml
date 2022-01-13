@@ -24,7 +24,7 @@ nav:
     - Java: java/index.md
     - Web: web/index.md
     # - iOS: ios/index.md
-    # - Android: android/index.mdw
+    - Android: android/index.mdw
   - Reference:
     - Overview: reference/index.md
     - Wallet Service: reference/services/wallet-service.md
