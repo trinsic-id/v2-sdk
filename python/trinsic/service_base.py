@@ -9,7 +9,7 @@ from betterproto import Message, ServiceStub
 from grpclib.client import Channel
 
 from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.proto.services.common.v1 import ServerConfig, ResponseStatus
 from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
 from trinsic.trinsic_util import create_channel
 
@@ -91,3 +91,13 @@ class ServiceBase(ABC):
     def channel(self):
         """Underlying channel"""
         return self._channel
+
+
+class ResponseStatusException(Exception):
+    def __init__(self, action: str, status: ResponseStatus):
+        super(f"{action} failed, status={status}")
+
+    @staticmethod
+    def assert_success(status: ResponseStatus, action: str) -> None:
+        if status != ResponseStatus.SUCCESS:
+            raise ResponseStatusException(action, status)
