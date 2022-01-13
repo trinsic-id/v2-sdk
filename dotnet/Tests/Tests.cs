@@ -39,7 +39,7 @@ public class Tests
     private const string VaccinationCertificateUnsigned = "TestData/vaccination-certificate-unsigned.jsonld";
     private const string VaccinationCertificateFrame = "TestData/vaccination-certificate-frame.jsonld";
 
-    [Fact]
+    [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
         var accountService = new AccountService(_serverConfig);
 

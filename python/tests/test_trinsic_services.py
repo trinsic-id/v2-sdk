@@ -5,6 +5,7 @@ from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
+from samples.templates_demo import templates_demo
 from trinsic.services import WalletService, ProviderService, TrustRegistryService, AccountService
 from trinsic.trinsic_util import trinsic_test_config
 
@@ -33,6 +34,9 @@ class TestServices(unittest.TestCase):
 
     def test_ecosystem_demo(self):
         asyncio.run(ecosystem_demo())
+
+    def test_templates_demo(self):
+        asyncio.run(templates_demo())
 
     def test_providerservice_input_validation(self):
         async def test_code():
