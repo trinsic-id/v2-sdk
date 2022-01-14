@@ -5,7 +5,7 @@ Trinsic Service wrappers
 import datetime
 import json
 import urllib.parse
-from typing import List, Tuple, SupportsBytes, Union, Optional, AsyncIterator
+from typing import List, Tuple, SupportsBytes, Union, Optional, AsyncIterator, Dict
 
 from grpclib.client import Channel
 from trinsicokapi import oberon
@@ -23,8 +23,8 @@ from trinsic.proto.services.universalwallet.v1 import SearchResponse, UniversalW
 from trinsic.proto.services.verifiablecredentials.templates.v1 import CredentialTemplatesStub, \
     CreateCredentialTemplateResponse, GetCredentialTemplateResponse, \
     ListCredentialTemplatesResponse, TemplateField, SearchCredentialTemplatesResponse, DeleteCredentialTemplateResponse
-from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub, CheckStatusResponse
-from trinsic.service_base import ServiceBase
+from trinsic.proto.services.verifiablecredentials.v1 import VerifiableCredentialStub, CheckStatusResponse, SendResponse
+from trinsic.service_base import ServiceBase, ResponseStatusException
 from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_seconds
 
 
@@ -154,9 +154,7 @@ class CredentialsService(ServiceBase):
         Returns:
         """
         response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
-        if response.status == ResponseStatus.SUCCESS:
-            return
-        raise Exception(f"update status did not complete, status={response.status}")
+        ResponseStatusException.assert_success(response.status, "update credential status")
 
     async def create_proof(self, document_id: str, reveal_document: dict) -> dict:
         """
@@ -189,7 +187,8 @@ class CredentialsService(ServiceBase):
             document: Document to send
             email: Email to which the document is sent
         """
-        await self.client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
+        response = await self.client.send(email=email, document=JsonPayload(json_string=json.dumps(document)))
+        ResponseStatusException.assert_success(response.status, "sending credential")
 
 
 class CredentialTemplatesService(ServiceBase):
@@ -205,7 +204,7 @@ class CredentialTemplatesService(ServiceBase):
         super().__init__(profile, server_config, channel)
         self.client: CredentialTemplatesStub = self.stub_with_metadata(CredentialTemplatesStub)
 
-    async def create(self, name: str, fields: Optional[dict[str, TemplateField]],
+    async def create(self, name: str, fields: Optional[Dict[str, TemplateField]],
                      allow_additional_fields: bool) -> CreateCredentialTemplateResponse:
         return await self.client.create(name=name, fields=fields, allow_additional_fields=allow_additional_fields)
 
@@ -356,8 +355,7 @@ class TrustRegistryService(ServiceBase):
                                                      valid_from_utc=int(valid_from_epoch),
                                                      valid_until_utc=int(valid_until_epoch))
 
-        if response.status != ResponseStatus.SUCCESS:
-            raise RuntimeError(f"cannot register verifier: code {response.status}")
+        ResponseStatusException.assert_success(response.status, "registering issuer")
 
     async def unregister_issuer(self, issuer_did: str, credential_type: str, governance_framework: str,
                                 valid_from: datetime.datetime = None, valid_until: datetime.datetime = None) -> None:
@@ -393,8 +391,7 @@ class TrustRegistryService(ServiceBase):
                                                        governance_framework_uri=governance_framework,
                                                        valid_from_utc=int(valid_from_epoch),
                                                        valid_until_utc=int(valid_until_epoch))
-        if response.status != ResponseStatus.SUCCESS:
-            raise RuntimeError(f"cannot register verifier: code {response.status}")
+        ResponseStatusException.assert_success(response.status, "registering verifier")
 
     async def unregister_verifier(self, verifier_did: str, presentation_type: str, governance_framework: str,
                                   valid_from: datetime.datetime, valid_until: datetime.datetime) -> None:

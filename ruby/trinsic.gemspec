@@ -1,7 +1,7 @@
 require_relative 'lib/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "trinsic"
+  spec.name          = "trinsic-services"
   spec.version       = Trinsic::VERSION
   spec.authors       = ["Scott Phillips"]
   spec.email         = ["polygonguru@gmail.com"]
@@ -9,9 +9,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Trinsic Services Ruby SDK}
   spec.homepage      = "https://github.com/trinsic-id/sdk"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
-
-  spec.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com"
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/trinsic-id/sdk/ruby"

@@ -22,7 +22,7 @@ def _vaccine_cert_frame_path() -> str:
 
 
 async def vaccine_demo():
-    # createService() {
+    # createAccountService() {
     account_service = AccountService(server_config=trinsic_test_config())
     # }
 
@@ -102,10 +102,6 @@ async def vaccine_demo():
     # print(f"Credential_status: {credential_status}")
     # assert credential_status.revoked is True
     # }
-
-    # wallet_service.close() - not required, because wallet shares channel with account
-    account_service.close()
-    credentials_service.close()
 
 
 if __name__ == "__main__":

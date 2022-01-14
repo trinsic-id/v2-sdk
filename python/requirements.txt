@@ -1,5 +1,5 @@
-betterproto~=2.0.0b3
+betterproto~=2.0.0b4
 grpclib~=0.4.1
 grpcio-tools
-trinsic-okapi~=1.0.5
+trinsic-okapi~=1.2.0
 blake3~=0.2.1

@@ -35,10 +35,10 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
-      - name: Set up Python 3.9
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
@@ -57,7 +57,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Python Unit Test Results (${{ matrix.os }})
+          name: Python ${{ matrix.python-version }} Unit Test Results (${{ matrix.os }})
           path: 'python/test_output*.xml'
 
   publish-test-results-python:

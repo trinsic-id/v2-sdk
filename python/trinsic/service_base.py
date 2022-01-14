@@ -9,7 +9,7 @@ from betterproto import Message, ServiceStub
 from grpclib.client import Channel
 
 from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.proto.services.common.v1 import ServerConfig, ResponseStatus
 from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
 from trinsic.trinsic_util import create_channel
 
@@ -39,10 +39,19 @@ class ServiceBase(ABC):
         self._channel: Channel = channel or create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+
+    def __del__(self):
+        self.close()
+
     def close(self):
         """Close the underlying channel"""
-        self._channel.close()
-        del self._channel
+        if self._channel is not None:
+            self._channel.close()
 
     def build_metadata(self, request: Message):
         """
@@ -82,3 +91,18 @@ class ServiceBase(ABC):
     def channel(self):
         """Underlying channel"""
         return self._channel
+
+
+class ResponseStatusException(Exception):
+    """
+    Exception raised when an action has a non-success reponse status.
+    """
+
+    def __init__(self, action: str, status: ResponseStatus):
+        super().__init__(f"{action} failed, status={status}")
+        self.status = status
+
+    @staticmethod
+    def assert_success(status: ResponseStatus, action: str) -> None:
+        if status != ResponseStatus.SUCCESS:
+            raise ResponseStatusException(action, status)
