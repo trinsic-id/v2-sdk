@@ -148,8 +148,10 @@ class ProviderStub(betterproto.ServiceStub):
         request = InviteRequest()
         request.participant = participant
         request.description = description
-        request.email = email
-        request.phone = phone
+        if email is not None and email != "":
+            request.email = email
+        if phone is not None and phone != "":
+            request.phone = phone
         if didcomm_invitation is not None:
             request.didcomm_invitation = didcomm_invitation
 

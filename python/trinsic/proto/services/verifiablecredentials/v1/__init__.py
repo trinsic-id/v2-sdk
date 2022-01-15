@@ -201,8 +201,10 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
     ) -> "SendResponse":
 
         request = SendRequest()
-        request.email = email
-        request.did_uri = did_uri
+        if email is not None and email != "":
+            request.email = email
+        if did_uri is not None and did_uri != "":
+            request.did_uri = did_uri
         if didcomm_invitation is not None:
             request.didcomm_invitation = didcomm_invitation
         if document is not None:
