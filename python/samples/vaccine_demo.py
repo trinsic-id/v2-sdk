@@ -28,13 +28,14 @@ async def vaccine_demo():
 
     # setupActors() {
     # Create 3 different profiles for each participant in the scenario
-    allison, _ = await account_service.sign_in()
-    clinic, _ = await account_service.sign_in()
-    airline, _ = await account_service.sign_in()
+    allison = await account_service.sign_in()
+    clinic = await account_service.sign_in()
+    airline = await account_service.sign_in()
     # }
 
     account_service.profile = clinic
     info = await account_service.get_info()
+    print(f"Account info={info}")
 
     # createService() {
     wallet_service = WalletService(allison, account_service.channel)

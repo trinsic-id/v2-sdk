@@ -41,8 +41,7 @@ class AccountService(ServiceBase):
         super().__init__(profile, server_config, channel)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
-    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> Tuple[
-        AccountProfile, ConfirmationMethod]:
+    async def sign_in(self, details: AccountDetails = AccountDetails(email='')) -> AccountProfile:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
@@ -50,7 +49,7 @@ class AccountService(ServiceBase):
         Returns:
         """
         response = await self.client.sign_in(details=details)
-        return response.profile, response.confirmation_method
+        return response.profile
 
     @staticmethod
     def unprotect(profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]) -> AccountProfile:
