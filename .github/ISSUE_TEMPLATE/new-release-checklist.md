@@ -36,7 +36,7 @@ Manual steps are instructions that need to be taken in order to have a full rele
 - [ ] **Swift Release** &mdash; create new release in associated repository for Swift package at [trinsic-id/sdk-swift](https://github.com/trinsic-id/sdk-swift). The release version in this repo follows a pattern that doesn't include leading `v`. Example release format is `1.2.0`.
 - [ ] External Tools
   - [ ] **Homebrew** &mdash; to create a new tap, follow the instructions at [trinsic-id/homebrew-tap](https://github.com/trinsic-id/homebrew-tap) by making a new PR with the required information. This step depends on a release asset package.
-  - [ ] **Windows Package Manager** (winget) &mdash; TODO: Add details
+  - [ ] **Windows Package Manager** (winget) &mdash; Update PR to the yaml here: https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/trinsic/cli/
   - [ ] **NixOS** &mdash; TODO: Add details
 - [ ] **Samples** &mdash; if required, code samples at https://github.com/trinsic-id/sdk-examples should be updated to match the version
 - [ ] Release announced to Trinsic Team
