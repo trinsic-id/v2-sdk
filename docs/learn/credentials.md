@@ -1,4 +1,6 @@
-# Credentials
+# What are Verifiable Credentials
+Goal: Share the standards that we work with 
+
 ![Trust Triangle](/_static/images/trust-triangle.png)
 
 "Verifiable Credentials", or "VCs" are digital documents that conform to the W3C Verifiable Credential Data Model. VCs provide a standard for digitally issuing, holding, and verifying data about a subject. A verifiable credential is a set of tamper-evident claims and metadata that cryptographically prove who issued it.  [https://www.w3.org/TR/vc-data-model/](https://www.w3.org/TR/vc-data-model/)
@@ -49,3 +51,8 @@ In short, they are the attributes that you want to include in this credential.
 Schemas are nonproprietary; any issuer can view/use the schemas written by any other issuer.
 
 We abstract schema creation away into the same action as creation of a credential template. Keep reading to read how to create a schema and credential template. 
+
+## Verifications
+Passes are documents generated from credentials that contain only the information required to be verified. They can be generated in advance or in real-time. Passes minimize the information about you that is shared with third parties.
+
+Credentials are signed using BLS keys. These create from the credential fields. 
