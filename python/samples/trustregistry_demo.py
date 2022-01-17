@@ -8,7 +8,7 @@ from trinsic.trinsic_util import trinsic_test_config
 async def trustregistry_demo():
     # setup
     account_service = AccountService(server_config=trinsic_test_config())
-    account, _ = await account_service.sign_in()
+    account = await account_service.sign_in()
     service = TrustRegistryService(account, trinsic_test_config())
 
     # data
