@@ -27,7 +27,7 @@ class TestServices(unittest.TestCase):
     def test_responsestatus_exception(self):
         with self.assertRaises(ResponseStatusException) as rse:
             ResponseStatusException.assert_success(ResponseStatus.UNKNOWN_ERROR, "test should fail")
-        self.assertEqual(f"test should fail failed, status={ResponseStatus.UNKNOWN_ERROR}", str(rse.exception))
+        self.assertEqual(f"test should fail failed, status={repr(ResponseStatus.UNKNOWN_ERROR)}", str(rse.exception))
         ResponseStatusException.assert_success(ResponseStatus.SUCCESS, "This should NOT fail")
 
     @unittest.skip("Ecosystem support not implemented")
