@@ -8,7 +8,7 @@ nav:
   - Home: index.md
   - Getting Started: 
     - What is Trinsic?: learn/intro.md
-    - Try the Demo: cli/demo.md
+    - Try the Demo: walkthroughs/vaccination.md
     - Before You Start: early-adopter.md
   - Guides:
     - Tutorial:
