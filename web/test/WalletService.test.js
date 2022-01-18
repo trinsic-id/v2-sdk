@@ -85,7 +85,7 @@ describe("wallet service tests", () => {
 
         let credentialJson = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
 
-        t.not(credentialJson, null);
+        expect(credentialJson).not.toBeNull();
 
         let jsonDocument = JSON.parse(credentialJson);
         expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
