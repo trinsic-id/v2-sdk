@@ -31,8 +31,8 @@ publishing {
     publications {
         gpr(MavenPublication) {
             groupId = jarDomainId + "." + jarGroupId
-            artifactId = jarArtifactId as Publication
-            version = jarVersion as Publication
+            artifactId = jarArtifactId
+            version = jarVersion
             from(components.java)
         }
     }
