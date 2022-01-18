@@ -25,6 +25,7 @@ Manual steps are instructions that need to be taken in order to have a full rele
     - [ ] Trinsic CLI vendored tarball (for Homebrew), named `trinsic-cli-vendor-X.X.0.tar.gz`
     - [ ] Trinsic CLI Microsoft Installer (msi), name `trinsic-cli-X.X.0.msi`
 - [ ] **Package Releases** &mdash; validate if packages have been correctly released
+  - [ ] golang tag (`go/vX.X.0`)
   - [ ] nuget.org
   - [ ] npmjs.com
   - [ ] pypi.org
