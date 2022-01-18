@@ -90,7 +90,6 @@ describe("wallet service tests", () => {
         let jsonDocument = JSON.parse(credentialJson);
         expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
         expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
-
-        t.pass();
+        
     }, 20000);
 });
