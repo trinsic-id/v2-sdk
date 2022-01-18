@@ -30,7 +30,7 @@ This an example of a list of attributes that would comprise a credential templat
 This will create a Template that has the following structure:
 ```
     TemplateData {
-        id: "urn:template:__default:review",
+        id: "urn:template:alices-local-guides:review",
         name: "Review",
         version: 1,
         fields: {
@@ -62,3 +62,5 @@ This will create a Template that has the following structure:
         r#type: "VerifiableCredential",
     }
     ```
+You can view the `schema_uri` and the `context_uri` in the browser as raw json
+

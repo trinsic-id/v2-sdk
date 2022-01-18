@@ -12,6 +12,7 @@ You can give each of your end-users a wallet tied to their email address or phon
 
 ### Wallet Architecture 
 While wallets are hosted on a server and your client application with connect with the wallet, the wallets communicate  are peer to peer. 
+
 Wallets can be thought of a little like an email inbox. Each wallet can only be accessed by a set of keys stored on devices. 
 
 ## Commands

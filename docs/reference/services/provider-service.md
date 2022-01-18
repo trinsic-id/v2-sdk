@@ -62,6 +62,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
 ### Check Invitation Status
+[ParticipantType](/reference/proto/#participanttype)
 
 User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object. ***TODO: Link to protobuf***.
 
