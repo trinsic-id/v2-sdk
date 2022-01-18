@@ -23,5 +23,5 @@ jobs:
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Create tag
         run: |
-          git tag "go/${{ steps.setversion.outputs.packageVersion }}" main
-          git push "go/${{ steps.setversion.outputs.packageVersion }}" origin
+          git tag "go/v${{ steps.setversion.outputs.packageVersion }}"
+          git push origin "go/v${{ steps.setversion.outputs.packageVersion }}"
