@@ -39,7 +39,7 @@ public abstract class ServiceBase
         serverConfig ??= DefaultServerConfig();
 #if __BROWSER__
         var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-        return GrpcChannel.ForAddress(Configuration.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
+        return GrpcChannel.ForAddress(serverConfig.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
 #else
         return GrpcChannel.ForAddress(serverConfig.FormatUrl());
 #endif
