@@ -1,6 +1,5 @@
-import { AccountService, CredentialService, WalletService, CreateCredentialTemplateRequest } from "../lib";
+import { AccountService, CredentialService, TemplateService, WalletService, CreateCredentialTemplateRequest, TemplateField, FieldType } from "../lib";
 import { config } from "./env";
-import {TemplateService} from "../lib/TemplateService";
 
 let accountService;
 let profile;
