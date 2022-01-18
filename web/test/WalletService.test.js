@@ -1,7 +1,6 @@
-import { AccountService, CredentialService, WalletService } from "../lib";
+import { AccountService, CredentialService, WalletService, CreateCredentialTemplateRequest } from "../lib";
 import { config } from "./env";
 import {TemplateService} from "../lib/TemplateService";
-import {CreateCredentialTemplateRequest} from "../src";
 
 let accountService;
 let profile;
