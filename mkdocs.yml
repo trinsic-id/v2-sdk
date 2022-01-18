@@ -8,15 +8,13 @@ nav:
   - Home: index.md
   - Getting Started: 
     - What is Trinsic?: learn/intro.md
-    - Try the Demo: walkthroughs/vaccination.md
     - Before You Start: early-adopter.md
-  - Guides:
-    - Tutorial:
-      - Overview: learn/tutorial.md
-      - Create Wallets: learn/wallets.md
-      - Define Templates: learn/templates.md
-      - Organize an Ecosystem: learn/ecosystems.md
-      - Exchange Credentials: learn/credentials.md
+    - Try the Walkthrough: walkthroughs/vaccination.md
+  - Key Concepts:
+    - Wallets: learn/wallets.md
+    - Templates: learn/templates.md
+    - Credentials: learn/credentials.md
+    - Ecosystems: learn/ecosystems.md
     - Standards: learn/standards.md
     - Security: learn/security.md
   - Developer Tools:
