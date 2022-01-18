@@ -7,6 +7,8 @@ on:
         description: 'Version to build'
         required: true
         default: ''
+  release:
+    types: [published, prereleased]
 
 jobs:
   release_testpypi:
