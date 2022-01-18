@@ -111,7 +111,7 @@ plugins:
   - search
   - autorefs
   - codeinclude:
-      title_mode: pymdownx.tabbed
+      title_mode: none
   - mkdocstrings:
       handlers:
         python:

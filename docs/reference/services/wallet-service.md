@@ -49,7 +49,7 @@ If invited by a provider, you can supply the security code found in your invitat
     profile = await wallet_service.create_wallet("<security code>")
     ```
 
-## Insert Record
+## Insert Item
 
 This method allows inserting any JSON data in the wallet.
 
