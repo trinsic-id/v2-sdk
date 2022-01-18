@@ -23,6 +23,7 @@ Manual steps are instructions that need to be taken in order to have a full rele
     - [ ] Debian Package, named `trinsic_X.X.0_amd64.deb`
     - [ ] Trinsic CLI tarball (for Homebrew), named `trinsic-cli-X.X.0.tar.gz`
     - [ ] Trinsic CLI vendored tarball (for Homebrew), named `trinsic-cli-vendor-X.X.0.tar.gz`
+    - [ ] Trinsic CLI Microsoft Installer (msi), name `trinsic-cli-X.X.0.msi`
 - [ ] **Package Releases** &mdash; validate if packages have been correctly released
   - [ ] nuget.org
   - [ ] npmjs.com

@@ -7,7 +7,9 @@ on:
         description: 'Version to build'
         required: true
         default: ''
-
+  release:
+    types: [published, prereleased]
+    
 jobs:
   build:
     name: Build + Publish Ruby
@@ -29,11 +31,16 @@ jobs:
           path: ./libs
           branch: main
           repo: trinsic-id/okapi
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Build and run tests
         run: |
           gem install bundler
           bundle install
-          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
 
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
