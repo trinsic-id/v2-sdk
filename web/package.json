@@ -35,7 +35,7 @@
   "devDependencies": {
     "@types/google-protobuf": "^3.15.2",
     "@types/node": "^15.12.0",
-    "chromedriver": "^95.0.0",
+    "chromedriver": "^97.0.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^10.0.0",
     "geckodriver": "^2.0.0",
