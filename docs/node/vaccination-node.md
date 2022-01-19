@@ -28,7 +28,7 @@ npm i @trinsic/trinsic
 Create a reference to the wallet service that points to your ecosystem service. You should have set up your `.env` with the appropriate values that you received with your ecosystem setup. In your `index.js` file add the following lines:
 
 ```js
-const { AccountService } = require('@trinsic/trinsic')
+const { AccountService, WalletService, CredentialService } = require('@trinsic/trinsic');
 
 const endpoint = process.env.TEST_SERVER_ENDPOINT;
 const port = process.env.TEST_SERVER_PORT;
