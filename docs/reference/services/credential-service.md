@@ -204,7 +204,7 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
 
 === "Trinsic CLI"
     ```bash
-    trinsic issuer verify-proof --proof-document <JSONLD_FILE>
+    trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
     ```
 === "TypeScript"
 
