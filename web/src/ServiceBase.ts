@@ -35,7 +35,7 @@ export default abstract class ServiceBase {
     let requestHash = new ArrayBuffer(0);
 
     if (requestData.length > 0) {
-      requestHash = await crypto.subtle.digest("blake3", request.serializeBinary());
+      requestHash = await crypto.subtle.digest("sha256", request.serializeBinary());
     }
     const timestamp = Date.now();
 
