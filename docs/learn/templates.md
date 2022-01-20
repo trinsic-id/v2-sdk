@@ -8,7 +8,6 @@ This an example of a list of attributes that would comprise a credential templat
     "name": {
         "type": "string",
         "description": "Name of the business",
-        "required": true
     },
     "website": {
         "type": "string",
