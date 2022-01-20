@@ -3,7 +3,7 @@ The Trinsic C# / .NET SDK makes it easy to interact with the Trinsic API from yo
 
 
 !!! note "Supported runtimes"
-    Xamarin targets for iOS and Android are fully supported using the same package dependencies. Support for Blazor in Web Assembly will be available in a future release.
+    .NET targets for iOS, Android, and Blazor are fully supported using the same package dependencies via .NET 6.
 
 ## Installation in a new project
 Add the required dependencies from [Nuget.org :material-open-in-new:](https://www.nuget.org/packages/Trinsic)
