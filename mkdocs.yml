@@ -5,50 +5,55 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://ecosystems-docs-alpha.trinsic.id
 nav:
-  - Introduction: index.md
-  - Tutorial: cli/vaccination-cli.md
-  - Learn:
+  - Home: index.md
+  - Getting Started: 
+    - What is Trinsic?: learn/intro.md
+    - Before You Start: early-adopter.md
+    - Try the Walkthrough: walkthroughs/vaccination.md
+  - Key Concepts:
     - Wallets: learn/wallets.md
+    - Templates: learn/templates.md
     - Credentials: learn/credentials.md
-    - Passes: learn/passes.md
     - Ecosystems: learn/ecosystems.md
-    # - Security: learn/security.md
-    - Underlying Tech: learn/tech.md
-  - Build:
+    - Standards: learn/standards.md
+    - Security: learn/security.md
+  - Developer Tools:
     - Trinsic CLI: cli/index.md
-    - Node: node/index.md
-    - C#: dotnet/index.md
-    - Python: python/index.md
-    # - Ruby: ruby/index.md
-    # - Go: go/index.md
-    - Java: java/index.md
-    - Web: web/index.md
-    # - iOS: ios/index.md
-    - Android: android/index.md
-  - Reference:
-    - Overview: reference/index.md
+    - Client-Side SDKs:
+      - Browser: web/index.md
+      - iOS: ios/index.md
+      - Android: android/index.md
+    - Server-Side SDKs:
+      - Node: node/index.md
+      - C#: dotnet/index.md
+      - Python: python/index.md
+      - Ruby: ruby/index.md
+      - Go: go/index.md
+      - Java: java/index.md
+  - SDK Reference:
+    - Setup & Configuration: reference/index.md
     - Wallet Service: reference/services/wallet-service.md
+    - Credential Service: reference/services/credential-service.md
     - Provider Service: reference/services/provider-service.md
-    - Trust Registry Service: reference/services/trust-registry.md
+    - Trust Registry Service: reference/services/trust-registry-service.md
     - Protocol Buffers: reference/proto/index.md
   - Resources:
     - Roadmap: roadmap.md
-    - Join the Beta: early-adopter.md
     - Ask a Question: support.md
     - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
-    # - Changelog: changelog.md TODO
+    # - Changelog: changelog.md
     - Contribute on Github: https://github.com/trinsic-id
 theme:
   name: material
   logo: _static/logo-title.svg
-  # custom_dir: overrides
+  custom_dir: overrides
   favicon: _static/logo.png
   features:
     - content.tabs.link
     - navigation.instant
     - navigation.tracking
-    - navigation.expand
-    - navigation.sections
+    # - navigation.expand
+    # - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
   font:
@@ -104,7 +109,7 @@ plugins:
   - search
   - autorefs
   - codeinclude:
-      title_mode: pymdownx.tabbed
+      title_mode: none
   - mkdocstrings:
       handlers:
         python:

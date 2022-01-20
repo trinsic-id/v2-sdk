@@ -4,7 +4,7 @@ This service helps ecosystem providers with data management and onboarding. This
 
 ## Onboarding
 
-### Invite Participants
+### Invite Participant
 
 Users can be onboarded as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in [creating wallet with provider invitation](/reference/services/wallet-service/#create-wallet-with-provider-invitation)
@@ -62,6 +62,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
 ### Check Invitation Status
+[ParticipantType](/reference/proto/#participanttype)
 
 User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object. ***TODO: Link to protobuf***.
 
@@ -97,141 +98,10 @@ User invitation status can be checked with the provided `invitation id`. It retu
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
-## Credential Templates
+## Create Ecosystem
 
-Credential Templates are json templates that help issuers save context when issuing credentials. 
 
-When issuing a credential through Trinsic, it's as simple as adding the attributes to the credential template and then issuing it. 
+## List Ecosystems
 
-These credential templates can be shared between issuers in an ecosystem. 
 
-A template is a saved JSON-LD schema that is used to define/create credentials and verification. 
-
-### Get
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
-=== "Ruby"
-    ```ruby
-    
-    ```
-
-### Search
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
-
-=== "Ruby"
-    ```ruby
-
-    ```
-
-### Update
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
-=== "Ruby"
-    ```ruby
-
-    ```
-
-### Delete
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
+## Accept Invite
