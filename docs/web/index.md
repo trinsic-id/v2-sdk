@@ -11,6 +11,21 @@ Install the package for Node or Browser from [npmjs.com :material-open-in-new:](
     ```
 
 ## Configuration
+When using the SDK in your code, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.
+
+```typescript
+import { WalletService } from '@trinsic/trinsic';
+
+// Set the server address
+const service = new WalletService("https://example.com");
+
+// Create new profile or import an existing one
+const myProfile = await service.createWallet();
+
+// Set the profile to be used with authorization pipeline
+service.setProfile(myProfile);
+```
+
 ### Create new project
 
 Let's create a new console app that we will use to add our sample code

@@ -2,11 +2,16 @@
 
 ## Installation
 
-Install latest packages from nuget.org
+Install latest package from nuget.org
 
 ```
-dotnet add package Trinsic.Sdk
-dotnet add package Okapi.Net
+dotnet add package Trinsic
+```
+
+If using this package in Blazor WebAssembly, use
+
+```
+dotnet add package Trinsic.Web
 ```
 
 ## Usage

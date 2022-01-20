@@ -6,6 +6,7 @@ on:
       packageVersion:
         description: 'Package Version (leave empty for latest release)'
         required: false
+        default: ''
   release:
     types: [published, prereleased]
 
@@ -27,6 +28,11 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - uses: arduino/setup-protoc@v1
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: |
           curl -L https://github.com/grpc/grpc-web/releases/download/1.2.1/protoc-gen-grpc-web-1.2.1-linux-x86_64 --output protoc-gen-grpc-web
           chmod +x protoc-gen-grpc-web
@@ -40,19 +46,9 @@ jobs:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = if ([string]::IsNullOrEmpty($env:MANUAL_VERSION)) { $json.tag_name.Trim("v") } else { $env:MANUAL_VERSION.Trim("v") }
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          MANUAL_VERSION: ${{ github.event.inputs.packageVersion }}
       # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
-          npm version $PACKAGE_VERSION
+          npm version ${{ steps.setversion.outputs.packageVersion }}
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

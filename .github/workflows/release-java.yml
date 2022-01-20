@@ -8,7 +8,7 @@ on:
         required: true
         default: ''
   release:
-    types: [ published ]
+    types: [published, prereleased]
 
 jobs:
   build:
@@ -32,9 +32,14 @@ jobs:
           path: ./libs
           branch: main
           repo: trinsic-id/okapi
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Publish package
         run: |
-          python ../devops/build_sdks.py --package-version=${{ github.event.inputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
           gradle publish
         working-directory: java
         env:

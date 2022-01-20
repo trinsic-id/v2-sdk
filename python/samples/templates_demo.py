@@ -10,7 +10,7 @@ from trinsic.trinsic_util import trinsic_test_config
 
 async def templates_demo():
     account_service = AccountService(server_config=trinsic_test_config())
-    profile, _ = await account_service.sign_in()
+    profile = await account_service.sign_in()
     template_service = CredentialTemplatesService(profile, trinsic_test_config())
     credential_service = CredentialsService(profile, trinsic_test_config())
 

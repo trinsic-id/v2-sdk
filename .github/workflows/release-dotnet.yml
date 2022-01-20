@@ -22,23 +22,17 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
-      - name: Generate Package Version
-        run: |
-          $json = Invoke-WebRequest 'https://api.github.com/repos/trinsic-id/sdk/releases/latest' `
-            -Headers @{ "Authorization" = "Token $env:API_GITHUB_TOKEN"} | ConvertFrom-Json
-          $version = if ([string]::IsNullOrEmpty($env:MANUAL_VERSION)) { $json.tag_name.Trim("v") } else { $env:MANUAL_VERSION.Trim("v") }
-          echo "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          MANUAL_VERSION: ${{ github.event.inputs.packageVersion }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: |
           dotnet workload install ios
           dotnet restore
-          dotnet build -c Release
-          dotnet pack -p:Configuration=Release -p:PackageVersion=$env:PACKAGE_VERSION
-          dotnet pack -p:Configuration=Release -p:PackageVersion=$env:PACKAGE_VERSION -p:IsBrowser=true -p:PackageId=Trinsic.Web
-        working-directory: ./dotnet/Trinsic
+          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }}
+          dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:IsBrowser=true -p:PackageId=Trinsic.Web ./Trinsic
+        working-directory: ./dotnet
         shell: pwsh
       - uses: actions/upload-artifact@v2
         with:
