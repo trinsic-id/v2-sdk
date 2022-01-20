@@ -34,7 +34,10 @@ Add the required dependencies from [Nuget.org :material-open-in-new:](https://ww
 using Trinsic;
 
 // Set the server address
-var service = new WalletService();
+// WalletService requires an account profile
+var accountService = new AccountService();
+var accountProfile = await accountService.signIn();
+var service = new WalletService(accountProfile);
 
 // Create new profile or import an existing one
 var myProfile = await service.CreateWallet();
