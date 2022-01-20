@@ -1,3 +1,4 @@
+const test = require("ava");
 const path = require("path");
 const fs = require("fs");
 
@@ -18,6 +19,8 @@ function getVaccineCertUnsignedJSON() {
     const data = fs.readFileSync(vaccineCertUnsignedPath(), 'utf8');
     return JSON.parse(data);
 }
+
+test("This is a helper class", t => t.pass())
 
 exports.vaccineCertFrame = getVaccineCertFrameJSON
 exports.vaccineCertUnsigned = getVaccineCertUnsignedJSON
