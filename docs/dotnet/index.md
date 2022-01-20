@@ -12,7 +12,6 @@ Add the required dependencies from [Nuget.org :material-open-in-new:](https://ww
 === "Package Manager"
     ```
     PM> Install-Package Trinsic
-    PM> Install-Package Okapi.Net 
     ```
 === ".NET CLI"
     ```bash
