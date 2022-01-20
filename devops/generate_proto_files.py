@@ -215,13 +215,13 @@ def update_dotnet():
 
 def main():
     # download_protoc_plugins()
-    # update_golang()
+    update_golang()
     update_ruby()
-    # update_java()
-    # update_markdown()
-    # update_python()
-    # update_node()
-    # update_web()
+    update_java()
+    update_markdown()
+    update_python()
+    update_node()
+    update_web()
     # update_dotnet()
 
 

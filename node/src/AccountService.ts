@@ -36,7 +36,7 @@ export class AccountService extends ServiceBase {
         });
     }
 
-    public info(): Promise<InfoResponse.AsObject> {
+    public info(): Promise<InfoResponse> {
         const request = new InfoRequest();
 
         return new Promise(async (resolve, reject) => {
@@ -44,7 +44,7 @@ export class AccountService extends ServiceBase {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(response.toObject());
+                    resolve(response);
                 }
             });
         });

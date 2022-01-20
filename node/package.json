@@ -9,7 +9,8 @@
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 ./src/proto/**/*_pb.* ./lib/",
-    "test": "ava --verbose"
+    "test": "ava --verbose",
+    "build-and-test": "npm run build:typescript && npm run build:copy && npm run test"
   },
   "author": "Trinsic",
   "contributors": [

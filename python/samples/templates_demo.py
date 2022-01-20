@@ -33,6 +33,10 @@ async def templates_demo():
     assert 'id' in json_keys
     assert 'credentialSubject' in json_keys
 
+    account_service.close()
+    template_service.close()
+    credential_service.close()
+
 
 if __name__ == "__main__":
     asyncio.run(templates_demo())
