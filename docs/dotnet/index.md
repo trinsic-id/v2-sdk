@@ -26,8 +26,6 @@ Add the required dependencies from [Nuget.org :material-open-in-new:](https://ww
     ```
 
 
-!!! note ""
-    The package `Okapi.Net` is already a dependency of `Trinsic` package, but we must add explicitly to bring in static library dependencies.
     This will not be required in future version and only package `Trinsic` can be used.
 
 ## Configuration
