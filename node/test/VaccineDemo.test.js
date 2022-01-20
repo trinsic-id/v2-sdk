@@ -49,7 +49,7 @@ async function vaccineDemo() {
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
-    accountService.updateActiveProfile(allison);
+    credentialService.updateActiveProfile(allison);
     const proofRequestJson = testData.vaccineCertFrame();
     const proof = await credentialService.createProof(itemId, proofRequestJson);
     // }
@@ -57,7 +57,7 @@ async function vaccineDemo() {
 
     // verifyCredential() {
     // The airline verifies the credential
-    accountService.updateActiveProfile(airline);
+    credentialService.updateActiveProfile(airline);
     const isValid = await credentialService.verifyProof(proof);
     // }
     console.log(`Verification result=${isValid}`);
