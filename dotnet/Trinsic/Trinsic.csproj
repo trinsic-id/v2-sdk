@@ -1,75 +1,67 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <IsBrowser>false</IsBrowser>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net6.0-ios</TargetFrameworks>
+        <Nullable>enable</Nullable>
+        <IsBrowser>false</IsBrowser>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DocumentationFile>Trinsic.xml</DocumentationFile>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(IsBrowser)' == 'true'">
-    <DefineConstants>$(DefineConstants);__BROWSER__</DefineConstants>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(IsBrowser)' == 'true'">
+        <DefineConstants>$(DefineConstants);__BROWSER__</DefineConstants>
+    </PropertyGroup>
 
-  <ItemGroup Condition="'$(IsBrowser)' == 'true'">
-    <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
-  </ItemGroup>
-
-  <!--
-    https://github.com/novotnyllc/MSBuildSdkExtras/issues/176
-    https://githubmemory.com/repo/xamarin/xamarin-macios/issues/12631
-
-    required, as it won't pack without the below action
-   -->
-  <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
-    <ItemGroup>
-      <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
-      <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+    <ItemGroup Condition="'$(IsBrowser)' == 'true'">
+        <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
     </ItemGroup>
-  </Target>
-<!--  <PropertyGroup>-->
-<!--    <GenerateDocumentationFile>false</GenerateDocumentationFile>-->
-<!--    <DocumentationFile>Trinsic.xml</DocumentationFile>-->
-<!--    <DocumentationMarkdown>..\..\docs\reference\dotnet.md</DocumentationMarkdown>-->
-<!--    <VsxmdAutoDeleteXml>True</VsxmdAutoDeleteXml>-->
-<!--  </PropertyGroup>-->
-  <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
-    <PackageReference Include="Blake3Core" Version="0.1.0" />
-    <PackageReference Include="Multiformats.Base" Version="2.0.2" />
-<!--    <PackageReference Include="Vsxmd" Version="1.4.5">-->
-<!--      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>-->
-<!--      <PrivateAssets>all</PrivateAssets>-->
-<!--    </PackageReference>-->
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-    <PackageReference Include="Okapi.Net" Version="1.2.3">
-      <PrivateAssets>none</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>Tests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
-    <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
-    <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
-    <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
-    <Protobuf Include="..\..\proto\services\debug\v1\debug.proto" Link="Proto/debug.proto" />
-    <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
-    <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
-    <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />
-
-    <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto" />
-    <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto" />
-  </ItemGroup>
     
-  <ItemGroup>
-    <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/trust-registry.proto" ProtoRoot="..\..\proto" />
-  </ItemGroup>
+    <!--
+      https://github.com/novotnyllc/MSBuildSdkExtras/issues/176
+      https://githubmemory.com/repo/xamarin/xamarin-macios/issues/12631
+  
+      required, as it won't pack without the below action
+     -->
+    <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
+        <ItemGroup>
+            <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+            <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+        </ItemGroup>
+    </Target>
+    <ItemGroup>
+        <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+        <PackageReference Include="Blake3Core" Version="0.1.0" />
+        <PackageReference Include="Multiformats.Base" Version="2.0.2" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
+        <PackageReference Include="Okapi.Net" Version="1.2.3">
+            <PrivateAssets>none</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
+        <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
+        <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\debug\v1\debug.proto" Link="Proto/debug.proto" />
+        <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />
+
+        <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/trust-registry.proto" ProtoRoot="..\..\proto" />
+    </ItemGroup>
 
 </Project>
