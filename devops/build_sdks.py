@@ -116,8 +116,6 @@ def build_docs(args):
     # npm install in the root of sdk
     subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
 
-    
-
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')

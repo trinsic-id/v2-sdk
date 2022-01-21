@@ -15,6 +15,6 @@ The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Jav
 
 Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/java.md){ .md-button }
+[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/java/_index.md){ .md-button }
 
 ^ TODO - Macro generate the next steps content since it's essentially identical for all languages?
