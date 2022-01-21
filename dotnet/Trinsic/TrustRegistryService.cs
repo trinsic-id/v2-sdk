@@ -158,6 +158,7 @@ public class TrustRegistryService : ServiceBase
     /// Search the trust registry
     /// </summary>
     /// <param name="query"></param>
+    /// <param name="continuationToken">continuation token from a previous search</param>
     /// <returns></returns>
     public async Task<SearchRegistryResponse> SearchRegistryAsync(string query = "SELECT * FROM c", string? continuationToken = null) {
         SearchRegistryRequest request = new() {
