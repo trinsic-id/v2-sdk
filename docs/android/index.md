@@ -13,6 +13,6 @@ The Trinsic Java / Android SDK makes it easy to interact with the Trinsic API fr
 
 ## Next Steps
 
-Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./drivers-license-android.-android.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
+Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./drivers-license-android.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
 [Start Walkthrough](./drivers-license-android.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/java.md){ .md-button }
