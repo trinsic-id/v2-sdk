@@ -48,7 +48,7 @@ We've set up some environments to use on Repl.it. If your language of choice isn
     git clone https://github.com/trinsic-id/cli-example && cd cli-example
     ```
 
-    If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
+    If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our <!--[demo environment](./demo.md)--> to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
 
    
 
@@ -198,7 +198,7 @@ If you would like to save the profile for future use, you can simply export the 
     References: 
 
     - Manage access to cloud wallets with the [Account Service](../reference/services/account-service.md#login)
-    - Learn more about [Wallets](wallets.md)
+    - Learn more about [Wallets](../learn/wallets.md)
     - Read more about [security profiles](../reference/index.md#authorization) and authentication.
 
 ---
@@ -299,11 +299,11 @@ To issue this credential we'll specify links to the json files, set the active p
     Reference: 
     
     - Learn more about how to [issue a credential](../reference/services/wallet-service.md#issue-credential)
-    - Learn more about [verifiable credentials](credentials.md)
+    - Learn more about [verifiable credentials](../learn/credentials.md)
 
 
 ---
-## Send Credential to Alice
+## Send Credential to Allison
 
 At this point, the clinic can send the signed credential to Allison using any available methods. These methods can include any message exchange protocol, or a custom transport. In this case, we'll assume that the credential was delivered to Allison in an offline environment.
 
@@ -565,7 +565,7 @@ We have language specific sample applications that you can run to understand how
 
 
 === "Python"
-   
+   This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py)
 
 === "Java"
     This sample is available in our Github repo in the [java directory](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java).

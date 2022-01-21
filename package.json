@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Trinsic SDK for interaction with Trinsic Core and Ecosystems backend services",
   "author": "Trinsic",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "groovydoc-to-markdown": "^1.0.1"
+  }
 }

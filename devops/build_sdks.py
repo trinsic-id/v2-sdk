@@ -2,6 +2,7 @@
 Build the various language SDK packages for release
 """
 import argparse
+import subprocess
 import glob
 import os
 import platform
@@ -132,6 +133,12 @@ def get_github_version(github_token: str = None) -> str:
     return version
 
 
+def build_java_docs(args):
+    # https://github.com/fchastanet/groovydoc-to-markdown
+    # npm install in the root of sdk
+    subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
@@ -146,6 +153,7 @@ def main():
     build_java(args)
     build_ruby(args)
     build_golang(args)
+    build_java_docs(args)
     build_dotnet_docs(args)
 
 
