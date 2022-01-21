@@ -1,4 +1,4 @@
-const okapi = require("@trinsic/okapi");
+require("@trinsic/okapi");
 import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
 import { Nonce, ServerConfig, AccountProfile } from "./proto/";
 import { Message } from "google-protobuf";
@@ -43,9 +43,9 @@ export default abstract class ServiceBase {
     let requestHash: Buffer | string = Buffer.from('');
 
     if (requestData.length > 0) {
-      requestHash = hash(requestData);
+      requestHash = hash(requestData, {length:64});
     }
-    var timestamp = Date.now();
+    const timestamp = Date.now();
 
     let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
 
@@ -56,9 +56,9 @@ export default abstract class ServiceBase {
         .setToken(this.activeProfile.getAuthToken())
     );
 
-    var metadata = new Metadata();
+    const metadata = new Metadata();
     metadata.add(
-      "Authorization",
+      "authorization",
       `Oberon ` +
       `ver=1,` +
       `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +

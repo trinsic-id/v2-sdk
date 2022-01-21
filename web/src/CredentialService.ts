@@ -25,7 +25,7 @@ export class CredentialService extends ServiceBase {
     }
 
     public issue(document: any): Promise<any> {
-        const request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(document));
+        const request = new JsonPayload().setJsonString(JSON.stringify(document));
 
         return new Promise(async (resolve, reject) => {
             let issueRequest = new IssueRequest().setDocument(request);
@@ -34,7 +34,7 @@ export class CredentialService extends ServiceBase {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(response.getDocument()!.getJsonStruct()!.toJavaScript());
+                    resolve(JSON.parse(response.getDocument()!.getJsonString()));
                 }
             });
         });
@@ -52,8 +52,8 @@ export class CredentialService extends ServiceBase {
         });
     }
 
-    public send(document: JSStruct, email: string): Promise<SendResponse.AsObject> {
-        const request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(document));
+    public send(document: JSStruct, email: string): Promise<SendResponse> {
+        const request = new JsonPayload().setJsonString(JSON.stringify(document));
 
         return new Promise(async (resolve, reject) => {
             let sendRequest = new SendRequest();
@@ -63,7 +63,7 @@ export class CredentialService extends ServiceBase {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(response.toObject());
+                    resolve(response);
                 }
             });
         });
@@ -96,7 +96,7 @@ export class CredentialService extends ServiceBase {
     }
 
     public createProof(documentId: string, revealDocument: any): Promise<any> {
-        const request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(revealDocument));
+        const request = new JsonPayload().setJsonString(JSON.stringify(revealDocument));
 
         return new Promise(async (resolve, reject) => {
             let createProofRequest = new CreateProofRequest().setDocumentId(documentId).setRevealDocument(request);
@@ -108,7 +108,7 @@ export class CredentialService extends ServiceBase {
                     if (error) {
                         reject(error);
                     } else {
-                        resolve(response.getProofDocument()!.getJsonStruct()!.toJavaScript());
+                        resolve(JSON.parse(response.getProofDocument()!.getJsonString()));
                     }
                 }
             );
@@ -116,7 +116,7 @@ export class CredentialService extends ServiceBase {
     }
 
     public verifyProof(proofDocument: any): Promise<boolean> {
-        const request = new JsonPayload().setJsonStruct(Struct.fromJavaScript(proofDocument));
+        const request = new JsonPayload().setJsonString(JSON.stringify(proofDocument));
 
         return new Promise(async (resolve, reject) => {
             let verifyProofRequest = new VerifyProofRequest().setProofDocument(request);

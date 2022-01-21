@@ -50,9 +50,9 @@ test("Demo: Trust Registry", async (t) => {
     t.not(issuerStatus, null);
     t.is(issuerStatus.getStatus(), RegistrationStatus.CURRENT)
 
-    let veriferStatus = await trustRegistryService.checkVerifierStatus(new CheckVerifierStatusRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card"));
-    t.not(veriferStatus, null);
-    t.is(veriferStatus.getStatus(), RegistrationStatus.CURRENT)
+    let verifierStatus = await trustRegistryService.checkVerifierStatus(new CheckVerifierStatusRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card"));
+    t.not(verifierStatus, null);
+    t.is(verifierStatus.getStatus(), RegistrationStatus.CURRENT)
 
     let searchResult = await trustRegistryService.searchRegistry();
     t.not(searchResult, null);
