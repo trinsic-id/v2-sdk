@@ -73,6 +73,7 @@ async def vaccine_demo():
     wallet_service.profile = allison
     item_id = await wallet_service.insert_item(credential)
     print(f"item id = {item_id}")
+    wallet_items = await wallet_service.search()
     # }
 
     # shareCredential() {
@@ -93,7 +94,7 @@ async def vaccine_demo():
     valid = await credentials_service.verify_proof(credential_proof)
 
     print(f"Verification result: {valid}")
-    assert valid
+    assert valid is True
     # }
 
     # revokeCredential() {

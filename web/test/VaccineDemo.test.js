@@ -42,7 +42,7 @@ async function vaccineDemo() {
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
-  accountService.updateActiveProfile(allison);
+  walletService.updateActiveProfile(allison);
   const itemId = await walletService.insertItem(credential);
   // }
   console.log(`Item id=${itemId}`);
@@ -51,7 +51,7 @@ async function vaccineDemo() {
   // Allison shares the credential with the venue.
   // The venue has communicated with Allison the details of the credential
   // that they require expressed as a JSON-LD frame.
-  accountService.updateActiveProfile(allison);
+  credentialService.updateActiveProfile(allison);
   const proofRequestJson = require(vaccineCertFramePath);
   const proof = await credentialService.createProof(itemId, proofRequestJson);
   // }
@@ -59,14 +59,16 @@ async function vaccineDemo() {
 
   // verifyCredential() {
   // The airline verifies the credential
-  accountService.updateActiveProfile(airline);
+  credentialService.updateActiveProfile(airline);
   const isValid = await credentialService.verifyProof(proof);
   // }
   console.log(`Verification result=${isValid}`);
+  if (!isValid)
+    throw new Error("Verification should be true!")
 }
 
-describe('Demo: vaccination demo - credential issuance, storing, and verification', () => {
-  it('should run the demo without raising exceptions', () => {
-    expect(() => { await vaccineDemo() }).not.toThrow();
+describe('Demo: vaccination demo - credential issuance, storing, and verification', async () => {
+  it('should run the demo without raising exceptions', async () => {
+    expect(async () => { await vaccineDemo() }).not.toThrow();
   });
 });

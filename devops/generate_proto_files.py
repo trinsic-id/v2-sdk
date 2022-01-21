@@ -10,7 +10,7 @@ from typing import List, Dict, Union
 
 import pkg_resources
 
-from build_sdks import update_line
+from build_sdks import update_line, clean_dir
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
@@ -75,15 +75,6 @@ def get_matching_files(dir_name: str, extension: str) -> List[str]:
         extension = f'*.{extension}'
     search_glob = join(dir_name, '**', extension)
     return [abspath(file_path) for file_path in glob.glob(search_glob, recursive=True)]
-
-
-def clean_dir(language_dir: str) -> None:
-    print(f"Cleaning directory={language_dir}")
-    try:
-        shutil.rmtree(language_dir)
-    except Exception as e:
-        print(e)
-    os.mkdir(language_dir)
 
 
 def join_args(args: Union[List[str], Dict[str, str]]) -> str:
@@ -215,13 +206,13 @@ def update_dotnet():
 
 def main():
     # download_protoc_plugins()
-    # update_golang()
+    update_golang()
     update_ruby()
-    # update_java()
-    # update_markdown()
-    # update_python()
-    # update_node()
-    # update_web()
+    update_java()
+    update_markdown()
+    update_python()
+    update_node()
+    update_web()
     # update_dotnet()
 
 

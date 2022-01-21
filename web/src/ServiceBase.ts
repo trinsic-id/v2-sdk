@@ -2,7 +2,7 @@ import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
 import { Metadata } from "grpc-web";
 import { Nonce, ServerConfig, AccountProfile } from "./proto";
 import { Message } from "google-protobuf";
-import { encode, fromUint8Array } from "js-base64";
+import { fromUint8Array } from "js-base64";
 
 export interface ServiceOptions {
   profile?: AccountProfile;
@@ -31,13 +31,13 @@ export default abstract class ServiceBase {
       throw new Error("profile must be set");
     }
 
-    var requestData = request.serializeBinary();
-    var requestHash = new ArrayBuffer(0);
+    const requestData = request.serializeBinary();
+    let requestHash = new ArrayBuffer(0);
 
     if (requestData.length > 0) {
       requestHash = await crypto.subtle.digest("SHA-256", request.serializeBinary());
     }
-    var timestamp = Date.now();
+    const timestamp = Date.now();
 
     let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(new Uint8Array(requestHash));
 
@@ -48,13 +48,13 @@ export default abstract class ServiceBase {
         .setToken(this.activeProfile.getAuthToken())
     );
 
-    var metadata = {
+    const metadata = {
       Authorization:
-        `Oberon ` +
-        `ver=1,` +
-        `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
-        `data=${fromUint8Array(this.activeProfile.getAuthData_asU8(), true)},` +
-        `nonce=${fromUint8Array(nonce.serializeBinary(), true)}`,
+          `Oberon ` +
+          `ver=1,` +
+          `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
+          `data=${fromUint8Array(this.activeProfile.getAuthData_asU8(), true)},` +
+          `nonce=${fromUint8Array(nonce.serializeBinary(), true)}`,
     };
 
     return metadata;

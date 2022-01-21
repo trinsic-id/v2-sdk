@@ -5,6 +5,7 @@ const { WalletService, ServerConfig, AccountService, CredentialService, Template
 const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
 const { InviteRequest } = require("../lib");
 const { randomEmail } = require("./helpers/random");
+const testData = require("./TestData");
 
 require("dotenv").config();
 
@@ -41,14 +42,10 @@ test("create new account", async (t) => {
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-  // let info = await accountService.info();
-
-  // t.not(info, null);
-
   let credentialService = new CredentialService({ profile, server: config });
   let walletService = new WalletService({ profile, server: config });
 
-  let issueResponse = await credentialService.issueCredential(require("./data/vaccination-certificate-unsigned.json"));
+  let issueResponse = await credentialService.issueCredential(testData.vaccineCertUnsigned());
 
   let itemId = await walletService.insertItem(issueResponse);
 
@@ -60,7 +57,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   t.not(items, null);
   t.true(items.getItemsList().length > 0);
 
-  let proof = await credentialService.createProof(itemId, require("./data/vaccination-certificate-frame.json"));
+  let proof = await credentialService.createProof(itemId, testData.vaccineCertFrame());
 
   let valid = await credentialService.verifyProof(proof);
 
@@ -92,11 +89,9 @@ test("Demo: template management and credential issuance from template", async (t
     age: 42
   });
 
-  let credentialJson = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
+  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
 
-  t.not(credentialJson, null);
-
-  let jsonDocument = JSON.parse(credentialJson);
+  t.not(jsonDocument, null);
   t.true(jsonDocument.hasOwnProperty("id"));
   t.true(jsonDocument.hasOwnProperty("credentialSubject"));
 

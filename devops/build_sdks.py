@@ -8,6 +8,7 @@ import os
 import platform
 import shutil
 from os.path import join, abspath, dirname
+import subprocess
 from typing import Dict
 
 try:
@@ -50,6 +51,16 @@ def copy_okapi_libs(copy_to: str, windows_path='windows'):
     shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
 
 
+def clean_dir(language_dir: str) -> None:
+    print(f"Cleaning directory={language_dir}")
+    try:
+        shutil.rmtree(language_dir)
+    except Exception as e:
+        print(e)
+    os.mkdir(language_dir)
+
+
+
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
     with open(file_name, 'r') as fid:
         file_lines = fid.readlines()
@@ -65,6 +76,17 @@ def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
         if line.strip().startswith(find.strip()):
             line = replace + '\n'
     return line
+
+
+def build_dotnet_docs(args) -> None:
+    # https://github.com/Doraku/DefaultDocumentation
+    # dotnet tool install DefaultDocumentation.Console -g
+    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
+    output_doc_folder = '../docs/reference/dotnet'
+    current_dir = dirname(__file__)
+    clean_dir(abspath(join(current_dir, output_doc_folder)))
+    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
+                     cwd=current_dir).wait()
 
 
 def build_python(args) -> None:
@@ -111,7 +133,7 @@ def get_github_version(github_token: str = None) -> str:
     return version
 
 
-def build_docs(args):
+def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
     # npm install in the root of sdk
     subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
@@ -131,7 +153,8 @@ def main():
     build_java(args)
     build_ruby(args)
     build_golang(args)
-    build_docs(args)
+    build_java_docs(args)
+    build_dotnet_docs(args)
 
 
 if __name__ == "__main__":
