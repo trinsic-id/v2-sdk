@@ -1,23 +1,15 @@
 # What is Trinsic?
-Trinsic is a hosting provider for identity wallet and an SDK for developers that want to interact with them.
-You can use Trinsic to give your end-users identity wallets and then share, store, and verify data through them. Doing this gives complete transparency to end users about the data you're sharing and let's them use that data anywhere. 
+Trinsic is a hosting provider for identity wallets and an SDK for developers that want to interact with them.
+You can use Trinsic to give your end-users identity wallets and then share, store, and verify data through them.
 
 ## Wallets
-Identity Wallets are secure, partitioned data stores for a specific subject. This normally is a person, but it can also be an organization or a device. 
+Identity Wallets are secure, partitioned data stores for information that needs to get verified. This normally is a person, but it can also be an organization or a device. 
 
 You can use Trinsic's platform to invite end-users to create a cloud-hosted identity wallet that can be accessed on any device using multi-factor passwordless authentication. 
 
 Once created, applications and organizations can issue data to the identity wallet. Other applications can request to verify information from the wallet. If the end-user accepts the request, a proof of the requested information will be created and sent to the requester. 
 
 Using identity wallets, you can build powerful products that preserve your end-user's privacy without compromising on convenience.
-
-**Benefits of identity wallets**
-- Provide a PII data vault that gives the individual full transparency and control
-- Comply with data privacy regulations 
-- Simplify authentication and authorization both online and in-person across disconnected systems
-- Issue digital representations of physical identity documents 
-- Selectively request and verify the data held within multiple credentials from various sources all at once
-
 
 [Wallet Service](../reference/services/wallet-service.md)
 ## Credentials & Proofs
