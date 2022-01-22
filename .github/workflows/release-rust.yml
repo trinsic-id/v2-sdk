@@ -28,6 +28,7 @@ jobs:
         run: |
           rm cli/build.rs
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' cli/Cargo.toml
+          sed -i 's/version: 1.0.0/version: ${{ steps.setversion.outputs.packageVersion }}/g' cli/src/cli.yaml
           mv cli trinsic-cli
           tar -czvf trinsic-cli-${{ steps.setversion.outputs.packageVersion }}.tar.gz trinsic-cli
 
