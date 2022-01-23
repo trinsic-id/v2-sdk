@@ -1,0 +1,33 @@
+name: Auto Assign to Project(s)
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request_target:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+env:
+  MY_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to One Project
+    steps:
+    - name: Assign NEW issues and NEW pull requests to project
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: github.event.action == 'opened'
+      with:
+        project: 'https://github.com/orgs/trinsic-id/projects/4'
+
+    - name: Assign issues and pull requests with `discussion` label to project
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: |
+        contains(github.event.issue.labels.*.name, 'discussion') ||
+        contains(github.event.pull_request.labels.*.name, 'discussion')
+      with:
+        project: 'https://github.com/orgs/trinsic-id/projects/4'
+        column_name: 'Discussion'
+
+# https://github.com/marketplace/actions/assign-to-one-project
