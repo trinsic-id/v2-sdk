@@ -4,16 +4,16 @@ name: Add PR to project
 on:
   pull_request:
     types:
-      - ready_for_review
-  issues:
-    types: [opened, labeled]
+      [opened, labeled]
+  # issues:
+  #   types: [opened, labeled]
 jobs:
   track_pr:
     runs-on: ubuntu-latest
     steps:
       - name: Get project data
         env:
-          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_AUTOMATION_TOKEN }}
           ORGANIZATION: trinsic-id
           PROJECT_NUMBER: 4
         run: |
@@ -40,7 +40,7 @@ jobs:
 
       - name: Add PR to project
         env:
-          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_AUTOMATION_TOKEN }}
           PR_ID: ${{ github.event.pull_request.node_id }}
         run: |
           item_id="$( gh api graphql -f query='
@@ -59,7 +59,7 @@ jobs:
 
       - name: Set fields
         env:
-          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PROJECT_AUTOMATION_TOKEN }}
         run: |
           gh api graphql -f query='
             mutation (
