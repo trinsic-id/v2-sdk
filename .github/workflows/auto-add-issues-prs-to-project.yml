@@ -7,6 +7,7 @@ on:
       [opened, labeled]
   # issues:
   #   types: [opened, labeled]
+
 jobs:
   track_pr:
     runs-on: ubuntu-latest
