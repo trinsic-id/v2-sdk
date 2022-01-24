@@ -7,14 +7,13 @@
 public sealed class AddFrameworkRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; AddFrameworkRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; AddFrameworkRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_GovernanceFrameworkFieldNumber'></a>
 ## AddFrameworkRequest.GovernanceFrameworkFieldNumber Field
@@ -32,14 +31,13 @@ public const int GovernanceFrameworkFieldNumber = 1;
 public sealed class AddFrameworkResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; AddFrameworkResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; AddFrameworkResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse_StatusFieldNumber'></a>
 ## AddFrameworkResponse.StatusFieldNumber Field
@@ -57,14 +55,13 @@ public const int StatusFieldNumber = 1;
 public sealed class CheckIssuerStatusRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckIssuerStatusRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckIssuerStatusRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckIssuerStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckIssuerStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckIssuerStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckIssuerStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckIssuerStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusRequest_CredentialTypeUriFieldNumber'></a>
 ## CheckIssuerStatusRequest.CredentialTypeUriFieldNumber Field
@@ -109,14 +106,13 @@ public const int X509CertFieldNumber = 3;
 public sealed class CheckIssuerStatusResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckIssuerStatusResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckIssuerStatusResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckIssuerStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckIssuerStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckIssuerStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckIssuerStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckIssuerStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_CheckIssuerStatusResponse_StatusFieldNumber'></a>
 ## CheckIssuerStatusResponse.StatusFieldNumber Field
@@ -134,14 +130,13 @@ public const int StatusFieldNumber = 1;
 public sealed class CheckVerifierStatusRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckVerifierStatusRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckVerifierStatusRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckVerifierStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckVerifierStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckVerifierStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckVerifierStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckVerifierStatusRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusRequest_DidUriFieldNumber'></a>
 ## CheckVerifierStatusRequest.DidUriFieldNumber Field
@@ -186,14 +181,13 @@ public const int X509CertFieldNumber = 3;
 public sealed class CheckVerifierStatusResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckVerifierStatusResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckVerifierStatusResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckVerifierStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckVerifierStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckVerifierStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckVerifierStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckVerifierStatusResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse 'Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_CheckVerifierStatusResponse_StatusFieldNumber'></a>
 ## CheckVerifierStatusResponse.StatusFieldNumber Field
@@ -211,14 +205,13 @@ public const int StatusFieldNumber = 1;
 public sealed class FetchDataRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.FetchDataRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.FetchDataRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.FetchDataRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; FetchDataRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; FetchDataRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[FetchDataRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[FetchDataRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[FetchDataRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[FetchDataRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[FetchDataRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataRequest 'Trinsic.Services.TrustRegistry.V1.FetchDataRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_FetchDataRequest_GovernanceFrameworkUriFieldNumber'></a>
 ## FetchDataRequest.GovernanceFrameworkUriFieldNumber Field
@@ -245,14 +238,13 @@ public const int QueryFieldNumber = 2;
 public sealed class FetchDataResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.FetchDataResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.FetchDataResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.FetchDataResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; FetchDataResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; FetchDataResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[FetchDataResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataResponse 'Trinsic.Services.TrustRegistry.V1.FetchDataResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[FetchDataResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataResponse 'Trinsic.Services.TrustRegistry.V1.FetchDataResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[FetchDataResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataResponse 'Trinsic.Services.TrustRegistry.V1.FetchDataResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[FetchDataResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataResponse 'Trinsic.Services.TrustRegistry.V1.FetchDataResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[FetchDataResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_FetchDataResponse 'Trinsic.Services.TrustRegistry.V1.FetchDataResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_FetchDataResponse_ContinuationTokenFieldNumber'></a>
 ## FetchDataResponse.ContinuationTokenFieldNumber Field
@@ -288,14 +280,13 @@ public const int ResponseJsonFieldNumber = 1;
 public sealed class GovernanceFramework :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.GovernanceFramework>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.GovernanceFramework>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.GovernanceFramework>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; GovernanceFramework  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; GovernanceFramework  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[GovernanceFramework](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[GovernanceFramework](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[GovernanceFramework](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[GovernanceFramework](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[GovernanceFramework](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_GovernanceFramework 'Trinsic.Services.TrustRegistry.V1.GovernanceFramework')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_GovernanceFramework_DescriptionFieldNumber'></a>
 ## GovernanceFramework.DescriptionFieldNumber Field
@@ -331,14 +322,13 @@ public const int TrustRegistryUriFieldNumber = 2;
 public sealed class RegisterIssuerRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RegisterIssuerRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RegisterIssuerRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_CredentialTypeUriFieldNumber'></a>
 ## RegisterIssuerRequest.CredentialTypeUriFieldNumber Field
@@ -401,14 +391,13 @@ public const int X509CertFieldNumber = 2;
 public sealed class RegisterIssuerResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RegisterIssuerResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RegisterIssuerResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse_StatusFieldNumber'></a>
 ## RegisterIssuerResponse.StatusFieldNumber Field
@@ -426,14 +415,13 @@ public const int StatusFieldNumber = 1;
 public sealed class RegisterVerifierRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RegisterVerifierRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RegisterVerifierRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_DidUriFieldNumber'></a>
 ## RegisterVerifierRequest.DidUriFieldNumber Field
@@ -496,14 +484,13 @@ public const int X509CertFieldNumber = 2;
 public sealed class RegisterVerifierResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RegisterVerifierResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RegisterVerifierResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse_StatusFieldNumber'></a>
 ## RegisterVerifierResponse.StatusFieldNumber Field
@@ -521,14 +508,13 @@ public const int StatusFieldNumber = 1;
 public sealed class RemoveFrameworkRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RemoveFrameworkRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RemoveFrameworkRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RemoveFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RemoveFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RemoveFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RemoveFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RemoveFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RemoveFrameworkRequest_GovernanceFrameworkFieldNumber'></a>
 ## RemoveFrameworkRequest.GovernanceFrameworkFieldNumber Field
@@ -546,14 +532,13 @@ public const int GovernanceFrameworkFieldNumber = 1;
 public sealed class RemoveFrameworkResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; RemoveFrameworkResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; RemoveFrameworkResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RemoveFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[RemoveFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RemoveFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[RemoveFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[RemoveFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.RemoveFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_RemoveFrameworkResponse_StatusFieldNumber'></a>
 ## RemoveFrameworkResponse.StatusFieldNumber Field
@@ -571,14 +556,13 @@ public const int StatusFieldNumber = 1;
 public sealed class SearchRegistryRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SearchRegistryRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; SearchRegistryRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SearchRegistryRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest 'Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SearchRegistryRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest 'Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SearchRegistryRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest 'Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SearchRegistryRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest 'Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SearchRegistryRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest 'Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_SearchRegistryRequest_ContinuationTokenFieldNumber'></a>
 ## SearchRegistryRequest.ContinuationTokenFieldNumber Field
@@ -624,14 +608,13 @@ public string Query { get; set; }
 public sealed class SearchRegistryResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SearchRegistryResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; SearchRegistryResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SearchRegistryResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse 'Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SearchRegistryResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse 'Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SearchRegistryResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse 'Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SearchRegistryResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse 'Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SearchRegistryResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse 'Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_SearchRegistryResponse_ContinuationTokenFieldNumber'></a>
 ## SearchRegistryResponse.ContinuationTokenFieldNumber Field
@@ -897,26 +880,26 @@ The options for the call.
 [AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.AddFramework(AddFrameworkRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Adds a trust registry defintion to the ecosystem  
 ```csharp
-public virtual Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse AddFramework(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse AddFramework(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFramework(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -943,26 +926,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[AddFrameworkResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkResponse 'Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.AddFrameworkAsync(AddFrameworkRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Adds a trust registry defintion to the ecosystem  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse> AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse> AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [AddFrameworkRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest 'Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_AddFrameworkAsync(Trinsic_Services_TrustRegistry_V1_AddFrameworkRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1002,26 +985,26 @@ The options for the call.
 [RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.RegisterIssuer(RegisterIssuerRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Registers an authoritative issuer with a credential template  
 ```csharp
-public virtual Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse RegisterIssuer(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse RegisterIssuer(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuer(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1048,26 +1031,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[RegisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.RegisterIssuerAsync(RegisterIssuerRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Registers an authoritative issuer with a credential template  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse> RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.RegisterIssuerResponse> RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [RegisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_RegisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1094,26 +1077,26 @@ The options for the call.
 [RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.RegisterVerifier(RegisterVerifierRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Registers an authoritative verifier with a credential template  
 ```csharp
-public virtual Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse RegisterVerifier(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse RegisterVerifier(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifier(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1140,26 +1123,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[RegisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.RegisterVerifierAsync(RegisterVerifierRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Registers an authoritative verifier with a credential template  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse> RegisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.RegisterVerifierResponse> RegisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [RegisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_RegisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_RegisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1186,26 +1169,26 @@ The options for the call.
 [UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.UnregisterIssuer(UnregisterIssuerRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Removes an authoritative issuer with a credential template from the trust registry  
 ```csharp
-public virtual Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse UnregisterIssuer(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse UnregisterIssuer(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuer(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1232,26 +1215,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.UnregisterIssuerAsync(UnregisterIssuerRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Removes an authoritative issuer with a credential template from the trust registry  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse> UnregisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse> UnregisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterIssuerAsync(Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1278,26 +1261,26 @@ The options for the call.
 [UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.UnregisterVerifier(UnregisterVerifierRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Removes an authoritative verifier with a presentation template from the trust registry  
 ```csharp
-public virtual Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse UnregisterVerifier(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse UnregisterVerifier(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifier(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1324,26 +1307,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## TrustRegistry.TrustRegistryClient.UnregisterVerifierAsync(UnregisterVerifierRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Removes an authoritative verifier with a presentation template from the trust registry  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse> UnregisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse> UnregisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_TrustRegistry_V1_TrustRegistry_TrustRegistryClient_UnregisterVerifierAsync(Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -1377,14 +1360,13 @@ public static Google.Protobuf.Reflection.FileDescriptor Descriptor { get; }
 public sealed class UnregisterIssuerRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UnregisterIssuerRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UnregisterIssuerRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterIssuerRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_UnregisterIssuerRequest_CredentialTypeUriFieldNumber'></a>
 ## UnregisterIssuerRequest.CredentialTypeUriFieldNumber Field
@@ -1429,14 +1411,13 @@ public const int X509CertFieldNumber = 2;
 public sealed class UnregisterIssuerResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UnregisterIssuerResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UnregisterIssuerResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterIssuerResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterIssuerResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_UnregisterIssuerResponse_StatusFieldNumber'></a>
 ## UnregisterIssuerResponse.StatusFieldNumber Field
@@ -1454,14 +1435,13 @@ public const int StatusFieldNumber = 1;
 public sealed class UnregisterVerifierRequest :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UnregisterVerifierRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UnregisterVerifierRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterVerifierRequest](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_UnregisterVerifierRequest_DidUriFieldNumber'></a>
 ## UnregisterVerifierRequest.DidUriFieldNumber Field
@@ -1506,14 +1486,13 @@ public const int X509CertFieldNumber = 2;
 public sealed class UnregisterVerifierResponse :
 Google.Protobuf.IMessage<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UnregisterVerifierResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UnregisterVerifierResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UnregisterVerifierResponse](Trinsic_Services_TrustRegistry_V1.md#Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse 'Trinsic.Services.TrustRegistry.V1.UnregisterVerifierResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_TrustRegistry_V1_UnregisterVerifierResponse_StatusFieldNumber'></a>
 ## UnregisterVerifierResponse.StatusFieldNumber Field

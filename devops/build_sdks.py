@@ -7,7 +7,7 @@ import glob
 import os
 import platform
 import shutil
-from os.path import join, abspath, dirname
+from os.path import join, abspath, dirname, isdir, split
 import subprocess
 from typing import Dict
 
@@ -78,20 +78,18 @@ def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
     return line
 
 
-def build_dotnet_docs(args) -> None:
-    # https://github.com/Doraku/DefaultDocumentation
-    # dotnet tool install DefaultDocumentation.Console -g
-    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
-    output_doc_folder = '../docs/reference/dotnet'
-    current_dir = dirname(__file__)
-    clean_dir(abspath(join(current_dir, output_doc_folder)))
-    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-                     cwd=current_dir).wait()
+def get_language_dir(language_name: str) -> str:
+    """
+    Get the directory for the given language SDK
+    :param language_name: The language directory
+    :return: Absolute path to the given language SDK
+    """
+    return abspath(join(dirname(abspath(__file__)), '..', language_name))
 
 
 def build_python(args) -> None:
     # Update version in setup.cfg
-    python_dir = abspath(join(dirname(__file__), '..', 'python'))
+    python_dir = get_language_dir('python')
     update_line(join(python_dir, 'setup.cfg'),
                 {'version = ': f'version = {get_package_versions(args)}'})
     copy_okapi_libs(abspath(join(python_dir, '..', 'libs')))
@@ -99,7 +97,7 @@ def build_python(args) -> None:
 
 def build_java(args) -> None:
     # Update version in setup.cfg
-    java_dir = abspath(join(dirname(__file__), '..', 'java'))
+    java_dir = get_language_dir('java')
     update_line(join(java_dir, 'build.gradle'),
                 {'def jarVersion': f'def jarVersion = "{get_package_versions(args)}"'})
     copy_okapi_libs(abspath(join(java_dir, '..', 'libs')))
@@ -107,14 +105,14 @@ def build_java(args) -> None:
 
 def build_ruby(args) -> None:
     # Update version in setup.cfg
-    ruby_dir = abspath(join(dirname(__file__), '..', 'ruby'))
+    ruby_dir = get_language_dir('ruby')
     update_line(join(ruby_dir, 'lib', 'version.rb'),
                 {'  VERSION =': f"  VERSION = '{get_package_versions(args)}'"})
 
 
 def build_golang(args) -> None:
     # Update version in setup.cfg
-    golang_dir = abspath(join(dirname(__file__), '..', 'go', 'services'))
+    golang_dir = abspath(join(get_language_dir('go'), 'services'))
     # Copy in the binaries
     copy_okapi_libs(golang_dir, 'windows-gnu')
 
@@ -139,6 +137,36 @@ def build_java_docs(args):
     subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
 
 
+def build_dotnet_docs(args) -> None:
+    # https://github.com/Doraku/DefaultDocumentation
+    # dotnet tool install DefaultDocumentation.Console -g
+    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
+    output_doc_folder = '../docs/reference/dotnet'
+    current_dir = dirname(__file__)
+    clean_dir(abspath(join(current_dir, output_doc_folder)))
+    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
+                     cwd=current_dir).wait()
+
+
+def build_go_docs(args):
+    # https://github.com/posener/goreadme
+    # go get github.com/posener/goreadme/cmd/goreadme
+    goreadme_args = r'-recursive -functions -methods -types -variabless'  # Yes, that's a duplicated s, it's on purpose.
+    doc_path = abspath(join(get_language_dir('docs'), 'reference', 'go'))
+
+    def write_doc_file(input_path: str, output_file: str):
+        print(f"goreadme(input={input_path}, output={output_file})")
+        with open(join(doc_path, f'{output_file}.md'), 'w') as output:
+            subprocess.Popen(rf'goreadme {goreadme_args}', cwd=input_path, stdout=output).wait()
+        # Handle the subdirectories
+        for sub_folder in glob.glob(join(input_path, '**')):
+            if isdir(sub_folder):
+                _, folder_name = split(sub_folder)
+                write_doc_file(sub_folder, folder_name)
+    
+    write_doc_file(get_language_dir('go'), 'index')
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
@@ -155,6 +183,7 @@ def main():
     build_golang(args)
     build_java_docs(args)
     build_dotnet_docs(args)
+    build_go_docs(args)
 
 
 if __name__ == "__main__":

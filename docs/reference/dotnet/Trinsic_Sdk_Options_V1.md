@@ -26,14 +26,13 @@ public static Google.Protobuf.Reflection.FileDescriptor Descriptor { get; }
 public sealed class ServerConfiguration :
 Google.Protobuf.IMessage<Trinsic.Sdk.Options.V1.ServerConfiguration>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Sdk.Options.V1.ServerConfiguration>,
 Google.Protobuf.IDeepCloneable<Trinsic.Sdk.Options.V1.ServerConfiguration>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ServerConfiguration  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; ServerConfiguration  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[ServerConfiguration](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServerConfiguration 'Trinsic.Sdk.Options.V1.ServerConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ServerConfiguration](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServerConfiguration 'Trinsic.Sdk.Options.V1.ServerConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[ServerConfiguration](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServerConfiguration 'Trinsic.Sdk.Options.V1.ServerConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[ServerConfiguration](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServerConfiguration 'Trinsic.Sdk.Options.V1.ServerConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[ServerConfiguration](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServerConfiguration 'Trinsic.Sdk.Options.V1.ServerConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Sdk_Options_V1_ServerConfiguration_EndpointFieldNumber'></a>
 ## ServerConfiguration.EndpointFieldNumber Field
@@ -98,14 +97,13 @@ service options
 public sealed class ServiceOptions :
 Google.Protobuf.IMessage<Trinsic.Sdk.Options.V1.ServiceOptions>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Sdk.Options.V1.ServiceOptions>,
 Google.Protobuf.IDeepCloneable<Trinsic.Sdk.Options.V1.ServiceOptions>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ServiceOptions  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; ServiceOptions  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[ServiceOptions](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServiceOptions 'Trinsic.Sdk.Options.V1.ServiceOptions')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[ServiceOptions](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServiceOptions 'Trinsic.Sdk.Options.V1.ServiceOptions')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[ServiceOptions](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServiceOptions 'Trinsic.Sdk.Options.V1.ServiceOptions')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[ServiceOptions](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServiceOptions 'Trinsic.Sdk.Options.V1.ServiceOptions')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[ServiceOptions](Trinsic_Sdk_Options_V1.md#Trinsic_Sdk_Options_V1_ServiceOptions 'Trinsic.Sdk.Options.V1.ServiceOptions')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Sdk_Options_V1_ServiceOptions_EcosystemFieldNumber'></a>
 ## ServiceOptions.EcosystemFieldNumber Field
