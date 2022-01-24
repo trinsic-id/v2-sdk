@@ -78,17 +78,6 @@ def replace_line_if_needed(line: str, replace_lines: Dict[str, str]) -> str:
     return line
 
 
-def build_dotnet_docs(args) -> None:
-    # https://github.com/Doraku/DefaultDocumentation
-    # dotnet tool install DefaultDocumentation.Console -g
-    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
-    output_doc_folder = '../docs/reference/dotnet'
-    current_dir = dirname(__file__)
-    clean_dir(abspath(join(current_dir, output_doc_folder)))
-    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-                     cwd=current_dir).wait()
-
-
 def build_python(args) -> None:
     # Update version in setup.cfg
     python_dir = abspath(join(dirname(__file__), '..', 'python'))
@@ -137,6 +126,17 @@ def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
     # npm install in the root of sdk
     subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
+
+
+def build_dotnet_docs(args) -> None:
+    # https://github.com/Doraku/DefaultDocumentation
+    # dotnet tool install DefaultDocumentation.Console -g
+    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
+    output_doc_folder = '../docs/reference/dotnet'
+    current_dir = dirname(__file__)
+    clean_dir(abspath(join(current_dir, output_doc_folder)))
+    subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
+                     cwd=current_dir).wait()
 
 
 def parse_arguments():
