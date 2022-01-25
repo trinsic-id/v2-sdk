@@ -2,6 +2,7 @@
 # Projects beta API ref: https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects
 name: Add PR to project
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - ready_for_review
