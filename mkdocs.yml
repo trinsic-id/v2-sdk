@@ -72,14 +72,14 @@ theme:
         name: Switch to light mode
 markdown_extensions:
   - pymdownx.highlight:
-      use_pygments: false
+      use_pygments: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid-experimental
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
-      alternate_style: false
+      alternate_style: true
   - pymdownx.snippets:
       base_path: [".", "docs"]
   - pymdownx.emoji:
@@ -109,7 +109,7 @@ plugins:
   - search
   - autorefs
   - codeinclude:
-      title_mode: none
+      title_mode: pymdownx.tabbed
   - mkdocstrings:
       handlers:
         python:
