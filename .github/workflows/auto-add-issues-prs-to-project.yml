@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Get project data
         run: |
-          gh auth login
+          gh auth login --with-token
           gh api graphql -f query='
             query($org: String!, $number: Int!) {
               organization(login: $org){
