@@ -20,5 +20,6 @@ jobs:
           pip install -r ./docs/requirements.txt
           pip install -r ./python/requirements.txt
           pip install git+https://github.com/fundthmcalculus/mkdocs-codeinclude-plugin.git@support-lang-based-extensions
+          pip list
       - run: mkdocs build
 
