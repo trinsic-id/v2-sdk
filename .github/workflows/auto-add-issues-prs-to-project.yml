@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Get project data
         env:
-          GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.API_ADD_ISSUE_PR_BOARD_TOKEN }}
           ORGANIZATION: trinsic-id
           PROJECT_NUMBER: 4
         run: |
