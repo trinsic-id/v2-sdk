@@ -4,8 +4,6 @@ name: Add PR to project
 on:
   workflow_dispatch:
   pull_request:
-    types:
-      - ready_for_review
   issues:
     types: [opened, labeled]
 jobs:
