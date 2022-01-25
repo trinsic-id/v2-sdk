@@ -10,6 +10,8 @@ on:
 jobs:
   track_pr:
     runs-on: ubuntu-latest
+    permissions:
+      org: read
     steps:
       - name: Get project data
         env:
