@@ -8,7 +8,7 @@ The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go ap
 * You need to have [CGO configured](https://pkg.go.dev/cmd/cgo) for the okapi native binary link
 * Issue the following command:
 ```bash
-go install https://github.com/trinsic-id/sdk/go
+go install github.com/trinsic-id/sdk/go
 ```
 * To test the installation, try the following go code:
 TODO
