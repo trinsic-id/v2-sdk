@@ -10,7 +10,7 @@ from typing import List, Dict, Union
 
 import pkg_resources
 
-from build_sdks import update_line, clean_dir
+from build_sdks import update_line, clean_dir, get_language_dir
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
@@ -54,15 +54,6 @@ def download_protoc_plugins() -> None:
     os.system(f'go install github.com/coinbase/protoc-gen-rbi@latest')
     # TODO - Ruby grpc protoc tools install
     # TODO - Node grpc protoc tools install
-
-
-def get_language_dir(language_name: str) -> str:
-    """
-    Get the directory for the given language SDK
-    :param language_name: The language directory
-    :return: Absolute path to the given language SDK
-    """
-    return abspath(join(dirname(abspath(__file__)), '..', language_name))
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:

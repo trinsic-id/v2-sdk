@@ -8,14 +8,13 @@ request object to update the status of the revocation entry
 public sealed class CheckStatusRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckStatusRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckStatusRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_CredentialStatusIdFieldNumber'></a>
 ## CheckStatusRequest.CredentialStatusIdFieldNumber Field
@@ -44,14 +43,13 @@ response object for update of status of revocation entry
 public sealed class CheckStatusResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CheckStatusResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CheckStatusResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse_RevokedFieldNumber'></a>
 ## CheckStatusResponse.RevokedFieldNumber Field
@@ -80,14 +78,13 @@ Create Proof
 public sealed class CreateProofRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CreateProofRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CreateProofRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest_DocumentIdFieldNumber'></a>
 ## CreateProofRequest.DocumentIdFieldNumber Field
@@ -114,14 +111,13 @@ public const int RevealDocumentFieldNumber = 1;
 public sealed class CreateProofResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CreateProofResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CreateProofResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse_ProofDocumentFieldNumber'></a>
 ## CreateProofResponse.ProofDocumentFieldNumber Field
@@ -139,14 +135,13 @@ public const int ProofDocumentFieldNumber = 1;
 public sealed class IssueFromTemplateRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IssueFromTemplateRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; IssueFromTemplateRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueFromTemplateRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[IssueFromTemplateRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueFromTemplateRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueFromTemplateRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueFromTemplateRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest_TemplateIdFieldNumber'></a>
 ## IssueFromTemplateRequest.TemplateIdFieldNumber Field
@@ -173,14 +168,13 @@ public const int ValuesJsonFieldNumber = 2;
 public sealed class IssueFromTemplateResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IssueFromTemplateResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; IssueFromTemplateResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueFromTemplateResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[IssueFromTemplateResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueFromTemplateResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueFromTemplateResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueFromTemplateResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateResponse_DocumentJsonFieldNumber'></a>
 ## IssueFromTemplateResponse.DocumentJsonFieldNumber Field
@@ -198,14 +192,13 @@ public const int DocumentJsonFieldNumber = 1;
 public sealed class IssueRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.IssueRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.IssueRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.IssueRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IssueRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; IssueRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_IssueRequest_DocumentFieldNumber'></a>
 ## IssueRequest.DocumentFieldNumber Field
@@ -223,14 +216,13 @@ public const int DocumentFieldNumber = 1;
 public sealed class IssueResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.IssueResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.IssueResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.IssueResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; IssueResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; IssueResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_IssueResponse_DocumentFieldNumber'></a>
 ## IssueResponse.DocumentFieldNumber Field
@@ -248,14 +240,13 @@ public const int DocumentFieldNumber = 1;
 public sealed class SendRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.SendRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.SendRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.SendRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SendRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; SendRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_SendRequest_DidcommInvitationFieldNumber'></a>
 ## SendRequest.DidcommInvitationFieldNumber Field
@@ -300,14 +291,13 @@ public const int EmailFieldNumber = 1;
 public sealed class SendResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.SendResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.SendResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.SendResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SendResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; SendResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SendResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendResponse 'Trinsic.Services.VerifiableCredentials.V1.SendResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[SendResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendResponse 'Trinsic.Services.VerifiableCredentials.V1.SendResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SendResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendResponse 'Trinsic.Services.VerifiableCredentials.V1.SendResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[SendResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendResponse 'Trinsic.Services.VerifiableCredentials.V1.SendResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[SendResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendResponse 'Trinsic.Services.VerifiableCredentials.V1.SendResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_SendResponse_StatusFieldNumber'></a>
 ## SendResponse.StatusFieldNumber Field
@@ -326,14 +316,13 @@ request object to update the status of the revocation entry
 public sealed class UpdateStatusRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UpdateStatusRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UpdateStatusRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_CredentialStatusIdFieldNumber'></a>
 ## UpdateStatusRequest.CredentialStatusIdFieldNumber Field
@@ -380,14 +369,13 @@ response object for update of status of revocation entry
 public sealed class UpdateStatusResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; UpdateStatusResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; UpdateStatusResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse_StatusFieldNumber'></a>
 ## UpdateStatusResponse.StatusFieldNumber Field
@@ -569,26 +557,26 @@ The options for the call.
 [CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## VerifiableCredential.VerifiableCredentialClient.CheckStatus(CheckStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Check credential status by setting the revocation value  
 ```csharp
-public virtual Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatus(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -615,26 +603,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## VerifiableCredential.VerifiableCredentialClient.CheckStatusAsync(CheckStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Check credential status by setting the revocation value  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse> CheckStatusAsync(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse> CheckStatusAsync(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [CheckStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_CheckStatusAsync(Trinsic_Services_VerifiableCredentials_V1_CheckStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -674,26 +662,26 @@ The options for the call.
 [UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## VerifiableCredential.VerifiableCredentialClient.UpdateStatus(UpdateStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Update credential status by setting the revocation value  
 ```csharp
-public virtual Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse UpdateStatus(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse UpdateStatus(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatus(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -720,26 +708,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[UpdateStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
 ## VerifiableCredential.VerifiableCredentialClient.UpdateStatusAsync(UpdateStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Update credential status by setting the revocation value  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse> UpdateStatusAsync(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse> UpdateStatusAsync(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
 `request` [UpdateStatusRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest 'Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_VerifiableCredentials_V1_VerifiableCredential_VerifiableCredentialClient_UpdateStatusAsync(Trinsic_Services_VerifiableCredentials_V1_UpdateStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -774,14 +762,13 @@ Verify Proof
 public sealed class VerifyProofRequest :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; VerifyProofRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; VerifyProofRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest_ProofDocumentFieldNumber'></a>
 ## VerifyProofRequest.ProofDocumentFieldNumber Field
@@ -799,14 +786,13 @@ public const int ProofDocumentFieldNumber = 1;
 public sealed class VerifyProofResponse :
 Google.Protobuf.IMessage<Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse>,
 Google.Protobuf.IMessage,
-System.IEquatable<Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; VerifyProofResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; VerifyProofResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[VerifyProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[VerifyProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[VerifyProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[VerifyProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[VerifyProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_VerifiableCredentials_V1_VerifyProofResponse_ValidFieldNumber'></a>
 ## VerifyProofResponse.ValidFieldNumber Field

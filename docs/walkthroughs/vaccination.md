@@ -79,12 +79,12 @@ We've set up some environments to use on Repl.it. If your language of choice isn
 
 
 
-<!-- === "Ruby"
+=== "Ruby"
     - [Install Instructions](../ruby/index.md) 
     
-    === "Go"
+=== "Go"
     - [Install Instructions](../go/index.md)
-    -->
+   
 
 ---
 
