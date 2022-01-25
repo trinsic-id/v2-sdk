@@ -47,6 +47,7 @@ class AccountService(ServiceBase):
         Args:
             details:
         Returns:
+            `AccountProfile` that has been created
         """
         response = await self.client.sign_in(details=details)
         return response.profile
@@ -59,7 +60,7 @@ class AccountService(ServiceBase):
             profile:
             security_code:
         Returns:
-            The in-place modified profile
+            The in-place unprotected `AccountProfile`
         """
         request = UnBlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
@@ -77,6 +78,7 @@ class AccountService(ServiceBase):
             profile:
             security_code:
         Returns:
+            A protected `AccountProfile`
         """
         request = BlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
@@ -132,6 +134,7 @@ class CredentialsService(ServiceBase):
             template_id:
             values_json:
         Returns:
+            The JSON document representation of this credential as a string
         """
         return (await self.client.issue_from_template(template_id=template_id, values_json=values_json)).document_json
 
@@ -141,6 +144,7 @@ class CredentialsService(ServiceBase):
         Args:
             credential_status_id:
         Returns:
+            `CheckStatusResponse`
         """
         return await self.client.check_status(credential_status_id=credential_status_id)
 
@@ -150,7 +154,6 @@ class CredentialsService(ServiceBase):
         Args:
             credential_status_id:
             revoked:
-        Returns:
         """
         response = await self.client.update_status(credential_status_id=credential_status_id, revoked=revoked)
         ResponseStatusException.assert_success(response.status, "update credential status")
@@ -286,7 +289,7 @@ class ProviderService(ServiceBase):
             uri:
 
         Returns:
-
+            [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)
         """
         return await self.client.create_ecosystem(name=name, description=description, uri=uri)
 
@@ -294,6 +297,7 @@ class ProviderService(ServiceBase):
         """
         Lists all ecosystems that are owned by the authorized user
         Returns:
+            A `List` of the [Ecosystem](/reference/proto/#ecosystem)s owned by the user
         """
         return (await self.client.list_ecosystems()).ecosystem
 

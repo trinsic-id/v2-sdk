@@ -1,13 +1,9 @@
 name: Documentation (release)
 
 on:
-  # todo: add a staging target for doc builds
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
   workflow_dispatch:
 jobs:
   deploy:
