@@ -16,10 +16,6 @@ jobs:
       issues: write
     steps:
       - name: Get project data
-        env:
-          GITHUB_TOKEN: ${{ secrets.API_ADD_ISSUE_PR_BOARD_TOKEN }}
-          ORGANIZATION: trinsic-id
-          PROJECT_NUMBER: 4
         run: |
           gh api graphql -f query='
             query($org: String!, $number: Int!) {
@@ -41,6 +37,12 @@ jobs:
           echo 'DATE_FIELD_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Date posted") | .id' project_data.json) >> $GITHUB_ENV
           echo 'STATUS_FIELD_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") | .id' project_data.json) >> $GITHUB_ENV
           echo 'TODO_OPTION_ID='$(jq '.data.organization.projectNext.fields.nodes[] | select(.name== "Status") |.settings | fromjson.options[] | select(.name=="Todo") |.id' project_data.json) >> $GITHUB_ENV
+
+        env:
+          GH_TOKEN: ${{ secrets.API_ADD_ISSUE_PR_BOARD_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: trinsic-id
+          PROJECT_NUMBER: 4
 
       - name: Add PR to project
         env:
