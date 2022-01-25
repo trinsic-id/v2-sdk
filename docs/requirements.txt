@@ -3,3 +3,4 @@ mkdocs-material
 mkdocs-codeinclude-plugin
 mkdocstrings
 mkdocs-autorefs
+markdown-fenced-code-tabs
