@@ -82,7 +82,7 @@ jobs:
           # Only set the date field if valid
           if [ $DATE_FIELD_ID -eq '']
           then
-            return
+            exit 0
           fi
           gh api graphql -f query='
             mutation (
