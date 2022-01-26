@@ -31,7 +31,8 @@ nav:
       - Go: go/index.md
       - Java: java/index.md
   - SDK Reference:
-    - Setup & Configuration: reference/index.md
+    - Overview: reference/index.md
+    - Account Service: reference/services/account-service.md
     - Wallet Service: reference/services/wallet-service.md
     - Credential Service: reference/services/credential-service.md
     - Provider Service: reference/services/provider-service.md
