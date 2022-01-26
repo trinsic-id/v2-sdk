@@ -77,8 +77,6 @@ We've set up some environments to use on Repl.it. If your language of choice isn
 
     In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
 
-
-
 === "Ruby"
     - [Install Instructions](../ruby/index.md) 
     
@@ -121,7 +119,6 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     <!--/codeinclude-->
 
 
-
 === "Python"
     <!--codeinclude-->
     ```python
@@ -136,6 +133,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
     ```
     <!--/codeinclude-->
+
     
 === "Go"
     <!--codeinclude-->
@@ -146,12 +144,13 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
-=== "Typescript" 
-    <!--codeinclude-->
+<!-- === "Typescript" 
+    
     ```javascript
     [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeAndRecallProfile
     ```
-    <!--/codeinclude-->
+     
+-->
 
 
 === "C#"
@@ -169,13 +168,13 @@ If you would like to save the profile for future use, you can simply export the 
     ```
     <!--/codeinclude-->
 
-
 === "Java"
     <!--codeinclude-->
     ```java
     [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```go
