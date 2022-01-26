@@ -105,7 +105,12 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     trinsic account login --description "Vaccination Clinic" --alias clinic
     ```
 
-=== "Typescript" 
+=== "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
 
 
 === "C#"
@@ -131,12 +136,22 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
     ```
     <!--/codeinclude-->
-
+    
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
 === "Typescript" 
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
 
 
 === "C#"
@@ -159,6 +174,12 @@ If you would like to save the profile for future use, you can simply export the 
     <!--codeinclude-->
     ```java
     [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Save and Load Profile](../../go/services/services_test.go) inside_block:storeAndRecallProfile
     ```
     <!--/codeinclude-->
 
@@ -220,7 +241,11 @@ To issue this credential we'll specify links to the json files, set the active p
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:issueCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -255,6 +280,18 @@ To issue this credential we'll specify links to the json files, set the active p
     <!--codeinclude-->
     ```java
     [Issue Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Data Paths](../../go/services/services_test.go) inside_block:pathData
+    ```
+    <!--/codeinclude-->
+    <!--codeinclude-->
+    ```go
+    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -295,7 +332,11 @@ Once Allison receives the credential, she or her wallet application can store it
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -318,6 +359,12 @@ Once Allison receives the credential, she or her wallet application can store it
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Store Credential](../../go/services/services_test.go) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
 
 
 Note down the response `item_id` printed to the console for the next step.
@@ -351,13 +398,16 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Trinsic CLI"
     Replace the `<item_id>` in the generate proof command below with the output from the `insert_item` above.
 
-
     ```bash
     trinsic --profile allison issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -374,8 +424,6 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     ```
     <!--/codeinclude-->
 
-   
-
 === "Java"
     <!--codeinclude-->
     ```java
@@ -383,6 +431,12 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Share Credential](../../go/services/services_test.go) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
 
 Take a look at the proof. Notice how only the attributes included in the `frame` are included with the proof.
 
@@ -402,7 +456,11 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -424,6 +482,13 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     <!--codeinclude-->
     ```java
     [Verify Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Verify Credential](../../go/services/services_test.go) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -457,7 +522,8 @@ Watch for the result of `true` to know that the credential successfully passed a
 ## Full Source Code
 
 === "Typescript"
-    No full walkthrough exists yet for Typescript. However, the tests folder in the [browser](https://github.com/trinsic-id/sdk/tree/main/web/test) and [node](https://github.com/trinsic-id/sdk/tree/main/node/test) directories have other test cases to review.    
+    [browser](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.js)
+    [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.test.js)    
 
 
 === "C#"
