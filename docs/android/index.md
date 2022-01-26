@@ -7,8 +7,8 @@ The Trinsic Android sample application makes it easy to interact with the Trinsi
 2. Download the trinsic okapi package (`okapi-X.X.X.jar`) from the [Github Packages](https://github.com/trinsic-id/okapi/packages/919613).
 3. Put the jar files into the appropriate folder (`./android/app/libs`) - this allows gradle to package them in, since public anonymous gradle access to Github Maven Packages is not supported.
 4. Download the latest [release artifact](https://github.com/trinsic-id/okapi/releases/latest) asset called `libs.zip`
-5. Extract it, under `libs/android` you should find the various android device (and emulator) architectures supported.
-6. Copy the `libokapi.so` from the corresponding directory to the corresponding architecture directory under `android/app/src/main/jniLibs`.
+5. Extract it, under `libs/android` you should find folders with the various android device (and emulator) architectures supported.
+6. Copy the `libokapi.so` from the corresponding directory to the corresponding architecture directory under `android/app/src/main/jniLibs` - there should be exact folder name matches
 7. You should be able to build and run the android application.
 
 <!--Go to the okapi actions latest run, then go to the artifact, and download the android artifact. 
