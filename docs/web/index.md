@@ -49,6 +49,63 @@ module.exports = {
 };
 ```
 
+#### Configure Webpack for React
+
+If using React you may need to start your project with [craco](https://www.npmjs.com/package/@craco/craco)
+
+Install Craco
+```bash
+npm i @craco/craco
+```
+
+Next change your react scripts in your package.json file
+```json
+"scripts": {
+-   "start": "react-scripts start",
++   "start": "craco start",
+-   "build": "react-scripts build",
++   "build": "craco build"
+-   "test": "react-scripts test",
++   "test": "craco test"
+}
+```
+Finally you will need to add a craco configuration file called `craco.config.js` and add the following:
+
+```js
+// craco.config.js
+
+const { addBeforeLoader, loaderByName } = require('@craco/craco');
+
+module.exports = {
+  webpack: {
+    configure: (webpackConfig) => {
+      const wasmExtensionRegExp = /\.wasm$/;
+      webpackConfig.resolve.extensions.push('.wasm');
+
+      webpackConfig.module.rules.forEach((rule) => {
+        (rule.oneOf || []).forEach((oneOf) => {
+          if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
+            oneOf.exclude.push(wasmExtensionRegExp);
+          }
+        });
+      });
+
+      const wasmLoader = {
+        test: /\.wasm$/,
+        exclude: /node_modules/,
+        loaders: ['wasm-loader'],
+      };
+
+      addBeforeLoader(webpackConfig, loaderByName('file-loader'), wasmLoader);
+
+      return webpackConfig;
+    }
+  }
+}
+```
+
+This allows react loaders to properly load in some of our needed .wasm files.
+
 ### Set up Website
 
 Create a simple html page with a script tag referencing the webpack bundle that will be built after completing the sample code. Note that you will not have the bundle.js file yet because it will be generated from the index.js file you create.
