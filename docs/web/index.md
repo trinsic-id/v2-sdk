@@ -1,6 +1,6 @@
 # The Trinsic Javascript / Web SDK
 
-The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/web).
+The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web).
 
 ## Installation
 Install the package for Node or Browser from [npmjs.com :material-open-in-new:](https://www.npmjs.com/package/@trinsic/trinsic){target=_blank}
@@ -10,21 +10,7 @@ Install the package for Node or Browser from [npmjs.com :material-open-in-new:](
     npm i @trinsic/trinsic
     ```
 
-## Configuration
-When using the SDK in your code, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.
-
-```typescript
-import { WalletService } from '@trinsic/trinsic';
-
-// Set the server address
-const service = new WalletService("https://example.com");
-
-// Create new profile or import an existing one
-const myProfile = await service.createWallet();
-
-// Set the profile to be used with authorization pipeline
-service.setProfile(myProfile);
-```
+<!-- ## Configuration -->
 
 ### Create new project
 
@@ -98,9 +84,9 @@ web-sample
 
 ## Next Steps
 
-Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./vaccination-web.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
+Once the SDK is installed and configured, you're ready to start building! We recommend going through the walkthrough next. If you're ready to dive into building your ecosystem, check out our API Reference
 
-[Start Walkthrough](./vaccination-web.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
+[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button }
 
 
 
