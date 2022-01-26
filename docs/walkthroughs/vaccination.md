@@ -131,7 +131,13 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
     ```
     <!--/codeinclude-->
-
+    
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
 
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
@@ -159,6 +165,12 @@ If you would like to save the profile for future use, you can simply export the 
     <!--codeinclude-->
     ```java
     [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Save and Load Profile](../../go/services/services_test.go) inside_block:storeAndRecallProfile
     ```
     <!--/codeinclude-->
 
@@ -258,6 +270,18 @@ To issue this credential we'll specify links to the json files, set the active p
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Data Paths](../../go/services/services_test.go) inside_block:pathData
+    ```
+    <!--/codeinclude-->
+    <!--codeinclude-->
+    ```go
+    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
+    ```
+    <!--/codeinclude-->
+
 
 
 !!! info
@@ -318,6 +342,12 @@ Once Allison receives the credential, she or her wallet application can store it
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Store Credential](../../go/services/services_test.go) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
 
 
 Note down the response `item_id` printed to the console for the next step.
@@ -374,8 +404,6 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     ```
     <!--/codeinclude-->
 
-   
-
 === "Java"
     <!--codeinclude-->
     ```java
@@ -383,6 +411,12 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Share Credential](../../go/services/services_test.go) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
 
 Take a look at the proof. Notice how only the attributes included in the `frame` are included with the proof.
 
@@ -424,6 +458,13 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     <!--codeinclude-->
     ```java
     [Verify Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Verify Credential](../../go/services/services_test.go) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
