@@ -74,6 +74,13 @@ public class Tests
         _testOutputHelper.WriteLine($"Credential:\n{credential.ToString(Formatting.Indented)}");
         // }
 
+        // storeAndRecallProfile {
+        // Serialize profile by exporting the binary protobuf form
+        File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+        // Create profile from existing data
+        allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
+        // }
+
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
         // storeCredential() {
