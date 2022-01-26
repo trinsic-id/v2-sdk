@@ -105,7 +105,12 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     trinsic account login --description "Vaccination Clinic" --alias clinic
     ```
 
-=== "Typescript" 
+=== "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
 
 
 === "C#"
@@ -142,7 +147,11 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
 === "Typescript" 
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
 
 
 === "C#"
@@ -232,7 +241,11 @@ To issue this credential we'll specify links to the json files, set the active p
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:issueCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -319,7 +332,11 @@ Once Allison receives the credential, she or her wallet application can store it
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -381,13 +398,16 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Trinsic CLI"
     Replace the `<item_id>` in the generate proof command below with the output from the `insert_item` above.
 
-
     ```bash
     trinsic --profile allison issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -436,7 +456,11 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     ```
 
 === "Typescript"
-
+    <!--codeinclude-->
+    ```javascript
+    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -498,7 +522,8 @@ Watch for the result of `true` to know that the credential successfully passed a
 ## Full Source Code
 
 === "Typescript"
-    No full walkthrough exists yet for Typescript. However, the tests folder in the [browser](https://github.com/trinsic-id/sdk/tree/main/web/test) and [node](https://github.com/trinsic-id/sdk/tree/main/node/test) directories have other test cases to review.    
+    [browser](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.js)
+    [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.test.js)    
 
 
 === "C#"
