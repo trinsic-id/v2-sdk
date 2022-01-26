@@ -34,7 +34,9 @@ The Credential service supports signing data using [BBS+ Signatures :material-op
 
     var signedDocument = await credentialService.IssueCredential(unsignedDocument);
     ```
+
 === "Python"
+
     ```python
     import json
     credential_json = json.dumps({
@@ -185,7 +187,9 @@ The endpoint to create a proof requires two inputs:
 
     var signedDocument = await credentialService.CreateProof(itemId, frame);
     ```
+
 === "Python"
+    
     ```python
     import json
     frame_json = json.dumps({
