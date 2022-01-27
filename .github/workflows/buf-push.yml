@@ -45,8 +45,7 @@ jobs:
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
         run: |
-          gem install google-protobuf grpc
-          go install github.com/coinbase/protoc-gen-rbi@latest
+          gem install grpc-tools
           go install github.com/coinbase/protoc-gen-rbi@latest
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest

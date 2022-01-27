@@ -111,7 +111,7 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # Ruby type specifications
-    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files(), plugin="protoc-gen-rbi")
+    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files())  # , plugin="protoc-gen-rbi")
 
 
 def update_java():
@@ -162,7 +162,6 @@ def update_web():
     clean_dir(join(lang_proto_path, 'services'))
     clean_dir(join(lang_proto_path, 'sdk'))
     clean_dir(join(lang_proto_path, 'pbmse'))
-    # TODO - Make this cross-platform
 
     # code generation
     run_protoc({'grpc-web_out': f'import_style=typescript,mode=grpcwebtext:{lang_proto_path}'},
