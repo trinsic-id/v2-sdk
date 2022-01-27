@@ -48,12 +48,6 @@ def download_protoc_plugins() -> None:
 
     with open(kotlin_plugin(), 'w') as fid:
         fid.write(f'@java.exe -jar "%~dp0/{kotlin_jar}" %*')
-    # go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
-    os.system(f'go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@{protoc_plugin_versions("mkdocs")}')
-    os.system(f'go install google.golang.org/protobuf@latest')
-    os.system(f'go install github.com/coinbase/protoc-gen-rbi@latest')
-    # TODO - Ruby grpc protoc tools install
-    # TODO - Node grpc protoc tools install
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
@@ -196,7 +190,7 @@ def update_dotnet():
 
 
 def main():
-    # download_protoc_plugins()
+    download_protoc_plugins()
     update_golang()
     update_ruby()
     update_java()
