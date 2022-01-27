@@ -13,6 +13,8 @@ using Xunit;
 using Xunit.Abstractions;
 using Trinsic;
 using FluentAssertions;
+using Google.Protobuf;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -76,9 +78,9 @@ public class Tests
 
         // storeAndRecallProfile {
         // Serialize profile by exporting the binary protobuf form
-        File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+        File.WriteAllBytes("allison.bin", allison.ToByteArray());
         // Create profile from existing data
-        allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
+        allison = AccountProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
         // }
 
         // STORE CREDENTIAL
