@@ -1,0 +1,25 @@
+name: Assign PR to project and milestone"
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Request Milestone
+        uses: breathingdust/current-milestone-action@v4
+        if: github.event_name == 'pull_request'
+        with:
+          pull_number: ${{ github.event.pull_request.number }}
+          milestone_number: "5"
+
+      - name: Pull Request Project
+        uses: srggrs/assign-one-project-github-action@1.3.1
+        with:
+          project: 'https://github.com/orgs/trinsic-id/projects/3'
