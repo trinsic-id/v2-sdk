@@ -22,15 +22,15 @@ def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
 
 
 def plugin_path() -> str:
-    return join(dirname(__file__), 'protoc-plugins')
+    return abspath(join(dirname(__file__), 'protoc-plugins'))
 
 
 def java_plugin() -> str:
-    return join(plugin_path(), 'protoc-gen-grpc-java.exe')
+    return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
 
 
 def kotlin_plugin() -> str:
-    return join(plugin_path(), 'protoc-gen-grpc-kotlin.cmd')
+    return abspath(join(plugin_path(), 'protoc-gen-grpc-kotlin.cmd'))
 
 
 def download_protoc_plugins() -> None:
@@ -111,17 +111,20 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # Ruby type specifications
-    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files(), plugin="protoc-gen-rbi=C:\personal\protoc-gen-rbi\protoc-gen-rbi.exe")
+    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files(), plugin="protoc-gen-rbi")
 
 
 def update_java():
     java_path = get_language_dir('java')
-    java_proto_path = join(java_path, 'src', 'main', 'java')
-    # TODO - clean_dir(java_proto_path)
-    run_protoc({'java_out': java_proto_path, 'grpc-java_out': java_proto_path}, {}, get_proto_files())
-    run_protoc({'grpc-kotlin_out': java_proto_path}, {}, get_proto_files())
+    lang_proto_path = join(java_path, 'src', 'main', 'java')
+    clean_dir(join(lang_proto_path, 'services'))
+    clean_dir(join(lang_proto_path, 'sdk'))
+    clean_dir(join(lang_proto_path, 'pbmse'))
+
+    run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files())
+    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files())
     # remove okapi pbmse
-    shutil.rmtree(join(java_proto_path, 'trinsic', 'okapi'))
+    shutil.rmtree(join(lang_proto_path, 'trinsic', 'okapi'))
 
 
 def update_markdown():

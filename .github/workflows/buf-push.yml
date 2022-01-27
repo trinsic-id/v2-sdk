@@ -33,6 +33,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.76.0
+        with:
+          ruby-version: 3.0
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -41,6 +45,8 @@ jobs:
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
         run: |
+          gem install google-protobuf grpc
+          go install github.com/coinbase/protoc-gen-rbi@latest
           go install github.com/coinbase/protoc-gen-rbi@latest
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
