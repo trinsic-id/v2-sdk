@@ -1,0 +1,6 @@
+base-branch:
+  - "(main)"
+  - "2022 Q1"
+
+head-branch:
+  - "2022 Q1"

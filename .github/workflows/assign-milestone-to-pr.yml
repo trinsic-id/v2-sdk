@@ -1,0 +1,12 @@
+name: Assing PR to Milestone
+on:
+  pull_request:
+jobs:
+  track_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull Request Milestone
+        uses: iyu/actions-milestone@v1.1.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/milestone.yml
