@@ -1,8 +1,11 @@
 name: Assing PR to Milestone
 on:
   pull_request:
+    types:
+      - opened
+
 jobs:
-  track_pr:
+  assign_milestone:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Request Milestone
