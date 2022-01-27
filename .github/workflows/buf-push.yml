@@ -26,7 +26,7 @@ jobs:
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
 
   compile_proto:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.9
@@ -50,6 +50,8 @@ jobs:
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+          pip install --upgrade setuptools
+          pip install --upgrade distribute
           pip install -r ./devops/requirements.txt
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
