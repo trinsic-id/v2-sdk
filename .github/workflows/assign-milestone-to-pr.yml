@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pull Request Milestone
-        uses: iyu/actions-milestone@v1.1.0
+        uses: breathingdust/current-milestone-action@v4
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          configuration-path: .github/milestone.yml
+          pull_number: ${{ github.event.pull_request.number }}
+          milestone_number: "5"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
