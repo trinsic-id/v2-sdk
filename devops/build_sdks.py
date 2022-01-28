@@ -2,7 +2,6 @@
 Build the various language SDK packages for release
 """
 import argparse
-import subprocess
 import glob
 import os
 import platform
@@ -11,10 +10,6 @@ from os.path import join, abspath, dirname, isdir, split
 import subprocess
 from typing import Dict
 
-try:
-    import requests
-except ImportError:
-    os.system('pip install requests')
 import requests
 
 
@@ -55,8 +50,8 @@ def clean_dir(language_dir: str) -> None:
     print(f"Cleaning directory={language_dir}")
     try:
         shutil.rmtree(language_dir)
-    except Exception as e:
-        print(e)
+    except FileNotFoundError:
+        pass
     os.mkdir(language_dir)
 
 

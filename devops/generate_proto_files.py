@@ -3,12 +3,13 @@ Generate the language bindings from the proto files.
 """
 import glob
 import os
+from platform import system
 import shutil
 import urllib.request
 from os.path import abspath, join, dirname
 from typing import List, Dict, Union
 
-import pkg_resources
+import importlib.resources
 
 from build_sdks import update_line, clean_dir, get_language_dir
 
@@ -30,7 +31,7 @@ def java_plugin() -> str:
 
 
 def kotlin_plugin() -> str:
-    return abspath(join(plugin_path(), 'protoc-gen-grpc-kotlin.cmd'))
+    return abspath(join(plugin_path(), f'protoc-gen-grpc-kotlin.{"cmd" if system() == "Windows" else ".sh"}'))
 
 
 def download_protoc_plugins() -> None:
@@ -40,14 +41,17 @@ def download_protoc_plugins() -> None:
     java_plugin_version = protoc_plugin_versions("java")
     kotlin_plugin_version = protoc_plugin_versions("kotlin")
     urllib.request.urlretrieve(
-        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-windows-x86_64.exe',
+        f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-{system().lower()}-x86_64.exe',
         java_plugin())
     urllib.request.urlretrieve(
         f'https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/{kotlin_plugin_version}/protoc-gen-grpc-kotlin-{kotlin_plugin_version}-jdk7.jar',
         kotlin_jar)
 
     with open(kotlin_plugin(), 'w') as fid:
-        fid.write(f'@java.exe -jar "%~dp0/{kotlin_jar}" %*')
+        if system().lower() == 'windows':
+            fid.write(f'@java.exe -jar "{kotlin_jar}" %*')
+        else:
+            fid.write(f'java -jar {kotlin_jar} "$@')
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
@@ -111,18 +115,23 @@ def update_ruby():
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
                protoc_executable='grpc_tools_ruby_protoc')
     # Ruby type specifications
-    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files())  # , plugin="protoc-gen-rbi")
+    run_protoc({'rbi_out': f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files())
 
 
 def update_java():
     java_path = get_language_dir('java')
     lang_proto_path = join(java_path, 'src', 'main', 'java')
-    clean_dir(join(lang_proto_path, 'services'))
-    clean_dir(join(lang_proto_path, 'sdk'))
-    clean_dir(join(lang_proto_path, 'pbmse'))
+    java_services = join(lang_proto_path, 'trinsic', 'services')
+    for subdir in os.listdir(java_services):
+        java_subdir = join(java_services, subdir)
+        if os.path.isdir(java_subdir):
+            clean_dir(java_subdir)
+    clean_dir(join(lang_proto_path, 'trinsic', 'sdk'))
+    clean_dir(join(lang_proto_path, 'trinsic', 'pbmse'))
 
-    run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files())
-    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files())
+    run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files(),
+               plugin=java_plugin())
+    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(), plugin=kotlin_plugin())
     # remove okapi pbmse
     shutil.rmtree(join(lang_proto_path, 'trinsic', 'okapi'))
 
@@ -177,11 +186,8 @@ def update_python():
     # Remove everything under output directory
     python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
     clean_dir(python_proto_path)
-    # Come up with better locations, import google defaults from the package location (see code in protoc.main)
-    proto_include = pkg_resources.resource_filename('grpc_tools', '_proto').replace("lib", "Lib")
     # Inject an empty python code file path to mimic the first argument.
-    run_protoc({'python_betterproto_out': python_proto_path}, [f'-I{proto_include}'],
-               proto_files=get_proto_files())
+    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
 
 
 def update_dotnet():
@@ -195,11 +201,11 @@ def main():
     download_protoc_plugins()
     update_golang()
     update_ruby()
-    update_java()
     update_markdown()
     update_python()
     update_node()
     update_web()
+    update_java()
     # update_dotnet()
 
 
