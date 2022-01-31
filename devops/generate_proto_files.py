@@ -56,11 +56,9 @@ def download_protoc_plugins() -> None:
         else:
             fid.write(f'java -jar {kotlin_jar} "$@')
 
-    # Assert files exist
-    with open(java_plugin(), 'r'):
-        pass
-    with open(kotlin_plugin(), 'r'):
-        pass
+    if system().lower() == "linux":
+        os.system(f"chmod +x {java_plugin()}")
+        os.system(f"chmod +x {kotlin_plugin()}")
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
