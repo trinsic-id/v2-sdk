@@ -92,7 +92,7 @@ def run_protoc(language_options: Dict[str, str] = None,
     command_args = list(itertools.chain(*command_args))
     # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
     command_args = [arg for arg in command_args if arg]
-    logging.debug(command_args)
+    logging.info(command_args)
     # output = subprocess.run(command_args, capture_output=True)
     # output.check_returncode()
     if os.system(" ".join(command_args)) != 0:
