@@ -54,7 +54,8 @@ def download_protoc_plugins() -> None:
         if system().lower() == 'windows':
             fid.write(f'@java.exe -jar "{kotlin_jar}" %*')
         else:
-            fid.write(f'java -jar {kotlin_jar} "$@')
+            fid.write(f'#!/usr/bin/env sh\n'
+                      f'java -jar {kotlin_jar} "$@')
 
     if system().lower() == "linux":
         os.system(f"chmod +x {java_plugin()}")
