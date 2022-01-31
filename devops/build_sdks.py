@@ -3,6 +3,7 @@ Build the various language SDK packages for release
 """
 import argparse
 import glob
+import logging
 import os
 import platform
 import shutil
@@ -39,7 +40,7 @@ def get_os_arch_path(extract_dir, windows_path):
 def copy_okapi_libs(copy_to: str, windows_path='windows'):
     okapi_dir = abspath(join(dirname(__file__), '..'))
     copy_from = get_os_arch_path(okapi_dir, windows_path)
-    print(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
+    logging.info(f"Copying okapi libs from: {copy_from}\nto: {copy_to}")
 
     for copy_file in glob.glob(join(copy_from, '*.*')):
         shutil.copy2(copy_file, copy_to)
@@ -47,7 +48,7 @@ def copy_okapi_libs(copy_to: str, windows_path='windows'):
 
 
 def clean_dir(language_dir: str) -> None:
-    print(f"Cleaning directory={language_dir}")
+    logging.info(f"Cleaning directory={language_dir}")
     try:
         shutil.rmtree(language_dir)
     except FileNotFoundError:
@@ -150,7 +151,7 @@ def build_go_docs(args):
     doc_path = abspath(join(get_language_dir('docs'), 'reference', 'go'))
 
     def write_doc_file(input_path: str, output_file: str):
-        print(f"goreadme(input={input_path}, output={output_file})")
+        logging.info(f"goreadme(input={input_path}, output={output_file})")
         with open(join(doc_path, f'{output_file}.md'), 'w') as output:
             subprocess.Popen(rf'goreadme {goreadme_args}', cwd=input_path, stdout=output).wait()
         # Handle the subdirectories
