@@ -140,7 +140,7 @@ def update_java():
     clean_dir(join(lang_proto_path, 'trinsic', 'pbmse'))
 
     run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files(),
-               plugin=f"protoc-gen-grpc-java={java_plugin()}")
+               plugin=f"protoc-gen-grpc_java={java_plugin()}")
     run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(), plugin=kotlin_plugin())
     # remove okapi pbmse
     clean_dir(join(lang_proto_path, 'trinsic', 'okapi'))
