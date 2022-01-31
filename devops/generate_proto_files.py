@@ -30,7 +30,7 @@ def plugin_path() -> str:
 
 
 def java_plugin() -> str:
-    return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
+    return abspath(join(plugin_path(), 'protoc-gen-grpc_java.exe'))
 
 
 def kotlin_plugin() -> str:
@@ -55,6 +55,12 @@ def download_protoc_plugins() -> None:
             fid.write(f'@java.exe -jar "{kotlin_jar}" %*')
         else:
             fid.write(f'java -jar {kotlin_jar} "$@')
+
+    # Assert files exist
+    with open(java_plugin(), 'r'):
+        pass
+    with open(kotlin_plugin(), 'r'):
+        pass
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
