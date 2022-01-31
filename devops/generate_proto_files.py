@@ -34,7 +34,7 @@ def java_plugin() -> str:
 
 
 def kotlin_plugin() -> str:
-    return abspath(join(plugin_path(), f'protoc-gen-grpc-kotlin.{"cmd" if system() == "Windows" else ".sh"}'))
+    return abspath(join(plugin_path(), f'protoc-gen-grpc-kotlin.{"cmd" if system() == "Windows" else "sh"}'))
 
 
 def download_protoc_plugins() -> None:
