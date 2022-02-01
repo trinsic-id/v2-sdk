@@ -10,11 +10,6 @@ namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public ProviderService(AccountProfile accountProfile)
         : base(accountProfile) {
         Client = new(Channel);
@@ -22,6 +17,11 @@ public class ProviderService : ServiceBase
 
     public ProviderService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal ProviderService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 

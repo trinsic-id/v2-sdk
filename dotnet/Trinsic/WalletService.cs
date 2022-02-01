@@ -11,11 +11,6 @@ namespace Trinsic;
 
 public class WalletService : ServiceBase
 {
-    public WalletService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public WalletService(AccountProfile accountProfile)
         : base(accountProfile) {
         Client = new(Channel);
@@ -23,6 +18,11 @@ public class WalletService : ServiceBase
     
     public WalletService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal WalletService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 

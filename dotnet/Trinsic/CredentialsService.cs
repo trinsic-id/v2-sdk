@@ -12,11 +12,6 @@ namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public CredentialsService(AccountProfile accountProfile)
         : base(accountProfile) {
         Client = new(Channel);
@@ -24,6 +19,11 @@ public class CredentialsService : ServiceBase
     
     public CredentialsService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal CredentialsService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 

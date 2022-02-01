@@ -10,11 +10,6 @@ namespace Trinsic;
 
 public class TrustRegistryService : ServiceBase
 {
-    public TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public TrustRegistryService(AccountProfile accountProfile)
         : base(accountProfile) {
         Client = new(Channel);
@@ -22,6 +17,11 @@ public class TrustRegistryService : ServiceBase
     
     public TrustRegistryService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal TrustRegistryService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 

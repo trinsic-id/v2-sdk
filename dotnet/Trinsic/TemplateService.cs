@@ -11,11 +11,6 @@ namespace Trinsic;
 /// </summary>
 public class TemplateService : ServiceBase
 {
-    public TemplateService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public TemplateService(AccountProfile accountProfile)
         : base(accountProfile) {
         Client = new(Channel);
@@ -23,6 +18,11 @@ public class TemplateService : ServiceBase
     
     public TemplateService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal TemplateService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 

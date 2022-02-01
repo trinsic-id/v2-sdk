@@ -17,18 +17,8 @@ public class AccountService : ServiceBase
 {
     private AccountProfile? profile;
 
-    public AccountService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
-        Client = new(Channel);
-    }
-
     public AccountService()
         : base(DefaultServerConfig()) {
-        Client = new(Channel);
-    }
-
-    public AccountService(ServerConfig serverConfig)
-        : base(serverConfig) {
         Client = new(Channel);
     }
 
@@ -39,6 +29,16 @@ public class AccountService : ServiceBase
 
     public AccountService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
+        Client = new(Channel);
+    }
+    
+    internal AccountService(ServerConfig serverConfig)
+        : base(serverConfig) {
+        Client = new(Channel);
+    }
+    
+    internal AccountService(AccountProfile accountProfile, ServerConfig serverConfig)
+        : base(accountProfile, serverConfig) {
         Client = new(Channel);
     }
 
