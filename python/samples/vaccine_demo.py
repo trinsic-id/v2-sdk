@@ -38,8 +38,8 @@ async def vaccine_demo():
     print(f"Account info={info}")
 
     # createService() {
-    wallet_service = WalletService(allison, account_service.channel)
-    credentials_service = CredentialsService(clinic, trinsic_test_config())
+    wallet_service = WalletService(allison, server_config=account_service.channel)
+    credentials_service = CredentialsService(clinic, server_config=trinsic_test_config())
     # }
 
     # storeAndRecallProfile() {

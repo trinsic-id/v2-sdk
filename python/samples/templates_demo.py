@@ -11,8 +11,8 @@ from trinsic.trinsic_util import trinsic_test_config
 async def templates_demo():
     account_service = AccountService(server_config=trinsic_test_config())
     profile = await account_service.sign_in()
-    template_service = CredentialTemplatesService(profile, trinsic_test_config())
-    credential_service = CredentialsService(profile, trinsic_test_config())
+    template_service = CredentialTemplatesService(profile, server_config=trinsic_test_config())
+    credential_service = CredentialsService(profile, server_config=trinsic_test_config())
 
     # create example template
     template = await template_service.create(name="My Example Credential", allow_additional_fields=False, fields={'firstName': TemplateField(description="Given name"),

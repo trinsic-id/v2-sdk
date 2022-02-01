@@ -35,7 +35,8 @@ class ServiceBase(ABC):
                  server_config: ServerConfig,
                  channel: Channel):
         self.profile: AccountProfile = profile
-        self._server_config: ServerConfig = server_config
+        if not channel:
+            self._server_config: ServerConfig = server_config
         self._channel: Channel = channel or create_channel(server_config)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
 
@@ -50,7 +51,7 @@ class ServiceBase(ABC):
 
     def close(self):
         """Close the underlying channel"""
-        if self._channel is not None:
+        if hasattr(self, '_channel') and self._channel is not None:
             self._channel.close()
 
     def build_metadata(self, request: Message):

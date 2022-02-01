@@ -31,7 +31,7 @@ from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_sec
 class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
-    def __init__(self, profile: AccountProfile = None, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, *, profile: AccountProfile = None, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         """
         Initialize a connection to the server.
@@ -106,7 +106,7 @@ class AccountService(ServiceBase):
 class CredentialsService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, profile: AccountProfile, *, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         """
         Initialize a connection to the server.
@@ -196,7 +196,7 @@ class CredentialsService(ServiceBase):
 class CredentialTemplatesService(ServiceBase):
     """Wrapper for the [Credential Templates Service](/reference/services/CredentialTemplates-service/)"""
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, profile: AccountProfile, *, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         """
         Initialize a connection to the server.
@@ -228,7 +228,7 @@ class ProviderService(ServiceBase):
     Wrapper for the [Provider Service](/reference/services/provider-service)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, profile: AccountProfile, *, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         """
         Initialize the connection
@@ -307,7 +307,7 @@ class TrustRegistryService(ServiceBase):
     Wrapper for [Trust Registry Service](/reference/services/trust-registry/)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, profile: AccountProfile, *, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         super().__init__(profile, server_config, channel)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
@@ -464,7 +464,7 @@ class WalletService(ServiceBase):
     Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
-    def __init__(self, profile: AccountProfile, server_config: ServerConfig = trinsic_production_config(),
+    def __init__(self, profile: AccountProfile, *, server_config: ServerConfig = trinsic_production_config(),
                  channel: Channel = None):
         """
         Initialize a connection to the server.
