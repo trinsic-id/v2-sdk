@@ -10,7 +10,10 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func NewServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
+func newServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
+	if channel != nil && serverConfig != nil {
+		return nil, fmt.Errorf("Cannot provide both a channel and a server configuration")
+	}
 	if channel == nil {
 		channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
 		if err != nil {

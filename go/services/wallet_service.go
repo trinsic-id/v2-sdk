@@ -7,8 +7,11 @@ import (
 	"google.golang.org/grpc"
 )
 
-func CreateWalletService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (WalletService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func CreateWalletService(profile *sdk.AccountProfile, channel *grpc.ClientConn) (WalletService, error) {
+	return createWalletService(profile, nil, channel)
+}
+func createWalletService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (WalletService, error) {
+	base, err := newServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}

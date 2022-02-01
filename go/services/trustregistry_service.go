@@ -8,8 +8,11 @@ import (
 	"net/url"
 )
 
-func NewTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewTrustRegistryService(profile *sdk.AccountProfile, channel *grpc.ClientConn) (TrustRegistryService, error) {
+	return newTrustRegistryService(profile, nil, channel)
+}
+func newTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
+	base, err := newServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}

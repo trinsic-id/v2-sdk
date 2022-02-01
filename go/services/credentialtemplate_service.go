@@ -6,8 +6,11 @@ import (
 	"google.golang.org/grpc"
 )
 
-func NewCredentialTemplateService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialTemplateService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewCredentialTemplateService(profile *sdk.AccountProfile, channel *grpc.ClientConn) (CredentialTemplateService, error) {
+	return newCredentialTemplateService(profile, nil, channel)
+}
+func newCredentialTemplateService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialTemplateService, error) {
+	base, err := newServiceBase(profile, serverConfig, channel)
 	if err != nil {
 		return nil, err
 	}
