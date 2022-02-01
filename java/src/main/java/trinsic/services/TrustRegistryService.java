@@ -18,12 +18,15 @@ public class TrustRegistryService extends ServiceBase {
     public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile) {
         this(accountProfile, null, null);
     }
+    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
 
-    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
+    TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
         this(accountProfile, serverConfig, null);
     }
 
-    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    private TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
         this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     }

@@ -1,10 +1,11 @@
-package trinsic;
+package trinsic.services;
 
 import io.grpc.ManagedChannel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import trinsic.TrinsicUtilities;
 import trinsic.services.AccountService;
 
 import java.net.MalformedURLException;

@@ -8,12 +8,15 @@ import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.common.v1.ProviderGrpcKt
 import trinsic.services.common.v1.ProviderOuterClass.*
 
-class ProviderServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?,
-    serverConfig: CommonOuterClass.ServerConfig?,
-    channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+class ProviderServiceKt : ServiceBase{
     var stub = ProviderGrpcKt.ProviderCoroutineStub(this.channel)
+
+    public constructor(accountProfile: AccountOuterClass.AccountProfile) : this(accountProfile, null, null)
+    public constructor(accountProfile: AccountOuterClass.AccountProfile, channel: Channel?) : this(accountProfile, null, channel)
+    internal constructor(accountProfile: AccountOuterClass.AccountProfile, serverConfig: CommonOuterClass.ServerConfig?) : this(accountProfile, serverConfig, null)
+    private constructor(
+        accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
+    ) : super(accountProfile, serverConfig, channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun inviteParticipant(request: InviteRequest): InviteResponse {

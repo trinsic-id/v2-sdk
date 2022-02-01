@@ -1,11 +1,10 @@
-package trinsic;
+package trinsic.services;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.common.v1.ProviderOuterClass;
 
 import java.io.IOException;

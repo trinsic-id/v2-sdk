@@ -11,10 +11,17 @@ import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.account.v1.AccountOuterClass.*
 import trinsic.services.common.v1.CommonOuterClass
 
-class AccountServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+class AccountServiceKt : ServiceBase {
     var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
+
+    public constructor() : this(null, null, null)
+    public constructor(accountProfile: AccountOuterClass.AccountProfile) : this(accountProfile, null, null)
+    public constructor(accountProfile: AccountOuterClass.AccountProfile, channel: Channel?) : this(accountProfile, null, channel)
+    internal constructor(serverConfig: CommonOuterClass.ServerConfig) : this(null, serverConfig, null)
+    internal constructor(accountProfile: AccountOuterClass.AccountProfile, serverConfig: CommonOuterClass.ServerConfig?) : this(accountProfile, serverConfig, null)
+    private constructor(
+        accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
+    ) : super(accountProfile, serverConfig, channel)
 
     suspend fun signIn(details: AccountOuterClass.AccountDetails?): AccountOuterClass.SignInResponse {
         val details2 = details ?: AccountOuterClass.AccountDetails.newBuilder().build()

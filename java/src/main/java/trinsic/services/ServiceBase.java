@@ -22,8 +22,7 @@ public abstract class ServiceBase {
 
     protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
         this.profile = accountProfile;
-        this.configuration = serverConfig;
-        if (this.configuration == null) this.configuration = TrinsicUtilities.getProductionConfig();
+        this.configuration = serverConfig != null ? serverConfig : TrinsicUtilities.getProductionConfig();
         // Note if we should clean up the channel in the end.
         this.createdChannel = channel == null;
         this.channel = this.createdChannel ? TrinsicUtilities.getChannel(this.configuration) : channel;

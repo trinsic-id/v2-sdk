@@ -9,10 +9,15 @@ import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 
-class TrustRegistryServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+class TrustRegistryServiceKt : ServiceBase {
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
+
+    public constructor(accountProfile: AccountOuterClass.AccountProfile) : this(accountProfile, null, null)
+    public constructor(accountProfile: AccountOuterClass.AccountProfile, channel: Channel?) : this(accountProfile, null, channel)
+    internal constructor(accountProfile: AccountOuterClass.AccountProfile, serverConfig: CommonOuterClass.ServerConfig?) : this(accountProfile, serverConfig, null)
+    private constructor(
+        accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
+    ) : super(accountProfile, serverConfig, channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {

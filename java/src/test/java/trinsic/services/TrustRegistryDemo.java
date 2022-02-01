@@ -1,6 +1,7 @@
-package trinsic;
+package trinsic.services;
 
 import org.junit.jupiter.api.Assertions;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.TrustRegistryService;
@@ -16,7 +17,7 @@ public class TrustRegistryDemo {
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
-        var accountService = new AccountService(null,TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
         var account = accountService.signIn(null).get().getProfile();
         var service = new TrustRegistryService(account, TrinsicUtilities.getTestServerConfig());
 

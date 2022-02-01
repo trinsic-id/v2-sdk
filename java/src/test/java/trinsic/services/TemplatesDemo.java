@@ -1,6 +1,7 @@
-package trinsic;
+package trinsic.services;
 
 import com.google.gson.Gson;
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.CredentialTemplateService;

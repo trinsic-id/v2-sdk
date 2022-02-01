@@ -11,7 +11,7 @@ import java.io.IOException
 import java.nio.file.Path
 import java.util.concurrent.ExecutionException
 
-suspend fun main(args: Array<String>) {
+suspend fun main() {
     runVaccineDemo()
 }
 
@@ -20,7 +20,7 @@ suspend fun runVaccineDemo() {
     // createService() {
     val serverConfig = TrinsicUtilities.getTestServerConfig()
     println("Connecting to:\n$serverConfig")
-    val accountService = AccountServiceKt(null, serverConfig, null)
+    val accountService = AccountServiceKt(serverConfig)
     // }
 
     // setupActors() {
@@ -31,8 +31,8 @@ suspend fun runVaccineDemo() {
     // }
 
     // createService() {
-    val walletService = WalletServiceKt(allison, serverConfig, null)
-    val credentialsService = CredentialsServiceKt(clinic, serverConfig, null)
+    val walletService = WalletServiceKt(allison, serverConfig)
+    val credentialsService = CredentialsServiceKt(clinic, serverConfig)
     // }
 
     // storeAndRecallProfile() {

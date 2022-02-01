@@ -8,16 +8,16 @@ import java.io.IOException
 import java.util.concurrent.ExecutionException
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
-suspend fun main(args: Array<String>) {
+suspend fun main() {
     // Make sure you set the TEST_SERVER_ENDPOINT environment variable
     runEcosystemsDemo()
 }
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
-    val accountService = AccountServiceKt(null, TrinsicUtilities.getTestServerConfig(), null)
+    val accountService = AccountServiceKt(TrinsicUtilities.getTestServerConfig())
     val account = accountService.signIn(null).profile
-    val service = ProviderServiceKt(account, TrinsicUtilities.getTestServerConfig(), null)
+    val service = ProviderServiceKt(account, TrinsicUtilities.getTestServerConfig())
     val ecosystem = service.createEcosystem(
         ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").setDescription("My ecosystem")
             .setUri("https://example.com").build()

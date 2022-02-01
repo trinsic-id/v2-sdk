@@ -1,7 +1,8 @@
-package trinsic;
+package trinsic.services;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import trinsic.GrpcException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

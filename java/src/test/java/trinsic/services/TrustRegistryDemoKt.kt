@@ -8,16 +8,16 @@ import java.io.IOException
 import java.util.concurrent.ExecutionException
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
-suspend fun main(args: Array<String>) {
+suspend fun main() {
     // Make sure you set the TEST_SERVER_ENDPOINT environment variable
     runTrustRegistryDemo()
 }
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
-    val accountService = AccountServiceKt(null, TrinsicUtilities.getTestServerConfig(), null)
+    val accountService = AccountServiceKt(TrinsicUtilities.getTestServerConfig())
     val account = accountService.signIn(null).profile
-    val service = TrustRegistryServiceKt(account, TrinsicUtilities.getTestServerConfig(), null)
+    val service = TrustRegistryServiceKt(account, TrinsicUtilities.getTestServerConfig())
     service.registerIssuer(
         TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder().setDidUri("did:example:test")
             .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
