@@ -45,7 +45,7 @@ jobs:
           path: ./libs
           repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }} 
-          name: ["windows", "macos", "linux"]
+          name: [windows, macos, linux]
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=golang
