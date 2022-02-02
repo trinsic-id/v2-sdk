@@ -35,6 +35,12 @@ test("add governance framework", async (t) => {
     t.not(response, null);
 });
 
+test("add governance framework - invalid uri", async (t) => {
+    let trustRegistryService = new TrustRegistryService({profile, server: config});
+
+    const error = await t.throwsAsync(async () => await trustRegistryService.addGovernanceFramework(new AddFrameworkRequest().setGovernanceFramework(new GovernanceFramework())));
+});
+
 test("Demo: Trust Registry", async (t) => {
     let trustRegistryService = new TrustRegistryService({profile, server: config});
 

@@ -110,6 +110,12 @@ export class TrustRegistryService extends ServiceBase {
 
     public addGovernanceFramework(request: AddFrameworkRequest): Promise<AddFrameworkResponse> {
         return new Promise(async (resolve, reject) => {
+            try {
+                const uriString = request.getGovernanceFramework()?.getGovernanceFrameworkUri();
+                new URL(uriString!);
+            } catch (e) {
+                reject(e)
+            }
             this.client.addFramework(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
