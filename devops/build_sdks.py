@@ -48,7 +48,10 @@ def copy_okapi_libs(copy_to: str, windows_path='windows'):
 
     for copy_file in glob.glob(join(copy_from, '*.*')):
         shutil.copy2(copy_file, copy_to)
-    shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
+    try:
+        shutil.copy2(join(okapi_dir, 'libs', 'C_header', 'okapi.h'), copy_to)
+    except FileNotFoundError:
+        pass
 
 
 def clean_dir(language_dir: str) -> None:
