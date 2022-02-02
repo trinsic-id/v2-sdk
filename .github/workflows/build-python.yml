@@ -42,7 +42,6 @@ jobs:
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
-          python -m pip install git+https://github.com/fundthmcalculus/grpclib@fix-issue-150
           python -m pip install pytest pytest-cov
           python ../devops/build_sdks.py
           python -m pytest --cache-clear ./tests --junitxml=test_output.xml --cov=.
