@@ -1,0 +1,3 @@
+betterproto[compiler]
+grpcio-tools
+requests

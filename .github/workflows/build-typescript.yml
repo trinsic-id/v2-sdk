@@ -2,6 +2,7 @@ name: "TypeScript"
 
 on:
   workflow_call:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -10,6 +11,7 @@ on:
       - 'web/**'
       - 'proto/**'
       - '.github/workflows/*typescript*'
+      - "devops/**"
   push:
     branches:
       - main
@@ -18,7 +20,7 @@ on:
       - 'web/**'
       - 'proto/**'
       - '.github/workflows/*typescript*'
-  workflow_dispatch:
+      - "devops/**"
 
 jobs:
   build_test:

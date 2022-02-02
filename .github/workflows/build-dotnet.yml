@@ -9,6 +9,7 @@ on:
       - "dotnet/**"
       - "proto/**"
       - ".github/workflows/*dotnet*"
+      - "devops/**"
   push:
     branches:
       - main
@@ -16,6 +17,7 @@ on:
       - "dotnet/**"
       - "proto/**"
       - ".github/workflows/*dotnet*"
+      - "devops/**"
   workflow_dispatch:
 
 jobs:

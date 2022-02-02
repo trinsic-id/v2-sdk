@@ -39,8 +39,8 @@ jobs:
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - name: Publish package
         run: |
-          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
-          gradle publish
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=java
+          gradle jar
         working-directory: java
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
@@ -49,3 +49,12 @@ jobs:
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
           TEST_SERVER_PORT: 443
           TEST_SERVER_USE_TLS: true
+
+      - name: Upload to Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.API_GITHUB_TOKEN }}
+          file: java/build/libs/trinsic-services-${{ steps.setversion.outputs.packageVersion }}.jar
+          asset_name: trinsic-services-${{ steps.setversion.outputs.packageVersion }}.jar
+          tag: ${{ steps.setversion.outputs.releaseVersion }}
+          overwrite: true

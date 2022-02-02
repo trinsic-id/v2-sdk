@@ -1,13 +1,11 @@
 # The Trinsic Swift SDK
 
-The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any iOS application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/swift).
+The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any application built for iOS, MacCatalyst, or MacOS. The SDK is available for Swift Package Manager and can be added in your dependency section in `Package.swift` as follows:
 
-## Installation
-TODO
+```swift
+dependencies: [
+    .package(name: "Trinsic", url: "https://github.com/trinsic-id/sdk-swift", branch: "main")
+],
+```
 
-## Configuration
-TODO
-
-## Next Steps
-TODO
-
+You can find more details, source code, and tests for the Swift SDK at [Github](https://github.com/trinsic-id/sdk-swift).

@@ -4,30 +4,33 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/connectivity"
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
 	"strings"
 	"testing"
 
+	sdk "github.com/trinsic-id/sdk/go/proto"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/connectivity"
+
 	"github.com/stretchr/testify/assert"
 )
 
+// pathData() {
 func GetBasePath() string {
 	_, fileName, _, _ := runtime.Caller(1)
 	path := filepath.Clean(filepath.Join(filepath.Dir(fileName), "..", "..", "devops", "testdata"))
 	return path
 }
-
 func GetVaccineCertUnsignedPath() string {
 	return filepath.Join(GetBasePath(), "vaccination-certificate-unsigned.jsonld")
 }
 func GetVaccineCertFramePath() string {
 	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
 }
+
+// }
 
 func GetTestServerChannel() *grpc.ClientConn {
 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
@@ -50,6 +53,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	}
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
+	// setupActors() {
 	allison, _, err := accountService.SignIn(context.Background(), nil)
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(allison) {
@@ -67,12 +71,15 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	if !assert2.NotNil(airline) {
 		return
 	}
+	// }
 
+	// storeAndRecallProfile() {
 	// Store profile for later use
 	// File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
 
 	// Create profile from existing data
 	// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
+	// }
 
 	walletService, err := CreateWalletService(clinic, TrinsicTestConfig(), channel)
 	failError(t, "error creating wallet service", err)
@@ -81,6 +88,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
+	// issueCredential() {
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
 	var credentialJson Document
@@ -89,21 +97,24 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	credential, err := credentialService.IssueCredential(context.Background(), credentialJson)
 	failError(t, "error issuing credential", err)
-
 	fmt.Printf("Credential:%s\n", credential)
+	// }
 
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
+	// storeCredential() {
 	walletService.SetProfile(allison)
 	failError(t, "error setting profile", err)
 	itemId, err := walletService.InsertItem(context.Background(), credential)
 	failError(t, "error inserting item", err)
 	fmt.Println("item id", itemId)
+	// }
 
 	// SHARE CREDENTIAL
 	// Allison shares the credential with the venue.
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
+	// shareCredential() {
 	walletService.SetProfile(allison)
 	failError(t, "error reading file", err)
 
@@ -117,9 +128,11 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	credentialProof, err := credentialService.CreateProof(context.Background(), itemId, proofRequestJson)
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
+	// }
 
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
+	// verifyCredential() {
 	walletService.SetProfile(airline)
 	failError(t, "error setting profile", err)
 	valid, err := credentialService.VerifyProof(context.Background(), credentialProof)
@@ -128,6 +141,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	if valid != true {
 		t.Fail()
 	}
+	// }
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
