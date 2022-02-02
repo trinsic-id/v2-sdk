@@ -11,7 +11,11 @@ from os.path import join, abspath, dirname, isdir, split
 import subprocess
 from typing import Dict
 
-import requests
+try:
+    import requests
+except:
+    os.system('pip install -r requests')
+    import requests
 
 
 def parse_version_tag():
