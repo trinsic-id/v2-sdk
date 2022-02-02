@@ -46,7 +46,7 @@ jobs:
           repo: trinsic-id/okapi
       - name: Build with Gradle
         run: |
-          python ../devops/build_sdks.py
+          python ../devops/build_sdks.py --language=golang
           gradle build
         shell: pwsh
         working-directory: java

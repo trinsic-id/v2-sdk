@@ -49,7 +49,7 @@ jobs:
           gem install bundler
           gem install rspec
           bundle install
-          python ../devops/build_sdks.py
+          python ../devops/build_sdks.py --language=ruby
           bundle exec rake
           rake test
           exit 0

@@ -170,20 +170,28 @@ def build_go_docs(args):
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Process SDK building')
     parser.add_argument('--package-version', help='Manual override package version')
+    parser.add_argument('--language', help='Comma-separated languages to build', default='all')
     return parser.parse_args()
 
 
 def main():
     # Get command line arguments
     args = parse_arguments()
+    langs_to_build = [lang.lower() for lang in (args.language + ',').split(',')]
+    build_all = 'all' in langs_to_build
     # Update version information
-    build_python(args)
-    build_java(args)
-    build_ruby(args)
-    build_golang(args)
-    build_java_docs(args)
-    build_dotnet_docs(args)
-    build_go_docs(args)
+    if build_all or 'python' in langs_to_build:
+        build_python(args)
+    if build_all or 'java' in langs_to_build:
+        build_java(args)
+    if build_all or 'ruby' in langs_to_build:
+        build_ruby(args)
+    if build_all or 'golang' in langs_to_build:
+        build_golang(args)
+    if build_all or 'docs' in langs_to_build:
+        build_java_docs(args)
+        build_dotnet_docs(args)
+        build_go_docs(args)
 
 
 if __name__ == "__main__":
