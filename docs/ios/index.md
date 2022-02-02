@@ -6,6 +6,6 @@ The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any ap
 dependencies: [
     .package(name: "Trinsic", url: "https://github.com/trinsic-id/sdk-swift", branch: "main")
 ],
-``
+```
 
 You can find more details, source code, and tests for the Swift SDK at [Github](https://github.com/trinsic-id/sdk-swift).
