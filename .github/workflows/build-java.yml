@@ -39,11 +39,13 @@ jobs:
         with:
           python-version: 3.9
       - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.16.0
         with:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          name: ["windows", "macos", "linux"]
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=golang
