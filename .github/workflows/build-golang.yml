@@ -21,20 +21,29 @@ on:
 jobs:
   build-and-test-golang:
     name: Build, Test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest ] # , macos-latest ] disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu] ] # , macos-latest ] disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
     steps:
       - uses: actions/checkout@v2
-      - name: Download workflow artifact
+      - name: Download ${{ matrix.os-artifact[0] }} binaries
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
+          path: ./libs/${{ matrix.os-artifact[1] }}
           repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
+      - name: Download C header
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs/C_header
+          repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: C_header
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
@@ -57,8 +66,6 @@ jobs:
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           LD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/go/services"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/go/services"
           CGO_LDFLAGS: "-L${{ github.workspace }}/go/services"
           CGO_CFLAGS: "-I${{ github.workspace }}/go/services"
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
@@ -68,7 +75,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Golang Unit Test Results (${{ matrix.os }})
+          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
           path: 'go/services/test_output*.xml'
 
   publish-test-results-golang:
