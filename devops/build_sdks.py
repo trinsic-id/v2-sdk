@@ -86,7 +86,12 @@ def get_language_dir(language_name: str) -> str:
     """
     return abspath(join(dirname(abspath(__file__)), '..', language_name))
 
-  
+
+def get_sdk_dir() -> str:
+    """Get the full path of the root of the sdk repository"""
+    return abspath(join(dirname(abspath(__file__)), '..'))
+
+
 def build_python(args) -> None:
     # Update version in setup.cfg
     python_dir = get_language_dir('python')
@@ -134,18 +139,17 @@ def get_github_version(github_token: str = None) -> str:
 def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
     # npm install in the root of sdk
-    subprocess.Popen(r'node ../node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ../docs/reference/java', cwd=dirname(__file__) ).wait()
+    subprocess.Popen(r'node ./node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ./docs/reference/java', cwd=get_sdk_dir() ).wait()
 
 
 def build_dotnet_docs(args) -> None:
     # https://github.com/Doraku/DefaultDocumentation
     # dotnet tool install DefaultDocumentation.Console -g
-    assembly_file = '../dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
-    output_doc_folder = '../docs/reference/dotnet'
-    current_dir = dirname(__file__)
-    clean_dir(abspath(join(current_dir, output_doc_folder)))
+    assembly_file = './dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll'
+    output_doc_folder = './docs/reference/dotnet'
+    clean_dir(abspath(join(get_sdk_dir(), output_doc_folder)))
     subprocess.Popen(f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-                     cwd=current_dir).wait()
+                     cwd=get_sdk_dir()).wait()
 
 
 def build_go_docs(args):
