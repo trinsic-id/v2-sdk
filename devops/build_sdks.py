@@ -14,7 +14,7 @@ from typing import Dict
 try:
     import requests
 except:
-    os.system('pip install -r requests')
+    os.system('pip install requests')
     import requests
 
 
