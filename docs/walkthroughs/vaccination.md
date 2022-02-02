@@ -130,7 +130,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 === "Java"
     <!--codeinclude-->
     ```java
-    [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
+    [Setup Wallets](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -171,7 +171,7 @@ If you would like to save the profile for future use, you can simply export the 
 === "Java"
     <!--codeinclude-->
     ```java
-    [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
+    [Save and Load Profile](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:storeAndRecallProfile
     ```
     <!--/codeinclude-->
 
@@ -271,14 +271,14 @@ To issue this credential we'll specify links to the json files, set the active p
     We specify links to the jsonld files:
     <!--codeinclude-->
     ```java
-    [Data Paths](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:pathData
+    [Data Paths](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:pathData
     ```
     <!--/codeinclude-->
 
     Let's set the active profile to the clinic, and call the issuance endpoint
     <!--codeinclude-->
     ```java
-    [Issue Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredential
+    [Issue Credential](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -354,7 +354,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Java"
     <!--codeinclude-->
     ```java
-    [Store Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeCredential
+    [Store Credential](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -426,7 +426,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Java"
     <!--codeinclude-->
     ```java
-    [Share Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:shareCredential
+    [Share Credential](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -480,7 +480,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Java"
     <!--codeinclude-->
     ```java
-    [Verify Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyCredential
+    [Verify Credential](../../java/src/test/java/trinsic/services/VaccineDemo.java) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
