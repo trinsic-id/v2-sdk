@@ -13,6 +13,8 @@ using Xunit;
 using Xunit.Abstractions;
 using Trinsic;
 using FluentAssertions;
+using Google.Protobuf;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -72,6 +74,13 @@ public class Tests
         // Sign the credential using BBS+ signature scheme
         var credential = await credentialsService.IssueCredentialAsync(document: JObject.Parse(credentialJson));
         _testOutputHelper.WriteLine($"Credential:\n{credential.ToString(Formatting.Indented)}");
+        // }
+
+        // storeAndRecallProfile {
+        // Serialize profile by exporting the binary protobuf form
+        File.WriteAllBytes("allison.bin", allison.ToByteArray());
+        // Create profile from existing data
+        allison = AccountProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
         // }
 
         // STORE CREDENTIAL

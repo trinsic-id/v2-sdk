@@ -41,7 +41,7 @@ When creating a product that uses identity wallets, it is useful to have the too
 ## Open Standards
 Trinsic's technology is all based on open web standards. Our goal is to promote a future of applications where identity and personal data is independent from applications. To meet this end, we use decentralized identifiers that can be generated and resolved without needing a centralized database. We also follow the data model for verifiable credentials so that data sent by one application can be presented at another without requiring a specific vendor. 
 
-[Learn More](./tech.md)
+[Learn More](./standards.md)
 ## Security and Privacy
 As a hosting provider of identity wallets, we've recognized the need for strong security and privacy since before we started building. 
 

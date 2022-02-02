@@ -23,4 +23,4 @@ A layer built on top of Core, Trinsic Ecosystems is a product for organizations 
 At Trinsic, we call the organizations that bring together these ecosystems of companies and customers "providers" since they are providing digital trust to the ecosystem through Trinsic's infrastructure.
 
 !!! Note "Get Started in 15 Minutes"
-    Want to get started using digital credentials quickly? Try our [tutorial](tutorial.md) to get a conceptual walkthrough of a common use case.
+    Want to get started using digital credentials quickly? Try our [tutorial](walkthroughs/vaccination.md) to get a conceptual walkthrough of a common use case.

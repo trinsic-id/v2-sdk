@@ -9,6 +9,7 @@ on:
       - "cli/**"
       - "proto/**"
       - ".github/workflows/*rust*"
+      - "devops/**"
   push:
     branches:
       - main
@@ -16,6 +17,7 @@ on:
       - "cli/**"
       - "proto/**"
       - ".github/workflows/*rust*"
+      - "devops/**"
   workflow_dispatch:
     inputs:
       packageVersion:
