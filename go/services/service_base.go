@@ -12,10 +12,10 @@ import (
 
 func newServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
 	if channel != nil && serverConfig != nil {
-		return nil, fmt.Errorf("Cannot provide both a channel and a server configuration")
+		return nil, fmt.Errorf("cannot provide both a channel and a server configuration")
 	}
 	if channel == nil {
-		channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
+		channel2, err := CreateChannelFromConfig(serverConfig)
 		if err != nil {
 			return nil, err
 		}

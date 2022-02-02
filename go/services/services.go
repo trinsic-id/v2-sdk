@@ -42,7 +42,7 @@ func TrinsicTestConfig() *sdk.ServerConfig {
 	}
 }
 
-func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
+func CreateChannelFromConfig(config *sdk.ServerConfig) (*grpc.ClientConn, error) {
 	if config == nil {
 		config = TrinsicProductionConfig()
 	}
@@ -50,10 +50,11 @@ func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
 	if config.UseTls {
 		scheme = "https"
 	}
-	return fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
+	channelUrl := fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
+	return createChannel(channelUrl, true)
 }
 
-func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, error) {
+func createChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, error) {
 	var serviceUrl, err = url.Parse(serviceAddress)
 	if err != nil {
 		return nil, err
