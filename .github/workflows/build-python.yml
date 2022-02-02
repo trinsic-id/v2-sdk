@@ -37,6 +37,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:

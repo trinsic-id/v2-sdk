@@ -44,6 +44,7 @@ jobs:
           workflow: "build-libs.yml"
           path: ./libs
           repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and run tests
         run: |
           gem install bundler
