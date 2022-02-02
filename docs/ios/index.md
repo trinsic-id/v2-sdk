@@ -1,6 +1,6 @@
 # The Trinsic Swift SDK
 
-The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any iOS application. The SDK is available for Swift Package Manager and can be added in your dependency section in `Package.swift` as follows:
+The Trinsic Swift SDK makes it easy to interact with the Trinsic API from any application built for iOS, MacCatalyst, or MacOS. The SDK is available for Swift Package Manager and can be added in your dependency section in `Package.swift` as follows:
 
 ```swift
 dependencies: [
