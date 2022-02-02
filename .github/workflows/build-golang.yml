@@ -8,6 +8,7 @@ on:
       - "go/**"
       - "proto/**"
       - ".github/workflows/*golang*"
+      - "devops/**"
   push:
     branches:
       - main
@@ -15,6 +16,7 @@ on:
       - "go/**"
       - "proto/**"
       - ".github/workflows/*golang*"
+      - "devops/**"
 
 jobs:
   build-and-test-golang:
