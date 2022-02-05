@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'google-protobuf', '~> 3.17', '>= 3.17.3'
   spec.add_dependency 'grpc', '~> 1.40'
   spec.add_dependency 'concurrent-ruby', '~> 1.1.9'
-  spec.add_dependency 'trinsic-okapi', '~> 1.2.0'
+  spec.add_dependency 'trinsic-okapi', '~> 1.2.1'
   spec.add_dependency 'digest-blake3', '~>0.37.0.1'
 
   spec.add_development_dependency 'minitest', '~> 5.14'

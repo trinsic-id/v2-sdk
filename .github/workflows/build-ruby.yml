@@ -23,10 +23,11 @@ jobs:
     name: Build, Test
     runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
+      fail-fast: false
       matrix:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby-version: [ '2.5', '2.6', '2.7', '3.0' ]
+        ruby-version: [ '2.6', '2.7', '3.0' ]
 
     steps:
       - uses: actions/checkout@v2
@@ -54,14 +55,11 @@ jobs:
           python ../devops/build_sdks.py --language=ruby
           bundle exec rake
           rake test
-          exit 0
         shell: pwsh
         working-directory: ruby
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           RUBY_DLL_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"  # Required for Ruby on Windows
-          DYLD_FALLBACK_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
-          DYLD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
           TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
           TEST_SERVER_PORT: 443
