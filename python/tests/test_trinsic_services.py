@@ -1,4 +1,5 @@
 import asyncio
+import platform
 import unittest
 
 from samples.ecosystem_demo import ecosystem_demo
@@ -15,6 +16,9 @@ from trinsic.trinsic_util import trinsic_test_config
 # Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
 
 class TestServices(unittest.TestCase):
+    def test_python_platform(self):
+        print(f"Running on: {platform.platform()}")
+
     def test_servicebase_setprofile(self):
         async def test_code():
             wallet_service = WalletService(None, trinsic_test_config())
