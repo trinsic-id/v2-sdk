@@ -40,7 +40,7 @@ jobs:
         run: |
           gem install bundler
           bundle install
-          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }}
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=ruby
 
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
