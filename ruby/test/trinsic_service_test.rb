@@ -6,10 +6,6 @@ require 'trinsic_services'
 
 class TrinsicServiceTest < Minitest::Test
 
-  def get_library_path
-    File.expand_path(File.join(File.dirname(__FILE__), 'libs'))
-  end
-
   def before_setup
     Okapi::load_native_library
   end

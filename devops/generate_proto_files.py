@@ -5,14 +5,11 @@ import glob
 import itertools
 import logging
 import os
-import subprocess
 from platform import system
-import shutil
 import urllib.request
 from os.path import abspath, join, dirname
 from typing import List, Dict, Union
 
-import importlib.resources
 
 from build_sdks import update_line, clean_dir, get_language_dir
 
