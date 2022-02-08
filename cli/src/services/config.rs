@@ -4,6 +4,7 @@ use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
+use prost::Message;
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::{env::var, path::Path};
@@ -264,7 +265,7 @@ impl Interceptor for DefaultConfig {
                 .duration_since(UNIX_EPOCH)
                 .unwrap()
                 .as_millis() as i64,
-            request_hash: blake3::hash(&request.get_ref().to_vec())
+            request_hash: blake3::hash(&request.get_ref().encode_to_vec())
                 .as_bytes()
                 .to_vec(),
         };
