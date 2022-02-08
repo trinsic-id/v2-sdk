@@ -1,27 +1,27 @@
-const test = require("ava");
-const { WalletService, ServerConfig, AccountService, CredentialService, TemplateService,
-  CreateCredentialTemplateRequest, TemplateField, FieldType, IssueFromTemplateRequest
-} = require("../lib");
-const { Struct } = require("google-protobuf/google/protobuf/struct_pb");
-const { InviteRequest } = require("../lib");
-const { randomEmail } = require("./helpers/random");
-const testData = require("./TestData");
+import test from "ava";
+import {
+  AccountService,
+  CreateCredentialTemplateRequest,
+  CredentialService, FieldType, IssueFromTemplateRequest,
+  TemplateField,
+  TemplateService,
+  WalletService
+} from "../src";
+import {getTestServerConfig, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
+import {AccountProfile} from "../lib";
+
 
 require("dotenv").config();
 
-const endpoint = process.env.TEST_SERVER_ENDPOINT;
-const port = process.env.TEST_SERVER_PORT;
-const useTls = process.env.TEST_SERVER_USE_TLS;
+const config = getTestServerConfig()
 
-const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
-
-let profile = null;
+let profile = new AccountProfile();
 
 test.before(async () => {
   let service = new AccountService({ server: config });
   let response = await service.signIn();
 
-  profile = response.getProfile();
+  profile = response.getProfile()!;
 });
 
 test("get account info", async (t) => {
@@ -35,7 +35,7 @@ test("create new account", async (t) => {
   let service = new AccountService({ server: config });
   let response = await service.signIn();
 
-  service.updateActiveProfile(response.getProfile());
+  service.updateActiveProfile(response.getProfile()!);
 
   t.not(profile, null);
   t.pass();
@@ -45,7 +45,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   let credentialService = new CredentialService({ profile, server: config });
   let walletService = new WalletService({ profile, server: config });
 
-  let issueResponse = await credentialService.issueCredential(testData.vaccineCertUnsigned());
+  let issueResponse = await credentialService.issueCredential(getVaccineCertUnsignedJSON());
 
   let itemId = await walletService.insertItem(issueResponse);
 
@@ -57,7 +57,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   t.not(items, null);
   t.true(items.getItemsList().length > 0);
 
-  let proof = await credentialService.createProof(itemId, testData.vaccineCertFrame());
+  let proof = await credentialService.createProof(itemId, getVaccineCertFrameJSON());
 
   let valid = await credentialService.verifyProof(proof);
 
@@ -79,8 +79,8 @@ test("Demo: template management and credential issuance from template", async (t
 
   t.not(template, null);
   t.not(template.getData(), null);
-  t.not(template.getData().getId(), null);
-  t.not(template.getData().getSchemaUri(), null);
+  t.not(template.getData()!.getId(), null);
+  t.not(template.getData()!.getSchemaUri(), null);
 
   // issue credential from this template
   let values = JSON.stringify({
@@ -89,7 +89,7 @@ test("Demo: template management and credential issuance from template", async (t
     age: 42
   });
 
-  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
+  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData()!.getId()).setValuesJson(values));
 
   t.not(jsonDocument, null);
   t.true(jsonDocument.hasOwnProperty("id"));
