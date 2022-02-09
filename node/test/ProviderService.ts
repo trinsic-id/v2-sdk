@@ -1,24 +1,17 @@
-const test = require("ava");
-const {InviteRequest, AccountService, ProviderService, ServerConfig, CreateEcosystemRequest} = require("../lib");
-const {Struct} = require("google-protobuf/google/protobuf/struct_pb");
-const fs = require("fs");
-const path = require("path");
-const {randomEmail} = require("./helpers/random");
+import test from "ava"
+import {AccountService, CreateEcosystemRequest, ProviderService, AccountProfile} from "../src";
+import {getTestServerConfig} from "./TestData";
 
 require("dotenv").config();
 
-const endpoint = process.env.TEST_SERVER_ENDPOINT;
-const port = process.env.TEST_SERVER_PORT;
-const useTls = process.env.TEST_SERVER_USE_TLS;
-
-const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
-let profile = null;
+const config = getTestServerConfig();
+let profile = new AccountProfile();
 
 test.before(async t => {
-    let service = new AccountService({profile: null, server: config});
+    let service = new AccountService({profile: undefined, server: config});
     let response = await service.signIn();
 
-    profile = response.getProfile();
+    profile = response.getProfile()!;
 });
 
 test("make an invitation", async (t) => {

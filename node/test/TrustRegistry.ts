@@ -1,31 +1,27 @@
-const test = require("ava");
-const {
+import test from "ava";
+import {
+    AccountProfile,
     TrustRegistryService,
     AddFrameworkRequest,
     GovernanceFramework,
     AccountService,
-    ServerConfig,
     RegisterIssuerRequest,
     ResponseStatus,
     RegisterVerifierRequest, CheckIssuerStatusRequest, CheckVerifierStatusRequest, RegistrationStatus,
-    SearchRegistryRequest,
-} = require("../lib");
-const {v4: uuid} = require("uuid");
+} from "../src"
+import {v4 as uuid} from "uuid";
+import {getTestServerConfig} from "./TestData";
 
 require("dotenv").config();
 
-const endpoint = process.env.TEST_SERVER_ENDPOINT;
-const port = process.env.TEST_SERVER_PORT;
-const useTls = process.env.TEST_SERVER_USE_TLS;
-
-const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTls);
-let profile = null;
+const config = getTestServerConfig()
+let profile = new AccountProfile();
 
 test.before(async t => {
     let service = new AccountService({server: config});
     let response = await service.signIn();
 
-    profile = response.getProfile();
+    profile = response.getProfile()!;
 });
 
 test("add governance framework", async (t) => {

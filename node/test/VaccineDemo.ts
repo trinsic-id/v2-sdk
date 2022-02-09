@@ -1,14 +1,11 @@
-const test = require("ava");
-const {AccountService, CredentialService, ServerConfig, WalletService} = require("../lib");
-const testData = require("./TestData")
+import test from "ava";
+
+import {AccountService, CredentialService, WalletService} from "../src";
+import {getTestServerConfig, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
 
 require("dotenv").config();
 
-const endpoint = process.env.TEST_SERVER_ENDPOINT;
-const port = process.env.TEST_SERVER_PORT;
-const useTLS = process.env.TEST_SERVER_USE_TLS !== "false"; // This ensures the default is true for security.
-
-const config = new ServerConfig().setEndpoint(endpoint).setPort(Number(port)).setUseTls(useTLS);
+const config = getTestServerConfig()
 
 async function vaccineDemo() {
     // createAccountService() {
@@ -17,9 +14,9 @@ async function vaccineDemo() {
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    const allison = (await accountService.signIn()).getProfile();
-    const clinic = (await accountService.signIn()).getProfile();
-    const airline = (await accountService.signIn()).getProfile();
+    const allison = (await accountService.signIn()).getProfile()!;
+    const clinic = (await accountService.signIn()).getProfile()!;
+    const airline = (await accountService.signIn()).getProfile()!;
     // }
 
     accountService.updateActiveProfile(clinic);
@@ -33,7 +30,7 @@ async function vaccineDemo() {
 
     // issueCredential() {
     // Sign a credential as the clinic and send it to Allison
-    const credentialJson = testData.vaccineCertUnsigned()
+    const credentialJson = getVaccineCertUnsignedJSON()
     const credential = await credentialService.issueCredential(credentialJson);
     // }
     console.log(`Credential=${credential}`);
@@ -50,7 +47,7 @@ async function vaccineDemo() {
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
     credentialService.updateActiveProfile(allison);
-    const proofRequestJson = testData.vaccineCertFrame();
+    const proofRequestJson = getVaccineCertFrameJSON();
     const proof = await credentialService.createProof(itemId, proofRequestJson);
     // }
     console.log(`Proof=${proof}`);
