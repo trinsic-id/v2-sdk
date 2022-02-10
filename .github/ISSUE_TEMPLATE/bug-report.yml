@@ -1,0 +1,12 @@
+---
+name: Bug Report
+about: Reporting bugs found in production, staging, other environments for trinsic services v2
+title: Bug Report
+labels: 'bug'
+assignees: michaeldboyd
+
+---
+
+# Description / Reproduction steps
+
+Describe the bug you experienced, and the steps to reproduce it, if any. Sample code is always helpful, but bear in mind this is a public repository (don't post any sensitive information!).
