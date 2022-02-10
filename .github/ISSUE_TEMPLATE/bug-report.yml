@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Reporting bugs found in production, staging, other environments for trinsic services v2
+description: Reporting bugs found in production, staging, other environments for trinsic services v2
 title: Bug Report
 labels: 'bug'
 assignees: michaeldboyd
