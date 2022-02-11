@@ -5,6 +5,19 @@ title: Bug Report
 labels: 'bug'
 assignees: michaeldboyd
 body:
+- type: textarea
+  id: repro-steps
+  attributes:
+    label: Reproduction steps
+    value: |
+      1. Step 1
+      2. Step 2
+      3. ...
+- type: textarea
+  id: repro-code
+  attributes:
+    label: Reproduction Code
+    value:
 ---
 
 # Description / Reproduction steps
