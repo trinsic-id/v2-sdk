@@ -4,9 +4,28 @@ description: Reporting bugs found in production, staging, other environments for
 title: Bug Report
 labels: 'bug'
 assignees: michaeldboyd
-
+body:
+- type: textarea
+  id: repro-steps
+  attributes:
+    label: Reproduction steps
+    value: |
+      1. Step 1
+      2. Step 2
+      3. ...
+- type: textarea
+  id: repro-code
+  attributes:
+    label: Reproduction Code
+    value:
 ---
 
 # Description / Reproduction steps
 
-Describe the bug you experienced, and the steps to reproduce it, if any. Sample code is always helpful, but bear in mind this is a public repository (don't post any sensitive information!).
+Describe the bug you experienced, and the steps to reproduce it, if any. 
+- [ ] Step 1
+- [ ] Step 2 ...
+
+# Sample Code
+
+Sample code is always helpful, but bear in mind this is a public repository (don't post any sensitive information!).
