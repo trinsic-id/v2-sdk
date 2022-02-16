@@ -36,7 +36,11 @@ export default abstract class ServiceBase {
 
   async getMetadata(request: Message): Promise<Metadata> {
     if (!this.activeProfile) {
-      throw new Error("profile must be set")
+      throw new Error("profile must be set");
+    }
+
+    if (this.activeProfile!.getProtection()?.getEnabled()) {
+      throw new Error("profile is protected; you must use security code to remove the protection first");
     }
 
     let requestData = request.serializeBinary();
