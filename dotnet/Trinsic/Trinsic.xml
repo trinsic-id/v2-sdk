@@ -658,6 +658,17 @@
             Delete item request
             </summary>
         </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteItemRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.DeleteItemRequest.ItemId">
+            <summary>
+            item identifier of the record to delete
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteItemResponse.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWallet.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -680,7 +691,7 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.DeleteItem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Delete an item from the wallet permanently
             </summary>
@@ -778,7 +789,7 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteItem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Delete an item from the wallet permanently
             </summary>
@@ -788,7 +799,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.Deleteitem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteItem(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)">
             <summary>
             Delete an item from the wallet permanently
             </summary>
@@ -796,7 +807,7 @@
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteitemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteItemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Delete an item from the wallet permanently
             </summary>
@@ -806,7 +817,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteitemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.DeleteItemAsync(Trinsic.Services.UniversalWallet.V1.DeleteItemRequest,Grpc.Core.CallOptions)">
             <summary>
             Delete an item from the wallet permanently
             </summary>
