@@ -156,13 +156,13 @@ subcommands:
                   help: The template id to use for issuance
                   takes_value: true
                   required: true
-              - input:
-                  long: input
+              - values-data:
+                  long: values-data
                   value_name: JSON
                   help: The JSON values of the credential subject
                   takes_value: true
-              - input-file:
-                  long: input-file
+              - values-file:
+                  long: values-file
                   value_name: FILE
                   help: The file with JSON values of the credential subject
                   takes_value: true
