@@ -63,7 +63,7 @@ export class WalletService extends ServiceBase {
 
     public deleteItem(request: DeleteItemRequest): Promise<DeleteItemResponse> {
         return new Promise(async (resolve, reject) => {
-            this.walletClient.deleteitem(request, await this.getMetadata(request),
+            this.walletClient.deleteItem(request, await this.getMetadata(request),
                 (error, response) => {
                     if (error) {
                         reject(error);
