@@ -13,6 +13,12 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .subcommand_matches("insert-item")
                 .expect("Error parsing request"),
         );
+    } else if args.is_present("delete-item") {
+        return delete_item(
+            &args
+                .subcommand_matches("delete-item")
+                .expect("Error parsing request"),
+        );
     } else if args.is_present("send") {
         return send(
             &args
@@ -37,6 +43,12 @@ fn insert_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     })
 }
 
+fn delete_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    Command::DeleteItem(DeleteItemArgs {
+        item_id: args.value_of("item-id"),
+    })
+}
+
 fn send<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     Command::Send(SendArgs {
         email: args.value_of("email"),
@@ -48,6 +60,7 @@ fn send<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 pub enum Command<'a> {
     Search(SearchArgs<'a>),
     InsertItem(InsertItemArgs<'a>),
+    DeleteItem(DeleteItemArgs<'a>),
     Send(SendArgs<'a>),
 }
 
@@ -60,6 +73,11 @@ pub struct SearchArgs<'a> {
 pub struct InsertItemArgs<'a> {
     pub item_type: Option<&'a str>,
     pub item: Option<&'a str>,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct DeleteItemArgs<'a> {
+    pub item_id: Option<&'a str>,
 }
 
 #[derive(Debug, PartialEq)]
