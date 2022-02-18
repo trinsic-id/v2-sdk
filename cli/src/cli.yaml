@@ -116,6 +116,15 @@ subcommands:
                   help: Path to file containing item data
                   takes_value: true
                   required: true
+        - delete-item:
+            about: Delete item into the wallet
+            args:
+              - item-id:
+                  long: item-id
+                  value_name: ID
+                  help: The item id of the record to delete
+                  takes_value: true
+                  required: true
         - send:
             about: Send a document to another wallet
             args:
