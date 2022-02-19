@@ -48,7 +48,7 @@ public class WalletService extends ServiceBase {
     }
 
     public ListenableFuture<UniversalWalletOuterClass.DeleteItemResponse> deleteItem(UniversalWalletOuterClass.DeleteItemRequest request) throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).deleteitem(request);
+        return withMetadata(stub, request).deleteItem(request);
     }
 }
 
