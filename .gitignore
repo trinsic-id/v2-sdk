@@ -388,3 +388,4 @@ java/allison.bin
 devops/protoc-plugins/
 
 *.code-workspace
+ruby/.ruby-version

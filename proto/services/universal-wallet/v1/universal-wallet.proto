@@ -41,8 +41,13 @@ message InsertItemResponse {
 }
 
 // Delete item request
-message DeleteItemRequest {}
-message DeleteItemResponse {}
+message DeleteItemRequest {
+    // item identifier of the record to delete
+    string item_id = 1;
+}
+message DeleteItemResponse {
+    services.common.v1.ResponseStatus status = 1;
+}
 
 service UniversalWallet {
 
@@ -53,6 +58,6 @@ service UniversalWallet {
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
 
     // Delete an item from the wallet permanently
-    rpc Deleteitem(DeleteItemRequest) returns (DeleteItemResponse);
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
 }
 

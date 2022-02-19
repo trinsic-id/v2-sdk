@@ -1,6 +1,7 @@
 use std::default::*;
 
 use super::super::parser::wallet::*;
+use crate::proto::services::universalwallet::v1::DeleteItemRequest;
 use crate::utils::read_file_as_string;
 use crate::{grpc_channel, grpc_client_with_auth};
 use crate::{
@@ -27,6 +28,7 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
     match args {
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
+        Command::DeleteItem(args) => Ok(delete_item(args, config)),
         Command::Send(args) => Ok(send(args, config)),
     }
 }
@@ -77,6 +79,20 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
         })
         .await
         .expect("Insert item failed")
+        .into_inner();
+
+    println!("{:#?}", response);
+}
+
+#[tokio::main]
+async fn delete_item(args: &DeleteItemArgs, config: DefaultConfig) {
+    let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
+    let response = client
+        .delete_item(DeleteItemRequest {
+            item_id: args.item_id.map_or(String::default(), |x| x.to_string()),
+        })
+        .await
+        .expect("Delete item failed")
         .into_inner();
 
     println!("{:#?}", response);

@@ -2,6 +2,8 @@ import ServiceBase, {ServiceOptions} from "./ServiceBase";
 import {
     AccountClient,
     AccountDetails,
+    AccountProfile,
+    ConfirmationMethod,
     InfoRequest,
     InfoResponse,
     ListDevicesRequest,
@@ -10,7 +12,10 @@ import {
     RevokeDeviceResponse,
     SignInRequest,
     SignInResponse,
+    TokenProtection,
 } from "./proto";
+import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
+
 
 export class AccountService extends ServiceBase {
     client: AccountClient;
@@ -47,6 +52,20 @@ export class AccountService extends ServiceBase {
                 }
             });
         });
+    }
+
+    public async protect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
+        const cloned = profile.clone();
+        const request = new BlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
+        const result = await Oberon.blindToken(request);
+        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+    }
+
+    public async unprotect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
+        const cloned = profile.clone();
+        const request = new UnBlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
+        const result = await Oberon.unblindToken(request);
+        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
     }
 
     public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {

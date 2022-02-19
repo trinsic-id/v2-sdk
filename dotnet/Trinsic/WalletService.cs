@@ -95,10 +95,10 @@ public class WalletService : ServiceBase
     }
 
     public async Task<DeleteItemResponse> DeleteItemAsync(DeleteItemRequest request) {
-        return await Client.DeleteitemAsync(request, await BuildMetadataAsync(request));
+        return await Client.DeleteItemAsync(request, await BuildMetadataAsync(request));
     }
 
     public DeleteItemResponse DeleteItem(DeleteItemRequest request) {
-        return Client.Deleteitem(request, BuildMetadata(request));
+        return Client.DeleteItem(request, BuildMetadata(request));
     }
 }

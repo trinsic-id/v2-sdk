@@ -8,6 +8,7 @@ on:
       - "java/**"
       - "proto/**"
       - ".github/workflows/*java*"
+      - "devops/**"
   push:
     branches:
       - main
@@ -15,15 +16,16 @@ on:
       - "java/**"
       - "proto/**"
       - ".github/workflows/*java*"
+      - "devops/**"
 
 jobs:
   build-and-test-java:
     name: Build
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
 
     steps:
       - uses: actions/checkout@v2
@@ -36,15 +38,17 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Download workflow artifact
-        uses: dawidd6/action-download-artifact@v2.14.0
+      - name: Download ${{ matrix.os-artifact[0] }} binaries
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs
+          path: ./libs/${{ matrix.os-artifact[1] }}
           repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Build with Gradle
         run: |
-          python ../devops/build_sdks.py
+          python ../devops/build_sdks.py --language=java
           gradle build
         shell: pwsh
         working-directory: java
