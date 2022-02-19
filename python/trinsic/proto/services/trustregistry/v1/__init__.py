@@ -188,7 +188,7 @@ class TrustRegistryStub(betterproto.ServiceStub):
         *,
         query: str = "",
         continuation_token: str = "",
-        options: "__common_v1__.RequestOptions" = None,
+        options: "__common_v1__.RequestOptions" = None
     ) -> "SearchRegistryResponse":
 
         request = SearchRegistryRequest()
@@ -216,9 +216,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = RegisterIssuerRequest()
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
         request.valid_from_utc = valid_from_utc
         request.valid_until_utc = valid_until_utc
@@ -243,9 +243,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = RegisterVerifierRequest()
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
         request.valid_from_utc = valid_from_utc
         request.valid_until_utc = valid_until_utc
@@ -268,9 +268,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = UnregisterIssuerRequest()
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
         request.governance_framework_uri = governance_framework_uri
 
@@ -291,9 +291,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
         request = UnregisterVerifierRequest()
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
         request.governance_framework_uri = governance_framework_uri
 
@@ -315,9 +315,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
         request = CheckIssuerStatusRequest()
         request.governance_framework_uri = governance_framework_uri
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.credential_type_uri = credential_type_uri
 
         return await self._unary_unary(
@@ -338,9 +338,9 @@ class TrustRegistryStub(betterproto.ServiceStub):
         request = CheckVerifierStatusRequest()
         request.governance_framework_uri = governance_framework_uri
         if did_uri:
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if x509_cert:
-            request.x509_cert = x509_cert
+        request.x509_cert = x509_cert
         request.presentation_type_uri = presentation_type_uri
 
         return await self._unary_unary(

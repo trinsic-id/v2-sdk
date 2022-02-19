@@ -64,7 +64,7 @@ class CommonStub(betterproto.ServiceStub):
         aad: bytes = b"",
         ciphertext: bytes = b"",
         tag: bytes = b"",
-        recipients: Optional[List["EncryptionRecipient"]] = None,
+        recipients: Optional[List["EncryptionRecipient"]] = None
     ) -> "___pbmse_v1__.EncryptedMessage":
         recipients = recipients or []
 

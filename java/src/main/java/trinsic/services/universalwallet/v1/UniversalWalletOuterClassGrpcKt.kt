@@ -46,10 +46,10 @@ object UniversalWalletGrpcKt {
     @JvmStatic
     get() = UniversalWalletGrpc.getInsertItemMethod()
 
-  val deleteitemMethod: MethodDescriptor<UniversalWalletOuterClass.DeleteItemRequest,
+  val deleteItemMethod: MethodDescriptor<UniversalWalletOuterClass.DeleteItemRequest,
       UniversalWalletOuterClass.DeleteItemResponse>
     @JvmStatic
-    get() = UniversalWalletGrpc.getDeleteitemMethod()
+    get() = UniversalWalletGrpc.getDeleteItemMethod()
 
   /**
    * A stub for issuing RPCs to a(n) services.universalwallet.v1.UniversalWallet service as
@@ -115,10 +115,10 @@ object UniversalWalletGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun deleteitem(request: UniversalWalletOuterClass.DeleteItemRequest, headers: Metadata =
+    suspend fun deleteItem(request: UniversalWalletOuterClass.DeleteItemRequest, headers: Metadata =
         Metadata()): UniversalWalletOuterClass.DeleteItemResponse = unaryRpc(
       channel,
-      UniversalWalletGrpc.getDeleteitemMethod(),
+      UniversalWalletGrpc.getDeleteItemMethod(),
       request,
       callOptions,
       headers
@@ -162,7 +162,7 @@ object UniversalWalletGrpcKt {
         StatusException(UNIMPLEMENTED.withDescription("Method services.universalwallet.v1.UniversalWallet.InsertItem is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.Deleteitem.
+     * Returns the response to an RPC for services.universalwallet.v1.UniversalWallet.DeleteItem.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -172,9 +172,9 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun deleteitem(request: UniversalWalletOuterClass.DeleteItemRequest):
+    open suspend fun deleteItem(request: UniversalWalletOuterClass.DeleteItemRequest):
         UniversalWalletOuterClass.DeleteItemResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.universalwallet.v1.UniversalWallet.Deleteitem is unimplemented"))
+        StatusException(UNIMPLEMENTED.withDescription("Method services.universalwallet.v1.UniversalWallet.DeleteItem is unimplemented"))
 
     final override fun bindService(): ServerServiceDefinition = builder(getServiceDescriptor())
       .addMethod(unaryServerMethodDefinition(
@@ -189,8 +189,8 @@ object UniversalWalletGrpcKt {
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = UniversalWalletGrpc.getDeleteitemMethod(),
-      implementation = ::deleteitem
+      descriptor = UniversalWalletGrpc.getDeleteItemMethod(),
+      implementation = ::deleteItem
     )).build()
   }
 }

@@ -149,9 +149,9 @@ class ProviderStub(betterproto.ServiceStub):
         request.participant = participant
         request.description = description
         if email is not None and email != "":
-            request.email = email
+        request.email = email
         if phone is not None and phone != "":
-            request.phone = phone
+        request.phone = phone
         if didcomm_invitation is not None:
             request.didcomm_invitation = didcomm_invitation
 

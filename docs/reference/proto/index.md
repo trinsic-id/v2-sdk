@@ -1363,6 +1363,11 @@ The referenece_id passed is the response from the
 Delete item request
 
 
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| item_id | [string](#string) |  | item identifier of the record to delete |
+
+
 
 
 
@@ -1371,6 +1376,11 @@ Delete item request
 
 ### DeleteItemResponse
 
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
 
 
 
@@ -1459,7 +1469,7 @@ Search response object
 | ----------- | ------------ | ------------- | ------------|
 | Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) | Search the wallet using a SQL-like syntax |
 | InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) | Insert an item into the wallet |
-| Deleteitem | [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest) | [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse) | Delete an item from the wallet permanently |
+| DeleteItem | [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest) | [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse) | Delete an item from the wallet permanently |
 
  
 

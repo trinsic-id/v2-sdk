@@ -163,7 +163,7 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
         self,
         *,
         reveal_document: "__common_v1__.JsonPayload" = None,
-        document_id: str = "",
+        document_id: str = ""
     ) -> "CreateProofResponse":
 
         request = CreateProofRequest()
@@ -202,9 +202,9 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
 
         request = SendRequest()
         if email is not None and email != "":
-            request.email = email
+        request.email = email
         if did_uri is not None and did_uri != "":
-            request.did_uri = did_uri
+        request.did_uri = did_uri
         if didcomm_invitation is not None:
             request.didcomm_invitation = didcomm_invitation
         if document is not None:
