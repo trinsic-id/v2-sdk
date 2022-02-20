@@ -77,7 +77,7 @@ func (w *WalletBase) DeleteItem(userContext context.Context, request *sdk.Delete
 	if err != nil {
 		return nil, err
 	}
-	response, err := w.client.Deleteitem(md, request)
+	response, err := w.client.DeleteItem(md, request)
 	if err != nil {
 		return nil, err
 	}

@@ -163,7 +163,7 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
         self,
         *,
         reveal_document: "__common_v1__.JsonPayload" = None,
-        document_id: str = "",
+        document_id: str = ""
     ) -> "CreateProofResponse":
 
         request = CreateProofRequest()

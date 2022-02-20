@@ -32,6 +32,6 @@ class WalletServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun deleteItem(request: DeleteItemRequest): DeleteItemResponse {
-        return withMetadata(stub, request).deleteitem(request)
+        return withMetadata(stub, request).deleteItem(request)
     }
 }

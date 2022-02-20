@@ -78,34 +78,34 @@ public final class UniversalWalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest,
-      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteitemMethod;
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteItemMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Deleteitem",
+      fullMethodName = SERVICE_NAME + '/' + "DeleteItem",
       requestType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest.class,
       responseType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest,
-      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteitemMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteitemMethod;
-    if ((getDeleteitemMethod = UniversalWalletGrpc.getDeleteitemMethod) == null) {
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteItemMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> getDeleteItemMethod;
+    if ((getDeleteItemMethod = UniversalWalletGrpc.getDeleteItemMethod) == null) {
       synchronized (UniversalWalletGrpc.class) {
-        if ((getDeleteitemMethod = UniversalWalletGrpc.getDeleteitemMethod) == null) {
-          UniversalWalletGrpc.getDeleteitemMethod = getDeleteitemMethod =
+        if ((getDeleteItemMethod = UniversalWalletGrpc.getDeleteItemMethod) == null) {
+          UniversalWalletGrpc.getDeleteItemMethod = getDeleteItemMethod =
               io.grpc.MethodDescriptor.<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Deleteitem"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteItem"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new UniversalWalletMethodDescriptorSupplier("Deleteitem"))
+              .setSchemaDescriptor(new UniversalWalletMethodDescriptorSupplier("DeleteItem"))
               .build();
         }
       }
     }
-    return getDeleteitemMethod;
+    return getDeleteItemMethod;
   }
 
   /**
@@ -181,9 +181,9 @@ public final class UniversalWalletGrpc {
      * Delete an item from the wallet permanently
      * </pre>
      */
-    public void deleteitem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request,
+    public void deleteItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteitemMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteItemMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -203,12 +203,12 @@ public final class UniversalWalletGrpc {
                 trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse>(
                   this, METHODID_INSERT_ITEM)))
           .addMethod(
-            getDeleteitemMethod(),
+            getDeleteItemMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest,
                 trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse>(
-                  this, METHODID_DELETEITEM)))
+                  this, METHODID_DELETE_ITEM)))
           .build();
     }
   }
@@ -254,10 +254,10 @@ public final class UniversalWalletGrpc {
      * Delete an item from the wallet permanently
      * </pre>
      */
-    public void deleteitem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request,
+    public void deleteItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDeleteitemMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getDeleteItemMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -300,9 +300,9 @@ public final class UniversalWalletGrpc {
      * Delete an item from the wallet permanently
      * </pre>
      */
-    public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse deleteitem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request) {
+    public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse deleteItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteitemMethod(), getCallOptions(), request);
+          getChannel(), getDeleteItemMethod(), getCallOptions(), request);
     }
   }
 
@@ -347,16 +347,16 @@ public final class UniversalWalletGrpc {
      * Delete an item from the wallet permanently
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> deleteitem(
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse> deleteItem(
         trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDeleteitemMethod(), getCallOptions()), request);
+          getChannel().newCall(getDeleteItemMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_SEARCH = 0;
   private static final int METHODID_INSERT_ITEM = 1;
-  private static final int METHODID_DELETEITEM = 2;
+  private static final int METHODID_DELETE_ITEM = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -383,8 +383,8 @@ public final class UniversalWalletGrpc {
           serviceImpl.insertItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse>) responseObserver);
           break;
-        case METHODID_DELETEITEM:
-          serviceImpl.deleteitem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest) request,
+        case METHODID_DELETE_ITEM:
+          serviceImpl.deleteItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse>) responseObserver);
           break;
         default:
@@ -450,7 +450,7 @@ public final class UniversalWalletGrpc {
               .setSchemaDescriptor(new UniversalWalletFileDescriptorSupplier())
               .addMethod(getSearchMethod())
               .addMethod(getInsertItemMethod())
-              .addMethod(getDeleteitemMethod())
+              .addMethod(getDeleteItemMethod())
               .build();
         }
       }

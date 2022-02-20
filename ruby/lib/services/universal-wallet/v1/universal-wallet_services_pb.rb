@@ -21,7 +21,7 @@ module Services
           # Insert an item into the wallet
           rpc :InsertItem, ::Services::Universalwallet::V1::InsertItemRequest, ::Services::Universalwallet::V1::InsertItemResponse
           # Delete an item from the wallet permanently
-          rpc :Deleteitem, ::Services::Universalwallet::V1::DeleteItemRequest, ::Services::Universalwallet::V1::DeleteItemResponse
+          rpc :DeleteItem, ::Services::Universalwallet::V1::DeleteItemRequest, ::Services::Universalwallet::V1::DeleteItemResponse
         end
 
         Stub = Service.rpc_stub_class
