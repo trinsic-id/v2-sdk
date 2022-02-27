@@ -19,6 +19,11 @@ public class ProviderService : ServiceBase
         : base(accountProfile) {
         Client = new(Channel);
     }
+    
+    public ProviderService(ServerConfig serverConfig)
+        : base(serverConfig) {
+        Client = new(Channel);
+    }
 
     public ProviderService(AccountProfile accountProfile, GrpcChannel channel)
         : base(accountProfile, channel) {
@@ -89,7 +94,7 @@ public class ProviderService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
         request.Details ??= new();
         
-        return Client.CreateEcosystem(request, BuildMetadata(request));
+        return Client.CreateEcosystem(request);
     }
     
     /// <summary>

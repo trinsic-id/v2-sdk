@@ -63,6 +63,12 @@ public class AccountService : ServiceBase
 
         return response.Profile;
     }
+    
+    public async Task<AccountProfile> SignInAsync(SignInRequest request) {
+        var response = await Client.SignInAsync(request);
+
+        return response.Profile;
+    }
 
     /// <summary>
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are

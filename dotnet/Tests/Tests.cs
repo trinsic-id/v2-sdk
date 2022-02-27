@@ -30,9 +30,9 @@ public class Tests
         _testOutputHelper = testOutputHelper;
 
         _serverConfig = new() {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "staging-internal.trinsic.cloud",
-            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
-            UseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || useTls
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
+            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
+            UseTls = false
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_serverConfig.FormatUrl()}");
@@ -43,14 +43,18 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
+        var providerService = new ProviderService(_serverConfig);
         var accountService = new AccountService(_serverConfig);
+
+        var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
+        var ecosystemId = ecosystem.Ecosystem.Id;
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync();
-        var clinic = await accountService.SignInAsync();
-        var airline = await accountService.SignInAsync();
+        var allison = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
+        var clinic = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
+        var airline = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
         // }
 
         accountService.Profile = clinic;
@@ -245,8 +249,7 @@ public class Tests
         var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()
-            {InvitationId = response.InvitationId});
+        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
