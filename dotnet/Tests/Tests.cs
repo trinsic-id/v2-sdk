@@ -271,16 +271,17 @@ public class Tests
         var profile = await accountService.SignInAsync();
         var templateService = new TemplateService(profile, accountService.Channel);
         var credentialService = new CredentialsService(profile, accountService.Channel);
-        
+        var walletService = new WalletService(profile, accountService.Channel);
+
         // create example template
         CreateCredentialTemplateRequest templateRequest = new() {
             Name = "My Example Credential",
             AllowAdditionalFields = false
         };
-        templateRequest.Fields.Add("firstName", new(){ Description = "Given name"});
+        templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new(){ Type = FieldType.Number, Optional = true});
-        
+        templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
+
         var template = await templateService.CreateAsync(templateRequest);
 
         template.Should().NotBeNull();
@@ -306,5 +307,24 @@ public class Tests
 
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
+
+        var itemId = await walletService.InsertItemAsync(JObject.Parse(credentialJson));
+
+        var frame = new JObject {
+            {
+                "@context",
+                new JArray("https://www.w3.org/2018/credentials/v1",
+                    "https://w3id.org/bbs/v1",
+                    "https://staging-schema.trinsic.cloud/__default/my-example-credential/context")
+            },
+            {"type", new JArray("VerifiableCredential")}
+        };
+
+
+        var proof = await credentialService.CreateProofAsync(itemId, frame);
+
+        var valid = await credentialService.VerifyProofAsync(proof);
+
+        valid.Should().BeTrue();
     }
 }
