@@ -186,20 +186,13 @@ public class Tests
         // test create ecosystem
         var actualCreate = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Name = "Test Ecosystem",
+            Name = $"test-sdk-{Guid.NewGuid():N}",
             Uri = "https://example.com"
         });
 
         actualCreate.Should().NotBeNull();
-        actualCreate.Id.Should().NotBeNull();
-        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
-
-        // test list ecosystems
-        var actualList = await service.ListEcosystemsAsync();
-
-        var ecosystems = actualList as Ecosystem[] ?? actualList.ToArray();
-        ecosystems.Should().NotBeNull();
-        ecosystems.Should().NotBeEmpty();
+        actualCreate.Ecosystem.Id.Should().NotBeNull();
+        actualCreate.Ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
     }
 
     [Fact]
@@ -248,7 +241,7 @@ public class Tests
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
-        var invite = new InviteRequest() {Email = "info@trinsic.id", Description = "Test invitation"};
+        var invite = new InviteRequest {Description = "Test invitation"};
         var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
@@ -319,7 +312,6 @@ public class Tests
             },
             {"type", new JArray("VerifiableCredential")}
         };
-
 
         var proof = await credentialService.CreateProofAsync(itemId, frame);
 

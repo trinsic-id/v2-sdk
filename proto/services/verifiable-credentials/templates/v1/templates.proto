@@ -92,6 +92,6 @@ message TemplateData {
   bool allow_additional_fields = 5;
   string schema_uri = 6;
   string context_uri = 7;
-  string ecosystem_id = 8 [json_name="_ecosystemId"];
+  string ecosystem_id = 8 [json_name="ecosystemId"];
   string type = 9         [json_name="type"];
 }
