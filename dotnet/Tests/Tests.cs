@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 using System;
@@ -17,6 +16,7 @@ using Google.Protobuf;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+#pragma warning disable CS0618
 
 namespace Tests;
 

@@ -81,12 +81,13 @@ public class CredentialsService : ServiceBase
     /// Derive a proof from an existing document in the wallet using
     /// an input reveal document frame
     /// </summary>
-    /// <param name="documentId"></param>
+    /// <param name="itemId"></param>
     /// <param name="revealDocument"></param>
     /// <returns></returns>
-    public async Task<JObject> CreateProofAsync(string documentId, JObject revealDocument) {
+    [Obsolete("Please use 'CreateProofAsync(CreateProofRequest) method instead")]
+    public async Task<JObject> CreateProofAsync(string itemId, JObject revealDocument) {
         CreateProofRequest request = new() {
-            DocumentId = documentId,
+            ItemId = itemId,
             RevealDocumentJson = revealDocument.ToString()
         };
         var response = await Client.CreateProofAsync(request, await BuildMetadataAsync(request));
@@ -94,14 +95,55 @@ public class CredentialsService : ServiceBase
         return JObject.Parse(response.ProofDocumentJson);
     }
 
-    public JObject CreateProof(string documentId, JObject revealDocument) {
+    [Obsolete("Please use 'CreateProof(CreateProofRequest) method instead")]
+    public JObject CreateProof(string itemId, JObject revealDocument) {
         CreateProofRequest request = new() {
-            DocumentId = documentId,
+            ItemId = itemId,
             RevealDocumentJson = revealDocument.ToString()
         };
         var response = Client.CreateProof(request, BuildMetadata(request));
 
         return JObject.Parse(response.ProofDocumentJson);
+    }
+    
+    /// <summary>
+    /// Create a proof from a record in the user's wallet. The record must be a valid
+    /// verifiable credential and contain a signature from which a proof can be derived.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<CreateProofResponse> CreateProofAsync(CreateProofRequest request) {
+        return await Client.CreateProofAsync(request, await BuildMetadataAsync(request));
+    }
+    
+    /// <summary>
+    /// Create a proof from a record in the user's wallet. The record must be a valid
+    /// verifiable credential and contain a signature from which a proof can be derived.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public CreateProofResponse CreateProof(CreateProofRequest request) {
+        return Client.CreateProof(request, BuildMetadata(request));
+    }
+    
+    /// <summary>
+    /// Create a proof from the input document. This is a convenience method that doesn't
+    /// require the verifiable credential to be stored in the users wallet.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<CreateProofResponse> CreateProofDirectAsync(CreateProofDirectRequest request) {
+        return await Client.CreateProofDirectAsync(request, await BuildMetadataAsync(request));
+    }
+    
+    /// <summary>
+    /// Create a proof from the input document. This is a convenience method that doesn't
+    /// require the verifiable credential to be stored in the users wallet.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public CreateProofResponse CreateProofDirect(CreateProofDirectRequest request) {
+        return Client.CreateProofDirect(request, BuildMetadata(request));
     }
 
     /// <summary>

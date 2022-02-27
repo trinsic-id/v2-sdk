@@ -80,8 +80,40 @@
             Derive a proof from an existing document in the wallet using
             an input reveal document frame
             </summary>
-            <param name="documentId"></param>
+            <param name="itemId"></param>
             <param name="revealDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that doesn't
+            require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that doesn't
+            require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Newtonsoft.Json.Linq.JObject)">
@@ -880,8 +912,45 @@
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJsonFieldNumber">
             <summary>Field number for the "reveal_document_json" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentIdFieldNumber">
-            <summary>Field number for the "document_id" field.</summary>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJson">
+            <summary>
+            Optional document that describes which fields should be
+            revealed in the generated proof. If specified, this document must be
+            a valid JSON-LD frame.
+            If this field is not specified, a default reveal document will be
+            used and all fields in the signed document will be revealed
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemId">
+            <summary>
+            The item identifier that contains a record with a verifiable
+            credential to be used for generating the proof.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.RevealDocumentJsonFieldNumber">
+            <summary>Field number for the "reveal_document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.RevealDocumentJson">
+            <summary>
+            Optional document that describes which fields should be
+            revealed in the generated proof. If specified, this document must be
+            a valid JSON-LD frame.
+            If this field is not specified, a default reveal document will be
+            used and all fields in the signed document will be revealed
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.DocumentJson">
+            <summary>
+            A document that contains a valid verifiable credential with an
+            unbound signature. The proof will be derived from this document
+            directly. The document will not be stored in the wallet.
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentJsonFieldNumber">
             <summary>Field number for the "proof_document_json" field.</summary>
@@ -993,6 +1062,25 @@
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase">
             <summary>Base class for server-side implementations of VerifiableCredential</summary>
         </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Check credential status by setting the revocation value
@@ -1004,6 +1092,41 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.UpdateStatus(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Update credential status by setting the revocation value
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that
+            doesn't require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1026,6 +1149,90 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Protected constructor to allow creation of configured clients.</summary>
             <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
@@ -1094,6 +1301,162 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.UpdateStatusAsync(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest,Grpc.Core.CallOptions)">
             <summary>
             Update credential status by setting the revocation value
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that
+            doesn't require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that
+            doesn't require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that
+            doesn't require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from the input document. This is a convenience method that
+            doesn't require the verifiable credential to be stored in the users wallet.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
