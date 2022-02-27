@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Google.Protobuf;
 using Grpc.Net.Client;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -67,7 +68,7 @@ public class ProviderService : ServiceBase
     }
 
     /// <summary>
-    ///     Creates new ecosystem
+    /// Create new ecosystem and assigns the authenticated user as owner
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
@@ -78,10 +79,40 @@ public class ProviderService : ServiceBase
         return await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
     }
 
+    /// <summary>
+    /// Create new ecosystem and assigns the authenticated user as owner
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public CreateEcosystemResponse CreateEcosystem(CreateEcosystemRequest request) {
         if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
         request.Details ??= new();
         
         return Client.CreateEcosystem(request, BuildMetadata(request));
+    }
+    
+    /// <summary>
+    /// Generates an unprotected authentication token that can be used
+    /// to configure server side applications
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<string> GenerateTokenAsync(GenerateTokenRequest request) {
+        var response = await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
+
+        return Convert.ToBase64String(response.ToByteArray());
+    }
+    
+    /// <summary>
+    /// Generates an unprotected authentication token that can be used
+    /// to configure server side applications
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public string GenerateToken(GenerateTokenRequest request) {
+        var response = Client.GenerateToken(request, BuildMetadata(request));
+
+        return Convert.ToBase64String(response.ToByteArray());
     }
 }

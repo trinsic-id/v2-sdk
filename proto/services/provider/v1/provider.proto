@@ -98,33 +98,25 @@ message CreateEcosystemResponse {
     services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
-// message ListEcosystemsRequest {}
-
-// message ListEcosystemsResponse {
-//     repeated Ecosystem ecosystem = 1;
-// }
-
-// message AcceptInviteRequest {
-//     string id = 1;
-//     string code = 2;
-// }
-
-// message AcceptInviteResponse {
-//     Ecosystem ecosystem = 2;
-// }
+message GenerateTokenRequest {
+    // Optional description to identify this token
+    string description = 1;
+}
+message GenerateTokenResponse {
+    // Account authentication profile that contains unprotected token
+    services.account.v1.AccountProfile profile = 1;
+}
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
     rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
 
-    // // List all ecosystems assigned to the authenticated account
-    // rpc ListEcosystems(ListEcosystemsRequest) returns (ListEcosystemsResponse);
+    // Generates an unprotected authentication token that can be used to
+    // configure server side applications
+    rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
 
     // Invite a user to the ecosystem
     rpc Invite(InviteRequest) returns (InviteResponse);
-
-    // // Accept an invite to the ecosystem
-    // rpc AcceptInvite(AcceptInviteRequest) returns (AcceptInviteResponse);
 
     // Check the invitation status
     rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);

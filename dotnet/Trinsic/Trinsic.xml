@@ -1793,6 +1793,22 @@
             This settings is configured globally by the server administrator.
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenRequest.Description">
+            <summary>
+            Optional description to identify this token
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenResponse.ProfileFieldNumber">
+            <summary>Field number for the "profile" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenResponse.Profile">
+            <summary>
+            Account authentication profile that contains unprotected token
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.Provider.V1.Provider.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -1802,6 +1818,15 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Create new ecosystem and assign the authenticated user as owner
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1872,6 +1897,46 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest,Grpc.Core.CallOptions)">
             <summary>
             Create new ecosystem and assign the authenticated user as owner
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2455,7 +2520,31 @@
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
-                Creates new ecosystem
+            Create new ecosystem and assigns the authenticated user as owner
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
+            <summary>
+            Create new ecosystem and assigns the authenticated user as owner
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
+            <summary>
+            Generates an unprotected authentication token that can be used
+            to configure server side applications
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
+            <summary>
+            Generates an unprotected authentication token that can be used
+            to configure server side applications
             </summary>
             <param name="request"></param>
             <returns></returns>
