@@ -15,6 +15,7 @@ using FluentAssertions;
 using Google.Protobuf;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
+using Trinsic.Services.VerifiableCredentials.V1;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 #pragma warning disable CS0618
 
@@ -52,9 +53,9 @@ public class Tests
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
-        var clinic = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
-        var airline = await accountService.SignInAsync(new SignInRequest { EcosystemId = ecosystemId});
+        var allison = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var clinic = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var airline = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
         // }
 
         accountService.Profile = clinic;
@@ -277,6 +278,7 @@ public class Tests
         templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
         templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
+        templateRequest.Fields.Add("id", new());
 
         var template = await templateService.CreateAsync(templateRequest);
 
@@ -289,7 +291,8 @@ public class Tests
         var values = JsonSerializer.Serialize(new {
             firstName = "Jane",
             lastName = "Doe",
-            age = 42
+            age = 42,
+            id = $"urn:uuid:123"
         });
 
         var credentialJson = await credentialService.IssueFromTemplateAsync(new() {
@@ -307,18 +310,16 @@ public class Tests
         var itemId = await walletService.InsertItemAsync(JObject.Parse(credentialJson));
 
         var frame = new JObject {
-            {
-                "@context",
-                new JArray("https://www.w3.org/2018/credentials/v1",
-                    "https://w3id.org/bbs/v1",
-                    "https://staging-schema.trinsic.cloud/__default/my-example-credential/context")
-            },
+            {"@context", "https://www.w3.org/2018/credentials/v1"},
             {"type", new JArray("VerifiableCredential")}
         };
 
-        var proof = await credentialService.CreateProofAsync(itemId, frame);
+        var proof = await credentialService.CreateProofAsync(new CreateProofRequest {
+            ItemId = itemId,
+            RevealDocumentJson = frame.ToString()
+        });
 
-        var valid = await credentialService.VerifyProofAsync(proof);
+        var valid = await credentialService.VerifyProofAsync(JObject.Parse(proof.ProofDocumentJson));
 
         valid.Should().BeTrue();
     }

@@ -57,7 +57,7 @@ public class AccountService : ServiceBase
     /// <param name="details"></param>
     /// <returns></returns>
     public async Task<AccountProfile> SignInAsync(AccountDetails? details = null) {
-        SignInRequest request = new() {Details = details ?? new AccountDetails()};
+        SignInRequest request = new() {Details = details ?? new AccountDetails(), EcosystemId = "default"};
 
         var response = await Client.SignInAsync(request);
 
@@ -77,7 +77,7 @@ public class AccountService : ServiceBase
     /// <param name="details"></param>
     /// <returns></returns>
     public AccountProfile SignIn(AccountDetails? details = null) {
-        SignInRequest request = new() {Details = details ?? new AccountDetails()};
+        SignInRequest request = new() {Details = details ?? new AccountDetails(), EcosystemId = "default"};
         var response = Client.SignIn(request);
         return response.Profile;
     }
