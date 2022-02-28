@@ -234,11 +234,16 @@ public class Tests
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var myAccountService = new AccountService(_serverConfig);
-        var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipantAsync(new InviteRequest()));
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()));
+        var accountService = new AccountService(_serverConfig);
+        var profile = await accountService.SignInAsync();
+        var providerService = new ProviderService(profile, accountService.Channel);
+        
+        var invitationResponse = await providerService.InviteParticipantAsync(new());
+
+        invitationResponse.Should().NotBeNull();
+        invitationResponse.InvitationCode.Should().NotBeEmpty();
+        
+        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new InvitationStatusRequest()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
