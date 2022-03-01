@@ -5,11 +5,10 @@ import (
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func NewAccountService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (AccountService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewAccountService(options ServiceOptions) (AccountService, error) {
+	base, err := NewServiceBase(options.profile, options.config, options.channel)
 	if err != nil {
 		return nil, err
 	}

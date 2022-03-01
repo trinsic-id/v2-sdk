@@ -7,8 +7,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-func NewProviderService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (ProviderService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewProviderService(options ServiceOptions) (ProviderService, error) {
+	base, err := NewServiceBase(options.profile, options.config, options.channel)
 	if err != nil {
 		return nil, err
 	}

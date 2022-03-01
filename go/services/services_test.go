@@ -43,8 +43,8 @@ func GetTestServerChannel() *grpc.ClientConn {
 func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
 	// Open in background
-	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), false)
-	accountService, err := NewAccountService(nil, TrinsicTestConfig(), channel)
+	channel := GetTestServerChannel()
+	accountService, err := NewAccountService(ServiceOptions{channel: channel})
 	if !assert2.Nil(err) {
 		return
 	}
@@ -81,9 +81,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 	// }
 
-	walletService, err := CreateWalletService(clinic, TrinsicTestConfig(), channel)
+	walletService, err := CreateWalletService(ServiceOptions{channel: channel})
 	failError(t, "error creating wallet service", err)
-	credentialService, err := NewCredentialService(clinic, TrinsicTestConfig(), channel)
+	credentialService, err := NewCredentialService(ServiceOptions{channel: channel})
 	failError(t, "error creating credential service", err)
 
 	// ISSUE CREDENTIAL
@@ -149,7 +149,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	if done {
 		return
 	}
-	service, err := NewTrustRegistryService(profile, TrinsicTestConfig(), channel)
+	service, err := NewTrustRegistryService(ServiceOptions{profile: profile, channel: channel})
 
 	// register issuer
 	didUri := "did:example:test"
@@ -208,7 +208,7 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn,
 	if !assert2.Nil(err) {
 		return nil, nil, nil, nil, true
 	}
-	accountService, err := NewAccountService(nil, TrinsicTestConfig(), channel)
+	accountService, err := NewAccountService(ServiceOptions{channel: channel})
 	if !assert2.Nil(err) {
 		return nil, nil, nil, nil, true
 	}
@@ -224,7 +224,7 @@ func TestEcosystemDemo(t *testing.T) {
 	if done {
 		return
 	}
-	service, err := NewProviderService(profile, TrinsicTestConfig(), channel)
+	service, err := NewProviderService(ServiceOptions{profile: profile, channel: channel})
 	if !assert2.Nil(err) {
 		return
 	}
@@ -258,11 +258,11 @@ func TestTemplatesDemo(t *testing.T) {
 	if done {
 		return
 	}
-	templateService, err := NewCredentialTemplateService(profile, TrinsicTestConfig(), channel)
+	templateService, err := NewCredentialTemplateService(ServiceOptions{profile: profile, channel: channel})
 	if !assert2.Nil(err) {
 		return
 	}
-	credentialService, err := NewCredentialService(profile, TrinsicTestConfig(), channel)
+	credentialService, err := NewCredentialService(ServiceOptions{profile: profile, channel: channel})
 	if !assert2.Nil(err) {
 		return
 	}
