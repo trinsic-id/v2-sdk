@@ -3,7 +3,9 @@ import json
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.services import WalletService, AccountService, CredentialsService
+from trinsic.account_service import AccountService
+from trinsic.credentials_service import CredentialsService
+from trinsic.wallet_service import WalletService
 from trinsic.trinsic_util import trinsic_test_config
 
 
@@ -38,8 +40,10 @@ async def vaccine_demo():
     print(f"Account info={info}")
 
     # createService() {
-    wallet_service = WalletService(allison, account_service.channel)
-    credentials_service = CredentialsService(clinic, trinsic_test_config())
+    wallet_service = WalletService(profile=allison, channel=account_service.channel)
+    credentials_service = CredentialsService(
+        profile=clinic, server_config=trinsic_test_config()
+    )
     # }
 
     # storeAndRecallProfile() {
@@ -84,7 +88,9 @@ async def vaccine_demo():
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = json.load(fid2)
 
-    credential_proof = await credentials_service.create_proof(document_id=item_id, reveal_document=proof_request_json)
+    credential_proof = await credentials_service.create_proof(
+        document_id=item_id, reveal_document=proof_request_json
+    )
     print(f"Proof: {credential_proof}")
     # }
 

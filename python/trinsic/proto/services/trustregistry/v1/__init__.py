@@ -188,7 +188,7 @@ class TrustRegistryStub(betterproto.ServiceStub):
         *,
         query: str = "",
         continuation_token: str = "",
-        options: "__common_v1__.RequestOptions" = None
+        options: "__common_v1__.RequestOptions" = None,
     ) -> "SearchRegistryResponse":
 
         request = SearchRegistryRequest()
