@@ -277,13 +277,12 @@ public class Tests
 
         // create example template
         CreateCredentialTemplateRequest templateRequest = new() {
-            Name = "My Example Credential",
+            Name = "An Example Credential",
             AllowAdditionalFields = false
         };
         templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
         templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
-        templateRequest.Fields.Add("id", new());
 
         var template = await templateService.CreateAsync(templateRequest);
 
@@ -296,8 +295,7 @@ public class Tests
         var values = JsonSerializer.Serialize(new {
             firstName = "Jane",
             lastName = "Doe",
-            age = 42,
-            id = $"urn:uuid:123"
+            age = "42"
         });
 
         var credentialJson = await credentialService.IssueFromTemplateAsync(new() {

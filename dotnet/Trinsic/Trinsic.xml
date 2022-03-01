@@ -100,22 +100,6 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that doesn't
-            require the verifiable credential to be stored in the users wallet.
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.CredentialsService.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that doesn't
-            require the verifiable credential to be stored in the users wallet.
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
         <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Newtonsoft.Json.Linq.JObject)">
             <summary>
             Verifies a proof document
@@ -930,27 +914,18 @@
             credential to be used for generating the proof.
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.RevealDocumentJsonFieldNumber">
-            <summary>Field number for the "reveal_document_json" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.RevealDocumentJson">
-            <summary>
-            Optional document that describes which fields should be
-            revealed in the generated proof. If specified, this document must be
-            a valid JSON-LD frame.
-            If this field is not specified, a default reveal document will be
-            used and all fields in the signed document will be revealed
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.DocumentJsonFieldNumber">
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJsonFieldNumber">
             <summary>Field number for the "document_json" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest.DocumentJson">
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJson">
             <summary>
             A document that contains a valid verifiable credential with an
             unbound signature. The proof will be derived from this document
             directly. The document will not be stored in the wallet.
             </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ProofOneofCase">
+            <summary>Enum of possible cases for the "proof" oneof.</summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentJsonFieldNumber">
             <summary>Field number for the "proof_document_json" field.</summary>
@@ -1099,17 +1074,8 @@
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.ServerCallContext)">
             <summary>
-            Create a proof from a record in the user's wallet. The record must be a valid
-            verifiable credential and contain a signature from which a proof can be derived.
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that
-            doesn't require the verifiable credential to be stored in the users wallet.
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1308,8 +1274,8 @@
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Create a proof from a record in the user's wallet. The record must be a valid
-            verifiable credential and contain a signature from which a proof can be derived.
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1319,8 +1285,8 @@
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
             <summary>
-            Create a proof from a record in the user's wallet. The record must be a valid
-            verifiable credential and contain a signature from which a proof can be derived.
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1328,8 +1294,8 @@
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Create a proof from a record in the user's wallet. The record must be a valid
-            verifiable credential and contain a signature from which a proof can be derived.
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1339,48 +1305,8 @@
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
             <summary>
-            Create a proof from a record in the user's wallet. The record must be a valid
-            verifiable credential and contain a signature from which a proof can be derived.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that
-            doesn't require the verifiable credential to be stored in the users wallet.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirect(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that
-            doesn't require the verifiable credential to be stored in the users wallet.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that
-            doesn't require the verifiable credential to be stored in the users wallet.
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofDirectAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofDirectRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Create a proof from the input document. This is a convenience method that
-            doesn't require the verifiable credential to be stored in the users wallet.
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>

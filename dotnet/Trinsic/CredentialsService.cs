@@ -125,26 +125,6 @@ public class CredentialsService : ServiceBase
     public CreateProofResponse CreateProof(CreateProofRequest request) {
         return Client.CreateProof(request, BuildMetadata(request));
     }
-    
-    /// <summary>
-    /// Create a proof from the input document. This is a convenience method that doesn't
-    /// require the verifiable credential to be stored in the users wallet.
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-    public async Task<CreateProofResponse> CreateProofDirectAsync(CreateProofDirectRequest request) {
-        return await Client.CreateProofDirectAsync(request, await BuildMetadataAsync(request));
-    }
-    
-    /// <summary>
-    /// Create a proof from the input document. This is a convenience method that doesn't
-    /// require the verifiable credential to be stored in the users wallet.
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
-    public CreateProofResponse CreateProofDirect(CreateProofDirectRequest request) {
-        return Client.CreateProofDirect(request, BuildMetadata(request));
-    }
 
     /// <summary>
     /// Verifies a proof document

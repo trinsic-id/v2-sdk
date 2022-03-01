@@ -25,8 +25,6 @@ pub struct SearchRegistryRequest {
     pub query: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "5")]
-    pub options: ::core::option::Option<super::super::common::v1::RequestOptions>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryResponse {
