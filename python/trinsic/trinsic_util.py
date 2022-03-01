@@ -27,7 +27,7 @@ def trinsic_test_config() -> ServerConfig:
     Returns:
         [ServerConfig](/reference/proto/#serverconfig)
     """
-    endpoint = getenv("TEST_SERVER_ENDPOINT") or "prod.trinsic.cloud"
+    endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
     return ServerConfig(endpoint=endpoint, port=port, use_tls=use_tls)
