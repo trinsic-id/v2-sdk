@@ -323,5 +323,6 @@ func failError(t *testing.T, message string, err error) {
 	if err != nil {
 		t.Helper()
 		t.Errorf("%s: %v", message, err)
+		t.FailNow()
 	}
 }
