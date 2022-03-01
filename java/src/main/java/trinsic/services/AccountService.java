@@ -22,7 +22,11 @@ public class AccountService extends ServiceBase {
         this(accountProfile, serverConfig, null);
     }
 
-    public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    public AccountService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
+
+    private AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
         this.stub = AccountGrpc.newFutureStub(this.getChannel());
     }

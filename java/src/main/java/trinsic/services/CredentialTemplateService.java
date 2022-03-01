@@ -20,7 +20,11 @@ public class CredentialTemplateService extends ServiceBase {
         this(accountProfile, serverConfig, null);
     }
 
-    public CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    public CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
+
+    private CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
 
         this.stub = CredentialTemplatesGrpc.newFutureStub(this.getChannel());

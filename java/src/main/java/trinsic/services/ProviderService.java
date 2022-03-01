@@ -24,7 +24,11 @@ public class ProviderService extends ServiceBase {
         this(accountProfile, serverConfig, null);
     }
 
-    public ProviderService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    public ProviderService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
+
+    private ProviderService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
         this.stub = ProviderGrpc.newFutureStub(this.getChannel());
     }

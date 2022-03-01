@@ -18,7 +18,7 @@ public class TrinsicUtilities {
     }
     public static CommonOuterClass.ServerConfig getTestServerConfig() {
 
-        String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "");
+        String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud");
         int port = Integer.parseInt(getEnvVar("TEST_SERVER_PORT", "443"));
         boolean useTls = Boolean.parseBoolean(getEnvVar("TEST_SERVER_USE_TLS", "true"));
 

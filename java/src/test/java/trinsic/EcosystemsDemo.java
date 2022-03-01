@@ -29,5 +29,8 @@ public class EcosystemsDemo {
         var actualList = service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();
         Assertions.assertNotNull(actualList);
         Assertions.assertTrue(actualList.size() > 0);
+
+        accountService.shutdown();
+        service.shutdown();
     }
 }
