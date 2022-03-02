@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'google-protobuf', '>= 3.17.3'
   spec.add_dependency 'grpc', '~>1.42'
   spec.add_dependency 'rake', '>= 13.0.6'
-  spec.add_dependency 'trinsic-okapi', '>= 1.2.1'
+  spec.add_dependency 'trinsic-okapi', '~> 1.2.1'
 
   spec.add_development_dependency 'minitest', '~> 5.14'
   spec.add_development_dependency 'minitest-reporters', '~>1.4'
