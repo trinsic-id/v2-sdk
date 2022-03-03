@@ -63,12 +63,8 @@ public class WalletService : ServiceBase
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    public async Task<string> InsertItemAsync(JObject item)
-    {
-        InsertItemRequest request = new()
-        {
-            Item = new() { JsonStruct = item.ToStruct() }
-        };
+    public async Task<string> InsertItemAsync(JObject item) {
+        InsertItemRequest request = new() {ItemJson = item.ToString()};
 
         var response = await Client.InsertItemAsync(
             request: request,
@@ -81,12 +77,8 @@ public class WalletService : ServiceBase
     /// </summary>
     /// <param name="item"></param>
     /// <returns></returns>
-    public string InsertItem(JObject item)
-    {
-        InsertItemRequest request = new()
-        {
-            Item = new() { JsonStruct = item.ToStruct() }
-        };
+    public string InsertItem(JObject item) {
+        InsertItemRequest request = new() {ItemJson = item.ToString()};
 
         var response = Client.InsertItem(
             request: request,

@@ -26,8 +26,6 @@ message RemoveFrameworkResponse {
 message SearchRegistryRequest {
     string query = 1; // SELECT c from c where c.type == 'GovernanceFramework'
     string continuation_token = 2;
-
-    services.common.v1.RequestOptions options = 5;
 }
 
 message SearchRegistryResponse {

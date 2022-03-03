@@ -6,8 +6,6 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
 import "services/common/v1/common.proto";
-import "services/provider/v1/provider.proto";
-
 
 // Request for creating new account
 message SignInRequest {
@@ -16,6 +14,9 @@ message SignInRequest {
     // Invitation code associated with this registration
     // This field is optional.
     string invitation_code = 2;
+    // EcosystemId to sign in. This field is optional
+    // and will be ignored if invitation_code is passed
+    string ecosystem_id = 3;
 }
 
 // Account Registration Details
@@ -93,7 +94,7 @@ message InfoResponse {
     // the calling request context
     AccountDetails details = 1;
     // any ecosystems the account has access to
-    repeated services.provider.v1.Ecosystem ecosystems = 2;
+    repeated AccountEcosystem ecosystems = 2;
 }
 
 message ListDevicesRequest {}
@@ -101,6 +102,13 @@ message ListDevicesResponse {}
 
 message RevokeDeviceRequest {}
 message RevokeDeviceResponse {}
+
+message AccountEcosystem {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    string uri = 4;
+}
 
 service Account {
     // Sign in to an already existing account

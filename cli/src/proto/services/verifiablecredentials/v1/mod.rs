@@ -1,12 +1,12 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueRequest {
-    #[prost(message, optional, tag = "1")]
-    pub document: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub document_json: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueResponse {
-    #[prost(message, optional, tag = "1")]
-    pub document: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub signed_document_json: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct IssueFromTemplateRequest {
@@ -23,31 +23,63 @@ pub struct IssueFromTemplateResponse {
 /// Create Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
-    #[prost(message, optional, tag = "1")]
-    pub reveal_document: ::core::option::Option<super::super::common::v1::JsonPayload>,
-    #[prost(string, tag = "2")]
-    pub document_id: ::prost::alloc::string::String,
+    /// Optional document that describes which fields should be
+    /// revealed in the generated proof. If specified, this document must be
+    /// a valid JSON-LD frame.
+    /// If this field is not specified, a default reveal document will be
+    /// used and all fields in the signed document will be revealed
+    #[prost(string, tag = "1")]
+    pub reveal_document_json: ::prost::alloc::string::String,
+    /// Specify the input to be used to derive this proof.
+    /// Input can be an existing item in the wallet or an input document
+    #[prost(oneof = "create_proof_request::Proof", tags = "2, 3")]
+    pub proof: ::core::option::Option<create_proof_request::Proof>,
+}
+/// Nested message and enum types in `CreateProofRequest`.
+pub mod create_proof_request {
+    /// Specify the input to be used to derive this proof.
+    /// Input can be an existing item in the wallet or an input document
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum Proof {
+        /// The item identifier that contains a record with a verifiable
+        /// credential to be used for generating the proof.
+        #[prost(string, tag = "2")]
+        ItemId(::prost::alloc::string::String),
+        /// A document that contains a valid verifiable credential with an
+        /// unbound signature. The proof will be derived from this document
+        /// directly. The document will not be stored in the wallet.
+        #[prost(string, tag = "3")]
+        DocumentJson(::prost::alloc::string::String),
+    }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
-    #[prost(message, optional, tag = "1")]
-    pub proof_document: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub proof_document_json: ::prost::alloc::string::String,
 }
 /// Verify Proof
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofRequest {
-    #[prost(message, optional, tag = "1")]
-    pub proof_document: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "1")]
+    pub proof_document_json: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
+    /// Indicates if the proof is valid
     #[prost(bool, tag = "1")]
-    pub valid: bool,
+    pub is_valid: bool,
+    /// Validation messages that describe invalid verifications
+    /// based on different factors, such as schema validation,
+    /// proof verification, revocation registry membership, etc.
+    /// If the proof is not valid, this field will contain detailed
+    /// results where this verification failed.
+    #[prost(string, repeated, tag = "2")]
+    pub validation_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
-    #[prost(message, optional, tag = "100")]
-    pub document: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    #[prost(string, tag = "100")]
+    pub document_json: ::prost::alloc::string::String,
     #[prost(oneof = "send_request::DeliveryMethod", tags = "1, 2, 3")]
     pub delivery_method: ::core::option::Option<send_request::DeliveryMethod>,
 }
@@ -59,8 +91,8 @@ pub mod send_request {
         Email(::prost::alloc::string::String),
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
-        #[prost(message, tag = "3")]
-        DidcommInvitation(super::super::super::common::v1::JsonPayload),
+        #[prost(string, tag = "3")]
+        DidcommInvitationJson(::prost::alloc::string::String),
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -158,6 +190,8 @@ pub mod verifiable_credential_client {
             self.inner = self.inner.accept_gzip();
             self
         }
+        #[doc = " Sign and issue a verifiable credential from a submitted document."]
+        #[doc = " The document must be a valid JSON-LD document."]
         pub async fn issue(
             &mut self,
             request: impl tonic::IntoRequest<super::IssueRequest>,
@@ -174,6 +208,9 @@ pub mod verifiable_credential_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Sign and issue a verifiable credential from a pre-defined template."]
+        #[doc = " This process will also add schema validation and "]
+        #[doc = " revocation registry entry in the credential."]
         pub async fn issue_from_template(
             &mut self,
             request: impl tonic::IntoRequest<super::IssueFromTemplateRequest>,
@@ -224,6 +261,8 @@ pub mod verifiable_credential_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Create a proof from a signed document that is a valid"]
+        #[doc = " verifiable credential and contains a signature from which a proof can be derived."]
         pub async fn create_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateProofRequest>,
@@ -240,6 +279,8 @@ pub mod verifiable_credential_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Verifies a proof by checking the signature value, and if possible schema validation,"]
+        #[doc = " revocation status, and issuer status against a trust registry"]
         pub async fn verify_proof(
             &mut self,
             request: impl tonic::IntoRequest<super::VerifyProofRequest>,
@@ -256,6 +297,7 @@ pub mod verifiable_credential_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Sends a document directly to a user's email within the given ecosystem"]
         pub async fn send(
             &mut self,
             request: impl tonic::IntoRequest<super::SendRequest>,

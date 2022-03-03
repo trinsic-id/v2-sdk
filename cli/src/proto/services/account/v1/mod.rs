@@ -8,6 +8,10 @@ pub struct SignInRequest {
     /// This field is optional.
     #[prost(string, tag = "2")]
     pub invitation_code: ::prost::alloc::string::String,
+    /// EcosystemId to sign in. This field is optional
+    /// and will be ignored if invitation_code is passed
+    #[prost(string, tag = "3")]
+    pub ecosystem_id: ::prost::alloc::string::String,
 }
 /// Account Registration Details
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -84,7 +88,7 @@ pub struct InfoResponse {
     pub details: ::core::option::Option<AccountDetails>,
     /// any ecosystems the account has access to
     #[prost(message, repeated, tag = "2")]
-    pub ecosystems: ::prost::alloc::vec::Vec<super::super::provider::v1::Ecosystem>,
+    pub ecosystems: ::prost::alloc::vec::Vec<AccountEcosystem>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}
@@ -94,6 +98,17 @@ pub struct ListDevicesResponse {}
 pub struct RevokeDeviceRequest {}
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RevokeDeviceResponse {}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AccountEcosystem {
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub description: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub uri: ::prost::alloc::string::String,
+}
 /// Confirmation method type for two-factor workflows
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]

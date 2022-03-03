@@ -7,14 +7,12 @@ pub struct SearchRequest {
     pub query: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "5")]
-    pub options: ::core::option::Option<super::super::common::v1::RequestOptions>,
 }
 /// Search response object
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
-    #[prost(message, repeated, tag = "1")]
-    pub items: ::prost::alloc::vec::Vec<super::super::common::v1::JsonPayload>,
+    #[prost(string, repeated, tag = "1")]
+    pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
     #[prost(int32, tag = "3")]
@@ -27,8 +25,10 @@ pub struct SearchResponse {
 /// Insert item request
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
-    #[prost(message, optional, tag = "1")]
-    pub item: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    /// the document to insert as stringified json
+    #[prost(string, tag = "1")]
+    pub item_json: ::prost::alloc::string::String,
+    /// optional item type ex. "VerifiableCredential"
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }

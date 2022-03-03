@@ -1,27 +1,4 @@
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RequestOptions {
-    #[prost(enumeration = "JsonFormat", tag = "1")]
-    pub response_json_format: i32,
-}
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct JsonPayload {
-    #[prost(oneof = "json_payload::Json", tags = "1, 2, 3")]
-    #[serde(flatten)]
-    pub json: ::core::option::Option<json_payload::Json>,
-}
-/// Nested message and enum types in `JsonPayload`.
-pub mod json_payload {
-    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
-    pub enum Json {
-        #[prost(message, tag = "1")]
-        JsonStruct(super::super::super::super::google::protobuf::Struct),
-        #[prost(string, tag = "2")]
-        JsonString(::prost::alloc::string::String),
-        #[prost(bytes, tag = "3")]
-        JsonBytes(::prost::alloc::vec::Vec<u8>),
-    }
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ServerConfig {
     /// service endpoint
     #[prost(string, tag = "1")]
@@ -52,13 +29,6 @@ pub enum ResponseStatus {
     ItemNotFound = 20,
     SerializationError = 200,
     UnknownError = 100,
-}
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
-#[repr(i32)]
-pub enum JsonFormat {
-    Protobuf = 0,
-    Binary = 1,
-    String = 2,
 }
 #[doc = r" Generated client implementations."]
 pub mod common_client {
