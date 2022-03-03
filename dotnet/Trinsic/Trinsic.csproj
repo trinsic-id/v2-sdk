@@ -35,7 +35,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-        <PackageReference Include="Okapi.Net" Version="1.4.0">
+        <PackageReference Include="Okapi.Net" Version="1.4.1">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

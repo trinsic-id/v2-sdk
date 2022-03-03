@@ -317,9 +317,10 @@ public class Tests
             {"type", new JArray("VerifiableCredential")}
         };
 
-        var proof = await credentialService.CreateProofAsync(new CreateProofRequest {
-            ItemId = itemId,
-            RevealDocumentJson = frame.ToString()
+        var proof = await credentialService.CreateProofAsync(new() {
+            //ItemId = itemId,
+            DocumentJson = credentialJson,
+            RevealDocumentJson = frame.ToString(Formatting.None)
         });
 
         var valid = await credentialService.VerifyProofAsync(JObject.Parse(proof.ProofDocumentJson));

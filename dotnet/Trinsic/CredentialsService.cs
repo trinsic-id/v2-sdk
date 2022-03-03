@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
@@ -133,7 +134,7 @@ public class CredentialsService : ServiceBase
     /// <returns></returns>
     public async Task<bool> VerifyProofAsync(JObject proofDocument) {
         VerifyProofRequest request = new() {
-            ProofDocumentJson = proofDocument.ToString()
+            ProofDocumentJson = proofDocument.ToString(Formatting.None)
         };
         var response = await Client.VerifyProofAsync(
             request: request,
