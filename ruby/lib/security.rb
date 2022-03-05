@@ -1,7 +1,10 @@
 require 'services/common/v1/common_pb'
 require 'okapi/security/v1/security_pb'
 require 'okapi'
-require 'digest/blake3'
+require 'okapi/proofs/v1/proofs_pb'
+require 'okapi/hashing/v1/hashing_pb'
+require 'oberon'
+require 'hashing'
 
 module Trinsic
   # Interface
@@ -24,7 +27,7 @@ module Trinsic
       end
 
       request_hash = Google::Protobuf::encode(message)
-      request_hash = Digest::BLAKE3.digest(request_hash) unless request_hash.length == 0 # skip hashing if empty
+      request_hash = Okapi::Hashing::blake3_hash( Okapi::Hashing_V1::Blake3HashRequest.new(data: request_hash)) unless request_hash.length == 0 # skip hashing if empty
       nonce = Trinsic::Common_V1::Nonce.new(timestamp: (Time.now.to_f*1000).to_int, request_hash: request_hash)
       request = Okapi::Security::V1::CreateOberonProofRequest.new(token: account_profile.auth_token,
                                                                   data: account_profile.auth_data,
