@@ -4,6 +4,7 @@ using Google.Protobuf.WellKnownTypes;
 using Grpc.Net.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
@@ -13,18 +14,12 @@ namespace Trinsic;
 
 public class CredentialsService : ServiceBase
 {
-    public CredentialsService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public CredentialsService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public CredentialsService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-
-    public CredentialsService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public CredentialsService() {
         Client = new(Channel);
     }
 

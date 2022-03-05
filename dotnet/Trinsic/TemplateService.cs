@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Grpc.Net.Client;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
@@ -11,18 +12,12 @@ namespace Trinsic;
 /// </summary>
 public class TemplateService : ServiceBase
 {
-    public TemplateService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public TemplateService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public TemplateService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public TemplateService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public TemplateService() {
         Client = new(Channel);
     }
 

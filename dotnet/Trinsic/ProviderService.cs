@@ -1,32 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Grpc.Net.Client;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.Common.V1;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
 
 namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public ProviderService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public ProviderService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public ProviderService(ServerConfig serverConfig)
-        : base(serverConfig) {
-        Client = new(Channel);
-    }
-
-    public ProviderService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public ProviderService() {
         Client = new(Channel);
     }
 

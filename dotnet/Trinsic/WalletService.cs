@@ -5,24 +5,19 @@ using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
 using Grpc.Net.Client;
+using Trinsic.Sdk.Options.V1;
 using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient;
 
 namespace Trinsic;
 
 public class WalletService : ServiceBase
 {
-    public WalletService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public WalletService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public WalletService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public WalletService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public WalletService() {
         Client = new(Channel);
     }
 
