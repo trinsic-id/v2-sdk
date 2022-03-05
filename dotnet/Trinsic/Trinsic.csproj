@@ -30,7 +30,6 @@
     </Target>
     <ItemGroup>
         <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
-        <PackageReference Include="Blake3Core" Version="0.1.0" />
         <PackageReference Include="Multiformats.Base" Version="2.0.2" />
     </ItemGroup>
     <ItemGroup>
