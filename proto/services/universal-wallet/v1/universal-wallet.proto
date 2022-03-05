@@ -23,6 +23,38 @@ message SearchResponse {
     string continuation_token = 4;
 }
 
+// Get Item
+
+// Get item request object
+message GetItemRequest {
+    // The item identifier
+    string item_id = 1;
+}
+
+// Get item response object
+message GetItemResponse {
+    // The item data represented as stringified JSON
+    string item_json = 1;
+    // User set item type that described the content of this item
+    string item_type = 2;
+}
+
+// Update Item
+
+// Update item request object
+message UpdateItemRequest {
+    // The item identifier
+    string item_id = 1;
+    // The item type that described the content of this item
+    string item_type = 2;
+}
+
+// Update item response object
+message UpdateItemResponse {
+    // Response status
+    services.common.v1.ResponseStatus status = 1;
+}
+
 // InsertItem
 
 // Insert item request
@@ -45,18 +77,21 @@ message DeleteItemRequest {
     // item identifier of the record to delete
     string item_id = 1;
 }
+
+// Delete item response
 message DeleteItemResponse {
     services.common.v1.ResponseStatus status = 1;
 }
 
 service UniversalWallet {
-
+    // Retrieve an item from the wallet with a given item identifier
+    rpc GetItem(GetItemRequest) returns (GetItemResponse);
     // Search the wallet using a SQL-like syntax
     rpc Search(SearchRequest) returns (SearchResponse);
-
     // Insert an item into the wallet
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
-
+    // Insert an item into the wallet
+    rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
     // Delete an item from the wallet permanently
     rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
 }
