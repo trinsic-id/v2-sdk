@@ -7,7 +7,6 @@ import (
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/protobuf/proto"
-	"lukechampine.com/blake3"
 	"time"
 )
 
@@ -28,7 +27,11 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, messa
 		return "", err
 	}
 
-	requestHash := blake3.Sum256(requestBytes)
+	hashResult, err := okapi.Hashing().Blake3Hash(&okapiproto.Blake3HashRequest{Data: requestBytes})
+	if err != nil {
+		return "", err
+	}
+	requestHash := hashResult.Digest
 	nonce := &sdk.Nonce{
 		Timestamp:   time.Now().UnixMilli(),
 		RequestHash: requestHash[:],
