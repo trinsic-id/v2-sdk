@@ -8,6 +8,7 @@ import {
   SignInRequest,
   TemplateField,
   TemplateService,
+  VerifyProofRequest,
   WalletService
 } from "../src";
 import { getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON } from "./TestData";
@@ -45,7 +46,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
   let walletService = new WalletService(options);
 
   let issueResponse = await credentialService.issueCredential(new IssueRequest()
-    .setDocumentJson(getVaccineCertUnsignedJSON()));
+    .setDocumentJson(JSON.stringify(getVaccineCertUnsignedJSON())));
 
   let insertItemResponse = await walletService.insertItem(new InsertItemRequest()
     .setItemJson(issueResponse.getSignedDocumentJson()));
@@ -60,11 +61,12 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
   let proof = await credentialService.createProof(new CreateProofRequest()
     .setItemId(insertItemResponse.getItemId())
-    .setRevealDocumentJson(getVaccineCertFrameJSON()));
+    .setRevealDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
 
-  let valid = await credentialService.verifyProof(proof);
+  let verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
+    .setProofDocumentJson(proof.getProofDocumentJson()));
 
-  t.true(valid);
+  t.true(verifyResponse.getIsValid());
   t.pass();
 });
 
@@ -73,7 +75,9 @@ test("Demo: template management and credential issuance from template", async (t
   let templateService = new TemplateService(options);
 
   // create example template
-  let templateRequest = new CreateCredentialTemplateRequest().setName("My Example Credential").setAllowAdditionalFields(false);
+  let templateRequest = new CreateCredentialTemplateRequest()
+    .setName("My Example Credential")
+    .setAllowAdditionalFields(false);
   templateRequest.getFieldsMap().set("firstName", new TemplateField().setDescription("Given name"));
   templateRequest.getFieldsMap().set("lastName", new TemplateField());
   templateRequest.getFieldsMap().set("age", new TemplateField().setType(FieldType.NUMBER).setOptional(true));
@@ -92,8 +96,9 @@ test("Demo: template management and credential issuance from template", async (t
     age: 42
   });
 
-  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest()
+  let issueResponse = await credentialService.issueFromTemplate(new IssueFromTemplateRequest()
     .setTemplateId(template.getData()!.getId()).setValuesJson(values));
+  let jsonDocument = JSON.parse(issueResponse.getDocumentJson());
 
   t.not(jsonDocument, null);
   t.true(jsonDocument.hasOwnProperty("id"));

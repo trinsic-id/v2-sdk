@@ -1,8 +1,6 @@
-import test from "ava";
 import { resolve } from "path"
 import { readFileSync } from "fs"
-import { ServerConfig, ServiceOptions } from "../src";
-import { type, release, platform } from "os";
+import { ServiceOptions } from "../src";
 
 export function vaccineCertFramePath(): string {
     return resolve(__dirname, "..", "..", "devops", "testdata", "vaccination-certificate-frame.jsonld");
