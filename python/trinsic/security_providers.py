@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 
 import betterproto
-from blake3 import blake3
-from trinsicokapi import oberon
+from trinsicokapi import oberon, hashing
+from trinsicokapi.proto.okapi.hashing.v1 import Blake3HashRequest
 from trinsicokapi.proto.okapi.security.v1 import CreateOberonProofRequest
 
 from trinsic.proto.services.account.v1 import AccountProfile
@@ -27,7 +27,7 @@ class OberonSecurityProvider(SecurityProvider):
             raise ValueError("The token must be unprotected before use")
 
         # Compute the hash of the request and capture current timestamp
-        request_hash = blake3(bytes(message)).digest(64)
+        request_hash = hashing.blake3_hash(request=Blake3HashRequest(data=bytes(message))).digest
 
         nonce = Nonce(
             timestamp=int(datetime.now().timestamp() * 1000), request_hash=request_hash

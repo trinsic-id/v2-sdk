@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 using System;
@@ -16,7 +15,9 @@ using FluentAssertions;
 using Google.Protobuf;
 using Trinsic.Services.Account.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
+using Trinsic.Services.VerifiableCredentials.V1;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+#pragma warning disable CS0618
 
 namespace Tests;
 
@@ -30,9 +31,9 @@ public class Tests
         _testOutputHelper = testOutputHelper;
 
         _serverConfig = new() {
-            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "staging-internal.trinsic.cloud",
-            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 443,
-            UseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var useTls) || useTls
+            Endpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
+            Port = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
+            UseTls = false
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_serverConfig.FormatUrl()}");
@@ -43,14 +44,18 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
+        var providerService = new ProviderService(_serverConfig);
         var accountService = new AccountService(_serverConfig);
+
+        var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
+        var ecosystemId = ecosystem.Ecosystem.Id;
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync();
-        var clinic = await accountService.SignInAsync();
-        var airline = await accountService.SignInAsync();
+        var allison = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var clinic = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var airline = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
         // }
 
         accountService.Profile = clinic;
@@ -186,20 +191,13 @@ public class Tests
         // test create ecosystem
         var actualCreate = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Name = "Test Ecosystem",
+            Name = $"test-sdk-{Guid.NewGuid():N}",
             Uri = "https://example.com"
         });
 
         actualCreate.Should().NotBeNull();
-        actualCreate.Id.Should().NotBeNull();
-        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
-
-        // test list ecosystems
-        var actualList = await service.ListEcosystemsAsync();
-
-        var ecosystems = actualList as Ecosystem[] ?? actualList.ToArray();
-        ecosystems.Should().NotBeNull();
-        ecosystems.Should().NotBeEmpty();
+        actualCreate.Ecosystem.Id.Should().NotBeNull();
+        actualCreate.Ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
     }
 
     [Fact]
@@ -236,11 +234,16 @@ public class Tests
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var myAccountService = new AccountService(_serverConfig);
-        var myProfile = await myAccountService.SignInAsync();
-        var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InviteParticipantAsync(new InviteRequest()));
-        await Assert.ThrowsAsync<Exception>(async () => await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()));
+        var accountService = new AccountService(_serverConfig);
+        var profile = await accountService.SignInAsync();
+        var providerService = new ProviderService(profile, accountService.Channel);
+        
+        var invitationResponse = await providerService.InviteParticipantAsync(new());
+
+        invitationResponse.Should().NotBeNull();
+        invitationResponse.InvitationCode.Should().NotBeEmpty();
+        
+        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new InvitationStatusRequest()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
@@ -248,12 +251,11 @@ public class Tests
         var myAccountService = new AccountService(_serverConfig);
         var myProfile = await myAccountService.SignInAsync();
         var myProviderService = new ProviderService(myProfile, myAccountService.Channel);
-        var invite = new InviteRequest() {Email = "info@trinsic.id", Description = "Test invitation"};
+        var invite = new InviteRequest {Description = "Test invitation"};
         var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest()
-            {InvitationId = response.InvitationId});
+        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
@@ -271,16 +273,17 @@ public class Tests
         var profile = await accountService.SignInAsync();
         var templateService = new TemplateService(profile, accountService.Channel);
         var credentialService = new CredentialsService(profile, accountService.Channel);
-        
+        var walletService = new WalletService(profile, accountService.Channel);
+
         // create example template
         CreateCredentialTemplateRequest templateRequest = new() {
-            Name = "My Example Credential",
+            Name = "An Example Credential",
             AllowAdditionalFields = false
         };
-        templateRequest.Fields.Add("firstName", new(){ Description = "Given name"});
+        templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new(){ Type = FieldType.Number, Optional = true});
-        
+        templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
+
         var template = await templateService.CreateAsync(templateRequest);
 
         template.Should().NotBeNull();
@@ -292,7 +295,7 @@ public class Tests
         var values = JsonSerializer.Serialize(new {
             firstName = "Jane",
             lastName = "Doe",
-            age = 42
+            age = "42"
         });
 
         var credentialJson = await credentialService.IssueFromTemplateAsync(new() {
@@ -306,5 +309,22 @@ public class Tests
 
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
+
+        var itemId = await walletService.InsertItemAsync(JObject.Parse(credentialJson));
+
+        var frame = new JObject {
+            {"@context", "https://www.w3.org/2018/credentials/v1"},
+            {"type", new JArray("VerifiableCredential")}
+        };
+
+        var proof = await credentialService.CreateProofAsync(new() {
+            //ItemId = itemId,
+            DocumentJson = credentialJson,
+            RevealDocumentJson = frame.ToString(Formatting.None)
+        });
+
+        var valid = await credentialService.VerifyProofAsync(JObject.Parse(proof.ProofDocumentJson));
+
+        valid.Should().BeTrue();
     }
 }

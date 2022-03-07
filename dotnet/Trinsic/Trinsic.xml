@@ -80,8 +80,24 @@
             Derive a proof from an existing document in the wallet using
             an input reveal document frame
             </summary>
-            <param name="documentId"></param>
+            <param name="itemId"></param>
             <param name="revealDocument"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.CredentialsService.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
+            <summary>
+            Create a proof from a record in the user's wallet. The record must be a valid
+            verifiable credential and contain a signature from which a proof can be derived.
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Newtonsoft.Json.Linq.JObject)">
@@ -119,21 +135,6 @@
         </member>
         <member name="P:Trinsic.Services.Common.V1.CommonReflection.Descriptor">
             <summary>File descriptor for services/common/v1/common.proto</summary>
-        </member>
-        <member name="F:Trinsic.Services.Common.V1.RequestOptions.ResponseJsonFormatFieldNumber">
-            <summary>Field number for the "response_json_format" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Common.V1.JsonPayload.JsonStructFieldNumber">
-            <summary>Field number for the "json_struct" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Common.V1.JsonPayload.JsonStringFieldNumber">
-            <summary>Field number for the "json_string" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Common.V1.JsonPayload.JsonBytesFieldNumber">
-            <summary>Field number for the "json_bytes" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.Common.V1.JsonPayload.JsonOneofCase">
-            <summary>Enum of possible cases for the "json" oneof.</summary>
         </member>
         <member name="F:Trinsic.Services.Common.V1.ServerConfig.EndpointFieldNumber">
             <summary>Field number for the "endpoint" field.</summary>
@@ -273,6 +274,15 @@
             <summary>
             Invitation code associated with this registration
             This field is optional.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.SignInRequest.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.SignInRequest.EcosystemId">
+            <summary>
+            EcosystemId to sign in. This field is optional
+            and will be ignored if invitation_code is passed
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountDetails">
@@ -420,6 +430,18 @@
             <summary>
             any ecosystems the account has access to
             </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.UriFieldNumber">
+            <summary>Field number for the "uri" field.</summary>
         </member>
         <member name="P:Trinsic.Services.Account.V1.Account.Descriptor">
             <summary>Service descriptor</summary>
@@ -606,9 +628,6 @@
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchRequest.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.SearchRequest.OptionsFieldNumber">
-            <summary>Field number for the "options" field.</summary>
-        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.SearchResponse">
             <summary>
             Search response object
@@ -631,11 +650,21 @@
             Insert item request
             </summary>
         </member>
-        <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemFieldNumber">
-            <summary>Field number for the "item" field.</summary>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemJsonFieldNumber">
+            <summary>Field number for the "item_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemJson">
+            <summary>
+            the document to insert as stringified json
+            </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemTypeFieldNumber">
             <summary>Field number for the "item_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemType">
+            <summary>
+            optional item type ex. "VerifiableCredential"
+            </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.InsertItemResponse">
             <summary>
@@ -844,11 +873,11 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredentialsReflection.Descriptor">
             <summary>File descriptor for services/verifiable-credentials/v1/verifiable-credentials.proto</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentFieldNumber">
-            <summary>Field number for the "document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.DocumentFieldNumber">
-            <summary>Field number for the "document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.SignedDocumentJsonFieldNumber">
+            <summary>Field number for the "signed_document_json" field.</summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.TemplateIdFieldNumber">
             <summary>Field number for the "template_id" field.</summary>
@@ -864,25 +893,70 @@
             Create Proof
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentFieldNumber">
-            <summary>Field number for the "reveal_document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJsonFieldNumber">
+            <summary>Field number for the "reveal_document_json" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentIdFieldNumber">
-            <summary>Field number for the "document_id" field.</summary>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJson">
+            <summary>
+            Optional document that describes which fields should be
+            revealed in the generated proof. If specified, this document must be
+            a valid JSON-LD frame.
+            If this field is not specified, a default reveal document will be
+            used and all fields in the signed document will be revealed
+            </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentFieldNumber">
-            <summary>Field number for the "proof_document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemId">
+            <summary>
+            The item identifier that contains a record with a verifiable
+            credential to be used for generating the proof.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJson">
+            <summary>
+            A document that contains a valid verifiable credential with an
+            unbound signature. The proof will be derived from this document
+            directly. The document will not be stored in the wallet.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ProofOneofCase">
+            <summary>Enum of possible cases for the "proof" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentJsonFieldNumber">
+            <summary>Field number for the "proof_document_json" field.</summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest">
             <summary>
             Verify Proof
             </summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest.ProofDocumentFieldNumber">
-            <summary>Field number for the "proof_document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest.ProofDocumentJsonFieldNumber">
+            <summary>Field number for the "proof_document_json" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidFieldNumber">
-            <summary>Field number for the "valid" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.IsValidFieldNumber">
+            <summary>Field number for the "is_valid" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.IsValid">
+            <summary>
+            Indicates if the proof is valid
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationMessagesFieldNumber">
+            <summary>Field number for the "validation_messages" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationMessages">
+            <summary>
+            Validation messages that describe invalid verifications
+            based on different factors, such as schema validation,
+            proof verification, revocation registry membership, etc.
+            If the proof is not valid, this field will contain detailed
+            results where this verification failed.
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.EmailFieldNumber">
             <summary>Field number for the "email" field.</summary>
@@ -890,11 +964,11 @@
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUriFieldNumber">
             <summary>Field number for the "did_uri" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationFieldNumber">
-            <summary>Field number for the "didcomm_invitation" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJsonFieldNumber">
+            <summary>Field number for the "didcomm_invitation_json" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DocumentFieldNumber">
-            <summary>Field number for the "document" field.</summary>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DocumentJsonFieldNumber">
+            <summary>Field number for the "document_json" field.</summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DeliveryMethodOneofCase">
             <summary>Enum of possible cases for the "delivery_method" oneof.</summary>
@@ -963,6 +1037,25 @@
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase">
             <summary>Base class for server-side implementations of VerifiableCredential</summary>
         </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Check credential status by setting the revocation value
@@ -974,6 +1067,32 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.UpdateStatus(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Update credential status by setting the revocation value
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -996,6 +1115,90 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Protected constructor to allow creation of configured clients.</summary>
             <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Issue(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a submitted document.
+            The document must be a valid JSON-LD document.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sign and issue a verifiable credential from a pre-defined template.
+            This process will also add schema validation and 
+            revocation registry entry in the credential.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
@@ -1064,6 +1267,122 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.UpdateStatusAsync(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest,Grpc.Core.CallOptions)">
             <summary>
             Update credential status by setting the revocation value
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Create a proof from a signed document that is a valid
+            verifiable credential and contains a signature from which a proof can be derived.
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProof(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Verifies a proof by checking the signature value, and if possible schema validation,
+            revocation status, and issuer status against a trust registry
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.Send(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Sends a document directly to a user's email within the given ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1266,17 +1585,8 @@
         <member name="F:Trinsic.Services.Provider.V1.InviteRequest.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.InviteRequest.EmailFieldNumber">
-            <summary>Field number for the "email" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.InviteRequest.PhoneFieldNumber">
-            <summary>Field number for the "phone" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.InviteRequest.DidcommInvitationFieldNumber">
-            <summary>Field number for the "didcomm_invitation" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.InviteRequest.ContactMethodOneofCase">
-            <summary>Enum of possible cases for the "contact_method" oneof.</summary>
+        <member name="F:Trinsic.Services.Provider.V1.InviteRequest.DetailsFieldNumber">
+            <summary>Field number for the "details" field.</summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.InviteRequest.Types">
             <summary>Container for nested types declared in the InviteRequest message type.</summary>
@@ -1287,11 +1597,20 @@
         <member name="F:Trinsic.Services.Provider.V1.InviteResponse.InvitationIdFieldNumber">
             <summary>Field number for the "invitation_id" field.</summary>
         </member>
+        <member name="F:Trinsic.Services.Provider.V1.InviteResponse.InvitationCodeFieldNumber">
+            <summary>Field number for the "invitation_code" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.InviteResponse.InvitationCode">
+            <summary>
+            Invitation Code that must be passed with the account 'SignIn' request
+            to correlate this user with the invitation sent.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.InvitationStatusRequest">
             <summary>
             Request details for the status of onboarding
             an individual or organization.
-            The referenece_id passed is the response from the
+            The reference_id passed is the response from the
             `Onboard` method call
             </summary>
         </member>
@@ -1342,26 +1661,79 @@
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Name">
+            <summary>
+            Globally unique name for the Ecosystem. This name will be
+            part of the ecosystem specific URLs and namespaces.
+            Allowed characters are lowercase letters, numbers, underscore and hyphen.
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Description">
+            <summary>
+            Ecosystem description.
+            This field is optional.
+            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.UriFieldNumber">
             <summary>Field number for the "uri" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemResponse.IdFieldNumber">
-            <summary>Field number for the "id" field.</summary>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Uri">
+            <summary>
+            External URL associated with your organization or ecosystem entity.
+            This field is optional
+            </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.ListEcosystemsResponse.EcosystemFieldNumber">
+        <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.DetailsFieldNumber">
+            <summary>Field number for the "details" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Details">
+            <summary>
+            The account details of the owner of the ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemResponse.EcosystemFieldNumber">
             <summary>Field number for the "ecosystem" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.AcceptInviteRequest.IdFieldNumber">
-            <summary>Field number for the "id" field.</summary>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemResponse.Ecosystem">
+            <summary>
+            Details of the created ecosystem
+            </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.AcceptInviteRequest.CodeFieldNumber">
-            <summary>Field number for the "code" field.</summary>
+        <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemResponse.ProfileFieldNumber">
+            <summary>Field number for the "profile" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.AcceptInviteResponse.EcosystemFieldNumber">
-            <summary>Field number for the "ecosystem" field.</summary>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemResponse.Profile">
+            <summary>
+            Account profile for auth of the owner of the ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemResponse.ConfirmationMethodFieldNumber">
+            <summary>Field number for the "confirmation_method" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemResponse.ConfirmationMethod">
+            <summary>
+            Indicates if confirmation of account is required.
+            This settings is configured globally by the server administrator.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenRequest.Description">
+            <summary>
+            Optional description to identify this token
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GenerateTokenResponse.ProfileFieldNumber">
+            <summary>Field number for the "profile" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GenerateTokenResponse.Profile">
+            <summary>
+            Account authentication profile that contains unprotected token
+            </summary>
         </member>
         <member name="P:Trinsic.Services.Provider.V1.Provider.Descriptor">
             <summary>Service descriptor</summary>
@@ -1377,9 +1749,10 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.ServerCallContext)">
             <summary>
-            List all ecosystems assigned to the authenticated account
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1388,14 +1761,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.Invite(Trinsic.Services.Provider.V1.InviteRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Invite a user to the ecosystem
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Accept an invite to the ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1463,9 +1828,10 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            List all ecosystems assigned to the authenticated account
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1473,17 +1839,19 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
             <summary>
-            List all ecosystems assigned to the authenticated account
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.ListEcosystemsAsync(Trinsic.Services.Provider.V1.ListEcosystemsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            List all ecosystems assigned to the authenticated account
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1491,9 +1859,10 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.ListEcosystemsAsync(Trinsic.Services.Provider.V1.ListEcosystemsRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest,Grpc.Core.CallOptions)">
             <summary>
-            List all ecosystems assigned to the authenticated account
+            Generates an unprotected authentication token that can be used to
+            configure server side applications
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1530,42 +1899,6 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.InviteAsync(Trinsic.Services.Provider.V1.InviteRequest,Grpc.Core.CallOptions)">
             <summary>
             Invite a user to the ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Accept an invite to the ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Accept an invite to the ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.AcceptInviteAsync(Trinsic.Services.Provider.V1.AcceptInviteRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Accept an invite to the ecosystem
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.AcceptInviteAsync(Trinsic.Services.Provider.V1.AcceptInviteRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Accept an invite to the ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1668,9 +2001,6 @@
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest.OptionsFieldNumber">
-            <summary>Field number for the "options" field.</summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.ItemsJsonFieldNumber">
             <summary>Field number for the "items_json" field.</summary>
@@ -2085,52 +2415,16 @@
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
-        <member name="T:Trinsic.Services.Debug.V1.DebugReflection">
-            <summary>Holder for reflection information generated from debug.proto</summary>
-        </member>
-        <member name="P:Trinsic.Services.Debug.V1.DebugReflection.Descriptor">
-            <summary>File descriptor for debug.proto</summary>
-        </member>
-        <member name="P:Trinsic.Services.Debug.V1.Debugging.Descriptor">
-            <summary>Service descriptor</summary>
-        </member>
-        <member name="T:Trinsic.Services.Debug.V1.Debugging.DebuggingBase">
-            <summary>Base class for server-side implementations of Debugging</summary>
-        </member>
-        <member name="T:Trinsic.Services.Debug.V1.Debugging.DebuggingClient">
-            <summary>Client for Debugging</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.ChannelBase)">
-            <summary>Creates a new client for Debugging</summary>
-            <param name="channel">The channel to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.CallInvoker)">
-            <summary>Creates a new client for Debugging that uses a custom <c>CallInvoker</c>.</summary>
-            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor">
-            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Protected constructor to allow creation of configured clients.</summary>
-            <param name="configuration">The client configuration.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.BindService(Trinsic.Services.Debug.V1.Debugging.DebuggingBase)">
-            <summary>Creates service definition that can be registered with a server</summary>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Debug.V1.Debugging.DebuggingBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
-            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
-            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
         <member name="M:Trinsic.ProviderService.InviteParticipantAsync(Trinsic.Services.Provider.V1.InviteRequest)">
             <summary>
                 Initiates the participant onboarding flow using the input contact method
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.InviteParticipant(Trinsic.Services.Provider.V1.InviteRequest)">
+            <summary>
+            Invite a user to the ecosystem
             </summary>
             <param name="request"></param>
             <returns></returns>
@@ -2142,17 +2436,43 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Trinsic.ProviderService.InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
+            <summary>
+            Gets the status of the onboarding invitation for a given invitation ID
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
-                Creates new ecosystem
+            Create new ecosystem and assigns the authenticated user as owner
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.ProviderService.ListEcosystemsAsync">
+        <member name="M:Trinsic.ProviderService.CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
-                List all ecosystems that are owned by the authorized user
+            Create new ecosystem and assigns the authenticated user as owner
             </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
+            <summary>
+            Generates an unprotected authentication token that can be used
+            to configure server side applications
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
+            <summary>
+            Generates an unprotected authentication token that can be used
+            to configure server side applications
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
