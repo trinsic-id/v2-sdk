@@ -369,6 +369,28 @@ class Services::Universalwallet::V1::DeleteItemRequest
   def self.descriptor
   end
 
+  sig do
+    params(
+      item_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    item_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def item_id
+  end
+
+  sig { params(value: String).void }
+  def item_id=(value)
+  end
+
+  sig { void }
+  def clear_item_id
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -405,6 +427,28 @@ class Services::Universalwallet::V1::DeleteItemResponse
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
+  end
+
+  sig do
+    params(
+      status: T.nilable(T.any(Symbol, String, Integer))
+    ).void
+  end
+  def initialize(
+    status: :SUCCESS
+  )
+  end
+
+  sig { returns(Symbol) }
+  def status
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def status=(value)
+  end
+
+  sig { void }
+  def clear_status
   end
 
   sig { params(field: String).returns(T.untyped) }

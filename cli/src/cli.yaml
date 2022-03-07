@@ -116,6 +116,15 @@ subcommands:
                   help: Path to file containing item data
                   takes_value: true
                   required: true
+        - delete-item:
+            about: Delete item into the wallet
+            args:
+              - item-id:
+                  long: item-id
+                  value_name: ID
+                  help: The item id of the record to delete
+                  takes_value: true
+                  required: true
         - send:
             about: Send a document to another wallet
             args:
@@ -156,13 +165,13 @@ subcommands:
                   help: The template id to use for issuance
                   takes_value: true
                   required: true
-              - input:
-                  long: input
+              - values-data:
+                  long: values-data
                   value_name: JSON
                   help: The JSON values of the credential subject
                   takes_value: true
-              - input-file:
-                  long: input-file
+              - values-file:
+                  long: values-file
                   value_name: FILE
                   help: The file with JSON values of the credential subject
                   takes_value: true

@@ -39,7 +39,7 @@ module Services::Universalwallet::V1::UniversalWallet
         request: Services::Universalwallet::V1::DeleteItemRequest
       ).returns(Services::Universalwallet::V1::DeleteItemResponse)
     end
-    def deleteitem(request)
+    def delete_item(request)
     end
   end
 end

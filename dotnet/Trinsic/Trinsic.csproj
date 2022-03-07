@@ -35,7 +35,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-        <PackageReference Include="Okapi.Net" Version="1.2.3">
+        <PackageReference Include="Okapi.Net" Version="1.4.1">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -51,7 +51,6 @@
         <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
         <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\debug\v1\debug.proto" Link="Proto/debug.proto" />
         <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />
@@ -61,7 +60,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/trust-registry.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/options.proto" ProtoRoot="..\..\proto" />
     </ItemGroup>
 
 </Project>

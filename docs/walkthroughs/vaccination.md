@@ -106,7 +106,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:setupActors
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -147,7 +147,7 @@ If you would like to save the profile for future use, you can simply export the 
 <!-- === "Typescript" 
     
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeAndRecallProfile
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:storeAndRecallProfile
     ```
      
 -->
@@ -242,7 +242,7 @@ To issue this credential we'll specify links to the json files, set the active p
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:issueCredential
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -333,7 +333,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:storeCredential
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -404,7 +404,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:shareCredential
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -457,7 +457,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.test.js) inside_block:verifyCredential
+    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -522,7 +522,7 @@ Watch for the result of `true` to know that the credential successfully passed a
 
 === "Typescript"
     [browser](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.js)
-    [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.test.js)    
+    [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.ts)    
 
 
 === "C#"

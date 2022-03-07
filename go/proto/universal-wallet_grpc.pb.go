@@ -23,7 +23,7 @@ type UniversalWalletClient interface {
 	// Insert an item into the wallet
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
 	// Delete an item from the wallet permanently
-	Deleteitem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
+	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
 }
 
 type universalWalletClient struct {
@@ -52,9 +52,9 @@ func (c *universalWalletClient) InsertItem(ctx context.Context, in *InsertItemRe
 	return out, nil
 }
 
-func (c *universalWalletClient) Deleteitem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error) {
+func (c *universalWalletClient) DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error) {
 	out := new(DeleteItemResponse)
-	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/Deleteitem", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/DeleteItem", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -70,7 +70,7 @@ type UniversalWalletServer interface {
 	// Insert an item into the wallet
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
 	// Delete an item from the wallet permanently
-	Deleteitem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
+	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
 }
 
@@ -84,8 +84,8 @@ func (UnimplementedUniversalWalletServer) Search(context.Context, *SearchRequest
 func (UnimplementedUniversalWalletServer) InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InsertItem not implemented")
 }
-func (UnimplementedUniversalWalletServer) Deleteitem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Deleteitem not implemented")
+func (UnimplementedUniversalWalletServer) DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteItem not implemented")
 }
 func (UnimplementedUniversalWalletServer) mustEmbedUnimplementedUniversalWalletServer() {}
 
@@ -136,20 +136,20 @@ func _UniversalWallet_InsertItem_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UniversalWallet_Deleteitem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UniversalWallet_DeleteItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteItemRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UniversalWalletServer).Deleteitem(ctx, in)
+		return srv.(UniversalWalletServer).DeleteItem(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.universalwallet.v1.UniversalWallet/Deleteitem",
+		FullMethod: "/services.universalwallet.v1.UniversalWallet/DeleteItem",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UniversalWalletServer).Deleteitem(ctx, req.(*DeleteItemRequest))
+		return srv.(UniversalWalletServer).DeleteItem(ctx, req.(*DeleteItemRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -170,8 +170,8 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UniversalWallet_InsertItem_Handler,
 		},
 		{
-			MethodName: "Deleteitem",
-			Handler:    _UniversalWallet_Deleteitem_Handler,
+			MethodName: "DeleteItem",
+			Handler:    _UniversalWallet_DeleteItem_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

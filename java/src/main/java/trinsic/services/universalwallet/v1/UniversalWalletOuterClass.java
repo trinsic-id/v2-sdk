@@ -3536,6 +3536,26 @@ public final class UniversalWalletOuterClass {
   public interface DeleteItemRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.DeleteItemRequest)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * item identifier of the record to delete
+     * </pre>
+     *
+     * <code>string item_id = 1;</code>
+     * @return The itemId.
+     */
+    java.lang.String getItemId();
+    /**
+     * <pre>
+     * item identifier of the record to delete
+     * </pre>
+     *
+     * <code>string item_id = 1;</code>
+     * @return The bytes for itemId.
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
   }
   /**
    * <pre>
@@ -3554,6 +3574,7 @@ public final class UniversalWalletOuterClass {
       super(builder);
     }
     private DeleteItemRequest() {
+      itemId_ = "";
     }
 
     @java.lang.Override
@@ -3586,6 +3607,12 @@ public final class UniversalWalletOuterClass {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              itemId_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -3618,6 +3645,52 @@ public final class UniversalWalletOuterClass {
               trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest.class, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest.Builder.class);
     }
 
+    public static final int ITEM_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object itemId_;
+    /**
+     * <pre>
+     * item identifier of the record to delete
+     * </pre>
+     *
+     * <code>string item_id = 1;</code>
+     * @return The itemId.
+     */
+    @java.lang.Override
+    public java.lang.String getItemId() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        itemId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * item identifier of the record to delete
+     * </pre>
+     *
+     * <code>string item_id = 1;</code>
+     * @return The bytes for itemId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = itemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        itemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3632,6 +3705,9 @@ public final class UniversalWalletOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, itemId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3641,6 +3717,9 @@ public final class UniversalWalletOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, itemId_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3656,6 +3735,8 @@ public final class UniversalWalletOuterClass {
       }
       trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest other = (trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest) obj;
 
+      if (!getItemId()
+          .equals(other.getItemId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3667,6 +3748,8 @@ public final class UniversalWalletOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ITEM_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getItemId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3804,6 +3887,8 @@ public final class UniversalWalletOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        itemId_ = "";
+
         return this;
       }
 
@@ -3830,6 +3915,7 @@ public final class UniversalWalletOuterClass {
       @java.lang.Override
       public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest buildPartial() {
         trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest result = new trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest(this);
+        result.itemId_ = itemId_;
         onBuilt();
         return result;
       }
@@ -3878,6 +3964,10 @@ public final class UniversalWalletOuterClass {
 
       public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest other) {
         if (other == trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest.getDefaultInstance()) return this;
+        if (!other.getItemId().isEmpty()) {
+          itemId_ = other.itemId_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3904,6 +3994,102 @@ public final class UniversalWalletOuterClass {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object itemId_ = "";
+      /**
+       * <pre>
+       * item identifier of the record to delete
+       * </pre>
+       *
+       * <code>string item_id = 1;</code>
+       * @return The itemId.
+       */
+      public java.lang.String getItemId() {
+        java.lang.Object ref = itemId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          itemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * item identifier of the record to delete
+       * </pre>
+       *
+       * <code>string item_id = 1;</code>
+       * @return The bytes for itemId.
+       */
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = itemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          itemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * item identifier of the record to delete
+       * </pre>
+       *
+       * <code>string item_id = 1;</code>
+       * @param value The itemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * item identifier of the record to delete
+       * </pre>
+       *
+       * <code>string item_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearItemId() {
+        
+        itemId_ = getDefaultInstance().getItemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * item identifier of the record to delete
+       * </pre>
+       *
+       * <code>string item_id = 1;</code>
+       * @param value The bytes for itemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        itemId_ = value;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -3962,6 +4148,17 @@ public final class UniversalWalletOuterClass {
   public interface DeleteItemResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.DeleteItemResponse)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.services.common.v1.ResponseStatus status = 1;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    int getStatusValue();
+    /**
+     * <code>.services.common.v1.ResponseStatus status = 1;</code>
+     * @return The status.
+     */
+    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
@@ -3976,6 +4173,7 @@ public final class UniversalWalletOuterClass {
       super(builder);
     }
     private DeleteItemResponse() {
+      status_ = 0;
     }
 
     @java.lang.Override
@@ -4008,6 +4206,12 @@ public final class UniversalWalletOuterClass {
             case 0:
               done = true;
               break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              status_ = rawValue;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -4040,6 +4244,25 @@ public final class UniversalWalletOuterClass {
               trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse.class, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse.Builder.class);
     }
 
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_;
+    /**
+     * <code>.services.common.v1.ResponseStatus status = 1;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    @java.lang.Override public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>.services.common.v1.ResponseStatus status = 1;</code>
+     * @return The status.
+     */
+    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4054,6 +4277,9 @@ public final class UniversalWalletOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+        output.writeEnum(1, status_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4063,6 +4289,10 @@ public final class UniversalWalletOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, status_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -4078,6 +4308,7 @@ public final class UniversalWalletOuterClass {
       }
       trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse other = (trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse) obj;
 
+      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4089,6 +4320,8 @@ public final class UniversalWalletOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4222,6 +4455,8 @@ public final class UniversalWalletOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        status_ = 0;
+
         return this;
       }
 
@@ -4248,6 +4483,7 @@ public final class UniversalWalletOuterClass {
       @java.lang.Override
       public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse buildPartial() {
         trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse result = new trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse(this);
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -4296,6 +4532,9 @@ public final class UniversalWalletOuterClass {
 
       public Builder mergeFrom(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse other) {
         if (other == trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemResponse.getDefaultInstance()) return this;
+        if (other.status_ != 0) {
+          setStatusValue(other.getStatusValue());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -4322,6 +4561,60 @@ public final class UniversalWalletOuterClass {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private int status_ = 0;
+      /**
+       * <code>.services.common.v1.ResponseStatus status = 1;</code>
+       * @return The enum numeric value on the wire for status.
+       */
+      @java.lang.Override public int getStatusValue() {
+        return status_;
+      }
+      /**
+       * <code>.services.common.v1.ResponseStatus status = 1;</code>
+       * @param value The enum numeric value on the wire for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusValue(int value) {
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.services.common.v1.ResponseStatus status = 1;</code>
+       * @return The status.
+       */
+      @java.lang.Override
+      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+        @SuppressWarnings("deprecation")
+        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.services.common.v1.ResponseStatus status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        status_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.services.common.v1.ResponseStatus status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        
+        status_ = 0;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -4429,19 +4722,21 @@ public final class UniversalWalletOuterClass {
       "s.common.v1.JsonPayload\022\021\n\titem_type\030\002 \001" +
       "(\t\"Y\n\022InsertItemResponse\0222\n\006status\030\001 \001(\016" +
       "2\".services.common.v1.ResponseStatus\022\017\n\007" +
-      "item_id\030\002 \001(\t\"\023\n\021DeleteItemRequest\"\024\n\022De" +
-      "leteItemResponse2\322\002\n\017UniversalWallet\022a\n\006" +
-      "Search\022*.services.universalwallet.v1.Sea" +
-      "rchRequest\032+.services.universalwallet.v1" +
-      ".SearchResponse\022m\n\nInsertItem\022..services" +
-      ".universalwallet.v1.InsertItemRequest\032/." +
-      "services.universalwallet.v1.InsertItemRe" +
-      "sponse\022m\n\nDeleteitem\022..services.universa" +
-      "lwallet.v1.DeleteItemRequest\032/.services." +
-      "universalwallet.v1.DeleteItemResponseBf\n" +
-      "#trinsic.services.universalwallet.v1Z\031gi" +
-      "thub.com/trinsic-id/sdk\252\002#Trinsic.Servic" +
-      "es.UniversalWallet.V1b\006proto3"
+      "item_id\030\002 \001(\t\"$\n\021DeleteItemRequest\022\017\n\007it" +
+      "em_id\030\001 \001(\t\"H\n\022DeleteItemResponse\0222\n\006sta" +
+      "tus\030\001 \001(\0162\".services.common.v1.ResponseS" +
+      "tatus2\322\002\n\017UniversalWallet\022a\n\006Search\022*.se" +
+      "rvices.universalwallet.v1.SearchRequest\032" +
+      "+.services.universalwallet.v1.SearchResp" +
+      "onse\022m\n\nInsertItem\022..services.universalw" +
+      "allet.v1.InsertItemRequest\032/.services.un" +
+      "iversalwallet.v1.InsertItemResponse\022m\n\nD" +
+      "eleteItem\022..services.universalwallet.v1." +
+      "DeleteItemRequest\032/.services.universalwa" +
+      "llet.v1.DeleteItemResponseBf\n#trinsic.se" +
+      "rvices.universalwallet.v1Z\031github.com/tr" +
+      "insic-id/sdk\252\002#Trinsic.Services.Universa" +
+      "lWallet.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4477,13 +4772,13 @@ public final class UniversalWalletOuterClass {
     internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "ItemId", });
     internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_services_universalwallet_v1_DeleteItemResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Status", });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
   }
 

@@ -127,7 +127,7 @@ class CredentialTemplatesStub(betterproto.ServiceStub):
         *,
         name: str = "",
         fields: Dict[str, "TemplateField"] = None,
-        allow_additional_fields: bool = False,
+        allow_additional_fields: bool = False
     ) -> "CreateCredentialTemplateResponse":
 
         request = CreateCredentialTemplateRequest()

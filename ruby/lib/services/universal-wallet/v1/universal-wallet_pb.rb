@@ -26,8 +26,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :item_id, :string, 2
     end
     add_message "services.universalwallet.v1.DeleteItemRequest" do
+      optional :item_id, :string, 1
     end
     add_message "services.universalwallet.v1.DeleteItemResponse" do
+      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
   end
 end

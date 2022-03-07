@@ -34,7 +34,6 @@
     account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_prod_server)
     ```
 
-
 ### Sign In
 Sign into a wallet. If a wallet has not been created with the information, a new wallet will be created.
 

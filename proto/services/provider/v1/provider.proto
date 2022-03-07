@@ -7,6 +7,7 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.common.v1";
 
 import "services/common/v1/common.proto";
+import "services/account/v1/account.proto";
 
 message Invite {
     string id = 1;
@@ -19,11 +20,7 @@ message Invite {
 message InviteRequest {
     ParticipantType participant = 1;
     string description = 2;
-    oneof contact_method {
-        string email = 5;
-        string phone = 6;
-        DidCommInvitation didcomm_invitation = 7;
-    }
+    services.account.v1.AccountDetails details = 3;
 
     message DidCommInvitation {}
 }
@@ -36,11 +33,15 @@ message InviteResponse {
     services.common.v1.ResponseStatus status = 1;
 
     string invitation_id = 10;
+        
+    // Invitation Code that must be passed with the account 'SignIn' request
+    // to correlate this user with the invitation sent.
+    string invitation_code = 11;
 }
 
 // Request details for the status of onboarding
 // an individual or organization.
-// The referenece_id passed is the response from the
+// The reference_id passed is the response from the
 // `Onboard` method call
 message InvitationStatusRequest {
     string invitation_id = 1;
@@ -73,42 +74,49 @@ message Ecosystem {
 }
 
 message CreateEcosystemRequest {
+    // Globally unique name for the Ecosystem. This name will be
+    // part of the ecosystem specific URLs and namespaces.
+    // Allowed characters are lowercase letters, numbers, underscore and hyphen.
     string name = 1;
+    // Ecosystem description.
+    // This field is optional.
     string description = 2;
+    // External URL associated with your organization or ecosystem entity.
+    // This field is optional
     string uri = 3;
+    // The account details of the owner of the ecosystem
+    services.account.v1.AccountDetails details = 4;
 }
 
 message CreateEcosystemResponse {
-    string id = 1;
+    // Details of the created ecosystem
+    Ecosystem ecosystem = 1;
+    // Account profile for auth of the owner of the ecosystem
+    services.account.v1.AccountProfile profile = 2;
+    // Indicates if confirmation of account is required.
+    // This settings is configured globally by the server administrator.
+    services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
-message ListEcosystemsRequest {}
-
-message ListEcosystemsResponse {
-    repeated Ecosystem ecosystem = 1;
+message GenerateTokenRequest {
+    // Optional description to identify this token
+    string description = 1;
 }
-
-message AcceptInviteRequest {
-    string id = 1;
-    string code = 2;
-}
-
-message AcceptInviteResponse {
-    Ecosystem ecosystem = 2;
+message GenerateTokenResponse {
+    // Account authentication profile that contains unprotected token
+    services.account.v1.AccountProfile profile = 1;
 }
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
     rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
 
-    // List all ecosystems assigned to the authenticated account
-    rpc ListEcosystems(ListEcosystemsRequest) returns (ListEcosystemsResponse);
+    // Generates an unprotected authentication token that can be used to
+    // configure server side applications
+    rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
 
     // Invite a user to the ecosystem
     rpc Invite(InviteRequest) returns (InviteResponse);
-
-    // Accept an invite to the ecosystem
-    rpc AcceptInvite(AcceptInviteRequest) returns (AcceptInviteResponse);
 
     // Check the invitation status
     rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);

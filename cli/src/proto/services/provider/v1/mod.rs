@@ -17,22 +17,13 @@ pub struct InviteRequest {
     pub participant: i32,
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    #[prost(oneof = "invite_request::ContactMethod", tags = "5, 6, 7")]
-    pub contact_method: ::core::option::Option<invite_request::ContactMethod>,
+    #[prost(message, optional, tag = "3")]
+    pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
 /// Nested message and enum types in `InviteRequest`.
 pub mod invite_request {
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DidCommInvitation {}
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
-    pub enum ContactMethod {
-        #[prost(string, tag = "5")]
-        Email(::prost::alloc::string::String),
-        #[prost(string, tag = "6")]
-        Phone(::prost::alloc::string::String),
-        #[prost(message, tag = "7")]
-        DidcommInvitation(DidCommInvitation),
-    }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
@@ -40,10 +31,14 @@ pub struct InviteResponse {
     pub status: i32,
     #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
+    /// Invitation Code that must be passed with the account 'SignIn' request
+    /// to correlate this user with the invitation sent.
+    #[prost(string, tag = "11")]
+    pub invitation_code: ::prost::alloc::string::String,
 }
 /// Request details for the status of onboarding
 /// an individual or organization.
-/// The referenece_id passed is the response from the
+/// The reference_id passed is the response from the
 /// `Onboard` method call
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusRequest {
@@ -85,36 +80,50 @@ pub struct Ecosystem {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
+    /// Globally unique name for the Ecosystem. This name will be
+    /// part of the ecosystem specific URLs and namespaces.
+    /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
+    /// Ecosystem description.
+    /// This field is optional.
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
+    /// External URL associated with your organization or ecosystem entity.
+    /// This field is optional
     #[prost(string, tag = "3")]
     pub uri: ::prost::alloc::string::String,
+    /// The account details of the owner of the ecosystem
+    #[prost(message, optional, tag = "4")]
+    pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemResponse {
-    #[prost(string, tag = "1")]
-    pub id: ::prost::alloc::string::String,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ListEcosystemsRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ListEcosystemsResponse {
-    #[prost(message, repeated, tag = "1")]
-    pub ecosystem: ::prost::alloc::vec::Vec<Ecosystem>,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AcceptInviteRequest {
-    #[prost(string, tag = "1")]
-    pub id: ::prost::alloc::string::String,
-    #[prost(string, tag = "2")]
-    pub code: ::prost::alloc::string::String,
-}
-#[derive(Clone, PartialEq, ::prost::Message)]
-pub struct AcceptInviteResponse {
-    #[prost(message, optional, tag = "2")]
+    /// Details of the created ecosystem
+    #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
+    /// Account profile for auth of the owner of the ecosystem
+    #[prost(message, optional, tag = "2")]
+    pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
+    /// Indicates if confirmation of account is required.
+    /// This settings is configured globally by the server administrator.
+    #[prost(
+        enumeration = "super::super::account::v1::ConfirmationMethod",
+        tag = "3"
+    )]
+    pub confirmation_method: i32,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenerateTokenRequest {
+    /// Optional description to identify this token
+    #[prost(string, tag = "1")]
+    pub description: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenerateTokenResponse {
+    /// Account authentication profile that contains unprotected token
+    #[prost(message, optional, tag = "1")]
+    pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
 }
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -199,11 +208,12 @@ pub mod provider_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " List all ecosystems assigned to the authenticated account"]
-        pub async fn list_ecosystems(
+        #[doc = " Generates an unprotected authentication token that can be used to"]
+        #[doc = " configure server side applications"]
+        pub async fn generate_token(
             &mut self,
-            request: impl tonic::IntoRequest<super::ListEcosystemsRequest>,
-        ) -> Result<tonic::Response<super::ListEcosystemsResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::GenerateTokenRequest>,
+        ) -> Result<tonic::Response<super::GenerateTokenResponse>, tonic::Status> {
             self.inner.ready().await.map_err(|e| {
                 tonic::Status::new(
                     tonic::Code::Unknown,
@@ -212,7 +222,7 @@ pub mod provider_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/ListEcosystems",
+                "/services.provider.v1.Provider/GenerateToken",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
@@ -230,22 +240,6 @@ pub mod provider_client {
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
-            self.inner.unary(request.into_request(), path, codec).await
-        }
-        #[doc = " Accept an invite to the ecosystem"]
-        pub async fn accept_invite(
-            &mut self,
-            request: impl tonic::IntoRequest<super::AcceptInviteRequest>,
-        ) -> Result<tonic::Response<super::AcceptInviteResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
-            let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/AcceptInvite");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Check the invitation status"]

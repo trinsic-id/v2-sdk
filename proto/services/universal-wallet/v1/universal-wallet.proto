@@ -13,13 +13,11 @@ import "services/common/v1/common.proto";
 message SearchRequest {
     string query = 1;
     string continuation_token = 2;
-
-    services.common.v1.RequestOptions options = 5;
 }
 
 // Search response object
 message SearchResponse {
-    repeated services.common.v1.JsonPayload items = 1;
+    repeated string items = 1;
     bool has_more = 2;
     int32 count = 3;
     string continuation_token = 4;
@@ -29,7 +27,9 @@ message SearchResponse {
 
 // Insert item request
 message InsertItemRequest {
-    services.common.v1.JsonPayload item = 1;
+    // the document to insert as stringified json
+    string item_json = 1;
+    // optional item type ex. "VerifiableCredential"
     string item_type = 2;
 }
 
@@ -41,8 +41,13 @@ message InsertItemResponse {
 }
 
 // Delete item request
-message DeleteItemRequest {}
-message DeleteItemResponse {}
+message DeleteItemRequest {
+    // item identifier of the record to delete
+    string item_id = 1;
+}
+message DeleteItemResponse {
+    services.common.v1.ResponseStatus status = 1;
+}
 
 service UniversalWallet {
 
@@ -53,6 +58,6 @@ service UniversalWallet {
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
 
     // Delete an item from the wallet permanently
-    rpc Deleteitem(DeleteItemRequest) returns (DeleteItemResponse);
+    rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);
 }
 

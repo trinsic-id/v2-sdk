@@ -7,14 +7,12 @@ pub struct SearchRequest {
     pub query: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
-    #[prost(message, optional, tag = "5")]
-    pub options: ::core::option::Option<super::super::common::v1::RequestOptions>,
 }
 /// Search response object
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
-    #[prost(message, repeated, tag = "1")]
-    pub items: ::prost::alloc::vec::Vec<super::super::common::v1::JsonPayload>,
+    #[prost(string, repeated, tag = "1")]
+    pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
     #[prost(int32, tag = "3")]
@@ -27,8 +25,10 @@ pub struct SearchResponse {
 /// Insert item request
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
-    #[prost(message, optional, tag = "1")]
-    pub item: ::core::option::Option<super::super::common::v1::JsonPayload>,
+    /// the document to insert as stringified json
+    #[prost(string, tag = "1")]
+    pub item_json: ::prost::alloc::string::String,
+    /// optional item type ex. "VerifiableCredential"
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
@@ -43,9 +43,16 @@ pub struct InsertItemResponse {
 }
 /// Delete item request
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct DeleteItemRequest {}
+pub struct DeleteItemRequest {
+    /// item identifier of the record to delete
+    #[prost(string, tag = "1")]
+    pub item_id: ::prost::alloc::string::String,
+}
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct DeleteItemResponse {}
+pub struct DeleteItemResponse {
+    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
+    pub status: i32,
+}
 #[doc = r" Generated client implementations."]
 pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -141,7 +148,7 @@ pub mod universal_wallet_client {
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Delete an item from the wallet permanently"]
-        pub async fn deleteitem(
+        pub async fn delete_item(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteItemRequest>,
         ) -> Result<tonic::Response<super::DeleteItemResponse>, tonic::Status> {
@@ -153,7 +160,7 @@ pub mod universal_wallet_client {
             })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/Deleteitem",
+                "/services.universalwallet.v1.UniversalWallet/DeleteItem",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
