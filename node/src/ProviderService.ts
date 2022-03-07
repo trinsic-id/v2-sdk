@@ -43,7 +43,7 @@ export class ProviderService extends ServiceBase {
 
     public createEcosystem(request: CreateEcosystemRequest): Promise<CreateEcosystemResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.createEcosystem(request, await this.getMetadata(request), (error, response) => {
+            this.client.createEcosystem(request, (error, response) => {
                 if (error) {
                     reject(error);
                 }

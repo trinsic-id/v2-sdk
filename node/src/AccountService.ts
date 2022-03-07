@@ -28,6 +28,8 @@ export class AccountService extends ServiceBase {
     }
 
     public signIn(request: SignInRequest): Promise<string> {
+        request.setEcosystemId(request.getEcosystemId() || this.options.getDefaultEcosystem());
+
         return new Promise((resolve, reject) => {
             this.client.signIn(request, (error, response) => {
                 if (error || response.getStatus() != ResponseStatus.SUCCESS) {

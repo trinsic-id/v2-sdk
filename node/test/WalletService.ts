@@ -2,62 +2,65 @@ import test from "ava";
 import {
   AccountService,
   CreateCredentialTemplateRequest,
-  CredentialService, FieldType, IssueFromTemplateRequest,
+  CreateProofRequest,
+  CredentialService, FieldType, InsertItemRequest, IssueFromTemplateRequest,
+  IssueRequest,
+  SignInRequest,
   TemplateField,
   TemplateService,
   WalletService
 } from "../src";
-import {getTestServerConfig, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
-import {AccountProfile} from "../lib";
+import { getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON } from "./TestData";
 
 
 require("dotenv").config();
 
-const config = getTestServerConfig()
+const options = getTestServerOptions();
 
-let profile = new AccountProfile();
+test.before(async t => {
+  let service = new AccountService(options);
+  let authToken = await service.signIn(new SignInRequest());
 
-test.before(async () => {
-  let service = new AccountService({ server: config });
-  let response = await service.signIn();
-
-  profile = response.getProfile()!;
+  options.setAuthToken(authToken);
 });
 
 test("get account info", async (t) => {
-  let service = new AccountService({ profile, server: config });
+  let service = new AccountService(options);
   let info = await service.info();
 
   t.not(info, null);
 });
 
 test("create new account", async (t) => {
-  let service = new AccountService({ server: config });
-  let response = await service.signIn();
+  let service = new AccountService(options);
+  let response = await service.signIn(new SignInRequest());
 
-  service.updateActiveProfile(response.getProfile()!);
-
-  t.not(profile, null);
+  t.not(response, null);
+  t.not(response, "");
   t.pass();
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-  let credentialService = new CredentialService({ profile, server: config });
-  let walletService = new WalletService({ profile, server: config });
+  let credentialService = new CredentialService(options);
+  let walletService = new WalletService(options);
 
-  let issueResponse = await credentialService.issueCredential(getVaccineCertUnsignedJSON());
+  let issueResponse = await credentialService.issueCredential(new IssueRequest()
+    .setDocumentJson(getVaccineCertUnsignedJSON()));
 
-  let itemId = await walletService.insertItem(issueResponse);
+  let insertItemResponse = await walletService.insertItem(new InsertItemRequest()
+    .setItemJson(issueResponse.getSignedDocumentJson()));
 
-  t.not(itemId, null);
-  t.not(itemId, "");
+  t.not(insertItemResponse, null);
+  t.not(insertItemResponse.getItemId(), "");
 
   let items = await walletService.search();
 
   t.not(items, null);
   t.true(items.getItemsList().length > 0);
 
-  let proof = await credentialService.createProof(itemId, getVaccineCertFrameJSON());
+  let proof = await credentialService.createProof(new CreateProofRequest()
+    .setItemId(insertItemResponse.getItemId())
+    .setRevealDocumentJson(getVaccineCertFrameJSON()));
 
   let valid = await credentialService.verifyProof(proof);
 
@@ -66,8 +69,8 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 });
 
 test("Demo: template management and credential issuance from template", async (t) => {
-  let credentialService = new CredentialService({ profile, server: config });
-  let templateService = new TemplateService({ profile, server: config });
+  let credentialService = new CredentialService(options);
+  let templateService = new TemplateService(options);
 
   // create example template
   let templateRequest = new CreateCredentialTemplateRequest().setName("My Example Credential").setAllowAdditionalFields(false);
@@ -89,7 +92,8 @@ test("Demo: template management and credential issuance from template", async (t
     age: 42
   });
 
-  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData()!.getId()).setValuesJson(values));
+  let jsonDocument = await credentialService.issueFromTemplate(new IssueFromTemplateRequest()
+    .setTemplateId(template.getData()!.getId()).setValuesJson(values));
 
   t.not(jsonDocument, null);
   t.true(jsonDocument.hasOwnProperty("id"));
