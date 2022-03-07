@@ -23,5 +23,5 @@ test("Demo: Ecosystem Tests", async (t) => {
 
     t.not(actualCreate, null);
     t.not(actualCreate.getEcosystem(), null);
-    t.true(actualCreate.getEcosystem().getId().startsWith("urn:trinsic:ecosystems:"));
+    t.true(actualCreate.getEcosystem()!.getId().startsWith("urn:trinsic:ecosystems:"));
 });
