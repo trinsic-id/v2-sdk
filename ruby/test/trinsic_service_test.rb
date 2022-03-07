@@ -1,4 +1,4 @@
-require "./test/test_helper"
+require_relative 'test_helper'
 require 'json'
 require 'okapi'
 require 'uri'
@@ -22,14 +22,14 @@ class TrinsicServiceTest < Minitest::Test
   end
 
   def test_providerservice_inviteparticipant
-    return # this test needs ecosystem support
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-    account_profile = account_service.sign_in(nil).profile
-    provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
-
-    invite_request = Services::Provider::V1::InviteRequest.new(:description => "I dunno", :email => "does.not.exist@trinsic.id")
-    invite_response = provider_service.invite_participant(invite_request)
-    assert(invite_response != nil)
+    nil # this test needs ecosystem support
+    # account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    # account_profile = account_service.sign_in(nil).profile
+    # provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
+    #
+    # invite_request = Services::Provider::V1::InviteRequest.new(:description => "I dunno", :email => "does.not.exist@trinsic.id")
+    # invite_response = provider_service.invite_participant(invite_request)
+    # assert(invite_response != nil)
     # TODO - Verify invitation status response
   end
 
@@ -164,8 +164,8 @@ class TrinsicServiceTest < Minitest::Test
     did_uri = "did:example:test"
     framework_uri = "https://example.com"
     type_uri = "https://schema.org/Card"
-    register = service.register_issuer(Trinsic::TrustRegistry_V1::RegisterIssuerRequest.new(:did_uri => did_uri, :governance_framework_uri => framework_uri, :credential_type_uri => type_uri))
-    register = service.register_verifier(Trinsic::TrustRegistry_V1::RegisterVerifierRequest.new(:did_uri => did_uri, :governance_framework_uri => framework_uri, :presentation_type_uri => type_uri))
+    service.register_issuer(Trinsic::TrustRegistry_V1::RegisterIssuerRequest.new(:did_uri => did_uri, :governance_framework_uri => framework_uri, :credential_type_uri => type_uri))
+    service.register_verifier(Trinsic::TrustRegistry_V1::RegisterVerifierRequest.new(:did_uri => did_uri, :governance_framework_uri => framework_uri, :presentation_type_uri => type_uri))
 
     # check issuer status
     issuer_status = service.check_issuer_status(Trinsic::TrustRegistry_V1::CheckIssuerStatusRequest.new(:did_uri => did_uri, :governance_framework_uri => framework_uri, :credential_type_uri => type_uri))

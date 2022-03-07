@@ -8,7 +8,7 @@ import (
 
 func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
-	accountService, err := NewAccountService(nil, TrinsicTestConfig(), nil)
+	accountService, err := NewAccountService(ServiceOptions{config: TrinsicTestConfig()})
 	if !assert2.Nil(err) {
 		return
 	}
@@ -31,10 +31,10 @@ func TestProtectUnprotectProfile(t *testing.T) {
 		accountService.SetProfile(protectedProfile)
 		info2, err2 := accountService.GetInfo(context.Background())
 		if !assert2.NotNil(err2) {
-			return
+			t.FailNow()
 		}
 		if !assert2.Nil(info2) {
-			return
+			t.FailNow()
 		}
 	})
 
@@ -42,10 +42,10 @@ func TestProtectUnprotectProfile(t *testing.T) {
 		accountService.SetProfile(unprotectedProfile)
 		info2, err2 := accountService.GetInfo(context.Background())
 		if !assert2.Nil(err2) {
-			return
+			t.FailNow()
 		}
 		if !assert2.NotNil(info2) {
-			return
+			t.FailNow()
 		}
 	})
 }

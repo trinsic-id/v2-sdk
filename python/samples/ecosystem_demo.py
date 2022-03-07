@@ -1,14 +1,20 @@
 import asyncio
 
-from trinsic.services import ProviderService, AccountService
+from trinsic.account_service import AccountService
+from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_test_config
 
 
 async def ecosystem_demo():
     account_service = AccountService(server_config=trinsic_test_config())
     account_profile = await account_service.sign_in()
-    provider_service = ProviderService(account_profile, trinsic_test_config(), account_service.channel)
-    actual_create = await provider_service.create_ecosystem(name="Test Ecosystem", description="My ecosystem", uri="https://example.com")
+    provider_service = ProviderService(
+        profile=account_profile,
+        channel=account_service.channel,
+    )
+    actual_create = await provider_service.create_ecosystem(
+        name="Test Ecosystem", description="My ecosystem", uri="https://example.com"
+    )
     assert actual_create is not None
     assert actual_create.id is not None
     assert actual_create.id.startswith("urn:trinsic:ecosystems:")

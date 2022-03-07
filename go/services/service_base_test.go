@@ -8,10 +8,10 @@ import (
 
 func TestServiceBase_SetProfile(t *testing.T) {
 	assert2 := assert.New(t)
-	base, err := NewServiceBase(nil, TrinsicTestConfig(), GetTestServerChannel())
+	base, err := NewServiceBase(nil, TrinsicTestConfig(), nil)
 	failError(t, "error creating service base", err)
 
-	accountService, err := NewAccountService(nil, TrinsicTestConfig(), GetTestServerChannel())
+	accountService, err := NewAccountService(ServiceOptions{channel: GetTestServerChannel()})
 	if !assert2.Nil(err) {
 		return
 	}

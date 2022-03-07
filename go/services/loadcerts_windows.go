@@ -14,7 +14,11 @@ func loadWindowsCerts() []*x509.Certificate {
 	const CRYPT_E_NOT_FOUND = 0x80092004
 	// Copied from: https://github.com/golang/go/issues/16736#issuecomment-540373689
 	// Because golang team apparently doesn't believe that Windows deserves security.
-	storeHandle, err := syscall.CertOpenSystemStore(0, syscall.StringToUTF16Ptr("Root"))
+	ptr, err := syscall.UTF16PtrFromString("Root")
+	if err != nil {
+		fmt.Println(err)
+	}
+	storeHandle, err := syscall.CertOpenSystemStore(0, ptr)
 	if err != nil {
 		fmt.Println(syscall.GetLastError())
 	}

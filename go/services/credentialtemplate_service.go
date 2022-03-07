@@ -3,11 +3,10 @@ package services
 import (
 	"context"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func NewCredentialTemplateService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialTemplateService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewCredentialTemplateService(options ServiceOptions) (CredentialTemplateService, error) {
+	base, err := NewServiceBase(options.profile, options.config, options.channel)
 	if err != nil {
 		return nil, err
 	}

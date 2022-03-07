@@ -11,6 +11,9 @@ import (
 )
 
 func NewServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
+	if channel != nil && serverConfig != nil {
+		return nil, errors.New("cannot provide both serverConfig and channel - connection is ambiguous")
+	}
 	if channel == nil {
 		channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
 		if err != nil {

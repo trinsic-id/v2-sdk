@@ -26,10 +26,10 @@ module Trinsic
   Wallet_V1 = Services::Universalwallet::V1
 
   def self.trinsic_test_server
-    server_endpoint = ENV["TEST_SERVER_ENDPOINT"]
+    server_endpoint = ENV["TEST_SERVER_ENDPOINT"] || "prod.trinsic.cloud"
     server_port = ENV["TEST_SERVER_PORT"] || "443"
     server_usetls = ENV["TEST_SERVER_USE_TLS"] || "true"
-    Common_V1::ServerConfig.new(endpoint: server_endpoint, port: server_port.to_i, use_tls: server_usetls.downcase == "true")
+    Common_V1::ServerConfig.new(endpoint: server_endpoint, port: server_port.to_i, use_tls: server_usetls.downcase != "false")
   end
 
   def self.trinsic_prod_server

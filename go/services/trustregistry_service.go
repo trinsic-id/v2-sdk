@@ -4,12 +4,11 @@ import (
 	"context"
 	"fmt"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 	"net/url"
 )
 
-func NewTrustRegistryService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (TrustRegistryService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewTrustRegistryService(options ServiceOptions) (TrustRegistryService, error) {
+	base, err := NewServiceBase(options.profile, options.config, options.channel)
 	if err != nil {
 		return nil, err
 	}

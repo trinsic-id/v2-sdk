@@ -5,11 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func NewCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+func NewCredentialService(options ServiceOptions) (CredentialService, error) {
+	base, err := NewServiceBase(options.profile, options.config, options.channel)
 	if err != nil {
 		return nil, err
 	}

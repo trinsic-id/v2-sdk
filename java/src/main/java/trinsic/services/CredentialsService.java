@@ -26,7 +26,11 @@ public class CredentialsService extends ServiceBase {
         this(accountProfile, serverConfig, null);
     }
 
-    public CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    public CredentialsService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
+
+    private CredentialsService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
 
         this.stub = VerifiableCredentialGrpc.newFutureStub(this.getChannel());

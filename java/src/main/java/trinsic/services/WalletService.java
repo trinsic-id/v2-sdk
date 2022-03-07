@@ -25,7 +25,11 @@ public class WalletService extends ServiceBase {
         this(accountProfile, serverConfig, null);
     }
 
-    public WalletService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
+    public WalletService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
+        this(accountProfile, null, existingChannel);
+    }
+
+    private WalletService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
         super(accountProfile, serverConfig, existingChannel);
         this.stub = UniversalWalletGrpc.newFutureStub(this.getChannel());
     }

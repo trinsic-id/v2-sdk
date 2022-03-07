@@ -16,8 +16,12 @@ from trinsic.trinsic_util import create_channel
 _skip_routes = ["/services.account.v1.Account/SignIn"]
 
 
-def _update_metadata(route: str, service: "ServiceBase", metadata: "_MetadataLike",
-                     request: "_MessageLike") -> "_MetadataLike":
+def _update_metadata(
+    route: str,
+    service: "ServiceBase",
+    metadata: "_MetadataLike",
+    request: "_MessageLike",
+) -> "_MetadataLike":
     if route in _skip_routes:
         return metadata
     metadata = metadata or {}
@@ -31,9 +35,13 @@ class ServiceBase(ABC):
     Base class for service wrapper classes, provides the metadata functionality in a consistent manner.
     """
 
-    def __init__(self, profile: AccountProfile,
-                 server_config: ServerConfig,
-                 channel: Channel):
+    def __init__(
+        self, profile: AccountProfile, server_config: ServerConfig, channel: Channel
+    ):
+        if server_config and channel:
+            raise ValueError(
+                "Cannot provide both server_config and channel - connection is ambiguous"
+            )
         self.profile: AccountProfile = profile
         self._server_config: ServerConfig = server_config
         self._channel: Channel = channel or create_channel(server_config)
@@ -61,27 +69,39 @@ class ServiceBase(ABC):
         if not self.profile:
             raise ValueError("Cannot call authenticated endpoint: profile must be set")
 
-        return {"authorization": self._security_provider.get_auth_header(self.profile, request)}
+        return {
+            "authorization": self._security_provider.get_auth_header(
+                self.profile, request
+            )
+        }
 
     def stub_with_metadata(self, stub_type: Type[T]) -> T:
         return self.with_call_metadata(stub_type(self.channel))
 
     def with_call_metadata(self, stub: ServiceStub) -> ServiceStub:
         # Find the _unary_unary() method
-        _cls_unary_unary = getattr(stub, '_unary_unary')
+        _cls_unary_unary = getattr(stub, "_unary_unary")
 
         # Wrap it
-        async def wrapped_unary(this,
-                                route: str,
-                                request: "_MessageLike",
-                                response_type: Type[T],
-                                *,
-                                timeout: Optional[float] = None,
-                                deadline: Optional["Deadline"] = None,
-                                metadata: Optional["_MetadataLike"] = None) -> Type[T]:
+        async def wrapped_unary(
+            this,
+            route: str,
+            request: "_MessageLike",
+            response_type: Type[T],
+            *,
+            timeout: Optional[float] = None,
+            deadline: Optional["Deadline"] = None,
+            metadata: Optional["_MetadataLike"] = None,
+        ) -> Type[T]:
             metadata = _update_metadata(route, self, metadata, request)
-            return await this._unary_unary_1(route, request, response_type, timeout=timeout, deadline=deadline,
-                                             metadata=metadata)
+            return await this._unary_unary_1(
+                route,
+                request,
+                response_type,
+                timeout=timeout,
+                deadline=deadline,
+                metadata=metadata,
+            )
 
         stub._unary_unary = types.MethodType(wrapped_unary, stub)
         stub._unary_unary_1 = _cls_unary_unary

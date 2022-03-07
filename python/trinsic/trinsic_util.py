@@ -23,13 +23,13 @@ def trinsic_production_config() -> ServerConfig:
 
 def trinsic_test_config() -> ServerConfig:
     """
-    Test server configuration
+    Test server configuration - if environment variables aren't set, default to production
     Returns:
         [ServerConfig](/reference/proto/#serverconfig)
     """
-    endpoint = getenv('TEST_SERVER_ENDPOINT')
-    port = int(getenv('TEST_SERVER_PORT', 443))
-    use_tls = bool(strtobool(getenv('TEST_SERVER_USE_TLS', 'true')))
+    endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
+    port = int(getenv("TEST_SERVER_PORT", 443))
+    use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
     return ServerConfig(endpoint=endpoint, port=port, use_tls=use_tls)
 
 
@@ -48,7 +48,9 @@ def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
         is_https = service_url.scheme == "https"
         if not service_url.hostname:
             raise ValueError(f'Invalid url="{config}"')
-        channel = Channel(host=f"{service_url.hostname}", port=service_url.port, ssl=is_https)
+        channel = Channel(
+            host=f"{service_url.hostname}", port=service_url.port, ssl=is_https
+        )
     elif isinstance(config, ServerConfig):
         channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)
     else:
@@ -56,7 +58,9 @@ def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
     return channel
 
 
-def convert_to_epoch_seconds(valid_from: datetime, valid_until: datetime) -> Tuple[float, float]:
+def convert_to_epoch_seconds(
+    valid_from: datetime, valid_until: datetime
+) -> Tuple[float, float]:
     """
     Convert provided datetime objects to seconds since the UNIX epoch - this works around windows strptime() limitations.
     Args:

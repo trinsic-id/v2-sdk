@@ -16,9 +16,31 @@ import (
 
 type Document map[string]interface{}
 
+type ServiceOptions struct {
+	profile *sdk.AccountProfile
+	config  *sdk.ServerConfig
+	channel *grpc.ClientConn
+}
+
 func TrinsicProductionConfig() *sdk.ServerConfig {
 	return &sdk.ServerConfig{
 		Endpoint: "prod.trinsic.cloud",
+		Port:     443,
+		UseTls:   true,
+	}
+}
+
+func TrinsicDevelopmentConfig() *sdk.ServerConfig {
+	return &sdk.ServerConfig{
+		Endpoint: "dev-internal.trinsic.cloud",
+		Port:     443,
+		UseTls:   true,
+	}
+}
+
+func TrinsicStagingConfig() *sdk.ServerConfig {
+	return &sdk.ServerConfig{
+		Endpoint: "staging-internal.trinsic.cloud",
 		Port:     443,
 		UseTls:   true,
 	}
