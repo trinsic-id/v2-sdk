@@ -1,12 +1,13 @@
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
-    AcceptInviteRequest, AcceptInviteResponse,
-    CreateEcosystemRequest, CreateEcosystemResponse,
+    CreateEcosystemRequest,
+    CreateEcosystemResponse,
     InvitationStatusRequest,
     InvitationStatusResponse,
     InviteRequest,
-    InviteResponse, ListEcosystemsRequest, ListEcosystemsResponse,
-    ProviderClient
+    InviteResponse,
+    ProviderClient,
+    ServiceOptions
 } from "./proto";
 
 export class ProviderService extends ServiceBase {
@@ -29,17 +30,6 @@ export class ProviderService extends ServiceBase {
         });
     }
 
-    public acceptInvite(request: AcceptInviteRequest): Promise<AcceptInviteResponse> {
-        return new Promise(async (resolve, reject) => {
-            this.client.acceptInvite(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                }
-                return resolve(response);
-            });
-        });
-    }
-
     public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.invitationStatus(request, await this.getMetadata(request), (error, response) => {
@@ -54,18 +44,6 @@ export class ProviderService extends ServiceBase {
     public createEcosystem(request: CreateEcosystemRequest): Promise<CreateEcosystemResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.createEcosystem(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                }
-                return resolve(response);
-            });
-        });
-    }
-
-    public listEcosystems(): Promise<ListEcosystemsResponse> {
-        let request = new ListEcosystemsRequest();
-        return new Promise(async (resolve, reject) => {
-            this.client.listEcosystems(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
                 }

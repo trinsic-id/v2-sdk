@@ -26,7 +26,7 @@
   "license": "ISC",
   "dependencies": {
     "@grpc/grpc-js": "^1.5.2",
-    "@trinsic/okapi": "^1.2.0",
+    "@trinsic/okapi": "^1.4.0",
     "base64url": "^3.0.1",
     "google-protobuf": "^3.19.3",
     "mini-blake3": "^6.5.5"
