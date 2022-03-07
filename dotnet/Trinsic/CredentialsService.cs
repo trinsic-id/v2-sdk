@@ -1,11 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Net.Client;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
@@ -28,28 +23,20 @@ public class CredentialsService : ServiceBase
     /// <summary>
     /// Signs an input credential
     /// </summary>
-    /// <param name="document"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<JObject> IssueCredentialAsync(JObject document) {
-        try {
-            IssueRequest request = new() {DocumentJson = document.ToString()};
-            var response = await Client.IssueAsync(request, await BuildMetadataAsync(request));
-            return JObject.Parse(response.SignedDocumentJson);
-        } catch(Exception e) {
-            Console.WriteLine(e);
-            throw;
+    public async Task<IssueResponse> IssueCredentialAsync(IssueRequest request) {
+        if (string.IsNullOrWhiteSpace(request.DocumentJson)) {
+            throw new ArgumentException("document json must not be empty");
         }
+        return await Client.IssueAsync(request, await BuildMetadataAsync(request));
     }
 
-    public JObject IssueCredential(JObject document) {
-        try {
-            IssueRequest request = new() {DocumentJson = document.ToString()};
-            var response = Client.Issue(request, BuildMetadata(request));
-            return JObject.Parse(response.SignedDocumentJson);
-        } catch(Exception e) {
-            Console.WriteLine(e);
-            throw;
+    public IssueResponse IssueCredential(IssueRequest request) {
+        if (string.IsNullOrWhiteSpace(request.DocumentJson)) {
+            throw new ArgumentException("document json must not be empty");
         }
+        return Client.Issue(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -72,36 +59,6 @@ public class CredentialsService : ServiceBase
         return response.DocumentJson;
     }
 
-
-    /// <summary>
-    /// Derive a proof from an existing document in the wallet using
-    /// an input reveal document frame
-    /// </summary>
-    /// <param name="itemId"></param>
-    /// <param name="revealDocument"></param>
-    /// <returns></returns>
-    [Obsolete("Please use 'CreateProofAsync(CreateProofRequest) method instead")]
-    public async Task<JObject> CreateProofAsync(string itemId, JObject revealDocument) {
-        CreateProofRequest request = new() {
-            ItemId = itemId,
-            RevealDocumentJson = revealDocument.ToString()
-        };
-        var response = await Client.CreateProofAsync(request, await BuildMetadataAsync(request));
-
-        return JObject.Parse(response.ProofDocumentJson);
-    }
-
-    [Obsolete("Please use 'CreateProof(CreateProofRequest) method instead")]
-    public JObject CreateProof(string itemId, JObject revealDocument) {
-        CreateProofRequest request = new() {
-            ItemId = itemId,
-            RevealDocumentJson = revealDocument.ToString()
-        };
-        var response = Client.CreateProof(request, BuildMetadata(request));
-
-        return JObject.Parse(response.ProofDocumentJson);
-    }
-    
     /// <summary>
     /// Create a proof from a record in the user's wallet. The record must be a valid
     /// verifiable credential and contain a signature from which a proof can be derived.
@@ -111,7 +68,7 @@ public class CredentialsService : ServiceBase
     public async Task<CreateProofResponse> CreateProofAsync(CreateProofRequest request) {
         return await Client.CreateProofAsync(request, await BuildMetadataAsync(request));
     }
-    
+
     /// <summary>
     /// Create a proof from a record in the user's wallet. The record must be a valid
     /// verifiable credential and contain a signature from which a proof can be derived.
@@ -125,12 +82,9 @@ public class CredentialsService : ServiceBase
     /// <summary>
     /// Verifies a proof document
     /// </summary>
-    /// <param name="proofDocument"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<bool> VerifyProofAsync(JObject proofDocument) {
-        VerifyProofRequest request = new() {
-            ProofDocumentJson = proofDocument.ToString(Formatting.None)
-        };
+    public async Task<bool> VerifyProofAsync(VerifyProofRequest request) {
         var response = await Client.VerifyProofAsync(
             request: request,
             headers: await BuildMetadataAsync(request));
@@ -138,10 +92,7 @@ public class CredentialsService : ServiceBase
         return response.IsValid;
     }
 
-    public bool VerifyProof(JObject proofDocument) {
-        VerifyProofRequest request = new() {
-            ProofDocumentJson = proofDocument.ToString()
-        };
+    public bool VerifyProof(VerifyProofRequest request) {
         var response = Client.VerifyProof(
             request: request,
             headers: BuildMetadata(request));
@@ -188,24 +139,15 @@ public class CredentialsService : ServiceBase
     /// <summary>
     /// Sends a document to the specified destination
     /// </summary>
-    /// <param name="document"></param>
-    /// <param name="email"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task SendAsync(JObject document, string email) {
-        SendRequest request = new() {
-            Email = email,
-            DocumentJson = document.ToString()
-        };
+    public async Task SendAsync(SendRequest request) {
         var response = await Client.SendAsync(
             request: request,
             headers: await BuildMetadataAsync(request));
     }
 
-    public void Send(JObject document, string email) {
-        SendRequest request = new() {
-            Email = email,
-            DocumentJson = document.ToString()
-        };
+    public void Send(SendRequest request) {
         var response = Client.Send(
             request: request,
             headers: BuildMetadata(request));

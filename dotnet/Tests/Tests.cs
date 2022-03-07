@@ -79,8 +79,8 @@ public class Tests
         // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
         // Sign the credential using BBS+ signature scheme
-        var credential = await credentialsService.IssueCredentialAsync(document: JObject.Parse(credentialJson));
-        _testOutputHelper.WriteLine($"Credential:\n{credential.ToString(Formatting.Indented)}");
+        var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
+        _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
 
         // storeAndRecallProfile {
@@ -96,7 +96,7 @@ public class Tests
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
-        var itemId = await walletService.InsertItemAsync(credential);
+        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         // }
 
         // SHARE CREDENTIAL
@@ -111,10 +111,13 @@ public class Tests
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
-        var credentialProof = await credentialsService.CreateProofAsync(itemId, JObject.Parse(proofRequestJson));
+        var credentialProof = await credentialsService.CreateProofAsync(new() {
+            ItemId = itemId,
+            RevealDocumentJson = proofRequestJson
+        });
         // }
         _testOutputHelper.WriteLine("Proof:");
-        _testOutputHelper.WriteLine(credentialProof.ToString(Formatting.Indented));
+        _testOutputHelper.WriteLine(credentialProof.ProofDocumentJson);
 
 
         // VERIFY CREDENTIAL
@@ -123,7 +126,9 @@ public class Tests
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = airline;
 
         // Check for valid signature
-        var valid = await credentialsService.VerifyProofAsync(credentialProof);
+        var valid = await credentialsService.VerifyProofAsync(new() {
+            ProofDocumentJson = credentialProof.ProofDocumentJson
+        });
         // }
         _testOutputHelper.WriteLine($"Verification result: {valid}");
         Assert.True(valid);
@@ -228,12 +233,12 @@ public class Tests
         var accountService = new AccountService(_options);
         var profile = await accountService.SignInAsync(new());
         var providerService = new ProviderService(_options.CloneWithAuthToken(profile));
-        
+
         var invitationResponse = await providerService.InviteParticipantAsync(new());
 
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
-        
+
         await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new InvitationStatusRequest()));
     }
 
@@ -263,7 +268,7 @@ public class Tests
         var accountService = new AccountService(_options);
         var profile = await accountService.SignInAsync(new());
         var options = _options.CloneWithAuthToken(profile);
-        
+
         var templateService = new TemplateService(options);
         var credentialService = new CredentialsService(options);
         var walletService = new WalletService(options);
@@ -303,22 +308,36 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
-        var itemId = await walletService.InsertItemAsync(JObject.Parse(credentialJson));
+        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credentialJson});
 
         var frame = new JObject {
             {"@context", "https://www.w3.org/2018/credentials/v1"},
             {"type", new JArray("VerifiableCredential")}
         };
 
-        var proof = await credentialService.CreateProofAsync(new() {
-            //ItemId = itemId,
-            DocumentJson = credentialJson,
-            RevealDocumentJson = frame.ToString(Formatting.None)
-        });
+        // Create proof from input document
+        {
+            var proof = await credentialService.CreateProofAsync(new() {
+                DocumentJson = credentialJson,
+                RevealDocumentJson = frame.ToString(Formatting.None)
+            });
 
-        var valid = await credentialService.VerifyProofAsync(JObject.Parse(proof.ProofDocumentJson));
+            var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
 
-        valid.Should().BeTrue();
+            valid.Should().BeTrue();
+        }
+
+        // Create proof from item id
+        {
+            var proof = await credentialService.CreateProofAsync(new() {
+                ItemId = itemId,
+                RevealDocumentJson = frame.ToString(Formatting.None)
+            });
+
+            var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
+
+            valid.Should().BeTrue();
+        }
     }
 }
 

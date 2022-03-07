@@ -59,11 +59,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.IssueCredentialAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.CredentialsService.IssueCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
             <summary>
             Signs an input credential
             </summary>
-            <param name="document"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
@@ -79,15 +79,6 @@
             </summary>
             <param name="request">The request object with the template identifier and the values</param>
             <returns>Verifiable credential as JSON</returns>
-        </member>
-        <member name="M:Trinsic.CredentialsService.CreateProofAsync(System.String,Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            Derive a proof from an existing document in the wallet using
-            an input reveal document frame
-            </summary>
-            <param name="itemId"></param>
-            <param name="revealDocument"></param>
-            <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
             <summary>
@@ -105,11 +96,11 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest)">
             <summary>
             Verifies a proof document
             </summary>
-            <param name="proofDocument"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.CheckStatusAsync(System.String)">
@@ -127,12 +118,11 @@
             <param name="revoked"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.SendAsync(Newtonsoft.Json.Linq.JObject,System.String)">
+        <member name="M:Trinsic.CredentialsService.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest)">
             <summary>
             Sends a document to the specified destination
             </summary>
-            <param name="document"></param>
-            <param name="email"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:Trinsic.Services.Common.V1.CommonReflection">
@@ -2779,18 +2769,18 @@
             </remarks>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.InsertItemAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.WalletService.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
             Insert an item into the personal wallet
             </summary>
-            <param name="item"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.InsertItem(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.WalletService.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
             Insert an item into the personal wallet
             </summary>
-            <param name="item"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:Trinsic.Sdk.Options.V1.OptionsReflection">
@@ -2844,12 +2834,6 @@
             ecosystem to use with endpoints that require it
             </summary>
         </member>
-        <member name="M:Newtonsoft.Json.Linq.JTokenExtensions.ToStruct(Newtonsoft.Json.Linq.JToken)">
-            <summary>
-            Converts to struct.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">
             <summary>
             Converts a message from one type into another. The two types must be compatible
@@ -2857,20 +2841,6 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="message"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.StructExtensions.ToJToken(Google.Protobuf.WellKnownTypes.Struct)">
-            <summary>
-            Converts to jtoken.
-            </summary>
-            <param name="message">The message.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.StructExtensions.ToJObject(Google.Protobuf.WellKnownTypes.Struct)">
-            <summary>
-            Converts to <c>JObject</c>.
-            </summary>
-            <param name="message">The message.</param>
             <returns></returns>
         </member>
     </members>

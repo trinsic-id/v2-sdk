@@ -1,12 +1,6 @@
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Newtonsoft.Json.Linq;
 using Trinsic.Services.UniversalWallet.V1;
-using Trinsic.Services.Common.V1;
-using Trinsic.Services.Account.V1;
-using Grpc.Net.Client;
 using Trinsic.Sdk.Options.V1;
-using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient;
 
 namespace Trinsic;
 
@@ -21,7 +15,7 @@ public class WalletService : ServiceBase
         Client = new(Channel);
     }
 
-    private WalletServiceClient Client { get; }
+    private UniversalWallet.UniversalWalletClient Client { get; }
 
     /// <summary>
     /// Search the wallet for records matching the specified criteria
@@ -56,11 +50,9 @@ public class WalletService : ServiceBase
     /// <summary>
     /// Insert an item into the personal wallet
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<string> InsertItemAsync(JObject item) {
-        InsertItemRequest request = new() {ItemJson = item.ToString()};
-
+    public async Task<string> InsertItemAsync(InsertItemRequest request) {
         var response = await Client.InsertItemAsync(
             request: request,
             headers: await BuildMetadataAsync(request));
@@ -70,11 +62,9 @@ public class WalletService : ServiceBase
     /// <summary>
     /// Insert an item into the personal wallet
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public string InsertItem(JObject item) {
-        InsertItemRequest request = new() {ItemJson = item.ToString()};
-
+    public string InsertItem(InsertItemRequest request) {
         var response = Client.InsertItem(
             request: request,
             headers: BuildMetadata(request));
