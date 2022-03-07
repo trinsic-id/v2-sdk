@@ -68,9 +68,9 @@ class TrustRegistryServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun searchRegistry(query: String?): SearchRegistryResponse {
-        var query = query
-        if (query == null) query = "SELECT * FROM c"
-        val request = SearchRegistryRequest.newBuilder().setQuery(query).build()
+        var query2 = query
+        if (query2 == null) query2 = "SELECT * FROM c"
+        val request = SearchRegistryRequest.newBuilder().setQuery(query2).build()
         return withMetadata(stub, request).searchRegistry(request)
     }
 

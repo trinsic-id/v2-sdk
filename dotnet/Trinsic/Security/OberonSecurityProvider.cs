@@ -1,9 +1,6 @@
 using System;
-using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
-using Blake3Core;
 using Google.Protobuf;
 using Okapi.Security;
 using Trinsic.Services.Account.V1;
@@ -13,7 +10,6 @@ namespace Trinsic;
 
 internal class OberonSecurityProvider : ISecurityProvider
 {
-    private readonly HashAlgorithm _hasher = new Blake3();
 
     public Task<string> GetAuthHeaderAsync(AccountProfile accountProfile, IMessage message)
     {
@@ -40,8 +36,7 @@ internal class OberonSecurityProvider : ISecurityProvider
 
         if (requestBytes.Any())
         {
-            using MemoryStream stream = new(message.ToByteArray());
-            requestHash = ByteString.CopyFrom(_hasher.ComputeHash(stream));
+            requestHash = Okapi.Hashing.Blake3.Hash(new() {Data = ByteString.CopyFrom(requestBytes)}).Digest;
         }
 
         Nonce nonce = new()
