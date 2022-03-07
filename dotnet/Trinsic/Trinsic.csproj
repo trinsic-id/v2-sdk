@@ -37,7 +37,6 @@
         <PackageReference Include="Okapi.Net" Version="1.4.1">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">

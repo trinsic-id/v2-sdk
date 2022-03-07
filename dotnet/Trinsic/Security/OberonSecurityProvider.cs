@@ -52,7 +52,7 @@ internal class OberonSecurityProvider : ISecurityProvider
             Nonce = nonce.ToByteString()
         });
 
-        var header = $"Oberon " +
+        var header = "Oberon " +
             $"ver={1}," +
             $"proof={Base64UrlEncode(proof.Proof.ToByteArray())}," +
             $"data={Base64UrlEncode(accountProfile.AuthData.ToByteArray())}," +

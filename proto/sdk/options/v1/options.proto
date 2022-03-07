@@ -6,23 +6,17 @@ option go_package = "github.com/trinsic-id/sdk/go/options";
 option java_package = "trinsic.sdk.v1";
 option csharp_namespace = "Trinsic.Sdk.Options.V1";
 
-import "services/account/v1/account.proto";
-
 // service options
 message ServiceOptions {
-    // server configuration
-    ServerConfiguration server = 1;
-    // account profile to use for authentication
-    services.account.v1.AccountProfile profile = 2;
+    // service endpoint
+    string server_endpoint = 1;
+    // service port
+    int32 server_port = 2;
+    // indicates if tls is used
+    bool server_use_tls = 3;
+    // default auth token for oberon security scheme
+    string auth_token = 4;
     // ecosystem to use with endpoints that require it
-    string ecosystem = 3;
+    string default_ecosystem = 5;
 }
 
-message ServerConfiguration {
-    // service endpoint
-    string endpoint = 1;
-    // service port
-    int32 port = 2;
-    // indicates if tls is used
-    bool use_tls = 3;
-}

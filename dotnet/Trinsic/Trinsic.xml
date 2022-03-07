@@ -9,37 +9,42 @@
             Account Service
             </summary>
         </member>
-        <member name="M:Trinsic.AccountService.SignInAsync(Trinsic.Services.Account.V1.AccountDetails)">
+        <member name="P:Trinsic.AccountService.Client">
+            <summary>
+            Gets the underlying grpc client
+            </summary>
+        </member>
+        <member name="M:Trinsic.AccountService.SignInAsync(Trinsic.Services.Account.V1.SignInRequest)">
             <summary>
             Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
             specified, they will be used to associate
             </summary>
-            <param name="details"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.AccountService.SignIn(Trinsic.Services.Account.V1.AccountDetails)">
+        <member name="M:Trinsic.AccountService.SignIn(Trinsic.Services.Account.V1.SignInRequest)">
             <summary>
             Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
             specified, they will be used to associate
             </summary>
-            <param name="details"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.AccountService.Unprotect(Trinsic.Services.Account.V1.AccountProfile,System.String)">
+        <member name="M:Trinsic.AccountService.Unprotect(System.String,System.String)">
             <summary>
             Unprotects the account profile using a security code.
             The confirmation method field will specify how this code was
             communicated with the account owner.
             </summary>
-            <param name="profile"></param>
+            <param name="authToken"></param>
             <param name="securityCode"></param>
         </member>
-        <member name="M:Trinsic.AccountService.Protect(Trinsic.Services.Account.V1.AccountProfile,System.String)">
+        <member name="M:Trinsic.AccountService.Protect(System.String,System.String)">
             <summary>
             Protects the account profile with a security code.
             The code can be a PIN, password, keychain secret, etc.
             </summary>
-            <param name="profile"></param>
+            <param name="authToken"></param>
             <param name="securityCode"></param>
         </member>
         <member name="M:Trinsic.AccountService.GetInfoAsync">
@@ -54,11 +59,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.IssueCredentialAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.CredentialsService.IssueCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
             <summary>
             Signs an input credential
             </summary>
-            <param name="document"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
@@ -74,15 +79,6 @@
             </summary>
             <param name="request">The request object with the template identifier and the values</param>
             <returns>Verifiable credential as JSON</returns>
-        </member>
-        <member name="M:Trinsic.CredentialsService.CreateProofAsync(System.String,Newtonsoft.Json.Linq.JObject)">
-            <summary>
-            Derive a proof from an existing document in the wallet using
-            an input reveal document frame
-            </summary>
-            <param name="itemId"></param>
-            <param name="revealDocument"></param>
-            <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest)">
             <summary>
@@ -100,11 +96,11 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.CredentialsService.VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest)">
             <summary>
             Verifies a proof document
             </summary>
-            <param name="proofDocument"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.CheckStatusAsync(System.String)">
@@ -122,12 +118,11 @@
             <param name="revoked"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.SendAsync(Newtonsoft.Json.Linq.JObject,System.String)">
+        <member name="M:Trinsic.CredentialsService.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest)">
             <summary>
             Sends a document to the specified destination
             </summary>
-            <param name="document"></param>
-            <param name="email"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:Trinsic.Services.Common.V1.CommonReflection">
@@ -645,6 +640,74 @@
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetItemRequest">
+            <summary>
+            Get item request object
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemRequest.ItemId">
+            <summary>
+            The item identifier
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.GetItemResponse">
+            <summary>
+            Get item response object
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemJsonFieldNumber">
+            <summary>Field number for the "item_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemJson">
+            <summary>
+            The item data represented as stringified JSON
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemTypeFieldNumber">
+            <summary>Field number for the "item_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemType">
+            <summary>
+            User set item type that described the content of this item
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest">
+            <summary>
+            Update item request object
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemIdFieldNumber">
+            <summary>Field number for the "item_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemId">
+            <summary>
+            The item identifier
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemTypeFieldNumber">
+            <summary>Field number for the "item_type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemType">
+            <summary>
+            The item type that described the content of this item
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.UpdateItemResponse">
+            <summary>
+            Update item response object
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.UniversalWallet.V1.UpdateItemResponse.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.UpdateItemResponse.Status">
+            <summary>
+            Response status
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.InsertItemRequest">
             <summary>
             Insert item request
@@ -695,6 +758,11 @@
             item identifier of the record to delete
             </summary>
         </member>
+        <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteItemResponse">
+            <summary>
+            Delete item response
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteItemResponse.StatusFieldNumber">
             <summary>Field number for the "status" field.</summary>
         </member>
@@ -703,6 +771,14 @@
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase">
             <summary>Base class for server-side implementations of UniversalWallet</summary>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.GetItem(Trinsic.Services.UniversalWallet.V1.GetItemRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Retrieve an item from the wallet with a given item identifier
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.ServerCallContext)">
             <summary>
@@ -713,6 +789,14 @@
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Insert an item into the wallet
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Insert an item into the wallet
             </summary>
@@ -745,6 +829,42 @@
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Protected constructor to allow creation of configured clients.</summary>
             <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetItem(Trinsic.Services.UniversalWallet.V1.GetItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve an item from the wallet with a given item identifier
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetItem(Trinsic.Services.UniversalWallet.V1.GetItemRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve an item from the wallet with a given item identifier
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetItemAsync(Trinsic.Services.UniversalWallet.V1.GetItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retrieve an item from the wallet with a given item identifier
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.GetItemAsync(Trinsic.Services.UniversalWallet.V1.GetItemRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retrieve an item from the wallet with a given item identifier
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
@@ -811,6 +931,42 @@
             <returns>The call object.</returns>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Insert an item into the wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Insert an item into the wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Insert an item into the wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItemAsync(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Insert an item into the wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItemAsync(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.CallOptions)">
             <summary>
             Insert an item into the wallet
             </summary>
@@ -2613,18 +2769,18 @@
             </remarks>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.InsertItemAsync(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.WalletService.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
             Insert an item into the personal wallet
             </summary>
-            <param name="item"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.InsertItem(Newtonsoft.Json.Linq.JObject)">
+        <member name="M:Trinsic.WalletService.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
             Insert an item into the personal wallet
             </summary>
-            <param name="item"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:Trinsic.Sdk.Options.V1.OptionsReflection">
@@ -2638,59 +2794,45 @@
             service options
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerFieldNumber">
-            <summary>Field number for the "server" field.</summary>
+        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpointFieldNumber">
+            <summary>Field number for the "server_endpoint" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.Server">
-            <summary>
-            server configuration
-            </summary>
-        </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ProfileFieldNumber">
-            <summary>Field number for the "profile" field.</summary>
-        </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.Profile">
-            <summary>
-            account profile to use for authentication
-            </summary>
-        </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.EcosystemFieldNumber">
-            <summary>Field number for the "ecosystem" field.</summary>
-        </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.Ecosystem">
-            <summary>
-            ecosystem to use with endpoints that require it
-            </summary>
-        </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServerConfiguration.EndpointFieldNumber">
-            <summary>Field number for the "endpoint" field.</summary>
-        </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServerConfiguration.Endpoint">
+        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpoint">
             <summary>
             service endpoint
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServerConfiguration.PortFieldNumber">
-            <summary>Field number for the "port" field.</summary>
+        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPortFieldNumber">
+            <summary>Field number for the "server_port" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServerConfiguration.Port">
+        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPort">
             <summary>
             service port
             </summary>
         </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServerConfiguration.UseTlsFieldNumber">
-            <summary>Field number for the "use_tls" field.</summary>
+        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTlsFieldNumber">
+            <summary>Field number for the "server_use_tls" field.</summary>
         </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServerConfiguration.UseTls">
+        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTls">
             <summary>
             indicates if tls is used
             </summary>
         </member>
-        <member name="M:Newtonsoft.Json.Linq.JTokenExtensions.ToStruct(Newtonsoft.Json.Linq.JToken)">
+        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.AuthTokenFieldNumber">
+            <summary>Field number for the "auth_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.AuthToken">
             <summary>
-            Converts to struct.
+            default auth token for oberon security scheme
             </summary>
-            <returns></returns>
+        </member>
+        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystemFieldNumber">
+            <summary>Field number for the "default_ecosystem" field.</summary>
+        </member>
+        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystem">
+            <summary>
+            ecosystem to use with endpoints that require it
+            </summary>
         </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">
             <summary>
@@ -2699,20 +2841,6 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="message"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.StructExtensions.ToJToken(Google.Protobuf.WellKnownTypes.Struct)">
-            <summary>
-            Converts to jtoken.
-            </summary>
-            <param name="message">The message.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Google.Protobuf.WellKnownTypes.StructExtensions.ToJObject(Google.Protobuf.WellKnownTypes.Struct)">
-            <summary>
-            Converts to <c>JObject</c>.
-            </summary>
-            <param name="message">The message.</param>
             <returns></returns>
         </member>
     </members>
