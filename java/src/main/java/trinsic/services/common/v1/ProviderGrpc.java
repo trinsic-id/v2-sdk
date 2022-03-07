@@ -46,35 +46,35 @@ public final class ProviderGrpc {
     return getCreateEcosystemMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
-      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest,
+      trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> getGenerateTokenMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ListEcosystems",
-      requestType = trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class,
-      responseType = trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GenerateToken",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
-      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> getListEcosystemsMethod;
-    if ((getListEcosystemsMethod = ProviderGrpc.getListEcosystemsMethod) == null) {
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest,
+      trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> getGenerateTokenMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> getGenerateTokenMethod;
+    if ((getGenerateTokenMethod = ProviderGrpc.getGenerateTokenMethod) == null) {
       synchronized (ProviderGrpc.class) {
-        if ((getListEcosystemsMethod = ProviderGrpc.getListEcosystemsMethod) == null) {
-          ProviderGrpc.getListEcosystemsMethod = getListEcosystemsMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>newBuilder()
+        if ((getGenerateTokenMethod = ProviderGrpc.getGenerateTokenMethod) == null) {
+          ProviderGrpc.getGenerateTokenMethod = getGenerateTokenMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListEcosystems"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GenerateToken"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance()))
+                  trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("ListEcosystems"))
+                  trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("GenerateToken"))
               .build();
         }
       }
     }
-    return getListEcosystemsMethod;
+    return getGenerateTokenMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
@@ -106,37 +106,6 @@ public final class ProviderGrpc {
       }
     }
     return getInviteMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
-      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "AcceptInvite",
-      requestType = trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class,
-      responseType = trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
-      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> getAcceptInviteMethod;
-    if ((getAcceptInviteMethod = ProviderGrpc.getAcceptInviteMethod) == null) {
-      synchronized (ProviderGrpc.class) {
-        if ((getAcceptInviteMethod = ProviderGrpc.getAcceptInviteMethod) == null) {
-          ProviderGrpc.getAcceptInviteMethod = getAcceptInviteMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AcceptInvite"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("AcceptInvite"))
-              .build();
-        }
-      }
-    }
-    return getAcceptInviteMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
@@ -230,12 +199,13 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     * List all ecosystems assigned to the authenticated account
+     * Generates an unprotected authentication token that can be used to
+     * configure server side applications
      * </pre>
      */
-    public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListEcosystemsMethod(), responseObserver);
+    public void generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGenerateTokenMethod(), responseObserver);
     }
 
     /**
@@ -246,16 +216,6 @@ public final class ProviderGrpc {
     public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInviteMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Accept an invite to the ecosystem
-     * </pre>
-     */
-    public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAcceptInviteMethod(), responseObserver);
     }
 
     /**
@@ -278,12 +238,12 @@ public final class ProviderGrpc {
                 trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse>(
                   this, METHODID_CREATE_ECOSYSTEM)))
           .addMethod(
-            getListEcosystemsMethod(),
+            getGenerateTokenMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest,
-                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>(
-                  this, METHODID_LIST_ECOSYSTEMS)))
+                trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest,
+                trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse>(
+                  this, METHODID_GENERATE_TOKEN)))
           .addMethod(
             getInviteMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -291,13 +251,6 @@ public final class ProviderGrpc {
                 trinsic.services.common.v1.ProviderOuterClass.InviteRequest,
                 trinsic.services.common.v1.ProviderOuterClass.InviteResponse>(
                   this, METHODID_INVITE)))
-          .addMethod(
-            getAcceptInviteMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest,
-                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>(
-                  this, METHODID_ACCEPT_INVITE)))
           .addMethod(
             getInvitationStatusMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -336,13 +289,14 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     * List all ecosystems assigned to the authenticated account
+     * Generates an unprotected authentication token that can be used to
+     * configure server side applications
      * </pre>
      */
-    public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver) {
+    public void generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getListEcosystemsMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGenerateTokenMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -354,17 +308,6 @@ public final class ProviderGrpc {
         io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInviteMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Accept an invite to the ecosystem
-     * </pre>
-     */
-    public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAcceptInviteMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -405,12 +348,13 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     * List all ecosystems assigned to the authenticated account
+     * Generates an unprotected authentication token that can be used to
+     * configure server side applications
      * </pre>
      */
-    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request) {
+    public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getListEcosystemsMethod(), getCallOptions(), request);
+          getChannel(), getGenerateTokenMethod(), getCallOptions(), request);
     }
 
     /**
@@ -421,16 +365,6 @@ public final class ProviderGrpc {
     public trinsic.services.common.v1.ProviderOuterClass.InviteResponse invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInviteMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Accept an invite to the ecosystem
-     * </pre>
-     */
-    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAcceptInviteMethod(), getCallOptions(), request);
     }
 
     /**
@@ -471,13 +405,14 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     * List all ecosystems assigned to the authenticated account
+     * Generates an unprotected authentication token that can be used to
+     * configure server side applications
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> listEcosystems(
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> generateToken(
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getListEcosystemsMethod(), getCallOptions()), request);
+          getChannel().newCall(getGenerateTokenMethod(), getCallOptions()), request);
     }
 
     /**
@@ -493,17 +428,6 @@ public final class ProviderGrpc {
 
     /**
      * <pre>
-     * Accept an invite to the ecosystem
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> acceptInvite(
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAcceptInviteMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
      * Check the invitation status
      * </pre>
      */
@@ -515,10 +439,9 @@ public final class ProviderGrpc {
   }
 
   private static final int METHODID_CREATE_ECOSYSTEM = 0;
-  private static final int METHODID_LIST_ECOSYSTEMS = 1;
+  private static final int METHODID_GENERATE_TOKEN = 1;
   private static final int METHODID_INVITE = 2;
-  private static final int METHODID_ACCEPT_INVITE = 3;
-  private static final int METHODID_INVITATION_STATUS = 4;
+  private static final int METHODID_INVITATION_STATUS = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -541,17 +464,13 @@ public final class ProviderGrpc {
           serviceImpl.createEcosystem((trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse>) responseObserver);
           break;
-        case METHODID_LIST_ECOSYSTEMS:
-          serviceImpl.listEcosystems((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse>) responseObserver);
+        case METHODID_GENERATE_TOKEN:
+          serviceImpl.generateToken((trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse>) responseObserver);
           break;
         case METHODID_INVITE:
           serviceImpl.invite((trinsic.services.common.v1.ProviderOuterClass.InviteRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse>) responseObserver);
-          break;
-        case METHODID_ACCEPT_INVITE:
-          serviceImpl.acceptInvite((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse>) responseObserver);
           break;
         case METHODID_INVITATION_STATUS:
           serviceImpl.invitationStatus((trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest) request,
@@ -619,9 +538,8 @@ public final class ProviderGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ProviderFileDescriptorSupplier())
               .addMethod(getCreateEcosystemMethod())
-              .addMethod(getListEcosystemsMethod())
+              .addMethod(getGenerateTokenMethod())
               .addMethod(getInviteMethod())
-              .addMethod(getAcceptInviteMethod())
               .addMethod(getInvitationStatusMethod())
               .build();
         }

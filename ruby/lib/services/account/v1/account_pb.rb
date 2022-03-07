@@ -4,12 +4,12 @@
 require 'google/protobuf'
 
 require 'services/common/v1/common_pb'
-require 'services/provider/v1/provider_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/account/v1/account.proto", :syntax => :proto3) do
     add_message "services.account.v1.SignInRequest" do
       optional :details, :message, 1, "services.account.v1.AccountDetails"
       optional :invitation_code, :string, 2
+      optional :ecosystem_id, :string, 3
     end
     add_message "services.account.v1.AccountDetails" do
       optional :name, :string, 1
@@ -35,7 +35,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.account.v1.InfoResponse" do
       optional :details, :message, 1, "services.account.v1.AccountDetails"
-      repeated :ecosystems, :message, 2, "services.provider.v1.Ecosystem"
+      repeated :ecosystems, :message, 2, "services.account.v1.AccountEcosystem"
     end
     add_message "services.account.v1.ListDevicesRequest" do
     end
@@ -44,6 +44,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.account.v1.RevokeDeviceRequest" do
     end
     add_message "services.account.v1.RevokeDeviceResponse" do
+    end
+    add_message "services.account.v1.AccountEcosystem" do
+      optional :id, :string, 1
+      optional :name, :string, 2
+      optional :description, :string, 3
+      optional :uri, :string, 4
     end
     add_enum "services.account.v1.ConfirmationMethod" do
       value :None, 0
@@ -69,6 +75,7 @@ module Services
       ListDevicesResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.account.v1.ListDevicesResponse").msgclass
       RevokeDeviceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.account.v1.RevokeDeviceRequest").msgclass
       RevokeDeviceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.account.v1.RevokeDeviceResponse").msgclass
+      AccountEcosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.account.v1.AccountEcosystem").msgclass
       ConfirmationMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.account.v1.ConfirmationMethod").enummodule
     end
   end

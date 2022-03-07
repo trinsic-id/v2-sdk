@@ -281,6 +281,10 @@ public final class VerifiableCredentialGrpc {
   public static abstract class VerifiableCredentialImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a submitted document.
+     * The document must be a valid JSON-LD document.
+     * </pre>
      */
     public void issue(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> responseObserver) {
@@ -288,6 +292,11 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a pre-defined template.
+     * This process will also add schema validation and 
+     * revocation registry entry in the credential.
+     * </pre>
      */
     public void issueFromTemplate(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse> responseObserver) {
@@ -315,6 +324,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Create a proof from a signed document that is a valid
+     * verifiable credential and contains a signature from which a proof can be derived.
+     * </pre>
      */
     public void createProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> responseObserver) {
@@ -322,6 +335,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Verifies a proof by checking the signature value, and if possible schema validation,
+     * revocation status, and issuer status against a trust registry
+     * </pre>
      */
     public void verifyProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse> responseObserver) {
@@ -329,6 +346,9 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sends a document directly to a user's email within the given ecosystem
+     * </pre>
      */
     public void send(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse> responseObserver) {
@@ -405,6 +425,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a submitted document.
+     * The document must be a valid JSON-LD document.
+     * </pre>
      */
     public void issue(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> responseObserver) {
@@ -413,6 +437,11 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a pre-defined template.
+     * This process will also add schema validation and 
+     * revocation registry entry in the credential.
+     * </pre>
      */
     public void issueFromTemplate(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse> responseObserver) {
@@ -443,6 +472,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Create a proof from a signed document that is a valid
+     * verifiable credential and contains a signature from which a proof can be derived.
+     * </pre>
      */
     public void createProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> responseObserver) {
@@ -451,6 +484,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Verifies a proof by checking the signature value, and if possible schema validation,
+     * revocation status, and issuer status against a trust registry
+     * </pre>
      */
     public void verifyProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse> responseObserver) {
@@ -459,6 +496,9 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sends a document directly to a user's email within the given ecosystem
+     * </pre>
      */
     public void send(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse> responseObserver) {
@@ -482,6 +522,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a submitted document.
+     * The document must be a valid JSON-LD document.
+     * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse issue(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -489,6 +533,11 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a pre-defined template.
+     * This process will also add schema validation and 
+     * revocation registry entry in the credential.
+     * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse issueFromTemplate(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -516,6 +565,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Create a proof from a signed document that is a valid
+     * verifiable credential and contains a signature from which a proof can be derived.
+     * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse createProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -523,6 +576,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Verifies a proof by checking the signature value, and if possible schema validation,
+     * revocation status, and issuer status against a trust registry
+     * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse verifyProof(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -530,6 +587,9 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sends a document directly to a user's email within the given ecosystem
+     * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse send(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -552,6 +612,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a submitted document.
+     * The document must be a valid JSON-LD document.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse> issue(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request) {
@@ -560,6 +624,11 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sign and issue a verifiable credential from a pre-defined template.
+     * This process will also add schema validation and 
+     * revocation registry entry in the credential.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse> issueFromTemplate(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest request) {
@@ -590,6 +659,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Create a proof from a signed document that is a valid
+     * verifiable credential and contains a signature from which a proof can be derived.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse> createProof(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request) {
@@ -598,6 +671,10 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Verifies a proof by checking the signature value, and if possible schema validation,
+     * revocation status, and issuer status against a trust registry
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse> verifyProof(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request) {
@@ -606,6 +683,9 @@ public final class VerifiableCredentialGrpc {
     }
 
     /**
+     * <pre>
+     * Sends a document directly to a user's email within the given ecosystem
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse> send(
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request) {

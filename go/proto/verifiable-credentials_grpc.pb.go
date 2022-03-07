@@ -18,14 +18,24 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VerifiableCredentialClient interface {
+	// Sign and issue a verifiable credential from a submitted document.
+	// The document must be a valid JSON-LD document.
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
+	// Sign and issue a verifiable credential from a pre-defined template.
+	// This process will also add schema validation and
+	// revocation registry entry in the credential.
 	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error)
 	// Check credential status by setting the revocation value
 	CheckStatus(ctx context.Context, in *CheckStatusRequest, opts ...grpc.CallOption) (*CheckStatusResponse, error)
 	// Update credential status by setting the revocation value
 	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error)
+	// Create a proof from a signed document that is a valid
+	// verifiable credential and contains a signature from which a proof can be derived.
 	CreateProof(ctx context.Context, in *CreateProofRequest, opts ...grpc.CallOption) (*CreateProofResponse, error)
+	// Verifies a proof by checking the signature value, and if possible schema validation,
+	// revocation status, and issuer status against a trust registry
 	VerifyProof(ctx context.Context, in *VerifyProofRequest, opts ...grpc.CallOption) (*VerifyProofResponse, error)
+	// Sends a document directly to a user's email within the given ecosystem
 	Send(ctx context.Context, in *SendRequest, opts ...grpc.CallOption) (*SendResponse, error)
 }
 
@@ -104,14 +114,24 @@ func (c *verifiableCredentialClient) Send(ctx context.Context, in *SendRequest, 
 // All implementations must embed UnimplementedVerifiableCredentialServer
 // for forward compatibility
 type VerifiableCredentialServer interface {
+	// Sign and issue a verifiable credential from a submitted document.
+	// The document must be a valid JSON-LD document.
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
+	// Sign and issue a verifiable credential from a pre-defined template.
+	// This process will also add schema validation and
+	// revocation registry entry in the credential.
 	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error)
 	// Check credential status by setting the revocation value
 	CheckStatus(context.Context, *CheckStatusRequest) (*CheckStatusResponse, error)
 	// Update credential status by setting the revocation value
 	UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error)
+	// Create a proof from a signed document that is a valid
+	// verifiable credential and contains a signature from which a proof can be derived.
 	CreateProof(context.Context, *CreateProofRequest) (*CreateProofResponse, error)
+	// Verifies a proof by checking the signature value, and if possible schema validation,
+	// revocation status, and issuer status against a trust registry
 	VerifyProof(context.Context, *VerifyProofRequest) (*VerifyProofResponse, error)
+	// Sends a document directly to a user's email within the given ecosystem
 	Send(context.Context, *SendRequest) (*SendResponse, error)
 	mustEmbedUnimplementedVerifiableCredentialServer()
 }

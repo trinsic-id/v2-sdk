@@ -10532,12 +10532,12 @@ public final class Templates {
         getContextUriBytes();
 
     /**
-     * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+     * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The ecosystemId.
      */
     java.lang.String getEcosystemId();
     /**
-     * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+     * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The bytes for ecosystemId.
      */
     com.google.protobuf.ByteString
@@ -10968,7 +10968,7 @@ public final class Templates {
     public static final int ECOSYSTEM_ID_FIELD_NUMBER = 8;
     private volatile java.lang.Object ecosystemId_;
     /**
-     * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+     * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The ecosystemId.
      */
     @java.lang.Override
@@ -10985,7 +10985,7 @@ public final class Templates {
       }
     }
     /**
-     * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+     * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The bytes for ecosystemId.
      */
     @java.lang.Override
@@ -12013,7 +12013,7 @@ public final class Templates {
 
       private java.lang.Object ecosystemId_ = "";
       /**
-       * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+       * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return The ecosystemId.
        */
       public java.lang.String getEcosystemId() {
@@ -12029,7 +12029,7 @@ public final class Templates {
         }
       }
       /**
-       * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+       * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return The bytes for ecosystemId.
        */
       public com.google.protobuf.ByteString
@@ -12046,7 +12046,7 @@ public final class Templates {
         }
       }
       /**
-       * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+       * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @param value The ecosystemId to set.
        * @return This builder for chaining.
        */
@@ -12061,7 +12061,7 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+       * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return This builder for chaining.
        */
       public Builder clearEcosystemId() {
@@ -12071,7 +12071,7 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string ecosystem_id = 8 [json_name = "_ecosystemId"];</code>
+       * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @param value The bytes for ecosystemId to set.
        * @return This builder for chaining.
        */
@@ -12353,43 +12353,43 @@ public final class Templates {
       "ateData\"\026\n\024ListTemplatesRequest\"e\n\025ListT" +
       "emplatesResponse\022L\n\ttemplates\030\001 \003(\01329.se" +
       "rvices.verifiablecredentials.templates.v" +
-      "1.TemplateData\"\201\003\n\014TemplateData\022\016\n\002id\030\001 " +
+      "1.TemplateData\"\200\003\n\014TemplateData\022\016\n\002id\030\001 " +
       "\001(\tR\002id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U" +
       "\n\006fields\030\004 \003(\0132E.services.verifiablecred" +
       "entials.templates.v1.TemplateData.Fields" +
       "Entry\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022" +
       "\n\nschema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022" +
-      "\"\n\014ecosystem_id\030\010 \001(\tR\014_ecosystemId\022\022\n\004t" +
-      "ype\030\t \001(\tR\004type\032i\n\013FieldsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022I\n\005value\030\002 \001(\0132:.services.verifiable" +
-      "credentials.templates.v1.TemplateField:\002" +
-      "8\001*;\n\tFieldType\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022" +
-      "\010\n\004BOOL\020\002\022\014\n\010DATETIME\020\0042\322\006\n\023CredentialTe" +
-      "mplates\022\245\001\n\006Create\022L.services.verifiable" +
-      "credentials.templates.v1.CreateCredentia" +
-      "lTemplateRequest\032M.services.verifiablecr" +
-      "edentials.templates.v1.CreateCredentialT" +
-      "emplateResponse\022\234\001\n\003Get\022I.services.verif" +
-      "iablecredentials.templates.v1.GetCredent" +
-      "ialTemplateRequest\032J.services.verifiable" +
-      "credentials.templates.v1.GetCredentialTe" +
-      "mplateResponse\022\241\001\n\004List\022K.services.verif" +
-      "iablecredentials.templates.v1.ListCreden" +
-      "tialTemplatesRequest\032L.services.verifiab" +
-      "lecredentials.templates.v1.ListCredentia" +
-      "lTemplatesResponse\022\247\001\n\006Search\022M.services" +
-      ".verifiablecredentials.templates.v1.Sear" +
-      "chCredentialTemplatesRequest\032N.services." +
+      "!\n\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004ty" +
+      "pe\030\t \001(\tR\004type\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022I\n\005value\030\002 \001(\0132:.services.verifiablec" +
+      "redentials.templates.v1.TemplateField:\0028" +
+      "\001*;\n\tFieldType\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010" +
+      "\n\004BOOL\020\002\022\014\n\010DATETIME\020\0042\322\006\n\023CredentialTem" +
+      "plates\022\245\001\n\006Create\022L.services.verifiablec" +
+      "redentials.templates.v1.CreateCredential" +
+      "TemplateRequest\032M.services.verifiablecre" +
+      "dentials.templates.v1.CreateCredentialTe" +
+      "mplateResponse\022\234\001\n\003Get\022I.services.verifi" +
+      "ablecredentials.templates.v1.GetCredenti" +
+      "alTemplateRequest\032J.services.verifiablec" +
+      "redentials.templates.v1.GetCredentialTem" +
+      "plateResponse\022\241\001\n\004List\022K.services.verifi" +
+      "ablecredentials.templates.v1.ListCredent" +
+      "ialTemplatesRequest\032L.services.verifiabl" +
+      "ecredentials.templates.v1.ListCredential" +
+      "TemplatesResponse\022\247\001\n\006Search\022M.services." +
       "verifiablecredentials.templates.v1.Searc" +
-      "hCredentialTemplatesResponse\022\245\001\n\006Delete\022" +
-      "L.services.verifiablecredentials.templat" +
-      "es.v1.DeleteCredentialTemplateRequest\032M." +
-      "services.verifiablecredentials.templates" +
-      ".v1.DeleteCredentialTemplateResponseB\206\001\n" +
-      "3trinsic.services.verifiablecredentials." +
-      "templates.v1Z\031github.com/trinsic-id/sdk\252" +
-      "\0023Trinsic.Services.VerifiableCredentials" +
-      ".Templates.V1b\006proto3"
+      "hCredentialTemplatesRequest\032N.services.v" +
+      "erifiablecredentials.templates.v1.Search" +
+      "CredentialTemplatesResponse\022\245\001\n\006Delete\022L" +
+      ".services.verifiablecredentials.template" +
+      "s.v1.DeleteCredentialTemplateRequest\032M.s" +
+      "ervices.verifiablecredentials.templates." +
+      "v1.DeleteCredentialTemplateResponseB\206\001\n3" +
+      "trinsic.services.verifiablecredentials.t" +
+      "emplates.v1Z\031github.com/trinsic-id/sdk\252\002" +
+      "3Trinsic.Services.VerifiableCredentials." +
+      "Templates.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -5,6 +5,7 @@ import glob
 import itertools
 import logging
 import os
+import sys
 from platform import system
 import urllib.request
 from os.path import abspath, join, dirname
@@ -167,7 +168,7 @@ def update_python():
 
 
 def main():
-    logging.getLogger().setLevel(logging.INFO)
+    logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
     download_protoc_plugins()
     update_golang()
     update_ruby()

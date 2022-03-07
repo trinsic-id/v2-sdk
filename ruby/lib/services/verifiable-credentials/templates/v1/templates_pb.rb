@@ -67,7 +67,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :allow_additional_fields, :bool, 5
       optional :schema_uri, :string, 6
       optional :context_uri, :string, 7
-      optional :ecosystem_id, :string, 8, json_name: "_ecosystemId"
+      optional :ecosystem_id, :string, 8, json_name: "ecosystemId"
       optional :type, :string, 9, json_name: "type"
     end
     add_enum "services.verifiablecredentials.templates.v1.FieldType" do

@@ -7,10 +7,10 @@ require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/verifiable-credentials/v1/verifiable-credentials.proto", :syntax => :proto3) do
     add_message "services.verifiablecredentials.v1.IssueRequest" do
-      optional :document, :message, 1, "services.common.v1.JsonPayload"
+      optional :document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.IssueResponse" do
-      optional :document, :message, 1, "services.common.v1.JsonPayload"
+      optional :signed_document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.IssueFromTemplateRequest" do
       optional :template_id, :string, 1
@@ -20,24 +20,28 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.CreateProofRequest" do
-      optional :reveal_document, :message, 1, "services.common.v1.JsonPayload"
-      optional :document_id, :string, 2
+      optional :reveal_document_json, :string, 1
+      oneof :proof do
+        optional :item_id, :string, 2
+        optional :document_json, :string, 3
+      end
     end
     add_message "services.verifiablecredentials.v1.CreateProofResponse" do
-      optional :proof_document, :message, 1, "services.common.v1.JsonPayload"
+      optional :proof_document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.VerifyProofRequest" do
-      optional :proof_document, :message, 1, "services.common.v1.JsonPayload"
+      optional :proof_document_json, :string, 1
     end
     add_message "services.verifiablecredentials.v1.VerifyProofResponse" do
-      optional :valid, :bool, 1
+      optional :is_valid, :bool, 1
+      repeated :validation_messages, :string, 2
     end
     add_message "services.verifiablecredentials.v1.SendRequest" do
-      optional :document, :message, 100, "services.common.v1.JsonPayload"
+      optional :document_json, :string, 100
       oneof :delivery_method do
         optional :email, :string, 1
         optional :did_uri, :string, 2
-        optional :didcomm_invitation, :message, 3, "services.common.v1.JsonPayload"
+        optional :didcomm_invitation_json, :string, 3
       end
     end
     add_message "services.verifiablecredentials.v1.SendResponse" do
