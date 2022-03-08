@@ -51,7 +51,9 @@ class AccountService(ServiceBase):
         """
         ecosystem_id = ecosystem_id or self.service_options.default_ecosystem
         response = await self.client.sign_in(details=details, ecosystem_id=ecosystem_id)
-        return base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
+        auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
+        self.service_options.auth_token = auth_token
+        return auth_token
 
     @staticmethod
     def unprotect(
