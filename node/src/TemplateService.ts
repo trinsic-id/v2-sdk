@@ -1,4 +1,4 @@
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
     CreateCredentialTemplateRequest,
     CreateCredentialTemplateResponse,
@@ -11,6 +11,7 @@ import {
     ListCredentialTemplatesResponse,
     SearchCredentialTemplatesRequest,
     SearchCredentialTemplatesResponse,
+    ServiceOptions
 } from "./proto";
 
 type JavaScriptValue = string | number | boolean | {} | any[];

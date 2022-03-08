@@ -1,3 +1,4 @@
+export * from "./sdk/options/v1/options_pb";
 export * from "./services/common/v1/common_pb";
 export * from "./services/common/v1/common_grpc_pb";
 export * from "./services/account/v1/account_pb";

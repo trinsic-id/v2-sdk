@@ -1,5 +1,6 @@
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
+    ServiceOptions,
     AddFrameworkRequest,
     AddFrameworkResponse,
     CheckIssuerStatusRequest,
