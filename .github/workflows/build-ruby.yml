@@ -60,7 +60,7 @@ jobs:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           RUBY_DLL_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"  # Required for Ruby on Windows
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: 443
           TEST_SERVER_USE_TLS: true
       - name: Upload Unit Test Results - Ruby

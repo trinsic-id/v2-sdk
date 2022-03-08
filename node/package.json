@@ -25,10 +25,10 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@grpc/grpc-js": "^1.5.2",
-    "@trinsic/okapi": "^1.2.0",
+    "@grpc/grpc-js": "^1.5.7",
+    "@trinsic/okapi": "^1.4.0",
     "base64url": "^3.0.1",
-    "google-protobuf": "^3.19.3",
+    "google-protobuf": "^3.19.4",
     "mini-blake3": "^6.5.5"
   },
   "devDependencies": {
@@ -49,7 +49,8 @@
       "ts"
     ],
     "files": [
-      "./test/**/*"
+      "./test/**/*",
+      "!./test/TestData.ts"
     ],
     "require": [
       "ts-node/register"
