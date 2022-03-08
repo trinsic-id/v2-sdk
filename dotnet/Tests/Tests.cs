@@ -50,7 +50,9 @@ public class Tests
         // createAccountService() {
         var providerService = new ProviderService(_options);
         var accountService = new AccountService(_options);
+        var account = await accountService.SignInAsync(new());
 
+        providerService.Options.AuthToken = account;
         var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
         var ecosystemId = ecosystem.Ecosystem.Id;
         // }

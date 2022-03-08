@@ -29,8 +29,9 @@ def _vaccine_cert_frame_path() -> str:
 
 async def vaccine_demo():
     # createAccountService() {
-    provider_service = ProviderService(server_config=trinsic_config())
     account_service = AccountService(server_config=trinsic_config())
+    account = await account_service.sign_in()
+    provider_service = ProviderService(server_config=trinsic_config(account))
 
     ecosystem = await provider_service.create_ecosystem(name=f"test-sdk-{uuid.uuid4()}")
     ecosystem_id = ecosystem.ecosystem.id
@@ -55,7 +56,7 @@ async def vaccine_demo():
     # storeAndRecallProfile() {
     # Store profile for later use
     with open("allison.txt", "wb") as fid:
-        fid.write(bytes(allison))
+        fid.write(allison.encode('utf-8'))
 
     # Create profile from existing data
     with open("allison.txt", "rb") as fid:

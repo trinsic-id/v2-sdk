@@ -220,7 +220,6 @@ class TrustRegistryService(ServiceBase):
 
         return await self.client.search_registry(
             query=query,
-            options=RequestOptions(response_json_format=JsonFormat.Protobuf),
         )
 
     async def fetch_data(
