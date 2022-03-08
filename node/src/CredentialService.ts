@@ -18,8 +18,6 @@ import {
 } from "./proto";
 import { VerifiableCredentialClient } from "./proto/services/verifiable-credentials/v1/verifiable-credentials_grpc_pb";
 
-type JavaScriptValue = string | number | boolean | {} | any[];
-type JSStruct = { [key: string]: JavaScriptValue };
 
 export class CredentialService extends ServiceBase {
     credentialClient: VerifiableCredentialClient;

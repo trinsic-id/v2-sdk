@@ -24,8 +24,9 @@ export class ProviderService extends ServiceBase {
             this.client.invite(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -35,8 +36,9 @@ export class ProviderService extends ServiceBase {
             this.client.invitationStatus(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -46,9 +48,11 @@ export class ProviderService extends ServiceBase {
             this.client.createEcosystem(request, (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
 }
+

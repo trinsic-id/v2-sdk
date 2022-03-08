@@ -6,9 +6,11 @@ import {
     CreateCredentialTemplateRequest,
     TemplateField,
     FieldType,
-    IssueFromTemplateRequest
+    IssueFromTemplateRequest,
+    SignInRequest,
+    InfoRequest
 } from "../lib";
-import {config} from "./env";
+import {options} from "./env";
 
 let accountService;
 let profile;
@@ -18,21 +20,19 @@ let templateService;
 
 describe("wallet service tests", () => {
     beforeAll(async () => {
-        accountService = new AccountService({server: config});
-        const response = await accountService.signIn();
-        profile = response.getProfile();
+        accountService = new AccountService(options);
+        const authToken = await accountService.signIn(new SignInRequest());
+        options.setAuthToken(authToken);
 
-        walletService = new WalletService({profile, server: config});
-        credentialService = new CredentialService({profile, server: config});
-        templateService = new TemplateService({profile, server: config});
+        walletService = new WalletService(options);
+        credentialService = new CredentialService(options);
+        templateService = new TemplateService(options);
 
         console.log("before all ran");
     });
 
     it("can retrieve account info", async () => {
-        accountService.updateActiveProfile(profile);
-
-        const info = await accountService.info();
+        const info = await accountService.info(new InfoRequest());
         expect(info).not.toBeNull();
     });
 
@@ -44,7 +44,7 @@ describe("wallet service tests", () => {
             id: "https://issuer.oidp.uscis.gov/credentials/83627465",
         };
 
-        let issueResponse = await credentialService.issue(unsignedDocument);
+        let issueResponse = await credentialService.issueCredential(unsignedDocument);
         expect(issueResponse).not.toBeNull();
 
         let itemId = await walletService.insertItem(issueResponse);

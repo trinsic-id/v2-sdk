@@ -1,36 +1,35 @@
 import {
   AccountService,
   CredentialService,
+  InfoRequest,
+  SignInRequest,
   WalletService
 } from '../lib';
-import { config } from './env';
+import {options} from "./env";
 import vaccineCertUnsignedPath from 'vaccination-certificate-unsigned.json'
 import vaccineCertFramePath from 'vaccination-certificate-frame.json'
 
 async function vaccineDemo() {
   // createAccountService() {
-  const accountService = new AccountService({ server: config });
+  const accountService = new AccountService(options);
   // }
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  let response = await accountService.signIn();
-  const allison = response.getProfile();
+  const allison = await accountService.signIn(new SignInRequest());
 
-  response = await accountService.signIn();
-  const clinic = response.getProfile();
+  const clinic = await accountService.signIn(new SignInRequest());
 
-  response = await accountService.signIn();
-  const airline = response.getProfile();
+  const airline = await accountService.signIn(new SignInRequest());
   // }
 
-  accountService.updateActiveProfile(clinic);
-  const info = await accountService.info();
+  accountService.options.setAuthToken(clinic);
+  const info = await accountService.info(new InfoRequest());
   console.log(`Account info=${info}`);
 
   // createService() {
-  const walletService = new WalletService({ profile: allison, server: config });
-  const credentialService = new CredentialService({ profile: clinic, server: config });
+  const walletService = new WalletService(options.setAuthToken(allison));
+  const credentialService = new CredentialService(options.setAuthToken(clinic));
   // }
 
   // issueCredential() {

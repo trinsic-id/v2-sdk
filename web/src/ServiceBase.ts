@@ -16,7 +16,7 @@ export default abstract class ServiceBase {
 
     this.options = options;
 
-    this.address = `${this.options.getServerEndpoint()}:${this.options.getServerPort()}`;
+    this.address = `${this.options.getServerUseTls() ? "https" : "http"}://${this.options.getServerEndpoint()}:${this.options.getServerPort()}`;
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
