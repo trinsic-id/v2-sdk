@@ -14,9 +14,6 @@ import {
     ServiceOptions
 } from "./proto";
 
-type JavaScriptValue = string | number | boolean | {} | any[];
-type JSStruct = { [key: string]: JavaScriptValue };
-
 export class TemplateService extends ServiceBase {
     client: CredentialTemplatesClient;
 
@@ -36,8 +33,9 @@ export class TemplateService extends ServiceBase {
                 (error, response) => {
                     if (error) {
                         reject(error);
+                    } else {
+                        resolve(response);
                     }
-                    return resolve(response);
                 }
             );
         });
@@ -48,8 +46,9 @@ export class TemplateService extends ServiceBase {
             this.client.get(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -59,8 +58,9 @@ export class TemplateService extends ServiceBase {
             this.client.search(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -70,8 +70,9 @@ export class TemplateService extends ServiceBase {
             this.client.list(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response)
             })
         })
     }
@@ -81,8 +82,9 @@ export class TemplateService extends ServiceBase {
             this.client.delete(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }

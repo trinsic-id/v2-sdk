@@ -1,3 +1,6 @@
-const { ServerConfig } = require("../lib/proto");
+const { ServiceOptions } = require("../lib/proto");
 
-export const config = new ServerConfig().setEndpoint("staging-internal.trinsic.cloud").setPort(443).setUseTls(true);
+export const options = new ServiceOptions()
+    .setServerEndpoint("dev-internal.trinsic.cloud")
+    .setServerPort(443)
+    .setServerUseTls(true);

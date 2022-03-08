@@ -79,9 +79,11 @@ export class AccountService extends ServiceBase {
     public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.listDevices(request, await this.getMetadata(request), (error, response) => {
-                if (error)
+                if (error) {
                     reject(error);
-                resolve(response);
+                } else {
+                    resolve(response);
+                }
             })
         })
     }
@@ -89,9 +91,11 @@ export class AccountService extends ServiceBase {
     public revokeDevice(request: RevokeDeviceRequest): Promise<RevokeDeviceResponse> {
         return new Promise(async (resolve, reject) => {
             this.client.revokeDevice(request, await this.getMetadata(request), (error, response) => {
-                if (error)
+                if (error) {
                     reject(error);
-                resolve(response);
+                } else {
+                    resolve(response);
+                }
             })
         })
     }

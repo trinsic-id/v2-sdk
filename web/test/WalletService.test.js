@@ -6,67 +6,87 @@ import {
     CreateCredentialTemplateRequest,
     TemplateField,
     FieldType,
-    IssueFromTemplateRequest
+    IssueFromTemplateRequest,
+    SignInRequest,
+    InfoRequest,
+    IssueRequest,
+    InsertItemRequest,
+    CreateProofRequest,
+    VerifyProofRequest,
 } from "../lib";
-import {config} from "./env";
+import { options } from "./env";
 
+/**
+ * @type {AccountService} Account Service
+ */
 let accountService;
-let profile;
+/**
+ * @type {WalletService} Wallet Service
+ */
 let walletService;
+/**
+ * @type {CredentialService} Credential Service
+ */
 let credentialService;
+/**
+ * @type {TemplateService} Template Service
+ */
 let templateService;
 
 describe("wallet service tests", () => {
     beforeAll(async () => {
-        accountService = new AccountService({server: config});
-        const response = await accountService.signIn();
-        profile = response.getProfile();
+        accountService = new AccountService(options);
+        const authToken = await accountService.signIn(new SignInRequest());
+        options.setAuthToken(authToken);
 
-        walletService = new WalletService({profile, server: config});
-        credentialService = new CredentialService({profile, server: config});
-        templateService = new TemplateService({profile, server: config});
+        walletService = new WalletService(options);
+        credentialService = new CredentialService(options);
+        templateService = new TemplateService(options);
 
         console.log("before all ran");
     });
 
     it("can retrieve account info", async () => {
-        accountService.updateActiveProfile(profile);
-
-        const info = await accountService.info();
+        const info = await accountService.info(new InfoRequest());
         expect(info).not.toBeNull();
     });
 
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
-        expect(profile).not.toBeNull();
-
         let unsignedDocument = {
             "@context": "https://w3id.org/security/v3-unstable",
             id: "https://issuer.oidp.uscis.gov/credentials/83627465",
         };
 
-        let issueResponse = await credentialService.issue(unsignedDocument);
+        let issueResponse = await credentialService.issueCredential(
+            new IssueRequest().setDocumentJson(JSON.stringify(unsignedDocument))
+        );
         expect(issueResponse).not.toBeNull();
 
-        let itemId = await walletService.insertItem(issueResponse);
-        expect(itemId).not.toBeNull();
-        expect(itemId).not.toBe("");
+        let insertResponse = await walletService.insertItem(new InsertItemRequest()
+            .setItemJson(issueResponse.getSignedDocumentJson()));
+        expect(insertResponse).not.toBeNull();
+        expect(insertResponse.getItemId()).not.toBe("");
 
         let items = await walletService.search();
         expect(items).not.toBeNull();
         expect(items.getItemsList().length).toBeGreaterThan(0);
 
-        let proof = await credentialService.createProof(itemId, {"@context": "http://w3id.org/security/v3-unstable"});
+        let proof = await credentialService.createProof(new CreateProofRequest()
+            .setItemId(insertResponse.getItemId())
+            .setRevealDocumentJson(JSON.stringify({ "@context": "http://w3id.org/security/v3-unstable" })));
         expect(proof).not.toBeNull();
 
-        let valid = await credentialService.verifyProof(proof);
-        expect(valid).toBe(true);
+        let verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
+            .setProofDocumentJson(proof.getProofDocumentJson()));
+        expect(verifyResponse).not.toBeNull();
+        expect(verifyResponse.getIsValid()).toBe(true);
     }, 20000);
 
     it("Demo: template management and credential issuance from template", async () => {
-        expect(profile).not.toBeNull();
-
         // create example template
-        let templateRequest = new CreateCredentialTemplateRequest().setName("My Example Credential").setAllowAdditionalFields(false);
+        let templateRequest = new CreateCredentialTemplateRequest()
+            .setName("My Example Credential")
+            .setAllowAdditionalFields(false);
         templateRequest.getFieldsMap().set("firstName", new TemplateField().setDescription("Given name"));
         templateRequest.getFieldsMap().set("lastName", new TemplateField());
         templateRequest.getFieldsMap().set("age", new TemplateField().setType(FieldType.NUMBER).setOptional(true));
@@ -80,16 +100,19 @@ describe("wallet service tests", () => {
 
         // issue credential from this template
         let values = JSON.stringify({
-            firstName: "Jane", lastName: "Doe", age: 42
+            firstName: "Jane",
+            lastName: "Doe",
+            age: 42,
         });
 
-        let credentialJson = await credentialService.issueFromTemplate(new IssueFromTemplateRequest().setTemplateId(template.getData().getId()).setValuesJson(values));
+        let issueResponse = await credentialService.issueFromTemplate(new IssueFromTemplateRequest()
+            .setTemplateId(template.getData().getId())
+            .setValuesJson(values));
 
-        expect(credentialJson).not.toBeNull();
+        expect(issueResponse).not.toBeNull();
 
-        let jsonDocument = JSON.parse(credentialJson);
+        let jsonDocument = JSON.parse(issueResponse.getDocumentJson());
         expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
         expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
-        
     }, 20000);
 });

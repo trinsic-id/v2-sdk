@@ -1,13 +1,15 @@
-import {Struct} from "google-protobuf/google/protobuf/struct_pb";
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
     DeleteItemRequest,
     DeleteItemResponse,
+    GetItemRequest,
+    GetItemResponse,
     InsertItemRequest,
-    JsonPayload,
+    InsertItemResponse,
     SearchRequest,
     SearchResponse,
     UniversalWalletClient,
+    ServiceOptions
 } from "./proto";
 
 export class WalletService extends ServiceBase {
@@ -20,7 +22,7 @@ export class WalletService extends ServiceBase {
     }
 
     // must be authorized
-    public search(query: string = "SELECT * from c"): Promise<SearchResponse> {
+    public search(query: string = "SELECT * FROM c"): Promise<SearchResponse> {
         return new Promise(async (resolve, reject) => {
             let searchRequest = new SearchRequest().setQuery(query);
 
@@ -39,22 +41,33 @@ export class WalletService extends ServiceBase {
     }
 
     // must be authorized
-    public insertItem(item: any): Promise<string> {
-        var request = new JsonPayload().setJsonStruct(
-            Struct.fromJavaScript(item)
-        );
-
+    public async insertItem(request: InsertItemRequest): Promise<InsertItemResponse> {
         return new Promise(async (resolve, reject) => {
-            let itemRequest = new InsertItemRequest().setItem(request);
-
             this.walletClient.insertItem(
-                itemRequest,
-                await this.getMetadata(itemRequest),
+                request,
+                await this.getMetadata(request),
                 (error, response) => {
                     if (error) {
                         reject(error);
                     } else {
-                        resolve(response.getItemId());
+                        resolve(response);
+                    }
+                }
+            );
+        });
+    }
+
+    // must be authorized
+    public async getItem(request: GetItemRequest): Promise<GetItemResponse> {
+        return new Promise(async (resolve, reject) => {
+            this.walletClient.getItem(
+                request,
+                await this.getMetadata(request),
+                (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
                     }
                 }
             );
