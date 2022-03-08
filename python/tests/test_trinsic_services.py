@@ -86,19 +86,19 @@ class TestServices(unittest.TestCase):
                 await self.print_get_info(account_service, my_protected_profile)
 
             my_unprotected_profile = account_service.unprotect(my_profile, code)
-            await self.print_get_info(account_service, my_unprotected_profile)
+            self.fail("Unprotected profile hangs on get info for unknown reasons")
+            # await self.print_get_info(account_service, my_unprotected_profile)
 
         asyncio.run(test_code())
 
     @staticmethod
     async def print_get_info(
         account_service: AccountService, my_profile
-    ) -> InfoResponse:
+    ):
         account_service.service_options.auth_token = my_profile
         info = await account_service.get_info()
         assert info is not None
         print(f"profile={info}")
-        return info
 
 
 if __name__ == "__main__":
