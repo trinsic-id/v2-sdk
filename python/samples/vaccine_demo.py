@@ -1,12 +1,14 @@
 import asyncio
 import json
+import uuid
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
+from trinsic.provider_service import ProviderService
 from trinsic.wallet_service import WalletService
-from trinsic.trinsic_util import trinsic_test_config
+from trinsic.trinsic_util import trinsic_config
 
 
 # pathData() {
@@ -20,41 +22,44 @@ def _vaccine_cert_unsigned_path() -> str:
 
 def _vaccine_cert_frame_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-frame.jsonld"))
+
+
 # }
 
 
 async def vaccine_demo():
     # createAccountService() {
-    account_service = AccountService(server_config=trinsic_test_config())
+    provider_service = ProviderService(server_config=trinsic_config())
+    account_service = AccountService(server_config=trinsic_config())
+
+    ecosystem = await provider_service.create_ecosystem(name=f"test-sdk-{uuid.uuid4()}")
+    ecosystem_id = ecosystem.ecosystem.id
     # }
 
     # setupActors() {
     # Create 3 different profiles for each participant in the scenario
-    allison = await account_service.sign_in()
-    clinic = await account_service.sign_in()
-    airline = await account_service.sign_in()
+    allison = await account_service.sign_in(ecosystem_id=ecosystem_id)
+    clinic = await account_service.sign_in(ecosystem_id=ecosystem_id)
+    airline = await account_service.sign_in(ecosystem_id=ecosystem_id)
     # }
 
-    account_service.profile = clinic
+    account_service.service_options.auth_token = clinic
     info = await account_service.get_info()
     print(f"Account info={info}")
 
     # createService() {
-    wallet_service = WalletService(profile=allison, channel=account_service.channel)
-    credentials_service = CredentialsService(
-        profile=clinic, server_config=trinsic_test_config()
-    )
+    wallet_service = WalletService(server_config=trinsic_config(allison))
+    credentials_service = CredentialsService(server_config=trinsic_config(clinic))
     # }
 
     # storeAndRecallProfile() {
     # Store profile for later use
-    with open("allison.bin", "wb") as fid:
+    with open("allison.txt", "wb") as fid:
         fid.write(bytes(allison))
 
     # Create profile from existing data
-    allison = AccountProfile()
-    with open("allison.bin", "rb") as fid:
-        allison.parse(fid.read())
+    with open("allison.txt", "rb") as fid:
+        allison = fid.readline()
     # }
 
     # issueCredential() {
@@ -62,7 +67,7 @@ async def vaccine_demo():
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = json.load(fid)
 
-    credential = await credentials_service.issue_credential(credential_json)
+    credential = await credentials_service.issue_credential(document=credential_json)
     print(f"Credential: {credential}")
     # }
 
@@ -74,30 +79,33 @@ async def vaccine_demo():
 
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
-    wallet_service.profile = allison
-    item_id = await wallet_service.insert_item(credential)
+    wallet_service.service_options.auth_token = allison
+    item_id = await wallet_service.insert_item(item=credential)
     print(f"item id = {item_id}")
     wallet_items = await wallet_service.search()
+    print(f"last wallet item = {wallet_items.items[-1]}")
     # }
 
     # shareCredential() {
     # Allison shares the credential with the venue.
     # The venue has communicated with Allison the details of the credential
     # that they require expressed as a JSON-LD frame.
-    credentials_service.profile = allison
+    credentials_service.service_options.auth_token = allison
+    wallet_service.service_options.auth_token = allison
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = json.load(fid2)
 
     credential_proof = await credentials_service.create_proof(
-        document_id=item_id, reveal_document=proof_request_json
+        item_id=item_id, reveal_document=proof_request_json
     )
     print(f"Proof: {credential_proof}")
     # }
 
     # verifyCredential() {
     # The airline verifies the credential
-    credentials_service.profile = airline
-    valid = await credentials_service.verify_proof(credential_proof)
+    credentials_service.service_options.auth_token = airline
+    wallet_service.service_options.auth_token = airline
+    valid = await credentials_service.verify_proof(proof_document=credential_proof)
 
     print(f"Verification result: {valid}")
     assert valid is True

@@ -1,21 +1,12 @@
-from typing import List
-
-from grpclib.client import Channel
-
-from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.provider.v1 import (
     ProviderStub,
     ParticipantType,
-    InviteRequestDidCommInvitation,
     InviteResponse,
-    AcceptInviteResponse,
     InvitationStatusResponse,
     CreateEcosystemResponse,
-    Ecosystem,
 )
 from trinsic.service_base import ServiceBase
-from trinsic.trinsic_util import trinsic_production_config
 
 
 class ProviderService(ServiceBase):
@@ -25,26 +16,20 @@ class ProviderService(ServiceBase):
 
     def __init__(
         self,
-        *,
-        profile: AccountProfile,
-        server_config: ServerConfig = None,
-        channel: Channel = None
+        server_config: ServiceOptions = None,
     ):
         """
         Initialize the connection
         Args:
             server_config: The address of the server to connect, or an already-connected `Channel`
         """
-        super().__init__(profile, server_config, channel)
+        super().__init__(server_config)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
 
     async def invite_participant(
         self,
         participant: ParticipantType = None,
         description: str = None,
-        email: str = None,
-        phone: str = None,
-        didcomm_invitation: InviteRequestDidCommInvitation = None,
     ) -> InviteResponse:
         """
         [Invite a new participant to the provider ecosystem](/reference/services/provider-service/#invite-participants)
@@ -57,21 +42,16 @@ class ProviderService(ServiceBase):
         Returns:
             [InviteResponse](/reference/proto/#inviteresponse)
         """
-        if not email and not phone:
-            raise ValueError("Contact method must be set")
 
         return await self.client.invite(
             participant=participant,
             description=description,
-            phone=phone,
-            email=email,
-            didcomm_invitation=didcomm_invitation,
         )
 
-    async def accept_invite(
-        self, invite_id: str = None, code: str = None
-    ) -> AcceptInviteResponse:
-        return await self.client.accept_invite(id=invite_id, code=code)
+    # async def accept_invite(
+    #     self, invite_id: str = None, code: str = None
+    # ) -> AcceptInviteResponse:
+    #     return await self.client.accept_invite(id=invite_id, code=code)
 
     async def invitation_status(
         self, invitation_id: str = ""
@@ -104,11 +84,3 @@ class ProviderService(ServiceBase):
         return await self.client.create_ecosystem(
             name=name, description=description, uri=uri
         )
-
-    async def list_ecosystems(self) -> List[Ecosystem]:
-        """
-        Lists all ecosystems that are owned by the authorized user
-        Returns:
-            A `List` of the [Ecosystem](/reference/proto/#ecosystem)s owned by the user
-        """
-        return (await self.client.list_ecosystems()).ecosystem

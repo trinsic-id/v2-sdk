@@ -1,3 +1,5 @@
+import base64
+import encodings.utf_8
 from typing import Union, SupportsBytes
 
 from grpclib.client import Channel
@@ -7,6 +9,7 @@ from trinsicokapi.proto.okapi.security.v1 import (
     BlindOberonTokenRequest,
 )
 
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import (
     AccountProfile,
     AccountStub,
@@ -27,36 +30,39 @@ class AccountService(ServiceBase):
 
     def __init__(
         self,
-        *,
-        profile: AccountProfile = None,
-        server_config: ServerConfig = None,
-        channel: Channel = None
+        server_config: ServiceOptions = None,
     ):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, server_config, channel)
+        super().__init__(server_config)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
     async def sign_in(
-        self, details: AccountDetails = AccountDetails(email="")
-    ) -> AccountProfile:
+        self,
+        *,
+        details: AccountDetails = AccountDetails(email=""),
+        ecosystem_id: str = None
+    ) -> str:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
+            ecosystem_id:
             details:
         Returns:
-            `AccountProfile` that has been created
+            `AccountProfile` that has been created binary serialized and base64 encoded so that it can be stored
         """
-        response = await self.client.sign_in(details=details)
-        return response.profile
+        ecosystem_id = ecosystem_id or self.service_options.default_ecosystem
+        response = await self.client.sign_in(details=details, ecosystem_id=ecosystem_id)
+        return base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
 
     @staticmethod
     def unprotect(
-        profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]
-    ) -> AccountProfile:
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
+    ) -> str:
         """
         Unprotects the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
         Args:
@@ -65,18 +71,21 @@ class AccountService(ServiceBase):
         Returns:
             The in-place unprotected `AccountProfile`
         """
+        if isinstance(profile, str):
+            profile = AccountProfile().parse(base64.urlsafe_b64decode(profile))
         request = UnBlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
         result = oberon.unblind_token(request)
         profile.auth_token = result.token
         profile.protection.enabled = False
         profile.protection.method = ConfirmationMethod.None_
-        return profile
+        return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
 
     @staticmethod
     def protect(
-        profile: AccountProfile, security_code: Union[SupportsBytes, bytes, str]
-    ) -> AccountProfile:
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
+    ) -> str:
         """
         Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
         Args:
@@ -85,13 +94,15 @@ class AccountService(ServiceBase):
         Returns:
             A protected `AccountProfile`
         """
+        if isinstance(profile, str):
+            profile = AccountProfile().parse(base64.urlsafe_b64decode(profile))
         request = BlindOberonTokenRequest(token=profile.auth_token)
         request.blinding.append(bytes(security_code))
         result = oberon.blind_token(request)
         profile.auth_token = result.token
         profile.protection.enabled = True
         profile.protection.method = ConfirmationMethod.Other
-        return profile
+        return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
 
     async def get_info(self) -> InfoResponse:
         """
@@ -101,8 +112,8 @@ class AccountService(ServiceBase):
         """
         return await self.client.info()
 
-    async def list_devices(self, request: ListDevicesRequest) -> ListDevicesResponse:
+    async def list_devices(self) -> ListDevicesResponse:
         return await self.client.list_devices()
 
-    async def revoke_device(self, request: RevokeDeviceRequest) -> RevokeDeviceResponse:
+    async def revoke_device(self) -> RevokeDeviceResponse:
         return await self.client.revoke_device()

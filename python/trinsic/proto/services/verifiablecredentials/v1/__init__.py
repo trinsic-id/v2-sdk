@@ -180,8 +180,10 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
 
         request = CreateProofRequest()
         request.reveal_document_json = reveal_document_json
-        request.item_id = item_id
-        request.document_json = document_json
+        if item_id:
+            request.item_id = item_id
+        if document_json and document_json != '{}':
+            request.document_json = document_json
 
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",

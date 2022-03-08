@@ -1,19 +1,21 @@
 import asyncio
 import platform
 import unittest
+import uuid
 
 from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
 from samples.templates_demo import templates_demo
+from trinsic.proto.services.account.v1 import InfoResponse
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.service_base import ResponseStatusException
 from trinsic.account_service import AccountService
 from trinsic.provider_service import ProviderService
 from trinsic.trustregistry_service import TrustRegistryService
 from trinsic.wallet_service import WalletService
-from trinsic.trinsic_util import trinsic_test_config
+from trinsic.trinsic_util import trinsic_config
 
 
 # Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
@@ -23,27 +25,13 @@ class TestServices(unittest.TestCase):
     def test_python_platform(self):
         print(f"Running on: {platform.platform()}")
 
-    def test_servicebase_setprofile(self):
-        async def test_code():
-            wallet_service = WalletService(
-                profile=None, server_config=trinsic_test_config()
-            )
-            with self.assertRaises(Exception) as e:
-                self.assertIsNotNone(wallet_service.build_metadata(None))
-            self.assertEqual(
-                "cannot call authenticated endpoint: profile must be set",
-                e.exception.args[0].lower(),
-            )
-
-        asyncio.run(test_code())
-
     def test_responsestatus_exception(self):
         with self.assertRaises(ResponseStatusException) as rse:
             ResponseStatusException.assert_success(
                 ResponseStatus.UNKNOWN_ERROR, "test should fail"
             )
         self.assertEqual(
-            f"test should fail failed, status={repr(ResponseStatus.UNKNOWN_ERROR)}",
+            f"test should fail, status={repr(ResponseStatus.UNKNOWN_ERROR)}",
             str(rse.exception),
         )
         ResponseStatusException.assert_success(
@@ -68,9 +56,7 @@ class TestServices(unittest.TestCase):
 
     def test_providerservice_input_validation(self):
         async def test_code():
-            cred_service = ProviderService(
-                profile=None, server_config=trinsic_test_config()
-            )
+            cred_service = ProviderService(server_config=trinsic_config())
             with self.assertRaises(ValueError) as ve:
                 await cred_service.invite_participant()
             with self.assertRaises(ValueError) as ve:
@@ -80,9 +66,7 @@ class TestServices(unittest.TestCase):
 
     def test_trustregistryservice_input_validation(self):
         async def test_code():
-            cred_service = TrustRegistryService(
-                profile=None, server_config=trinsic_test_config()
-            )
+            cred_service = TrustRegistryService(server_config=trinsic_config())
             with self.assertRaises(ValueError) as ve:
                 await cred_service.register_governance_framework(
                     "", "Invalid framework"
@@ -92,25 +76,31 @@ class TestServices(unittest.TestCase):
 
     def test_protect_unprotect_account(self):
         async def test_code():
-            account_service = AccountService(server_config=trinsic_test_config())
+            account_service = AccountService(server_config=trinsic_config())
             my_profile = await account_service.sign_in()
+            account_service.service_options.auth_token = my_profile
             await self.print_get_info(account_service, my_profile)
 
             code = b"1234"
             my_protected_profile = account_service.protect(my_profile, code)
-            with self.assertRaises(ValueError) as ve:
+            with self.assertRaises(Exception) as ve:
                 await self.print_get_info(account_service, my_protected_profile)
 
             my_unprotected_profile = account_service.unprotect(my_profile, code)
             await self.print_get_info(account_service, my_unprotected_profile)
 
-        asyncio.run(test_code())
+        # asyncio.run(test_code())
+        self.fail("unprotected account hangs on get info")
 
     @staticmethod
-    async def print_get_info(account_service, my_profile):
-        account_service.profile = my_profile
+    async def print_get_info(
+        account_service: AccountService, my_profile
+    ) -> InfoResponse:
+        account_service.service_options.auth_token = my_profile
         info = await account_service.get_info()
+        assert info is not None
         print(f"profile={info}")
+        return info
 
 
 if __name__ == "__main__":

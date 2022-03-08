@@ -2,10 +2,7 @@ import datetime
 import urllib.parse
 from typing import AsyncIterator
 
-from grpclib.client import Channel
-
-from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.common.v1 import ServerConfig, RequestOptions, JsonFormat
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.trustregistry.v1 import (
     TrustRegistryStub,
     GovernanceFramework,
@@ -15,7 +12,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     FetchDataResponse,
 )
 from trinsic.service_base import ServiceBase, ResponseStatusException
-from trinsic.trinsic_util import trinsic_production_config, convert_to_epoch_seconds
+from trinsic.trinsic_util import convert_to_epoch_seconds
 
 
 class TrustRegistryService(ServiceBase):
@@ -25,12 +22,9 @@ class TrustRegistryService(ServiceBase):
 
     def __init__(
         self,
-        *,
-        profile: AccountProfile,
-        server_config: ServerConfig = None,
-        channel: Channel = None,
+        server_config: ServiceOptions = None,
     ):
-        super().__init__(profile, server_config, channel)
+        super().__init__(server_config)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
     async def register_governance_framework(
@@ -55,7 +49,7 @@ class TrustRegistryService(ServiceBase):
                 )
             )
             if response.status != response.status.SUCCESS:
-                raise RuntimeError(f"cannot register verifier: code {response.status}")
+                raise RuntimeError(f"cannot register governance framework: code {response.status}")
         else:
             raise ValueError(f"Invalid URI string={governance_framework}")
 
@@ -97,7 +91,7 @@ class TrustRegistryService(ServiceBase):
             valid_until_utc=int(valid_until_epoch),
         )
 
-        ResponseStatusException.assert_success(response.status, "registering issuer")
+        ResponseStatusException.assert_success(response.status, "cannot register issuer")
 
     async def unregister_issuer(
         self,
@@ -148,7 +142,7 @@ class TrustRegistryService(ServiceBase):
             valid_from_utc=int(valid_from_epoch),
             valid_until_utc=int(valid_until_epoch),
         )
-        ResponseStatusException.assert_success(response.status, "registering verifier")
+        ResponseStatusException.assert_success(response.status, "cannot register verifier")
 
     async def unregister_verifier(
         self,
