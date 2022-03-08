@@ -1,4 +1,4 @@
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
     AccountClient,
     AccountDetails,
@@ -8,8 +8,10 @@ import {
     InfoResponse,
     ListDevicesRequest,
     ListDevicesResponse,
+    ResponseStatus,
     RevokeDeviceRequest,
     RevokeDeviceResponse,
+    ServiceOptions,
     SignInRequest,
     SignInResponse,
     TokenProtection,
@@ -26,29 +28,36 @@ export class AccountService extends ServiceBase {
         this.client = new AccountClient(this.address);
     }
 
-    public signIn(details?: AccountDetails, invitationCode?: string): Promise<SignInResponse> {
-        let request = new SignInRequest().setDetails(details ?? new AccountDetails()).setInvitationCode(invitationCode ?? "");
+    public signIn(request: SignInRequest): Promise<string> {
+        request.setEcosystemId(request.getEcosystemId() || this.options.getDefaultEcosystem());
 
         return new Promise((resolve, reject) => {
             this.client.signIn(request, null, (error, response) => {
-                if (error) {
+                if (error || response.getStatus() != ResponseStatus.SUCCESS) {
                     reject(error);
                 } else {
-                    resolve(response);
+                    var authToken = Buffer
+                        .from(response.getProfile()!.serializeBinary())
+                        .toString('base64');
+
+                    // set the auth token as active for the current service instance
+                    this.options.setAuthToken(authToken);
+
+                    resolve(authToken);
                 }
             });
         });
     }
 
-    public info(): Promise<InfoResponse.AsObject> {
-        var request = new InfoRequest();
+    public info(): Promise<InfoResponse> {
+        const request = new InfoRequest();
 
         return new Promise(async (resolve, reject) => {
             this.client.info(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(response.toObject());
+                    resolve(response);
                 }
             });
         });
