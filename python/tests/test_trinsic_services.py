@@ -78,7 +78,6 @@ class TestServices(unittest.TestCase):
         async def test_code():
             account_service = AccountService(server_config=trinsic_config())
             my_profile = await account_service.sign_in()
-            account_service.service_options.auth_token = my_profile
             await self.print_get_info(account_service, my_profile)
 
             code = b"1234"
@@ -89,8 +88,7 @@ class TestServices(unittest.TestCase):
             my_unprotected_profile = account_service.unprotect(my_profile, code)
             await self.print_get_info(account_service, my_unprotected_profile)
 
-        # asyncio.run(test_code())
-        self.fail("unprotected account hangs on get info")
+        asyncio.run(test_code())
 
     @staticmethod
     async def print_get_info(

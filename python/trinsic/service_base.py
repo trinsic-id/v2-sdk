@@ -54,7 +54,11 @@ class ServiceBase(ABC):
     def close(self):
         """Close the underlying channel"""
         if self._channel is not None:
-            self._channel.close()
+            try:
+                self._channel.close()
+            except RuntimeError:
+                # If the event loop is closed, NBD.
+                pass
 
     def build_metadata(self, request: Message):
         """

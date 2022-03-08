@@ -1,8 +1,6 @@
 import base64
-import encodings.utf_8
 from typing import Union, SupportsBytes
 
-from grpclib.client import Channel
 from trinsicokapi import oberon
 from trinsicokapi.proto.okapi.security.v1 import (
     UnBlindOberonTokenRequest,
@@ -16,12 +14,9 @@ from trinsic.proto.services.account.v1 import (
     AccountDetails,
     ConfirmationMethod,
     InfoResponse,
-    ListDevicesRequest,
     ListDevicesResponse,
-    RevokeDeviceRequest,
     RevokeDeviceResponse,
 )
-from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.service_base import ServiceBase
 
 
@@ -64,7 +59,7 @@ class AccountService(ServiceBase):
         security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
         """
-        Unprotects the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
+        Unprotect the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
         Args:
             profile:
             security_code:
@@ -87,7 +82,7 @@ class AccountService(ServiceBase):
         security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
         """
-        Protects the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
+        Protect the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
         Args:
             profile:
             security_code:

@@ -182,7 +182,7 @@ class VerifiableCredentialStub(betterproto.ServiceStub):
         request.reveal_document_json = reveal_document_json
         if item_id:
             request.item_id = item_id
-        if document_json and document_json != '{}':
+        if document_json and document_json != "{}":
             request.document_json = document_json
 
         return await self._unary_unary(

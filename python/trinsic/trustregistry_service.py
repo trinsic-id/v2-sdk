@@ -49,7 +49,9 @@ class TrustRegistryService(ServiceBase):
                 )
             )
             if response.status != response.status.SUCCESS:
-                raise RuntimeError(f"cannot register governance framework: code {response.status}")
+                raise RuntimeError(
+                    f"cannot register governance framework: code {response.status}"
+                )
         else:
             raise ValueError(f"Invalid URI string={governance_framework}")
 
@@ -91,7 +93,9 @@ class TrustRegistryService(ServiceBase):
             valid_until_utc=int(valid_until_epoch),
         )
 
-        ResponseStatusException.assert_success(response.status, "cannot register issuer")
+        ResponseStatusException.assert_success(
+            response.status, "cannot register issuer"
+        )
 
     async def unregister_issuer(
         self,
@@ -142,7 +146,9 @@ class TrustRegistryService(ServiceBase):
             valid_from_utc=int(valid_from_epoch),
             valid_until_utc=int(valid_until_epoch),
         )
-        ResponseStatusException.assert_success(response.status, "cannot register verifier")
+        ResponseStatusException.assert_success(
+            response.status, "cannot register verifier"
+        )
 
     async def unregister_verifier(
         self,

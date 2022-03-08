@@ -56,7 +56,7 @@ async def vaccine_demo():
     # storeAndRecallProfile() {
     # Store profile for later use
     with open("allison.txt", "wb") as fid:
-        fid.write(allison.encode('utf-8'))
+        fid.write(allison.encode("utf-8"))
 
     # Create profile from existing data
     with open("allison.txt", "rb") as fid:
