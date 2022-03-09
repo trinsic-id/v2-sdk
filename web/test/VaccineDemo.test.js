@@ -1,74 +1,82 @@
 import {
-  AccountService,
-  CredentialService,
-  WalletService
+    AccountService,
+    CreateProofRequest,
+    CredentialService,
+    InfoRequest,
+    InsertItemRequest,
+    IssueRequest,
+    SignInRequest,
+    VerifyProofRequest,
+    WalletService
 } from '../lib';
-import { config } from './env';
-import vaccineCertUnsignedPath from 'vaccination-certificate-unsigned.json'
-import vaccineCertFramePath from 'vaccination-certificate-frame.json'
+import { options } from "./env";
+import vaccineCertUnsignedPath from './data/vaccination-certificate-unsigned.json'
+import vaccineCertFramePath from './data/vaccination-certificate-frame.json'
 
 async function vaccineDemo() {
-  // createAccountService() {
-  const accountService = new AccountService({ server: config });
-  // }
+    // createAccountService() {
+    const accountService = new AccountService(options);
+    // }
 
-  // setupActors() {
-  // Create 3 different profiles for each participant in the scenario
-  let response = await accountService.signIn();
-  const allison = response.getProfile();
+    // setupActors() {
+    // Create 3 different profiles for each participant in the scenario
+    const allison = await accountService.signIn(new SignInRequest());
 
-  response = await accountService.signIn();
-  const clinic = response.getProfile();
+    const clinic = await accountService.signIn(new SignInRequest());
 
-  response = await accountService.signIn();
-  const airline = response.getProfile();
-  // }
+    const airline = await accountService.signIn(new SignInRequest());
+    // }
 
-  accountService.updateActiveProfile(clinic);
-  const info = await accountService.info();
-  console.log(`Account info=${info}`);
+    accountService.options.setAuthToken(clinic);
+    const info = await accountService.info(new InfoRequest());
+    console.log(`Account info=${info}`);
 
-  // createService() {
-  const walletService = new WalletService({ profile: allison, server: config });
-  const credentialService = new CredentialService({ profile: clinic, server: config });
-  // }
+    // createService() {
+    const walletService = new WalletService(options.setAuthToken(allison));
+    const credentialService = new CredentialService(options.setAuthToken(clinic));
+    // }
 
-  // issueCredential() {
-  // Sign a credential as the clinic and send it to Allison
-  const credentialJson = require(vaccineCertUnsignedPath);
-  const credential = await credentialService.issueCredential(credentialJson);
-  // }
-  console.log(`Credential=${credential}`);
+    // issueCredential() {
+    // Sign a credential as the clinic and send it to Allison
+    const unsignedDocument = require(vaccineCertUnsignedPath);
+    const issueResponse = await credentialService.issueCredential(new IssueRequest()
+        .setDocumentJson(JSON.stringify(unsignedDocument)));
+    // }
+    console.log(`Credential=${issueResponse}`);
 
-  // storeCredential() {
-  // Alice stores the credential in her cloud wallet.
-  walletService.updateActiveProfile(allison);
-  const itemId = await walletService.insertItem(credential);
-  // }
-  console.log(`Item id=${itemId}`);
+    // storeCredential() {
+    // Alice stores the credential in her cloud wallet.
+    walletService.options.setAuthToken(allison);
+    const insertResponse = await walletService.insertItem(new InsertItemRequest()
+        .setItemJson(issueResponse.getSignedDocumentJson()));
+    // }
+    console.log(`Item id=${insertResponse.getItemId()}`);
 
-  // shareCredential() {
-  // Allison shares the credential with the venue.
-  // The venue has communicated with Allison the details of the credential
-  // that they require expressed as a JSON-LD frame.
-  credentialService.updateActiveProfile(allison);
-  const proofRequestJson = require(vaccineCertFramePath);
-  const proof = await credentialService.createProof(itemId, proofRequestJson);
-  // }
-  console.log(`Proof=${proof}`);
+    // shareCredential() {
+    // Allison shares the credential with the venue.
+    // The venue has communicated with Allison the details of the credential
+    // that they require expressed as a JSON-LD frame.
+    credentialService.options.setAuthToken(allison);
+    const proofRequestFrame = require(vaccineCertFramePath);
+    const proofResponse = await credentialService.createProof(new CreateProofRequest()
+        .setItemId(insertResponse.getItemId())
+        .setDocumentJson(JSON.stringify(proofRequestFrame)));
+    // }
+    console.log(`Proof=${proofResponse.getProofDocumentJson()}`);
 
-  // verifyCredential() {
-  // The airline verifies the credential
-  credentialService.updateActiveProfile(airline);
-  const isValid = await credentialService.verifyProof(proof);
-  // }
-  console.log(`Verification result=${isValid}`);
-  if (!isValid)
-    throw new Error("Verification should be true!")
+    // verifyCredential() {
+    // The airline verifies the credential
+    credentialService.options.setAuthToken(airline);
+    const verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
+        .setProofDocumentJson(proofResponse.getProofDocumentJson()));
+    // }
+    console.log(`Verification result=${verifyResponse.getIsValid()}`);
+    if (!verifyResponse.getIsValid())
+        throw new Error("Verification should be true!")
 }
 
 describe('Demo: vaccination demo - credential issuance, storing, and verification', async () => {
-  it('should run the demo without raising exceptions', async () => {
-    expect(async () => { await vaccineDemo() }).not.toThrow();
-  });
+    it('should run the demo without raising exceptions', async () => {
+        expect(async () => { await vaccineDemo() }).not.toThrow();
+    });
 });

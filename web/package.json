@@ -27,8 +27,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@trinsic/okapi": "^1.2.0",
-    "buffer": "^6.0.3",
+    "@trinsic/okapi": "^1.4.0",
     "google-protobuf": "^3.17.2",
     "grpc-web": "^1.2.1",
     "js-base64": "^3.7.2"
@@ -36,7 +35,7 @@
   "devDependencies": {
     "@types/google-protobuf": "^3.15.2",
     "@types/node": "^15.12.0",
-    "chromedriver": "^97.0.0",
+    "chromedriver": "^98.0.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^10.0.0",
     "geckodriver": "^2.0.0",

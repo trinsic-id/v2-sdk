@@ -58,7 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This has github maven package repo permissions
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           JAVA_LIBRARY_PATH: "${{ github.workspace }}/libs" # https://stackoverflow.com/a/60128194 - MacOS doesn't allow LD_LIBRARY_PATH.
-          TEST_SERVER_ENDPOINT: staging-internal.trinsic.cloud
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: 443
           TEST_SERVER_USE_TLS: true
       - name: Upload Unit Test Results - Java

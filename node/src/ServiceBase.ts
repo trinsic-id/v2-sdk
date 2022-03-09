@@ -1,45 +1,37 @@
-require("@trinsic/okapi");
 import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
-import { Nonce, ServerConfig, AccountProfile } from "./proto/";
+import { Nonce, ServerConfig, AccountProfile, ServiceOptions } from "./proto/";
 import { Message } from "google-protobuf";
 import base64url from "base64url";
-import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
-import { hash } from "mini-blake3/src/dist/node";
-
-export interface ServiceOptions {
-  profile?: AccountProfile;
-  server?: ServerConfig;
-  ecosystem?: string
-}
+import { CreateOberonProofRequest, Oberon, Hashing, Blake3HashRequest } from "@trinsic/okapi";
 
 export default abstract class ServiceBase {
-  activeProfile?: AccountProfile;
-  serverConfig: ServerConfig;
+  options: ServiceOptions;
   channel?: Channel;
   channelCredentials: ChannelCredentials;
   address: string;
 
-  constructor(options: ServiceOptions = {}) {
-    options.server = options.server || new ServerConfig()
-      .setEndpoint("prod.trinsic.cloud")
-      .setPort(443)
-      .setUseTls(true);
+  constructor(options: ServiceOptions = new ServiceOptions()) {
+    options.setServerEndpoint(options.getServerEndpoint() || "prod.trinsic.cloud")
+      .setServerPort(options.getServerPort() || 443)
+      .setServerUseTls(options.getServerPort() == 443 ? true : options.getServerUseTls())
+      .setDefaultEcosystem(options.getDefaultEcosystem() || "default");
 
+    this.options = options;
 
-    this.activeProfile = options.profile;
-    this.serverConfig = options.server;
-    this.address = `${this.serverConfig.getEndpoint()}:${this.serverConfig.getPort()}`;
-    this.channelCredentials = this.serverConfig.getUseTls()
+    this.address = `${this.options.getServerEndpoint()}:${this.options.getServerPort()}`;
+    this.channelCredentials = this.options.getServerUseTls()
       ? ChannelCredentials.createSsl()
       : ChannelCredentials.createInsecure();
   }
 
   async getMetadata(request: Message): Promise<Metadata> {
-    if (!this.activeProfile) {
-      throw new Error("profile must be set");
+    if (!this.options.getAuthToken()) {
+      throw new Error("auth token must be set");
     }
 
-    if (this.activeProfile!.getProtection()?.getEnabled()) {
+    var profile = AccountProfile.deserializeBinary(Buffer.from(this.options.getAuthToken(), 'base64url'));
+
+    if (profile.getProtection()?.getEnabled()) {
       throw new Error("profile is protected; you must use security code to remove the protection first");
     }
 
@@ -47,7 +39,9 @@ export default abstract class ServiceBase {
     let requestHash: Buffer | string = Buffer.from('');
 
     if (requestData.length > 0) {
-      requestHash = hash(requestData, {length:64});
+      let hashResponse = await Hashing.blake3Hash(new Blake3HashRequest()
+        .setData(requestData));
+      requestHash = Buffer.from(hashResponse.getDigest_asU8());
     }
     const timestamp = Date.now();
 
@@ -56,8 +50,8 @@ export default abstract class ServiceBase {
     let proof = await Oberon.createProof(
       new CreateOberonProofRequest()
         .setNonce(nonce.serializeBinary())
-        .setData(this.activeProfile.getAuthData())
-        .setToken(this.activeProfile.getAuthToken())
+        .setData(profile.getAuthData())
+        .setToken(profile.getAuthToken())
     );
 
     const metadata = new Metadata();
@@ -66,14 +60,10 @@ export default abstract class ServiceBase {
       `Oberon ` +
       `ver=1,` +
       `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
-      `data=${base64url.encode(Buffer.from(this.activeProfile.getAuthData_asU8()))},` +
+      `data=${base64url.encode(Buffer.from(profile.getAuthData_asU8()))},` +
       `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
     );
 
     return metadata;
-  }
-
-  updateActiveProfile(profile: AccountProfile): void {
-    this.activeProfile = profile;
   }
 }

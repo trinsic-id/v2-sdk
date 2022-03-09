@@ -1,4 +1,5 @@
 export * from "./pbmse/v1/pbmse_pb";
+export * from "./sdk/options/v1/options_pb";
 export * from "./services/common/v1/common_pb";
 export * from "./services/common/v1/CommonServiceClientPb";
 export * from "./services/account/v1/account_pb";
