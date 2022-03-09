@@ -2,8 +2,7 @@ import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
 import { Nonce, ServerConfig, AccountProfile, ServiceOptions } from "./proto/";
 import { Message } from "google-protobuf";
 import base64url from "base64url";
-import { CreateOberonProofRequest, Oberon } from "@trinsic/okapi";
-import { hash } from "mini-blake3/src/dist/node";
+import { CreateOberonProofRequest, Oberon, Hashing, Blake3HashRequest } from "@trinsic/okapi";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
@@ -40,7 +39,9 @@ export default abstract class ServiceBase {
     let requestHash: Buffer | string = Buffer.from('');
 
     if (requestData.length > 0) {
-      requestHash = hash(requestData, { length: 64 });
+      let hashResponse = await Hashing.blake3Hash(new Blake3HashRequest()
+        .setData(requestData));
+      requestHash = Buffer.from(hashResponse.getDigest_asU8());
     }
     const timestamp = Date.now();
 
