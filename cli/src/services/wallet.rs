@@ -5,22 +5,17 @@ use crate::proto::services::universalwallet::v1::DeleteItemRequest;
 use crate::utils::read_file_as_string;
 use crate::{grpc_channel, grpc_client_with_auth};
 use crate::{
-    proto::{
-        google::protobuf::Struct,
-        services::{
-            common::v1::{json_payload::Json, JsonPayload},
-            universalwallet::v1::{
-                universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
-            },
-            verifiablecredentials::v1::{
-                send_request::DeliveryMethod,
-                verifiable_credential_client::VerifiableCredentialClient, SendRequest,
-            },
+    proto::services::{
+        universalwallet::v1::{
+            universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
+        },
+        verifiablecredentials::v1::{
+            send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient,
+            SendRequest,
         },
     },
     services::config::*,
 };
-use okapi::MessageFormatter;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -62,19 +57,12 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
-    let item: Struct =
-        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
-    let item_bytes = item.to_vec();
-
-    use crate::MessageFormatter;
-    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
+    let item_json = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
         .insert_item(InsertItemRequest {
-            item: Some(JsonPayload {
-                json: Some(Json::JsonStruct(item)),
-            }),
+            item_json: item_json,
             item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
         .await
@@ -100,22 +88,15 @@ async fn delete_item(args: &DeleteItemArgs, config: DefaultConfig) {
 
 #[tokio::main]
 async fn send(args: &SendArgs, config: DefaultConfig) {
-    let item: okapi::proto::google_protobuf::Struct =
-        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
-    let item_bytes = item.to_vec();
-
-    use crate::MessageFormatter;
-    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
+    let item = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
     let response = client
         .send(SendRequest {
-            document: Some(JsonPayload {
-                json: Some(Json::JsonStruct(item)),
-            }),
             delivery_method: Some(DeliveryMethod::Email(
                 args.email.expect("Email must be specified").to_string(),
             )),
+            document_json: item,
         })
         .await
         .expect("Send item failed")

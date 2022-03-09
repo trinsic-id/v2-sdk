@@ -1,12 +1,11 @@
-use crate::utils::read_line;
 use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    if args.is_present("create_organization") {
-        create_organization(
+    if args.is_present("create-ecosystem") {
+        create_ecosystem(
             &args
-                .subcommand_matches("create_organization")
+                .subcommand_matches("create-ecosystem")
                 .expect("Error parsing request"),
         )
     } else if args.is_present("invite") {
@@ -20,42 +19,13 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     }
 }
 
-fn create_organization<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    let mut organization = CreateOrganizationArgs {
-        id: args.value_of("id"),
-        name: args.value_of("name"),
-        capabilities: vec![],
-        members: vec![],
+fn create_ecosystem<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+    let ecosystem = CreateEcosystemArgs {
+        name: args.value_of("name").map(|x| x.into()),
+        email: args.value_of("email").map(|x| x.into()),
     };
 
-    loop {
-        println!("{:#?}", organization);
-        let input = read_line(Some("Type 'member' to add a member, 'capability' to add a capability, or 'done' when your organization is ready"));
-
-        match &input[..] {
-            "member\n" => {
-                organization.members.push(Member {
-                    name: read_line(Some("Member name")),
-                    email: read_line(Some("Member email")),
-                });
-            }
-            "capability\n" => {
-                match &read_line(Some("What capability would you like to add?\n0. verifier\n1. issuer\n2. provider\nCapability"))[..] {
-                    "0" => organization.capabilities.push(0),
-                    "1" => organization.capabilities.push(1),
-                    "2" => organization.capabilities.push(2),
-                    "verifier" => organization.capabilities.push(0),
-                    "issuer" => organization.capabilities.push(1),
-                    "provider" => organization.capabilities.push(2),
-                    _ => println!("Invalid capability"),
-                };
-            }
-            "done\n" => break,
-            _ => println!("Unrecognized command"),
-        }
-    }
-
-    Command::CreateOrganization(organization)
+    Command::CreateEcosystem(ecosystem)
 }
 
 fn invite<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
@@ -86,19 +56,15 @@ fn invite<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 
 #[derive(Debug, PartialEq)]
 pub enum Command<'a> {
-    CreateOrganization(CreateOrganizationArgs<'a>),
+    CreateEcosystem(CreateEcosystemArgs),
     Invite(InviteArgs<'a>),
     InvitationStatus,
-    CreateCredentialTemplate,
-    ListCredentialTemplates,
 }
 
 #[derive(Debug, PartialEq)]
-pub struct CreateOrganizationArgs<'a> {
-    pub id: Option<&'a str>,
-    pub name: Option<&'a str>,
-    pub capabilities: Vec<i32>,
-    pub members: Vec<Member>,
+pub struct CreateEcosystemArgs {
+    pub name: Option<String>,
+    pub email: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]

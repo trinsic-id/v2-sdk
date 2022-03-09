@@ -232,19 +232,19 @@ subcommands:
   - provider:
       about: Provider service
       subcommands:
-        - create_organization:
-            about: Create an organization
+        - create-ecosystem:
+            about: Create new ecosystem
             args:
               - name:
-                  value_name: STRING
-                  help: name for organization
+                  long: name
+                  help: Name of the ecosystem
                   takes_value: true
-                  required: true
-              - id:
-                  value_name: STRING
-                  help: id for organization
+                  required: false
+              - email:
+                  long: email
+                  help: Email address of the owner of the ecosystem
                   takes_value: true
-                  required: true
+                  required: false
         - invite:
             about: Send an invitation
             args:
@@ -276,10 +276,6 @@ subcommands:
                   required: false
         - invitation_status:
             about: Check invitation status
-        - create-credential-template:
-            about: Create credential template
-        - list-credential-templates:
-            about: List credential templates
   - trust-registry:
       about: Trust Registry
       subcommands:
