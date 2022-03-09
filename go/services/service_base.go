@@ -15,18 +15,6 @@ import (
 )
 
 func NewServiceBase(options *sdk.ServiceOptions) (*ServiceBase, error) {
-	// if channel != nil && serverConfig != nil {
-	// 	return nil, errors.New("cannot provide both serverConfig and channel - connection is ambiguous")
-	// }
-	// if channel == nil {
-	// 	channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
-	// 	if err != nil {
-	// 		return nil, err
-	// 	}
-	// 	channel = channel2
-	// }
-	// channel.Connect()
-
 	conn, err := NewServiceConnection(options)
 	if err != nil {
 		return nil, err
