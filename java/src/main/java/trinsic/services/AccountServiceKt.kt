@@ -15,7 +15,7 @@ class AccountServiceKt(
 ) : ServiceBase(options) {
     var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
 
-    suspend fun signIn(details: AccountDetails?, ecosystemId: String?): String {
+    suspend fun signIn(details: AccountDetails?, ecosystemId: String? = null): String {
         val details2 = details ?: AccountDetails.newBuilder().build()
         val request = SignInRequest.newBuilder().setDetails(details2).setEcosystemId(ecosystemId ?: this.options.defaultEcosystem ).build()
         return Base64.getUrlEncoder().encodeToString(stub.signIn(request).profile.toByteArray())

@@ -14,9 +14,7 @@ class WalletServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun search(query: String?): SearchResponse {
-        var query = query
-        if (query == null) query = "SELECT * from c"
-        val request = SearchRequest.newBuilder().setQuery(query).build()
+        val request = SearchRequest.newBuilder().setQuery(query ?: "SELECT * from c").build()
         return withMetadata(stub, request).search(request)
     }
 
