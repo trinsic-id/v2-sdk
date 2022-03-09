@@ -16,9 +16,9 @@ public class TrustRegistryDemo {
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
-        var accountService = new AccountService(null,TrinsicUtilities.getTestServerConfig());
-        var account = accountService.signIn(null).get().getProfile();
-        var service = new TrustRegistryService(account, TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        var account = accountService.signIn(null).get();
+        var service = new TrustRegistryService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         final String didUri = "did:example:test";
         final String frameworkUri = "https://example.com";

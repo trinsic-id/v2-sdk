@@ -86,10 +86,10 @@ class TestServices(unittest.TestCase):
                 await self.print_get_info(account_service, my_protected_profile)
 
             my_unprotected_profile = account_service.unprotect(my_profile, code)
-            self.fail("Unprotected profile hangs on get info for unknown reasons")
-            # await self.print_get_info(account_service, my_unprotected_profile)
+            await self.print_get_info(account_service, my_unprotected_profile)
 
-        asyncio.run(test_code())
+        self.fail("Unprotected profile hangs on get info for unknown reasons")
+        # asyncio.run(test_code())
 
     @staticmethod
     async def print_get_info(
