@@ -1,21 +1,20 @@
 use crate::parser::issuer::{IssueFromTemplateArgs, UpdateStatusArgs};
-use crate::proto::services::common::v1::ResponseStatus;
-use crate::proto::{
-    services::{
-        common::v1::{json_payload::Json, JsonPayload},
+use crate::{
+    grpc_client_with_auth,
+    proto::services::{
+        common::v1::ResponseStatus,
         verifiablecredentials::v1::{
-            verifiable_credential_client::VerifiableCredentialClient, CheckStatusRequest,
-            CreateProofRequest, IssueFromTemplateRequest, IssueRequest, UpdateStatusRequest,
-            VerifyProofRequest,
+            create_proof_request::Proof, verifiable_credential_client::VerifiableCredentialClient,
+            CheckStatusRequest, CreateProofRequest, IssueFromTemplateRequest, IssueRequest,
+            UpdateStatusRequest, VerifyProofRequest,
         },
     },
-    JsonPretty,
+    utils::{read_file_as_string, write_file},
+    *,
 };
-use crate::utils::{read_file_as_string, write_file};
-use crate::{grpc_client_with_auth, *};
 
 use super::{super::parser::issuer::*, config::DefaultConfig};
-use okapi::MessageFormatter;
+
 use tonic::transport::Channel;
 
 pub(crate) fn execute(args: &Command, config: DefaultConfig) {
@@ -31,31 +30,19 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) {
 
 #[tokio::main]
 async fn issue(args: &IssueArgs, config: DefaultConfig) {
-    let document: okapi::proto::google_protobuf::Struct =
-        serde_json::from_str(&read_file_as_string(args.document)).expect("Unable to parse Item");
-    let document = document.to_vec();
-
-    use crate::MessageFormatter;
-    let document: crate::proto::google::protobuf::Struct =
-        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    let document_json = read_file_as_string(args.document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
-    let request = tonic::Request::new(IssueRequest {
-        document: Some(JsonPayload {
-            json: Some(Json::JsonStruct(document)),
-        }),
-    });
+    let request = tonic::Request::new(IssueRequest { document_json });
 
     let response = client
         .issue(request)
         .await
         .expect("Issue failed")
         .into_inner();
-    write_file(
-        args.out,
-        &response.document.unwrap().to_string_pretty().as_bytes(),
-    );
+
+    write_file(args.out, &response.signed_document_json.as_bytes());
 }
 
 #[tokio::main]
@@ -129,22 +116,13 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
         Some(id) => id.to_string(),
         None => panic!("Please include document id"),
     };
-    let document: okapi::proto::google_protobuf::Struct =
-        serde_json::from_str(&read_file_as_string(args.reveal_document))
-            .expect("Unable to parse Item");
-    let document = document.to_vec();
-
-    use crate::MessageFormatter;
-    let document: crate::proto::google::protobuf::Struct =
-        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    let reveal_document_json = read_file_as_string(args.reveal_document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CreateProofRequest {
-        reveal_document: Some(JsonPayload {
-            json: Some(Json::JsonStruct(document)),
-        }),
-        document_id,
+        reveal_document_json,
+        proof: Some(Proof::ItemId(document_id)),
     });
 
     let response = client
@@ -152,33 +130,18 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
         .await
         .expect("Create proof failed")
         .into_inner();
-    write_file(
-        args.out,
-        response
-            .proof_document
-            .unwrap()
-            .to_string_pretty()
-            .as_bytes(),
-    );
+
+    write_file(args.out, response.proof_document_json.as_bytes());
 }
 
 #[tokio::main]
 async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
-    let document: okapi::proto::google_protobuf::Struct =
-        serde_json::from_str(&read_file_as_string(args.proof_document))
-            .expect("Unable to parse Item");
-    let document = document.to_vec();
-
-    use crate::MessageFormatter;
-    let document: crate::proto::google::protobuf::Struct =
-        crate::proto::google::protobuf::Struct::from_vec(&document).unwrap();
+    let proof_document_json = read_file_as_string(args.proof_document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(VerifyProofRequest {
-        proof_document: Some(JsonPayload {
-            json: Some(Json::JsonStruct(document)),
-        }),
+        proof_document_json,
     });
 
     let response = client
@@ -187,5 +150,5 @@ async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
         .expect("Verify proof failed")
         .into_inner();
 
-    println!("{:}", response.valid);
+    println!("{:}", response.is_valid);
 }
