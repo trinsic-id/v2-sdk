@@ -10,8 +10,12 @@ async def ecosystem_demo():
     account_service = AccountService(server_config=trinsic_config())
     account = await account_service.sign_in()
     provider_service = ProviderService(server_config=trinsic_config(account))
+
+    ecosystem_name = f"test-sdk-{uuid.uuid4()}"
+    print(f"Ecosystem name={ecosystem_name}")
+
     actual_create = await provider_service.create_ecosystem(
-        name=f"test-sdk-{uuid.uuid4()}",
+        name=ecosystem_name,
         description="My ecosystem",
         uri="https://example.com",
     )
