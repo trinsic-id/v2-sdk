@@ -245,6 +245,11 @@ subcommands:
                   help: Email address of the owner of the ecosystem
                   takes_value: true
                   required: false
+              - alias:
+                  long: alias
+                  help: Alias to use with this authentication profile
+                  takes_value: true
+                  required: false
         - invite:
             about: Send an invitation
             args:

@@ -1,10 +1,12 @@
+use std::io;
 use std::thread::AccessError;
 
 use super::super::parser::provider::*;
 use crate::parser;
-use crate::proto::services::account::v1::AccountDetails;
+use crate::proto::services::account::v1::{AccountDetails, ConfirmationMethod};
 use crate::proto::services::provider::v1::CreateEcosystemRequest;
 use crate::proto::services::provider::v1::{provider_client::ProviderClient, InviteRequest};
+use crate::services::account::unprotect;
 use crate::services::config::*;
 use crate::*;
 use tonic::transport::Channel;
@@ -81,7 +83,40 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) ->
         .expect("create ecosystem failed")
         .into_inner();
 
-    println!("{:#?}", response);
+    let pr = response.profile.unwrap();
+    let protection = pr.protection.clone().unwrap();
+
+    let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
+        ConfirmationMethod::None => pr,
+        ConfirmationMethod::Email => {
+            println!(
+                "{}",
+                "Confirmation required. Check your email for security code.".blue()
+            );
+            println!("{}", "Enter Code:".bold());
+            let mut buffer = String::new();
+            io::stdin().read_line(&mut buffer)?;
+
+            // strips new line characters at the end
+            let code = buffer.lines().next().unwrap();
+
+            let mut p = pr.clone();
+            unprotect(&mut p, code.as_bytes().to_vec());
+
+            p
+        }
+        ConfirmationMethod::Sms => {
+            println!("{}", "SMS confirmation is not yet supported.".red());
+            pr
+        }
+        ConfirmationMethod::ConnectedDevice => pr,
+        ConfirmationMethod::Other => pr,
+    };
+
+    // println!("Profile: {:#?}", profile);
+    let mut new_config = config.clone();
+    let auth_token = new_config.save_profile(profile, &args.alias, true);
+    println!("Auth Token: {:#?}", auth_token.unwrap());
 
     Ok(())
 }

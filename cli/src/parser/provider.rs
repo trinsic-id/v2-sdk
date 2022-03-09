@@ -23,6 +23,9 @@ fn create_ecosystem<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     let ecosystem = CreateEcosystemArgs {
         name: args.value_of("name").map(|x| x.into()),
         email: args.value_of("email").map(|x| x.into()),
+        alias: args
+            .value_of("alias")
+            .map_or("default".to_string(), |x| x.into()),
     };
 
     Command::CreateEcosystem(ecosystem)
@@ -65,6 +68,7 @@ pub enum Command<'a> {
 pub struct CreateEcosystemArgs {
     pub name: Option<String>,
     pub email: Option<String>,
+    pub alias: String,
 }
 
 #[derive(Debug, PartialEq)]

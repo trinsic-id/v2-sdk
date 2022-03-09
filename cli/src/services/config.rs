@@ -183,7 +183,7 @@ impl DefaultConfig {
         profile: AccountProfile,
         name: &str,
         default: bool,
-    ) -> Result<(), Error> {
+    ) -> Result<String, Error> {
         let profile_filename = data_path().join(format!("{}.bin", name));
         let mut profile_file = OpenOptions::new()
             .create(true)
@@ -191,7 +191,9 @@ impl DefaultConfig {
             .truncate(true)
             .open(profile_filename)?;
 
-        profile_file.write_all(&profile.to_vec())?;
+        let profile_str = base64::encode_config(&profile.to_vec(), base64::URL_SAFE_NO_PAD);
+
+        profile_file.write_all(profile_str.as_bytes())?;
         profile_file.flush()?;
 
         // If default is `true`, set this profile as default in the
@@ -211,7 +213,7 @@ impl DefaultConfig {
 
         self.save_config()?;
 
-        Ok(())
+        Ok(profile_str)
     }
 
     pub fn print(&self) -> Result<(), Error> {
