@@ -2,11 +2,12 @@ package services
 
 import (
 	"context"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
-func NewCredentialTemplateService(options ServiceOptions) (CredentialTemplateService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+func NewCredentialTemplateService(options *sdk.ServiceOptions) (CredentialTemplateService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}

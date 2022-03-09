@@ -4,11 +4,14 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
-func NewCredentialService(options ServiceOptions) (CredentialService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+type Document map[string]interface{}
+
+func NewCredentialService(options *sdk.ServiceOptions) (CredentialService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
@@ -42,11 +45,7 @@ func (c *CredentialBase) IssueCredential(userContext context.Context, document D
 		return nil, err
 	}
 	issueRequest := &sdk.IssueRequest{
-		Document: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonBytes),
-			},
-		},
+		DocumentJson: string(jsonBytes),
 	}
 
 	md, err := c.GetMetadataContext(userContext, issueRequest)
@@ -58,7 +57,7 @@ func (c *CredentialBase) IssueCredential(userContext context.Context, document D
 		return nil, err
 	}
 	var doc map[string]interface{}
-	err = json.Unmarshal([]byte(response.Document.GetJsonString()), &doc)
+	err = json.Unmarshal([]byte(response.SignedDocumentJson), &doc)
 	if err != nil {
 		return nil, err
 	}
@@ -83,12 +82,8 @@ func (c *CredentialBase) CreateProof(userContext context.Context, documentId str
 		return nil, err
 	}
 	request := &sdk.CreateProofRequest{
-		DocumentId: documentId,
-		RevealDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
+		Proof:              &sdk.CreateProofRequest_ItemId{ItemId: documentId},
+		RevealDocumentJson: string(jsonString),
 	}
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
@@ -99,7 +94,7 @@ func (c *CredentialBase) CreateProof(userContext context.Context, documentId str
 		return nil, err
 	}
 	var proofMap map[string]interface{}
-	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
+	err = json.Unmarshal([]byte(proof.ProofDocumentJson), &proofMap)
 	if err != nil {
 		return nil, err
 	}
@@ -112,11 +107,7 @@ func (c *CredentialBase) VerifyProof(userContext context.Context, proofDocument 
 		return false, err
 	}
 	request := &sdk.VerifyProofRequest{
-		ProofDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
+		ProofDocumentJson: string(jsonString),
 	}
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
@@ -126,7 +117,7 @@ func (c *CredentialBase) VerifyProof(userContext context.Context, proofDocument 
 	if err != nil {
 		return false, err
 	}
-	return proof.Valid, nil
+	return proof.IsValid, nil
 }
 
 func (c *CredentialBase) CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error) {
@@ -165,11 +156,7 @@ func (c *CredentialBase) Send(userContext context.Context, document Document, em
 		DeliveryMethod: &sdk.SendRequest_Email{
 			Email: email,
 		},
-		Document: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
+		DocumentJson: string(jsonString),
 	}
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {

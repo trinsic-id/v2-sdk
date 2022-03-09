@@ -3,11 +3,12 @@ package services
 import (
 	"encoding/base64"
 	"fmt"
+	"time"
+
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/protobuf/proto"
-	"time"
 )
 
 type SecurityProvider interface {

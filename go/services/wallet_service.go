@@ -3,12 +3,12 @@ package services
 import (
 	"context"
 	"encoding/json"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func CreateWalletService(options ServiceOptions) (WalletService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+func CreateWalletService(options *sdk.ServiceOptions) (WalletService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,6 @@ func CreateWalletService(options ServiceOptions) (WalletService, error) {
 
 type WalletService interface {
 	Service
-
 	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
 	InsertItem(userContext context.Context, item Document) (string, error)
 	DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) (*sdk.DeleteItemResponse, error)
@@ -30,8 +29,7 @@ type WalletService interface {
 
 type WalletBase struct {
 	*ServiceBase
-	channel *grpc.ClientConn
-	client  sdk.UniversalWalletClient
+	client sdk.UniversalWalletClient
 }
 
 func (w *WalletBase) Search(userContext context.Context, query string) (*sdk.SearchResponse, error) {
@@ -55,11 +53,7 @@ func (w *WalletBase) InsertItem(userContext context.Context, item Document) (str
 		return "", err
 	}
 	request := &sdk.InsertItemRequest{
-		Item: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
+		ItemJson: string(jsonString),
 	}
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {

@@ -2,13 +2,20 @@ package services
 
 import (
 	"context"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
-	accountService, err := NewAccountService(ServiceOptions{config: TrinsicTestConfig()})
+
+	opts, err := NewServiceOptions(WithTestEnv())
+	if !assert2.Nil(err) {
+		return
+	}
+
+	accountService, err := NewAccountService(opts)
 	if !assert2.Nil(err) {
 		return
 	}

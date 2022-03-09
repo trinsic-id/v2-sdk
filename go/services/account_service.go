@@ -2,13 +2,16 @@ package services
 
 import (
 	"context"
+	"encoding/base64"
+
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
 	sdk "github.com/trinsic-id/sdk/go/proto"
+	"google.golang.org/protobuf/proto"
 )
 
-func NewAccountService(options ServiceOptions) (AccountService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+func NewAccountService(options *sdk.ServiceOptions) (AccountService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
@@ -22,9 +25,9 @@ func NewAccountService(options ServiceOptions) (AccountService, error) {
 
 type AccountService interface {
 	Service
-	SignIn(userContext context.Context, details *sdk.AccountDetails) (*sdk.AccountProfile, sdk.ConfirmationMethod, error)
-	Unprotect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error)
-	Protect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error)
+	SignIn(userContext context.Context, details *sdk.AccountDetails) (string, sdk.ConfirmationMethod, error)
+	Unprotect(authtoken, securityCode string) (string, error)
+	Protect(authtoken, securityCode string) (string, error)
 	GetInfo(userContext context.Context) (*sdk.InfoResponse, error)
 	ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error)
 	RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error)
@@ -35,61 +38,77 @@ type AccountBase struct {
 	client sdk.AccountClient
 }
 
-func (a *AccountBase) SignIn(userContext context.Context, details *sdk.AccountDetails) (*sdk.AccountProfile, sdk.ConfirmationMethod, error) {
+func (a *AccountBase) SignIn(userContext context.Context, details *sdk.AccountDetails) (string, sdk.ConfirmationMethod, error) {
 	if details == nil {
 		details = &sdk.AccountDetails{}
 	}
-	request := &sdk.SignInRequest{
-		Details: details,
-	}
-	response, err := a.client.SignIn(userContext, request)
+
+	response, err := a.client.SignIn(userContext, &sdk.SignInRequest{Details: details, EcosystemId: a.options.DefaultEcosystem})
 	if err != nil {
-		return nil, sdk.ConfirmationMethod_None, err
+		return "", sdk.ConfirmationMethod_None, err
 	}
 
-	return response.Profile, response.ConfirmationMethod, nil
+	tkn, err := ProfileToToken(response.Profile)
+	if err != nil {
+		return "", sdk.ConfirmationMethod_None, err
+	}
+
+	return tkn, response.ConfirmationMethod, nil
 }
 
-func (a *AccountBase) Unprotect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error) {
-	cloned := &sdk.AccountProfile{
-		ProfileType: profile.ProfileType,
-		AuthData:    profile.AuthData,
+// Unprotect an authtoken using the given security code
+func (a *AccountBase) Unprotect(authtoken, securityCode string) (string, error) {
+	profile, err := ProfileFromToken(authtoken)
+	if err != nil {
+		return "", err
 	}
+
 	request := &okapiproto.UnBlindOberonTokenRequest{
 		Token:    profile.AuthToken,
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
+
 	response, err := okapi.Oberon().UnblindToken(request)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	cloned.AuthToken = response.Token
-	cloned.Protection = &sdk.TokenProtection{
+
+	profile.AuthToken = response.Token
+	profile.Protection = &sdk.TokenProtection{
 		Enabled: false,
 		Method:  sdk.ConfirmationMethod_None,
 	}
-	return cloned, nil
+
+	return ProfileToToken(profile)
 }
 
-func (a *AccountBase) Protect(profile *sdk.AccountProfile, securityCode string) (*sdk.AccountProfile, error) {
-	cloned := &sdk.AccountProfile{
-		ProfileType: profile.ProfileType,
-		AuthData:    profile.AuthData,
+// Protect an authtoken with the given security code. Must be unprotected before use
+//
+// This method can be called as many times as you want, but each code must be "unwrapped"
+// in the reverse order before use
+func (a *AccountBase) Protect(authtoken, securityCode string) (string, error) {
+	profile, err := ProfileFromToken(authtoken)
+	if err != nil {
+		return "", err
 	}
+
 	request := &okapiproto.BlindOberonTokenRequest{
 		Token:    profile.AuthToken,
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
+
 	response, err := okapi.Oberon().BlindToken(request)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	cloned.AuthToken = response.Token
-	cloned.Protection = &sdk.TokenProtection{
+
+	profile.AuthToken = response.Token
+	profile.Protection = &sdk.TokenProtection{
 		Enabled: true,
 		Method:  sdk.ConfirmationMethod_Other,
 	}
-	return cloned, nil
+
+	return ProfileToToken(profile)
 }
 
 func (a *AccountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, error) {
@@ -127,4 +146,26 @@ func (a *AccountBase) RevokeDevice(userContext context.Context, request *sdk.Rev
 		return nil, err
 	}
 	return response, nil
+}
+
+func ProfileToToken(profile *sdk.AccountProfile) (string, error) {
+	pbytes, err := proto.Marshal(profile)
+	if err != nil {
+		return "", err
+	}
+
+	return base64.RawURLEncoding.EncodeToString(pbytes), nil
+}
+
+func ProfileFromToken(token string) (*sdk.AccountProfile, error) {
+	tb, err := base64.RawURLEncoding.DecodeString(token)
+	if err != nil {
+		return nil, err
+	}
+
+	profile := &sdk.AccountProfile{}
+
+	err = proto.Unmarshal(tb, profile)
+
+	return profile, err
 }
