@@ -111,19 +111,19 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
 	// setupActors() {
-	allison, _, err := accountService.SignIn(context.Background(), nil)
+	allison, _, err := accountService.SignIn(context.Background(), nil, "", "")
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(allison) {
 		return
 	}
 
-	clinic, _, err := accountService.SignIn(context.Background(), nil)
+	clinic, _, err := accountService.SignIn(context.Background(), nil, "", "")
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(clinic) {
 		return
 	}
 
-	airline, _, err := accountService.SignIn(context.Background(), nil)
+	airline, _, err := accountService.SignIn(context.Background(), nil, "", "")
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(airline) {
 		return
@@ -280,7 +280,7 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn,
 	if !assert2.Nil(err) {
 		return nil, nil, "", err
 	}
-	authtoken, _, err := accountService.SignIn(context.Background(), nil)
+	authtoken, _, err := accountService.SignIn(context.Background(), nil, "", "")
 	if !assert2.Nil(err) {
 		fmt.Println(err)
 		return nil, nil, "", err

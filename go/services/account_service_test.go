@@ -19,7 +19,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-	profile, _, err := accountService.SignIn(context.Background(), nil)
+	profile, _, err := accountService.SignIn(context.Background(), nil, "", "default")
 	if !assert2.Nil(err) {
 		return
 	}
