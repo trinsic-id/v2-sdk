@@ -11,13 +11,16 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// SecurityProvider defines the required functionality to provide authentication to the api
 type SecurityProvider interface {
 	GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error)
 }
 
+// OberonSecurityProvider implements the SecurityProvider interface and provides oberon token functionality
 type OberonSecurityProvider struct {
 }
 
+// GetAuthHeader returns an authentication header with a correctly formatted oberon token
 func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error) {
 	if profile != nil && profile.Protection.Enabled {
 		return "", fmt.Errorf("the token must be unprotected before use")

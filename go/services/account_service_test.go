@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
 func TestProtectUnprotectProfile(t *testing.T) {
@@ -19,7 +20,8 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-	profile, _, err := accountService.SignIn(context.Background(), nil, "", "default")
+
+	profile, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	if !assert2.Nil(err) {
 		return
 	}
@@ -35,7 +37,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	}
 
 	t.Run("Protected profile should fail", func(t *testing.T) {
-		accountService.SetProfile(protectedProfile)
+		accountService.SetToken(protectedProfile)
 		info2, err2 := accountService.GetInfo(context.Background())
 		if !assert2.NotNil(err2) {
 			t.FailNow()
@@ -46,7 +48,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	})
 
 	t.Run("Unprotected profile should work", func(t *testing.T) {
-		accountService.SetProfile(unprotectedProfile)
+		accountService.SetToken(unprotectedProfile)
 		info2, err2 := accountService.GetInfo(context.Background())
 		if !assert2.Nil(err2) {
 			t.FailNow()
