@@ -1,6 +1,6 @@
 use clap::ArgMatches;
 
-use crate::services::config::DefaultConfig;
+use crate::services::config::CliConfig;
 
 #[derive(Debug, PartialEq, Default)]
 pub struct Command<'a> {
@@ -27,7 +27,7 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
 
     let mut empty = true;
     if args.is_present("show") {
-        DefaultConfig::init().unwrap().print().unwrap();
+        CliConfig::init().unwrap().print().unwrap();
         empty = false;
     } else {
         if args.is_present("server-endpoint") {
@@ -49,7 +49,7 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
     }
 
     if empty {
-        DefaultConfig::init().unwrap().print().unwrap();
+        CliConfig::init().unwrap().print().unwrap();
     }
 
     command

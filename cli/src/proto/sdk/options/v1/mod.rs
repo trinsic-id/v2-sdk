@@ -1,5 +1,5 @@
 /// service options
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ServiceOptions {
     /// service endpoint
     #[prost(string, tag = "1")]
@@ -12,6 +12,7 @@ pub struct ServiceOptions {
     pub server_use_tls: bool,
     /// default auth token for oberon security scheme
     #[prost(string, tag = "4")]
+    #[serde(skip_serializing_if = "String::is_empty")]
     pub auth_token: ::prost::alloc::string::String,
     /// ecosystem to use with endpoints that require it
     #[prost(string, tag = "5")]

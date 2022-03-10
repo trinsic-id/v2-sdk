@@ -13,11 +13,11 @@ use crate::{
     *,
 };
 
-use super::{super::parser::issuer::*, config::DefaultConfig};
+use super::{super::parser::issuer::*, config::CliConfig};
 
 use tonic::transport::Channel;
 
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
         Command::Issue(args) => issue(args, config),
         Command::CreateProof(args) => create_proof(args, config),
@@ -29,7 +29,7 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
 }
 
 #[tokio::main]
-async fn issue(args: &IssueArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn issue(args: &IssueArgs, config: CliConfig) -> Result<(), Error> {
     let document_json = read_file_as_string(args.document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
@@ -44,10 +44,7 @@ async fn issue(args: &IssueArgs, config: DefaultConfig) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn issue_from_template(
-    args: &IssueFromTemplateArgs,
-    config: DefaultConfig,
-) -> Result<(), Error> {
+async fn issue_from_template(args: &IssueFromTemplateArgs, config: CliConfig) -> Result<(), Error> {
     let values = args.values_json.as_ref().map_or_else(
         || {
             args.values_file.as_ref().map_or_else(
@@ -75,7 +72,7 @@ async fn issue_from_template(
 }
 
 #[tokio::main]
-async fn get_status(args: &GetStatusArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn get_status(args: &GetStatusArgs, config: CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CheckStatusRequest {
@@ -90,7 +87,7 @@ async fn get_status(args: &GetStatusArgs, config: DefaultConfig) -> Result<(), E
 }
 
 #[tokio::main]
-async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn update_status(args: &UpdateStatusArgs, config: CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(UpdateStatusRequest {
@@ -106,7 +103,7 @@ async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) -> Result
 }
 
 #[tokio::main]
-async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<(), Error> {
     let document_id = match args.document_id {
         Some(id) => id.to_string(),
         None => panic!("Please include document id"),
@@ -128,7 +125,7 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) -> Result<(
 }
 
 #[tokio::main]
-async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn verify_proof(args: &VerifyProofArgs, config: CliConfig) -> Result<(), Error> {
     let proof_document_json = read_file_as_string(args.proof_document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);

@@ -11,7 +11,7 @@ use crate::*;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
         Command::Invite(args) => Ok(invite(args, config)),
         Command::CreateEcosystem(args) => create_ecosystem(args, &config),
@@ -20,7 +20,7 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
 }
 
 #[tokio::main]
-async fn invite(args: &InviteArgs, config: DefaultConfig) {
+async fn invite(args: &InviteArgs, config: CliConfig) {
     let client = grpc_client_with_auth!(ProviderClient<Channel>, config);
 
     let request = tonic::Request::new(InviteRequest {
@@ -57,7 +57,7 @@ async fn invite(args: &InviteArgs, config: DefaultConfig) {
 }
 
 #[tokio::main]
-async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
 
     let req = CreateEcosystemRequest {

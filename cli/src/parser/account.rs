@@ -1,6 +1,6 @@
 use clap::ArgMatches;
 
-use crate::services::config::Error;
+use crate::error::Error;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("login") {

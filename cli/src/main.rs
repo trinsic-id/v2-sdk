@@ -4,16 +4,17 @@ pub mod services;
 pub mod utils;
 #[macro_use]
 pub(crate) mod macros;
+pub(crate) mod error;
 
 #[macro_use]
 extern crate clap;
-use crate::services::config::Error;
+use crate::error::Error;
 use clap::{App, AppSettings};
 use colored::Colorize;
 use parser::template;
 use prost::{DecodeError, Message};
 use serde_json::Value;
-use services::config::DefaultConfig;
+use services::config::CliConfig;
 
 pub static mut DEBUG: bool = false;
 
@@ -51,7 +52,7 @@ fn main() {
         .subcommand(template::subcommand());
     let matches = app.get_matches();
 
-    let config = DefaultConfig::from(&matches);
+    let config = CliConfig::from(&matches);
     let service = parser::parse(&matches);
 
     match service {

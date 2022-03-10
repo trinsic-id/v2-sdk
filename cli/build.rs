@@ -9,10 +9,13 @@ fn main() {
     config
         .compile_well_known_types(true)
         .type_attribute(
-            "JsonPayload",
+            "ServiceOptions",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
-        .field_attribute("JsonPayload.json", "#[serde(flatten)]")
+        .field_attribute(
+            "ServiceOptions.auth_token",
+            "#[serde(skip_serializing_if = \"String::is_empty\")]",
+        )
         .type_attribute(
             "JsonPayload.json",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",

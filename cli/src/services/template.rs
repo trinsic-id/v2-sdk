@@ -1,20 +1,22 @@
 use std::collections::HashMap;
 
-use crate::parser::template::*;
-
-use crate::proto::services::verifiablecredentials::templates::v1::{
-    credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest,
-    DeleteCredentialTemplateRequest, GetCredentialTemplateRequest, ListCredentialTemplatesRequest,
-    SearchCredentialTemplatesRequest,
+use crate::{
+    error::Error,
+    grpc_channel, grpc_client_with_auth,
+    parser::template::*,
+    proto::services::verifiablecredentials::templates::v1::{
+        credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest,
+        DeleteCredentialTemplateRequest, GetCredentialTemplateRequest,
+        ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
+    },
+    services::CliConfig,
+    utils::read_file_as_string,
 };
-use crate::services::config::Error;
-use crate::services::DefaultConfig;
-use crate::utils::read_file_as_string;
-use crate::{grpc_channel, grpc_client_with_auth};
+
 use colored::Colorize;
 use tonic::transport::Channel;
 
-pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<(), Error> {
     match args {
         TemplateCommand::Create(args) => create(args, config),
         TemplateCommand::Get(args) => get(args, config),
@@ -25,7 +27,7 @@ pub(crate) fn execute(args: &TemplateCommand, config: &DefaultConfig) -> Result<
 }
 
 #[tokio::main]
-async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let fields: Result<HashMap<String, Field>, _> = match &args.fields_data {
@@ -51,7 +53,7 @@ async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(),
 }
 
 #[tokio::main]
-async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(GetCredentialTemplateRequest {
@@ -66,7 +68,7 @@ async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error
 }
 
 #[tokio::main]
-async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(ListCredentialTemplatesRequest {
@@ -89,7 +91,7 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
 }
 
 #[tokio::main]
-async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(SearchCredentialTemplatesRequest {
@@ -112,7 +114,7 @@ async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<()
 }
 
 #[tokio::main]
-async fn delete(args: &DeleteTemplateArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn delete(args: &DeleteTemplateArgs, config: &CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(DeleteCredentialTemplateRequest {

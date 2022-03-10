@@ -1,6 +1,7 @@
-use std::io;
-
+use super::config::CliConfig;
+use crate::parser::account::{Command, InfoArgs, SignInArgs};
 use crate::{
+    error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
         account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod,
@@ -9,14 +10,11 @@ use crate::{
 };
 use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
+use std::io;
 use tonic::transport::Channel;
 
-use crate::parser::account::{Command, InfoArgs, SignInArgs};
-
-use super::config::{DefaultConfig, Error};
-
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
         Command::SignIn(args) => sign_in(args, config),
         Command::Info(args) => info(args, config),
@@ -24,7 +22,7 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
 }
 
 #[tokio::main]
-async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
     let mut new_config = config.clone();
 
     let name = match &args.name {
@@ -88,7 +86,7 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
 }
 
 #[tokio::main]
-async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
+async fn info(_args: &InfoArgs, config: CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InfoRequest {});

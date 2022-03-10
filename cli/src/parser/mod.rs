@@ -1,4 +1,4 @@
-use crate::services::{config::Error, Service};
+use crate::{error::Error, services::Service};
 use clap::ArgMatches;
 
 pub mod account;

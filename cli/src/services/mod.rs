@@ -6,9 +6,10 @@ mod trustregistry;
 mod vc;
 mod wallet;
 
-use self::config::{DefaultConfig, Error};
+use self::config::CliConfig;
+use crate::error::Error;
 
-pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<(), Error> {
     match args {
         Service::Wallet(args) => wallet::execute(&args, config),
         Service::Account(args) => account::execute(&args, config),

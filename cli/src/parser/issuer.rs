@@ -1,4 +1,4 @@
-use crate::services::config::Error;
+use crate::error::Error;
 use clap::ArgMatches;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {

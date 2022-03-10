@@ -1,146 +1,95 @@
-use crate::proto::services::account::v1::AccountProfile;
-use crate::{proto::services::common::v1::Nonce, MessageFormatter};
+use crate::{
+    error::Error,
+    proto::{
+        sdk::options::v1::ServiceOptions,
+        services::{account::v1::AccountProfile, common::v1::Nonce},
+    },
+    MessageFormatter,
+};
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use prost::Message;
+
 use serde::{Deserialize, Serialize};
-use std::fmt::Display;
-use std::time::{SystemTime, UNIX_EPOCH};
-use std::{env::var, path::Path};
 use std::{
+    env::var,
     fs::{self, OpenOptions},
     io::prelude::*,
-    path::PathBuf,
+    path::{Path, PathBuf},
+    time::{SystemTime, UNIX_EPOCH},
 };
 use tonic::service::Interceptor;
-use tonic::Status;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
 pub(crate) static DEFAULT_SERVER_ENDPOINT: &str = "prod.trinsic.cloud";
-pub(crate) static DEFAULT_SERVER_PORT: u16 = 443;
+pub(crate) static DEFAULT_SERVER_PORT: i32 = 443;
 pub(crate) static DEFAULT_SERVER_USE_TLS: bool = true;
 #[cfg(not(test))]
 pub static CONFIG_FILENAME: &str = "config.toml";
 #[cfg(test)]
 pub static CONFIG_FILENAME: &str = "config.test.toml";
 
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) struct DefaultConfig {
-    pub server: ConfigServer,
-    pub profile: Option<ConfigProfile>,
-}
-
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) struct ConfigServer {
-    pub endpoint: String,
-    pub port: u16,
-    pub use_tls: bool,
+pub(crate) struct CliConfig {
+    pub options: ServiceOptions,
+    pub defaults: Option<ConfigDefaults>,
 }
 
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) struct ConfigProfile {
-    pub default: String,
+pub(crate) struct ConfigDefaults {
+    pub profile: String,
 }
 
-impl Default for ConfigServer {
+impl Default for CliConfig {
     fn default() -> Self {
-        ConfigServer {
-            endpoint: DEFAULT_SERVER_ENDPOINT.into(),
-            port: DEFAULT_SERVER_PORT,
-            use_tls: DEFAULT_SERVER_USE_TLS,
+        CliConfig {
+            options: ServiceOptions {
+                server_endpoint: DEFAULT_SERVER_ENDPOINT.into(),
+                server_port: DEFAULT_SERVER_PORT,
+                server_use_tls: DEFAULT_SERVER_USE_TLS,
+                default_ecosystem: "default".into(),
+                auth_token: "".into(),
+            },
+            defaults: None,
         }
     }
 }
 
-impl Into<Bytes> for &ConfigServer {
+impl Into<Bytes> for &ServiceOptions {
     fn into(self) -> Bytes {
         Bytes::from(format!(
             "{tls}://{endpoint}:{port}",
-            tls = if self.use_tls { "https" } else { "http" },
-            endpoint = self.endpoint,
-            port = self.port
+            tls = if self.server_use_tls { "https" } else { "http" },
+            endpoint = self.server_endpoint,
+            port = self.server_port
         ))
-    }
-}
-
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) enum Error {
-    IOError,
-    SerializationError,
-    APIError { code: String, message: String },
-    MissingArguments,
-    UnknownCommand,
-}
-
-impl From<toml::ser::Error> for Error {
-    fn from(_: toml::ser::Error) -> Self {
-        Error::SerializationError
-    }
-}
-
-impl From<toml::de::Error> for Error {
-    fn from(_: toml::de::Error) -> Self {
-        Error::SerializationError
-    }
-}
-
-impl From<std::io::Error> for Error {
-    fn from(_: std::io::Error) -> Self {
-        Error::IOError
-    }
-}
-
-impl From<serde_json::Error> for Error {
-    fn from(_: serde_json::Error) -> Self {
-        Error::SerializationError
-    }
-}
-
-impl From<prost::DecodeError> for Error {
-    fn from(_: prost::DecodeError) -> Self {
-        Error::SerializationError
-    }
-}
-
-impl From<Status> for Error {
-    fn from(status: Status) -> Self {
-        Error::APIError {
-            code: status.code().to_string(),
-            message: status.message().to_string(),
-        }
-    }
-}
-
-impl Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_fmt(format_args!("{:#?}", self))
     }
 }
 
 use crate::DEBUG;
 
-impl From<&ArgMatches<'_>> for DefaultConfig {
+impl From<&ArgMatches<'_>> for CliConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
         if matches.is_present("debug") {
             unsafe { DEBUG = true }
         }
-        if matches.is_present("alias") {
-            DefaultConfig {
-                profile: Some(ConfigProfile {
-                    default: matches.value_of("alias").unwrap().to_string(),
+        if matches.is_present("profile") {
+            CliConfig {
+                defaults: Some(ConfigDefaults {
+                    profile: matches.value_of("profile").unwrap().to_string(),
                 }),
-                ..DefaultConfig::init().unwrap()
+                ..CliConfig::init().unwrap()
             }
         } else {
-            DefaultConfig::init().unwrap()
+            CliConfig::init().unwrap()
         }
     }
 }
 
-impl DefaultConfig {
+impl CliConfig {
     /// Initialize the configuration by reading the default confgiruation file.
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
@@ -148,14 +97,12 @@ impl DefaultConfig {
         let config_file = data_path().join(CONFIG_FILENAME);
 
         // If a default file is not found, create one with default configuration
-        if !Path::new(&config_file).exists() {
-            create_file(&config_file, &DefaultConfig::default())?;
-        };
+        write_config(&config_file, &CliConfig::default())?;
 
         let mut buffer = String::new();
         let mut file = OpenOptions::new().read(true).open(&config_file)?;
         file.read_to_string(&mut buffer)?;
-        let config: DefaultConfig = match toml::from_str(&buffer) {
+        let config: CliConfig = match toml::from_str(&buffer) {
             Ok(x) => x,
             Err(_err) => {
                 let mut file = OpenOptions::new()
@@ -166,11 +113,11 @@ impl DefaultConfig {
                     .append(false)
                     .open(config_file)?;
 
-                let buffer = toml::to_vec(&DefaultConfig::default())?;
+                let buffer = toml::to_vec(&CliConfig::default())?;
                 file.write_all(&buffer)?;
                 file.flush()?;
 
-                DefaultConfig::default()
+                CliConfig::default()
             }
         };
 
@@ -180,14 +127,14 @@ impl DefaultConfig {
     pub fn save_config(&self) -> Result<(), Error> {
         let config_file = data_path().join(CONFIG_FILENAME);
 
-        update_file(&config_file, self)
+        write_config(&config_file, self)
     }
     #[allow(dead_code)]
     pub fn read_profile<T>(&self) -> Result<T, Error>
     where
         T: crate::MessageFormatter + prost::Message + Default,
     {
-        let filename = data_path().join(format!("{}.bin", self.profile.as_ref().unwrap().default));
+        let filename = data_path().join(format!("{}.bin", self.defaults.as_ref().unwrap().profile));
         let mut file = OpenOptions::new().read(true).open(filename)?;
 
         let mut buffer: Vec<u8> = vec![];
@@ -216,14 +163,14 @@ impl DefaultConfig {
 
         // If default is `true`, set this profile as default in the
         // main configuration file
-        if default || self.profile.is_none() {
-            self.profile = Some(match self.profile.as_ref() {
-                Some(profile) => ConfigProfile {
-                    default: name.to_string(),
+        if default || self.defaults.is_none() {
+            self.defaults = Some(match self.defaults.as_ref() {
+                Some(profile) => ConfigDefaults {
+                    profile: name.to_string(),
                     ..*profile
                 },
-                None => ConfigProfile {
-                    default: name.to_string(),
+                None => ConfigDefaults {
+                    profile: name.to_string(),
                     ..Default::default()
                 },
             });
@@ -270,7 +217,7 @@ impl DefaultConfig {
 //     }
 // }
 
-impl Interceptor for DefaultConfig {
+impl Interceptor for CliConfig {
     fn call(
         &mut self,
         mut request: tonic::Request<()>,
@@ -326,10 +273,10 @@ pub fn execute(args: &Command) {
 }
 
 fn set_profile_attr(args: &ProfileArgs) {
-    let mut config = DefaultConfig::init().unwrap();
+    let mut config = CliConfig::init().unwrap();
     if args.default.is_some() {
-        config.profile = Some(ConfigProfile {
-            default: args.default.unwrap().to_string(),
+        config.defaults = Some(ConfigDefaults {
+            profile: args.default.unwrap().to_string(),
         });
     }
 
@@ -337,15 +284,15 @@ fn set_profile_attr(args: &ProfileArgs) {
 }
 
 fn set_server_attr(args: &ServerArgs) {
-    let mut config = DefaultConfig::init().unwrap();
+    let mut config = CliConfig::init().unwrap();
     if args.endpoint.is_some() {
-        config.server.endpoint = args.endpoint.unwrap().to_string();
+        config.options.server_endpoint = args.endpoint.unwrap().to_string();
     }
     if args.port.is_some() {
-        config.server.port = args.port.unwrap();
+        config.options.server_port = args.port.unwrap() as i32;
     }
     if args.use_tls.is_some() {
-        config.server.use_tls = args.use_tls.unwrap();
+        config.options.server_use_tls = args.use_tls.unwrap();
     }
 
     config.save_config().unwrap()
@@ -365,27 +312,12 @@ fn data_path() -> PathBuf {
     path
 }
 
-fn create_file(config_dir: &Path, config: &DefaultConfig) -> Result<(), Error> {
+fn write_config(config_dir: &Path, config: &CliConfig) -> Result<(), Error> {
     let mut file = OpenOptions::new()
-        .create_new(true)
-        .read(true)
-        .write(true)
-        .append(false)
-        .open(config_dir)?;
-
-    let buffer = toml::to_vec(config)?;
-    file.write_all(&buffer)?;
-    file.flush()?;
-
-    Ok(())
-}
-
-fn update_file(config_dir: &Path, config: &DefaultConfig) -> Result<(), Error> {
-    let mut file = OpenOptions::new()
+        .create(true)
         .truncate(true)
         .read(true)
         .write(true)
-        .append(false)
         .open(config_dir)?;
 
     let buffer = toml::to_vec(config)?;
@@ -397,12 +329,29 @@ fn update_file(config_dir: &Path, config: &DefaultConfig) -> Result<(), Error> {
 
 #[cfg(test)]
 mod test {
+    use crate::proto::sdk::options::v1::ServiceOptions;
+
     use super::*;
 
     #[test]
     fn open_default_config() {
-        let config = DefaultConfig::init();
+        let config = CliConfig::init();
 
         assert!(matches!(config, Ok(_)));
+    }
+
+    #[test]
+    fn serde_service_options() {
+        let options = ServiceOptions {
+            server_endpoint: "example.com".into(),
+            server_port: 443,
+            server_use_tls: true,
+            default_ecosystem: "default".into(),
+            ..Default::default()
+        };
+
+        let toml = ::toml::to_string_pretty(&options);
+
+        println!("{:#?}", &toml);
     }
 }

@@ -1,6 +1,7 @@
 use std::default::*;
 
 use super::super::parser::wallet::*;
+use crate::error::Error;
 use crate::proto::services::universalwallet::v1::DeleteItemRequest;
 use crate::utils::read_file_as_string;
 use crate::{grpc_channel, grpc_client_with_auth};
@@ -19,7 +20,7 @@ use crate::{
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
         Command::Search(args) => Ok(search(args, config)),
         Command::InsertItem(args) => Ok(insert_item(args, config)),
@@ -29,7 +30,7 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: DefaultConfig) {
+async fn search(args: &SearchArgs, config: CliConfig) {
     let query = args
         .query
         .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
@@ -56,7 +57,7 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
 }
 
 #[tokio::main]
-async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
+async fn insert_item(args: &InsertItemArgs, config: CliConfig) {
     let item_json = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
@@ -73,7 +74,7 @@ async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
 }
 
 #[tokio::main]
-async fn delete_item(args: &DeleteItemArgs, config: DefaultConfig) {
+async fn delete_item(args: &DeleteItemArgs, config: CliConfig) {
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
         .delete_item(DeleteItemRequest {
@@ -87,7 +88,7 @@ async fn delete_item(args: &DeleteItemArgs, config: DefaultConfig) {
 }
 
 #[tokio::main]
-async fn send(args: &SendArgs, config: DefaultConfig) {
+async fn send(args: &SendArgs, config: CliConfig) {
     let item = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());

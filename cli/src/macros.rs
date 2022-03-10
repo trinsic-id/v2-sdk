@@ -1,7 +1,7 @@
 #[macro_export]
 macro_rules! grpc_channel {
     ($x:expr) => {
-        Channel::from_shared(&$x.server)
+        Channel::from_shared(&$x.options)
             .unwrap()
             .connect()
             .await

@@ -1,6 +1,5 @@
+use crate::error::Error;
 use clap::ArgMatches;
-
-use crate::services::config::Error;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("search") {
