@@ -23,8 +23,6 @@ pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error
 
 #[derive(Debug, PartialEq)]
 pub(crate) enum Service<'a> {
-    DIDComm(crate::parser::didcomm::Command<'a>),
-    DIDKey(crate::parser::didkey::Command<'a>),
     Wallet(crate::parser::wallet::Command<'a>),
     VerifiableCredential(crate::parser::issuer::Command<'a>),
     Provider(crate::parser::provider::Command<'a>),

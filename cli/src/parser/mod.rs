@@ -3,8 +3,6 @@ use clap::ArgMatches;
 
 pub mod account;
 pub mod config;
-pub mod didcomm;
-pub mod didkey;
 pub mod issuer;
 pub mod provider;
 pub mod template;
@@ -12,19 +10,7 @@ pub mod trustregistry;
 pub mod wallet;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
-    if args.is_present("didkey") {
-        Service::DIDKey(didkey::parse(
-            &args
-                .subcommand_matches("didkey")
-                .expect("Error parsing request"),
-        ))
-    } else if args.is_present("didcomm") {
-        Service::DIDComm(didcomm::parse(
-            &args
-                .subcommand_matches("didcomm")
-                .expect("Error parsing request"),
-        ))
-    } else if args.is_present("wallet") {
+    if args.is_present("wallet") {
         Service::Wallet(wallet::parse(
             &args
                 .subcommand_matches("wallet")
