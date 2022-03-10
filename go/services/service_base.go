@@ -2,47 +2,43 @@ package services
 
 import (
 	"context"
+	"crypto/x509"
 	"errors"
 	"fmt"
+	"runtime"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
-func NewServiceBase(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (*ServiceBase, error) {
-	if channel != nil && serverConfig != nil {
-		return nil, errors.New("cannot provide both serverConfig and channel - connection is ambiguous")
+func NewServiceBase(options *sdk.ServiceOptions) (*ServiceBase, error) {
+	conn, err := NewServiceConnection(options)
+	if err != nil {
+		return nil, err
 	}
-	if channel == nil {
-		channel2, err := CreateChannel(CreateChannelUrlFromConfig(serverConfig), true)
-		if err != nil {
-			return nil, err
-		}
-		channel = channel2
-	}
-	channel.Connect()
-	service := &ServiceBase{
-		profile:              profile,
-		configuration:        serverConfig,
-		channel:              channel,
-		securityProviderImpl: &OberonSecurityProvider{},
-	}
-	return service, nil
+
+	return &ServiceBase{
+		options:          options,
+		channel:          conn,
+		securityProvider: &OberonSecurityProvider{},
+	}, nil
 }
 
 type ServiceBase struct {
-	ecosystemId          string
-	profile              *sdk.AccountProfile
-	configuration        *sdk.ServerConfig
-	channel              *grpc.ClientConn
-	securityProviderImpl *OberonSecurityProvider
+	options          *sdk.ServiceOptions
+	channel          *grpc.ClientConn
+	securityProvider SecurityProvider
 }
 
 type Service interface {
 	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
 	BuildMetadata(message proto.Message) (metadata.MD, error)
-	SetProfile(profile *sdk.AccountProfile)
+	SetProfile(token string)
+	GetProfile() string
+	GetServiceOptions() *sdk.ServiceOptions
 	SetChannel(channel *grpc.ClientConn)
 	GetChannel() *grpc.ClientConn
 }
@@ -55,31 +51,82 @@ func (s *ServiceBase) SetChannel(channel *grpc.ClientConn) {
 	s.channel = channel
 }
 
-func (s *ServiceBase) SetProfile(profile *sdk.AccountProfile) {
-	s.profile = profile
+func (s *ServiceBase) SetProfile(authtoken string) {
+	s.options.AuthToken = authtoken
 }
 
+func (s *ServiceBase) GetProfile() string {
+	if s.options != nil {
+		return s.options.AuthToken
+	}
+
+	return ""
+}
+
+func (s *ServiceBase) GetServiceOptions() *sdk.ServiceOptions {
+	return s.options
+}
+
+// GetMetadataContext returns a new context with grpc metadata containing authentication headers
+//
+// This call will return an error if the auth token is not set
 func (s *ServiceBase) GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error) {
+	if userContext == nil {
+		return nil, errors.New("userContext cannot be nil")
+	}
+
 	md, err := s.BuildMetadata(message)
 	if err != nil {
 		return nil, err
 	}
-	if userContext == nil {
-		return nil, errors.New("userContext cannot be nil")
-	}
+
 	return metadata.NewOutgoingContext(userContext, md), nil
 }
 
+// BuildMetadata builds grpc metadata with the authentication header configured.
+//
+// This call will return an error if the auth token is not set
 func (s *ServiceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
-	if s.profile == nil {
-		return nil, fmt.Errorf("cannot call authenticated endpoint: profile must be set")
+	if len(s.options.AuthToken) == 0 {
+		return nil, errors.New("cannot call authenticated endpoint: auth token must be set in service options")
 	}
-	authString, err := s.securityProviderImpl.GetAuthHeader(s.profile, message)
+
+	profile, err := ProfileFromToken(s.options.AuthToken)
 	if err != nil {
 		return nil, err
 	}
+
+	authString, err := s.securityProvider.GetAuthHeader(profile, message)
+	if err != nil {
+		return nil, err
+	}
+
 	return metadata.New(map[string]string{
 		"authorization": authString,
-		"ecosystem":     s.ecosystemId,
 	}), nil
+}
+
+// NewServiceConnection returns a grpc client connection to the target
+// provided in the options (ServerEndpoint, ServerPort, and ServerUseTLS)
+func NewServiceConnection(options *sdk.ServiceOptions) (*grpc.ClientConn, error) {
+	var dialOptions []grpc.DialOption
+
+	if !options.ServerUseTls {
+		dialOptions = append(dialOptions, grpc.WithInsecure())
+	} else {
+		rootCAs, err := x509.SystemCertPool()
+		if err != nil && runtime.GOOS == "windows" {
+			rootCAs = x509.NewCertPool()
+			windowsCerts := loadWindowsCerts()
+			for _, cert := range windowsCerts {
+				rootCAs.AddCert(cert)
+			}
+		} else if err != nil {
+			return nil, err
+		}
+		creds := credentials.NewClientTLSFromCert(rootCAs, "")
+		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
+	}
+
+	return grpc.Dial(fmt.Sprintf("%s:%d", options.ServerEndpoint, options.ServerPort), dialOptions...)
 }

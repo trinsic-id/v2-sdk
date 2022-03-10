@@ -3,12 +3,13 @@ package services
 import (
 	"context"
 	"fmt"
-	sdk "github.com/trinsic-id/sdk/go/proto"
 	"net/url"
+
+	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
-func NewTrustRegistryService(options ServiceOptions) (TrustRegistryService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+func NewTrustRegistryService(options *sdk.ServiceOptions) (TrustRegistryService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
@@ -130,8 +131,7 @@ func (t *TrustRegistryBase) SearchRegistry(userContext context.Context, query st
 		query = "SELECT * FROM c"
 	}
 	request := &sdk.SearchRegistryRequest{
-		Query:   query,
-		Options: &sdk.RequestOptions{ResponseJsonFormat: sdk.JsonFormat_Protobuf},
+		Query: query,
 	}
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {

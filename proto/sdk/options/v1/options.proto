@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package sdk.options.v1;
 
-option go_package = "github.com/trinsic-id/sdk/go/options";
+option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.sdk.v1";
 option csharp_namespace = "Trinsic.Sdk.Options.V1";
 
