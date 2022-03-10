@@ -212,9 +212,7 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
 
 #[cfg(test)]
 pub mod test {
-    use std::collections::{BTreeMap, HashMap};
-
-    use serde::__private::de::StrDeserializer;
+    use std::collections::BTreeMap;
 
     use super::{Field, FieldType};
 

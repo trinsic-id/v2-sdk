@@ -6,6 +6,7 @@ use colored::Colorize;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use prost::Message;
 use serde::{Deserialize, Serialize};
+use std::fmt::Display;
 use std::time::{SystemTime, UNIX_EPOCH};
 use std::{env::var, path::Path};
 use std::{
@@ -70,6 +71,7 @@ pub(crate) enum Error {
     IOError,
     SerializationError,
     APIError { code: String, message: String },
+    MissingArguments,
     UnknownCommand,
 }
 
@@ -109,6 +111,12 @@ impl From<Status> for Error {
             code: status.code().to_string(),
             message: status.message().to_string(),
         }
+    }
+}
+
+impl Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_fmt(format_args!("{:#?}", self))
     }
 }
 

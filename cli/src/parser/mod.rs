@@ -1,4 +1,4 @@
-use crate::services::Service;
+use crate::services::{config::Error, Service};
 use clap::ArgMatches;
 
 pub mod account;
@@ -9,13 +9,13 @@ pub mod template;
 pub mod trustregistry;
 pub mod wallet;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
-    if args.is_present("wallet") {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Service<'a>, Error> {
+    Ok(if args.is_present("wallet") {
         Service::Wallet(wallet::parse(
             &args
                 .subcommand_matches("wallet")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else if args.is_present("config") {
         Service::Config(config::parse(
             &args
@@ -27,19 +27,19 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
             &args
                 .subcommand_matches("vc")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else if args.is_present("account") {
         Service::Account(account::parse(
             &args
                 .subcommand_matches("account")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else if args.is_present("provider") {
         Service::Provider(provider::parse(
             &args
                 .subcommand_matches("provider")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else if args.is_present("trust-registry") {
         Service::TrustRegistry(trustregistry::parse(
             &args
@@ -54,5 +54,5 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Service<'a> {
         ))
     } else {
         Service::Unknown
-    }
+    })
 }

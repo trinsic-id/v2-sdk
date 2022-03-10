@@ -12,20 +12,20 @@ use super::config::{DefaultConfig, Error};
 
 pub(crate) fn execute(args: &Command, config: &DefaultConfig) -> Result<(), Error> {
     match args {
-        Command::Search(args) => Ok(search(args, config)),
-        Command::RegisterIssuer(args) => Ok(register_issuer(args, config)),
-        Command::RegisterVerifier(args) => Ok(register_verifier(args, config)),
-        Command::UnregisterIssuer(args) => Ok(unregister_issuer(args, config)),
-        Command::UnregisterVerifier(args) => Ok(unregister_verifier(args, config)),
-        Command::CheckIssuer(args) => Ok(check_issuer(args, config)),
-        Command::CheckVerifier(args) => Ok(check_verifier(args, config)),
-        Command::RegisterEgf(args) => Ok(add_framework(args, config)),
-        Command::UnregisterEgf(args) => Ok(remove_framework(args, config)),
+        Command::Search(args) => search(args, config),
+        Command::RegisterIssuer(args) => register_issuer(args, config),
+        Command::RegisterVerifier(args) => register_verifier(args, config),
+        Command::UnregisterIssuer(args) => unregister_issuer(args, config),
+        Command::UnregisterVerifier(args) => unregister_verifier(args, config),
+        Command::CheckIssuer(args) => check_issuer(args, config),
+        Command::CheckVerifier(args) => check_verifier(args, config),
+        Command::RegisterEgf(args) => add_framework(args, config),
+        Command::UnregisterEgf(args) => remove_framework(args, config),
     }
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: &DefaultConfig) {
+async fn search(args: &SearchArgs, config: &DefaultConfig) -> Result<(), Error> {
     let query = args
         .query
         .as_ref()
@@ -41,10 +41,12 @@ async fn search(args: &SearchArgs, config: &DefaultConfig) {
     let response = client.search_registry(request).await?.into_inner();
 
     println!("{}", response.items_json);
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterIssuerRequest {
@@ -65,10 +67,12 @@ async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckIssuerStatusRequest {
@@ -93,10 +97,12 @@ async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         )
         .bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckVerifierStatusRequest {
@@ -124,10 +130,12 @@ async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         )
         .bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterIssuerRequest {
@@ -148,10 +156,12 @@ async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterVerifierRequest {
@@ -175,10 +185,12 @@ async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
+async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterVerifierRequest {
@@ -202,10 +214,12 @@ async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) {
+async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(AddFrameworkRequest {
@@ -225,10 +239,12 @@ async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) {
+async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RemoveFrameworkRequest {
@@ -244,4 +260,6 @@ async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) {
         "{}",
         format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
     );
+
+    Ok(())
 }
