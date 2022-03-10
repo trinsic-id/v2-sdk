@@ -7,7 +7,6 @@ import (
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
-	_ "google.golang.org/protobuf/types/known/structpb"
 )
 
 //Options for configuring the sdk
@@ -50,7 +49,7 @@ func WithAuthToken(token string) Option {
 	}
 }
 
-// WithEcosystem will set the default ecosystem used for each of the calls
+// WithDefaultEcosystem will set the default ecosystem used for each of the calls
 //
 // This value will be added to calls that reqire an ecosystemID to be set
 // if no value is provided
@@ -107,7 +106,7 @@ func WithProductionEnv() Option {
 	}
 }
 
-// WithProductionEnv will configure the server to use the trinsic production environment
+// WithTestEnv will configure the server to use the trinsic production environment
 func WithTestEnv() Option {
 	return func(s *Options) error {
 		s.ServiceOptions.ServerEndpoint = os.Getenv("TEST_SERVER_ENDPOINT")
@@ -129,6 +128,7 @@ func WithTestEnv() Option {
 	}
 }
 
+// WithChannel will use the provided grpc channel instead of creating a default
 func WithChannel(conn *grpc.ClientConn) Option {
 	return func(s *Options) error {
 		s.Channel = conn

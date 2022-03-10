@@ -138,9 +138,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// storeCredential() {
 	walletService.SetToken(allison)
 	failError(t, "error setting profile", err)
-	itemId, err := walletService.InsertItem(context.Background(), &sdk.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
+	itemID, err := walletService.InsertItem(context.Background(), &sdk.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
 	failError(t, "error inserting item", err)
-	fmt.Println("item id", itemId)
+	fmt.Println("item id", itemID)
 	// }
 
 	// SHARE CREDENTIAL
@@ -156,7 +156,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	req := &sdk.CreateProofRequest{
 		RevealDocumentJson: string(fileContent2),
-		Proof:              &sdk.CreateProofRequest_ItemId{ItemId: itemId},
+		Proof:              &sdk.CreateProofRequest_ItemId{ItemId: itemID},
 	}
 
 	credentialService.SetToken(allison)
@@ -193,31 +193,31 @@ func TestTrustRegistryDemo(t *testing.T) {
 	service, _ := NewTrustRegistryService(opts)
 
 	// register issuer
-	didUri := "did:example:test"
-	typeUri := "https://schema.org/Card"
-	frameworkUri := "https://example.com"
+	didURI := "did:example:test"
+	typeURI := "https://schema.org/Card"
+	frameworkURI := "https://example.com"
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
-		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didUri},
-		CredentialTypeUri:      typeUri,
-		GovernanceFrameworkUri: frameworkUri,
+		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
+		CredentialTypeUri:      typeURI,
+		GovernanceFrameworkUri: frameworkURI,
 	})
 	if !assert2.Nil(err) {
 		return
 	}
 
 	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
-		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didUri},
-		PresentationTypeUri:    typeUri,
-		GovernanceFrameworkUri: frameworkUri,
+		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
+		PresentationTypeUri:    typeURI,
+		GovernanceFrameworkUri: frameworkURI,
 	})
 	if !assert2.Nil(err) {
 		return
 	}
 
 	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
-		GovernanceFrameworkUri: frameworkUri,
-		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didUri},
-		CredentialTypeUri:      typeUri,
+		GovernanceFrameworkUri: frameworkURI,
+		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didURI},
+		CredentialTypeUri:      typeURI,
 	})
 	if !assert2.Nil(err) {
 		return
@@ -225,9 +225,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
 
 	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
-		GovernanceFrameworkUri: frameworkUri,
-		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didUri},
-		PresentationTypeUri:    typeUri,
+		GovernanceFrameworkUri: frameworkURI,
+		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didURI},
+		PresentationTypeUri:    typeURI,
 	})
 	if !assert2.Nil(err) {
 		return
@@ -363,7 +363,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 
-	credentialJson, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
+	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
 		TemplateId: template.Data.Id,
 		ValuesJson: string(valuesString),
 	})
@@ -371,7 +371,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 	var jsonDocument = make(map[string]interface{})
-	err = json.Unmarshal([]byte(credentialJson.DocumentJson), &jsonDocument)
+	err = json.Unmarshal([]byte(credentialJSON.DocumentJson), &jsonDocument)
 	if !assert2.Nil(err) {
 		return
 	}

@@ -22,7 +22,7 @@ func NewCredentialService(options *Options) (CredentialService, error) {
 	return service, nil
 }
 
-// CredentialsService defines the interface for interacting with credentials
+// CredentialService defines the interface for interacting with credentials
 type CredentialService interface {
 	Service
 	// IssueCredential using a document json
