@@ -1,7 +1,8 @@
+use crate::services::config::Error;
 use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("create-ecosystem") {
         create_ecosystem(
             &args
@@ -15,11 +16,11 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .expect("Error parsing request"),
         )
     } else {
-        panic!("Unrecognized command")
+        Err(Error::MissingArguments)
     }
 }
 
-fn create_ecosystem<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+fn create_ecosystem<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     let ecosystem = CreateEcosystemArgs {
         name: args.value_of("name").map(|x| x.into()),
         email: args.value_of("email").map(|x| x.into()),
@@ -28,11 +29,11 @@ fn create_ecosystem<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
             .map_or("default".to_string(), |x| x.into()),
     };
 
-    Command::CreateEcosystem(ecosystem)
+    Ok(Command::CreateEcosystem(ecosystem))
 }
 
-fn invite<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::Invite(InviteArgs {
+fn invite<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::Invite(InviteArgs {
         participant_type: if args.is_present("organization") {
             ParticipantType::Organization
         } else {
@@ -54,7 +55,7 @@ fn invite<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
             InvitationMethod::None
         },
         description: args.value_of("description"),
-    })
+    }))
 }
 
 #[derive(Debug, PartialEq)]

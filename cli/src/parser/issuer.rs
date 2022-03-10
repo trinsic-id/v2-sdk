@@ -1,7 +1,7 @@
+use crate::services::config::Error;
 use clap::ArgMatches;
-use colored::Colorize;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("issue") {
         issue(
             &args
@@ -27,72 +27,68 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .expect("Error parsing request"),
         )
     } else if args.is_present("create-proof") {
-        return create_proof(
+        create_proof(
             &args
                 .subcommand_matches("create-proof")
                 .expect("Error parsing request"),
-        );
+        )
     } else if args.is_present("verify-proof") {
-        return verify_proof(
+        verify_proof(
             &args
                 .subcommand_matches("verify-proof")
                 .expect("Error parsing request"),
-        );
+        )
     } else {
-        println!(
-            "{}",
-            format!("invalid subcommand. see 'trinsic vc -h' for details").red()
-        );
-        panic!();
+        Err(Error::MissingArguments)
     }
 }
 
-fn issue<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::Issue(IssueArgs {
+fn issue<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::Issue(IssueArgs {
         document: args.value_of("document"),
         out: args.value_of("out"),
-    })
+    }))
 }
 
-fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::IssueFromTemplate(IssueFromTemplateArgs {
+fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::IssueFromTemplate(IssueFromTemplateArgs {
         template_id: args
             .value_of("template-id")
             .map_or(String::default(), |x| x.to_string()),
         values_json: args.value_of("values-data").map(|x| x.to_string()),
         values_file: args.value_of("values-file").map(|x| x.to_string()),
-    })
+    }))
 }
 
-fn get_status<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::GetStatus(GetStatusArgs {
+fn get_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::GetStatus(GetStatusArgs {
         credential_status_id: args
             .value_of("credential-status-id")
             .map_or(String::default(), |x| x.to_string()),
-    })
+    }))
 }
 
-fn update_status<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::UpdateStatus(UpdateStatusArgs {
+fn update_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::UpdateStatus(UpdateStatusArgs {
         credential_status_id: args
             .value_of("credential-status-id")
             .map_or(String::default(), |x| x.to_string()),
         revoked: args.is_present("revoked"),
-    })
+    }))
 }
 
-fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::CreateProof(CreateProofArgs {
+fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::CreateProof(CreateProofArgs {
         reveal_document: args.value_of("reveal-document"),
         document_id: args.value_of("document-id"),
         out: args.value_of("out"),
-    })
+    }))
 }
 
-fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::VerifyProof(VerifyProofArgs {
+fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::VerifyProof(VerifyProofArgs {
         proof_document: args.value_of("proof-document"),
-    })
+    }))
 }
 
 #[derive(Debug, PartialEq)]
