@@ -50,6 +50,10 @@ type accountBase struct {
 
 // SignIn to a given account
 func (a *accountBase) SignIn(userContext context.Context, request *sdk.SignInRequest) (string, sdk.ConfirmationMethod, error) {
+	if request == nil {
+		request = &sdk.SignInRequest{}
+	}
+
 	if len(request.EcosystemId) == 0 {
 		request.EcosystemId = a.GetServiceOptions().DefaultEcosystem
 	}
