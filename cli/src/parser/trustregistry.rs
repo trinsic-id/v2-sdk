@@ -1,5 +1,7 @@
 use clap::ArgMatches;
 
+use crate::services::config::Error;
+
 #[derive(Debug, PartialEq)]
 pub enum Command {
     Search(SearchArgs),
@@ -44,7 +46,7 @@ pub struct RemoveFrameworkArgs {
     pub governance_framework_uri: String,
 }
 
-pub fn parse(args: &ArgMatches) -> Command {
+pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     if args.is_present("search") {
         search(
             &args
@@ -100,79 +102,79 @@ pub fn parse(args: &ArgMatches) -> Command {
                 .expect("Error parsing request"),
         )
     } else {
-        panic!("Unrecognized command")
+        Err(Error::MissingArguments)
     }
 }
 
-fn search<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::Search(SearchArgs {
+fn search<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::Search(SearchArgs {
         query: args.value_of("query").map(|q| q.into()),
-    })
+    }))
 }
 
-fn register_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::RegisterIssuer(RegistrationArgs {
+fn register_issuer<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::RegisterIssuer(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("credential-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn register_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::RegisterVerifier(RegistrationArgs {
+fn register_verifier<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::RegisterVerifier(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn unregister_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::UnregisterIssuer(RegistrationArgs {
+fn unregister_issuer<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::UnregisterIssuer(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("credential-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn unregister_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::UnregisterVerifier(RegistrationArgs {
+fn unregister_verifier<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::UnregisterVerifier(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn check_issuer<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::CheckIssuer(RegistrationArgs {
+fn check_issuer<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::CheckIssuer(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("credential-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn check_verifier<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::CheckVerifier(RegistrationArgs {
+fn check_verifier<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::CheckVerifier(RegistrationArgs {
         did_uri: args.value_of("did").map(|q| q.into()),
         type_uri: args.value_of("presentation-type").map(|q| q.into()),
         governance_framework_uri: args.value_of("egf").map(|q| q.into()),
         ..Default::default()
-    })
+    }))
 }
 
-fn add_egf<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::RegisterEgf(AddFrameworkArgs {
+fn add_egf<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::RegisterEgf(AddFrameworkArgs {
         governance_framework_uri: args.value_of("uri").map_or(String::default(), |q| q.into()),
         description: args.value_of("description").map(|x| x.into()),
-    })
+    }))
 }
 
-fn remove_egf<'a>(args: &'a ArgMatches<'_>) -> Command {
-    Command::UnregisterEgf(RemoveFrameworkArgs {
+fn remove_egf<'a>(args: &'a ArgMatches<'_>) -> Result<Command, Error> {
+    Ok(Command::UnregisterEgf(RemoveFrameworkArgs {
         governance_framework_uri: args.value_of("uri").map_or(String::default(), |q| q.into()),
-    })
+    }))
 }

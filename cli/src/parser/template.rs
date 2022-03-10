@@ -63,6 +63,7 @@ pub enum FieldType {
 
 use crate::proto::services::verifiablecredentials::templates::v1::FieldType as ProtoFieldType;
 use crate::proto::services::verifiablecredentials::templates::v1::TemplateField as ProtoField;
+use crate::services::config::Error;
 
 impl Default for FieldType {
     fn default() -> Self {
@@ -101,73 +102,73 @@ pub fn to_map(map: HashMap<String, Field>) -> HashMap<String, ProtoField> {
     result
 }
 
-pub fn parse(args: &ArgMatches) -> TemplateCommand {
+pub(crate) fn parse(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     if args.is_present("create") {
-        return create(
+        create(
             &args
                 .subcommand_matches("create")
                 .expect("Error parsing request"),
-        );
+        )
     } else if args.is_present("get") {
-        return get(&args
+        get(&args
             .subcommand_matches("get")
-            .expect("Error parsing request"));
+            .expect("Error parsing request"))
     } else if args.is_present("list") {
-        return list(
+        list(
             &args
                 .subcommand_matches("list")
                 .expect("Error parsing request"),
-        );
+        )
     } else if args.is_present("search") {
-        return search(
+        search(
             &args
                 .subcommand_matches("search")
                 .expect("Error parsing request"),
-        );
+        )
     } else {
-        panic!("Unrecognized command")
+        Err(Error::MissingArguments)
     }
 }
 
-fn create(args: &ArgMatches) -> TemplateCommand {
-    TemplateCommand::Create(CreateTemplateArgs {
+fn create(args: &ArgMatches) -> Result<TemplateCommand, Error> {
+    Ok(TemplateCommand::Create(CreateTemplateArgs {
         name: args
             .value_of("name")
             .map_or(String::default(), |x| x.to_string()),
         fields_file: args.value_of("fields-file").map(|x| x.to_string()),
         fields_data: args.value_of("fields-data").map(|x| x.to_string()),
         allow_additional: args.is_present("allow-additional"),
-    })
+    }))
 }
 
-fn get(args: &ArgMatches) -> TemplateCommand {
-    TemplateCommand::Get(GetTemplateArgs {
+fn get(args: &ArgMatches) -> Result<TemplateCommand, Error> {
+    Ok(TemplateCommand::Get(GetTemplateArgs {
         id: args
             .value_of("id")
             .map_or(String::default(), |x| x.to_string()),
-    })
+    }))
 }
 
-fn list(args: &ArgMatches) -> TemplateCommand {
-    TemplateCommand::List(ListTemplatesArgs {
+fn list(args: &ArgMatches) -> Result<TemplateCommand, Error> {
+    Ok(TemplateCommand::List(ListTemplatesArgs {
         query: args
             .value_of("query")
             .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
         continuation_token: args
             .value_of("continuation-token")
             .map_or(String::default(), |x| x.to_string()),
-    })
+    }))
 }
 
-fn search(args: &ArgMatches) -> TemplateCommand {
-    TemplateCommand::Search(SearchTemplatesArgs {
+fn search(args: &ArgMatches) -> Result<TemplateCommand, Error> {
+    Ok(TemplateCommand::Search(SearchTemplatesArgs {
         query: args
             .value_of("query")
             .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
         continuation_token: args
             .value_of("continuation-token")
             .map_or(String::default(), |x| x.to_string()),
-    })
+    }))
 }
 
 pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {

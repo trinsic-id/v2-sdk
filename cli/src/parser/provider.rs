@@ -1,7 +1,6 @@
+use crate::services::config::Error;
 use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
-
-use crate::services::config::Error;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("create-ecosystem") {

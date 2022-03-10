@@ -45,13 +45,13 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Service<'a>, Error> 
             &args
                 .subcommand_matches("trust-registry")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else if args.is_present("template") {
         Service::Template(template::parse(
             &args
                 .subcommand_matches("template")
                 .expect("Error parsing request"),
-        ))
+        )?)
     } else {
         Service::Unknown
     })
