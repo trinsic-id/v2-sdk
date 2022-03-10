@@ -106,7 +106,8 @@ func WithProductionEnv() Option {
 	}
 }
 
-// WithTestEnv will configure the server to use the trinsic production environment
+// WithTestEnv will configure the server to use the environment provided by environment variables
+// falling back to trinsic production environment if necessary
 func WithTestEnv() Option {
 	return func(s *Options) error {
 		s.ServiceOptions.ServerEndpoint = os.Getenv("TEST_SERVER_ENDPOINT")
