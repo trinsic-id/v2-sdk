@@ -35,55 +35,30 @@ func TestServiceOptions(t *testing.T) {
 	opts, err := NewServiceOptions()
 	assert.Nil(err)
 
-	prodOpts := &sdk.ServiceOptions{}
+	prodOpts := &Options{ServiceOptions: &sdk.ServiceOptions{}}
 	err = WithProductionEnv()(prodOpts)
 	assert.Nil(err, "production options should return")
 
-	prodOpts.DefaultEcosystem = "default"
+	prodOpts.ServiceOptions.DefaultEcosystem = "default"
 	assert.Equal(prodOpts, opts, "should default to production env")
-	assert.Equal("prod.trinsic.cloud", opts.ServerEndpoint, "incorrect prod url")
+	assert.Equal("prod.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect prod url")
 
 	err = WithAuthToken("test token")(opts)
 	assert.Nil(err, "should not error on test token")
-	assert.Equal("test token", opts.AuthToken, "test token not applied")
+	assert.Equal("test token", opts.ServiceOptions.AuthToken, "test token not applied")
 
 	err = WithDevEnv()(opts)
 	assert.Nil(err, "should not error on dev env")
-	assert.Equal("dev-internal.trinsic.cloud", opts.ServerEndpoint, "incorrect dev url")
+	assert.Equal("dev-internal.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect dev url")
 
 	err = WithStagingEnv()(opts)
 	assert.Nil(err, "should not error on staging env")
-	assert.Equal("staging-internal.trinsic.cloud", opts.ServerEndpoint, "incorrect staging url")
+	assert.Equal("staging-internal.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect staging url")
 
 	err = WithDefaultEcosystem("test1")(opts)
 	assert.Nil(err, "should not error on setting default ecosystem")
-	assert.Equal("test1", opts.DefaultEcosystem, "default ecosystem not updated")
-
-	// // Grab config from env
-	// os.Setenv("TEST_SERVER_ENDPOINT", "test.ing")
-	// os.Setenv("TEST_SERVER_PORT", "1234")
-	// os.Setenv("TEST_SERVER_USE_TLS", "true")
-
-	// err = WithTestEnv()(opts)
-	// assert.Nil(err, "should not error on test env")
-	// assert.Equal("test.ing", opts.ServerEndpoint)
-	// assert.Equal(int32(1234), opts.ServerPort)
-	// assert.True(opts.ServerUseTls)
-
-	// // Respect false for flag
-	// os.Setenv("TEST_SERVER_USE_TLS", "false")
-	// err = WithTestEnv()(opts)
-	// assert.Nil(err, "should not error on test env")
-	// assert.False(opts.ServerUseTls)
+	assert.Equal("test1", opts.ServiceOptions.DefaultEcosystem, "default ecosystem not updated")
 }
-
-// func GetTestServerChannel() *grpc.ClientConn {
-// 	channel, err := CreateChannel(CreateChannelUrlFromConfig(TrinsicTestConfig()), true)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	return channel
-// }
 
 func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
@@ -104,6 +79,8 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 		return
 	}
 
+	opts.Channel = accountService.GetChannel()
+
 	// if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
 	// 	t.Fail()
 	// }
@@ -111,19 +88,19 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
 	// setupActors() {
-	allison, _, err := accountService.SignIn(context.Background(), nil, "", "")
+	allison, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(allison) {
 		return
 	}
 
-	clinic, _, err := accountService.SignIn(context.Background(), nil, "", "")
+	clinic, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(clinic) {
 		return
 	}
 
-	airline, _, err := accountService.SignIn(context.Background(), nil, "", "")
+	airline, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(airline) {
 		return
@@ -138,25 +115,20 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 	// }
 
-	walletService, err := CreateWalletService(opts)
+	walletService, err := NewWalletService(opts)
 	failError(t, "error creating wallet service", err)
-	walletService.SetChannel(accountService.GetChannel())
 
 	credentialService, err := NewCredentialService(opts)
 	failError(t, "error creating credential service", err)
-	credentialService.SetChannel(accountService.GetChannel())
 
 	// ISSUE CREDENTIAL
 	// Sign a credential as the clinic and send it to Allison
 	// issueCredential() {
 	fileContent, err := ioutil.ReadFile(GetVaccineCertUnsignedPath())
 	failError(t, "error reading file", err)
-	var credentialJson Document
-	err = json.Unmarshal(fileContent, &credentialJson)
-	failError(t, "error parsing JSON", err)
 
-	credentialService.SetProfile(clinic)
-	credential, err := credentialService.IssueCredential(context.Background(), credentialJson)
+	credentialService.SetToken(clinic)
+	credential, err := credentialService.IssueCredential(context.Background(), &sdk.IssueRequest{DocumentJson: string(fileContent)})
 	failError(t, "error issuing credential", err)
 	fmt.Printf("Credential:%s\n", credential)
 	// }
@@ -164,11 +136,11 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
 	// storeCredential() {
-	walletService.SetProfile(allison)
+	walletService.SetToken(allison)
 	failError(t, "error setting profile", err)
-	itemId, err := walletService.InsertItem(context.Background(), credential)
+	itemID, err := walletService.InsertItem(context.Background(), &sdk.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
 	failError(t, "error inserting item", err)
-	fmt.Println("item id", itemId)
+	fmt.Println("item id", itemID)
 	// }
 
 	// SHARE CREDENTIAL
@@ -176,17 +148,19 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// The venue has communicated with Allison the details of the credential
 	// that they require expressed as a JSON-LD frame.
 	// shareCredential() {
-	walletService.SetProfile(allison)
+	walletService.SetToken(allison)
 	failError(t, "error reading file", err)
 
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
 	failError(t, "error reading file", err)
-	var proofRequestJson Document
-	err = json.Unmarshal(fileContent2, &proofRequestJson)
-	failError(t, "error parsing JSON", err)
 
-	credentialService.SetProfile(allison)
-	credentialProof, err := credentialService.CreateProof(context.Background(), itemId, proofRequestJson)
+	req := &sdk.CreateProofRequest{
+		RevealDocumentJson: string(fileContent2),
+		Proof:              &sdk.CreateProofRequest_ItemId{ItemId: itemID},
+	}
+
+	credentialService.SetToken(allison)
+	credentialProof, err := credentialService.CreateProof(context.Background(), req)
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 	// }
@@ -194,9 +168,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// VERIFY CREDENTIAL
 	// The airline verifies the credential
 	// verifyCredential() {
-	walletService.SetProfile(airline)
+	walletService.SetToken(airline)
 	failError(t, "error setting profile", err)
-	valid, err := credentialService.VerifyProof(context.Background(), credentialProof)
+	valid, err := credentialService.VerifyProof(context.Background(), &sdk.VerifyProofRequest{ProofDocumentJson: credential.SignedDocumentJson})
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
@@ -211,40 +185,39 @@ func TestTrustRegistryDemo(t *testing.T) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
 	if !assert2.Nil(err) {
 		return
 	}
 
 	service, _ := NewTrustRegistryService(opts)
-	service.SetChannel(channel)
 
 	// register issuer
-	didUri := "did:example:test"
-	typeUri := "https://schema.org/Card"
-	frameworkUri := "https://example.com"
+	didURI := "did:example:test"
+	typeURI := "https://schema.org/Card"
+	frameworkURI := "https://example.com"
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
-		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didUri},
-		CredentialTypeUri:      typeUri,
-		GovernanceFrameworkUri: frameworkUri,
+		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
+		CredentialTypeUri:      typeURI,
+		GovernanceFrameworkUri: frameworkURI,
 	})
 	if !assert2.Nil(err) {
 		return
 	}
 
 	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
-		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didUri},
-		PresentationTypeUri:    typeUri,
-		GovernanceFrameworkUri: frameworkUri,
+		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
+		PresentationTypeUri:    typeURI,
+		GovernanceFrameworkUri: frameworkURI,
 	})
 	if !assert2.Nil(err) {
 		return
 	}
 
 	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
-		GovernanceFrameworkUri: frameworkUri,
-		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didUri},
-		CredentialTypeUri:      typeUri,
+		GovernanceFrameworkUri: frameworkURI,
+		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didURI},
+		CredentialTypeUri:      typeURI,
 	})
 	if !assert2.Nil(err) {
 		return
@@ -252,16 +225,16 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
 
 	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
-		GovernanceFrameworkUri: frameworkUri,
-		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didUri},
-		PresentationTypeUri:    typeUri,
+		GovernanceFrameworkUri: frameworkURI,
+		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didURI},
+		PresentationTypeUri:    typeURI,
 	})
 	if !assert2.Nil(err) {
 		return
 	}
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
 
-	ecosystemList, err := service.SearchRegistry(context.Background(), "")
+	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
 	if !assert2.Nil(err) {
 		return
 	}
@@ -273,17 +246,17 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn,
 	assert2 := assert.New(t)
 	opts, err := NewServiceOptions(WithTestEnv())
 	if !assert2.Nil(err) {
-		return nil, nil, "", err
+		return assert2, nil, "", err
 	}
 	// Open in background
 	accountService, err := NewAccountService(opts)
 	if !assert2.Nil(err) {
-		return nil, nil, "", err
+		return assert2, nil, "", err
 	}
-	authtoken, _, err := accountService.SignIn(context.Background(), nil, "", "")
+	authtoken, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	if !assert2.Nil(err) {
 		fmt.Println(err)
-		return nil, nil, "", err
+		return assert2, nil, "", err
 	}
 	return assert2, accountService.GetChannel(), authtoken, nil
 }
@@ -309,7 +282,7 @@ func TestEcosystemDemo(t *testing.T) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -318,8 +291,6 @@ func TestEcosystemDemo(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-
-	service.SetChannel(channel)
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
 		Name:        "Test-Ecosystem",
@@ -348,7 +319,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -357,14 +328,11 @@ func TestTemplatesDemo(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-	templateService.SetChannel(channel)
 
 	credentialService, err := NewCredentialService(opts)
 	if !assert2.Nil(err) {
 		return
 	}
-
-	credentialService.SetChannel(channel)
 
 	// create example template
 	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: "My Example Credential", AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
@@ -395,7 +363,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 
-	credentialJson, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
+	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
 		TemplateId: template.Data.Id,
 		ValuesJson: string(valuesString),
 	})
@@ -403,7 +371,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 	var jsonDocument = make(map[string]interface{})
-	err = json.Unmarshal([]byte(credentialJson.DocumentJson), &jsonDocument)
+	err = json.Unmarshal([]byte(credentialJSON.DocumentJson), &jsonDocument)
 	if !assert2.Nil(err) {
 		return
 	}

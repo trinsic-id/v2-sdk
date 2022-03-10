@@ -2,29 +2,30 @@ package services
 
 import sdk "github.com/trinsic-id/sdk/go/proto"
 
+// ProfileProvider defines the interface for interacting with stored profiles
 type ProfileProvider interface {
 	Get(name string) (sdk.AccountProfile, error)
 	Save(name string, profile sdk.AccountProfile) error
 }
 
-type FileProfileProvider struct {
+type fileProfileProvider struct {
 }
 
-type KeychainProfileProvider struct {
+type keychainProfileProvider struct {
 }
 
-func (f FileProfileProvider) Get(name string) (sdk.AccountProfile, error) {
+func (f fileProfileProvider) Get(name string) (sdk.AccountProfile, error) {
 	panic("implement me")
 }
 
-func (f FileProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
+func (f fileProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
 	panic("implement me")
 }
 
-func (k KeychainProfileProvider) Get(name string) (sdk.AccountProfile, error) {
+func (k keychainProfileProvider) Get(name string) (sdk.AccountProfile, error) {
 	panic("implement me")
 }
 
-func (k KeychainProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
+func (k keychainProfileProvider) Save(name string, profile *sdk.AccountProfile) error {
 	panic("implement me")
 }
