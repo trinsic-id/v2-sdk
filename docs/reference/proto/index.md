@@ -15,11 +15,11 @@
     - [EncryptionMode](#pbmse.v1.EncryptionMode)
   
 - [sdk/options/v1/options.proto](#sdk/options/v1/options.proto)
-    - [ServerConfiguration](#sdk.options.v1.ServerConfiguration)
     - [ServiceOptions](#sdk.options.v1.ServiceOptions)
   
 - [services/account/v1/account.proto](#services/account/v1/account.proto)
     - [AccountDetails](#services.account.v1.AccountDetails)
+    - [AccountEcosystem](#services.account.v1.AccountEcosystem)
     - [AccountProfile](#services.account.v1.AccountProfile)
     - [InfoRequest](#services.account.v1.InfoRequest)
     - [InfoResponse](#services.account.v1.InfoResponse)
@@ -36,12 +36,9 @@
     - [Account](#services.account.v1.Account)
   
 - [services/common/v1/common.proto](#services/common/v1/common.proto)
-    - [JsonPayload](#services.common.v1.JsonPayload)
     - [Nonce](#services.common.v1.Nonce)
-    - [RequestOptions](#services.common.v1.RequestOptions)
     - [ServerConfig](#services.common.v1.ServerConfig)
   
-    - [JsonFormat](#services.common.v1.JsonFormat)
     - [ResponseStatus](#services.common.v1.ResponseStatus)
   
     - [Common](#services.common.v1.Common)
@@ -50,19 +47,17 @@
     - [Debugging](#services.debug.v1.Debugging)
   
 - [services/provider/v1/provider.proto](#services/provider/v1/provider.proto)
-    - [AcceptInviteRequest](#services.provider.v1.AcceptInviteRequest)
-    - [AcceptInviteResponse](#services.provider.v1.AcceptInviteResponse)
     - [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest)
     - [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse)
     - [Ecosystem](#services.provider.v1.Ecosystem)
+    - [GenerateTokenRequest](#services.provider.v1.GenerateTokenRequest)
+    - [GenerateTokenResponse](#services.provider.v1.GenerateTokenResponse)
     - [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest)
     - [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse)
     - [Invite](#services.provider.v1.Invite)
     - [InviteRequest](#services.provider.v1.InviteRequest)
     - [InviteRequest.DidCommInvitation](#services.provider.v1.InviteRequest.DidCommInvitation)
     - [InviteResponse](#services.provider.v1.InviteResponse)
-    - [ListEcosystemsRequest](#services.provider.v1.ListEcosystemsRequest)
-    - [ListEcosystemsResponse](#services.provider.v1.ListEcosystemsResponse)
   
     - [InvitationStatusResponse.Status](#services.provider.v1.InvitationStatusResponse.Status)
     - [ParticipantType](#services.provider.v1.ParticipantType)
@@ -99,10 +94,14 @@
 - [services/universal-wallet/v1/universal-wallet.proto](#services/universal-wallet/v1/universal-wallet.proto)
     - [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest)
     - [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse)
+    - [GetItemRequest](#services.universalwallet.v1.GetItemRequest)
+    - [GetItemResponse](#services.universalwallet.v1.GetItemResponse)
     - [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest)
     - [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse)
     - [SearchRequest](#services.universalwallet.v1.SearchRequest)
     - [SearchResponse](#services.universalwallet.v1.SearchResponse)
+    - [UpdateItemRequest](#services.universalwallet.v1.UpdateItemRequest)
+    - [UpdateItemResponse](#services.universalwallet.v1.UpdateItemResponse)
   
     - [UniversalWallet](#services.universalwallet.v1.UniversalWallet)
   
@@ -303,23 +302,6 @@ Protocol buffer message signing and encryption
 
 
 
-<a name="sdk.options.v1.ServerConfiguration"></a>
-
-### ServerConfiguration
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| endpoint | [string](#string) |  | service endpoint |
-| port | [int32](#int32) |  | service port |
-| use_tls | [bool](#bool) |  | indicates if tls is used |
-
-
-
-
-
-
 <a name="sdk.options.v1.ServiceOptions"></a>
 
 ### ServiceOptions
@@ -328,9 +310,11 @@ service options
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| server | [ServerConfiguration](#sdk.options.v1.ServerConfiguration) |  | server configuration |
-| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | account profile to use for authentication |
-| ecosystem | [string](#string) |  | ecosystem to use with endpoints that require it |
+| server_endpoint | [string](#string) |  | service endpoint |
+| server_port | [int32](#int32) |  | service port |
+| server_use_tls | [bool](#bool) |  | indicates if tls is used |
+| auth_token | [string](#string) |  | default auth token for oberon security scheme |
+| default_ecosystem | [string](#string) |  | ecosystem to use with endpoints that require it |
 
 
 
@@ -364,6 +348,24 @@ Account Registration Details
 | name | [string](#string) |  | Account name (optional) |
 | email | [string](#string) |  | Email account (required) |
 | sms | [string](#string) |  | SMS number including country code (optional) |
+
+
+
+
+
+
+<a name="services.account.v1.AccountEcosystem"></a>
+
+### AccountEcosystem
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [string](#string) |  |  |
+| name | [string](#string) |  |  |
+| description | [string](#string) |  |  |
+| uri | [string](#string) |  |  |
 
 
 
@@ -408,7 +410,7 @@ This information should be stored securely
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | details | [AccountDetails](#services.account.v1.AccountDetails) |  | The account details associated with the calling request context |
-| ecosystems | [services.provider.v1.Ecosystem](#services.provider.v1.Ecosystem) | repeated | any ecosystems the account has access to |
+| ecosystems | [AccountEcosystem](#services.account.v1.AccountEcosystem) | repeated | any ecosystems the account has access to |
 
 
 
@@ -465,6 +467,7 @@ Request for creating new account
 | ----- | ---- | ----- | ----------- |
 | details | [AccountDetails](#services.account.v1.AccountDetails) |  | Account registration details |
 | invitation_code | [string](#string) |  | Invitation code associated with this registration This field is optional. |
+| ecosystem_id | [string](#string) |  | EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed |
 
 
 
@@ -553,23 +556,6 @@ rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
 
 
 
-<a name="services.common.v1.JsonPayload"></a>
-
-### JsonPayload
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| json_struct | [google.protobuf.Struct](#google.protobuf.Struct) |  |  |
-| json_string | [string](#string) |  |  |
-| json_bytes | [bytes](#bytes) |  |  |
-
-
-
-
-
-
 <a name="services.common.v1.Nonce"></a>
 
 ### Nonce
@@ -580,21 +566,6 @@ Nonce used to generate an oberon proof
 | ----- | ---- | ----- | ----------- |
 | timestamp | [int64](#int64) |  | UTC unix millisecond timestamp the request was made |
 | request_hash | [bytes](#bytes) |  | blake3256 hash of the request body |
-
-
-
-
-
-
-<a name="services.common.v1.RequestOptions"></a>
-
-### RequestOptions
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| response_json_format | [JsonFormat](#services.common.v1.JsonFormat) |  |  |
 
 
 
@@ -618,19 +589,6 @@ Nonce used to generate an oberon proof
 
 
  
-
-
-<a name="services.common.v1.JsonFormat"></a>
-
-### JsonFormat
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| Protobuf | 0 |  |
-| Binary | 1 |  |
-| String | 2 |  |
-
 
 
 <a name="services.common.v1.ResponseStatus"></a>
@@ -700,37 +658,6 @@ Nonce used to generate an oberon proof
 
 
 
-<a name="services.provider.v1.AcceptInviteRequest"></a>
-
-### AcceptInviteRequest
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| code | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.provider.v1.AcceptInviteResponse"></a>
-
-### AcceptInviteResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) |  |  |
-
-
-
-
-
-
 <a name="services.provider.v1.CreateEcosystemRequest"></a>
 
 ### CreateEcosystemRequest
@@ -739,9 +666,10 @@ Nonce used to generate an oberon proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| uri | [string](#string) |  |  |
+| name | [string](#string) |  | Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. |
+| description | [string](#string) |  | Ecosystem description. This field is optional. |
+| uri | [string](#string) |  | External URL associated with your organization or ecosystem entity. This field is optional |
+| details | [services.account.v1.AccountDetails](#services.account.v1.AccountDetails) |  | The account details of the owner of the ecosystem |
 
 
 
@@ -756,7 +684,9 @@ Nonce used to generate an oberon proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) |  | Details of the created ecosystem |
+| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | Account profile for auth of the owner of the ecosystem |
+| confirmation_method | [services.account.v1.ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
 
 
 
@@ -781,12 +711,42 @@ Nonce used to generate an oberon proof
 
 
 
+<a name="services.provider.v1.GenerateTokenRequest"></a>
+
+### GenerateTokenRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| description | [string](#string) |  | Optional description to identify this token |
+
+
+
+
+
+
+<a name="services.provider.v1.GenerateTokenResponse"></a>
+
+### GenerateTokenResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | Account authentication profile that contains unprotected token |
+
+
+
+
+
+
 <a name="services.provider.v1.InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
 Request details for the status of onboarding
 an individual or organization.
-The referenece_id passed is the response from the
+The reference_id passed is the response from the
 `Onboard` method call
 
 
@@ -844,9 +804,7 @@ The referenece_id passed is the response from the
 | ----- | ---- | ----- | ----------- |
 | participant | [ParticipantType](#services.provider.v1.ParticipantType) |  |  |
 | description | [string](#string) |  |  |
-| email | [string](#string) |  |  |
-| phone | [string](#string) |  |  |
-| didcomm_invitation | [InviteRequest.DidCommInvitation](#services.provider.v1.InviteRequest.DidCommInvitation) |  |  |
+| details | [services.account.v1.AccountDetails](#services.account.v1.AccountDetails) |  |  |
 
 
 
@@ -873,31 +831,7 @@ The referenece_id passed is the response from the
 | ----- | ---- | ----- | ----------- |
 | status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
 | invitation_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="services.provider.v1.ListEcosystemsRequest"></a>
-
-### ListEcosystemsRequest
-
-
-
-
-
-
-
-<a name="services.provider.v1.ListEcosystemsResponse"></a>
-
-### ListEcosystemsResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) | repeated |  |
+| invitation_code | [string](#string) |  | Invitation Code that must be passed with the account &#39;SignIn&#39; request to correlate this user with the invitation sent. |
 
 
 
@@ -944,9 +878,8 @@ The referenece_id passed is the response from the
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateEcosystem | [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest) | [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| ListEcosystems | [ListEcosystemsRequest](#services.provider.v1.ListEcosystemsRequest) | [ListEcosystemsResponse](#services.provider.v1.ListEcosystemsResponse) | List all ecosystems assigned to the authenticated account |
+| GenerateToken | [GenerateTokenRequest](#services.provider.v1.GenerateTokenRequest) | [GenerateTokenResponse](#services.provider.v1.GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
 | Invite | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) | Invite a user to the ecosystem |
-| AcceptInvite | [AcceptInviteRequest](#services.provider.v1.AcceptInviteRequest) | [AcceptInviteResponse](#services.provider.v1.AcceptInviteResponse) | Accept an invite to the ecosystem |
 | InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) | Check the invitation status |
 
  
@@ -1216,7 +1149,6 @@ The referenece_id passed is the response from the
 | ----- | ---- | ----- | ----------- |
 | query | [string](#string) |  | SELECT c from c where c.type == &#39;GovernanceFramework&#39; |
 | continuation_token | [string](#string) |  |  |
-| options | [services.common.v1.RequestOptions](#services.common.v1.RequestOptions) |  |  |
 
 
 
@@ -1375,12 +1307,43 @@ Delete item request
 <a name="services.universalwallet.v1.DeleteItemResponse"></a>
 
 ### DeleteItemResponse
-
+Delete item response
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+
+
+
+
+
+
+<a name="services.universalwallet.v1.GetItemRequest"></a>
+
+### GetItemRequest
+Get item request object
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| item_id | [string](#string) |  | The item identifier |
+
+
+
+
+
+
+<a name="services.universalwallet.v1.GetItemResponse"></a>
+
+### GetItemResponse
+Get item response object
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| item_json | [string](#string) |  | The item data represented as stringified JSON |
+| item_type | [string](#string) |  | User set item type that described the content of this item |
 
 
 
@@ -1395,8 +1358,8 @@ Insert item request
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| item | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| item_type | [string](#string) |  |  |
+| item_json | [string](#string) |  | the document to insert as stringified json |
+| item_type | [string](#string) |  | optional item type ex. &#34;VerifiableCredential&#34; |
 
 
 
@@ -1429,7 +1392,6 @@ Search request object
 | ----- | ---- | ----- | ----------- |
 | query | [string](#string) |  |  |
 | continuation_token | [string](#string) |  |  |
-| options | [services.common.v1.RequestOptions](#services.common.v1.RequestOptions) |  |  |
 
 
 
@@ -1444,10 +1406,41 @@ Search response object
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| items | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) | repeated |  |
+| items | [string](#string) | repeated |  |
 | has_more | [bool](#bool) |  |  |
 | count | [int32](#int32) |  |  |
 | continuation_token | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="services.universalwallet.v1.UpdateItemRequest"></a>
+
+### UpdateItemRequest
+Update item request object
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| item_id | [string](#string) |  | The item identifier |
+| item_type | [string](#string) |  | The item type that described the content of this item |
+
+
+
+
+
+
+<a name="services.universalwallet.v1.UpdateItemResponse"></a>
+
+### UpdateItemResponse
+Update item response object
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | Response status |
 
 
 
@@ -1467,8 +1460,10 @@ Search response object
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| GetItem | [GetItemRequest](#services.universalwallet.v1.GetItemRequest) | [GetItemResponse](#services.universalwallet.v1.GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
 | Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) | Search the wallet using a SQL-like syntax |
 | InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) | Insert an item into the wallet |
+| UpdateItem | [UpdateItemRequest](#services.universalwallet.v1.UpdateItemRequest) | [UpdateItemResponse](#services.universalwallet.v1.UpdateItemResponse) | Insert an item into the wallet |
 | DeleteItem | [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest) | [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse) | Delete an item from the wallet permanently |
 
  
@@ -1845,8 +1840,9 @@ Create Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| reveal_document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| document_id | [string](#string) |  |  |
+| reveal_document_json | [string](#string) |  | Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed |
+| item_id | [string](#string) |  | The item identifier that contains a record with a verifiable credential to be used for generating the proof. |
+| document_json | [string](#string) |  | A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
 
 
 
@@ -1861,7 +1857,7 @@ Create Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| proof_document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| proof_document_json | [string](#string) |  |  |
 
 
 
@@ -1907,7 +1903,7 @@ Create Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| document_json | [string](#string) |  |  |
 
 
 
@@ -1922,7 +1918,7 @@ Create Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| signed_document_json | [string](#string) |  |  |
 
 
 
@@ -1939,8 +1935,8 @@ Create Proof
 | ----- | ---- | ----- | ----------- |
 | email | [string](#string) |  |  |
 | did_uri | [string](#string) |  |  |
-| didcomm_invitation | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
-| document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| didcomm_invitation_json | [string](#string) |  |  |
+| document_json | [string](#string) |  |  |
 
 
 
@@ -2001,7 +1997,7 @@ Verify Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| proof_document | [services.common.v1.JsonPayload](#services.common.v1.JsonPayload) |  |  |
+| proof_document_json | [string](#string) |  |  |
 
 
 
@@ -2016,7 +2012,8 @@ Verify Proof
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| valid | [bool](#bool) |  |  |
+| is_valid | [bool](#bool) |  | Indicates if the proof is valid |
+| validation_messages | [string](#string) | repeated | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
 
 
 
@@ -2036,13 +2033,13 @@ Verify Proof
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Issue | [IssueRequest](#services.verifiablecredentials.v1.IssueRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) |  |
-| IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse) |  |
+| Issue | [IssueRequest](#services.verifiablecredentials.v1.IssueRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
+| IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
 | CheckStatus | [CheckStatusRequest](#services.verifiablecredentials.v1.CheckStatusRequest) | [CheckStatusResponse](#services.verifiablecredentials.v1.CheckStatusResponse) | Check credential status by setting the revocation value |
 | UpdateStatus | [UpdateStatusRequest](#services.verifiablecredentials.v1.UpdateStatusRequest) | [UpdateStatusResponse](#services.verifiablecredentials.v1.UpdateStatusResponse) | Update credential status by setting the revocation value |
-| CreateProof | [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest) | [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse) |  |
-| VerifyProof | [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest) | [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse) |  |
-| Send | [SendRequest](#services.verifiablecredentials.v1.SendRequest) | [SendResponse](#services.verifiablecredentials.v1.SendResponse) |  |
+| CreateProof | [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest) | [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
+| VerifyProof | [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest) | [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
+| Send | [SendRequest](#services.verifiablecredentials.v1.SendRequest) | [SendResponse](#services.verifiablecredentials.v1.SendResponse) | Sends a document directly to a user&#39;s email within the given ecosystem |
 
  
 

@@ -18,12 +18,11 @@ module Services
 
           # Create new ecosystem and assign the authenticated user as owner
           rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest, ::Services::Provider::V1::CreateEcosystemResponse
-          # List all ecosystems assigned to the authenticated account
-          rpc :ListEcosystems, ::Services::Provider::V1::ListEcosystemsRequest, ::Services::Provider::V1::ListEcosystemsResponse
+          # Generates an unprotected authentication token that can be used to
+          # configure server side applications
+          rpc :GenerateToken, ::Services::Provider::V1::GenerateTokenRequest, ::Services::Provider::V1::GenerateTokenResponse
           # Invite a user to the ecosystem
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
-          # Accept an invite to the ecosystem
-          rpc :AcceptInvite, ::Services::Provider::V1::AcceptInviteRequest, ::Services::Provider::V1::AcceptInviteResponse
           # Check the invitation status
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
         end

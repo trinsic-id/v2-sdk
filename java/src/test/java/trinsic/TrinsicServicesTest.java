@@ -15,7 +15,7 @@ class TrinsicServicesTest {
 
     @Test
     public void testServiceBaseSetProfile() {
-        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> accountService.buildMetadata(null));
         accountService.shutdown();
@@ -24,12 +24,12 @@ class TrinsicServicesTest {
     @Test
     @Disabled
     public void testProviderServiceInviteParticipant() throws IOException, DidException, ExecutionException, InterruptedException {
-        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
-        var account = accountService.signIn(null).get().getProfile();
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        var account = accountService.signIn(null).get();
 
-        var providerService = new ProviderService(account, TrinsicUtilities.getTestServerConfig());
+        var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
         var ecosystem = providerService.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").build()).get();
-        var invitation = ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDescription("I dunno").setEmail("info@trinsic.id").build();
+        var invitation = ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDescription("I dunno").build();
         var response = providerService.inviteParticipant(invitation).get();
         Assertions.assertNotNull(response);
 
@@ -59,7 +59,7 @@ class TrinsicServicesTest {
 
     @Test
     public void testProviderServiceInputValidation() {
-        var providerService = new ProviderService(null, TrinsicUtilities.getTestServerConfig());
+        var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions());
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().build()));
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.invitationStatus(ProviderOuterClass.InvitationStatusRequest.newBuilder().build()));
     }

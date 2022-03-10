@@ -1,64 +1,68 @@
 # Documentation
 
-## `boolean hasServer()`
+## `java.lang.String getServerEndpoint()`
 
-<pre> server configuration </pre>
+<pre> service endpoint </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** Whether the server field is set.
+ * **Returns:** The serverEndpoint.
 
-## `trinsic.sdk.v1.Options.ServerConfiguration getServer()`
+## `com.google.protobuf.ByteString getServerEndpointBytes()`
 
-<pre> server configuration </pre>
+<pre> service endpoint </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** The server.
+ * **Returns:** The bytes for serverEndpoint.
 
-## `trinsic.sdk.v1.Options.ServerConfigurationOrBuilder getServerOrBuilder()`
+## `int getServerPort()`
 
-<pre> server configuration </pre>
+<pre> service port </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`int32 server_port = 2;`
 
-## `boolean hasProfile()`
+ * **Returns:** The serverPort.
 
-<pre> account profile to use for authentication </pre>
+## `boolean getServerUseTls()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> indicates if tls is used </pre>
 
- * **Returns:** Whether the profile field is set.
+`bool server_use_tls = 3;`
 
-## `trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+ * **Returns:** The serverUseTls.
 
-<pre> account profile to use for authentication </pre>
+## `java.lang.String getAuthToken()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> default auth token for oberon security scheme </pre>
 
- * **Returns:** The profile.
+`string auth_token = 4;`
 
-## `trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+ * **Returns:** The authToken.
 
-<pre> account profile to use for authentication </pre>
+## `com.google.protobuf.ByteString getAuthTokenBytes()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> default auth token for oberon security scheme </pre>
 
-## `java.lang.String getEcosystem()`
+`string auth_token = 4;`
 
-<pre> ecosystem to use with endpoints that require it </pre>
+ * **Returns:** The bytes for authToken.
 
-`string ecosystem = 3;`
-
- * **Returns:** The ecosystem.
-
-## `com.google.protobuf.ByteString getEcosystemBytes()`
+## `java.lang.String getDefaultEcosystem()`
 
 <pre> ecosystem to use with endpoints that require it </pre>
 
-`string ecosystem = 3;`
+`string default_ecosystem = 5;`
 
- * **Returns:** The bytes for ecosystem.
+ * **Returns:** The defaultEcosystem.
+
+## `com.google.protobuf.ByteString getDefaultEcosystemBytes()`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Returns:** The bytes for defaultEcosystem.
 
 ## `public static final class ServiceOptions extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -66,65 +70,69 @@
 
 Protobuf type {@code sdk.options.v1.ServiceOptions}
 
-## `@java.lang.Override public boolean hasServer()`
+## `@java.lang.Override public java.lang.String getServerEndpoint()`
 
-<pre> server configuration </pre>
+<pre> service endpoint </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** Whether the server field is set.
+ * **Returns:** The serverEndpoint.
 
-## `@java.lang.Override public trinsic.sdk.v1.Options.ServerConfiguration getServer()`
+## `@java.lang.Override public com.google.protobuf.ByteString getServerEndpointBytes()`
 
-<pre> server configuration </pre>
+<pre> service endpoint </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** The server.
+ * **Returns:** The bytes for serverEndpoint.
 
-## `@java.lang.Override public trinsic.sdk.v1.Options.ServerConfigurationOrBuilder getServerOrBuilder()`
+## `@java.lang.Override public int getServerPort()`
 
-<pre> server configuration </pre>
+<pre> service port </pre>
 
-`.sdk.options.v1.ServerConfiguration server = 1;`
+`int32 server_port = 2;`
 
-## `@java.lang.Override public boolean hasProfile()`
+ * **Returns:** The serverPort.
 
-<pre> account profile to use for authentication </pre>
+## `@java.lang.Override public boolean getServerUseTls()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> indicates if tls is used </pre>
 
- * **Returns:** Whether the profile field is set.
+`bool server_use_tls = 3;`
 
-## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+ * **Returns:** The serverUseTls.
 
-<pre> account profile to use for authentication </pre>
+## `@java.lang.Override public java.lang.String getAuthToken()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> default auth token for oberon security scheme </pre>
 
- * **Returns:** The profile.
+`string auth_token = 4;`
 
-## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+ * **Returns:** The authToken.
 
-<pre> account profile to use for authentication </pre>
+## `@java.lang.Override public com.google.protobuf.ByteString getAuthTokenBytes()`
 
-`.services.account.v1.AccountProfile profile = 2;`
+<pre> default auth token for oberon security scheme </pre>
 
-## `@java.lang.Override public java.lang.String getEcosystem()`
+`string auth_token = 4;`
 
-<pre> ecosystem to use with endpoints that require it </pre>
+ * **Returns:** The bytes for authToken.
 
-`string ecosystem = 3;`
-
- * **Returns:** The ecosystem.
-
-## `@java.lang.Override public com.google.protobuf.ByteString getEcosystemBytes()`
+## `@java.lang.Override public java.lang.String getDefaultEcosystem()`
 
 <pre> ecosystem to use with endpoints that require it </pre>
 
-`string ecosystem = 3;`
+`string default_ecosystem = 5;`
 
- * **Returns:** The bytes for ecosystem.
+ * **Returns:** The defaultEcosystem.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getDefaultEcosystemBytes()`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Returns:** The bytes for defaultEcosystem.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -132,324 +140,178 @@ Protobuf type {@code sdk.options.v1.ServiceOptions}
 
 Protobuf type {@code sdk.options.v1.ServiceOptions}
 
-## `public boolean hasServer()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
- * **Returns:** Whether the server field is set.
-
-## `public trinsic.sdk.v1.Options.ServerConfiguration getServer()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
- * **Returns:** The server.
-
-## `public Builder setServer(trinsic.sdk.v1.Options.ServerConfiguration value)`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public Builder setServer( trinsic.sdk.v1.Options.ServerConfiguration.Builder builderForValue)`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public Builder mergeServer(trinsic.sdk.v1.Options.ServerConfiguration value)`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public Builder clearServer()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public trinsic.sdk.v1.Options.ServerConfiguration.Builder getServerBuilder()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public trinsic.sdk.v1.Options.ServerConfigurationOrBuilder getServerOrBuilder()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.sdk.v1.Options.ServerConfiguration, trinsic.sdk.v1.Options.ServerConfiguration.Builder, trinsic.sdk.v1.Options.ServerConfigurationOrBuilder> getServerFieldBuilder()`
-
-<pre> server configuration </pre>
-
-`.sdk.options.v1.ServerConfiguration server = 1;`
-
-## `public boolean hasProfile()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
- * **Returns:** Whether the profile field is set.
-
-## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
- * **Returns:** The profile.
-
-## `public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public Builder setProfile( trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue)`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public Builder clearProfile()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> getProfileFieldBuilder()`
-
-<pre> account profile to use for authentication </pre>
-
-`.services.account.v1.AccountProfile profile = 2;`
-
-## `public java.lang.String getEcosystem()`
-
-<pre> ecosystem to use with endpoints that require it </pre>
-
-`string ecosystem = 3;`
-
- * **Returns:** The ecosystem.
-
-## `public com.google.protobuf.ByteString getEcosystemBytes()`
-
-<pre> ecosystem to use with endpoints that require it </pre>
-
-`string ecosystem = 3;`
-
- * **Returns:** The bytes for ecosystem.
-
-## `public Builder setEcosystem( java.lang.String value)`
-
-<pre> ecosystem to use with endpoints that require it </pre>
-
-`string ecosystem = 3;`
-
- * **Parameters:** `value` — The ecosystem to set.
- * **Returns:** This builder for chaining.
-
-## `public Builder clearEcosystem()`
-
-<pre> ecosystem to use with endpoints that require it </pre>
-
-`string ecosystem = 3;`
-
- * **Returns:** This builder for chaining.
-
-## `public Builder setEcosystemBytes( com.google.protobuf.ByteString value)`
-
-<pre> ecosystem to use with endpoints that require it </pre>
-
-`string ecosystem = 3;`
-
- * **Parameters:** `value` — The bytes for ecosystem to set.
- * **Returns:** This builder for chaining.
-
-## `java.lang.String getEndpoint()`
+## `public java.lang.String getServerEndpoint()`
 
 <pre> service endpoint </pre>
 
-`string endpoint = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** The endpoint.
+ * **Returns:** The serverEndpoint.
 
-## `com.google.protobuf.ByteString getEndpointBytes()`
+## `public com.google.protobuf.ByteString getServerEndpointBytes()`
 
 <pre> service endpoint </pre>
 
-`string endpoint = 1;`
+`string server_endpoint = 1;`
 
- * **Returns:** The bytes for endpoint.
+ * **Returns:** The bytes for serverEndpoint.
 
-## `int getPort()`
+## `public Builder setServerEndpoint( java.lang.String value)`
+
+<pre> service endpoint </pre>
+
+`string server_endpoint = 1;`
+
+ * **Parameters:** `value` — The serverEndpoint to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearServerEndpoint()`
+
+<pre> service endpoint </pre>
+
+`string server_endpoint = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setServerEndpointBytes( com.google.protobuf.ByteString value)`
+
+<pre> service endpoint </pre>
+
+`string server_endpoint = 1;`
+
+ * **Parameters:** `value` — The bytes for serverEndpoint to set.
+ * **Returns:** This builder for chaining.
+
+## `@java.lang.Override public int getServerPort()`
 
 <pre> service port </pre>
 
-`int32 port = 2;`
+`int32 server_port = 2;`
 
- * **Returns:** The port.
+ * **Returns:** The serverPort.
 
-## `boolean getUseTls()`
-
-<pre> indicates if tls is used </pre>
-
-`bool use_tls = 3;`
-
- * **Returns:** The useTls.
-
-## `public static final class ServerConfiguration extends com.google.protobuf.GeneratedMessageV3 implements`
-
-Protobuf type {@code sdk.options.v1.ServerConfiguration}
-
-## `@java.lang.Override public java.lang.String getEndpoint()`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Returns:** The endpoint.
-
-## `@java.lang.Override public com.google.protobuf.ByteString getEndpointBytes()`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Returns:** The bytes for endpoint.
-
-## `@java.lang.Override public int getPort()`
+## `public Builder setServerPort(int value)`
 
 <pre> service port </pre>
 
-`int32 port = 2;`
+`int32 server_port = 2;`
 
- * **Returns:** The port.
-
-## `@java.lang.Override public boolean getUseTls()`
-
-<pre> indicates if tls is used </pre>
-
-`bool use_tls = 3;`
-
- * **Returns:** The useTls.
-
-## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
-
-Protobuf type {@code sdk.options.v1.ServerConfiguration}
-
-## `public java.lang.String getEndpoint()`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Returns:** The endpoint.
-
-## `public com.google.protobuf.ByteString getEndpointBytes()`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Returns:** The bytes for endpoint.
-
-## `public Builder setEndpoint( java.lang.String value)`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Parameters:** `value` — The endpoint to set.
+ * **Parameters:** `value` — The serverPort to set.
  * **Returns:** This builder for chaining.
 
-## `public Builder clearEndpoint()`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Returns:** This builder for chaining.
-
-## `public Builder setEndpointBytes( com.google.protobuf.ByteString value)`
-
-<pre> service endpoint </pre>
-
-`string endpoint = 1;`
-
- * **Parameters:** `value` — The bytes for endpoint to set.
- * **Returns:** This builder for chaining.
-
-## `@java.lang.Override public int getPort()`
+## `public Builder clearServerPort()`
 
 <pre> service port </pre>
 
-`int32 port = 2;`
-
- * **Returns:** The port.
-
-## `public Builder setPort(int value)`
-
-<pre> service port </pre>
-
-`int32 port = 2;`
-
- * **Parameters:** `value` — The port to set.
- * **Returns:** This builder for chaining.
-
-## `public Builder clearPort()`
-
-<pre> service port </pre>
-
-`int32 port = 2;`
+`int32 server_port = 2;`
 
  * **Returns:** This builder for chaining.
 
-## `@java.lang.Override public boolean getUseTls()`
+## `@java.lang.Override public boolean getServerUseTls()`
 
 <pre> indicates if tls is used </pre>
 
-`bool use_tls = 3;`
+`bool server_use_tls = 3;`
 
- * **Returns:** The useTls.
+ * **Returns:** The serverUseTls.
 
-## `public Builder setUseTls(boolean value)`
+## `public Builder setServerUseTls(boolean value)`
 
 <pre> indicates if tls is used </pre>
 
-`bool use_tls = 3;`
+`bool server_use_tls = 3;`
 
- * **Parameters:** `value` — The useTls to set.
+ * **Parameters:** `value` — The serverUseTls to set.
  * **Returns:** This builder for chaining.
 
-## `public Builder clearUseTls()`
+## `public Builder clearServerUseTls()`
 
 <pre> indicates if tls is used </pre>
 
-`bool use_tls = 3;`
+`bool server_use_tls = 3;`
 
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getAuthToken()`
+
+<pre> default auth token for oberon security scheme </pre>
+
+`string auth_token = 4;`
+
+ * **Returns:** The authToken.
+
+## `public com.google.protobuf.ByteString getAuthTokenBytes()`
+
+<pre> default auth token for oberon security scheme </pre>
+
+`string auth_token = 4;`
+
+ * **Returns:** The bytes for authToken.
+
+## `public Builder setAuthToken( java.lang.String value)`
+
+<pre> default auth token for oberon security scheme </pre>
+
+`string auth_token = 4;`
+
+ * **Parameters:** `value` — The authToken to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearAuthToken()`
+
+<pre> default auth token for oberon security scheme </pre>
+
+`string auth_token = 4;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setAuthTokenBytes( com.google.protobuf.ByteString value)`
+
+<pre> default auth token for oberon security scheme </pre>
+
+`string auth_token = 4;`
+
+ * **Parameters:** `value` — The bytes for authToken to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getDefaultEcosystem()`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Returns:** The defaultEcosystem.
+
+## `public com.google.protobuf.ByteString getDefaultEcosystemBytes()`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Returns:** The bytes for defaultEcosystem.
+
+## `public Builder setDefaultEcosystem( java.lang.String value)`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Parameters:** `value` — The defaultEcosystem to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearDefaultEcosystem()`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setDefaultEcosystemBytes( com.google.protobuf.ByteString value)`
+
+<pre> ecosystem to use with endpoints that require it </pre>
+
+`string default_ecosystem = 5;`
+
+ * **Parameters:** `value` — The bytes for defaultEcosystem to set.
  * **Returns:** This builder for chaining.

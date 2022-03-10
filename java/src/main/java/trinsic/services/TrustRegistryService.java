@@ -2,9 +2,8 @@ package trinsic.services;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import io.grpc.Channel;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.sdk.v1.Options;
 import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
@@ -15,20 +14,10 @@ import java.util.concurrent.ExecutionException;
 public class TrustRegistryService extends ServiceBase {
     public TrustRegistryGrpc.TrustRegistryFutureStub stub;
 
-    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile) {
-        this(accountProfile, null, null);
-    }
+    public TrustRegistryService() { this(null); }
 
-    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        this(accountProfile, serverConfig, null);
-    }
-
-    public TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, Channel existingChannel) {
-        this(accountProfile, null, existingChannel);
-    }
-
-    private TrustRegistryService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
-        super(accountProfile, serverConfig, existingChannel);
+    public TrustRegistryService(Options.ServiceOptions options) {
+        super(options);
         this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     }
 

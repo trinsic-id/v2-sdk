@@ -32,6 +32,9 @@ class SignInRequest(betterproto.Message):
     details: "AccountDetails" = betterproto.message_field(1)
     # Invitation code associated with this registration This field is optional.
     invitation_code: str = betterproto.string_field(2)
+    # EcosystemId to sign in. This field is optional and will be ignored if
+    # invitation_code is passed
+    ecosystem_id: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
@@ -107,7 +110,7 @@ class InfoResponse(betterproto.Message):
     # The account details associated with the calling request context
     details: "AccountDetails" = betterproto.message_field(1)
     # any ecosystems the account has access to
-    ecosystems: List["__provider_v1__.Ecosystem"] = betterproto.message_field(2)
+    ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
 
 
 @dataclass(eq=False, repr=False)
@@ -130,15 +133,28 @@ class RevokeDeviceResponse(betterproto.Message):
     pass
 
 
+@dataclass(eq=False, repr=False)
+class AccountEcosystem(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    name: str = betterproto.string_field(2)
+    description: str = betterproto.string_field(3)
+    uri: str = betterproto.string_field(4)
+
+
 class AccountStub(betterproto.ServiceStub):
     async def sign_in(
-        self, *, details: "AccountDetails" = None, invitation_code: str = ""
+        self,
+        *,
+        details: "AccountDetails" = None,
+        invitation_code: str = "",
+        ecosystem_id: str = ""
     ) -> "SignInResponse":
 
         request = SignInRequest()
         if details is not None:
             request.details = details
         request.invitation_code = invitation_code
+        request.ecosystem_id = ecosystem_id
 
         return await self._unary_unary(
             "/services.account.v1.Account/SignIn", request, SignInResponse
@@ -171,7 +187,7 @@ class AccountStub(betterproto.ServiceStub):
 
 class AccountBase(ServiceBase):
     async def sign_in(
-        self, details: "AccountDetails", invitation_code: str
+        self, details: "AccountDetails", invitation_code: str, ecosystem_id: str
     ) -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
@@ -190,6 +206,7 @@ class AccountBase(ServiceBase):
         request_kwargs = {
             "details": request.details,
             "invitation_code": request.invitation_code,
+            "ecosystem_id": request.ecosystem_id,
         }
 
         response = await self.sign_in(**request_kwargs)
@@ -249,4 +266,3 @@ class AccountBase(ServiceBase):
 
 
 from ...common import v1 as __common_v1__
-from ...provider import v1 as __provider_v1__

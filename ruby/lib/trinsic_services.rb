@@ -13,6 +13,7 @@ require 'services/verifiable-credentials/v1/verifiable-credentials_services_pb'
 require 'services/verifiable-credentials/templates/v1/templates_services_pb'
 require 'services/trust-registry/v1/trust-registry_services_pb'
 require 'services/common/v1/common_pb'
+require 'sdk/options/v1/options_pb'
 require 'security'
 
 module Trinsic
@@ -20,64 +21,54 @@ module Trinsic
   Common_V1 = Services::Common::V1
   Account_V1 = Services::Account::V1
   Credentials_V1 = Services::Verifiablecredentials::V1
+  Options_V1 = Sdk::Options::V1
   Provider_V1 = Services::Provider::V1
   Template_V1 = Services::Verifiablecredentials::Templates::V1
   TrustRegistry_V1 = Services::Trustregistry::V1
   Wallet_V1 = Services::Universalwallet::V1
 
-  def self.trinsic_test_server
+  def self.trinsic_server(auth_token = nil)
     server_endpoint = ENV["TEST_SERVER_ENDPOINT"] || "prod.trinsic.cloud"
     server_port = ENV["TEST_SERVER_PORT"] || "443"
-    server_usetls = ENV["TEST_SERVER_USE_TLS"] || "true"
-    Common_V1::ServerConfig.new(endpoint: server_endpoint, port: server_port.to_i, use_tls: server_usetls.downcase != "false")
-  end
-
-  def self.trinsic_prod_server
-    Common_V1::ServerConfig.new(endpoint: "prod.trinsic.cloud", port: 443, use_tls: true)
+    server_use_tls = ENV["TEST_SERVER_USE_TLS"] || "true"
+    server_authtoken = auth_token || ""
+    server_default_ecosystem = ENV["TEST_SERVER_ECOSYSTEM"] || "default"
+    Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i, server_use_tls: server_use_tls.downcase != "false", auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
   end
 
   class Error < StandardError; end
 
   class ServiceBase
-    def initialize(account_profile, server_config)
-      @profile = account_profile
-      @configuration = server_config || trinsic_prod_server
+    def initialize(service_options)
+      @service_options = service_options || trinsic_server
       @security_provider = OberonSecurityProvider.new
     end
 
     def metadata(message)
-      if @profile == nil
+      if @service_options.nil? || @service_options.auth_token.nil?
         raise Error.new("Cannot call authenticated endpoint: profile must be set")
       end
-      { 'authorization' => @security_provider.get_auth_header(@profile, message) }
+      { 'authorization' => @security_provider.get_auth_header(Account_V1::AccountProfile.decode(Base64.urlsafe_decode64(@service_options.auth_token)), message) }
     end
 
     def profile=(new_profile)
-      @profile = new_profile
+      @service_options.auth_token = new_profile
     end
 
     def profile
-      @profile
+      @service_options.auth_token
     end
 
     def get_url
-      "#{@configuration.endpoint}:#{@configuration.port}"
-    end
-
-    def self.parse_url(url)
-      if url.is_a? Common_V1::ServerConfig
-        return url
-      end
-      uri = URI.parse(url)
-      Common_V1::ServerConfig.new(endpoint: uri.host, port: uri.port.to_i, use_tls: uri.scheme != "http")
+      "#{@service_options.server_endpoint}:#{@service_options.server_port}"
     end
   end
 
   class AccountService < ServiceBase
 
-    def initialize(account_profile, server_config)
-      super
-      if server_config.use_tls
+    def initialize(service_options)
+      super(service_options)
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Account_V1::Account::Stub.new(get_url, channel_creds)
       else
@@ -85,9 +76,12 @@ module Trinsic
       end
     end
 
-    def sign_in(account_details)
-      request = Account_V1::SignInRequest.new(details: account_details || Account_V1::AccountDetails.new)
-      @client.sign_in(request)
+    def sign_in(account_details, ecosystem_id = nil)
+      request = Account_V1::SignInRequest.new(details: account_details || Account_V1::AccountDetails.new, ecosystem_id: ecosystem_id || @service_options.default_ecosystem)
+      auth_token = @client.sign_in(request).profile
+      encoded_profile = Base64.urlsafe_encode64(Account_V1::AccountProfile.encode(auth_token))
+      self.profile = encoded_profile
+      encoded_profile
     end
 
     def unprotect(profile, security_code)
@@ -126,9 +120,9 @@ module Trinsic
 
   class CredentialService < ServiceBase
 
-    def initialize(account_profile, server_config)
+    def initialize(service_options)
       super
-      if server_config.use_tls
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, channel_creds)
       else
@@ -137,10 +131,9 @@ module Trinsic
     end
 
     def issue_credential(document)
-      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(document))
-      request = Credentials_V1::IssueRequest.new(document: payload)
+      request = Credentials_V1::IssueRequest.new(document_json: JSON.generate(document))
       response = @client.issue(request, metadata: metadata(request))
-      JSON.parse(response.document.json_string)
+      JSON.parse(response.signed_document_json)
     end
 
     def issue_from_template(request)
@@ -153,17 +146,19 @@ module Trinsic
       @client.send(request, metadata: metadata(request))
     end
 
-    def create_proof(document_id, reveal_document)
-      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(reveal_document))
-      request = Credentials_V1::CreateProofRequest.new(document_id: document_id,
-                                                       reveal_document: payload)
-      JSON.parse(@client.create_proof(request, metadata: metadata(request)).proof_document.json_string)
+    def create_proof(reveal_document:, item_id: nil, document: nil)
+      doc_json = nil
+      doc_json = JSON.generate(document) unless document.nil?
+      request = Credentials_V1::CreateProofRequest.new(item_id: item_id,
+                                                       reveal_document_json: JSON.generate(reveal_document),
+                                                       document_json: doc_json)
+      response = @client.create_proof(request, metadata: metadata(request))
+      JSON.parse(response.proof_document_json)
     end
 
     def verify_proof(proof_document)
-      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(proof_document))
-      request = Credentials_V1::VerifyProofRequest.new(proof_document: payload)
-      @client.verify_proof(request, metadata: metadata(request)).valid
+      request = Credentials_V1::VerifyProofRequest.new(proof_document_json: JSON.generate(proof_document))
+      @client.verify_proof(request, metadata: metadata(request)).is_valid
     end
 
     def check_status(credential_status_id)
@@ -179,9 +174,9 @@ module Trinsic
 
   class ProviderService < ServiceBase
 
-    def initialize(account_profile, server_config)
-      super
-      if server_config.use_tls
+    def initialize(service_options)
+      super(service_options)
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Provider_V1::Provider::Stub.new(get_url, channel_creds)
       else
@@ -209,20 +204,20 @@ module Trinsic
       @client.create_ecosystem(request, metadata: metadata(request))
     end
 
-    def list_ecosystems(request = nil)
-      if request == nil
-        request = Provider_V1::ListEcosystemsRequest.new
-      end
-      response = @client.list_ecosystems(request, metadata: metadata(request))
-      response.ecosystem
-    end
+    # def list_ecosystems(request = nil)
+    #   if request == nil
+    #     request = Provider_V1::ListEcosystemsRequest.new
+    #   end
+    #   response = @client.list_ecosystems(request, metadata: metadata(request))
+    #   response.ecosystem
+    # end
   end
 
   class TemplateService < ServiceBase
 
-    def initialize(account_profile, server_config)
+    def initialize(service_options)
       super
-      if server_config.use_tls
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Template_V1::CredentialTemplates::Stub.new(get_url, channel_creds)
       else
@@ -253,9 +248,9 @@ module Trinsic
 
   class TrustRegistryService < ServiceBase
 
-    def initialize(account_profile, server_config)
+    def initialize(service_options)
       super
-      if server_config.use_tls
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, channel_creds)
       else
@@ -305,7 +300,7 @@ module Trinsic
     end
 
     def search_registry(query = "SELECT * FROM c")
-      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query, options: Common_V1::RequestOptions.new(response_json_format: Common_V1::JsonFormat::Protobuf))
+      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query)
       response = @client.search_registry(request, metadata: metadata(request))
       JSON.parse(response.items_json)
     end
@@ -317,9 +312,9 @@ module Trinsic
 
   class WalletService < ServiceBase
 
-    def initialize(account_profile, server_config)
+    def initialize(service_options)
       super
-      if server_config.use_tls
+      if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Wallet_V1::UniversalWallet::Stub.new(get_url, channel_creds)
       else
@@ -333,8 +328,7 @@ module Trinsic
     end
 
     def insert_item(item)
-      payload = Common_V1::JsonPayload.new(json_string: JSON.generate(item))
-      request = Wallet_V1::InsertItemRequest.new(item: payload)
+      request = Wallet_V1::InsertItemRequest.new(item_json: JSON.generate(item))
       @client.insert_item(request, metadata: metadata(request)).item_id
     end
 

@@ -3,13 +3,15 @@ import asyncio
 from trinsic.proto.services.provider.v1 import ParticipantType
 from trinsic.account_service import AccountService
 from trinsic.provider_service import ProviderService
-from trinsic.trinsic_util import trinsic_test_config
+from trinsic.trinsic_util import trinsic_config
 
 
 async def provider_demo():
-    account_service = AccountService(server_config=trinsic_test_config())
+    account_service = AccountService(server_config=trinsic_config())
     account_profile, _ = await account_service.sign_in()
-    provider_service = ProviderService(account_profile, trinsic_test_config())
+    provider_service = ProviderService(
+        profile=account_profile, server_config=trinsic_config()
+    )
     invite_response = await provider_service.invite_participant(
         participant=ParticipantType.participant_type_individual,
         description="I dunno",

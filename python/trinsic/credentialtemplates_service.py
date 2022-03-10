@@ -2,8 +2,8 @@ from typing import Optional, Dict
 
 from grpclib.client import Channel
 
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import AccountProfile
-from trinsic.proto.services.common.v1 import ServerConfig
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CredentialTemplatesStub,
     TemplateField,
@@ -14,25 +14,22 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     DeleteCredentialTemplateResponse,
 )
 from trinsic.service_base import ServiceBase
-from trinsic.trinsic_util import trinsic_production_config
 
 
-class CredentialTemplatesService(ServiceBase):
+class TemplateService(ServiceBase):
     """Wrapper for the [Credential Templates Service](/reference/services/CredentialTemplates-service/)"""
 
     def __init__(
         self,
         *,
-        profile: AccountProfile,
-        server_config: ServerConfig = None,
-        channel: Channel = None
+        server_config: ServiceOptions = None,
     ):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(profile, server_config, channel)
+        super().__init__(server_config)
         self.client: CredentialTemplatesStub = self.stub_with_metadata(
             CredentialTemplatesStub
         )

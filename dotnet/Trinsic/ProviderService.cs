@@ -68,7 +68,7 @@ public class ProviderService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
         request.Details ??= new();
 
-        return await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
+        return await Client.CreateEcosystemAsync(request);
     }
 
     /// <summary>

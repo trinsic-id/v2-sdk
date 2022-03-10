@@ -20,6 +20,14 @@ module Services::Universalwallet::V1::UniversalWallet
 
     sig do
       params(
+        request: Services::Universalwallet::V1::GetItemRequest
+      ).returns(Services::Universalwallet::V1::GetItemResponse)
+    end
+    def get_item(request)
+    end
+
+    sig do
+      params(
         request: Services::Universalwallet::V1::SearchRequest
       ).returns(Services::Universalwallet::V1::SearchResponse)
     end
@@ -32,6 +40,14 @@ module Services::Universalwallet::V1::UniversalWallet
       ).returns(Services::Universalwallet::V1::InsertItemResponse)
     end
     def insert_item(request)
+    end
+
+    sig do
+      params(
+        request: Services::Universalwallet::V1::UpdateItemRequest
+      ).returns(Services::Universalwallet::V1::UpdateItemResponse)
+    end
+    def update_item(request)
     end
 
     sig do

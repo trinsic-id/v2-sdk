@@ -20,17 +20,13 @@ Creates a new ListenableFuture-style stub that supports unary calls on the servi
 
 <pre> Create new ecosystem and assign the authenticated user as owner </pre>
 
-## `public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver)`
+## `public void generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> responseObserver)`
 
-<pre> List all ecosystems assigned to the authenticated account </pre>
+<pre> Generates an unprotected authentication token that can be used to configure server side applications </pre>
 
 ## `public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver)`
 
 <pre> Invite a user to the ecosystem </pre>
-
-## `public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver)`
-
-<pre> Accept an invite to the ecosystem </pre>
 
 ## `public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver)`
 
@@ -42,17 +38,13 @@ Creates a new ListenableFuture-style stub that supports unary calls on the servi
 
 <pre> Create new ecosystem and assign the authenticated user as owner </pre>
 
-## `public void listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> responseObserver)`
+## `public void generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> responseObserver)`
 
-<pre> List all ecosystems assigned to the authenticated account </pre>
+<pre> Generates an unprotected authentication token that can be used to configure server side applications </pre>
 
 ## `public void invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> responseObserver)`
 
 <pre> Invite a user to the ecosystem </pre>
-
-## `public void acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> responseObserver)`
-
-<pre> Accept an invite to the ecosystem </pre>
 
 ## `public void invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request, io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> responseObserver)`
 
@@ -64,17 +56,13 @@ Creates a new ListenableFuture-style stub that supports unary calls on the servi
 
 <pre> Create new ecosystem and assign the authenticated user as owner </pre>
 
-## `public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse listEcosystems(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request)`
+## `public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse generateToken(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request)`
 
-<pre> List all ecosystems assigned to the authenticated account </pre>
+<pre> Generates an unprotected authentication token that can be used to configure server side applications </pre>
 
 ## `public trinsic.services.common.v1.ProviderOuterClass.InviteResponse invite(trinsic.services.common.v1.ProviderOuterClass.InviteRequest request)`
 
 <pre> Invite a user to the ecosystem </pre>
-
-## `public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse acceptInvite(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request)`
-
-<pre> Accept an invite to the ecosystem </pre>
 
 ## `public trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request)`
 
@@ -86,17 +74,13 @@ Creates a new ListenableFuture-style stub that supports unary calls on the servi
 
 <pre> Create new ecosystem and assign the authenticated user as owner </pre>
 
-## `public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse> listEcosystems( trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest request)`
+## `public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse> generateToken( trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest request)`
 
-<pre> List all ecosystems assigned to the authenticated account </pre>
+<pre> Generates an unprotected authentication token that can be used to configure server side applications </pre>
 
 ## `public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InviteResponse> invite( trinsic.services.common.v1.ProviderOuterClass.InviteRequest request)`
 
 <pre> Invite a user to the ecosystem </pre>
-
-## `public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse> acceptInvite( trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest request)`
-
-<pre> Accept an invite to the ecosystem </pre>
 
 ## `public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse> invitationStatus( trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request)`
 

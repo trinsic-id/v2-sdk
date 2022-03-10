@@ -3,6 +3,7 @@ using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -35,7 +36,7 @@ public class Tests
         _options = new() {
             ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
             ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            ServerUseTls = false
+            ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls 
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
@@ -46,11 +47,15 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
+        // createAccountService() {
         var providerService = new ProviderService(_options);
         var accountService = new AccountService(_options);
+        var account = await accountService.SignInAsync(new());
 
+        providerService.Options.AuthToken = account;
         var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
         var ecosystemId = ecosystem.Ecosystem.Id;
+        // }
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
@@ -97,6 +102,8 @@ public class Tests
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
         var itemId = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
+        var walletItems = await walletService.SearchAsync();
+        _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
         // }
 
         // SHARE CREDENTIAL
@@ -115,9 +122,9 @@ public class Tests
             ItemId = itemId,
             RevealDocumentJson = proofRequestJson
         });
-        // }
         _testOutputHelper.WriteLine("Proof:");
         _testOutputHelper.WriteLine(credentialProof.ProofDocumentJson);
+        // }
 
 
         // VERIFY CREDENTIAL
@@ -129,9 +136,9 @@ public class Tests
         var valid = await credentialsService.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
         });
-        // }
         _testOutputHelper.WriteLine($"Verification result: {valid}");
         Assert.True(valid);
+        // }
     }
 
     [Fact(DisplayName = "Demo: trust registries")]

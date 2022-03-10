@@ -21,7 +21,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.trustregistry.v1.SearchRegistryRequest" do
       optional :query, :string, 1
       optional :continuation_token, :string, 2
-      optional :options, :message, 5, "services.common.v1.RequestOptions"
     end
     add_message "services.trustregistry.v1.SearchRegistryResponse" do
       optional :items_json, :string, 1

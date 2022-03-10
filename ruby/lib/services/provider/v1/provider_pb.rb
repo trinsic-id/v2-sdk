@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'services/common/v1/common_pb'
+require 'services/account/v1/account_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/provider.proto", :syntax => :proto3) do
     add_message "services.provider.v1.Invite" do
@@ -16,17 +17,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.InviteRequest" do
       optional :participant, :enum, 1, "services.provider.v1.ParticipantType"
       optional :description, :string, 2
-      oneof :contact_method do
-        optional :email, :string, 5
-        optional :phone, :string, 6
-        optional :didcomm_invitation, :message, 7, "services.provider.v1.InviteRequest.DidCommInvitation"
-      end
+      optional :details, :message, 3, "services.account.v1.AccountDetails"
     end
     add_message "services.provider.v1.InviteRequest.DidCommInvitation" do
     end
     add_message "services.provider.v1.InviteResponse" do
       optional :status, :enum, 1, "services.common.v1.ResponseStatus"
       optional :invitation_id, :string, 10
+      optional :invitation_code, :string, 11
     end
     add_message "services.provider.v1.InvitationStatusRequest" do
       optional :invitation_id, :string, 1
@@ -51,21 +49,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 1
       optional :description, :string, 2
       optional :uri, :string, 3
+      optional :details, :message, 4, "services.account.v1.AccountDetails"
     end
     add_message "services.provider.v1.CreateEcosystemResponse" do
-      optional :id, :string, 1
+      optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
+      optional :profile, :message, 2, "services.account.v1.AccountProfile"
+      optional :confirmation_method, :enum, 3, "services.account.v1.ConfirmationMethod"
     end
-    add_message "services.provider.v1.ListEcosystemsRequest" do
+    add_message "services.provider.v1.GenerateTokenRequest" do
+      optional :description, :string, 1
     end
-    add_message "services.provider.v1.ListEcosystemsResponse" do
-      repeated :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
-    end
-    add_message "services.provider.v1.AcceptInviteRequest" do
-      optional :id, :string, 1
-      optional :code, :string, 2
-    end
-    add_message "services.provider.v1.AcceptInviteResponse" do
-      optional :ecosystem, :message, 2, "services.provider.v1.Ecosystem"
+    add_message "services.provider.v1.GenerateTokenResponse" do
+      optional :profile, :message, 1, "services.account.v1.AccountProfile"
     end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
@@ -87,10 +82,8 @@ module Services
       Ecosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Ecosystem").msgclass
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
-      ListEcosystemsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListEcosystemsRequest").msgclass
-      ListEcosystemsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListEcosystemsResponse").msgclass
-      AcceptInviteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AcceptInviteRequest").msgclass
-      AcceptInviteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AcceptInviteResponse").msgclass
+      GenerateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenRequest").msgclass
+      GenerateTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end

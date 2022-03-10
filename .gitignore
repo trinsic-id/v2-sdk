@@ -389,3 +389,5 @@ devops/protoc-plugins/
 
 *.code-workspace
 ruby/.ruby-version
+python/tests/allison.txt
+java/allison.txt

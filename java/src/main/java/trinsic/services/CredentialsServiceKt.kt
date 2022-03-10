@@ -5,20 +5,21 @@ import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
+import trinsic.sdk.v1.Options
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
 
 class CredentialsServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+    options: Options.ServiceOptions?
+) : ServiceBase(options) {
     var stub = VerifiableCredentialGrpcKt.VerifiableCredentialCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun issueCredential(document: HashMap<*, *>?): java.util.HashMap<*, *>? {
-        val request = IssueRequest.newBuilder().setDocument(TrinsicUtilities.createPayloadString(document)).build()
-        return Gson().fromJson(withMetadata(stub, request).issue(request).document.jsonString, HashMap::class.java)
+        val request = IssueRequest.newBuilder().setDocumentJson(TrinsicUtilities.hashmapToJson(document)).build()
+        return Gson().fromJson(withMetadata(stub, request).issue(request).signedDocumentJson, HashMap::class.java)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -27,20 +28,20 @@ class CredentialsServiceKt(
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun createProof(documentId: String?, revealDocument: HashMap<*, *>?): java.util.HashMap<*, *>? {
-        val request = CreateProofRequest.newBuilder().setDocumentId(documentId)
-            .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument)).build()
+    suspend fun createProof(itemId: String?, revealDocument: HashMap<*, *>?): java.util.HashMap<*, *>? {
+        val request = CreateProofRequest.newBuilder().setItemId(itemId)
+            .setRevealDocumentJson(TrinsicUtilities.hashmapToJson(revealDocument)).build()
         return Gson().fromJson(
-            withMetadata(stub, request).createProof(request).proofDocument.jsonString, HashMap::class.java
+            withMetadata(stub, request).createProof(request).proofDocumentJson, HashMap::class.java
         )
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun verifyProof(proofDocument: HashMap<*, *>?): Boolean {
         val request =
-            VerifyProofRequest.newBuilder().setProofDocument(TrinsicUtilities.createPayloadString(proofDocument))
+            VerifyProofRequest.newBuilder().setProofDocumentJson(TrinsicUtilities.hashmapToJson(proofDocument))
                 .build()
-        return withMetadata(stub, request).verifyProof(request).valid
+        return withMetadata(stub, request).verifyProof(request).isValid
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -58,9 +59,9 @@ class CredentialsServiceKt(
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun send(document: HashMap<*, *>?, email: String?): SendResponse? {
+    suspend fun send(document: HashMap<*, *>?, email: String?): SendResponse {
         val request =
-            SendRequest.newBuilder().setEmail(email).setDocument(TrinsicUtilities.createPayloadString(document)).build()
+            SendRequest.newBuilder().setEmail(email).setDocumentJson(TrinsicUtilities.hashmapToJson(document)).build()
         return withMetadata(stub, request).send(request)
     }
 }

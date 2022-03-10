@@ -4,14 +4,15 @@ import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
+import trinsic.sdk.v1.Options
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 
 class TrustRegistryServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+    options: Options.ServiceOptions?
+) : ServiceBase(options) {
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

@@ -15,24 +15,61 @@ class SearchRequest(betterproto.Message):
 
     query: str = betterproto.string_field(1)
     continuation_token: str = betterproto.string_field(2)
-    options: "__common_v1__.RequestOptions" = betterproto.message_field(5)
 
 
 @dataclass(eq=False, repr=False)
 class SearchResponse(betterproto.Message):
     """Search response object"""
 
-    items: List["__common_v1__.JsonPayload"] = betterproto.message_field(1)
+    items: List[str] = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
     count: int = betterproto.int32_field(3)
     continuation_token: str = betterproto.string_field(4)
 
 
 @dataclass(eq=False, repr=False)
+class GetItemRequest(betterproto.Message):
+    """Get item request object"""
+
+    # The item identifier
+    item_id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetItemResponse(betterproto.Message):
+    """Get item response object"""
+
+    # The item data represented as stringified JSON
+    item_json: str = betterproto.string_field(1)
+    # User set item type that described the content of this item
+    item_type: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateItemRequest(betterproto.Message):
+    """Update item request object"""
+
+    # The item identifier
+    item_id: str = betterproto.string_field(1)
+    # The item type that described the content of this item
+    item_type: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateItemResponse(betterproto.Message):
+    """Update item response object"""
+
+    # Response status
+    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+
+
+@dataclass(eq=False, repr=False)
 class InsertItemRequest(betterproto.Message):
     """Insert item request"""
 
-    item: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    # the document to insert as stringified json
+    item_json: str = betterproto.string_field(1)
+    # optional item type ex. "VerifiableCredential"
     item_type: str = betterproto.string_field(2)
 
 
@@ -55,23 +92,30 @@ class DeleteItemRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class DeleteItemResponse(betterproto.Message):
+    """Delete item response"""
+
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
 
 
 class UniversalWalletStub(betterproto.ServiceStub):
+    async def get_item(self, *, item_id: str = "") -> "GetItemResponse":
+
+        request = GetItemRequest()
+        request.item_id = item_id
+
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/GetItem",
+            request,
+            GetItemResponse,
+        )
+
     async def search(
-        self,
-        *,
-        query: str = "",
-        continuation_token: str = "",
-        options: "__common_v1__.RequestOptions" = None
+        self, *, query: str = "", continuation_token: str = ""
     ) -> "SearchResponse":
 
         request = SearchRequest()
         request.query = query
         request.continuation_token = continuation_token
-        if options is not None:
-            request.options = options
 
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/Search",
@@ -80,18 +124,31 @@ class UniversalWalletStub(betterproto.ServiceStub):
         )
 
     async def insert_item(
-        self, *, item: "__common_v1__.JsonPayload" = None, item_type: str = ""
+        self, *, item_json: str = "", item_type: str = ""
     ) -> "InsertItemResponse":
 
         request = InsertItemRequest()
-        if item is not None:
-            request.item = item
+        request.item_json = item_json
         request.item_type = item_type
 
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/InsertItem",
             request,
             InsertItemResponse,
+        )
+
+    async def update_item(
+        self, *, item_id: str = "", item_type: str = ""
+    ) -> "UpdateItemResponse":
+
+        request = UpdateItemRequest()
+        request.item_id = item_id
+        request.item_type = item_type
+
+        return await self._unary_unary(
+            "/services.universalwallet.v1.UniversalWallet/UpdateItem",
+            request,
+            UpdateItemResponse,
         )
 
     async def delete_item(self, *, item_id: str = "") -> "DeleteItemResponse":
@@ -107,21 +164,30 @@ class UniversalWalletStub(betterproto.ServiceStub):
 
 
 class UniversalWalletBase(ServiceBase):
-    async def search(
-        self,
-        query: str,
-        continuation_token: str,
-        options: "__common_v1__.RequestOptions",
-    ) -> "SearchResponse":
+    async def get_item(self, item_id: str) -> "GetItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def insert_item(
-        self, item: "__common_v1__.JsonPayload", item_type: str
-    ) -> "InsertItemResponse":
+    async def search(self, query: str, continuation_token: str) -> "SearchResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def insert_item(self, item_json: str, item_type: str) -> "InsertItemResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def update_item(self, item_id: str, item_type: str) -> "UpdateItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def delete_item(self, item_id: str) -> "DeleteItemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def __rpc_get_item(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "item_id": request.item_id,
+        }
+
+        response = await self.get_item(**request_kwargs)
+        await stream.send_message(response)
 
     async def __rpc_search(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
@@ -129,7 +195,6 @@ class UniversalWalletBase(ServiceBase):
         request_kwargs = {
             "query": request.query,
             "continuation_token": request.continuation_token,
-            "options": request.options,
         }
 
         response = await self.search(**request_kwargs)
@@ -139,11 +204,22 @@ class UniversalWalletBase(ServiceBase):
         request = await stream.recv_message()
 
         request_kwargs = {
-            "item": request.item,
+            "item_json": request.item_json,
             "item_type": request.item_type,
         }
 
         response = await self.insert_item(**request_kwargs)
+        await stream.send_message(response)
+
+    async def __rpc_update_item(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+
+        request_kwargs = {
+            "item_id": request.item_id,
+            "item_type": request.item_type,
+        }
+
+        response = await self.update_item(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_delete_item(self, stream: grpclib.server.Stream) -> None:
@@ -158,6 +234,12 @@ class UniversalWalletBase(ServiceBase):
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
+            "/services.universalwallet.v1.UniversalWallet/GetItem": grpclib.const.Handler(
+                self.__rpc_get_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetItemRequest,
+                GetItemResponse,
+            ),
             "/services.universalwallet.v1.UniversalWallet/Search": grpclib.const.Handler(
                 self.__rpc_search,
                 grpclib.const.Cardinality.UNARY_UNARY,
@@ -169,6 +251,12 @@ class UniversalWalletBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 InsertItemRequest,
                 InsertItemResponse,
+            ),
+            "/services.universalwallet.v1.UniversalWallet/UpdateItem": grpclib.const.Handler(
+                self.__rpc_update_item,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateItemRequest,
+                UpdateItemResponse,
             ),
             "/services.universalwallet.v1.UniversalWallet/DeleteItem": grpclib.const.Handler(
                 self.__rpc_delete_item,

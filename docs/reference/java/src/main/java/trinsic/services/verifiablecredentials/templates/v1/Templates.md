@@ -1696,13 +1696,13 @@ Use {@link #getFieldsMap()} instead.
 
 ## `java.lang.String getEcosystemId()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The ecosystemId.
 
 ## `com.google.protobuf.ByteString getEcosystemIdBytes()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The bytes for ecosystemId.
 
@@ -1804,13 +1804,13 @@ Use {@link #getFieldsMap()} instead.
 
 ## `@java.lang.Override public java.lang.String getEcosystemId()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The ecosystemId.
 
 ## `@java.lang.Override public com.google.protobuf.ByteString getEcosystemIdBytes()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The bytes for ecosystemId.
 
@@ -2034,32 +2034,32 @@ Use alternate mutation accessors instead.
 
 ## `public java.lang.String getEcosystemId()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The ecosystemId.
 
 ## `public com.google.protobuf.ByteString getEcosystemIdBytes()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** The bytes for ecosystemId.
 
 ## `public Builder setEcosystemId( java.lang.String value)`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Parameters:** `value` — The ecosystemId to set.
  * **Returns:** This builder for chaining.
 
 ## `public Builder clearEcosystemId()`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Returns:** This builder for chaining.
 
 ## `public Builder setEcosystemIdBytes( com.google.protobuf.ByteString value)`
 
-`string ecosystem_id = 8 [json_name = "_ecosystemId"];`
+`string ecosystem_id = 8 [json_name = "ecosystemId"];`
 
  * **Parameters:** `value` — The bytes for ecosystemId to set.
  * **Returns:** This builder for chaining.

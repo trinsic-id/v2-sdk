@@ -21,7 +21,7 @@ internal class OberonSecurityProvider : ISecurityProvider
     /// </summary>
     /// <param name="data"></param>
     /// <returns></returns>
-    protected static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
+    private static string Base64UrlEncode(byte[] data) => Convert.ToBase64String(data)
         .Replace('+', '-')
         .Replace('/', '_')
         .Trim('=');

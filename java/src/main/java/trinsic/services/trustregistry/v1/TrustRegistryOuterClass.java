@@ -2508,21 +2508,6 @@ public final class TrustRegistryOuterClass {
      */
     com.google.protobuf.ByteString
         getContinuationTokenBytes();
-
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     * @return Whether the options field is set.
-     */
-    boolean hasOptions();
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     * @return The options.
-     */
-    trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions();
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
@@ -2581,19 +2566,6 @@ public final class TrustRegistryOuterClass {
               java.lang.String s = input.readStringRequireUtf8();
 
               continuationToken_ = s;
-              break;
-            }
-            case 42: {
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder subBuilder = null;
-              if (options_ != null) {
-                subBuilder = options_.toBuilder();
-              }
-              options_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.RequestOptions.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(options_);
-                options_ = subBuilder.buildPartial();
-              }
-
               break;
             }
             default: {
@@ -2712,32 +2684,6 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int OPTIONS_FIELD_NUMBER = 5;
-    private trinsic.services.common.v1.CommonOuterClass.RequestOptions options_;
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     * @return Whether the options field is set.
-     */
-    @java.lang.Override
-    public boolean hasOptions() {
-      return options_ != null;
-    }
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     * @return The options.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions() {
-      return options_ == null ? trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : options_;
-    }
-    /**
-     * <code>.services.common.v1.RequestOptions options = 5;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder() {
-      return getOptions();
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2758,9 +2704,6 @@ public final class TrustRegistryOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
       }
-      if (options_ != null) {
-        output.writeMessage(5, getOptions());
-      }
       unknownFields.writeTo(output);
     }
 
@@ -2775,10 +2718,6 @@ public final class TrustRegistryOuterClass {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
-      }
-      if (options_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getOptions());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2799,11 +2738,6 @@ public final class TrustRegistryOuterClass {
           .equals(other.getQuery())) return false;
       if (!getContinuationToken()
           .equals(other.getContinuationToken())) return false;
-      if (hasOptions() != other.hasOptions()) return false;
-      if (hasOptions()) {
-        if (!getOptions()
-            .equals(other.getOptions())) return false;
-      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2819,10 +2753,6 @@ public final class TrustRegistryOuterClass {
       hash = (53 * hash) + getQuery().hashCode();
       hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getContinuationToken().hashCode();
-      if (hasOptions()) {
-        hash = (37 * hash) + OPTIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getOptions().hashCode();
-      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2960,12 +2890,6 @@ public final class TrustRegistryOuterClass {
 
         continuationToken_ = "";
 
-        if (optionsBuilder_ == null) {
-          options_ = null;
-        } else {
-          options_ = null;
-          optionsBuilder_ = null;
-        }
         return this;
       }
 
@@ -2994,11 +2918,6 @@ public final class TrustRegistryOuterClass {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest(this);
         result.query_ = query_;
         result.continuationToken_ = continuationToken_;
-        if (optionsBuilder_ == null) {
-          result.options_ = options_;
-        } else {
-          result.options_ = optionsBuilder_.build();
-        }
         onBuilt();
         return result;
       }
@@ -3054,9 +2973,6 @@ public final class TrustRegistryOuterClass {
         if (!other.getContinuationToken().isEmpty()) {
           continuationToken_ = other.continuationToken_;
           onChanged();
-        }
-        if (other.hasOptions()) {
-          mergeOptions(other.getOptions());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3257,125 +3173,6 @@ public final class TrustRegistryOuterClass {
         continuationToken_ = value;
         onChanged();
         return this;
-      }
-
-      private trinsic.services.common.v1.CommonOuterClass.RequestOptions options_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> optionsBuilder_;
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       * @return Whether the options field is set.
-       */
-      public boolean hasOptions() {
-        return optionsBuilder_ != null || options_ != null;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       * @return The options.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions() {
-        if (optionsBuilder_ == null) {
-          return options_ == null ? trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : options_;
-        } else {
-          return optionsBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public Builder setOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value) {
-        if (optionsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          options_ = value;
-          onChanged();
-        } else {
-          optionsBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public Builder setOptions(
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder builderForValue) {
-        if (optionsBuilder_ == null) {
-          options_ = builderForValue.build();
-          onChanged();
-        } else {
-          optionsBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public Builder mergeOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value) {
-        if (optionsBuilder_ == null) {
-          if (options_ != null) {
-            options_ =
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.newBuilder(options_).mergeFrom(value).buildPartial();
-          } else {
-            options_ = value;
-          }
-          onChanged();
-        } else {
-          optionsBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public Builder clearOptions() {
-        if (optionsBuilder_ == null) {
-          options_ = null;
-          onChanged();
-        } else {
-          options_ = null;
-          optionsBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder getOptionsBuilder() {
-        
-        onChanged();
-        return getOptionsFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder() {
-        if (optionsBuilder_ != null) {
-          return optionsBuilder_.getMessageOrBuilder();
-        } else {
-          return options_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions.getDefaultInstance() : options_;
-        }
-      }
-      /**
-       * <code>.services.common.v1.RequestOptions options = 5;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> 
-          getOptionsFieldBuilder() {
-        if (optionsBuilder_ == null) {
-          optionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder>(
-                  getOptions(),
-                  getParentForChildren(),
-                  isClean());
-          options_ = null;
-        }
-        return optionsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -17321,93 +17118,91 @@ public final class TrustRegistryOuterClass {
       "rnance_framework\030\001 \001(\0132..services.trustr" +
       "egistry.v1.GovernanceFramework\"M\n\027Remove" +
       "FrameworkResponse\0222\n\006status\030\001 \001(\0162\".serv" +
-      "ices.common.v1.ResponseStatus\"w\n\025SearchR" +
+      "ices.common.v1.ResponseStatus\"B\n\025SearchR" +
       "egistryRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continu" +
-      "ation_token\030\002 \001(\t\0223\n\007options\030\005 \001(\0132\".ser" +
-      "vices.common.v1.RequestOptions\"i\n\026Search" +
-      "RegistryResponse\022\022\n\nitems_json\030\001 \001(\t\022\020\n\010" +
-      "has_more\030\002 \001(\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continu" +
-      "ation_token\030\004 \001(\t\"h\n\023GovernanceFramework" +
-      "\022 \n\030governance_framework_uri\030\001 \001(\t\022\032\n\022tr" +
-      "ust_registry_uri\030\002 \001(\t\022\023\n\013description\030\003 " +
-      "\001(\t\"\274\001\n\025RegisterIssuerRequest\022\021\n\007did_uri" +
-      "\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH\000\022\033\n\023credent" +
-      "ial_type_uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001" +
-      "(\004\022\027\n\017valid_until_utc\030\014 \001(\004\022 \n\030governanc" +
-      "e_framework_uri\030\024 \001(\tB\013\n\tauthority\"L\n\026Re" +
-      "gisterIssuerResponse\0222\n\006status\030\001 \001(\0162\".s" +
-      "ervices.common.v1.ResponseStatus\"\300\001\n\027Reg" +
-      "isterVerifierRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022" +
-      "\023\n\tx509_cert\030\002 \001(\tH\000\022\035\n\025presentation_typ" +
-      "e_uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017v" +
-      "alid_until_utc\030\014 \001(\004\022 \n\030governance_frame" +
-      "work_uri\030\024 \001(\tB\013\n\tauthority\"N\n\030RegisterV" +
-      "erifierResponse\0222\n\006status\030\001 \001(\0162\".servic" +
-      "es.common.v1.ResponseStatus\"\215\001\n\027Unregist" +
-      "erIssuerRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx5" +
-      "09_cert\030\002 \001(\tH\000\022\033\n\023credential_type_uri\030\n" +
-      " \001(\t\022 \n\030governance_framework_uri\030\024 \001(\tB\013" +
-      "\n\tauthority\"N\n\030UnregisterIssuerResponse\022" +
-      "2\n\006status\030\001 \001(\0162\".services.common.v1.Res" +
-      "ponseStatus\"\221\001\n\031UnregisterVerifierReques" +
-      "t\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH" +
-      "\000\022\035\n\025presentation_type_uri\030\n \001(\t\022 \n\030gove" +
-      "rnance_framework_uri\030\024 \001(\tB\013\n\tauthority\"" +
-      "P\n\032UnregisterVerifierResponse\0222\n\006status\030" +
-      "\001 \001(\0162\".services.common.v1.ResponseStatu" +
-      "s\"\213\001\n\030CheckIssuerStatusRequest\022 \n\030govern" +
-      "ance_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(" +
-      "\tH\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\033\n\023credential_t" +
-      "ype_uri\030\004 \001(\tB\010\n\006member\"Z\n\031CheckIssuerSt" +
-      "atusResponse\022=\n\006status\030\001 \001(\0162-.services." +
-      "trustregistry.v1.RegistrationStatus\"\217\001\n\032" +
-      "CheckVerifierStatusRequest\022 \n\030governance" +
-      "_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH\000\022" +
-      "\023\n\tx509_cert\030\003 \001(\tH\000\022\035\n\025presentation_typ" +
-      "e_uri\030\004 \001(\tB\010\n\006member\"\\\n\033CheckVerifierSt" +
-      "atusResponse\022=\n\006status\030\001 \001(\0162-.services." +
-      "trustregistry.v1.RegistrationStatus\"C\n\020F" +
-      "etchDataRequest\022 \n\030governance_framework_" +
-      "uri\030\001 \001(\t\022\r\n\005query\030\002 \001(\t\"`\n\021FetchDataRes" +
-      "ponse\022\025\n\rresponse_json\030\001 \001(\t\022\030\n\020has_more" +
-      "_results\030\002 \001(\010\022\032\n\022continuation_token\030\003 \001" +
-      "(\t*Z\n\022RegistrationStatus\022\013\n\007CURRENT\020\000\022\013\n" +
-      "\007EXPIRED\020\001\022\016\n\nTERMINATED\020\002\022\013\n\007REVOKED\020\003\022" +
-      "\r\n\tNOT_FOUND\020\n2\327\t\n\rTrustRegistry\022o\n\014AddF" +
-      "ramework\022..services.trustregistry.v1.Add" +
-      "FrameworkRequest\032/.services.trustregistr" +
-      "y.v1.AddFrameworkResponse\022x\n\017RemoveFrame" +
-      "work\0221.services.trustregistry.v1.RemoveF" +
-      "rameworkRequest\0322.services.trustregistry" +
-      ".v1.RemoveFrameworkResponse\022u\n\016SearchReg" +
-      "istry\0220.services.trustregistry.v1.Search" +
-      "RegistryRequest\0321.services.trustregistry" +
-      ".v1.SearchRegistryResponse\022u\n\016RegisterIs" +
-      "suer\0220.services.trustregistry.v1.Registe" +
-      "rIssuerRequest\0321.services.trustregistry." +
-      "v1.RegisterIssuerResponse\022{\n\020RegisterVer" +
-      "ifier\0222.services.trustregistry.v1.Regist" +
-      "erVerifierRequest\0323.services.trustregist" +
-      "ry.v1.RegisterVerifierResponse\022{\n\020Unregi" +
-      "sterIssuer\0222.services.trustregistry.v1.U" +
-      "nregisterIssuerRequest\0323.services.trustr" +
-      "egistry.v1.UnregisterIssuerResponse\022\201\001\n\022" +
-      "UnregisterVerifier\0224.services.trustregis" +
-      "try.v1.UnregisterVerifierRequest\0325.servi" +
-      "ces.trustregistry.v1.UnregisterVerifierR" +
-      "esponse\022~\n\021CheckIssuerStatus\0223.services." +
-      "trustregistry.v1.CheckIssuerStatusReques" +
-      "t\0324.services.trustregistry.v1.CheckIssue" +
-      "rStatusResponse\022\204\001\n\023CheckVerifierStatus\022" +
-      "5.services.trustregistry.v1.CheckVerifie" +
-      "rStatusRequest\0326.services.trustregistry." +
-      "v1.CheckVerifierStatusResponse\022h\n\tFetchD" +
-      "ata\022+.services.trustregistry.v1.FetchDat" +
-      "aRequest\032,.services.trustregistry.v1.Fet" +
-      "chDataResponse0\001Bb\n!trinsic.services.tru" +
-      "stregistry.v1Z\031github.com/trinsic-id/sdk" +
-      "\252\002!Trinsic.Services.TrustRegistry.V1b\006pr" +
-      "oto3"
+      "ation_token\030\002 \001(\t\"i\n\026SearchRegistryRespo" +
+      "nse\022\022\n\nitems_json\030\001 \001(\t\022\020\n\010has_more\030\002 \001(" +
+      "\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continuation_token\030\004" +
+      " \001(\t\"h\n\023GovernanceFramework\022 \n\030governanc" +
+      "e_framework_uri\030\001 \001(\t\022\032\n\022trust_registry_" +
+      "uri\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\"\274\001\n\025Regis" +
+      "terIssuerRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx" +
+      "509_cert\030\002 \001(\tH\000\022\033\n\023credential_type_uri\030" +
+      "\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017valid_u" +
+      "ntil_utc\030\014 \001(\004\022 \n\030governance_framework_u" +
+      "ri\030\024 \001(\tB\013\n\tauthority\"L\n\026RegisterIssuerR" +
+      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
+      "n.v1.ResponseStatus\"\300\001\n\027RegisterVerifier" +
+      "Request\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030" +
+      "\002 \001(\tH\000\022\035\n\025presentation_type_uri\030\n \001(\t\022\026" +
+      "\n\016valid_from_utc\030\013 \001(\004\022\027\n\017valid_until_ut" +
+      "c\030\014 \001(\004\022 \n\030governance_framework_uri\030\024 \001(" +
+      "\tB\013\n\tauthority\"N\n\030RegisterVerifierRespon" +
+      "se\0222\n\006status\030\001 \001(\0162\".services.common.v1." +
+      "ResponseStatus\"\215\001\n\027UnregisterIssuerReque" +
+      "st\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\t" +
+      "H\000\022\033\n\023credential_type_uri\030\n \001(\t\022 \n\030gover" +
+      "nance_framework_uri\030\024 \001(\tB\013\n\tauthority\"N" +
+      "\n\030UnregisterIssuerResponse\0222\n\006status\030\001 \001" +
+      "(\0162\".services.common.v1.ResponseStatus\"\221" +
+      "\001\n\031UnregisterVerifierRequest\022\021\n\007did_uri\030" +
+      "\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH\000\022\035\n\025presenta" +
+      "tion_type_uri\030\n \001(\t\022 \n\030governance_framew" +
+      "ork_uri\030\024 \001(\tB\013\n\tauthority\"P\n\032Unregister" +
+      "VerifierResponse\0222\n\006status\030\001 \001(\0162\".servi" +
+      "ces.common.v1.ResponseStatus\"\213\001\n\030CheckIs" +
+      "suerStatusRequest\022 \n\030governance_framewor" +
+      "k_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH\000\022\023\n\tx509_c" +
+      "ert\030\003 \001(\tH\000\022\033\n\023credential_type_uri\030\004 \001(\t" +
+      "B\010\n\006member\"Z\n\031CheckIssuerStatusResponse\022" +
+      "=\n\006status\030\001 \001(\0162-.services.trustregistry" +
+      ".v1.RegistrationStatus\"\217\001\n\032CheckVerifier" +
+      "StatusRequest\022 \n\030governance_framework_ur" +
+      "i\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH\000\022\023\n\tx509_cert\030" +
+      "\003 \001(\tH\000\022\035\n\025presentation_type_uri\030\004 \001(\tB\010" +
+      "\n\006member\"\\\n\033CheckVerifierStatusResponse\022" +
+      "=\n\006status\030\001 \001(\0162-.services.trustregistry" +
+      ".v1.RegistrationStatus\"C\n\020FetchDataReque" +
+      "st\022 \n\030governance_framework_uri\030\001 \001(\t\022\r\n\005" +
+      "query\030\002 \001(\t\"`\n\021FetchDataResponse\022\025\n\rresp" +
+      "onse_json\030\001 \001(\t\022\030\n\020has_more_results\030\002 \001(" +
+      "\010\022\032\n\022continuation_token\030\003 \001(\t*Z\n\022Registr" +
+      "ationStatus\022\013\n\007CURRENT\020\000\022\013\n\007EXPIRED\020\001\022\016\n" +
+      "\nTERMINATED\020\002\022\013\n\007REVOKED\020\003\022\r\n\tNOT_FOUND\020" +
+      "\n2\327\t\n\rTrustRegistry\022o\n\014AddFramework\022..se" +
+      "rvices.trustregistry.v1.AddFrameworkRequ" +
+      "est\032/.services.trustregistry.v1.AddFrame" +
+      "workResponse\022x\n\017RemoveFramework\0221.servic" +
+      "es.trustregistry.v1.RemoveFrameworkReque" +
+      "st\0322.services.trustregistry.v1.RemoveFra" +
+      "meworkResponse\022u\n\016SearchRegistry\0220.servi" +
+      "ces.trustregistry.v1.SearchRegistryReque" +
+      "st\0321.services.trustregistry.v1.SearchReg" +
+      "istryResponse\022u\n\016RegisterIssuer\0220.servic" +
+      "es.trustregistry.v1.RegisterIssuerReques" +
+      "t\0321.services.trustregistry.v1.RegisterIs" +
+      "suerResponse\022{\n\020RegisterVerifier\0222.servi" +
+      "ces.trustregistry.v1.RegisterVerifierReq" +
+      "uest\0323.services.trustregistry.v1.Registe" +
+      "rVerifierResponse\022{\n\020UnregisterIssuer\0222." +
+      "services.trustregistry.v1.UnregisterIssu" +
+      "erRequest\0323.services.trustregistry.v1.Un" +
+      "registerIssuerResponse\022\201\001\n\022UnregisterVer" +
+      "ifier\0224.services.trustregistry.v1.Unregi" +
+      "sterVerifierRequest\0325.services.trustregi" +
+      "stry.v1.UnregisterVerifierResponse\022~\n\021Ch" +
+      "eckIssuerStatus\0223.services.trustregistry" +
+      ".v1.CheckIssuerStatusRequest\0324.services." +
+      "trustregistry.v1.CheckIssuerStatusRespon" +
+      "se\022\204\001\n\023CheckVerifierStatus\0225.services.tr" +
+      "ustregistry.v1.CheckVerifierStatusReques" +
+      "t\0326.services.trustregistry.v1.CheckVerif" +
+      "ierStatusResponse\022h\n\tFetchData\022+.service" +
+      "s.trustregistry.v1.FetchDataRequest\032,.se" +
+      "rvices.trustregistry.v1.FetchDataRespons" +
+      "e0\001Bb\n!trinsic.services.trustregistry.v1" +
+      "Z\031github.com/trinsic-id/sdk\252\002!Trinsic.Se" +
+      "rvices.TrustRegistry.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -17443,7 +17238,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor,
-        new java.lang.String[] { "Query", "ContinuationToken", "Options", });
+        new java.lang.String[] { "Query", "ContinuationToken", });
     internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_services_trustregistry_v1_SearchRegistryResponse_fieldAccessorTable = new

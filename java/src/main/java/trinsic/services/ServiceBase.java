@@ -8,50 +8,47 @@ import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.sdk.v1.Options;
 import trinsic.security.ISecurityProvider;
 import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.CommonOuterClass;
+
+import java.util.Base64;
 
 public abstract class ServiceBase {
     private final ISecurityProvider securityProvider = new OberonSecurityProvider();
     private final Channel channel;
-    private final boolean createdChannel;
-    private AccountOuterClass.AccountProfile profile;
-    private CommonOuterClass.ServerConfig configuration;
+    private Options.ServiceOptions options;
 
-    protected ServiceBase(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel channel) {
-        this.profile = accountProfile;
-        this.configuration = serverConfig;
-        if (this.configuration == null) this.configuration = TrinsicUtilities.getProductionConfig();
-        // Note if we should clean up the channel in the end.
-        this.createdChannel = channel == null;
-        this.channel = this.createdChannel ? TrinsicUtilities.getChannel(this.configuration) : channel;
+    protected ServiceBase(Options.ServiceOptions options) {
+        this.options = options;
+        if (this.options == null) this.options = TrinsicUtilities.getTrinsicServiceOptions();
+        this.channel = TrinsicUtilities.getChannel(this.options);
     }
 
     public void shutdown() {
-        if (channel instanceof ManagedChannel && createdChannel) ((ManagedChannel) this.channel).shutdownNow();
+        if (channel instanceof ManagedChannel) ((ManagedChannel) this.channel).shutdownNow();
     }
 
     public Metadata buildMetadata(Message request) throws InvalidProtocolBufferException, DidException {
-        if (this.profile == null)
+        if (this.options == null || this.options.getAuthToken().isEmpty())
             throw new IllegalArgumentException("Cannot call authenticated endpoint: profile must be set");
 
         var metadata = new Metadata();
-        metadata.put(Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER), securityProvider.GetAuthHeader(this.profile, request));
+        metadata.put(Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER), securityProvider.GetAuthHeader(this.getProfile(), request));
         return metadata;
     }
 
-    public AccountOuterClass.AccountProfile getProfile() {
-        return this.profile;
+    private AccountOuterClass.AccountProfile getProfile() throws InvalidProtocolBufferException {
+        return AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(this.options.getAuthToken())).build();
     }
 
-    public void setProfile(AccountOuterClass.AccountProfile profile) {
-        this.profile = profile;
+    public void setProfile(String base64ProfileToken) {
+        this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setAuthToken(base64ProfileToken).build();
     }
 
-    public CommonOuterClass.ServerConfig getConfiguration() {
-        return this.configuration;
+    public Options.ServiceOptions getOptions() {
+        return this.options;
     }
 
     public Channel getChannel() {

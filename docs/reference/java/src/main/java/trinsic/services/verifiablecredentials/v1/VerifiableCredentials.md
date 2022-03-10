@@ -1,164 +1,132 @@
 # Documentation
 
-## `boolean hasDocument()`
+## `java.lang.String getDocumentJson()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** Whether the document field is set.
+ * **Returns:** The documentJson.
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+## `com.google.protobuf.ByteString getDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** The document.
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class IssueRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
 
-## `@java.lang.Override public boolean hasDocument()`
+## `@java.lang.Override public java.lang.String getDocumentJson()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** Whether the document field is set.
+ * **Returns:** The documentJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+## `@java.lang.Override public com.google.protobuf.ByteString getDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** The document.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
 
-## `public boolean hasDocument()`
+## `public java.lang.String getDocumentJson()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** Whether the document field is set.
+ * **Returns:** The documentJson.
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+## `public com.google.protobuf.ByteString getDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
- * **Returns:** The document.
+ * **Returns:** The bytes for documentJson.
 
-## `public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `public Builder setDocumentJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
-## `public Builder setDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Parameters:** `value` — The documentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload document = 1;`
+## `public Builder clearDocumentJson()`
 
-## `public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string document_json = 1;`
 
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearDocument()`
+## `public Builder setDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string document_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder()`
+ * **Parameters:** `value` — The bytes for documentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload document = 1;`
+## `java.lang.String getSignedDocumentJson()`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
+`string signed_document_json = 1;`
 
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** The signedDocumentJson.
 
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getDocumentFieldBuilder()`
+## `com.google.protobuf.ByteString getSignedDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
-## `boolean hasDocument()`
-
-`.services.common.v1.JsonPayload document = 1;`
-
- * **Returns:** Whether the document field is set.
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
-
-`.services.common.v1.JsonPayload document = 1;`
-
- * **Returns:** The document.
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** The bytes for signedDocumentJson.
 
 ## `public static final class IssueResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
 
-## `@java.lang.Override public boolean hasDocument()`
+## `@java.lang.Override public java.lang.String getSignedDocumentJson()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
- * **Returns:** Whether the document field is set.
+ * **Returns:** The signedDocumentJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+## `@java.lang.Override public com.google.protobuf.ByteString getSignedDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
- * **Returns:** The document.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** The bytes for signedDocumentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
 
-## `public boolean hasDocument()`
+## `public java.lang.String getSignedDocumentJson()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
- * **Returns:** Whether the document field is set.
+ * **Returns:** The signedDocumentJson.
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+## `public com.google.protobuf.ByteString getSignedDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
- * **Returns:** The document.
+ * **Returns:** The bytes for signedDocumentJson.
 
-## `public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `public Builder setSignedDocumentJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
-## `public Builder setDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Parameters:** `value` — The signedDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload document = 1;`
+## `public Builder clearSignedDocumentJson()`
 
-## `public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string signed_document_json = 1;`
 
-`.services.common.v1.JsonPayload document = 1;`
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearDocument()`
+## `public Builder setSignedDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload document = 1;`
+`string signed_document_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getDocumentFieldBuilder()`
-
-`.services.common.v1.JsonPayload document = 1;`
+ * **Parameters:** `value` — The bytes for signedDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
 ## `java.lang.String getTemplateId()`
 
@@ -344,33 +312,69 @@ Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateResponse
  * **Parameters:** `value` — The bytes for documentJson to set.
  * **Returns:** This builder for chaining.
 
-## `boolean hasRevealDocument()`
+## `java.lang.String getRevealDocumentJson()`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
- * **Returns:** Whether the revealDocument field is set.
+`string reveal_document_json = 1;`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument()`
+ * **Returns:** The revealDocumentJson.
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+## `com.google.protobuf.ByteString getRevealDocumentJsonBytes()`
 
- * **Returns:** The revealDocument.
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder()`
+`string reveal_document_json = 1;`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+ * **Returns:** The bytes for revealDocumentJson.
 
-## `java.lang.String getDocumentId()`
+## `boolean hasItemId()`
 
-`string document_id = 2;`
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
 
- * **Returns:** The documentId.
+`string item_id = 2;`
 
-## `com.google.protobuf.ByteString getDocumentIdBytes()`
+ * **Returns:** Whether the itemId field is set.
 
-`string document_id = 2;`
+## `java.lang.String getItemId()`
 
- * **Returns:** The bytes for documentId.
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** The itemId.
+
+## `com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** The bytes for itemId.
+
+## `boolean hasDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** Whether the documentJson field is set.
+
+## `java.lang.String getDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The documentJson.
+
+## `com.google.protobuf.ByteString getDocumentJsonBytes()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class CreateProofRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -378,33 +382,75 @@ Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateResponse
 
 Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
 
-## `@java.lang.Override public boolean hasRevealDocument()`
+## `@java.lang.Deprecated public static ProofCase valueOf(int value)`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+ * **Parameters:** `value` — The number of the enum to look for.
+ * **Returns:** The enum associated with the given number.
+ * **Deprecated**
 
- * **Returns:** Whether the revealDocument field is set.
+## `@java.lang.Override public java.lang.String getRevealDocumentJson()`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument()`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+`string reveal_document_json = 1;`
 
- * **Returns:** The revealDocument.
+ * **Returns:** The revealDocumentJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder()`
+## `@java.lang.Override public com.google.protobuf.ByteString getRevealDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
-## `@java.lang.Override public java.lang.String getDocumentId()`
+`string reveal_document_json = 1;`
 
-`string document_id = 2;`
+ * **Returns:** The bytes for revealDocumentJson.
 
- * **Returns:** The documentId.
+## `public boolean hasItemId()`
 
-## `@java.lang.Override public com.google.protobuf.ByteString getDocumentIdBytes()`
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
 
-`string document_id = 2;`
+`string item_id = 2;`
 
- * **Returns:** The bytes for documentId.
+ * **Returns:** Whether the itemId field is set.
+
+## `public java.lang.String getItemId()`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** The itemId.
+
+## `public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public boolean hasDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** Whether the documentJson field is set.
+
+## `public java.lang.String getDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The documentJson.
+
+## `public com.google.protobuf.ByteString getDocumentJsonBytes()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -412,173 +458,223 @@ Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
 
 Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
 
-## `public boolean hasRevealDocument()`
+## `public java.lang.String getRevealDocumentJson()`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
- * **Returns:** Whether the revealDocument field is set.
+`string reveal_document_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument()`
+ * **Returns:** The revealDocumentJson.
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+## `public com.google.protobuf.ByteString getRevealDocumentJsonBytes()`
 
- * **Returns:** The revealDocument.
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
-## `public Builder setRevealDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string reveal_document_json = 1;`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+ * **Returns:** The bytes for revealDocumentJson.
 
-## `public Builder setRevealDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+## `public Builder setRevealDocumentJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
-## `public Builder mergeRevealDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string reveal_document_json = 1;`
 
-`.services.common.v1.JsonPayload reveal_document = 1;`
-
-## `public Builder clearRevealDocument()`
-
-`.services.common.v1.JsonPayload reveal_document = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getRevealDocumentBuilder()`
-
-`.services.common.v1.JsonPayload reveal_document = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload reveal_document = 1;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getRevealDocumentFieldBuilder()`
-
-`.services.common.v1.JsonPayload reveal_document = 1;`
-
-## `public java.lang.String getDocumentId()`
-
-`string document_id = 2;`
-
- * **Returns:** The documentId.
-
-## `public com.google.protobuf.ByteString getDocumentIdBytes()`
-
-`string document_id = 2;`
-
- * **Returns:** The bytes for documentId.
-
-## `public Builder setDocumentId( java.lang.String value)`
-
-`string document_id = 2;`
-
- * **Parameters:** `value` — The documentId to set.
+ * **Parameters:** `value` — The revealDocumentJson to set.
  * **Returns:** This builder for chaining.
 
-## `public Builder clearDocumentId()`
+## `public Builder clearRevealDocumentJson()`
 
-`string document_id = 2;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
+
+`string reveal_document_json = 1;`
 
  * **Returns:** This builder for chaining.
 
-## `public Builder setDocumentIdBytes( com.google.protobuf.ByteString value)`
+## `public Builder setRevealDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`string document_id = 2;`
+<pre> Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed </pre>
 
- * **Parameters:** `value` — The bytes for documentId to set.
+`string reveal_document_json = 1;`
+
+ * **Parameters:** `value` — The bytes for revealDocumentJson to set.
  * **Returns:** This builder for chaining.
 
-## `boolean hasProofDocument()`
+## `@java.lang.Override public boolean hasItemId()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
 
- * **Returns:** Whether the proofDocument field is set.
+`string item_id = 2;`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
+ * **Returns:** Whether the itemId field is set.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `@java.lang.Override public java.lang.String getItemId()`
 
- * **Returns:** The proofDocument.
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
+`string item_id = 2;`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** The itemId.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public Builder setItemId( java.lang.String value)`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Parameters:** `value` — The itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemId()`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemIdBytes( com.google.protobuf.ByteString value)`
+
+<pre> The item identifier that contains a record with a verifiable credential to be used for generating the proof. </pre>
+
+`string item_id = 2;`
+
+ * **Parameters:** `value` — The bytes for itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `@java.lang.Override public boolean hasDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** Whether the documentJson field is set.
+
+## `@java.lang.Override public java.lang.String getDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The documentJson.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getDocumentJsonBytes()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** The bytes for documentJson.
+
+## `public Builder setDocumentJson( java.lang.String value)`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Parameters:** `value` — The documentJson to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearDocumentJson()`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setDocumentJsonBytes( com.google.protobuf.ByteString value)`
+
+<pre> A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. </pre>
+
+`string document_json = 3;`
+
+ * **Parameters:** `value` — The bytes for documentJson to set.
+ * **Returns:** This builder for chaining.
+
+## `java.lang.String getProofDocumentJson()`
+
+`string proof_document_json = 1;`
+
+ * **Returns:** The proofDocumentJson.
+
+## `com.google.protobuf.ByteString getProofDocumentJsonBytes()`
+
+`string proof_document_json = 1;`
+
+ * **Returns:** The bytes for proofDocumentJson.
 
 ## `public static final class CreateProofResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
 
-## `@java.lang.Override public boolean hasProofDocument()`
+## `@java.lang.Override public java.lang.String getProofDocumentJson()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** Whether the proofDocument field is set.
+ * **Returns:** The proofDocumentJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
+## `@java.lang.Override public com.google.protobuf.ByteString getProofDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** The proofDocument.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** The bytes for proofDocumentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
 
-## `public boolean hasProofDocument()`
+## `public java.lang.String getProofDocumentJson()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** Whether the proofDocument field is set.
+ * **Returns:** The proofDocumentJson.
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
+## `public com.google.protobuf.ByteString getProofDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** The proofDocument.
+ * **Returns:** The bytes for proofDocumentJson.
 
-## `public Builder setProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `public Builder setProofDocumentJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
-## `public Builder setProofDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Parameters:** `value` — The proofDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `public Builder clearProofDocumentJson()`
 
-## `public Builder mergeProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string proof_document_json = 1;`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearProofDocument()`
+## `public Builder setProofDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getProofDocumentBuilder()`
+ * **Parameters:** `value` — The bytes for proofDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `java.lang.String getProofDocumentJson()`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
+`string proof_document_json = 1;`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** The proofDocumentJson.
 
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getProofDocumentFieldBuilder()`
+## `com.google.protobuf.ByteString getProofDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
-## `boolean hasProofDocument()`
-
-`.services.common.v1.JsonPayload proof_document = 1;`
-
- * **Returns:** Whether the proofDocument field is set.
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
-
-`.services.common.v1.JsonPayload proof_document = 1;`
-
- * **Returns:** The proofDocument.
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** The bytes for proofDocumentJson.
 
 ## `public static final class VerifyProofRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -586,21 +682,17 @@ Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
 
 Protobuf type {@code services.verifiablecredentials.v1.VerifyProofRequest}
 
-## `@java.lang.Override public boolean hasProofDocument()`
+## `@java.lang.Override public java.lang.String getProofDocumentJson()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** Whether the proofDocument field is set.
+ * **Returns:** The proofDocumentJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
+## `@java.lang.Override public com.google.protobuf.ByteString getProofDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** The proofDocument.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** The bytes for proofDocumentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -608,83 +700,233 @@ Protobuf type {@code services.verifiablecredentials.v1.VerifyProofRequest}
 
 Protobuf type {@code services.verifiablecredentials.v1.VerifyProofRequest}
 
-## `public boolean hasProofDocument()`
+## `public java.lang.String getProofDocumentJson()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** Whether the proofDocument field is set.
+ * **Returns:** The proofDocumentJson.
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument()`
+## `public com.google.protobuf.ByteString getProofDocumentJsonBytes()`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
- * **Returns:** The proofDocument.
+ * **Returns:** The bytes for proofDocumentJson.
 
-## `public Builder setProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `public Builder setProofDocumentJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
-## `public Builder setProofDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Parameters:** `value` — The proofDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `public Builder clearProofDocumentJson()`
 
-## `public Builder mergeProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string proof_document_json = 1;`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearProofDocument()`
+## `public Builder setProofDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`string proof_document_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getProofDocumentBuilder()`
+ * **Parameters:** `value` — The bytes for proofDocumentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `boolean getIsValid()`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder()`
+<pre> Indicates if the proof is valid </pre>
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+`bool is_valid = 1;`
 
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getProofDocumentFieldBuilder()`
+ * **Returns:** The isValid.
 
-`.services.common.v1.JsonPayload proof_document = 1;`
+## `java.util.List<java.lang.String> getValidationMessagesList()`
 
-## `boolean getValid()`
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
 
-`bool valid = 1;`
+`repeated string validation_messages = 2;`
 
- * **Returns:** The valid.
+ * **Returns:** A list containing the validationMessages.
+
+## `int getValidationMessagesCount()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** The count of validationMessages.
+
+## `java.lang.String getValidationMessages(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The validationMessages at the given index.
+
+## `com.google.protobuf.ByteString getValidationMessagesBytes(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the validationMessages at the given index.
 
 ## `public static final class VerifyProofResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
 
-## `@java.lang.Override public boolean getValid()`
+## `@java.lang.Override public boolean getIsValid()`
 
-`bool valid = 1;`
+<pre> Indicates if the proof is valid </pre>
 
- * **Returns:** The valid.
+`bool is_valid = 1;`
+
+ * **Returns:** The isValid.
+
+## `public com.google.protobuf.ProtocolStringList getValidationMessagesList()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** A list containing the validationMessages.
+
+## `public int getValidationMessagesCount()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** The count of validationMessages.
+
+## `public java.lang.String getValidationMessages(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The validationMessages at the given index.
+
+## `public com.google.protobuf.ByteString getValidationMessagesBytes(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the validationMessages at the given index.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
 
-## `@java.lang.Override public boolean getValid()`
+## `@java.lang.Override public boolean getIsValid()`
 
-`bool valid = 1;`
+<pre> Indicates if the proof is valid </pre>
 
- * **Returns:** The valid.
+`bool is_valid = 1;`
 
-## `public Builder setValid(boolean value)`
+ * **Returns:** The isValid.
 
-`bool valid = 1;`
+## `public Builder setIsValid(boolean value)`
 
- * **Parameters:** `value` — The valid to set.
+<pre> Indicates if the proof is valid </pre>
+
+`bool is_valid = 1;`
+
+ * **Parameters:** `value` — The isValid to set.
  * **Returns:** This builder for chaining.
 
-## `public Builder clearValid()`
+## `public Builder clearIsValid()`
 
-`bool valid = 1;`
+<pre> Indicates if the proof is valid </pre>
 
+`bool is_valid = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public com.google.protobuf.ProtocolStringList getValidationMessagesList()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** A list containing the validationMessages.
+
+## `public int getValidationMessagesCount()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** The count of validationMessages.
+
+## `public java.lang.String getValidationMessages(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The validationMessages at the given index.
+
+## `public com.google.protobuf.ByteString getValidationMessagesBytes(int index)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the validationMessages at the given index.
+
+## `public Builder setValidationMessages( int index, java.lang.String value)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:**
+   * `index` — The index to set the value at.
+   * `value` — The validationMessages to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder addValidationMessages( java.lang.String value)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `value` — The validationMessages to add.
+ * **Returns:** This builder for chaining.
+
+## `public Builder addAllValidationMessages( java.lang.Iterable<java.lang.String> values)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `values` — The validationMessages to add.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearValidationMessages()`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder addValidationMessagesBytes( com.google.protobuf.ByteString value)`
+
+<pre> Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. </pre>
+
+`repeated string validation_messages = 2;`
+
+ * **Parameters:** `value` — The bytes of the validationMessages to add.
  * **Returns:** This builder for chaining.
 
 ## `boolean hasEmail()`
@@ -723,37 +965,35 @@ Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
 
  * **Returns:** The bytes for didUri.
 
-## `boolean hasDidcommInvitation()`
+## `boolean hasDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** Whether the didcommInvitation field is set.
+ * **Returns:** Whether the didcommInvitationJson field is set.
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation()`
+## `java.lang.String getDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** The didcommInvitation.
+ * **Returns:** The didcommInvitationJson.
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder()`
+## `com.google.protobuf.ByteString getDidcommInvitationJsonBytes()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
-## `boolean hasDocument()`
+ * **Returns:** The bytes for didcommInvitationJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `java.lang.String getDocumentJson()`
 
- * **Returns:** Whether the document field is set.
+`string document_json = 100;`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+ * **Returns:** The documentJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `com.google.protobuf.ByteString getDocumentJsonBytes()`
 
- * **Returns:** The document.
+`string document_json = 100;`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 100;`
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class SendRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -801,37 +1041,35 @@ Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
 
  * **Returns:** The bytes for didUri.
 
-## `@java.lang.Override public boolean hasDidcommInvitation()`
+## `public boolean hasDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** Whether the didcommInvitation field is set.
+ * **Returns:** Whether the didcommInvitationJson field is set.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation()`
+## `public java.lang.String getDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** The didcommInvitation.
+ * **Returns:** The didcommInvitationJson.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder()`
+## `public com.google.protobuf.ByteString getDidcommInvitationJsonBytes()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
-## `@java.lang.Override public boolean hasDocument()`
+ * **Returns:** The bytes for didcommInvitationJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `@java.lang.Override public java.lang.String getDocumentJson()`
 
- * **Returns:** Whether the document field is set.
+`string document_json = 100;`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+ * **Returns:** The documentJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `@java.lang.Override public com.google.protobuf.ByteString getDocumentJsonBytes()`
 
- * **Returns:** The document.
+`string document_json = 100;`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 100;`
+ * **Returns:** The bytes for documentJson.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -913,85 +1151,75 @@ Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
  * **Parameters:** `value` — The bytes for didUri to set.
  * **Returns:** This builder for chaining.
 
-## `@java.lang.Override public boolean hasDidcommInvitation()`
+## `@java.lang.Override public boolean hasDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** Whether the didcommInvitation field is set.
+ * **Returns:** Whether the didcommInvitationJson field is set.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation()`
+## `@java.lang.Override public java.lang.String getDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
- * **Returns:** The didcommInvitation.
+ * **Returns:** The didcommInvitationJson.
 
-## `public Builder setDidcommInvitation(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `@java.lang.Override public com.google.protobuf.ByteString getDidcommInvitationJsonBytes()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
-## `public Builder setDidcommInvitation( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Returns:** The bytes for didcommInvitationJson.
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+## `public Builder setDidcommInvitationJson( java.lang.String value)`
 
-## `public Builder mergeDidcommInvitation(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string didcomm_invitation_json = 3;`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+ * **Parameters:** `value` — The didcommInvitationJson to set.
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearDidcommInvitation()`
+## `public Builder clearDidcommInvitationJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string didcomm_invitation_json = 3;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDidcommInvitationBuilder()`
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+## `public Builder setDidcommInvitationJsonBytes( com.google.protobuf.ByteString value)`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder()`
+`string didcomm_invitation_json = 3;`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+ * **Parameters:** `value` — The bytes for didcommInvitationJson to set.
+ * **Returns:** This builder for chaining.
 
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getDidcommInvitationFieldBuilder()`
+## `public java.lang.String getDocumentJson()`
 
-`.services.common.v1.JsonPayload didcomm_invitation = 3;`
+`string document_json = 100;`
 
-## `public boolean hasDocument()`
+ * **Returns:** The documentJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `public com.google.protobuf.ByteString getDocumentJsonBytes()`
 
- * **Returns:** Whether the document field is set.
+`string document_json = 100;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument()`
+ * **Returns:** The bytes for documentJson.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `public Builder setDocumentJson( java.lang.String value)`
 
- * **Returns:** The document.
+`string document_json = 100;`
 
-## `public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+ * **Parameters:** `value` — The documentJson to set.
+ * **Returns:** This builder for chaining.
 
-`.services.common.v1.JsonPayload document = 100;`
+## `public Builder clearDocumentJson()`
 
-## `public Builder setDocument( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+`string document_json = 100;`
 
-`.services.common.v1.JsonPayload document = 100;`
+ * **Returns:** This builder for chaining.
 
-## `public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+## `public Builder setDocumentJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload document = 100;`
+`string document_json = 100;`
 
-## `public Builder clearDocument()`
-
-`.services.common.v1.JsonPayload document = 100;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder()`
-
-`.services.common.v1.JsonPayload document = 100;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder()`
-
-`.services.common.v1.JsonPayload document = 100;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getDocumentFieldBuilder()`
-
-`.services.common.v1.JsonPayload document = 100;`
+ * **Parameters:** `value` — The bytes for documentJson to set.
+ * **Returns:** This builder for chaining.
 
 ## `int getStatusValue()`
 
