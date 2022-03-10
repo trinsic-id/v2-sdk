@@ -47,11 +47,7 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
         ..Default::default()
     });
 
-    let response = client
-        .sign_in(request)
-        .await
-        .expect("Create Wallet failed")
-        .into_inner();
+    let response = client.sign_in(request).await?.into_inner();
 
     let pr = response.profile.unwrap();
     let protection = pr.protection.clone().unwrap();
@@ -97,11 +93,7 @@ async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
 
     let request = tonic::Request::new(InfoRequest {});
 
-    let response = client
-        .info(request)
-        .await
-        .expect("Info failed")
-        .into_inner();
+    let response = client.info(request).await?.into_inner();
 
     println!("{:#?}", response);
 

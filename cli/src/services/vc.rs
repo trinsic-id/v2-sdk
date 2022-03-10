@@ -17,7 +17,7 @@ use super::{super::parser::issuer::*, config::DefaultConfig};
 
 use tonic::transport::Channel;
 
-pub(crate) fn execute(args: &Command, config: DefaultConfig) {
+pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
     match args {
         Command::Issue(args) => issue(args, config),
         Command::CreateProof(args) => create_proof(args, config),
@@ -29,24 +29,25 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) {
 }
 
 #[tokio::main]
-async fn issue(args: &IssueArgs, config: DefaultConfig) {
+async fn issue(args: &IssueArgs, config: DefaultConfig) -> Result<(), Error> {
     let document_json = read_file_as_string(args.document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(IssueRequest { document_json });
 
-    let response = client
-        .issue(request)
-        .await
-        .expect("Issue failed")
-        .into_inner();
+    let response = client.issue(request).await?.into_inner();
 
     write_file(args.out, &response.signed_document_json.as_bytes());
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn issue_from_template(args: &IssueFromTemplateArgs, config: DefaultConfig) {
+async fn issue_from_template(
+    args: &IssueFromTemplateArgs,
+    config: DefaultConfig,
+) -> Result<(), Error> {
     let values = args.values_json.as_ref().map_or_else(
         || {
             args.values_file.as_ref().map_or_else(
@@ -64,36 +65,32 @@ async fn issue_from_template(args: &IssueFromTemplateArgs, config: DefaultConfig
         values_json: values,
     });
 
-    let response = client
-        .issue_from_template(request)
-        .await
-        .expect("Issue failed")
-        .into_inner();
+    let response = client.issue_from_template(request).await?.into_inner();
 
     // parse and format, to get pretty print *shrug*
     let json: Value = serde_json::from_str(&response.document_json).unwrap();
-    println!("{}", serde_json::to_string_pretty(&json).unwrap())
+    println!("{}", serde_json::to_string_pretty(&json).unwrap());
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn get_status(args: &GetStatusArgs, config: DefaultConfig) {
+async fn get_status(args: &GetStatusArgs, config: DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CheckStatusRequest {
         credential_status_id: args.credential_status_id.clone(),
     });
 
-    let response = client
-        .check_status(request)
-        .await
-        .expect("get status failed")
-        .into_inner();
+    let response = client.check_status(request).await?.into_inner();
 
-    println!("Revoked = {}", response.revoked)
+    println!("Revoked = {}", response.revoked);
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) {
+async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(UpdateStatusRequest {
@@ -101,17 +98,15 @@ async fn update_status(args: &UpdateStatusArgs, config: DefaultConfig) {
         revoked: args.revoked,
     });
 
-    let response = client
-        .update_status(request)
-        .await
-        .expect("update status failed")
-        .into_inner();
+    let response = client.update_status(request).await?.into_inner();
 
-    println!("{:#?}", ResponseStatus::from_i32(response.status).unwrap())
+    println!("{:#?}", ResponseStatus::from_i32(response.status).unwrap());
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
+async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) -> Result<(), Error> {
     let document_id = match args.document_id {
         Some(id) => id.to_string(),
         None => panic!("Please include document id"),
@@ -125,17 +120,15 @@ async fn create_proof(args: &CreateProofArgs, config: DefaultConfig) {
         proof: Some(Proof::ItemId(document_id)),
     });
 
-    let response = client
-        .create_proof(request)
-        .await
-        .expect("Create proof failed")
-        .into_inner();
+    let response = client.create_proof(request).await?.into_inner();
 
     write_file(args.out, response.proof_document_json.as_bytes());
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
+async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) -> Result<(), Error> {
     let proof_document_json = read_file_as_string(args.proof_document);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
@@ -144,11 +137,9 @@ async fn verify_proof(args: &VerifyProofArgs, config: DefaultConfig) {
         proof_document_json,
     });
 
-    let response = client
-        .verify_proof(request)
-        .await
-        .expect("Verify proof failed")
-        .into_inner();
+    let response = client.verify_proof(request).await?.into_inner();
 
     println!("{:}", response.is_valid);
+
+    Ok(())
 }

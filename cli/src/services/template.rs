@@ -43,11 +43,7 @@ async fn create(args: &CreateTemplateArgs, config: &DefaultConfig) -> Result<(),
     };
     let request = tonic::Request::new(req);
 
-    let response = client
-        .create(request)
-        .await
-        .expect("create template failed")
-        .into_inner();
+    let response = client.create(request).await?.into_inner();
 
     println!("{:#?}", response);
 
@@ -62,11 +58,7 @@ async fn get(args: &GetTemplateArgs, config: &DefaultConfig) -> Result<(), Error
         id: args.id.clone(),
     });
 
-    let response = client
-        .get(request)
-        .await
-        .expect("create template failed")
-        .into_inner();
+    let response = client.get(request).await?.into_inner();
 
     println!("{:#?}", response.template);
 
@@ -82,11 +74,7 @@ async fn list(args: &ListTemplatesArgs, config: &DefaultConfig) -> Result<(), Er
         continuation_token: args.continuation_token.clone(),
     });
 
-    let response = client
-        .list(request)
-        .await
-        .expect("create template failed")
-        .into_inner();
+    let response = client.list(request).await?.into_inner();
 
     println!("{:#?}", response.templates);
 
@@ -109,11 +97,7 @@ async fn search(args: &SearchTemplatesArgs, config: &DefaultConfig) -> Result<()
         continuation_token: args.continuation_token.clone(),
     });
 
-    let response = client
-        .search(request)
-        .await
-        .expect("search templates failed")
-        .into_inner();
+    let response = client.search(request).await?.into_inner();
 
     println!("{:#?}", response.items_json);
 
@@ -135,11 +119,7 @@ async fn delete(args: &DeleteTemplateArgs, config: &DefaultConfig) -> Result<(),
         id: args.id.clone(),
     });
 
-    let response = client
-        .delete(request)
-        .await
-        .expect("search templates failed")
-        .into_inner();
+    let response = client.delete(request).await?.into_inner();
 
     println!("{:#?}", response);
 

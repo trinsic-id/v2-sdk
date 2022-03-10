@@ -14,6 +14,7 @@ use std::{
     path::PathBuf,
 };
 use tonic::service::Interceptor;
+use tonic::Status;
 
 use crate::parser::config::{Command, ProfileArgs, ServerArgs};
 
@@ -65,10 +66,10 @@ impl Into<Bytes> for &ConfigServer {
 }
 
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
-pub enum Error {
+pub(crate) enum Error {
     IOError,
     SerializationError,
-    APIError(String),
+    APIError { code: String, message: String },
     UnknownCommand,
 }
 
@@ -99,6 +100,15 @@ impl From<serde_json::Error> for Error {
 impl From<prost::DecodeError> for Error {
     fn from(_: prost::DecodeError) -> Self {
         Error::SerializationError
+    }
+}
+
+impl From<Status> for Error {
+    fn from(status: Status) -> Self {
+        Error::APIError {
+            code: status.code().to_string(),
+            message: status.message().to_string(),
+        }
     }
 }
 

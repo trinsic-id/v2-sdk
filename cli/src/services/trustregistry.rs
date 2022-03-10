@@ -38,11 +38,7 @@ async fn search(args: &SearchArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .search_registry(request)
-        .await
-        .expect("search registry command failed")
-        .into_inner();
+    let response = client.search_registry(request).await?.into_inner();
 
     println!("{}", response.items_json);
 }
@@ -63,11 +59,7 @@ async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .register_issuer(request)
-        .await
-        .expect("register issuer command failed")
-        .into_inner();
+    let response = client.register_issuer(request).await?.into_inner();
 
     println!(
         "{}",
@@ -91,11 +83,7 @@ async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .check_issuer_status(request)
-        .await
-        .expect("check issuer command failed")
-        .into_inner();
+    let response = client.check_issuer_status(request).await?.into_inner();
 
     println!(
         "{}",
@@ -126,11 +114,7 @@ async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .check_verifier_status(request)
-        .await
-        .expect("check verifier command failed")
-        .into_inner();
+    let response = client.check_verifier_status(request).await?.into_inner();
 
     println!(
         "{}",
@@ -158,11 +142,7 @@ async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .unregister_issuer(request)
-        .await
-        .expect("unregister issuer command failed")
-        .into_inner();
+    let response = client.unregister_issuer(request).await?.into_inner();
 
     println!(
         "{}",
@@ -189,11 +169,7 @@ async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .unregister_verifier(request)
-        .await
-        .expect("unregister issuer command failed")
-        .into_inner();
+    let response = client.unregister_verifier(request).await?.into_inner();
 
     println!(
         "{}",
@@ -220,11 +196,7 @@ async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .register_verifier(request)
-        .await
-        .expect("register verifier command failed")
-        .into_inner();
+    let response = client.register_verifier(request).await?.into_inner();
 
     println!(
         "{}",
@@ -247,11 +219,7 @@ async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) {
         }),
     });
 
-    let response = client
-        .add_framework(request)
-        .await
-        .expect("add framework command failed")
-        .into_inner();
+    let response = client.add_framework(request).await?.into_inner();
 
     println!(
         "{}",
@@ -270,11 +238,7 @@ async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) {
         }),
     });
 
-    let response = client
-        .remove_framework(request)
-        .await
-        .expect("add framework command failed")
-        .into_inner();
+    let response = client.remove_framework(request).await?.into_inner();
 
     println!(
         "{}",

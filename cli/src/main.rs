@@ -14,7 +14,6 @@ use parser::template;
 use prost::{DecodeError, Message};
 use serde_json::Value;
 use services::config::DefaultConfig;
-use std::fmt::Display;
 
 pub static mut DEBUG: bool = false;
 
@@ -58,13 +57,13 @@ fn main() {
     match services::execute(&service, config) {
         Ok(_) => {}
         Err(err) => match err {
-            services::config::Error::IOError => println!("{}", format!("io error").red()),
-            services::config::Error::SerializationError => {
+            Error::IOError => println!("{}", format!("io error").red()),
+            Error::SerializationError => {
                 println!("{}", format!("serialization error").red())
             }
-            services::config::Error::UnknownCommand => unimplemented!("should not be hit"),
-            Error::APIError(grpc_status) => {
-                println!("api error: {}", format!("{}", grpc_status).red())
+            Error::UnknownCommand => unimplemented!("should not be hit"),
+            Error::APIError { code, message } => {
+                println!("{}", format!("ERR: {} [{}]", code, message).red());
             }
         },
     }
