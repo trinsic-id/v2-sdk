@@ -153,9 +153,6 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
 	failError(t, "error reading file", err)
-	var proofRequestJson Document
-	err = json.Unmarshal(fileContent2, &proofRequestJson)
-	failError(t, "error parsing JSON", err)
 
 	req := &sdk.CreateProofRequest{
 		RevealDocumentJson: string(fileContent2),

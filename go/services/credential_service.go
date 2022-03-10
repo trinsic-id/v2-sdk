@@ -7,8 +7,6 @@ import (
 	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
-type Document map[string]interface{}
-
 // NewCredentialService returns a credential service with the base service configured
 // using the provided options
 func NewCredentialService(options *Options) (CredentialService, error) {
