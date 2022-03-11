@@ -192,11 +192,17 @@ If you would like to save the profile for future use, you can simply export the 
 
 ---
 
-<!-- ## Define a Template
+## Define a Template
 
 === "Trinsic CLI"
 
 === "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Define Template](../../node/test/CredentialTemplates.ts) inside_block:defineTemplate
+    [Create Template](../../node/test/CredentialTemplates.ts) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
 
 === "C#"
 
@@ -333,7 +339,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:storeCredential
+    [Store Credential](../../node/test/VaccineDemo.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -404,7 +410,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:shareCredential
+    [Share Credential](../../node/test/VaccineDemo.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -457,7 +463,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:verifyCredential
+    [Verify Credential](../../node/test/VaccineDemo.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 

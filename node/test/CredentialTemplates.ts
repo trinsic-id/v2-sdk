@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const options = getTestServerOptions();
 
+// defineTemplate() {
 var credentialTemplateName = "My First Credential Template";
 var  nameField = new TemplateField();
 nameField.setType(FieldType.STRING);
@@ -27,6 +28,7 @@ var  isVaccinated = new TemplateField();
 isVaccinated.setType(FieldType.BOOL);
 isVaccinated.setDescription("Whether or not the person has been vaccinated");
 isVaccinated.setOptional(false);
+// }
 
 let issuer = new AccountProfile();
 
@@ -38,6 +40,7 @@ test.before(async t => {
 });
 
 async function createCredentialTemplateTest() {
+  // createTemplate() {
   const templateService = new TemplateService(options);
   
   let request = new CreateCredentialTemplateRequest();
@@ -50,6 +53,7 @@ async function createCredentialTemplateTest() {
   .set("vaccinated", isVaccinated);
   
   let response = await templateService.createCredentialTemplate(request);
+  // }
   
   return response;
 }
