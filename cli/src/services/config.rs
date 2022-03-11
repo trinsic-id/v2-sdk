@@ -76,16 +76,7 @@ impl From<&ArgMatches<'_>> for CliConfig {
         if matches.is_present("debug") {
             unsafe { DEBUG = true }
         }
-        if matches.is_present("profile") {
-            CliConfig {
-                defaults: Some(ConfigDefaults {
-                    profile: matches.value_of("profile").unwrap().to_string(),
-                }),
-                ..CliConfig::init().unwrap()
-            }
-        } else {
-            CliConfig::init().unwrap()
-        }
+        CliConfig::init().unwrap()
     }
 }
 
@@ -93,8 +84,22 @@ impl CliConfig {
     /// Initialize the configuration by reading the default confgiruation file.
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
-        let config = CliConfig::default();
-        config.save()?;
+        let config_file = data_path()?.join(CONFIG_FILENAME);
+
+        let config = match OpenOptions::new().read(true).open(config_file) {
+            Ok(mut file) => {
+                let mut buffer = String::new();
+                file.read_to_string(&mut buffer)?;
+
+                toml::from_str(&buffer)?
+            }
+            Err(_) => {
+                let config = CliConfig::default();
+                config.save()?;
+
+                config
+            }
+        };
 
         Ok(config)
     }

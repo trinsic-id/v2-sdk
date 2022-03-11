@@ -84,7 +84,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
 
     println!(
         "{}: {}",
-        format!("result").blue().bold(),
+        format!("result").cyan().bold(),
         format!("success").bold()
     );
     println!("auth_token = {}", new_config.options.auth_token);

@@ -17,29 +17,27 @@ subcommands:
             takes_value: true
             required: false
             long: server-endpoint
+            short: e
         - server-port:
             value_name: NUMBER
             help: "(Optional) Port of the server endpoint. (default: 443)"
             takes_value: true
             required: false
             long: server-port
+            short: p
         - server-use-tls:
             value_name: BOOL
             help: "(Optional) Indicates if TLS should be used. (default: true)"
             takes_value: true
             required: false
             long: server-use-tls
-        - profile-default:
-            long: profile-default
+        - auth-token:
+            long: auth-token
+            short: a
             value_name: NAME
-            help: (Optional) Name of the profile to set as default
+            help: (Optional) Sets the auth token for outgoing requests
             takes_value: true
             required: false
-        - show:
-            long: show
-            takes_value: false
-            required: false
-            help: Show the current configuration file
   - account:
       about: Account Service
       subcommands:
@@ -72,14 +70,6 @@ subcommands:
                   help: (Optional) Invitation code provided by authorized entity
                   takes_value: true
                   required: false
-              - alias:
-                  long: alias
-                  value_name: PROFILE_NAME
-                  help: >-
-                    (Required) Alias of the local profile to use to store
-                    authentication data
-                  takes_value: true
-                  required: true
               - default:
                   long: default
                   takes_value: false
@@ -469,15 +459,6 @@ subcommands:
                   takes_value: true
                   required: true
 args:
-  - profile:
-      long: alias
-      short: a
-      value_name: NAME
-      help: >-
-        (Optional) Account alias to use for authentication. If not set, it will
-        use the default configured.
-      takes_value: true
-      required: false
   - debug:
       long: debug
       short: d

@@ -14,22 +14,17 @@ use tonic::transport::Channel;
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
-        Command::Invite(args) => Ok(invite(args, config)),
+        Command::Invite(args) => invite(args, &config),
         Command::CreateEcosystem(args) => create_ecosystem(args, &config),
         Command::InvitationStatus => todo!(),
     }
 }
 
 #[tokio::main]
-async fn invite(args: &InviteArgs, config: CliConfig) {
-    let client = grpc_client_with_auth!(ProviderClient<Channel>, config);
+async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<(), Error> {
+    let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InviteRequest {
-        // contact_method: match &args.invitation_method {
-        //     InvitationMethod::Email(email) => Some(ContactMethod::Email(email.to_owned())),
-        //     InvitationMethod::Sms(sms) => Some(ContactMethod::Phone(sms.to_owned())),
-        //     InvitationMethod::None => None,
-        // },
         participant: match args.participant_type {
             parser::provider::ParticipantType::Individual => {
                 crate::proto::services::provider::v1::ParticipantType::Individual as i32
@@ -42,19 +37,14 @@ async fn invite(args: &InviteArgs, config: CliConfig) {
             .description
             .map_or(String::default(), |x| x.to_string()),
         details: Some(AccountDetails {
-            name: todo!(),
-            email: todo!(),
-            sms: todo!(),
+            ..Default::default()
         }),
     });
 
-    let response = client
-        .invite(request)
-        .await
-        .expect("Invite failed")
-        .into_inner();
-    use colored::*;
+    let response = client.invite(request).await?.into_inner();
     println!("Invitation code '{}'", response.invitation_id.cyan().bold());
+
+    Ok(())
 }
 
 #[tokio::main]
@@ -116,7 +106,7 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
 
     println!(
         "{}: {}",
-        format!("result").blue().bold(),
+        format!("result").cyan().bold(),
         format!("success").bold()
     );
     println!("auth_token = {}", new_config.options.auth_token);
