@@ -1,6 +1,8 @@
 use clap::ArgMatches;
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
+use crate::services::config::Error;
+
+pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("search") {
         return search(
             &args
@@ -26,34 +28,34 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
                 .expect("Error parsing request"),
         );
     } else {
-        panic!("Unrecognized command")
+        Err(Error::MissingArguments)
     }
 }
 
-fn search<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::Search(SearchArgs {
+fn search<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::Search(SearchArgs {
         query: args.value_of("query"),
-    })
+    }))
 }
 
-fn insert_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::InsertItem(InsertItemArgs {
+fn insert_item<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::InsertItem(InsertItemArgs {
         item_type: args.value_of("type"),
         item: args.value_of("item"),
-    })
+    }))
 }
 
-fn delete_item<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::DeleteItem(DeleteItemArgs {
+fn delete_item<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::DeleteItem(DeleteItemArgs {
         item_id: args.value_of("item-id"),
-    })
+    }))
 }
 
-fn send<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    Command::Send(SendArgs {
+fn send<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+    Ok(Command::Send(SendArgs {
         email: args.value_of("email"),
         item: args.value_of("item"),
-    })
+    }))
 }
 
 #[derive(Debug, PartialEq)]

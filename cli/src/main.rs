@@ -14,7 +14,6 @@ use parser::template;
 use prost::{DecodeError, Message};
 use serde_json::Value;
 use services::config::DefaultConfig;
-use std::fmt::Display;
 
 pub static mut DEBUG: bool = false;
 
@@ -55,18 +54,44 @@ fn main() {
     let config = DefaultConfig::from(&matches);
     let service = parser::parse(&matches);
 
-    match services::execute(&service, config) {
-        Ok(_) => {}
-        Err(err) => match err {
-            services::config::Error::IOError => println!("{}", format!("io error").red()),
-            services::config::Error::SerializationError => {
-                println!("{}", format!("serialization error").red())
-            }
-            services::config::Error::UnknownCommand => unimplemented!("should not be hit"),
-            Error::APIError(grpc_status) => {
-                println!("api error: {}", format!("{}", grpc_status).red())
-            }
+    match service {
+        Ok(service) => match services::execute(&service, config) {
+            Ok(_) => {}
+            Err(err) => match err {
+                Error::IOError => println!("{}", format!("io error").red()),
+                Error::SerializationError => {
+                    println!("{}", format!("serialization error").red())
+                }
+                Error::UnknownCommand => unimplemented!("should not be hit"),
+                Error::APIError { code, message } => {
+                    println!(
+                        "{}: {}: {}",
+                        format!("error").red().bold(),
+                        format!("{}", code.to_lowercase()).bold(),
+                        format!("{}", message.to_lowercase())
+                    );
+                }
+                Error::MissingArguments => todo!(),
+            },
         },
+        Err(err) => {
+            println!(
+                "{}: {}: {}",
+                format!("error").red().bold(),
+                format!("command error").bold(),
+                format!("{}", err)
+            );
+            println!();
+            println!(
+                "{}",
+                format!(
+                    "For more information try {} or {}",
+                    format!("-h").green(),
+                    format!("--help").green()
+                )
+                .italic()
+            )
+        }
     }
 }
 

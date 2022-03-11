@@ -14,63 +14,78 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func NewServiceBase(options *sdk.ServiceOptions) (*ServiceBase, error) {
-	conn, err := NewServiceConnection(options)
-	if err != nil {
-		return nil, err
+// NewServiceBase returns a base service which is the foundation
+// for all the other services
+func NewServiceBase(options *Options) (Service, error) {
+	if options.Channel == nil {
+		conn, err := NewServiceConnection(options.ServiceOptions)
+		if err != nil {
+			return nil, err
+		}
+
+		options.Channel = conn
 	}
 
-	return &ServiceBase{
+	return &serviceBase{
 		options:          options,
-		channel:          conn,
 		securityProvider: &OberonSecurityProvider{},
 	}, nil
 }
 
-type ServiceBase struct {
-	options          *sdk.ServiceOptions
-	channel          *grpc.ClientConn
-	securityProvider SecurityProvider
-}
-
+// Service defines functionality common to all services
 type Service interface {
+	// GetMetadatContext returns a context with the required grpc metadata embedded in it
 	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
+	// BuildMetdata builds the required grpc metadata
 	BuildMetadata(message proto.Message) (metadata.MD, error)
-	SetProfile(token string)
-	GetProfile() string
+	// SetToken assigns the given auth token to the service. This token will be used for
+	// make all api calls
+	SetToken(token string)
+	// GetToken returns the auth token currently assigned to this service or an empty string
+	// if none is set
+	GetToken() string
+	// GetProfile returns the account profile associated with this service, or null if none
+	GetProfile() *sdk.AccountProfile
+	// GetServiceOptions returns the set of ServiceOptions the service is using
 	GetServiceOptions() *sdk.ServiceOptions
-	SetChannel(channel *grpc.ClientConn)
+	// GetChannel returns the grpc client connect
 	GetChannel() *grpc.ClientConn
 }
 
-func (s *ServiceBase) GetChannel() *grpc.ClientConn {
-	return s.channel
+type serviceBase struct {
+	options          *Options
+	securityProvider SecurityProvider
 }
 
-func (s *ServiceBase) SetChannel(channel *grpc.ClientConn) {
-	s.channel = channel
+func (s *serviceBase) GetChannel() *grpc.ClientConn {
+	return s.options.Channel
 }
 
-func (s *ServiceBase) SetProfile(authtoken string) {
-	s.options.AuthToken = authtoken
+func (s *serviceBase) SetToken(authtoken string) {
+	s.options.ServiceOptions.AuthToken = authtoken
 }
 
-func (s *ServiceBase) GetProfile() string {
-	if s.options != nil {
-		return s.options.AuthToken
+func (s *serviceBase) GetToken() string {
+	return s.options.ServiceOptions.AuthToken
+}
+
+func (s *serviceBase) GetProfile() *sdk.AccountProfile {
+	if s.options != nil && len(s.options.ServiceOptions.AuthToken) != 0 {
+		profile, _ := ProfileFromToken(s.options.ServiceOptions.AuthToken)
+		return profile
 	}
 
-	return ""
+	return nil
 }
 
-func (s *ServiceBase) GetServiceOptions() *sdk.ServiceOptions {
-	return s.options
+func (s *serviceBase) GetServiceOptions() *sdk.ServiceOptions {
+	return s.options.ServiceOptions
 }
 
 // GetMetadataContext returns a new context with grpc metadata containing authentication headers
 //
 // This call will return an error if the auth token is not set
-func (s *ServiceBase) GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error) {
+func (s *serviceBase) GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error) {
 	if userContext == nil {
 		return nil, errors.New("userContext cannot be nil")
 	}
@@ -86,12 +101,12 @@ func (s *ServiceBase) GetMetadataContext(userContext context.Context, message pr
 // BuildMetadata builds grpc metadata with the authentication header configured.
 //
 // This call will return an error if the auth token is not set
-func (s *ServiceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
-	if len(s.options.AuthToken) == 0 {
+func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
+	if len(s.options.ServiceOptions.AuthToken) == 0 {
 		return nil, errors.New("cannot call authenticated endpoint: auth token must be set in service options")
 	}
 
-	profile, err := ProfileFromToken(s.options.AuthToken)
+	profile, err := ProfileFromToken(s.options.ServiceOptions.AuthToken)
 	if err != nil {
 		return nil, err
 	}

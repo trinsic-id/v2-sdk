@@ -28,7 +28,7 @@ func TestServiceBase(t *testing.T) {
 
 	base, err := NewServiceBase(opts)
 	assert.Nil(err)
-	assert.Equal(opts, base.GetServiceOptions())
+	assert.Equal(opts.ServiceOptions, base.GetServiceOptions())
 
 	// Did we get a default grpc connection?
 	conn := base.GetChannel()
@@ -36,15 +36,30 @@ func TestServiceBase(t *testing.T) {
 	assert.Equal(connectivity.Idle, conn.GetState(), "new grpc connection state should be idle")
 	assert.Equal("127.0.0.1:1234", conn.Target())
 
-	// Can we replace the grpc connection
+	// Can we specify a grp connection?
 	nconn, err := grpc.Dial("192.168.1.1:4321", grpc.WithInsecure())
 	assert.Nil(err)
 	if !assert.NotNil(nconn) {
 		return
 	}
 
-	base.SetChannel(nconn)
-	assert.Equal("192.168.1.1:4321", base.channel.Target(), "new grpc connection should be set")
+	opts, err = NewServiceOptions(
+		WithOptions(&sdk.ServiceOptions{
+			ServerEndpoint:   "127.0.0.1",
+			ServerPort:       1234,
+			DefaultEcosystem: "test"},
+		),
+		WithChannel(nconn),
+	)
+
+	if !assert.Nil(err) {
+		return
+	}
+
+	base, err = NewServiceBase(opts)
+	assert.Nil(err)
+	assert.Equal(opts.ServiceOptions, base.GetServiceOptions())
+	assert.Equal("192.168.1.1:4321", base.GetChannel().Target(), "new grpc connection should be set")
 
 	// we should have an empty auth profile
 	assert.Empty(base.GetProfile(), "auth Profile should be empty")
@@ -68,8 +83,8 @@ func TestServiceBase(t *testing.T) {
 	assert.Equal("EgoxMjM0NTY3ODkwGgoxMjM0NTY3ODkwIgIIAQ", tkn)
 
 	// Set new profile
-	base.SetProfile(tkn)
-	assert.Equal(tkn, base.options.AuthToken, "auth token should have been replaced")
+	base.SetToken(tkn)
+	assert.Equal(tkn, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Must Unprotect token
 	_, err = base.GetMetadataContext(context.Background(), &sdk.AccountDetails{})
@@ -79,8 +94,8 @@ func TestServiceBase(t *testing.T) {
 
 	// use test vector (valid unprotected token)
 	testToken := "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnAKKnVybjp0cmluc2ljOndhbGxldHM6SlZkS0pHcWs1YnFzRmtNTGJKTHZwSxIkYmFiM2Y5ZTgtOTIyYS00ZjEwLWI5MmMtMmYyZTM0MmUwNDQzIhx1cm46dHJpbnNpYzplY29zeXN0ZW1zOlRlc3QxGjCFcgwYBFmtbNn4Y2D37yIiChzzNLfods2vo37H6wf65vAYFZ3FqbtMNe6MKX14LQQiAA"
-	base.SetProfile(testToken)
-	assert.Equal(testToken, base.options.AuthToken, "auth token should have been replaced")
+	base.SetToken(testToken)
+	assert.Equal(testToken, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Sets the authorization header to oberon
 	md, err := base.BuildMetadata(&sdk.AccountDetails{})

@@ -12,14 +12,14 @@ import (
 
 // NewAccountService returns an account servcie with the base service configured
 // using the provided options
-func NewAccountService(options *sdk.ServiceOptions) (AccountService, error) {
+func NewAccountService(options *Options) (AccountService, error) {
 	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
-	service := &AccountBase{
-		ServiceBase: base,
-		client:      sdk.NewAccountClient(base.channel),
+	service := &accountBase{
+		Service: base,
+		client:  sdk.NewAccountClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -29,9 +29,9 @@ func NewAccountService(options *sdk.ServiceOptions) (AccountService, error) {
 type AccountService interface {
 	Service
 	// SignIn returns an encoded auth token
-	SignIn(userContext context.Context, details *sdk.AccountDetails, inviteCode, ecosystemID string) (string, sdk.ConfirmationMethod, error)
+	SignIn(userContext context.Context, request *sdk.SignInRequest) (string, sdk.ConfirmationMethod, error)
 	// Unprotect takes an authtoken that has been protected using a pin code
-	// and returns an ulocked token
+	// and returns an unlocked token
 	Unprotect(authtoken, securityCode string) (string, error)
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
@@ -43,37 +43,39 @@ type AccountService interface {
 	RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error)
 }
 
-// AccountBase implements the AccountService interface
-type AccountBase struct {
-	*ServiceBase
+type accountBase struct {
+	Service
 	client sdk.AccountClient
 }
 
 // SignIn to a given account
-func (a *AccountBase) SignIn(userContext context.Context, details *sdk.AccountDetails, inviteCode, ecosystemID string) (string, sdk.ConfirmationMethod, error) {
-	if details == nil {
-		details = &sdk.AccountDetails{}
+func (a *accountBase) SignIn(userContext context.Context, request *sdk.SignInRequest) (string, sdk.ConfirmationMethod, error) {
+	if request == nil {
+		request = &sdk.SignInRequest{}
 	}
 
-	if len(ecosystemID) == 0 {
-		ecosystemID = a.options.DefaultEcosystem
+	if len(request.EcosystemId) == 0 {
+		request.EcosystemId = a.GetServiceOptions().DefaultEcosystem
 	}
 
-	response, err := a.client.SignIn(userContext, &sdk.SignInRequest{Details: details, InvitationCode: inviteCode, EcosystemId: ecosystemID})
+	resp, err := a.client.SignIn(userContext, request)
 	if err != nil {
 		return "", sdk.ConfirmationMethod_None, err
 	}
 
-	tkn, err := ProfileToToken(response.Profile)
+	tkn, err := ProfileToToken(resp.Profile)
 	if err != nil {
 		return "", sdk.ConfirmationMethod_None, err
 	}
 
-	return tkn, response.ConfirmationMethod, nil
+	return tkn, resp.ConfirmationMethod, nil
 }
 
 // Unprotect an authtoken using the given security code
-func (a *AccountBase) Unprotect(authtoken, securityCode string) (string, error) {
+//
+// This method can be called multiple times on an individual token
+// to "unwrap" the blindings that have been applied
+func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) {
 	profile, err := ProfileFromToken(authtoken)
 	if err != nil {
 		return "", err
@@ -101,8 +103,8 @@ func (a *AccountBase) Unprotect(authtoken, securityCode string) (string, error) 
 // Protect an authtoken with the given security code. Must be unprotected before use
 //
 // This method can be called as many times as you want, but each code must be "unwrapped"
-// in the reverse order before use
-func (a *AccountBase) Protect(authtoken, securityCode string) (string, error) {
+// by calling Unprotect in the reverse order before use
+func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 	profile, err := ProfileFromToken(authtoken)
 	if err != nil {
 		return "", err
@@ -128,7 +130,7 @@ func (a *AccountBase) Protect(authtoken, securityCode string) (string, error) {
 }
 
 // GetInfo associated with a given wallet
-func (a *AccountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, error) {
+func (a *accountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, error) {
 	request := &sdk.InfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
@@ -142,7 +144,7 @@ func (a *AccountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, e
 }
 
 // ListDevices that can access the cloud wallet
-func (a *AccountBase) ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error) {
+func (a *accountBase) ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -155,7 +157,7 @@ func (a *AccountBase) ListDevices(userContext context.Context, request *sdk.List
 }
 
 // RevokeDevice from the cloud wallet
-func (a *AccountBase) RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error) {
+func (a *accountBase) RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

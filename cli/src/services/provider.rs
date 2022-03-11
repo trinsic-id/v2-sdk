@@ -1,5 +1,4 @@
 use std::io;
-use std::thread::AccessError;
 
 use super::super::parser::provider::*;
 use crate::parser;
@@ -16,13 +15,13 @@ pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error
     match args {
         Command::Invite(args) => Ok(invite(args, config)),
         Command::CreateEcosystem(args) => create_ecosystem(args, &config),
-        _ => Err(Error::UnknownCommand),
+        Command::InvitationStatus => todo!(),
     }
 }
 
 #[tokio::main]
 async fn invite(args: &InviteArgs, config: DefaultConfig) {
-    let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config);
+    let client = grpc_client_with_auth!(ProviderClient<Channel>, config);
 
     let request = tonic::Request::new(InviteRequest {
         // contact_method: match &args.invitation_method {
@@ -77,11 +76,7 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) ->
     };
     let request = tonic::Request::new(req);
 
-    let response = client
-        .create_ecosystem(request)
-        .await
-        .expect("create ecosystem failed")
-        .into_inner();
+    let response = client.create_ecosystem(request).await?.into_inner();
 
     let pr = response.profile.unwrap();
     let protection = pr.protection.clone().unwrap();
