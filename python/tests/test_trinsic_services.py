@@ -71,7 +71,6 @@ class TestServices(unittest.TestCase):
 
         asyncio.run(test_code())
 
-    @unittest.skip("Account protection demo hangs")
     def test_protect_unprotect_account(self):
         async def test_code():
             account_service = AccountService(server_config=trinsic_config())
@@ -83,7 +82,7 @@ class TestServices(unittest.TestCase):
             with self.assertRaises(Exception) as ve:
                 await self.print_get_info(account_service, my_protected_profile)
 
-            my_unprotected_profile = account_service.unprotect(my_profile, code)
+            my_unprotected_profile = account_service.unprotect(my_protected_profile, code)
             # This hangs for unknown reasons.
             await self.print_get_info(account_service, my_unprotected_profile)
 
