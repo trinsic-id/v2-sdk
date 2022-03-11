@@ -49,7 +49,6 @@ func TestServiceBase(t *testing.T) {
 			ServerPort:       1234,
 			DefaultEcosystem: "test"},
 		),
-		WithChannel(nconn),
 	)
 
 	if !assert.Nil(err) {
@@ -59,7 +58,7 @@ func TestServiceBase(t *testing.T) {
 	base, err = NewServiceBase(opts)
 	assert.Nil(err)
 	assert.Equal(opts.ServiceOptions, base.GetServiceOptions())
-	assert.Equal("192.168.1.1:4321", base.GetChannel().Target(), "new grpc connection should be set")
+	assert.Equal("127.0.0.1:1234", base.GetChannel().Target(), "new grpc connection should be set")
 
 	// we should have an empty auth profile
 	assert.Empty(base.GetProfile(), "auth Profile should be empty")

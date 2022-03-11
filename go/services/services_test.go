@@ -12,7 +12,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
 // pathData() {
@@ -74,8 +73,6 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-
-	opts.Channel = accountService.GetChannel()
 
 	// if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
 	// 	t.Fail()
@@ -176,12 +173,12 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -238,23 +235,23 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 }
 
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn, string, error) {
+func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
 	assert2 := assert.New(t)
 	opts, err := NewServiceOptions(WithTestEnv())
 	if !assert2.Nil(err) {
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
 	// Open in background
 	accountService, err := NewAccountService(opts)
 	if !assert2.Nil(err) {
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
 	authtoken, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	if !assert2.Nil(err) {
 		fmt.Println(err)
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
-	return assert2, accountService.GetChannel(), authtoken, nil
+	return assert2, authtoken, nil
 }
 
 func createRandomEcosystem() error {
@@ -273,12 +270,12 @@ func createRandomEcosystem() error {
 	return err
 }
 func TestEcosystemDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -310,12 +307,12 @@ func TestEcosystemDemo(t *testing.T) {
 }
 
 func TestTemplatesDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}
