@@ -17,20 +17,21 @@ use crate::{
     },
     services::config::*,
 };
+use colored::Colorize;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
 pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
     match args {
-        Command::Search(args) => Ok(search(args, config)),
-        Command::InsertItem(args) => Ok(insert_item(args, config)),
-        Command::DeleteItem(args) => Ok(delete_item(args, config)),
-        Command::Send(args) => Ok(send(args, config)),
+        Command::Search(args) => search(args, config),
+        Command::InsertItem(args) => insert_item(args, config),
+        Command::DeleteItem(args) => delete_item(args, config),
+        Command::Send(args) => send(args, config),
     }
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: CliConfig) {
+async fn search(args: &SearchArgs, config: CliConfig) -> Result<(), Error> {
     let query = args
         .query
         .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
@@ -41,12 +42,8 @@ async fn search(args: &SearchArgs, config: CliConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .search(request)
-        .await
-        .expect("Search failed")
-        .into_inner();
-    use colored::*;
+    let response = client.search(request).await?.into_inner();
+
     println!("Search results for query '{}'", query.cyan().bold());
     println!(
         "{}",
@@ -54,10 +51,12 @@ async fn search(args: &SearchArgs, config: CliConfig) {
             .unwrap()
             .yellow()
     );
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn insert_item(args: &InsertItemArgs, config: CliConfig) {
+async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<(), Error> {
     let item_json = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
@@ -66,29 +65,31 @@ async fn insert_item(args: &InsertItemArgs, config: CliConfig) {
             item_json: item_json,
             item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
-        .await
-        .expect("Insert item failed")
+        .await?
         .into_inner();
 
     println!("{:#?}", response);
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn delete_item(args: &DeleteItemArgs, config: CliConfig) {
+async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<(), Error> {
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
         .delete_item(DeleteItemRequest {
             item_id: args.item_id.map_or(String::default(), |x| x.to_string()),
         })
-        .await
-        .expect("Delete item failed")
+        .await?
         .into_inner();
 
     println!("{:#?}", response);
+
+    Ok(())
 }
 
 #[tokio::main]
-async fn send(args: &SendArgs, config: CliConfig) {
+async fn send(args: &SendArgs, config: CliConfig) -> Result<(), Error> {
     let item = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
@@ -99,9 +100,10 @@ async fn send(args: &SendArgs, config: CliConfig) {
             )),
             document_json: item,
         })
-        .await
-        .expect("Send item failed")
+        .await?
         .into_inner();
 
     println!("{:#?}", response);
+
+    Ok(())
 }
