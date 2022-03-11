@@ -207,6 +207,11 @@ If you would like to save the profile for future use, you can simply export the 
 === "C#"
 
 === "Python"
+    <!--codeinclude-->
+    ```python
+    [Create Template](../../python/samples/templates_demo.py) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
 
 === "Java"
 

@@ -20,6 +20,7 @@ async def templates_demo():
     wallet_service = WalletService(server_config=trinsic_config(profile))
 
     # create example template
+    # createTemplate() {
     template = await template_service.create(
         name="An Example Credential",
         allow_additional_fields=False,
@@ -29,6 +30,7 @@ async def templates_demo():
             "age": TemplateField(type=FieldType.NUMBER, optional=True),
         },
     )
+    # }
     assert template is not None
     assert template.data is not None
     assert template.data.id is not None
