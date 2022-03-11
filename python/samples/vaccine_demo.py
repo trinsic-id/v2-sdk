@@ -119,6 +119,10 @@ async def vaccine_demo():
     # print(f"Credential_status: {credential_status}")
     # assert credential_status.revoked is True
     # }
+    credentials_service.close()
+    wallet_service.close()
+    account_service.close()
+    provider_service.close()
 
 
 if __name__ == "__main__":

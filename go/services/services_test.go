@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
@@ -87,11 +88,6 @@ func TestServiceOptions(t *testing.T) {
 
 func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
-
-	err := createDefaultEcosystem()
-	if !assert2.Nil(err) {
-		return
-	}
 
 	// Open in background
 	opts, err := NewServiceOptions(WithTestEnv())
@@ -288,7 +284,7 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn,
 	return assert2, accountService.GetChannel(), authtoken, nil
 }
 
-func createDefaultEcosystem() error {
+func createRandomEcosystem() error {
 	opts, err := NewServiceOptions(WithTestEnv())
 	if err != nil {
 		return err
@@ -299,7 +295,7 @@ func createDefaultEcosystem() error {
 		return err
 	}
 
-	_, err = ps.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{Name: "default"})
+	_, err = ps.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{Name: "test-sdk-" + uuid.New().String()})
 
 	return err
 }
@@ -322,7 +318,7 @@ func TestEcosystemDemo(t *testing.T) {
 	service.SetChannel(channel)
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
-		Name:        "Test-Ecosystem",
+		Name:        "test-sdk-" + uuid.New().String(),
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
