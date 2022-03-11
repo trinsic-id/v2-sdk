@@ -1,11 +1,8 @@
 import test from "ava";
 
 import {AccountService, CredentialService, WalletService, TemplateService, CreateCredentialTemplateRequest, TemplateField, FieldType, AccountProfile, IssueFromTemplateRequest, SignInRequest, InsertItemRequest, CreateProofRequest, VerifyProofRequest} from "../src";
-import {getTemplateCertFrameJSON, getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
-
-require("dotenv").config();
-
-const options = getTestServerOptions();
+import templateCertFramePath from './data/credential-template-frame.json'
+import { options } from "./env";
 
 var credentialTemplateName = "My First Credential Template";
 var  nameField = new TemplateField();
@@ -88,7 +85,7 @@ async function verifyCredential() {
 
 
   credentialService.options.setAuthToken(allison);
-  const proofRequestJson = getTemplateCertFrameJSON();
+  const proofRequestJson = require(templateCertFramePath);
   const proofRequest = new CreateProofRequest()
     .setItemId(insertItemResponse.getItemId())
     .setDocumentJson(proofRequestJson);
