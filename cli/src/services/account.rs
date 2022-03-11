@@ -8,8 +8,10 @@ use crate::{
         InfoRequest, SignInRequest, TokenProtection,
     },
 };
+use base64::URL_SAFE_NO_PAD;
 use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
+use prost::Message;
 use std::io;
 use tonic::transport::Channel;
 
@@ -23,8 +25,6 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
 
 #[tokio::main]
 async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
-    let mut new_config = config.clone();
-
     let name = match &args.name {
         Some(desc) => desc.to_string(),
         None => "New Wallet (from CLI)".to_string(),
@@ -47,11 +47,11 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
 
     let response = client.sign_in(request).await?.into_inner();
 
-    let pr = response.profile.unwrap();
-    let protection = pr.protection.clone().unwrap();
+    let acc_profile = response.profile.unwrap();
+    let protection = acc_profile.protection.clone().unwrap();
 
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
-        ConfirmationMethod::None => pr,
+        ConfirmationMethod::None => acc_profile,
         ConfirmationMethod::Email => {
             println!(
                 "{}",
@@ -64,23 +64,30 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
             // strips new line characters at the end
             let code = buffer.lines().next().unwrap();
 
-            let mut p = pr.clone();
+            let mut p = acc_profile.clone();
             unprotect(&mut p, code.as_bytes().to_vec());
 
             p
         }
         ConfirmationMethod::Sms => {
             println!("{}", "SMS confirmation is not yet supported.".red());
-            pr
+            acc_profile
         }
-        ConfirmationMethod::ConnectedDevice => pr,
-        ConfirmationMethod::Other => pr,
+        ConfirmationMethod::ConnectedDevice => acc_profile,
+        ConfirmationMethod::Other => acc_profile,
     };
 
-    // println!("Profile: {:#?}", profile);
+    let mut new_config = config.clone();
+    new_config.options.auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
 
-    let auth_token = new_config.save_profile(profile, args.alias.unwrap(), args.set_default);
-    println!("Auth Token: {:#?}", auth_token.unwrap());
+    new_config.save()?;
+
+    println!(
+        "{}: {}",
+        format!("result").blue().bold(),
+        format!("success").bold()
+    );
+    println!("auth_token = {}", new_config.options.auth_token);
 
     Ok(())
 }

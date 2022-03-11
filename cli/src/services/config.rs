@@ -17,12 +17,12 @@ use std::{
     env::var,
     fs::{self, OpenOptions},
     io::prelude::*,
-    path::{Path, PathBuf},
+    path::PathBuf,
     time::{SystemTime, UNIX_EPOCH},
 };
 use tonic::service::Interceptor;
 
-use crate::parser::config::{Command, ProfileArgs, ServerArgs};
+use crate::parser::config::{ConfigCommand, SdkOptionsArgs};
 
 pub(crate) static DEFAULT_SERVER_ENDPOINT: &str = "prod.trinsic.cloud";
 pub(crate) static DEFAULT_SERVER_PORT: i32 = 443;
@@ -93,96 +93,31 @@ impl CliConfig {
     /// Initialize the configuration by reading the default confgiruation file.
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
-        // Use the user's home directory to store configuration files and profile data
-        let config_file = data_path().join(CONFIG_FILENAME);
-
-        // If a default file is not found, create one with default configuration
-        write_config(&config_file, &CliConfig::default())?;
-
-        let mut buffer = String::new();
-        let mut file = OpenOptions::new().read(true).open(&config_file)?;
-        file.read_to_string(&mut buffer)?;
-        let config: CliConfig = match toml::from_str(&buffer) {
-            Ok(x) => x,
-            Err(_err) => {
-                let mut file = OpenOptions::new()
-                    .create_new(false)
-                    .read(true)
-                    .truncate(true)
-                    .write(true)
-                    .append(false)
-                    .open(config_file)?;
-
-                let buffer = toml::to_vec(&CliConfig::default())?;
-                file.write_all(&buffer)?;
-                file.flush()?;
-
-                CliConfig::default()
-            }
-        };
+        let config = CliConfig::default();
+        config.save()?;
 
         Ok(config)
     }
 
-    pub fn save_config(&self) -> Result<(), Error> {
-        let config_file = data_path().join(CONFIG_FILENAME);
+    pub fn save(&self) -> Result<(), Error> {
+        let config_file = data_path()?.join(CONFIG_FILENAME);
 
-        write_config(&config_file, self)
-    }
-    #[allow(dead_code)]
-    pub fn read_profile<T>(&self) -> Result<T, Error>
-    where
-        T: crate::MessageFormatter + prost::Message + Default,
-    {
-        let filename = data_path().join(format!("{}.bin", self.defaults.as_ref().unwrap().profile));
-        let mut file = OpenOptions::new().read(true).open(filename)?;
-
-        let mut buffer: Vec<u8> = vec![];
-        file.read_to_end(&mut buffer)?;
-
-        T::from_vec(&buffer).map_err(|_| Error::SerializationError)
-    }
-
-    pub fn save_profile(
-        &mut self,
-        profile: AccountProfile,
-        name: &str,
-        default: bool,
-    ) -> Result<String, Error> {
-        let profile_filename = data_path().join(format!("{}.bin", name));
-        let mut profile_file = OpenOptions::new()
+        let mut file = OpenOptions::new()
             .create(true)
-            .write(true)
             .truncate(true)
-            .open(profile_filename)?;
+            .read(true)
+            .write(true)
+            .open(config_file)?;
 
-        let profile_str = base64::encode_config(&profile.to_vec(), base64::URL_SAFE_NO_PAD);
+        let buffer = toml::to_vec(self)?;
+        file.write_all(&buffer)?;
+        file.flush()?;
 
-        profile_file.write_all(profile_str.as_bytes())?;
-        profile_file.flush()?;
-
-        // If default is `true`, set this profile as default in the
-        // main configuration file
-        if default || self.defaults.is_none() {
-            self.defaults = Some(match self.defaults.as_ref() {
-                Some(profile) => ConfigDefaults {
-                    profile: name.to_string(),
-                    ..*profile
-                },
-                None => ConfigDefaults {
-                    profile: name.to_string(),
-                    ..Default::default()
-                },
-            });
-        }
-
-        self.save_config()?;
-
-        Ok(profile_str)
+        Ok(())
     }
 
     pub fn print(&self) -> Result<(), Error> {
-        let config_file = data_path().join(CONFIG_FILENAME);
+        let config_file = data_path()?.join(CONFIG_FILENAME);
         let mut file = OpenOptions::new().read(true).open(config_file.clone())?;
 
         let mut buffer: String = String::new();
@@ -223,7 +158,10 @@ impl Interceptor for CliConfig {
         mut request: tonic::Request<()>,
     ) -> Result<tonic::Request<()>, tonic::Status> {
         // read the currently configured profile
-        let profile: AccountProfile = self.read_profile().unwrap();
+        let profile_data = base64::decode_config(&self.options.auth_token, base64::URL_SAFE)
+            .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
+        let profile: AccountProfile = AccountProfile::from_vec(&profile_data)
+            .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
 
         // generate nonce by combining the current unix epoch timestamp
         // and a hash of the request payload
@@ -267,26 +205,14 @@ impl Interceptor for CliConfig {
     }
 }
 
-pub fn execute(args: &Command) {
-    set_server_attr(&args.server);
-    set_profile_attr(&args.profile);
+pub fn execute(args: &ConfigCommand) {
+    save(&args.options);
 }
 
-fn set_profile_attr(args: &ProfileArgs) {
-    let mut config = CliConfig::init().unwrap();
-    if args.default.is_some() {
-        config.defaults = Some(ConfigDefaults {
-            profile: args.default.unwrap().to_string(),
-        });
-    }
-
-    config.save_config().unwrap()
-}
-
-fn set_server_attr(args: &ServerArgs) {
+fn save(args: &SdkOptionsArgs) {
     let mut config = CliConfig::init().unwrap();
     if args.endpoint.is_some() {
-        config.options.server_endpoint = args.endpoint.unwrap().to_string();
+        config.options.server_endpoint = args.endpoint.as_ref().unwrap().to_string();
     }
     if args.port.is_some() {
         config.options.server_port = args.port.unwrap() as i32;
@@ -294,37 +220,26 @@ fn set_server_attr(args: &ServerArgs) {
     if args.use_tls.is_some() {
         config.options.server_use_tls = args.use_tls.unwrap();
     }
+    if args.auth_token.is_some() {
+        config.options.auth_token = args.auth_token.as_ref().unwrap().to_string();
+    }
+    if args.default_ecosystem.is_some() {
+        config.options.default_ecosystem = args.default_ecosystem.as_ref().unwrap().to_string();
+    }
 
-    config.save_config().unwrap()
+    config.save().unwrap()
 }
 
-fn data_path() -> PathBuf {
-    let path: PathBuf = match var("OKAPI_ROOT") {
+fn data_path() -> Result<PathBuf, Error> {
+    let path: PathBuf = match var("TRINSIC_ROOT") {
         Ok(path) => path.into(),
-        Err(_) => dirs::home_dir().expect(
-            "Unable to locate home directory. Please set the environment variable $OKAPI_ROOT",
-        ),
+        Err(_) => dirs::home_dir().ok_or(Error::IOError)?,
     }
     .join(".trinsic");
     if !path.exists() {
-        fs::create_dir_all(path.clone()).unwrap();
+        fs::create_dir_all(path.clone())?;
     }
-    path
-}
-
-fn write_config(config_dir: &Path, config: &CliConfig) -> Result<(), Error> {
-    let mut file = OpenOptions::new()
-        .create(true)
-        .truncate(true)
-        .read(true)
-        .write(true)
-        .open(config_dir)?;
-
-    let buffer = toml::to_vec(config)?;
-    file.write_all(&buffer)?;
-    file.flush()?;
-
-    Ok(())
+    Ok(path)
 }
 
 #[cfg(test)]

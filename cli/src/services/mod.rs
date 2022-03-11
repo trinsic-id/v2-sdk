@@ -27,7 +27,7 @@ pub(crate) enum Service<'a> {
     Wallet(crate::parser::wallet::Command<'a>),
     VerifiableCredential(crate::parser::issuer::Command<'a>),
     Provider(crate::parser::provider::Command<'a>),
-    Config(crate::parser::config::Command<'a>),
+    Config(crate::parser::config::ConfigCommand),
     Account(crate::parser::account::Command<'a>),
     TrustRegistry(crate::parser::trustregistry::Command),
     Template(crate::parser::template::TemplateCommand),

@@ -8,6 +8,7 @@ use crate::proto::services::provider::v1::{provider_client::ProviderClient, Invi
 use crate::services::account::unprotect;
 use crate::services::config::*;
 use crate::*;
+use base64::URL_SAFE_NO_PAD;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -78,11 +79,11 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
 
     let response = client.create_ecosystem(request).await?.into_inner();
 
-    let pr = response.profile.unwrap();
-    let protection = pr.protection.clone().unwrap();
+    let acc_profile = response.profile.unwrap();
+    let protection = acc_profile.protection.clone().unwrap();
 
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
-        ConfirmationMethod::None => pr,
+        ConfirmationMethod::None => acc_profile,
         ConfirmationMethod::Email => {
             println!(
                 "{}",
@@ -95,23 +96,30 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
             // strips new line characters at the end
             let code = buffer.lines().next().unwrap();
 
-            let mut p = pr.clone();
+            let mut p = acc_profile.clone();
             unprotect(&mut p, code.as_bytes().to_vec());
 
             p
         }
         ConfirmationMethod::Sms => {
             println!("{}", "SMS confirmation is not yet supported.".red());
-            pr
+            acc_profile
         }
-        ConfirmationMethod::ConnectedDevice => pr,
-        ConfirmationMethod::Other => pr,
+        ConfirmationMethod::ConnectedDevice => acc_profile,
+        ConfirmationMethod::Other => acc_profile,
     };
 
-    // println!("Profile: {:#?}", profile);
     let mut new_config = config.clone();
-    let auth_token = new_config.save_profile(profile, &args.alias, true);
-    println!("Auth Token: {:#?}", auth_token.unwrap());
+    new_config.options.auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
+
+    new_config.save()?;
+
+    println!(
+        "{}: {}",
+        format!("result").blue().bold(),
+        format!("success").bold()
+    );
+    println!("auth_token = {}", new_config.options.auth_token);
 
     Ok(())
 }
