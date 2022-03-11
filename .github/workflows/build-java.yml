@@ -59,8 +59,8 @@ jobs:
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
           JAVA_LIBRARY_PATH: "${{ github.workspace }}/libs" # https://stackoverflow.com/a/60128194 - MacOS doesn't allow LD_LIBRARY_PATH.
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
-          TEST_SERVER_PORT: 443
-          TEST_SERVER_USE_TLS: true
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - name: Upload Unit Test Results - Java
         if: always()
         uses: actions/upload-artifact@v2

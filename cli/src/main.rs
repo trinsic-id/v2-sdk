@@ -7,9 +7,6 @@ pub(crate) mod macros;
 
 #[macro_use]
 extern crate clap;
-use std::fmt::Display;
-
-use crate::proto::services::common::v1::{json_payload, JsonPayload};
 use crate::services::config::Error;
 use clap::{App, AppSettings};
 use colored::Colorize;
@@ -46,26 +43,6 @@ where
     }
 }
 
-impl Display for JsonPayload {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_fmt(format_args!(
-            "{}",
-            match self.json.as_ref().unwrap() {
-                json_payload::Json::JsonStruct(x) =>
-                    serde_json::to_string_pretty(&x).unwrap_or_default(),
-                json_payload::Json::JsonString(x) => serde_json::to_string_pretty(
-                    &serde_json::from_str::<Value>(&x).unwrap_or_default()
-                )
-                .unwrap_or_default(),
-                json_payload::Json::JsonBytes(x) => serde_json::to_string_pretty(
-                    &serde_json::from_slice::<Value>(&x).unwrap_or_default()
-                )
-                .unwrap_or_default(),
-            }
-        ))
-    }
-}
-
 #[allow(unused_must_use)]
 fn main() {
     let yaml = load_yaml!("cli.yaml");
@@ -77,18 +54,44 @@ fn main() {
     let config = DefaultConfig::from(&matches);
     let service = parser::parse(&matches);
 
-    match services::execute(&service, config) {
-        Ok(_) => {}
-        Err(err) => match err {
-            services::config::Error::IOError => println!("{}", format!("io error").red()),
-            services::config::Error::SerializationError => {
-                println!("{}", format!("serialization error").red())
-            }
-            services::config::Error::UnknownCommand => unimplemented!("should not be hit"),
-            Error::APIError(grpc_status) => {
-                println!("api error: {}", format!("{}", grpc_status).red())
-            }
+    match service {
+        Ok(service) => match services::execute(&service, config) {
+            Ok(_) => {}
+            Err(err) => match err {
+                Error::IOError => println!("{}", format!("io error").red()),
+                Error::SerializationError => {
+                    println!("{}", format!("serialization error").red())
+                }
+                Error::UnknownCommand => unimplemented!("should not be hit"),
+                Error::APIError { code, message } => {
+                    println!(
+                        "{}: {}: {}",
+                        format!("error").red().bold(),
+                        format!("{}", code.to_lowercase()).bold(),
+                        format!("{}", message.to_lowercase())
+                    );
+                }
+                Error::MissingArguments => todo!(),
+            },
         },
+        Err(err) => {
+            println!(
+                "{}: {}: {}",
+                format!("error").red().bold(),
+                format!("command error").bold(),
+                format!("{}", err)
+            );
+            println!();
+            println!(
+                "{}",
+                format!(
+                    "For more information try {} or {}",
+                    format!("-h").green(),
+                    format!("--help").green()
+                )
+                .italic()
+            )
+        }
     }
 }
 

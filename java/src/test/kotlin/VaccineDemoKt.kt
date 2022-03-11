@@ -18,29 +18,28 @@ suspend fun main(args: Array<String>) {
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runVaccineDemo() {
     // createService() {
-    val serverConfig = TrinsicUtilities.getTestServerConfig()
+    val serverConfig = TrinsicUtilities.getTrinsicServiceOptions()
     println("Connecting to:\n$serverConfig")
-    val accountService = AccountServiceKt(null, serverConfig, null)
+    val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
     // }
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    var allison = accountService.signIn(null).profile
-    val clinic = accountService.signIn(null).profile
-    val airline = accountService.signIn(null).profile
+    var allison = accountService.signIn(null)
+    val clinic = accountService.signIn(null)
+    val airline = accountService.signIn(null)
     // }
 
     // createService() {
-    val walletService = WalletServiceKt(allison, serverConfig, null)
-    val credentialsService = CredentialsServiceKt(clinic, serverConfig, null)
+    val walletService = WalletServiceKt(TrinsicUtilities.getTrinsicServiceOptions(allison))
+    val credentialsService = CredentialsServiceKt(TrinsicUtilities.getTrinsicServiceOptions(clinic))
     // }
 
     // storeAndRecallProfile() {
-    File("allison.bin").writeBytes(allison.toByteArray())
+    File("allison.txt").writeText(allison)
 
     // Create profile from existing data
-    val allisonBin = File("allison.bin").readBytes()
-    allison = AccountProfile.newBuilder().mergeFrom(allisonBin).build()
+    allison = File("allison.txt").readText().trim()
     // }
 
     // issueCredential() {
@@ -60,7 +59,7 @@ suspend fun runVaccineDemo() {
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
-    credentialsService.profile = allison
+    credentialsService.setProfile(allison)
     val proofRequestJson = Gson().fromJson(
         File(vaccineCertFramePath()).readText(),
         HashMap::class.java
@@ -71,7 +70,7 @@ suspend fun runVaccineDemo() {
 
     // verifyCredential() {
     // The airline verifies the credential
-    credentialsService.profile = airline
+    credentialsService.setProfile(airline)
     val isValid = credentialsService.verifyProof(credentialProof)
     println("Verification result: $isValid")
     Assertions.assertTrue(isValid)

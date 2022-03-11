@@ -27,7 +27,9 @@ class OberonSecurityProvider(SecurityProvider):
             raise ValueError("The token must be unprotected before use")
 
         # Compute the hash of the request and capture current timestamp
-        request_hash = hashing.blake3_hash(request=Blake3HashRequest(data=bytes(message))).digest
+        request_hash = hashing.blake3_hash(
+            request=Blake3HashRequest(data=bytes(message))
+        ).digest
 
         nonce = Nonce(
             timestamp=int(datetime.now().timestamp() * 1000), request_hash=request_hash

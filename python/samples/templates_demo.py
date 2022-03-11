@@ -1,30 +1,27 @@
 import asyncio
 import json
-from typing import Dict, Any
 
+from trinsic.account_service import AccountService
+from trinsic.credentials_service import CredentialsService
+from trinsic.credentialtemplates_service import TemplateService
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
     FieldType,
 )
-from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
-from trinsic.credentialtemplates_service import CredentialTemplatesService
-from trinsic.trinsic_util import trinsic_test_config
+from trinsic.trinsic_util import trinsic_config
+from trinsic.wallet_service import WalletService
 
 
 async def templates_demo():
-    account_service = AccountService(server_config=trinsic_test_config())
+    account_service = AccountService(server_config=trinsic_config())
     profile = await account_service.sign_in()
-    template_service = CredentialTemplatesService(
-        profile=profile, server_config=trinsic_test_config()
-    )
-    credential_service = CredentialsService(
-        profile=profile, server_config=trinsic_test_config()
-    )
+    template_service = TemplateService(server_config=trinsic_config(profile))
+    credential_service = CredentialsService(server_config=trinsic_config(profile))
+    wallet_service = WalletService(server_config=trinsic_config(profile))
 
     # create example template
     template = await template_service.create(
-        name="My Example Credential",
+        name="An Example Credential",
         allow_additional_fields=False,
         fields={
             "firstName": TemplateField(description="Given name"),
@@ -39,15 +36,34 @@ async def templates_demo():
 
     # issue credential from this template
     values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": 42})
-    credential_json = await credential_service.issue_from_template(
+    json_document = await credential_service.issue_from_template(
         template_id=template.data.id, values_json=values
     )
-    assert credential_json is not None
+    assert json_document is not None
 
-    json_document: Dict[str, Any] = json.loads(credential_json)
     json_keys = list(json_document.keys())
     assert "id" in json_keys
     assert "credentialSubject" in json_keys
+
+    item_id = await wallet_service.insert_item(item=json_document)
+    frame = {
+        "@context": "https://www.w3.org/2018/credentials/v1",
+        "type": ["VerifiableCredential"],
+    }
+
+    # create proof from input document
+    proof = await credential_service.create_proof(
+        document=json_document, reveal_document=frame
+    )
+    valid = await credential_service.verify_proof(proof_document=proof)
+    assert valid
+
+    # create proof from item id
+    proof = await credential_service.create_proof(
+        item_id=item_id, reveal_document=frame
+    )
+    valid = await credential_service.verify_proof(proof_document=proof)
+    assert valid
 
     account_service.close()
     template_service.close()

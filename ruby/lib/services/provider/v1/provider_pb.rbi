@@ -151,17 +151,13 @@ class Services::Provider::V1::InviteRequest
     params(
       participant: T.nilable(T.any(Symbol, String, Integer)),
       description: T.nilable(String),
-      email: T.nilable(String),
-      phone: T.nilable(String),
-      didcomm_invitation: T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)
+      details: T.nilable(Services::Account::V1::AccountDetails)
     ).void
   end
   def initialize(
     participant: :participant_type_individual,
     description: "",
-    email: "",
-    phone: "",
-    didcomm_invitation: nil
+    details: nil
   )
   end
 
@@ -189,44 +185,16 @@ class Services::Provider::V1::InviteRequest
   def clear_description
   end
 
-  sig { returns(String) }
-  def email
+  sig { returns(T.nilable(Services::Account::V1::AccountDetails)) }
+  def details
   end
 
-  sig { params(value: String).void }
-  def email=(value)
-  end
-
-  sig { void }
-  def clear_email
-  end
-
-  sig { returns(String) }
-  def phone
-  end
-
-  sig { params(value: String).void }
-  def phone=(value)
+  sig { params(value: T.nilable(Services::Account::V1::AccountDetails)).void }
+  def details=(value)
   end
 
   sig { void }
-  def clear_phone
-  end
-
-  sig { returns(T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)) }
-  def didcomm_invitation
-  end
-
-  sig { params(value: T.nilable(Services::Provider::V1::InviteRequest::DidCommInvitation)).void }
-  def didcomm_invitation=(value)
-  end
-
-  sig { void }
-  def clear_didcomm_invitation
-  end
-
-  sig { returns(T.nilable(Symbol)) }
-  def contact_method
+  def clear_details
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -270,12 +238,14 @@ class Services::Provider::V1::InviteResponse
   sig do
     params(
       status: T.nilable(T.any(Symbol, String, Integer)),
-      invitation_id: T.nilable(String)
+      invitation_id: T.nilable(String),
+      invitation_code: T.nilable(String)
     ).void
   end
   def initialize(
     status: :SUCCESS,
-    invitation_id: ""
+    invitation_id: "",
+    invitation_code: ""
   )
   end
 
@@ -301,6 +271,18 @@ class Services::Provider::V1::InviteResponse
 
   sig { void }
   def clear_invitation_id
+  end
+
+  sig { returns(String) }
+  def invitation_code
+  end
+
+  sig { params(value: String).void }
+  def invitation_code=(value)
+  end
+
+  sig { void }
+  def clear_invitation_code
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -581,13 +563,15 @@ class Services::Provider::V1::CreateEcosystemRequest
     params(
       name: T.nilable(String),
       description: T.nilable(String),
-      uri: T.nilable(String)
+      uri: T.nilable(String),
+      details: T.nilable(Services::Account::V1::AccountDetails)
     ).void
   end
   def initialize(
     name: "",
     description: "",
-    uri: ""
+    uri: "",
+    details: nil
   )
   end
 
@@ -625,6 +609,18 @@ class Services::Provider::V1::CreateEcosystemRequest
 
   sig { void }
   def clear_uri
+  end
+
+  sig { returns(T.nilable(Services::Account::V1::AccountDetails)) }
+  def details
+  end
+
+  sig { params(value: T.nilable(Services::Account::V1::AccountDetails)).void }
+  def details=(value)
+  end
+
+  sig { void }
+  def clear_details
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -667,243 +663,15 @@ class Services::Provider::V1::CreateEcosystemResponse
 
   sig do
     params(
-      id: T.nilable(String)
+      ecosystem: T.nilable(Services::Provider::V1::Ecosystem),
+      profile: T.nilable(Services::Account::V1::AccountProfile),
+      confirmation_method: T.nilable(T.any(Symbol, String, Integer))
     ).void
   end
   def initialize(
-    id: ""
-  )
-  end
-
-  sig { returns(String) }
-  def id
-  end
-
-  sig { params(value: String).void }
-  def id=(value)
-  end
-
-  sig { void }
-  def clear_id
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::ListEcosystemsRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::ListEcosystemsRequest) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::ListEcosystemsRequest).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListEcosystemsRequest) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::ListEcosystemsRequest, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::ListEcosystemsResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::ListEcosystemsResponse) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::ListEcosystemsResponse).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListEcosystemsResponse) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::ListEcosystemsResponse, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig do
-    params(
-      ecosystem: T.nilable(T::Array[T.nilable(Services::Provider::V1::Ecosystem)])
-    ).void
-  end
-  def initialize(
-    ecosystem: []
-  )
-  end
-
-  sig { returns(T::Array[T.nilable(Services::Provider::V1::Ecosystem)]) }
-  def ecosystem
-  end
-
-  sig { params(value: Google::Protobuf::RepeatedField).void }
-  def ecosystem=(value)
-  end
-
-  sig { void }
-  def clear_ecosystem
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::AcceptInviteRequest
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::AcceptInviteRequest) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::AcceptInviteRequest).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AcceptInviteRequest) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::AcceptInviteRequest, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig do
-    params(
-      id: T.nilable(String),
-      code: T.nilable(String)
-    ).void
-  end
-  def initialize(
-    id: "",
-    code: ""
-  )
-  end
-
-  sig { returns(String) }
-  def id
-  end
-
-  sig { params(value: String).void }
-  def id=(value)
-  end
-
-  sig { void }
-  def clear_id
-  end
-
-  sig { returns(String) }
-  def code
-  end
-
-  sig { params(value: String).void }
-  def code=(value)
-  end
-
-  sig { void }
-  def clear_code
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::AcceptInviteResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::AcceptInviteResponse) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::AcceptInviteResponse).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AcceptInviteResponse) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::AcceptInviteResponse, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  sig do
-    params(
-      ecosystem: T.nilable(Services::Provider::V1::Ecosystem)
-    ).void
-  end
-  def initialize(
-    ecosystem: nil
+    ecosystem: nil,
+    profile: nil,
+    confirmation_method: :None
   )
   end
 
@@ -917,6 +685,150 @@ class Services::Provider::V1::AcceptInviteResponse
 
   sig { void }
   def clear_ecosystem
+  end
+
+  sig { returns(T.nilable(Services::Account::V1::AccountProfile)) }
+  def profile
+  end
+
+  sig { params(value: T.nilable(Services::Account::V1::AccountProfile)).void }
+  def profile=(value)
+  end
+
+  sig { void }
+  def clear_profile
+  end
+
+  sig { returns(Symbol) }
+  def confirmation_method
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def confirmation_method=(value)
+  end
+
+  sig { void }
+  def clear_confirmation_method
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GenerateTokenRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GenerateTokenRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GenerateTokenRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GenerateTokenRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GenerateTokenRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      description: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    description: ""
+  )
+  end
+
+  sig { returns(String) }
+  def description
+  end
+
+  sig { params(value: String).void }
+  def description=(value)
+  end
+
+  sig { void }
+  def clear_description
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GenerateTokenResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GenerateTokenResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GenerateTokenResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GenerateTokenResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GenerateTokenResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      profile: T.nilable(Services::Account::V1::AccountProfile)
+    ).void
+  end
+  def initialize(
+    profile: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Account::V1::AccountProfile)) }
+  def profile
+  end
+
+  sig { params(value: T.nilable(Services::Account::V1::AccountProfile)).void }
+  def profile=(value)
+  end
+
+  sig { void }
+  def clear_profile
   end
 
   sig { params(field: String).returns(T.untyped) }

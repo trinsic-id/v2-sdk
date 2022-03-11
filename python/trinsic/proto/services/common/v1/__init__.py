@@ -18,26 +18,6 @@ class ResponseStatus(betterproto.Enum):
     UNKNOWN_ERROR = 100
 
 
-class JsonFormat(betterproto.Enum):
-    Protobuf = 0
-    Binary = 1
-    String = 2
-
-
-@dataclass(eq=False, repr=False)
-class RequestOptions(betterproto.Message):
-    response_json_format: "JsonFormat" = betterproto.enum_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class JsonPayload(betterproto.Message):
-    json_struct: "betterproto_lib_google_protobuf.Struct" = betterproto.message_field(
-        1, group="json"
-    )
-    json_string: str = betterproto.string_field(2, group="json")
-    json_bytes: bytes = betterproto.bytes_field(3, group="json")
-
-
 @dataclass(eq=False, repr=False)
 class ServerConfig(betterproto.Message):
     # service endpoint
@@ -120,4 +100,3 @@ class CommonBase(ServiceBase):
 
 
 from ....pbmse import v1 as ___pbmse_v1__
-import betterproto.lib.google.protobuf as betterproto_lib_google_protobuf

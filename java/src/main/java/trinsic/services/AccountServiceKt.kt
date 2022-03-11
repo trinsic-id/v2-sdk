@@ -2,50 +2,49 @@ package trinsic.services
 
 import com.google.protobuf.ByteString
 import com.google.protobuf.InvalidProtocolBufferException
-import io.grpc.Channel
 import trinsic.okapi.DidException
 import trinsic.okapi.Oberon
 import trinsic.okapi.security.v1.Security
+import trinsic.sdk.v1.Options.ServiceOptions
 import trinsic.services.account.v1.AccountGrpcKt
-import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.account.v1.AccountOuterClass.*
-import trinsic.services.common.v1.CommonOuterClass
+import java.util.Base64
 
 class AccountServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+    options: ServiceOptions?
+) : ServiceBase(options) {
     var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
 
-    suspend fun signIn(details: AccountOuterClass.AccountDetails?): AccountOuterClass.SignInResponse {
-        val details2 = details ?: AccountOuterClass.AccountDetails.newBuilder().build()
-        val request = AccountOuterClass.SignInRequest.newBuilder().setDetails(details2).build()
-        return stub.signIn(request)
+    suspend fun signIn(details: AccountDetails?, ecosystemId: String? = null): String {
+        val details2 = details ?: AccountDetails.newBuilder().build()
+        val request = SignInRequest.newBuilder().setDetails(details2).setEcosystemId(ecosystemId ?: this.options.defaultEcosystem ).build()
+        return Base64.getUrlEncoder().encodeToString(stub.signIn(request).profile.toByteArray())
     }
 
-    fun unprotect(profile: AccountOuterClass.AccountProfile, securityCode: String): AccountOuterClass.AccountProfile {
+    fun unprotect(profile: AccountProfile, securityCode: String): AccountProfile {
         val request = Security.UnBlindOberonTokenRequest.newBuilder().setToken(profile.authToken)
             .addBlinding(ByteString.copyFromUtf8(securityCode)).build()
         val result = Oberon.unBlindToken(request)
 
-        return AccountOuterClass.AccountProfile.newBuilder().setAuthToken(result.token).setProtection(
-                AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.None)
+        return AccountProfile.newBuilder().setAuthToken(result.token).setProtection(
+                TokenProtection.newBuilder().setMethod(ConfirmationMethod.None)
                     .setEnabled(false).build()
             ).build()
     }
 
-    fun protect(profile: AccountOuterClass.AccountProfile, securityCode: String): AccountOuterClass.AccountProfile {
+    fun protect(profile: AccountProfile, securityCode: String): AccountProfile {
         val request = Security.BlindOberonTokenRequest.newBuilder().setToken(profile.authToken)
             .addBlinding(ByteString.copyFromUtf8(securityCode)).build()
         val result = Oberon.blindToken(request)
 
-        return AccountOuterClass.AccountProfile.newBuilder().setAuthToken(result.token).setProtection(
-                AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.Other)
+        return AccountProfile.newBuilder().setAuthToken(result.token).setProtection(
+                TokenProtection.newBuilder().setMethod(ConfirmationMethod.Other)
                     .setEnabled(true).build()
             ).build()
     }
 
-    suspend fun getInfo(): AccountOuterClass.InfoResponse {
-        val request = AccountOuterClass.InfoRequest.newBuilder().build()
+    suspend fun getInfo(): InfoResponse {
+        val request = InfoRequest.newBuilder().build()
         return withMetadata(stub, request).info(request)
     }
 

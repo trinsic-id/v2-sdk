@@ -3,6 +3,7 @@ require 'json'
 require 'okapi'
 require 'uri'
 require 'trinsic_services'
+require 'securerandom'
 
 class TrinsicServiceTest < Minitest::Test
 
@@ -11,11 +12,11 @@ class TrinsicServiceTest < Minitest::Test
   end
 
   def test_servicebase_setprofile
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
     assert_raises Exception do
-      service.metadata(nil)
+      account_service.metadata(nil)
     end
-    account_profile = account_service.sign_in(nil).profile
+    account_profile = account_service.sign_in(nil)
     account_service.profile = account_profile
     metadata = account_service.metadata(Services::Provider::V1::InviteRequest.new)
     assert(metadata != nil, "Valid metadata once profile is set")
@@ -23,9 +24,9 @@ class TrinsicServiceTest < Minitest::Test
 
   def test_providerservice_inviteparticipant
     nil # this test needs ecosystem support
-    # account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    # account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_server)
     # account_profile = account_service.sign_in(nil).profile
-    # provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_test_server)
+    # provider_service = Trinsic::ProviderService.new(account_profile, Trinsic::trinsic_server)
     #
     # invite_request = Services::Provider::V1::InviteRequest.new(:description => "I dunno", :email => "does.not.exist@trinsic.id")
     # invite_response = provider_service.invite_participant(invite_request)
@@ -50,13 +51,13 @@ class TrinsicServiceTest < Minitest::Test
   end
 
   def test_trinsic_services_demo
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
+    account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
 
     # SETUP ACTORS
     # Create 3 different profiles for each participant in the scenario
-    allison = account_service.sign_in(nil).profile
-    clinic = account_service.sign_in(nil).profile
-    airline = account_service.sign_in(nil).profile
+    allison = account_service.sign_in(nil)
+    clinic = account_service.sign_in(nil)
+    airline = account_service.sign_in(nil)
 
     # Store profile for later use
     # File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -64,8 +65,8 @@ class TrinsicServiceTest < Minitest::Test
     # Create profile from existing data
     # var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
 
-    wallet_service = Trinsic::WalletService.new(allison, Trinsic::trinsic_test_server)
-    credential_service = Trinsic::CredentialService.new(clinic, Trinsic::trinsic_test_server)
+    wallet_service = Trinsic::WalletService.new(Trinsic::trinsic_server(allison))
+    credential_service = Trinsic::CredentialService.new(Trinsic::trinsic_server(clinic))
 
     # ISSUE CREDENTIAL
     # Sign a credential as the clinic and send it to Allison
@@ -94,7 +95,7 @@ class TrinsicServiceTest < Minitest::Test
     text2 = File.open(self.vaccine_cert_frame_path).read
     proof_request_json = JSON.parse(text2)
 
-    credential_proof = credential_service.create_proof(document_id = item_id, reveal_document = proof_request_json)
+    credential_proof = credential_service.create_proof(:item_id => item_id, :reveal_document => proof_request_json)
 
     puts "Proof: #{credential_proof}"
 
@@ -110,27 +111,27 @@ class TrinsicServiceTest < Minitest::Test
   end
 
   def test_ecosystem_demo
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-    account = account_service.sign_in(nil).profile
-    service = Trinsic::ProviderService.new(account, Trinsic::trinsic_test_server)
+    account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
+    account = account_service.sign_in(nil)
+    service = Trinsic::ProviderService.new(Trinsic::trinsic_server(account))
 
     # test create ecosystem
-    actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :name => "Test Ecosystem", :uri => "did:example:test"))
-    assert(actual_create != nil, "Ecosystem should be created")
-    assert(actual_create.id != nil, "Id should exist")
-    assert(actual_create.id.start_with?("urn:trinsic:ecosystems:"))
+    actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :name => "test-sdk-#{SecureRandom.uuid}", :uri => "https://example.com"))
+    assert(actual_create.ecosystem != nil, "Ecosystem should be created")
+    assert(actual_create.ecosystem.id != nil, "Id should exist")
+    assert(actual_create.ecosystem.id.start_with?("urn:trinsic:ecosystems:"))
 
     # test list ecosystems
-    actual_list = service.list_ecosystems
-    assert(actual_list.nil? == false)
-    assert(actual_list.length > 0)
+    # actual_list = service.list_ecosystems
+    # assert(actual_list.nil? == false)
+    # assert(actual_list.length > 0)
   end
 
   def test_templates_demo
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-    account = account_service.sign_in(nil).profile
-    credential_service = Trinsic::CredentialService.new(account, Trinsic::trinsic_test_server)
-    template_service = Trinsic::TemplateService.new(account, Trinsic::trinsic_test_server)
+    account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
+    account = account_service.sign_in(nil)
+    credential_service = Trinsic::CredentialService.new(Trinsic::trinsic_server(account))
+    template_service = Trinsic::TemplateService.new(Trinsic::trinsic_server(account))
 
     # create example template
     template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(:name => "My Example Credential", :allow_additional_fields => false)
@@ -156,9 +157,9 @@ class TrinsicServiceTest < Minitest::Test
   end
 
   def test_trustregistry_demo
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_test_server)
-    account = account_service.sign_in(nil).profile
-    service = Trinsic::TrustRegistryService.new(account, Trinsic::trinsic_test_server)
+    account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
+    account = account_service.sign_in(nil)
+    service = Trinsic::TrustRegistryService.new(Trinsic::trinsic_server(account))
 
     # register issuer
     did_uri = "did:example:test"

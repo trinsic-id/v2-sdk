@@ -12,16 +12,16 @@ class AccountServiceTest {
 
     @Test
     public void testProtectUnprotectAccount() throws ExecutionException, InterruptedException, InvalidProtocolBufferException, DidException {
-        var accountService = new AccountService(null,TrinsicUtilities.getTestServerConfig());
-        var myProfile = accountService.signIn(null).get().getProfile();
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        var myProfile = accountService.signIn(null).get();
 
-        var code=  "1234";
+        var code = "1234";
         var myProtectedProfile = accountService.protect(myProfile, code);
         var myUnprotectedProfile = accountService.unprotect(myProtectedProfile, code);
 
         Assertions.assertThrows(Exception.class, () -> {
            accountService.setProfile(myProtectedProfile);
-           Assertions.assertEquals(myProtectedProfile, accountService.getProfile());
+           Assertions.assertEquals(myProtectedProfile, accountService.getOptions().getAuthToken());
            accountService.getInfo().get();
         });
 

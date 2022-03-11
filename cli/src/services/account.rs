@@ -40,17 +40,14 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
             email: args.email.map_or(String::default(), |x| x.to_string()),
             sms: args.sms.map_or(String::default(), |x| x.to_string()),
         }),
+        ecosystem_id: "default".into(),
         invitation_code: args
             .invitation_code
             .map_or(String::default(), |x| x.to_string()),
         ..Default::default()
     });
 
-    let response = client
-        .sign_in(request)
-        .await
-        .expect("Create Wallet failed")
-        .into_inner();
+    let response = client.sign_in(request).await?.into_inner();
 
     let pr = response.profile.unwrap();
     let protection = pr.protection.clone().unwrap();
@@ -84,7 +81,10 @@ async fn sign_in(args: &SignInArgs, config: DefaultConfig) -> Result<(), Error> 
 
     // println!("Profile: {:#?}", profile);
 
-    new_config.save_profile(profile, args.alias.unwrap(), args.set_default)
+    let auth_token = new_config.save_profile(profile, args.alias.unwrap(), args.set_default);
+    println!("Auth Token: {:#?}", auth_token.unwrap());
+
+    Ok(())
 }
 
 #[tokio::main]
@@ -93,18 +93,14 @@ async fn info(_args: &InfoArgs, config: DefaultConfig) -> Result<(), Error> {
 
     let request = tonic::Request::new(InfoRequest {});
 
-    let response = client
-        .info(request)
-        .await
-        .expect("Info failed")
-        .into_inner();
+    let response = client.info(request).await?.into_inner();
 
     println!("{:#?}", response);
 
     Ok(())
 }
 
-fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
+pub(crate) fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
     let request = UnBlindOberonTokenRequest {
         blinding: vec![code],
         token: profile.auth_token.clone(),

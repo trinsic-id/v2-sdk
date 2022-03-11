@@ -19,19 +19,16 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return Whether the document field is set.
+     * <code>string document_json = 1;</code>
+     * @return The documentJson.
      */
-    boolean hasDocument();
+    java.lang.String getDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return The document.
+     * <code>string document_json = 1;</code>
+     * @return The bytes for documentJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder();
+    com.google.protobuf.ByteString
+        getDocumentJsonBytes();
   }
   /**
    * Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
@@ -46,6 +43,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private IssueRequest() {
+      documentJson_ = "";
     }
 
     @java.lang.Override
@@ -79,16 +77,9 @@ public final class VerifiableCredentials {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (document_ != null) {
-                subBuilder = document_.toBuilder();
-              }
-              document_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(document_);
-                document_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              documentJson_ = s;
               break;
             }
             default: {
@@ -123,30 +114,42 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest.Builder.class);
     }
 
-    public static final int DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
+    public static final int DOCUMENT_JSON_FIELD_NUMBER = 1;
+    private volatile java.lang.Object documentJson_;
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return Whether the document field is set.
+     * <code>string document_json = 1;</code>
+     * @return The documentJson.
      */
     @java.lang.Override
-    public boolean hasDocument() {
-      return document_ != null;
+    public java.lang.String getDocumentJson() {
+      java.lang.Object ref = documentJson_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        documentJson_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return The document.
+     * <code>string document_json = 1;</code>
+     * @return The bytes for documentJson.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-      return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-      return getDocument();
+    public com.google.protobuf.ByteString
+        getDocumentJsonBytes() {
+      java.lang.Object ref = documentJson_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        documentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -163,8 +166,8 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (document_ != null) {
-        output.writeMessage(1, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, documentJson_);
       }
       unknownFields.writeTo(output);
     }
@@ -175,9 +178,8 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (document_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, documentJson_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -194,11 +196,8 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest) obj;
 
-      if (hasDocument() != other.hasDocument()) return false;
-      if (hasDocument()) {
-        if (!getDocument()
-            .equals(other.getDocument())) return false;
-      }
+      if (!getDocumentJson()
+          .equals(other.getDocumentJson())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -210,10 +209,8 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDocument()) {
-        hash = (37 * hash) + DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getDocument().hashCode();
-      }
+      hash = (37 * hash) + DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getDocumentJson().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -347,12 +344,8 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (documentBuilder_ == null) {
-          document_ = null;
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
+        documentJson_ = "";
+
         return this;
       }
 
@@ -379,11 +372,7 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest(this);
-        if (documentBuilder_ == null) {
-          result.document_ = document_;
-        } else {
-          result.document_ = documentBuilder_.build();
-        }
+        result.documentJson_ = documentJson_;
         onBuilt();
         return result;
       }
@@ -432,8 +421,9 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest.getDefaultInstance()) return this;
-        if (other.hasDocument()) {
-          mergeDocument(other.getDocument());
+        if (!other.getDocumentJson().isEmpty()) {
+          documentJson_ = other.documentJson_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -464,123 +454,80 @@ public final class VerifiableCredentials {
         return this;
       }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> documentBuilder_;
+      private java.lang.Object documentJson_ = "";
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       * @return Whether the document field is set.
+       * <code>string document_json = 1;</code>
+       * @return The documentJson.
        */
-      public boolean hasDocument() {
-        return documentBuilder_ != null || document_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       * @return The document.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-        if (documentBuilder_ == null) {
-          return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
+      public java.lang.String getDocumentJson() {
+        java.lang.Object ref = documentJson_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          documentJson_ = s;
+          return s;
         } else {
-          return documentBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string document_json = 1;</code>
+       * @return The bytes for documentJson.
        */
-      public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          document_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getDocumentJsonBytes() {
+        java.lang.Object ref = documentJson_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          documentJson_ = b;
+          return b;
         } else {
-          documentBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string document_json = 1;</code>
+       * @param value The documentJson to set.
+       * @return This builder for chaining.
        */
-      public Builder setDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (documentBuilder_ == null) {
-          document_ = builderForValue.build();
-          onChanged();
-        } else {
-          documentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (document_ != null) {
-            document_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(document_).mergeFrom(value).buildPartial();
-          } else {
-            document_ = value;
-          }
-          onChanged();
-        } else {
-          documentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public Builder clearDocument() {
-        if (documentBuilder_ == null) {
-          document_ = null;
-          onChanged();
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder() {
-        
+      public Builder setDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        documentJson_ = value;
         onChanged();
-        return getDocumentFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string document_json = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-        if (documentBuilder_ != null) {
-          return documentBuilder_.getMessageOrBuilder();
-        } else {
-          return document_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
-        }
+      public Builder clearDocumentJson() {
+        
+        documentJson_ = getDefaultInstance().getDocumentJson();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string document_json = 1;</code>
+       * @param value The bytes for documentJson to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDocumentFieldBuilder() {
-        if (documentBuilder_ == null) {
-          documentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getDocument(),
-                  getParentForChildren(),
-                  isClean());
-          document_ = null;
-        }
-        return documentBuilder_;
+      public Builder setDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        documentJson_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -640,19 +587,16 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return Whether the document field is set.
+     * <code>string signed_document_json = 1;</code>
+     * @return The signedDocumentJson.
      */
-    boolean hasDocument();
+    java.lang.String getSignedDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return The document.
+     * <code>string signed_document_json = 1;</code>
+     * @return The bytes for signedDocumentJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder();
+    com.google.protobuf.ByteString
+        getSignedDocumentJsonBytes();
   }
   /**
    * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
@@ -667,6 +611,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private IssueResponse() {
+      signedDocumentJson_ = "";
     }
 
     @java.lang.Override
@@ -700,16 +645,9 @@ public final class VerifiableCredentials {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (document_ != null) {
-                subBuilder = document_.toBuilder();
-              }
-              document_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(document_);
-                document_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              signedDocumentJson_ = s;
               break;
             }
             default: {
@@ -744,30 +682,42 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.Builder.class);
     }
 
-    public static final int DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
+    public static final int SIGNED_DOCUMENT_JSON_FIELD_NUMBER = 1;
+    private volatile java.lang.Object signedDocumentJson_;
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return Whether the document field is set.
+     * <code>string signed_document_json = 1;</code>
+     * @return The signedDocumentJson.
      */
     @java.lang.Override
-    public boolean hasDocument() {
-      return document_ != null;
+    public java.lang.String getSignedDocumentJson() {
+      java.lang.Object ref = signedDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        signedDocumentJson_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     * @return The document.
+     * <code>string signed_document_json = 1;</code>
+     * @return The bytes for signedDocumentJson.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-      return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-      return getDocument();
+    public com.google.protobuf.ByteString
+        getSignedDocumentJsonBytes() {
+      java.lang.Object ref = signedDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        signedDocumentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -784,8 +734,8 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (document_ != null) {
-        output.writeMessage(1, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(signedDocumentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, signedDocumentJson_);
       }
       unknownFields.writeTo(output);
     }
@@ -796,9 +746,8 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (document_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(signedDocumentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, signedDocumentJson_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -815,11 +764,8 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse) obj;
 
-      if (hasDocument() != other.hasDocument()) return false;
-      if (hasDocument()) {
-        if (!getDocument()
-            .equals(other.getDocument())) return false;
-      }
+      if (!getSignedDocumentJson()
+          .equals(other.getSignedDocumentJson())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -831,10 +777,8 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDocument()) {
-        hash = (37 * hash) + DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getDocument().hashCode();
-      }
+      hash = (37 * hash) + SIGNED_DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getSignedDocumentJson().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -968,12 +912,8 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (documentBuilder_ == null) {
-          document_ = null;
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
+        signedDocumentJson_ = "";
+
         return this;
       }
 
@@ -1000,11 +940,7 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse(this);
-        if (documentBuilder_ == null) {
-          result.document_ = document_;
-        } else {
-          result.document_ = documentBuilder_.build();
-        }
+        result.signedDocumentJson_ = signedDocumentJson_;
         onBuilt();
         return result;
       }
@@ -1053,8 +989,9 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.getDefaultInstance()) return this;
-        if (other.hasDocument()) {
-          mergeDocument(other.getDocument());
+        if (!other.getSignedDocumentJson().isEmpty()) {
+          signedDocumentJson_ = other.signedDocumentJson_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1085,123 +1022,80 @@ public final class VerifiableCredentials {
         return this;
       }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> documentBuilder_;
+      private java.lang.Object signedDocumentJson_ = "";
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       * @return Whether the document field is set.
+       * <code>string signed_document_json = 1;</code>
+       * @return The signedDocumentJson.
        */
-      public boolean hasDocument() {
-        return documentBuilder_ != null || document_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       * @return The document.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-        if (documentBuilder_ == null) {
-          return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
+      public java.lang.String getSignedDocumentJson() {
+        java.lang.Object ref = signedDocumentJson_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          signedDocumentJson_ = s;
+          return s;
         } else {
-          return documentBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string signed_document_json = 1;</code>
+       * @return The bytes for signedDocumentJson.
        */
-      public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          document_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getSignedDocumentJsonBytes() {
+        java.lang.Object ref = signedDocumentJson_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          signedDocumentJson_ = b;
+          return b;
         } else {
-          documentBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string signed_document_json = 1;</code>
+       * @param value The signedDocumentJson to set.
+       * @return This builder for chaining.
        */
-      public Builder setDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (documentBuilder_ == null) {
-          document_ = builderForValue.build();
-          onChanged();
-        } else {
-          documentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (document_ != null) {
-            document_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(document_).mergeFrom(value).buildPartial();
-          } else {
-            document_ = value;
-          }
-          onChanged();
-        } else {
-          documentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public Builder clearDocument() {
-        if (documentBuilder_ == null) {
-          document_ = null;
-          onChanged();
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder() {
-        
+      public Builder setSignedDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        signedDocumentJson_ = value;
         onChanged();
-        return getDocumentFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string signed_document_json = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-        if (documentBuilder_ != null) {
-          return documentBuilder_.getMessageOrBuilder();
-        } else {
-          return document_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
-        }
+      public Builder clearSignedDocumentJson() {
+        
+        signedDocumentJson_ = getDefaultInstance().getSignedDocumentJson();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 1;</code>
+       * <code>string signed_document_json = 1;</code>
+       * @param value The bytes for signedDocumentJson to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDocumentFieldBuilder() {
-        if (documentBuilder_ == null) {
-          documentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getDocument(),
-                  getParentForChildren(),
-                  isClean());
-          document_ = null;
-        }
-        return documentBuilder_;
+      public Builder setSignedDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        signedDocumentJson_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2547,31 +2441,101 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     * @return Whether the revealDocument field is set.
+     * <pre>
+     * Optional document that describes which fields should be
+     * revealed in the generated proof. If specified, this document must be
+     * a valid JSON-LD frame.
+     * If this field is not specified, a default reveal document will be
+     * used and all fields in the signed document will be revealed
+     * </pre>
+     *
+     * <code>string reveal_document_json = 1;</code>
+     * @return The revealDocumentJson.
      */
-    boolean hasRevealDocument();
+    java.lang.String getRevealDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     * @return The revealDocument.
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder();
-
-    /**
-     * <code>string document_id = 2;</code>
-     * @return The documentId.
-     */
-    java.lang.String getDocumentId();
-    /**
-     * <code>string document_id = 2;</code>
-     * @return The bytes for documentId.
+     * <pre>
+     * Optional document that describes which fields should be
+     * revealed in the generated proof. If specified, this document must be
+     * a valid JSON-LD frame.
+     * If this field is not specified, a default reveal document will be
+     * used and all fields in the signed document will be revealed
+     * </pre>
+     *
+     * <code>string reveal_document_json = 1;</code>
+     * @return The bytes for revealDocumentJson.
      */
     com.google.protobuf.ByteString
-        getDocumentIdBytes();
+        getRevealDocumentJsonBytes();
+
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return Whether the itemId field is set.
+     */
+    boolean hasItemId();
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return The itemId.
+     */
+    java.lang.String getItemId();
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return The bytes for itemId.
+     */
+    com.google.protobuf.ByteString
+        getItemIdBytes();
+
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return Whether the documentJson field is set.
+     */
+    boolean hasDocumentJson();
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return The documentJson.
+     */
+    java.lang.String getDocumentJson();
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return The bytes for documentJson.
+     */
+    com.google.protobuf.ByteString
+        getDocumentJsonBytes();
+
+    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.ProofCase getProofCase();
   }
   /**
    * <pre>
@@ -2590,7 +2554,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private CreateProofRequest() {
-      documentId_ = "";
+      revealDocumentJson_ = "";
     }
 
     @java.lang.Override
@@ -2624,22 +2588,21 @@ public final class VerifiableCredentials {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (revealDocument_ != null) {
-                subBuilder = revealDocument_.toBuilder();
-              }
-              revealDocument_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(revealDocument_);
-                revealDocument_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              revealDocumentJson_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              documentId_ = s;
+              proofCase_ = 2;
+              proof_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              proofCase_ = 3;
+              proof_ = s;
               break;
             }
             default: {
@@ -2674,64 +2637,232 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.Builder.class);
     }
 
-    public static final int REVEAL_DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload revealDocument_;
-    /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     * @return Whether the revealDocument field is set.
-     */
-    @java.lang.Override
-    public boolean hasRevealDocument() {
-      return revealDocument_ != null;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     * @return The revealDocument.
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument() {
-      return revealDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : revealDocument_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder() {
-      return getRevealDocument();
+    private int proofCase_ = 0;
+    private java.lang.Object proof_;
+    public enum ProofCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ITEM_ID(2),
+      DOCUMENT_JSON(3),
+      PROOF_NOT_SET(0);
+      private final int value;
+      private ProofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ProofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ProofCase forNumber(int value) {
+        switch (value) {
+          case 2: return ITEM_ID;
+          case 3: return DOCUMENT_JSON;
+          case 0: return PROOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public ProofCase
+    getProofCase() {
+      return ProofCase.forNumber(
+          proofCase_);
     }
 
-    public static final int DOCUMENT_ID_FIELD_NUMBER = 2;
-    private volatile java.lang.Object documentId_;
+    public static final int REVEAL_DOCUMENT_JSON_FIELD_NUMBER = 1;
+    private volatile java.lang.Object revealDocumentJson_;
     /**
-     * <code>string document_id = 2;</code>
-     * @return The documentId.
+     * <pre>
+     * Optional document that describes which fields should be
+     * revealed in the generated proof. If specified, this document must be
+     * a valid JSON-LD frame.
+     * If this field is not specified, a default reveal document will be
+     * used and all fields in the signed document will be revealed
+     * </pre>
+     *
+     * <code>string reveal_document_json = 1;</code>
+     * @return The revealDocumentJson.
      */
     @java.lang.Override
-    public java.lang.String getDocumentId() {
-      java.lang.Object ref = documentId_;
+    public java.lang.String getRevealDocumentJson() {
+      java.lang.Object ref = revealDocumentJson_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        documentId_ = s;
+        revealDocumentJson_ = s;
         return s;
       }
     }
     /**
-     * <code>string document_id = 2;</code>
-     * @return The bytes for documentId.
+     * <pre>
+     * Optional document that describes which fields should be
+     * revealed in the generated proof. If specified, this document must be
+     * a valid JSON-LD frame.
+     * If this field is not specified, a default reveal document will be
+     * used and all fields in the signed document will be revealed
+     * </pre>
+     *
+     * <code>string reveal_document_json = 1;</code>
+     * @return The bytes for revealDocumentJson.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getDocumentIdBytes() {
-      java.lang.Object ref = documentId_;
+        getRevealDocumentJsonBytes() {
+      java.lang.Object ref = revealDocumentJson_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        documentId_ = b;
+        revealDocumentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ITEM_ID_FIELD_NUMBER = 2;
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return Whether the itemId field is set.
+     */
+    public boolean hasItemId() {
+      return proofCase_ == 2;
+    }
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return The itemId.
+     */
+    public java.lang.String getItemId() {
+      java.lang.Object ref = "";
+      if (proofCase_ == 2) {
+        ref = proof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (proofCase_ == 2) {
+          proof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The item identifier that contains a record with a verifiable
+     * credential to be used for generating the proof.
+     * </pre>
+     *
+     * <code>string item_id = 2;</code>
+     * @return The bytes for itemId.
+     */
+    public com.google.protobuf.ByteString
+        getItemIdBytes() {
+      java.lang.Object ref = "";
+      if (proofCase_ == 2) {
+        ref = proof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (proofCase_ == 2) {
+          proof_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DOCUMENT_JSON_FIELD_NUMBER = 3;
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return Whether the documentJson field is set.
+     */
+    public boolean hasDocumentJson() {
+      return proofCase_ == 3;
+    }
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return The documentJson.
+     */
+    public java.lang.String getDocumentJson() {
+      java.lang.Object ref = "";
+      if (proofCase_ == 3) {
+        ref = proof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (proofCase_ == 3) {
+          proof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * A document that contains a valid verifiable credential with an
+     * unbound signature. The proof will be derived from this document
+     * directly. The document will not be stored in the wallet.
+     * </pre>
+     *
+     * <code>string document_json = 3;</code>
+     * @return The bytes for documentJson.
+     */
+    public com.google.protobuf.ByteString
+        getDocumentJsonBytes() {
+      java.lang.Object ref = "";
+      if (proofCase_ == 3) {
+        ref = proof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (proofCase_ == 3) {
+          proof_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -2752,11 +2883,14 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (revealDocument_ != null) {
-        output.writeMessage(1, getRevealDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(revealDocumentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, revealDocumentJson_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, documentId_);
+      if (proofCase_ == 2) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, proof_);
+      }
+      if (proofCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, proof_);
       }
       unknownFields.writeTo(output);
     }
@@ -2767,12 +2901,14 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (revealDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getRevealDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(revealDocumentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, revealDocumentJson_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, documentId_);
+      if (proofCase_ == 2) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, proof_);
+      }
+      if (proofCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, proof_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2789,13 +2925,21 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest) obj;
 
-      if (hasRevealDocument() != other.hasRevealDocument()) return false;
-      if (hasRevealDocument()) {
-        if (!getRevealDocument()
-            .equals(other.getRevealDocument())) return false;
+      if (!getRevealDocumentJson()
+          .equals(other.getRevealDocumentJson())) return false;
+      if (!getProofCase().equals(other.getProofCase())) return false;
+      switch (proofCase_) {
+        case 2:
+          if (!getItemId()
+              .equals(other.getItemId())) return false;
+          break;
+        case 3:
+          if (!getDocumentJson()
+              .equals(other.getDocumentJson())) return false;
+          break;
+        case 0:
+        default:
       }
-      if (!getDocumentId()
-          .equals(other.getDocumentId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2807,12 +2951,20 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasRevealDocument()) {
-        hash = (37 * hash) + REVEAL_DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getRevealDocument().hashCode();
+      hash = (37 * hash) + REVEAL_DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getRevealDocumentJson().hashCode();
+      switch (proofCase_) {
+        case 2:
+          hash = (37 * hash) + ITEM_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getItemId().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + DOCUMENT_JSON_FIELD_NUMBER;
+          hash = (53 * hash) + getDocumentJson().hashCode();
+          break;
+        case 0:
+        default:
       }
-      hash = (37 * hash) + DOCUMENT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getDocumentId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2950,14 +3102,10 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (revealDocumentBuilder_ == null) {
-          revealDocument_ = null;
-        } else {
-          revealDocument_ = null;
-          revealDocumentBuilder_ = null;
-        }
-        documentId_ = "";
+        revealDocumentJson_ = "";
 
+        proofCase_ = 0;
+        proof_ = null;
         return this;
       }
 
@@ -2984,12 +3132,14 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest(this);
-        if (revealDocumentBuilder_ == null) {
-          result.revealDocument_ = revealDocument_;
-        } else {
-          result.revealDocument_ = revealDocumentBuilder_.build();
+        result.revealDocumentJson_ = revealDocumentJson_;
+        if (proofCase_ == 2) {
+          result.proof_ = proof_;
         }
-        result.documentId_ = documentId_;
+        if (proofCase_ == 3) {
+          result.proof_ = proof_;
+        }
+        result.proofCase_ = proofCase_;
         onBuilt();
         return result;
       }
@@ -3038,12 +3188,26 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.getDefaultInstance()) return this;
-        if (other.hasRevealDocument()) {
-          mergeRevealDocument(other.getRevealDocument());
-        }
-        if (!other.getDocumentId().isEmpty()) {
-          documentId_ = other.documentId_;
+        if (!other.getRevealDocumentJson().isEmpty()) {
+          revealDocumentJson_ = other.revealDocumentJson_;
           onChanged();
+        }
+        switch (other.getProofCase()) {
+          case ITEM_ID: {
+            proofCase_ = 2;
+            proof_ = other.proof_;
+            onChanged();
+            break;
+          }
+          case DOCUMENT_JSON: {
+            proofCase_ = 3;
+            proof_ = other.proof_;
+            onChanged();
+            break;
+          }
+          case PROOF_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3073,198 +3237,394 @@ public final class VerifiableCredentials {
         }
         return this;
       }
+      private int proofCase_ = 0;
+      private java.lang.Object proof_;
+      public ProofCase
+          getProofCase() {
+        return ProofCase.forNumber(
+            proofCase_);
+      }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload revealDocument_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> revealDocumentBuilder_;
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       * @return Whether the revealDocument field is set.
-       */
-      public boolean hasRevealDocument() {
-        return revealDocumentBuilder_ != null || revealDocument_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       * @return The revealDocument.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getRevealDocument() {
-        if (revealDocumentBuilder_ == null) {
-          return revealDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : revealDocument_;
-        } else {
-          return revealDocumentBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public Builder setRevealDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (revealDocumentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          revealDocument_ = value;
-          onChanged();
-        } else {
-          revealDocumentBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public Builder setRevealDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (revealDocumentBuilder_ == null) {
-          revealDocument_ = builderForValue.build();
-          onChanged();
-        } else {
-          revealDocumentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public Builder mergeRevealDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (revealDocumentBuilder_ == null) {
-          if (revealDocument_ != null) {
-            revealDocument_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(revealDocument_).mergeFrom(value).buildPartial();
-          } else {
-            revealDocument_ = value;
-          }
-          onChanged();
-        } else {
-          revealDocumentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public Builder clearRevealDocument() {
-        if (revealDocumentBuilder_ == null) {
-          revealDocument_ = null;
-          onChanged();
-        } else {
-          revealDocument_ = null;
-          revealDocumentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getRevealDocumentBuilder() {
-        
+      public Builder clearProof() {
+        proofCase_ = 0;
+        proof_ = null;
         onChanged();
-        return getRevealDocumentFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getRevealDocumentOrBuilder() {
-        if (revealDocumentBuilder_ != null) {
-          return revealDocumentBuilder_.getMessageOrBuilder();
-        } else {
-          return revealDocument_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : revealDocument_;
-        }
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload reveal_document = 1;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getRevealDocumentFieldBuilder() {
-        if (revealDocumentBuilder_ == null) {
-          revealDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getRevealDocument(),
-                  getParentForChildren(),
-                  isClean());
-          revealDocument_ = null;
-        }
-        return revealDocumentBuilder_;
+        return this;
       }
 
-      private java.lang.Object documentId_ = "";
+
+      private java.lang.Object revealDocumentJson_ = "";
       /**
-       * <code>string document_id = 2;</code>
-       * @return The documentId.
+       * <pre>
+       * Optional document that describes which fields should be
+       * revealed in the generated proof. If specified, this document must be
+       * a valid JSON-LD frame.
+       * If this field is not specified, a default reveal document will be
+       * used and all fields in the signed document will be revealed
+       * </pre>
+       *
+       * <code>string reveal_document_json = 1;</code>
+       * @return The revealDocumentJson.
        */
-      public java.lang.String getDocumentId() {
-        java.lang.Object ref = documentId_;
+      public java.lang.String getRevealDocumentJson() {
+        java.lang.Object ref = revealDocumentJson_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          documentId_ = s;
+          revealDocumentJson_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string document_id = 2;</code>
-       * @return The bytes for documentId.
+       * <pre>
+       * Optional document that describes which fields should be
+       * revealed in the generated proof. If specified, this document must be
+       * a valid JSON-LD frame.
+       * If this field is not specified, a default reveal document will be
+       * used and all fields in the signed document will be revealed
+       * </pre>
+       *
+       * <code>string reveal_document_json = 1;</code>
+       * @return The bytes for revealDocumentJson.
        */
       public com.google.protobuf.ByteString
-          getDocumentIdBytes() {
-        java.lang.Object ref = documentId_;
+          getRevealDocumentJsonBytes() {
+        java.lang.Object ref = revealDocumentJson_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          documentId_ = b;
+          revealDocumentJson_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string document_id = 2;</code>
-       * @param value The documentId to set.
+       * <pre>
+       * Optional document that describes which fields should be
+       * revealed in the generated proof. If specified, this document must be
+       * a valid JSON-LD frame.
+       * If this field is not specified, a default reveal document will be
+       * used and all fields in the signed document will be revealed
+       * </pre>
+       *
+       * <code>string reveal_document_json = 1;</code>
+       * @param value The revealDocumentJson to set.
        * @return This builder for chaining.
        */
-      public Builder setDocumentId(
+      public Builder setRevealDocumentJson(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        documentId_ = value;
+        revealDocumentJson_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string document_id = 2;</code>
+       * <pre>
+       * Optional document that describes which fields should be
+       * revealed in the generated proof. If specified, this document must be
+       * a valid JSON-LD frame.
+       * If this field is not specified, a default reveal document will be
+       * used and all fields in the signed document will be revealed
+       * </pre>
+       *
+       * <code>string reveal_document_json = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDocumentId() {
+      public Builder clearRevealDocumentJson() {
         
-        documentId_ = getDefaultInstance().getDocumentId();
+        revealDocumentJson_ = getDefaultInstance().getRevealDocumentJson();
         onChanged();
         return this;
       }
       /**
-       * <code>string document_id = 2;</code>
-       * @param value The bytes for documentId to set.
+       * <pre>
+       * Optional document that describes which fields should be
+       * revealed in the generated proof. If specified, this document must be
+       * a valid JSON-LD frame.
+       * If this field is not specified, a default reveal document will be
+       * used and all fields in the signed document will be revealed
+       * </pre>
+       *
+       * <code>string reveal_document_json = 1;</code>
+       * @param value The bytes for revealDocumentJson to set.
        * @return This builder for chaining.
        */
-      public Builder setDocumentIdBytes(
+      public Builder setRevealDocumentJsonBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        documentId_ = value;
+        revealDocumentJson_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @return Whether the itemId field is set.
+       */
+      @java.lang.Override
+      public boolean hasItemId() {
+        return proofCase_ == 2;
+      }
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @return The itemId.
+       */
+      @java.lang.Override
+      public java.lang.String getItemId() {
+        java.lang.Object ref = "";
+        if (proofCase_ == 2) {
+          ref = proof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (proofCase_ == 2) {
+            proof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @return The bytes for itemId.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getItemIdBytes() {
+        java.lang.Object ref = "";
+        if (proofCase_ == 2) {
+          ref = proof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (proofCase_ == 2) {
+            proof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @param value The itemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setItemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  proofCase_ = 2;
+        proof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearItemId() {
+        if (proofCase_ == 2) {
+          proofCase_ = 0;
+          proof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The item identifier that contains a record with a verifiable
+       * credential to be used for generating the proof.
+       * </pre>
+       *
+       * <code>string item_id = 2;</code>
+       * @param value The bytes for itemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setItemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        proofCase_ = 2;
+        proof_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @return Whether the documentJson field is set.
+       */
+      @java.lang.Override
+      public boolean hasDocumentJson() {
+        return proofCase_ == 3;
+      }
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @return The documentJson.
+       */
+      @java.lang.Override
+      public java.lang.String getDocumentJson() {
+        java.lang.Object ref = "";
+        if (proofCase_ == 3) {
+          ref = proof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (proofCase_ == 3) {
+            proof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @return The bytes for documentJson.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDocumentJsonBytes() {
+        java.lang.Object ref = "";
+        if (proofCase_ == 3) {
+          ref = proof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (proofCase_ == 3) {
+            proof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @param value The documentJson to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  proofCase_ = 3;
+        proof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDocumentJson() {
+        if (proofCase_ == 3) {
+          proofCase_ = 0;
+          proof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * A document that contains a valid verifiable credential with an
+       * unbound signature. The proof will be derived from this document
+       * directly. The document will not be stored in the wallet.
+       * </pre>
+       *
+       * <code>string document_json = 3;</code>
+       * @param value The bytes for documentJson to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        proofCase_ = 3;
+        proof_ = value;
         onChanged();
         return this;
       }
@@ -3326,19 +3686,16 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return Whether the proofDocument field is set.
+     * <code>string proof_document_json = 1;</code>
+     * @return The proofDocumentJson.
      */
-    boolean hasProofDocument();
+    java.lang.String getProofDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return The proofDocument.
+     * <code>string proof_document_json = 1;</code>
+     * @return The bytes for proofDocumentJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder();
+    com.google.protobuf.ByteString
+        getProofDocumentJsonBytes();
   }
   /**
    * Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
@@ -3353,6 +3710,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private CreateProofResponse() {
+      proofDocumentJson_ = "";
     }
 
     @java.lang.Override
@@ -3386,16 +3744,9 @@ public final class VerifiableCredentials {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (proofDocument_ != null) {
-                subBuilder = proofDocument_.toBuilder();
-              }
-              proofDocument_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(proofDocument_);
-                proofDocument_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              proofDocumentJson_ = s;
               break;
             }
             default: {
@@ -3430,30 +3781,42 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse.Builder.class);
     }
 
-    public static final int PROOF_DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload proofDocument_;
+    public static final int PROOF_DOCUMENT_JSON_FIELD_NUMBER = 1;
+    private volatile java.lang.Object proofDocumentJson_;
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return Whether the proofDocument field is set.
+     * <code>string proof_document_json = 1;</code>
+     * @return The proofDocumentJson.
      */
     @java.lang.Override
-    public boolean hasProofDocument() {
-      return proofDocument_ != null;
+    public java.lang.String getProofDocumentJson() {
+      java.lang.Object ref = proofDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        proofDocumentJson_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return The proofDocument.
+     * <code>string proof_document_json = 1;</code>
+     * @return The bytes for proofDocumentJson.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument() {
-      return proofDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder() {
-      return getProofDocument();
+    public com.google.protobuf.ByteString
+        getProofDocumentJsonBytes() {
+      java.lang.Object ref = proofDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        proofDocumentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3470,8 +3833,8 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (proofDocument_ != null) {
-        output.writeMessage(1, getProofDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proofDocumentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, proofDocumentJson_);
       }
       unknownFields.writeTo(output);
     }
@@ -3482,9 +3845,8 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (proofDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getProofDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proofDocumentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, proofDocumentJson_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3501,11 +3863,8 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse) obj;
 
-      if (hasProofDocument() != other.hasProofDocument()) return false;
-      if (hasProofDocument()) {
-        if (!getProofDocument()
-            .equals(other.getProofDocument())) return false;
-      }
+      if (!getProofDocumentJson()
+          .equals(other.getProofDocumentJson())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3517,10 +3876,8 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasProofDocument()) {
-        hash = (37 * hash) + PROOF_DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getProofDocument().hashCode();
-      }
+      hash = (37 * hash) + PROOF_DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getProofDocumentJson().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3654,12 +4011,8 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = null;
-        } else {
-          proofDocument_ = null;
-          proofDocumentBuilder_ = null;
-        }
+        proofDocumentJson_ = "";
+
         return this;
       }
 
@@ -3686,11 +4039,7 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse(this);
-        if (proofDocumentBuilder_ == null) {
-          result.proofDocument_ = proofDocument_;
-        } else {
-          result.proofDocument_ = proofDocumentBuilder_.build();
-        }
+        result.proofDocumentJson_ = proofDocumentJson_;
         onBuilt();
         return result;
       }
@@ -3739,8 +4088,9 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse.getDefaultInstance()) return this;
-        if (other.hasProofDocument()) {
-          mergeProofDocument(other.getProofDocument());
+        if (!other.getProofDocumentJson().isEmpty()) {
+          proofDocumentJson_ = other.proofDocumentJson_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3771,123 +4121,80 @@ public final class VerifiableCredentials {
         return this;
       }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload proofDocument_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> proofDocumentBuilder_;
+      private java.lang.Object proofDocumentJson_ = "";
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       * @return Whether the proofDocument field is set.
+       * <code>string proof_document_json = 1;</code>
+       * @return The proofDocumentJson.
        */
-      public boolean hasProofDocument() {
-        return proofDocumentBuilder_ != null || proofDocument_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       * @return The proofDocument.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument() {
-        if (proofDocumentBuilder_ == null) {
-          return proofDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
+      public java.lang.String getProofDocumentJson() {
+        java.lang.Object ref = proofDocumentJson_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          proofDocumentJson_ = s;
+          return s;
         } else {
-          return proofDocumentBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @return The bytes for proofDocumentJson.
        */
-      public Builder setProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (proofDocumentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          proofDocument_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getProofDocumentJsonBytes() {
+        java.lang.Object ref = proofDocumentJson_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          proofDocumentJson_ = b;
+          return b;
         } else {
-          proofDocumentBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @param value The proofDocumentJson to set.
+       * @return This builder for chaining.
        */
-      public Builder setProofDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = builderForValue.build();
-          onChanged();
-        } else {
-          proofDocumentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public Builder mergeProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (proofDocumentBuilder_ == null) {
-          if (proofDocument_ != null) {
-            proofDocument_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(proofDocument_).mergeFrom(value).buildPartial();
-          } else {
-            proofDocument_ = value;
-          }
-          onChanged();
-        } else {
-          proofDocumentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public Builder clearProofDocument() {
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = null;
-          onChanged();
-        } else {
-          proofDocument_ = null;
-          proofDocumentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getProofDocumentBuilder() {
-        
+      public Builder setProofDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        proofDocumentJson_ = value;
         onChanged();
-        return getProofDocumentFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder() {
-        if (proofDocumentBuilder_ != null) {
-          return proofDocumentBuilder_.getMessageOrBuilder();
-        } else {
-          return proofDocument_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
-        }
+      public Builder clearProofDocumentJson() {
+        
+        proofDocumentJson_ = getDefaultInstance().getProofDocumentJson();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @param value The bytes for proofDocumentJson to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getProofDocumentFieldBuilder() {
-        if (proofDocumentBuilder_ == null) {
-          proofDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getProofDocument(),
-                  getParentForChildren(),
-                  isClean());
-          proofDocument_ = null;
-        }
-        return proofDocumentBuilder_;
+      public Builder setProofDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        proofDocumentJson_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3947,19 +4254,16 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return Whether the proofDocument field is set.
+     * <code>string proof_document_json = 1;</code>
+     * @return The proofDocumentJson.
      */
-    boolean hasProofDocument();
+    java.lang.String getProofDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return The proofDocument.
+     * <code>string proof_document_json = 1;</code>
+     * @return The bytes for proofDocumentJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder();
+    com.google.protobuf.ByteString
+        getProofDocumentJsonBytes();
   }
   /**
    * <pre>
@@ -3978,6 +4282,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private VerifyProofRequest() {
+      proofDocumentJson_ = "";
     }
 
     @java.lang.Override
@@ -4011,16 +4316,9 @@ public final class VerifiableCredentials {
               done = true;
               break;
             case 10: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (proofDocument_ != null) {
-                subBuilder = proofDocument_.toBuilder();
-              }
-              proofDocument_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(proofDocument_);
-                proofDocument_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              proofDocumentJson_ = s;
               break;
             }
             default: {
@@ -4055,30 +4353,42 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest.Builder.class);
     }
 
-    public static final int PROOF_DOCUMENT_FIELD_NUMBER = 1;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload proofDocument_;
+    public static final int PROOF_DOCUMENT_JSON_FIELD_NUMBER = 1;
+    private volatile java.lang.Object proofDocumentJson_;
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return Whether the proofDocument field is set.
+     * <code>string proof_document_json = 1;</code>
+     * @return The proofDocumentJson.
      */
     @java.lang.Override
-    public boolean hasProofDocument() {
-      return proofDocument_ != null;
+    public java.lang.String getProofDocumentJson() {
+      java.lang.Object ref = proofDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        proofDocumentJson_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     * @return The proofDocument.
+     * <code>string proof_document_json = 1;</code>
+     * @return The bytes for proofDocumentJson.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument() {
-      return proofDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder() {
-      return getProofDocument();
+    public com.google.protobuf.ByteString
+        getProofDocumentJsonBytes() {
+      java.lang.Object ref = proofDocumentJson_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        proofDocumentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4095,8 +4405,8 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (proofDocument_ != null) {
-        output.writeMessage(1, getProofDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proofDocumentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, proofDocumentJson_);
       }
       unknownFields.writeTo(output);
     }
@@ -4107,9 +4417,8 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (proofDocument_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getProofDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proofDocumentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, proofDocumentJson_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4126,11 +4435,8 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest) obj;
 
-      if (hasProofDocument() != other.hasProofDocument()) return false;
-      if (hasProofDocument()) {
-        if (!getProofDocument()
-            .equals(other.getProofDocument())) return false;
-      }
+      if (!getProofDocumentJson()
+          .equals(other.getProofDocumentJson())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4142,10 +4448,8 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasProofDocument()) {
-        hash = (37 * hash) + PROOF_DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getProofDocument().hashCode();
-      }
+      hash = (37 * hash) + PROOF_DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getProofDocumentJson().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4283,12 +4587,8 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = null;
-        } else {
-          proofDocument_ = null;
-          proofDocumentBuilder_ = null;
-        }
+        proofDocumentJson_ = "";
+
         return this;
       }
 
@@ -4315,11 +4615,7 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest(this);
-        if (proofDocumentBuilder_ == null) {
-          result.proofDocument_ = proofDocument_;
-        } else {
-          result.proofDocument_ = proofDocumentBuilder_.build();
-        }
+        result.proofDocumentJson_ = proofDocumentJson_;
         onBuilt();
         return result;
       }
@@ -4368,8 +4664,9 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest.getDefaultInstance()) return this;
-        if (other.hasProofDocument()) {
-          mergeProofDocument(other.getProofDocument());
+        if (!other.getProofDocumentJson().isEmpty()) {
+          proofDocumentJson_ = other.proofDocumentJson_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4400,123 +4697,80 @@ public final class VerifiableCredentials {
         return this;
       }
 
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload proofDocument_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> proofDocumentBuilder_;
+      private java.lang.Object proofDocumentJson_ = "";
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       * @return Whether the proofDocument field is set.
+       * <code>string proof_document_json = 1;</code>
+       * @return The proofDocumentJson.
        */
-      public boolean hasProofDocument() {
-        return proofDocumentBuilder_ != null || proofDocument_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       * @return The proofDocument.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getProofDocument() {
-        if (proofDocumentBuilder_ == null) {
-          return proofDocument_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
+      public java.lang.String getProofDocumentJson() {
+        java.lang.Object ref = proofDocumentJson_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          proofDocumentJson_ = s;
+          return s;
         } else {
-          return proofDocumentBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @return The bytes for proofDocumentJson.
        */
-      public Builder setProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (proofDocumentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          proofDocument_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getProofDocumentJsonBytes() {
+        java.lang.Object ref = proofDocumentJson_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          proofDocumentJson_ = b;
+          return b;
         } else {
-          proofDocumentBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @param value The proofDocumentJson to set.
+       * @return This builder for chaining.
        */
-      public Builder setProofDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = builderForValue.build();
-          onChanged();
-        } else {
-          proofDocumentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public Builder mergeProofDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (proofDocumentBuilder_ == null) {
-          if (proofDocument_ != null) {
-            proofDocument_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(proofDocument_).mergeFrom(value).buildPartial();
-          } else {
-            proofDocument_ = value;
-          }
-          onChanged();
-        } else {
-          proofDocumentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public Builder clearProofDocument() {
-        if (proofDocumentBuilder_ == null) {
-          proofDocument_ = null;
-          onChanged();
-        } else {
-          proofDocument_ = null;
-          proofDocumentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getProofDocumentBuilder() {
-        
+      public Builder setProofDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        proofDocumentJson_ = value;
         onChanged();
-        return getProofDocumentFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getProofDocumentOrBuilder() {
-        if (proofDocumentBuilder_ != null) {
-          return proofDocumentBuilder_.getMessageOrBuilder();
-        } else {
-          return proofDocument_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : proofDocument_;
-        }
+      public Builder clearProofDocumentJson() {
+        
+        proofDocumentJson_ = getDefaultInstance().getProofDocumentJson();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload proof_document = 1;</code>
+       * <code>string proof_document_json = 1;</code>
+       * @param value The bytes for proofDocumentJson to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getProofDocumentFieldBuilder() {
-        if (proofDocumentBuilder_ == null) {
-          proofDocumentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getProofDocument(),
-                  getParentForChildren(),
-                  isClean());
-          proofDocument_ = null;
-        }
-        return proofDocumentBuilder_;
+      public Builder setProofDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        proofDocumentJson_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4576,10 +4830,71 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bool valid = 1;</code>
-     * @return The valid.
+     * <pre>
+     * Indicates if the proof is valid
+     * </pre>
+     *
+     * <code>bool is_valid = 1;</code>
+     * @return The isValid.
      */
-    boolean getValid();
+    boolean getIsValid();
+
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @return A list containing the validationMessages.
+     */
+    java.util.List<java.lang.String>
+        getValidationMessagesList();
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @return The count of validationMessages.
+     */
+    int getValidationMessagesCount();
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @param index The index of the element to return.
+     * @return The validationMessages at the given index.
+     */
+    java.lang.String getValidationMessages(int index);
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the validationMessages at the given index.
+     */
+    com.google.protobuf.ByteString
+        getValidationMessagesBytes(int index);
   }
   /**
    * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
@@ -4594,6 +4909,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private VerifyProofResponse() {
+      validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -4616,6 +4932,7 @@ public final class VerifiableCredentials {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -4628,7 +4945,16 @@ public final class VerifiableCredentials {
               break;
             case 8: {
 
-              valid_ = input.readBool();
+              isValid_ = input.readBool();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                validationMessages_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              validationMessages_.add(s);
               break;
             }
             default: {
@@ -4646,6 +4972,9 @@ public final class VerifiableCredentials {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          validationMessages_ = validationMessages_.getUnmodifiableView();
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -4663,15 +4992,86 @@ public final class VerifiableCredentials {
               trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse.class, trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse.Builder.class);
     }
 
-    public static final int VALID_FIELD_NUMBER = 1;
-    private boolean valid_;
+    public static final int IS_VALID_FIELD_NUMBER = 1;
+    private boolean isValid_;
     /**
-     * <code>bool valid = 1;</code>
-     * @return The valid.
+     * <pre>
+     * Indicates if the proof is valid
+     * </pre>
+     *
+     * <code>bool is_valid = 1;</code>
+     * @return The isValid.
      */
     @java.lang.Override
-    public boolean getValid() {
-      return valid_;
+    public boolean getIsValid() {
+      return isValid_;
+    }
+
+    public static final int VALIDATION_MESSAGES_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList validationMessages_;
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @return A list containing the validationMessages.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getValidationMessagesList() {
+      return validationMessages_;
+    }
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @return The count of validationMessages.
+     */
+    public int getValidationMessagesCount() {
+      return validationMessages_.size();
+    }
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @param index The index of the element to return.
+     * @return The validationMessages at the given index.
+     */
+    public java.lang.String getValidationMessages(int index) {
+      return validationMessages_.get(index);
+    }
+    /**
+     * <pre>
+     * Validation messages that describe invalid verifications
+     * based on different factors, such as schema validation,
+     * proof verification, revocation registry membership, etc.
+     * If the proof is not valid, this field will contain detailed
+     * results where this verification failed.
+     * </pre>
+     *
+     * <code>repeated string validation_messages = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the validationMessages at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getValidationMessagesBytes(int index) {
+      return validationMessages_.getByteString(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4688,8 +5088,11 @@ public final class VerifiableCredentials {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (valid_ != false) {
-        output.writeBool(1, valid_);
+      if (isValid_ != false) {
+        output.writeBool(1, isValid_);
+      }
+      for (int i = 0; i < validationMessages_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, validationMessages_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4700,9 +5103,17 @@ public final class VerifiableCredentials {
       if (size != -1) return size;
 
       size = 0;
-      if (valid_ != false) {
+      if (isValid_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(1, valid_);
+          .computeBoolSize(1, isValid_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < validationMessages_.size(); i++) {
+          dataSize += computeStringSizeNoTag(validationMessages_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getValidationMessagesList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4719,8 +5130,10 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse) obj;
 
-      if (getValid()
-          != other.getValid()) return false;
+      if (getIsValid()
+          != other.getIsValid()) return false;
+      if (!getValidationMessagesList()
+          .equals(other.getValidationMessagesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4732,9 +5145,13 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + VALID_FIELD_NUMBER;
+      hash = (37 * hash) + IS_VALID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getValid());
+          getIsValid());
+      if (getValidationMessagesCount() > 0) {
+        hash = (37 * hash) + VALIDATION_MESSAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getValidationMessagesList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4868,8 +5285,10 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        valid_ = false;
+        isValid_ = false;
 
+        validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -4896,7 +5315,13 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse buildPartial() {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse(this);
-        result.valid_ = valid_;
+        int from_bitField0_ = bitField0_;
+        result.isValid_ = isValid_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          validationMessages_ = validationMessages_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.validationMessages_ = validationMessages_;
         onBuilt();
         return result;
       }
@@ -4945,8 +5370,18 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse.getDefaultInstance()) return this;
-        if (other.getValid() != false) {
-          setValid(other.getValid());
+        if (other.getIsValid() != false) {
+          setIsValid(other.getIsValid());
+        }
+        if (!other.validationMessages_.isEmpty()) {
+          if (validationMessages_.isEmpty()) {
+            validationMessages_ = other.validationMessages_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureValidationMessagesIsMutable();
+            validationMessages_.addAll(other.validationMessages_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4976,34 +5411,229 @@ public final class VerifiableCredentials {
         }
         return this;
       }
+      private int bitField0_;
 
-      private boolean valid_ ;
+      private boolean isValid_ ;
       /**
-       * <code>bool valid = 1;</code>
-       * @return The valid.
+       * <pre>
+       * Indicates if the proof is valid
+       * </pre>
+       *
+       * <code>bool is_valid = 1;</code>
+       * @return The isValid.
        */
       @java.lang.Override
-      public boolean getValid() {
-        return valid_;
+      public boolean getIsValid() {
+        return isValid_;
       }
       /**
-       * <code>bool valid = 1;</code>
-       * @param value The valid to set.
+       * <pre>
+       * Indicates if the proof is valid
+       * </pre>
+       *
+       * <code>bool is_valid = 1;</code>
+       * @param value The isValid to set.
        * @return This builder for chaining.
        */
-      public Builder setValid(boolean value) {
+      public Builder setIsValid(boolean value) {
         
-        valid_ = value;
+        isValid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool valid = 1;</code>
+       * <pre>
+       * Indicates if the proof is valid
+       * </pre>
+       *
+       * <code>bool is_valid = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearValid() {
+      public Builder clearIsValid() {
         
-        valid_ = false;
+        isValid_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureValidationMessagesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          validationMessages_ = new com.google.protobuf.LazyStringArrayList(validationMessages_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @return A list containing the validationMessages.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getValidationMessagesList() {
+        return validationMessages_.getUnmodifiableView();
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @return The count of validationMessages.
+       */
+      public int getValidationMessagesCount() {
+        return validationMessages_.size();
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param index The index of the element to return.
+       * @return The validationMessages at the given index.
+       */
+      public java.lang.String getValidationMessages(int index) {
+        return validationMessages_.get(index);
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the validationMessages at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getValidationMessagesBytes(int index) {
+        return validationMessages_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The validationMessages to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValidationMessages(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValidationMessagesIsMutable();
+        validationMessages_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param value The validationMessages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addValidationMessages(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureValidationMessagesIsMutable();
+        validationMessages_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param values The validationMessages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllValidationMessages(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureValidationMessagesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, validationMessages_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValidationMessages() {
+        validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Validation messages that describe invalid verifications
+       * based on different factors, such as schema validation,
+       * proof verification, revocation registry membership, etc.
+       * If the proof is not valid, this field will contain detailed
+       * results where this verification failed.
+       * </pre>
+       *
+       * <code>repeated string validation_messages = 2;</code>
+       * @param value The bytes of the validationMessages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addValidationMessagesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureValidationMessagesIsMutable();
+        validationMessages_.add(value);
         onChanged();
         return this;
       }
@@ -5099,34 +5729,33 @@ public final class VerifiableCredentials {
         getDidUriBytes();
 
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-     * @return Whether the didcommInvitation field is set.
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return Whether the didcommInvitationJson field is set.
      */
-    boolean hasDidcommInvitation();
+    boolean hasDidcommInvitationJson();
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-     * @return The didcommInvitation.
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return The didcommInvitationJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation();
+    java.lang.String getDidcommInvitationJson();
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return The bytes for didcommInvitationJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder();
+    com.google.protobuf.ByteString
+        getDidcommInvitationJsonBytes();
 
     /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     * @return Whether the document field is set.
+     * <code>string document_json = 100;</code>
+     * @return The documentJson.
      */
-    boolean hasDocument();
+    java.lang.String getDocumentJson();
     /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     * @return The document.
+     * <code>string document_json = 100;</code>
+     * @return The bytes for documentJson.
      */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument();
-    /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     */
-    trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder();
+    com.google.protobuf.ByteString
+        getDocumentJsonBytes();
 
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest.DeliveryMethodCase getDeliveryMethodCase();
   }
@@ -5143,6 +5772,7 @@ public final class VerifiableCredentials {
       super(builder);
     }
     private SendRequest() {
+      documentJson_ = "";
     }
 
     @java.lang.Override
@@ -5188,30 +5818,15 @@ public final class VerifiableCredentials {
               break;
             }
             case 26: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (deliveryMethodCase_ == 3) {
-                subBuilder = ((trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_).toBuilder();
-              }
-              deliveryMethod_ =
-                  input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_);
-                deliveryMethod_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
               deliveryMethodCase_ = 3;
+              deliveryMethod_ = s;
               break;
             }
             case 802: {
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder subBuilder = null;
-              if (document_ != null) {
-                subBuilder = document_.toBuilder();
-              }
-              document_ = input.readMessage(trinsic.services.common.v1.CommonOuterClass.JsonPayload.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(document_);
-                document_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              documentJson_ = s;
               break;
             }
             default: {
@@ -5253,7 +5868,7 @@ public final class VerifiableCredentials {
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       EMAIL(1),
       DID_URI(2),
-      DIDCOMM_INVITATION(3),
+      DIDCOMM_INVITATION_JSON(3),
       DELIVERYMETHOD_NOT_SET(0);
       private final int value;
       private DeliveryMethodCase(int value) {
@@ -5273,7 +5888,7 @@ public final class VerifiableCredentials {
         switch (value) {
           case 1: return EMAIL;
           case 2: return DID_URI;
-          case 3: return DIDCOMM_INVITATION;
+          case 3: return DIDCOMM_INVITATION_JSON;
           case 0: return DELIVERYMETHOD_NOT_SET;
           default: return null;
         }
@@ -5393,61 +6008,94 @@ public final class VerifiableCredentials {
       }
     }
 
-    public static final int DIDCOMM_INVITATION_FIELD_NUMBER = 3;
+    public static final int DIDCOMM_INVITATION_JSON_FIELD_NUMBER = 3;
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-     * @return Whether the didcommInvitation field is set.
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return Whether the didcommInvitationJson field is set.
      */
-    @java.lang.Override
-    public boolean hasDidcommInvitation() {
+    public boolean hasDidcommInvitationJson() {
       return deliveryMethodCase_ == 3;
     }
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-     * @return The didcommInvitation.
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return The didcommInvitationJson.
      */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation() {
+    public java.lang.String getDidcommInvitationJson() {
+      java.lang.Object ref = "";
       if (deliveryMethodCase_ == 3) {
-         return (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_;
+        ref = deliveryMethod_;
       }
-      return trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (deliveryMethodCase_ == 3) {
+          deliveryMethod_ = s;
+        }
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
+     * <code>string didcomm_invitation_json = 3;</code>
+     * @return The bytes for didcommInvitationJson.
      */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder() {
+    public com.google.protobuf.ByteString
+        getDidcommInvitationJsonBytes() {
+      java.lang.Object ref = "";
       if (deliveryMethodCase_ == 3) {
-         return (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_;
+        ref = deliveryMethod_;
       }
-      return trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (deliveryMethodCase_ == 3) {
+          deliveryMethod_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int DOCUMENT_FIELD_NUMBER = 100;
-    private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
+    public static final int DOCUMENT_JSON_FIELD_NUMBER = 100;
+    private volatile java.lang.Object documentJson_;
     /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     * @return Whether the document field is set.
+     * <code>string document_json = 100;</code>
+     * @return The documentJson.
      */
     @java.lang.Override
-    public boolean hasDocument() {
-      return document_ != null;
+    public java.lang.String getDocumentJson() {
+      java.lang.Object ref = documentJson_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        documentJson_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     * @return The document.
+     * <code>string document_json = 100;</code>
+     * @return The bytes for documentJson.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-      return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
-    }
-    /**
-     * <code>.services.common.v1.JsonPayload document = 100;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-      return getDocument();
+    public com.google.protobuf.ByteString
+        getDocumentJsonBytes() {
+      java.lang.Object ref = documentJson_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        documentJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5471,10 +6119,10 @@ public final class VerifiableCredentials {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, deliveryMethod_);
       }
       if (deliveryMethodCase_ == 3) {
-        output.writeMessage(3, (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, deliveryMethod_);
       }
-      if (document_ != null) {
-        output.writeMessage(100, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 100, documentJson_);
       }
       unknownFields.writeTo(output);
     }
@@ -5492,12 +6140,10 @@ public final class VerifiableCredentials {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, deliveryMethod_);
       }
       if (deliveryMethodCase_ == 3) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, deliveryMethod_);
       }
-      if (document_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(100, getDocument());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(100, documentJson_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5514,11 +6160,8 @@ public final class VerifiableCredentials {
       }
       trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest other = (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest) obj;
 
-      if (hasDocument() != other.hasDocument()) return false;
-      if (hasDocument()) {
-        if (!getDocument()
-            .equals(other.getDocument())) return false;
-      }
+      if (!getDocumentJson()
+          .equals(other.getDocumentJson())) return false;
       if (!getDeliveryMethodCase().equals(other.getDeliveryMethodCase())) return false;
       switch (deliveryMethodCase_) {
         case 1:
@@ -5530,8 +6173,8 @@ public final class VerifiableCredentials {
               .equals(other.getDidUri())) return false;
           break;
         case 3:
-          if (!getDidcommInvitation()
-              .equals(other.getDidcommInvitation())) return false;
+          if (!getDidcommInvitationJson()
+              .equals(other.getDidcommInvitationJson())) return false;
           break;
         case 0:
         default:
@@ -5547,10 +6190,8 @@ public final class VerifiableCredentials {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasDocument()) {
-        hash = (37 * hash) + DOCUMENT_FIELD_NUMBER;
-        hash = (53 * hash) + getDocument().hashCode();
-      }
+      hash = (37 * hash) + DOCUMENT_JSON_FIELD_NUMBER;
+      hash = (53 * hash) + getDocumentJson().hashCode();
       switch (deliveryMethodCase_) {
         case 1:
           hash = (37 * hash) + EMAIL_FIELD_NUMBER;
@@ -5561,8 +6202,8 @@ public final class VerifiableCredentials {
           hash = (53 * hash) + getDidUri().hashCode();
           break;
         case 3:
-          hash = (37 * hash) + DIDCOMM_INVITATION_FIELD_NUMBER;
-          hash = (53 * hash) + getDidcommInvitation().hashCode();
+          hash = (37 * hash) + DIDCOMM_INVITATION_JSON_FIELD_NUMBER;
+          hash = (53 * hash) + getDidcommInvitationJson().hashCode();
           break;
         case 0:
         default:
@@ -5700,12 +6341,8 @@ public final class VerifiableCredentials {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (documentBuilder_ == null) {
-          document_ = null;
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
+        documentJson_ = "";
+
         deliveryMethodCase_ = 0;
         deliveryMethod_ = null;
         return this;
@@ -5741,17 +6378,9 @@ public final class VerifiableCredentials {
           result.deliveryMethod_ = deliveryMethod_;
         }
         if (deliveryMethodCase_ == 3) {
-          if (didcommInvitationBuilder_ == null) {
-            result.deliveryMethod_ = deliveryMethod_;
-          } else {
-            result.deliveryMethod_ = didcommInvitationBuilder_.build();
-          }
+          result.deliveryMethod_ = deliveryMethod_;
         }
-        if (documentBuilder_ == null) {
-          result.document_ = document_;
-        } else {
-          result.document_ = documentBuilder_.build();
-        }
+        result.documentJson_ = documentJson_;
         result.deliveryMethodCase_ = deliveryMethodCase_;
         onBuilt();
         return result;
@@ -5801,8 +6430,9 @@ public final class VerifiableCredentials {
 
       public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest other) {
         if (other == trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest.getDefaultInstance()) return this;
-        if (other.hasDocument()) {
-          mergeDocument(other.getDocument());
+        if (!other.getDocumentJson().isEmpty()) {
+          documentJson_ = other.documentJson_;
+          onChanged();
         }
         switch (other.getDeliveryMethodCase()) {
           case EMAIL: {
@@ -5817,8 +6447,10 @@ public final class VerifiableCredentials {
             onChanged();
             break;
           }
-          case DIDCOMM_INVITATION: {
-            mergeDidcommInvitation(other.getDidcommInvitation());
+          case DIDCOMM_INVITATION_JSON: {
+            deliveryMethodCase_ = 3;
+            deliveryMethod_ = other.deliveryMethod_;
+            onChanged();
             break;
           }
           case DELIVERYMETHOD_NOT_SET: {
@@ -6063,264 +6695,177 @@ public final class VerifiableCredentials {
         return this;
       }
 
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> didcommInvitationBuilder_;
       /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       * @return Whether the didcommInvitation field is set.
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @return Whether the didcommInvitationJson field is set.
        */
       @java.lang.Override
-      public boolean hasDidcommInvitation() {
+      public boolean hasDidcommInvitationJson() {
         return deliveryMethodCase_ == 3;
       }
       /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       * @return The didcommInvitation.
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @return The didcommInvitationJson.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDidcommInvitation() {
-        if (didcommInvitationBuilder_ == null) {
+      public java.lang.String getDidcommInvitationJson() {
+        java.lang.Object ref = "";
+        if (deliveryMethodCase_ == 3) {
+          ref = deliveryMethod_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
           if (deliveryMethodCase_ == 3) {
-            return (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_;
+            deliveryMethod_ = s;
           }
-          return trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
+          return s;
         } else {
-          if (deliveryMethodCase_ == 3) {
-            return didcommInvitationBuilder_.getMessage();
-          }
-          return trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      public Builder setDidcommInvitation(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didcommInvitationBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          deliveryMethod_ = value;
-          onChanged();
-        } else {
-          didcommInvitationBuilder_.setMessage(value);
-        }
-        deliveryMethodCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      public Builder setDidcommInvitation(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (didcommInvitationBuilder_ == null) {
-          deliveryMethod_ = builderForValue.build();
-          onChanged();
-        } else {
-          didcommInvitationBuilder_.setMessage(builderForValue.build());
-        }
-        deliveryMethodCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      public Builder mergeDidcommInvitation(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (didcommInvitationBuilder_ == null) {
-          if (deliveryMethodCase_ == 3 &&
-              deliveryMethod_ != trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance()) {
-            deliveryMethod_ = trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder((trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_)
-                .mergeFrom(value).buildPartial();
-          } else {
-            deliveryMethod_ = value;
-          }
-          onChanged();
-        } else {
-          if (deliveryMethodCase_ == 3) {
-            didcommInvitationBuilder_.mergeFrom(value);
-          }
-          didcommInvitationBuilder_.setMessage(value);
-        }
-        deliveryMethodCase_ = 3;
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      public Builder clearDidcommInvitation() {
-        if (didcommInvitationBuilder_ == null) {
-          if (deliveryMethodCase_ == 3) {
-            deliveryMethodCase_ = 0;
-            deliveryMethod_ = null;
-            onChanged();
-          }
-        } else {
-          if (deliveryMethodCase_ == 3) {
-            deliveryMethodCase_ = 0;
-            deliveryMethod_ = null;
-          }
-          didcommInvitationBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDidcommInvitationBuilder() {
-        return getDidcommInvitationFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @return The bytes for didcommInvitationJson.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDidcommInvitationOrBuilder() {
-        if ((deliveryMethodCase_ == 3) && (didcommInvitationBuilder_ != null)) {
-          return didcommInvitationBuilder_.getMessageOrBuilder();
-        } else {
+      public com.google.protobuf.ByteString
+          getDidcommInvitationJsonBytes() {
+        java.lang.Object ref = "";
+        if (deliveryMethodCase_ == 3) {
+          ref = deliveryMethod_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
           if (deliveryMethodCase_ == 3) {
-            return (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_;
+            deliveryMethod_ = b;
           }
-          return trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
-        }
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload didcomm_invitation = 3;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDidcommInvitationFieldBuilder() {
-        if (didcommInvitationBuilder_ == null) {
-          if (!(deliveryMethodCase_ == 3)) {
-            deliveryMethod_ = trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance();
-          }
-          didcommInvitationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  (trinsic.services.common.v1.CommonOuterClass.JsonPayload) deliveryMethod_,
-                  getParentForChildren(),
-                  isClean());
-          deliveryMethod_ = null;
-        }
-        deliveryMethodCase_ = 3;
-        onChanged();;
-        return didcommInvitationBuilder_;
-      }
-
-      private trinsic.services.common.v1.CommonOuterClass.JsonPayload document_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> documentBuilder_;
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       * @return Whether the document field is set.
-       */
-      public boolean hasDocument() {
-        return documentBuilder_ != null || document_ != null;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       * @return The document.
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload getDocument() {
-        if (documentBuilder_ == null) {
-          return document_ == null ? trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
+          return b;
         } else {
-          return documentBuilder_.getMessage();
+          return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @param value The didcommInvitationJson to set.
+       * @return This builder for chaining.
        */
-      public Builder setDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          document_ = value;
-          onChanged();
-        } else {
-          documentBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       */
-      public Builder setDocument(
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue) {
-        if (documentBuilder_ == null) {
-          document_ = builderForValue.build();
-          onChanged();
-        } else {
-          documentBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       */
-      public Builder mergeDocument(trinsic.services.common.v1.CommonOuterClass.JsonPayload value) {
-        if (documentBuilder_ == null) {
-          if (document_ != null) {
-            document_ =
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.newBuilder(document_).mergeFrom(value).buildPartial();
-          } else {
-            document_ = value;
-          }
-          onChanged();
-        } else {
-          documentBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       */
-      public Builder clearDocument() {
-        if (documentBuilder_ == null) {
-          document_ = null;
-          onChanged();
-        } else {
-          document_ = null;
-          documentBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
-       */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getDocumentBuilder() {
-        
+      public Builder setDidcommInvitationJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  deliveryMethodCase_ = 3;
+        deliveryMethod_ = value;
         onChanged();
-        return getDocumentFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getDocumentOrBuilder() {
-        if (documentBuilder_ != null) {
-          return documentBuilder_.getMessageOrBuilder();
+      public Builder clearDidcommInvitationJson() {
+        if (deliveryMethodCase_ == 3) {
+          deliveryMethodCase_ = 0;
+          deliveryMethod_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string didcomm_invitation_json = 3;</code>
+       * @param value The bytes for didcommInvitationJson to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDidcommInvitationJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        deliveryMethodCase_ = 3;
+        deliveryMethod_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object documentJson_ = "";
+      /**
+       * <code>string document_json = 100;</code>
+       * @return The documentJson.
+       */
+      public java.lang.String getDocumentJson() {
+        java.lang.Object ref = documentJson_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          documentJson_ = s;
+          return s;
         } else {
-          return document_ == null ?
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload.getDefaultInstance() : document_;
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.common.v1.JsonPayload document = 100;</code>
+       * <code>string document_json = 100;</code>
+       * @return The bytes for documentJson.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> 
-          getDocumentFieldBuilder() {
-        if (documentBuilder_ == null) {
-          documentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder>(
-                  getDocument(),
-                  getParentForChildren(),
-                  isClean());
-          document_ = null;
+      public com.google.protobuf.ByteString
+          getDocumentJsonBytes() {
+        java.lang.Object ref = documentJson_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          documentJson_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
-        return documentBuilder_;
+      }
+      /**
+       * <code>string document_json = 100;</code>
+       * @param value The documentJson to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDocumentJson(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        documentJson_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string document_json = 100;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDocumentJson() {
+        
+        documentJson_ = getDefaultInstance().getDocumentJson();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string document_json = 100;</code>
+       * @param value The bytes for documentJson to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDocumentJsonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        documentJson_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9347,59 +9892,56 @@ public final class VerifiableCredentials {
       "\n?services/verifiable-credentials/v1/ver" +
       "ifiable-credentials.proto\022!services.veri" +
       "fiablecredentials.v1\032\037services/common/v1" +
-      "/common.proto\"A\n\014IssueRequest\0221\n\010documen" +
-      "t\030\001 \001(\0132\037.services.common.v1.JsonPayload" +
-      "\"B\n\rIssueResponse\0221\n\010document\030\001 \001(\0132\037.se" +
-      "rvices.common.v1.JsonPayload\"D\n\030IssueFro" +
-      "mTemplateRequest\022\023\n\013template_id\030\001 \001(\t\022\023\n" +
-      "\013values_json\030\002 \001(\t\"2\n\031IssueFromTemplateR" +
-      "esponse\022\025\n\rdocument_json\030\001 \001(\t\"c\n\022Create" +
-      "ProofRequest\0228\n\017reveal_document\030\001 \001(\0132\037." +
-      "services.common.v1.JsonPayload\022\023\n\013docume" +
-      "nt_id\030\002 \001(\t\"N\n\023CreateProofResponse\0227\n\016pr" +
-      "oof_document\030\001 \001(\0132\037.services.common.v1." +
-      "JsonPayload\"M\n\022VerifyProofRequest\0227\n\016pro" +
-      "of_document\030\001 \001(\0132\037.services.common.v1.J" +
-      "sonPayload\"$\n\023VerifyProofResponse\022\r\n\005val" +
-      "id\030\001 \001(\010\"\266\001\n\013SendRequest\022\017\n\005email\030\001 \001(\tH" +
-      "\000\022\021\n\007did_uri\030\002 \001(\tH\000\022=\n\022didcomm_invitati" +
-      "on\030\003 \001(\0132\037.services.common.v1.JsonPayloa" +
-      "dH\000\0221\n\010document\030d \001(\0132\037.services.common." +
-      "v1.JsonPayloadB\021\n\017delivery_method\"B\n\014Sen" +
-      "dResponse\0222\n\006status\030\001 \001(\0162\".services.com" +
-      "mon.v1.ResponseStatus\"D\n\023UpdateStatusReq" +
-      "uest\022\034\n\024credential_status_id\030\001 \001(\t\022\017\n\007re" +
-      "voked\030\002 \001(\010\"J\n\024UpdateStatusResponse\0222\n\006s" +
-      "tatus\030\001 \001(\0162\".services.common.v1.Respons" +
-      "eStatus\"2\n\022CheckStatusRequest\022\034\n\024credent" +
-      "ial_status_id\030\001 \001(\t\"&\n\023CheckStatusRespon" +
-      "se\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCreden" +
-      "tial\022j\n\005Issue\022/.services.verifiablecrede" +
-      "ntials.v1.IssueRequest\0320.services.verifi" +
-      "ablecredentials.v1.IssueResponse\022\216\001\n\021Iss" +
-      "ueFromTemplate\022;.services.verifiablecred" +
-      "entials.v1.IssueFromTemplateRequest\032<.se" +
-      "rvices.verifiablecredentials.v1.IssueFro" +
-      "mTemplateResponse\022|\n\013CheckStatus\0225.servi" +
-      "ces.verifiablecredentials.v1.CheckStatus" +
-      "Request\0326.services.verifiablecredentials" +
-      ".v1.CheckStatusResponse\022\177\n\014UpdateStatus\022" +
-      "6.services.verifiablecredentials.v1.Upda" +
-      "teStatusRequest\0327.services.verifiablecre" +
-      "dentials.v1.UpdateStatusResponse\022|\n\013Crea" +
-      "teProof\0225.services.verifiablecredentials" +
-      ".v1.CreateProofRequest\0326.services.verifi" +
-      "ablecredentials.v1.CreateProofResponse\022|" +
-      "\n\013VerifyProof\0225.services.verifiablecrede" +
-      "ntials.v1.VerifyProofRequest\0326.services." +
-      "verifiablecredentials.v1.VerifyProofResp" +
-      "onse\022g\n\004Send\022..services.verifiablecreden" +
-      "tials.v1.SendRequest\032/.services.verifiab" +
-      "lecredentials.v1.SendResponseB\204\001\n)trinsi" +
-      "c.services.verifiablecredentials.v1Z\031git" +
-      "hub.com/trinsic-id/sdk\242\002\017TrinsicServices" +
-      "\252\002)Trinsic.Services.VerifiableCredential" +
-      "s.V1b\006proto3"
+      "/common.proto\"%\n\014IssueRequest\022\025\n\rdocumen" +
+      "t_json\030\001 \001(\t\"-\n\rIssueResponse\022\034\n\024signed_" +
+      "document_json\030\001 \001(\t\"D\n\030IssueFromTemplate" +
+      "Request\022\023\n\013template_id\030\001 \001(\t\022\023\n\013values_j" +
+      "son\030\002 \001(\t\"2\n\031IssueFromTemplateResponse\022\025" +
+      "\n\rdocument_json\030\001 \001(\t\"g\n\022CreateProofRequ" +
+      "est\022\034\n\024reveal_document_json\030\001 \001(\t\022\021\n\007ite" +
+      "m_id\030\002 \001(\tH\000\022\027\n\rdocument_json\030\003 \001(\tH\000B\007\n" +
+      "\005proof\"2\n\023CreateProofResponse\022\033\n\023proof_d" +
+      "ocument_json\030\001 \001(\t\"1\n\022VerifyProofRequest" +
+      "\022\033\n\023proof_document_json\030\001 \001(\t\"D\n\023VerifyP" +
+      "roofResponse\022\020\n\010is_valid\030\001 \001(\010\022\033\n\023valida" +
+      "tion_messages\030\002 \003(\t\"~\n\013SendRequest\022\017\n\005em" +
+      "ail\030\001 \001(\tH\000\022\021\n\007did_uri\030\002 \001(\tH\000\022!\n\027didcom" +
+      "m_invitation_json\030\003 \001(\tH\000\022\025\n\rdocument_js" +
+      "on\030d \001(\tB\021\n\017delivery_method\"B\n\014SendRespo" +
+      "nse\0222\n\006status\030\001 \001(\0162\".services.common.v1" +
+      ".ResponseStatus\"D\n\023UpdateStatusRequest\022\034" +
+      "\n\024credential_status_id\030\001 \001(\t\022\017\n\007revoked\030" +
+      "\002 \001(\010\"J\n\024UpdateStatusResponse\0222\n\006status\030" +
+      "\001 \001(\0162\".services.common.v1.ResponseStatu" +
+      "s\"2\n\022CheckStatusRequest\022\034\n\024credential_st" +
+      "atus_id\030\001 \001(\t\"&\n\023CheckStatusResponse\022\017\n\007" +
+      "revoked\030\001 \001(\0102\367\006\n\024VerifiableCredential\022j" +
+      "\n\005Issue\022/.services.verifiablecredentials" +
+      ".v1.IssueRequest\0320.services.verifiablecr" +
+      "edentials.v1.IssueResponse\022\216\001\n\021IssueFrom" +
+      "Template\022;.services.verifiablecredential" +
+      "s.v1.IssueFromTemplateRequest\032<.services" +
+      ".verifiablecredentials.v1.IssueFromTempl" +
+      "ateResponse\022|\n\013CheckStatus\0225.services.ve" +
+      "rifiablecredentials.v1.CheckStatusReques" +
+      "t\0326.services.verifiablecredentials.v1.Ch" +
+      "eckStatusResponse\022\177\n\014UpdateStatus\0226.serv" +
+      "ices.verifiablecredentials.v1.UpdateStat" +
+      "usRequest\0327.services.verifiablecredentia" +
+      "ls.v1.UpdateStatusResponse\022|\n\013CreateProo" +
+      "f\0225.services.verifiablecredentials.v1.Cr" +
+      "eateProofRequest\0326.services.verifiablecr" +
+      "edentials.v1.CreateProofResponse\022|\n\013Veri" +
+      "fyProof\0225.services.verifiablecredentials" +
+      ".v1.VerifyProofRequest\0326.services.verifi" +
+      "ablecredentials.v1.VerifyProofResponse\022g" +
+      "\n\004Send\022..services.verifiablecredentials." +
+      "v1.SendRequest\032/.services.verifiablecred" +
+      "entials.v1.SendResponseB\204\001\n)trinsic.serv" +
+      "ices.verifiablecredentials.v1Z\031github.co" +
+      "m/trinsic-id/sdk\242\002\017TrinsicServices\252\002)Tri" +
+      "nsic.Services.VerifiableCredentials.V1b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9411,13 +9953,13 @@ public final class VerifiableCredentials {
     internal_static_services_verifiablecredentials_v1_IssueRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor,
-        new java.lang.String[] { "Document", });
+        new java.lang.String[] { "DocumentJson", });
     internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor,
-        new java.lang.String[] { "Document", });
+        new java.lang.String[] { "SignedDocumentJson", });
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable = new
@@ -9435,31 +9977,31 @@ public final class VerifiableCredentials {
     internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor,
-        new java.lang.String[] { "RevealDocument", "DocumentId", });
+        new java.lang.String[] { "RevealDocumentJson", "ItemId", "DocumentJson", "Proof", });
     internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_services_verifiablecredentials_v1_CreateProofResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor,
-        new java.lang.String[] { "ProofDocument", });
+        new java.lang.String[] { "ProofDocumentJson", });
     internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_services_verifiablecredentials_v1_VerifyProofRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor,
-        new java.lang.String[] { "ProofDocument", });
+        new java.lang.String[] { "ProofDocumentJson", });
     internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor,
-        new java.lang.String[] { "Valid", });
+        new java.lang.String[] { "IsValid", "ValidationMessages", });
     internal_static_services_verifiablecredentials_v1_SendRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_SendRequest_descriptor,
-        new java.lang.String[] { "Email", "DidUri", "DidcommInvitation", "Document", "DeliveryMethod", });
+        new java.lang.String[] { "Email", "DidUri", "DidcommInvitationJson", "DocumentJson", "DeliveryMethod", });
     internal_static_services_verifiablecredentials_v1_SendResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_services_verifiablecredentials_v1_SendResponse_fieldAccessorTable = new

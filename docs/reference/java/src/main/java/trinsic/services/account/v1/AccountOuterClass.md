@@ -115,6 +115,22 @@ Protobuf enum {@code services.account.v1.ConfirmationMethod}
 
  * **Returns:** The bytes for invitationCode.
 
+## `java.lang.String getEcosystemId()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The ecosystemId.
+
+## `com.google.protobuf.ByteString getEcosystemIdBytes()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The bytes for ecosystemId.
+
 ## `public static final class SignInRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
 <pre> Request for creating new account </pre>
@@ -158,6 +174,22 @@ Protobuf type {@code services.account.v1.SignInRequest}
 `string invitation_code = 2;`
 
  * **Returns:** The bytes for invitationCode.
+
+## `@java.lang.Override public java.lang.String getEcosystemId()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The ecosystemId.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getEcosystemIdBytes()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The bytes for ecosystemId.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -263,6 +295,48 @@ Protobuf type {@code services.account.v1.SignInRequest}
 `string invitation_code = 2;`
 
  * **Parameters:** `value` — The bytes for invitationCode to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getEcosystemId()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The ecosystemId.
+
+## `public com.google.protobuf.ByteString getEcosystemIdBytes()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** The bytes for ecosystemId.
+
+## `public Builder setEcosystemId( java.lang.String value)`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Parameters:** `value` — The ecosystemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearEcosystemId()`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setEcosystemIdBytes( com.google.protobuf.ByteString value)`
+
+<pre> EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed </pre>
+
+`string ecosystem_id = 3;`
+
+ * **Parameters:** `value` — The bytes for ecosystemId to set.
  * **Returns:** This builder for chaining.
 
 ## `java.lang.String getName()`
@@ -1188,35 +1262,35 @@ Protobuf type {@code services.account.v1.InfoRequest}
 
 `.services.account.v1.AccountDetails details = 1;`
 
-## `java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemsList()`
+## `java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index)`
+## `trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `int getEcosystemsCount()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemsOrBuilderList()`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder( int index)`
+## `java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> getEcosystemsOrBuilderList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder( int index)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public static final class InfoResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -1244,35 +1318,35 @@ Protobuf type {@code services.account.v1.InfoResponse}
 
 `.services.account.v1.AccountDetails details = 1;`
 
-## `@java.lang.Override public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemsList()`
+## `@java.lang.Override public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `@java.lang.Override public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemsOrBuilderList()`
+## `@java.lang.Override public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> getEcosystemsOrBuilderList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `@java.lang.Override public int getEcosystemsCount()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder( int index)`
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder( int index)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -1336,113 +1410,113 @@ Protobuf type {@code services.account.v1.InfoResponse}
 
 `.services.account.v1.AccountDetails details = 1;`
 
-## `public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemsList()`
+## `public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public int getEcosystemsCount()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystems(int index)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public Builder setEcosystems( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public Builder setEcosystems( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public Builder addEcosystems(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
+## `public Builder setEcosystems( int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public Builder addEcosystems( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public Builder addEcosystems( trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
+## `public Builder setEcosystems( int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public Builder addEcosystems( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public Builder addAllEcosystems( java.lang.Iterable<? extends trinsic.services.common.v1.ProviderOuterClass.Ecosystem> values)`
+## `public Builder addEcosystems(trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public Builder addEcosystems( int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public Builder addEcosystems( trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public Builder addEcosystems( int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public Builder addAllEcosystems( java.lang.Iterable<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> values)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public Builder clearEcosystems()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public Builder removeEcosystems(int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemsBuilder( int index)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemsOrBuilder( int index)`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder getEcosystemsBuilder( int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemsOrBuilderList()`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemsBuilder()`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder( int index)`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemsBuilder( int index)`
-
-<pre> any ecosystems the account has access to </pre>
-
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
-
-## `public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder> getEcosystemsBuilderList()`
+## `public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> getEcosystemsOrBuilderList()`
 
 <pre> any ecosystems the account has access to </pre>
 
-`repeated .services.provider.v1.Ecosystem ecosystems = 2;`
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder()`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder( int index)`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
+
+## `public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder> getEcosystemsBuilderList()`
+
+<pre> any ecosystems the account has access to </pre>
+
+`repeated .services.account.v1.AccountEcosystem ecosystems = 2;`
 
 ## `public static final class ListDevicesRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -1475,3 +1549,235 @@ Protobuf type {@code services.account.v1.RevokeDeviceResponse}
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.account.v1.RevokeDeviceResponse}
+
+## `java.lang.String getId()`
+
+`string id = 1;`
+
+ * **Returns:** The id.
+
+## `com.google.protobuf.ByteString getIdBytes()`
+
+`string id = 1;`
+
+ * **Returns:** The bytes for id.
+
+## `java.lang.String getName()`
+
+`string name = 2;`
+
+ * **Returns:** The name.
+
+## `com.google.protobuf.ByteString getNameBytes()`
+
+`string name = 2;`
+
+ * **Returns:** The bytes for name.
+
+## `java.lang.String getDescription()`
+
+`string description = 3;`
+
+ * **Returns:** The description.
+
+## `com.google.protobuf.ByteString getDescriptionBytes()`
+
+`string description = 3;`
+
+ * **Returns:** The bytes for description.
+
+## `java.lang.String getUri()`
+
+`string uri = 4;`
+
+ * **Returns:** The uri.
+
+## `com.google.protobuf.ByteString getUriBytes()`
+
+`string uri = 4;`
+
+ * **Returns:** The bytes for uri.
+
+## `public static final class AccountEcosystem extends com.google.protobuf.GeneratedMessageV3 implements`
+
+Protobuf type {@code services.account.v1.AccountEcosystem}
+
+## `@java.lang.Override public java.lang.String getId()`
+
+`string id = 1;`
+
+ * **Returns:** The id.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getIdBytes()`
+
+`string id = 1;`
+
+ * **Returns:** The bytes for id.
+
+## `@java.lang.Override public java.lang.String getName()`
+
+`string name = 2;`
+
+ * **Returns:** The name.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getNameBytes()`
+
+`string name = 2;`
+
+ * **Returns:** The bytes for name.
+
+## `@java.lang.Override public java.lang.String getDescription()`
+
+`string description = 3;`
+
+ * **Returns:** The description.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getDescriptionBytes()`
+
+`string description = 3;`
+
+ * **Returns:** The bytes for description.
+
+## `@java.lang.Override public java.lang.String getUri()`
+
+`string uri = 4;`
+
+ * **Returns:** The uri.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getUriBytes()`
+
+`string uri = 4;`
+
+ * **Returns:** The bytes for uri.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+Protobuf type {@code services.account.v1.AccountEcosystem}
+
+## `public java.lang.String getId()`
+
+`string id = 1;`
+
+ * **Returns:** The id.
+
+## `public com.google.protobuf.ByteString getIdBytes()`
+
+`string id = 1;`
+
+ * **Returns:** The bytes for id.
+
+## `public Builder setId( java.lang.String value)`
+
+`string id = 1;`
+
+ * **Parameters:** `value` — The id to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearId()`
+
+`string id = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setIdBytes( com.google.protobuf.ByteString value)`
+
+`string id = 1;`
+
+ * **Parameters:** `value` — The bytes for id to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getName()`
+
+`string name = 2;`
+
+ * **Returns:** The name.
+
+## `public com.google.protobuf.ByteString getNameBytes()`
+
+`string name = 2;`
+
+ * **Returns:** The bytes for name.
+
+## `public Builder setName( java.lang.String value)`
+
+`string name = 2;`
+
+ * **Parameters:** `value` — The name to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearName()`
+
+`string name = 2;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setNameBytes( com.google.protobuf.ByteString value)`
+
+`string name = 2;`
+
+ * **Parameters:** `value` — The bytes for name to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getDescription()`
+
+`string description = 3;`
+
+ * **Returns:** The description.
+
+## `public com.google.protobuf.ByteString getDescriptionBytes()`
+
+`string description = 3;`
+
+ * **Returns:** The bytes for description.
+
+## `public Builder setDescription( java.lang.String value)`
+
+`string description = 3;`
+
+ * **Parameters:** `value` — The description to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearDescription()`
+
+`string description = 3;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setDescriptionBytes( com.google.protobuf.ByteString value)`
+
+`string description = 3;`
+
+ * **Parameters:** `value` — The bytes for description to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getUri()`
+
+`string uri = 4;`
+
+ * **Returns:** The uri.
+
+## `public com.google.protobuf.ByteString getUriBytes()`
+
+`string uri = 4;`
+
+ * **Returns:** The bytes for uri.
+
+## `public Builder setUri( java.lang.String value)`
+
+`string uri = 4;`
+
+ * **Parameters:** `value` — The uri to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearUri()`
+
+`string uri = 4;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setUriBytes( com.google.protobuf.ByteString value)`
+
+`string uri = 4;`
+
+ * **Parameters:** `value` — The bytes for uri to set.
+ * **Returns:** This builder for chaining.

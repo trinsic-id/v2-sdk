@@ -19,10 +19,10 @@ public class TemplatesDemo {
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
-        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
-        var account = accountService.signIn(null).get().getProfile();
-        var templateService = new CredentialTemplateService(account, TrinsicUtilities.getTestServerConfig());
-        var credentialService = new CredentialsService(account, TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        var account = accountService.signIn(null).get();
+        var templateService = new CredentialTemplateService(TrinsicUtilities.getTrinsicServiceOptions(account));
+        var credentialService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         // create example template
         var fields = new HashMap<String, Templates.TemplateField>();

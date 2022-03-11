@@ -28,10 +28,10 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
-        request: Services::Provider::V1::ListEcosystemsRequest
-      ).returns(Services::Provider::V1::ListEcosystemsResponse)
+        request: Services::Provider::V1::GenerateTokenRequest
+      ).returns(Services::Provider::V1::GenerateTokenResponse)
     end
-    def list_ecosystems(request)
+    def generate_token(request)
     end
 
     sig do
@@ -40,14 +40,6 @@ module Services::Provider::V1::Provider
       ).returns(Services::Provider::V1::InviteResponse)
     end
     def invite(request)
-    end
-
-    sig do
-      params(
-        request: Services::Provider::V1::AcceptInviteRequest
-      ).returns(Services::Provider::V1::AcceptInviteResponse)
-    end
-    def accept_invite(request)
     end
 
     sig do

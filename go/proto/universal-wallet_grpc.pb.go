@@ -18,10 +18,14 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UniversalWalletClient interface {
+	// Retrieve an item from the wallet with a given item identifier
+	GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error)
 	// Search the wallet using a SQL-like syntax
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
+	// Insert an item into the wallet
+	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
 }
@@ -32,6 +36,15 @@ type universalWalletClient struct {
 
 func NewUniversalWalletClient(cc grpc.ClientConnInterface) UniversalWalletClient {
 	return &universalWalletClient{cc}
+}
+
+func (c *universalWalletClient) GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error) {
+	out := new(GetItemResponse)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/GetItem", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *universalWalletClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error) {
@@ -52,6 +65,15 @@ func (c *universalWalletClient) InsertItem(ctx context.Context, in *InsertItemRe
 	return out, nil
 }
 
+func (c *universalWalletClient) UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error) {
+	out := new(UpdateItemResponse)
+	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/UpdateItem", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *universalWalletClient) DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error) {
 	out := new(DeleteItemResponse)
 	err := c.cc.Invoke(ctx, "/services.universalwallet.v1.UniversalWallet/DeleteItem", in, out, opts...)
@@ -65,10 +87,14 @@ func (c *universalWalletClient) DeleteItem(ctx context.Context, in *DeleteItemRe
 // All implementations must embed UnimplementedUniversalWalletServer
 // for forward compatibility
 type UniversalWalletServer interface {
+	// Retrieve an item from the wallet with a given item identifier
+	GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error)
 	// Search the wallet using a SQL-like syntax
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
+	// Insert an item into the wallet
+	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)
 	mustEmbedUnimplementedUniversalWalletServer()
@@ -78,11 +104,17 @@ type UniversalWalletServer interface {
 type UnimplementedUniversalWalletServer struct {
 }
 
+func (UnimplementedUniversalWalletServer) GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetItem not implemented")
+}
 func (UnimplementedUniversalWalletServer) Search(context.Context, *SearchRequest) (*SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
 func (UnimplementedUniversalWalletServer) InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InsertItem not implemented")
+}
+func (UnimplementedUniversalWalletServer) UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateItem not implemented")
 }
 func (UnimplementedUniversalWalletServer) DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteItem not implemented")
@@ -98,6 +130,24 @@ type UnsafeUniversalWalletServer interface {
 
 func RegisterUniversalWalletServer(s grpc.ServiceRegistrar, srv UniversalWalletServer) {
 	s.RegisterService(&UniversalWallet_ServiceDesc, srv)
+}
+
+func _UniversalWallet_GetItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetItemRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).GetItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.universalwallet.v1.UniversalWallet/GetItem",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).GetItem(ctx, req.(*GetItemRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _UniversalWallet_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -136,6 +186,24 @@ func _UniversalWallet_InsertItem_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UniversalWallet_UpdateItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateItemRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UniversalWalletServer).UpdateItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.universalwallet.v1.UniversalWallet/UpdateItem",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UniversalWalletServer).UpdateItem(ctx, req.(*UpdateItemRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UniversalWallet_DeleteItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteItemRequest)
 	if err := dec(in); err != nil {
@@ -162,12 +230,20 @@ var UniversalWallet_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UniversalWalletServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "GetItem",
+			Handler:    _UniversalWallet_GetItem_Handler,
+		},
+		{
 			MethodName: "Search",
 			Handler:    _UniversalWallet_Search_Handler,
 		},
 		{
 			MethodName: "InsertItem",
 			Handler:    _UniversalWallet_InsertItem_Handler,
+		},
+		{
+			MethodName: "UpdateItem",
+			Handler:    _UniversalWallet_UpdateItem_Handler,
 		},
 		{
 			MethodName: "DeleteItem",

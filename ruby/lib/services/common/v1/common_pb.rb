@@ -3,20 +3,9 @@
 
 require 'google/protobuf'
 
-require 'google/protobuf/struct_pb'
 require 'pbmse/v1/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/common/v1/common.proto", :syntax => :proto3) do
-    add_message "services.common.v1.RequestOptions" do
-      optional :response_json_format, :enum, 1, "services.common.v1.JsonFormat"
-    end
-    add_message "services.common.v1.JsonPayload" do
-      oneof :json do
-        optional :json_struct, :message, 1, "google.protobuf.Struct"
-        optional :json_string, :string, 2
-        optional :json_bytes, :bytes, 3
-      end
-    end
     add_message "services.common.v1.ServerConfig" do
       optional :endpoint, :string, 1
       optional :port, :int32, 2
@@ -34,23 +23,15 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :SERIALIZATION_ERROR, 200
       value :UNKNOWN_ERROR, 100
     end
-    add_enum "services.common.v1.JsonFormat" do
-      value :Protobuf, 0
-      value :Binary, 1
-      value :String, 2
-    end
   end
 end
 
 module Services
   module Common
     module V1
-      RequestOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.RequestOptions").msgclass
-      JsonPayload = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.JsonPayload").msgclass
       ServerConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ServerConfig").msgclass
       Nonce = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.Nonce").msgclass
       ResponseStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ResponseStatus").enummodule
-      JsonFormat = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.JsonFormat").enummodule
     end
   end
 end

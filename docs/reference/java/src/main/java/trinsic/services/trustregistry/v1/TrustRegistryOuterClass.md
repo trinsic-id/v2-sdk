@@ -387,22 +387,6 @@ Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse}
 
  * **Returns:** The bytes for continuationToken.
 
-## `boolean hasOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** Whether the options field is set.
-
-## `trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
 ## `public static final class SearchRegistryRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
 Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
@@ -434,22 +418,6 @@ Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
 `string continuation_token = 2;`
 
  * **Returns:** The bytes for continuationToken.
-
-## `@java.lang.Override public boolean hasOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** Whether the options field is set.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -528,46 +496,6 @@ Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
 
  * **Parameters:** `value` — The bytes for continuationToken to set.
  * **Returns:** This builder for chaining.
-
-## `public boolean hasOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** Whether the options field is set.
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `public Builder setOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder setOptions( trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder builderForValue)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder mergeOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder clearOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder getOptionsBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> getOptionsFieldBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
 
 ## `java.lang.String getItemsJson()`
 

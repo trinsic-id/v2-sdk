@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.42.1)",
+    value = "by gRPC proto compiler (version 1.44.1)",
     comments = "Source: services/universal-wallet/v1/universal-wallet.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class UniversalWalletGrpc {
@@ -15,6 +15,37 @@ public final class UniversalWalletGrpc {
   public static final String SERVICE_NAME = "services.universalwallet.v1.UniversalWallet";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest,
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> getGetItemMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetItem",
+      requestType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest.class,
+      responseType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest,
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> getGetItemMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> getGetItemMethod;
+    if ((getGetItemMethod = UniversalWalletGrpc.getGetItemMethod) == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getGetItemMethod = UniversalWalletGrpc.getGetItemMethod) == null) {
+          UniversalWalletGrpc.getGetItemMethod = getGetItemMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetItem"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UniversalWalletMethodDescriptorSupplier("GetItem"))
+              .build();
+        }
+      }
+    }
+    return getGetItemMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.SearchRequest,
       trinsic.services.universalwallet.v1.UniversalWalletOuterClass.SearchResponse> getSearchMethod;
 
@@ -75,6 +106,37 @@ public final class UniversalWalletGrpc {
       }
     }
     return getInsertItemMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest,
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> getUpdateItemMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateItem",
+      requestType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest.class,
+      responseType = trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest,
+      trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> getUpdateItemMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> getUpdateItemMethod;
+    if ((getUpdateItemMethod = UniversalWalletGrpc.getUpdateItemMethod) == null) {
+      synchronized (UniversalWalletGrpc.class) {
+        if ((getUpdateItemMethod = UniversalWalletGrpc.getUpdateItemMethod) == null) {
+          UniversalWalletGrpc.getUpdateItemMethod = getUpdateItemMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest, trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateItem"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new UniversalWalletMethodDescriptorSupplier("UpdateItem"))
+              .build();
+        }
+      }
+    }
+    return getUpdateItemMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest,
@@ -158,6 +220,16 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Retrieve an item from the wallet with a given item identifier
+     * </pre>
+     */
+    public void getItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetItemMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Search the wallet using a SQL-like syntax
      * </pre>
      */
@@ -178,6 +250,16 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Insert an item into the wallet
+     * </pre>
+     */
+    public void updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateItemMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Delete an item from the wallet permanently
      * </pre>
      */
@@ -188,6 +270,13 @@ public final class UniversalWalletGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getGetItemMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest,
+                trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse>(
+                  this, METHODID_GET_ITEM)))
           .addMethod(
             getSearchMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -202,6 +291,13 @@ public final class UniversalWalletGrpc {
                 trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest,
                 trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse>(
                   this, METHODID_INSERT_ITEM)))
+          .addMethod(
+            getUpdateItemMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest,
+                trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse>(
+                  this, METHODID_UPDATE_ITEM)))
           .addMethod(
             getDeleteItemMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -229,6 +325,17 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Retrieve an item from the wallet with a given item identifier
+     * </pre>
+     */
+    public void getItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetItemMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Search the wallet using a SQL-like syntax
      * </pre>
      */
@@ -247,6 +354,17 @@ public final class UniversalWalletGrpc {
         io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInsertItemMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Insert an item into the wallet
+     * </pre>
+     */
+    public void updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateItemMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -277,6 +395,16 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Retrieve an item from the wallet with a given item identifier
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse getItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetItemMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Search the wallet using a SQL-like syntax
      * </pre>
      */
@@ -293,6 +421,16 @@ public final class UniversalWalletGrpc {
     public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse insertItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInsertItemMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Insert an item into the wallet
+     * </pre>
+     */
+    public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateItemMethod(), getCallOptions(), request);
     }
 
     /**
@@ -322,6 +460,17 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Retrieve an item from the wallet with a given item identifier
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse> getItem(
+        trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetItemMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Search the wallet using a SQL-like syntax
      * </pre>
      */
@@ -344,6 +493,17 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
+     * Insert an item into the wallet
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> updateItem(
+        trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateItemMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Delete an item from the wallet permanently
      * </pre>
      */
@@ -354,9 +514,11 @@ public final class UniversalWalletGrpc {
     }
   }
 
-  private static final int METHODID_SEARCH = 0;
-  private static final int METHODID_INSERT_ITEM = 1;
-  private static final int METHODID_DELETE_ITEM = 2;
+  private static final int METHODID_GET_ITEM = 0;
+  private static final int METHODID_SEARCH = 1;
+  private static final int METHODID_INSERT_ITEM = 2;
+  private static final int METHODID_UPDATE_ITEM = 3;
+  private static final int METHODID_DELETE_ITEM = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -375,6 +537,10 @@ public final class UniversalWalletGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET_ITEM:
+          serviceImpl.getItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.GetItemResponse>) responseObserver);
+          break;
         case METHODID_SEARCH:
           serviceImpl.search((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.SearchRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.SearchResponse>) responseObserver);
@@ -382,6 +548,10 @@ public final class UniversalWalletGrpc {
         case METHODID_INSERT_ITEM:
           serviceImpl.insertItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_ITEM:
+          serviceImpl.updateItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse>) responseObserver);
           break;
         case METHODID_DELETE_ITEM:
           serviceImpl.deleteItem((trinsic.services.universalwallet.v1.UniversalWalletOuterClass.DeleteItemRequest) request,
@@ -448,8 +618,10 @@ public final class UniversalWalletGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UniversalWalletFileDescriptorSupplier())
+              .addMethod(getGetItemMethod())
               .addMethod(getSearchMethod())
               .addMethod(getInsertItemMethod())
+              .addMethod(getUpdateItemMethod())
               .addMethod(getDeleteItemMethod())
               .build();
         }

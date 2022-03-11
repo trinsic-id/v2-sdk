@@ -1,82 +1,35 @@
 #### [Trinsic](index.md 'index')
 ## Trinsic.Services.Provider.V1 Namespace
 ### Classes
-<a name='Trinsic_Services_Provider_V1_AcceptInviteRequest'></a>
-## AcceptInviteRequest Class
-```csharp
-public sealed class AcceptInviteRequest :
-Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.AcceptInviteRequest>,
-Google.Protobuf.IMessage,
-Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.AcceptInviteRequest>,
-Google.Protobuf.IBufferMessage
-```
-
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; AcceptInviteRequest  
-
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
-### Fields
-<a name='Trinsic_Services_Provider_V1_AcceptInviteRequest_CodeFieldNumber'></a>
-## AcceptInviteRequest.CodeFieldNumber Field
-Field number for the "code" field.
-```csharp
-public const int CodeFieldNumber = 2;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-  
-<a name='Trinsic_Services_Provider_V1_AcceptInviteRequest_IdFieldNumber'></a>
-## AcceptInviteRequest.IdFieldNumber Field
-Field number for the "id" field.
-```csharp
-public const int IdFieldNumber = 1;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-  
-  
-<a name='Trinsic_Services_Provider_V1_AcceptInviteResponse'></a>
-## AcceptInviteResponse Class
-```csharp
-public sealed class AcceptInviteResponse :
-Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.AcceptInviteResponse>,
-Google.Protobuf.IMessage,
-Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.AcceptInviteResponse>,
-Google.Protobuf.IBufferMessage
-```
-
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; AcceptInviteResponse  
-
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
-### Fields
-<a name='Trinsic_Services_Provider_V1_AcceptInviteResponse_EcosystemFieldNumber'></a>
-## AcceptInviteResponse.EcosystemFieldNumber Field
-Field number for the "ecosystem" field.
-```csharp
-public const int EcosystemFieldNumber = 2;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-  
-  
 <a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest'></a>
 ## CreateEcosystemRequest Class
 ```csharp
 public sealed class CreateEcosystemRequest :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.CreateEcosystemRequest>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.CreateEcosystemRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.CreateEcosystemRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CreateEcosystemRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CreateEcosystemRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_DescriptionFieldNumber'></a>
 ## CreateEcosystemRequest.DescriptionFieldNumber Field
 Field number for the "description" field.
 ```csharp
 public const int DescriptionFieldNumber = 2;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_DetailsFieldNumber'></a>
+## CreateEcosystemRequest.DetailsFieldNumber Field
+Field number for the "details" field.
+```csharp
+public const int DetailsFieldNumber = 4;
 ```
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -99,6 +52,47 @@ public const int UriFieldNumber = 3;
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
   
+### Properties
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_Description'></a>
+## CreateEcosystemRequest.Description Property
+Ecosystem description.  
+This field is optional.  
+```csharp
+public string Description { get; set; }
+```
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_Details'></a>
+## CreateEcosystemRequest.Details Property
+The account details of the owner of the ecosystem  
+```csharp
+public Trinsic.Services.Account.V1.AccountDetails Details { get; set; }
+```
+#### Property Value
+[AccountDetails](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountDetails 'Trinsic.Services.Account.V1.AccountDetails')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_Name'></a>
+## CreateEcosystemRequest.Name Property
+Globally unique name for the Ecosystem. This name will be  
+part of the ecosystem specific URLs and namespaces.  
+Allowed characters are lowercase letters, numbers, underscore and hyphen.  
+```csharp
+public string Name { get; set; }
+```
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemRequest_Uri'></a>
+## CreateEcosystemRequest.Uri Property
+External URL associated with your organization or ecosystem entity.  
+This field is optional  
+```csharp
+public string Uri { get; set; }
+```
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+  
   
 <a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse'></a>
 ## CreateEcosystemResponse Class
@@ -106,22 +100,70 @@ public const int UriFieldNumber = 3;
 public sealed class CreateEcosystemResponse :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.CreateEcosystemResponse>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.CreateEcosystemResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.CreateEcosystemResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; CreateEcosystemResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CreateEcosystemResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
-<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_IdFieldNumber'></a>
-## CreateEcosystemResponse.IdFieldNumber Field
-Field number for the "id" field.
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_ConfirmationMethodFieldNumber'></a>
+## CreateEcosystemResponse.ConfirmationMethodFieldNumber Field
+Field number for the "confirmation_method" field.
 ```csharp
-public const int IdFieldNumber = 1;
+public const int ConfirmationMethodFieldNumber = 3;
 ```
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_EcosystemFieldNumber'></a>
+## CreateEcosystemResponse.EcosystemFieldNumber Field
+Field number for the "ecosystem" field.
+```csharp
+public const int EcosystemFieldNumber = 1;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_ProfileFieldNumber'></a>
+## CreateEcosystemResponse.ProfileFieldNumber Field
+Field number for the "profile" field.
+```csharp
+public const int ProfileFieldNumber = 2;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+### Properties
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_ConfirmationMethod'></a>
+## CreateEcosystemResponse.ConfirmationMethod Property
+Indicates if confirmation of account is required.  
+This settings is configured globally by the server administrator.  
+```csharp
+public Trinsic.Services.Account.V1.ConfirmationMethod ConfirmationMethod { get; set; }
+```
+#### Property Value
+[ConfirmationMethod](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_ConfirmationMethod 'Trinsic.Services.Account.V1.ConfirmationMethod')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_Ecosystem'></a>
+## CreateEcosystemResponse.Ecosystem Property
+Details of the created ecosystem  
+```csharp
+public Trinsic.Services.Provider.V1.Ecosystem Ecosystem { get; set; }
+```
+#### Property Value
+[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')
+  
+<a name='Trinsic_Services_Provider_V1_CreateEcosystemResponse_Profile'></a>
+## CreateEcosystemResponse.Profile Property
+Account profile for auth of the owner of the ecosystem  
+```csharp
+public Trinsic.Services.Account.V1.AccountProfile Profile { get; set; }
+```
+#### Property Value
+[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')
   
   
 <a name='Trinsic_Services_Provider_V1_Ecosystem'></a>
@@ -130,13 +172,14 @@ public const int IdFieldNumber = 1;
 public sealed class Ecosystem :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.Ecosystem>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.Ecosystem>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.Ecosystem>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; Ecosystem  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Ecosystem  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_Ecosystem_DescriptionFieldNumber'></a>
 ## Ecosystem.DescriptionFieldNumber Field
@@ -175,23 +218,94 @@ public const int UriFieldNumber = 4;
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
   
   
+<a name='Trinsic_Services_Provider_V1_GenerateTokenRequest'></a>
+## GenerateTokenRequest Class
+```csharp
+public sealed class GenerateTokenRequest :
+Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.GenerateTokenRequest>,
+Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.GenerateTokenRequest>,
+Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.GenerateTokenRequest>,
+Google.Protobuf.IBufferMessage
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; GenerateTokenRequest  
+
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+### Fields
+<a name='Trinsic_Services_Provider_V1_GenerateTokenRequest_DescriptionFieldNumber'></a>
+## GenerateTokenRequest.DescriptionFieldNumber Field
+Field number for the "description" field.
+```csharp
+public const int DescriptionFieldNumber = 1;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+### Properties
+<a name='Trinsic_Services_Provider_V1_GenerateTokenRequest_Description'></a>
+## GenerateTokenRequest.Description Property
+Optional description to identify this token  
+```csharp
+public string Description { get; set; }
+```
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+  
+  
+<a name='Trinsic_Services_Provider_V1_GenerateTokenResponse'></a>
+## GenerateTokenResponse Class
+```csharp
+public sealed class GenerateTokenResponse :
+Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.GenerateTokenResponse>,
+Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.GenerateTokenResponse>,
+Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.GenerateTokenResponse>,
+Google.Protobuf.IBufferMessage
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; GenerateTokenResponse  
+
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+### Fields
+<a name='Trinsic_Services_Provider_V1_GenerateTokenResponse_ProfileFieldNumber'></a>
+## GenerateTokenResponse.ProfileFieldNumber Field
+Field number for the "profile" field.
+```csharp
+public const int ProfileFieldNumber = 1;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
+### Properties
+<a name='Trinsic_Services_Provider_V1_GenerateTokenResponse_Profile'></a>
+## GenerateTokenResponse.Profile Property
+Account authentication profile that contains unprotected token  
+```csharp
+public Trinsic.Services.Account.V1.AccountProfile Profile { get; set; }
+```
+#### Property Value
+[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')
+  
+  
 <a name='Trinsic_Services_Provider_V1_InvitationStatusRequest'></a>
 ## InvitationStatusRequest Class
 Request details for the status of onboarding  
 an individual or organization.  
-The referenece_id passed is the response from the  
+The reference_id passed is the response from the  
 `Onboard` method call  
 ```csharp
 public sealed class InvitationStatusRequest :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.InvitationStatusRequest>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.InvitationStatusRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.InvitationStatusRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; InvitationStatusRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; InvitationStatusRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_InvitationStatusRequest_InvitationIdFieldNumber'></a>
 ## InvitationStatusRequest.InvitationIdFieldNumber Field
@@ -209,13 +323,14 @@ public const int InvitationIdFieldNumber = 1;
 public sealed class InvitationStatusResponse :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.InvitationStatusResponse>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.InvitationStatusResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.InvitationStatusResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; InvitationStatusResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; InvitationStatusResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_InvitationStatusResponse_StatusDetailsFieldNumber'></a>
 ## InvitationStatusResponse.StatusDetailsFieldNumber Field
@@ -251,13 +366,14 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 public sealed class Invite :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.Invite>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.Invite>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.Invite>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; Invite  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Invite  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[Invite](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Invite 'Trinsic.Services.Provider.V1.Invite')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[Invite](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Invite 'Trinsic.Services.Provider.V1.Invite')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[Invite](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Invite 'Trinsic.Services.Provider.V1.Invite')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[Invite](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Invite 'Trinsic.Services.Provider.V1.Invite')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[Invite](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Invite 'Trinsic.Services.Provider.V1.Invite')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_Invite_AcceptedFieldNumber'></a>
 ## Invite.AcceptedFieldNumber Field
@@ -311,13 +427,14 @@ public const int IdFieldNumber = 1;
 public sealed class InviteRequest :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.InviteRequest>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.InviteRequest>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.InviteRequest>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; InviteRequest  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; InviteRequest  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
 <a name='Trinsic_Services_Provider_V1_InviteRequest_DescriptionFieldNumber'></a>
 ## InviteRequest.DescriptionFieldNumber Field
@@ -328,20 +445,11 @@ public const int DescriptionFieldNumber = 2;
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
   
-<a name='Trinsic_Services_Provider_V1_InviteRequest_DidcommInvitationFieldNumber'></a>
-## InviteRequest.DidcommInvitationFieldNumber Field
-Field number for the "didcomm_invitation" field.
+<a name='Trinsic_Services_Provider_V1_InviteRequest_DetailsFieldNumber'></a>
+## InviteRequest.DetailsFieldNumber Field
+Field number for the "details" field.
 ```csharp
-public const int DidcommInvitationFieldNumber = 7;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-  
-<a name='Trinsic_Services_Provider_V1_InviteRequest_EmailFieldNumber'></a>
-## InviteRequest.EmailFieldNumber Field
-Field number for the "email" field.
-```csharp
-public const int EmailFieldNumber = 5;
+public const int DetailsFieldNumber = 3;
 ```
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -351,15 +459,6 @@ public const int EmailFieldNumber = 5;
 Field number for the "participant" field.
 ```csharp
 public const int ParticipantFieldNumber = 1;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-  
-<a name='Trinsic_Services_Provider_V1_InviteRequest_PhoneFieldNumber'></a>
-## InviteRequest.PhoneFieldNumber Field
-Field number for the "phone" field.
-```csharp
-public const int PhoneFieldNumber = 6;
 ```
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
@@ -380,14 +479,24 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 public sealed class InviteResponse :
 Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.InviteResponse>,
 Google.Protobuf.IMessage,
+System.IEquatable<Trinsic.Services.Provider.V1.InviteResponse>,
 Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.InviteResponse>,
 Google.Protobuf.IBufferMessage
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; InviteResponse  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; InviteResponse  
 
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
+Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [System.IEquatable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable-1 'System.IEquatable`1'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
 ### Fields
+<a name='Trinsic_Services_Provider_V1_InviteResponse_InvitationCodeFieldNumber'></a>
+## InviteResponse.InvitationCodeFieldNumber Field
+Field number for the "invitation_code" field.
+```csharp
+public const int InvitationCodeFieldNumber = 11;
+```
+#### Field Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+  
 <a name='Trinsic_Services_Provider_V1_InviteResponse_InvitationIdFieldNumber'></a>
 ## InviteResponse.InvitationIdFieldNumber Field
 Field number for the "invitation_id" field.
@@ -406,29 +515,16 @@ public const int StatusFieldNumber = 1;
 #### Field Value
 [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
   
-  
-<a name='Trinsic_Services_Provider_V1_ListEcosystemsResponse'></a>
-## ListEcosystemsResponse Class
+### Properties
+<a name='Trinsic_Services_Provider_V1_InviteResponse_InvitationCode'></a>
+## InviteResponse.InvitationCode Property
+Invitation Code that must be passed with the account 'SignIn' request  
+to correlate this user with the invitation sent.  
 ```csharp
-public sealed class ListEcosystemsResponse :
-Google.Protobuf.IMessage<Trinsic.Services.Provider.V1.ListEcosystemsResponse>,
-Google.Protobuf.IMessage,
-Google.Protobuf.IDeepCloneable<Trinsic.Services.Provider.V1.ListEcosystemsResponse>,
-Google.Protobuf.IBufferMessage
+public string InvitationCode { get; set; }
 ```
-
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.IEquatable](https://docs.microsoft.com/en-us/dotnet/api/System.IEquatable 'System.IEquatable') &#129106; ListEcosystemsResponse  
-
-Implements [Google.Protobuf.IMessage&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1')[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage-1 'Google.Protobuf.IMessage`1'), [Google.Protobuf.IMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IMessage 'Google.Protobuf.IMessage'), [Google.Protobuf.IDeepCloneable&lt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1')[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IDeepCloneable-1 'Google.Protobuf.IDeepCloneable`1'), [Google.Protobuf.IBufferMessage](https://docs.microsoft.com/en-us/dotnet/api/Google.Protobuf.IBufferMessage 'Google.Protobuf.IBufferMessage')  
-### Fields
-<a name='Trinsic_Services_Provider_V1_ListEcosystemsResponse_EcosystemFieldNumber'></a>
-## ListEcosystemsResponse.EcosystemFieldNumber Field
-Field number for the "ecosystem" field.
-```csharp
-public const int EcosystemFieldNumber = 1;
-```
-#### Field Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
   
   
 <a name='Trinsic_Services_Provider_V1_Provider'></a>
@@ -490,25 +586,6 @@ public abstract class Provider.ProviderBase
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ProviderBase  
 ### Methods
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_ServerCallContext)'></a>
-## Provider.ProviderBase.AcceptInvite(AcceptInviteRequest, ServerCallContext) Method
-Accept an invite to the ecosystem  
-```csharp
-public virtual System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.AcceptInviteResponse> AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest request, Grpc.Core.ServerCallContext context);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_ServerCallContext)_request'></a>
-`request` [AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')  
-The request received from the client.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_ServerCallContext)_context'></a>
-`context` [Grpc.Core.ServerCallContext](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.ServerCallContext 'Grpc.Core.ServerCallContext')  
-The context of the server-side call handler being invoked.
-  
-#### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
-The response to send back to the client (wrapped by a task).
-  
 <a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_ServerCallContext)'></a>
 ## Provider.ProviderBase.CreateEcosystem(CreateEcosystemRequest, ServerCallContext) Method
 Create new ecosystem and assign the authenticated user as owner  
@@ -526,6 +603,26 @@ The context of the server-side call handler being invoked.
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+The response to send back to the client (wrapped by a task).
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_ServerCallContext)'></a>
+## Provider.ProviderBase.GenerateToken(GenerateTokenRequest, ServerCallContext) Method
+Generates an unprotected authentication token that can be used to  
+configure server side applications  
+```csharp
+public virtual System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.GenerateTokenResponse> GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest request, Grpc.Core.ServerCallContext context);
+```
+#### Parameters
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_ServerCallContext)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+The request received from the client.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_ServerCallContext)_context'></a>
+`context` [Grpc.Core.ServerCallContext](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.ServerCallContext 'Grpc.Core.ServerCallContext')  
+The context of the server-side call handler being invoked.
+  
+#### Returns
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
 The response to send back to the client (wrapped by a task).
   
 <a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_ServerCallContext)'></a>
@@ -564,25 +661,6 @@ The context of the server-side call handler being invoked.
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
-The response to send back to the client (wrapped by a task).
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_ServerCallContext)'></a>
-## Provider.ProviderBase.ListEcosystems(ListEcosystemsRequest, ServerCallContext) Method
-List all ecosystems assigned to the authenticated account  
-```csharp
-public virtual System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.ListEcosystemsResponse> ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest request, Grpc.Core.ServerCallContext context);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_ServerCallContext)_request'></a>
-`request` [Trinsic.Services.Provider.V1.ListEcosystemsRequest](https://docs.microsoft.com/en-us/dotnet/api/Trinsic.Services.Provider.V1.ListEcosystemsRequest 'Trinsic.Services.Provider.V1.ListEcosystemsRequest')  
-The request received from the client.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderBase_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_ServerCallContext)_context'></a>
-`context` [Grpc.Core.ServerCallContext](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.ServerCallContext 'Grpc.Core.ServerCallContext')  
-The context of the server-side call handler being invoked.
-  
-#### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
 The response to send back to the client (wrapped by a task).
   
   
@@ -639,98 +717,6 @@ The client configuration.
   
   
 ### Methods
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)'></a>
-## Provider.ProviderClient.AcceptInvite(AcceptInviteRequest, CallOptions) Method
-Accept an invite to the ecosystem  
-```csharp
-public virtual Trinsic.Services.Provider.V1.AcceptInviteResponse AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest request, Grpc.Core.CallOptions options);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)_request'></a>
-`request` [AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)_options'></a>
-`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
-The options for the call.
-  
-#### Returns
-[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')  
-The response received from the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
-## Provider.ProviderClient.AcceptInvite(AcceptInviteRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
-Accept an invite to the ecosystem  
-```csharp
-public virtual Trinsic.Services.Provider.V1.AcceptInviteResponse AcceptInvite(Trinsic.Services.Provider.V1.AcceptInviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
-`request` [AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
-`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
-The initial metadata to send with the call. This parameter is optional.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
-`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
-An optional deadline for the call. The call will be cancelled if deadline is hit.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInvite(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
-`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
-An optional token for canceling the call.
-  
-#### Returns
-[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')  
-The response received from the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)'></a>
-## Provider.ProviderClient.AcceptInviteAsync(AcceptInviteRequest, CallOptions) Method
-Accept an invite to the ecosystem  
-```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.AcceptInviteResponse> AcceptInviteAsync(Trinsic.Services.Provider.V1.AcceptInviteRequest request, Grpc.Core.CallOptions options);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)_request'></a>
-`request` [AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_CallOptions)_options'></a>
-`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
-The options for the call.
-  
-#### Returns
-[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
-The call object.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
-## Provider.ProviderClient.AcceptInviteAsync(AcceptInviteRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
-Accept an invite to the ecosystem  
-```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.AcceptInviteResponse> AcceptInviteAsync(Trinsic.Services.Provider.V1.AcceptInviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
-`request` [AcceptInviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteRequest 'Trinsic.Services.Provider.V1.AcceptInviteRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
-`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
-The initial metadata to send with the call. This parameter is optional.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
-`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
-An optional deadline for the call. The call will be cancelled if deadline is hit.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_AcceptInviteAsync(Trinsic_Services_Provider_V1_AcceptInviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
-`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
-An optional token for canceling the call.
-  
-#### Returns
-[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[AcceptInviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_AcceptInviteResponse 'Trinsic.Services.Provider.V1.AcceptInviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
-The call object.
-  
 <a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_CallOptions)'></a>
 ## Provider.ProviderClient.CreateEcosystem(CreateEcosystemRequest, CallOptions) Method
 Create new ecosystem and assign the authenticated user as owner  
@@ -750,26 +736,26 @@ The options for the call.
 [CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.CreateEcosystem(CreateEcosystemRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Create new ecosystem and assign the authenticated user as owner  
 ```csharp
-public virtual Trinsic.Services.Provider.V1.CreateEcosystemResponse CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Trinsic.Services.Provider.V1.CreateEcosystemResponse CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -796,31 +782,127 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.CreateEcosystemAsync(CreateEcosystemRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Create new ecosystem and assign the authenticated user as owner  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.CreateEcosystemResponse> CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.CreateEcosystemResponse> CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
 #### Returns
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
+The call object.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)'></a>
+## Provider.ProviderClient.GenerateToken(GenerateTokenRequest, CallOptions) Method
+Generates an unprotected authentication token that can be used to  
+configure server side applications  
+```csharp
+public virtual Trinsic.Services.Provider.V1.GenerateTokenResponse GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest request, Grpc.Core.CallOptions options);
+```
+#### Parameters
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+The request to send to the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)_options'></a>
+`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
+The options for the call.
+  
+#### Returns
+[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')  
+The response received from the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+## Provider.ProviderClient.GenerateToken(GenerateTokenRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
+Generates an unprotected authentication token that can be used to  
+configure server side applications  
+```csharp
+public virtual Trinsic.Services.Provider.V1.GenerateTokenResponse GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+```
+#### Parameters
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+The request to send to the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
+The initial metadata to send with the call. This parameter is optional.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
+An optional deadline for the call. The call will be cancelled if deadline is hit.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
+An optional token for canceling the call.
+  
+#### Returns
+[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')  
+The response received from the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)'></a>
+## Provider.ProviderClient.GenerateTokenAsync(GenerateTokenRequest, CallOptions) Method
+Generates an unprotected authentication token that can be used to  
+configure server side applications  
+```csharp
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.GenerateTokenResponse> GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest request, Grpc.Core.CallOptions options);
+```
+#### Parameters
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+The request to send to the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_CallOptions)_options'></a>
+`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
+The options for the call.
+  
+#### Returns
+[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
+The call object.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
+## Provider.ProviderClient.GenerateTokenAsync(GenerateTokenRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
+Generates an unprotected authentication token that can be used to  
+configure server side applications  
+```csharp
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.GenerateTokenResponse> GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
+```
+#### Parameters
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+The request to send to the server.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
+`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
+The initial metadata to send with the call. This parameter is optional.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
+`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
+An optional deadline for the call. The call will be cancelled if deadline is hit.
+  
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
+`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
+An optional token for canceling the call.
+  
+#### Returns
+[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[GenerateTokenResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenResponse 'Trinsic.Services.Provider.V1.GenerateTokenResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
 <a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_CallOptions)'></a>
@@ -842,26 +924,26 @@ The options for the call.
 [InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.InvitationStatus(InvitationStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Check the invitation status  
 ```csharp
-public virtual Trinsic.Services.Provider.V1.InvitationStatusResponse InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Trinsic.Services.Provider.V1.InvitationStatusResponse InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -888,26 +970,26 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.InvitationStatusAsync(InvitationStatusRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Check the invitation status  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.InvitationStatusResponse> InvitationStatusAsync(Trinsic.Services.Provider.V1.InvitationStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.InvitationStatusResponse> InvitationStatusAsync(Trinsic.Services.Provider.V1.InvitationStatusRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -934,26 +1016,26 @@ The options for the call.
 [InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')  
 The response received from the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.Invite(InviteRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Invite a user to the ecosystem  
 ```csharp
-public virtual Trinsic.Services.Provider.V1.InviteResponse Invite(Trinsic.Services.Provider.V1.InviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Trinsic.Services.Provider.V1.InviteResponse Invite(Trinsic.Services.Provider.V1.InviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_Invite(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
@@ -980,123 +1062,31 @@ The options for the call.
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)'></a>
 ## Provider.ProviderClient.InviteAsync(InviteRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
 Invite a user to the ecosystem  
 ```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.InviteResponse> InviteAsync(Trinsic.Services.Provider.V1.InviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
+public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.InviteResponse> InviteAsync(Trinsic.Services.Provider.V1.InviteRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken));
 ```
 #### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_request'></a>
 `request` [InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')  
 The request to send to the server.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_headers'></a>
 `headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
 The initial metadata to send with the call. This parameter is optional.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_deadline'></a>
 `deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 An optional deadline for the call. The call will be cancelled if deadline is hit.
   
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
+<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_InviteAsync(Trinsic_Services_Provider_V1_InviteRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__System_Threading_CancellationToken)_cancellationToken'></a>
 `cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
 An optional token for canceling the call.
   
 #### Returns
 [Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
-The call object.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)'></a>
-## Provider.ProviderClient.ListEcosystems(ListEcosystemsRequest, CallOptions) Method
-List all ecosystems assigned to the authenticated account  
-```csharp
-public virtual Trinsic.Services.Provider.V1.ListEcosystemsResponse ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest request, Grpc.Core.CallOptions options);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)_request'></a>
-`request` [Trinsic.Services.Provider.V1.ListEcosystemsRequest](https://docs.microsoft.com/en-us/dotnet/api/Trinsic.Services.Provider.V1.ListEcosystemsRequest 'Trinsic.Services.Provider.V1.ListEcosystemsRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)_options'></a>
-`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
-The options for the call.
-  
-#### Returns
-[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')  
-The response received from the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
-## Provider.ProviderClient.ListEcosystems(ListEcosystemsRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
-List all ecosystems assigned to the authenticated account  
-```csharp
-public virtual Trinsic.Services.Provider.V1.ListEcosystemsResponse ListEcosystems(Trinsic.Services.Provider.V1.ListEcosystemsRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
-`request` [Trinsic.Services.Provider.V1.ListEcosystemsRequest](https://docs.microsoft.com/en-us/dotnet/api/Trinsic.Services.Provider.V1.ListEcosystemsRequest 'Trinsic.Services.Provider.V1.ListEcosystemsRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
-`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
-The initial metadata to send with the call. This parameter is optional.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
-`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
-An optional deadline for the call. The call will be cancelled if deadline is hit.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystems(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
-`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
-An optional token for canceling the call.
-  
-#### Returns
-[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')  
-The response received from the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)'></a>
-## Provider.ProviderClient.ListEcosystemsAsync(ListEcosystemsRequest, CallOptions) Method
-List all ecosystems assigned to the authenticated account  
-```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.ListEcosystemsResponse> ListEcosystemsAsync(Trinsic.Services.Provider.V1.ListEcosystemsRequest request, Grpc.Core.CallOptions options);
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)_request'></a>
-`request` [Trinsic.Services.Provider.V1.ListEcosystemsRequest](https://docs.microsoft.com/en-us/dotnet/api/Trinsic.Services.Provider.V1.ListEcosystemsRequest 'Trinsic.Services.Provider.V1.ListEcosystemsRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_CallOptions)_options'></a>
-`options` [Grpc.Core.CallOptions](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.CallOptions 'Grpc.Core.CallOptions')  
-The options for the call.
-  
-#### Returns
-[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
-The call object.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)'></a>
-## Provider.ProviderClient.ListEcosystemsAsync(ListEcosystemsRequest, Metadata, Nullable&lt;DateTime&gt;, CancellationToken) Method
-List all ecosystems assigned to the authenticated account  
-```csharp
-public virtual Grpc.Core.AsyncUnaryCall<Trinsic.Services.Provider.V1.ListEcosystemsResponse> ListEcosystemsAsync(Trinsic.Services.Provider.V1.ListEcosystemsRequest request, Grpc.Core.Metadata headers=null, System.Nullable<System.DateTime> deadline=null, CancellationToken cancellationToken=default(CancellationToken));
-```
-#### Parameters
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_request'></a>
-`request` [Trinsic.Services.Provider.V1.ListEcosystemsRequest](https://docs.microsoft.com/en-us/dotnet/api/Trinsic.Services.Provider.V1.ListEcosystemsRequest 'Trinsic.Services.Provider.V1.ListEcosystemsRequest')  
-The request to send to the server.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_headers'></a>
-`headers` [Grpc.Core.Metadata](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.Metadata 'Grpc.Core.Metadata')  
-The initial metadata to send with the call. This parameter is optional.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_deadline'></a>
-`deadline` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
-An optional deadline for the call. The call will be cancelled if deadline is hit.
-  
-<a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_ListEcosystemsAsync(Trinsic_Services_Provider_V1_ListEcosystemsRequest_Grpc_Core_Metadata_System_Nullable_System_DateTime__CancellationToken)_cancellationToken'></a>
-`cancellationToken` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')  
-An optional token for canceling the call.
-  
-#### Returns
-[Grpc.Core.AsyncUnaryCall&lt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')[ListEcosystemsResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_ListEcosystemsResponse 'Trinsic.Services.Provider.V1.ListEcosystemsResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/Grpc.Core.AsyncUnaryCall-1 'Grpc.Core.AsyncUnaryCall`1')  
 The call object.
   
 <a name='Trinsic_Services_Provider_V1_Provider_ProviderClient_NewInstance(Grpc_Core_ClientBase_ClientBaseConfiguration)'></a>
@@ -1156,12 +1146,4 @@ The invite has expired
 `InvitationSent` 1  
 The participant has been invited  
   
-  
-<a name='Trinsic_Services_Provider_V1_InviteRequest_ContactMethodOneofCase'></a>
-## InviteRequest.ContactMethodOneofCase Enum
-Enum of possible cases for the "contact_method" oneof.
-```csharp
-public enum InviteRequest.ContactMethodOneofCase
-
-```
   

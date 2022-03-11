@@ -343,57 +343,21 @@ Protobuf type {@code services.provider.v1.Invite}
 
  * **Returns:** The bytes for description.
 
-## `boolean hasEmail()`
+## `boolean hasDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** Whether the email field is set.
+ * **Returns:** Whether the details field is set.
 
-## `java.lang.String getEmail()`
+## `trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** The email.
+ * **Returns:** The details.
 
-## `com.google.protobuf.ByteString getEmailBytes()`
+## `trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
 
-`string email = 5;`
-
- * **Returns:** The bytes for email.
-
-## `boolean hasPhone()`
-
-`string phone = 6;`
-
- * **Returns:** Whether the phone field is set.
-
-## `java.lang.String getPhone()`
-
-`string phone = 6;`
-
- * **Returns:** The phone.
-
-## `com.google.protobuf.ByteString getPhoneBytes()`
-
-`string phone = 6;`
-
- * **Returns:** The bytes for phone.
-
-## `boolean hasDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** Whether the didcommInvitation field is set.
-
-## `trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** The didcommInvitation.
-
-## `trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
+`.services.account.v1.AccountDetails details = 3;`
 
 ## `public static final class InviteRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -406,12 +370,6 @@ Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation}
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation}
-
-## `@java.lang.Deprecated public static ContactMethodCase valueOf(int value)`
-
- * **Parameters:** `value` — The number of the enum to look for.
- * **Returns:** The enum associated with the given number.
- * **Deprecated**
 
 ## `@java.lang.Override public int getParticipantValue()`
 
@@ -437,57 +395,21 @@ Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation}
 
  * **Returns:** The bytes for description.
 
-## `public boolean hasEmail()`
+## `@java.lang.Override public boolean hasDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** Whether the email field is set.
+ * **Returns:** Whether the details field is set.
 
-## `public java.lang.String getEmail()`
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** The email.
+ * **Returns:** The details.
 
-## `public com.google.protobuf.ByteString getEmailBytes()`
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
 
-`string email = 5;`
-
- * **Returns:** The bytes for email.
-
-## `public boolean hasPhone()`
-
-`string phone = 6;`
-
- * **Returns:** Whether the phone field is set.
-
-## `public java.lang.String getPhone()`
-
-`string phone = 6;`
-
- * **Returns:** The phone.
-
-## `public com.google.protobuf.ByteString getPhoneBytes()`
-
-`string phone = 6;`
-
- * **Returns:** The bytes for phone.
-
-## `@java.lang.Override public boolean hasDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** Whether the didcommInvitation field is set.
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** The didcommInvitation.
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
+`.services.account.v1.AccountDetails details = 3;`
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -557,121 +479,45 @@ Protobuf type {@code services.provider.v1.InviteRequest}
  * **Parameters:** `value` — The bytes for description to set.
  * **Returns:** This builder for chaining.
 
-## `@java.lang.Override public boolean hasEmail()`
+## `public boolean hasDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** Whether the email field is set.
+ * **Returns:** Whether the details field is set.
 
-## `@java.lang.Override public java.lang.String getEmail()`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** The email.
+ * **Returns:** The details.
 
-## `@java.lang.Override public com.google.protobuf.ByteString getEmailBytes()`
+## `public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value)`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** The bytes for email.
+## `public Builder setDetails( trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue)`
 
-## `public Builder setEmail( java.lang.String value)`
+`.services.account.v1.AccountDetails details = 3;`
 
-`string email = 5;`
+## `public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value)`
 
- * **Parameters:** `value` — The email to set.
- * **Returns:** This builder for chaining.
+`.services.account.v1.AccountDetails details = 3;`
 
-## `public Builder clearEmail()`
+## `public Builder clearDetails()`
 
-`string email = 5;`
+`.services.account.v1.AccountDetails details = 3;`
 
- * **Returns:** This builder for chaining.
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder()`
 
-## `public Builder setEmailBytes( com.google.protobuf.ByteString value)`
+`.services.account.v1.AccountDetails details = 3;`
 
-`string email = 5;`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
 
- * **Parameters:** `value` — The bytes for email to set.
- * **Returns:** This builder for chaining.
+`.services.account.v1.AccountDetails details = 3;`
 
-## `@java.lang.Override public boolean hasPhone()`
+## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> getDetailsFieldBuilder()`
 
-`string phone = 6;`
-
- * **Returns:** Whether the phone field is set.
-
-## `@java.lang.Override public java.lang.String getPhone()`
-
-`string phone = 6;`
-
- * **Returns:** The phone.
-
-## `@java.lang.Override public com.google.protobuf.ByteString getPhoneBytes()`
-
-`string phone = 6;`
-
- * **Returns:** The bytes for phone.
-
-## `public Builder setPhone( java.lang.String value)`
-
-`string phone = 6;`
-
- * **Parameters:** `value` — The phone to set.
- * **Returns:** This builder for chaining.
-
-## `public Builder clearPhone()`
-
-`string phone = 6;`
-
- * **Returns:** This builder for chaining.
-
-## `public Builder setPhoneBytes( com.google.protobuf.ByteString value)`
-
-`string phone = 6;`
-
- * **Parameters:** `value` — The bytes for phone to set.
- * **Returns:** This builder for chaining.
-
-## `@java.lang.Override public boolean hasDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** Whether the didcommInvitation field is set.
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
- * **Returns:** The didcommInvitation.
-
-## `public Builder setDidcommInvitation(trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation value)`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `public Builder setDidcommInvitation( trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder builderForValue)`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `public Builder mergeDidcommInvitation(trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation value)`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `public Builder clearDidcommInvitation()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder getDidcommInvitationBuilder()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder> getDidcommInvitationFieldBuilder()`
-
-`.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;`
+`.services.account.v1.AccountDetails details = 3;`
 
 ## `int getStatusValue()`
 
@@ -696,6 +542,22 @@ Protobuf type {@code services.provider.v1.InviteRequest}
 `string invitation_id = 10;`
 
  * **Returns:** The bytes for invitationId.
+
+## `java.lang.String getInvitationCode()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The invitationCode.
+
+## `com.google.protobuf.ByteString getInvitationCodeBytes()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The bytes for invitationCode.
 
 ## `public static final class InviteResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -724,6 +586,22 @@ Protobuf type {@code services.provider.v1.InviteResponse}
 `string invitation_id = 10;`
 
  * **Returns:** The bytes for invitationId.
+
+## `@java.lang.Override public java.lang.String getInvitationCode()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The invitationCode.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getInvitationCodeBytes()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The bytes for invitationCode.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -793,6 +671,48 @@ Protobuf type {@code services.provider.v1.InviteResponse}
  * **Parameters:** `value` — The bytes for invitationId to set.
  * **Returns:** This builder for chaining.
 
+## `public java.lang.String getInvitationCode()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The invitationCode.
+
+## `public com.google.protobuf.ByteString getInvitationCodeBytes()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** The bytes for invitationCode.
+
+## `public Builder setInvitationCode( java.lang.String value)`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Parameters:** `value` — The invitationCode to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearInvitationCode()`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setInvitationCodeBytes( com.google.protobuf.ByteString value)`
+
+<pre> Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. </pre>
+
+`string invitation_code = 11;`
+
+ * **Parameters:** `value` — The bytes for invitationCode to set.
+ * **Returns:** This builder for chaining.
+
 ## `java.lang.String getInvitationId()`
 
 `string invitation_id = 1;`
@@ -807,7 +727,7 @@ Protobuf type {@code services.provider.v1.InviteResponse}
 
 ## `public static final class InvitationStatusRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
-<pre> Request details for the status of onboarding an individual or organization. The referenece_id passed is the response from the `Onboard` method call </pre>
+<pre> Request details for the status of onboarding an individual or organization. The reference_id passed is the response from the `Onboard` method call </pre>
 
 Protobuf type {@code services.provider.v1.InvitationStatusRequest}
 
@@ -825,7 +745,7 @@ Protobuf type {@code services.provider.v1.InvitationStatusRequest}
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
-<pre> Request details for the status of onboarding an individual or organization. The referenece_id passed is the response from the `Onboard` method call </pre>
+<pre> Request details for the status of onboarding an individual or organization. The reference_id passed is the response from the `Onboard` method call </pre>
 
 Protobuf type {@code services.provider.v1.InvitationStatusRequest}
 
@@ -1278,11 +1198,15 @@ Protobuf type {@code services.provider.v1.Ecosystem}
 
 ## `java.lang.String getName()`
 
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
+
 `string name = 1;`
 
  * **Returns:** The name.
 
 ## `com.google.protobuf.ByteString getNameBytes()`
+
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
 
 `string name = 1;`
 
@@ -1290,11 +1214,15 @@ Protobuf type {@code services.provider.v1.Ecosystem}
 
 ## `java.lang.String getDescription()`
 
+<pre> Ecosystem description. This field is optional. </pre>
+
 `string description = 2;`
 
  * **Returns:** The description.
 
 ## `com.google.protobuf.ByteString getDescriptionBytes()`
+
+<pre> Ecosystem description. This field is optional. </pre>
 
 `string description = 2;`
 
@@ -1302,15 +1230,41 @@ Protobuf type {@code services.provider.v1.Ecosystem}
 
 ## `java.lang.String getUri()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The uri.
 
 ## `com.google.protobuf.ByteString getUriBytes()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The bytes for uri.
+
+## `boolean hasDetails()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
+
+ * **Returns:** Whether the details field is set.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
+
+ * **Returns:** The details.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
 
 ## `public static final class CreateEcosystemRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
@@ -1318,11 +1272,15 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `@java.lang.Override public java.lang.String getName()`
 
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
+
 `string name = 1;`
 
  * **Returns:** The name.
 
 ## `@java.lang.Override public com.google.protobuf.ByteString getNameBytes()`
+
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
 
 `string name = 1;`
 
@@ -1330,11 +1288,15 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `@java.lang.Override public java.lang.String getDescription()`
 
+<pre> Ecosystem description. This field is optional. </pre>
+
 `string description = 2;`
 
  * **Returns:** The description.
 
 ## `@java.lang.Override public com.google.protobuf.ByteString getDescriptionBytes()`
+
+<pre> Ecosystem description. This field is optional. </pre>
 
 `string description = 2;`
 
@@ -1342,15 +1304,41 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `@java.lang.Override public java.lang.String getUri()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The uri.
 
 ## `@java.lang.Override public com.google.protobuf.ByteString getUriBytes()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The bytes for uri.
+
+## `@java.lang.Override public boolean hasDetails()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
+
+ * **Returns:** Whether the details field is set.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
+
+ * **Returns:** The details.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
+
+<pre> The account details of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountDetails details = 4;`
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -1358,17 +1346,23 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public java.lang.String getName()`
 
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
+
 `string name = 1;`
 
  * **Returns:** The name.
 
 ## `public com.google.protobuf.ByteString getNameBytes()`
 
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
+
 `string name = 1;`
 
  * **Returns:** The bytes for name.
 
 ## `public Builder setName( java.lang.String value)`
+
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
 
 `string name = 1;`
 
@@ -1377,11 +1371,15 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public Builder clearName()`
 
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
+
 `string name = 1;`
 
  * **Returns:** This builder for chaining.
 
 ## `public Builder setNameBytes( com.google.protobuf.ByteString value)`
+
+<pre> Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. </pre>
 
 `string name = 1;`
 
@@ -1390,17 +1388,23 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public java.lang.String getDescription()`
 
+<pre> Ecosystem description. This field is optional. </pre>
+
 `string description = 2;`
 
  * **Returns:** The description.
 
 ## `public com.google.protobuf.ByteString getDescriptionBytes()`
 
+<pre> Ecosystem description. This field is optional. </pre>
+
 `string description = 2;`
 
  * **Returns:** The bytes for description.
 
 ## `public Builder setDescription( java.lang.String value)`
+
+<pre> Ecosystem description. This field is optional. </pre>
 
 `string description = 2;`
 
@@ -1409,11 +1413,15 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public Builder clearDescription()`
 
+<pre> Ecosystem description. This field is optional. </pre>
+
 `string description = 2;`
 
  * **Returns:** This builder for chaining.
 
 ## `public Builder setDescriptionBytes( com.google.protobuf.ByteString value)`
+
+<pre> Ecosystem description. This field is optional. </pre>
 
 `string description = 2;`
 
@@ -1422,17 +1430,23 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public java.lang.String getUri()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The uri.
 
 ## `public com.google.protobuf.ByteString getUriBytes()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** The bytes for uri.
 
 ## `public Builder setUri( java.lang.String value)`
+
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
 
 `string uri = 3;`
 
@@ -1441,405 +1455,553 @@ Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
 
 ## `public Builder clearUri()`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Returns:** This builder for chaining.
 
 ## `public Builder setUriBytes( com.google.protobuf.ByteString value)`
 
+<pre> External URL associated with your organization or ecosystem entity. This field is optional </pre>
+
 `string uri = 3;`
 
  * **Parameters:** `value` — The bytes for uri to set.
  * **Returns:** This builder for chaining.
 
-## `java.lang.String getId()`
+## `public boolean hasDetails()`
 
-`string id = 1;`
+<pre> The account details of the owner of the ecosystem </pre>
 
- * **Returns:** The id.
+`.services.account.v1.AccountDetails details = 4;`
 
-## `com.google.protobuf.ByteString getIdBytes()`
+ * **Returns:** Whether the details field is set.
 
-`string id = 1;`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails()`
 
- * **Returns:** The bytes for id.
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public static final class CreateEcosystemResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+`.services.account.v1.AccountDetails details = 4;`
 
-Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+ * **Returns:** The details.
 
-## `@java.lang.Override public java.lang.String getId()`
+## `public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value)`
 
-`string id = 1;`
+<pre> The account details of the owner of the ecosystem </pre>
 
- * **Returns:** The id.
+`.services.account.v1.AccountDetails details = 4;`
 
-## `@java.lang.Override public com.google.protobuf.ByteString getIdBytes()`
+## `public Builder setDetails( trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue)`
 
-`string id = 1;`
+<pre> The account details of the owner of the ecosystem </pre>
 
- * **Returns:** The bytes for id.
+`.services.account.v1.AccountDetails details = 4;`
 
-## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+## `public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value)`
 
-Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public java.lang.String getId()`
+`.services.account.v1.AccountDetails details = 4;`
 
-`string id = 1;`
+## `public Builder clearDetails()`
 
- * **Returns:** The id.
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public com.google.protobuf.ByteString getIdBytes()`
+`.services.account.v1.AccountDetails details = 4;`
 
-`string id = 1;`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder()`
 
- * **Returns:** The bytes for id.
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public Builder setId( java.lang.String value)`
+`.services.account.v1.AccountDetails details = 4;`
 
-`string id = 1;`
+## `public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder()`
 
- * **Parameters:** `value` — The id to set.
- * **Returns:** This builder for chaining.
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public Builder clearId()`
+`.services.account.v1.AccountDetails details = 4;`
 
-`string id = 1;`
+## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> getDetailsFieldBuilder()`
 
- * **Returns:** This builder for chaining.
+<pre> The account details of the owner of the ecosystem </pre>
 
-## `public Builder setIdBytes( com.google.protobuf.ByteString value)`
-
-`string id = 1;`
-
- * **Parameters:** `value` — The bytes for id to set.
- * **Returns:** This builder for chaining.
-
-## `public static final class ListEcosystemsRequest extends com.google.protobuf.GeneratedMessageV3 implements`
-
-Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
-
-## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
-
-Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
-
-## `java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `int getEcosystemCount()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemOrBuilderList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder( int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public static final class ListEcosystemsResponse extends com.google.protobuf.GeneratedMessageV3 implements`
-
-Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
-
-## `@java.lang.Override public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `@java.lang.Override public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemOrBuilderList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `@java.lang.Override public int getEcosystemCount()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder( int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
-
-Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
-
-## `public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public int getEcosystemCount()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder setEcosystem( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder setEcosystem( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder addEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder addEcosystem( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder addEcosystem( trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder addEcosystem( int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder addAllEcosystem( java.lang.Iterable<? extends trinsic.services.common.v1.ProviderOuterClass.Ecosystem> values)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder clearEcosystem()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public Builder removeEcosystem(int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder( int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder( int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemOrBuilderList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder( int index)`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder> getEcosystemBuilderList()`
-
-`repeated .services.provider.v1.Ecosystem ecosystem = 1;`
-
-## `java.lang.String getId()`
-
-`string id = 1;`
-
- * **Returns:** The id.
-
-## `com.google.protobuf.ByteString getIdBytes()`
-
-`string id = 1;`
-
- * **Returns:** The bytes for id.
-
-## `java.lang.String getCode()`
-
-`string code = 2;`
-
- * **Returns:** The code.
-
-## `com.google.protobuf.ByteString getCodeBytes()`
-
-`string code = 2;`
-
- * **Returns:** The bytes for code.
-
-## `public static final class AcceptInviteRequest extends com.google.protobuf.GeneratedMessageV3 implements`
-
-Protobuf type {@code services.provider.v1.AcceptInviteRequest}
-
-## `@java.lang.Override public java.lang.String getId()`
-
-`string id = 1;`
-
- * **Returns:** The id.
-
-## `@java.lang.Override public com.google.protobuf.ByteString getIdBytes()`
-
-`string id = 1;`
-
- * **Returns:** The bytes for id.
-
-## `@java.lang.Override public java.lang.String getCode()`
-
-`string code = 2;`
-
- * **Returns:** The code.
-
-## `@java.lang.Override public com.google.protobuf.ByteString getCodeBytes()`
-
-`string code = 2;`
-
- * **Returns:** The bytes for code.
-
-## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
-
-Protobuf type {@code services.provider.v1.AcceptInviteRequest}
-
-## `public java.lang.String getId()`
-
-`string id = 1;`
-
- * **Returns:** The id.
-
-## `public com.google.protobuf.ByteString getIdBytes()`
-
-`string id = 1;`
-
- * **Returns:** The bytes for id.
-
-## `public Builder setId( java.lang.String value)`
-
-`string id = 1;`
-
- * **Parameters:** `value` — The id to set.
- * **Returns:** This builder for chaining.
-
-## `public Builder clearId()`
-
-`string id = 1;`
-
- * **Returns:** This builder for chaining.
-
-## `public Builder setIdBytes( com.google.protobuf.ByteString value)`
-
-`string id = 1;`
-
- * **Parameters:** `value` — The bytes for id to set.
- * **Returns:** This builder for chaining.
-
-## `public java.lang.String getCode()`
-
-`string code = 2;`
-
- * **Returns:** The code.
-
-## `public com.google.protobuf.ByteString getCodeBytes()`
-
-`string code = 2;`
-
- * **Returns:** The bytes for code.
-
-## `public Builder setCode( java.lang.String value)`
-
-`string code = 2;`
-
- * **Parameters:** `value` — The code to set.
- * **Returns:** This builder for chaining.
-
-## `public Builder clearCode()`
-
-`string code = 2;`
-
- * **Returns:** This builder for chaining.
-
-## `public Builder setCodeBytes( com.google.protobuf.ByteString value)`
-
-`string code = 2;`
-
- * **Parameters:** `value` — The bytes for code to set.
- * **Returns:** This builder for chaining.
+`.services.account.v1.AccountDetails details = 4;`
 
 ## `boolean hasEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** Whether the ecosystem field is set.
 
 ## `trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** The ecosystem.
 
 ## `trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
 
-## `public static final class AcceptInviteResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
-Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+## `boolean hasProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** The profile.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `int getConfirmationMethodValue()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The enum numeric value on the wire for confirmationMethod.
+
+## `trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The confirmationMethod.
+
+## `public static final class CreateEcosystemResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+
+Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
 
 ## `@java.lang.Override public boolean hasEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** Whether the ecosystem field is set.
 
 ## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** The ecosystem.
 
 ## `@java.lang.Override public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
+
+## `@java.lang.Override public boolean hasProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** The profile.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `@java.lang.Override public int getConfirmationMethodValue()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The enum numeric value on the wire for confirmationMethod.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The confirmationMethod.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
-Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
 
 ## `public boolean hasEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** Whether the ecosystem field is set.
 
 ## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
  * **Returns:** The ecosystem.
 
 ## `public Builder setEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `public Builder setEcosystem( trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue)`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `public Builder mergeEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value)`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `public Builder clearEcosystem()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
 
 ## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> getEcosystemFieldBuilder()`
 
-`.services.provider.v1.Ecosystem ecosystem = 2;`
+<pre> Details of the created ecosystem </pre>
+
+`.services.provider.v1.Ecosystem ecosystem = 1;`
+
+## `public boolean hasProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+ * **Returns:** The profile.
+
+## `public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `public Builder setProfile( trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue)`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `public Builder clearProfile()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> getProfileFieldBuilder()`
+
+<pre> Account profile for auth of the owner of the ecosystem </pre>
+
+`.services.account.v1.AccountProfile profile = 2;`
+
+## `@java.lang.Override public int getConfirmationMethodValue()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The enum numeric value on the wire for confirmationMethod.
+
+## `public Builder setConfirmationMethodValue(int value)`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Parameters:** `value` — The enum numeric value on the wire for confirmationMethod to set.
+ * **Returns:** This builder for chaining.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** The confirmationMethod.
+
+## `public Builder setConfirmationMethod(trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod value)`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Parameters:** `value` — The confirmationMethod to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearConfirmationMethod()`
+
+<pre> Indicates if confirmation of account is required. This settings is configured globally by the server administrator. </pre>
+
+`.services.account.v1.ConfirmationMethod confirmation_method = 3;`
+
+ * **Returns:** This builder for chaining.
+
+## `java.lang.String getDescription()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The description.
+
+## `com.google.protobuf.ByteString getDescriptionBytes()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The bytes for description.
+
+## `public static final class GenerateTokenRequest extends com.google.protobuf.GeneratedMessageV3 implements`
+
+Protobuf type {@code services.provider.v1.GenerateTokenRequest}
+
+## `@java.lang.Override public java.lang.String getDescription()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The description.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getDescriptionBytes()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The bytes for description.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+Protobuf type {@code services.provider.v1.GenerateTokenRequest}
+
+## `public java.lang.String getDescription()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The description.
+
+## `public com.google.protobuf.ByteString getDescriptionBytes()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** The bytes for description.
+
+## `public Builder setDescription( java.lang.String value)`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Parameters:** `value` — The description to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearDescription()`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setDescriptionBytes( com.google.protobuf.ByteString value)`
+
+<pre> Optional description to identify this token </pre>
+
+`string description = 1;`
+
+ * **Parameters:** `value` — The bytes for description to set.
+ * **Returns:** This builder for chaining.
+
+## `boolean hasProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** The profile.
+
+## `trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public static final class GenerateTokenResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+
+Protobuf type {@code services.provider.v1.GenerateTokenResponse}
+
+## `@java.lang.Override public boolean hasProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** The profile.
+
+## `@java.lang.Override public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+Protobuf type {@code services.provider.v1.GenerateTokenResponse}
+
+## `public boolean hasProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** Whether the profile field is set.
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+ * **Returns:** The profile.
+
+## `public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public Builder setProfile( trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue)`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value)`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public Builder clearProfile()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`
+
+## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> getProfileFieldBuilder()`
+
+<pre> Account authentication profile that contains unprotected token </pre>
+
+`.services.account.v1.AccountProfile profile = 1;`

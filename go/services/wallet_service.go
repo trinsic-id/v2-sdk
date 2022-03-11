@@ -2,84 +2,84 @@ package services
 
 import (
 	"context"
-	"encoding/json"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func CreateWalletService(options ServiceOptions) (WalletService, error) {
-	base, err := NewServiceBase(options.profile, options.config, options.channel)
+// NewWalletService returns a wallet service with the base service configured
+// using the provided options
+func NewWalletService(options *Options) (WalletService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
-	service := &WalletBase{
-		ServiceBase: base,
-		client:      sdk.NewUniversalWalletClient(base.channel),
+	service := &walletBase{
+		Service: base,
+		client:  sdk.NewUniversalWalletClient(base.GetChannel()),
 	}
 
 	return service, nil
 }
 
+// WalletService defines the interface for interacting with wallet
 type WalletService interface {
 	Service
-
-	Search(userContext context.Context, query string) (*sdk.SearchResponse, error)
-	InsertItem(userContext context.Context, item Document) (string, error)
-	DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) (*sdk.DeleteItemResponse, error)
+	Search(userContext context.Context, request *sdk.SearchRequest) (*sdk.SearchResponse, error)
+	InsertItem(userContext context.Context, request *sdk.InsertItemRequest) (string, error)
+	DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) error
 }
 
-type WalletBase struct {
-	*ServiceBase
-	channel *grpc.ClientConn
-	client  sdk.UniversalWalletClient
+type walletBase struct {
+	Service
+	client sdk.UniversalWalletClient
 }
 
-func (w *WalletBase) Search(userContext context.Context, query string) (*sdk.SearchResponse, error) {
-	request := &sdk.SearchRequest{
-		Query: query,
+func (w *walletBase) Search(userContext context.Context, request *sdk.SearchRequest) (*sdk.SearchResponse, error) {
+	if request == nil {
+		request = &sdk.SearchRequest{}
 	}
+
+	if len(request.Query) == 0 {
+		request.Query = "SELECT * FROM c"
+	}
+
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
+
 	response, err := w.client.Search(md, request)
 	if err != nil {
 		return nil, err
 	}
+
 	return response, nil
 }
 
-func (w *WalletBase) InsertItem(userContext context.Context, item Document) (string, error) {
-	jsonString, err := json.Marshal(item)
-	if err != nil {
-		return "", err
-	}
-	request := &sdk.InsertItemRequest{
-		Item: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
+func (w *walletBase) InsertItem(userContext context.Context, request *sdk.InsertItemRequest) (string, error) {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return "", err
 	}
+
 	response, err := w.client.InsertItem(md, request)
 	if err != nil {
 		return "", err
 	}
+
 	return response.ItemId, nil
 }
 
-func (w *WalletBase) DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) (*sdk.DeleteItemResponse, error) {
+func (w *walletBase) DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) error {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	response, err := w.client.DeleteItem(md, request)
+
+	_, err = w.client.DeleteItem(md, request)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return response, nil
+
+	return nil
 }

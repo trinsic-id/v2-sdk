@@ -1,112 +1,138 @@
 package services
 
 import (
-	"crypto/x509"
-	"errors"
-	"fmt"
+	"os"
+	"strconv"
+	"strings"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials"
-	_ "google.golang.org/protobuf/types/known/structpb"
-	"net/url"
-	"os"
-	"runtime"
-	"strconv"
 )
 
-type Document map[string]interface{}
-
-type ServiceOptions struct {
-	profile *sdk.AccountProfile
-	config  *sdk.ServerConfig
-	channel *grpc.ClientConn
+//Options for configuring the sdk
+type Options struct {
+	ServiceOptions *sdk.ServiceOptions
+	Channel        *grpc.ClientConn
 }
 
-func TrinsicProductionConfig() *sdk.ServerConfig {
-	return &sdk.ServerConfig{
-		Endpoint: "prod.trinsic.cloud",
-		Port:     443,
-		UseTls:   true,
-	}
-}
-
-func TrinsicDevelopmentConfig() *sdk.ServerConfig {
-	return &sdk.ServerConfig{
-		Endpoint: "dev-internal.trinsic.cloud",
-		Port:     443,
-		UseTls:   true,
-	}
-}
-
-func TrinsicStagingConfig() *sdk.ServerConfig {
-	return &sdk.ServerConfig{
-		Endpoint: "staging-internal.trinsic.cloud",
-		Port:     443,
-		UseTls:   true,
-	}
-}
-
-func TrinsicTestConfig() *sdk.ServerConfig {
-	server := os.Getenv("TEST_SERVER_ENDPOINT")
-	port, err := strconv.Atoi(os.Getenv("TEST_SERVER_PORT"))
-	useTls, err2 := strconv.ParseBool(os.Getenv("TEST_SERVER_USE_TLS"))
-	if err != nil || port <= 0 {
-		port = 443
-	}
-	if err2 != nil {
-		useTls = true
+// NewServiceOptions returns a service options configuration with the provided options set
+func NewServiceOptions(opts ...Option) (*Options, error) {
+	options := &Options{
+		ServiceOptions: &sdk.ServiceOptions{
+			DefaultEcosystem: "default",
+		},
 	}
 
-	return &sdk.ServerConfig{
-		Endpoint: server,
-		Port:     int32(port),
-		UseTls:   useTls,
-	}
-}
+	// Default to production
+	WithProductionEnv()(options)
 
-func CreateChannelUrlFromConfig(config *sdk.ServerConfig) string {
-	if config == nil {
-		config = TrinsicProductionConfig()
-	}
-	scheme := "http"
-	if config.UseTls {
-		scheme = "https"
-	}
-	return fmt.Sprintf("%s://%s:%d", scheme, config.Endpoint, config.Port)
-}
-
-func CreateChannel(serviceAddress string, blockOnOpen bool) (*grpc.ClientConn, error) {
-	var serviceUrl, err = url.Parse(serviceAddress)
-	if err != nil {
-		return nil, err
-	}
-	if serviceUrl.Port() == "" {
-		return nil, &url.Error{Op: "parse", URL: serviceAddress, Err: errors.New("missing port (or scheme) in URL")}
-	}
-	dialUrl := serviceUrl.Hostname() + ":" + serviceUrl.Port()
-	var dialOptions []grpc.DialOption
-	if blockOnOpen {
-		dialOptions = append(dialOptions, grpc.WithBlock())
-	}
-	if serviceUrl.Scheme == "http" {
-		dialOptions = append(dialOptions, grpc.WithInsecure())
-	} else {
-		rootCAs, err := x509.SystemCertPool()
-		if err != nil && runtime.GOOS == "windows" {
-			rootCAs = x509.NewCertPool()
-			windowsCerts := loadWindowsCerts()
-			for _, cert := range windowsCerts {
-				rootCAs.AddCert(cert)
-			}
-		} else if err != nil {
+	// set user defined options
+	for _, o := range opts {
+		err := o(options)
+		if err != nil {
 			return nil, err
 		}
-		creds := credentials.NewClientTLSFromCert(rootCAs, "")
-		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
 	}
-	channel, err := grpc.Dial(dialUrl, dialOptions...)
-	if err != nil {
-		return nil, err
+
+	return options, nil
+}
+
+// Option function for setting options when configuring the service
+type Option func(*Options) error
+
+// WithAuthToken sets a specific account token to use
+func WithAuthToken(token string) Option {
+	return func(s *Options) error {
+		s.ServiceOptions.AuthToken = token
+
+		return nil
 	}
-	return channel, nil
+}
+
+// WithDefaultEcosystem will set the default ecosystem used for each of the calls
+//
+// This value will be added to calls that reqire an ecosystemID to be set
+// if no value is provided
+func WithDefaultEcosystem(ecosystemID string) Option {
+	return func(s *Options) error {
+		s.ServiceOptions.DefaultEcosystem = ecosystemID
+		return nil
+	}
+}
+
+// WithOptions will replace the current options with the one provided
+func WithOptions(serviceOptions *sdk.ServiceOptions) Option {
+	return func(s *Options) error {
+		s.ServiceOptions.AuthToken = serviceOptions.AuthToken
+		s.ServiceOptions.ServerPort = serviceOptions.ServerPort
+		s.ServiceOptions.ServerEndpoint = serviceOptions.ServerEndpoint
+		s.ServiceOptions.ServerUseTls = serviceOptions.ServerUseTls
+		s.ServiceOptions.DefaultEcosystem = serviceOptions.DefaultEcosystem
+
+		return nil
+	}
+}
+
+// WithDevEnv will configure the server to use the trinsic development environment
+func WithDevEnv() Option {
+	return func(s *Options) error {
+		s.ServiceOptions.ServerEndpoint = "dev-internal.trinsic.cloud"
+		s.ServiceOptions.ServerPort = 443
+		s.ServiceOptions.ServerUseTls = true
+
+		return nil
+	}
+}
+
+// WithStagingEnv will configure the server to use the trinsic staging environment
+func WithStagingEnv() Option {
+	return func(s *Options) error {
+		s.ServiceOptions.ServerEndpoint = "staging-internal.trinsic.cloud"
+		s.ServiceOptions.ServerPort = 443
+		s.ServiceOptions.ServerUseTls = true
+
+		return nil
+	}
+}
+
+// WithProductionEnv will configure the server to use the trinsic production environment
+func WithProductionEnv() Option {
+	return func(s *Options) error {
+		s.ServiceOptions.ServerEndpoint = "prod.trinsic.cloud"
+		s.ServiceOptions.ServerPort = 443
+		s.ServiceOptions.ServerUseTls = true
+
+		return nil
+	}
+}
+
+// WithTestEnv will configure the server to use the environment provided by environment variables
+// falling back to trinsic production environment if necessary
+func WithTestEnv() Option {
+	return func(s *Options) error {
+		s.ServiceOptions.ServerEndpoint = os.Getenv("TEST_SERVER_ENDPOINT")
+
+		port, err := strconv.Atoi(os.Getenv("TEST_SERVER_PORT"))
+		if err != nil || port <= 0 {
+			port = 443
+		}
+		s.ServiceOptions.ServerPort = int32(port)
+
+		useTLS := os.Getenv("TEST_SERVER_USE_TLS")
+		if len(useTLS) != 0 && strings.Compare(strings.ToLower(useTLS), "false") != 0 {
+			s.ServiceOptions.ServerUseTls = true
+		} else {
+			s.ServiceOptions.ServerUseTls = false
+		}
+
+		return nil
+	}
+}
+
+// WithChannel will use the provided grpc channel instead of creating a default
+func WithChannel(conn *grpc.ClientConn) Option {
+	return func(s *Options) error {
+		s.Channel = conn
+		return nil
+	}
 }

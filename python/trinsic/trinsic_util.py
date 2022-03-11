@@ -1,39 +1,56 @@
 """
 Utility functions for the Trinsic services SDK
 """
-import urllib.parse
+import dataclasses
 from datetime import datetime
 from distutils.util import strtobool
 from os import getenv
-from typing import Union, Tuple
+from typing import Tuple
 
 from grpclib.client import Channel
 
-from trinsic.proto.services.common.v1 import ServerConfig
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 
 
-def trinsic_production_config() -> ServerConfig:
+def trinsic_config(auth_token: str = None) -> ServiceOptions:
     """
-    Default production configuration for the trinsic cloud
+    Test Server configuration - if environment variables aren't set, default to production
+    Args:
+        auth_token: Existing auth token to use (instead of `clone_options_with_auth_token(trinsic_config(), auth_token)`)
     Returns:
-        [ServerConfig](/reference/proto/#serverconfig)
-    """
-    return ServerConfig(endpoint="prod.trinsic.cloud", port=443, use_tls=True)
-
-
-def trinsic_test_config() -> ServerConfig:
-    """
-    Test server configuration - if environment variables aren't set, default to production
-    Returns:
-        [ServerConfig](/reference/proto/#serverconfig)
+        [ServerConfig](/reference/proto/#serviceoptions)
     """
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
-    return ServerConfig(endpoint=endpoint, port=port, use_tls=use_tls)
+    ecosystem = getenv("TEST_SERVER_ECOSYSTEM", "default")
+    return ServiceOptions(
+        server_endpoint=endpoint,
+        server_port=port,
+        server_use_tls=use_tls,
+        default_ecosystem=ecosystem,
+        auth_token=auth_token,
+    )
 
 
-def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
+def clone_options_with_auth_token(
+    options: ServiceOptions, auth_token: str
+) -> ServiceOptions:
+    """
+    Clone the service options and replace the authentication token.
+    Args:
+        options:
+        auth_token:
+
+    Returns:
+
+    """
+    cloned = dataclasses.replace(options)
+    cloned.auth_token = auth_token
+    return cloned
+
+
+def create_channel(config: ServiceOptions) -> Channel:
     """
     Create the channel from the provided URL
     Args:
@@ -41,21 +58,9 @@ def create_channel(config: Union[ServerConfig, str, Channel]) -> Channel:
     Returns:
         connected `Channel`
     """
-    if isinstance(config, Channel):
-        channel = config
-    elif isinstance(config, str):
-        service_url = urllib.parse.urlsplit(config)
-        is_https = service_url.scheme == "https"
-        if not service_url.hostname:
-            raise ValueError(f'Invalid url="{config}"')
-        channel = Channel(
-            host=f"{service_url.hostname}", port=service_url.port, ssl=is_https
-        )
-    elif isinstance(config, ServerConfig):
-        channel = Channel(host=config.endpoint, port=config.port, ssl=config.use_tls)
-    else:
-        raise NotImplementedError(f"config type={type(config)} not supported.")
-    return channel
+    return Channel(
+        host=config.server_endpoint, port=config.server_port, ssl=config.server_use_tls
+    )
 
 
 def convert_to_epoch_seconds(
