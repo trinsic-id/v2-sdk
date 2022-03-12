@@ -12,6 +12,10 @@ fn main() {
             "ServiceOptions",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
+        .type_attribute(
+            ".services",
+            "#[derive(::serde::Serialize, ::serde::Deserialize)]",
+        )
         // .field_attribute(
         //     "ServiceOptions.auth_token",
         //     "#[serde(skip_serializing_if = \"String::is_empty\")]",

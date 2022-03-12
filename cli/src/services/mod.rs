@@ -6,18 +6,25 @@ mod trustregistry;
 mod vc;
 mod wallet;
 
+use std::collections::BTreeMap;
+
+use prost::Message;
+use serde::Serialize;
+
 use self::config::CliConfig;
 use crate::error::Error;
 
-pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error> {
     match args {
         Service::Wallet(args) => wallet::execute(&args, config),
         Service::Account(args) => account::execute(&args, config),
-        Service::VerifiableCredential(args) => vc::execute(&args, config),
-        Service::Provider(args) => provider::execute(&args, config),
-        Service::Config(args) => Ok(config::execute(&args)),
-        Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
-        Service::Template(args) => template::execute(&args, &config),
+        Service::VerifiableCredential(args) => vc::execute(&args, config).map(|_| Output::new()),
+        Service::Provider(args) => provider::execute(&args, config).map(|_| Output::new()),
+        Service::Config(args) => Ok(config::execute(&args)).map(|_| Output::new()),
+        Service::TrustRegistry(args) => {
+            trustregistry::execute(&args, &config).map(|_| Output::new())
+        }
+        Service::Template(args) => template::execute(&args, &config).map(|_| Output::new()),
         _ => Err(Error::UnknownCommand),
     }
 }
@@ -33,3 +40,5 @@ pub(crate) enum Service<'a> {
     Template(crate::parser::template::TemplateCommand),
     Unknown,
 }
+
+type Output = BTreeMap<String, String>;

@@ -1,5 +1,7 @@
 use super::config::CliConfig;
+use super::Output;
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
+use crate::MessageFormatter;
 use crate::{
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
@@ -16,7 +18,7 @@ use std::io;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
         Command::SignIn(args) => sign_in(args, config),
         Command::Info(args) => info(args, config),
@@ -24,7 +26,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
+async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> {
     let name = match &args.name {
         Some(desc) => desc.to_string(),
         None => "New Wallet (from CLI)".to_string(),
@@ -82,27 +84,24 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<(), Error> {
 
     new_config.save()?;
 
-    println!(
-        "{}: {}",
-        format!("result").cyan().bold(),
-        format!("success").bold()
-    );
-    println!("auth_token = {}", new_config.options.auth_token);
+    let mut output = Output::new();
+    output.insert("auth_token".into(), new_config.options.auth_token);
 
-    Ok(())
+    Ok(output)
 }
 
 #[tokio::main]
-async fn info(_args: &InfoArgs, config: CliConfig) -> Result<(), Error> {
+async fn info(_args: &InfoArgs, config: CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InfoRequest {});
 
     let response = client.info(request).await?.into_inner();
 
-    println!("{:#?}", response);
+    let mut output = Output::new();
+    output.insert("account_data".into(), response.to_string_pretty()?);
 
-    Ok(())
+    Ok(output)
 }
 
 pub(crate) fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {

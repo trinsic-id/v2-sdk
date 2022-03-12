@@ -184,7 +184,7 @@ impl Interceptor for CliConfig {
         let proof = Oberon::proof(&CreateOberonProofRequest {
             data: profile.auth_data.clone(),
             token: profile.auth_token,
-            nonce: nonce.to_vec(),
+            nonce: nonce.encode_to_vec(),
             blinding: vec![],
         })
         .unwrap();
@@ -193,7 +193,7 @@ impl Interceptor for CliConfig {
             "Oberon data={data},proof={proof},nonce={nonce},ver=1",
             data = base64::encode_config(profile.auth_data, base64::URL_SAFE_NO_PAD),
             proof = base64::encode_config(proof.proof, base64::URL_SAFE_NO_PAD),
-            nonce = base64::encode_config(nonce.to_vec(), base64::URL_SAFE_NO_PAD)
+            nonce = base64::encode_config(nonce.encode_to_vec(), base64::URL_SAFE_NO_PAD)
         );
 
         unsafe {
