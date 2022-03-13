@@ -59,9 +59,8 @@ fn main() {
     let matches = app.get_matches();
 
     let config = CliConfig::from(&matches);
-    let service = parser::parse(&matches);
 
-    match service {
+    match parser::parse(&matches) {
         Ok(service) => match services::execute(&service, config) {
             Ok(output) => {
                 println!("{}", "ok".bold().green());
@@ -98,12 +97,7 @@ fn main() {
             println!();
             println!(
                 "{}",
-                format!(
-                    "For more information try {} or {}",
-                    format!("-h").green(),
-                    format!("--help").green()
-                )
-                .italic()
+                format!("For more information try {}", format!("--help").green()).italic()
             )
         }
     }

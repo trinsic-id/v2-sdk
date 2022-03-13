@@ -40,7 +40,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
             email: args.email.map_or(String::default(), |x| x.to_string()),
             sms: args.sms.map_or(String::default(), |x| x.to_string()),
         }),
-        ecosystem_id: "default".into(),
+        ecosystem_id: config.options.default_ecosystem.clone(),
         invitation_code: args
             .invitation_code
             .map_or(String::default(), |x| x.to_string()),

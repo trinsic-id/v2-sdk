@@ -8,9 +8,6 @@ mod wallet;
 
 use std::collections::BTreeMap;
 
-use prost::Message;
-use serde::Serialize;
-
 use self::config::CliConfig;
 use crate::error::Error;
 

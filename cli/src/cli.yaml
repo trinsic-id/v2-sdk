@@ -284,7 +284,7 @@ subcommands:
                   value_name: SQL query
                   help: |
                     The SQL query to search the registry.
-                    Default value is "SELECT * FROM c".
+                    Default value is "SELECT c.data, c.id, c.type FROM c".
                   takes_value: true
                   required: true
         - check-issuer:

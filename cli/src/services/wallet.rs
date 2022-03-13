@@ -5,7 +5,7 @@ use super::Output;
 use crate::error::Error;
 use crate::proto::services::universalwallet::v1::DeleteItemRequest;
 use crate::utils::read_file_as_string;
-use crate::{grpc_channel, grpc_client_with_auth, MessageFormatter};
+use crate::{grpc_channel, grpc_client_with_auth};
 use crate::{
     proto::services::{
         universalwallet::v1::{
@@ -35,7 +35,9 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     let query = args
         .query
-        .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
+        .map_or("SELECT c.data, c.id, c.type FROM c".to_string(), |q| {
+            q.to_string()
+        });
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let request = tonic::Request::new(SearchRequest {
@@ -48,15 +50,13 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     // TODO: this can be implemented better
     let mut out = String::default();
     out.push_str("[");
-    for key in response.items {
-        out.push_str(&key);
-        out.push_str(",");
+    for item in response.items {
+        out.push_str(format!("{},", &item).as_str());
     }
     out = out.trim_end_matches(",").to_string();
     out.push_str("]");
 
     let mut output = Output::new();
-    output.insert("query".into(), query);
     output.insert(
         "items".into(),
         // serde back and forth to get pretty print
@@ -64,6 +64,7 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
             &serde_json::from_str::<Value>(&out).map_err(|_| Error::SerializationError)?,
         )?,
     );
+    output.insert("query".into(), query);
 
     Ok(output)
 }
@@ -90,14 +91,12 @@ async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output,
 #[tokio::main]
 async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
-    let response = client
+    let _response = client
         .delete_item(DeleteItemRequest {
             item_id: args.item_id.map_or(String::default(), |x| x.to_string()),
         })
         .await?
         .into_inner();
-
-    println!("{:#?}", response);
 
     Ok(Output::new())
 }
@@ -107,7 +106,7 @@ async fn send(args: &SendArgs, config: CliConfig) -> Result<Output, Error> {
     let item = read_file_as_string(args.item);
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
-    let response = client
+    let _response = client
         .send(SendRequest {
             delivery_method: Some(DeliveryMethod::Email(
                 args.email.expect("Email must be specified").to_string(),
