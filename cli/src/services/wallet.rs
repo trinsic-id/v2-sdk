@@ -1,5 +1,3 @@
-use std::default::*;
-
 use super::{super::parser::wallet::*, Output};
 use crate::{
     error::Error,
@@ -15,9 +13,10 @@ use crate::{
         },
     },
     services::config::*,
-    utils::read_file,
+    utils::{prettify_json, read_file},
 };
-use serde_json::Value;
+use indexmap::indexmap;
+use std::default::*;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -55,17 +54,10 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     out = out.trim_end_matches(",").to_string();
     out.push_str("]");
 
-    let mut output = Output::new();
-    output.insert(
-        "items".into(),
-        // serde back and forth to get pretty print
-        serde_json::to_string_pretty(
-            &serde_json::from_str::<Value>(&out).map_err(|_| Error::SerializationError)?,
-        )?,
-    );
-    output.insert("query".into(), query);
-
-    Ok(output)
+    Ok(indexmap! {
+        "query".into() => query,
+        "items".into() => prettify_json(&out)?
+    })
 }
 
 #[tokio::main]

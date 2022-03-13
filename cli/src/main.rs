@@ -66,7 +66,6 @@ fn main() {
                 for (key, value) in output.iter() {
                     print!("{} {} ", key.bold().yellow(), "→".bold().bright_black());
                     println!("{}", value);
-                    println!();
                 }
             }
             Err(err) => match err {

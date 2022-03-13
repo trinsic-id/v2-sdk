@@ -2239,6 +2239,7 @@ dependencies = [
  "clap",
  "colored",
  "dirs",
+ "indexmap",
  "okapi",
  "prost 0.9.0",
  "prost-types 0.9.0",

@@ -6,7 +6,7 @@ mod trustregistry;
 mod vc;
 mod wallet;
 
-use std::collections::BTreeMap;
+use indexmap::IndexMap;
 
 use self::config::CliConfig;
 use crate::error::Error;
@@ -38,4 +38,5 @@ pub(crate) enum Service<'a> {
     Unknown,
 }
 
-type Output = BTreeMap<String, String>;
+// type Output = BTreeMap<String, String>;
+type Output = IndexMap<String, String>;

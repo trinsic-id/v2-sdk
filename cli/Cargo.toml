@@ -23,6 +23,7 @@ yaml-rust = "0.3"
 colored = "2"
 blake3 = "1.2"
 bytes = "1.1"
+indexmap = "1.8"
 
 [build-dependencies]
 tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
