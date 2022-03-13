@@ -14,7 +14,6 @@ use colored::Colorize;
 use parser::template;
 use prost::{DecodeError, Message};
 use serde::Serialize;
-use serde_json::Value;
 use services::config::CliConfig;
 
 pub static mut DEBUG: bool = false;
@@ -65,8 +64,8 @@ fn main() {
             Ok(output) => {
                 println!("{}", "ok".bold().green());
                 for (key, value) in output.iter() {
-                    println!("{}", format!("[{}]", key).bold());
-                    println!("{}", value.italic());
+                    print!("{} {} ", key.bold().yellow(), "→".bold().bright_black());
+                    println!("{}", value);
                     println!();
                 }
             }
@@ -84,7 +83,17 @@ fn main() {
                         format!("{}", message.to_lowercase())
                     );
                 }
-                Error::MissingArguments => todo!(),
+                Error::MissingArguments => println!(
+                    "{}: {}",
+                    "error".red().bold(),
+                    "missing command arguments".bold()
+                ),
+                Error::InvalidArgument(x) => println!(
+                    "{}: {}: {}",
+                    "error".red().bold(),
+                    "invalid argument".bold(),
+                    x
+                ),
             },
         },
         Err(err) => {

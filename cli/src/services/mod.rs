@@ -15,7 +15,7 @@ pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error
     match args {
         Service::Wallet(args) => wallet::execute(&args, config),
         Service::Account(args) => account::execute(&args, config),
-        Service::VerifiableCredential(args) => vc::execute(&args, config).map(|_| Output::new()),
+        Service::VerifiableCredential(args) => vc::execute(&args, config),
         Service::Provider(args) => provider::execute(&args, config).map(|_| Output::new()),
         Service::Config(args) => Ok(config::execute(&args)).map(|_| Output::new()),
         Service::TrustRegistry(args) => {
@@ -29,7 +29,7 @@ pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error
 #[derive(Debug, PartialEq)]
 pub(crate) enum Service<'a> {
     Wallet(crate::parser::wallet::Command<'a>),
-    VerifiableCredential(crate::parser::issuer::Command<'a>),
+    VerifiableCredential(crate::parser::vc::Command<'a>),
     Provider(crate::parser::provider::Command<'a>),
     Config(crate::parser::config::ConfigCommand),
     Account(crate::parser::account::Command<'a>),

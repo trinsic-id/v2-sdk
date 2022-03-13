@@ -1,15 +1,13 @@
 use std::default::*;
 
-use super::super::parser::wallet::*;
-use super::Output;
-use crate::error::Error;
-use crate::proto::services::universalwallet::v1::DeleteItemRequest;
-use crate::utils::read_file_as_string;
-use crate::{grpc_channel, grpc_client_with_auth};
+use super::{super::parser::wallet::*, Output};
 use crate::{
+    error::Error,
+    grpc_channel, grpc_client_with_auth,
     proto::services::{
         universalwallet::v1::{
-            universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
+            universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest,
+            SearchRequest,
         },
         verifiablecredentials::v1::{
             send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient,
@@ -17,6 +15,7 @@ use crate::{
         },
     },
     services::config::*,
+    utils::read_file,
 };
 use serde_json::Value;
 use tonic::transport::Channel;
@@ -71,7 +70,9 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output, Error> {
-    let item_json = read_file_as_string(args.item);
+    let item_json = read_file(args.item.ok_or(Error::InvalidArgument(
+        "input document must be specified".to_string(),
+    ))?)?;
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
@@ -83,7 +84,7 @@ async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output,
         .into_inner();
 
     let mut output = Output::new();
-    output.insert("item_id".into(), response.item_id);
+    output.insert("item id".into(), response.item_id);
 
     Ok(output)
 }
@@ -103,7 +104,9 @@ async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<Output,
 
 #[tokio::main]
 async fn send(args: &SendArgs, config: CliConfig) -> Result<Output, Error> {
-    let item = read_file_as_string(args.item);
+    let item = read_file(args.item.ok_or(Error::InvalidArgument(
+        "input document must be specified".to_string(),
+    ))?)?;
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
     let _response = client

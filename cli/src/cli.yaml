@@ -165,6 +165,13 @@ subcommands:
                   value_name: FILE
                   help: The file with JSON values of the credential subject
                   takes_value: true
+              - out:
+                  long: out
+                  short: o
+                  value_name: OUTPUT_FILE
+                  help: (Optional) Output file to store the issued credential
+                  takes_value: true
+                  required: false
         - update-status:
             about: Update the credential status (revocation) of an issued credential
             args:
@@ -190,26 +197,33 @@ subcommands:
                   takes_value: true
                   required: true
         - create-proof:
-            about: Create a proof
+            about: Create a proof of signature from a document in the user's wallet or a file
             args:
-              - reveal-document:
-                  long: reveal-document
-                  value_name: JSONLD_FRAME_FILE
-                  help: Document
+              - reveal-document-file:
+                  long: reveal-document-file
+                  value_name: REVEAL FRAME FILE
+                  help: (Optional) Input document that contains valid JSON-LD frame to be used for creating the proof
                   takes_value: true
-                  required: true
-              - document-id:
-                  long: document-id
+                  required: false
+              - item-id:
+                  long: item-id
                   value_name: STRING
-                  help: Document id
+                  help: Item ID of a document in the user's wallet
                   takes_value: true
-                  required: true
+                  required: false
+              - document-file:
+                  long: document-file
+                  value_name: FILE
+                  help: File that contains a signed document
+                  takes_value: true
+                  required: false
               - out:
                   long: out
+                  short: o
                   value_name: OUTPUT_FILE
-                  help: output location for created_proof
+                  help: Output file to store the generated proof
                   takes_value: true
-                  required: true
+                  required: false
         - verify-proof:
             about: Verify a proof
             args:

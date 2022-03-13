@@ -10,7 +10,7 @@ use crate::{
         ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
     },
     services::CliConfig,
-    utils::read_file_as_string,
+    utils::read_file,
 };
 
 use colored::Colorize;
@@ -33,7 +33,7 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<(), Err
     let fields: Result<HashMap<String, Field>, _> = match &args.fields_data {
         Some(data) => serde_json::from_str(&data),
         None => match &args.fields_file {
-            Some(file) => serde_json::from_str(&read_file_as_string(Some(&file))),
+            Some(file) => serde_json::from_str(&read_file(file)?),
             None => panic!("you must specify fields data or file"),
         },
     };

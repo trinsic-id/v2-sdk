@@ -9,6 +9,7 @@ pub(crate) enum Error {
     SerializationError,
     APIError { code: String, message: String },
     MissingArguments,
+    InvalidArgument(String),
     UnknownCommand,
 }
 
