@@ -194,7 +194,7 @@ fn print() -> Result<Output, Error> {
     let config = CliConfig::init()?.options;
 
     Ok(indexmap! {
-        "path".into() => data_path()?.to_string_lossy().into(),
+        "path".into() => data_path()?.join(CONFIG_FILENAME).to_string_lossy().into(),
         "server endpoint".into() => config.server_endpoint,
         "server port".into() => config.server_port.to_string(),
         "server use tls".into() => config.server_use_tls.to_string(),
