@@ -6,15 +6,18 @@ mod trustregistry;
 mod vc;
 mod wallet;
 
-use self::config::{DefaultConfig, Error};
+use indexmap::IndexMap;
 
-pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error> {
+use self::config::CliConfig;
+use crate::error::Error;
+
+pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error> {
     match args {
         Service::Wallet(args) => wallet::execute(&args, config),
         Service::Account(args) => account::execute(&args, config),
         Service::VerifiableCredential(args) => vc::execute(&args, config),
         Service::Provider(args) => provider::execute(&args, config),
-        Service::Config(args) => Ok(config::execute(&args)),
+        Service::Config(args) => config::execute(&args),
         Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
         Service::Template(args) => template::execute(&args, &config),
         _ => Err(Error::UnknownCommand),
@@ -24,11 +27,14 @@ pub(crate) fn execute(args: &Service, config: DefaultConfig) -> Result<(), Error
 #[derive(Debug, PartialEq)]
 pub(crate) enum Service<'a> {
     Wallet(crate::parser::wallet::Command<'a>),
-    VerifiableCredential(crate::parser::issuer::Command<'a>),
+    VerifiableCredential(crate::parser::vc::Command<'a>),
     Provider(crate::parser::provider::Command<'a>),
-    Config(crate::parser::config::Command<'a>),
+    Config(crate::parser::config::ConfigCommand),
     Account(crate::parser::account::Command<'a>),
     TrustRegistry(crate::parser::trustregistry::Command),
     Template(crate::parser::template::TemplateCommand),
     Unknown,
 }
+
+// type Output = BTreeMap<String, String>;
+type Output = IndexMap<String, String>;

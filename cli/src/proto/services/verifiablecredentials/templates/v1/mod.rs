@@ -1,14 +1,14 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetCredentialTemplateRequest {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetCredentialTemplateResponse {
     #[prost(message, optional, tag = "1")]
     pub template: ::core::option::Option<TemplateData>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchCredentialTemplatesRequest {
     /// SELECT * FROM c WHERE c.name = 'Diploma'
     #[prost(string, tag = "1")]
@@ -16,7 +16,7 @@ pub struct SearchCredentialTemplatesRequest {
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchCredentialTemplatesResponse {
     #[prost(string, tag = "1")]
     pub items_json: ::prost::alloc::string::String,
@@ -27,7 +27,7 @@ pub struct SearchCredentialTemplatesResponse {
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListCredentialTemplatesRequest {
     /// SELECT * FROM c WHERE c.name = 'Diploma'
     #[prost(string, tag = "1")]
@@ -35,7 +35,7 @@ pub struct ListCredentialTemplatesRequest {
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListCredentialTemplatesResponse {
     #[prost(message, repeated, tag = "1")]
     pub templates: ::prost::alloc::vec::Vec<TemplateData>,
@@ -44,15 +44,15 @@ pub struct ListCredentialTemplatesResponse {
     #[prost(string, tag = "3")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteCredentialTemplateRequest {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteCredentialTemplateResponse {}
 /// Request to create new template
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateCredentialTemplateRequest {
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
@@ -61,12 +61,12 @@ pub struct CreateCredentialTemplateRequest {
     #[prost(bool, tag = "3")]
     pub allow_additional_fields: bool,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateCredentialTemplateResponse {
     #[prost(message, optional, tag = "1")]
     pub data: ::core::option::Option<TemplateData>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct TemplateField {
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
@@ -75,24 +75,24 @@ pub struct TemplateField {
     #[prost(enumeration = "FieldType", tag = "4")]
     pub r#type: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetTemplateRequest {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetTemplateResponse {
     #[prost(message, optional, tag = "1")]
     pub data: ::core::option::Option<TemplateData>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListTemplatesRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListTemplatesResponse {
     #[prost(message, repeated, tag = "1")]
     pub templates: ::prost::alloc::vec::Vec<TemplateData>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct TemplateData {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
@@ -113,7 +113,19 @@ pub struct TemplateData {
     #[prost(string, tag = "9")]
     pub r#type: ::prost::alloc::string::String,
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum FieldType {
     String = 0,

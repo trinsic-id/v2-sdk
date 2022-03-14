@@ -61,9 +61,12 @@ pub enum FieldType {
     Bool,
 }
 
-use crate::proto::services::verifiablecredentials::templates::v1::FieldType as ProtoFieldType;
-use crate::proto::services::verifiablecredentials::templates::v1::TemplateField as ProtoField;
-use crate::services::config::Error;
+use crate::{
+    error::Error,
+    proto::services::verifiablecredentials::templates::v1::{
+        FieldType as ProtoFieldType, TemplateField as ProtoField,
+    },
+};
 
 impl Default for FieldType {
     fn default() -> Self {

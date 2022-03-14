@@ -1,24 +1,24 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AddFrameworkRequest {
     #[prost(message, optional, tag = "1")]
     pub governance_framework: ::core::option::Option<GovernanceFramework>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AddFrameworkResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RemoveFrameworkRequest {
     #[prost(message, optional, tag = "1")]
     pub governance_framework: ::core::option::Option<GovernanceFramework>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RemoveFrameworkResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryRequest {
     /// SELECT c from c where c.type == 'GovernanceFramework'
     #[prost(string, tag = "1")]
@@ -26,7 +26,7 @@ pub struct SearchRegistryRequest {
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryResponse {
     #[prost(string, tag = "1")]
     pub items_json: ::prost::alloc::string::String,
@@ -37,7 +37,7 @@ pub struct SearchRegistryResponse {
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GovernanceFramework {
     #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
@@ -46,7 +46,7 @@ pub struct GovernanceFramework {
     #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RegisterIssuerRequest {
     #[prost(string, tag = "10")]
     pub credential_type_uri: ::prost::alloc::string::String,
@@ -61,7 +61,7 @@ pub struct RegisterIssuerRequest {
 }
 /// Nested message and enum types in `RegisterIssuerRequest`.
 pub mod register_issuer_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Authority {
         #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
@@ -69,12 +69,12 @@ pub mod register_issuer_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RegisterIssuerResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RegisterVerifierRequest {
     #[prost(string, tag = "10")]
     pub presentation_type_uri: ::prost::alloc::string::String,
@@ -89,7 +89,7 @@ pub struct RegisterVerifierRequest {
 }
 /// Nested message and enum types in `RegisterVerifierRequest`.
 pub mod register_verifier_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Authority {
         #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
@@ -97,12 +97,12 @@ pub mod register_verifier_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RegisterVerifierResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterIssuerRequest {
     #[prost(string, tag = "10")]
     pub credential_type_uri: ::prost::alloc::string::String,
@@ -113,7 +113,7 @@ pub struct UnregisterIssuerRequest {
 }
 /// Nested message and enum types in `UnregisterIssuerRequest`.
 pub mod unregister_issuer_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Authority {
         #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
@@ -121,12 +121,12 @@ pub mod unregister_issuer_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterIssuerResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterVerifierRequest {
     #[prost(string, tag = "10")]
     pub presentation_type_uri: ::prost::alloc::string::String,
@@ -137,7 +137,7 @@ pub struct UnregisterVerifierRequest {
 }
 /// Nested message and enum types in `UnregisterVerifierRequest`.
 pub mod unregister_verifier_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Authority {
         #[prost(string, tag = "1")]
         DidUri(::prost::alloc::string::String),
@@ -145,12 +145,12 @@ pub mod unregister_verifier_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterVerifierResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckIssuerStatusRequest {
     #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
@@ -161,7 +161,7 @@ pub struct CheckIssuerStatusRequest {
 }
 /// Nested message and enum types in `CheckIssuerStatusRequest`.
 pub mod check_issuer_status_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Member {
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
@@ -169,12 +169,12 @@ pub mod check_issuer_status_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckIssuerStatusResponse {
     #[prost(enumeration = "RegistrationStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckVerifierStatusRequest {
     #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
@@ -185,7 +185,7 @@ pub struct CheckVerifierStatusRequest {
 }
 /// Nested message and enum types in `CheckVerifierStatusRequest`.
 pub mod check_verifier_status_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Member {
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
@@ -193,19 +193,19 @@ pub mod check_verifier_status_request {
         X509Cert(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckVerifierStatusResponse {
     #[prost(enumeration = "RegistrationStatus", tag = "1")]
     pub status: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct FetchDataRequest {
     #[prost(string, tag = "1")]
     pub governance_framework_uri: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub query: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct FetchDataResponse {
     #[prost(string, tag = "1")]
     pub response_json: ::prost::alloc::string::String,
@@ -214,7 +214,19 @@ pub struct FetchDataResponse {
     #[prost(string, tag = "3")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum RegistrationStatus {
     /// - the entity is currently authorized, as of time of the query.

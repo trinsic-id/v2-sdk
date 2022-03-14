@@ -1,16 +1,14 @@
-use crate::parser::trustregistry::*;
-use crate::proto::services::common::v1::ResponseStatus;
+use super::{config::CliConfig, Output};
 use crate::{
+    error::Error,
     grpc_channel, grpc_client_with_auth,
+    parser::trustregistry::*,
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
 };
-
-use colored::Colorize;
+use indexmap::indexmap;
 use tonic::transport::Channel;
 
-use super::config::{DefaultConfig, Error};
-
-pub(crate) fn execute(args: &Command, config: &DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: &CliConfig) -> Result<Output, Error> {
     match args {
         Command::Search(args) => search(args, config),
         Command::RegisterIssuer(args) => register_issuer(args, config),
@@ -25,7 +23,7 @@ pub(crate) fn execute(args: &Command, config: &DefaultConfig) -> Result<(), Erro
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn search(args: &SearchArgs, config: &CliConfig) -> Result<Output, Error> {
     let query = args
         .query
         .as_ref()
@@ -38,15 +36,13 @@ async fn search(args: &SearchArgs, config: &DefaultConfig) -> Result<(), Error> 
         ..Default::default()
     });
 
-    let response = client.search_registry(request).await?.into_inner();
+    let _response = client.search_registry(request).await?.into_inner();
 
-    println!("{}", response.items_json);
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn register_issuer(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterIssuerRequest {
@@ -61,18 +57,13 @@ async fn register_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Res
         ..Default::default()
     });
 
-    let response = client.register_issuer(request).await?.into_inner();
+    let _response = client.register_issuer(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn check_issuer(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckIssuerStatusRequest {
@@ -89,20 +80,13 @@ async fn check_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result
 
     let response = client.check_issuer_status(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(
-            ": {:?}",
-            RegistrationStatus::from_i32(response.status).unwrap()
-        )
-        .bright_yellow()
-    );
-
-    Ok(())
+    Ok(indexmap! {
+        "status".into() => format!("{:?}", RegistrationStatus::from_i32(response.status).ok_or(Error::SerializationError)?),
+    })
 }
 
 #[tokio::main]
-async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn check_verifier(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(CheckVerifierStatusRequest {
@@ -122,20 +106,13 @@ async fn check_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Resu
 
     let response = client.check_verifier_status(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(
-            ": {:?}",
-            RegistrationStatus::from_i32(response.status).unwrap()
-        )
-        .bright_yellow()
-    );
-
-    Ok(())
+    Ok(indexmap! {
+        "status".into() => format!("{:?}", RegistrationStatus::from_i32(response.status).ok_or(Error::SerializationError)?),
+    })
 }
 
 #[tokio::main]
-async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn unregister_issuer(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterIssuerRequest {
@@ -150,18 +127,13 @@ async fn unregister_issuer(args: &RegistrationArgs, config: &DefaultConfig) -> R
         ..Default::default()
     });
 
-    let response = client.unregister_issuer(request).await?.into_inner();
+    let _response = client.unregister_issuer(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn unregister_verifier(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(UnregisterVerifierRequest {
@@ -179,18 +151,13 @@ async fn unregister_verifier(args: &RegistrationArgs, config: &DefaultConfig) ->
         ..Default::default()
     });
 
-    let response = client.unregister_verifier(request).await?.into_inner();
+    let _response = client.unregister_verifier(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn register_verifier(args: &RegistrationArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RegisterVerifierRequest {
@@ -208,18 +175,13 @@ async fn register_verifier(args: &RegistrationArgs, config: &DefaultConfig) -> R
         ..Default::default()
     });
 
-    let response = client.register_verifier(request).await?.into_inner();
+    let _response = client.register_verifier(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn add_framework(args: &AddFrameworkArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(AddFrameworkRequest {
@@ -233,18 +195,13 @@ async fn add_framework(args: &AddFrameworkArgs, config: &DefaultConfig) -> Resul
         }),
     });
 
-    let response = client.add_framework(request).await?.into_inner();
+    let _response = client.add_framework(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn remove_framework(args: &RemoveFrameworkArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(RemoveFrameworkRequest {
@@ -254,12 +211,7 @@ async fn remove_framework(args: &RemoveFrameworkArgs, config: &DefaultConfig) ->
         }),
     });
 
-    let response = client.remove_framework(request).await?.into_inner();
+    let _response = client.remove_framework(request).await?.into_inner();
 
-    println!(
-        "{}",
-        format!(": {:?}", ResponseStatus::from_i32(response.status).unwrap()).bright_yellow()
-    );
-
-    Ok(())
+    Ok(Output::new())
 }
