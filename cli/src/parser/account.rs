@@ -26,8 +26,7 @@ fn sign_in<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
         email: args.value_of("email"),
         sms: args.value_of("sms"),
         invitation_code: args.value_of("invitation-code"),
-        alias: args.value_of("alias"),
-        set_default: args.is_present("default"),
+        ecosystem: args.value_of("ecosystem").map(|x| x.into()),
     }))
 }
 
@@ -45,10 +44,9 @@ pub enum Command<'a> {
 pub struct SignInArgs<'a> {
     pub invitation_code: Option<&'a str>,
     pub name: Option<&'a str>,
-    pub alias: Option<&'a str>,
-    pub set_default: bool,
     pub email: Option<&'a str>,
     pub sms: Option<&'a str>,
+    pub ecosystem: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]

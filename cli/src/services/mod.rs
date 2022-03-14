@@ -18,9 +18,7 @@ pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error
         Service::VerifiableCredential(args) => vc::execute(&args, config),
         Service::Provider(args) => provider::execute(&args, config),
         Service::Config(args) => Ok(config::execute(&args)).map(|_| Output::new()),
-        Service::TrustRegistry(args) => {
-            trustregistry::execute(&args, &config).map(|_| Output::new())
-        }
+        Service::TrustRegistry(args) => trustregistry::execute(&args, &config),
         Service::Template(args) => template::execute(&args, &config),
         _ => Err(Error::UnknownCommand),
     }

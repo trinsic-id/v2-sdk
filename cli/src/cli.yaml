@@ -70,11 +70,12 @@ subcommands:
                   help: (Optional) Invitation code provided by authorized entity
                   takes_value: true
                   required: false
-              - default:
-                  long: default
-                  takes_value: false
+              - ecosystem:
+                  long: ecosystem
+                  short: e
+                  takes_value: true
                   required: false
-                  help: (Optional) Set this profile as default
+                  help: (Optional) The ecosystem name or id to sign in
         - info:
             about: Show account information
   - wallet:

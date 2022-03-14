@@ -31,6 +31,10 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
         Some(desc) => desc.to_string(),
         None => "New Wallet (from CLI)".to_string(),
     };
+    let ecosystem = args
+        .ecosystem
+        .as_ref()
+        .map_or(config.options.default_ecosystem.clone(), |x| x.to_owned());
 
     let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
 
@@ -40,11 +44,10 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
             email: args.email.map_or(String::default(), |x| x.to_string()),
             sms: args.sms.map_or(String::default(), |x| x.to_string()),
         }),
-        ecosystem_id: config.options.default_ecosystem.clone(),
+        ecosystem_id: ecosystem,
         invitation_code: args
             .invitation_code
             .map_or(String::default(), |x| x.to_string()),
-        ..Default::default()
     });
 
     let response = client.sign_in(request).await?.into_inner();
