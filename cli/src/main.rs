@@ -68,32 +68,35 @@ fn main() {
                     println!("{}", value);
                 }
             }
-            Err(err) => match err {
-                Error::IOError => println!("{}", format!("io error").red()),
-                Error::SerializationError => {
-                    println!("{}", format!("serialization error").red())
-                }
-                Error::UnknownCommand => unimplemented!("should not be hit"),
-                Error::APIError { code, message } => {
-                    println!(
+            Err(err) => {
+                match err {
+                    Error::IOError => println!("{}", format!("io error").red()),
+                    Error::SerializationError => {
+                        println!("{}", format!("serialization error").red())
+                    }
+                    Error::UnknownCommand => unimplemented!("should not be hit"),
+                    Error::APIError { code, message } => {
+                        println!(
+                            "{}: {}: {}",
+                            format!("error").red().bold(),
+                            format!("{}", code.to_lowercase()).bold(),
+                            format!("{}", message.to_lowercase())
+                        );
+                    }
+                    Error::MissingArguments => println!(
+                        "{}: {}",
+                        "error".red().bold(),
+                        "missing command arguments".bold()
+                    ),
+                    Error::InvalidArgument(x) => println!(
                         "{}: {}: {}",
-                        format!("error").red().bold(),
-                        format!("{}", code.to_lowercase()).bold(),
-                        format!("{}", message.to_lowercase())
-                    );
-                }
-                Error::MissingArguments => println!(
-                    "{}: {}",
-                    "error".red().bold(),
-                    "missing command arguments".bold()
-                ),
-                Error::InvalidArgument(x) => println!(
-                    "{}: {}: {}",
-                    "error".red().bold(),
-                    "invalid argument".bold(),
-                    x
-                ),
-            },
+                        "error".red().bold(),
+                        "invalid argument".bold(),
+                        x
+                    ),
+                    Error::ConnectionError => println!("{}", format!("connection error").red()),
+                };
+            }
         },
         Err(err) => {
             println!(
@@ -106,7 +109,7 @@ fn main() {
             println!(
                 "{}",
                 format!("For more information try {}", format!("--help").green()).italic()
-            )
+            );
         }
     }
 }

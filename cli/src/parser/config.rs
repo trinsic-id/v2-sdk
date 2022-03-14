@@ -1,9 +1,7 @@
 use clap::ArgMatches;
 
-use crate::services::config::CliConfig;
-
 #[derive(Debug, PartialEq, Default)]
-pub struct ConfigCommand {
+pub struct ConfigArgs {
     pub options: SdkOptionsArgs,
     pub custom: Option<CustomArgs>,
 }
@@ -20,42 +18,37 @@ pub struct SdkOptionsArgs {
 #[derive(Debug, PartialEq, Default)]
 pub struct CustomArgs {}
 
+#[derive(Debug, PartialEq)]
+pub enum ConfigCommand {
+    Print,
+    Save(ConfigArgs),
+}
+
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> ConfigCommand {
-    let mut command = ConfigCommand {
+    let mut config_args = ConfigArgs {
         ..Default::default()
     };
 
-    let mut empty = true;
-    if args.is_present("show") {
-        CliConfig::init().unwrap().print().unwrap();
-        empty = false;
+    if args.is_present("server-endpoint") {
+        config_args.options.endpoint = args.value_of("server-endpoint").map(|x| x.into());
+    }
+    if args.is_present("server-port") {
+        config_args.options.port = args.value_of("server-port").map(|x| x.parse().unwrap());
+    }
+    if args.is_present("server-use-tls") {
+        config_args.options.use_tls = args.value_of("server-use-tls").map(|x| x.parse().unwrap());
+    }
+    if args.is_present("auth-token") {
+        config_args.options.auth_token = args.value_of("auth-token").map(|x| x.into());
+    }
+    if args.is_present("default-ecosystem") {
+        config_args.options.default_ecosystem =
+            args.value_of("default-ecosystem").map(|x| x.into());
+    }
+
+    if config_args == ConfigArgs::default() {
+        ConfigCommand::Print
     } else {
-        if args.is_present("server-endpoint") {
-            command.options.endpoint = args.value_of("server-endpoint").map(|x| x.into());
-            empty = false;
-        }
-        if args.is_present("server-port") {
-            command.options.port = args.value_of("server-port").map(|x| x.parse().unwrap());
-            empty = false;
-        }
-        if args.is_present("server-use-tls") {
-            command.options.use_tls = args.value_of("server-use-tls").map(|x| x.parse().unwrap());
-            empty = false;
-        }
-        if args.is_present("auth-token") {
-            command.options.auth_token = args.value_of("auth-token").map(|x| x.into());
-            empty = false;
-        }
-        if args.is_present("default-ecosystem") {
-            command.options.default_ecosystem =
-                args.value_of("default-ecosystem").map(|x| x.into());
-            empty = false;
-        }
+        ConfigCommand::Save(config_args)
     }
-
-    if empty {
-        CliConfig::init().unwrap().print().unwrap();
-    }
-
-    command
 }

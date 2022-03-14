@@ -9,6 +9,7 @@ pub(crate) enum Error {
     SerializationError,
     APIError { code: String, message: String },
     MissingArguments,
+    ConnectionError,
     InvalidArgument(String),
     UnknownCommand,
 }
@@ -22,6 +23,18 @@ impl From<toml::ser::Error> for Error {
 impl From<toml::de::Error> for Error {
     fn from(_: toml::de::Error) -> Self {
         Error::SerializationError
+    }
+}
+
+impl From<tonic::codegen::http::uri::InvalidUri> for Error {
+    fn from(_: tonic::codegen::http::uri::InvalidUri) -> Self {
+        Error::InvalidArgument("invalid server uri".to_string())
+    }
+}
+
+impl From<tonic::transport::Error> for Error {
+    fn from(_: tonic::transport::Error) -> Self {
+        Error::ConnectionError
     }
 }
 

@@ -1,5 +1,6 @@
 use crate::{
     error::Error,
+    parser::config::ConfigCommand,
     proto::{
         sdk::options::v1::ServiceOptions,
         services::{account::v1::AccountProfile, common::v1::Nonce},
@@ -9,12 +10,13 @@ use crate::{
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
+use indexmap::indexmap;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use prost::Message;
-
 use serde::{Deserialize, Serialize};
 use std::{
     env::var,
+    fmt::Debug,
     fs::{self, OpenOptions},
     io::prelude::*,
     path::PathBuf,
@@ -22,7 +24,7 @@ use std::{
 };
 use tonic::service::Interceptor;
 
-use crate::parser::config::{ConfigCommand, SdkOptionsArgs};
+use crate::parser::config::SdkOptionsArgs;
 
 pub(crate) static DEFAULT_SERVER_ENDPOINT: &str = "prod.trinsic.cloud";
 pub(crate) static DEFAULT_SERVER_PORT: i32 = 443;
@@ -70,6 +72,8 @@ impl Into<Bytes> for &ServiceOptions {
 }
 
 use crate::DEBUG;
+
+use super::Output;
 
 impl From<&ArgMatches<'_>> for CliConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
@@ -120,48 +124,17 @@ impl CliConfig {
 
         Ok(())
     }
-
-    pub fn print(&self) -> Result<(), Error> {
-        let config_file = data_path()?.join(CONFIG_FILENAME);
-        let mut file = OpenOptions::new().read(true).open(config_file.clone())?;
-
-        let mut buffer: String = String::new();
-        file.read_to_string(&mut buffer)?;
-
-        use colored::*;
-        println!("{}", "Path:".bold());
-        println!("{}", config_file.to_string_lossy().yellow());
-        println!("{}", "Contents:".bold());
-        buffer
-            .lines()
-            .into_iter()
-            .for_each(|x| println!("{}", x.yellow()));
-
-        Ok(())
-    }
 }
-
-// #[allow(clippy::from_over_into)]
-// impl Into<Interceptor> for Config {
-//     fn into(self) -> Interceptor {
-//         Interceptor::new(move |mut req: Request<()>| {
-//             req.metadata_mut().insert(
-//                 "capability-invocation",
-//                 self.read_capability()
-//                     .expect("couldn't read capability document")
-//                     .parse()
-//                     .expect("error parsing capability"),
-//             );
-//             Ok(req)
-//         })
-//     }
-// }
 
 impl Interceptor for CliConfig {
     fn call(
         &mut self,
         mut request: tonic::Request<()>,
     ) -> Result<tonic::Request<()>, tonic::Status> {
+        if self.options.auth_token.is_empty() {
+            return Err(tonic::Status::invalid_argument("missing auth token"));
+        }
+
         // read the currently configured profile
         let profile_data = base64::decode_config(&self.options.auth_token, base64::URL_SAFE)
             .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
@@ -187,7 +160,7 @@ impl Interceptor for CliConfig {
             nonce: nonce.encode_to_vec(),
             blinding: vec![],
         })
-        .unwrap();
+        .map_err(|e| tonic::Status::internal(format!("{:?}", e)))?;
 
         let header = format!(
             "Oberon data={data},proof={proof},nonce={nonce},ver=1",
@@ -210,11 +183,27 @@ impl Interceptor for CliConfig {
     }
 }
 
-pub fn execute(args: &ConfigCommand) {
-    save(&args.options);
+pub(crate) fn execute(args: &ConfigCommand) -> Result<Output, Error> {
+    match args {
+        ConfigCommand::Print => print(),
+        ConfigCommand::Save(x) => save(&x.options),
+    }
 }
 
-fn save(args: &SdkOptionsArgs) {
+fn print() -> Result<Output, Error> {
+    let config = CliConfig::init()?.options;
+
+    Ok(indexmap! {
+        "path".into() => data_path()?.to_string_lossy().into(),
+        "server endpoint".into() => config.server_endpoint,
+        "server port".into() => config.server_port.to_string(),
+        "server use tls".into() => config.server_use_tls.to_string(),
+        "auth token".into() => config.auth_token,
+        "default ecosystem".into() => config.default_ecosystem
+    })
+}
+
+fn save(args: &SdkOptionsArgs) -> Result<Output, Error> {
     let mut config = CliConfig::init().unwrap();
     if args.endpoint.is_some() {
         config.options.server_endpoint = args.endpoint.as_ref().unwrap().to_string();
@@ -232,7 +221,9 @@ fn save(args: &SdkOptionsArgs) {
         config.options.default_ecosystem = args.default_ecosystem.as_ref().unwrap().to_string();
     }
 
-    config.save().unwrap()
+    config.save()?;
+
+    Ok(Output::new())
 }
 
 fn data_path() -> Result<PathBuf, Error> {
