@@ -118,7 +118,7 @@ mod test {
     #[test]
     fn run_custom_command() {
         let yaml = load_yaml!("cli.yaml");
-        let matches = App::from_yaml(yaml)
+        let _matches = App::from_yaml(yaml)
             .get_matches_from_safe(vec![
                 "trinsic",
                 "config",

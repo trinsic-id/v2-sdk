@@ -21,7 +21,7 @@ pub(crate) fn execute(args: &Service, config: CliConfig) -> Result<Output, Error
         Service::TrustRegistry(args) => {
             trustregistry::execute(&args, &config).map(|_| Output::new())
         }
-        Service::Template(args) => template::execute(&args, &config).map(|_| Output::new()),
+        Service::Template(args) => template::execute(&args, &config),
         _ => Err(Error::UnknownCommand),
     }
 }

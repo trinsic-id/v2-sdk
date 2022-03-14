@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use crate::{
     error::Error,
     grpc_channel, grpc_client_with_auth,
@@ -11,12 +9,17 @@ use crate::{
     },
     services::CliConfig,
     utils::read_file,
+    MessageFormatter,
 };
+use indexmap::indexmap;
+use std::collections::HashMap;
 
 use colored::Colorize;
 use tonic::transport::Channel;
 
-pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<(), Error> {
+use super::Output;
+
+pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<Output, Error> {
     match args {
         TemplateCommand::Create(args) => create(args, config),
         TemplateCommand::Get(args) => get(args, config),
@@ -27,14 +30,18 @@ pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<(), 
 }
 
 #[tokio::main]
-async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<(), Error> {
+async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let fields: Result<HashMap<String, Field>, _> = match &args.fields_data {
         Some(data) => serde_json::from_str(&data),
         None => match &args.fields_file {
             Some(file) => serde_json::from_str(&read_file(file)?),
-            None => panic!("you must specify fields data or file"),
+            None => {
+                return Err(Error::InvalidArgument(
+                    "you must specify input fields file".to_string(),
+                ))
+            }
         },
     };
 
@@ -47,13 +54,13 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<(), Err
 
     let response = client.create(request).await?.into_inner();
 
-    println!("{:#?}", response);
-
-    Ok(())
+    Ok(indexmap! {
+        "template".into() => response.to_string_pretty()?
+    })
 }
 
 #[tokio::main]
-async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<(), Error> {
+async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(GetCredentialTemplateRequest {
@@ -62,13 +69,13 @@ async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<(), Error> {
 
     let response = client.get(request).await?.into_inner();
 
-    println!("{:#?}", response.template);
-
-    Ok(())
+    Ok(indexmap! {
+        "template".into() => response.to_string_pretty()?
+    })
 }
 
 #[tokio::main]
-async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<(), Error> {
+async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(ListCredentialTemplatesRequest {
@@ -87,11 +94,13 @@ async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<(), Error>
         )
     }
 
-    Ok(())
+    Ok(indexmap! {
+        "templates".into() => response.to_string_pretty()?
+    })
 }
 
 #[tokio::main]
-async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<(), Error> {
+async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(SearchCredentialTemplatesRequest {
@@ -101,29 +110,20 @@ async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<(), Er
 
     let response = client.search(request).await?.into_inner();
 
-    println!("{:#?}", response.items_json);
-
-    if response.has_more {
-        println!(
-            "More results available. Use argument '{}'",
-            format!("--continuation-token {}", response.continuation_token).cyan()
-        )
-    }
-
-    Ok(())
+    Ok(indexmap! {
+        "template".into() => response.to_string_pretty()?
+    })
 }
 
 #[tokio::main]
-async fn delete(args: &DeleteTemplateArgs, config: &CliConfig) -> Result<(), Error> {
+async fn delete(args: &DeleteTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(DeleteCredentialTemplateRequest {
         id: args.id.clone(),
     });
 
-    let response = client.delete(request).await?.into_inner();
+    let _response = client.delete(request).await?.into_inner();
 
-    println!("{:#?}", response);
-
-    Ok(())
+    Ok(Output::new())
 }
