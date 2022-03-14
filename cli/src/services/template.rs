@@ -8,13 +8,11 @@ use crate::{
         ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
     },
     services::CliConfig,
-    utils::read_file,
+    utils::{prettify_json, read_file},
     MessageFormatter,
 };
 use indexmap::indexmap;
 use std::collections::HashMap;
-
-use colored::Colorize;
 use tonic::transport::Channel;
 
 use super::Output;
@@ -85,17 +83,8 @@ async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<Output, Er
 
     let response = client.list(request).await?.into_inner();
 
-    println!("{:#?}", response.templates);
-
-    if response.has_more_results {
-        println!(
-            "More results available. Use argument '{}'",
-            format!("--continuation-token {}", response.continuation_token).cyan()
-        )
-    }
-
     Ok(indexmap! {
-        "templates".into() => response.to_string_pretty()?
+        "response".into() => response.to_string_pretty()?
     })
 }
 
@@ -111,7 +100,9 @@ async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<Output
     let response = client.search(request).await?.into_inner();
 
     Ok(indexmap! {
-        "template".into() => response.to_string_pretty()?
+        "query".into() => args.query.clone(),
+        "templates".into() => prettify_json(&response.items_json)?,
+        "more results".into() => response.has_more.to_string()
     })
 }
 

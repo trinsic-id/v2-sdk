@@ -1,18 +1,25 @@
 use std::io;
 
 use super::super::parser::provider::*;
-use crate::parser;
-use crate::proto::services::account::v1::{AccountDetails, ConfirmationMethod};
-use crate::proto::services::provider::v1::CreateEcosystemRequest;
-use crate::proto::services::provider::v1::{provider_client::ProviderClient, InviteRequest};
-use crate::services::account::unprotect;
-use crate::services::config::*;
-use crate::*;
+use super::Output;
+use crate::{
+    error::Error,
+    grpc_channel, grpc_client, grpc_client_with_auth, parser,
+    proto::services::{
+        account::v1::{AccountDetails, ConfirmationMethod},
+        provider::v1::{provider_client::ProviderClient, CreateEcosystemRequest, InviteRequest},
+    },
+    services::{account::unprotect, config::*},
+    MessageFormatter,
+};
 use base64::URL_SAFE_NO_PAD;
+use colored::Colorize;
+use indexmap::indexmap;
+use prost::Message;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
         Command::Invite(args) => invite(args, &config),
         Command::CreateEcosystem(args) => create_ecosystem(args, &config),
@@ -21,7 +28,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<(), Error> {
 }
 
 #[tokio::main]
-async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<(), Error> {
+async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InviteRequest {
@@ -42,13 +49,15 @@ async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<(), Error> {
     });
 
     let response = client.invite(request).await?.into_inner();
-    println!("Invitation code '{}'", response.invitation_id.cyan().bold());
 
-    Ok(())
+    Ok(indexmap! {
+        "invitation id".into() => response.invitation_id,
+        "security code".into() => response.invitation_code,
+    })
 }
 
 #[tokio::main]
-async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Result<(), Error> {
+async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
 
     let req = CreateEcosystemRequest {
@@ -104,12 +113,10 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
 
     new_config.save()?;
 
-    println!(
-        "{}: {}",
-        format!("result").cyan().bold(),
-        format!("success").bold()
-    );
-    println!("auth_token = {}", new_config.options.auth_token);
-
-    Ok(())
+    Ok(indexmap! {
+        "ecosystem".into() => response.ecosystem
+            .ok_or(Error::InvalidArgument("expected ecosystem object in response".to_string()))?
+            .to_string_pretty()?,
+        "auth token".into() => new_config.options.auth_token
+    })
 }
