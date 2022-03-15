@@ -64,11 +64,17 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<CreateEcosystemResponse> CreateEcosystemAsync(CreateEcosystemRequest request) {
-        if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
+    public async Task<(Ecosystem ecosystem, string authToken)> CreateEcosystemAsync(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        return await Client.CreateEcosystemAsync(request);
+        var response = await Client.CreateEcosystemAsync(request);
+
+        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? false) {
+            Options.AuthToken = authToken;
+        }
+        return (response.Ecosystem, authToken);
     }
 
     /// <summary>
@@ -77,13 +83,18 @@ public class ProviderService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public CreateEcosystemResponse CreateEcosystem(CreateEcosystemRequest request) {
-        if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
+    public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
-        
-        return Client.CreateEcosystem(request);
+
+        var response = Client.CreateEcosystem(request);
+        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+        }
+        return (response.Ecosystem, authToken);
     }
-    
+
     /// <summary>
     /// Generates an unprotected authentication token that can be used
     /// to configure server side applications
@@ -95,7 +106,7 @@ public class ProviderService : ServiceBase
 
         return Convert.ToBase64String(response.ToByteArray());
     }
-    
+
     /// <summary>
     /// Generates an unprotected authentication token that can be used
     /// to configure server side applications

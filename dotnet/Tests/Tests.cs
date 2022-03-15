@@ -27,6 +27,17 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
+#if DEBUG
+    const string DefaultEndpoint = "localhost";
+    const int DefaultPort = 5000;
+    const bool DefaultUseTls = false;
+#else
+    const string DefaultEndpoint = "staging-internal.trinsic.cloud";
+    const int DefaultPort = 443;
+    const bool DefaultUseTls = true;
+
+#endif
+
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServiceOptions _options;
 
@@ -34,9 +45,9 @@ public class Tests
         _testOutputHelper = testOutputHelper;
 
         _options = new() {
-            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls 
+            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
+            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
+            ServerUseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) ? tls : DefaultUseTls
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
@@ -48,13 +59,10 @@ public class Tests
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
         // createAccountService() {
-        var providerService = new ProviderService(_options);
-        var accountService = new AccountService(_options);
-        var account = await accountService.SignInAsync(new());
-
-        providerService.Options.AuthToken = account;
-        var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
-        var ecosystemId = ecosystem.Ecosystem.Id;
+        var providerService = new ProviderService(_options.Clone());
+        var accountService = new AccountService(_options.Clone());
+        var (ecosystem, _) = providerService.CreateEcosystem(new());
+        var ecosystemId = ecosystem.Id;
         // }
 
         // SETUP ACTORS
@@ -144,9 +152,9 @@ public class Tests
     [Fact(DisplayName = "Demo: trust registries")]
     public async Task TestTrustRegistry() {
         // setup
-        var accountService = new AccountService(_options);
-        var account = await accountService.SignInAsync(new());
-        var service = new TrustRegistryService(_options.CloneWithAuthToken(account));
+        var providerService = new ProviderService(_options.Clone());
+        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
+        var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
 
         // register issuer
         var register = service.RegisterIssuerAsync(new() {
@@ -203,15 +211,14 @@ public class Tests
         var service = new ProviderService(_options.CloneWithAuthToken(account));
 
         // test create ecosystem
-        var actualCreate = await service.CreateEcosystemAsync(new() {
+        var (actualCreate, _) = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Name = $"test-sdk-{Guid.NewGuid():N}",
             Uri = "https://example.com"
         });
 
         actualCreate.Should().NotBeNull();
-        actualCreate.Ecosystem.Id.Should().NotBeNull();
-        actualCreate.Ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
+        actualCreate.Id.Should().NotBeNull();
+        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
     }
 
     [Fact]
@@ -237,9 +244,8 @@ public class Tests
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var accountService = new AccountService(_options);
-        var profile = await accountService.SignInAsync(new());
-        var providerService = new ProviderService(_options.CloneWithAuthToken(profile));
+        var providerService = new ProviderService(_options.Clone());
+        _ = await providerService.CreateEcosystemAsync(new());
 
         var invitationResponse = await providerService.InviteParticipantAsync(new());
 
@@ -272,9 +278,9 @@ public class Tests
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]
     public async Task DemoTemplatesWithIssuance() {
-        var accountService = new AccountService(_options);
-        var profile = await accountService.SignInAsync(new());
-        var options = _options.CloneWithAuthToken(profile);
+        var providerService = new ProviderService(_options.Clone());
+        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
+        var options = _options.CloneWithAuthToken(authToken);
 
         var templateService = new TemplateService(options);
         var credentialService = new CredentialsService(options);
