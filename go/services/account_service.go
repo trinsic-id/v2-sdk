@@ -53,6 +53,9 @@ func (a *accountBase) SignIn(userContext context.Context, request *sdk.SignInReq
 	if request == nil {
 		request = &sdk.SignInRequest{}
 	}
+	if request.Details == nil {
+		request.Details = &sdk.AccountDetails{}
+	}
 
 	if len(request.EcosystemId) == 0 {
 		request.EcosystemId = a.GetServiceOptions().DefaultEcosystem

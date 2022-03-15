@@ -6,13 +6,11 @@ import (
 	"strings"
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
 //Options for configuring the sdk
 type Options struct {
 	ServiceOptions *sdk.ServiceOptions
-	Channel        *grpc.ClientConn
 }
 
 // NewServiceOptions returns a service options configuration with the provided options set
@@ -119,20 +117,18 @@ func WithTestEnv() Option {
 		s.ServiceOptions.ServerPort = int32(port)
 
 		useTLS := os.Getenv("TEST_SERVER_USE_TLS")
-		if len(useTLS) != 0 && strings.Compare(strings.ToLower(useTLS), "false") != 0 {
-			s.ServiceOptions.ServerUseTls = true
-		} else {
+		if len(useTLS) != 0 && strings.Compare(strings.ToLower(useTLS), "false") == 0 {
 			s.ServiceOptions.ServerUseTls = false
+		} else {
+			s.ServiceOptions.ServerUseTls = true
 		}
 
-		return nil
-	}
-}
+		defaultEcosystem := os.Getenv("TEST_SERVER_ECOSYSTEM")
+		if len(defaultEcosystem) > 0 {
+		} else {
+			s.ServiceOptions.DefaultEcosystem = "default"
+		}
 
-// WithChannel will use the provided grpc channel instead of creating a default
-func WithChannel(conn *grpc.ClientConn) Option {
-	return func(s *Options) error {
-		s.Channel = conn
 		return nil
 	}
 }

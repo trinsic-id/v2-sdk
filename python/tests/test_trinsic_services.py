@@ -1,21 +1,18 @@
 import asyncio
 import platform
 import unittest
-import uuid
 
 from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
+from samples.templates_demo import templates_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
-from samples.templates_demo import templates_demo
-from trinsic.proto.services.account.v1 import InfoResponse
-from trinsic.proto.services.common.v1 import ResponseStatus
-from trinsic.service_base import ResponseStatusException
 from trinsic.account_service import AccountService
+from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.provider_service import ProviderService
-from trinsic.trustregistry_service import TrustRegistryService
-from trinsic.wallet_service import WalletService
+from trinsic.service_base import ResponseStatusException
 from trinsic.trinsic_util import trinsic_config
+from trinsic.trustregistry_service import TrustRegistryService
 
 
 # Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
@@ -74,7 +71,6 @@ class TestServices(unittest.TestCase):
 
         asyncio.run(test_code())
 
-    @unittest.skip("Account protection demo hangs")
     def test_protect_unprotect_account(self):
         async def test_code():
             account_service = AccountService(server_config=trinsic_config())
@@ -86,7 +82,7 @@ class TestServices(unittest.TestCase):
             with self.assertRaises(Exception) as ve:
                 await self.print_get_info(account_service, my_protected_profile)
 
-            my_unprotected_profile = account_service.unprotect(my_profile, code)
+            my_unprotected_profile = account_service.unprotect(my_protected_profile, code)
             # This hangs for unknown reasons.
             await self.print_get_info(account_service, my_unprotected_profile)
 
