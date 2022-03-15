@@ -35,7 +35,6 @@ public class Tests
     const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     const int DefaultPort = 443;
     const bool DefaultUseTls = true;
-
 #endif
 
     private readonly ITestOutputHelper _testOutputHelper;
