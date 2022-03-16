@@ -40,8 +40,12 @@ public class AccountService : ServiceBase
         }
         var response = await Client.SignInAsync(request);
 
-        Options.AuthToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        return Options.AuthToken;
+        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+        }
+        return authToken;
     }
 
     /// <summary>
