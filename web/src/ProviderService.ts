@@ -2,6 +2,7 @@ import ServiceBase from "./ServiceBase";
 import {
     CreateEcosystemRequest,
     CreateEcosystemResponse,
+    Ecosystem,
     InvitationStatusRequest,
     InvitationStatusResponse,
     InviteRequest,
@@ -9,6 +10,7 @@ import {
     ProviderClient,
     ServiceOptions
 } from "./proto";
+import { fromUint8Array } from "js-base64";
 
 export class ProviderService extends ServiceBase {
     client: ProviderClient;
@@ -43,13 +45,18 @@ export class ProviderService extends ServiceBase {
         });
     }
 
-    public createEcosystem(request: CreateEcosystemRequest): Promise<CreateEcosystemResponse> {
+    public createEcosystem(request: CreateEcosystemRequest): Promise<[Ecosystem, string]> {
         return new Promise(async (resolve, reject) => {
             this.client.createEcosystem(request, null, (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(response);
+                    var authToken = fromUint8Array(response.getProfile()!.serializeBinary(), true);
+                    if (!response.getProfile()?.getProtection()?.getEnabled() || true) {
+                        // set the auth token as active for the current service instance
+                        this.options.setAuthToken(authToken);
+                    }
+                    resolve([response.getEcosystem()!, authToken]);
                 }
             });
         });

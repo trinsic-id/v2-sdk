@@ -16,7 +16,7 @@ import {
     SignInResponse,
     TokenProtection,
 } from "./proto";
-import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
+import { BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest } from "@trinsic/okapi";
 import { fromUint8Array } from "js-base64";
 
 
@@ -37,11 +37,11 @@ export class AccountService extends ServiceBase {
                 if (error || response.getStatus() != ResponseStatus.SUCCESS) {
                     reject(error);
                 } else {
-                    var authToken = fromUint8Array(response.getProfile()!.serializeBinary());
-
-                    // set the auth token as active for the current service instance
-                    this.options.setAuthToken(authToken);
-
+                    var authToken = fromUint8Array(response.getProfile()!.serializeBinary(), true);
+                    if (!response.getProfile()?.getProtection()?.getEnabled() || true) {
+                        // set the auth token as active for the current service instance
+                        this.options.setAuthToken(authToken);
+                    }
                     resolve(authToken);
                 }
             });

@@ -13,9 +13,15 @@ import {
     InsertItemRequest,
     CreateProofRequest,
     VerifyProofRequest,
+    ProviderService,
+    CreateEcosystemRequest,
 } from "../lib";
 import { options } from "./env";
 
+/**
+ * @type {ProviderService} Provider Service
+ */
+ let providerService;
 /**
  * @type {AccountService} Account Service
  */
@@ -42,13 +48,18 @@ describe("wallet service tests", () => {
         walletService = new WalletService(options);
         credentialService = new CredentialService(options);
         templateService = new TemplateService(options);
-
-        console.log("before all ran");
     });
 
     it("can retrieve account info", async () => {
         const info = await accountService.info(new InfoRequest());
         expect(info).not.toBeNull();
+    });
+
+    if("can create new ecosystem", async () => {
+        const [ecosystem, authToken] = await providerService.createEcosystem(new CreateEcosystemRequest());
+
+        expect(ecosystem).not.toBeNull();
+        expect(authToken).not.toBeEmpty();
     });
 
     it("Demo: create wallet, set profile, search records, issue credential", async () => {
