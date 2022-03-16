@@ -38,6 +38,12 @@ subcommands:
             help: (Optional) Sets the auth token for outgoing requests
             takes_value: true
             required: false
+        - default-ecosystem:
+            long: default-ecosystem
+            value_name: NAME
+            help: (Optional) Sets the default ecosystem when signing in
+            takes_value: true
+            required: false
   - account:
       about: Account Service
       subcommands:
