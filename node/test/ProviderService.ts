@@ -17,8 +17,7 @@ test("Demo: Ecosystem Tests", async (t) => {
     let providerService = new ProviderService(options);
     let actualCreate = await providerService.createEcosystem(
         new CreateEcosystemRequest()
-            .setName(`test-${new Date().getMilliseconds()}`)
-            .setDescription("My ecosystem")
+            .setDescription("Test ecosystem from Node")
             .setUri("https://example.com"));
 
     t.not(actualCreate, null);
