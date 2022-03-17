@@ -22,7 +22,11 @@ public class AccountService : ServiceBase
     public AccountService() {
         Client = new(Channel);
     }
-    
+
+    internal AccountService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
     /// <summary>
     /// Gets the underlying grpc client
     /// </summary>
@@ -43,7 +47,7 @@ public class AccountService : ServiceBase
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
         
         if (!response.Profile.Protection?.Enabled ?? true) {
-            Options.AuthToken = authToken;
+            await TokenProvider.SaveAsync(authToken);
         }
         return authToken;
     }
@@ -60,8 +64,12 @@ public class AccountService : ServiceBase
         }
         var response = Client.SignIn(request);
         
-        Options.AuthToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        return Options.AuthToken;
+        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            TokenProvider.Save(authToken);
+        }
+        return authToken;
     }
 
     /// <summary>

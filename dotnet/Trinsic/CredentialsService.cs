@@ -17,6 +17,10 @@ public class CredentialsService : ServiceBase
     public CredentialsService() {
         Client = new(Channel);
     }
+    
+    internal CredentialsService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
 
     private VerifiableCredential.VerifiableCredentialClient Client { get; }
 

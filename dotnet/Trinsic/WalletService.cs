@@ -14,6 +14,10 @@ public class WalletService : ServiceBase
     public WalletService() {
         Client = new(Channel);
     }
+    
+    internal WalletService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
 
     private UniversalWallet.UniversalWalletClient Client { get; }
 

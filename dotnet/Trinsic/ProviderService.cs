@@ -16,6 +16,10 @@ public class ProviderService : ServiceBase
     public ProviderService() {
         Client = new(Channel);
     }
+    
+    internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
 
     private Provider.ProviderClient Client { get; }
 

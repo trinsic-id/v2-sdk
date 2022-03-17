@@ -1,8 +1,5 @@
 using System.Threading.Tasks;
-using Grpc.Net.Client;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 
 namespace Trinsic;
@@ -18,6 +15,10 @@ public class TemplateService : ServiceBase
     }
 
     public TemplateService() {
+        Client = new(Channel);
+    }
+    
+    internal TemplateService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
 

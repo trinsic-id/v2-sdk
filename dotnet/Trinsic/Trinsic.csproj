@@ -30,10 +30,11 @@
     </Target>
     <ItemGroup>
         <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
-        <PackageReference Include="Multiformats.Base" Version="2.0.2" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
         <PackageReference Include="Okapi.Net" Version="1.4.1">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
@@ -41,6 +42,9 @@
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
             <_Parameter1>Tests</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>Trinsic.Browser</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
 

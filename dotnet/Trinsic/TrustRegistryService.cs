@@ -1,9 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Grpc.Core;
-using Grpc.Net.Client;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
 
@@ -17,6 +15,10 @@ public class TrustRegistryService : ServiceBase
     }
 
     public TrustRegistryService() {
+        Client = new(Channel);
+    }
+    
+    internal TrustRegistryService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
 
