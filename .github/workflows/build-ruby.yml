@@ -39,15 +39,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - name: Download ${{ matrix.os-artifact[0] }} binaries
-        uses: dawidd6/action-download-artifact@v2.17.0
-        with:
-          workflow: "build-libs.yml"
-          path: ./libs/${{ matrix.os-artifact[1] }}
-          repo: trinsic-id/okapi
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ matrix.os-artifact[1] }}
-          run_id: 1903152040  # Last scheduled build before the breaking 1.4.0 release
       - name: Build and run tests
         run: |
           gem install bundler
@@ -58,8 +49,6 @@ jobs:
         working-directory: ruby
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          RUBY_DLL_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"  # Required for Ruby on Windows
-          LD_LIBRARY_PATH: "${{ github.workspace }}/libs/${{ matrix.os-artifact[1] }}"
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
