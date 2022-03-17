@@ -31,6 +31,14 @@ jobs:
         python-version: [3.8, 3.9, '3.10']
     steps:
       - uses: actions/checkout@v2
+      - name: Download ${{ matrix.os-artifact[0] }} binaries
+        uses: dawidd6/action-download-artifact@v2.17.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./libs/${{ matrix.os-artifact[1] }}
+          repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
