@@ -12,9 +12,9 @@ public static class ServiceOptionsExtensions
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddTrinsic(this IServiceCollection services, Action<ServiceOptions>? configure = default) {
+    public static IServiceCollection AddTrinsic(this IServiceCollection services) {
 
-        services.Configure(configure);
+        // services.Configure(configure);
 
         services.AddSingleton<AccountService>();
         services.AddSingleton<ProviderService>();
