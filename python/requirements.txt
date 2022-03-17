@@ -1,4 +1,4 @@
 betterproto~=2.0.0b4
 grpclib~=0.4.3rc2
 grpcio-tools
-trinsic-okapi~=1.4.0
+trinsic-okapi~=1.4.1
