@@ -286,7 +286,6 @@ func TestEcosystemDemo(t *testing.T) {
 	}
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
-		Name:        "test-sdk-" + uuid.New().String(),
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})

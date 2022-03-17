@@ -116,7 +116,7 @@ class TrinsicServiceTest < Minitest::Test
     service = Trinsic::ProviderService.new(Trinsic::trinsic_server(account))
 
     # test create ecosystem
-    actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :name => "test-sdk-#{SecureRandom.uuid}", :uri => "https://example.com"))
+    actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :uri => "https://example.com"))
     assert(actual_create.ecosystem != nil, "Ecosystem should be created")
     assert(actual_create.ecosystem.id != nil, "Id should exist")
     assert(actual_create.ecosystem.id.start_with?("urn:trinsic:ecosystems:"))

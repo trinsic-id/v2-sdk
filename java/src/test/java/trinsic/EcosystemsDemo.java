@@ -20,8 +20,7 @@ public class EcosystemsDemo {
         var account = accountService.signIn(null).get();
         var service = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
-        var ecosystemName = "test-sdk-" + java.util.UUID.randomUUID();
-        var response = service.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName(ecosystemName).setDescription("My ecosystem").setUri("https://example.com").build()).get();
+        var response = service.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setDescription("My ecosystem").setUri("https://example.com").build()).get();
 
         Assertions.assertNotNull(response.getEcosystem());
         Assertions.assertNotNull(response.getEcosystem().getId());

@@ -33,7 +33,7 @@ async def vaccine_demo():
     account = await account_service.sign_in()
     provider_service = ProviderService(server_config=trinsic_config(account))
 
-    ecosystem = await provider_service.create_ecosystem(name=f"test-sdk-{uuid.uuid4()}")
+    ecosystem = await provider_service.create_ecosystem()
     ecosystem_id = ecosystem.ecosystem.id
     # }
 
