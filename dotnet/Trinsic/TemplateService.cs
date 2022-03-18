@@ -18,12 +18,12 @@ public class TemplateService : ServiceBase
     public TemplateService() {
         Client = new(Channel);
     }
-    
+
     internal TemplateService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
-    
-    internal TemplateService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+
+    internal TemplateService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
@@ -55,7 +55,7 @@ public class TemplateService : ServiceBase
     public GetCredentialTemplateResponse Get(GetCredentialTemplateRequest request) {
         return Client.Get(request, BuildMetadata(request));
     }
-    
+
     /// <summary>
     /// List the available templates for the given ecosystem.
     /// Results can be customized using a SQL query.
@@ -71,7 +71,7 @@ public class TemplateService : ServiceBase
     public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
         return await Client.ListAsync(request, await BuildMetadataAsync(request));
     }
-    
+
     public ListCredentialTemplatesResponse List(ListCredentialTemplatesRequest request) {
         return Client.List(request, BuildMetadata(request));
     }

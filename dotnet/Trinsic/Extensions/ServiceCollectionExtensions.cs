@@ -22,7 +22,7 @@ public static class ServiceCollectionExtensions
 
         return AddTrinsic(services);
     }
-    
+
     /// <summary>
     /// Registers Trinsic SDK services and dependencies
     /// </summary>

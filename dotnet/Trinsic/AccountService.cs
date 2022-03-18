@@ -27,7 +27,7 @@ public class AccountService : ServiceBase
         Client = new(Channel);
     }
 
-    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
@@ -44,16 +44,12 @@ public class AccountService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<string> SignInAsync(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) {
-            request.EcosystemId = Options.DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = await Client.SignInAsync(request);
 
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        
-        if (!response.Profile.Protection?.Enabled ?? true) {
-            await TokenProvider.SaveAsync(authToken);
-        }
+
+        if (!response.Profile.Protection?.Enabled ?? true) await TokenProvider.SaveAsync(authToken);
         return authToken;
     }
 
@@ -64,16 +60,12 @@ public class AccountService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public string SignIn(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) {
-            request.EcosystemId = Options.DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = Client.SignIn(request);
-        
+
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        
-        if (!response.Profile.Protection?.Enabled ?? true) {
-            TokenProvider.Save(authToken);
-        }
+
+        if (!response.Profile.Protection?.Enabled ?? true) TokenProvider.Save(authToken);
         return authToken;
     }
 

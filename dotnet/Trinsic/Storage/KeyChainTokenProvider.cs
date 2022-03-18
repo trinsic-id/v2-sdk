@@ -1,4 +1,3 @@
-
 #if __IOS__
 
 using System.Threading.Tasks;
@@ -14,7 +13,7 @@ namespace Trinsic;
 internal class KeyChainTokenProvider : ITokenProvider
 {
     public static KeyChainTokenProvider StaticInstance => new();
-    
+
     public Task<string?> GetAsync(string name, CancellationToken cancellationToken = default) {
         return Task.Run(() => Get(name), cancellationToken);
     }
@@ -35,7 +34,7 @@ internal class KeyChainTokenProvider : ITokenProvider
         var rec = new SecRecord(SecKind.GenericPassword) {
             Generic = NSData.FromString(name)
         };
-        _ = SecKeyChain.QueryAsRecord(rec, out SecStatusCode res);
+        _ = SecKeyChain.QueryAsRecord(rec, out var res);
         if (res != SecStatusCode.Success) {
             var s = new SecRecord(SecKind.GenericPassword) {
                 Label = $"Account Profile: {name}",
@@ -48,9 +47,7 @@ internal class KeyChainTokenProvider : ITokenProvider
             };
 
             var err = SecKeyChain.Add(s);
-            if (err != SecStatusCode.Success) {
-                throw new($"error saving token: {err:G}");
-            }
+            if (err != SecStatusCode.Success) throw new($"error saving token: {err:G}");
         }
         else {
             throw new("Profile already exists");

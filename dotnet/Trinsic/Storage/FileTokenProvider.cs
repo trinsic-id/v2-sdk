@@ -8,9 +8,9 @@ namespace Trinsic;
 internal class FileTokenProvider : ITokenProvider
 {
     private const string Vendor = "Trinsic";
-    
+
     public static FileTokenProvider StaticInstance => new();
-    
+
     private string? _cachedToken;
 
     public async Task<string?> GetAsync(string name = TokenDefaults.Name, CancellationToken cancellationToken = default) {
@@ -55,7 +55,7 @@ internal class FileTokenProvider : ITokenProvider
         var filename = Path.Combine(rootPath, Vendor, name);
 
         Directory.CreateDirectory(Path.Combine(rootPath, Vendor));
-        
+
         _cachedToken = authToken;
 
         File.WriteAllText(filename, authToken);

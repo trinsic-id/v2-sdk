@@ -17,12 +17,12 @@ public class ProviderService : ServiceBase
     public ProviderService() {
         Client = new(Channel);
     }
-    
+
     internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
-    
-    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+
+    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
@@ -81,9 +81,7 @@ public class ProviderService : ServiceBase
 
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? false) {
-            Options.AuthToken = authToken;
-        }
+        if (!response.Profile.Protection?.Enabled ?? false) Options.AuthToken = authToken;
         return (response.Ecosystem, authToken);
     }
 
@@ -99,9 +97,7 @@ public class ProviderService : ServiceBase
         var response = Client.CreateEcosystem(request);
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true) {
-            Options.AuthToken = authToken;
-        }
+        if (!response.Profile.Protection?.Enabled ?? true) Options.AuthToken = authToken;
         return (response.Ecosystem, authToken);
     }
 

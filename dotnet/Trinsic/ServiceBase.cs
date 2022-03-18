@@ -23,7 +23,7 @@ public abstract class ServiceBase
     internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
 
     protected internal readonly ITokenProvider TokenProvider;
-    
+
     protected internal ServiceBase() : this(new()) { }
 
     protected internal ServiceBase(ServiceOptions options) {
@@ -43,18 +43,10 @@ public abstract class ServiceBase
     }
 
     private void EnsureOptionDefaults() {
-        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) {
-            Options.ServerEndpoint = DefaultServerEndpoint;
-        }
-        if (Options.ServerPort == default) {
-            Options.ServerPort = DefaultServerPort;
-        }
-        if (Options.ServerPort == DefaultServerPort) {
-            Options.ServerUseTls = DefaultServerUseTls;
-        }
-        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) {
-            Options.DefaultEcosystem = DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) Options.ServerEndpoint = DefaultServerEndpoint;
+        if (Options.ServerPort == default) Options.ServerPort = DefaultServerPort;
+        if (Options.ServerPort == DefaultServerPort) Options.ServerUseTls = DefaultServerUseTls;
+        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) Options.DefaultEcosystem = DefaultEcosystem;
     }
 
     private static GrpcChannel CreateChannel(ServiceOptions options) {
@@ -82,9 +74,7 @@ public abstract class ServiceBase
     /// <returns></returns>
     protected async Task<Metadata> BuildMetadataAsync(IMessage request) {
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
-        if (authToken is null) {
-            throw new("Cannot call authenticated endpoint before signing in");
-        }
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
 
@@ -99,9 +89,7 @@ public abstract class ServiceBase
     /// <returns></returns>
     protected Metadata BuildMetadata(IMessage request) {
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
-        if (authToken is null) {
-            throw new("Cannot call authenticated endpoint before signing in");
-        }
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
 

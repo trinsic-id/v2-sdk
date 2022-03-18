@@ -18,12 +18,11 @@ public class TrustRegistryService : ServiceBase
     public TrustRegistryService() {
         Client = new(Channel);
     }
-    
-    internal TrustRegistryService(ITokenProvider tokenProvider) 
-        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) {
-    }
-    
-    internal TrustRegistryService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+
+    internal TrustRegistryService(ITokenProvider tokenProvider)
+        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) { }
+
+    internal TrustRegistryService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
@@ -40,9 +39,7 @@ public class TrustRegistryService : ServiceBase
     /// <param name="description">The framework description</param>
     /// <returns></returns>
     public async Task RegisterGovernanceFrameworkAsync(string governanceFramework, string description) {
-        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) {
-            throw new("Invalid URI string");
-        }
+        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) throw new("Invalid URI string");
 
         AddFrameworkRequest request = new() {
             GovernanceFramework = new() {
@@ -54,9 +51,7 @@ public class TrustRegistryService : ServiceBase
     }
 
     public void RegisterGovernanceFramework(string governanceFramework, string description) {
-        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) {
-            throw new("Invalid URI string");
-        }
+        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) throw new("Invalid URI string");
         AddFrameworkRequest request = new() {
             GovernanceFramework = new() {
                 GovernanceFrameworkUri = governanceFramework,
@@ -81,16 +76,12 @@ public class TrustRegistryService : ServiceBase
     /// <returns></returns>
     public async Task RegisterIssuerAsync(RegisterIssuerRequest request) {
         var response = await Client.RegisterIssuerAsync(request, await BuildMetadataAsync(request));
-        if (response.Status != ResponseStatus.Success) {
-            throw new($"cannot register issuer: code {response.Status}");
-        }
+        if (response.Status != ResponseStatus.Success) throw new($"cannot register issuer: code {response.Status}");
     }
 
     public void RegisterIssuer(RegisterIssuerRequest request) {
         var response = Client.RegisterIssuer(request, BuildMetadata(request));
-        if (response.Status != ResponseStatus.Success) {
-            throw new($"cannot register issuer: code {response.Status}");
-        }
+        if (response.Status != ResponseStatus.Success) throw new($"cannot register issuer: code {response.Status}");
     }
 
     public async Task<UnregisterIssuerResponse> UnregisterIssuerAsync(UnregisterIssuerRequest request) {
@@ -108,16 +99,12 @@ public class TrustRegistryService : ServiceBase
     /// <returns></returns>
     public async Task RegisterVerifierAsync(RegisterVerifierRequest request) {
         var response = await Client.RegisterVerifierAsync(request, await BuildMetadataAsync(request));
-        if (response.Status != ResponseStatus.Success) {
-            throw new($"cannot register verifier: code {response.Status}");
-        }
+        if (response.Status != ResponseStatus.Success) throw new($"cannot register verifier: code {response.Status}");
     }
 
     public void RegisterVerifier(RegisterVerifierRequest request) {
         var response = Client.RegisterVerifier(request, BuildMetadata(request));
-        if (response.Status != ResponseStatus.Success) {
-            throw new($"cannot register verifier: code {response.Status}");
-        }
+        if (response.Status != ResponseStatus.Success) throw new($"cannot register verifier: code {response.Status}");
     }
 
     public async Task<UnregisterVerifierResponse> UnregisterVerifierAsync(UnregisterVerifierRequest request) {
@@ -152,7 +139,7 @@ public class TrustRegistryService : ServiceBase
 
         return response.Status;
     }
-    
+
     public RegistrationStatus CheckVerifierStatus(CheckVerifierStatusRequest request) {
         return Client.CheckVerifierStatus(request, BuildMetadata(request)).Status;
     }

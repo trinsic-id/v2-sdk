@@ -13,10 +13,10 @@
     </PropertyGroup>
 
     <ItemGroup Condition="'$(IsBrowser)' == 'true'">
-        <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+        <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3"/>
     </ItemGroup>
-    
+
     <!--
       https://github.com/novotnyllc/MSBuildSdkExtras/issues/176
       https://githubmemory.com/repo/xamarin/xamarin-macios/issues/12631
@@ -25,17 +25,17 @@
      -->
     <Target Name="_RemoveNativeReferencesManifest" AfterTargets="BuiltProjectOutputGroup">
         <ItemGroup>
-            <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
-            <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)" />
+            <_BuiltProjectOutputGroupOutputIntermediate Remove="$(OutDir)$(_DeploymentTargetApplicationManifestFileName)"/>
+            <BuiltProjectOutputGroupOutput Remove="$(ProjectDir)$(OutDir)$(_DeploymentTargetApplicationManifestFileName)"/>
         </ItemGroup>
     </Target>
     <ItemGroup>
-        <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.40.0"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0"/>
         <PackageReference Include="Okapi.Net" Version="1.4.1">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
@@ -52,18 +52,18 @@
     <ItemGroup>
         <!-- TODO: use the glob, luke <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" /> -->
         <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
-        <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto"/>
+        <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto"/>
+        <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto"/>
+        <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto"/>
+        <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto"/>
 
-        <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto" />
-        <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\provider\v1\provider.proto" Link="Proto/provider.proto" ProtoRoot="..\..\proto"/>
+        <Protobuf Include="..\..\proto\services\trust-registry\v1\trust-registry.proto" Link="Proto/trust-registry.proto" ProtoRoot="..\..\proto"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/options.proto" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\sdk\options\v1\options.proto" Link="Proto/sdk/options.proto" ProtoRoot="..\..\proto"/>
     </ItemGroup>
 
 </Project>

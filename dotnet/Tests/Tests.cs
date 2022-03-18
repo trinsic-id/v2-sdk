@@ -20,6 +20,7 @@ using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 using FieldType = Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+
 #pragma warning disable CS0618
 
 namespace Tests;
@@ -32,9 +33,9 @@ public class Tests
     const int DefaultPort = 5000;
     const bool DefaultUseTls = false;
 #else
-    const string DefaultEndpoint = "staging-internal.trinsic.cloud";
-    const int DefaultPort = 443;
-    const bool DefaultUseTls = true;
+    private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
+    private const int DefaultPort = 443;
+    private const bool DefaultUseTls = true;
 #endif
 
     private readonly ITestOutputHelper _testOutputHelper;
@@ -67,9 +68,9 @@ public class Tests
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
-        var clinic = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
-        var airline = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var allison = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
+        var clinic = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
+        var airline = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
         // }
 
         accountService.Options.AuthToken = clinic;
@@ -251,7 +252,7 @@ public class Tests
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
 
-        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new InvitationStatusRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
@@ -263,7 +264,7 @@ public class Tests
         var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest {InvitationId = response.InvitationId});
+        var statusResponse = await myProviderService.InvitationStatusAsync(new() {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
@@ -352,7 +353,6 @@ public class Tests
         }
     }
 }
-
 public static class Extensions
 {
     public static ServiceOptions CloneWithAuthToken(this ServiceOptions options, string authToken) {

@@ -10,8 +10,7 @@ public static class ProtoMessageExtensions
     /// <param name="message"></param>
     /// <returns></returns>
     public static T As<T>(this IMessage message)
-        where T : IMessage, new()
-    {
+        where T : IMessage, new() {
         var target = new T();
         target.MergeFrom(message.ToByteString());
 

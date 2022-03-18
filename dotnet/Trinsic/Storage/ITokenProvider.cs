@@ -9,7 +9,6 @@ internal class TokenDefaults
 {
     internal const string Name = "dotnet.authtoken";
 }
-
 public interface ITokenProvider
 {
     Task<string?> GetAsync(string name = TokenDefaults.Name, CancellationToken cancellationToken = default);
