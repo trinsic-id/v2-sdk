@@ -21,7 +21,7 @@ export function getVaccineCertUnsignedJSON(): any {
 }
 
 export function getTestServerOptions(): ServiceOptions {
-    const endpoint = process.env.TEST_SERVER_ENDPOINT || "dev-internal.trinsic.cloud";
+    const endpoint = process.env.TEST_SERVER_ENDPOINT || "staging-internal.trinsic.cloud";
     const port = process.env.TEST_SERVER_PORT || "443";
     const useTls = (process.env.TEST_SERVER_USE_TLS || "true") != "false";
 
