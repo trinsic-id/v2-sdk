@@ -1,11 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Microsoft.Extensions.Options;
 using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
-using AccountServiceClient = Trinsic.Services.Account.V1.Account.AccountClient;
 
 namespace Trinsic;
 
@@ -22,11 +22,20 @@ public class AccountService : ServiceBase
     public AccountService() {
         Client = new(Channel);
     }
-    
+
+    internal AccountService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
+    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
+        Client = new(Channel);
+    }
+
     /// <summary>
     /// Gets the underlying grpc client
     /// </summary>
-    public AccountServiceClient Client { get; }
+    private Account.AccountClient Client { get; }
 
     /// <summary>
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
@@ -35,16 +44,12 @@ public class AccountService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<string> SignInAsync(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) {
-            request.EcosystemId = Options.DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = await Client.SignInAsync(request);
 
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        
-        if (!response.Profile.Protection?.Enabled ?? true) {
-            Options.AuthToken = authToken;
-        }
+
+        if (!response.Profile.Protection?.Enabled ?? true) await TokenProvider.SaveAsync(authToken);
         return authToken;
     }
 
@@ -55,13 +60,13 @@ public class AccountService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public string SignIn(SignInRequest request) {
-        if (string.IsNullOrWhiteSpace(request.EcosystemId)) {
-            request.EcosystemId = Options.DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = Client.SignIn(request);
-        
-        Options.AuthToken = Convert.ToBase64String(response.Profile.ToByteArray());
-        return Options.AuthToken;
+
+        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) TokenProvider.Save(authToken);
+        return authToken;
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
@@ -18,6 +19,15 @@ public class CredentialsService : ServiceBase
         Client = new(Channel);
     }
 
+    internal CredentialsService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
+    internal CredentialsService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
+        Client = new(Channel);
+    }
+
     private VerifiableCredential.VerifiableCredentialClient Client { get; }
 
     /// <summary>
@@ -26,16 +36,12 @@ public class CredentialsService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<IssueResponse> IssueCredentialAsync(IssueRequest request) {
-        if (string.IsNullOrWhiteSpace(request.DocumentJson)) {
-            throw new ArgumentException("document json must not be empty");
-        }
+        if (string.IsNullOrWhiteSpace(request.DocumentJson)) throw new ArgumentException("document json must not be empty");
         return await Client.IssueAsync(request, await BuildMetadataAsync(request));
     }
 
     public IssueResponse IssueCredential(IssueRequest request) {
-        if (string.IsNullOrWhiteSpace(request.DocumentJson)) {
-            throw new ArgumentException("document json must not be empty");
-        }
+        if (string.IsNullOrWhiteSpace(request.DocumentJson)) throw new ArgumentException("document json must not be empty");
         return Client.Issue(request, BuildMetadata(request));
     }
 
@@ -86,16 +92,16 @@ public class CredentialsService : ServiceBase
     /// <returns></returns>
     public async Task<bool> VerifyProofAsync(VerifyProofRequest request) {
         var response = await Client.VerifyProofAsync(
-            request: request,
-            headers: await BuildMetadataAsync(request));
+            request,
+            await BuildMetadataAsync(request));
 
         return response.IsValid;
     }
 
     public bool VerifyProof(VerifyProofRequest request) {
         var response = Client.VerifyProof(
-            request: request,
-            headers: BuildMetadata(request));
+            request,
+            BuildMetadata(request));
 
         return response.IsValid;
     }
@@ -125,14 +131,14 @@ public class CredentialsService : ServiceBase
         UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked = revoked};
         var response = await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
         if (response.Status == ResponseStatus.Success) return;
-        throw new Exception($"Status not completely updated {response.Status}");
+        throw new($"Status not completely updated {response.Status}");
     }
 
     public void UpdateStatus(string credentialStatusId, bool revoked) {
         UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked = revoked};
         var response = Client.UpdateStatus(request, BuildMetadata(request));
         if (response.Status == ResponseStatus.Success) return;
-        throw new Exception($"Status not completely updated {response.Status}");
+        throw new($"Status not completely updated {response.Status}");
     }
 
 
@@ -143,13 +149,13 @@ public class CredentialsService : ServiceBase
     /// <returns></returns>
     public async Task SendAsync(SendRequest request) {
         var response = await Client.SendAsync(
-            request: request,
-            headers: await BuildMetadataAsync(request));
+            request,
+            await BuildMetadataAsync(request));
     }
 
     public void Send(SendRequest request) {
         var response = Client.Send(
-            request: request,
-            headers: BuildMetadata(request));
+            request,
+            BuildMetadata(request));
     }
 }

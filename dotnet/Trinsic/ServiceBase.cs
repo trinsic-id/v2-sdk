@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Grpc.Core;
 using Google.Protobuf;
 using Trinsic.Services.Common.V1;
@@ -13,38 +14,39 @@ using Grpc.Net.Client.Web;
 
 namespace Trinsic;
 
+[SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible")]
 public abstract class ServiceBase
 {
-    private const string DefaultEcosystem = "default";
-    private const bool DefaultServerUseTls = true;
-    private const int DefaultServerPort = 443;
-    private const string DefaultServerEndpoint = "prod.trinsic.cloud";
-    
-    protected internal ServiceBase() {
-        Options = new();
-        EnsureOptionDefaults();
-        Channel = CreateChannel(Options);
-    }
+    internal const string DefaultEcosystem = "default";
+    internal const bool DefaultServerUseTls = true;
+    internal const int DefaultServerPort = 443;
+    internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
+
+    protected internal readonly ITokenProvider TokenProvider;
+
+    protected internal ServiceBase() : this(new()) { }
 
     protected internal ServiceBase(ServiceOptions options) {
         Options = options;
         EnsureOptionDefaults();
-        Channel = CreateChannel(options);
+        Channel = CreateChannel(Options);
+
+#if __IOS__
+        TokenProvider = KeyChainTokenProvider.StaticInstance;
+#else
+        TokenProvider = FileTokenProvider.StaticInstance;
+#endif
+    }
+
+    protected internal ServiceBase(ServiceOptions options, ITokenProvider tokenProvider) : this(options) {
+        TokenProvider = tokenProvider;
     }
 
     private void EnsureOptionDefaults() {
-        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) {
-            Options.ServerEndpoint = DefaultServerEndpoint;
-        }
-        if (Options.ServerPort == default) {
-            Options.ServerPort = DefaultServerPort;
-        }
-        if (Options.ServerPort == DefaultServerPort) {
-            Options.ServerUseTls = DefaultServerUseTls;
-        }
-        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) {
-            Options.DefaultEcosystem = DefaultEcosystem;
-        }
+        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) Options.ServerEndpoint = DefaultServerEndpoint;
+        if (Options.ServerPort == default) Options.ServerPort = DefaultServerPort;
+        if (Options.ServerPort == DefaultServerPort) Options.ServerUseTls = DefaultServerUseTls;
+        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) Options.DefaultEcosystem = DefaultEcosystem;
     }
 
     private static GrpcChannel CreateChannel(ServiceOptions options) {
@@ -64,18 +66,17 @@ public abstract class ServiceBase
     /// Gets the gRPC channel used by this service. This channel can be reused
     /// by passing this instance to other service constructors.
     /// </summary>
-    public GrpcChannel Channel { get; set; }
+    protected GrpcChannel Channel { get; }
 
     /// <summary>
     /// Create call metadata by setting the required authentication headers
     /// </summary>
     /// <returns></returns>
     protected async Task<Metadata> BuildMetadataAsync(IMessage request) {
-        if (Options is null || string.IsNullOrWhiteSpace(Options.AuthToken)) {
-            throw new("Cannot call authenticated endpoint: auth token must be set in service options");
-        }
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(Options.AuthToken));
+        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
 
         return new() {
             {"Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request)}
@@ -87,11 +88,10 @@ public abstract class ServiceBase
     /// </summary>
     /// <returns></returns>
     protected Metadata BuildMetadata(IMessage request) {
-        if (Options is null || string.IsNullOrWhiteSpace(Options.AuthToken)) {
-            throw new("Cannot call authenticated endpoint: auth token must be set in service options");
-        }
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(Options.AuthToken));
+        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
 
         return new() {
             {"Authorization", _securityProvider.GetAuthHeader(profile, request)}

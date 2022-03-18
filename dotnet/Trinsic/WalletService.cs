@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Sdk.Options.V1;
 
@@ -15,6 +16,14 @@ public class WalletService : ServiceBase
         Client = new(Channel);
     }
 
+    internal WalletService(ITokenProvider tokenProvider)
+        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) { }
+
+    internal WalletService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
+        Client = new(Channel);
+    }
+
     private UniversalWallet.UniversalWalletClient Client { get; }
 
     /// <summary>
@@ -25,9 +34,8 @@ public class WalletService : ServiceBase
     /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public async Task<SearchResponse> SearchAsync(string query = "SELECT * FROM c")
-    {
-        SearchRequest request = new() { Query = query };
+    public async Task<SearchResponse> SearchAsync(string query = "SELECT * FROM c") {
+        SearchRequest request = new() {Query = query};
         var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
     }
@@ -40,9 +48,8 @@ public class WalletService : ServiceBase
     /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public SearchResponse Search(string query = "SELECT * FROM c")
-    {
-        SearchRequest request = new() { Query = query };
+    public SearchResponse Search(string query = "SELECT * FROM c") {
+        SearchRequest request = new() {Query = query};
         var response = Client.Search(request, BuildMetadata(request));
         return response;
     }
@@ -54,8 +61,8 @@ public class WalletService : ServiceBase
     /// <returns></returns>
     public async Task<string> InsertItemAsync(InsertItemRequest request) {
         var response = await Client.InsertItemAsync(
-            request: request,
-            headers: await BuildMetadataAsync(request));
+            request,
+            await BuildMetadataAsync(request));
         return response.ItemId;
     }
 
@@ -66,8 +73,8 @@ public class WalletService : ServiceBase
     /// <returns></returns>
     public string InsertItem(InsertItemRequest request) {
         var response = Client.InsertItem(
-            request: request,
-            headers: BuildMetadata(request));
+            request,
+            BuildMetadata(request));
         return response.ItemId;
     }
 
