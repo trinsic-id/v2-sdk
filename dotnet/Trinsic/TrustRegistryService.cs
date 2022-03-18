@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.TrustRegistry.V1;
@@ -18,7 +19,12 @@ public class TrustRegistryService : ServiceBase
         Client = new(Channel);
     }
     
-    internal TrustRegistryService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+    internal TrustRegistryService(ITokenProvider tokenProvider) 
+        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) {
+    }
+    
+    internal TrustRegistryService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

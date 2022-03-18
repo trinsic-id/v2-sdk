@@ -17,19 +17,19 @@ namespace Trinsic;
 [SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible")]
 public abstract class ServiceBase
 {
-    private const string DefaultEcosystem = "default";
-    private const bool DefaultServerUseTls = true;
-    private const int DefaultServerPort = 443;
-    private const string DefaultServerEndpoint = "prod.trinsic.cloud";
+    internal const string DefaultEcosystem = "default";
+    internal const bool DefaultServerUseTls = true;
+    internal const int DefaultServerPort = 443;
+    internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
 
-    protected readonly ITokenProvider TokenProvider;
+    protected internal readonly ITokenProvider TokenProvider;
     
     protected internal ServiceBase() : this(new()) { }
 
     protected internal ServiceBase(ServiceOptions options) {
         Options = options;
         EnsureOptionDefaults();
-        Channel = CreateChannel(options);
+        Channel = CreateChannel(Options);
 
 #if __IOS__
         TokenProvider = KeyChainTokenProvider.StaticInstance;

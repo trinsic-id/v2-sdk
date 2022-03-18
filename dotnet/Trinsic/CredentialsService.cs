@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
@@ -19,6 +20,11 @@ public class CredentialsService : ServiceBase
     }
     
     internal CredentialsService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+    
+    internal CredentialsService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

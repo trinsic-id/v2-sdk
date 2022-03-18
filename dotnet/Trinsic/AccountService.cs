@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Microsoft.Extensions.Options;
 using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Sdk.Options.V1;
@@ -24,6 +25,11 @@ public class AccountService : ServiceBase
     }
 
     internal AccountService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
+    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 

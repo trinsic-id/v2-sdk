@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Sdk.Options.V1;
 
@@ -15,7 +16,12 @@ public class WalletService : ServiceBase
         Client = new(Channel);
     }
     
-    internal WalletService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+    internal WalletService(ITokenProvider tokenProvider) 
+        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) {
+    }
+    
+    internal WalletService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options) 
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 
