@@ -6,7 +6,6 @@ using Okapi.Security;
 using Okapi.Security.V1;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
-using AccountServiceClient = Trinsic.Services.Account.V1.Account.AccountClient;
 
 namespace Trinsic;
 
@@ -36,7 +35,7 @@ public class AccountService : ServiceBase
     /// <summary>
     /// Gets the underlying grpc client
     /// </summary>
-    public AccountServiceClient Client { get; }
+    private Account.AccountClient Client { get; }
 
     /// <summary>
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are

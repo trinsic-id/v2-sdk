@@ -14,6 +14,7 @@
 
     <ItemGroup Condition="'$(IsBrowser)' == 'true'">
         <PackageReference Include="Grpc.Net.Client.Web" Version="2.40.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
     </ItemGroup>
     
     <!--

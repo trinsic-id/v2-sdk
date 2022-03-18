@@ -1,7 +1,11 @@
-﻿using Microsoft.JSInterop;
+﻿#if __BROWSER__
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.JSInterop;
 using Microsoft.JSInterop.WebAssembly;
 
-namespace Trinsic.Browser;
+namespace Trinsic;
 
 public class BrowserTokenProvider : ITokenProvider
 {
@@ -28,3 +32,4 @@ public class BrowserTokenProvider : ITokenProvider
         throw new NotImplementedException("sync method not supported, please use async overload instead");
     }
 }
+#endif

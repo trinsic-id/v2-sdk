@@ -47,7 +47,6 @@ public class HostTests
                     options.ServerEndpoint = "example.com";
                     options.ServerPort = 42;
                     options.ServerUseTls = true;
-                    ;
                 });
             }).Build();
 

@@ -2843,5 +2843,20 @@
             <param name="message"></param>
             <returns></returns>
         </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Trinsic.Sdk.Options.V1.ServiceOptions})">
+            <summary>
+            Registers Trinsic SDK services and dependencies
+            </summary>
+            <param name="services"></param>
+            <param name="configure"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTrinsic(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers Trinsic SDK services and dependencies
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

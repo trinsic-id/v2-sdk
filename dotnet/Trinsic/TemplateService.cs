@@ -28,7 +28,7 @@ public class TemplateService : ServiceBase
         Client = new(Channel);
     }
 
-    private CredentialTemplates.CredentialTemplatesClient Client { get; set; }
+    private CredentialTemplates.CredentialTemplatesClient Client { get; }
 
     /// <summary>
     /// Create new credential template with the given parameters
