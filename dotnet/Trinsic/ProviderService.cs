@@ -81,7 +81,10 @@ public class ProviderService : ServiceBase
 
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? false) Options.AuthToken = authToken;
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+            await TokenProvider.SaveAsync(authToken);
+        }
         return (response.Ecosystem, authToken);
     }
 
@@ -90,14 +93,16 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    /// <exception cref="Exception"></exception>
     public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
 
         var response = Client.CreateEcosystem(request);
         var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true) Options.AuthToken = authToken;
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+            TokenProvider.Save(authToken);
+        }
         return (response.Ecosystem, authToken);
     }
 

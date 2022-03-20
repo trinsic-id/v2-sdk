@@ -2613,7 +2613,6 @@
             </summary>
             <param name="request"></param>
             <returns></returns>
-            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
