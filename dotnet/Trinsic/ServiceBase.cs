@@ -73,7 +73,9 @@ public abstract class ServiceBase
     /// </summary>
     /// <returns></returns>
     protected async Task<Metadata> BuildMetadataAsync(IMessage request) {
-        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
+            ? await TokenProvider.GetAsync()
+            : Options.AuthToken;
         if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
@@ -88,7 +90,9 @@ public abstract class ServiceBase
     /// </summary>
     /// <returns></returns>
     protected Metadata BuildMetadata(IMessage request) {
-        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) ? TokenProvider.Get() : Options.AuthToken;
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) 
+            ? TokenProvider.Get() 
+            : Options.AuthToken;
         if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
