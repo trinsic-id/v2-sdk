@@ -145,8 +145,8 @@ public class Tests
         var valid = await credentialsService.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
         });
-        _testOutputHelper.WriteLine($"Verification result: {valid}");
-        Assert.True(valid);
+        _testOutputHelper.WriteLine($"Verification result: {valid.IsValid}");
+        Assert.True(valid.IsValid);
         // }
     }
 
@@ -322,12 +322,12 @@ public class Tests
 
         credentialJson.Should().NotBeNull();
 
-        var jsonDocument = JsonDocument.Parse(credentialJson).RootElement.EnumerateObject();
+        var jsonDocument = JsonDocument.Parse(credentialJson.DocumentJson).RootElement.EnumerateObject();
 
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
-        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credentialJson});
+        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
 
         var frame = new JObject {
             {"@context", "https://www.w3.org/2018/credentials/v1"},
@@ -337,13 +337,13 @@ public class Tests
         // Create proof from input document
         {
             var proof = await credentialService.CreateProofAsync(new() {
-                DocumentJson = credentialJson,
+                DocumentJson = credentialJson.DocumentJson,
                 RevealDocumentJson = frame.ToString(Formatting.None)
             });
 
             var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
 
-            valid.Should().BeTrue();
+            valid.IsValid.Should().BeTrue();
         }
 
         // Create proof from item id
@@ -355,7 +355,7 @@ public class Tests
 
             var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
 
-            valid.Should().BeTrue();
+            valid.IsValid.Should().BeTrue();
         }
     }
 }

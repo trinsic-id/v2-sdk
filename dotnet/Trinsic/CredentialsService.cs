@@ -50,9 +50,9 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="request">The request object with the template identifier and the values</param>
     /// <returns>Verifiable credential as JSON</returns>
-    public async Task<string> IssueFromTemplateAsync(IssueFromTemplateRequest request) {
+    public async Task<IssueFromTemplateResponse> IssueFromTemplateAsync(IssueFromTemplateRequest request) {
         var response = await Client.IssueFromTemplateAsync(request, await BuildMetadataAsync(request));
-        return response.DocumentJson;
+        return response;
     }
 
     /// <summary>
@@ -60,9 +60,9 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="request">The request object with the template identifier and the values</param>
     /// <returns>Verifiable credential as JSON</returns>
-    public string IssueFromTemplate(IssueFromTemplateRequest request) {
+    public IssueFromTemplateResponse IssueFromTemplate(IssueFromTemplateRequest request) {
         var response = Client.IssueFromTemplate(request, BuildMetadata(request));
-        return response.DocumentJson;
+        return response;
     }
 
     /// <summary>
@@ -90,20 +90,20 @@ public class CredentialsService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<bool> VerifyProofAsync(VerifyProofRequest request) {
+    public async Task<VerifyProofResponse> VerifyProofAsync(VerifyProofRequest request) {
         var response = await Client.VerifyProofAsync(
             request,
             await BuildMetadataAsync(request));
 
-        return response.IsValid;
+        return response;
     }
 
-    public bool VerifyProof(VerifyProofRequest request) {
+    public VerifyProofResponse VerifyProof(VerifyProofRequest request) {
         var response = Client.VerifyProof(
             request,
             BuildMetadata(request));
 
-        return response.IsValid;
+        return response;
     }
 
     /// <summary>
