@@ -14,7 +14,6 @@ import java.util.concurrent.ExecutionException;
 
 public class TemplatesDemo {
     public static void main(String[] args) throws IOException, DidException, ExecutionException, InterruptedException {
-        // Make sure you set the TEST_SERVER_ENDPOINT environment variable
         run();
     }
 
