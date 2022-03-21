@@ -109,33 +109,26 @@ public class CredentialsService : ServiceBase
     /// <summary>
     /// Check credential template status
     /// </summary>
-    /// <param name="credentialStatusId"></param>
     /// <returns></returns>
-    public async Task<CheckStatusResponse> CheckStatusAsync(string credentialStatusId) {
-        CheckStatusRequest request = new() {CredentialStatusId = credentialStatusId};
+    public async Task<CheckStatusResponse> CheckStatusAsync(CheckStatusRequest request) {
         return await Client.CheckStatusAsync(request, await BuildMetadataAsync(request));
     }
 
-    public CheckStatusResponse CheckStatus(string credentialStatusId) {
-        CheckStatusRequest request = new() {CredentialStatusId = credentialStatusId};
+    public CheckStatusResponse CheckStatus(CheckStatusRequest request) {
         return Client.CheckStatus(request, BuildMetadata(request));
     }
 
     /// <summary>
     /// Update credential template revocation status
     /// </summary>
-    /// <param name="credentialStatusId"></param>
-    /// <param name="revoked"></param>
     /// <returns></returns>
-    public async Task UpdateStatusAsync(string credentialStatusId, bool revoked) {
-        UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked = revoked};
+    public async Task UpdateStatusAsync(UpdateStatusRequest request) {
         var response = await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
         if (response.Status == ResponseStatus.Success) return;
         throw new($"Status not completely updated {response.Status}");
     }
 
-    public void UpdateStatus(string credentialStatusId, bool revoked) {
-        UpdateStatusRequest request = new() {CredentialStatusId = credentialStatusId, Revoked = revoked};
+    public void UpdateStatus(UpdateStatusRequest request) {
         var response = Client.UpdateStatus(request, BuildMetadata(request));
         if (response.Status == ResponseStatus.Success) return;
         throw new($"Status not completely updated {response.Status}");

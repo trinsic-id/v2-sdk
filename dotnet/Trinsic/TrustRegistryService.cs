@@ -35,29 +35,16 @@ public class TrustRegistryService : ServiceBase
     /// <remarks>
     /// Calling this multiple times with the same URI will update the previously registered framework.
     /// </remarks>
-    /// <param name="governanceFramework">The governance framework URI</param>
-    /// <param name="description">The framework description</param>
     /// <returns></returns>
-    public async Task RegisterGovernanceFrameworkAsync(string governanceFramework, string description) {
-        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) throw new("Invalid URI string");
+    public async Task<AddFrameworkResponse> RegisterGovernanceFrameworkAsync(AddFrameworkRequest request) {
+        if (!Uri.TryCreate(request.GovernanceFramework.GovernanceFrameworkUri, UriKind.Absolute, out _)) throw new("Invalid URI string");
 
-        AddFrameworkRequest request = new() {
-            GovernanceFramework = new() {
-                GovernanceFrameworkUri = governanceFramework,
-                Description = description
-            }
-        };
-        var response = await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
+        return await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
-    public void RegisterGovernanceFramework(string governanceFramework, string description) {
-        if (!Uri.TryCreate(governanceFramework, UriKind.Absolute, out _)) throw new("Invalid URI string");
-        AddFrameworkRequest request = new() {
-            GovernanceFramework = new() {
-                GovernanceFrameworkUri = governanceFramework,
-                Description = description
-            }
-        };
+    public void RegisterGovernanceFramework(AddFrameworkRequest request) {
+        if (!Uri.TryCreate(request.GovernanceFramework.GovernanceFrameworkUri, UriKind.Absolute, out _)) throw new("Invalid URI string");
+        
         Client.AddFramework(request, BuildMetadata(request));
     }
 
@@ -147,23 +134,19 @@ public class TrustRegistryService : ServiceBase
     /// <summary>
     /// Search the trust registry
     /// </summary>
-    /// <param name="query"></param>
-    /// <param name="continuationToken">continuation token from a previous search</param>
     /// <returns></returns>
-    public async Task<SearchRegistryResponse> SearchRegistryAsync(string query = "SELECT * FROM c", string? continuationToken = null) {
-        SearchRegistryRequest request = new() {
-            Query = query,
-            ContinuationToken = continuationToken ?? string.Empty
-        };
+    public async Task<SearchRegistryResponse> SearchRegistryAsync(SearchRegistryRequest request) {
+        if (String.IsNullOrWhiteSpace(request.Query))
+            request.Query = "SELECT * FROM c";
+        
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
         return response;
     }
 
-    public SearchRegistryResponse SearchRegistry(string query = "SELECT * FROM c", string? continuationToken = null) {
-        SearchRegistryRequest request = new() {
-            Query = query,
-            ContinuationToken = continuationToken ?? string.Empty
-        };
+    public SearchRegistryResponse SearchRegistry(SearchRegistryRequest request) {
+        if (String.IsNullOrWhiteSpace(request.Query))
+            request.Query = "SELECT * FROM c";
+        
         return Client.SearchRegistry(request, BuildMetadata(request));
     }
 

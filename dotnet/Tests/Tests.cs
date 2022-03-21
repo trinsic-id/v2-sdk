@@ -16,6 +16,7 @@ using FluentAssertions;
 using Google.Protobuf;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
+using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 using FieldType = Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType;
@@ -110,7 +111,7 @@ public class Tests
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
         var itemId = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
-        var walletItems = await walletService.SearchAsync();
+        var walletItems = await walletService.SearchAsync(new());
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
         // }
 
@@ -197,7 +198,7 @@ public class Tests
         verifierStatus.Should().Be(RegistrationStatus.Current);
 
         // search registry
-        var searchResult = await service.SearchRegistryAsync();
+        var searchResult = await service.SearchRegistryAsync(new());
 
         searchResult.Should().NotBeNull();
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
@@ -273,7 +274,12 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new () {
+            GovernanceFramework = new() {
+                Description = "invalid uri",
+                GovernanceFrameworkUri = ""
+            }
+        }));
     }
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]
