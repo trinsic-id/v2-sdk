@@ -108,7 +108,11 @@ func WithProductionEnv() Option {
 // falling back to trinsic production environment if necessary
 func WithTestEnv() Option {
 	return func(s *Options) error {
-		s.ServiceOptions.ServerEndpoint = os.Getenv("TEST_SERVER_ENDPOINT")
+		testEndpoint := strings.TrimSpace(os.Getenv("TEST_SERVER_ENDPOINT"))
+		if len(testEndpoint) == 0 {
+			testEndpoint = "prod.trinsic.cloud"
+		}
+		s.ServiceOptions.ServerEndpoint = testEndpoint
 
 		port, err := strconv.Atoi(os.Getenv("TEST_SERVER_PORT"))
 		if err != nil || port <= 0 {
