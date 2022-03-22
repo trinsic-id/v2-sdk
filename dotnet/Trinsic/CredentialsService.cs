@@ -91,19 +91,11 @@ public class CredentialsService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<VerifyProofResponse> VerifyProofAsync(VerifyProofRequest request) {
-        var response = await Client.VerifyProofAsync(
-            request,
-            await BuildMetadataAsync(request));
-
-        return response;
+        return await Client.VerifyProofAsync(request,await BuildMetadataAsync(request));
     }
 
     public VerifyProofResponse VerifyProof(VerifyProofRequest request) {
-        var response = Client.VerifyProof(
-            request,
-            BuildMetadata(request));
-
-        return response;
+        return Client.VerifyProof(request,BuildMetadata(request));
     }
 
     /// <summary>
@@ -141,17 +133,13 @@ public class CredentialsService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task SendAsync(SendRequest request) {
-        var response = await Client.SendAsync(
-            request,
-            await BuildMetadataAsync(request));
+        var response = await Client.SendAsync(request,await BuildMetadataAsync(request));
         if (response.Status != ResponseStatus.Success)
             throw new($"request not completely sent {response.Status}");
     }
 
     public void Send(SendRequest request) {
-        var response = Client.Send(
-            request,
-            BuildMetadata(request));
+        var response = Client.Send(request,BuildMetadata(request));
         if (response.Status != ResponseStatus.Success)
             throw new($"request not completely sent {response.Status}");
     }
