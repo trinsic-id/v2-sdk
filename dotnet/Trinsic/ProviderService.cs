@@ -112,6 +112,7 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
+    [Experimental]
     public async Task<string> GenerateTokenAsync(GenerateTokenRequest request) {
         var response = await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
 
@@ -124,9 +125,14 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
+    [Experimental]
     public string GenerateToken(GenerateTokenRequest request) {
         var response = Client.GenerateToken(request, BuildMetadata(request));
 
         return Convert.ToBase64String(response.ToByteArray());
     }
+}
+public class ExperimentalAttribute : Attribute
+{
+    // TODO - Experimental attribute object
 }

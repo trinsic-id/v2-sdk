@@ -94,26 +94,26 @@ public class TrustRegistryService : ServiceBase
         if (response.Status != ResponseStatus.Success) throw new($"cannot register verifier: code {response.Status}");
     }
 
-    public async Task<UnregisterVerifierResponse> UnregisterVerifierAsync(UnregisterVerifierRequest request) {
-        return await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
+    public async Task UnregisterVerifierAsync(UnregisterVerifierRequest request) {
+        var response = await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
+        if (response.Status != ResponseStatus.Success) throw new($"cannot unregister verifier: code {response.Status}");
     }
 
-    public UnregisterVerifierResponse UnregisterVerifier(UnregisterVerifierRequest request) {
-        return Client.UnregisterVerifier(request, BuildMetadata(request));
+    public void UnregisterVerifier(UnregisterVerifierRequest request) {
+        var response= Client.UnregisterVerifier(request, BuildMetadata(request));
+        if (response.Status != ResponseStatus.Success) throw new($"cannot unregister verifier: code {response.Status}");
     }
 
     /// <summary>
     /// Checks the status of the issuer for a given credential type in the given governance framework
     /// </summary>
     /// <param name="request">The request object</param>
-    public async Task<RegistrationStatus> CheckIssuerStatusAsync(CheckIssuerStatusRequest request) {
-        var response = await Client.CheckIssuerStatusAsync(request, await BuildMetadataAsync(request));
-
-        return response.Status;
+    public async Task<CheckIssuerStatusResponse> CheckIssuerStatusAsync(CheckIssuerStatusRequest request) {
+        return await Client.CheckIssuerStatusAsync(request, await BuildMetadataAsync(request));
     }
 
-    public RegistrationStatus CheckIssuerStatus(CheckIssuerStatusRequest request) {
-        return Client.CheckIssuerStatus(request, BuildMetadata(request)).Status;
+    public CheckIssuerStatusResponse CheckIssuerStatus(CheckIssuerStatusRequest request) {
+        return Client.CheckIssuerStatus(request, BuildMetadata(request));
     }
 
     /// <summary>
@@ -121,14 +121,12 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="request">The request object</param>
     /// <returns>The status of the registration</returns>
-    public async Task<RegistrationStatus> CheckVerifierStatusAsync(CheckVerifierStatusRequest request) {
-        var response = await Client.CheckVerifierStatusAsync(request, await BuildMetadataAsync(request));
-
-        return response.Status;
+    public async Task<CheckVerifierStatusResponse> CheckVerifierStatusAsync(CheckVerifierStatusRequest request) {
+        return await Client.CheckVerifierStatusAsync(request, await BuildMetadataAsync(request));
     }
 
-    public RegistrationStatus CheckVerifierStatus(CheckVerifierStatusRequest request) {
-        return Client.CheckVerifierStatus(request, BuildMetadata(request)).Status;
+    public CheckVerifierStatusResponse CheckVerifierStatus(CheckVerifierStatusRequest request) {
+        return Client.CheckVerifierStatus(request, BuildMetadata(request));
     }
 
     /// <summary>

@@ -144,11 +144,15 @@ public class CredentialsService : ServiceBase
         var response = await Client.SendAsync(
             request,
             await BuildMetadataAsync(request));
+        if (response.Status != ResponseStatus.Success)
+            throw new($"request not completely sent {response.Status}");
     }
 
     public void Send(SendRequest request) {
         var response = Client.Send(
             request,
             BuildMetadata(request));
+        if (response.Status != ResponseStatus.Success)
+            throw new($"request not completely sent {response.Status}");
     }
 }
