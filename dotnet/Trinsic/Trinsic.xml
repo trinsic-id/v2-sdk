@@ -103,19 +103,16 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.CheckStatusAsync(System.String)">
+        <member name="M:Trinsic.CredentialsService.CheckStatusAsync(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest)">
             <summary>
             Check credential template status
             </summary>
-            <param name="credentialStatusId"></param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.CredentialsService.UpdateStatusAsync(System.String,System.Boolean)">
+        <member name="M:Trinsic.CredentialsService.UpdateStatusAsync(Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest)">
             <summary>
             Update credential template revocation status
             </summary>
-            <param name="credentialStatusId"></param>
-            <param name="revoked"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialsService.SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest)">
@@ -2702,15 +2699,13 @@
             The search response and continuation token, if available
             </returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.RegisterGovernanceFrameworkAsync(System.String,System.String)">
+        <member name="M:Trinsic.TrustRegistryService.RegisterGovernanceFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
             Register a Governance Framework with the Trust Registry.
             </summary>
             <remarks>
             Calling this multiple times with the same URI will update the previously registered framework.
             </remarks>
-            <param name="governanceFramework">The governance framework URI</param>
-            <param name="description">The framework description</param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.TrustRegistryService.RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest)">
@@ -2740,29 +2735,25 @@
             <param name="request">The request object</param>
             <returns>The status of the registration</returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.SearchRegistryAsync(System.String,System.String)">
+        <member name="M:Trinsic.TrustRegistryService.SearchRegistryAsync(Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest)">
             <summary>
             Search the trust registry
             </summary>
-            <param name="query"></param>
-            <param name="continuationToken">continuation token from a previous search</param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.SearchAsync(System.String)">
+        <member name="M:Trinsic.WalletService.SearchAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
             <summary>
             Search the wallet for records matching the specified criteria
             </summary>
-            <param name="query">The SQL query</param>
             <remarks>
             See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
             </remarks>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.WalletService.Search(System.String)">
+        <member name="M:Trinsic.WalletService.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
             <summary>
             Search the wallet for records matching the specified criteria
             </summary>
-            <param name="query">The SQL query</param>
             <remarks>
             See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
             </remarks>
