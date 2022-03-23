@@ -36,7 +36,7 @@ public class WalletService : ServiceBase
     /// <returns></returns>
     public async Task<SearchResponse> SearchAsync(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c";
+            request.Query = "SELECT c.id, c.type, c.data FROM c";
 
         var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
@@ -45,13 +45,13 @@ public class WalletService : ServiceBase
     /// <summary>
     ///     Search the wallet for records matching the specified criteria
     /// </summary>
-    /// <remarks>
+    /// <remarks`>
     ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
     public SearchResponse Search(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c";
+            request.Query = "SELECT c.id, c.type, c.data FROM c";
 
         var response = Client.Search(request, BuildMetadata(request));
         return response;

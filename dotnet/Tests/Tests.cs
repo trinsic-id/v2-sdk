@@ -110,7 +110,8 @@ public class Tests
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
-        var itemId = (await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson})).ItemId;
+        var insertItemResponse = (await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson}));
+        var itemId = insertItemResponse.ItemId;
         var walletItems = await walletService.SearchAsync(new());
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
         // }
@@ -328,7 +329,8 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
-        var itemId = (await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson})).ItemId;
+        var insertItemResponse = (await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson}));
+        var itemId = insertItemResponse.ItemId;
 
         var frame = new JObject {
             {"@context", "https://www.w3.org/2018/credentials/v1"},
