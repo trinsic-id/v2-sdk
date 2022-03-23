@@ -79,7 +79,7 @@ public class ProviderService : ServiceBase
 
         var response = await Client.CreateEcosystemAsync(request);
 
-        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true) {
             Options.AuthToken = authToken;
@@ -97,7 +97,7 @@ public class ProviderService : ServiceBase
         request.Details ??= new();
 
         var response = Client.CreateEcosystem(request);
-        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true) {
             Options.AuthToken = authToken;
@@ -115,7 +115,7 @@ public class ProviderService : ServiceBase
     public async Task<string> GenerateTokenAsync(GenerateTokenRequest request) {
         var response = await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
 
-        return Convert.ToBase64String(response.ToByteArray());
+        return Base64Url.Encode(response.ToByteArray());
     }
 
     /// <summary>
@@ -127,6 +127,6 @@ public class ProviderService : ServiceBase
     public string GenerateToken(GenerateTokenRequest request) {
         var response = Client.GenerateToken(request, BuildMetadata(request));
 
-        return Convert.ToBase64String(response.ToByteArray());
+        return Base64Url.Encode(response.ToByteArray());
     }
 }

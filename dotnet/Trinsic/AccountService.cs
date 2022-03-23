@@ -47,7 +47,7 @@ public class AccountService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = await Client.SignInAsync(request);
 
-        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true) await TokenProvider.SaveAsync(authToken);
         return authToken;
@@ -63,7 +63,7 @@ public class AccountService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = Client.SignIn(request);
 
-        var authToken = Convert.ToBase64String(response.Profile.ToByteArray());
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true) TokenProvider.Save(authToken);
         return authToken;
@@ -77,7 +77,7 @@ public class AccountService : ServiceBase
     /// <param name="authToken"></param>
     /// <param name="securityCode"></param>
     public static string Unprotect(string authToken, string securityCode) {
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         UnBlindOberonTokenRequest request = new() {Token = profile.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
@@ -89,7 +89,7 @@ public class AccountService : ServiceBase
             Method = ConfirmationMethod.None
         };
 
-        return Convert.ToBase64String(profile.ToByteArray());
+        return Base64Url.Encode(profile.ToByteArray());
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public class AccountService : ServiceBase
     /// <param name="authToken"></param>
     /// <param name="securityCode"></param>
     public static string Protect(string authToken, string securityCode) {
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         BlindOberonTokenRequest request = new() {Token = profile.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
@@ -111,7 +111,7 @@ public class AccountService : ServiceBase
             Method = ConfirmationMethod.Other
         };
 
-        return Convert.ToBase64String(profile.ToByteArray());
+        return Base64Url.Encode(profile.ToByteArray());
     }
 
     /// <summary>
