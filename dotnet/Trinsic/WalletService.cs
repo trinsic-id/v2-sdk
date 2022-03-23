@@ -45,7 +45,7 @@ public class WalletService : ServiceBase
     /// <summary>
     ///     Search the wallet for records matching the specified criteria
     /// </summary>
-    /// <remarks`>
+    /// <remarks>
     ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
