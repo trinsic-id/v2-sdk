@@ -358,7 +358,17 @@ public class Tests
             valid.IsValid.Should().BeTrue();
         }
     }
+
+    [Fact(DisplayName = "Decode base64 url encoded string")]
+    public void DecodeBase64UrlString() {
+        const string encoded = "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
+
+        var actual = Base64Url.Decode(encoded);
+
+        actual.Should().NotBeEmpty();
+    }
 }
+
 public static class Extensions
 {
     public static ServiceOptions CloneWithAuthToken(this ServiceOptions options, string authToken) {

@@ -60,7 +60,7 @@ public abstract class ServiceBase
 
     private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
 
-    public ServiceOptions Options { get; protected set; }
+    public ServiceOptions Options { get; }
 
     /// <summary>
     /// Gets the gRPC channel used by this service. This channel can be reused
@@ -78,7 +78,7 @@ public abstract class ServiceBase
             : Options.AuthToken;
         if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         return new() {
             {"Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request)}
@@ -95,7 +95,7 @@ public abstract class ServiceBase
             : Options.AuthToken;
         if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
-        var profile = AccountProfile.Parser.ParseFrom(Convert.FromBase64String(authToken));
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         return new() {
             {"Authorization", _securityProvider.GetAuthHeader(profile, request)}
