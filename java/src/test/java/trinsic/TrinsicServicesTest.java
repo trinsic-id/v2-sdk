@@ -25,7 +25,7 @@ class TrinsicServicesTest {
     @Disabled
     public void testProviderServiceInviteParticipant() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var account = accountService.signIn(null).get();
+        var account = accountService.signIn().get();
 
         var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
         var ecosystem = providerService.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").build()).get();

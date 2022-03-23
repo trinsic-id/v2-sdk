@@ -1,11 +1,11 @@
-import com.google.gson.Gson
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.CredentialsServiceKt
 import trinsic.services.WalletServiceKt
-import trinsic.services.account.v1.AccountOuterClass.AccountProfile
+import trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentials
 import java.io.File
 import java.io.IOException
 import java.nio.file.Path
@@ -25,9 +25,9 @@ suspend fun runVaccineDemo() {
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    var allison = accountService.signIn(null)
-    val clinic = accountService.signIn(null)
-    val airline = accountService.signIn(null)
+    var allison = accountService.signIn()
+    val clinic = accountService.signIn()
+    val airline = accountService.signIn()
     // }
 
     // createService() {
@@ -44,14 +44,18 @@ suspend fun runVaccineDemo() {
 
     // issueCredential() {
     // Sign a credential as the clinic and send it to Allison
-    val credentialJson = Gson().fromJson(File(vaccineCertUnsignedPath()).readText(), HashMap::class.java)
-    val credential = credentialsService.issueCredential(credentialJson)
+    val credentialJson = File(vaccineCertUnsignedPath()).readText()
+    val credential = credentialsService.issueCredential(
+        VerifiableCredentials.IssueRequest.newBuilder().setDocumentJson(credentialJson).build()
+    )
     println("Credential: $credential")
     // }
 
     // storeCredential() {
     // Alice stores the credential in her cloud wallet.
-    val itemId = walletService.insertItem(credential)
+    val response =
+        walletService.insertItem(InsertItemRequest.newBuilder().setItemJson(credential.signedDocumentJson).build())
+    val itemId = response.itemId
     println("item id = $itemId")
     // }
 
@@ -60,20 +64,23 @@ suspend fun runVaccineDemo() {
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
     credentialsService.setProfile(allison)
-    val proofRequestJson = Gson().fromJson(
-        File(vaccineCertFramePath()).readText(),
-        HashMap::class.java
+    val proofRequestJson = File(vaccineCertFramePath()).readText()
+    val createProofResponse = credentialsService.createProof(
+        VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).setRevealDocumentJson(proofRequestJson)
+            .build()
     )
-    val credentialProof = credentialsService.createProof(itemId, proofRequestJson)
+    val credentialProof = createProofResponse.proofDocumentJson
     println("Proof: $credentialProof")
     // }
 
     // verifyCredential() {
     // The airline verifies the credential
     credentialsService.setProfile(airline)
-    val isValid = credentialsService.verifyProof(credentialProof)
-    println("Verification result: $isValid")
-    Assertions.assertTrue(isValid)
+    val verifyResult = credentialsService.verifyProof(
+        VerifiableCredentials.VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build()
+    )
+    println("Verification result: ${verifyResult.isValid}")
+    Assertions.assertTrue(verifyResult.isValid)
     // }
     accountService.shutdown()
     credentialsService.shutdown()
