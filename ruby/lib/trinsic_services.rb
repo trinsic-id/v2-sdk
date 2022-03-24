@@ -323,6 +323,7 @@ module Trinsic
     end
 
     def search(query)
+      query = query or "SELECT c.id, c.type, c.data FROM c"
       request = Wallet_V1::SearchRequest.new(query: query)
       @client.search(request, metadata: metadata(request))
     end

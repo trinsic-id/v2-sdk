@@ -22,7 +22,7 @@ export class WalletService extends ServiceBase {
     }
 
     // must be authorized
-    public search(query: string = "SELECT * FROM c"): Promise<SearchResponse> {
+    public search(query: string = "SELECT c.id, c.type, c.data FROM c"): Promise<SearchResponse> {
         return new Promise(async (resolve, reject) => {
             let searchRequest = new SearchRequest().setQuery(query);
 
