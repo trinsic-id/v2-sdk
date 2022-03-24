@@ -104,7 +104,8 @@ export class TrustRegistryService extends ServiceBase {
         });
     }
 
-    public searchRegistry(request: SearchRegistryRequest): Promise<SearchRegistryResponse> {
+    public searchRegistry(request: SearchRegistryRequest = null): Promise<SearchRegistryResponse> {
+        if (!request) request = new SearchRegistryRequest();
         return new Promise(async (resolve, reject) => {
             if (!request.getQuery())
                 request = new SearchRegistryRequest(request).setQuery("SELECT * FROM c");
