@@ -9,6 +9,11 @@ from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
 from trinsic.account_service import AccountService
 from trinsic.proto.services.common.v1 import ResponseStatus
+from trinsic.proto.services.provider.v1 import InviteRequest
+from trinsic.proto.services.trustregistry.v1 import (
+    AddFrameworkRequest,
+    GovernanceFramework,
+)
 from trinsic.provider_service import ProviderService
 from trinsic.service_base import ResponseStatusException
 from trinsic.trinsic_util import trinsic_config
@@ -55,9 +60,9 @@ class TestServices(unittest.TestCase):
         async def test_code():
             cred_service = ProviderService(server_config=trinsic_config())
             with self.assertRaises(ValueError) as ve:
-                await cred_service.invite_participant()
+                await cred_service.invite_participant(request=InviteRequest())
             with self.assertRaises(ValueError) as ve:
-                await cred_service.invitation_status()
+                await cred_service.invitation_status(request=InviteRequest())
 
         asyncio.run(test_code())
 
@@ -66,7 +71,11 @@ class TestServices(unittest.TestCase):
             cred_service = TrustRegistryService(server_config=trinsic_config())
             with self.assertRaises(ValueError) as ve:
                 await cred_service.register_governance_framework(
-                    "", "Invalid framework"
+                    request=AddFrameworkRequest(
+                        governance_framework=GovernanceFramework(
+                            governance_framework_uri="", description="invalid framework"
+                        )
+                    )
                 )
 
         asyncio.run(test_code())
@@ -78,20 +87,22 @@ class TestServices(unittest.TestCase):
             await self.print_get_info(account_service, my_profile)
 
             code = b"1234"
-            my_protected_profile = account_service.protect(my_profile, code)
+            my_protected_profile = account_service.protect(
+                profile=my_profile, security_code=code
+            )
             with self.assertRaises(Exception) as ve:
                 await self.print_get_info(account_service, my_protected_profile)
 
-            my_unprotected_profile = account_service.unprotect(my_protected_profile, code)
+            my_unprotected_profile = account_service.unprotect(
+                profile=my_protected_profile, security_code=code
+            )
             # This hangs for unknown reasons.
             await self.print_get_info(account_service, my_unprotected_profile)
 
         asyncio.run(test_code())
 
     @staticmethod
-    async def print_get_info(
-        account_service: AccountService, my_profile
-    ):
+    async def print_get_info(account_service: AccountService, my_profile):
         account_service.service_options.auth_token = my_profile
         info = await account_service.get_info()
         assert info is not None

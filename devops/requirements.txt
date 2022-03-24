@@ -1,3 +1,3 @@
-betterproto[compiler]
+git+https://github.com/danielgtaylor/python-betterproto.git@master#egg=betterproto[compiler]
 grpcio-tools
 requests

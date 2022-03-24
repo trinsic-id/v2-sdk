@@ -11,11 +11,14 @@ from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import (
     AccountProfile,
     AccountStub,
-    AccountDetails,
     ConfirmationMethod,
     InfoResponse,
     ListDevicesResponse,
     RevokeDeviceResponse,
+    SignInRequest,
+    InfoRequest,
+    ListDevicesRequest,
+    RevokeDeviceRequest,
 )
 from trinsic.service_base import ServiceBase
 
@@ -35,28 +38,26 @@ class AccountService(ServiceBase):
         super().__init__(server_config)
         self.client: AccountStub = self.stub_with_metadata(AccountStub)
 
-    async def sign_in(
-        self,
-        *,
-        details: AccountDetails = AccountDetails(email=""),
-        ecosystem_id: str = None
-    ) -> str:
+    async def sign_in(self, *, request: SignInRequest = None) -> str:
         """
         Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
         Args:
-            ecosystem_id:
-            details:
+            request:
         Returns:
             `AccountProfile` that has been created binary serialized and base64 encoded so that it can be stored
         """
-        ecosystem_id = ecosystem_id or self.service_options.default_ecosystem
-        response = await self.client.sign_in(details=details, ecosystem_id=ecosystem_id)
+        request = request or SignInRequest()
+        request.ecosystem_id = (
+            request.ecosystem_id or self.service_options.default_ecosystem
+        )
+        response = await self.client.sign_in(sign_in_request=request)
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
         self.service_options.auth_token = auth_token
         return auth_token
 
     @staticmethod
     def unprotect(
+        *,
         profile: Union[AccountProfile, str],
         security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
@@ -80,6 +81,7 @@ class AccountService(ServiceBase):
 
     @staticmethod
     def protect(
+        *,
         profile: Union[AccountProfile, str],
         security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
@@ -107,10 +109,12 @@ class AccountService(ServiceBase):
         Returns:
             The `InfoResponse`
         """
-        return await self.client.info()
+        return await self.client.info(info_request=InfoRequest())
 
     async def list_devices(self) -> ListDevicesResponse:
-        return await self.client.list_devices()
+        return await self.client.list_devices(list_devices_request=ListDevicesRequest())
 
     async def revoke_device(self) -> RevokeDeviceResponse:
-        return await self.client.revoke_device()
+        return await self.client.revoke_device(
+            revoke_device_request=RevokeDeviceRequest()
+        )

@@ -1,9 +1,18 @@
-import json
-
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.verifiablecredentials.v1 import (
     VerifiableCredentialStub,
     CheckStatusResponse,
+    IssueRequest,
+    IssueResponse,
+    IssueFromTemplateRequest,
+    IssueFromTemplateResponse,
+    CheckStatusRequest,
+    UpdateStatusRequest,
+    CreateProofRequest,
+    CreateProofResponse,
+    VerifyProofRequest,
+    VerifyProofResponse,
+    SendRequest,
 )
 from trinsic.service_base import ServiceBase, ResponseStatusException
 
@@ -26,115 +35,74 @@ class CredentialsService(ServiceBase):
             VerifiableCredentialStub
         )
 
-    async def issue_credential(self, *, document: dict) -> dict:
+    async def issue_credential(self, *, request: IssueRequest) -> IssueResponse:
         """
         [Issue a new credential](/reference/services/credentials-service/#issue-credential)
         Args:
-            document: Dictionary describing the credential
+            request:
         Returns:
             Dictionary with the issued credential
         """
-        response = await self.client.issue(document_json=json.dumps(document))
-        return json.loads(response.signed_document_json)
+        return await self.client.issue(issue_request=request)
 
-    async def issue_from_template(self, *, template_id: str, values_json: str) -> dict:
+    async def issue_from_template(
+        self, *, request: IssueFromTemplateRequest
+    ) -> IssueFromTemplateResponse:
         """
         Issue a credential from the previously stored template.
         Args:
-            template_id:
-            values_json:
+            request:
         Returns:
             The JSON document representation of this credential as a string
         """
-        return json.loads(
-            (
-                await self.client.issue_from_template(
-                    template_id=template_id, values_json=values_json
-                )
-            ).document_json
+        return await self.client.issue_from_template(
+            issue_from_template_request=request
         )
 
-    async def check_status(self, *, credential_status_id: str) -> CheckStatusResponse:
+    async def check_status(self, *, request: CheckStatusRequest) -> CheckStatusResponse:
         """
         Check status of a credential
         Args:
-            credential_status_id:
+            request:
         Returns:
             `CheckStatusResponse`
         """
-        return await self.client.check_status(credential_status_id=credential_status_id)
+        return await self.client.check_status(check_status_request=request)
 
-    async def update_status(self, *, credential_status_id: str, revoked: bool) -> None:
+    async def update_status(self, *, request: UpdateStatusRequest) -> None:
         """
         Update the status of a credential
         Args:
-            credential_status_id:
-            revoked:
+            request:
         """
-        response = await self.client.update_status(
-            credential_status_id=credential_status_id, revoked=revoked
-        )
+        response = await self.client.update_status(update_status_request=request)
         ResponseStatusException.assert_success(
             response.status, "update credential status"
         )
 
-    async def create_proof(
-        self, *, reveal_document: dict, item_id: str = "", document: dict = None
-    ) -> dict:
+    async def create_proof(self, *, request: CreateProofRequest) -> CreateProofResponse:
         """
         [Create a proof](/reference/services/wallet-service/#create-proof)
         Args:
-            document: document in the wallet that is signed
-            item_id: id of document in the wallet
-            reveal_document: JSONLD frame describing what data is to be disclosed.
+            request:
         Returns:
             The JSONLD proof
         """
-        document_json = json.dumps(document) if document else None
-        return json.loads(
-            (
-                await self.client.create_proof(
-                    reveal_document_json=json.dumps(reveal_document),
-                    item_id=item_id,
-                    document_json=document_json,
-                )
-            ).proof_document_json
-        )
+        return await self.client.create_proof(create_proof_request=request)
 
-    async def verify_proof(self, *, proof_document: dict) -> bool:
+    async def verify_proof(self, *, request: VerifyProofRequest) -> VerifyProofResponse:
         """
         [Verify a proof](/reference/services/wallet-service/#verify-proof)
         Args:
-            proof_document: Document to verify
+            request:
         Returns:
             `True` if verified, `False` if not verified
         """
-        return (
-            await self.client.verify_proof(
-                proof_document_json=json.dumps(proof_document)
-            )
-        ).is_valid
+        return await self.client.verify_proof(verify_proof_request=request)
 
-    async def send(
-        self,
-        *,
-        document: dict,
-        email: str = None,
-        did_uri: str = None,
-        didcomm_invitation_json: str = None,
-    ) -> None:
+    async def send(self, *, request: SendRequest) -> None:
         """
         [Send the provided document to the given email](/reference/services/wallet-service/#sending-documents-using-email-as-identifier)
-        Args:
-            didcomm_invitation_json:
-            did_uri:
-            document: Document to send
-            email: Email to which the document is sent
         """
-        response = await self.client.send(
-            email=email,
-            document_json=json.dumps(document),
-            did_uri=did_uri,
-            didcomm_invitation_json=didcomm_invitation_json,
-        )
+        response = await self.client.send(send_request=request)
         ResponseStatusException.assert_success(response.status, "sending credential")

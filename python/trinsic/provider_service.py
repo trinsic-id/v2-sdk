@@ -5,6 +5,9 @@ from trinsic.proto.services.provider.v1 import (
     InviteResponse,
     InvitationStatusResponse,
     CreateEcosystemResponse,
+    InviteRequest,
+    InvitationStatusRequest,
+    CreateEcosystemRequest,
 )
 from trinsic.service_base import ServiceBase
 
@@ -26,11 +29,7 @@ class ProviderService(ServiceBase):
         super().__init__(server_config)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
 
-    async def invite_participant(
-        self,
-        participant: ParticipantType = None,
-        description: str = None,
-    ) -> InviteResponse:
+    async def invite_participant(self, *, request: InviteRequest) -> InviteResponse:
         """
         [Invite a new participant to the provider ecosystem](/reference/services/provider-service/#invite-participants)
         Args:
@@ -43,10 +42,7 @@ class ProviderService(ServiceBase):
             [InviteResponse](/reference/proto/#inviteresponse)
         """
 
-        return await self.client.invite(
-            participant=participant,
-            description=description,
-        )
+        return await self.client.invite(invite_request=request)
 
     # async def accept_invite(
     #     self, invite_id: str = None, code: str = None
@@ -54,7 +50,7 @@ class ProviderService(ServiceBase):
     #     return await self.client.accept_invite(id=invite_id, code=code)
 
     async def invitation_status(
-        self, invitation_id: str = ""
+        self, *, request: InvitationStatusRequest
     ) -> InvitationStatusResponse:
         """
         [Check invitation status](/reference/services/provider-service/#check-invitation-status)
@@ -63,13 +59,17 @@ class ProviderService(ServiceBase):
         Returns:
             [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
         """
-        if not invitation_id or not invitation_id.strip():
+        if (
+            not request
+            or not request.invitation_id
+            or not request.invitation_id.strip()
+        ):
             raise ValueError("Onboarding reference ID must be set.")
 
-        return await self.client.invitation_status(invitation_id=invitation_id)
+        return await self.client.invitation_status(invitation_status_request=request)
 
     async def create_ecosystem(
-        self, name: str = "", description: str = "", uri: str = ""
+        self, *, request: CreateEcosystemRequest = None
     ) -> CreateEcosystemResponse:
         """
         Creates a new ecosystem
@@ -81,6 +81,5 @@ class ProviderService(ServiceBase):
         Returns:
             [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)
         """
-        return await self.client.create_ecosystem(
-            name=name, description=description, uri=uri
-        )
+        request = request or CreateEcosystemRequest()
+        return await self.client.create_ecosystem(create_ecosystem_request=request)
