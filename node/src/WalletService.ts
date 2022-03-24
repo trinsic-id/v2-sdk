@@ -25,10 +25,10 @@ export class WalletService extends ServiceBase {
     }
 
     // must be authorized
-    public search(request: SearchRequest): Promise<SearchResponse> {
+    public search(request: SearchRequest = new SearchRequest()): Promise<SearchResponse> {
         return new Promise(async (resolve, reject) => {
             if (!request.getQuery())
-                request = new SearchRequest(request).setQuery("SELECT c.id, c.type, c.data FROM c");
+                request = request.setQuery("SELECT c.id, c.type, c.data FROM c");
             this.walletClient.search(
                 request,
                 await this.getMetadata(request),
