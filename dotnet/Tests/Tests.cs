@@ -329,7 +329,7 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
-        var insertItemResponse = (await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson}));
+        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
         var itemId = insertItemResponse.ItemId;
 
         var frame = new JObject {
