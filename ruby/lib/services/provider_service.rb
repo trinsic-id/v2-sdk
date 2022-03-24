@@ -1,3 +1,5 @@
+require 'services/service_base'
+
 module Trinsic
   class ProviderService < ServiceBase
 

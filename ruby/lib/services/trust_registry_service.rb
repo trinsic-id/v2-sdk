@@ -1,3 +1,6 @@
+require 'services/service_base'
+require 'json'
+
 module Trinsic
   class TrustRegistryService < ServiceBase
 
