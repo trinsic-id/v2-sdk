@@ -1,7 +1,6 @@
 import ServiceBase from "./ServiceBase";
 import {
     AccountClient,
-    AccountDetails,
     AccountProfile,
     ConfirmationMethod,
     InfoRequest,
@@ -13,7 +12,6 @@ import {
     RevokeDeviceResponse,
     ServiceOptions,
     SignInRequest,
-    SignInResponse,
     TokenProtection,
 } from "./proto";
 import { BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest } from "@trinsic/okapi";

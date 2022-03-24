@@ -2,6 +2,7 @@ import asyncio
 import uuid
 
 from trinsic.account_service import AccountService
+from trinsic.proto.services.provider.v1 import CreateEcosystemRequest
 from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
 
@@ -12,8 +13,9 @@ async def ecosystem_demo():
     provider_service = ProviderService(server_config=trinsic_config(account))
 
     actual_create = await provider_service.create_ecosystem(
-        description="My ecosystem",
-        uri="https://example.com",
+        request=CreateEcosystemRequest(
+            description="My ecosystem", uri="https://example.com"
+        )
     )
     assert actual_create.ecosystem is not None
     assert actual_create.ecosystem.id is not None

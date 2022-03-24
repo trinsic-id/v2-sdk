@@ -11,13 +11,17 @@ from betterproto.grpc.grpclib_server import ServiceBase
 class ServiceOptions(betterproto.Message):
     """service options"""
 
-    # service endpoint
     server_endpoint: str = betterproto.string_field(1)
-    # service port
+    """service endpoint"""
+
     server_port: int = betterproto.int32_field(2)
-    # indicates if tls is used
+    """service port"""
+
     server_use_tls: bool = betterproto.bool_field(3)
-    # default auth token for oberon security scheme
+    """indicates if tls is used"""
+
     auth_token: str = betterproto.string_field(4)
-    # ecosystem to use with endpoints that require it
+    """default auth token for oberon security scheme"""
+
     default_ecosystem: str = betterproto.string_field(5)
+    """ecosystem to use with endpoints that require it"""

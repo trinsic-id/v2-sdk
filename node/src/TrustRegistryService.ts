@@ -104,9 +104,10 @@ export class TrustRegistryService extends ServiceBase {
         });
     }
 
-    public searchRegistry(query: string = "SELECT * FROM c"): Promise<SearchRegistryResponse> {
+    public searchRegistry(request: SearchRegistryRequest = new SearchRegistryRequest()): Promise<SearchRegistryResponse> {
         return new Promise(async (resolve, reject) => {
-            const request = new SearchRegistryRequest().setQuery(query);
+            if (!request.getQuery())
+                request = request.setQuery("SELECT * FROM c");
             this.client.searchRegistry(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
