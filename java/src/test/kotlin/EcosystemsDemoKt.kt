@@ -15,7 +15,7 @@ suspend fun main() {
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
     val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
-    val account = accountService.signIn(null)
+    val account = accountService.signIn()
     val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
     val response = service.createEcosystem(
         ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName("test-sdk-" + java.util.UUID.randomUUID()).setDescription("My ecosystem")

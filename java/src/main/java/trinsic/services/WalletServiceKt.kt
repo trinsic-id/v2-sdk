@@ -1,7 +1,6 @@
 package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
-import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.sdk.v1.Options
 import trinsic.services.universalwallet.v1.UniversalWalletGrpcKt
@@ -13,15 +12,15 @@ class WalletServiceKt(
     var stub = UniversalWalletGrpcKt.UniversalWalletCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun search(query: String?): SearchResponse {
-        val request = SearchRequest.newBuilder().setQuery(query ?: "SELECT * from c").build()
+    suspend fun search(request: SearchRequest): SearchResponse {
+        var request = request
+        if (request.query.isBlank()) request = SearchRequest.newBuilder(request).setQuery("SELECT c.id, c.type, c.data FROM c").build()
         return withMetadata(stub, request).search(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun insertItem(item: HashMap<*, *>?): String? {
-        val request = InsertItemRequest.newBuilder().setItemJson(TrinsicUtilities.hashmapToJson(item)).build()
-        return withMetadata(stub, request).insertItem(request).itemId
+    suspend fun insertItem(request: InsertItemRequest): InsertItemResponse {
+        return withMetadata(stub, request).insertItem(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

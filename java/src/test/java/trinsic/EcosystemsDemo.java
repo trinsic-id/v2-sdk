@@ -16,7 +16,7 @@ public class EcosystemsDemo {
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var account = accountService.signIn(null).get();
+        var account = accountService.signIn().get();
         var service = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         var response = service.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setDescription("My ecosystem").setUri("https://example.com").build()).get();

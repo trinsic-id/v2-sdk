@@ -16,18 +16,12 @@ class ProviderServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun inviteParticipant(request: InviteRequest): InviteResponse {
-        // Ensure a contact method is set.
         return withMetadata(stub, request).invite(request)
     }
 
-//    @Throws(InvalidProtocolBufferException::class, DidException::class)
-//    suspend fun acceptInvite(request: AcceptInviteRequest): AcceptInviteResponse {
-//        return withMetadata(stub, request).acceptInvite(request)
-//    }
-
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse {
-        require(request.invitationId.isNotEmpty()) { "Onboarding reference ID must be set." }
+        require(request.invitationId.isNotBlank()) { "Onboarding reference ID must be set." }
         return withMetadata(stub, request).invitationStatus(request)
     }
 
@@ -35,10 +29,4 @@ class ProviderServiceKt(
     suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse {
         return stub.createEcosystem(request)
     }
-
-//    @Throws(InvalidProtocolBufferException::class, DidException::class)
-//    suspend fun listEcosystems(request: ListEcosystemsRequest): List<Ecosystem> {
-//        val response = withMetadata(stub, request).listEcosystems(request)
-//        return response.ecosystemList
-//    }
 }

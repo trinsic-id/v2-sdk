@@ -19,7 +19,7 @@ public class TemplatesDemo {
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var account = accountService.signIn(null).get();
+        var account = accountService.signIn().get();
         var templateService = new CredentialTemplateService(TrinsicUtilities.getTrinsicServiceOptions(account));
         var credentialService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(account));
 

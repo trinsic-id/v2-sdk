@@ -2793,32 +2793,32 @@
         </member>
         <member name="M:Trinsic.WalletService.SearchAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
             <summary>
-            Search the wallet for records matching the specified criteria
+                Search the wallet for records matching the specified criteria
             </summary>
             <remarks>
-            See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+                See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
             </remarks>
             <returns></returns>
         </member>
         <member name="M:Trinsic.WalletService.Search(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
             <summary>
-            Search the wallet for records matching the specified criteria
+                Search the wallet for records matching the specified criteria
             </summary>
             <remarks>
-            See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+                See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
             </remarks>
             <returns></returns>
         </member>
         <member name="M:Trinsic.WalletService.InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
-            Insert an item into the personal wallet
+                Insert an item into the personal wallet
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.WalletService.InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest)">
             <summary>
-            Insert an item into the personal wallet
+                Insert an item into the personal wallet
             </summary>
             <param name="request"></param>
             <returns></returns>
