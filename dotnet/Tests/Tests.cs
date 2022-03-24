@@ -110,7 +110,7 @@ public class Tests
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
-        var insertItemResponse = (await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson}));
+        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
         var walletItems = await walletService.SearchAsync(new());
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
