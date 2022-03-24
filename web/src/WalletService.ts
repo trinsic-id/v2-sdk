@@ -21,14 +21,13 @@ export class WalletService extends ServiceBase {
         this.walletClient = new UniversalWalletClient(this.address);
     }
 
-    // must be authorized
-    public search(query: string = "SELECT c.id, c.type, c.data FROM c"): Promise<SearchResponse> {
+    public search(request: SearchRequest): Promise<SearchResponse> {
         return new Promise(async (resolve, reject) => {
-            let searchRequest = new SearchRequest().setQuery(query);
-
+            if (!request.getQuery())
+                request = new SearchRequest(request).setQuery("SELECT c.id, c.type, c.data FROM c");
             this.walletClient.search(
-                searchRequest,
-                await this.getMetadata(searchRequest),
+                request,
+                await this.getMetadata(request),
                 (error, response) => {
                     if (error) {
                         reject(error);
