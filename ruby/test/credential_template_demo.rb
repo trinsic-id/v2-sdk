@@ -6,7 +6,7 @@ require 'json'
 
 def credential_template_demo_run
   account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
-  account = account_service.sign_in(nil)
+  account = account_service.sign_in()
   credential_service = Trinsic::CredentialService.new(Trinsic::trinsic_server(account))
   template_service = Trinsic::CredentialTemplateService.new(Trinsic::trinsic_server(account))
 

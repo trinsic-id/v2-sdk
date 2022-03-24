@@ -4,8 +4,8 @@ require 'json'
 module Trinsic
   class TrustRegistryService < ServiceBase
 
-    def initialize(service_options)
-      super
+    def initialize(service_options = nil)
+      super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, channel_creds)
@@ -14,10 +14,10 @@ module Trinsic
       end
     end
 
-    def register_governance_framework(governance_framework, description)
+    def register_governance_framework(request)
       # TODO - verify uri
-      request = TrustRegistry_V1::AddFrameworkRequest.new(governance_framework: governance_framework,
-                                                          description: description)
+      # request = TrustRegistry_V1::AddFrameworkRequest.new(governance_framework: governance_framework,
+      #                                                     description: description)
       @client.add_framework(request, metadata: metadata(request))
     end
 
@@ -55,10 +55,12 @@ module Trinsic
       response.status
     end
 
-    def search_registry(query = 'SELECT * FROM c')
-      request = TrustRegistry_V1::SearchRegistryRequest.new(query: query)
-      response = @client.search_registry(request, metadata: metadata(request))
-      JSON.parse(response.items_json)
+    def search_registry(request = nil)
+      # request = TrustRegistry_V1::SearchRegistryRequest.new(query: query)
+      request ||= TrustRegistry_V1::SearchRegistryRequest.new
+      request.query = request.query.empty? ? "SELECT * FROM c" : request.query
+      @client.search_registry(request, metadata: metadata(request))
+      # JSON.parse(response.items_json)
     end
 
     def fetch_data(request)

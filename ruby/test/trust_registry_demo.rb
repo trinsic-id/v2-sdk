@@ -25,7 +25,7 @@ def trust_registry_demo_run
   # search registry
   search_result = service.search_registry
   raise "Search result should exist" if search_result.nil?
-  raise "Search result should not be empty" unless search_result.length > 0
+  raise "Search result should not be empty" unless JSON.parse(search_result.items_json).length > 0
 end
 
 trust_registry_demo_run

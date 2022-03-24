@@ -3,8 +3,8 @@ require 'services/service_base'
 module Trinsic
   class CredentialTemplateService < ServiceBase
 
-    def initialize(service_options)
-      super
+    def initialize(service_options = nil)
+      super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
         @client = Template_V1::CredentialTemplates::Stub.new(get_url, channel_creds)

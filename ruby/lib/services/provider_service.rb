@@ -3,7 +3,7 @@ require 'services/service_base'
 module Trinsic
   class ProviderService < ServiceBase
 
-    def initialize(service_options)
+    def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new

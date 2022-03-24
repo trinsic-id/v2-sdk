@@ -22,9 +22,9 @@ def vaccine_demo_run
 
   # SETUP ACTORS
   # Create 3 different profiles for each participant in the scenario
-  allison = account_service.sign_in(nil)
-  clinic = account_service.sign_in(nil)
-  airline = account_service.sign_in(nil)
+  allison = account_service.sign_in
+  clinic = account_service.sign_in
+  airline = account_service.sign_in
 
   # Store profile for later use
   # File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
@@ -42,15 +42,15 @@ def vaccine_demo_run
   text = File.open(self.vaccine_cert_unsigned_path).read
   credential_json = JSON.parse(text)
 
-  credential = credential_service.issue_credential(credential_json)
-
+  issue_result = credential_service.issue_credential(Trinsic::Credentials_V1::IssueRequest.new(document_json: JSON.generate(credential_json)))
+  credential = issue_result.signed_document_json
   puts "Credential: #{credential}"
 
   # STORE CREDENTIAL
   # Alice stores the credential in her cloud wallet.
   wallet_service.profile = allison
   credential_service.profile = allison
-  item_id = wallet_service.insert_item(credential)
+  item_id = wallet_service.insert_item(Trinsic::Wallet_V1::InsertItemRequest.new(item_json: credential))
   puts "item id = #{item_id}"
 
   # SHARE CREDENTIAL
@@ -62,16 +62,16 @@ def vaccine_demo_run
   text2 = File.open(self.vaccine_cert_frame_path).read
   proof_request_json = JSON.parse(text2)
 
-  credential_proof = credential_service.create_proof(:item_id => item_id, :reveal_document => proof_request_json)
-
+  proof_result = credential_service.create_proof(Trinsic::Credentials_V1::CreateProofRequest.new(item_id: item_id, reveal_document_json: JSON.generate(proof_request_json)))
+  credential_proof = proof_result.proof_document_json
   puts "Proof: #{credential_proof}"
 
   # VERIFY CREDENTIAL
   # The airline verifies the credential
   wallet_service.profile = airline
   credential_service.profile = airline
-  valid = credential_service.verify_proof(credential_proof)
-
+  verify_result = credential_service.verify_proof(Trinsic::Credentials_V1::VerifyProofRequest.new(proof_document_json: credential_proof))
+  valid = verify_result.is_valid
   puts "Verification result: #{valid}"
 
   raise "Credential should be valid" unless valid
