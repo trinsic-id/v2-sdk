@@ -10,6 +10,18 @@ from trinsic.proto.services.trustregistry.v1 import (
     RegistrationStatus,
     SearchRegistryResponse,
     FetchDataResponse,
+    AddFrameworkRequest,
+    RemoveFrameworkRequest,
+    RegisterIssuerRequest,
+    UnregisterIssuerRequest,
+    RegisterVerifierRequest,
+    UnregisterVerifierRequest,
+    SearchRegistryRequest,
+    FetchDataRequest,
+    CheckVerifierStatusRequest,
+    CheckVerifierStatusResponse,
+    CheckIssuerStatusResponse,
+    CheckIssuerStatusRequest,
 )
 from trinsic.service_base import ServiceBase, ResponseStatusException
 from trinsic.trinsic_util import convert_to_epoch_seconds
@@ -28,7 +40,7 @@ class TrustRegistryService(ServiceBase):
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
     async def register_governance_framework(
-        self, governance_framework: str, description: str
+        self, *, request: AddFrameworkRequest
     ) -> None:
         """
         [Create a governance framework](/reference/services/trust-registry/#create-a-ecosystem-governance-framework)
@@ -37,39 +49,26 @@ class TrustRegistryService(ServiceBase):
             description:
         """
         governance_url = urllib.parse.urlsplit(
-            governance_framework, allow_fragments=False
+            request.governance_framework.governance_framework_uri, allow_fragments=False
         )
         # Verify complete url
         if governance_url.scheme and governance_url.netloc and governance_url.path:
-
-            response = await self.client.add_framework(
-                governance_framework=GovernanceFramework(
-                    governance_framework_uri=governance_framework,
-                    description=description,
-                )
-            )
+            response = await self.client.add_framework(add_framework_request=request)
             if response.status != response.status.SUCCESS:
                 raise RuntimeError(
                     f"cannot register governance framework: code {response.status}"
                 )
         else:
-            raise ValueError(f"Invalid URI string={governance_framework}")
+            raise ValueError(
+                f"Invalid URI string={request.governance_framework.governance_framework_uri}"
+            )
 
     async def remove_governance_framework(
-        self, governance_framework: GovernanceFramework = None
+        self, *, request: RemoveFrameworkRequest
     ) -> RemoveFrameworkResponse:
-        return await self.client.remove_framework(
-            governance_framework=governance_framework
-        )
+        return await self.client.remove_framework(remove_framework_request=request)
 
-    async def register_issuer(
-        self,
-        issuer_did: str,
-        credential_type: str,
-        governance_framework: str,
-        valid_from: datetime.datetime = None,
-        valid_until: datetime.datetime = None,
-    ) -> None:
+    async def register_issuer(self, *, request: RegisterIssuerRequest) -> None:
         """
         [Register the issuer](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
@@ -81,30 +80,12 @@ class TrustRegistryService(ServiceBase):
         Raises:
             ValueError: if date ranges are not provided
         """
-        valid_from_epoch, valid_until_epoch = convert_to_epoch_seconds(
-            valid_from, valid_until
-        )
-
-        response = await self.client.register_issuer(
-            did_uri=issuer_did,
-            credential_type_uri=credential_type,
-            governance_framework_uri=governance_framework,
-            valid_from_utc=int(valid_from_epoch),
-            valid_until_utc=int(valid_until_epoch),
-        )
-
+        response = await self.client.register_issuer(register_issuer_request=request)
         ResponseStatusException.assert_success(
             response.status, "cannot register issuer"
         )
 
-    async def unregister_issuer(
-        self,
-        issuer_did: str,
-        credential_type: str,
-        governance_framework: str,
-        valid_from: datetime.datetime = None,
-        valid_until: datetime.datetime = None,
-    ) -> None:
+    async def unregister_issuer(self, *, request: UnregisterIssuerRequest) -> None:
         """
         [Unregister the issuer](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
         Args:
@@ -116,16 +97,14 @@ class TrustRegistryService(ServiceBase):
         Raises:
             NotImplementedError: Unsupported call
         """
-        raise NotImplementedError
+        response = await self.client.unregister_issuer(
+            unregister_issuer_request=request
+        )
+        ResponseStatusException.assert_success(
+            response.status, "cannot unregister issuer"
+        )
 
-    async def register_verifier(
-        self,
-        verifier_did: str,
-        presentation_type: str,
-        governance_framework: str,
-        valid_from: datetime.datetime = None,
-        valid_until: datetime.datetime = None,
-    ) -> None:
+    async def register_verifier(self, *, request: RegisterVerifierRequest) -> None:
         """
         [Register the verifier](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
@@ -135,29 +114,14 @@ class TrustRegistryService(ServiceBase):
             valid_from:
             valid_until:
         """
-        valid_from_epoch, valid_until_epoch = convert_to_epoch_seconds(
-            valid_from, valid_until
-        )
-
         response = await self.client.register_verifier(
-            did_uri=verifier_did,
-            presentation_type_uri=presentation_type,
-            governance_framework_uri=governance_framework,
-            valid_from_utc=int(valid_from_epoch),
-            valid_until_utc=int(valid_until_epoch),
+            register_verifier_request=request
         )
         ResponseStatusException.assert_success(
             response.status, "cannot register verifier"
         )
 
-    async def unregister_verifier(
-        self,
-        verifier_did: str,
-        presentation_type: str,
-        governance_framework: str,
-        valid_from: datetime.datetime,
-        valid_until: datetime.datetime,
-    ) -> None:
+    async def unregister_verifier(self, *, request: UnregisterVerifierRequest) -> None:
         """
         [Unregister the verifier](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
         Args:
@@ -169,11 +133,16 @@ class TrustRegistryService(ServiceBase):
         Raises:
             NotImplementedError: Unsupported call
         """
-        raise NotImplementedError
+        response = await self.client.unregister_verifier(
+            unregister_verifier_request=request
+        )
+        ResponseStatusException.assert_success(
+            response.status, "cannot unregister verifier"
+        )
 
     async def check_issuer_status(
-        self, issuer_did: str, credential_type: str, governance_framework: str
-    ) -> RegistrationStatus:
+        self, *, request: CheckIssuerStatusRequest
+    ) -> CheckIssuerStatusResponse:
         """
         [Check for authoritative status](/reference/services/trust-registry/#check-authoritative-status)
         Args:
@@ -184,17 +153,13 @@ class TrustRegistryService(ServiceBase):
             [RegistrationStatus](/reference/proto/#checkissuerstatusresponse)
         """
 
-        return (
-            await self.client.check_issuer_status(
-                governance_framework_uri=governance_framework,
-                did_uri=issuer_did,
-                credential_type_uri=credential_type,
-            )
-        ).status
+        return await self.client.check_issuer_status(
+            check_issuer_status_request=request
+        )
 
     async def check_verifier_status(
-        self, issuer_did: str, presentation_type: str, governance_framework: str
-    ) -> RegistrationStatus:
+        self, *, request: CheckVerifierStatusRequest
+    ) -> CheckVerifierStatusResponse:
         """
         [Check verifier status](/reference/services/trust-registry/#check-authoritative-status)
         Args
@@ -205,16 +170,12 @@ class TrustRegistryService(ServiceBase):
             [RegistrationStatus](/reference/proto/#registrationstatus)
         """
 
-        return (
-            await self.client.check_verifier_status(
-                governance_framework_uri=governance_framework,
-                did_uri=issuer_did,
-                presentation_type_uri=presentation_type,
-            )
-        ).status
+        return await self.client.check_verifier_status(
+            check_verifier_status_request=request
+        )
 
     async def search_registry(
-        self, query: str = "SELECT * FROM c"
+        self, *, request: SearchRegistryRequest = None
     ) -> SearchRegistryResponse:
         """
         [Search the registry](/reference/services/trust-registry/#search)
@@ -223,14 +184,11 @@ class TrustRegistryService(ServiceBase):
         Returns:
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
-
-        return await self.client.search_registry(
-            query=query,
-        )
+        request = request or SearchRegistryRequest()
+        request.query = request.query or "SELECT * FROM c"
+        return await self.client.search_registry(search_registry_request=request)
 
     async def fetch_data(
-        self, governance_framework_uri: str = None, query: str = None
+        self, *, request: FetchDataRequest
     ) -> AsyncIterator[FetchDataResponse]:
-        return self.client.fetch_data(
-            governance_framework_uri=governance_framework_uri, query=query
-        )
+        return self.client.fetch_data(fetch_data_request=request)

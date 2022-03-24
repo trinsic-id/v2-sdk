@@ -2,11 +2,21 @@
 # sources: services/verifiable-credentials/templates/v1/templates.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class FieldType(betterproto.Enum):
@@ -124,151 +134,134 @@ class TemplateData(betterproto.Message):
 class CredentialTemplatesStub(betterproto.ServiceStub):
     async def create(
         self,
-        *,
-        name: str = "",
-        fields: Dict[str, "TemplateField"] = None,
-        allow_additional_fields: bool = False
+        create_credential_template_request: "CreateCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CreateCredentialTemplateResponse":
-
-        request = CreateCredentialTemplateRequest()
-        request.name = name
-        request.fields = fields
-        request.allow_additional_fields = allow_additional_fields
-
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
-            request,
+            create_credential_template_request,
             CreateCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def get(self, *, id: str = "") -> "GetCredentialTemplateResponse":
-
-        request = GetCredentialTemplateRequest()
-        request.id = id
-
+    async def get(
+        self,
+        get_credential_template_request: "GetCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
-            request,
+            get_credential_template_request,
             GetCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def list(
-        self, *, query: str = "", continuation_token: str = ""
+        self,
+        list_credential_templates_request: "ListCredentialTemplatesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "ListCredentialTemplatesResponse":
-
-        request = ListCredentialTemplatesRequest()
-        request.query = query
-        request.continuation_token = continuation_token
-
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
-            request,
+            list_credential_templates_request,
             ListCredentialTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def search(
-        self, *, query: str = "", continuation_token: str = ""
+        self,
+        search_credential_templates_request: "SearchCredentialTemplatesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "SearchCredentialTemplatesResponse":
-
-        request = SearchCredentialTemplatesRequest()
-        request.query = query
-        request.continuation_token = continuation_token
-
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
-            request,
+            search_credential_templates_request,
             SearchCredentialTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def delete(self, *, id: str = "") -> "DeleteCredentialTemplateResponse":
-
-        request = DeleteCredentialTemplateRequest()
-        request.id = id
-
+    async def delete(
+        self,
+        delete_credential_template_request: "DeleteCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "DeleteCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete",
-            request,
+            delete_credential_template_request,
             DeleteCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 
 class CredentialTemplatesBase(ServiceBase):
     async def create(
-        self,
-        name: str,
-        fields: Dict[str, "TemplateField"],
-        allow_additional_fields: bool,
+        self, create_credential_template_request: "CreateCredentialTemplateRequest"
     ) -> "CreateCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def get(self, id: str) -> "GetCredentialTemplateResponse":
+    async def get(
+        self, get_credential_template_request: "GetCredentialTemplateRequest"
+    ) -> "GetCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def list(
-        self, query: str, continuation_token: str
+        self, list_credential_templates_request: "ListCredentialTemplatesRequest"
     ) -> "ListCredentialTemplatesResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def search(
-        self, query: str, continuation_token: str
+        self, search_credential_templates_request: "SearchCredentialTemplatesRequest"
     ) -> "SearchCredentialTemplatesResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def delete(self, id: str) -> "DeleteCredentialTemplateResponse":
+    async def delete(
+        self, delete_credential_template_request: "DeleteCredentialTemplateRequest"
+    ) -> "DeleteCredentialTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_create(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "name": request.name,
-            "fields": request.fields,
-            "allow_additional_fields": request.allow_additional_fields,
-        }
-
-        response = await self.create(**request_kwargs)
+        response = await self.create(request)
         await stream.send_message(response)
 
     async def __rpc_get(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "id": request.id,
-        }
-
-        response = await self.get(**request_kwargs)
+        response = await self.get(request)
         await stream.send_message(response)
 
     async def __rpc_list(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "query": request.query,
-            "continuation_token": request.continuation_token,
-        }
-
-        response = await self.list(**request_kwargs)
+        response = await self.list(request)
         await stream.send_message(response)
 
     async def __rpc_search(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "query": request.query,
-            "continuation_token": request.continuation_token,
-        }
-
-        response = await self.search(**request_kwargs)
+        response = await self.search(request)
         await stream.send_message(response)
 
     async def __rpc_delete(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "id": request.id,
-        }
-
-        response = await self.delete(**request_kwargs)
+        response = await self.delete(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:

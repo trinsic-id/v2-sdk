@@ -5,6 +5,10 @@ from trinsic.proto.services.universalwallet.v1 import (
     UniversalWalletStub,
     SearchResponse,
     DeleteItemResponse,
+    SearchRequest,
+    InsertItemRequest,
+    InsertItemResponse,
+    DeleteItemRequest,
 )
 from trinsic.service_base import ServiceBase
 
@@ -23,17 +27,19 @@ class WalletService(ServiceBase):
         super().__init__(server_config)
         self.client: UniversalWalletStub = self.stub_with_metadata(UniversalWalletStub)
 
-    async def search(self, query: str = "SELECT * from c") -> SearchResponse:
+    async def search(self, *, request: SearchRequest = None) -> SearchResponse:
         """
         [Search for crdentials](/reference/services/wallet-service/#search-query)
         Args:
-             query: SQL query to use for searching, see the docs for allowed keywords
+             request: Request object
         Returns:
             The search response object information
         """
-        return await self.client.search(query=query)
+        request = request or SearchRequest()
+        request.query = request.query or "SELECT c.id, c.type, c.data FROM c"
+        return await self.client.search(search_request=request)
 
-    async def insert_item(self, *, item: dict, item_type: str = "") -> str:
+    async def insert_item(self, *, request: InsertItemRequest) -> InsertItemResponse:
         """
         [Insert a new item](/reference/services/wallet-service/#insert-record)
         Args:
@@ -42,11 +48,7 @@ class WalletService(ServiceBase):
         Returns:
             `item_id` of the created record.
         """
-        return (
-            await self.client.insert_item(
-                item_json=json.dumps(item), item_type=item_type
-            )
-        ).item_id
+        return await self.client.insert_item(insert_item_request=request)
 
-    async def delete_item(self) -> DeleteItemResponse:
-        return await self.client.delete_item()
+    async def delete_item(self, *, request: DeleteItemRequest) -> DeleteItemResponse:
+        return await self.client.delete_item(delete_item_request=request)

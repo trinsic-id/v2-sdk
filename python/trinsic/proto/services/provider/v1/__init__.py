@@ -2,11 +2,23 @@
 # sources: services/provider/v1/provider.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+from ...account import v1 as __account_v1__
+from ...common import v1 as __common_v1__
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class ParticipantType(betterproto.Enum):
@@ -16,9 +28,16 @@ class ParticipantType(betterproto.Enum):
 
 class InvitationStatusResponseStatus(betterproto.Enum):
     Error = 0
+    """Onboarding resulted in error"""
+
     InvitationSent = 1
+    """The participant has been invited"""
+
     Completed = 2
+    """The participant has been onboarded"""
+
     Expired = 3
+    """The invite has expired"""
 
 
 @dataclass(eq=False, repr=False)
@@ -46,9 +65,11 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 class InviteResponse(betterproto.Message):
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
     invitation_id: str = betterproto.string_field(10)
-    # Invitation Code that must be passed with the account 'SignIn' request to
-    # correlate this user with the invitation sent.
     invitation_code: str = betterproto.string_field(11)
+    """
+    Invitation Code that must be passed with the account 'SignIn' request to
+    correlate this user with the invitation sent.
+    """
 
 
 @dataclass(eq=False, repr=False)
@@ -77,175 +98,156 @@ class Ecosystem(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemRequest(betterproto.Message):
-    # Globally unique name for the Ecosystem. This name will be part of the
-    # ecosystem specific URLs and namespaces. Allowed characters are lowercase
-    # letters, numbers, underscore and hyphen.
     name: str = betterproto.string_field(1)
-    # Ecosystem description. This field is optional.
+    """
+    Globally unique name for the Ecosystem. This name will be part of the
+    ecosystem specific URLs and namespaces. Allowed characters are lowercase
+    letters, numbers, underscore and hyphen.
+    """
+
     description: str = betterproto.string_field(2)
-    # External URL associated with your organization or ecosystem entity. This
-    # field is optional
+    """Ecosystem description. This field is optional."""
+
     uri: str = betterproto.string_field(3)
-    # The account details of the owner of the ecosystem
+    """
+    External URL associated with your organization or ecosystem entity. This
+    field is optional
+    """
+
     details: "__account_v1__.AccountDetails" = betterproto.message_field(4)
+    """The account details of the owner of the ecosystem"""
 
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemResponse(betterproto.Message):
-    # Details of the created ecosystem
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    # Account profile for auth of the owner of the ecosystem
+    """Details of the created ecosystem"""
+
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(2)
-    # Indicates if confirmation of account is required. This settings is
-    # configured globally by the server administrator.
+    """Account profile for auth of the owner of the ecosystem"""
+
     confirmation_method: "__account_v1__.ConfirmationMethod" = betterproto.enum_field(3)
+    """
+    Indicates if confirmation of account is required. This settings is
+    configured globally by the server administrator.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
-    # Optional description to identify this token
     description: str = betterproto.string_field(1)
+    """Optional description to identify this token"""
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenResponse(betterproto.Message):
-    # Account authentication profile that contains unprotected token
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(1)
+    """Account authentication profile that contains unprotected token"""
 
 
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self,
-        *,
-        name: str = "",
-        description: str = "",
-        uri: str = "",
-        details: "__account_v1__.AccountDetails" = None
+        create_ecosystem_request: "CreateEcosystemRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CreateEcosystemResponse":
-
-        request = CreateEcosystemRequest()
-        request.name = name
-        request.description = description
-        request.uri = uri
-        if details is not None:
-            request.details = details
-
         return await self._unary_unary(
             "/services.provider.v1.Provider/CreateEcosystem",
-            request,
+            create_ecosystem_request,
             CreateEcosystemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def generate_token(self, *, description: str = "") -> "GenerateTokenResponse":
-
-        request = GenerateTokenRequest()
-        request.description = description
-
+    async def generate_token(
+        self,
+        generate_token_request: "GenerateTokenRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GenerateTokenResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GenerateToken",
-            request,
+            generate_token_request,
             GenerateTokenResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def invite(
         self,
-        *,
-        participant: "ParticipantType" = 0,
-        description: str = "",
-        details: "__account_v1__.AccountDetails" = None
+        invite_request: "InviteRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "InviteResponse":
-
-        request = InviteRequest()
-        request.participant = participant
-        request.description = description
-        if details is not None:
-            request.details = details
-
         return await self._unary_unary(
-            "/services.provider.v1.Provider/Invite", request, InviteResponse
+            "/services.provider.v1.Provider/Invite",
+            invite_request,
+            InviteResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def invitation_status(
-        self, *, invitation_id: str = ""
+        self,
+        invitation_status_request: "InvitationStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "InvitationStatusResponse":
-
-        request = InvitationStatusRequest()
-        request.invitation_id = invitation_id
-
         return await self._unary_unary(
             "/services.provider.v1.Provider/InvitationStatus",
-            request,
+            invitation_status_request,
             InvitationStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 
 class ProviderBase(ServiceBase):
     async def create_ecosystem(
-        self,
-        name: str,
-        description: str,
-        uri: str,
-        details: "__account_v1__.AccountDetails",
+        self, create_ecosystem_request: "CreateEcosystemRequest"
     ) -> "CreateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def generate_token(self, description: str) -> "GenerateTokenResponse":
+    async def generate_token(
+        self, generate_token_request: "GenerateTokenRequest"
+    ) -> "GenerateTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def invite(
-        self,
-        participant: "ParticipantType",
-        description: str,
-        details: "__account_v1__.AccountDetails",
-    ) -> "InviteResponse":
+    async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def invitation_status(self, invitation_id: str) -> "InvitationStatusResponse":
+    async def invitation_status(
+        self, invitation_status_request: "InvitationStatusRequest"
+    ) -> "InvitationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "name": request.name,
-            "description": request.description,
-            "uri": request.uri,
-            "details": request.details,
-        }
-
-        response = await self.create_ecosystem(**request_kwargs)
+        response = await self.create_ecosystem(request)
         await stream.send_message(response)
 
     async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "description": request.description,
-        }
-
-        response = await self.generate_token(**request_kwargs)
+        response = await self.generate_token(request)
         await stream.send_message(response)
 
     async def __rpc_invite(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "participant": request.participant,
-            "description": request.description,
-            "details": request.details,
-        }
-
-        response = await self.invite(**request_kwargs)
+        response = await self.invite(request)
         await stream.send_message(response)
 
     async def __rpc_invitation_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "invitation_id": request.invitation_id,
-        }
-
-        response = await self.invitation_status(**request_kwargs)
+        response = await self.invitation_status(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -275,7 +277,3 @@ class ProviderBase(ServiceBase):
                 InvitationStatusResponse,
             ),
         }
-
-
-from ...account import v1 as __account_v1__
-from ...common import v1 as __common_v1__
