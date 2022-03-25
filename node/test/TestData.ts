@@ -25,8 +25,5 @@ export function getTestServerOptions(): ServiceOptions {
     const port = process.env.TEST_SERVER_PORT || "443";
     const useTls = (process.env.TEST_SERVER_USE_TLS || "true") != "false";
 
-    return new ServiceOptions()
-        .setServerEndpoint(endpoint)
-        .setServerPort(Number(port))
-        .setServerUseTls(useTls)
+    return ServiceOptions.fromPartial({serverPort: +port, serverEndpoint: endpoint, serverUseTls: useTls});
 }

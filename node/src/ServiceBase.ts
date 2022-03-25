@@ -1,41 +1,41 @@
-import { Channel, ChannelCredentials, Metadata } from "@grpc/grpc-js";
-import { Nonce, ServerConfig, AccountProfile, ServiceOptions } from "./proto/";
-import { Message } from "google-protobuf";
+import { ChannelCredentials, Metadata } from "@grpc/grpc-js";
+import {Nonce, AccountProfile, ServiceOptions} from "./proto";
 import base64url from "base64url";
 import { CreateOberonProofRequest, Oberon, Hashing, Blake3HashRequest } from "@trinsic/okapi";
+import _m0 from "protobufjs/minimal";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
-  channel?: Channel;
   channelCredentials: ChannelCredentials;
   address: string;
 
-  constructor(options: ServiceOptions = new ServiceOptions()) {
-    options.setServerEndpoint(options.getServerEndpoint() || "prod.trinsic.cloud")
-      .setServerPort(options.getServerPort() || 443)
-      .setServerUseTls(options.getServerPort() == 443 ? true : options.getServerUseTls())
-      .setDefaultEcosystem(options.getDefaultEcosystem() || "default");
+  protected constructor(options: ServiceOptions = {serverEndpoint: "prod.trinsic.cloud",
+  defaultEcosystem: "default", serverUseTls: true, serverPort: 443, authToken: ""}) {
+    options.serverEndpoint = (options.serverEndpoint || "prod.trinsic.cloud");
+    options.serverPort = options.serverPort || (options.serverUseTls ? 443 : 5000);
+    options.defaultEcosystem = options.defaultEcosystem || "default";
 
     this.options = options;
 
-    this.address = `${this.options.getServerEndpoint()}:${this.options.getServerPort()}`;
-    this.channelCredentials = this.options.getServerUseTls()
+    this.address = `${this.options.serverEndpoint}:${this.options.serverPort}`;
+    this.channelCredentials = this.options.serverUseTls
       ? ChannelCredentials.createSsl()
       : ChannelCredentials.createInsecure();
   }
 
-  async getMetadata(request: Message): Promise<Metadata> {
-    if (!this.options.getAuthToken()) {
+  async getMetadata(request: any, type: { encode(message: any, writer?: _m0.Writer): _m0.Writer }): Promise<Metadata> {
+    if (!this.options.authToken) {
       throw new Error("auth token must be set");
     }
 
-    var profile = AccountProfile.deserializeBinary(Buffer.from(this.options.getAuthToken(), 'base64url'));
+    const profile = AccountProfile.decode(Buffer.from(this.options.authToken, 'base64url'));
 
-    if (profile.getProtection()?.getEnabled()) {
-      throw new Error("profile is protected; you must use security code to remove the protection first");
+    if (profile.protection?.enabled) {
+      throw new Error("profile is protected; you must use the security code to remove the protection first");
     }
 
-    let requestData = request.serializeBinary();
+    // @ts-ignore
+    let requestData: Uint8Array = type.encode(request).finish(); // ClassType.encode(instanceOfClass)
     let requestHash: Buffer | string = Buffer.from('');
 
     if (requestData.length > 0) {
@@ -45,13 +45,13 @@ export default abstract class ServiceBase {
     }
     const timestamp = Date.now();
 
-    let nonce = new Nonce().setTimestamp(timestamp).setRequestHash(requestHash);
+    let nonce: Nonce = {timestamp: timestamp, requestHash: requestHash }
 
     let proof = await Oberon.createProof(
       new CreateOberonProofRequest()
-        .setNonce(nonce.serializeBinary())
-        .setData(profile.getAuthData())
-        .setToken(profile.getAuthToken())
+        .setNonce(Nonce.encode(nonce).finish())
+        .setData(profile.authData)
+        .setToken(profile.authToken)
     );
 
     const metadata = new Metadata();
@@ -60,8 +60,8 @@ export default abstract class ServiceBase {
       `Oberon ` +
       `ver=1,` +
       `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
-      `data=${base64url.encode(Buffer.from(profile.getAuthData_asU8()))},` +
-      `nonce=${base64url.encode(Buffer.from(nonce.serializeBinary()))}`
+      `data=${base64url.encode(Buffer.from(profile.authData))},` +
+      `nonce=${base64url.encode(Buffer.from(Nonce.encode(nonce).finish()))}`
     );
 
     return metadata;

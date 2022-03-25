@@ -29,7 +29,7 @@ export class TemplateService extends ServiceBase {
         return new Promise(async (resolve, reject) => {
             this.client.create(
                 request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, CreateCredentialTemplateRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -43,7 +43,7 @@ export class TemplateService extends ServiceBase {
 
     public getCredentialTemplate(request: GetCredentialTemplateRequest): Promise<GetCredentialTemplateResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.get(request, await this.getMetadata(request), (error, response) => {
+            this.client.get(request, await this.getMetadata(request, GetCredentialTemplateRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -55,7 +55,7 @@ export class TemplateService extends ServiceBase {
 
     public searchCredentialTemplate(request: SearchCredentialTemplatesRequest): Promise<SearchCredentialTemplatesResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.search(request, await this.getMetadata(request), (error, response) => {
+            this.client.search(request, await this.getMetadata(request, SearchCredentialTemplatesRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -67,7 +67,7 @@ export class TemplateService extends ServiceBase {
 
     public listCredentialTemplate(request: ListCredentialTemplatesRequest): Promise<ListCredentialTemplatesResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.list(request, await this.getMetadata(request), (error, response) => {
+            this.client.list(request, await this.getMetadata(request, ListCredentialTemplatesRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -79,7 +79,7 @@ export class TemplateService extends ServiceBase {
 
     public deleteCredentialTemplate(request: DeleteCredentialTemplateRequest): Promise<DeleteCredentialTemplateResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.delete(request, await this.getMetadata(request), (error, response) => {
+            this.client.delete(request, await this.getMetadata(request, DeleteCredentialTemplateRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {

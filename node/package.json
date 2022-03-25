@@ -2,15 +2,14 @@
   "name": "@trinsic/trinsic",
   "version": "1.0.0",
   "description": "verifiable credentials",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
-    "build": "npm run build:proto && npm run build:typescript && npm run build:copy",
+    "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
-    "build:copy": "npx copyfiles -u 1 ./src/proto/**/*_pb.* ./lib/",
     "test": "ava --verbose",
-    "build-and-test": "npm run build:typescript && npm run build:copy && npm run test"
+    "build-and-test": "npm run build && npm run test"
   },
   "author": "Trinsic",
   "contributors": [
@@ -25,7 +24,7 @@
   ],
   "license": "ISC",
   "dependencies": {
-    "@grpc/grpc-js": "^1.5.7",
+    "@grpc/grpc-js": "^1.5.9",
     "@trinsic/okapi": "^1.4.0",
     "base64url": "^3.0.1",
     "google-protobuf": "^3.19.4"
@@ -33,14 +32,13 @@
   "devDependencies": {
     "@types/google-protobuf": "^3.15.5",
     "@types/uuid": "^8.3.4",
-    "ava": "^4.0.1",
+    "ava": "^4.1.0",
     "copyfiles": "^2.4.1",
-    "dotenv": "^14.2.0",
-    "grpc_tools_node_protoc_ts": "^5.3.2",
-    "grpc-tools": "^1.11.1",
-    "jest": "^27.4.7",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.5",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "ts-node": "^10.7.0",
+    "ts-proto": "^1.110.0",
+    "typescript": "^4.6.2",
     "uuid": "^8.3.2"
   },
   "ava": {

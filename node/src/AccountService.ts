@@ -5,16 +5,16 @@ import {
     ConfirmationMethod,
     InfoRequest,
     InfoResponse,
-    SignInRequest,
-    TokenProtection,
-    ServiceOptions,
     ListDevicesRequest,
     ListDevicesResponse,
+    ResponseStatus,
     RevokeDeviceRequest,
     RevokeDeviceResponse,
-    ResponseStatus,
+    ServiceOptions,
+    SignInRequest,
+
 } from "./proto";
-import { BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest } from "@trinsic/okapi";
+import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
 
 export class AccountService extends ServiceBase {
     client: AccountClient;
@@ -25,20 +25,20 @@ export class AccountService extends ServiceBase {
         this.client = new AccountClient(this.address, this.channelCredentials);
     }
 
-    public signIn(request: SignInRequest): Promise<string> {
-        request.setEcosystemId(request.getEcosystemId() || this.options.getDefaultEcosystem());
+    public signIn(request: SignInRequest = {ecosystemId: "", details: undefined, invitationCode:""}): Promise<string> {
+        request.ecosystemId = request.ecosystemId || this.options.defaultEcosystem;
 
         return new Promise((resolve, reject) => {
             this.client.signIn(request, (error, response) => {
-                if (error || response.getStatus() != ResponseStatus.SUCCESS) {
+                if (error || response.status != ResponseStatus.SUCCESS) {
                     reject(error);
                 } else {
-                    var authToken = Buffer
-                        .from(response.getProfile()!.serializeBinary())
+                    const authToken = Buffer
+                        .from(AccountProfile.encode(response.profile!).finish())
                         .toString('base64');
 
                     // set the auth token as active for the current service instance
-                    this.options.setAuthToken(authToken);
+                    this.options.authToken = authToken;
 
                     resolve(authToken);
                 }
@@ -47,10 +47,10 @@ export class AccountService extends ServiceBase {
     }
 
     public info(): Promise<InfoResponse> {
-        const request = new InfoRequest();
+        const request: InfoRequest = {};
 
         return new Promise(async (resolve, reject) => {
-            this.client.info(request, await this.getMetadata(request), (error, response) => {
+            this.client.info(request, await this.getMetadata(request, InfoRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -61,22 +61,26 @@ export class AccountService extends ServiceBase {
     }
 
     public async protect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
-        const request = new BlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
+        const request = new BlindOberonTokenRequest().setToken(profile.authToken).setBlindingList([securityCode]);
         const result = await Oberon.blindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+        return {authToken: result.getToken_asU8(),
+        authData: profile.authData,
+        protection: {enabled: true, method: ConfirmationMethod.Other},
+        profileType: profile.profileType};
     }
 
     public async unprotect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
-        const request = new UnBlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
+        const request = new UnBlindOberonTokenRequest().setToken(profile.authToken).setBlindingList([securityCode]);
         const result = await Oberon.unblindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+        return {authToken: result.getToken_asU8(),
+            authData: profile.authData,
+            protection: {enabled: false, method: ConfirmationMethod.None},
+            profileType: profile.profileType};
     }
 
     public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.listDevices(request, await this.getMetadata(request), (error, response) => {
+            this.client.listDevices(request, await this.getMetadata(request, ListDevicesRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {
@@ -88,7 +92,7 @@ export class AccountService extends ServiceBase {
 
     public revokeDevice(request: RevokeDeviceRequest): Promise<RevokeDeviceResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.revokeDevice(request, await this.getMetadata(request), (error, response) => {
+            this.client.revokeDevice(request, await this.getMetadata(request, RevokeDeviceRequest), (error, response) => {
                 if (error) {
                     reject(error);
                 } else {

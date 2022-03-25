@@ -14,9 +14,8 @@ import {
     CreateProofResponse,
     IssueFromTemplateResponse,
     VerifyProofResponse,
-    IssueResponse
+    IssueResponse, VerifiableCredentialClient
 } from "./proto";
-import { VerifiableCredentialClient } from "./proto/services/verifiable-credentials/v1/verifiable-credentials_grpc_pb";
 
 
 export class CredentialService extends ServiceBase {
@@ -31,7 +30,7 @@ export class CredentialService extends ServiceBase {
     public issueCredential(request: IssueRequest): Promise<IssueResponse> {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.issue(request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, IssueRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -45,7 +44,7 @@ export class CredentialService extends ServiceBase {
     public issueFromTemplate(request: IssueFromTemplateRequest): Promise<IssueFromTemplateResponse> {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.issueFromTemplate(request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, IssueFromTemplateRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -60,7 +59,7 @@ export class CredentialService extends ServiceBase {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.createProof(
                 request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, CreateProofRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -76,7 +75,7 @@ export class CredentialService extends ServiceBase {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.verifyProof(
                 request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, VerifyProofRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -91,7 +90,7 @@ export class CredentialService extends ServiceBase {
     public checkStatus(request: CheckStatusRequest): Promise<CheckStatusResponse> {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.checkStatus(request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, CheckStatusRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -105,7 +104,7 @@ export class CredentialService extends ServiceBase {
     public updateStatus(request: UpdateStatusRequest): Promise<UpdateStatusResponse> {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.updateStatus(request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, UpdateStatusRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);
@@ -119,7 +118,7 @@ export class CredentialService extends ServiceBase {
     public send(request: SendRequest): Promise<SendResponse> {
         return new Promise(async (resolve, reject) => {
             this.credentialClient.send(request,
-                await this.getMetadata(request),
+                await this.getMetadata(request, SendRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);

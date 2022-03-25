@@ -14,12 +14,12 @@ async function vaccineDemo() {
 
     // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    const allison = await accountService.signIn(new SignInRequest());
-    const clinic = await accountService.signIn(new SignInRequest());
-    const airline = await accountService.signIn(new SignInRequest());
+    const allison = await accountService.signIn();
+    const clinic = await accountService.signIn();
+    const airline = await accountService.signIn();
     // }
 
-    accountService.options.setAuthToken(clinic);
+    accountService.options.authToken = (clinic);
     const info = await accountService.info();
 
     // createService() {
@@ -30,33 +30,28 @@ async function vaccineDemo() {
     // issueCredential() {
     // Sign a credential as the clinic and send it to Allison
     const credentialJson = getVaccineCertUnsignedJSON()
-    const credential = await credentialService.issueCredential(new IssueRequest()
-        .setDocumentJson(JSON.stringify(credentialJson)));
+    const credential = await credentialService.issueCredential({documentJson: JSON.stringify(credentialJson)});
     // }
 
     // storeCredential() {
     // Alice stores the credential in her cloud wallet.
-    accountService.options.setAuthToken(allison);
-    const itemId = await walletService.insertItem(new InsertItemRequest()
-        .setItemJson(credential.getSignedDocumentJson()));
+    accountService.options.authToken = (allison);
+    const insertResult = await walletService.insertItem(InsertItemRequest.fromPartial({itemJson: credential.signedDocumentJson}));
     // }
 
     // shareCredential() {
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
-    credentialService.options.setAuthToken(allison);
+    credentialService.options.authToken = (allison);
     const proofRequestJson = getVaccineCertFrameJSON();
-    const proof = await credentialService.createProof(new CreateProofRequest()
-        .setItemId(itemId.getItemId())
-        .setRevealDocumentJson(JSON.stringify(proofRequestJson)));
+    const proof = await credentialService.createProof({itemId: insertResult.itemId, revealDocumentJson: JSON.stringify(proofRequestJson), documentJson: undefined});
     // }
 
     // verifyCredential() {
     // The airline verifies the credential
-    credentialService.options.setAuthToken(airline);
-    const verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
-        .setProofDocumentJson(proof.getProofDocumentJson()));
+    credentialService.options.authToken = (airline);
+    const verifyResponse = await credentialService.verifyProof({proofDocumentJson: proof.proofDocumentJson});
     // }
     
     return verifyResponse
@@ -64,6 +59,6 @@ async function vaccineDemo() {
 
 test("Demo: vaccination demo - credential issuance, storing, and verification", async (t) => {
     let response = await vaccineDemo();
-    t.true(response.getIsValid())
+    t.true(response.isValid)
     t.pass();
 });

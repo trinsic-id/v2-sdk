@@ -1,15 +1,15 @@
-export * from "./sdk/options/v1/options_pb";
-export * from "./services/common/v1/common_pb";
-export * from "./services/common/v1/common_grpc_pb";
-export * from "./services/account/v1/account_pb";
-export * from "./services/account/v1/account_grpc_pb";
-export * from "./services/verifiable-credentials/v1/verifiable-credentials_pb";
-export * from "./services/verifiable-credentials/v1/verifiable-credentials_grpc_pb";
-export * from "./services/verifiable-credentials/templates/v1/templates_pb";
-export * from "./services/verifiable-credentials/templates/v1/templates_grpc_pb";
-export * from "./services/provider/v1/provider_pb";
-export * from "./services/provider/v1/provider_grpc_pb";
-export * from "./services/universal-wallet/v1/universal-wallet_pb";
-export * from "./services/universal-wallet/v1/universal-wallet_grpc_pb";
-export * from "./services/trust-registry/v1/trust-registry_pb";
-export * from "./services/trust-registry/v1/trust-registry_grpc_pb";
+export * from "./services/account/v1/account"
+// @ts-ignore
+export * from "./services/provider/v1/provider"
+// @ts-ignore
+export * from "./services/trust-registry/v1/trust-registry"
+// @ts-ignore
+export * from "./services/universal-wallet/v1/universal-wallet"
+// @ts-ignore
+export * from "./services/verifiable-credentials/v1/verifiable-credentials"
+// @ts-ignore
+export * from "./services/verifiable-credentials/templates/v1/templates"
+// @ts-ignore
+export * from "./services/common/v1/common"
+// @ts-ignore
+export * from "./sdk/options/v1/options"
