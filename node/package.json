@@ -2,8 +2,8 @@
   "name": "@trinsic/trinsic",
   "version": "1.0.0",
   "description": "verifiable credentials",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",
