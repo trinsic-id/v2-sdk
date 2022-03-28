@@ -1,6 +1,6 @@
 import test from "ava"
-import { AccountService, CreateEcosystemRequest, ProviderService, AccountProfile, SignInRequest } from "../src";
-import { getTestServerOptions } from "./TestData";
+import {AccountService, CreateEcosystemRequest, ProviderService, SignInRequest} from "../src";
+import {getTestServerOptions} from "./TestData";
 
 require("dotenv").config();
 
