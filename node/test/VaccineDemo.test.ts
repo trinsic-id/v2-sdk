@@ -1,4 +1,4 @@
-import { AccountService, CredentialService, InsertItemRequest, WalletService } from "../src";
+import { AccountService, CredentialService, InsertItemRequest, WalletService } from "@trinsic/trinsic";
 import { getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON } from "./TestData";
 
 require("dotenv").config();
@@ -58,4 +58,4 @@ async function vaccineDemo() {
 test("Demo: vaccination demo - credential issuance, storing, and verification", async () => {
     let response = await vaccineDemo();
     expect(response.isValid).toBeTruthy();
-});
+}, 20000);

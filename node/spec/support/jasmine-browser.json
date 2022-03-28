@@ -1,7 +1,7 @@
 {
   "srcDir": "test",
   "srcFiles": [
-    "build/**/*.js"
+    "web/*.ts"
   ],
   "specDir": "test",
   "specFiles": [

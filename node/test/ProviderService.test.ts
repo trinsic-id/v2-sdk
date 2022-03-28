@@ -1,4 +1,4 @@
-import { AccountService, ProviderService} from "../src";
+import { AccountService, ProviderService} from "@trinsic/trinsic";
 import { getTestServerOptions } from "./TestData";
 
 require("dotenv").config();

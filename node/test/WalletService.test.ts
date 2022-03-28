@@ -7,9 +7,8 @@ import {
   TemplateField,
   TemplateService,
   WalletService
-} from "../src";
+} from "@trinsic/trinsic";
 import {getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
-import exp from "constants";
 
 
 require("dotenv").config();

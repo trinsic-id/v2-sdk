@@ -11,11 +11,11 @@ import {
     TemplateField,
     TemplateService,
     WalletService,
-} from "../../src";
+} from "@trinsic/trinsic";
 
 let providerService: ProviderService;
 let accountService: AccountService;
-let walletService: WalletService;
+let walletServiceTest: WalletService;
 let credentialService: CredentialService;
 let templateService: TemplateService;
 
@@ -30,7 +30,7 @@ describe("wallet service tests", () => {
         accountService = new AccountService(options);
         options.authToken = await accountService.signIn();
 
-        walletService = new WalletService(options);
+        walletServiceTest = new WalletService(options);
         credentialService = new CredentialService(options);
         templateService = new TemplateService(options);
     });
@@ -56,11 +56,11 @@ describe("wallet service tests", () => {
         let issueResponse = await credentialService.issueCredential({documentJson: JSON.stringify(unsignedDocument)});
         expect(issueResponse).not.toBeNull();
 
-        let insertResponse = await walletService.insertItem(InsertItemRequest.fromPartial({itemJson: issueResponse.signedDocumentJson}));
+        let insertResponse = await walletServiceTest.insertItem(InsertItemRequest.fromPartial({itemJson: issueResponse.signedDocumentJson}));
         expect(insertResponse).not.toBeNull();
         expect(insertResponse.itemId).not.toEqual("");
 
-        let items = await walletService.search();
+        let items = await walletServiceTest.search();
         expect(items).not.toBeNull();
         expect(items.items.length).toBeGreaterThan(0);
 

@@ -1,3 +1,4 @@
+// @ts-ignore
 import {
     AccountService,
     CreateProofRequest,
@@ -5,7 +6,7 @@ import {
     InsertItemRequest,
     ServiceOptions,
     WalletService
-} from '../../src';
+} from '@trinsic/trinsic';  // This is set in jest.config.js
 // @ts-ignore
 import vaccineCertUnsignedPath from '../data/vaccination-certificate-unsigned.json'
 // @ts-ignore

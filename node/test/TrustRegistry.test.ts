@@ -7,7 +7,7 @@ import {
     RegisterVerifierRequest,
     ResponseStatus,
     TrustRegistryService,
-} from "../src"
+} from "@trinsic/trinsic"
 import {v4 as uuid} from "uuid";
 import {getTestServerOptions} from "./TestData";
 
