@@ -21,7 +21,7 @@ foreach ($Item in Get-ChildItem -Path $PROTO_DIR -Include *.proto -Recurse)
     $File = $Item.FullName
 
     # If you want to run in the same powershell window, use this:
-    &"$GRPC_TOOLS_NODE_PROTOC" --plugin=protoc-gen-ts_proto="$PROTOC_GEN_TS_PATH" --ts_proto_out=$OUTPUT_DIR --ts_proto_opt=outputServices=grpc-js,esModuleInterop=true,useOptionals=messages -I $PROTO_DIR $File
+    &"$GRPC_TOOLS_NODE_PROTOC" --plugin=protoc-gen-ts_proto="$PROTOC_GEN_TS_PATH" --ts_proto_out=$OUTPUT_DIR --ts_proto_opt=outputServices=grpc-js,outputClientImpl=grpc-web,esModuleInterop=true,useOptionals=messages -I $PROTO_DIR $File
 
     # JavaScript code generating
     #    &"$GRPC_TOOLS_NODE_PROTOC" --js_out=import_style=commonjs,binary:$OUTPUT_DIR --grpc_out=grpc_js:$OUTPUT_DIR -I $PROTO_DIR $File

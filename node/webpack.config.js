@@ -36,12 +36,24 @@ module.exports = {
     alias: {
       "@trinsic/trinsic": path.resolve(__dirname, 'src')
     },
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    fallback: {
+      "path": false,
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "zlib": false,
+      "os": false,
+      "http2": false,
+      "stream": false,
+      "http": false,
+      "dns": false,
+    }
   },
   output: {
     path: path.resolve(__dirname, "./test/build"),
     filename: "[name].bundle.js",
-    libraryTarget: "amd"
+    // libraryTarget: "amd"
   },
   experiments: {
     asyncWebAssembly: true,

@@ -75,6 +75,8 @@ async function vaccineDemo() {
     console.log(`Verification result=${verifyResponse.isValid}`);
     if (!verifyResponse.isValid)
         throw new Error("Verification should be true!")
+
+    await new Promise(resolve => setTimeout(resolve, 250)); // 0.25 sec - need an await after the last console.log
 }
 
 describe('Demo: vaccination demo - credential issuance, storing, and verification', () => {
