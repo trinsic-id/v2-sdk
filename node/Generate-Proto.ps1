@@ -5,13 +5,15 @@ param($OutDir = './src/proto')
 if ($IsWindows)
 {
     $PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts.cmd"
-    $GRPC_TOOLS_NODE_PROTOC = Resolve-Path "./node_modules/.bin/grpc_tools_node_protoc.cmd"
 }
 else
 {
     $PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts"
-    $GRPC_TOOLS_NODE_PROTOC = Resolve-Path "./node_modules/.bin/grpc_tools_node_protoc"
 }
+# For mac, `brew install protobuf`
+# for windows, download and install to PATH
+# for linux, `apt-get install protobuf`
+$GRPC_TOOLS_NODE_PROTOC = "protoc"
 $OUTPUT_DIR = $OutDir
 $PROTO_DIR = Resolve-Path "../proto"
 

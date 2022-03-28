@@ -1,7 +1,16 @@
 import test from "ava";
 
-import { AccountService, CreateProofRequest, CredentialService, InsertItemRequest, IssueRequest, SignInRequest, VerifyProofRequest, WalletService } from "../src";
-import { getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON } from "./TestData";
+import {
+    AccountService,
+    CreateProofRequest,
+    CredentialService,
+    InsertItemRequest,
+    IssueRequest,
+    SignInRequest,
+    VerifyProofRequest,
+    WalletService
+} from "../src";
+import {getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
 
 require("dotenv").config();
 
@@ -58,7 +67,7 @@ async function vaccineDemo() {
     const verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
         .setProofDocumentJson(proof.getProofDocumentJson()));
     // }
-    
+
     return verifyResponse
 }
 

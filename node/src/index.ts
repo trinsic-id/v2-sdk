@@ -5,7 +5,7 @@ import { TemplateService } from './TemplateService';
 import { AccountService } from './AccountService';
 import { CredentialService } from './CredentialService';
 
-export * from "./proto/index";
+export * from "./proto";
 
 export {
     WalletService,

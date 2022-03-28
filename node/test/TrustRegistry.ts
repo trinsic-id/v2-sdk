@@ -1,19 +1,19 @@
 import test from "ava";
 import {
-    TrustRegistryService,
-    AddFrameworkRequest,
-    GovernanceFramework,
     AccountService,
-    RegisterIssuerRequest,
-    ResponseStatus,
-    RegisterVerifierRequest,
+    AddFrameworkRequest,
     CheckIssuerStatusRequest,
     CheckVerifierStatusRequest,
+    GovernanceFramework,
+    RegisterIssuerRequest,
+    RegisterVerifierRequest,
     RegistrationStatus,
+    ResponseStatus,
     SignInRequest,
+    TrustRegistryService,
 } from "../src"
-import { v4 as uuid } from "uuid";
-import { getTestServerOptions } from "./TestData";
+import {v4 as uuid} from "uuid";
+import {getTestServerOptions} from "./TestData";
 
 require("dotenv").config();
 
