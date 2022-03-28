@@ -4,12 +4,21 @@
   "description": "verifiable credentials",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
-    "build": "npm run build:proto && npm run build:typescript",
+    "build": "npm run build:proto && npm run build:typescript && npm run build:web",
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
-    "test": "ava --verbose",
-    "build-and-test": "npm run build && npm run test"
+    "build:web": "npx webpack build",
+    "test": "npm run test:node && npm run test:web",
+    "test:node": "jest",
+    "test:web": "npm run test:jasmine",
+    "test:jasmine": "npx jasmine-browser-runner runSpecs",
+    "test:debug": "npx jasmine-browser-runner serve",
+    "build-and-test:node": "npm run build:typescript && npm run test:node",
+    "build-and-test:web": "npm run build:typescript && npm run build:web && npm run test:web"
   },
   "author": "Trinsic",
   "contributors": [
@@ -20,37 +29,47 @@
     {
       "name": "Tomislav Markovski",
       "email": "tmarkovski@gmail.com"
+    },
+    {
+      "name": "Scott Phillips",
+      "email": "polygonguru@gmail.com"
     }
   ],
   "license": "ISC",
   "dependencies": {
-    "@grpc/grpc-js": "^1.5.9",
+    "@grpc/grpc-js": "^1.5.10",
     "@trinsic/okapi": "^1.4.0",
     "base64url": "^3.0.1",
-    "google-protobuf": "^3.19.4"
+    "protobufjs": "^6.11.2",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
-    "@types/google-protobuf": "^3.15.5",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
     "@types/uuid": "^8.3.4",
-    "ava": "^4.1.0",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "chromedriver": "^99.0.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
+    "geckodriver": "^3.0.1",
+    "jasmine-browser-runner": "^1.0.0",
+    "jasmine-core": "^4.0.0",
     "jest": "^27.5.1",
+    "karma": "^6.3.17",
+    "karma-typescript": "^5.5.3",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.1",
+    "karma-jasmine": "^4.0.1",
+    "karma-safari-launcher": "^1.0.0",
+    "ts-jest": "^27.1.4",
+    "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",
     "ts-proto": "^1.110.0",
-    "typescript": "^4.6.2",
-    "uuid": "^8.3.2"
-  },
-  "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "files": [
-      "./test/**/*",
-      "!./test/TestData.ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
+    "typescript": "^4.6.3",
+    "uuid": "^8.3.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }

@@ -1,6 +1,4 @@
-import test from "ava";
-
-import { AccountService, CreateProofRequest, CredentialService, InsertItemRequest, IssueRequest, SignInRequest, VerifyProofRequest, WalletService } from "../src";
+import { AccountService, CredentialService, InsertItemRequest, WalletService } from "../src";
 import { getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON } from "./TestData";
 
 require("dotenv").config();
@@ -57,8 +55,7 @@ async function vaccineDemo() {
     return verifyResponse
 }
 
-test("Demo: vaccination demo - credential issuance, storing, and verification", async (t) => {
+test("Demo: vaccination demo - credential issuance, storing, and verification", async () => {
     let response = await vaccineDemo();
-    t.true(response.isValid)
-    t.pass();
+    expect(response.isValid).toBeTruthy();
 });

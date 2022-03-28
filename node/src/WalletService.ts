@@ -13,12 +13,12 @@ import {
 } from "./proto";
 
 export class WalletService extends ServiceBase {
-    walletClient: UniversalWalletClient;
+    client: UniversalWalletClient;
 
     constructor(options?: ServiceOptions) {
         super(options);
 
-        this.walletClient = new UniversalWalletClient(
+        this.client = new UniversalWalletClient(
             this.address,
             this.channelCredentials
         );
@@ -29,7 +29,7 @@ export class WalletService extends ServiceBase {
         return new Promise(async (resolve, reject) => {
             if (!request.query)
                 request.query = "SELECT c.id, c.type, c.data FROM c";
-            this.walletClient.search(
+            this.client.search(
                 request,
                 await this.getMetadata(request, SearchRequest),
                 (error, response) => {
@@ -46,7 +46,7 @@ export class WalletService extends ServiceBase {
     // must be authorized
     public async insertItem(request: InsertItemRequest): Promise<InsertItemResponse> {
         return new Promise(async (resolve, reject) => {
-            this.walletClient.insertItem(
+            this.client.insertItem(
                 request,
                 await this.getMetadata(request, InsertItemRequest),
                 (error, response) => {
@@ -63,7 +63,7 @@ export class WalletService extends ServiceBase {
     // must be authorized
     public async getItem(request: GetItemRequest): Promise<GetItemResponse> {
         return new Promise(async (resolve, reject) => {
-            this.walletClient.getItem(
+            this.client.getItem(
                 request,
                 await this.getMetadata(request, GetItemRequest),
                 (error, response) => {
@@ -79,7 +79,7 @@ export class WalletService extends ServiceBase {
 
     public deleteItem(request: DeleteItemRequest): Promise<DeleteItemResponse> {
         return new Promise(async (resolve, reject) => {
-            this.walletClient.deleteItem(request, await this.getMetadata(request, DeleteItemRequest),
+            this.client.deleteItem(request, await this.getMetadata(request, DeleteItemRequest),
                 (error, response) => {
                     if (error) {
                         reject(error);

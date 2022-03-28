@@ -1,0 +1,15 @@
+{
+  "srcDir": "test",
+  "srcFiles": [
+    "build/**/*.js"
+  ],
+  "specDir": "test",
+  "specFiles": [
+    "build/**/*bundle.js"
+  ],
+  "helpers": [
+    "helpers/*.js"
+  ],
+  "random": true,
+  "browser": "headlessChrome"
+}

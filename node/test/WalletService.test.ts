@@ -1,4 +1,3 @@
-import test from "ava";
 import {
   AccountService,
   CreateCredentialTemplateRequest,
@@ -10,36 +9,36 @@ import {
   WalletService
 } from "../src";
 import {getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
+import exp from "constants";
 
 
 require("dotenv").config();
 
 const options = getTestServerOptions();
 
-test.before(async t => {
+beforeAll(async() => {
   let service = new AccountService(options);
   let authToken = await service.signIn();
 
   options.authToken = (authToken);
 });
 
-test("get account info", async (t) => {
+test("get account info", async () => {
   let service = new AccountService(options);
   let info = await service.info();
 
-  t.not(info, null);
+  expect(info).not.toBeNull();
 });
 
-test("create new account", async (t) => {
+test("create new account", async () => {
   let service = new AccountService(options);
   let response = await service.signIn();
 
-  t.not(response, null);
-  t.not(response, "");
-  t.pass();
+  expect(response).not.toBeNull();
+  expect(response).not.toEqual("");
 });
 
-test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
+test("Demo: create wallet, set profile, search records, issue credential", async () => {
   let credentialService = new CredentialService(options);
   let walletService = new WalletService(options);
 
@@ -47,24 +46,24 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
   let insertItemResponse = await walletService.insertItem({itemJson: issueResponse.signedDocumentJson, itemType: ""});
 
-  t.not(insertItemResponse, null);
-  t.not(insertItemResponse.itemId, "");
+  expect(insertItemResponse).not.toBeNull();
+  expect(insertItemResponse.itemId).not.toBe("");
 
   let items = await walletService.search();
 
-  t.not(items, null);
+  expect(items).not.toBeNull();
   // below assertion seems to fail, likely a race condition
   //t.true(items.getItemsList().length > 0);
+  // expect(items.itemsList.length > 0).toBeTruthy();
 
   let proof = await credentialService.createProof(CreateProofRequest.fromPartial({itemId: insertItemResponse.itemId, revealDocumentJson: JSON.stringify(getVaccineCertFrameJSON())}));
 
   let verifyResponse = await credentialService.verifyProof({proofDocumentJson: proof.proofDocumentJson});
 
-  t.true(verifyResponse.isValid);
-  t.pass();
+  expect(verifyResponse.isValid).toBeTruthy();
 });
 
-test("Demo: template management and credential issuance from template", async (t) => {
+test("Demo: template management and credential issuance from template", async () => {
   let credentialService = new CredentialService(options);
   let templateService = new TemplateService(options);
 
@@ -78,10 +77,10 @@ test("Demo: template management and credential issuance from template", async (t
 
   let template = await templateService.createCredentialTemplate(templateRequest);
 
-  t.not(template, null);
-  t.not(template.data, null);
-  t.not(template.data!.id, null);
-  t.not(template.data!.schemaUri, null);
+  expect(template).not.toBeNull();
+  expect(template.data).not.toBeNull();
+  expect(template.data!!.id).not.toBeNull();
+  expect(template.data!!.schemaUri).not.toBeNull();
 
   // issue credential from this template
   let values = JSON.stringify({
@@ -93,11 +92,9 @@ test("Demo: template management and credential issuance from template", async (t
   let issueResponse = await credentialService.issueFromTemplate({templateId: template.data!.id, valuesJson: values});
   let jsonDocument = JSON.parse(issueResponse.documentJson);
 
-  t.not(jsonDocument, null);
-  t.true(jsonDocument.hasOwnProperty("id"));
-  t.true(jsonDocument.hasOwnProperty("credentialSubject"));
-
-  t.pass();
+  expect(jsonDocument).not.toBeNull();
+  expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
+  expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
 });
 
 // test("create wallet with provider invitation", async (t) => {
