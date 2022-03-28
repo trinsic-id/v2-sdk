@@ -16,7 +16,7 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
 === "From source"
     The CLI can also be built from source.
 
-    This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
+    This requires the [Rustup toolchain <small>:material-open-in-new:<small>](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
 
     Once installed, run this command in terminal:
 
