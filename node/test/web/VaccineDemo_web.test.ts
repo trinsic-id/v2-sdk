@@ -77,7 +77,7 @@ async function vaccineDemo() {
         throw new Error("Verification should be true!")
 }
 
-describe('Demo: vaccination demo - credential issuance, storing, and verification', async () => {
+describe('Demo: vaccination demo - credential issuance, storing, and verification', () => {
     it('should run the demo without raising exceptions', async () => {
         expect(async () => {
             await vaccineDemo()

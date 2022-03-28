@@ -14,7 +14,7 @@
     "build:typescript": "tsc",
     "build:web": "npx copyfiles -f ./test/data/*.json ./lib/test/data && npx webpack build",
     "test": "npm run test:node && npm run test:web",
-    "test:node": "jest ./lib",
+    "test:node": "jest ./test",
     "test:jasmine": "npx jasmine-browser-runner runSpecs",
     "test:debug": "npx jasmine-browser-runner serve",
     "build-and-test": "npm run clean && npm run build && npm run test",

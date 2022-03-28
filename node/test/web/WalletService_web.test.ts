@@ -33,6 +33,7 @@ describe("wallet service tests", () => {
         walletServiceTest = new WalletService(options);
         credentialService = new CredentialService(options);
         templateService = new TemplateService(options);
+        providerService = new ProviderService(options);
     });
 
     it("can retrieve account info", async () => {

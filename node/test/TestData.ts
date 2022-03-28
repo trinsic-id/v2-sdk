@@ -1,13 +1,13 @@
 import { resolve } from "path"
 import { readFileSync } from "fs"
-import { ServiceOptions } from "../src";
+import { ServiceOptions } from "@trinsic/trinsic";
 
 export function vaccineCertFramePath(): string {
-    return resolve(__dirname, "..", "..", "..", "devops", "testdata", "vaccination-certificate-frame.jsonld");
+    return resolve(__dirname, "..", "..", "devops", "testdata", "vaccination-certificate-frame.jsonld");
 }
 
 export function vaccineCertUnsignedPath(): string {
-    return resolve(__dirname, "..", "..","..", "devops", "testdata", "vaccination-certificate-unsigned.jsonld");
+    return resolve(__dirname, "..","..", "devops", "testdata", "vaccination-certificate-unsigned.jsonld");
 }
 
 export function getVaccineCertFrameJSON(): any {
