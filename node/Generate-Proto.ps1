@@ -1,21 +1,27 @@
 # Generate protobuf files for JS and TS
-param($OutDir = './src/proto')
+param($OutDir = "$PSScriptRoot/src/proto")
 
 # Windows
 if ($IsWindows)
 {
-    $PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts.cmd"
+    $PROTOC_GEN_TS_PATH = Resolve-Path "$PSScriptRoot/node_modules/.bin/protoc-gen-ts.cmd"
 }
 else
 {
-    $PROTOC_GEN_TS_PATH = Resolve-Path "./node_modules/.bin/protoc-gen-ts"
+    $PROTOC_GEN_TS_PATH = Resolve-Path "$PSScriptRoot/node_modules/.bin/protoc-gen-ts"
 }
 # For mac, `brew install protobuf`
 # for windows, download and install to PATH
 # for linux, `apt-get install protobuf`
 $GRPC_TOOLS_NODE_PROTOC = "protoc"
 $OUTPUT_DIR = $OutDir
-$PROTO_DIR = Resolve-Path "../proto"
+$PROTO_DIR = Resolve-Path "$PSScriptRoot/../proto"
+
+if ((Get-Command "$GRPC_TOOLS_NODE_PROTOC" -ErrorAction SilentlyContinue) -eq $null)
+{
+    Write-Host "Unable to find $GRPC_TOOLS_NODE_PROTOC in your PATH"
+    Return
+}
 
 foreach ($Item in Get-ChildItem -Path $PROTO_DIR -Include *.proto -Recurse)
 {
