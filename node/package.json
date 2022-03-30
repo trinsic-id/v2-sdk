@@ -10,7 +10,7 @@
     "build:typescript": "tsc",
     "build:copy": "npx copyfiles -u 1 ./src/proto/**/*_pb.* ./lib/",
     "test": "ava --verbose",
-    "build-and-test": "npm run build:typescript && npm run build:copy && npm run test"
+    "build-and-test": "npm run build && npm run test"
   },
   "author": "Trinsic",
   "contributors": [
@@ -47,7 +47,7 @@
       "ts"
     ],
     "files": [
-      "./test/**/*",
+      "./test/*.ts",
       "!./test/TestData.ts"
     ],
     "require": [

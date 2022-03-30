@@ -9,7 +9,7 @@ brew install trinsic
 
 ## From source using the Rust toolchain
 
-This requires the [Rustup toolchain :material-open-in-new:](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
+This requires the [Rustup toolchain <small>:material-open-in-new:<small>](https://www.rust-lang.org/tools/install){target=_blank} installed on your system.
 
 Once installed, run this command in terminal:
 

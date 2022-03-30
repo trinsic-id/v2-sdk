@@ -3,7 +3,7 @@ site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
-site_url: https://ecosystems-docs-alpha.trinsic.id
+site_url: https://docs-v2.trinsic.id
 nav:
   - Home: index.md
   - Getting Started: 
@@ -11,12 +11,12 @@ nav:
     - Before You Start: early-adopter.md
     - Try the Walkthrough: walkthroughs/vaccination.md
   - Key Concepts:
+    - Security Overview: learn/security.md
+    - Identity Ecosystems: learn/ecosystems.md
     - Wallets: learn/wallets.md
     - Templates: learn/templates.md
     - Credentials: learn/credentials.md
-    - Ecosystems: learn/ecosystems.md
     - Standards: learn/standards.md
-    - Security: learn/security.md
   - Developer Tools:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
@@ -43,7 +43,7 @@ nav:
     - Ask a Question: support.md
     - Join the Community: https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ
     # - Changelog: changelog.md
-    - Contribute on Github: https://github.com/trinsic-id
+    - Contribute on GitHub: https://github.com/trinsic-id
 theme:
   name: material
   logo: _static/logo-title.svg
@@ -77,7 +77,7 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid-experimental
+          class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true

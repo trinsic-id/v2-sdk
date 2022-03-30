@@ -39,7 +39,6 @@
     "copyfiles": "^2.4.1",
     "dotenv": "^10.0.0",
     "geckodriver": "^2.0.0",
-    "grpc-tools": "1.11.1",
     "jasmine-browser-runner": "^1.0.0",
     "jasmine-core": "^4.0.0",
     "jest": "^27.0.4",
