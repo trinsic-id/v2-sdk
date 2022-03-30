@@ -57,11 +57,12 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     t.not(insertItemResponse, null);
     t.not(insertItemResponse.getItemId(), "");
 
-    let items = await walletService.search();
+    // Delay half a second for race condition fixes?
+    await new Promise(res => setTimeout(res, 500));
 
+    let items = await walletService.search();
     t.not(items, null);
-    // below assertion seems to fail, likely a race condition
-    //t.true(items.getItemsList().length > 0);
+    t.true(items.getItemsList().length > 0);
 
     let proof = await credentialService.createProof(new CreateProofRequest()
         .setItemId(insertItemResponse.getItemId())
