@@ -42,7 +42,7 @@ public class AccountService extends ServiceBase {
         }, Executors.newSingleThreadExecutor());
     }
 
-    public String unprotect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public static String unprotect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
         var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.UnBlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.unBlindToken(request);
@@ -51,7 +51,7 @@ public class AccountService extends ServiceBase {
         return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
     }
 
-    public String protect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public static String protect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
         var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.BlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.blindToken(request);
