@@ -2,7 +2,7 @@ This is the static code generation variant of the Node examples. Code in these e
 ## Installation
 run `pwsh make.ps1`
 it will take all the proto files in ../../proto and generate js files in the ./dist dir
-it will also build the index.ts and put it into the dist
+it will also build the index.d.ts and put it into the dist
 ```sh
 npm install -g grpc-tools
 grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./dist --grpc_out=grpc_js:./dist --proto_path=../../proto ProviderService.proto
