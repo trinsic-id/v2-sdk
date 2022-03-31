@@ -13,7 +13,7 @@ class AccountServiceTest {
     @Test
     public void testProtectUnprotectAccount() throws ExecutionException, InterruptedException, InvalidProtocolBufferException, DidException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var myProfile = accountService.signIn(null).get();
+        var myProfile = accountService.signIn().get();
 
         var code = "1234";
         var myProtectedProfile = accountService.protect(myProfile, code);

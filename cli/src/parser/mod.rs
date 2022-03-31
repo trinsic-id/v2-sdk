@@ -1,12 +1,12 @@
-use crate::services::{config::Error, Service};
+use crate::{error::Error, services::Service};
 use clap::ArgMatches;
 
 pub mod account;
 pub mod config;
-pub mod issuer;
 pub mod provider;
 pub mod template;
 pub mod trustregistry;
+pub mod vc;
 pub mod wallet;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Service<'a>, Error> {
@@ -23,7 +23,7 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Service<'a>, Error> 
                 .expect("Error parsing request"),
         ))
     } else if args.is_present("vc") {
-        Service::VerifiableCredential(issuer::parse(
+        Service::VerifiableCredential(vc::parse(
             &args
                 .subcommand_matches("vc")
                 .expect("Error parsing request"),

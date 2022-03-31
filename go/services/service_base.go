@@ -17,26 +17,23 @@ import (
 // NewServiceBase returns a base service which is the foundation
 // for all the other services
 func NewServiceBase(options *Options) (Service, error) {
-	if options.Channel == nil {
-		conn, err := NewServiceConnection(options.ServiceOptions)
-		if err != nil {
-			return nil, err
-		}
-
-		options.Channel = conn
+	conn, err := NewServiceConnection(options.ServiceOptions)
+	if err != nil {
+		return nil, err
 	}
 
 	return &serviceBase{
 		options:          options,
+		channel:          conn,
 		securityProvider: &OberonSecurityProvider{},
 	}, nil
 }
 
 // Service defines functionality common to all services
 type Service interface {
-	// GetMetadatContext returns a context with the required grpc metadata embedded in it
+	// GetMetadataContext returns a context with the required grpc metadata embedded in it
 	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
-	// BuildMetdata builds the required grpc metadata
+	// BuildMetadata builds the required grpc metadata
 	BuildMetadata(message proto.Message) (metadata.MD, error)
 	// SetToken assigns the given auth token to the service. This token will be used for
 	// make all api calls
@@ -54,11 +51,12 @@ type Service interface {
 
 type serviceBase struct {
 	options          *Options
+	channel          *grpc.ClientConn
 	securityProvider SecurityProvider
 }
 
 func (s *serviceBase) GetChannel() *grpc.ClientConn {
-	return s.options.Channel
+	return s.channel
 }
 
 func (s *serviceBase) SetToken(authtoken string) {

@@ -9,9 +9,9 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
 // pathData() {
@@ -63,11 +63,6 @@ func TestServiceOptions(t *testing.T) {
 func TestVaccineCredentialsDemo(t *testing.T) {
 	assert2 := assert.New(t)
 
-	err := createDefaultEcosystem()
-	if !assert2.Nil(err) {
-		return
-	}
-
 	// Open in background
 	opts, err := NewServiceOptions(WithTestEnv())
 	if !assert2.Nil(err) {
@@ -78,8 +73,6 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-
-	opts.Channel = accountService.GetChannel()
 
 	// if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {
 	// 	t.Fail()
@@ -180,12 +173,12 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -242,26 +235,26 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 }
 
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *grpc.ClientConn, string, error) {
+func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
 	assert2 := assert.New(t)
 	opts, err := NewServiceOptions(WithTestEnv())
 	if !assert2.Nil(err) {
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
 	// Open in background
 	accountService, err := NewAccountService(opts)
 	if !assert2.Nil(err) {
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
 	authtoken, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	if !assert2.Nil(err) {
 		fmt.Println(err)
-		return assert2, nil, "", err
+		return assert2, "", err
 	}
-	return assert2, accountService.GetChannel(), authtoken, nil
+	return assert2, authtoken, nil
 }
 
-func createDefaultEcosystem() error {
+func createRandomEcosystem() error {
 	opts, err := NewServiceOptions(WithTestEnv())
 	if err != nil {
 		return err
@@ -272,17 +265,17 @@ func createDefaultEcosystem() error {
 		return err
 	}
 
-	_, err = ps.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{Name: "default"})
+	_, err = ps.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{Name: "test-sdk-" + uuid.New().String()})
 
 	return err
 }
 func TestEcosystemDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}
@@ -293,7 +286,6 @@ func TestEcosystemDemo(t *testing.T) {
 	}
 
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
-		Name:        "Test-Ecosystem",
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
@@ -314,12 +306,12 @@ func TestEcosystemDemo(t *testing.T) {
 }
 
 func TestTemplatesDemo(t *testing.T) {
-	assert2, channel, authtoken, err := createAccountAndSignIn(t)
+	assert2, authtoken, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken), WithChannel(channel))
+	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
 	if !assert2.Nil(err) {
 		return
 	}

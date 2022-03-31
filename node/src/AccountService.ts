@@ -1,13 +1,11 @@
 import ServiceBase from "./ServiceBase";
 import {
     AccountClient,
-    AccountDetails,
     AccountProfile,
     ConfirmationMethod,
     InfoRequest,
     InfoResponse,
     SignInRequest,
-    SignInResponse,
     TokenProtection,
     ServiceOptions,
     ListDevicesRequest,

@@ -1,6 +1,6 @@
 use clap::ArgMatches;
 
-use crate::services::config::Error;
+use crate::error::Error;
 
 #[derive(Debug, PartialEq)]
 pub enum Command {

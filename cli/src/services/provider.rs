@@ -1,34 +1,37 @@
 use std::io;
 
 use super::super::parser::provider::*;
-use crate::parser;
-use crate::proto::services::account::v1::{AccountDetails, ConfirmationMethod};
-use crate::proto::services::provider::v1::CreateEcosystemRequest;
-use crate::proto::services::provider::v1::{provider_client::ProviderClient, InviteRequest};
-use crate::services::account::unprotect;
-use crate::services::config::*;
-use crate::*;
+use super::Output;
+use crate::{
+    error::Error,
+    grpc_channel, grpc_client, grpc_client_with_auth, parser,
+    proto::services::{
+        account::v1::{AccountDetails, ConfirmationMethod},
+        provider::v1::{provider_client::ProviderClient, CreateEcosystemRequest, InviteRequest},
+    },
+    services::{account::unprotect, config::*},
+    MessageFormatter,
+};
+use base64::URL_SAFE_NO_PAD;
+use colored::Colorize;
+use indexmap::indexmap;
+use prost::Message;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
-        Command::Invite(args) => Ok(invite(args, config)),
+        Command::Invite(args) => invite(args, &config),
         Command::CreateEcosystem(args) => create_ecosystem(args, &config),
         Command::InvitationStatus => todo!(),
     }
 }
 
 #[tokio::main]
-async fn invite(args: &InviteArgs, config: DefaultConfig) {
-    let client = grpc_client_with_auth!(ProviderClient<Channel>, config);
+async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<Output, Error> {
+    let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(InviteRequest {
-        // contact_method: match &args.invitation_method {
-        //     InvitationMethod::Email(email) => Some(ContactMethod::Email(email.to_owned())),
-        //     InvitationMethod::Sms(sms) => Some(ContactMethod::Phone(sms.to_owned())),
-        //     InvitationMethod::None => None,
-        // },
         participant: match args.participant_type {
             parser::provider::ParticipantType::Individual => {
                 crate::proto::services::provider::v1::ParticipantType::Individual as i32
@@ -41,23 +44,20 @@ async fn invite(args: &InviteArgs, config: DefaultConfig) {
             .description
             .map_or(String::default(), |x| x.to_string()),
         details: Some(AccountDetails {
-            name: todo!(),
-            email: todo!(),
-            sms: todo!(),
+            ..Default::default()
         }),
     });
 
-    let response = client
-        .invite(request)
-        .await
-        .expect("Invite failed")
-        .into_inner();
-    use colored::*;
-    println!("Invitation code '{}'", response.invitation_id.cyan().bold());
+    let response = client.invite(request).await?.into_inner();
+
+    Ok(indexmap! {
+        "invitation id".into() => response.invitation_id,
+        "security code".into() => response.invitation_code,
+    })
 }
 
 #[tokio::main]
-async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) -> Result<(), Error> {
+async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
 
     let req = CreateEcosystemRequest {
@@ -78,11 +78,11 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) ->
 
     let response = client.create_ecosystem(request).await?.into_inner();
 
-    let pr = response.profile.unwrap();
-    let protection = pr.protection.clone().unwrap();
+    let acc_profile = response.profile.unwrap();
+    let protection = acc_profile.protection.clone().unwrap();
 
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
-        ConfirmationMethod::None => pr,
+        ConfirmationMethod::None => acc_profile,
         ConfirmationMethod::Email => {
             println!(
                 "{}",
@@ -95,23 +95,28 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &DefaultConfig) ->
             // strips new line characters at the end
             let code = buffer.lines().next().unwrap();
 
-            let mut p = pr.clone();
+            let mut p = acc_profile.clone();
             unprotect(&mut p, code.as_bytes().to_vec());
 
             p
         }
         ConfirmationMethod::Sms => {
             println!("{}", "SMS confirmation is not yet supported.".red());
-            pr
+            acc_profile
         }
-        ConfirmationMethod::ConnectedDevice => pr,
-        ConfirmationMethod::Other => pr,
+        ConfirmationMethod::ConnectedDevice => acc_profile,
+        ConfirmationMethod::Other => acc_profile,
     };
 
-    // println!("Profile: {:#?}", profile);
     let mut new_config = config.clone();
-    let auth_token = new_config.save_profile(profile, &args.alias, true);
-    println!("Auth Token: {:#?}", auth_token.unwrap());
+    new_config.options.auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
 
-    Ok(())
+    new_config.save()?;
+
+    Ok(indexmap! {
+        "ecosystem".into() => response.ecosystem
+            .ok_or(Error::InvalidArgument("expected ecosystem object in response".to_string()))?
+            .to_string_pretty()?,
+        "auth token".into() => new_config.options.auth_token
+    })
 }

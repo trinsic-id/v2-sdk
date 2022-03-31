@@ -1,4 +1,4 @@
-use crate::services::config::Error;
+use crate::error::Error;
 use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
 

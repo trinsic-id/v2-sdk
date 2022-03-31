@@ -1,4 +1,4 @@
-use crate::services::config::Error;
+use crate::error::Error;
 use clap::ArgMatches;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
@@ -45,8 +45,8 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> 
 
 fn issue<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::Issue(IssueArgs {
-        document: args.value_of("document"),
-        out: args.value_of("out"),
+        document: args.value_of("document").map(|x| x.into()),
+        out: args.value_of("out").map(|x| x.into()),
     }))
 }
 
@@ -57,6 +57,7 @@ fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Erro
             .map_or(String::default(), |x| x.to_string()),
         values_json: args.value_of("values-data").map(|x| x.to_string()),
         values_file: args.value_of("values-file").map(|x| x.to_string()),
+        output_file: args.value_of("out").map(|x| x.to_string()),
     }))
 }
 
@@ -79,9 +80,10 @@ fn update_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
 
 fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::CreateProof(CreateProofArgs {
-        reveal_document: args.value_of("reveal-document"),
-        document_id: args.value_of("document-id"),
-        out: args.value_of("out"),
+        reveal_document: args.value_of("reveal-document-file").map(|x| x.into()),
+        document_file: args.value_of("document-file").map(|x| x.into()),
+        item_id: args.value_of("item-id").map(|x| x.into()),
+        out: args.value_of("out").map(|x| x.into()),
     }))
 }
 
@@ -93,18 +95,18 @@ fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
 
 #[derive(Debug, PartialEq)]
 pub(crate) enum Command<'a> {
-    Issue(IssueArgs<'a>),
+    Issue(IssueArgs),
     IssueFromTemplate(IssueFromTemplateArgs),
     GetStatus(GetStatusArgs),
     UpdateStatus(UpdateStatusArgs),
-    CreateProof(CreateProofArgs<'a>),
+    CreateProof(CreateProofArgs),
     VerifyProof(VerifyProofArgs<'a>),
 }
 
 #[derive(Debug, PartialEq)]
-pub struct IssueArgs<'a> {
-    pub document: Option<&'a str>,
-    pub out: Option<&'a str>,
+pub struct IssueArgs {
+    pub document: Option<String>,
+    pub out: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]
@@ -112,6 +114,7 @@ pub struct IssueFromTemplateArgs {
     pub template_id: String,
     pub values_json: Option<String>,
     pub values_file: Option<String>,
+    pub output_file: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]
@@ -126,10 +129,11 @@ pub struct UpdateStatusArgs {
 }
 
 #[derive(Debug, PartialEq)]
-pub struct CreateProofArgs<'a> {
-    pub reveal_document: Option<&'a str>,
-    pub document_id: Option<&'a str>,
-    pub out: Option<&'a str>,
+pub struct CreateProofArgs {
+    pub reveal_document: Option<String>,
+    pub document_file: Option<String>,
+    pub item_id: Option<String>,
+    pub out: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]

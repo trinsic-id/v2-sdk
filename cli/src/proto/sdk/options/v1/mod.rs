@@ -1,5 +1,5 @@
 /// service options
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ServiceOptions {
     /// service endpoint
     #[prost(string, tag = "1")]

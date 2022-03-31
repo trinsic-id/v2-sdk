@@ -1,4 +1,4 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Invite {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
@@ -11,7 +11,7 @@ pub struct Invite {
     #[prost(string, tag = "5")]
     pub expires: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
     #[prost(enumeration = "ParticipantType", tag = "1")]
     pub participant: i32,
@@ -22,10 +22,10 @@ pub struct InviteRequest {
 }
 /// Nested message and enum types in `InviteRequest`.
 pub mod invite_request {
-    #[derive(Clone, PartialEq, ::prost::Message)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
     pub struct DidCommInvitation {}
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
@@ -40,12 +40,12 @@ pub struct InviteResponse {
 /// an individual or organization.
 /// The reference_id passed is the response from the
 /// `Onboard` method call
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusRequest {
     #[prost(string, tag = "1")]
     pub invitation_id: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusResponse {
     #[prost(enumeration = "invitation_status_response::Status", tag = "1")]
     pub status: i32,
@@ -54,7 +54,19 @@ pub struct InvitationStatusResponse {
 }
 /// Nested message and enum types in `InvitationStatusResponse`.
 pub mod invitation_status_response {
-    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(
+        ::serde::Serialize,
+        ::serde::Deserialize,
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration,
+    )]
     #[repr(i32)]
     pub enum Status {
         /// Onboarding resulted in error
@@ -67,7 +79,7 @@ pub mod invitation_status_response {
         Expired = 3,
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Ecosystem {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
@@ -78,7 +90,7 @@ pub struct Ecosystem {
     #[prost(string, tag = "4")]
     pub uri: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
     /// Globally unique name for the Ecosystem. This name will be
     /// part of the ecosystem specific URLs and namespaces.
@@ -97,7 +109,7 @@ pub struct CreateEcosystemRequest {
     #[prost(message, optional, tag = "4")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemResponse {
     /// Details of the created ecosystem
     #[prost(message, optional, tag = "1")]
@@ -113,19 +125,31 @@ pub struct CreateEcosystemResponse {
     )]
     pub confirmation_method: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenRequest {
     /// Optional description to identify this token
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenResponse {
     /// Account authentication profile that contains unprotected token
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ParticipantType {
     Individual = 0,

@@ -4,35 +4,41 @@ pub mod services;
 pub mod utils;
 #[macro_use]
 pub(crate) mod macros;
+pub(crate) mod error;
 
 #[macro_use]
 extern crate clap;
-use crate::services::config::Error;
+use crate::error::Error;
 use clap::{App, AppSettings};
 use colored::Colorize;
 use parser::template;
 use prost::{DecodeError, Message};
-use serde_json::Value;
-use services::config::DefaultConfig;
+use serde::Serialize;
+use services::config::CliConfig;
 
 pub static mut DEBUG: bool = false;
 
-pub trait MessageFormatter {
+pub(crate) trait MessageFormatter {
     fn to_vec(&self) -> Vec<u8>;
     fn from_vec<T>(data: &Vec<u8>) -> Result<T, DecodeError>
     where
         T: Message + Default;
+    fn to_string_pretty(&self) -> Result<String, Error>;
 }
 
 impl<T> MessageFormatter for T
 where
-    T: Message + Default,
+    T: Message + Default + Serialize,
 {
     fn to_vec(&self) -> Vec<u8> {
         let mut data = vec![];
         data.reserve(self.encoded_len());
         self.encode(&mut data).unwrap();
         data
+    }
+
+    fn to_string_pretty(&self) -> Result<String, Error> {
+        Ok(serde_json::to_string_pretty(self)?)
     }
 
     fn from_vec<U>(data: &Vec<u8>) -> Result<U, DecodeError>
@@ -51,28 +57,46 @@ fn main() {
         .subcommand(template::subcommand());
     let matches = app.get_matches();
 
-    let config = DefaultConfig::from(&matches);
-    let service = parser::parse(&matches);
+    let config = CliConfig::from(&matches);
 
-    match service {
+    match parser::parse(&matches) {
         Ok(service) => match services::execute(&service, config) {
-            Ok(_) => {}
-            Err(err) => match err {
-                Error::IOError => println!("{}", format!("io error").red()),
-                Error::SerializationError => {
-                    println!("{}", format!("serialization error").red())
+            Ok(output) => {
+                println!("{}", "ok".bold().green());
+                for (key, value) in output.iter() {
+                    print!("{} {} ", key.bold().yellow(), "→".bold().bright_black());
+                    println!("{}", value);
                 }
-                Error::UnknownCommand => unimplemented!("should not be hit"),
-                Error::APIError { code, message } => {
-                    println!(
+            }
+            Err(err) => {
+                match err {
+                    Error::IOError => println!("{}", format!("io error").red()),
+                    Error::SerializationError => {
+                        println!("{}", format!("serialization error").red())
+                    }
+                    Error::UnknownCommand => unimplemented!("should not be hit"),
+                    Error::APIError { code, message } => {
+                        println!(
+                            "{}: {}: {}",
+                            format!("error").red().bold(),
+                            format!("{}", code.to_lowercase()).bold(),
+                            format!("{}", message.to_lowercase())
+                        );
+                    }
+                    Error::MissingArguments => println!(
+                        "{}: {}",
+                        "error".red().bold(),
+                        "missing command arguments".bold()
+                    ),
+                    Error::InvalidArgument(x) => println!(
                         "{}: {}: {}",
-                        format!("error").red().bold(),
-                        format!("{}", code.to_lowercase()).bold(),
-                        format!("{}", message.to_lowercase())
-                    );
-                }
-                Error::MissingArguments => todo!(),
-            },
+                        "error".red().bold(),
+                        "invalid argument".bold(),
+                        x
+                    ),
+                    Error::ConnectionError => println!("{}", format!("connection error").red()),
+                };
+            }
         },
         Err(err) => {
             println!(
@@ -84,13 +108,8 @@ fn main() {
             println!();
             println!(
                 "{}",
-                format!(
-                    "For more information try {} or {}",
-                    format!("-h").green(),
-                    format!("--help").green()
-                )
-                .italic()
-            )
+                format!("For more information try {}", format!("--help").green()).italic()
+            );
         }
     }
 }
@@ -102,7 +121,7 @@ mod test {
     #[test]
     fn run_custom_command() {
         let yaml = load_yaml!("cli.yaml");
-        let matches = App::from_yaml(yaml)
+        let _matches = App::from_yaml(yaml)
             .get_matches_from_safe(vec![
                 "trinsic",
                 "config",

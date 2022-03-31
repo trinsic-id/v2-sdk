@@ -39,7 +39,6 @@ jobs:
           repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-          run_id: 1903152040  # Last scheduled build before the breaking 1.4.0 release
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:

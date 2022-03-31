@@ -4,6 +4,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
@@ -17,20 +18,22 @@ import java.util.concurrent.Executors;
 public class AccountService extends ServiceBase {
     private final AccountGrpc.AccountFutureStub stub;
 
-    public AccountService() { this(null); }
+    public AccountService() {
+        this(null);
+    }
 
     public AccountService(Options.ServiceOptions options) {
         super(options);
         this.stub = AccountGrpc.newFutureStub(this.getChannel());
     }
 
-    public ListenableFuture<String> signIn(AccountOuterClass.AccountDetails details) {
-        return this.signIn(details, null);
+    public ListenableFuture<String> signIn() {
+        return signIn(AccountOuterClass.SignInRequest.getDefaultInstance());
     }
-    public ListenableFuture<String> signIn(AccountOuterClass.AccountDetails details, String ecosystemId) {
-        if (details == null) details = AccountOuterClass.AccountDetails.newBuilder().build();
-        if (ecosystemId == null || ecosystemId.isBlank()) ecosystemId = this.getOptions().getDefaultEcosystem();
-        var request = AccountOuterClass.SignInRequest.newBuilder().setDetails(details).setEcosystemId(ecosystemId).build();
+
+    public ListenableFuture<String> signIn(@NotNull AccountOuterClass.SignInRequest request) {
+        if (request.getEcosystemId().isBlank())
+            request = AccountOuterClass.SignInRequest.newBuilder(request).setEcosystemId(this.getOptions().getDefaultEcosystem()).build();
         var response = this.stub.signIn(request);
         return Futures.transform(response, input -> {
             var profileBase64 = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
@@ -39,7 +42,7 @@ public class AccountService extends ServiceBase {
         }, Executors.newSingleThreadExecutor());
     }
 
-    public String unprotect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public static String unprotect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
         var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.UnBlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.unBlindToken(request);
@@ -48,7 +51,7 @@ public class AccountService extends ServiceBase {
         return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
     }
 
-    public String protect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public static String protect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
         var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.BlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.blindToken(request);

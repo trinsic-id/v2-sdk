@@ -11,17 +11,15 @@ import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
     public static void main(String[] args) throws IOException, DidException, ExecutionException, InterruptedException {
-        // Make sure you set the TEST_SERVER_ENDPOINT environment variable
         run();
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var account = accountService.signIn(null).get();
+        var account = accountService.signIn().get();
         var service = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
-        var ecosystemName = "test-sdk-" + java.util.UUID.randomUUID();
-        var response = service.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setName(ecosystemName).setDescription("My ecosystem").setUri("https://example.com").build()).get();
+        var response = service.createEcosystem(ProviderOuterClass.CreateEcosystemRequest.newBuilder().setDescription("My ecosystem").setUri("https://example.com").build()).get();
 
         Assertions.assertNotNull(response.getEcosystem());
         Assertions.assertNotNull(response.getEcosystem().getId());

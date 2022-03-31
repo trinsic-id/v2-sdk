@@ -16,10 +16,12 @@ using FluentAssertions;
 using Google.Protobuf;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
+using Trinsic.Services.UniversalWallet.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Trinsic.Services.VerifiableCredentials.V1;
 using FieldType = Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+
 #pragma warning disable CS0618
 
 namespace Tests;
@@ -27,6 +29,16 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
+#if DEBUG
+    const string DefaultEndpoint = "localhost";
+    const int DefaultPort = 5000;
+    const bool DefaultUseTls = false;
+#else
+    private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
+    private const int DefaultPort = 443;
+    private const bool DefaultUseTls = true;
+#endif
+
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServiceOptions _options;
 
@@ -34,9 +46,9 @@ public class Tests
         _testOutputHelper = testOutputHelper;
 
         _options = new() {
-            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? "localhost",
-            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : 5000,
-            ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls 
+            ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
+            ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
+            ServerUseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) ? tls : DefaultUseTls
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
@@ -48,21 +60,18 @@ public class Tests
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
         // createAccountService() {
-        var providerService = new ProviderService(_options);
-        var accountService = new AccountService(_options);
-        var account = await accountService.SignInAsync(new());
-
-        providerService.Options.AuthToken = account;
-        var ecosystem = providerService.CreateEcosystem(new() {Name = $"test-sdk-{Guid.NewGuid():N}"});
-        var ecosystemId = ecosystem.Ecosystem.Id;
+        var providerService = new ProviderService(_options.Clone());
+        var accountService = new AccountService(_options.Clone());
+        var (ecosystem, _) = providerService.CreateEcosystem(new());
+        var ecosystemId = ecosystem.Id;
         // }
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
-        var clinic = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
-        var airline = await accountService.SignInAsync(new SignInRequest {EcosystemId = ecosystemId});
+        var allison = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
+        var clinic = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
+        var airline = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
         // }
 
         accountService.Options.AuthToken = clinic;
@@ -101,8 +110,9 @@ public class Tests
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
-        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
-        var walletItems = await walletService.SearchAsync();
+        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
+        var itemId = insertItemResponse.ItemId;
+        var walletItems = await walletService.SearchAsync(new());
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
         // }
 
@@ -136,17 +146,17 @@ public class Tests
         var valid = await credentialsService.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
         });
-        _testOutputHelper.WriteLine($"Verification result: {valid}");
-        Assert.True(valid);
+        _testOutputHelper.WriteLine($"Verification result: {valid.IsValid}");
+        Assert.True(valid.IsValid);
         // }
     }
 
     [Fact(DisplayName = "Demo: trust registries")]
     public async Task TestTrustRegistry() {
         // setup
-        var accountService = new AccountService(_options);
-        var account = await accountService.SignInAsync(new());
-        var service = new TrustRegistryService(_options.CloneWithAuthToken(account));
+        var providerService = new ProviderService(_options.Clone());
+        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
+        var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
 
         // register issuer
         var register = service.RegisterIssuerAsync(new() {
@@ -177,7 +187,8 @@ public class Tests
             CredentialTypeUri = "https://schema.org/Card"
         });
 
-        issuerStatus.Should().Be(RegistrationStatus.Current);
+        issuerStatus.Should().NotBeNull();
+        issuerStatus.Status.Should().Be(RegistrationStatus.Current);
 
         // check verifier status
         var verifierStatus = await service.CheckVerifierStatusAsync(new() {
@@ -186,10 +197,10 @@ public class Tests
             PresentationTypeUri = "https://schema.org/Card"
         });
 
-        verifierStatus.Should().Be(RegistrationStatus.Current);
+        verifierStatus.Status.Should().Be(RegistrationStatus.Current);
 
         // search registry
-        var searchResult = await service.SearchRegistryAsync();
+        var searchResult = await service.SearchRegistryAsync(new());
 
         searchResult.Should().NotBeNull();
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
@@ -203,15 +214,14 @@ public class Tests
         var service = new ProviderService(_options.CloneWithAuthToken(account));
 
         // test create ecosystem
-        var actualCreate = await service.CreateEcosystemAsync(new() {
+        var (actualCreate, _) = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
-            Name = $"test-sdk-{Guid.NewGuid():N}",
             Uri = "https://example.com"
         });
 
         actualCreate.Should().NotBeNull();
-        actualCreate.Ecosystem.Id.Should().NotBeNull();
-        actualCreate.Ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
+        actualCreate.Id.Should().NotBeNull();
+        actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
     }
 
     [Fact]
@@ -237,16 +247,15 @@ public class Tests
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var accountService = new AccountService(_options);
-        var profile = await accountService.SignInAsync(new());
-        var providerService = new ProviderService(_options.CloneWithAuthToken(profile));
+        var providerService = new ProviderService(_options.Clone());
+        _ = await providerService.CreateEcosystemAsync(new());
 
         var invitationResponse = await providerService.InviteParticipantAsync(new());
 
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
 
-        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new InvitationStatusRequest()));
+        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
@@ -258,7 +267,7 @@ public class Tests
         var response = await myProviderService.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatusAsync(new InvitationStatusRequest {InvitationId = response.InvitationId});
+        var statusResponse = await myProviderService.InvitationStatusAsync(new() {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
@@ -267,14 +276,19 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync("", "invalid uri"));
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new () {
+            GovernanceFramework = new() {
+                Description = "invalid uri",
+                GovernanceFrameworkUri = ""
+            }
+        }));
     }
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]
     public async Task DemoTemplatesWithIssuance() {
-        var accountService = new AccountService(_options);
-        var profile = await accountService.SignInAsync(new());
-        var options = _options.CloneWithAuthToken(profile);
+        var providerService = new ProviderService(_options.Clone());
+        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
+        var options = _options.CloneWithAuthToken(authToken);
 
         var templateService = new TemplateService(options);
         var credentialService = new CredentialsService(options);
@@ -312,12 +326,13 @@ public class Tests
 
         credentialJson.Should().NotBeNull();
 
-        var jsonDocument = JsonDocument.Parse(credentialJson).RootElement.EnumerateObject();
+        var jsonDocument = JsonDocument.Parse(credentialJson.DocumentJson).RootElement.EnumerateObject();
 
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
-        var itemId = await walletService.InsertItemAsync(new() {ItemJson = credentialJson});
+        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
+        var itemId = insertItemResponse.ItemId;
 
         var frame = new JObject {
             {"@context", "https://www.w3.org/2018/credentials/v1"},
@@ -327,13 +342,13 @@ public class Tests
         // Create proof from input document
         {
             var proof = await credentialService.CreateProofAsync(new() {
-                DocumentJson = credentialJson,
+                DocumentJson = credentialJson.DocumentJson,
                 RevealDocumentJson = frame.ToString(Formatting.None)
             });
 
             var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
 
-            valid.Should().BeTrue();
+            valid.IsValid.Should().BeTrue();
         }
 
         // Create proof from item id
@@ -345,8 +360,17 @@ public class Tests
 
             var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
 
-            valid.Should().BeTrue();
+            valid.IsValid.Should().BeTrue();
         }
+    }
+
+    [Fact(DisplayName = "Decode base64 url encoded string")]
+    public void DecodeBase64UrlString() {
+        const string encoded = "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
+
+        var actual = Base64Url.Decode(encoded);
+
+        actual.Should().NotBeEmpty();
     }
 }
 

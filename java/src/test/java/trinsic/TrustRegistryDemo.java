@@ -11,13 +11,12 @@ import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
     public static void main(String[] args) throws IOException, DidException, ExecutionException, InterruptedException {
-        // Make sure you set the TEST_SERVER_ENDPOINT environment variable
         run();
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-        var account = accountService.signIn(null).get();
+        var account = accountService.signIn().get();
         var service = new TrustRegistryService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         final String didUri = "did:example:test";
@@ -34,7 +33,7 @@ public class TrustRegistryDemo {
         var verifierStatus = service.checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build()).get();
         Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, verifierStatus.getStatus());
 
-        var searchResult = service.searchRegistry(null).get();
+        var searchResult = service.searchRegistry().get();
 
         Assertions.assertNotNull(searchResult);
         Assertions.assertNotNull(searchResult.getItemsJson());

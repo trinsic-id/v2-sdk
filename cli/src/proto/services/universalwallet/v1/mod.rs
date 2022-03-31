@@ -1,7 +1,7 @@
 // Search
 
 /// Search request object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRequest {
     #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
@@ -9,7 +9,7 @@ pub struct SearchRequest {
     pub continuation_token: ::prost::alloc::string::String,
 }
 /// Search response object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
     #[prost(string, repeated, tag = "1")]
     pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -23,14 +23,14 @@ pub struct SearchResponse {
 // Get Item
 
 /// Get item request object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetItemRequest {
     /// The item identifier
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
 }
 /// Get item response object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetItemResponse {
     /// The item data represented as stringified JSON
     #[prost(string, tag = "1")]
@@ -42,7 +42,7 @@ pub struct GetItemResponse {
 // Update Item
 
 /// Update item request object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateItemRequest {
     /// The item identifier
     #[prost(string, tag = "1")]
@@ -52,7 +52,7 @@ pub struct UpdateItemRequest {
     pub item_type: ::prost::alloc::string::String,
 }
 /// Update item response object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateItemResponse {
     /// Response status
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
@@ -61,7 +61,7 @@ pub struct UpdateItemResponse {
 // InsertItem
 
 /// Insert item request
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
     /// the document to insert as stringified json
     #[prost(string, tag = "1")]
@@ -71,7 +71,7 @@ pub struct InsertItemRequest {
     pub item_type: ::prost::alloc::string::String,
 }
 /// Insert item response
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
@@ -80,14 +80,14 @@ pub struct InsertItemResponse {
     pub item_id: ::prost::alloc::string::String,
 }
 /// Delete item request
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemRequest {
     /// item identifier of the record to delete
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
 }
 /// Delete item response
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,

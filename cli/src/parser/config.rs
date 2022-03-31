@@ -1,56 +1,54 @@
 use clap::ArgMatches;
 
-use crate::services::config::DefaultConfig;
-
 #[derive(Debug, PartialEq, Default)]
-pub struct Command<'a> {
-    pub server: ServerArgs<'a>,
-    pub profile: ProfileArgs<'a>,
+pub struct ConfigArgs {
+    pub options: SdkOptionsArgs,
+    pub custom: Option<CustomArgs>,
 }
 
 #[derive(Debug, PartialEq, Default)]
-pub struct ServerArgs<'a> {
-    pub endpoint: Option<&'a str>,
+pub struct SdkOptionsArgs {
+    pub endpoint: Option<String>,
     pub port: Option<u16>,
     pub use_tls: Option<bool>,
+    pub auth_token: Option<String>,
+    pub default_ecosystem: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Default)]
-pub struct ProfileArgs<'a> {
-    pub default: Option<&'a str>,
+pub struct CustomArgs {}
+
+#[derive(Debug, PartialEq)]
+pub enum ConfigCommand {
+    Print,
+    Save(ConfigArgs),
 }
 
-pub fn parse<'a>(args: &'a ArgMatches<'_>) -> Command<'a> {
-    let mut command = Command {
+pub fn parse<'a>(args: &'a ArgMatches<'_>) -> ConfigCommand {
+    let mut config_args = ConfigArgs {
         ..Default::default()
     };
 
-    let mut empty = true;
-    if args.is_present("show") {
-        DefaultConfig::init().unwrap().print().unwrap();
-        empty = false;
+    if args.is_present("server-endpoint") {
+        config_args.options.endpoint = args.value_of("server-endpoint").map(|x| x.into());
+    }
+    if args.is_present("server-port") {
+        config_args.options.port = args.value_of("server-port").map(|x| x.parse().unwrap());
+    }
+    if args.is_present("server-use-tls") {
+        config_args.options.use_tls = args.value_of("server-use-tls").map(|x| x.parse().unwrap());
+    }
+    if args.is_present("auth-token") {
+        config_args.options.auth_token = args.value_of("auth-token").map(|x| x.into());
+    }
+    if args.is_present("default-ecosystem") {
+        config_args.options.default_ecosystem =
+            args.value_of("default-ecosystem").map(|x| x.into());
+    }
+
+    if config_args == ConfigArgs::default() {
+        ConfigCommand::Print
     } else {
-        if args.is_present("server-endpoint") {
-            command.server.endpoint = args.value_of("server-endpoint");
-            empty = false;
-        }
-        if args.is_present("server-port") {
-            command.server.port = args.value_of("server-port").map(|x| x.parse().unwrap());
-            empty = false;
-        }
-        if args.is_present("server-use-tls") {
-            command.server.use_tls = args.value_of("server-use-tls").map(|x| x.parse().unwrap());
-            empty = false;
-        }
-        if args.is_present("profile-default") {
-            command.profile.default = args.value_of("profile-default");
-            empty = false;
-        }
+        ConfigCommand::Save(config_args)
     }
-
-    if empty {
-        DefaultConfig::init().unwrap().print().unwrap();
-    }
-
-    command
 }

@@ -1,17 +1,16 @@
-from typing import Optional, Dict
-
-from grpclib.client import Channel
-
 from trinsic.proto.sdk.options.v1 import ServiceOptions
-from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CredentialTemplatesStub,
-    TemplateField,
     CreateCredentialTemplateResponse,
     GetCredentialTemplateResponse,
     ListCredentialTemplatesResponse,
     SearchCredentialTemplatesResponse,
     DeleteCredentialTemplateResponse,
+    CreateCredentialTemplateRequest,
+    GetCredentialTemplateRequest,
+    ListCredentialTemplatesRequest,
+    SearchCredentialTemplatesRequest,
+    DeleteCredentialTemplateRequest,
 )
 from trinsic.service_base import ServiceBase
 
@@ -35,31 +34,27 @@ class TemplateService(ServiceBase):
         )
 
     async def create(
-        self,
-        name: str,
-        fields: Optional[Dict[str, TemplateField]],
-        allow_additional_fields: bool,
+        self, *, request: CreateCredentialTemplateRequest
     ) -> CreateCredentialTemplateResponse:
-        return await self.client.create(
-            name=name, fields=fields, allow_additional_fields=allow_additional_fields
-        )
+        return await self.client.create(create_credential_template_request=request)
 
-    async def get(self, cred_id: str) -> GetCredentialTemplateResponse:
-        return await self.client.get(id=cred_id)
+    async def get(
+        self, *, request: GetCredentialTemplateRequest
+    ) -> GetCredentialTemplateResponse:
+        return await self.client.get(get_credential_template_request=request)
 
     async def list(
-        self, query: str, continuation_token: str
+        self, *, request: ListCredentialTemplatesRequest
     ) -> ListCredentialTemplatesResponse:
-        return await self.client.list(
-            query=query, continuation_token=continuation_token
-        )
+        return await self.client.list(list_credential_templates_request=request)
 
     async def search(
-        self, query: str, continuation_token: str
+        self, *, request: SearchCredentialTemplatesRequest
     ) -> SearchCredentialTemplatesResponse:
-        return await self.client.search(
-            query=query, continuation_token=continuation_token
-        )
+        request.query = request.query or "SELECT * from c"
+        return await self.client.search(search_credential_templates_request=request)
 
-    async def delete(self, cred_id: str) -> DeleteCredentialTemplateResponse:
-        return await self.client.delete(id=cred_id)
+    async def delete(
+        self, *, request: DeleteCredentialTemplateRequest
+    ) -> DeleteCredentialTemplateResponse:
+        return await self.client.delete(delete_credential_template_request=request)

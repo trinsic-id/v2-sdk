@@ -6,7 +6,7 @@ The Trinsic C# / .NET SDK makes it easy to interact with the Trinsic API from yo
     .NET targets for iOS, Android, and Blazor are fully supported using the same package dependencies via .NET 6.
 
 ## Installation in a new project
-Add the required dependencies from [Nuget.org :material-open-in-new:](https://www.nuget.org/packages/Trinsic)
+Add the required dependencies from [Nuget.org <small>:material-open-in-new:<small>](https://www.nuget.org/packages/Trinsic)
 
 
 === "Package Manager"

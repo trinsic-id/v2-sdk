@@ -66,7 +66,7 @@ jobs:
         run: |
           cargo install cargo-deb
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
-          sed -i 's/version: "1.0.0"/version: "${{ steps.setversion.outputs.packageVersion }}"/g' src/cli.yaml
+          sed -i 's/version: 1.0.0/version: ${{ steps.setversion.outputs.packageVersion }}/g' src/cli.yaml
 
           cargo deb
         working-directory: cli
@@ -105,9 +105,8 @@ jobs:
         run: |
           export CARGO_HOME=`pwd`
           cd cli
-
           sed -i 's/version = "0.1.0"/version = "${{ steps.setversion.outputs.packageVersion }}"/g' Cargo.toml
-          sed -i 's/version: "1.0.0"/version: "${{ steps.setversion.outputs.packageVersion }}"/g' src/cli.yaml
+          sed -i 's/version: 1.0.0/version: ${{ steps.setversion.outputs.packageVersion }}/g' src/cli.yaml
           rm build.rs
           mv .cargo/_config.toml .cargo/config.toml
 
@@ -153,7 +152,7 @@ jobs:
       - name: Create wix installer
         run: |
           ([Regex]'version = "0.1.0"').Replace((Get-Content -path Cargo.toml -Raw), 'version = "${{ steps.setversion.outputs.packageVersion }}"', 1) | Set-Content -Path Cargo.toml
-          ([Regex]'version: "1.0.0"').Replace((Get-Content -path src/cli.yaml -Raw), 'version: "${{ steps.setversion.outputs.packageVersion }}"', 1) | Set-Content -Path src/cli.yaml
+          ([Regex]'version: 1.0.0').Replace((Get-Content -path src/cli.yaml -Raw), 'version: ${{ steps.setversion.outputs.packageVersion }}', 1) | Set-Content -Path src/cli.yaml
           cargo install cargo-wix
           cargo wix -b "C:\Program Files (x86)\WiX Toolset v3.11\bin"
         shell: pwsh
