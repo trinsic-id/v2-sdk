@@ -219,7 +219,11 @@ If you would like to save the profile for future use, you can simply export the 
     <!--/codeinclude-->
 
 === "Java"
-
+    <!--codeinclude-->
+    ```java
+    [Create Template](../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
 
 
 
