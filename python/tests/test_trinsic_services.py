@@ -7,13 +7,13 @@ from samples.provider_demo import provider_demo
 from samples.templates_demo import templates_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
-from trinsic.account_service import AccountService
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.proto.services.provider.v1 import InviteRequest
 from trinsic.proto.services.trustregistry.v1 import (
     AddFrameworkRequest,
     GovernanceFramework,
 )
+from trinsic.account_service import AccountService
 from trinsic.provider_service import ProviderService
 from trinsic.service_base import ResponseStatusException
 from trinsic.trinsic_util import trinsic_config
@@ -39,6 +39,9 @@ class TestServices(unittest.TestCase):
         ResponseStatusException.assert_success(
             ResponseStatus.SUCCESS, "This should NOT fail"
         )
+        
+    def test_default_constructor(self):
+        account_service = AccountService()
 
     @unittest.skip("Ecosystem support not implemented")
     def test_providerservice_demo(self):
