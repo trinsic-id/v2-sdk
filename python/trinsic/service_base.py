@@ -39,7 +39,7 @@ class ServiceBase(ABC):
 
     def __init__(self, server_config: ServiceOptions):
         self.service_options: ServiceOptions = server_config or trinsic_config()
-        self._channel: Channel = create_channel(server_config)
+        self._channel: Channel = create_channel(self.service_options)
         self._security_provider: SecurityProvider = OberonSecurityProvider()
 
     def __enter__(self):
