@@ -1,4 +1,4 @@
-name: Python
+name: Python (prod test)
 
 on:
   workflow_call:
