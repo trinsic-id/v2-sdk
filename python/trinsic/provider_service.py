@@ -55,7 +55,7 @@ class ProviderService(ServiceBase):
         """
         [Check invitation status](/reference/services/provider-service/#check-invitation-status)
         Args:
-            invitation_id: invitation id returned from `invite_participant()`
+            request:
         Returns:
             [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
         """
@@ -74,9 +74,7 @@ class ProviderService(ServiceBase):
         """
         Creates a new ecosystem
         Args:
-            name:
-            description:
-            uri:
+            request:
 
         Returns:
             [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)

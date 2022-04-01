@@ -20,6 +20,7 @@ async def ecosystem_demo():
     assert actual_create.ecosystem is not None
     assert actual_create.ecosystem.id is not None
     assert actual_create.ecosystem.id.startswith("urn:trinsic:ecosystems:")
+    print(f"ecosystem id={actual_create.ecosystem.id}")
 
 
 if __name__ == "__main__":
