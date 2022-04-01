@@ -1,0 +1,32 @@
+name: Ruby (prod test)
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    # Do it daily at 8AM
+    - cron: "0 8 * * *"
+
+jobs:
+  prod-test-ruby:
+    name: Ruby - samples - prod test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby-version: [ '2.7', '3.0' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+      - name: Build, Test, Pack
+        run: |
+          gem install trinsic-services
+          foreach ($Item in Get-ChildItem -Path Get-Location -Include *_demo.rb) {
+            ruby $Item.FullName
+          }
+        shell: pwsh
+        working-directory: ruby/test
