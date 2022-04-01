@@ -371,12 +371,3 @@ public class Tests
         actual.Should().NotBeEmpty();
     }
 }
-
-public static class Extensions
-{
-    public static ServiceOptions CloneWithAuthToken(this ServiceOptions options, string authToken) {
-        var cloned = options.Clone();
-        cloned.AuthToken = authToken;
-        return cloned;
-    }
-}
