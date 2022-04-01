@@ -33,24 +33,24 @@ class Services::Verifiablecredentials::V1::IssueRequest
 
   sig do
     params(
-      document: T.nilable(Services::Common::V1::JsonPayload)
+      document_json: T.nilable(String)
     ).void
   end
   def initialize(
-    document: nil
+    document_json: ""
   )
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def document
+  sig { returns(String) }
+  def document_json
   end
 
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def document=(value)
+  sig { params(value: String).void }
+  def document_json=(value)
   end
 
   sig { void }
-  def clear_document
+  def clear_document_json
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -93,24 +93,24 @@ class Services::Verifiablecredentials::V1::IssueResponse
 
   sig do
     params(
-      document: T.nilable(Services::Common::V1::JsonPayload)
+      signed_document_json: T.nilable(String)
     ).void
   end
   def initialize(
-    document: nil
+    signed_document_json: ""
   )
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def document
+  sig { returns(String) }
+  def signed_document_json
   end
 
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def document=(value)
+  sig { params(value: String).void }
+  def signed_document_json=(value)
   end
 
   sig { void }
-  def clear_document
+  def clear_signed_document_json
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -287,38 +287,56 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
 
   sig do
     params(
-      reveal_document: T.nilable(Services::Common::V1::JsonPayload),
-      document_id: T.nilable(String)
+      reveal_document_json: T.nilable(String),
+      item_id: T.nilable(String),
+      document_json: T.nilable(String)
     ).void
   end
   def initialize(
-    reveal_document: nil,
-    document_id: ""
+    reveal_document_json: "",
+    item_id: "",
+    document_json: ""
   )
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def reveal_document
-  end
-
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def reveal_document=(value)
-  end
-
-  sig { void }
-  def clear_reveal_document
-  end
-
   sig { returns(String) }
-  def document_id
+  def reveal_document_json
   end
 
   sig { params(value: String).void }
-  def document_id=(value)
+  def reveal_document_json=(value)
   end
 
   sig { void }
-  def clear_document_id
+  def clear_reveal_document_json
+  end
+
+  sig { returns(String) }
+  def item_id
+  end
+
+  sig { params(value: String).void }
+  def item_id=(value)
+  end
+
+  sig { void }
+  def clear_item_id
+  end
+
+  sig { returns(String) }
+  def document_json
+  end
+
+  sig { params(value: String).void }
+  def document_json=(value)
+  end
+
+  sig { void }
+  def clear_document_json
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def proof
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -361,24 +379,24 @@ class Services::Verifiablecredentials::V1::CreateProofResponse
 
   sig do
     params(
-      proof_document: T.nilable(Services::Common::V1::JsonPayload)
+      proof_document_json: T.nilable(String)
     ).void
   end
   def initialize(
-    proof_document: nil
+    proof_document_json: ""
   )
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def proof_document
+  sig { returns(String) }
+  def proof_document_json
   end
 
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def proof_document=(value)
+  sig { params(value: String).void }
+  def proof_document_json=(value)
   end
 
   sig { void }
-  def clear_proof_document
+  def clear_proof_document_json
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -421,24 +439,24 @@ class Services::Verifiablecredentials::V1::VerifyProofRequest
 
   sig do
     params(
-      proof_document: T.nilable(Services::Common::V1::JsonPayload)
+      proof_document_json: T.nilable(String)
     ).void
   end
   def initialize(
-    proof_document: nil
+    proof_document_json: ""
   )
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def proof_document
+  sig { returns(String) }
+  def proof_document_json
   end
 
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def proof_document=(value)
+  sig { params(value: String).void }
+  def proof_document_json=(value)
   end
 
   sig { void }
-  def clear_proof_document
+  def clear_proof_document_json
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -481,24 +499,38 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
 
   sig do
     params(
-      valid: T.nilable(T::Boolean)
+      is_valid: T.nilable(T::Boolean),
+      validation_messages: T.nilable(T::Array[String])
     ).void
   end
   def initialize(
-    valid: false
+    is_valid: false,
+    validation_messages: []
   )
   end
 
   sig { returns(T::Boolean) }
-  def valid
+  def is_valid
   end
 
   sig { params(value: T::Boolean).void }
-  def valid=(value)
+  def is_valid=(value)
   end
 
   sig { void }
-  def clear_valid
+  def clear_is_valid
+  end
+
+  sig { returns(T::Array[String]) }
+  def validation_messages
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def validation_messages=(value)
+  end
+
+  sig { void }
+  def clear_validation_messages
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -543,15 +575,15 @@ class Services::Verifiablecredentials::V1::SendRequest
     params(
       email: T.nilable(String),
       did_uri: T.nilable(String),
-      didcomm_invitation: T.nilable(Services::Common::V1::JsonPayload),
-      document: T.nilable(Services::Common::V1::JsonPayload)
+      didcomm_invitation_json: T.nilable(String),
+      document_json: T.nilable(String)
     ).void
   end
   def initialize(
     email: "",
     did_uri: "",
-    didcomm_invitation: nil,
-    document: nil
+    didcomm_invitation_json: "",
+    document_json: ""
   )
   end
 
@@ -579,28 +611,28 @@ class Services::Verifiablecredentials::V1::SendRequest
   def clear_did_uri
   end
 
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def didcomm_invitation
+  sig { returns(String) }
+  def didcomm_invitation_json
   end
 
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def didcomm_invitation=(value)
-  end
-
-  sig { void }
-  def clear_didcomm_invitation
-  end
-
-  sig { returns(T.nilable(Services::Common::V1::JsonPayload)) }
-  def document
-  end
-
-  sig { params(value: T.nilable(Services::Common::V1::JsonPayload)).void }
-  def document=(value)
+  sig { params(value: String).void }
+  def didcomm_invitation_json=(value)
   end
 
   sig { void }
-  def clear_document
+  def clear_didcomm_invitation_json
+  end
+
+  sig { returns(String) }
+  def document_json
+  end
+
+  sig { params(value: String).void }
+  def document_json=(value)
+  end
+
+  sig { void }
+  def clear_document_json
   end
 
   sig { returns(T.nilable(Symbol)) }

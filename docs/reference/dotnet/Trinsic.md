@@ -9,6 +9,16 @@ public class AccountService : Trinsic.ServiceBase
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ServiceBase](Trinsic.md#Trinsic_ServiceBase 'Trinsic.ServiceBase') &#129106; AccountService  
+### Properties
+<a name='Trinsic_AccountService_Client'></a>
+## AccountService.Client Property
+Gets the underlying grpc client  
+```csharp
+public Trinsic.Services.Account.V1.Account.AccountClient Client { get; }
+```
+#### Property Value
+[AccountClient](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_Account_AccountClient 'Trinsic.Services.Account.V1.Account.AccountClient')
+  
 ### Methods
 <a name='Trinsic_AccountService_GetInfo()'></a>
 ## AccountService.GetInfo() Method
@@ -28,68 +38,68 @@ public System.Threading.Tasks.Task<Trinsic.Services.Account.V1.InfoResponse> Get
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[InfoResponse](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_InfoResponse 'Trinsic.Services.Account.V1.InfoResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
-<a name='Trinsic_AccountService_Protect(Trinsic_Services_Account_V1_AccountProfile_string)'></a>
-## AccountService.Protect(AccountProfile, string) Method
+<a name='Trinsic_AccountService_Protect(string_string)'></a>
+## AccountService.Protect(string, string) Method
 Protects the account profile with a security code.  
 The code can be a PIN, password, keychain secret, etc.  
 ```csharp
-public static Trinsic.Services.Account.V1.AccountProfile Protect(Trinsic.Services.Account.V1.AccountProfile profile, string securityCode);
+public static string Protect(string authToken, string securityCode);
 ```
 #### Parameters
-<a name='Trinsic_AccountService_Protect(Trinsic_Services_Account_V1_AccountProfile_string)_profile'></a>
-`profile` [AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')  
+<a name='Trinsic_AccountService_Protect(string_string)_authToken'></a>
+`authToken` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
-<a name='Trinsic_AccountService_Protect(Trinsic_Services_Account_V1_AccountProfile_string)_securityCode'></a>
+<a name='Trinsic_AccountService_Protect(string_string)_securityCode'></a>
 `securityCode` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
 #### Returns
-[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')  
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
-<a name='Trinsic_AccountService_SignIn(Trinsic_Services_Account_V1_AccountDetails_)'></a>
-## AccountService.SignIn(AccountDetails?) Method
+<a name='Trinsic_AccountService_SignIn(Trinsic_Services_Account_V1_SignInRequest)'></a>
+## AccountService.SignIn(SignInRequest) Method
 Perform a sign-in to obtain an account profile. If the [AccountDetails](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountDetails 'Trinsic.Services.Account.V1.AccountDetails') are  
 specified, they will be used to associate  
 ```csharp
-public Trinsic.Services.Account.V1.AccountProfile SignIn(Trinsic.Services.Account.V1.AccountDetails? details=null);
+public string SignIn(Trinsic.Services.Account.V1.SignInRequest request);
 ```
 #### Parameters
-<a name='Trinsic_AccountService_SignIn(Trinsic_Services_Account_V1_AccountDetails_)_details'></a>
-`details` [AccountDetails](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountDetails 'Trinsic.Services.Account.V1.AccountDetails')  
+<a name='Trinsic_AccountService_SignIn(Trinsic_Services_Account_V1_SignInRequest)_request'></a>
+`request` [SignInRequest](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_SignInRequest 'Trinsic.Services.Account.V1.SignInRequest')  
   
 #### Returns
-[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')  
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
-<a name='Trinsic_AccountService_SignInAsync(Trinsic_Services_Account_V1_AccountDetails_)'></a>
-## AccountService.SignInAsync(AccountDetails?) Method
+<a name='Trinsic_AccountService_SignInAsync(Trinsic_Services_Account_V1_SignInRequest)'></a>
+## AccountService.SignInAsync(SignInRequest) Method
 Perform a sign-in to obtain an account profile. If the [AccountDetails](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountDetails 'Trinsic.Services.Account.V1.AccountDetails') are  
 specified, they will be used to associate  
 ```csharp
-public System.Threading.Tasks.Task<Trinsic.Services.Account.V1.AccountProfile> SignInAsync(Trinsic.Services.Account.V1.AccountDetails? details=null);
+public System.Threading.Tasks.Task<string> SignInAsync(Trinsic.Services.Account.V1.SignInRequest request);
 ```
 #### Parameters
-<a name='Trinsic_AccountService_SignInAsync(Trinsic_Services_Account_V1_AccountDetails_)_details'></a>
-`details` [AccountDetails](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountDetails 'Trinsic.Services.Account.V1.AccountDetails')  
+<a name='Trinsic_AccountService_SignInAsync(Trinsic_Services_Account_V1_SignInRequest)_request'></a>
+`request` [SignInRequest](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_SignInRequest 'Trinsic.Services.Account.V1.SignInRequest')  
   
 #### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
-<a name='Trinsic_AccountService_Unprotect(Trinsic_Services_Account_V1_AccountProfile_string)'></a>
-## AccountService.Unprotect(AccountProfile, string) Method
+<a name='Trinsic_AccountService_Unprotect(string_string)'></a>
+## AccountService.Unprotect(string, string) Method
 Unprotects the account profile using a security code.  
 The confirmation method field will specify how this code was  
 communicated with the account owner.  
 ```csharp
-public static Trinsic.Services.Account.V1.AccountProfile Unprotect(Trinsic.Services.Account.V1.AccountProfile profile, string securityCode);
+public static string Unprotect(string authToken, string securityCode);
 ```
 #### Parameters
-<a name='Trinsic_AccountService_Unprotect(Trinsic_Services_Account_V1_AccountProfile_string)_profile'></a>
-`profile` [AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')  
+<a name='Trinsic_AccountService_Unprotect(string_string)_authToken'></a>
+`authToken` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
-<a name='Trinsic_AccountService_Unprotect(Trinsic_Services_Account_V1_AccountProfile_string)_securityCode'></a>
+<a name='Trinsic_AccountService_Unprotect(string_string)_securityCode'></a>
 `securityCode` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
 #### Returns
-[AccountProfile](Trinsic_Services_Account_V1.md#Trinsic_Services_Account_V1_AccountProfile 'Trinsic.Services.Account.V1.AccountProfile')  
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
   
 <a name='Trinsic_CredentialsService'></a>
@@ -113,35 +123,46 @@ public System.Threading.Tasks.Task<Trinsic.Services.VerifiableCredentials.V1.Che
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[CheckStatusResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CheckStatusResponse 'Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
-<a name='Trinsic_CredentialsService_CreateProofAsync(string_Newtonsoft_Json_Linq_JObject)'></a>
-## CredentialsService.CreateProofAsync(string, JObject) Method
-Derive a proof from an existing document in the wallet using  
-an input reveal document frame  
+<a name='Trinsic_CredentialsService_CreateProof(Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest)'></a>
+## CredentialsService.CreateProof(CreateProofRequest) Method
+Create a proof from a record in the user's wallet. The record must be a valid  
+verifiable credential and contain a signature from which a proof can be derived.  
 ```csharp
-public System.Threading.Tasks.Task<Newtonsoft.Json.Linq.JObject> CreateProofAsync(string documentId, Newtonsoft.Json.Linq.JObject revealDocument);
+public Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse CreateProof(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest request);
 ```
 #### Parameters
-<a name='Trinsic_CredentialsService_CreateProofAsync(string_Newtonsoft_Json_Linq_JObject)_documentId'></a>
-`documentId` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-  
-<a name='Trinsic_CredentialsService_CreateProofAsync(string_Newtonsoft_Json_Linq_JObject)_revealDocument'></a>
-`revealDocument` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
+<a name='Trinsic_CredentialsService_CreateProof(Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest)_request'></a>
+`request` [CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')  
   
 #### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')  
   
-<a name='Trinsic_CredentialsService_IssueCredentialAsync(Newtonsoft_Json_Linq_JObject)'></a>
-## CredentialsService.IssueCredentialAsync(JObject) Method
+<a name='Trinsic_CredentialsService_CreateProofAsync(Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest)'></a>
+## CredentialsService.CreateProofAsync(CreateProofRequest) Method
+Create a proof from a record in the user's wallet. The record must be a valid  
+verifiable credential and contain a signature from which a proof can be derived.  
+```csharp
+public System.Threading.Tasks.Task<Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse> CreateProofAsync(Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest request);
+```
+#### Parameters
+<a name='Trinsic_CredentialsService_CreateProofAsync(Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest)_request'></a>
+`request` [CreateProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofRequest 'Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest')  
+  
+#### Returns
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[CreateProofResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_CreateProofResponse 'Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+  
+<a name='Trinsic_CredentialsService_IssueCredentialAsync(Trinsic_Services_VerifiableCredentials_V1_IssueRequest)'></a>
+## CredentialsService.IssueCredentialAsync(IssueRequest) Method
 Signs an input credential  
 ```csharp
-public System.Threading.Tasks.Task<Newtonsoft.Json.Linq.JObject> IssueCredentialAsync(Newtonsoft.Json.Linq.JObject document);
+public System.Threading.Tasks.Task<Trinsic.Services.VerifiableCredentials.V1.IssueResponse> IssueCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest request);
 ```
 #### Parameters
-<a name='Trinsic_CredentialsService_IssueCredentialAsync(Newtonsoft_Json_Linq_JObject)_document'></a>
-`document` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
+<a name='Trinsic_CredentialsService_IssueCredentialAsync(Trinsic_Services_VerifiableCredentials_V1_IssueRequest)_request'></a>
+`request` [IssueRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueRequest 'Trinsic.Services.VerifiableCredentials.V1.IssueRequest')  
   
 #### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[IssueResponse](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_IssueResponse 'Trinsic.Services.VerifiableCredentials.V1.IssueResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
 <a name='Trinsic_CredentialsService_IssueFromTemplate(Trinsic_Services_VerifiableCredentials_V1_IssueFromTemplateRequest)'></a>
 ## CredentialsService.IssueFromTemplate(IssueFromTemplateRequest) Method
@@ -173,18 +194,15 @@ The request object with the template identifier and the values
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
 Verifiable credential as JSON
   
-<a name='Trinsic_CredentialsService_SendAsync(Newtonsoft_Json_Linq_JObject_string)'></a>
-## CredentialsService.SendAsync(JObject, string) Method
+<a name='Trinsic_CredentialsService_SendAsync(Trinsic_Services_VerifiableCredentials_V1_SendRequest)'></a>
+## CredentialsService.SendAsync(SendRequest) Method
 Sends a document to the specified destination  
 ```csharp
-public System.Threading.Tasks.Task SendAsync(Newtonsoft.Json.Linq.JObject document, string email);
+public System.Threading.Tasks.Task SendAsync(Trinsic.Services.VerifiableCredentials.V1.SendRequest request);
 ```
 #### Parameters
-<a name='Trinsic_CredentialsService_SendAsync(Newtonsoft_Json_Linq_JObject_string)_document'></a>
-`document` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
-  
-<a name='Trinsic_CredentialsService_SendAsync(Newtonsoft_Json_Linq_JObject_string)_email'></a>
-`email` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+<a name='Trinsic_CredentialsService_SendAsync(Trinsic_Services_VerifiableCredentials_V1_SendRequest)_request'></a>
+`request` [SendRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_SendRequest 'Trinsic.Services.VerifiableCredentials.V1.SendRequest')  
   
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')  
@@ -205,15 +223,15 @@ public System.Threading.Tasks.Task UpdateStatusAsync(string credentialStatusId, 
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')  
   
-<a name='Trinsic_CredentialsService_VerifyProofAsync(Newtonsoft_Json_Linq_JObject)'></a>
-## CredentialsService.VerifyProofAsync(JObject) Method
+<a name='Trinsic_CredentialsService_VerifyProofAsync(Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest)'></a>
+## CredentialsService.VerifyProofAsync(VerifyProofRequest) Method
 Verifies a proof document  
 ```csharp
-public System.Threading.Tasks.Task<bool> VerifyProofAsync(Newtonsoft.Json.Linq.JObject proofDocument);
+public System.Threading.Tasks.Task<bool> VerifyProofAsync(Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest request);
 ```
 #### Parameters
-<a name='Trinsic_CredentialsService_VerifyProofAsync(Newtonsoft_Json_Linq_JObject)_proofDocument'></a>
-`proofDocument` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
+<a name='Trinsic_CredentialsService_VerifyProofAsync(Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest)_request'></a>
+`request` [VerifyProofRequest](Trinsic_Services_VerifiableCredentials_V1.md#Trinsic_Services_VerifiableCredentials_V1_VerifyProofRequest 'Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest')  
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
@@ -252,9 +270,24 @@ public class ProviderService : Trinsic.ServiceBase
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ServiceBase](Trinsic.md#Trinsic_ServiceBase 'Trinsic.ServiceBase') &#129106; ProviderService  
 ### Methods
+<a name='Trinsic_ProviderService_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest)'></a>
+## ProviderService.CreateEcosystem(CreateEcosystemRequest) Method
+Create new ecosystem and assigns the authenticated user as owner  
+```csharp
+public Trinsic.Services.Provider.V1.CreateEcosystemResponse CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest request);
+```
+#### Parameters
+<a name='Trinsic_ProviderService_CreateEcosystem(Trinsic_Services_Provider_V1_CreateEcosystemRequest)_request'></a>
+`request` [CreateEcosystemRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemRequest 'Trinsic.Services.Provider.V1.CreateEcosystemRequest')  
+  
+#### Returns
+[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')  
+#### Exceptions
+[System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
+  
 <a name='Trinsic_ProviderService_CreateEcosystemAsync(Trinsic_Services_Provider_V1_CreateEcosystemRequest)'></a>
 ## ProviderService.CreateEcosystemAsync(CreateEcosystemRequest) Method
-Creates new ecosystem  
+Create new ecosystem and assigns the authenticated user as owner  
 ```csharp
 public System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.CreateEcosystemResponse> CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest request);
 ```
@@ -264,6 +297,49 @@ public System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.CreateEcosystemR
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[CreateEcosystemResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_CreateEcosystemResponse 'Trinsic.Services.Provider.V1.CreateEcosystemResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+  
+<a name='Trinsic_ProviderService_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest)'></a>
+## ProviderService.GenerateToken(GenerateTokenRequest) Method
+Generates an unprotected authentication token that can be used  
+to configure server side applications  
+```csharp
+public string GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest request);
+```
+#### Parameters
+<a name='Trinsic_ProviderService_GenerateToken(Trinsic_Services_Provider_V1_GenerateTokenRequest)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+  
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+  
+<a name='Trinsic_ProviderService_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest)'></a>
+## ProviderService.GenerateTokenAsync(GenerateTokenRequest) Method
+Generates an unprotected authentication token that can be used  
+to configure server side applications  
+```csharp
+public System.Threading.Tasks.Task<string> GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest request);
+```
+#### Parameters
+<a name='Trinsic_ProviderService_GenerateTokenAsync(Trinsic_Services_Provider_V1_GenerateTokenRequest)_request'></a>
+`request` [GenerateTokenRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_GenerateTokenRequest 'Trinsic.Services.Provider.V1.GenerateTokenRequest')  
+  
+#### Returns
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
+  
+<a name='Trinsic_ProviderService_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest)'></a>
+## ProviderService.InvitationStatus(InvitationStatusRequest) Method
+Gets the status of the onboarding invitation for a given invitation ID  
+```csharp
+public Trinsic.Services.Provider.V1.InvitationStatusResponse InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest request);
+```
+#### Parameters
+<a name='Trinsic_ProviderService_InvitationStatus(Trinsic_Services_Provider_V1_InvitationStatusRequest)_request'></a>
+`request` [InvitationStatusRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusRequest 'Trinsic.Services.Provider.V1.InvitationStatusRequest')  
+  
+#### Returns
+[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')  
+#### Exceptions
+[System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception')  
   
 <a name='Trinsic_ProviderService_InvitationStatusAsync(Trinsic_Services_Provider_V1_InvitationStatusRequest)'></a>
 ## ProviderService.InvitationStatusAsync(InvitationStatusRequest) Method
@@ -278,6 +354,19 @@ public System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.InvitationStatus
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[InvitationStatusResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InvitationStatusResponse 'Trinsic.Services.Provider.V1.InvitationStatusResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
+<a name='Trinsic_ProviderService_InviteParticipant(Trinsic_Services_Provider_V1_InviteRequest)'></a>
+## ProviderService.InviteParticipant(InviteRequest) Method
+Invite a user to the ecosystem  
+```csharp
+public Trinsic.Services.Provider.V1.InviteResponse InviteParticipant(Trinsic.Services.Provider.V1.InviteRequest request);
+```
+#### Parameters
+<a name='Trinsic_ProviderService_InviteParticipant(Trinsic_Services_Provider_V1_InviteRequest)_request'></a>
+`request` [InviteRequest](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteRequest 'Trinsic.Services.Provider.V1.InviteRequest')  
+  
+#### Returns
+[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')  
+  
 <a name='Trinsic_ProviderService_InviteParticipantAsync(Trinsic_Services_Provider_V1_InviteRequest)'></a>
 ## ProviderService.InviteParticipantAsync(InviteRequest) Method
 Initiates the participant onboarding flow using the input contact method  
@@ -290,15 +379,6 @@ public System.Threading.Tasks.Task<Trinsic.Services.Provider.V1.InviteResponse> 
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[InviteResponse](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_InviteResponse 'Trinsic.Services.Provider.V1.InviteResponse')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
-  
-<a name='Trinsic_ProviderService_ListEcosystemsAsync()'></a>
-## ProviderService.ListEcosystemsAsync() Method
-List all ecosystems that are owned by the authorized user  
-```csharp
-public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Trinsic.Services.Provider.V1.Ecosystem>> ListEcosystemsAsync();
-```
-#### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[Ecosystem](Trinsic_Services_Provider_V1.md#Trinsic_Services_Provider_V1_Ecosystem 'Trinsic.Services.Provider.V1.Ecosystem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  
   
   
 <a name='Trinsic_ServiceBase'></a>
@@ -541,28 +621,28 @@ public class WalletService : Trinsic.ServiceBase
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [ServiceBase](Trinsic.md#Trinsic_ServiceBase 'Trinsic.ServiceBase') &#129106; WalletService  
 ### Methods
-<a name='Trinsic_WalletService_InsertItem(Newtonsoft_Json_Linq_JObject)'></a>
-## WalletService.InsertItem(JObject) Method
+<a name='Trinsic_WalletService_InsertItem(Trinsic_Services_UniversalWallet_V1_InsertItemRequest)'></a>
+## WalletService.InsertItem(InsertItemRequest) Method
 Insert an item into the personal wallet  
 ```csharp
-public string InsertItem(Newtonsoft.Json.Linq.JObject item);
+public string InsertItem(Trinsic.Services.UniversalWallet.V1.InsertItemRequest request);
 ```
 #### Parameters
-<a name='Trinsic_WalletService_InsertItem(Newtonsoft_Json_Linq_JObject)_item'></a>
-`item` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
+<a name='Trinsic_WalletService_InsertItem(Trinsic_Services_UniversalWallet_V1_InsertItemRequest)_request'></a>
+`request` [InsertItemRequest](Trinsic_Services_UniversalWallet_V1.md#Trinsic_Services_UniversalWallet_V1_InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest')  
   
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
   
-<a name='Trinsic_WalletService_InsertItemAsync(Newtonsoft_Json_Linq_JObject)'></a>
-## WalletService.InsertItemAsync(JObject) Method
+<a name='Trinsic_WalletService_InsertItemAsync(Trinsic_Services_UniversalWallet_V1_InsertItemRequest)'></a>
+## WalletService.InsertItemAsync(InsertItemRequest) Method
 Insert an item into the personal wallet  
 ```csharp
-public System.Threading.Tasks.Task<string> InsertItemAsync(Newtonsoft.Json.Linq.JObject item);
+public System.Threading.Tasks.Task<string> InsertItemAsync(Trinsic.Services.UniversalWallet.V1.InsertItemRequest request);
 ```
 #### Parameters
-<a name='Trinsic_WalletService_InsertItemAsync(Newtonsoft_Json_Linq_JObject)_item'></a>
-`item` [Newtonsoft.Json.Linq.JObject](https://docs.microsoft.com/en-us/dotnet/api/Newtonsoft.Json.Linq.JObject 'Newtonsoft.Json.Linq.JObject')  
+<a name='Trinsic_WalletService_InsertItemAsync(Trinsic_Services_UniversalWallet_V1_InsertItemRequest)_request'></a>
+`request` [InsertItemRequest](Trinsic_Services_UniversalWallet_V1.md#Trinsic_Services_UniversalWallet_V1_InsertItemRequest 'Trinsic.Services.UniversalWallet.V1.InsertItemRequest')  
   
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')  

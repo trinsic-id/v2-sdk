@@ -2,135 +2,107 @@ package services
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
+
 	sdk "github.com/trinsic-id/sdk/go/proto"
-	"google.golang.org/grpc"
 )
 
-func NewCredentialService(profile *sdk.AccountProfile, serverConfig *sdk.ServerConfig, channel *grpc.ClientConn) (CredentialService, error) {
-	base, err := NewServiceBase(profile, serverConfig, channel)
+// NewCredentialService returns a credential service with the base service configured
+// using the provided options
+func NewCredentialService(options *Options) (CredentialService, error) {
+	base, err := NewServiceBase(options)
 	if err != nil {
 		return nil, err
 	}
-	service := &CredentialBase{
-		ServiceBase: base,
-		client:      sdk.NewVerifiableCredentialClient(base.channel),
+	service := &credentialBase{
+		Service: base,
+		client:  sdk.NewVerifiableCredentialClient(base.GetChannel()),
 	}
 
 	return service, nil
 }
 
+// CredentialService defines the interface for interacting with credentials
 type CredentialService interface {
 	Service
-	IssueCredential(userContext context.Context, document Document) (Document, error)
+	// IssueCredential using a document json
+	IssueCredential(userContext context.Context, request *sdk.IssueRequest) (*sdk.IssueResponse, error)
+	// IssueFromTemplate issues a credential using a template
 	IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error)
+	// CheckStatus of the credential
 	CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error)
+	// UpdateStatus of the credential (i.e. revoke)
 	UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error)
-	CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error)
-	VerifyProof(userContext context.Context, proofDocument Document) (bool, error)
-	Send(userContext context.Context, document Document, email string) error
+	// CreateProof using either a credential in a cloud wallet or based on the json document provided
+	CreateProof(userContext context.Context, request *sdk.CreateProofRequest) (*sdk.CreateProofResponse, error)
+	// VerifyProof presentation
+	VerifyProof(userContext context.Context, request *sdk.VerifyProofRequest) (bool, error)
+	// Send a credential to another use's wallet
+	Send(userContext context.Context, request *sdk.SendRequest) error
 }
 
-type CredentialBase struct {
-	*ServiceBase
+type credentialBase struct {
+	Service
 	client sdk.VerifiableCredentialClient
 }
 
-func (c *CredentialBase) IssueCredential(userContext context.Context, document Document) (Document, error) {
-	jsonBytes, err := json.Marshal(document)
-	if err != nil {
-		return nil, err
-	}
-	issueRequest := &sdk.IssueRequest{
-		Document: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonBytes),
-			},
-		},
-	}
-
-	md, err := c.GetMetadataContext(userContext, issueRequest)
-	if err != nil {
-		return nil, err
-	}
-	response, err := c.client.Issue(md, issueRequest)
-	if err != nil {
-		return nil, err
-	}
-	var doc map[string]interface{}
-	err = json.Unmarshal([]byte(response.Document.GetJsonString()), &doc)
-	if err != nil {
-		return nil, err
-	}
-	return doc, nil
-}
-
-func (c *CredentialBase) IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error) {
+func (c *credentialBase) IssueCredential(userContext context.Context, request *sdk.IssueRequest) (*sdk.IssueResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
+
+	response, err := c.client.Issue(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (c *credentialBase) IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error) {
+	md, err := c.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+
 	response, err := c.client.IssueFromTemplate(md, request)
 	if err != nil {
 		return nil, err
 	}
+
 	return response, nil
 }
 
-func (c *CredentialBase) CreateProof(userContext context.Context, documentId string, revealDocument Document) (Document, error) {
-	jsonString, err := json.Marshal(revealDocument)
-	if err != nil {
-		return nil, err
-	}
-	request := &sdk.CreateProofRequest{
-		DocumentId: documentId,
-		RevealDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
+func (c *credentialBase) CreateProof(userContext context.Context, request *sdk.CreateProofRequest) (*sdk.CreateProofResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
-	proof, err := c.client.CreateProof(md, request)
+
+	response, err := c.client.CreateProof(md, request)
 	if err != nil {
 		return nil, err
 	}
-	var proofMap map[string]interface{}
-	err = json.Unmarshal([]byte(proof.ProofDocument.GetJsonString()), &proofMap)
-	if err != nil {
-		return nil, err
-	}
-	return proofMap, nil
+
+	return response, nil
 }
 
-func (c *CredentialBase) VerifyProof(userContext context.Context, proofDocument Document) (bool, error) {
-	jsonString, err := json.Marshal(proofDocument)
-	if err != nil {
-		return false, err
-	}
-	request := &sdk.VerifyProofRequest{
-		ProofDocument: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
+func (c *credentialBase) VerifyProof(userContext context.Context, request *sdk.VerifyProofRequest) (bool, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return false, err
 	}
+
 	proof, err := c.client.VerifyProof(md, request)
 	if err != nil {
 		return false, err
 	}
-	return proof.Valid, nil
+
+	return proof.IsValid, nil
 }
 
-func (c *CredentialBase) CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error) {
+func (c *credentialBase) CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -142,7 +114,7 @@ func (c *CredentialBase) CheckStatus(userContext context.Context, request *sdk.C
 	return response, nil
 }
 
-func (c *CredentialBase) UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error) {
+func (c *credentialBase) UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -157,28 +129,16 @@ func (c *CredentialBase) UpdateStatus(userContext context.Context, request *sdk.
 	return response, fmt.Errorf("error - did not run to completion %s", response.Status)
 }
 
-func (c *CredentialBase) Send(userContext context.Context, document Document, email string) error {
-	jsonString, err := json.Marshal(document)
-	if err != nil {
-		return err
-	}
-	request := &sdk.SendRequest{
-		DeliveryMethod: &sdk.SendRequest_Email{
-			Email: email,
-		},
-		Document: &sdk.JsonPayload{
-			Json: &sdk.JsonPayload_JsonString{
-				JsonString: string(jsonString),
-			},
-		},
-	}
+func (c *credentialBase) Send(userContext context.Context, request *sdk.SendRequest) error {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return err
 	}
+
 	_, err = c.client.Send(md, request)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }

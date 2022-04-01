@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using Grpc.Net.Client;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.Common.V1;
+using Microsoft.Extensions.Options;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
 
 namespace Trinsic;
@@ -11,22 +10,25 @@ namespace Trinsic;
 /// </summary>
 public class TemplateService : ServiceBase
 {
-    public TemplateService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public TemplateService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public TemplateService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public TemplateService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public TemplateService() {
         Client = new(Channel);
     }
 
-    private CredentialTemplates.CredentialTemplatesClient Client { get; set; }
+    internal TemplateService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
+    internal TemplateService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
+        Client = new(Channel);
+    }
+
+    private CredentialTemplates.CredentialTemplatesClient Client { get; }
 
     /// <summary>
     /// Create new credential template with the given parameters
@@ -53,7 +55,7 @@ public class TemplateService : ServiceBase
     public GetCredentialTemplateResponse Get(GetCredentialTemplateRequest request) {
         return Client.Get(request, BuildMetadata(request));
     }
-    
+
     /// <summary>
     /// List the available templates for the given ecosystem.
     /// Results can be customized using a SQL query.
@@ -69,7 +71,7 @@ public class TemplateService : ServiceBase
     public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
         return await Client.ListAsync(request, await BuildMetadataAsync(request));
     }
-    
+
     public ListCredentialTemplatesResponse List(ListCredentialTemplatesRequest request) {
         return Client.List(request, BuildMetadata(request));
     }

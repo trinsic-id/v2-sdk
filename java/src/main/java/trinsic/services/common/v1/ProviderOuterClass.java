@@ -1318,55 +1318,19 @@ public final class ProviderOuterClass {
         getDescriptionBytes();
 
     /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * @return Whether the details field is set.
      */
-    boolean hasEmail();
+    boolean hasDetails();
     /**
-     * <code>string email = 5;</code>
-     * @return The email.
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * @return The details.
      */
-    java.lang.String getEmail();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails();
     /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
      */
-    com.google.protobuf.ByteString
-        getEmailBytes();
-
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    boolean hasPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    java.lang.String getPhone();
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    com.google.protobuf.ByteString
-        getPhoneBytes();
-
-    /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-     * @return Whether the didcommInvitation field is set.
-     */
-    boolean hasDidcommInvitation();
-    /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-     * @return The didcommInvitation.
-     */
-    trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation();
-    /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-     */
-    trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder();
-
-    public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.ContactMethodCase getContactMethodCase();
+    trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
   }
   /**
    * Protobuf type {@code services.provider.v1.InviteRequest}
@@ -1427,30 +1391,17 @@ public final class ProviderOuterClass {
               description_ = s;
               break;
             }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 5;
-              contactMethod_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-              contactMethodCase_ = 6;
-              contactMethod_ = s;
-              break;
-            }
-            case 58: {
-              trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder subBuilder = null;
-              if (contactMethodCase_ == 7) {
-                subBuilder = ((trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_).toBuilder();
+            case 26: {
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder subBuilder = null;
+              if (details_ != null) {
+                subBuilder = details_.toBuilder();
               }
-              contactMethod_ =
-                  input.readMessage(trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.parser(), extensionRegistry);
+              details_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountDetails.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_);
-                contactMethod_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(details_);
+                details_ = subBuilder.buildPartial();
               }
-              contactMethodCase_ = 7;
+
               break;
             }
             default: {
@@ -1903,49 +1854,6 @@ public final class ProviderOuterClass {
 
     }
 
-    private int contactMethodCase_ = 0;
-    private java.lang.Object contactMethod_;
-    public enum ContactMethodCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      EMAIL(5),
-      PHONE(6),
-      DIDCOMM_INVITATION(7),
-      CONTACTMETHOD_NOT_SET(0);
-      private final int value;
-      private ContactMethodCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static ContactMethodCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static ContactMethodCase forNumber(int value) {
-        switch (value) {
-          case 5: return EMAIL;
-          case 6: return PHONE;
-          case 7: return DIDCOMM_INVITATION;
-          case 0: return CONTACTMETHOD_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public ContactMethodCase
-    getContactMethodCase() {
-      return ContactMethodCase.forNumber(
-          contactMethodCase_);
-    }
-
     public static final int PARTICIPANT_FIELD_NUMBER = 1;
     private int participant_;
     /**
@@ -2003,139 +1911,30 @@ public final class ProviderOuterClass {
       }
     }
 
-    public static final int EMAIL_FIELD_NUMBER = 5;
+    public static final int DETAILS_FIELD_NUMBER = 3;
+    private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
     /**
-     * <code>string email = 5;</code>
-     * @return Whether the email field is set.
-     */
-    public boolean hasEmail() {
-      return contactMethodCase_ == 5;
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The email.
-     */
-    public java.lang.String getEmail() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string email = 5;</code>
-     * @return The bytes for email.
-     */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 5) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 5) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PHONE_FIELD_NUMBER = 6;
-    /**
-     * <code>string phone = 6;</code>
-     * @return Whether the phone field is set.
-     */
-    public boolean hasPhone() {
-      return contactMethodCase_ == 6;
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The phone.
-     */
-    public java.lang.String getPhone() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string phone = 6;</code>
-     * @return The bytes for phone.
-     */
-    public com.google.protobuf.ByteString
-        getPhoneBytes() {
-      java.lang.Object ref = "";
-      if (contactMethodCase_ == 6) {
-        ref = contactMethod_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (contactMethodCase_ == 6) {
-          contactMethod_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DIDCOMM_INVITATION_FIELD_NUMBER = 7;
-    /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-     * @return Whether the didcommInvitation field is set.
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * @return Whether the details field is set.
      */
     @java.lang.Override
-    public boolean hasDidcommInvitation() {
-      return contactMethodCase_ == 7;
+    public boolean hasDetails() {
+      return details_ != null;
     }
     /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-     * @return The didcommInvitation.
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * @return The details.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation() {
-      if (contactMethodCase_ == 7) {
-         return (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_;
-      }
-      return trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+      return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
     }
     /**
-     * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+     * <code>.services.account.v1.AccountDetails details = 3;</code>
      */
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder() {
-      if (contactMethodCase_ == 7) {
-         return (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_;
-      }
-      return trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
+      return getDetails();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2158,14 +1957,8 @@ public final class ProviderOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
-      if (contactMethodCase_ == 5) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, contactMethod_);
-      }
-      if (contactMethodCase_ == 7) {
-        output.writeMessage(7, (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_);
+      if (details_ != null) {
+        output.writeMessage(3, getDetails());
       }
       unknownFields.writeTo(output);
     }
@@ -2183,15 +1976,9 @@ public final class ProviderOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
-      if (contactMethodCase_ == 5) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contactMethod_);
-      }
-      if (contactMethodCase_ == 6) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, contactMethod_);
-      }
-      if (contactMethodCase_ == 7) {
+      if (details_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_);
+          .computeMessageSize(3, getDetails());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2211,22 +1998,10 @@ public final class ProviderOuterClass {
       if (participant_ != other.participant_) return false;
       if (!getDescription()
           .equals(other.getDescription())) return false;
-      if (!getContactMethodCase().equals(other.getContactMethodCase())) return false;
-      switch (contactMethodCase_) {
-        case 5:
-          if (!getEmail()
-              .equals(other.getEmail())) return false;
-          break;
-        case 6:
-          if (!getPhone()
-              .equals(other.getPhone())) return false;
-          break;
-        case 7:
-          if (!getDidcommInvitation()
-              .equals(other.getDidcommInvitation())) return false;
-          break;
-        case 0:
-        default:
+      if (hasDetails() != other.hasDetails()) return false;
+      if (hasDetails()) {
+        if (!getDetails()
+            .equals(other.getDetails())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2243,21 +2018,9 @@ public final class ProviderOuterClass {
       hash = (53 * hash) + participant_;
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
-      switch (contactMethodCase_) {
-        case 5:
-          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
-          hash = (53 * hash) + getEmail().hashCode();
-          break;
-        case 6:
-          hash = (37 * hash) + PHONE_FIELD_NUMBER;
-          hash = (53 * hash) + getPhone().hashCode();
-          break;
-        case 7:
-          hash = (37 * hash) + DIDCOMM_INVITATION_FIELD_NUMBER;
-          hash = (53 * hash) + getDidcommInvitation().hashCode();
-          break;
-        case 0:
-        default:
+      if (hasDetails()) {
+        hash = (37 * hash) + DETAILS_FIELD_NUMBER;
+        hash = (53 * hash) + getDetails().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2396,8 +2159,12 @@ public final class ProviderOuterClass {
 
         description_ = "";
 
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
+        if (detailsBuilder_ == null) {
+          details_ = null;
+        } else {
+          details_ = null;
+          detailsBuilder_ = null;
+        }
         return this;
       }
 
@@ -2426,20 +2193,11 @@ public final class ProviderOuterClass {
         trinsic.services.common.v1.ProviderOuterClass.InviteRequest result = new trinsic.services.common.v1.ProviderOuterClass.InviteRequest(this);
         result.participant_ = participant_;
         result.description_ = description_;
-        if (contactMethodCase_ == 5) {
-          result.contactMethod_ = contactMethod_;
+        if (detailsBuilder_ == null) {
+          result.details_ = details_;
+        } else {
+          result.details_ = detailsBuilder_.build();
         }
-        if (contactMethodCase_ == 6) {
-          result.contactMethod_ = contactMethod_;
-        }
-        if (contactMethodCase_ == 7) {
-          if (didcommInvitationBuilder_ == null) {
-            result.contactMethod_ = contactMethod_;
-          } else {
-            result.contactMethod_ = didcommInvitationBuilder_.build();
-          }
-        }
-        result.contactMethodCase_ = contactMethodCase_;
         onBuilt();
         return result;
       }
@@ -2495,26 +2253,8 @@ public final class ProviderOuterClass {
           description_ = other.description_;
           onChanged();
         }
-        switch (other.getContactMethodCase()) {
-          case EMAIL: {
-            contactMethodCase_ = 5;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case PHONE: {
-            contactMethodCase_ = 6;
-            contactMethod_ = other.contactMethod_;
-            onChanged();
-            break;
-          }
-          case DIDCOMM_INVITATION: {
-            mergeDidcommInvitation(other.getDidcommInvitation());
-            break;
-          }
-          case CONTACTMETHOD_NOT_SET: {
-            break;
-          }
+        if (other.hasDetails()) {
+          mergeDetails(other.getDetails());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2544,21 +2284,6 @@ public final class ProviderOuterClass {
         }
         return this;
       }
-      private int contactMethodCase_ = 0;
-      private java.lang.Object contactMethod_;
-      public ContactMethodCase
-          getContactMethodCase() {
-        return ContactMethodCase.forNumber(
-            contactMethodCase_);
-      }
-
-      public Builder clearContactMethod() {
-        contactMethodCase_ = 0;
-        contactMethod_ = null;
-        onChanged();
-        return this;
-      }
-
 
       private int participant_ = 0;
       /**
@@ -2690,339 +2415,123 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      /**
-       * <code>string email = 5;</code>
-       * @return Whether the email field is set.
-       */
-      @java.lang.Override
-      public boolean hasEmail() {
-        return contactMethodCase_ == 5;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The email.
-       */
-      @java.lang.Override
-      public java.lang.String getEmail() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return The bytes for email.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getEmailBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 5) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 5) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmail(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEmail() {
-        if (contactMethodCase_ == 5) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string email = 5;</code>
-       * @param value The bytes for email to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEmailBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 5;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string phone = 6;</code>
-       * @return Whether the phone field is set.
-       */
-      @java.lang.Override
-      public boolean hasPhone() {
-        return contactMethodCase_ == 6;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The phone.
-       */
-      @java.lang.Override
-      public java.lang.String getPhone() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return The bytes for phone.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getPhoneBytes() {
-        java.lang.Object ref = "";
-        if (contactMethodCase_ == 6) {
-          ref = contactMethod_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (contactMethodCase_ == 6) {
-            contactMethod_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhone(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPhone() {
-        if (contactMethodCase_ == 6) {
-          contactMethodCase_ = 0;
-          contactMethod_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string phone = 6;</code>
-       * @param value The bytes for phone to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPhoneBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        contactMethodCase_ = 6;
-        contactMethod_ = value;
-        onChanged();
-        return this;
-      }
-
+      private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder> didcommInvitationBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> detailsBuilder_;
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-       * @return Whether the didcommInvitation field is set.
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * @return Whether the details field is set.
        */
-      @java.lang.Override
-      public boolean hasDidcommInvitation() {
-        return contactMethodCase_ == 7;
+      public boolean hasDetails() {
+        return detailsBuilder_ != null || details_ != null;
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
-       * @return The didcommInvitation.
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * @return The details.
        */
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation getDidcommInvitation() {
-        if (didcommInvitationBuilder_ == null) {
-          if (contactMethodCase_ == 7) {
-            return (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_;
-          }
-          return trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+        if (detailsBuilder_ == null) {
+          return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         } else {
-          if (contactMethodCase_ == 7) {
-            return didcommInvitationBuilder_.getMessage();
-          }
-          return trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
+          return detailsBuilder_.getMessage();
         }
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      public Builder setDidcommInvitation(trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation value) {
-        if (didcommInvitationBuilder_ == null) {
+      public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
+        if (detailsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          contactMethod_ = value;
+          details_ = value;
           onChanged();
         } else {
-          didcommInvitationBuilder_.setMessage(value);
+          detailsBuilder_.setMessage(value);
         }
-        contactMethodCase_ = 7;
+
         return this;
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      public Builder setDidcommInvitation(
-          trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder builderForValue) {
-        if (didcommInvitationBuilder_ == null) {
-          contactMethod_ = builderForValue.build();
+      public Builder setDetails(
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue) {
+        if (detailsBuilder_ == null) {
+          details_ = builderForValue.build();
           onChanged();
         } else {
-          didcommInvitationBuilder_.setMessage(builderForValue.build());
+          detailsBuilder_.setMessage(builderForValue.build());
         }
-        contactMethodCase_ = 7;
+
         return this;
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      public Builder mergeDidcommInvitation(trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation value) {
-        if (didcommInvitationBuilder_ == null) {
-          if (contactMethodCase_ == 7 &&
-              contactMethod_ != trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance()) {
-            contactMethod_ = trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.newBuilder((trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_)
-                .mergeFrom(value).buildPartial();
+      public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
+        if (detailsBuilder_ == null) {
+          if (details_ != null) {
+            details_ =
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
           } else {
-            contactMethod_ = value;
+            details_ = value;
           }
           onChanged();
         } else {
-          if (contactMethodCase_ == 7) {
-            didcommInvitationBuilder_.mergeFrom(value);
-          }
-          didcommInvitationBuilder_.setMessage(value);
+          detailsBuilder_.mergeFrom(value);
         }
-        contactMethodCase_ = 7;
+
         return this;
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      public Builder clearDidcommInvitation() {
-        if (didcommInvitationBuilder_ == null) {
-          if (contactMethodCase_ == 7) {
-            contactMethodCase_ = 0;
-            contactMethod_ = null;
-            onChanged();
-          }
+      public Builder clearDetails() {
+        if (detailsBuilder_ == null) {
+          details_ = null;
+          onChanged();
         } else {
-          if (contactMethodCase_ == 7) {
-            contactMethodCase_ = 0;
-            contactMethod_ = null;
-          }
-          didcommInvitationBuilder_.clear();
+          details_ = null;
+          detailsBuilder_ = null;
         }
+
         return this;
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder getDidcommInvitationBuilder() {
-        return getDidcommInvitationFieldBuilder().getBuilder();
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder() {
+        
+        onChanged();
+        return getDetailsFieldBuilder().getBuilder();
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder getDidcommInvitationOrBuilder() {
-        if ((contactMethodCase_ == 7) && (didcommInvitationBuilder_ != null)) {
-          return didcommInvitationBuilder_.getMessageOrBuilder();
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
+        if (detailsBuilder_ != null) {
+          return detailsBuilder_.getMessageOrBuilder();
         } else {
-          if (contactMethodCase_ == 7) {
-            return (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_;
-          }
-          return trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
+          return details_ == null ?
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
         }
       }
       /**
-       * <code>.services.provider.v1.InviteRequest.DidCommInvitation didcomm_invitation = 7;</code>
+       * <code>.services.account.v1.AccountDetails details = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder> 
-          getDidcommInvitationFieldBuilder() {
-        if (didcommInvitationBuilder_ == null) {
-          if (!(contactMethodCase_ == 7)) {
-            contactMethod_ = trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.getDefaultInstance();
-          }
-          didcommInvitationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation.Builder, trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitationOrBuilder>(
-                  (trinsic.services.common.v1.ProviderOuterClass.InviteRequest.DidCommInvitation) contactMethod_,
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> 
+          getDetailsFieldBuilder() {
+        if (detailsBuilder_ == null) {
+          detailsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder>(
+                  getDetails(),
                   getParentForChildren(),
                   isClean());
-          contactMethod_ = null;
+          details_ = null;
         }
-        contactMethodCase_ = 7;
-        onChanged();;
-        return didcommInvitationBuilder_;
+        return detailsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3103,6 +2612,28 @@ public final class ProviderOuterClass {
      */
     com.google.protobuf.ByteString
         getInvitationIdBytes();
+
+    /**
+     * <pre>
+     * Invitation Code that must be passed with the account 'SignIn' request
+     * to correlate this user with the invitation sent.
+     * </pre>
+     *
+     * <code>string invitation_code = 11;</code>
+     * @return The invitationCode.
+     */
+    java.lang.String getInvitationCode();
+    /**
+     * <pre>
+     * Invitation Code that must be passed with the account 'SignIn' request
+     * to correlate this user with the invitation sent.
+     * </pre>
+     *
+     * <code>string invitation_code = 11;</code>
+     * @return The bytes for invitationCode.
+     */
+    com.google.protobuf.ByteString
+        getInvitationCodeBytes();
   }
   /**
    * Protobuf type {@code services.provider.v1.InviteResponse}
@@ -3119,6 +2650,7 @@ public final class ProviderOuterClass {
     private InviteResponse() {
       status_ = 0;
       invitationId_ = "";
+      invitationCode_ = "";
     }
 
     @java.lang.Override
@@ -3161,6 +2693,12 @@ public final class ProviderOuterClass {
               java.lang.String s = input.readStringRequireUtf8();
 
               invitationId_ = s;
+              break;
+            }
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              invitationCode_ = s;
               break;
             }
             default: {
@@ -3252,6 +2790,54 @@ public final class ProviderOuterClass {
       }
     }
 
+    public static final int INVITATION_CODE_FIELD_NUMBER = 11;
+    private volatile java.lang.Object invitationCode_;
+    /**
+     * <pre>
+     * Invitation Code that must be passed with the account 'SignIn' request
+     * to correlate this user with the invitation sent.
+     * </pre>
+     *
+     * <code>string invitation_code = 11;</code>
+     * @return The invitationCode.
+     */
+    @java.lang.Override
+    public java.lang.String getInvitationCode() {
+      java.lang.Object ref = invitationCode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        invitationCode_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Invitation Code that must be passed with the account 'SignIn' request
+     * to correlate this user with the invitation sent.
+     * </pre>
+     *
+     * <code>string invitation_code = 11;</code>
+     * @return The bytes for invitationCode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getInvitationCodeBytes() {
+      java.lang.Object ref = invitationCode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        invitationCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3272,6 +2858,9 @@ public final class ProviderOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, invitationId_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, invitationCode_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3287,6 +2876,9 @@ public final class ProviderOuterClass {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, invitationId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationCode_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, invitationCode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3306,6 +2898,8 @@ public final class ProviderOuterClass {
       if (status_ != other.status_) return false;
       if (!getInvitationId()
           .equals(other.getInvitationId())) return false;
+      if (!getInvitationCode()
+          .equals(other.getInvitationCode())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3321,6 +2915,8 @@ public final class ProviderOuterClass {
       hash = (53 * hash) + status_;
       hash = (37 * hash) + INVITATION_ID_FIELD_NUMBER;
       hash = (53 * hash) + getInvitationId().hashCode();
+      hash = (37 * hash) + INVITATION_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getInvitationCode().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3458,6 +3054,8 @@ public final class ProviderOuterClass {
 
         invitationId_ = "";
 
+        invitationCode_ = "";
+
         return this;
       }
 
@@ -3486,6 +3084,7 @@ public final class ProviderOuterClass {
         trinsic.services.common.v1.ProviderOuterClass.InviteResponse result = new trinsic.services.common.v1.ProviderOuterClass.InviteResponse(this);
         result.status_ = status_;
         result.invitationId_ = invitationId_;
+        result.invitationCode_ = invitationCode_;
         onBuilt();
         return result;
       }
@@ -3539,6 +3138,10 @@ public final class ProviderOuterClass {
         }
         if (!other.getInvitationId().isEmpty()) {
           invitationId_ = other.invitationId_;
+          onChanged();
+        }
+        if (!other.getInvitationCode().isEmpty()) {
+          invitationCode_ = other.invitationCode_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -3699,6 +3302,107 @@ public final class ProviderOuterClass {
         onChanged();
         return this;
       }
+
+      private java.lang.Object invitationCode_ = "";
+      /**
+       * <pre>
+       * Invitation Code that must be passed with the account 'SignIn' request
+       * to correlate this user with the invitation sent.
+       * </pre>
+       *
+       * <code>string invitation_code = 11;</code>
+       * @return The invitationCode.
+       */
+      public java.lang.String getInvitationCode() {
+        java.lang.Object ref = invitationCode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          invitationCode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Invitation Code that must be passed with the account 'SignIn' request
+       * to correlate this user with the invitation sent.
+       * </pre>
+       *
+       * <code>string invitation_code = 11;</code>
+       * @return The bytes for invitationCode.
+       */
+      public com.google.protobuf.ByteString
+          getInvitationCodeBytes() {
+        java.lang.Object ref = invitationCode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          invitationCode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Invitation Code that must be passed with the account 'SignIn' request
+       * to correlate this user with the invitation sent.
+       * </pre>
+       *
+       * <code>string invitation_code = 11;</code>
+       * @param value The invitationCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInvitationCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        invitationCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Invitation Code that must be passed with the account 'SignIn' request
+       * to correlate this user with the invitation sent.
+       * </pre>
+       *
+       * <code>string invitation_code = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInvitationCode() {
+        
+        invitationCode_ = getDefaultInstance().getInvitationCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Invitation Code that must be passed with the account 'SignIn' request
+       * to correlate this user with the invitation sent.
+       * </pre>
+       *
+       * <code>string invitation_code = 11;</code>
+       * @param value The bytes for invitationCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInvitationCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        invitationCode_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3772,7 +3476,7 @@ public final class ProviderOuterClass {
    * <pre>
    * Request details for the status of onboarding
    * an individual or organization.
-   * The referenece_id passed is the response from the
+   * The reference_id passed is the response from the
    * `Onboard` method call
    * </pre>
    *
@@ -4055,7 +3759,7 @@ public final class ProviderOuterClass {
      * <pre>
      * Request details for the status of onboarding
      * an individual or organization.
-     * The referenece_id passed is the response from the
+     * The reference_id passed is the response from the
      * `Onboard` method call
      * </pre>
      *
@@ -6190,11 +5894,23 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Globally unique name for the Ecosystem. This name will be
+     * part of the ecosystem specific URLs and namespaces.
+     * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
+     * <pre>
+     * Globally unique name for the Ecosystem. This name will be
+     * part of the ecosystem specific URLs and namespaces.
+     * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
@@ -6202,11 +5918,21 @@ public final class ProviderOuterClass {
         getNameBytes();
 
     /**
+     * <pre>
+     * Ecosystem description.
+     * This field is optional.
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
+     * <pre>
+     * Ecosystem description.
+     * This field is optional.
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -6214,16 +5940,53 @@ public final class ProviderOuterClass {
         getDescriptionBytes();
 
     /**
+     * <pre>
+     * External URL associated with your organization or ecosystem entity.
+     * This field is optional
+     * </pre>
+     *
      * <code>string uri = 3;</code>
      * @return The uri.
      */
     java.lang.String getUri();
     /**
+     * <pre>
+     * External URL associated with your organization or ecosystem entity.
+     * This field is optional
+     * </pre>
+     *
      * <code>string uri = 3;</code>
      * @return The bytes for uri.
      */
     com.google.protobuf.ByteString
         getUriBytes();
+
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     * @return Whether the details field is set.
+     */
+    boolean hasDetails();
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     * @return The details.
+     */
+    trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails();
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     */
+    trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
   }
   /**
    * Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
@@ -6291,6 +6054,19 @@ public final class ProviderOuterClass {
               uri_ = s;
               break;
             }
+            case 34: {
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder subBuilder = null;
+              if (details_ != null) {
+                subBuilder = details_.toBuilder();
+              }
+              details_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountDetails.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(details_);
+                details_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -6326,6 +6102,12 @@ public final class ProviderOuterClass {
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <pre>
+     * Globally unique name for the Ecosystem. This name will be
+     * part of the ecosystem specific URLs and namespaces.
+     * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The name.
      */
@@ -6343,6 +6125,12 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * Globally unique name for the Ecosystem. This name will be
+     * part of the ecosystem specific URLs and namespaces.
+     * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
@@ -6364,6 +6152,11 @@ public final class ProviderOuterClass {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
+     * <pre>
+     * Ecosystem description.
+     * This field is optional.
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
@@ -6381,6 +6174,11 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * Ecosystem description.
+     * This field is optional.
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -6402,6 +6200,11 @@ public final class ProviderOuterClass {
     public static final int URI_FIELD_NUMBER = 3;
     private volatile java.lang.Object uri_;
     /**
+     * <pre>
+     * External URL associated with your organization or ecosystem entity.
+     * This field is optional
+     * </pre>
+     *
      * <code>string uri = 3;</code>
      * @return The uri.
      */
@@ -6419,6 +6222,11 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * External URL associated with your organization or ecosystem entity.
+     * This field is optional
+     * </pre>
+     *
      * <code>string uri = 3;</code>
      * @return The bytes for uri.
      */
@@ -6435,6 +6243,44 @@ public final class ProviderOuterClass {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int DETAILS_FIELD_NUMBER = 4;
+    private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     * @return Whether the details field is set.
+     */
+    @java.lang.Override
+    public boolean hasDetails() {
+      return details_ != null;
+    }
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     * @return The details.
+     */
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+      return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
+    }
+    /**
+     * <pre>
+     * The account details of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 4;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
+      return getDetails();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6460,6 +6306,9 @@ public final class ProviderOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, uri_);
       }
+      if (details_ != null) {
+        output.writeMessage(4, getDetails());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6477,6 +6326,10 @@ public final class ProviderOuterClass {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, uri_);
+      }
+      if (details_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getDetails());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6499,6 +6352,11 @@ public final class ProviderOuterClass {
           .equals(other.getDescription())) return false;
       if (!getUri()
           .equals(other.getUri())) return false;
+      if (hasDetails() != other.hasDetails()) return false;
+      if (hasDetails()) {
+        if (!getDetails()
+            .equals(other.getDetails())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6516,6 +6374,10 @@ public final class ProviderOuterClass {
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + URI_FIELD_NUMBER;
       hash = (53 * hash) + getUri().hashCode();
+      if (hasDetails()) {
+        hash = (37 * hash) + DETAILS_FIELD_NUMBER;
+        hash = (53 * hash) + getDetails().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6655,6 +6517,12 @@ public final class ProviderOuterClass {
 
         uri_ = "";
 
+        if (detailsBuilder_ == null) {
+          details_ = null;
+        } else {
+          details_ = null;
+          detailsBuilder_ = null;
+        }
         return this;
       }
 
@@ -6684,6 +6552,11 @@ public final class ProviderOuterClass {
         result.name_ = name_;
         result.description_ = description_;
         result.uri_ = uri_;
+        if (detailsBuilder_ == null) {
+          result.details_ = details_;
+        } else {
+          result.details_ = detailsBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -6744,6 +6617,9 @@ public final class ProviderOuterClass {
           uri_ = other.uri_;
           onChanged();
         }
+        if (other.hasDetails()) {
+          mergeDetails(other.getDetails());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6775,6 +6651,12 @@ public final class ProviderOuterClass {
 
       private java.lang.Object name_ = "";
       /**
+       * <pre>
+       * Globally unique name for the Ecosystem. This name will be
+       * part of the ecosystem specific URLs and namespaces.
+       * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return The name.
        */
@@ -6791,6 +6673,12 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Globally unique name for the Ecosystem. This name will be
+       * part of the ecosystem specific URLs and namespaces.
+       * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return The bytes for name.
        */
@@ -6808,6 +6696,12 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Globally unique name for the Ecosystem. This name will be
+       * part of the ecosystem specific URLs and namespaces.
+       * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @param value The name to set.
        * @return This builder for chaining.
@@ -6823,6 +6717,12 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Globally unique name for the Ecosystem. This name will be
+       * part of the ecosystem specific URLs and namespaces.
+       * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return This builder for chaining.
        */
@@ -6833,6 +6733,12 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Globally unique name for the Ecosystem. This name will be
+       * part of the ecosystem specific URLs and namespaces.
+       * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
@@ -6851,6 +6757,11 @@ public final class ProviderOuterClass {
 
       private java.lang.Object description_ = "";
       /**
+       * <pre>
+       * Ecosystem description.
+       * This field is optional.
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The description.
        */
@@ -6867,6 +6778,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Ecosystem description.
+       * This field is optional.
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The bytes for description.
        */
@@ -6884,6 +6800,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Ecosystem description.
+       * This field is optional.
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The description to set.
        * @return This builder for chaining.
@@ -6899,6 +6820,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Ecosystem description.
+       * This field is optional.
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return This builder for chaining.
        */
@@ -6909,6 +6835,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Ecosystem description.
+       * This field is optional.
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
@@ -6927,6 +6858,11 @@ public final class ProviderOuterClass {
 
       private java.lang.Object uri_ = "";
       /**
+       * <pre>
+       * External URL associated with your organization or ecosystem entity.
+       * This field is optional
+       * </pre>
+       *
        * <code>string uri = 3;</code>
        * @return The uri.
        */
@@ -6943,6 +6879,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * External URL associated with your organization or ecosystem entity.
+       * This field is optional
+       * </pre>
+       *
        * <code>string uri = 3;</code>
        * @return The bytes for uri.
        */
@@ -6960,6 +6901,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * External URL associated with your organization or ecosystem entity.
+       * This field is optional
+       * </pre>
+       *
        * <code>string uri = 3;</code>
        * @param value The uri to set.
        * @return This builder for chaining.
@@ -6975,6 +6921,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * External URL associated with your organization or ecosystem entity.
+       * This field is optional
+       * </pre>
+       *
        * <code>string uri = 3;</code>
        * @return This builder for chaining.
        */
@@ -6985,6 +6936,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * External URL associated with your organization or ecosystem entity.
+       * This field is optional
+       * </pre>
+       *
        * <code>string uri = 3;</code>
        * @param value The bytes for uri to set.
        * @return This builder for chaining.
@@ -6999,6 +6955,161 @@ public final class ProviderOuterClass {
         uri_ = value;
         onChanged();
         return this;
+      }
+
+      private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> detailsBuilder_;
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       * @return Whether the details field is set.
+       */
+      public boolean hasDetails() {
+        return detailsBuilder_ != null || details_ != null;
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       * @return The details.
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
+        if (detailsBuilder_ == null) {
+          return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
+        } else {
+          return detailsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
+        if (detailsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          details_ = value;
+          onChanged();
+        } else {
+          detailsBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public Builder setDetails(
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue) {
+        if (detailsBuilder_ == null) {
+          details_ = builderForValue.build();
+          onChanged();
+        } else {
+          detailsBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
+        if (detailsBuilder_ == null) {
+          if (details_ != null) {
+            details_ =
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
+          } else {
+            details_ = value;
+          }
+          onChanged();
+        } else {
+          detailsBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public Builder clearDetails() {
+        if (detailsBuilder_ == null) {
+          details_ = null;
+          onChanged();
+        } else {
+          details_ = null;
+          detailsBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder() {
+        
+        onChanged();
+        return getDetailsFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
+        if (detailsBuilder_ != null) {
+          return detailsBuilder_.getMessageOrBuilder();
+        } else {
+          return details_ == null ?
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
+        }
+      }
+      /**
+       * <pre>
+       * The account details of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> 
+          getDetailsFieldBuilder() {
+        if (detailsBuilder_ == null) {
+          detailsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder>(
+                  getDetails(),
+                  getParentForChildren(),
+                  isClean());
+          details_ = null;
+        }
+        return detailsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -7058,16 +7169,79 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string id = 1;</code>
-     * @return The id.
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * @return Whether the ecosystem field is set.
      */
-    java.lang.String getId();
+    boolean hasEcosystem();
     /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * @return The ecosystem.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem();
+    /**
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder();
+
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     * @return Whether the profile field is set.
+     */
+    boolean hasProfile();
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     * @return The profile.
+     */
+    trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile();
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     */
+    trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder();
+
+    /**
+     * <pre>
+     * Indicates if confirmation of account is required.
+     * This settings is configured globally by the server administrator.
+     * </pre>
+     *
+     * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+     * @return The enum numeric value on the wire for confirmationMethod.
+     */
+    int getConfirmationMethodValue();
+    /**
+     * <pre>
+     * Indicates if confirmation of account is required.
+     * This settings is configured globally by the server administrator.
+     * </pre>
+     *
+     * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+     * @return The confirmationMethod.
+     */
+    trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod();
   }
   /**
    * Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
@@ -7082,7 +7256,7 @@ public final class ProviderOuterClass {
       super(builder);
     }
     private CreateEcosystemResponse() {
-      id_ = "";
+      confirmationMethod_ = 0;
     }
 
     @java.lang.Override
@@ -7116,9 +7290,35 @@ public final class ProviderOuterClass {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder subBuilder = null;
+              if (ecosystem_ != null) {
+                subBuilder = ecosystem_.toBuilder();
+              }
+              ecosystem_ = input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ecosystem_);
+                ecosystem_ = subBuilder.buildPartial();
+              }
 
-              id_ = s;
+              break;
+            }
+            case 18: {
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder subBuilder = null;
+              if (profile_ != null) {
+                subBuilder = profile_.toBuilder();
+              }
+              profile_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountProfile.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(profile_);
+                profile_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+
+              confirmationMethod_ = rawValue;
               break;
             }
             default: {
@@ -7153,42 +7353,109 @@ public final class ProviderOuterClass {
               trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.class, trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    public static final int ECOSYSTEM_FIELD_NUMBER = 1;
+    private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
     /**
-     * <code>string id = 1;</code>
-     * @return The id.
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * @return Whether the ecosystem field is set.
      */
     @java.lang.Override
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
-      }
+    public boolean hasEcosystem() {
+      return ecosystem_ != null;
     }
     /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * @return The ecosystem.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
+      return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+    }
+    /**
+     * <pre>
+     * Details of the created ecosystem
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
+      return getEcosystem();
+    }
+
+    public static final int PROFILE_FIELD_NUMBER = 2;
+    private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     * @return Whether the profile field is set.
+     */
+    @java.lang.Override
+    public boolean hasProfile() {
+      return profile_ != null;
+    }
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     * @return The profile.
+     */
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
+      return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
+    }
+    /**
+     * <pre>
+     * Account profile for auth of the owner of the ecosystem
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 2;</code>
+     */
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
+      return getProfile();
+    }
+
+    public static final int CONFIRMATION_METHOD_FIELD_NUMBER = 3;
+    private int confirmationMethod_;
+    /**
+     * <pre>
+     * Indicates if confirmation of account is required.
+     * This settings is configured globally by the server administrator.
+     * </pre>
+     *
+     * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+     * @return The enum numeric value on the wire for confirmationMethod.
+     */
+    @java.lang.Override public int getConfirmationMethodValue() {
+      return confirmationMethod_;
+    }
+    /**
+     * <pre>
+     * Indicates if confirmation of account is required.
+     * This settings is configured globally by the server administrator.
+     * </pre>
+     *
+     * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+     * @return The confirmationMethod.
+     */
+    @java.lang.Override public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod() {
+      @SuppressWarnings("deprecation")
+      trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(confirmationMethod_);
+      return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7205,8 +7472,14 @@ public final class ProviderOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      if (ecosystem_ != null) {
+        output.writeMessage(1, getEcosystem());
+      }
+      if (profile_ != null) {
+        output.writeMessage(2, getProfile());
+      }
+      if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
+        output.writeEnum(3, confirmationMethod_);
       }
       unknownFields.writeTo(output);
     }
@@ -7217,8 +7490,17 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      if (ecosystem_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getEcosystem());
+      }
+      if (profile_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getProfile());
+      }
+      if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, confirmationMethod_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7235,8 +7517,17 @@ public final class ProviderOuterClass {
       }
       trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse other = (trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
+      if (hasEcosystem() != other.hasEcosystem()) return false;
+      if (hasEcosystem()) {
+        if (!getEcosystem()
+            .equals(other.getEcosystem())) return false;
+      }
+      if (hasProfile() != other.hasProfile()) return false;
+      if (hasProfile()) {
+        if (!getProfile()
+            .equals(other.getProfile())) return false;
+      }
+      if (confirmationMethod_ != other.confirmationMethod_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7248,8 +7539,16 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
+      if (hasEcosystem()) {
+        hash = (37 * hash) + ECOSYSTEM_FIELD_NUMBER;
+        hash = (53 * hash) + getEcosystem().hashCode();
+      }
+      if (hasProfile()) {
+        hash = (37 * hash) + PROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getProfile().hashCode();
+      }
+      hash = (37 * hash) + CONFIRMATION_METHOD_FIELD_NUMBER;
+      hash = (53 * hash) + confirmationMethod_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7383,7 +7682,19 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = null;
+        } else {
+          ecosystem_ = null;
+          ecosystemBuilder_ = null;
+        }
+        if (profileBuilder_ == null) {
+          profile_ = null;
+        } else {
+          profile_ = null;
+          profileBuilder_ = null;
+        }
+        confirmationMethod_ = 0;
 
         return this;
       }
@@ -7411,7 +7722,17 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse buildPartial() {
         trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse result = new trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse(this);
-        result.id_ = id_;
+        if (ecosystemBuilder_ == null) {
+          result.ecosystem_ = ecosystem_;
+        } else {
+          result.ecosystem_ = ecosystemBuilder_.build();
+        }
+        if (profileBuilder_ == null) {
+          result.profile_ = profile_;
+        } else {
+          result.profile_ = profileBuilder_.build();
+        }
+        result.confirmationMethod_ = confirmationMethod_;
         onBuilt();
         return result;
       }
@@ -7460,9 +7781,14 @@ public final class ProviderOuterClass {
 
       public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse other) {
         if (other == trinsic.services.common.v1.ProviderOuterClass.CreateEcosystemResponse.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
-          id_ = other.id_;
-          onChanged();
+        if (other.hasEcosystem()) {
+          mergeEcosystem(other.getEcosystem());
+        }
+        if (other.hasProfile()) {
+          mergeProfile(other.getProfile());
+        }
+        if (other.confirmationMethod_ != 0) {
+          setConfirmationMethodValue(other.getConfirmationMethodValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7493,78 +7819,391 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      private java.lang.Object id_ = "";
+      private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemBuilder_;
       /**
-       * <code>string id = 1;</code>
-       * @return The id.
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       * @return Whether the ecosystem field is set.
        */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          id_ = s;
-          return s;
+      public boolean hasEcosystem() {
+        return ecosystemBuilder_ != null || ecosystem_ != null;
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       * @return The ecosystem.
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
+        if (ecosystemBuilder_ == null) {
+          return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
         } else {
-          return (java.lang.String) ref;
+          return ecosystemBuilder_.getMessage();
         }
       }
       /**
-       * <code>string id = 1;</code>
-       * @return The bytes for id.
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
+      public Builder setEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ecosystem_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          ecosystemBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder setEcosystem(
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = builderForValue.build();
+          onChanged();
+        } else {
+          ecosystemBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder mergeEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
+        if (ecosystemBuilder_ == null) {
+          if (ecosystem_ != null) {
+            ecosystem_ =
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.newBuilder(ecosystem_).mergeFrom(value).buildPartial();
+          } else {
+            ecosystem_ = value;
+          }
+          onChanged();
+        } else {
+          ecosystemBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public Builder clearEcosystem() {
+        if (ecosystemBuilder_ == null) {
+          ecosystem_ = null;
+          onChanged();
+        } else {
+          ecosystem_ = null;
+          ecosystemBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder() {
+        
+        onChanged();
+        return getEcosystemFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
+        if (ecosystemBuilder_ != null) {
+          return ecosystemBuilder_.getMessageOrBuilder();
+        } else {
+          return ecosystem_ == null ?
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
         }
       }
       /**
-       * <code>string id = 1;</code>
-       * @param value The id to set.
+       * <pre>
+       * Details of the created ecosystem
+       * </pre>
+       *
+       * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
+          getEcosystemFieldBuilder() {
+        if (ecosystemBuilder_ == null) {
+          ecosystemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
+                  getEcosystem(),
+                  getParentForChildren(),
+                  isClean());
+          ecosystem_ = null;
+        }
+        return ecosystemBuilder_;
+      }
+
+      private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> profileBuilder_;
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       * @return Whether the profile field is set.
+       */
+      public boolean hasProfile() {
+        return profileBuilder_ != null || profile_ != null;
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       * @return The profile.
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
+        if (profileBuilder_ == null) {
+          return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
+        } else {
+          return profileBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
+        if (profileBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          profile_ = value;
+          onChanged();
+        } else {
+          profileBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public Builder setProfile(
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue) {
+        if (profileBuilder_ == null) {
+          profile_ = builderForValue.build();
+          onChanged();
+        } else {
+          profileBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
+        if (profileBuilder_ == null) {
+          if (profile_ != null) {
+            profile_ =
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.newBuilder(profile_).mergeFrom(value).buildPartial();
+          } else {
+            profile_ = value;
+          }
+          onChanged();
+        } else {
+          profileBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public Builder clearProfile() {
+        if (profileBuilder_ == null) {
+          profile_ = null;
+          onChanged();
+        } else {
+          profile_ = null;
+          profileBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder() {
+        
+        onChanged();
+        return getProfileFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
+        if (profileBuilder_ != null) {
+          return profileBuilder_.getMessageOrBuilder();
+        } else {
+          return profile_ == null ?
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
+        }
+      }
+      /**
+       * <pre>
+       * Account profile for auth of the owner of the ecosystem
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> 
+          getProfileFieldBuilder() {
+        if (profileBuilder_ == null) {
+          profileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder>(
+                  getProfile(),
+                  getParentForChildren(),
+                  isClean());
+          profile_ = null;
+        }
+        return profileBuilder_;
+      }
+
+      private int confirmationMethod_ = 0;
+      /**
+       * <pre>
+       * Indicates if confirmation of account is required.
+       * This settings is configured globally by the server administrator.
+       * </pre>
+       *
+       * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+       * @return The enum numeric value on the wire for confirmationMethod.
+       */
+      @java.lang.Override public int getConfirmationMethodValue() {
+        return confirmationMethod_;
+      }
+      /**
+       * <pre>
+       * Indicates if confirmation of account is required.
+       * This settings is configured globally by the server administrator.
+       * </pre>
+       *
+       * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+       * @param value The enum numeric value on the wire for confirmationMethod to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        id_ = value;
+      public Builder setConfirmationMethodValue(int value) {
+        
+        confirmationMethod_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <pre>
+       * Indicates if confirmation of account is required.
+       * This settings is configured globally by the server administrator.
+       * </pre>
+       *
+       * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+       * @return The confirmationMethod.
+       */
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod getConfirmationMethod() {
+        @SuppressWarnings("deprecation")
+        trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod result = trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.valueOf(confirmationMethod_);
+        return result == null ? trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Indicates if confirmation of account is required.
+       * This settings is configured globally by the server administrator.
+       * </pre>
+       *
+       * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+       * @param value The confirmationMethod to set.
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder setConfirmationMethod(trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         
-        id_ = getDefaultInstance().getId();
+        confirmationMethod_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
-       * @param value The bytes for id to set.
+       * <pre>
+       * Indicates if confirmation of account is required.
+       * This settings is configured globally by the server administrator.
+       * </pre>
+       *
+       * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearConfirmationMethod() {
         
-        id_ = value;
+        confirmationMethod_ = 0;
         onChanged();
         return this;
       }
@@ -7621,1267 +8260,51 @@ public final class ProviderOuterClass {
 
   }
 
-  public interface ListEcosystemsRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.provider.v1.ListEcosystemsRequest)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
-   */
-  public static final class ListEcosystemsRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.provider.v1.ListEcosystemsRequest)
-      ListEcosystemsRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ListEcosystemsRequest.newBuilder() to construct.
-    private ListEcosystemsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ListEcosystemsRequest() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ListEcosystemsRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ListEcosystemsRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest other = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.provider.v1.ListEcosystemsRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.provider.v1.ListEcosystemsRequest)
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstanceForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest build() {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest buildPartial() {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest result = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) {
-          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest other) {
-        if (other == trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.provider.v1.ListEcosystemsRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.provider.v1.ListEcosystemsRequest)
-    private static final trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest();
-    }
-
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ListEcosystemsRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ListEcosystemsRequest>() {
-      @java.lang.Override
-      public ListEcosystemsRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListEcosystemsRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ListEcosystemsRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ListEcosystemsRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ListEcosystemsResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.provider.v1.ListEcosystemsResponse)
+  public interface GenerateTokenRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.GenerateTokenRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <pre>
+     * Optional description to identify this token
+     * </pre>
+     *
+     * <code>string description = 1;</code>
+     * @return The description.
      */
-    java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> 
-        getEcosystemList();
+    java.lang.String getDescription();
     /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index);
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    int getEcosystemCount();
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
-        getEcosystemOrBuilderList();
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
-   */
-  public static final class ListEcosystemsResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.provider.v1.ListEcosystemsResponse)
-      ListEcosystemsResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ListEcosystemsResponse.newBuilder() to construct.
-    private ListEcosystemsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ListEcosystemsResponse() {
-      ecosystem_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ListEcosystemsResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ListEcosystemsResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                ecosystem_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              ecosystem_.add(
-                  input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          ecosystem_ = java.util.Collections.unmodifiableList(ecosystem_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.Builder.class);
-    }
-
-    public static final int ECOSYSTEM_FIELD_NUMBER = 1;
-    private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystem_;
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList() {
-      return ecosystem_;
-    }
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
-        getEcosystemOrBuilderList() {
-      return ecosystem_;
-    }
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    @java.lang.Override
-    public int getEcosystemCount() {
-      return ecosystem_.size();
-    }
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index) {
-      return ecosystem_.get(index);
-    }
-    /**
-     * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
-        int index) {
-      return ecosystem_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < ecosystem_.size(); i++) {
-        output.writeMessage(1, ecosystem_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < ecosystem_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, ecosystem_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse other = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) obj;
-
-      if (!getEcosystemList()
-          .equals(other.getEcosystemList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getEcosystemCount() > 0) {
-        hash = (37 * hash) + ECOSYSTEM_FIELD_NUMBER;
-        hash = (53 * hash) + getEcosystemList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.provider.v1.ListEcosystemsResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.provider.v1.ListEcosystemsResponse)
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.class, trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getEcosystemFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (ecosystemBuilder_ == null) {
-          ecosystem_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ecosystemBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstanceForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse build() {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse buildPartial() {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse result = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse(this);
-        int from_bitField0_ = bitField0_;
-        if (ecosystemBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            ecosystem_ = java.util.Collections.unmodifiableList(ecosystem_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.ecosystem_ = ecosystem_;
-        } else {
-          result.ecosystem_ = ecosystemBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) {
-          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse other) {
-        if (other == trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse.getDefaultInstance()) return this;
-        if (ecosystemBuilder_ == null) {
-          if (!other.ecosystem_.isEmpty()) {
-            if (ecosystem_.isEmpty()) {
-              ecosystem_ = other.ecosystem_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureEcosystemIsMutable();
-              ecosystem_.addAll(other.ecosystem_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.ecosystem_.isEmpty()) {
-            if (ecosystemBuilder_.isEmpty()) {
-              ecosystemBuilder_.dispose();
-              ecosystemBuilder_ = null;
-              ecosystem_ = other.ecosystem_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              ecosystemBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getEcosystemFieldBuilder() : null;
-            } else {
-              ecosystemBuilder_.addAllMessages(other.ecosystem_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> ecosystem_ =
-        java.util.Collections.emptyList();
-      private void ensureEcosystemIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          ecosystem_ = new java.util.ArrayList<trinsic.services.common.v1.ProviderOuterClass.Ecosystem>(ecosystem_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemBuilder_;
-
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem> getEcosystemList() {
-        if (ecosystemBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(ecosystem_);
-        } else {
-          return ecosystemBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public int getEcosystemCount() {
-        if (ecosystemBuilder_ == null) {
-          return ecosystem_.size();
-        } else {
-          return ecosystemBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem(int index) {
-        if (ecosystemBuilder_ == null) {
-          return ecosystem_.get(index);
-        } else {
-          return ecosystemBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder setEcosystem(
-          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
-        if (ecosystemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEcosystemIsMutable();
-          ecosystem_.set(index, value);
-          onChanged();
-        } else {
-          ecosystemBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder setEcosystem(
-          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
-        if (ecosystemBuilder_ == null) {
-          ensureEcosystemIsMutable();
-          ecosystem_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          ecosystemBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder addEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
-        if (ecosystemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEcosystemIsMutable();
-          ecosystem_.add(value);
-          onChanged();
-        } else {
-          ecosystemBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder addEcosystem(
-          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
-        if (ecosystemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEcosystemIsMutable();
-          ecosystem_.add(index, value);
-          onChanged();
-        } else {
-          ecosystemBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder addEcosystem(
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
-        if (ecosystemBuilder_ == null) {
-          ensureEcosystemIsMutable();
-          ecosystem_.add(builderForValue.build());
-          onChanged();
-        } else {
-          ecosystemBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder addEcosystem(
-          int index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
-        if (ecosystemBuilder_ == null) {
-          ensureEcosystemIsMutable();
-          ecosystem_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          ecosystemBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder addAllEcosystem(
-          java.lang.Iterable<? extends trinsic.services.common.v1.ProviderOuterClass.Ecosystem> values) {
-        if (ecosystemBuilder_ == null) {
-          ensureEcosystemIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, ecosystem_);
-          onChanged();
-        } else {
-          ecosystemBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder clearEcosystem() {
-        if (ecosystemBuilder_ == null) {
-          ecosystem_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          ecosystemBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public Builder removeEcosystem(int index) {
-        if (ecosystemBuilder_ == null) {
-          ensureEcosystemIsMutable();
-          ecosystem_.remove(index);
-          onChanged();
-        } else {
-          ecosystemBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder(
-          int index) {
-        return getEcosystemFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder(
-          int index) {
-        if (ecosystemBuilder_ == null) {
-          return ecosystem_.get(index);  } else {
-          return ecosystemBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public java.util.List<? extends trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
-           getEcosystemOrBuilderList() {
-        if (ecosystemBuilder_ != null) {
-          return ecosystemBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(ecosystem_);
-        }
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder() {
-        return getEcosystemFieldBuilder().addBuilder(
-            trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder addEcosystemBuilder(
-          int index) {
-        return getEcosystemFieldBuilder().addBuilder(
-            index, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .services.provider.v1.Ecosystem ecosystem = 1;</code>
-       */
-      public java.util.List<trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder> 
-           getEcosystemBuilderList() {
-        return getEcosystemFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
-          getEcosystemFieldBuilder() {
-        if (ecosystemBuilder_ == null) {
-          ecosystemBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
-                  ecosystem_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          ecosystem_ = null;
-        }
-        return ecosystemBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.provider.v1.ListEcosystemsResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.provider.v1.ListEcosystemsResponse)
-    private static final trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse();
-    }
-
-    public static trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ListEcosystemsResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ListEcosystemsResponse>() {
-      @java.lang.Override
-      public ListEcosystemsResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListEcosystemsResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ListEcosystemsResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ListEcosystemsResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.ListEcosystemsResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface AcceptInviteRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.provider.v1.AcceptInviteRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string id = 1;</code>
-     * @return The id.
-     */
-    java.lang.String getId();
-    /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
+     * <pre>
+     * Optional description to identify this token
+     * </pre>
+     *
+     * <code>string description = 1;</code>
+     * @return The bytes for description.
      */
     com.google.protobuf.ByteString
-        getIdBytes();
-
-    /**
-     * <code>string code = 2;</code>
-     * @return The code.
-     */
-    java.lang.String getCode();
-    /**
-     * <code>string code = 2;</code>
-     * @return The bytes for code.
-     */
-    com.google.protobuf.ByteString
-        getCodeBytes();
+        getDescriptionBytes();
   }
   /**
-   * Protobuf type {@code services.provider.v1.AcceptInviteRequest}
+   * Protobuf type {@code services.provider.v1.GenerateTokenRequest}
    */
-  public static final class AcceptInviteRequest extends
+  public static final class GenerateTokenRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.provider.v1.AcceptInviteRequest)
-      AcceptInviteRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.provider.v1.GenerateTokenRequest)
+      GenerateTokenRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use AcceptInviteRequest.newBuilder() to construct.
-    private AcceptInviteRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GenerateTokenRequest.newBuilder() to construct.
+    private GenerateTokenRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private AcceptInviteRequest() {
-      id_ = "";
-      code_ = "";
+    private GenerateTokenRequest() {
+      description_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new AcceptInviteRequest();
+      return new GenerateTokenRequest();
     }
 
     @java.lang.Override
@@ -8889,7 +8312,7 @@ public final class ProviderOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private AcceptInviteRequest(
+    private GenerateTokenRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8910,13 +8333,7 @@ public final class ProviderOuterClass {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              code_ = s;
+              description_ = s;
               break;
             }
             default: {
@@ -8940,87 +8357,57 @@ public final class ProviderOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.Builder.class);
+              trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.class, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    public static final int DESCRIPTION_FIELD_NUMBER = 1;
+    private volatile java.lang.Object description_;
     /**
-     * <code>string id = 1;</code>
-     * @return The id.
+     * <pre>
+     * Optional description to identify this token
+     * </pre>
+     *
+     * <code>string description = 1;</code>
+     * @return The description.
      */
     @java.lang.Override
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        description_ = s;
         return s;
       }
     }
     /**
-     * <code>string id = 1;</code>
-     * @return The bytes for id.
+     * <pre>
+     * Optional description to identify this token
+     * </pre>
+     *
+     * <code>string description = 1;</code>
+     * @return The bytes for description.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int CODE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object code_;
-    /**
-     * <code>string code = 2;</code>
-     * @return The code.
-     */
-    @java.lang.Override
-    public java.lang.String getCode() {
-      java.lang.Object ref = code_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        code_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string code = 2;</code>
-     * @return The bytes for code.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCodeBytes() {
-      java.lang.Object ref = code_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        code_ = b;
+        description_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -9041,11 +8428,8 @@ public final class ProviderOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, code_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, description_);
       }
       unknownFields.writeTo(output);
     }
@@ -9056,11 +8440,8 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(code_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, code_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, description_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9072,15 +8453,13 @@ public final class ProviderOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest)) {
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest other = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) obj;
+      trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest other = (trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
-      if (!getCode()
-          .equals(other.getCode())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9092,78 +8471,76 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
-      hash = (37 * hash) + CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getCode().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(byte[] data)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseDelimitedFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9176,7 +8553,7 @@ public final class ProviderOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest prototype) {
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9192,26 +8569,26 @@ public final class ProviderOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.provider.v1.AcceptInviteRequest}
+     * Protobuf type {@code services.provider.v1.GenerateTokenRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.provider.v1.AcceptInviteRequest)
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.GenerateTokenRequest)
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.Builder.class);
+                trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.class, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.newBuilder()
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9229,9 +8606,7 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
-
-        code_ = "";
+        description_ = "";
 
         return this;
       }
@@ -9239,17 +8614,17 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstanceForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance();
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest build() {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest result = buildPartial();
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest build() {
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9257,10 +8632,9 @@ public final class ProviderOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest buildPartial() {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest result = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest(this);
-        result.id_ = id_;
-        result.code_ = code_;
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest result = new trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest(this);
+        result.description_ = description_;
         onBuilt();
         return result;
       }
@@ -9299,22 +8673,18 @@ public final class ProviderOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) {
-          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest)other);
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest other) {
-        if (other == trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
-          id_ = other.id_;
-          onChanged();
-        }
-        if (!other.getCode().isEmpty()) {
-          code_ = other.code_;
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest.getDefaultInstance()) return this;
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -9332,11 +8702,11 @@ public final class ProviderOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest parsedMessage = null;
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9346,154 +8716,98 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      private java.lang.Object id_ = "";
+      private java.lang.Object description_ = "";
       /**
-       * <code>string id = 1;</code>
-       * @return The id.
+       * <pre>
+       * Optional description to identify this token
+       * </pre>
+       *
+       * <code>string description = 1;</code>
+       * @return The description.
        */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          id_ = s;
+          description_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string id = 1;</code>
-       * @return The bytes for id.
+       * <pre>
+       * Optional description to identify this token
+       * </pre>
+       *
+       * <code>string description = 1;</code>
+       * @return The bytes for description.
        */
       public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          id_ = b;
+          description_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string id = 1;</code>
-       * @param value The id to set.
+       * <pre>
+       * Optional description to identify this token
+       * </pre>
+       *
+       * <code>string description = 1;</code>
+       * @param value The description to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
+      public Builder setDescription(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        id_ = value;
+        description_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <pre>
+       * Optional description to identify this token
+       * </pre>
+       *
+       * <code>string description = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearId() {
+      public Builder clearDescription() {
         
-        id_ = getDefaultInstance().getId();
+        description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
-       * @param value The bytes for id to set.
+       * <pre>
+       * Optional description to identify this token
+       * </pre>
+       *
+       * <code>string description = 1;</code>
+       * @param value The bytes for description to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
+      public Builder setDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        id_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object code_ = "";
-      /**
-       * <code>string code = 2;</code>
-       * @return The code.
-       */
-      public java.lang.String getCode() {
-        java.lang.Object ref = code_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          code_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string code = 2;</code>
-       * @return The bytes for code.
-       */
-      public com.google.protobuf.ByteString
-          getCodeBytes() {
-        java.lang.Object ref = code_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          code_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string code = 2;</code>
-       * @param value The code to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        code_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string code = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCode() {
-        
-        code_ = getDefaultInstance().getCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string code = 2;</code>
-       * @param value The bytes for code to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        code_ = value;
+        description_ = value;
         onChanged();
         return this;
       }
@@ -9510,85 +8824,97 @@ public final class ProviderOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.provider.v1.AcceptInviteRequest)
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.GenerateTokenRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:services.provider.v1.AcceptInviteRequest)
-    private static final trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.provider.v1.GenerateTokenRequest)
+    private static final trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest();
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest();
     }
 
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstance() {
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<AcceptInviteRequest>
-        PARSER = new com.google.protobuf.AbstractParser<AcceptInviteRequest>() {
+    private static final com.google.protobuf.Parser<GenerateTokenRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GenerateTokenRequest>() {
       @java.lang.Override
-      public AcceptInviteRequest parsePartialFrom(
+      public GenerateTokenRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new AcceptInviteRequest(input, extensionRegistry);
+        return new GenerateTokenRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<AcceptInviteRequest> parser() {
+    public static com.google.protobuf.Parser<GenerateTokenRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<AcceptInviteRequest> getParserForType() {
+    public com.google.protobuf.Parser<GenerateTokenRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteRequest getDefaultInstanceForType() {
+    public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface AcceptInviteResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.provider.v1.AcceptInviteResponse)
+  public interface GenerateTokenResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.provider.v1.GenerateTokenResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-     * @return Whether the ecosystem field is set.
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     * @return Whether the profile field is set.
      */
-    boolean hasEcosystem();
+    boolean hasProfile();
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-     * @return The ecosystem.
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     * @return The profile.
      */
-    trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem();
+    trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile();
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
      */
-    trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder();
+    trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder();
   }
   /**
-   * Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+   * Protobuf type {@code services.provider.v1.GenerateTokenResponse}
    */
-  public static final class AcceptInviteResponse extends
+  public static final class GenerateTokenResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.provider.v1.AcceptInviteResponse)
-      AcceptInviteResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.provider.v1.GenerateTokenResponse)
+      GenerateTokenResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use AcceptInviteResponse.newBuilder() to construct.
-    private AcceptInviteResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GenerateTokenResponse.newBuilder() to construct.
+    private GenerateTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private AcceptInviteResponse() {
+    private GenerateTokenResponse() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new AcceptInviteResponse();
+      return new GenerateTokenResponse();
     }
 
     @java.lang.Override
@@ -9596,7 +8922,7 @@ public final class ProviderOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private AcceptInviteResponse(
+    private GenerateTokenResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9614,15 +8940,15 @@ public final class ProviderOuterClass {
             case 0:
               done = true;
               break;
-            case 18: {
-              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder subBuilder = null;
-              if (ecosystem_ != null) {
-                subBuilder = ecosystem_.toBuilder();
+            case 10: {
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder subBuilder = null;
+              if (profile_ != null) {
+                subBuilder = profile_.toBuilder();
               }
-              ecosystem_ = input.readMessage(trinsic.services.common.v1.ProviderOuterClass.Ecosystem.parser(), extensionRegistry);
+              profile_ = input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountProfile.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(ecosystem_);
-                ecosystem_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(profile_);
+                profile_ = subBuilder.buildPartial();
               }
 
               break;
@@ -9648,41 +8974,53 @@ public final class ProviderOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable
+      return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.Builder.class);
+              trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.class, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.Builder.class);
     }
 
-    public static final int ECOSYSTEM_FIELD_NUMBER = 2;
-    private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
+    public static final int PROFILE_FIELD_NUMBER = 1;
+    private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-     * @return Whether the ecosystem field is set.
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     * @return Whether the profile field is set.
      */
     @java.lang.Override
-    public boolean hasEcosystem() {
-      return ecosystem_ != null;
+    public boolean hasProfile() {
+      return profile_ != null;
     }
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-     * @return The ecosystem.
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     * @return The profile.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
-      return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
+      return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
     }
     /**
-     * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+     * <pre>
+     * Account authentication profile that contains unprotected token
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountProfile profile = 1;</code>
      */
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
-      return getEcosystem();
+    public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
+      return getProfile();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9699,8 +9037,8 @@ public final class ProviderOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (ecosystem_ != null) {
-        output.writeMessage(2, getEcosystem());
+      if (profile_ != null) {
+        output.writeMessage(1, getProfile());
       }
       unknownFields.writeTo(output);
     }
@@ -9711,9 +9049,9 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (ecosystem_ != null) {
+      if (profile_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getEcosystem());
+          .computeMessageSize(1, getProfile());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9725,15 +9063,15 @@ public final class ProviderOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse)) {
+      if (!(obj instanceof trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse other = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) obj;
+      trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse other = (trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse) obj;
 
-      if (hasEcosystem() != other.hasEcosystem()) return false;
-      if (hasEcosystem()) {
-        if (!getEcosystem()
-            .equals(other.getEcosystem())) return false;
+      if (hasProfile() != other.hasProfile()) return false;
+      if (hasProfile()) {
+        if (!getProfile()
+            .equals(other.getProfile())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9746,78 +9084,78 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasEcosystem()) {
-        hash = (37 * hash) + ECOSYSTEM_FIELD_NUMBER;
-        hash = (53 * hash) + getEcosystem().hashCode();
+      if (hasProfile()) {
+        hash = (37 * hash) + PROFILE_FIELD_NUMBER;
+        hash = (53 * hash) + getProfile().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(byte[] data)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseDelimitedFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parseFrom(
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9830,7 +9168,7 @@ public final class ProviderOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse prototype) {
+    public static Builder newBuilder(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9846,26 +9184,26 @@ public final class ProviderOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.provider.v1.AcceptInviteResponse}
+     * Protobuf type {@code services.provider.v1.GenerateTokenResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.provider.v1.AcceptInviteResponse)
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.provider.v1.GenerateTokenResponse)
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.class, trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.Builder.class);
+                trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.class, trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.newBuilder()
+      // Construct using trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9883,11 +9221,11 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (ecosystemBuilder_ == null) {
-          ecosystem_ = null;
+        if (profileBuilder_ == null) {
+          profile_ = null;
         } else {
-          ecosystem_ = null;
-          ecosystemBuilder_ = null;
+          profile_ = null;
+          profileBuilder_ = null;
         }
         return this;
       }
@@ -9895,17 +9233,17 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
+        return trinsic.services.common.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstanceForType() {
-        return trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance();
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse getDefaultInstanceForType() {
+        return trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse build() {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse result = buildPartial();
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse build() {
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9913,12 +9251,12 @@ public final class ProviderOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse buildPartial() {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse result = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse(this);
-        if (ecosystemBuilder_ == null) {
-          result.ecosystem_ = ecosystem_;
+      public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse buildPartial() {
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse result = new trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse(this);
+        if (profileBuilder_ == null) {
+          result.profile_ = profile_;
         } else {
-          result.ecosystem_ = ecosystemBuilder_.build();
+          result.profile_ = profileBuilder_.build();
         }
         onBuilt();
         return result;
@@ -9958,18 +9296,18 @@ public final class ProviderOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) {
-          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse)other);
+        if (other instanceof trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse) {
+          return mergeFrom((trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse other) {
-        if (other == trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse.getDefaultInstance()) return this;
-        if (other.hasEcosystem()) {
-          mergeEcosystem(other.getEcosystem());
+      public Builder mergeFrom(trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse other) {
+        if (other == trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse.getDefaultInstance()) return this;
+        if (other.hasProfile()) {
+          mergeProfile(other.getProfile());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9986,11 +9324,11 @@ public final class ProviderOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse parsedMessage = null;
+        trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10000,123 +9338,159 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      private trinsic.services.common.v1.ProviderOuterClass.Ecosystem ecosystem_;
+      private trinsic.services.account.v1.AccountOuterClass.AccountProfile profile_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> ecosystemBuilder_;
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> profileBuilder_;
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-       * @return Whether the ecosystem field is set.
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
+       * @return Whether the profile field is set.
        */
-      public boolean hasEcosystem() {
-        return ecosystemBuilder_ != null || ecosystem_ != null;
+      public boolean hasProfile() {
+        return profileBuilder_ != null || profile_ != null;
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
-       * @return The ecosystem.
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
+       * @return The profile.
        */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem getEcosystem() {
-        if (ecosystemBuilder_ == null) {
-          return ecosystem_ == null ? trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile getProfile() {
+        if (profileBuilder_ == null) {
+          return profile_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
         } else {
-          return ecosystemBuilder_.getMessage();
+          return profileBuilder_.getMessage();
         }
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public Builder setEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
-        if (ecosystemBuilder_ == null) {
+      public Builder setProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
+        if (profileBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ecosystem_ = value;
+          profile_ = value;
           onChanged();
         } else {
-          ecosystemBuilder_.setMessage(value);
+          profileBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public Builder setEcosystem(
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder builderForValue) {
-        if (ecosystemBuilder_ == null) {
-          ecosystem_ = builderForValue.build();
+      public Builder setProfile(
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder builderForValue) {
+        if (profileBuilder_ == null) {
+          profile_ = builderForValue.build();
           onChanged();
         } else {
-          ecosystemBuilder_.setMessage(builderForValue.build());
+          profileBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public Builder mergeEcosystem(trinsic.services.common.v1.ProviderOuterClass.Ecosystem value) {
-        if (ecosystemBuilder_ == null) {
-          if (ecosystem_ != null) {
-            ecosystem_ =
-              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.newBuilder(ecosystem_).mergeFrom(value).buildPartial();
+      public Builder mergeProfile(trinsic.services.account.v1.AccountOuterClass.AccountProfile value) {
+        if (profileBuilder_ == null) {
+          if (profile_ != null) {
+            profile_ =
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.newBuilder(profile_).mergeFrom(value).buildPartial();
           } else {
-            ecosystem_ = value;
+            profile_ = value;
           }
           onChanged();
         } else {
-          ecosystemBuilder_.mergeFrom(value);
+          profileBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public Builder clearEcosystem() {
-        if (ecosystemBuilder_ == null) {
-          ecosystem_ = null;
+      public Builder clearProfile() {
+        if (profileBuilder_ == null) {
+          profile_ = null;
           onChanged();
         } else {
-          ecosystem_ = null;
-          ecosystemBuilder_ = null;
+          profile_ = null;
+          profileBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder getEcosystemBuilder() {
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder getProfileBuilder() {
         
         onChanged();
-        return getEcosystemFieldBuilder().getBuilder();
+        return getProfileFieldBuilder().getBuilder();
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
-      public trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder getEcosystemOrBuilder() {
-        if (ecosystemBuilder_ != null) {
-          return ecosystemBuilder_.getMessageOrBuilder();
+      public trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder getProfileOrBuilder() {
+        if (profileBuilder_ != null) {
+          return profileBuilder_.getMessageOrBuilder();
         } else {
-          return ecosystem_ == null ?
-              trinsic.services.common.v1.ProviderOuterClass.Ecosystem.getDefaultInstance() : ecosystem_;
+          return profile_ == null ?
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile.getDefaultInstance() : profile_;
         }
       }
       /**
-       * <code>.services.provider.v1.Ecosystem ecosystem = 2;</code>
+       * <pre>
+       * Account authentication profile that contains unprotected token
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountProfile profile = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder> 
-          getEcosystemFieldBuilder() {
-        if (ecosystemBuilder_ == null) {
-          ecosystemBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.common.v1.ProviderOuterClass.Ecosystem, trinsic.services.common.v1.ProviderOuterClass.Ecosystem.Builder, trinsic.services.common.v1.ProviderOuterClass.EcosystemOrBuilder>(
-                  getEcosystem(),
+          trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder> 
+          getProfileFieldBuilder() {
+        if (profileBuilder_ == null) {
+          profileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              trinsic.services.account.v1.AccountOuterClass.AccountProfile, trinsic.services.account.v1.AccountOuterClass.AccountProfile.Builder, trinsic.services.account.v1.AccountOuterClass.AccountProfileOrBuilder>(
+                  getProfile(),
                   getParentForChildren(),
                   isClean());
-          ecosystem_ = null;
+          profile_ = null;
         }
-        return ecosystemBuilder_;
+        return profileBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -10131,41 +9505,41 @@ public final class ProviderOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.provider.v1.AcceptInviteResponse)
+      // @@protoc_insertion_point(builder_scope:services.provider.v1.GenerateTokenResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:services.provider.v1.AcceptInviteResponse)
-    private static final trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.provider.v1.GenerateTokenResponse)
+    private static final trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse();
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse();
     }
 
-    public static trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstance() {
+    public static trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<AcceptInviteResponse>
-        PARSER = new com.google.protobuf.AbstractParser<AcceptInviteResponse>() {
+    private static final com.google.protobuf.Parser<GenerateTokenResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GenerateTokenResponse>() {
       @java.lang.Override
-      public AcceptInviteResponse parsePartialFrom(
+      public GenerateTokenResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new AcceptInviteResponse(input, extensionRegistry);
+        return new GenerateTokenResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<AcceptInviteResponse> parser() {
+    public static com.google.protobuf.Parser<GenerateTokenResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<AcceptInviteResponse> getParserForType() {
+    public com.google.protobuf.Parser<GenerateTokenResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.common.v1.ProviderOuterClass.AcceptInviteResponse getDefaultInstanceForType() {
+    public trinsic.services.common.v1.ProviderOuterClass.GenerateTokenResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -10217,25 +9591,15 @@ public final class ProviderOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListEcosystemsRequest_descriptor;
+    internal_static_services_provider_v1_GenerateTokenRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable;
+      internal_static_services_provider_v1_GenerateTokenRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListEcosystemsResponse_descriptor;
+    internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_AcceptInviteRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_AcceptInviteResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable;
+      internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10247,57 +9611,58 @@ public final class ProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n#services/provider/v1/provider.proto\022\024s" +
       "ervices.provider.v1\032\037services/common/v1/" +
-      "common.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004co" +
-      "de\030\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 " +
-      "\001(\t\022\017\n\007expires\030\005 \001(\t\"\376\001\n\rInviteRequest\022:" +
-      "\n\013participant\030\001 \001(\0162%.services.provider." +
-      "v1.ParticipantType\022\023\n\013description\030\002 \001(\t\022" +
-      "\017\n\005email\030\005 \001(\tH\000\022\017\n\005phone\030\006 \001(\tH\000\022S\n\022did" +
-      "comm_invitation\030\007 \001(\01325.services.provide" +
-      "r.v1.InviteRequest.DidCommInvitationH\000\032\023" +
-      "\n\021DidCommInvitationB\020\n\016contact_method\"[\n" +
-      "\016InviteResponse\0222\n\006status\030\001 \001(\0162\".servic" +
-      "es.common.v1.ResponseStatus\022\025\n\rinvitatio" +
-      "n_id\030\n \001(\t\"0\n\027InvitationStatusRequest\022\025\n" +
-      "\rinvitation_id\030\001 \001(\t\"\276\001\n\030InvitationStatu" +
-      "sResponse\022E\n\006status\030\001 \001(\01625.services.pro" +
-      "vider.v1.InvitationStatusResponse.Status" +
-      "\022\026\n\016status_details\030\002 \001(\t\"C\n\006Status\022\t\n\005Er" +
-      "ror\020\000\022\022\n\016InvitationSent\020\001\022\r\n\tCompleted\020\002" +
-      "\022\013\n\007Expired\020\003\"G\n\tEcosystem\022\n\n\002id\030\001 \001(\t\022\014" +
-      "\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\013\n\003uri" +
-      "\030\004 \001(\t\"H\n\026CreateEcosystemRequest\022\014\n\004name" +
-      "\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\013\n\003uri\030\003 \001(\t" +
-      "\"%\n\027CreateEcosystemResponse\022\n\n\002id\030\001 \001(\t\"" +
-      "\027\n\025ListEcosystemsRequest\"L\n\026ListEcosyste" +
-      "msResponse\0222\n\tecosystem\030\001 \003(\0132\037.services" +
-      ".provider.v1.Ecosystem\"/\n\023AcceptInviteRe" +
-      "quest\022\n\n\002id\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\"J\n\024Accep" +
-      "tInviteResponse\0222\n\tecosystem\030\002 \001(\0132\037.ser" +
-      "vices.provider.v1.Ecosystem*U\n\017Participa" +
-      "ntType\022\037\n\033participant_type_individual\020\000\022" +
-      "!\n\035participant_type_organization\020\0012\226\004\n\010P" +
-      "rovider\022n\n\017CreateEcosystem\022,.services.pr" +
-      "ovider.v1.CreateEcosystemRequest\032-.servi" +
-      "ces.provider.v1.CreateEcosystemResponse\022" +
-      "k\n\016ListEcosystems\022+.services.provider.v1" +
-      ".ListEcosystemsRequest\032,.services.provid" +
-      "er.v1.ListEcosystemsResponse\022S\n\006Invite\022#" +
-      ".services.provider.v1.InviteRequest\032$.se" +
-      "rvices.provider.v1.InviteResponse\022e\n\014Acc" +
-      "eptInvite\022).services.provider.v1.AcceptI" +
-      "nviteRequest\032*.services.provider.v1.Acce" +
-      "ptInviteResponse\022q\n\020InvitationStatus\022-.s" +
-      "ervices.provider.v1.InvitationStatusRequ" +
-      "est\032..services.provider.v1.InvitationSta" +
-      "tusResponseBV\n\032trinsic.services.common.v" +
-      "1Z\031github.com/trinsic-id/sdk\252\002\034Trinsic.S" +
-      "ervices.Provider.V1b\006proto3"
+      "common.proto\032!services/account/v1/accoun" +
+      "t.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004code\030\002 " +
+      "\001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 \001(\t\022\017" +
+      "\n\007expires\030\005 \001(\t\"\253\001\n\rInviteRequest\022:\n\013par" +
+      "ticipant\030\001 \001(\0162%.services.provider.v1.Pa" +
+      "rticipantType\022\023\n\013description\030\002 \001(\t\0224\n\007de" +
+      "tails\030\003 \001(\0132#.services.account.v1.Accoun" +
+      "tDetails\032\023\n\021DidCommInvitation\"t\n\016InviteR" +
+      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
+      "n.v1.ResponseStatus\022\025\n\rinvitation_id\030\n \001" +
+      "(\t\022\027\n\017invitation_code\030\013 \001(\t\"0\n\027Invitatio" +
+      "nStatusRequest\022\025\n\rinvitation_id\030\001 \001(\t\"\276\001" +
+      "\n\030InvitationStatusResponse\022E\n\006status\030\001 \001" +
+      "(\01625.services.provider.v1.InvitationStat" +
+      "usResponse.Status\022\026\n\016status_details\030\002 \001(" +
+      "\t\"C\n\006Status\022\t\n\005Error\020\000\022\022\n\016InvitationSent" +
+      "\020\001\022\r\n\tCompleted\020\002\022\013\n\007Expired\020\003\"G\n\tEcosys" +
+      "tem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descrip" +
+      "tion\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t\"~\n\026CreateEcosyst" +
+      "emRequest\022\014\n\004name\030\001 \001(\t\022\023\n\013description\030\002" +
+      " \001(\t\022\013\n\003uri\030\003 \001(\t\0224\n\007details\030\004 \001(\0132#.ser" +
+      "vices.account.v1.AccountDetails\"\311\001\n\027Crea" +
+      "teEcosystemResponse\0222\n\tecosystem\030\001 \001(\0132\037" +
+      ".services.provider.v1.Ecosystem\0224\n\007profi" +
+      "le\030\002 \001(\0132#.services.account.v1.AccountPr" +
+      "ofile\022D\n\023confirmation_method\030\003 \001(\0162\'.ser" +
+      "vices.account.v1.ConfirmationMethod\"+\n\024G" +
+      "enerateTokenRequest\022\023\n\013description\030\001 \001(\t" +
+      "\"M\n\025GenerateTokenResponse\0224\n\007profile\030\001 \001" +
+      "(\0132#.services.account.v1.AccountProfile*" +
+      "U\n\017ParticipantType\022\037\n\033participant_type_i" +
+      "ndividual\020\000\022!\n\035participant_type_organiza" +
+      "tion\020\0012\254\003\n\010Provider\022n\n\017CreateEcosystem\022," +
+      ".services.provider.v1.CreateEcosystemReq" +
+      "uest\032-.services.provider.v1.CreateEcosys" +
+      "temResponse\022h\n\rGenerateToken\022*.services." +
+      "provider.v1.GenerateTokenRequest\032+.servi" +
+      "ces.provider.v1.GenerateTokenResponse\022S\n" +
+      "\006Invite\022#.services.provider.v1.InviteReq" +
+      "uest\032$.services.provider.v1.InviteRespon" +
+      "se\022q\n\020InvitationStatus\022-.services.provid" +
+      "er.v1.InvitationStatusRequest\032..services" +
+      ".provider.v1.InvitationStatusResponseBV\n" +
+      "\032trinsic.services.common.v1Z\031github.com/" +
+      "trinsic-id/sdk\252\002\034Trinsic.Services.Provid" +
+      "er.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
+          trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
         });
     internal_static_services_provider_v1_Invite_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -10310,7 +9675,7 @@ public final class ProviderOuterClass {
     internal_static_services_provider_v1_InviteRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InviteRequest_descriptor,
-        new java.lang.String[] { "Participant", "Description", "Email", "Phone", "DidcommInvitation", "ContactMethod", });
+        new java.lang.String[] { "Participant", "Description", "Details", });
     internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor =
       internal_static_services_provider_v1_InviteRequest_descriptor.getNestedTypes().get(0);
     internal_static_services_provider_v1_InviteRequest_DidCommInvitation_fieldAccessorTable = new
@@ -10322,7 +9687,7 @@ public final class ProviderOuterClass {
     internal_static_services_provider_v1_InviteResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_InviteResponse_descriptor,
-        new java.lang.String[] { "Status", "InvitationId", });
+        new java.lang.String[] { "Status", "InvitationId", "InvitationCode", });
     internal_static_services_provider_v1_InvitationStatusRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_services_provider_v1_InvitationStatusRequest_fieldAccessorTable = new
@@ -10346,38 +9711,27 @@ public final class ProviderOuterClass {
     internal_static_services_provider_v1_CreateEcosystemRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_CreateEcosystemRequest_descriptor,
-        new java.lang.String[] { "Name", "Description", "Uri", });
+        new java.lang.String[] { "Name", "Description", "Uri", "Details", });
     internal_static_services_provider_v1_CreateEcosystemResponse_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_services_provider_v1_CreateEcosystemResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_CreateEcosystemResponse_descriptor,
-        new java.lang.String[] { "Id", });
-    internal_static_services_provider_v1_ListEcosystemsRequest_descriptor =
+        new java.lang.String[] { "Ecosystem", "Profile", "ConfirmationMethod", });
+    internal_static_services_provider_v1_GenerateTokenRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_services_provider_v1_ListEcosystemsRequest_fieldAccessorTable = new
+    internal_static_services_provider_v1_GenerateTokenRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListEcosystemsRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_services_provider_v1_ListEcosystemsResponse_descriptor =
+        internal_static_services_provider_v1_GenerateTokenRequest_descriptor,
+        new java.lang.String[] { "Description", });
+    internal_static_services_provider_v1_GenerateTokenResponse_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_services_provider_v1_ListEcosystemsResponse_fieldAccessorTable = new
+    internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListEcosystemsResponse_descriptor,
-        new java.lang.String[] { "Ecosystem", });
-    internal_static_services_provider_v1_AcceptInviteRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_services_provider_v1_AcceptInviteRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_AcceptInviteRequest_descriptor,
-        new java.lang.String[] { "Id", "Code", });
-    internal_static_services_provider_v1_AcceptInviteResponse_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_services_provider_v1_AcceptInviteResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_AcceptInviteResponse_descriptor,
-        new java.lang.String[] { "Ecosystem", });
+        internal_static_services_provider_v1_GenerateTokenResponse_descriptor,
+        new java.lang.String[] { "Profile", });
     trinsic.services.common.v1.CommonOuterClass.getDescriptor();
+    trinsic.services.account.v1.AccountOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

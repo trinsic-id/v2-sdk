@@ -9,17 +9,25 @@ fn main() {
     config
         .compile_well_known_types(true)
         .type_attribute(
-            "JsonPayload",
+            "ServiceOptions",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
-        .field_attribute("JsonPayload.json", "#[serde(flatten)]")
         .type_attribute(
-            "JsonPayload.json",
+            ".services",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
+        // .field_attribute(
+        //     "ServiceOptions.auth_token",
+        //     "#[serde(skip_serializing_if = \"String::is_empty\")]",
+        // )
+        // .type_attribute(
+        //     "JsonPayload.json",
+        //     "#[derive(::serde::Serialize, ::serde::Deserialize)]",
+        // )
         .compile(
             &[
                 "../proto/pbmse/v1/pbmse.proto",
+                "../proto/sdk/options/v1/options.proto",
                 "../proto/services/debug/v1/debug.proto",
                 "../proto/services/common/v1/common.proto",
                 "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
@@ -38,6 +46,10 @@ fn main() {
         "./src/proto/google/protobuf/mod.rs"
     );
     move_file!("./src/proto/pbmse.v1.rs", "./src/proto/pbmse/v1/mod.rs");
+    move_file!(
+        "./src/proto/sdk.options.v1.rs",
+        "./src/proto/sdk/options/v1/mod.rs"
+    );
     move_file!(
         "./src/proto/services.common.v1.rs",
         "./src/proto/services/common/v1/mod.rs"

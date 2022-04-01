@@ -2,26 +2,20 @@ package trinsic.services;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import io.grpc.Channel;
 import trinsic.okapi.DidException;
-import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.CommonOuterClass;
+import trinsic.sdk.v1.Options;
 import trinsic.services.verifiablecredentials.templates.v1.CredentialTemplatesGrpc;
 import trinsic.services.verifiablecredentials.templates.v1.Templates;
 
 public class CredentialTemplateService extends ServiceBase {
     private final CredentialTemplatesGrpc.CredentialTemplatesFutureStub stub;
 
-    public CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile) {
-        this(accountProfile, null, null);
+    public CredentialTemplateService() {
+        this(null);
     }
 
-    public CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        this(accountProfile, serverConfig, null);
-    }
-
-    public CredentialTemplateService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
-        super(accountProfile, serverConfig, existingChannel);
+    public CredentialTemplateService(Options.ServiceOptions options) {
+        super(options);
 
         this.stub = CredentialTemplatesGrpc.newFutureStub(this.getChannel());
     }

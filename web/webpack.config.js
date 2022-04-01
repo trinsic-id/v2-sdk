@@ -3,8 +3,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
-    wallet: "./test/WalletService.test.js",
-    provider: "./test/ProviderService.test.js",
+    wallet: "./test/WalletService.test.js"
   },
   output: {
     path: path.resolve(__dirname, "./test/build"),
@@ -13,4 +12,7 @@ module.exports = {
   experiments: {
     asyncWebAssembly: true,
   },
+  stats: {
+    errorDetails: true
+  }
 };

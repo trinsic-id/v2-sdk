@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Grpc.Core;
 using Google.Protobuf;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
+using Trinsic.Sdk.Options.V1;
 #if __BROWSER__
 using System.Net.Http;
 using Grpc.Net.Client.Web;
@@ -12,64 +14,74 @@ using Grpc.Net.Client.Web;
 
 namespace Trinsic;
 
+[SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible")]
 public abstract class ServiceBase
 {
-    protected internal ServiceBase(ServerConfig serverConfig) {
-        Channel = CreateChannel(serverConfig);
-    }
-    protected internal ServiceBase(AccountProfile accountProfile) {
-        Channel = CreateChannel();
-        Profile = accountProfile;
-    }
-    protected internal ServiceBase(AccountProfile accountProfile, ServerConfig serverConfig) {
-        Profile = accountProfile;
-        Channel = CreateChannel(serverConfig);
-    }
+    internal const string DefaultEcosystem = "default";
+    internal const bool DefaultServerUseTls = true;
+    internal const int DefaultServerPort = 443;
+    internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
 
-    protected internal ServiceBase(GrpcChannel existingChannel) {
-        Channel = existingChannel;
-    }
+    protected internal readonly ITokenProvider TokenProvider;
 
-    protected internal ServiceBase(AccountProfile accountProfile, GrpcChannel existingChannel) {
-        Profile = accountProfile;
-        Channel = existingChannel;
-    }
+    protected internal ServiceBase() : this(new()) { }
 
-    private static GrpcChannel CreateChannel(ServerConfig? serverConfig = null) {
-        serverConfig ??= DefaultServerConfig();
-#if __BROWSER__
-        var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
-        return GrpcChannel.ForAddress(serverConfig.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
+    protected internal ServiceBase(ServiceOptions options) {
+        Options = options;
+        EnsureOptionDefaults();
+        Channel = CreateChannel(Options);
+
+#if __IOS__
+        TokenProvider = KeyChainTokenProvider.StaticInstance;
 #else
-        return GrpcChannel.ForAddress(serverConfig.FormatUrl());
+        TokenProvider = FileTokenProvider.StaticInstance;
 #endif
     }
 
-    protected static ServerConfig DefaultServerConfig() => new() {
-        Endpoint = "prod.trinsic.cloud",
-        Port = 443,
-        UseTls = true
-    };
+    protected internal ServiceBase(ServiceOptions options, ITokenProvider tokenProvider) : this(options) {
+        TokenProvider = tokenProvider;
+    }
+
+    private void EnsureOptionDefaults() {
+        if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) Options.ServerEndpoint = DefaultServerEndpoint;
+        if (Options.ServerPort == default) Options.ServerPort = DefaultServerPort;
+        if (Options.ServerPort == DefaultServerPort) Options.ServerUseTls = DefaultServerUseTls;
+        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) Options.DefaultEcosystem = DefaultEcosystem;
+    }
+
+    private static GrpcChannel CreateChannel(ServiceOptions options) {
+#if __BROWSER__
+        var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, new HttpClientHandler()));
+        return GrpcChannel.ForAddress(options.FormatUrl(), new GrpcChannelOptions { HttpClient = httpClient });
+#else
+        return GrpcChannel.ForAddress(options.FormatUrl());
+#endif
+    }
 
     private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
 
-    public virtual AccountProfile? Profile { get; set; }
+    public ServiceOptions Options { get; }
 
     /// <summary>
     /// Gets the gRPC channel used by this service. This channel can be reused
     /// by passing this instance to other service constructors.
     /// </summary>
-    public GrpcChannel Channel { get; private set; }
+    protected GrpcChannel Channel { get; }
 
     /// <summary>
     /// Create call metadata by setting the required authentication headers
     /// </summary>
     /// <returns></returns>
     protected async Task<Metadata> BuildMetadataAsync(IMessage request) {
-        if (Profile is null) throw new("Cannot call authenticated endpoint: profile must be set");
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
+            ? await TokenProvider.GetAsync()
+            : Options.AuthToken;
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
+
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         return new() {
-            {"Authorization", await _securityProvider.GetAuthHeaderAsync(Profile, request)}
+            {"Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request)}
         };
     }
 
@@ -78,10 +90,15 @@ public abstract class ServiceBase
     /// </summary>
     /// <returns></returns>
     protected Metadata BuildMetadata(IMessage request) {
-        if (Profile is null) throw new("Cannot call authenticated endpoint: profile must be set");
+        var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) 
+            ? TokenProvider.Get() 
+            : Options.AuthToken;
+        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
+
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
         return new() {
-            {"Authorization", _securityProvider.GetAuthHeader(Profile, request)}
+            {"Authorization", _securityProvider.GetAuthHeader(profile, request)}
         };
     }
 }

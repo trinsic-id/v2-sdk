@@ -1,5 +1,5 @@
 /// Request for creating new account
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInRequest {
     /// Account registration details
     #[prost(message, optional, tag = "1")]
@@ -14,7 +14,7 @@ pub struct SignInRequest {
     pub ecosystem_id: ::prost::alloc::string::String,
 }
 /// Account Registration Details
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountDetails {
     /// Account name (optional)
     #[prost(string, tag = "1")]
@@ -30,7 +30,7 @@ pub struct AccountDetails {
 /// This object will indicate if a confirmation code
 /// was sent to one of the users two-factor methods
 /// like email, SMS, etc.
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInResponse {
     /// The status of the response
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
@@ -49,7 +49,7 @@ pub struct SignInResponse {
 }
 /// Device profile containing sensitive authentication data.
 /// This information should be stored securely
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountProfile {
     /// The type of profile, used to differentiate between
     /// protocol schemes or versions
@@ -68,7 +68,7 @@ pub struct AccountProfile {
     pub protection: ::core::option::Option<TokenProtection>,
 }
 /// Token protection info
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct TokenProtection {
     /// Indicates if token is protected using a PIN,
     /// security code, HSM secret, etc.
@@ -78,9 +78,9 @@ pub struct TokenProtection {
     #[prost(enumeration = "ConfirmationMethod", tag = "2")]
     pub method: i32,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoResponse {
     /// The account details associated with
     /// the calling request context
@@ -90,15 +90,15 @@ pub struct InfoResponse {
     #[prost(message, repeated, tag = "2")]
     pub ecosystems: ::prost::alloc::vec::Vec<AccountEcosystem>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesResponse {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RevokeDeviceRequest {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RevokeDeviceResponse {}
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountEcosystem {
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
@@ -110,7 +110,19 @@ pub struct AccountEcosystem {
     pub uri: ::prost::alloc::string::String,
 }
 /// Confirmation method type for two-factor workflows
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ConfirmationMethod {
     /// No confirmation required

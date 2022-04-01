@@ -3,10 +3,8 @@ package trinsic;
 import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import trinsic.services.common.v1.CommonOuterClass;
+import trinsic.sdk.v1.Options;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 
 public class TrinsicUtilities {
@@ -16,43 +14,34 @@ public class TrinsicUtilities {
         if (envValue != null) return envValue;
         return defaultValue;
     }
-    public static CommonOuterClass.ServerConfig getTestServerConfig() {
+    public static Options.ServiceOptions getTrinsicServiceOptions() {
 
-        String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "");
+        String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud");
         int port = Integer.parseInt(getEnvVar("TEST_SERVER_PORT", "443"));
         boolean useTls = Boolean.parseBoolean(getEnvVar("TEST_SERVER_USE_TLS", "true"));
+        String authToken = getEnvVar("TEST_SERVER_AUTH_TOKEN", "");
+        String defaultEcosystem = getEnvVar("TEST_SERVER_ECOSYSTEM", "default");
 
-        return CommonOuterClass.ServerConfig.newBuilder()
-                .setEndpoint(endpoint)
-                .setPort(port)
-                .setUseTls(useTls).build();
-    }
-    public static CommonOuterClass.ServerConfig getProductionConfig() {
-        return CommonOuterClass.ServerConfig.newBuilder()
-                .setEndpoint("prod.trinsic.cloud")
-                .setPort(443)
-                .setUseTls(true).build();
-    }
-    public static CommonOuterClass.ServerConfig getConfigFromUrl(String url) throws MalformedURLException {
-        if (url == null || url.trim().length() == 0)
-            return getProductionConfig();
-        var serviceUrl = new URL(url);
-        if (serviceUrl.getPort() == -1)
-            throw new MalformedURLException("Port required!");
-        return CommonOuterClass.ServerConfig.newBuilder()
-                .setEndpoint(serviceUrl.getHost())
-                .setPort(serviceUrl.getPort())
-                .setUseTls(serviceUrl.getProtocol().equals("https")).build();
+        return Options.ServiceOptions.newBuilder()
+                .setServerEndpoint(endpoint)
+                .setServerPort(port)
+                .setAuthToken(authToken)
+                .setDefaultEcosystem(defaultEcosystem)
+                .setServerUseTls(useTls).build();
     }
 
-    public static CommonOuterClass.JsonPayload createPayloadString(HashMap document) {
+    public static Options.ServiceOptions getTrinsicServiceOptions(String authToken) {
+        return Options.ServiceOptions.newBuilder().mergeFrom(getTrinsicServiceOptions()).setAuthToken(authToken).build();
+    }
+
+    public static String hashmapToJson(HashMap document) {
         var gson = new Gson();
-        return CommonOuterClass.JsonPayload.newBuilder().setJsonString(gson.toJson(document, HashMap.class)).build();
+        return gson.toJson(document, HashMap.class);
     }
 
-    public static ManagedChannel getChannel(CommonOuterClass.ServerConfig config) {
-        var channelBuilder = ManagedChannelBuilder.forAddress(config.getEndpoint(), config.getPort());
-        if (!config.getUseTls())
+    public static ManagedChannel getChannel(Options.ServiceOptions config) {
+        var channelBuilder = ManagedChannelBuilder.forAddress(config.getServerEndpoint(), config.getServerPort());
+        if (!config.getServerUseTls())
             channelBuilder = channelBuilder.usePlaintext();
         else
             channelBuilder = channelBuilder.useTransportSecurity();

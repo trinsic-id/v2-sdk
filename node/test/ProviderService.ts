@@ -1,42 +1,26 @@
 import test from "ava"
-import {AccountService, CreateEcosystemRequest, ProviderService, AccountProfile} from "../src";
-import {getTestServerConfig} from "./TestData";
+import {AccountService, CreateEcosystemRequest, ProviderService, SignInRequest} from "../src";
+import {getTestServerOptions} from "./TestData";
 
 require("dotenv").config();
 
-const config = getTestServerConfig();
-let profile = new AccountProfile();
+const options = getTestServerOptions();
 
 test.before(async t => {
-    let service = new AccountService({profile: undefined, server: config});
-    let response = await service.signIn();
+    let service = new AccountService(options);
+    let authToken = await service.signIn(new SignInRequest());
 
-    profile = response.getProfile()!;
-});
-
-test("make an invitation", async (t) => {
-    // let providerService = new ProviderService({profile, server: config});
-
-    // let inviteRequest = new InviteRequest().setEmail(randomEmail()).setDescription("invitation");
-
-    // let inviteResponse = await providerService.inviteParticipant(inviteRequest);
-
-    // t.not(inviteResponse, null);
-    // t.not(inviteResponse.getInvitationId(), null);
-    t.pass();
+    options.setAuthToken(authToken);
 });
 
 test("Demo: Ecosystem Tests", async (t) => {
-    let providerService = new ProviderService({profile, server: config});
-    let actualCreate = await providerService.createEcosystem(new CreateEcosystemRequest().setName("Test Ecosystem").setDescription("My ecosystem").setUri("https://example.com"));
+    let providerService = new ProviderService(options);
+    let actualCreate = await providerService.createEcosystem(
+        new CreateEcosystemRequest()
+            .setDescription("Test ecosystem from Node")
+            .setUri("https://example.com"));
 
     t.not(actualCreate, null);
-    t.not(actualCreate.getId(), null);
-    t.true(actualCreate.getId().startsWith("urn:trinsic:ecosystems:"));
-
-    // test list the actual ecosystems
-    let actualList = await providerService.listEcosystems();
-    t.not(actualList, null);
-    t.true(actualList.getEcosystemList().length > 0)
+    t.not(actualCreate.getEcosystem(), null);
+    t.true(actualCreate.getEcosystem()!.getId().startsWith("urn:trinsic:ecosystems:"));
 });
-

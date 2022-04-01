@@ -1,10 +1,9 @@
 package trinsic.security;
 
-import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import io.github.rctcwyvrn.blake3.Blake3;
 import trinsic.okapi.DidException;
+import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.services.account.v1.AccountOuterClass;
@@ -20,26 +19,21 @@ public class OberonSecurityProvider implements ISecurityProvider {
             throw new RuntimeException("the token must be unprotected before use.");
 
         // compute the hash of the request and return the result
-        var bytes = message.toByteArray();
-        var hasher = Blake3.newInstance();
-        hasher.update(bytes);
-        var messageHash = hasher.digest(64);
+        var messageHash = Hashing.blake3_hash(trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.newBuilder().setData(message.toByteString()).build()).getDigest();
 
         var nonce = CommonOuterClass.Nonce.newBuilder()
                 .setTimestamp(Instant.now().toEpochMilli())
-                .setRequestHash(ByteString.copyFrom(messageHash)).build();
+                .setRequestHash(messageHash).build();
 
         var proof = Oberon.createProof(Security.CreateOberonProofRequest.newBuilder()
                 .setToken(accountProfile.getAuthToken())
                 .setData(accountProfile.getAuthData())
                 .setNonce(nonce.toByteString()).build());
 
-        var oberonBuilder = "Oberon " +
+        return "Oberon " +
                 "version=1," +
                 "proof=" + Base64.getUrlEncoder().encodeToString(proof.getProof().toByteArray()) + "," +
                 "data=" + Base64.getUrlEncoder().encodeToString(accountProfile.getAuthData().toByteArray()) + "," +
                 "nonce=" + Base64.getUrlEncoder().encodeToString(nonce.toByteArray());
-
-        return oberonBuilder;
     }
 }

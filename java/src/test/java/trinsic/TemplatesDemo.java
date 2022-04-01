@@ -14,15 +14,14 @@ import java.util.concurrent.ExecutionException;
 
 public class TemplatesDemo {
     public static void main(String[] args) throws IOException, DidException, ExecutionException, InterruptedException {
-        // Make sure you set the TEST_SERVER_ENDPOINT environment variable
         run();
     }
 
     public static void run() throws IOException, DidException, ExecutionException, InterruptedException {
-        var accountService = new AccountService(null, TrinsicUtilities.getTestServerConfig());
-        var account = accountService.signIn(null).get().getProfile();
-        var templateService = new CredentialTemplateService(account, TrinsicUtilities.getTestServerConfig());
-        var credentialService = new CredentialsService(account, TrinsicUtilities.getTestServerConfig());
+        var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        var account = accountService.signIn().get();
+        var templateService = new CredentialTemplateService(TrinsicUtilities.getTrinsicServiceOptions(account));
+        var credentialService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         // create example template
         var fields = new HashMap<String, Templates.TemplateField>();

@@ -11,7 +11,7 @@
 Library is available for use with different languages
 
 [![Gem](https://img.shields.io/gem/v/trinsic-services?color=e9563f)](https://rubygems.org/gems/trinsic-services)
-[![Go)](https://img.shields.io/github/go-mod/go-version/trinsic-id/sdk?color=01ADD8&filename=go%2Fgo.mod&label=go)](https://github.com/trinsic-id/sdk/tree/main/go/)
+[![Go)](https://img.shields.io/github/v/tag/trinsic-id/okapi?sort=semver)](https://github.com/trinsic-id/sdk/tree/main/go/)
 [![Nuget](https://img.shields.io/nuget/v/trinsic)](https://www.nuget.org/packages/Trinsic/)
 [![npm](https://img.shields.io/npm/v/@trinsic/trinsic?color=CC3534)](https://www.npmjs.com/package/@trinsic/trinsic)
 [![PyPI](https://img.shields.io/pypi/v/trinsic-sdk?color=%230074b7)](https://pypi.org/project/trinsic-sdk/)

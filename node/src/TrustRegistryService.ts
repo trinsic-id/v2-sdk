@@ -1,5 +1,6 @@
-import ServiceBase, {ServiceOptions} from "./ServiceBase";
+import ServiceBase from "./ServiceBase";
 import {
+    ServiceOptions,
     AddFrameworkRequest,
     AddFrameworkResponse,
     CheckIssuerStatusRequest,
@@ -20,6 +21,7 @@ import {
     UnregisterVerifierRequest,
     UnregisterVerifierResponse
 } from "./proto";
+import { ClientReadableStream } from "@grpc/grpc-js";
 
 export class TrustRegistryService extends ServiceBase {
     client: TrustRegistryClient;
@@ -35,8 +37,9 @@ export class TrustRegistryService extends ServiceBase {
             this.client.registerIssuer(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -46,8 +49,9 @@ export class TrustRegistryService extends ServiceBase {
             this.client.registerVerifier(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -57,8 +61,9 @@ export class TrustRegistryService extends ServiceBase {
             this.client.unregisterIssuer(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -68,8 +73,9 @@ export class TrustRegistryService extends ServiceBase {
             this.client.unregisterVerifier(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -79,8 +85,9 @@ export class TrustRegistryService extends ServiceBase {
             this.client.checkIssuerStatus(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -90,20 +97,23 @@ export class TrustRegistryService extends ServiceBase {
             this.client.checkVerifierStatus(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
 
-    public searchRegistry(query: string = "SELECT * FROM c"): Promise<SearchRegistryResponse> {
+    public searchRegistry(request: SearchRegistryRequest = new SearchRegistryRequest()): Promise<SearchRegistryResponse> {
         return new Promise(async (resolve, reject) => {
-            const request = new SearchRegistryRequest().setQuery(query);
+            if (!request.getQuery())
+                request = request.setQuery("SELECT * FROM c");
             this.client.searchRegistry(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -114,13 +124,15 @@ export class TrustRegistryService extends ServiceBase {
                 const uriString = request.getGovernanceFramework()?.getGovernanceFrameworkUri();
                 new URL(uriString!);
             } catch (e) {
-                reject(e)
+                reject(e);
+                return;
             }
             this.client.addFramework(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
@@ -130,15 +142,16 @@ export class TrustRegistryService extends ServiceBase {
             this.client.removeFramework(request, await this.getMetadata(request), (error, response) => {
                 if (error) {
                     reject(error);
+                } else {
+                    resolve(response);
                 }
-                return resolve(response);
             });
         });
     }
 
-    public fetchData(request: FetchDataRequest): Promise<FetchDataResponse> {
+    public fetchData(request: FetchDataRequest): Promise<ClientReadableStream<unknown>> {
         return new Promise(async (resolve, reject) => {
-            return this.client.fetchData(request, await this.getMetadata(request));
+            return resolve(this.client.fetchData(request, await this.getMetadata(request)));
         });
     }
 }

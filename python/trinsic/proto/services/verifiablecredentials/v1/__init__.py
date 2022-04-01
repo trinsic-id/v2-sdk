@@ -2,21 +2,33 @@
 # sources: services/verifiable-credentials/v1/verifiable-credentials.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+from ...common import v1 as __common_v1__
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 @dataclass(eq=False, repr=False)
 class IssueRequest(betterproto.Message):
-    document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    document_json: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class IssueResponse(betterproto.Message):
-    document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    signed_document_json: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -34,35 +46,60 @@ class IssueFromTemplateResponse(betterproto.Message):
 class CreateProofRequest(betterproto.Message):
     """Create Proof"""
 
-    reveal_document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
-    document_id: str = betterproto.string_field(2)
+    reveal_document_json: str = betterproto.string_field(1)
+    """
+    Optional document that describes which fields should be revealed in the
+    generated proof. If specified, this document must be a valid JSON-LD frame.
+    If this field is not specified, a default reveal document will be used and
+    all fields in the signed document will be revealed
+    """
+
+    item_id: str = betterproto.string_field(2, group="proof")
+    """
+    The item identifier that contains a record with a verifiable credential to
+    be used for generating the proof.
+    """
+
+    document_json: str = betterproto.string_field(3, group="proof")
+    """
+    A document that contains a valid verifiable credential with an unbound
+    signature. The proof will be derived from this document directly. The
+    document will not be stored in the wallet.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class CreateProofResponse(betterproto.Message):
-    proof_document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    proof_document_json: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class VerifyProofRequest(betterproto.Message):
     """Verify Proof"""
 
-    proof_document: "__common_v1__.JsonPayload" = betterproto.message_field(1)
+    proof_document_json: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class VerifyProofResponse(betterproto.Message):
-    valid: bool = betterproto.bool_field(1)
+    is_valid: bool = betterproto.bool_field(1)
+    """Indicates if the proof is valid"""
+
+    validation_messages: List[str] = betterproto.string_field(2)
+    """
+    Validation messages that describe invalid verifications based on different
+    factors, such as schema validation, proof verification, revocation registry
+    membership, etc. If the proof is not valid, this field will contain
+    detailed results where this verification failed.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class SendRequest(betterproto.Message):
     email: str = betterproto.string_field(1, group="delivery_method")
     did_uri: str = betterproto.string_field(2, group="delivery_method")
-    didcomm_invitation: "__common_v1__.JsonPayload" = betterproto.message_field(
-        3, group="delivery_method"
-    )
-    document: "__common_v1__.JsonPayload" = betterproto.message_field(100)
+    didcomm_invitation_json: str = betterproto.string_field(3, group="delivery_method")
+    document_json: str = betterproto.string_field(100)
 
 
 @dataclass(eq=False, repr=False)
@@ -74,10 +111,11 @@ class SendResponse(betterproto.Message):
 class UpdateStatusRequest(betterproto.Message):
     """request object to update the status of the revocation entry"""
 
-    # the credential status id
     credential_status_id: str = betterproto.string_field(1)
-    # indicates if the status is revoked
+    """the credential status id"""
+
     revoked: bool = betterproto.bool_field(2)
+    """indicates if the status is revoked"""
 
 
 @dataclass(eq=False, repr=False)
@@ -91,242 +129,197 @@ class UpdateStatusResponse(betterproto.Message):
 class CheckStatusRequest(betterproto.Message):
     """request object to update the status of the revocation entry"""
 
-    # the credential status id
     credential_status_id: str = betterproto.string_field(1)
+    """the credential status id"""
 
 
 @dataclass(eq=False, repr=False)
 class CheckStatusResponse(betterproto.Message):
     """response object for update of status of revocation entry"""
 
-    # indicates if the status is revoked
     revoked: bool = betterproto.bool_field(1)
+    """indicates if the status is revoked"""
 
 
 class VerifiableCredentialStub(betterproto.ServiceStub):
     async def issue(
-        self, *, document: "__common_v1__.JsonPayload" = None
+        self,
+        issue_request: "IssueRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "IssueResponse":
-
-        request = IssueRequest()
-        if document is not None:
-            request.document = document
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
-            request,
+            issue_request,
             IssueResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def issue_from_template(
-        self, *, template_id: str = "", values_json: str = ""
+        self,
+        issue_from_template_request: "IssueFromTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "IssueFromTemplateResponse":
-
-        request = IssueFromTemplateRequest()
-        request.template_id = template_id
-        request.values_json = values_json
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
-            request,
+            issue_from_template_request,
             IssueFromTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def check_status(
-        self, *, credential_status_id: str = ""
+        self,
+        check_status_request: "CheckStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CheckStatusResponse":
-
-        request = CheckStatusRequest()
-        request.credential_status_id = credential_status_id
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
-            request,
+            check_status_request,
             CheckStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def update_status(
-        self, *, credential_status_id: str = "", revoked: bool = False
+        self,
+        update_status_request: "UpdateStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "UpdateStatusResponse":
-
-        request = UpdateStatusRequest()
-        request.credential_status_id = credential_status_id
-        request.revoked = revoked
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
-            request,
+            update_status_request,
             UpdateStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def create_proof(
         self,
-        *,
-        reveal_document: "__common_v1__.JsonPayload" = None,
-        document_id: str = ""
+        create_proof_request: "CreateProofRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CreateProofResponse":
-
-        request = CreateProofRequest()
-        if reveal_document is not None:
-            request.reveal_document = reveal_document
-        request.document_id = document_id
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
-            request,
+            create_proof_request,
             CreateProofResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def verify_proof(
-        self, *, proof_document: "__common_v1__.JsonPayload" = None
+        self,
+        verify_proof_request: "VerifyProofRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "VerifyProofResponse":
-
-        request = VerifyProofRequest()
-        if proof_document is not None:
-            request.proof_document = proof_document
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
-            request,
+            verify_proof_request,
             VerifyProofResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def send(
         self,
-        *,
-        email: str = "",
-        did_uri: str = "",
-        didcomm_invitation: "__common_v1__.JsonPayload" = None,
-        document: "__common_v1__.JsonPayload" = None,
+        send_request: "SendRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "SendResponse":
-
-        request = SendRequest()
-        if email is not None and email != "":
-            request.email = email
-        if did_uri is not None and did_uri != "":
-            request.did_uri = did_uri
-        if didcomm_invitation is not None:
-            request.didcomm_invitation = didcomm_invitation
-        if document is not None:
-            request.document = document
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Send",
-            request,
+            send_request,
             SendResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 
 class VerifiableCredentialBase(ServiceBase):
-    async def issue(self, document: "__common_v1__.JsonPayload") -> "IssueResponse":
+    async def issue(self, issue_request: "IssueRequest") -> "IssueResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def issue_from_template(
-        self, template_id: str, values_json: str
+        self, issue_from_template_request: "IssueFromTemplateRequest"
     ) -> "IssueFromTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def check_status(self, credential_status_id: str) -> "CheckStatusResponse":
+    async def check_status(
+        self, check_status_request: "CheckStatusRequest"
+    ) -> "CheckStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def update_status(
-        self, credential_status_id: str, revoked: bool
+        self, update_status_request: "UpdateStatusRequest"
     ) -> "UpdateStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def create_proof(
-        self, reveal_document: "__common_v1__.JsonPayload", document_id: str
+        self, create_proof_request: "CreateProofRequest"
     ) -> "CreateProofResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def verify_proof(
-        self, proof_document: "__common_v1__.JsonPayload"
+        self, verify_proof_request: "VerifyProofRequest"
     ) -> "VerifyProofResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def send(
-        self,
-        email: str,
-        did_uri: str,
-        didcomm_invitation: "__common_v1__.JsonPayload",
-        document: "__common_v1__.JsonPayload",
-    ) -> "SendResponse":
+    async def send(self, send_request: "SendRequest") -> "SendResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_issue(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "document": request.document,
-        }
-
-        response = await self.issue(**request_kwargs)
+        response = await self.issue(request)
         await stream.send_message(response)
 
     async def __rpc_issue_from_template(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "template_id": request.template_id,
-            "values_json": request.values_json,
-        }
-
-        response = await self.issue_from_template(**request_kwargs)
+        response = await self.issue_from_template(request)
         await stream.send_message(response)
 
     async def __rpc_check_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "credential_status_id": request.credential_status_id,
-        }
-
-        response = await self.check_status(**request_kwargs)
+        response = await self.check_status(request)
         await stream.send_message(response)
 
     async def __rpc_update_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "credential_status_id": request.credential_status_id,
-            "revoked": request.revoked,
-        }
-
-        response = await self.update_status(**request_kwargs)
+        response = await self.update_status(request)
         await stream.send_message(response)
 
     async def __rpc_create_proof(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "reveal_document": request.reveal_document,
-            "document_id": request.document_id,
-        }
-
-        response = await self.create_proof(**request_kwargs)
+        response = await self.create_proof(request)
         await stream.send_message(response)
 
     async def __rpc_verify_proof(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "proof_document": request.proof_document,
-        }
-
-        response = await self.verify_proof(**request_kwargs)
+        response = await self.verify_proof(request)
         await stream.send_message(response)
 
     async def __rpc_send(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "email": request.email,
-            "did_uri": request.did_uri,
-            "didcomm_invitation": request.didcomm_invitation,
-            "document": request.document,
-        }
-
-        response = await self.send(**request_kwargs)
+        response = await self.send(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -374,6 +367,3 @@ class VerifiableCredentialBase(ServiceBase):
                 SendResponse,
             ),
         }
-
-
-from ...common import v1 as __common_v1__

@@ -2,48 +2,75 @@
 # sources: services/account/v1/account.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+from ...common import v1 as __common_v1__
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class ConfirmationMethod(betterproto.Enum):
     """Confirmation method type for two-factor workflows"""
 
-    # No confirmation required
     None_ = 0
-    # Email confirmation required
+    """No confirmation required"""
+
     Email = 1
-    # SMS confirmation required
+    """Email confirmation required"""
+
     Sms = 2
-    # Confirmation from a connected device is required
+    """SMS confirmation required"""
+
     ConnectedDevice = 3
-    # Indicates third-party method of confirmation is required
+    """Confirmation from a connected device is required"""
+
     Other = 10
+    """Indicates third-party method of confirmation is required"""
 
 
 @dataclass(eq=False, repr=False)
 class SignInRequest(betterproto.Message):
     """Request for creating new account"""
 
-    # Account registration details
     details: "AccountDetails" = betterproto.message_field(1)
-    # Invitation code associated with this registration This field is optional.
+    """Account registration details"""
+
     invitation_code: str = betterproto.string_field(2)
+    """
+    Invitation code associated with this registration This field is optional.
+    """
+
+    ecosystem_id: str = betterproto.string_field(3)
+    """
+    EcosystemId to sign in. This field is optional and will be ignored if
+    invitation_code is passed
+    """
 
 
 @dataclass(eq=False, repr=False)
 class AccountDetails(betterproto.Message):
     """Account Registration Details"""
 
-    # Account name (optional)
     name: str = betterproto.string_field(1)
-    # Email account (required)
+    """Account name (optional)"""
+
     email: str = betterproto.string_field(2)
-    # SMS number including country code (optional)
+    """Email account (required)"""
+
     sms: str = betterproto.string_field(3)
+    """SMS number including country code (optional)"""
 
 
 @dataclass(eq=False, repr=False)
@@ -54,16 +81,22 @@ class SignInResponse(betterproto.Message):
     email, SMS, etc.
     """
 
-    # The status of the response
     status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    # Indicates if confirmation of account is required. This settings is
-    # configured globally by the server administrator.
+    """The status of the response"""
+
     confirmation_method: "ConfirmationMethod" = betterproto.enum_field(3)
-    # Contains authentication data for use with the current device. This object
-    # must be stored in a secure place. It can also be protected with a PIN, but
-    # this is optional. See the docs at https://docs.trinsic.id for more
-    # information on working with authentication data.
+    """
+    Indicates if confirmation of account is required. This settings is
+    configured globally by the server administrator.
+    """
+
     profile: "AccountProfile" = betterproto.message_field(4)
+    """
+    Contains authentication data for use with the current device. This object
+    must be stored in a secure place. It can also be protected with a PIN, but
+    this is optional. See the docs at https://docs.trinsic.id for more
+    information on working with authentication data.
+    """
 
 
 @dataclass(eq=False, repr=False)
@@ -73,28 +106,38 @@ class AccountProfile(betterproto.Message):
     should be stored securely
     """
 
-    # The type of profile, used to differentiate between protocol schemes or
-    # versions
     profile_type: str = betterproto.string_field(1)
-    # Auth data containg information about the current device access
+    """
+    The type of profile, used to differentiate between protocol schemes or
+    versions
+    """
+
     auth_data: bytes = betterproto.bytes_field(2)
-    # Secure token issued by server used to generate zero-knowledge proofs
+    """Auth data containg information about the current device access"""
+
     auth_token: bytes = betterproto.bytes_field(3)
-    # Token security information about the token. If token protection is enabled,
-    # implementations must supply protection secret before using the token for
-    # authentication.
+    """Secure token issued by server used to generate zero-knowledge proofs"""
+
     protection: "TokenProtection" = betterproto.message_field(4)
+    """
+    Token security information about the token. If token protection is enabled,
+    implementations must supply protection secret before using the token for
+    authentication.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class TokenProtection(betterproto.Message):
     """Token protection info"""
 
-    # Indicates if token is protected using a PIN, security code, HSM secret,
-    # etc.
     enabled: bool = betterproto.bool_field(1)
-    # The method used to protect the token
+    """
+    Indicates if token is protected using a PIN, security code, HSM secret,
+    etc.
+    """
+
     method: "ConfirmationMethod" = betterproto.enum_field(2)
+    """The method used to protect the token"""
 
 
 @dataclass(eq=False, repr=False)
@@ -104,10 +147,11 @@ class InfoRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InfoResponse(betterproto.Message):
-    # The account details associated with the calling request context
     details: "AccountDetails" = betterproto.message_field(1)
-    # any ecosystems the account has access to
-    ecosystems: List["__provider_v1__.Ecosystem"] = betterproto.message_field(2)
+    """The account details associated with the calling request context"""
+
+    ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
+    """any ecosystems the account has access to"""
 
 
 @dataclass(eq=False, repr=False)
@@ -130,93 +174,115 @@ class RevokeDeviceResponse(betterproto.Message):
     pass
 
 
+@dataclass(eq=False, repr=False)
+class AccountEcosystem(betterproto.Message):
+    id: str = betterproto.string_field(1)
+    name: str = betterproto.string_field(2)
+    description: str = betterproto.string_field(3)
+    uri: str = betterproto.string_field(4)
+
+
 class AccountStub(betterproto.ServiceStub):
     async def sign_in(
-        self, *, details: "AccountDetails" = None, invitation_code: str = ""
+        self,
+        sign_in_request: "SignInRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "SignInResponse":
-
-        request = SignInRequest()
-        if details is not None:
-            request.details = details
-        request.invitation_code = invitation_code
-
         return await self._unary_unary(
-            "/services.account.v1.Account/SignIn", request, SignInResponse
+            "/services.account.v1.Account/SignIn",
+            sign_in_request,
+            SignInResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def info(self) -> "InfoResponse":
-
-        request = InfoRequest()
-
+    async def info(
+        self,
+        info_request: "InfoRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "InfoResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/Info", request, InfoResponse
+            "/services.account.v1.Account/Info",
+            info_request,
+            InfoResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def list_devices(self) -> "ListDevicesResponse":
-
-        request = ListDevicesRequest()
-
+    async def list_devices(
+        self,
+        list_devices_request: "ListDevicesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListDevicesResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/ListDevices", request, ListDevicesResponse
+            "/services.account.v1.Account/ListDevices",
+            list_devices_request,
+            ListDevicesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def revoke_device(self) -> "RevokeDeviceResponse":
-
-        request = RevokeDeviceRequest()
-
+    async def revoke_device(
+        self,
+        revoke_device_request: "RevokeDeviceRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RevokeDeviceResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/RevokeDevice", request, RevokeDeviceResponse
+            "/services.account.v1.Account/RevokeDevice",
+            revoke_device_request,
+            RevokeDeviceResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 
 class AccountBase(ServiceBase):
-    async def sign_in(
-        self, details: "AccountDetails", invitation_code: str
-    ) -> "SignInResponse":
+    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(self) -> "InfoResponse":
+    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def list_devices(self) -> "ListDevicesResponse":
+    async def list_devices(
+        self, list_devices_request: "ListDevicesRequest"
+    ) -> "ListDevicesResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def revoke_device(self) -> "RevokeDeviceResponse":
+    async def revoke_device(
+        self, revoke_device_request: "RevokeDeviceRequest"
+    ) -> "RevokeDeviceResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "details": request.details,
-            "invitation_code": request.invitation_code,
-        }
-
-        response = await self.sign_in(**request_kwargs)
+        response = await self.sign_in(request)
         await stream.send_message(response)
 
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.info(**request_kwargs)
+        response = await self.info(request)
         await stream.send_message(response)
 
     async def __rpc_list_devices(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.list_devices(**request_kwargs)
+        response = await self.list_devices(request)
         await stream.send_message(response)
 
     async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.revoke_device(**request_kwargs)
+        response = await self.revoke_device(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -246,7 +312,3 @@ class AccountBase(ServiceBase):
                 RevokeDeviceResponse,
             ),
         }
-
-
-from ...common import v1 as __common_v1__
-from ...provider import v1 as __provider_v1__

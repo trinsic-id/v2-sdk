@@ -1,89 +1,78 @@
+using System;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Options;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.UniversalWallet.V1;
-using Trinsic.Services.Common.V1;
-using Trinsic.Services.Account.V1;
-using Grpc.Net.Client;
-using WalletServiceClient = Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient;
 
 namespace Trinsic;
 
 public class WalletService : ServiceBase
 {
-    public WalletService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public WalletService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public WalletService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public WalletService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    public WalletService() {
         Client = new(Channel);
     }
 
-    private WalletServiceClient Client { get; }
+    internal WalletService(ITokenProvider tokenProvider)
+        : this(tokenProvider, Microsoft.Extensions.Options.Options.Create(new ServiceOptions())) { }
+
+    internal WalletService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
+        Client = new(Channel);
+    }
+
+    private UniversalWallet.UniversalWalletClient Client { get; }
 
     /// <summary>
-    /// Search the wallet for records matching the specified criteria
+    ///     Search the wallet for records matching the specified criteria
     /// </summary>
-    /// <param name="query">The SQL query</param>
     /// <remarks>
-    /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+    ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public async Task<SearchResponse> SearchAsync(string query = "SELECT * FROM c")
-    {
-        SearchRequest request = new() { Query = query };
+    public async Task<SearchResponse> SearchAsync(SearchRequest request) {
+        if (string.IsNullOrWhiteSpace(request.Query))
+            request.Query = "SELECT c.id, c.type, c.data FROM c";
+
         var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
     }
 
     /// <summary>
-    /// Search the wallet for records matching the specified criteria
+    ///     Search the wallet for records matching the specified criteria
     /// </summary>
-    /// <param name="query">The SQL query</param>
     /// <remarks>
-    /// See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
+    ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public SearchResponse Search(string query = "SELECT * FROM c")
-    {
-        SearchRequest request = new() { Query = query };
+    public SearchResponse Search(SearchRequest request) {
+        if (string.IsNullOrWhiteSpace(request.Query))
+            request.Query = "SELECT c.id, c.type, c.data FROM c";
+
         var response = Client.Search(request, BuildMetadata(request));
         return response;
     }
 
     /// <summary>
-    /// Insert an item into the personal wallet
+    ///     Insert an item into the personal wallet
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<string> InsertItemAsync(JObject item) {
-        InsertItemRequest request = new() {ItemJson = item.ToString()};
-
-        var response = await Client.InsertItemAsync(
-            request: request,
-            headers: await BuildMetadataAsync(request));
-        return response.ItemId;
+    public async Task<InsertItemResponse> InsertItemAsync(InsertItemRequest request) {
+        return await Client.InsertItemAsync(request, await BuildMetadataAsync(request));
     }
 
     /// <summary>
-    /// Insert an item into the personal wallet
+    ///     Insert an item into the personal wallet
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public string InsertItem(JObject item) {
-        InsertItemRequest request = new() {ItemJson = item.ToString()};
-
-        var response = Client.InsertItem(
-            request: request,
-            headers: BuildMetadata(request));
-        return response.ItemId;
+    public InsertItemResponse InsertItem(InsertItemRequest request) {
+        return Client.InsertItem(request,BuildMetadata(request));
     }
 
     public async Task<DeleteItemResponse> DeleteItemAsync(DeleteItemRequest request) {

@@ -1,32 +1,29 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Grpc.Net.Client;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.Common.V1;
+using Microsoft.Extensions.Options;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
 
 namespace Trinsic;
 
 public class ProviderService : ServiceBase
 {
-    public ProviderService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public ProviderService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public ProviderService(AccountProfile accountProfile)
-        : base(accountProfile) {
-        Client = new(Channel);
-    }
-    
-    public ProviderService(ServerConfig serverConfig)
-        : base(serverConfig) {
+    public ProviderService() {
         Client = new(Channel);
     }
 
-    public ProviderService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
+    internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+        Client = new(Channel);
+    }
+
+    internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 
@@ -77,11 +74,18 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<CreateEcosystemResponse> CreateEcosystemAsync(CreateEcosystemRequest request) {
-        if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
+    public async Task<(Ecosystem ecosystem, string authToken)> CreateEcosystemAsync(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        return await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
+        var response = await Client.CreateEcosystemAsync(request);
+
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+            await TokenProvider.SaveAsync(authToken);
+        }
+        return (response.Ecosystem, authToken);
     }
 
     /// <summary>
@@ -89,35 +93,46 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public CreateEcosystemResponse CreateEcosystem(CreateEcosystemRequest request) {
-        if (string.IsNullOrWhiteSpace(request.Name)) throw new("Field 'name' must be specified");
+    public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
-        
-        return Client.CreateEcosystem(request);
+
+        var response = Client.CreateEcosystem(request);
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) {
+            Options.AuthToken = authToken;
+            TokenProvider.Save(authToken);
+        }
+        return (response.Ecosystem, authToken);
     }
-    
+
     /// <summary>
     /// Generates an unprotected authentication token that can be used
     /// to configure server side applications
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
+    [Experimental]
     public async Task<string> GenerateTokenAsync(GenerateTokenRequest request) {
         var response = await Client.GenerateTokenAsync(request, await BuildMetadataAsync(request));
 
-        return Convert.ToBase64String(response.ToByteArray());
+        return Base64Url.Encode(response.ToByteArray());
     }
-    
+
     /// <summary>
     /// Generates an unprotected authentication token that can be used
     /// to configure server side applications
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
+    [Experimental]
     public string GenerateToken(GenerateTokenRequest request) {
         var response = Client.GenerateToken(request, BuildMetadata(request));
 
-        return Convert.ToBase64String(response.ToByteArray());
+        return Base64Url.Encode(response.ToByteArray());
     }
+}
+public class ExperimentalAttribute : Attribute
+{
+    // TODO - Experimental attribute object
 }

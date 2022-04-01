@@ -1,27 +1,27 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueRequest {
     #[prost(string, tag = "1")]
     pub document_json: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueResponse {
     #[prost(string, tag = "1")]
     pub signed_document_json: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueFromTemplateRequest {
     #[prost(string, tag = "1")]
     pub template_id: ::prost::alloc::string::String,
     #[prost(string, tag = "2")]
     pub values_json: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueFromTemplateResponse {
     #[prost(string, tag = "1")]
     pub document_json: ::prost::alloc::string::String,
 }
 /// Create Proof
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
     /// Optional document that describes which fields should be
     /// revealed in the generated proof. If specified, this document must be
@@ -39,7 +39,7 @@ pub struct CreateProofRequest {
 pub mod create_proof_request {
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Proof {
         /// The item identifier that contains a record with a verifiable
         /// credential to be used for generating the proof.
@@ -52,18 +52,18 @@ pub mod create_proof_request {
         DocumentJson(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
     #[prost(string, tag = "1")]
     pub proof_document_json: ::prost::alloc::string::String,
 }
 /// Verify Proof
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofRequest {
     #[prost(string, tag = "1")]
     pub proof_document_json: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
     /// Indicates if the proof is valid
     #[prost(bool, tag = "1")]
@@ -76,7 +76,7 @@ pub struct VerifyProofResponse {
     #[prost(string, repeated, tag = "2")]
     pub validation_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
     #[prost(string, tag = "100")]
     pub document_json: ::prost::alloc::string::String,
@@ -85,7 +85,7 @@ pub struct SendRequest {
 }
 /// Nested message and enum types in `SendRequest`.
 pub mod send_request {
-    #[derive(Clone, PartialEq, ::prost::Oneof)]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum DeliveryMethod {
         #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
@@ -95,13 +95,13 @@ pub mod send_request {
         DidcommInvitationJson(::prost::alloc::string::String),
     }
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
 /// request object to update the status of the revocation entry
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusRequest {
     /// the credential status id
     #[prost(string, tag = "1")]
@@ -111,20 +111,20 @@ pub struct UpdateStatusRequest {
     pub revoked: bool,
 }
 /// response object for update of status of revocation entry
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
 }
 /// request object to update the status of the revocation entry
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusRequest {
     /// the credential status id
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
 }
 /// response object for update of status of revocation entry
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusResponse {
     /// indicates if the status is revoked
     #[prost(bool, tag = "1")]

@@ -1,43 +1,41 @@
-use std::default::*;
-
-use super::super::parser::wallet::*;
-use crate::proto::services::universalwallet::v1::DeleteItemRequest;
-use crate::utils::read_file_as_string;
-use crate::{grpc_channel, grpc_client_with_auth};
+use super::{super::parser::wallet::*, Output};
 use crate::{
-    proto::{
-        google::protobuf::Struct,
-        services::{
-            common::v1::{json_payload::Json, JsonPayload},
-            universalwallet::v1::{
-                universal_wallet_client::UniversalWalletClient, InsertItemRequest, SearchRequest,
-            },
-            verifiablecredentials::v1::{
-                send_request::DeliveryMethod,
-                verifiable_credential_client::VerifiableCredentialClient, SendRequest,
-            },
+    error::Error,
+    grpc_channel, grpc_client_with_auth,
+    proto::services::{
+        universalwallet::v1::{
+            universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest,
+            SearchRequest,
+        },
+        verifiablecredentials::v1::{
+            send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient,
+            SendRequest,
         },
     },
     services::config::*,
+    utils::{prettify_json, read_file},
 };
-use okapi::MessageFormatter;
+use indexmap::indexmap;
+use std::default::*;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
-pub(crate) fn execute(args: &Command, config: DefaultConfig) -> Result<(), Error> {
+pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error> {
     match args {
-        Command::Search(args) => Ok(search(args, config)),
-        Command::InsertItem(args) => Ok(insert_item(args, config)),
-        Command::DeleteItem(args) => Ok(delete_item(args, config)),
-        Command::Send(args) => Ok(send(args, config)),
+        Command::Search(args) => search(args, config),
+        Command::InsertItem(args) => insert_item(args, config),
+        Command::DeleteItem(args) => delete_item(args, config),
+        Command::Send(args) => send(args, config),
     }
 }
 
 #[tokio::main]
-async fn search(args: &SearchArgs, config: DefaultConfig) {
+async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     let query = args
         .query
-        .map_or("SELECT * FROM c".to_string(), |q| q.to_string());
+        .map_or("SELECT c.data, c.id, c.type FROM c".to_string(), |q| {
+            q.to_string()
+        });
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let request = tonic::Request::new(SearchRequest {
@@ -45,81 +43,73 @@ async fn search(args: &SearchArgs, config: DefaultConfig) {
         ..Default::default()
     });
 
-    let response = client
-        .search(request)
-        .await
-        .expect("Search failed")
-        .into_inner();
-    use colored::*;
-    println!("Search results for query '{}'", query.cyan().bold());
-    println!(
-        "{}",
-        &serde_json::to_string_pretty(&response.items)
-            .unwrap()
-            .yellow()
-    );
+    let response = client.search(request).await?.into_inner();
+
+    // TODO: this can be implemented better
+    let mut out = String::default();
+    out.push_str("[");
+    for item in response.items {
+        out.push_str(format!("{},", &item).as_str());
+    }
+    out = out.trim_end_matches(",").to_string();
+    out.push_str("]");
+
+    Ok(indexmap! {
+        "query".into() => query,
+        "items".into() => prettify_json(&out)?
+    })
 }
 
 #[tokio::main]
-async fn insert_item(args: &InsertItemArgs, config: DefaultConfig) {
-    let item: Struct =
-        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
-    let item_bytes = item.to_vec();
-
-    use crate::MessageFormatter;
-    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
+async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output, Error> {
+    let item_json = read_file(args.item.ok_or(Error::InvalidArgument(
+        "input document must be specified".to_string(),
+    ))?)?;
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
         .insert_item(InsertItemRequest {
-            item: Some(JsonPayload {
-                json: Some(Json::JsonStruct(item)),
-            }),
+            item_json: item_json,
             item_type: args.item_type.map_or(String::default(), |x| x.to_string()),
         })
-        .await
-        .expect("Insert item failed")
+        .await?
         .into_inner();
 
-    println!("{:#?}", response);
+    let mut output = Output::new();
+    output.insert("item id".into(), response.item_id);
+
+    Ok(output)
 }
 
 #[tokio::main]
-async fn delete_item(args: &DeleteItemArgs, config: DefaultConfig) {
+async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
-    let response = client
+    let _response = client
         .delete_item(DeleteItemRequest {
             item_id: args.item_id.map_or(String::default(), |x| x.to_string()),
         })
-        .await
-        .expect("Delete item failed")
+        .await?
         .into_inner();
 
-    println!("{:#?}", response);
+    Ok(Output::new())
 }
 
 #[tokio::main]
-async fn send(args: &SendArgs, config: DefaultConfig) {
-    let item: okapi::proto::google_protobuf::Struct =
-        serde_json::from_str(&read_file_as_string(args.item)).expect("Unable to parse Item");
-    let item_bytes = item.to_vec();
-
-    use crate::MessageFormatter;
-    let item: Struct = Struct::from_vec(&item_bytes).unwrap();
+async fn send(args: &SendArgs, config: CliConfig) -> Result<Output, Error> {
+    let item = read_file(args.item.ok_or(Error::InvalidArgument(
+        "input document must be specified".to_string(),
+    ))?)?;
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
-    let response = client
+    let _response = client
         .send(SendRequest {
-            document: Some(JsonPayload {
-                json: Some(Json::JsonStruct(item)),
-            }),
             delivery_method: Some(DeliveryMethod::Email(
                 args.email.expect("Email must be specified").to_string(),
             )),
+            document_json: item,
         })
-        .await
-        .expect("Send item failed")
+        .await?
         .into_inner();
 
-    println!("{:#?}", response);
+    Ok(Output::new())
 }

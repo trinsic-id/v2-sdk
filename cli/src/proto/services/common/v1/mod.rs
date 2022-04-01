@@ -1,4 +1,4 @@
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ServerConfig {
     /// service endpoint
     #[prost(string, tag = "1")]
@@ -11,7 +11,7 @@ pub struct ServerConfig {
     pub use_tls: bool,
 }
 /// Nonce used to generate an oberon proof
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Nonce {
     /// UTC unix millisecond timestamp the request was made
     #[prost(int64, tag = "1")]
@@ -20,7 +20,19 @@ pub struct Nonce {
     #[prost(bytes = "vec", tag = "2")]
     pub request_hash: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(
+    ::serde::Serialize,
+    ::serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    PartialEq,
+    Eq,
+    Hash,
+    PartialOrd,
+    Ord,
+    ::prost::Enumeration,
+)]
 #[repr(i32)]
 pub enum ResponseStatus {
     Success = 0,

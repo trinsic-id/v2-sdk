@@ -11,22 +11,17 @@ from betterproto.grpc.grpclib_server import ServiceBase
 class ServiceOptions(betterproto.Message):
     """service options"""
 
-    # server configuration
-    server: "ServerConfiguration" = betterproto.message_field(1)
-    # account profile to use for authentication
-    profile: "___services_account_v1__.AccountProfile" = betterproto.message_field(2)
-    # ecosystem to use with endpoints that require it
-    ecosystem: str = betterproto.string_field(3)
+    server_endpoint: str = betterproto.string_field(1)
+    """service endpoint"""
 
+    server_port: int = betterproto.int32_field(2)
+    """service port"""
 
-@dataclass(eq=False, repr=False)
-class ServerConfiguration(betterproto.Message):
-    # service endpoint
-    endpoint: str = betterproto.string_field(1)
-    # service port
-    port: int = betterproto.int32_field(2)
-    # indicates if tls is used
-    use_tls: bool = betterproto.bool_field(3)
+    server_use_tls: bool = betterproto.bool_field(3)
+    """indicates if tls is used"""
 
+    auth_token: str = betterproto.string_field(4)
+    """default auth token for oberon security scheme"""
 
-from ....services.account import v1 as ___services_account_v1__
+    default_ecosystem: str = betterproto.string_field(5)
+    """ecosystem to use with endpoints that require it"""

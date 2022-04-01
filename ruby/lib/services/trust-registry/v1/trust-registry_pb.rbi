@@ -274,14 +274,12 @@ class Services::Trustregistry::V1::SearchRegistryRequest
   sig do
     params(
       query: T.nilable(String),
-      continuation_token: T.nilable(String),
-      options: T.nilable(Services::Common::V1::RequestOptions)
+      continuation_token: T.nilable(String)
     ).void
   end
   def initialize(
     query: "",
-    continuation_token: "",
-    options: nil
+    continuation_token: ""
   )
   end
 
@@ -307,18 +305,6 @@ class Services::Trustregistry::V1::SearchRegistryRequest
 
   sig { void }
   def clear_continuation_token
-  end
-
-  sig { returns(T.nilable(Services::Common::V1::RequestOptions)) }
-  def options
-  end
-
-  sig { params(value: T.nilable(Services::Common::V1::RequestOptions)).void }
-  def options=(value)
-  end
-
-  sig { void }
-  def clear_options
   end
 
   sig { params(field: String).returns(T.untyped) }

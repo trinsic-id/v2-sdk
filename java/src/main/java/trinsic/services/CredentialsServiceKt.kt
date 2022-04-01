@@ -1,24 +1,22 @@
 package trinsic.services
 
-import com.google.gson.Gson
 import com.google.protobuf.InvalidProtocolBufferException
-import io.grpc.Channel
-import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
-import trinsic.services.account.v1.AccountOuterClass
+import trinsic.sdk.v1.Options
 import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
+import java.util.concurrent.ExecutionException
 
 class CredentialsServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+    options: Options.ServiceOptions?
+) : ServiceBase(options) {
     var stub = VerifiableCredentialGrpcKt.VerifiableCredentialCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun issueCredential(document: HashMap<*, *>?): java.util.HashMap<*, *>? {
-        val request = IssueRequest.newBuilder().setDocument(TrinsicUtilities.createPayloadString(document)).build()
-        return Gson().fromJson(withMetadata(stub, request).issue(request).document.jsonString, HashMap::class.java)
+    suspend fun issueCredential(request: IssueRequest): IssueResponse {
+        require(!request.documentJson.isBlank()) { "document json must not be empty" }
+        return withMetadata(stub, request).issue(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -27,40 +25,39 @@ class CredentialsServiceKt(
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun createProof(documentId: String?, revealDocument: HashMap<*, *>?): java.util.HashMap<*, *>? {
-        val request = CreateProofRequest.newBuilder().setDocumentId(documentId)
-            .setRevealDocument(TrinsicUtilities.createPayloadString(revealDocument)).build()
-        return Gson().fromJson(
-            withMetadata(stub, request).createProof(request).proofDocument.jsonString, HashMap::class.java
-        )
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun verifyProof(proofDocument: HashMap<*, *>?): Boolean {
-        val request =
-            VerifyProofRequest.newBuilder().setProofDocument(TrinsicUtilities.createPayloadString(proofDocument))
-                .build()
-        return withMetadata(stub, request).verifyProof(request).valid
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkStatus(credentialStatusId: String?): CheckStatusResponse {
-        val request = CheckStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).build()
+    suspend fun checkStatus(request: CheckStatusRequest): CheckStatusResponse {
         return withMetadata(stub, request).checkStatus(request)
     }
 
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun updateStatus(credentialStatusId: String?, revoked: Boolean?): UpdateStatusResponse {
-        val request = UpdateStatusRequest.newBuilder().setCredentialStatusId(credentialStatusId).setRevoked(
-            revoked!!
-        ).build()
-        return withMetadata(stub, request).updateStatus(request)
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun updateStatus(request: UpdateStatusRequest) {
+        val response = withMetadata(stub, request).updateStatus(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("status not completely updated " + response.status)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun send(document: HashMap<*, *>?, email: String?): SendResponse? {
-        val request =
-            SendRequest.newBuilder().setEmail(email).setDocument(TrinsicUtilities.createPayloadString(document)).build()
-        return withMetadata(stub, request).send(request)
+    suspend fun createProof(request: CreateProofRequest): CreateProofResponse {
+        return withMetadata(stub, request).createProof(request)
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun verifyProof(request: VerifyProofRequest): VerifyProofResponse {
+        return withMetadata(stub, request).verifyProof(request)
+    }
+
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun send(request: SendRequest) {
+        val response = withMetadata(stub, request).send(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("request not complete sent " + response.status)
     }
 }

@@ -1,80 +1,111 @@
 package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
-import io.grpc.Channel
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
-import trinsic.services.account.v1.AccountOuterClass
+import trinsic.sdk.v1.Options
 import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
+import java.net.MalformedURLException
+import java.net.URL
+import java.util.concurrent.ExecutionException
 
 class TrustRegistryServiceKt(
-    accountProfile: AccountOuterClass.AccountProfile?, serverConfig: CommonOuterClass.ServerConfig?, channel: Channel?
-) : ServiceBase(accountProfile, serverConfig, channel) {
+    options: Options.ServiceOptions?
+) : ServiceBase(options) {
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {
+        try {
+            val url = URL(request.governanceFramework.governanceFrameworkUri)
+        } catch (e: MalformedURLException) {
+            throw IllegalArgumentException("invalid uri string", e)
+        }
         return withMetadata(stub, request).addFramework(request)
     }
 
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
-        return withMetadata(stub, request).removeFramework(request)
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest) {
+        val response = withMetadata(stub, request).removeFramework(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("cannot remove governance framework: code " + response.status)
+    }
+
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun registerIssuer(request: RegisterIssuerRequest) {
+        val response = withMetadata(stub, request).registerIssuer(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("cannot register issuer: code " + response.status)
+    }
+
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun unregisterIssuer(request: UnregisterIssuerRequest) {
+        val response = withMetadata(stub, request).unregisterIssuer(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("cannot unregister verifier: code " + response.status)
+    }
+
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun registerVerifier(request: RegisterVerifierRequest) {
+        val response = withMetadata(stub, request).registerVerifier(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("cannot register verifier: code " + response.status)
+    }
+
+    @Throws(
+        InvalidProtocolBufferException::class,
+        DidException::class,
+        ExecutionException::class,
+        InterruptedException::class
+    )
+    suspend fun unregisterVerifier(request: UnregisterVerifierRequest) {
+        val response = withMetadata(stub, request).unregisterVerifier(request)
+        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("cannot unregister verifier: code " + response.status)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun registerIssuer(
-        request: RegisterIssuerRequest
-    ): RegisterIssuerResponse {
-        return withMetadata(stub, request).registerIssuer(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun unregisterIssuer(
-        request: UnregisterIssuerRequest
-    ): UnregisterIssuerResponse {
-        return withMetadata(stub, request).unregisterIssuer(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun registerVerifier(
-        request: RegisterVerifierRequest
-    ): RegisterVerifierResponse {
-        return withMetadata(stub, request).registerVerifier(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun unregisterVerifier(
-        request: UnregisterVerifierRequest
-    ): UnregisterVerifierResponse {
-        return withMetadata(stub, request).unregisterVerifier(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkIssuerStatus(
-        request: CheckIssuerStatusRequest
-    ): CheckIssuerStatusResponse {
+    suspend fun checkIssuerStatus(request: CheckIssuerStatusRequest): CheckIssuerStatusResponse {
         return withMetadata(stub, request).checkIssuerStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkVerifierStatus(
-        request: CheckVerifierStatusRequest
-    ): CheckVerifierStatusResponse {
+    suspend fun checkVerifierStatus(request: CheckVerifierStatusRequest): CheckVerifierStatusResponse {
         return withMetadata(stub, request).checkVerifierStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun searchRegistry(query: String?): SearchRegistryResponse {
-        var query = query
-        if (query == null) query = "SELECT * FROM c"
-        val request = SearchRegistryRequest.newBuilder().setQuery(query).build()
+    suspend fun searchRegistry(): SearchRegistryResponse {
+        return searchRegistry(SearchRegistryRequest.getDefaultInstance())
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse {
+        var request = request
+        if (request.query.isBlank()) request =
+            SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c").build()
         return withMetadata(stub, request).searchRegistry(request)
     }
 
-    fun fetchData(request: FetchDataRequest): Flow<FetchDataResponse> {
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun fetchData(request: FetchDataRequest): Flow<FetchDataResponse> {
         return withMetadata(stub, request).fetchData(request)
     }
 }

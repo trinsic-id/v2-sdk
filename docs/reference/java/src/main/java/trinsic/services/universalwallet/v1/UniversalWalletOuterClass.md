@@ -24,22 +24,6 @@
 
  * **Returns:** The bytes for continuationToken.
 
-## `boolean hasOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** Whether the options field is set.
-
-## `trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
 ## `public static final class SearchRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
 <pre> Search request object </pre>
@@ -69,22 +53,6 @@ Protobuf type {@code services.universalwallet.v1.SearchRequest}
 `string continuation_token = 2;`
 
  * **Returns:** The bytes for continuationToken.
-
-## `@java.lang.Override public boolean hasOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** Whether the options field is set.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
@@ -156,65 +124,31 @@ Protobuf type {@code services.universalwallet.v1.SearchRequest}
  * **Parameters:** `value` — The bytes for continuationToken to set.
  * **Returns:** This builder for chaining.
 
-## `public boolean hasOptions()`
+## `java.util.List<java.lang.String> getItemsList()`
 
-`.services.common.v1.RequestOptions options = 5;`
+`repeated string items = 1;`
 
- * **Returns:** Whether the options field is set.
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptions getOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
- * **Returns:** The options.
-
-## `public Builder setOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder setOptions( trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder builderForValue)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder mergeOptions(trinsic.services.common.v1.CommonOuterClass.RequestOptions value)`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public Builder clearOptions()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder getOptionsBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder getOptionsOrBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.RequestOptions, trinsic.services.common.v1.CommonOuterClass.RequestOptions.Builder, trinsic.services.common.v1.CommonOuterClass.RequestOptionsOrBuilder> getOptionsFieldBuilder()`
-
-`.services.common.v1.RequestOptions options = 5;`
-
-## `java.util.List<trinsic.services.common.v1.CommonOuterClass.JsonPayload> getItemsList()`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getItems(int index)`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Returns:** A list containing the items.
 
 ## `int getItemsCount()`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `java.util.List<? extends trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getItemsOrBuilderList()`
+ * **Returns:** The count of items.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `java.lang.String getItems(int index)`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemsOrBuilder( int index)`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The items at the given index.
+
+## `com.google.protobuf.ByteString getItemsBytes(int index)`
+
+`repeated string items = 1;`
+
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the items at the given index.
 
 ## `boolean getHasMore()`
 
@@ -246,25 +180,31 @@ Protobuf type {@code services.universalwallet.v1.SearchRequest}
 
 Protobuf type {@code services.universalwallet.v1.SearchResponse}
 
-## `@java.lang.Override public java.util.List<trinsic.services.common.v1.CommonOuterClass.JsonPayload> getItemsList()`
+## `public com.google.protobuf.ProtocolStringList getItemsList()`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `@java.lang.Override public java.util.List<? extends trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getItemsOrBuilderList()`
+ * **Returns:** A list containing the items.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public int getItemsCount()`
 
-## `@java.lang.Override public int getItemsCount()`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Returns:** The count of items.
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getItems(int index)`
+## `public java.lang.String getItems(int index)`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemsOrBuilder( int index)`
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The items at the given index.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public com.google.protobuf.ByteString getItemsBytes(int index)`
+
+`repeated string items = 1;`
+
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the items at the given index.
 
 ## `@java.lang.Override public boolean getHasMore()`
 
@@ -296,77 +236,67 @@ Protobuf type {@code services.universalwallet.v1.SearchResponse}
 
 Protobuf type {@code services.universalwallet.v1.SearchResponse}
 
-## `public java.util.List<trinsic.services.common.v1.CommonOuterClass.JsonPayload> getItemsList()`
+## `public com.google.protobuf.ProtocolStringList getItemsList()`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
+
+ * **Returns:** A list containing the items.
 
 ## `public int getItemsCount()`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getItems(int index)`
+ * **Returns:** The count of items.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public java.lang.String getItems(int index)`
 
-## `public Builder setItems( int index, trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Parameters:** `index` — The index of the element to return.
+ * **Returns:** The items at the given index.
 
-## `public Builder setItems( int index, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+## `public com.google.protobuf.ByteString getItemsBytes(int index)`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `public Builder addItems(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+ * **Parameters:** `index` — The index of the value to return.
+ * **Returns:** The bytes of the items at the given index.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public Builder setItems( int index, java.lang.String value)`
 
-## `public Builder addItems( int index, trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Parameters:**
+   * `index` — The index to set the value at.
+   * `value` — The items to set.
+ * **Returns:** This builder for chaining.
 
-## `public Builder addItems( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+## `public Builder addItems( java.lang.String value)`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `public Builder addItems( int index, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+ * **Parameters:** `value` — The items to add.
+ * **Returns:** This builder for chaining.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public Builder addAllItems( java.lang.Iterable<java.lang.String> values)`
 
-## `public Builder addAllItems( java.lang.Iterable<? extends trinsic.services.common.v1.CommonOuterClass.JsonPayload> values)`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Parameters:** `values` — The items to add.
+ * **Returns:** This builder for chaining.
 
 ## `public Builder clearItems()`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+`repeated string items = 1;`
 
-## `public Builder removeItems(int index)`
+ * **Returns:** This builder for chaining.
 
-`repeated .services.common.v1.JsonPayload items = 1;`
+## `public Builder addItemsBytes( com.google.protobuf.ByteString value)`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getItemsBuilder( int index)`
+`repeated string items = 1;`
 
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemsOrBuilder( int index)`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `public java.util.List<? extends trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getItemsOrBuilderList()`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder addItemsBuilder()`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder addItemsBuilder( int index)`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
-
-## `public java.util.List<trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder> getItemsBuilderList()`
-
-`repeated .services.common.v1.JsonPayload items = 1;`
+ * **Parameters:** `value` — The bytes of the items to add.
+ * **Returns:** This builder for chaining.
 
 ## `@java.lang.Override public boolean getHasMore()`
 
@@ -438,29 +368,525 @@ Protobuf type {@code services.universalwallet.v1.SearchResponse}
  * **Parameters:** `value` — The bytes for continuationToken to set.
  * **Returns:** This builder for chaining.
 
-## `boolean hasItem()`
+## `java.lang.String getItemId()`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> The item identifier </pre>
 
- * **Returns:** Whether the item field is set.
+`string item_id = 1;`
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayload getItem()`
+ * **Returns:** The itemId.
 
-`.services.common.v1.JsonPayload item = 1;`
+## `com.google.protobuf.ByteString getItemIdBytes()`
 
- * **Returns:** The item.
+<pre> The item identifier </pre>
 
-## `trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemOrBuilder()`
+`string item_id = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Returns:** The bytes for itemId.
+
+## `public static final class GetItemRequest extends com.google.protobuf.GeneratedMessageV3 implements`
+
+<pre> Get item request object </pre>
+
+Protobuf type {@code services.universalwallet.v1.GetItemRequest}
+
+## `@java.lang.Override public java.lang.String getItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+<pre> Get item request object </pre>
+
+Protobuf type {@code services.universalwallet.v1.GetItemRequest}
+
+## `public java.lang.String getItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public Builder setItemId( java.lang.String value)`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemIdBytes( com.google.protobuf.ByteString value)`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The bytes for itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `java.lang.String getItemJson()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The itemJson.
+
+## `com.google.protobuf.ByteString getItemJsonBytes()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The bytes for itemJson.
 
 ## `java.lang.String getItemType()`
+
+<pre> User set item type that described the content of this item </pre>
 
 `string item_type = 2;`
 
  * **Returns:** The itemType.
 
 ## `com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public static final class GetItemResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+
+<pre> Get item response object </pre>
+
+Protobuf type {@code services.universalwallet.v1.GetItemResponse}
+
+## `@java.lang.Override public java.lang.String getItemJson()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The itemJson.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemJsonBytes()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The bytes for itemJson.
+
+## `@java.lang.Override public java.lang.String getItemType()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+<pre> Get item response object </pre>
+
+Protobuf type {@code services.universalwallet.v1.GetItemResponse}
+
+## `public java.lang.String getItemJson()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The itemJson.
+
+## `public com.google.protobuf.ByteString getItemJsonBytes()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The bytes for itemJson.
+
+## `public Builder setItemJson( java.lang.String value)`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Parameters:** `value` — The itemJson to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemJson()`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemJsonBytes( com.google.protobuf.ByteString value)`
+
+<pre> The item data represented as stringified JSON </pre>
+
+`string item_json = 1;`
+
+ * **Parameters:** `value` — The bytes for itemJson to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getItemType()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `public com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public Builder setItemType( java.lang.String value)`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Parameters:** `value` — The itemType to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemType()`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemTypeBytes( com.google.protobuf.ByteString value)`
+
+<pre> User set item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Parameters:** `value` — The bytes for itemType to set.
+ * **Returns:** This builder for chaining.
+
+## `java.lang.String getItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `java.lang.String getItemType()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public static final class UpdateItemRequest extends com.google.protobuf.GeneratedMessageV3 implements`
+
+<pre> Update item request object </pre>
+
+Protobuf type {@code services.universalwallet.v1.UpdateItemRequest}
+
+## `@java.lang.Override public java.lang.String getItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `@java.lang.Override public java.lang.String getItemType()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+<pre> Update item request object </pre>
+
+Protobuf type {@code services.universalwallet.v1.UpdateItemRequest}
+
+## `public java.lang.String getItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public Builder setItemId( java.lang.String value)`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemId()`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemIdBytes( com.google.protobuf.ByteString value)`
+
+<pre> The item identifier </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The bytes for itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public java.lang.String getItemType()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `public com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The bytes for itemType.
+
+## `public Builder setItemType( java.lang.String value)`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Parameters:** `value` — The itemType to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemType()`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemTypeBytes( com.google.protobuf.ByteString value)`
+
+<pre> The item type that described the content of this item </pre>
+
+`string item_type = 2;`
+
+ * **Parameters:** `value` — The bytes for itemType to set.
+ * **Returns:** This builder for chaining.
+
+## `int getStatusValue()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
+
+## `public static final class UpdateItemResponse extends com.google.protobuf.GeneratedMessageV3 implements`
+
+<pre> Update item response object </pre>
+
+Protobuf type {@code services.universalwallet.v1.UpdateItemResponse}
+
+## `@java.lang.Override public int getStatusValue()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
+
+## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
+
+<pre> Update item response object </pre>
+
+Protobuf type {@code services.universalwallet.v1.UpdateItemResponse}
+
+## `@java.lang.Override public int getStatusValue()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `public Builder setStatusValue(int value)`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Parameters:** `value` — The enum numeric value on the wire for status to set.
+ * **Returns:** This builder for chaining.
+
+## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
+
+## `public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value)`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Parameters:** `value` — The status to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearStatus()`
+
+<pre> Response status </pre>
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `java.lang.String getItemJson()`
+
+<pre> the document to insert as stringified json </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The itemJson.
+
+## `com.google.protobuf.ByteString getItemJsonBytes()`
+
+<pre> the document to insert as stringified json </pre>
+
+`string item_json = 1;`
+
+ * **Returns:** The bytes for itemJson.
+
+## `java.lang.String getItemType()`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
+
+`string item_type = 2;`
+
+ * **Returns:** The itemType.
+
+## `com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
@@ -472,29 +898,33 @@ Protobuf type {@code services.universalwallet.v1.SearchResponse}
 
 Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
 
-## `@java.lang.Override public boolean hasItem()`
+## `@java.lang.Override public java.lang.String getItemJson()`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> the document to insert as stringified json </pre>
 
- * **Returns:** Whether the item field is set.
+`string item_json = 1;`
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayload getItem()`
+ * **Returns:** The itemJson.
 
-`.services.common.v1.JsonPayload item = 1;`
+## `@java.lang.Override public com.google.protobuf.ByteString getItemJsonBytes()`
 
- * **Returns:** The item.
+<pre> the document to insert as stringified json </pre>
 
-## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemOrBuilder()`
+`string item_json = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Returns:** The bytes for itemJson.
 
 ## `@java.lang.Override public java.lang.String getItemType()`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
  * **Returns:** The itemType.
 
 ## `@java.lang.Override public com.google.protobuf.ByteString getItemTypeBytes()`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
@@ -506,47 +936,51 @@ Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
 
 Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
 
-## `public boolean hasItem()`
+## `public java.lang.String getItemJson()`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> the document to insert as stringified json </pre>
 
- * **Returns:** Whether the item field is set.
+`string item_json = 1;`
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload getItem()`
+ * **Returns:** The itemJson.
 
-`.services.common.v1.JsonPayload item = 1;`
+## `public com.google.protobuf.ByteString getItemJsonBytes()`
 
- * **Returns:** The item.
+<pre> the document to insert as stringified json </pre>
 
-## `public Builder setItem(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string item_json = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Returns:** The bytes for itemJson.
 
-## `public Builder setItem( trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder builderForValue)`
+## `public Builder setItemJson( java.lang.String value)`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> the document to insert as stringified json </pre>
 
-## `public Builder mergeItem(trinsic.services.common.v1.CommonOuterClass.JsonPayload value)`
+`string item_json = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Parameters:** `value` — The itemJson to set.
+ * **Returns:** This builder for chaining.
 
-## `public Builder clearItem()`
+## `public Builder clearItemJson()`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> the document to insert as stringified json </pre>
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder getItemBuilder()`
+`string item_json = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Returns:** This builder for chaining.
 
-## `public trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder getItemOrBuilder()`
+## `public Builder setItemJsonBytes( com.google.protobuf.ByteString value)`
 
-`.services.common.v1.JsonPayload item = 1;`
+<pre> the document to insert as stringified json </pre>
 
-## `private com.google.protobuf.SingleFieldBuilderV3< trinsic.services.common.v1.CommonOuterClass.JsonPayload, trinsic.services.common.v1.CommonOuterClass.JsonPayload.Builder, trinsic.services.common.v1.CommonOuterClass.JsonPayloadOrBuilder> getItemFieldBuilder()`
+`string item_json = 1;`
 
-`.services.common.v1.JsonPayload item = 1;`
+ * **Parameters:** `value` — The bytes for itemJson to set.
+ * **Returns:** This builder for chaining.
 
 ## `public java.lang.String getItemType()`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
@@ -554,11 +988,15 @@ Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
 
 ## `public com.google.protobuf.ByteString getItemTypeBytes()`
 
+<pre> optional item type ex. "VerifiableCredential" </pre>
+
 `string item_type = 2;`
 
  * **Returns:** The bytes for itemType.
 
 ## `public Builder setItemType( java.lang.String value)`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
@@ -567,11 +1005,15 @@ Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
 
 ## `public Builder clearItemType()`
 
+<pre> optional item type ex. "VerifiableCredential" </pre>
+
 `string item_type = 2;`
 
  * **Returns:** This builder for chaining.
 
 ## `public Builder setItemTypeBytes( com.google.protobuf.ByteString value)`
+
+<pre> optional item type ex. "VerifiableCredential" </pre>
 
 `string item_type = 2;`
 
@@ -720,22 +1162,156 @@ Protobuf type {@code services.universalwallet.v1.InsertItemResponse}
  * **Parameters:** `value` — The bytes for itemId to set.
  * **Returns:** This builder for chaining.
 
+## `java.lang.String getItemId()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
 ## `public static final class DeleteItemRequest extends com.google.protobuf.GeneratedMessageV3 implements`
 
 <pre> Delete item request </pre>
 
 Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
 
+## `@java.lang.Override public java.lang.String getItemId()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `@java.lang.Override public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
 <pre> Delete item request </pre>
 
 Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
 
+## `public java.lang.String getItemId()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The itemId.
+
+## `public com.google.protobuf.ByteString getItemIdBytes()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** The bytes for itemId.
+
+## `public Builder setItemId( java.lang.String value)`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearItemId()`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Returns:** This builder for chaining.
+
+## `public Builder setItemIdBytes( com.google.protobuf.ByteString value)`
+
+<pre> item identifier of the record to delete </pre>
+
+`string item_id = 1;`
+
+ * **Parameters:** `value` — The bytes for itemId to set.
+ * **Returns:** This builder for chaining.
+
+## `int getStatusValue()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
+
 ## `public static final class DeleteItemResponse extends com.google.protobuf.GeneratedMessageV3 implements`
 
+<pre> Delete item response </pre>
+
 Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
+
+## `@java.lang.Override public int getStatusValue()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
 
 ## `public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements`
 
+<pre> Delete item response </pre>
+
 Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
+
+## `@java.lang.Override public int getStatusValue()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The enum numeric value on the wire for status.
+
+## `public Builder setStatusValue(int value)`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Parameters:** `value` — The enum numeric value on the wire for status to set.
+ * **Returns:** This builder for chaining.
+
+## `@java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** The status.
+
+## `public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value)`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Parameters:** `value` — The status to set.
+ * **Returns:** This builder for chaining.
+
+## `public Builder clearStatus()`
+
+`.services.common.v1.ResponseStatus status = 1;`
+
+ * **Returns:** This builder for chaining.

@@ -29,6 +29,8 @@
  * [src/main/java/trinsic/services/common/v1/CommonOuterClass.java doc](src/main/java/trinsic/services/common/v1/CommonOuterClass.md)
  * [src/main/java/trinsic/services/common/v1/ProviderGrpc.java doc](src/main/java/trinsic/services/common/v1/ProviderGrpc.md)
  * [src/main/java/trinsic/services/common/v1/ProviderOuterClass.java doc](src/main/java/trinsic/services/common/v1/ProviderOuterClass.md)
+ * [src/main/java/trinsic/services/debug/v1/Debug.java doc](src/main/java/trinsic/services/debug/v1/Debug.md)
+ * [src/main/java/trinsic/services/debug/v1/DebuggingGrpc.java doc](src/main/java/trinsic/services/debug/v1/DebuggingGrpc.md)
  * [src/main/java/trinsic/services/trustregistry/v1/TrustRegistryGrpc.java doc](src/main/java/trinsic/services/trustregistry/v1/TrustRegistryGrpc.md)
  * [src/main/java/trinsic/services/trustregistry/v1/TrustRegistryOuterClass.java doc](src/main/java/trinsic/services/trustregistry/v1/TrustRegistryOuterClass.md)
  * [src/main/java/trinsic/services/universalwallet/v1/UniversalWalletGrpc.java doc](src/main/java/trinsic/services/universalwallet/v1/UniversalWalletGrpc.md)

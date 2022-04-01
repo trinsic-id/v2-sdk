@@ -1,126 +1,66 @@
-# Trinsic's Security
+# Security Infrastructure
 
 ## Overview
 
-We've implemented a multi-factor authentication protocol to gate access to each identity wallet.
+Our cloud services are secured using a novel method of authentication based on [zero-knowledge proofs <small>:material-open-in-new:</small>](https://en.wikipedia.org/wiki/Zero-knowledge_proof){target=_blank}. This approach allows us to introduce passwordless client authentication with improved security and user experience.
 
-The executive summary is as follows:
-> "Oberon allows endpoints to issue multi-factor capable tokens to consumers who can prove their validity without disclosing the tokens themselves and without requiring email, SMS, or authenticator apps. Endpoints only need to store a single public key and not any tokens. An attacker that breaks into the server doesn't have any password/token files to steal and only would see a public key."
+Compared to traditional security methods that store users' credentials on the server, our approach relies on a one-time client/server negotiation without storing any user secrets on our servers. All secrets are stored with the user client and are entirely in their control. During authentication, users present proof of knowledge of these secret tokens, instead of the actual tokens. This proof is generated with each request and is unique for that request only.
 
-Sign in
-- Sign in from any device, and confirm your sign in request from another device
+## Zero-knowledge Architecture
 
-Info
-- Get account information 
+TODO: Comparison to traditional security models
 
-List Devices
-- List all the devices that are currently authenticated
+## Oberon Auth Scheme
 
-Revoke Device
-- Revoke a device
+A succinct ZKP protocol for authentication. It works by using techniques similar to Identity-Based/Attribute-Based signatures.
 
+Oberon allows endpoints to issue multi-factor capable tokens to consumers who can prove their validity without disclosing the tokens themselves and without requiring email, SMS, or authenticator apps. Endpoints only need to store a single public key and not any tokens. An attacker that breaks into the server doesn't have any password/token files to steal and only would see a public key. The proof of token validity is only 256 bytes while the token itself is only 48 bytes. The issuing party and verifying servers can be separate entities.
 
-## Zero-knowledge Security Architecture
+[Crypto details for Oberon <small>:material-open-in-new:</small>](https://github.com/mikelodder7/oberon/blob/main/CRYPTO.md){target=_blank}
 
-Because the tokens are blinded, Trinsic does not know which identities are accessing which wallets.  
+### Account Registration
 
-We call this zero knowledge because
-- Each API request is blinded
-- No private keys are stored on our servers. If a hacker breaks in, they will only find the public key
-- Each API call is authenticated, regardless of where it's coming from, leading to a true zero trust architecture.
-- verifies device identity and user identity. Logins and connections time out once established, forcing users to continuously re-verify
-- Ensures each device is authorized in addition to each user
-- Multi factor authentication by default
+The below diagram illustrates how client and server interact during the registration process and negotiate the data for authentication:
 
-Trinsic supports networks of complex interactions between different services.
-
-## New Account Registration
-
-```mermaid
-
+``` mermaid
 sequenceDiagram
-
-    participant U as User
-    participant A as API
-    participant S as Cloud<br/>Services
-    participant E as Email<br/>Provider
-    
-    U->>A: New Account :Email :Name
-
-    activate A
-    A->>S: Create Wallet
-    activate S
-    note over S: Generate "WalletId" and<br/>initialize storage<br/>provider
-    S->>A: :WalletId
-    deactivate S
-    
-    A->>A: Generate :DeviceId
-    A->>S: Grant Access<br/>:DeviceId :WalletId
-
-    activate S
-    S->>S: Generate :Token
-    S->>S: Blind Token :Code
-    S->>E: Send :Code to :Email
-    S->>A: :BlindedToken
-    deactivate S
-
-    A->>U: Response<br/>:BlindedToken :AccessData
-    note right of U: :AccessData = { :DeviceId :WalletId }
-    deactivate A
-
-    U->>E: Check :Email for :Code
-    activate U
-    U->>U: Unblind :BlindedToken<br/>using :Code
-    note over U: Optionally, blind token<br />using :PIN or<br/>:KeyChainSecret
-    U->>U: Store :AccountProfile
-    note over U: :AccountProfile = { :Token :AccessData }
-    deactivate U
-
+  actor Client
+  Client->>Server: Register new account or ecosystem
+  Server-->>Client: Generated token
+  Note right of Server: Does not store token
+  opt
+    Note over Client: Apply multi-factor security<br />using PIN, word phrase, HSM, etc.<br />by cryptographically blinding<br/>the secret token
+    Client->>Client: Token protection
+  end
+  Client->>Client: Save token on client device
 ```
 
+### API Requests
 
-## Authenticated Requests
+The process of making authenticated API requests against the server involves generating a proof of knowledge and appending it to the request headers. This proof is:
+
+- valid for a limited time only (order of milliseconds)
+- unique and cannot be used twice (replay protection)
+- bound to the current request payload (mitm protection)
+
+The diagram below illustrates the steps involved in generating proof and interacting with the server.
 
 ```mermaid
-
 sequenceDiagram
+    actor U as Client
+    participant A as Server
 
-    participant U as User
-    participant A as API
-    participant S as Cloud<br/>Services
-    participant W as Wallet<br/>Provider
+    U->>U: Read Token
+    U->>U: Generate proof of token
+    U->>A: Make API Request
+    note right of U: Proof is added in 'Authorization' header
 
-    note over U: Initiate request to<br/>wallet data
-    activate U
-    U->>U: Retrieve :WalletProfile
-    U-->>U: Input :PIN
-    note over U: Optional :PIN or<br/>:KeyChainSecret
-    U->>U: Create API :Request<br/>and :RequestHash
-    U->>U: Generate ZKP :Proof
-    note over U: Using :WalletProfile and :Nonce
-    note over U: :Nonce = { :Timestamp :RequestHash }
-    U->>U: Add :Proof to<br/>:Authorization header
-    U->>+A: Send Request
-    deactivate U
+    A->>A: Check authorization
 
-    A->>A: Parse :Authorization header
-    A->>A: Check HMAC
-
-    A->>+S: Authenticate :Request
-    S->>S: Check :Proof
-    alt if invalid proof
-        S-->>A: Unauthorized (Invalid Proof)
-        A-->>U: Unauthorized
-    end
-    S->>S: Check access for :DeviceId<br/>to :WalletId
-    S->>-A: :AuthenticationResponse
-
-    alt if not authorized
-        A-->>U: Unauthorized
-    else if authorized
-        note over A: Output claims [ :WalletId :DeviceId ]
-        A->>+W: Get Data :WalletId :Request
-        W->>-A: :WalletData
-        A->>-U: :WalletData
+    alt sucesss
+        A->>A: Process request
+        A-->>U: Send response
+    else invalid proof
+        A-->>U: 401 Unauthorized
     end
 ```

@@ -1,50 +1,63 @@
 package trinsic.services;
 
+import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import io.grpc.Channel;
+import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
+import trinsic.sdk.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.CommonOuterClass;
+
+import java.util.Base64;
+import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
     private final AccountGrpc.AccountFutureStub stub;
 
-    public AccountService(AccountOuterClass.AccountProfile accountProfile) {
-        this(accountProfile, null, null);
+    public AccountService() {
+        this(null);
     }
 
-    public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig) {
-        this(accountProfile, serverConfig, null);
-    }
-
-    public AccountService(AccountOuterClass.AccountProfile accountProfile, CommonOuterClass.ServerConfig serverConfig, Channel existingChannel) {
-        super(accountProfile, serverConfig, existingChannel);
+    public AccountService(Options.ServiceOptions options) {
+        super(options);
         this.stub = AccountGrpc.newFutureStub(this.getChannel());
     }
 
-    public ListenableFuture<AccountOuterClass.SignInResponse> signIn(AccountOuterClass.AccountDetails details) {
-        if (details == null) details = AccountOuterClass.AccountDetails.newBuilder().build();
-        var request = AccountOuterClass.SignInRequest.newBuilder().setDetails(details).build();
-        return this.stub.signIn(request);
+    public ListenableFuture<String> signIn() {
+        return signIn(AccountOuterClass.SignInRequest.getDefaultInstance());
     }
 
-    public AccountOuterClass.AccountProfile unprotect(AccountOuterClass.AccountProfile profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<String> signIn(@NotNull AccountOuterClass.SignInRequest request) {
+        if (request.getEcosystemId().isBlank())
+            request = AccountOuterClass.SignInRequest.newBuilder(request).setEcosystemId(this.getOptions().getDefaultEcosystem()).build();
+        var response = this.stub.signIn(request);
+        return Futures.transform(response, input -> {
+            var profileBase64 = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+            this.setProfile(profileBase64);
+            return profileBase64;
+        }, Executors.newSingleThreadExecutor());
+    }
+
+    public static String unprotect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+        var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.UnBlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.unBlindToken(request);
 
-        return AccountOuterClass.AccountProfile.newBuilder(profile).setAuthToken(result.getToken()).setProtection(AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.None).setEnabled(false).build()).build();
+        profile = AccountOuterClass.AccountProfile.newBuilder(profile).setAuthToken(result.getToken()).setProtection(AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.None).setEnabled(false).build()).build();
+        return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
     }
 
-    public AccountOuterClass.AccountProfile protect(AccountOuterClass.AccountProfile profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+    public static String protect(String base64Profile, String securityCode) throws InvalidProtocolBufferException, DidException {
+        var profile = AccountOuterClass.AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
         var request = Security.BlindOberonTokenRequest.newBuilder().setToken(profile.getAuthToken()).addBlinding(ByteString.copyFromUtf8(securityCode)).build();
         var result = Oberon.blindToken(request);
 
-        return AccountOuterClass.AccountProfile.newBuilder(profile).setAuthToken(result.getToken()).setProtection(AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.Other).setEnabled(true).build()).build();
+        profile = AccountOuterClass.AccountProfile.newBuilder(profile).setAuthToken(result.getToken()).setProtection(AccountOuterClass.TokenProtection.newBuilder().setMethod(AccountOuterClass.ConfirmationMethod.Other).setEnabled(true).build()).build();
+        return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
     }
 
     public ListenableFuture<AccountOuterClass.InfoResponse> getInfo() throws InvalidProtocolBufferException, DidException {

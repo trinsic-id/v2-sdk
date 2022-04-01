@@ -1,12 +1,11 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Grpc.Net.Client;
+using Microsoft.Extensions.Options;
 using Okapi.Security;
 using Okapi.Security.V1;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Account.V1;
-using Trinsic.Services.Common.V1;
-using AccountServiceClient = Trinsic.Services.Account.V1.Account.AccountClient;
 
 namespace Trinsic;
 
@@ -15,71 +14,59 @@ namespace Trinsic;
 /// </summary>
 public class AccountService : ServiceBase
 {
-    private AccountProfile? profile;
-
-    public AccountService(AccountProfile accountProfile, ServerConfig serverConfig)
-        : base(accountProfile, serverConfig) {
+    public AccountService(ServiceOptions options)
+        : base(options) {
         Client = new(Channel);
     }
 
-    public AccountService()
-        : base(DefaultServerConfig()) {
+    public AccountService() {
         Client = new(Channel);
     }
 
-    public AccountService(ServerConfig serverConfig)
-        : base(serverConfig) {
+    internal AccountService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
 
-    public AccountService(AccountProfile accountProfile)
-        : base(accountProfile) {
+    internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }
 
-    public AccountService(AccountProfile accountProfile, GrpcChannel channel)
-        : base(accountProfile, channel) {
-        Client = new(Channel);
-    }
+    /// <summary>
+    /// Gets the underlying grpc client
+    /// </summary>
+    private Account.AccountClient Client { get; }
 
-    private AccountServiceClient Client { get; }
+    /// <summary>
+    /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
+    /// specified, they will be used to associate
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<string> SignInAsync(SignInRequest request) {
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
+        var response = await Client.SignInAsync(request);
 
-    public override AccountProfile? Profile
-    {
-        get => profile;
-        set => profile = value ?? throw new ArgumentNullException(nameof(Profile), "Profile cannot be null");
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) await TokenProvider.SaveAsync(authToken);
+        return authToken;
     }
 
     /// <summary>
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
     /// specified, they will be used to associate
     /// </summary>
-    /// <param name="details"></param>
+    /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<AccountProfile> SignInAsync(AccountDetails? details = null) {
-        SignInRequest request = new() {Details = details ?? new AccountDetails(), EcosystemId = "default"};
-
-        var response = await Client.SignInAsync(request);
-
-        return response.Profile;
-    }
-    
-    public async Task<AccountProfile> SignInAsync(SignInRequest request) {
-        var response = await Client.SignInAsync(request);
-
-        return response.Profile;
-    }
-
-    /// <summary>
-    /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
-    /// specified, they will be used to associate
-    /// </summary>
-    /// <param name="details"></param>
-    /// <returns></returns>
-    public AccountProfile SignIn(AccountDetails? details = null) {
-        SignInRequest request = new() {Details = details ?? new AccountDetails(), EcosystemId = "default"};
+    public string SignIn(SignInRequest request) {
+        if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = Options.DefaultEcosystem;
         var response = Client.SignIn(request);
-        return response.Profile;
+
+        var authToken = Base64Url.Encode(response.Profile.ToByteArray());
+
+        if (!response.Profile.Protection?.Enabled ?? true) TokenProvider.Save(authToken);
+        return authToken;
     }
 
     /// <summary>
@@ -87,44 +74,44 @@ public class AccountService : ServiceBase
     /// The confirmation method field will specify how this code was
     /// communicated with the account owner.
     /// </summary>
-    /// <param name="profile"></param>
+    /// <param name="authToken"></param>
     /// <param name="securityCode"></param>
-    public static AccountProfile Unprotect(AccountProfile profile, string securityCode) {
-        var cloned = profile.Clone();
+    public static string Unprotect(string authToken, string securityCode) {
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        UnBlindOberonTokenRequest request = new() {Token = cloned.AuthToken};
+        UnBlindOberonTokenRequest request = new() {Token = profile.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.UnblindToken(request);
 
-        cloned.AuthToken = result.Token;
-        cloned.Protection = new() {
+        profile.AuthToken = result.Token;
+        profile.Protection = new() {
             Enabled = false,
             Method = ConfirmationMethod.None
         };
 
-        return cloned;
+        return Base64Url.Encode(profile.ToByteArray());
     }
 
     /// <summary>
     /// Protects the account profile with a security code.
     /// The code can be a PIN, password, keychain secret, etc.
     /// </summary>
-    /// <param name="profile"></param>
+    /// <param name="authToken"></param>
     /// <param name="securityCode"></param>
-    public static AccountProfile Protect(AccountProfile profile, string securityCode) {
-        var cloned = profile.Clone();
+    public static string Protect(string authToken, string securityCode) {
+        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        BlindOberonTokenRequest request = new() {Token = cloned.AuthToken};
+        BlindOberonTokenRequest request = new() {Token = profile.AuthToken};
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.BlindToken(request);
 
-        cloned.AuthToken = result.Token;
-        cloned.Protection = new() {
+        profile.AuthToken = result.Token;
+        profile.Protection = new() {
             Enabled = true,
             Method = ConfirmationMethod.Other
         };
 
-        return cloned;
+        return Base64Url.Encode(profile.ToByteArray());
     }
 
     /// <summary>

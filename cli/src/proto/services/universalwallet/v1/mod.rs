@@ -1,7 +1,7 @@
 // Search
 
 /// Search request object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRequest {
     #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
@@ -9,7 +9,7 @@ pub struct SearchRequest {
     pub continuation_token: ::prost::alloc::string::String,
 }
 /// Search response object
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
     #[prost(string, repeated, tag = "1")]
     pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -20,10 +20,48 @@ pub struct SearchResponse {
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
+// Get Item
+
+/// Get item request object
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetItemRequest {
+    /// The item identifier
+    #[prost(string, tag = "1")]
+    pub item_id: ::prost::alloc::string::String,
+}
+/// Get item response object
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetItemResponse {
+    /// The item data represented as stringified JSON
+    #[prost(string, tag = "1")]
+    pub item_json: ::prost::alloc::string::String,
+    /// User set item type that described the content of this item
+    #[prost(string, tag = "2")]
+    pub item_type: ::prost::alloc::string::String,
+}
+// Update Item
+
+/// Update item request object
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpdateItemRequest {
+    /// The item identifier
+    #[prost(string, tag = "1")]
+    pub item_id: ::prost::alloc::string::String,
+    /// The item type that described the content of this item
+    #[prost(string, tag = "2")]
+    pub item_type: ::prost::alloc::string::String,
+}
+/// Update item response object
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpdateItemResponse {
+    /// Response status
+    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
+    pub status: i32,
+}
 // InsertItem
 
 /// Insert item request
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
     /// the document to insert as stringified json
     #[prost(string, tag = "1")]
@@ -33,7 +71,7 @@ pub struct InsertItemRequest {
     pub item_type: ::prost::alloc::string::String,
 }
 /// Insert item response
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
@@ -42,13 +80,14 @@ pub struct InsertItemResponse {
     pub item_id: ::prost::alloc::string::String,
 }
 /// Delete item request
-#[derive(Clone, PartialEq, ::prost::Message)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemRequest {
     /// item identifier of the record to delete
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
 }
-#[derive(Clone, PartialEq, ::prost::Message)]
+/// Delete item response
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {
     #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
     pub status: i32,
@@ -113,6 +152,23 @@ pub mod universal_wallet_client {
             self.inner = self.inner.accept_gzip();
             self
         }
+        #[doc = " Retrieve an item from the wallet with a given item identifier"]
+        pub async fn get_item(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetItemRequest>,
+        ) -> Result<tonic::Response<super::GetItemResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.universalwallet.v1.UniversalWallet/GetItem",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
         #[doc = " Search the wallet using a SQL-like syntax"]
         pub async fn search(
             &mut self,
@@ -144,6 +200,23 @@ pub mod universal_wallet_client {
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/services.universalwallet.v1.UniversalWallet/InsertItem",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Insert an item into the wallet"]
+        pub async fn update_item(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateItemRequest>,
+        ) -> Result<tonic::Response<super::UpdateItemResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/services.universalwallet.v1.UniversalWallet/UpdateItem",
             );
             self.inner.unary(request.into_request(), path, codec).await
         }

@@ -15,9 +15,9 @@ suspend fun main(args: Array<String>) {
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runTrustRegistryDemo() {
-    val accountService = AccountServiceKt(null, TrinsicUtilities.getTestServerConfig(), null)
-    val account = accountService.signIn(null).profile
-    val service = TrustRegistryServiceKt(account, TrinsicUtilities.getTestServerConfig(), null)
+    val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
+    val account = accountService.signIn()
+    val service = TrustRegistryServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
     service.registerIssuer(
         TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder().setDidUri("did:example:test")
             .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
@@ -36,7 +36,7 @@ suspend fun runTrustRegistryDemo() {
             .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
     )
     Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, verifierStatus.status)
-    val searchResult = service.searchRegistry(null)
+    val searchResult = service.searchRegistry()
     Assertions.assertNotNull(searchResult)
     Assertions.assertNotNull(searchResult.itemsJson)
     Assertions.assertTrue(searchResult.itemsJson.isNotEmpty())
