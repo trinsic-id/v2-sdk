@@ -9,8 +9,8 @@ on:
 
 jobs:
   prod-test-python:
-    name: Test Python code
-    runs-on: ${{ matrix.os-artifact[0] }}
+    name: Python - samples - prod test
+    runs-on: ${{ matrix.os[0] }}
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
