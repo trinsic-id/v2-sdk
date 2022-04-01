@@ -28,7 +28,7 @@ jobs:
       - name: Build, Test, Pack
         run: |
           gem install trinsic-services
-          foreach ($Item in Get-ChildItem -Path Get-Location -Include *_demo.rb -Recurse) {
+          foreach ($Item in Get-ChildItem -Include *_demo.rb -Recurse) {
             ruby $Item.FullName
           }
         shell: pwsh

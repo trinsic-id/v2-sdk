@@ -28,7 +28,7 @@ jobs:
       - name: Build, Test, Pack
         run: |
           python -m pip install trinsic-sdk
-          foreach ($Item in Get-ChildItem -Path Get-Location -Include *_demo.py -Recurse) {
+          foreach ($Item in Get-ChildItem -Include *_demo.py -Recurse) {
             python $Item.FullName
           }
         shell: pwsh
