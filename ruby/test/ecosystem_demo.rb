@@ -9,8 +9,8 @@ def ecosystem_demo_run
 
   # test create ecosystem
   actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(:description => "My ecosystem", :uri => "https://example.com"))
-  raise "ecosystem should be created" unless actual_create.ecosystem != nil
-  raise "ecosystem id should exist" unless actual_create.ecosystem.id != nil
+  raise 'ecosystem should be created' unless actual_create.ecosystem != nil
+  raise 'ecosystem id should exist' unless actual_create.ecosystem.id != nil
   raise "expected urn prefix='urn:trinsic:ecosystems:'" unless actual_create.ecosystem.id.start_with?("urn:trinsic:ecosystems:")
 
   # test list ecosystems
