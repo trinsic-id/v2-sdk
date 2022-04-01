@@ -182,7 +182,7 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
             SubCommand::with_name("create")
             .setting(AppSettings::ArgRequiredElseHelp)
             .about("Create new template")
-            .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\\"firstName\\":{}}'")
+            .after_help("EXAMPLES:\r\n\ttrinsic template create --name 'My Credential' --fields-data '{\"firstName\":{}}'")
             .arg(Arg::from_usage("-n --name <TEMPLATE_NAME> 'Sets the name of the template'").required(true))
             .arg(Arg::from_usage("--fields-data <JSON> 'Sets the fields of the template formatted as JSON'").required(false))
             .arg(Arg::from_usage("--fields-file <FILE> 'Sets the file containing fields JSON data'").required(false))
