@@ -5,7 +5,6 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
 ### Dependencies
 
 - the gitpod environment is already set up with everything need to generate the documentation site.
-- Python 3.10 is not supported yet due to protobuf parsing.
 - Install the requirements using `pip install -r requirements.txt`
 - Install the python SDK requirements (required for `mkdocstrings` which uses introspection) using `pip install -r python/requirements.txt`
 - https://www.mkdocs.org/#installation
