@@ -2,7 +2,12 @@
     selection:
         members:
             - security_providers
-            - services
+            - account_service
+            - credentials_service
+            - credentialtemplates_service
+            - provider_service
+            - trustregistry_service
+            - wallet_service
             - service_base
             - trinsic_util
     rendering:
