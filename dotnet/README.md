@@ -16,4 +16,4 @@ dotnet add package Trinsic.Web
 
 ## Usage
 
-See documentation
+See [documentation here](https://docs-v2.trinsic.id/)

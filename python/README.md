@@ -1,5 +1,15 @@
 # Python SDK
 
+## Installation
+
+```bash
+pip install trinsic-sdk
+```
+
+## Documentation
+
+See [documentation here](https://docs-v2.trinsic.id/)
+
 ## Known Issues
 * Python `asyncio` event loop closed bug: https://bugs.python.org/issue36709 emits output like this:
 ```diff
