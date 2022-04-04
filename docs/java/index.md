@@ -1,6 +1,6 @@
 # The Trinsic Java SDK
 
-The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Java application. The most recent version of the library can be found on Github Maven Packages. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/java).
+The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Java application. The most recent version of the library can be found on Github Maven Packages. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/java).
 
 ## Installation
 1. Download the trinsic SDK package (`services-X.X.X.jar`) from the [Github Packages](https://github.com/trinsic-id/sdk/packages/940563) into a `libs` folder in your project
