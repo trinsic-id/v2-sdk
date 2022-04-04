@@ -18,7 +18,7 @@ def trinsic_config(auth_token: str = None) -> ServiceOptions:
     Args:
         auth_token: Existing auth token to use (instead of `clone_options_with_auth_token(trinsic_config(), auth_token)`)
     Returns:
-        [ServerConfig](/reference/proto/#serviceoptions)
+        [ServiceOptions](/reference/proto/#serviceoptions)
     """
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
@@ -43,7 +43,7 @@ def clone_options_with_auth_token(
         auth_token:
 
     Returns:
-
+        [ServiceOptions](/reference/proto/#serviceoptions)
     """
     cloned = dataclasses.replace(options)
     cloned.auth_token = auth_token

@@ -1,6 +1,7 @@
 mkdocs
-mkdocs-material
+git+https://github.com/squidfunk/mkdocs-material@master#egg=mkdocs-material
 mkdocs-codeinclude-plugin
 mkdocstrings
+mkdocstrings-python-legacy
 mkdocs-autorefs
 markdown-fenced-code-tabs
