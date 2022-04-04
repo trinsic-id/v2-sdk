@@ -1,5 +1,14 @@
 # Trinsic SDK for Browsers
 
+## Installation
+```bash
+npm install @trinsic/trinsic-web
+```
+
+## Documentation
+
+See [documentation here](https://docs-v2.trinsic.id/)
+
 ## Maintainers
 
 ### Dev Environment Setup

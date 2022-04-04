@@ -1,3 +1,18 @@
+# Trinsic Node SDK
+
+## Installation
+```bash
+npm install @trinsic/trinsic
+```
+
+## Documentation
+
+See [documentation here](https://docs-v2.trinsic.id/)
+
+## Maintainers
+
+### Dev Environment Setup
+
 This is the static code generation variant of the Node examples. Code in these examples is pre-generated using protoc and the Node gRPC protoc plugin, and the generated code can be found in various `*_pb.js` files. The command line sequence for generating those files is as follows (assuming that `protoc` and `grpc_node_plugin` are present, and starting in the directory which contains this README.md file):
 ## Installation
 run `pwsh make.ps1`
