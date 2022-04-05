@@ -295,6 +295,7 @@ public class Tests
         var walletService = new WalletService(options);
 
         // create example template
+        // createTemplate() {
         CreateCredentialTemplateRequest templateRequest = new() {
             Name = "An Example Credential",
             AllowAdditionalFields = false
@@ -304,6 +305,7 @@ public class Tests
         templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
 
         var template = await templateService.CreateAsync(templateRequest);
+        // }
 
         template.Should().NotBeNull();
         template.Data.Should().NotBeNull();

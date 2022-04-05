@@ -27,6 +27,7 @@ async def templates_demo():
     wallet_service = WalletService(server_config=trinsic_config(profile))
 
     # create example template
+    # createTemplate() {
     template = await template_service.create(
         request=CreateCredentialTemplateRequest(
             name="An Example Credential",
@@ -38,6 +39,7 @@ async def templates_demo():
             },
         )
     )
+    # }
     assert template is not None
     assert template.data is not None
     assert template.data.id is not None
