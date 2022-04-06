@@ -1,4 +1,5 @@
 # What is Trinsic?
+
 Trinsic is a hosting provider for identity wallets and an SDK for developers that want to interact with them.
 You can use Trinsic to give your end-users identity wallets and then share, store, and verify data through them.
 
