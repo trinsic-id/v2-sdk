@@ -13,6 +13,13 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
     brew install trinsic-cli
     ```
 
+=== "Windows"
+    The CLI can be installed using [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/)
+    ```
+    winget install okapi
+    winget install trinsic
+    ```
+
 === "From source"
     The CLI can also be built from source.
 
@@ -28,13 +35,6 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
 
     ```bash
     trinsic --help
-    ```
-
-=== "Windows"
-    The CLI can be installed using [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/)
-    ```
-    winget install okapi
-    winget install trinsic
     ```
 
 ## Next Steps
