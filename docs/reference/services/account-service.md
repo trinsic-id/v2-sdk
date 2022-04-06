@@ -102,7 +102,7 @@ was sent to one of the users two-factor methods like email, SMS, etc. (as define
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | The status of the response |
+| status | [ResponseStatus](#services.common.v1.ResponseStatus) |  | The status of the response |
 | confirmation_method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. |
 | profile | [AccountProfile](#services.account.v1.AccountProfile) |  | Contains authentication data for use with the current device. |
 
@@ -153,7 +153,7 @@ provide are evidenced in the code snippets below:
 
 === "TypeScript"
     ```typescript
-    const protectedProfile = (await accountService.protect(accountProfile, "1234"));
+    const protectedProfile = await accountService.protect(accountProfile, "1234");
     ```
 === "C#"
     ```csharp
@@ -183,7 +183,7 @@ email or SMS as the `securityCode` argument.
 
 === "TypeScript"
     ```typescript
-    const accountProfile = (await accountService.unprotect(protectedProfile, "1234"));
+    const accountProfile = await accountService.unprotect(protectedProfile, "1234");
     ```
 === "C#"
     ```csharp
