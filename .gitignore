@@ -391,3 +391,6 @@ devops/protoc-plugins/
 ruby/.ruby-version
 python/tests/allison.txt
 java/allison.txt
+samples/java/build/
+samples/java/.gradle/
+samples/java/gradle/wrapper/gradle-wrapper.jar

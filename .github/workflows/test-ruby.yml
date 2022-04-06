@@ -32,4 +32,4 @@ jobs:
             ruby $Item.FullName
           }
         shell: pwsh
-        working-directory: ruby/test
+        working-directory: samples/ruby

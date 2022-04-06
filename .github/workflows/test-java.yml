@@ -1,4 +1,4 @@
-name: Python (prod test)
+name: Java (prod test)
 
 on:
   workflow_call:
@@ -8,28 +8,27 @@ on:
     - cron: "0 8 * * *"
   pull_request:
     paths:
-      - ".github/workflows/test-python.yml"
+      - ".github/workflows/test-java.yml"
 
 jobs:
-  prod-test-python:
-    name: Python - samples - prod test
+  prod-test-java:
+    name: Java - samples - prod test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        python-version: [3.8, 3.9, '3.10']
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: 'pip'
-      - name: Build, Test, Pack
+          java-version: '15'
+          distribution: 'adopt'
+      - name: Run Demos
         run: |
-          python -m pip install trinsic-sdk
+          
           foreach ($Item in Get-ChildItem -Include *_demo.py -Recurse) {
             python $Item.FullName
           }
         shell: pwsh
-        working-directory: samples/python
+        working-directory: samples/java
