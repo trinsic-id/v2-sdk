@@ -11,7 +11,11 @@ The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go ap
 go install github.com/trinsic-id/sdk/go@latest
 ```
 * To test the installation, try the following go code:
-TODO
+<!--codeinclude-->
+```golang
+[GoSample](../../samples/go/sample.go) inside_block:main
+```
+<!--/codeinclude-->
 
 ## Next Steps
 Once the go package is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
