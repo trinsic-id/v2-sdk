@@ -95,7 +95,15 @@ impl CliConfig {
                 let mut buffer = String::new();
                 file.read_to_string(&mut buffer)?;
 
-                toml::from_str(&buffer)?
+                match toml::from_str(&buffer) {
+                    Ok(buffer) => buffer,
+                    Err(_) => {
+                        let config = CliConfig::default();
+                        config.save()?;
+
+                        config
+                    }
+                }
             }
             Err(_) => {
                 let config = CliConfig::default();
