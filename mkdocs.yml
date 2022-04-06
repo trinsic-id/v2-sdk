@@ -113,6 +113,8 @@ plugins:
       show_contribution: false
       show_line_count: false
       fallback_to_empty: false
+      sort_authors_by: "contribution"
+      authorship_threshold_percent: 25
       exclude:
           - index.md
       enabled: true
