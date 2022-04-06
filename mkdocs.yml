@@ -47,7 +47,7 @@ nav:
 theme:
   name: material
   logo: _static/logo-title.svg
-  custom_dir: overrides
+  custom_dir: docs/overrides
   favicon: _static/logo.png
   features:
     - content.tabs.link
@@ -110,8 +110,8 @@ plugins:
   - search
   - autorefs
   - git-authors:
-      show_contribution: true
-      show_line_count: true
+      show_contribution: false
+      show_line_count: false
       fallback_to_empty: false
       exclude:
           - index.md
