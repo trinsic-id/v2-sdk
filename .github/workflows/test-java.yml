@@ -26,9 +26,6 @@ jobs:
           distribution: 'adopt'
       - name: Run Demos
         run: |
-          
-          foreach ($Item in Get-ChildItem -Include *_demo.py -Recurse) {
-            python $Item.FullName
-          }
+          gradle build
         shell: pwsh
         working-directory: samples/java
