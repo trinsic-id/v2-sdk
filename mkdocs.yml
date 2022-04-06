@@ -109,6 +109,13 @@ extra:
 plugins:
   - search
   - autorefs
+  - git-authors:
+      show_contribution: true
+      show_line_count: true
+      fallback_to_empty: false
+      exclude:
+          - index.md
+      enabled: true
   - codeinclude:
       title_mode: none
   - mkdocstrings:

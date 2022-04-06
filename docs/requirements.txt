@@ -1,6 +1,7 @@
 mkdocs
 git+https://github.com/squidfunk/mkdocs-material@master#egg=mkdocs-material
 mkdocs-codeinclude-plugin
+mkdocs-git-authors-plugin
 mkdocstrings
 mkdocstrings-python-legacy
 mkdocs-autorefs
