@@ -2,13 +2,8 @@
 
 ### Construct Instance
 
-=== "Trinsic CLI"
-    ```bash
-
-    ```
 === "TypeScript"
     ```typescript
-    // TODO - do we have a production config default option?
     const config = new ServerConfig().setEndpoint("prod.trinsic.cloud").setPort(Number(443)).setUseTls(true);
     const accountService = new AccountService({server: config});
     ```
@@ -43,7 +38,7 @@ Sign into a wallet. If a wallet has not been created with the information, a new
 
 === "Trinsic CLI"
     ```bash
-
+    trinsic account login --alias <PROFILE_NAME>
     ```
 === "TypeScript"
     ```typescript
@@ -78,7 +73,7 @@ Returns the account info associated with the wallet.
 
 === "Trinsic CLI"
     ```bash
-    
+    trinsic account info
     ```
 === "TypeScript"
     ```typescript
@@ -108,10 +103,6 @@ Returns the account info associated with the wallet.
 ### Protect Account Profile
 Blinds the account profile token using oberon
 
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
 === "TypeScript"
     ```typescript
     const protectedProfile = (await accountService.protect(accountProfile, "1234"));
@@ -140,10 +131,6 @@ Blinds the account profile token using oberon
 ### Unprotect Account Profile
 Unblinds the account profile token using oberon
 
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
 === "TypeScript"
     ```typescript
     const accountProfile = (await accountService.unprotect(protectedProfile, "1234"));
@@ -168,71 +155,3 @@ Unblinds the account profile token using oberon
     ```ruby
     account_profile = account_service.unprotect(protected_profile, '1234')
     ```
-
-<!-- 
-### Revoke Device
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
-=== "Ruby"
-    ```ruby
-    
-    ``` -->
-
-<!-- 
-### List Devices
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    ```typescript
-    
-    ```
-=== "C#"
-    ```csharp
-    
-    ```
-
-=== "Python"
-    ```python
-    
-    ```
-
-=== "Go"
-    ```golang
-    
-    ```
-=== "Java"
-    ```java
-    
-    ```
-=== "Ruby"
-    ```ruby
-    
-    ``` -->
