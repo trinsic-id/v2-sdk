@@ -1,5 +1,4 @@
 # What are Verifiable Credentials
-{{ git_page_authors }}
 ![Trust Triangle](/_static/images/trust-triangle.png)
 
 "Verifiable Credentials", or "VCs" are digital documents that conform to the W3C Verifiable Credential Data Model. VCs provide a standard for digitally issuing, holding, and verifying data about a subject. A verifiable credential is a set of tamper-evident claims and metadata that cryptographically prove who issued it.  [https://www.w3.org/TR/vc-data-model/](https://www.w3.org/TR/vc-data-model/)
