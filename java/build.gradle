@@ -22,6 +22,7 @@ group = jarDomainId + "." + jarGroupId + '.' + jarArtifactId
 archivesBaseName = 'trinsic-' + jarArtifactId
 version = jarVersion
 
+// urlFileSample() {
 def urlFile = { url, name ->
     File file = new File("$buildDir/download/${name}.jar")
     file.parentFile.mkdirs()
@@ -34,6 +35,7 @@ def urlFile = { url, name ->
     }
     files(file.absolutePath)
 }
+// }
 
 dependencies {
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+

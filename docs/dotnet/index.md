@@ -6,7 +6,7 @@ The Trinsic C# / .NET SDK makes it easy to interact with the Trinsic API from yo
     .NET targets for iOS, Android, and Blazor are fully supported using the same package dependencies via .NET 6.
 
 ## Installation in a new project
-Add the required dependencies from [Nuget.org <small>:material-open-in-new:<small>](https://www.nuget.org/packages/Trinsic)
+Add the required dependencies from [Nuget.org <small>:material-open-in-new:</small>](https://www.nuget.org/packages/Trinsic)
 
 
 === "Package Manager"
@@ -29,25 +29,15 @@ Add the required dependencies from [Nuget.org <small>:material-open-in-new:<smal
 
 ## Configuration
 
+<!--codeinclude-->
 ```csharp
-using Trinsic;
-
-// Set the server address
-// WalletService requires an account profile
-var accountService = new AccountService();
-var accountProfile = await accountService.signIn();
-var service = new WalletService(accountProfile);
-
-// Create new profile or import an existing one
-var myProfile = await service.CreateWallet();
-
-// Set the profile to be used with authorization pipeline
-service.SetProfile(myProfile);
+[SampleAccountService](../../dotnet/Tests/Tests.cs) inside_block:testSignInAndGetInfo
 ```
+<!--/codeinclude-->
 
 ## Next Steps
 
 Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [C# API Reference](../reference/dotnet/index.md){ .md-button }
+[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [C# API Reference](../reference/index.md){ .md-button }
 

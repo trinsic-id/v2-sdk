@@ -226,12 +226,14 @@ public class Tests
 
     [Fact]
     public async Task TestProtectUnprotectProfile() {
+        // testSignInAndGetInfo() {
         var myAccountService = new AccountService(_options);
 
         var myProfile = await myAccountService.SignInAsync(new());
         myAccountService.Options.AuthToken = myProfile;
         var output = await myAccountService.GetInfoAsync();
         Assert.NotNull(output);
+        // }
 
         var securityCode = "1234";
         var myProtectedProfile = AccountService.Protect(myProfile, securityCode);

@@ -8,14 +8,18 @@ The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go ap
 * You need to have [CGO configured](https://pkg.go.dev/cmd/cgo) for the okapi native binary link
 * Issue the following command:
 ```bash
-go install github.com/trinsic-id/sdk/go
+go install github.com/trinsic-id/sdk/go@latest
 ```
 * To test the installation, try the following go code:
-TODO
+<!--codeinclude-->
+```golang
+[GoSample](../../samples/go/sample.go) inside_block:main
+```
+<!--/codeinclude-->
 
 ## Next Steps
 Once the go package is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
-[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Go API Reference](../reference/go/index.md){ .md-button }
+[Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Go API Reference](../reference/index.md){ .md-button }
 
 

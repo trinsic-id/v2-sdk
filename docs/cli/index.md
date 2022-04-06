@@ -13,6 +13,13 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
     brew install trinsic-cli
     ```
 
+=== "Windows"
+    The CLI can be installed using [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/)
+    ```
+    winget install okapi
+    winget install trinsic
+    ```
+
 === "From source"
     The CLI can also be built from source.
 
@@ -30,12 +37,6 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
     trinsic --help
     ```
 
-<!-- === "Windows"
-    Install [Chocolatey](https://chocolatey.org/install)
-
-    ```
-    choco install trinsic-cli
-    ``` -->
 ## Next Steps
 
 Once the CLI is installed, you're ready to start building! We recommend going through the walkthrough next. If you're ready to dive into building your ecosystem, check out our API Reference. For more information about the CLI, read the [configuration guide](./config.md)

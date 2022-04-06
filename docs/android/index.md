@@ -1,26 +1,34 @@
 # Android Sample Application
 
-The Trinsic Android sample application makes it easy to interact with the Trinsic API. The most recent version of the library can be found on Github Maven Packages. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/java).
+The Trinsic Android sample application makes it easy to interact with the Trinsic API. The sample application is [located here](https://github.com/trinsic-id/sdk-examples/tree/main/android)
 
 ## Installation
-1. Download the trinsic SDK package (`services-X.X.X.jar`) from the [Github Packages](https://github.com/trinsic-id/sdk/packages/940563).
-2. Download the trinsic okapi package (`okapi-X.X.X.jar`) from the [Github Packages](https://github.com/trinsic-id/okapi/packages/919613).
-3. Put the jar files into the appropriate folder (`./android/app/libs`) - this allows gradle to package them in, since public anonymous gradle access to Github Maven Packages is not supported.
-4. Download the latest [release artifact](https://github.com/trinsic-id/okapi/releases/latest) asset called `libs.zip`
-5. Extract it, under `libs/android` you should find folders with the various android device (and emulator) architectures supported.
-6. Copy the `libokapi.so` from the corresponding directory to the corresponding architecture directory under `android/app/src/main/jniLibs` - there should be exact folder name matches
-7. You should be able to build and run the android application.
+1. Clone the `sdk-examples` [repository](https://github.com/trinsic-id/sdk-examples)
+2. Open the folder `sdk-examples/android` in [Android Studio](https://developer.android.com/studio)
+3. Run gradle build for the first time, it will take a while, but it should pull down all the required `.jar` files
+4. You should be able to build and run the android application.
+5. There is an `sdk-examples/android-controller` application written in Python which allows you to issue credentials/verify proofs outside of the android application for demonstration purposes.
 
-<!--Go to the okapi actions latest run, then go to the artifact, and download the android artifact. 
+!!! note Jar Download Note
 
-Unzip the android one, this will match the architectures in the file directories.
+    If you want to included the two required Trinsic `.jar` files in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle `implementation` target as shown below:
 
-Will not do m1 native emulators are not supported bc android doens't run on m1. 
+<!--codeinclude-->
+```java
+[urlFile Sample](../../java/build.gradle) inside_block:urlFileSample
+```
+<!--/codeinclude-->
 
-Download and extract the libjnidispatch.so - why? it's the native binary we require to do the c function calls. this is how we have to do jni on android. for all the architectures. -->
+```java
+dependencies {
+    // other dependencies
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.4.0/trinsic-okapi-1.4.0.jar', 'trinsic-okapi-1.4.0')
+    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.4.0/trinsic-services-1.4.1.jar', 'trinsic-services-1.4.1')
+}
+```
 
 ## Next Steps
 
 Once the SDK is installed and configured, you're ready to start building! We recommend going through the [walkthrough](./drivers-license-android.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
 
-[Start Walkthrough](./drivers-license-android.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/java/_index.md){ .md-button }
+[Start Walkthrough](./drivers-license-android.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Java API Reference](../reference/index.md){ .md-button }
