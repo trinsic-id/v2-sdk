@@ -205,8 +205,8 @@ If you would like to save the profile for future use, you can simply export the 
     <!--/codeinclude-->
 
 === "C#"
-    <!--codinclude-->
-    ```c#
+    <!--codeinclude-->
+    ```csharp
     [Create Template](../../dotnet/Tests/Tests.cs) inside_block:createTemplate
     ```
     <!--/codeinclude-->
