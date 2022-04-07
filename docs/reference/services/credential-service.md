@@ -20,9 +20,11 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     <!--/codeinclude-->
 
 === "C#"
+    <!--codeinclude-->
     ```csharp
-
+    [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
@@ -58,9 +60,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     <!--/codeinclude-->
 
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    
+    [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
@@ -168,18 +172,11 @@ The endpoint to create a proof requires two inputs:
     <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var frame = new JObject
-    {
-        { "@context", "https://www.w3.org/2018/credentials/v1" },
-        { "@explicit", true }
-        { "issuer", new JObject() }
-    };
-    var itemId = "<item document id>";
-
-    var signedDocument = await credentialService.CreateProof(itemId, frame);
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createProof
     ```
+    <!--/codeinclude-->
 
 === "Python"
     
@@ -206,17 +203,16 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [VerifyProof](../../../node/test/WalletService.ts) inside_block:createProof
+    [VerifyProof](../../../node/test/WalletService.ts) inside_block:verifyProof
     ```
     <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var isValid = await credentialService.VerifyProof(proofDocument);
-
-    Console.WriteLine($"Verify result: {isValid}");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
