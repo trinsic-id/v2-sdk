@@ -1,0 +1,30 @@
+name: Golang (prod test)
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    # Do it daily at 8AM
+    - cron: "0 8 * * *"
+  pull_request:
+    paths:
+      - ".github/workflows/test-dotnet.yml"
+
+jobs:
+  prod-test-net:
+    name: .NET - samples - prod test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
+      - name: Build, Test, Pack
+        run: |
+          go build sample.go
+        shell: pwsh
+        working-directory: samples/go

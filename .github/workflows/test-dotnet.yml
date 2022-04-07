@@ -1,0 +1,31 @@
+name: .NET (prod test)
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    # Do it daily at 8AM
+    - cron: "0 8 * * *"
+  pull_request:
+    paths:
+      - ".github/workflows/test-dotnet.yml"
+
+jobs:
+  prod-test-net:
+    name: .NET - samples - prod test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Build, Test, Pack
+        run: |
+          dotnet restore
+          dotnet build
+          dotnet run
+        shell: pwsh
+        working-directory: samples/dotnet
