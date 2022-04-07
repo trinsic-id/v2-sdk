@@ -357,14 +357,14 @@ public class Tests
         valid.IsValid.Should().BeTrue();
 
         // Create proof from item id
-        var proof = await credentialService.CreateProofAsync(new() {
+        var proof2 = await credentialService.CreateProofAsync(new() {
             ItemId = itemId,
             RevealDocumentJson = frame.ToString(Formatting.None)
         });
 
-        var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
+        var valid2 = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
-        valid.IsValid.Should().BeTrue();
+        valid2.IsValid.Should().BeTrue();
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]
