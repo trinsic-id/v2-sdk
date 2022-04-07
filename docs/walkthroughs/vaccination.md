@@ -584,17 +584,13 @@ Congratulations! If you've completed all the steps of this walkthrough, you've j
 We have language specific sample applications that you can run to understand how the Trinsic SDK works in a development environment. 
 
 === "Typescript"
-    The tests folder in the [browser]    
+    This sample is available in our [node directory](https://github.com/trinsic-id/sdk-examples/tree/main/node/basic)  
 
 === "C#"
-    This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) subdirectory. You can also simply run the code using Replit and inspect the results.
-
-    <!-- ??? example "Run example in Replit"
-        <iframe frameborder="0" width="100%" height="650px" src="https://replit.com/@trinsic/VaccinationSample-dotnet?lite=true"></iframe> -->
-
+    This sample is available in our [dotnet directory](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs). 
 
 === "Python"
-   This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py)
+   This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py).
 
 === "Java"
     This sample is available in our Github repo in the [java directory](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java).
