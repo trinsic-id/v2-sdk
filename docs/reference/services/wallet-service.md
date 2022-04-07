@@ -5,49 +5,8 @@ The wallet service is the main interface for interacting with a cloud wallet. Th
 
 ## Create Wallet
 
-Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider.
+Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin.
 
-### Create wallet directly
-
-To create a wallet directly without an invitation, use the following methods. These methods return secure profile data that should be stored in a safe place. The profile is used to authenticate the wallet service with the cloud provider. Read more details and recommendations in the [Security Profiles](/reference/#authorization) page.
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet create --name <profile_name>
-    ```
-=== "TypeScript"
-    ```typescript
-    const profile = await walletService.createWallet();
-    ```
-=== "C#"
-    ```csharp
-    var profile = await walletService.Create();
-    ```
-=== "Python"
-    ```python 
-    profile = await wallet_service.create_wallet()
-    ```
-
-### Create wallet with provider invitation
-
-If invited by a provider, you can supply the security code found in your invitation (via email, SMS, etc). Read more about [inviting participants](/reference/services/provider-service/#invite-participants) to your ecosystem as provider.
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet create --name <profile> --security-code <code>
-    ```
-=== "TypeScript"
-    ```typescript
-    const profile = await walletService.createWallet("<security code>");
-    ```
-=== "C#"
-    ```csharp
-    var profile = await walletService.Create("<security code>");
-    ```
-=== "Python"
-    ```python
-    profile = await wallet_service.create_wallet("<security code>")
-    ```
 
 ## Insert Item
 
@@ -58,20 +17,17 @@ This method allows inserting any JSON data in the wallet.
     trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
-    let itemId = await walletService.insertItem({
-        "foo": "bar"
-    });
+    [VerifyProof](../../../node/test/WalletService.ts) inside_block:insertItemWallet
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var item = new JObject
-    {
-        { "foo", "bar" }
-    };
-
-    var itemId = await walletService.InsertItem(item);
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
     ```
+    <!--/codeinclude-->
 === "Python"
     ```python
     item_id = await wallet_service.insert_item(credential)
@@ -94,16 +50,18 @@ The default query used in the commands below returns a full wallet result set. T
     trinsic wallet search
     ```
 === "TypeScript"
-
+    <!--codeinclude-->
     ```typescript
-    const items = await walletService.Search();
+    [SearchWallet](../../../node/test/WalletService.ts) inside_block:searchWallet
     ```
+    <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var items = await walletService.Search();
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWallet
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
@@ -120,18 +78,18 @@ To pass custom query to the search function, use the query parameter or the avai
         --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
     ```
 === "TypeScript"
-
+    <!--codeinclude-->
     ```typescript
-    const query = "SELECT * FROM c WHERE c.type = 'VerifiableCredential'";
-
-    const items = await walletService.search(query);
+    [VerifyProof](../../../node/test/WalletService.ts) inside_block:searchWalletSQL
     ```
+    <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var items = await walletService.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletSQL
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python

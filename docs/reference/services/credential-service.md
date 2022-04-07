@@ -13,37 +13,35 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     trinsic issuer issue --document <INPUT_JSONLD_FILE> --out <OUTPUT_FILE>
     ```
 === "TypeScript"
-
+    <!--codeinclude-->
     ```typescript
-    let unsignedDocument = {
-        "@context": "https://w3id.org/security/v2",
-        "id": "https://issuer.oidp.uscis.gov/credentials/83627465"
-    }
-
-    let signedDocument = await credentialService.issue(unsignedDocument);
+    [Issue Credential](../../../node/test/VaccineDemo.ts) inside_block:issueCredential
     ```
+    <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var unsignedDocument = new JObject
-    {
-        { "@context", "https://w3id.org/security/v2" },
-        { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
-    };
-
-    var signedDocument = await credentialService.IssueCredential(unsignedDocument);
+    [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
     ```
+    <!--/codeinclude-->
 
 === "Python"
-
     ```python
-    import json
-    credential_json = json.dumps({
-      { "@context", "https://w3id.org/security/v2" },
-      { "id", "https://issuer.oidp.uscis.gov/credentials/83627465" }
-    })
-    credential = await credential_service.issue_credential(credential_json)
+
+    ```
+
+=== "Go"
+    ```golang
+    
+    ```
+=== "Java"
+    ```java
+    
+    ```
+=== "Ruby"
+    ```ruby
+    
     ```
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
@@ -55,13 +53,18 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
-    
+    [Issue From Template](../../../node/test/CredentialTemplates.ts) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
+
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    
+    [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
@@ -160,33 +163,20 @@ The endpoint to create a proof requires two inputs:
     ```bash
     trinsic vc create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
     ```
+
 === "TypeScript"
-
+    <!--codeinclude-->
     ```typescript
-    let frame = {
-        "@context": "https://www.w3.org/2018/credentials/v1",
-        "type": [ "VerifiableCredential" ],
-        "@explicit": true,
-        "issuer": {}
-    }
-    let itemId = "<item document id>";
-
-    let signedDocument = await credentialService.createProof(itemId, frame);
+    [CreateProof](../../../node/test/WalletService.ts) inside_block:createProof
     ```
+    <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var frame = new JObject
-    {
-        { "@context", "https://www.w3.org/2018/credentials/v1" },
-        { "@explicit", true }
-        { "issuer", new JObject() }
-    };
-    var itemId = "<item document id>";
-
-    var signedDocument = await credentialService.CreateProof(itemId, frame);
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createProof
     ```
+    <!--/codeinclude-->
 
 === "Python"
     
@@ -211,20 +201,18 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
     ```
 === "TypeScript"
-
+    <!--codeinclude-->
     ```typescript
-    let isValid = await credentialService.verifyProof(proofDocument);
-
-    console.log("Verify result: " + isValid);
+    [VerifyProof](../../../node/test/WalletService.ts) inside_block:verifyProof
     ```
+    <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var isValid = await credentialService.VerifyProof(proofDocument);
-
-    Console.WriteLine($"Verify result: {isValid}");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python

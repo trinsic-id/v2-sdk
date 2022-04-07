@@ -93,6 +93,7 @@ public class Tests
         // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
         // Sign the credential using BBS+ signature scheme
+        // issueCredentialSample() {
         var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
@@ -112,8 +113,13 @@ public class Tests
 
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
+        // searchWallet() {
         var walletItems = await walletService.SearchAsync(new());
+        // }
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
+
+        // searchWalletSQL() { 
+        var walletItems2 = await walletService.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
         // }
 
         // SHARE CREDENTIAL
@@ -321,10 +327,12 @@ public class Tests
             age = "42"
         });
 
+        // issueFromTemplate() {
         var credentialJson = await credentialService.IssueFromTemplateAsync(new() {
             TemplateId = template.Data.Id,
             ValuesJson = values
         });
+        // }
 
         credentialJson.Should().NotBeNull();
 
@@ -333,7 +341,9 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
+        // insertItemWallet() {
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
+        // }
         var itemId = insertItemResponse.ItemId;
 
         var frame = new JObject {
@@ -342,28 +352,26 @@ public class Tests
         };
 
         // Create proof from input document
-        {
-            var proof = await credentialService.CreateProofAsync(new() {
-                DocumentJson = credentialJson.DocumentJson,
-                RevealDocumentJson = frame.ToString(Formatting.None)
-            });
-
-            var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
-
-            valid.IsValid.Should().BeTrue();
-        }
+        // createProof() {
+        var proof = await credentialService.CreateProofAsync(new() {
+            DocumentJson = credentialJson.DocumentJson,
+            RevealDocumentJson = frame.ToString(Formatting.None)
+        });
+        // }
+        // verifyProof() {
+        var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
+        // }
+        valid.IsValid.Should().BeTrue();
 
         // Create proof from item id
-        {
-            var proof = await credentialService.CreateProofAsync(new() {
-                ItemId = itemId,
-                RevealDocumentJson = frame.ToString(Formatting.None)
-            });
+        var proof2 = await credentialService.CreateProofAsync(new() {
+            ItemId = itemId,
+            RevealDocumentJson = frame.ToString(Formatting.None)
+        });
 
-            var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
+        var valid2 = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
-            valid.IsValid.Should().BeTrue();
-        }
+        valid2.IsValid.Should().BeTrue();
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]

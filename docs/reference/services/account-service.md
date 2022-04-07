@@ -169,7 +169,7 @@ provide are evidenced in the code snippets below:
     ```
 === "Java"
     ```java
-    var protectedProfile = accountService.protect(accountProfile, "1234");
+    var protectedProfile = AccountService.protect(accountProfile, "1234");
     ```
 === "Ruby"
     ```ruby
@@ -191,7 +191,7 @@ email or SMS as the `securityCode` argument.
     ```
 === "Python"
     ```python
-    account_profile = account_service.protect(protected_profile, "1234".encode('utf-8'))
+    account_profile = account_service.unprotect(protected_profile, "1234".encode('utf-8'))
     ```
 === "Go"
     ```golang
@@ -199,7 +199,7 @@ email or SMS as the `securityCode` argument.
     ```
 === "Java"
     ```java
-    var accountProfile = accountService.unprotect(protectedProfile, "1234");
+    var accountProfile = AccountService.unprotect(protectedProfile, "1234");
     ```
 === "Ruby"
     ```ruby
