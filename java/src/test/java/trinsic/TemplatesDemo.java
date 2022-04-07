@@ -24,12 +24,14 @@ public class TemplatesDemo {
         var credentialService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         // create example template
+        // createTemplate() {
         var fields = new HashMap<String, Templates.TemplateField>();
         fields.put("firstName", Templates.TemplateField.newBuilder().setDescription("Given name").build());
         fields.put("lastName", Templates.TemplateField.newBuilder().build());
         fields.put("age", Templates.TemplateField.newBuilder().setType(Templates.FieldType.NUMBER).setOptional(true).build());
         var templateRequest = Templates.CreateCredentialTemplateRequest.newBuilder().setName("My Example Credential").setAllowAdditionalFields(false).putAllFields(fields).build();
         var template = templateService.create(templateRequest).get();
+        // }
 
         assert template != null;
         assert template.hasData();

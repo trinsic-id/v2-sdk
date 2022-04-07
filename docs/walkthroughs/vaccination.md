@@ -225,6 +225,12 @@ If you would like to save the profile for future use, you can simply export the 
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Create Template](../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
 
 
 ## Create an Ecosystem
