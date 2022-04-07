@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0  # Get everything so that the `mkdocs-git-authors` plugin answers correctly
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.10
+          python-version: '3.10'
       - run: |
           pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -r ./docs/requirements.txt
