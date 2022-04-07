@@ -8,6 +8,7 @@ import {
     InsertItemRequest,
     IssueFromTemplateRequest,
     IssueRequest,
+    SearchRequest,
     SignInRequest,
     TemplateField,
     TemplateService,
@@ -51,8 +52,10 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     let issueResponse = await credentialService.issueCredential(new IssueRequest()
         .setDocumentJson(JSON.stringify(getVaccineCertUnsignedJSON())));
 
+    // insertItemWallet() {
     let insertItemResponse = await walletService.insertItem(new InsertItemRequest()
         .setItemJson(issueResponse.getSignedDocumentJson()));
+    // }
 
     t.not(insertItemResponse, null);
     t.not(insertItemResponse.getItemId(), "");
@@ -60,9 +63,14 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     // Delay half a second for race condition fixes?
     await new Promise(res => setTimeout(res, 500));
 
+    // searchWalletBasic() {
     let items = await walletService.search();
+    // }
     t.not(items, null);
     t.true(items.getItemsList().length > 0);
+    // searchWalletSQL() {
+    let items2 = await walletService.search(new SearchRequest().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"));
+    // }
 
     // createProof() {
     let proof = await credentialService.createProof(new CreateProofRequest()
