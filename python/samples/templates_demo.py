@@ -46,12 +46,14 @@ async def templates_demo():
     assert template.data.schema_uri is not None
 
     # issue credential from this template
+    # issueFromTemplate() {
     values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": 42})
     issue_response = await credential_service.issue_from_template(
         request=IssueFromTemplateRequest(
             template_id=template.data.id, values_json=values
         )
     )
+    # }
     json_document = json.loads(issue_response.document_json)
     assert json_document is not None
 

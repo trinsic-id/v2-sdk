@@ -27,9 +27,11 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-
+    [Issue Credential](../../../python/samples/vaccine_demo.py) inside_block:issueCredential
     ```
+    <!--/codeinclude-->
 
 === "Go"
     ```golang
@@ -67,9 +69,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    
+    [Issue From Template](../../../python/samples/templates_demo.py) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
 
 === "Go"
     ```golang
@@ -179,18 +183,11 @@ The endpoint to create a proof requires two inputs:
     <!--/codeinclude-->
 
 === "Python"
-    
+    <!--codeinclude-->
     ```python
-    import json
-    frame_json = json.dumps({
-    "@context": "https://www.w3.org/2018/credentials/v1",
-    "type": [ "VerifiableCredential" ],
-    "@explicit": true,
-    "issuer": {}
-    })
-
-    presentation = wallet_services.create_proof(document_id, frame_json)
+    [CreateProof](../../../python/samples/vaccine_demo.py) inside_block:createProof
     ```
+    <!--/codeinclude-->
 
 ### Verify Proof
 
@@ -210,14 +207,16 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
+    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
     ```
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    valid = await wallet_service.verify_proof(presentation)
+    [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:verifyProof
     ```
+    <!--/codeinclude-->
 
 ### Exchange Credentials
 

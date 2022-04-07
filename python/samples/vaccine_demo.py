@@ -1,10 +1,12 @@
 import asyncio
 from os.path import abspath, join, dirname
 
+from aiohttp import request
+
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
 from trinsic.proto.services.account.v1 import SignInRequest
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
@@ -26,8 +28,6 @@ def _vaccine_cert_unsigned_path() -> str:
 
 def _vaccine_cert_frame_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-frame.jsonld"))
-
-
 # }
 
 
@@ -35,8 +35,10 @@ async def vaccine_demo():
     # createAccountService() {
     account_service = AccountService(server_config=trinsic_config())
     account = await account_service.sign_in()
-    provider_service = ProviderService(server_config=trinsic_config(account))
+    # }
 
+    # createProviderService() {
+    provider_service = ProviderService(server_config=trinsic_config(account))
     ecosystem = await provider_service.create_ecosystem()
     ecosystem_id = ecosystem.ecosystem.id
     # }
@@ -73,17 +75,17 @@ async def vaccine_demo():
         allison = fid.readline()
     # }
 
-    # issueCredential() {
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = "\n".join(fid.readlines())
 
+    # issueCredential() {
     issue_response = await credentials_service.issue_credential(
         request=IssueRequest(document_json=credential_json)
     )
+    # }
     credential = issue_response.signed_document_json
     print(f"Credential: {credential}")
-    # }
 
     # checkCredentialStatus() {
     # status_id = credential['id']
@@ -94,14 +96,20 @@ async def vaccine_demo():
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
     wallet_service.service_options.auth_token = allison
+    # insertItemWallet() {
     insert_response = await wallet_service.insert_item(
         request=InsertItemRequest(item_json=credential)
     )
+    # }
     item_id = insert_response.item_id
     print(f"item id = {item_id}")
+    # searchWallet() {
     wallet_items = await wallet_service.search()
-    print(f"last wallet item = {wallet_items.items[-1]}")
     # }
+    # searchWalletSQL() {
+    wallet_items2 = await wallet_service.search(request=SearchRequest(query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"))
+    # }
+    print(f"last wallet item = {wallet_items.items[-1]}")
 
     # shareCredential() {
     # Allison shares the credential with the venue.
@@ -112,11 +120,13 @@ async def vaccine_demo():
     with open(_vaccine_cert_frame_path(), "r") as fid2:
         proof_request_json = "\n".join(fid2.readlines())
 
+    # createProof() {
     proof_response = await credentials_service.create_proof(
         request=CreateProofRequest(
             reveal_document_json=proof_request_json, item_id=item_id
         )
     )
+    # }
     credential_proof = proof_response.proof_document_json
     print(f"Proof: {credential_proof}")
     # }
@@ -125,9 +135,11 @@ async def vaccine_demo():
     # The airline verifies the credential
     credentials_service.service_options.auth_token = airline
     wallet_service.service_options.auth_token = airline
+    # verifyProof() {
     verify_result = await credentials_service.verify_proof(
         request=VerifyProofRequest(proof_document_json=credential_proof)
     )
+    # }
     valid = verify_result.is_valid
     print(f"Verification result: {valid}")
     assert valid is True

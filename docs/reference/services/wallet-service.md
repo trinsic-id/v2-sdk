@@ -29,9 +29,12 @@ This method allows inserting any JSON data in the wallet.
     ```
     <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    item_id = await wallet_service.insert_item(credential)
+    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
     ```
+    <!--/codeinclude-->
+
 The output of this method will be a unique `itemId` that can be used as input where required.
 
 ## Search / Query
@@ -64,9 +67,11 @@ The default query used in the commands below returns a full wallet result set. T
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    item = await wallet_service.search()
+    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
     ```
+    <!--/codeinclude-->
 
 ### SQL Search
 
@@ -92,10 +97,11 @@ To pass custom query to the search function, use the query parameter or the avai
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    query = "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
-    item = await wallet_service.search(query)
+    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
     ```
+    <!--/codeinclude-->
 
 
 ### Common SQL Queries
