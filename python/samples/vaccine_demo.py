@@ -1,8 +1,6 @@
 import asyncio
 from os.path import abspath, join, dirname
 
-from aiohttp import request
-
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
 from trinsic.proto.services.account.v1 import SignInRequest
