@@ -12,7 +12,7 @@ on:
 
 jobs:
   prod-test-golang:
-    name: Go - samples - prod test
+    name: Golang - samples - prod test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
