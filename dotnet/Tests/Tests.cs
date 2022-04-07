@@ -113,8 +113,13 @@ public class Tests
 
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
+        // searchWallet() {
         var walletItems = await walletService.SearchAsync(new());
+        // }
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
+
+        // searchWalletSQL() { 
+        var walletItems2 = await walletService.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
         // }
 
         // SHARE CREDENTIAL
@@ -336,7 +341,9 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "id");
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
+        // insertItemWallet() {
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
+        // }
         var itemId = insertItemResponse.ItemId;
 
         var frame = new JObject {

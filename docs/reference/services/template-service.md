@@ -23,9 +23,11 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     <!--/codeinclude-->
     
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createTemplate
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python

@@ -23,14 +23,11 @@ This method allows inserting any JSON data in the wallet.
     ```
     <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var item = new JObject
-    {
-        { "foo", "bar" }
-    };
-
-    var itemId = await walletService.InsertItem(item);
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
     ```
+    <!--/codeinclude-->
 === "Python"
     ```python
     item_id = await wallet_service.insert_item(credential)
@@ -60,10 +57,11 @@ The default query used in the commands below returns a full wallet result set. T
     <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var items = await walletService.Search();
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWallet
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
@@ -87,10 +85,11 @@ To pass custom query to the search function, use the query parameter or the avai
     <!--/codeinclude-->
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    var items = await walletService.Search("SELECT * FROM c WHERE c.type = 'VerifiableCredential'");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletSQL
     ```
+    <!--/codeinclude-->
 
 === "Python"
     ```python
