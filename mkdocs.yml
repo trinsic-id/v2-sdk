@@ -111,10 +111,10 @@ plugins:
   - autorefs
   - git-authors:
       show_contribution: false
-      show_line_count: false
+      show_line_count: true
       fallback_to_empty: false
       sort_authors_by: "contribution"
-      authorship_threshold_percent: 25
+      authorship_threshold_percent: 10
       exclude:
           - index.md
       enabled: true
