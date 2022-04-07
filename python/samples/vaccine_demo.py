@@ -1,10 +1,12 @@
 import asyncio
 from os.path import abspath, join, dirname
 
+from aiohttp import request
+
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
 from trinsic.proto.services.account.v1 import SignInRequest
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
@@ -94,14 +96,20 @@ async def vaccine_demo():
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
     wallet_service.service_options.auth_token = allison
+    # insertItemWallet() {
     insert_response = await wallet_service.insert_item(
         request=InsertItemRequest(item_json=credential)
     )
+    # }
     item_id = insert_response.item_id
     print(f"item id = {item_id}")
+    # searchWallet() {
     wallet_items = await wallet_service.search()
-    print(f"last wallet item = {wallet_items.items[-1]}")
     # }
+    # searchWalletSQL() {
+    wallet_items2 = await wallet_service.search(request=SearchRequest(query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"))
+    # }
+    print(f"last wallet item = {wallet_items.items[-1]}")
 
     # shareCredential() {
     # Allison shares the credential with the venue.
