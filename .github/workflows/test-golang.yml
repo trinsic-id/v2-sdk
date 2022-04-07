@@ -8,11 +8,11 @@ on:
     - cron: "0 8 * * *"
   pull_request:
     paths:
-      - ".github/workflows/test-dotnet.yml"
+      - ".github/workflows/test-golang.yml"
 
 jobs:
-  prod-test-net:
-    name: .NET - samples - prod test
+  prod-test-golang:
+    name: Go - samples - prod test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
