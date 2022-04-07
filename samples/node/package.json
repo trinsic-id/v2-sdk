@@ -1,0 +1,27 @@
+{
+  "name": "trinsic-prod-test-node",
+  "version": "1.0.0",
+  "description": "Trinsic production test sample of node",
+  "main": "index.ts",
+  "scripts": {
+    "main": "npx ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinsic-id/sdk.git"
+  },
+  "author": "Scott Phillips",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/trinsic-id/sdk/issues"
+  },
+  "homepage": "https://github.com/trinsic-id/sdk#readme",
+  "dependencies": {
+    "@trinsic/trinsic": "^1.4.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23"
+  }
+}
