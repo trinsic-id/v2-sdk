@@ -1,0 +1,31 @@
+name: Java (prod test)
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  schedule:
+    # Do it daily at 8AM
+    - cron: "0 8 * * *"
+  pull_request:
+    paths:
+      - ".github/workflows/test-java.yml"
+
+jobs:
+  prod-test-java:
+    name: Java - samples - prod test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+      - name: Run Demos
+        run: |
+          gradle build
+        shell: pwsh
+        working-directory: samples/java

@@ -24,7 +24,7 @@ export default abstract class ServiceBase {
             throw new Error("auth token must be set");
         }
 
-        var profile = AccountProfile.deserializeBinary(toUint8Array(this.options.getAuthToken()));
+        const profile = AccountProfile.deserializeBinary(toUint8Array(this.options.getAuthToken()));
 
         const requestData = request.serializeBinary();
         let requestHash = new Uint8Array();

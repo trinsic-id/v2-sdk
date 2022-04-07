@@ -32,4 +32,4 @@ jobs:
             python $Item.FullName
           }
         shell: pwsh
-        working-directory: python/samples
+        working-directory: samples/python

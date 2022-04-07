@@ -1,6 +1,4 @@
-package trinsic;
-
-
+import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.CredentialsService;

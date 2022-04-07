@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os: [ ubuntu-latest, macos-latest ]  # skipping windows-latest, because of a `rake` install conflict.
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
         ruby-version: [ '2.7', '3.0' ]
     steps:
@@ -32,4 +32,4 @@ jobs:
             ruby $Item.FullName
           }
         shell: pwsh
-        working-directory: ruby/test
+        working-directory: samples/ruby

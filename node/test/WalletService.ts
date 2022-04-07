@@ -67,7 +67,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     let items = await walletService.search();
     // }
     t.not(items, null);
-    t.true(items.getItemsList().length > 0);
+    t.not(items.getItemsList().length, 0);
     // searchWalletSQL() {
     let items2 = await walletService.search(new SearchRequest().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"));
     // }

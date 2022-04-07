@@ -1,10 +1,10 @@
-package trinsic.services;
+package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.services.AccountService;
 
 import java.util.concurrent.ExecutionException;
 
@@ -16,8 +16,8 @@ class AccountServiceTest {
         var myProfile = accountService.signIn().get();
 
         var code = "1234";
-        var myProtectedProfile = accountService.protect(myProfile, code);
-        var myUnprotectedProfile = accountService.unprotect(myProtectedProfile, code);
+        var myProtectedProfile = AccountService.protect(myProfile, code);
+        var myUnprotectedProfile = AccountService.unprotect(myProtectedProfile, code);
 
         Assertions.assertThrows(Exception.class, () -> {
            accountService.setProfile(myProtectedProfile);
