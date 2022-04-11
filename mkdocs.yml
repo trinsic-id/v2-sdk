@@ -53,6 +53,8 @@ theme:
     - content.tabs.link
     - navigation.instant
     - navigation.tracking
+    - navigation.tabs
+    - announce.dismiss
     # - navigation.expand
     # - navigation.sections
   icon:
