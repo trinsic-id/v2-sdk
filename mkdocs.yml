@@ -110,6 +110,9 @@ extra:
 
 plugins:
   - search
+  - macros:
+      module_name: mkdocs_macros_main
+      verbose: true
   - autorefs
   - git-authors:
       show_contribution: false
@@ -133,3 +136,4 @@ plugins:
             new_path_syntax: true
       watch:
         - python
+        - mkdocs_macros_main.py
