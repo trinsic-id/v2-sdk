@@ -148,13 +148,13 @@ The `invitationId` in the response contains the security code that users must su
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    
+    [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "Python"

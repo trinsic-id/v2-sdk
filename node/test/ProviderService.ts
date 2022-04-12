@@ -15,10 +15,12 @@ test.before(async t => {
 
 test("Demo: Ecosystem Tests", async (t) => {
     let providerService = new ProviderService(options);
+    // createEcosystem() {
     let actualCreate = await providerService.createEcosystem(
         new CreateEcosystemRequest()
             .setDescription("Test ecosystem from Node")
             .setUri("https://example.com"));
+    // }
 
     t.not(actualCreate, null);
     t.not(actualCreate.getEcosystem(), null);

@@ -220,10 +220,12 @@ public class Tests
         var service = new ProviderService(_options.CloneWithAuthToken(account));
 
         // test create ecosystem
+        // createEcosystem() {
         var (actualCreate, _) = await service.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
             Uri = "https://example.com"
         });
+        // }
 
         actualCreate.Should().NotBeNull();
         actualCreate.Id.Should().NotBeNull();
