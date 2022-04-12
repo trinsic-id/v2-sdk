@@ -29,16 +29,10 @@ will find how to instantiate the Account Service with default settings, by simpl
     account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_prod_server)
     ```
 
-The constructor also accepts an `options` object as an argument. It follows the same structure of [ServiceOptions]('../proto/#serviceoptions), with the following
+The constructor also accepts an `options` object as an argument. It follows the same structure of [ServiceOptions](../proto/index.md#serviceoptions), with the following
 properties:
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| server_endpoint | [string](#string) |  | service endpoint |
-| server_port | [int32](#int32) |  | service port |
-| server_use_tls | [bool](#bool) |  | indicates if tls is used |
-| auth_token | [string](#string) |  | default auth token for oberon security scheme |
-| default_ecosystem | [string](#string) |  | ecosystem to use with endpoints that require it |
+{{ include_section('reference/proto/', 'ServiceOptions') }}
 
 The exact structure of such object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. 
 
@@ -50,19 +44,11 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 
 The sign in request should look like this:
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| details | [AccountDetails](#services.account.v1.AccountDetails) |  | Account registration details |
-| invitation_code | [string](#string) |  | Invitation code associated with this registration This field is optional. |
-| ecosystem_id | [string](#string) |  | EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed |
+{{ include_section('reference/proto/', 'SignInRequest') }}
 
 And the [Account Details](../proto/#signinrequest) object should look like this:
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Account name (optional) |
-| email | [string](#string) |  | Email account (required) |
-| sms | [string](#string) |  | SMS number including country code (optional) |
+{{ include_section('reference/proto/', 'AccountDetails') }}
 
 
 
@@ -100,21 +86,14 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
 This operation produces a response that has the structure of a [Sign In Response](../proto/#signinresponse), indicating whether or not a confirmation code
 was sent to one of the users two-factor methods like email, SMS, etc. (as defined by the Sign In Request).
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [ResponseStatus](#services.common.v1.ResponseStatus) |  | The status of the response |
-| confirmation_method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. |
-| profile | [AccountProfile](#services.account.v1.AccountProfile) |  | Contains authentication data for use with the current device. |
+{{ include_section('reference/proto/', 'SignInResponse') }}
 
 ### Get Account Info
 This will returns the account info of the current active profile in the SDK or CLI. This can only be called on a profile that has been 
 [unprotected](./account-service.md/#unprotect-account-profile) by providing a code that was sent through email or SMS when the account was 
 signed in. Its response is a [Info Response](../proto/index.md#inforesponse) object and has the following properties:
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| details | [AccountDetails](#services.account.v1.AccountDetails) |  | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](#services.account.v1.AccountEcosystem) | repeated | any ecosystems the account has access to |
+{{ include_section('reference/proto/', 'InfoResponse') }}
 
 Calling this procedure, is as trivial as evidenced below. Keep it mind, however, that it assumes you have the correct profile active.
 
