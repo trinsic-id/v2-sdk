@@ -38,11 +38,11 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 
 === "Go"
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
     ```
 === "Java"
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
     ```
 === "Ruby"
     ```ruby

@@ -103,10 +103,10 @@ User invitation status can be checked with the provided `invitation id`. It retu
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
-<!-- ## Create Ecosystem
+## Create Ecosystem
 
 
 ## List Ecosystems
 
 
-## Accept Invite -->
+<!-- ## Accept Invite -->
