@@ -291,10 +291,12 @@ func TestEcosystemDemo(t *testing.T) {
 		return
 	}
 
+	// createEcosystem() {
 	actualCreate, err := service.CreateEcosystem(context.Background(), &sdk.CreateEcosystemRequest{
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
@@ -303,7 +305,9 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
 	// test list ecosystems
-	// actualList, err := service.ListEcosystems(context.Background())
+	// listEcosystems() {
+	actualList, err := service.ListEcosystems(context.Background())
+	// }
 	if !assert2.Nil(err) {
 		return
 	}

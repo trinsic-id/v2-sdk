@@ -58,6 +58,24 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     } 
     response = await provider_service.invite_participant(request)
     ```
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
@@ -100,6 +118,24 @@ User invitation status can be checked with the provided `invitation id`. It retu
   
     response = await provider_service.invitation_status(invitation_id="INVITATION ID")
     ```
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
@@ -130,13 +166,13 @@ The `invitationId` in the response contains the security code that users must su
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [CreateProof](../../../go/services/services_test.go) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -173,13 +209,13 @@ The `invitationId` in the response contains the security code that users must su
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [CreateProof](../../../go/services/services_test.go) inside_block:listEcosystems
     ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:listEcosystems
     ```
     <!--/codeinclude-->
 === "Ruby"
