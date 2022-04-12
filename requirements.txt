@@ -1,0 +1,9 @@
+mkdocs
+git+https://github.com/squidfunk/mkdocs-material@master#egg=mkdocs-material
+mkdocs-codeinclude-plugin
+# mkdocs-git-authors-plugin
+git+https://github.com/trinsic-id/mkdocs-git-authors-plugin@sort-order#egg=mkdocs-git-authors-plugin
+mkdocstrings
+mkdocstrings-python-legacy
+mkdocs-autorefs
+markdown-fenced-code-tabs
