@@ -4,7 +4,7 @@
 ## SDK Calls
 
 ### Issue Credential
-The Credential service supports signing data using [BBS+ Signatures <small>:material-open-in-new:<small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.
+The Credential service supports signing data using [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.
 
 > This endpoint requires that the user provide a valid JSON-LD document.
 
@@ -272,9 +272,9 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
 
 Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.
 
-- [DIDComm Messaging <small>:material-open-in-new:<small>](https://identity.foundation/didcomm-messaging/spec/){target=_blank}
-- [Wallet And Credential Interactions <small>:material-open-in-new:<small>](https://identity.foundation/wallet-and-credential-interactions/){target=_blank}
-- [OpenID Connect Credential Provider <small>:material-open-in-new:<small>](https://mattrglobal.github.io/oidc-client-bound-assertions-spec/){target=_blank}
+- [DIDComm Messaging <small>:material-open-in-new:</small>](https://identity.foundation/didcomm-messaging/spec/){target=_blank}
+- [Wallet And Credential Interactions <small>:material-open-in-new:</small>](https://identity.foundation/wallet-and-credential-interactions/){target=_blank}
+- [OpenID Connect Credential Provider <small>:material-open-in-new:</small>](https://mattrglobal.github.io/oidc-client-bound-assertions-spec/){target=_blank}
 
 > During this beta period, we are only supporting exchanging data between users by using their email addresses. The messages are routed securely to the destination wallet without leaving the secure network of the ecosystem backend. Our goal is to provide basic ability to share data without affecting the user experience. As interoperable exchange methods become available, we will add this functionality in the SDK.
 
