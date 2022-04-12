@@ -11,16 +11,20 @@ async def ecosystem_demo():
     account_service = AccountService(server_config=trinsic_config())
     account = await account_service.sign_in()
     provider_service = ProviderService(server_config=trinsic_config(account))
-
+    # createEcosystem() {
     actual_create = await provider_service.create_ecosystem(
         request=CreateEcosystemRequest(
             description="My ecosystem", uri="https://example.com"
         )
     )
+    # }
     assert actual_create.ecosystem is not None
     assert actual_create.ecosystem.id is not None
     assert actual_create.ecosystem.id.startswith("urn:trinsic:ecosystems:")
     print(f"ecosystem id={actual_create.ecosystem.id}")
+
+    # listEcosystems() {
+    # }
 
 
 if __name__ == "__main__":
