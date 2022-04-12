@@ -16,8 +16,8 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
 === "Windows"
     The CLI can be installed using [Winget](https://docs.microsoft.com/en-us/windows/package-manager/winget/)
     ```
-    winget install okapi
-    winget install trinsic
+    winget install trinsic.okapi
+    winget install trinsic.cli
     ```
 
 === "From source"
