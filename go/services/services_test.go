@@ -133,9 +133,18 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// storeCredential() {
 	walletService.SetToken(allison)
 	failError(t, "error setting profile", err)
+	// insertItemWallet() {
 	itemID, err := walletService.InsertItem(context.Background(), &sdk.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
+	// }
 	failError(t, "error inserting item", err)
 	fmt.Println("item id", itemID)
+	// }
+
+	// searchWallet() {
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})	
+	// }
+	// searchWalletSQL() {
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
 	// }
 
 	// SHARE CREDENTIAL

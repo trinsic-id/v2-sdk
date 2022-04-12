@@ -62,9 +62,18 @@ public class VaccineDemo {
 
         // storeCredential() {
         // Alice stores the credential in her cloud wallet.
+        // insertItemWallet() {
         var insertItemResponse = walletService.insertItem(UniversalWalletOuterClass.InsertItemRequest.newBuilder().setItemJson(credential).build()).get();
+        // }
         final var itemId = insertItemResponse.getItemId();
         System.out.println("item id = " + itemId);
+        // }
+
+        // searchWallet() {
+        var searchResponse = walletService.search(UniversalWalletOuterClass.SearchRequest.getDefaultInstance()).get();	
+        // }
+        // searchWalletSQL() {
+        var searchResponse2 = walletService.search(UniversalWalletOuterClass.SearchRequest.newBuilder().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'").build()).get();
         // }
 
         // shareCredential() {

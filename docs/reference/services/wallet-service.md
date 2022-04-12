@@ -37,13 +37,13 @@ This method allows inserting any JSON data in the wallet.
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -93,13 +93,13 @@ The default query used in the commands below returns a full wallet result set. T
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWallet
     ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWallet
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -141,13 +141,13 @@ To pass custom query to the search function, use the query parameter or the avai
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 === "Ruby"
