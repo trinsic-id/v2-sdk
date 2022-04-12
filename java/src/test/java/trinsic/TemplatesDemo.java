@@ -44,7 +44,9 @@ public class TemplatesDemo {
         valuesMap.put("lastName", "Doe");
         valuesMap.put("age", 42);
         var valuesJson = new Gson().toJson(valuesMap);
+        // issueFromTemplate() {
         var credentialJson = credentialService.issueCredentialFromTemplate(VerifiableCredentials.IssueFromTemplateRequest.newBuilder().setTemplateId(template.getData().getId()).setValuesJson(valuesJson).build()).get();
+        // }
         assert credentialJson != null;
         assert !credentialJson.getDocumentJson().isEmpty();
 

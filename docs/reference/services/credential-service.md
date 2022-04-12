@@ -34,17 +34,23 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     <!--/codeinclude-->
 
 === "Go"
+    <!--codeinclude-->
     ```golang
-    
+    [VerifyProof](../../../go/services/services_test.go) inside_block:issueCredentialSample
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
-    
+    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredentialSample
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
@@ -76,17 +82,23 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     <!--/codeinclude-->
 
 === "Go"
+    <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:issueFromTemplate
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 ### Check Revocation Status
 
@@ -189,6 +201,25 @@ The endpoint to create a proof requires two inputs:
     ```
     <!--/codeinclude-->
 
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [CreateProof](../../../go/services/services_test.go) inside_block:createProof
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createProof
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
+
 ### Verify Proof
 
 This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.
@@ -215,6 +246,25 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     <!--codeinclude-->
     ```python
     [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:verifyProof
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [VerifyProof](../../../go/services/services_test.go) inside_block:verifyProof
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyProof
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
     ```
     <!--/codeinclude-->
 

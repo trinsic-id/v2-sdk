@@ -121,7 +121,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	failError(t, "error reading file", err)
 
 	credentialService.SetToken(clinic)
+	// issueCredentialSample() {
 	credential, err := credentialService.IssueCredential(context.Background(), &sdk.IssueRequest{DocumentJson: string(fileContent)})
+	// }
 	failError(t, "error issuing credential", err)
 	fmt.Printf("Credential:%s\n", credential)
 	// }
@@ -153,7 +155,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	}
 
 	credentialService.SetToken(allison)
+	// createProof() {
 	credentialProof, err := credentialService.CreateProof(context.Background(), req)
+	// }
 	failError(t, "error creating proof", err)
 	fmt.Println("Credential proof", credentialProof)
 	// }
@@ -163,7 +167,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// verifyCredential() {
 	walletService.SetToken(airline)
 	failError(t, "error setting profile", err)
+	// verifyProof() {
 	valid, err := credentialService.VerifyProof(context.Background(), &sdk.VerifyProofRequest{ProofDocumentJson: credential.SignedDocumentJson})
+	// }
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
 	if valid != true {
