@@ -105,8 +105,87 @@ The `invitationId` in the response contains the security code that users must su
 
 ## Create Ecosystem
 
+=== "Trinsic CLI"
+    ```bash
+    
+    ```
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    
+    ```
+    <!--/codeinclude-->
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    
+    ```
+    <!--/codeinclude-->
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 ## List Ecosystems
 
+=== "Trinsic CLI"
+    ```bash
+    
+    ```
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    
+    ```
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    
+    ```
+    <!--/codeinclude-->
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 <!-- ## Accept Invite -->
