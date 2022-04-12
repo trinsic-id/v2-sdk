@@ -103,10 +103,90 @@ User invitation status can be checked with the provided `invitation id`. It retu
 
 The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
 
-<!-- ## Create Ecosystem
+## Create Ecosystem
 
+=== "Trinsic CLI"
+    ```bash
+    
+    ```
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    
+    ```
+    <!--/codeinclude-->
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    
+    ```
+    <!--/codeinclude-->
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 ## List Ecosystems
 
+=== "Trinsic CLI"
+    ```bash
+    
+    ```
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    
+    ```
+    <!--/codeinclude-->
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    
+    ```
+    <!--/codeinclude-->
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
-## Accept Invite -->
+<!-- ## Accept Invite -->

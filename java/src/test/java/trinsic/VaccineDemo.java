@@ -53,7 +53,9 @@ public class VaccineDemo {
         // issueCredential() {
         // Sign a credential as the clinic and send it to Allison
         var credentialJson = Files.readString(vaccineCertUnsignedPath());
+        // issueCredentialSample() {
         var issueResult = credentialsService.issueCredential(VerifiableCredentials.IssueRequest.newBuilder().setDocumentJson(credentialJson).build()).get();
+        // }
         var credential = issueResult.getSignedDocumentJson();
         System.out.println("Credential: " + credential);
         // }
@@ -71,7 +73,9 @@ public class VaccineDemo {
         // that they require expressed as a JSON-LD frame.
         credentialsService.setProfile(allison);
         var proofRequestJson = Files.readString(vaccineCertFramePath());
+        // createProof() {
         var createProofResponse = credentialsService.createProof(VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).setRevealDocumentJson(proofRequestJson).build()).get();
+        // }
         var credentialProof = createProofResponse.getProofDocumentJson();
         System.out.println("Proof: " + credentialProof);
         // }
@@ -79,7 +83,9 @@ public class VaccineDemo {
         // verifyCredential() {
         // The airline verifies the credential
         credentialsService.setProfile(airline);
+        // verifyProof() {
         var verifyProofResponse = credentialsService.verifyProof(VerifiableCredentials.VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build()).get();
+        // }
         var isValid = verifyProofResponse.getIsValid();
         System.out.println("Verification result: " + isValid);
         assert isValid;

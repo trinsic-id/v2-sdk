@@ -60,9 +60,9 @@ func TestTemplatesDemo(t *testing.T) {
 	templateRequest.Fields["firstName"] = &sdk.TemplateField{Description: "Given name"}
 	templateRequest.Fields["lastName"] = &sdk.TemplateField{}
 	templateRequest.Fields["age"] = &sdk.TemplateField{Type: sdk.FieldType_NUMBER, Optional: true}
-	// }
 
 	template, err := templateService.Create(context.Background(), templateRequest)
+	// }
 	if !assert2.Nil(err) && !assert2.NotNil(template) {
 		return
 	}
@@ -85,10 +85,12 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 
+	// issureFromTemplate() {
 	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
 		TemplateId: template.Data.Id,
 		ValuesJson: string(valuesString),
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}

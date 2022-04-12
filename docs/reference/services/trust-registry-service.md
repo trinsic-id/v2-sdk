@@ -24,31 +24,41 @@ An ecosystem governance framework is useful because it provides a good basis for
     trinsic trust-registry register-efg
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 ### Register Issuers and Verifiers
 Each entity on the governance framework, whether an issuer or a verifier, is represented by a decentralized identifier. These entities are registered to either issue or verify specific credential types. A credential type is represented as a fully qualified `type` URI, of the kind found in a JSON-LD Verifiable Credential.
 Finally, each entity must be registered on a specific governance framework. 
@@ -61,31 +71,41 @@ Finally, each entity must be registered on a specific governance framework.
         --did did:example:fabre
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 ### Unregister Issuers and Verifiers
 To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
@@ -98,31 +118,41 @@ To unregister an entity, include the credential type, the did, and the ecosystem
         --did did:example:fabre
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 ### Check Authoritative Status
 Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.
 
@@ -134,31 +164,41 @@ Check the status of an issuer for a credential type within a given governance fr
         --did did:example:fabre
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 ### Search
 Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
@@ -168,31 +208,41 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     trinsic trust-registry search --query <SQL query>
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 ### Cache Offline Registry File
 
 === "Trinsic CLI"
@@ -200,28 +250,38 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     trinsic trust-registry download 
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
