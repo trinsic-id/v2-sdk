@@ -157,6 +157,7 @@ The `invitationId` in the response contains the security code that users must su
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
     <!--codeinclude-->
     ```csharp

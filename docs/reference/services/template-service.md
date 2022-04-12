@@ -37,17 +37,23 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     <!--/codeinclude-->
 
 === "Go"
+    <!--codeinclude-->
     ```golang
     [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 ### Get
 
@@ -56,31 +62,41 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
     
     ```
+    <!--/codeinclude-->
 
 ### Search
 
@@ -89,32 +105,41 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
-
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
-
+    
     ```
+    <!--/codeinclude-->
 
 
 ### Update
@@ -124,31 +149,41 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
 === "Ruby"
+    <!--codeinclude-->
     ```ruby
-
+    
     ```
+    <!--/codeinclude-->
 
 ### Delete
 
@@ -157,24 +192,38 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
     
     ```
 === "TypeScript"
+    <!--codeinclude-->
     ```typescript
     
     ```
+    <!--/codeinclude-->
 === "C#"
+    <!--codeinclude-->
     ```csharp
     
     ```
-
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
     
     ```
-
+    <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
     
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     
     ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->

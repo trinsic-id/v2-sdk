@@ -34,6 +34,24 @@ This method allows inserting any JSON data in the wallet.
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 The output of this method will be a unique `itemId` that can be used as input where required.
 
@@ -72,6 +90,24 @@ The default query used in the commands below returns a full wallet result set. T
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 ### SQL Search
 
@@ -102,7 +138,24 @@ To pass custom query to the search function, use the query parameter or the avai
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
-
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
 
 ### Common SQL Queries
 
