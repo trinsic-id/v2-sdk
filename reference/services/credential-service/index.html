@@ -197,109 +197,6 @@
       
         
           
-            
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
-    <ul class="md-tabs__list">
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../learn/intro/" class="md-tabs__link">
-        Getting Started
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../learn/security/" class="md-tabs__link">
-        Key Concepts
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../cli/" class="md-tabs__link">
-        Developer Tools
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-    
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link md-tabs__link--active">
-        SDK Reference
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../roadmap/" class="md-tabs__link">
-        Resources
-      </a>
-    </li>
-  
-
-      
-    </ul>
-  </div>
-</nav>
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -312,10 +209,8 @@
                   <div class="md-sidebar__inner">
                     
 
-  
 
-
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
       
@@ -1222,7 +1117,7 @@
 <blockquote>
 <p>This endpoint requires that the user provide a valid JSON-LD document.</p>
 </blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic issuer issue --document &lt;INPUT_JSONLD_FILE&gt; --out &lt;OUTPUT_FILE&gt;
@@ -1247,22 +1142,26 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="nx">credential</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueCredential</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent</span><span class="p">)})</span><span class="w"></span>
 </code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">issueResult</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">issueCredential</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the <a href="#insert-record">insert record</a> separately if you'd like to store a copy of this document.</p>
 <h3 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1431,21 +1330,129 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">services</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;io/ioutil&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">sdk</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createAccountAndSignIn</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">assert</span><span class="p">.</span><span class="nx">Assertions</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">assert</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Open in background</span><span class="w"></span>
+<span class="w">    </span><span class="nx">accountService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewAccountService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestTemplatesDemo</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createAccountAndSignIn</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">(),</span><span class="w"> </span><span class="nx">WithAuthToken</span><span class="p">(</span><span class="nx">authtoken</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">templateService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCredentialTemplateService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">credentialService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCredentialService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// create example template</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// createTemplate() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">templateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My Example Credential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">AllowAdditionalFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">Fields</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">)}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;firstName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">FieldType_NUMBER</span><span class="p">,</span><span class="w"> </span><span class="nx">Optional</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">template</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">templateRequest</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">template</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">Data</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">template</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">SchemaUri</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// issue credential from this template</span><span class="w"></span>
+<span class="w">    </span><span class="nx">values</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">FirstName</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="w">        </span><span class="nx">LastName</span><span class="w">  </span><span class="kt">string</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Age</span><span class="w">       </span><span class="kt">int</span><span class="w"></span>
+<span class="w">    </span><span class="p">}{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">LastName</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Age</span><span class="p">:</span><span class="w">       </span><span class="mi">42</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">valuesString</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">values</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// issureFromTemplate() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">credentialJSON</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueFromTemplate</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">IssueFromTemplateRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">TemplateId</span><span class="p">:</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">ValuesJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">valuesString</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">jsonDocument</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">credentialJSON</span><span class="p">.</span><span class="nx">DocumentJson</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">jsonDocument</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">jsonDocument</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">jsonDocument</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">])</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">jsonDocument</span><span class="p">[</span><span class="s">&quot;credentialSubject&quot;</span><span class="p">])</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">credentialJson</span> <span class="o">=</span> <span class="n">credentialService</span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">()).</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <h3 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:7"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><input id="__tabbed_7_6" name="__tabbed_7" type="radio" /><input id="__tabbed_7_7" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label><label for="__tabbed_7_6">Java</label><label for="__tabbed_7_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1478,7 +1485,7 @@
 </div>
 </div>
 <h3 id="update-revocation-status">Update Revocation Status<a class="headerlink" href="#update-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label><label for="__tabbed_4_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:7"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><input id="__tabbed_8_7" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label><label for="__tabbed_8_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1517,7 +1524,7 @@
 <li>document in the wallet that is signed with the correct signature</li>
 <li>JSONLD frame that describes the data to be disclosed</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:5"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc create-proof --document-id &lt;STRING&gt; --out &lt;OUTPUT_FILE&gt; --reveal-document &lt;JSONLD_FRAME_FILE&gt;
@@ -1544,11 +1551,27 @@
 <span class="p">)</span>
 </code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">credentialProof</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">createProofResponse</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <h3 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h3>
 <p>This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:5"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
@@ -1569,6 +1592,22 @@
 <span class="p">)</span>
 </code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">valid</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">verifyProofResponse</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <h3 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h3>
@@ -1583,7 +1622,7 @@
 </blockquote>
 <h4 id="sending-documents-using-email-as-identifier">Sending documents using Email as identifier<a class="headerlink" href="#sending-documents-using-email-as-identifier" title="Permanent link">&para;</a></h4>
 <p>To send a document to another user, they must have created a wallet and <a href="#create-wallet-with-provider-invitation">associated their email address</a> with that wallet.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:8"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><input id="__tabbed_7_6" name="__tabbed_7" type="radio" /><input id="__tabbed_7_7" name="__tabbed_7" type="radio" /><input id="__tabbed_7_8" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label><label for="__tabbed_7_6">Java</label><label for="__tabbed_7_7">Ruby</label><label for="__tabbed_7_8">Swift</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:8"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><input id="__tabbed_15_3" name="__tabbed_15" type="radio" /><input id="__tabbed_15_4" name="__tabbed_15" type="radio" /><input id="__tabbed_15_5" name="__tabbed_15" type="radio" /><input id="__tabbed_15_6" name="__tabbed_15" type="radio" /><input id="__tabbed_15_7" name="__tabbed_15" type="radio" /><input id="__tabbed_15_8" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Trinsic CLI</label><label for="__tabbed_15_2">TypeScript</label><label for="__tabbed_15_3">C#</label><label for="__tabbed_15_4">Python</label><label for="__tabbed_15_5">Go</label><label for="__tabbed_15_6">Java</label><label for="__tabbed_15_7">Ruby</label><label for="__tabbed_15_8">Swift</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc send --email &lt;EMAIL_ADDRESS&gt; --item &lt;FILE&gt;
@@ -1688,7 +1727,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
