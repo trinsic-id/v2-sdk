@@ -195,45 +195,55 @@ func TestTrustRegistryDemo(t *testing.T) {
 	didURI := "did:example:test"
 	typeURI := "https://schema.org/Card"
 	frameworkURI := "https://example.com"
+	// registerIssuer() {
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
+	// registerVerifier() {
 	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
 		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
+	// checkIssuerStatus() {
 	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
 
+	// checkVerifierStatus() {
 	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
 
+	// searchTrustRegistry() {
 	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
