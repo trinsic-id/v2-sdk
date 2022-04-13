@@ -330,6 +330,20 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.NotNil(actualCreate.Id)
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
+	// inviteParticipant() {
+	inviteResponse, err := service.InviteParticipant(context.Background(),
+		&sdk.InviteRequest{Participant: sdk.ParticipantType_participant_type_individual,
+			Details: &sdk.AccountDetails{Email: "example@trinsic.id"}})
+	// }
+	if inviteResponse == nil {
+		inviteResponse = &sdk.InviteResponse{InvitationId: "NA"}
+	}
+	// invitationStatus() {
+	inviteStatus, err := service.InvitationStatus(context.Background(), &sdk.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
+	// }
+	if inviteStatus != nil {
+	}
+
 }
 
 // func TestCreateChannelUrlFromConfig(t *testing.T) {
