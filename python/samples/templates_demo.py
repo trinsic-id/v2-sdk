@@ -14,6 +14,8 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
     CreateProofRequest,
     VerifyProofRequest,
+    CheckStatusRequest,
+    UpdateStatusRequest,
 )
 from trinsic.trinsic_util import trinsic_config
 from trinsic.wallet_service import WalletService
@@ -92,6 +94,23 @@ async def templates_demo():
         request=VerifyProofRequest(proof_document_json=proof.proof_document_json)
     )
     assert verify_result.is_valid
+
+    try:
+        # checkCredentialStatus() {
+        checkResponse = await credential_service.check_status(
+            request=CheckStatusRequest(credential_status_id="")
+        )
+    except:
+        pass # This is expected
+    # }
+    try:
+        # updateCredentialStatus() {
+        updateResponse = await credential_service.update_status(
+            request=UpdateStatusRequest(credential_status_id="", revoked=True)
+        )
+        # }
+    except:
+        pass # This is expected
 
     account_service.close()
     template_service.close()
