@@ -94,7 +94,21 @@ func (t *trustRegistryBase) RegisterIssuer(userContext context.Context, request 
 }
 
 func (t *trustRegistryBase) UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error {
-	panic("implement me")
+	md, err := t.GetMetadataContext(userContext, request)
+	if err != nil {
+		return err
+	}
+
+	response, err := t.client.UnregisterIssuer(md, request)
+	if err != nil {
+		return err
+	}
+
+	if response.Status != sdk.ResponseStatus_SUCCESS {
+		return fmt.Errorf("cannot unregister issuer: code %s", response.Status)
+	}
+
+	return nil
 }
 
 func (t *trustRegistryBase) RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error {
@@ -116,7 +130,21 @@ func (t *trustRegistryBase) RegisterVerifier(userContext context.Context, reques
 }
 
 func (t *trustRegistryBase) UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error {
-	panic("implement me")
+	md, err := t.GetMetadataContext(userContext, request)
+	if err != nil {
+		return err
+	}
+
+	response, err := t.client.UnregisterVerifier(md, request)
+	if err != nil {
+		return err
+	}
+
+	if response.Status != sdk.ResponseStatus_SUCCESS {
+		return fmt.Errorf("cannot unregister verifier: code %s", response.Status)
+	}
+
+	return nil
 }
 
 func (t *trustRegistryBase) CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error) {

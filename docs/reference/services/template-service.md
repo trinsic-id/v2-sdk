@@ -82,7 +82,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:getCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Java"
@@ -125,7 +125,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Java"
@@ -168,7 +168,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:deleteCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Java"

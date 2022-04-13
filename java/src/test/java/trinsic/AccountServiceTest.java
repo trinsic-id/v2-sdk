@@ -33,7 +33,9 @@ class AccountServiceTest {
 
         Assertions.assertDoesNotThrow(() -> {
             accountService.setProfile(myUnprotectedProfile);
-            accountService.getInfo().get();
+            // getInfo() {
+            var info = accountService.getInfo().get();
+            // }
         });
     }
 

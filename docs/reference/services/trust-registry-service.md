@@ -44,7 +44,7 @@ An ecosystem governance framework is useful because it provides a good basis for
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerGovernanceFramework
     ```
     <!--/codeinclude-->
 === "Java"
@@ -184,7 +184,7 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:unregisterIssuer
     ```
     <!--/codeinclude-->
 === "Java"
@@ -231,7 +231,7 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:unregisterVerifier
     ```
     <!--/codeinclude-->
 === "Java"

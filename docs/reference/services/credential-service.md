@@ -121,9 +121,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     ```
 
 === "Go"
+    <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:checkCredentialStatus
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
@@ -156,9 +158,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     ```
 
 === "Go"
+    <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:updateCredentialStatus
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
@@ -309,13 +313,17 @@ To send a document to another user, they must have created a wallet and [associa
     ```
 
 === "Go"
+    <!--codeinclude-->
     ```golang
-    
+    [Issue From Template](../../../go/services/services_test.go) inside_block:sendCredential
     ```
+    <!--/codeinclude-->
 === "Java"
+    <!--codeinclude-->
     ```java
     [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     
