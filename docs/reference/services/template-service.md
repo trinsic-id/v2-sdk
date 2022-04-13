@@ -88,7 +88,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:getCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -131,51 +131,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Java"
     <!--codeinclude-->
     ```java
-    
-    ```
-    <!--/codeinclude-->
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
-
-### Update
-
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    
-    ```
-    <!--/codeinclude-->
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    
-    ```
-    <!--/codeinclude-->
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    
-    ```
-    <!--/codeinclude-->
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -218,7 +174,7 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:deleteCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Ruby"

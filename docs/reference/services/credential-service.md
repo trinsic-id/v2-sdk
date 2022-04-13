@@ -125,9 +125,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:checkCredentialStatus
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     
@@ -158,9 +160,11 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    
+    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateCredentialStatus
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     
@@ -310,7 +314,7 @@ To send a document to another user, they must have created a wallet and [associa
     ```
 === "Java"
     ```java
-    
+    [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
     ```
 === "Ruby"
     ```ruby

@@ -67,7 +67,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -127,7 +127,7 @@ User invitation status can be checked with the provided `invitation id`. It retu
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 === "Ruby"

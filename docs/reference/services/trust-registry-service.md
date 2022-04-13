@@ -50,6 +50,7 @@ An ecosystem governance framework is useful because it provides a good basis for
 === "Java"
     <!--codeinclude-->
     ```java
+    [RegisterGovernanceFramework](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerGovernanceFramework
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -152,7 +153,7 @@ Finally, each entity must be registered on a specific governance framework.
     ```
     <!--/codeinclude-->
 
-### Unregister Issuers and Verifiers
+### Unregister Issuers
 To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
 
 === "Trinsic CLI"
@@ -189,6 +190,54 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 === "Java"
     <!--codeinclude-->
     ```java
+    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:unregisterIssuer
+    ```
+    <!--/codeinclude-->
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    
+    ```
+    <!--/codeinclude-->
+
+### Unregister Verifiers
+To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic trust-registry unregister-issuer \
+        --egf http://hl7.org/fhir \
+        --credential-type https://w3id.org/vaccination#VaccinationCertificate \
+        --did did:example:fabre
+    ```
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    
+    ```
+    <!--/codeinclude-->
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    
+    ```
+    <!--/codeinclude-->
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    
+    ```
+    <!--/codeinclude-->
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    
+    ```
+    <!--/codeinclude-->
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:unregisterVerifier
     ```
     <!--/codeinclude-->
 === "Ruby"

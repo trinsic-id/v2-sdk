@@ -22,6 +22,11 @@ public class TrustRegistryDemo {
         final String didUri = "did:example:test";
         final String frameworkUri = "https://example.com";
         final String typeUri = "https://schema.org/Card";
+
+        // registerGovernanceFramework() {
+        var frameworkResponse = service.registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest.newBuilder().setGovernanceFramework(TrustRegistryOuterClass.GovernanceFramework.newBuilder().setGovernanceFrameworkUri(frameworkUri).build()).build()).get();
+        // }
+
         // registerIssuer() {
         service.registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
                 .setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build());
@@ -45,5 +50,13 @@ public class TrustRegistryDemo {
         Assertions.assertNotNull(searchResult);
         Assertions.assertNotNull(searchResult.getItemsJson());
         Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
+
+        // unregisterIssuer() {
+        service.unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).setDidUri(didUri).setCredentialTypeUri(typeUri).build());
+        // }
+
+        // unregisterVerifier() {
+        service.unregisterVerifier(TrustRegistryOuterClass.UnregisterVerifierRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).setDidUri(didUri).setPresentationTypeUri(typeUri).build());
+        // }
     }
 }
