@@ -1094,15 +1094,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#list-ecosystems" class="md-nav__link">
-    <span class="md-ellipsis">
-      List Ecosystems
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1340,15 +1331,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#list-ecosystems" class="md-nav__link">
-    <span class="md-ellipsis">
-      List Ecosystems
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1471,55 +1453,55 @@ trinsic provider invite --person --method-email alice@faber.edu
 </div>
 <p>The <code>invitationId</code> in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.</p>
 <h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">actualCreate</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span>
+    <span class="ow">new</span> <span class="nx">CreateEcosystemRequest</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">C#</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<h2 id="list-ecosystems">List Ecosystems<a class="headerlink" href="#list-ecosystems" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-</div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">actualList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">ListEcosystems</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
 </code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">actualList</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">listEcosystems</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">ListEcosystemsRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Ruby</label></div>
 <div class="tabbed-content">
@@ -1529,7 +1511,99 @@ trinsic provider invite --person --method-email alice@faber.edu
 </div>
 </div>
 </div>
-<!-- ## Accept Invite -->
+<!--
+## List Ecosystems
+
+=== "Trinsic CLI"
+    <div class="highlight"><pre><span></span><code>
+</code></pre></div>
+=== "TypeScript"
+=== "C#"
+=== "Python"
+
+    <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+
+<span class="kn">from</span> <span class="nn">trinsic.account_service</span> <span class="kn">import</span> <span class="n">AccountService</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.provider.v1</span> <span class="kn">import</span> <span class="n">CreateEcosystemRequest</span>
+<span class="kn">from</span> <span class="nn">trinsic.provider_service</span> <span class="kn">import</span> <span class="n">ProviderService</span>
+<span class="kn">from</span> <span class="nn">trinsic.trinsic_util</span> <span class="kn">import</span> <span class="n">trinsic_config</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">ecosystem_demo</span><span class="p">():</span>
+    <span class="n">account_service</span> <span class="o">=</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
+    <span class="n">account</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+    <span class="n">provider_service</span> <span class="o">=</span> <span class="n">ProviderService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">(</span><span class="n">account</span><span class="p">))</span>
+    <span class="c1"># createEcosystem() {</span>
+    <span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="k">assert</span> <span class="n">actual_create</span><span class="o">.</span><span class="n">ecosystem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">assert</span> <span class="n">actual_create</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">assert</span> <span class="n">actual_create</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;urn:trinsic:ecosystems:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ecosystem id=</span><span class="si">{</span><span class="n">actual_create</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># listEcosystems() {</span>
+    <span class="c1"># }</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ecosystem_demo</span><span class="p">())</span>
+</code></pre></div>
+
+    === "Go"
+
+    <div class="highlight"><pre><span></span><code><span class="nx">actualList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">ListEcosystems</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
+</code></pre></div>
+
+    === "Java"
+
+    <div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">trinsic</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Assertions</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">trinsic.okapi.DidException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">trinsic.services.AccountService</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">trinsic.services.ProviderService</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">trinsic.services.common.v1.ProviderOuterClass</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ExecutionException</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EcosystemsDemo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">DidException</span><span class="p">,</span> <span class="n">ExecutionException</span><span class="p">,</span> <span class="n">InterruptedException</span> <span class="p">{</span>
+        <span class="n">run</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">DidException</span><span class="p">,</span> <span class="n">ExecutionException</span><span class="p">,</span> <span class="n">InterruptedException</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="n">accountService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">());</span>
+        <span class="kd">var</span> <span class="n">account</span> <span class="o">=</span> <span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="n">service</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProviderService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">(</span><span class="n">account</span><span class="p">));</span>
+        <span class="c1">// createEcosystem() {</span>
+        <span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+        <span class="c1">// }</span>
+        <span class="n">Assertions</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getEcosystem</span><span class="p">());</span>
+        <span class="n">Assertions</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getEcosystem</span><span class="p">().</span><span class="na">getId</span><span class="p">());</span>
+        <span class="n">Assertions</span><span class="p">.</span><span class="na">assertTrue</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="na">getEcosystem</span><span class="p">().</span><span class="na">getId</span><span class="p">().</span><span class="na">startsWith</span><span class="p">(</span><span class="s">&quot;urn:trinsic:ecosystems:&quot;</span><span class="p">));</span>
+
+        <span class="c1">// listEcosystems() {</span>
+        <span class="c1">// }</span>
+<span class="c1">//        var actualList = service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();</span>
+<span class="c1">//        Assertions.assertNotNull(actualList);</span>
+<span class="c1">//        Assertions.assertTrue(actualList.size() &gt; 0);</span>
+
+        <span class="n">accountService</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+        <span class="n">service</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+    === "Ruby"
+
+ ## Accept Invite
+ -->
 
 
 

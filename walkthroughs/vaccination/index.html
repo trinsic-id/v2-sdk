@@ -1993,10 +1993,12 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">account</span><span class="p">));</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// test create ecosystem</span>
+<span class="w">    </span><span class="c1">// createEcosystem() {</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span>
 
 <span class="w">    </span><span class="n">actualCreate</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="n">actualCreate</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
@@ -2326,7 +2328,11 @@ The certificate is in a JSON form, and for this example, we will use the followi
     <span class="n">wallet_items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
     <span class="c1"># }</span>
     <span class="c1"># searchWalletSQL() {</span>
-    <span class="n">wallet_items2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">SearchRequest</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">))</span>
+    <span class="n">wallet_items2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">SearchRequest</span><span class="p">(</span>
+            <span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
     <span class="c1"># }</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;last wallet item = </span><span class="si">{</span><span class="n">wallet_items</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -2383,7 +2389,9 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Alice stores the credential in her cloud wallet.</span>
+<span class="c1">// insertItemWallet() {</span>
 <span class="kd">var</span> <span class="n">insertItemResponse</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<span class="c1">// }</span>
 <span class="kd">final</span> <span class="kd">var</span> <span class="n">itemId</span> <span class="o">=</span> <span class="n">insertItemResponse</span><span class="p">.</span><span class="na">getItemId</span><span class="p">();</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;item id = &quot;</span> <span class="o">+</span> <span class="n">itemId</span><span class="p">);</span>
 </code></pre></div>
@@ -2391,7 +2399,9 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
 <span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error setting profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// insertItemWallet() {</span><span class="w"></span>
 <span class="nx">itemID</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">InsertItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InsertItemRequest</span><span class="p">{</span><span class="nx">ItemJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
+<span class="c1">// }</span><span class="w"></span>
 <span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error inserting item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;item id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">itemID</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
