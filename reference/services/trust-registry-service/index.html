@@ -1489,7 +1489,7 @@ Our implementation is based off of this <a href="https://github.com/trustoverip/
 <h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-ecosystem-governance-framework">Create a Ecosystem Governance Framework<a class="headerlink" href="#create-a-ecosystem-governance-framework" title="Permanent link">&para;</a></h3>
 <p>An ecosystem governance framework is useful because it provides a good basis for verifying issuers and verifiers. It's a json-ld document that lists the issuers and verifiers. These issuers and verifiers are identified by a decentralized identifier. The governance framework is signified by an identifier as well. This can be used to represent the governance framework outside in the credential that it comes in. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry register-efg
@@ -1498,11 +1498,21 @@ Our implementation is based off of this <a href="https://github.com/trustoverip/
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterGovernanceFramework</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">AddFrameworkRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">GovernanceFramework</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">GovernanceFramework</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">frameworkResponse</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">registerGovernanceFramework</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">AddFrameworkRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFramework</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">GovernanceFramework</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1513,7 +1523,7 @@ Our implementation is based off of this <a href="https://github.com/trustoverip/
 <h3 id="register-issuers">Register Issuers<a class="headerlink" href="#register-issuers" title="Permanent link">&para;</a></h3>
 <p>Each entity on the governance framework, whether an issuer or a verifier, is represented by a decentralized identifier. These entities are registered to either issue or verify specific credential types. A credential type is represented as a fully qualified <code>type</code> URI, of the kind found in a JSON-LD Verifiable Credential.
 Finally, each entity must be registered on a specific governance framework. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry register-issuer <span class="se">\</span>
@@ -1526,13 +1536,20 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1544,7 +1561,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 
 <span class="n">service</span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterIssuerRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setCredentialTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1553,7 +1570,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 </div>
 <h3 id="register-verifiers">Register Verifiers<a class="headerlink" href="#register-verifiers" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:5"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry register-issuer <span class="se">\</span>
@@ -1566,13 +1583,20 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1583,7 +1607,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 
 <span class="n">service</span><span class="p">.</span><span class="na">unregisterVerifier</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterVerifierRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setPresentationTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1593,7 +1617,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 <h3 id="unregister-issuers">Unregister Issuers<a class="headerlink" href="#unregister-issuers" title="Permanent link">&para;</a></h3>
 <p>To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:6"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><input id="__tabbed_9_6" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Go</label><label for="__tabbed_9_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry unregister-issuer <span class="se">\</span>
@@ -1605,35 +1629,18 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
 <div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="n">service</span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterIssuerRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setCredentialTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<h3 id="unregister-verifiers">Unregister Verifiers<a class="headerlink" href="#unregister-verifiers" title="Permanent link">&para;</a></h3>
-<p>To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:6"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">C#</label><label for="__tabbed_11_4">Python</label><label for="__tabbed_11_5">Go</label><label for="__tabbed_11_6">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic trust-registry unregister-issuer <span class="se">\</span>
-    --egf http://hl7.org/fhir <span class="se">\</span>
-    --credential-type https://w3id.org/vaccination#VaccinationCertificate <span class="se">\</span>
-    --did did:example:fabre
-</code></pre></div>
-</div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block"></div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">service</span><span class="p">.</span><span class="na">unregisterVerifier</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterVerifierRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setPresentationTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Ruby</label></div>
 <div class="tabbed-content">
@@ -1643,9 +1650,44 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 </div>
 </div>
+<h3 id="unregister-verifiers">Unregister Verifiers<a class="headerlink" href="#unregister-verifiers" title="Permanent link">&para;</a></h3>
+<p>To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:5"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><input id="__tabbed_13_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Trinsic CLI</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">C#</label><label for="__tabbed_13_4">Python</label><label for="__tabbed_13_5">Go</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic trust-registry unregister-issuer <span class="se">\</span>
+    --egf http://hl7.org/fhir <span class="se">\</span>
+    --credential-type https://w3id.org/vaccination#VaccinationCertificate <span class="se">\</span>
+    --did did:example:fabre
+</code></pre></div>
+</div>
+<div class="tabbed-block"></div>
+<div class="tabbed-block"></div>
+<div class="tabbed-block"></div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="n">service</span><span class="p">.</span><span class="na">unregisterVerifier</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterVerifierRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setPresentationTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <h3 id="check-issuer-status">Check Issuer Status<a class="headerlink" href="#check-issuer-status" title="Permanent link">&para;</a></h3>
 <p>Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:5"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><input id="__tabbed_13_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Trinsic CLI</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">C#</label><label for="__tabbed_13_4">Python</label><label for="__tabbed_13_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:5"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><input id="__tabbed_16_4" name="__tabbed_16" type="radio" /><input id="__tabbed_16_5" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Trinsic CLI</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">C#</label><label for="__tabbed_16_4">Python</label><label for="__tabbed_16_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry check-issuer <span class="se">\</span>
@@ -1664,14 +1706,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <span class="w">    </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">issuerStatus</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">CheckIssuerStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setCredentialTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1681,7 +1723,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 <h3 id="check-verifier-status">Check Verifier Status<a class="headerlink" href="#check-verifier-status" title="Permanent link">&para;</a></h3>
 <p>Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:5"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><input id="__tabbed_16_4" name="__tabbed_16" type="radio" /><input id="__tabbed_16_5" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Trinsic CLI</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">C#</label><label for="__tabbed_16_4">Python</label><label for="__tabbed_16_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:5"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><input id="__tabbed_19_4" name="__tabbed_19" type="radio" /><input id="__tabbed_19_5" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Trinsic CLI</label><label for="__tabbed_19_2">TypeScript</label><label for="__tabbed_19_3">C#</label><label for="__tabbed_19_4">Python</label><label for="__tabbed_19_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry check-issuer <span class="se">\</span>
@@ -1700,14 +1742,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <span class="w">    </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">verifierStatus</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">CheckIssuerStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">).</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">).</span><span class="na">setCredentialTypeUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1717,7 +1759,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 <h3 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
 <p>Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:5"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><input id="__tabbed_19_4" name="__tabbed_19" type="radio" /><input id="__tabbed_19_5" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Trinsic CLI</label><label for="__tabbed_19_2">TypeScript</label><label for="__tabbed_19_3">C#</label><label for="__tabbed_19_4">Python</label><label for="__tabbed_19_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:5"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><input id="__tabbed_22_4" name="__tabbed_22" type="radio" /><input id="__tabbed_22_5" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Trinsic CLI</label><label for="__tabbed_22_2">TypeScript</label><label for="__tabbed_22_3">C#</label><label for="__tabbed_22_4">Python</label><label for="__tabbed_22_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry search --query &lt;SQL query&gt;
@@ -1729,14 +1771,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">SearchRegistry</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">searchResult</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">searchRegistry</span><span class="p">().</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1745,7 +1787,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 </div>
 <h3 id="cache-offline-registry-file">Cache Offline Registry File<a class="headerlink" href="#cache-offline-registry-file" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="22:7"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><input id="__tabbed_22_4" name="__tabbed_22" type="radio" /><input id="__tabbed_22_5" name="__tabbed_22" type="radio" /><input id="__tabbed_22_6" name="__tabbed_22" type="radio" /><input id="__tabbed_22_7" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">Trinsic CLI</label><label for="__tabbed_22_2">TypeScript</label><label for="__tabbed_22_3">C#</label><label for="__tabbed_22_4">Python</label><label for="__tabbed_22_5">Go</label><label for="__tabbed_22_6">Java</label><label for="__tabbed_22_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="25:7"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><input id="__tabbed_25_3" name="__tabbed_25" type="radio" /><input id="__tabbed_25_4" name="__tabbed_25" type="radio" /><input id="__tabbed_25_5" name="__tabbed_25" type="radio" /><input id="__tabbed_25_6" name="__tabbed_25" type="radio" /><input id="__tabbed_25_7" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">Trinsic CLI</label><label for="__tabbed_25_2">TypeScript</label><label for="__tabbed_25_3">C#</label><label for="__tabbed_25_4">Python</label><label for="__tabbed_25_5">Go</label><label for="__tabbed_25_6">Java</label><label for="__tabbed_25_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic trust-registry download 

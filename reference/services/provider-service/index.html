@@ -1357,7 +1357,7 @@
 <p>Users can be onboarded as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in <a href="/reference/services/wallet-service/#create-wallet-with-provider-invitation">creating wallet with provider invitation</a></p>
 <p>In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invite --organization --method-email admin@faber.edu
@@ -1405,14 +1405,22 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invite_participant</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">InviteParticipant</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InviteRequest</span><span class="p">{</span><span class="nx">Participant</span><span class="p">:</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">ParticipantType_participant_type_individual</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Details</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">AccountDetails</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">inviteResponse</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">inviteParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InviteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
         <span class="p">.</span><span class="na">setParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">ParticipantType</span><span class="p">.</span><span class="na">participant_type_individual</span><span class="p">)</span>
                 <span class="p">.</span><span class="na">setDetails</span><span class="p">(</span><span class="n">AccountOuterClass</span><span class="p">.</span><span class="na">AccountDetails</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
         <span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1426,7 +1434,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 <p>User invitation status can be checked with the provided <code>invitation id</code>. It returns an <code>InvitationStatusResponse</code> object. </p>
 <p><a href="/reference/proto/#invitationstatusrequest">Invitation Status Request</a></p>
 <p><a href="/reference/proto/#invitationstatusresponset">Invitation Status Response</a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invitation_status &lt;INVITATION_ID&gt;
@@ -1456,14 +1464,20 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invitation_status</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s2">&quot;INVITATION ID&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">inviteStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">InvitationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InvitationStatusRequest</span><span class="p">{</span><span class="nx">InvitationId</span><span class="p">:</span><span class="w"> </span><span class="nx">inviteResponse</span><span class="p">.</span><span class="nx">InvitationId</span><span class="p">})</span><span class="w"></span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">invitationStatus</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">invitationStatus</span><span class="p">(</span>
         <span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InvitationStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
                 <span class="p">.</span><span class="na">setInvitationId</span><span class="p">(</span><span class="n">inviteResponse</span><span class="p">.</span><span class="na">getInvitationId</span><span class="p">())</span>
                 <span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1473,7 +1487,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 </div>
 <p>The <code>invitationId</code> in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.</p>
 <h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1485,7 +1499,7 @@ trinsic provider invite --person --method-email alice@faber.edu
         <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">C#</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1495,7 +1509,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1506,7 +1520,7 @@ trinsic provider invite --person --method-email alice@faber.edu
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1516,14 +1530,14 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1576,7 +1590,390 @@ trinsic provider invite --person --method-email alice@faber.edu
 
     === "Go"
 
-    <div class="highlight"><pre><span></span><code><span class="nx">actualList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">ListEcosystems</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">services</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;io/ioutil&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">sdk</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto&quot;</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+
+<span class="c1">// pathData() {</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetBasePath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">fileName</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">path</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Clean</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">fileName</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;devops&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;testdata&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">path</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetVaccineCertUnsignedPath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">GetBasePath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-unsigned.jsonld&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetVaccineCertFramePath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">GetBasePath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-frame.jsonld&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// }</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestServiceOptions</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">assert</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">prodOpts</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Options</span><span class="p">{</span><span class="nx">ServiceOptions</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">{}}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">WithProductionEnv</span><span class="p">()(</span><span class="nx">prodOpts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;production options should return&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">prodOpts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">DefaultEcosystem</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">prodOpts</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should default to production env&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="s">&quot;prod.trinsic.cloud&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">ServerEndpoint</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incorrect prod url&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">WithAuthToken</span><span class="p">(</span><span class="s">&quot;test token&quot;</span><span class="p">)(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should not error on test token&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="s">&quot;test token&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">AuthToken</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;test token not applied&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">WithDevEnv</span><span class="p">()(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should not error on dev env&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="s">&quot;dev-internal.trinsic.cloud&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">ServerEndpoint</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incorrect dev url&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">WithStagingEnv</span><span class="p">()(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should not error on staging env&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="s">&quot;staging-internal.trinsic.cloud&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">ServerEndpoint</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;incorrect staging url&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">WithDefaultEcosystem</span><span class="p">(</span><span class="s">&quot;test1&quot;</span><span class="p">)(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;should not error on setting default ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="s">&quot;test1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="p">.</span><span class="nx">ServiceOptions</span><span class="p">.</span><span class="nx">DefaultEcosystem</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default ecosystem not updated&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestVaccineCredentialsDemo</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">assert</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Open in background</span><span class="w"></span>
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">accountService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewAccountService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// if !accountService.GetChannel().WaitForStateChange(context.Background(), connectivity.Ready) {</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//  t.Fail()</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// SETUP ACTORS</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Create 3 different profiles for each participant in the scenario</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// setupActors() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">allison</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">clinic</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">clinic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">airline</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">airline</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// storeAndRecallProfile() {</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Store profile for later use</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// File.WriteAllBytes(&quot;allison.bin&quot;, allison.ToByteString().ToByteArray());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Create profile from existing data</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes(&quot;allison.bin&quot;));</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">walletService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewWalletService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating wallet service&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">credentialService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCredentialService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating credential service&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// ISSUE CREDENTIAL</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// issueCredential() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fileContent</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">GetVaccineCertUnsignedPath</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">clinic</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// issueCredentialSample() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">credential</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueCredential</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent</span><span class="p">)})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error issuing credential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Credential:%s\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">credential</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// sendCredential() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SendRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">DeliveryMethod</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SendRequest_Email</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// We ignore errors because we don&#39;t expect this email account to exist.</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// STORE CREDENTIAL</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Alice stores the credential in her cloud wallet.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// storeCredential() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error setting profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// insertItemWallet() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">itemID</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">InsertItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InsertItemRequest</span><span class="p">{</span><span class="nx">ItemJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error inserting item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;item id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">itemID</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// searchWallet() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">items</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SearchRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// searchWalletSQL() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">items2</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SearchRequest</span><span class="p">{</span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">items2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// SHARE CREDENTIAL</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Allison shares the credential with the venue.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The venue has communicated with Allison the details of the credential</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// that they require expressed as a JSON-LD frame.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// shareCredential() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">fileContent2</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">GetVaccineCertFramePath</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">RevealDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent2</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Proof</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateProofRequest_ItemId</span><span class="p">{</span><span class="nx">ItemId</span><span class="p">:</span><span class="w"> </span><span class="nx">itemID</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// createProof() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">credentialProof</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Credential proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">credentialProof</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// VERIFY CREDENTIAL</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The airline verifies the credential</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// verifyCredential() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">airline</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error setting profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// verifyProof() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">valid</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error verifying proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Validation result&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">valid</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">valid</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Fail</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestTrustRegistryDemo</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createAccountAndSignIn</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">(),</span><span class="w"> </span><span class="nx">WithAuthToken</span><span class="p">(</span><span class="nx">authtoken</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTrustRegistryService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// register issuer</span><span class="w"></span>
+<span class="w">    </span><span class="nx">didURI</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">typeURI</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">frameworkURI</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// registerGovernanceFramework() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterGovernanceFramework</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">AddFrameworkRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFramework</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">GovernanceFramework</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// registerIssuer() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// registerVerifier() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// checkIssuerStatus() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">issuerStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CheckIssuerStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CheckIssuerStatusRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Member</span><span class="p">:</span><span class="w">                 </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CheckIssuerStatusRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegistrationStatus_CURRENT</span><span class="p">,</span><span class="w"> </span><span class="nx">issuerStatus</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Issuer status should be current&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// checkVerifierStatus() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">verifierStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CheckVerifierStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CheckVerifierStatusRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Member</span><span class="p">:</span><span class="w">                 </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CheckVerifierStatusRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegistrationStatus_CURRENT</span><span class="p">,</span><span class="w"> </span><span class="nx">verifierStatus</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;verifier status should be current&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// searchTrustRegistry() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">SearchRegistry</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">ecosystemList</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotEmpty</span><span class="p">(</span><span class="nx">ecosystemList</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// unregisterIssuer() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// unregisterVerifier() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createAccountAndSignIn</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">assert</span><span class="p">.</span><span class="nx">Assertions</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">assert</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Open in background</span><span class="w"></span>
+<span class="w">    </span><span class="nx">accountService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewAccountService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">createRandomEcosystem</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">ps</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewProviderService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">ps</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test-sdk-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">String</span><span class="p">()})</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestEcosystemDemo</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">,</span><span class="w"> </span><span class="nx">authtoken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createAccountAndSignIn</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">(),</span><span class="w"> </span><span class="nx">WithAuthToken</span><span class="p">(</span><span class="nx">authtoken</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nx">service</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewProviderService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// createEcosystem() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">actualCreate</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// assert2.NotNil(actualCreate.Id)</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// assert2.True(strings.HasPrefix(actualCreate.Id, &quot;urn:trinsic:ecosystems:&quot;))</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// inviteParticipant() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">InviteParticipant</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InviteRequest</span><span class="p">{</span><span class="nx">Participant</span><span class="p">:</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">ParticipantType_participant_type_individual</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Details</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">AccountDetails</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">inviteResponse</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">inviteResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InviteResponse</span><span class="p">{</span><span class="nx">InvitationId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NA&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// invitationStatus() {</span><span class="w"></span>
+<span class="w">    </span><span class="nx">inviteStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">InvitationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InvitationStatusRequest</span><span class="p">{</span><span class="nx">InvitationId</span><span class="p">:</span><span class="w"> </span><span class="nx">inviteResponse</span><span class="p">.</span><span class="nx">InvitationId</span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// }</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">inviteStatus</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// func TestCreateChannelUrlFromConfig(t *testing.T) {</span><span class="w"></span>
+<span class="c1">//  assert2 := assert.New(t)</span><span class="w"></span>
+<span class="c1">//  if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), &quot;Default is production stack&quot;) {</span><span class="w"></span>
+<span class="c1">//      return</span><span class="w"></span>
+<span class="c1">//  }</span><span class="w"></span>
+<span class="c1">// }</span><span class="w"></span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Helper</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;%s: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">FailNow</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
     === "Java"
