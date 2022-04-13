@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
@@ -128,6 +127,12 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	fmt.Printf("Credential:%s\n", credential)
 	// }
 
+	// sendCredential() {
+	err = credentialService.Send(context.Background(), &sdk.SendRequest{DocumentJson: credential.SignedDocumentJson,
+		DeliveryMethod: &sdk.SendRequest_Email{Email: "example@trinsic.id"}})
+	// }
+	// We ignore errors because we don't expect this email account to exist.
+
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
 	// storeCredential() {
@@ -141,11 +146,13 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// }
 
 	// searchWallet() {
-	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})	
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})
 	// }
 	// searchWalletSQL() {
-	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
+	items2, err := walletService.Search(context.Background(), &sdk.SearchRequest{Query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
 	// }
+	if items != nil && items2 != nil {
+	}
 
 	// SHARE CREDENTIAL
 	// Allison shares the credential with the venue.
@@ -323,15 +330,6 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.NotNil(actualCreate.Id)
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
-	// test list ecosystems
-	// listEcosystems() {
-	actualList, err := service.ListEcosystems(context.Background())
-	// }
-	if !assert2.Nil(err) {
-		return
-	}
-	// assert2.NotNil(actualList)
-	// assert2.NotEmpty(actualList)
 }
 
 // func TestCreateChannelUrlFromConfig(t *testing.T) {

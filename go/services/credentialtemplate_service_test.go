@@ -3,35 +3,10 @@ package services
 import (
 	"context"
 	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"path/filepath"
-	"runtime"
 	"testing"
 
-	"github.com/google/uuid"
-	"github.com/stretchr/testify/assert"
 	sdk "github.com/trinsic-id/sdk/go/proto"
 )
-
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
-	assert2 := assert.New(t)
-	opts, err := NewServiceOptions(WithTestEnv())
-	if !assert2.Nil(err) {
-		return assert2, "", err
-	}
-	// Open in background
-	accountService, err := NewAccountService(opts)
-	if !assert2.Nil(err) {
-		return assert2, "", err
-	}
-	authtoken, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
-	if !assert2.Nil(err) {
-		fmt.Println(err)
-		return assert2, "", err
-	}
-	return assert2, authtoken, nil
-}
 
 func TestTemplatesDemo(t *testing.T) {
 	assert2, authtoken, err := createAccountAndSignIn(t)
@@ -102,4 +77,17 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(jsonDocument)
 	assert2.NotNil(jsonDocument["id"])
 	assert2.NotNil(jsonDocument["credentialSubject"])
+
+	// checkCredentialStatus() {
+	status, err := credentialService.CheckStatus(context.Background(), &sdk.CheckStatusRequest{CredentialStatusId: ""})
+	// }
+	if status != nil {
+	}
+
+	// updateCredentialStatus() {
+	updateResponse, err := credentialService.UpdateStatus(context.Background(), &sdk.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
+	// }
+	if updateResponse != nil {
+	}
+
 }
