@@ -45,12 +45,12 @@ public class TemplatesDemo {
         valuesMap.put("lastName", "Doe");
         valuesMap.put("age", 42);
         var valuesJson = new Gson().toJson(valuesMap);
-        var credentialJson = credentialService.issueCredentialFromTemplate(VerifiableCredentials.IssueFromTemplateRequest.newBuilder().setTemplateId(template.getData().getId()).setValuesJson(valuesJson).build()).get();
+        var issueResponse = credentialService.issueCredentialFromTemplate(VerifiableCredentials.IssueFromTemplateRequest.newBuilder().setTemplateId(template.getData().getId()).setValuesJson(valuesJson).build()).get();
         // }
-        assert credentialJson != null;
-        assert !credentialJson.getDocumentJson().isEmpty();
+        assert issueResponse != null;
+        assert !issueResponse.getDocumentJson().isEmpty();
 
-        var jsonDocument = new Gson().fromJson(credentialJson.getDocumentJson(), HashMap.class);
+        var jsonDocument = new Gson().fromJson(issueResponse.getDocumentJson(), HashMap.class);
         assert jsonDocument.containsKey("id");
         assert jsonDocument.containsKey("credentialSubject");
 
@@ -66,6 +66,14 @@ public class TemplatesDemo {
 
         // deleteCredentialTemplate() {
         var deleteResponse = templateService.delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build()).get();
+        // }
+
+        // checkCredentialStatus() {
+        var checkStatusResponse = credentialService.checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build()).get();
+        // }
+
+        // updateCredentialStatus() {
+        credentialService.updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
         // }
     }
 }

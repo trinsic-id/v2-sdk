@@ -89,6 +89,14 @@ public class VaccineDemo {
         System.out.println("Proof: " + credentialProof);
         // }
 
+        try {
+            // sendCredential() {
+            credentialsService.send(VerifiableCredentials.SendRequest.newBuilder().setDocumentJson(credentialProof).setEmail("example@trinsic.id").build());
+            // }
+        } catch (RuntimeException re) {
+            // This is okay, we don't expect that account to exist.
+        }
+
         // verifyCredential() {
         // The airline verifies the credential
         credentialsService.setProfile(airline);

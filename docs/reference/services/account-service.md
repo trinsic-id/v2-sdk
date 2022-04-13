@@ -21,9 +21,11 @@ will find how to instantiate the Account Service with default settings, by simpl
     account_service = AccountService()
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    var accountService = new AccountService(null);
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceConstructor
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_prod_server)
@@ -75,9 +77,11 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
     profile, _, err := accountService.SignIn(context.Background(), nil)
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    var allison = accountService.signIn(null).get().getProfile();
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     allison = account_service.sign_in(nil).profile
@@ -118,9 +122,11 @@ Calling this procedure, is as trivial as evidenced below. Keep it mind, however,
     infoResponse, err := accountService.GetInfo(context.Background())
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    var info = accountService.getInfo().get();
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     info = account_service.get_info()
@@ -147,9 +153,11 @@ provide are evidenced in the code snippets below:
     protectedProfile, err := accountService.Protect(accountProfile, "1234")
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    var protectedProfile = AccountService.protect(accountProfile, "1234");
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     protected_profile = account_service.protect(account_profile, '1234')
@@ -177,9 +185,11 @@ email or SMS as the `securityCode` argument.
     accountProfile, err := accountService.Unprotect(protectedProfile, "1234")
     ```
 === "Java"
+    <!--codeinclude-->
     ```java
-    var accountProfile = AccountService.unprotect(protectedProfile, "1234");
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Ruby"
     ```ruby
     account_profile = account_service.unprotect(protected_profile, '1234')
