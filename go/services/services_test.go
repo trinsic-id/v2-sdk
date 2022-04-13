@@ -133,9 +133,18 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// storeCredential() {
 	walletService.SetToken(allison)
 	failError(t, "error setting profile", err)
+	// insertItemWallet() {
 	itemID, err := walletService.InsertItem(context.Background(), &sdk.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
+	// }
 	failError(t, "error inserting item", err)
 	fmt.Println("item id", itemID)
+	// }
+
+	// searchWallet() {
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})	
+	// }
+	// searchWalletSQL() {
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
 	// }
 
 	// SHARE CREDENTIAL
@@ -195,45 +204,55 @@ func TestTrustRegistryDemo(t *testing.T) {
 	didURI := "did:example:test"
 	typeURI := "https://schema.org/Card"
 	frameworkURI := "https://example.com"
+	// registerIssuer() {
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
+	// registerVerifier() {
 	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
 		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
+	// checkIssuerStatus() {
 	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
 
+	// checkVerifierStatus() {
 	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,
 	})
+	// }
 	if !assert2.Nil(err) {
 		return
 	}
 	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
 
+	// searchTrustRegistry() {
 	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
+	// }
 	if !assert2.Nil(err) {
 		return
 	}

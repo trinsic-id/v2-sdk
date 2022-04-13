@@ -26,8 +26,8 @@ public class EcosystemsDemo {
         Assertions.assertTrue(response.getEcosystem().getId().startsWith("urn:trinsic:ecosystems:"));
 
         // listEcosystems() {
-        var actualList = service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();
         // }
+//        var actualList = service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();
 //        Assertions.assertNotNull(actualList);
 //        Assertions.assertTrue(actualList.size() > 0);
 

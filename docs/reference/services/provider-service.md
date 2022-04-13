@@ -148,19 +148,19 @@ The `invitationId` in the response contains the security code that users must su
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    
+    [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [CreateProof](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 === "Go"
@@ -182,6 +182,7 @@ The `invitationId` in the response contains the security code that users must su
     ```
     <!--/codeinclude-->
 
+<!--
 ## List Ecosystems
 
 === "Trinsic CLI"
@@ -203,7 +204,7 @@ The `invitationId` in the response contains the security code that users must su
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [CreateProof](../../../python/samples/ecosystem_demo.py) inside_block:listEcosystems
     ```
     <!--/codeinclude-->
 === "Go"
@@ -225,4 +226,5 @@ The `invitationId` in the response contains the security code that users must su
     ```
     <!--/codeinclude-->
 
-<!-- ## Accept Invite -->
+ ## Accept Invite
+ -->

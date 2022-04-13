@@ -60,40 +60,40 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         await templates_demo()
 
     async def test_providerservice_input_validation(self):
-            cred_service = ProviderService(server_config=trinsic_config())
-            with self.assertRaises(ValueError) as ve:
-                await cred_service.invite_participant(request=InviteRequest())
-            with self.assertRaises(ValueError) as ve:
-                await cred_service.invitation_status(request=InvitationStatusRequest())
+        cred_service = ProviderService(server_config=trinsic_config())
+        with self.assertRaises(ValueError) as ve:
+            await cred_service.invite_participant(request=InviteRequest())
+        with self.assertRaises(ValueError) as ve:
+            await cred_service.invitation_status(request=InvitationStatusRequest())
 
     async def test_trustregistryservice_input_validation(self):
-            cred_service = TrustRegistryService(server_config=trinsic_config())
-            with self.assertRaises(ValueError) as ve:
-                await cred_service.register_governance_framework(
-                    request=AddFrameworkRequest(
-                        governance_framework=GovernanceFramework(
-                            governance_framework_uri="", description="invalid framework"
-                        )
+        cred_service = TrustRegistryService(server_config=trinsic_config())
+        with self.assertRaises(ValueError) as ve:
+            await cred_service.register_governance_framework(
+                request=AddFrameworkRequest(
+                    governance_framework=GovernanceFramework(
+                        governance_framework_uri="", description="invalid framework"
                     )
                 )
+            )
 
     async def test_protect_unprotect_account(self):
-            account_service = AccountService(server_config=trinsic_config())
-            my_profile = await account_service.sign_in()
-            await self.print_get_info(account_service, my_profile)
+        account_service = AccountService(server_config=trinsic_config())
+        my_profile = await account_service.sign_in()
+        await self.print_get_info(account_service, my_profile)
 
-            code = b"1234"
-            my_protected_profile = account_service.protect(
-                profile=my_profile, security_code=code
-            )
-            with self.assertRaises(Exception) as ve:
-                await self.print_get_info(account_service, my_protected_profile)
+        code = b"1234"
+        my_protected_profile = account_service.protect(
+            profile=my_profile, security_code=code
+        )
+        with self.assertRaises(Exception) as ve:
+            await self.print_get_info(account_service, my_protected_profile)
 
-            my_unprotected_profile = account_service.unprotect(
-                profile=my_protected_profile, security_code=code
-            )
-            # This hangs for unknown reasons.
-            await self.print_get_info(account_service, my_unprotected_profile)
+        my_unprotected_profile = account_service.unprotect(
+            profile=my_protected_profile, security_code=code
+        )
+        # This hangs for unknown reasons.
+        await self.print_get_info(account_service, my_unprotected_profile)
 
     @staticmethod
     async def print_get_info(account_service: AccountService, my_profile):
