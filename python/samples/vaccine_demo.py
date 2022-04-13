@@ -26,6 +26,8 @@ def _vaccine_cert_unsigned_path() -> str:
 
 def _vaccine_cert_frame_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-frame.jsonld"))
+
+
 # }
 
 
@@ -105,7 +107,11 @@ async def vaccine_demo():
     wallet_items = await wallet_service.search()
     # }
     # searchWalletSQL() {
-    wallet_items2 = await wallet_service.search(request=SearchRequest(query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"))
+    wallet_items2 = await wallet_service.search(
+        request=SearchRequest(
+            query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"
+        )
+    )
     # }
     print(f"last wallet item = {wallet_items.items[-1]}")
 

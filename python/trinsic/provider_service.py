@@ -81,17 +81,3 @@ class ProviderService(ServiceBase):
         """
         request = request or CreateEcosystemRequest()
         return await self.client.create_ecosystem(create_ecosystem_request=request)
-
-    async def list_ecosystem(
-        self, *, request: ListEcosystemRequest = None
-    ) -> CreateEcosystemResponse:
-        """
-        Creates a new ecosystem
-        Args:
-            request:
-
-        Returns:
-            [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)
-        """
-        request = request or CreateEcosystemRequest()
-        return await self.client.create_ecosystem(create_ecosystem_request=request)
