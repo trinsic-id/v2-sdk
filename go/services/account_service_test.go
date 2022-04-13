@@ -11,6 +11,7 @@ import (
 func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
 
+	// accountServiceConstructor() {
 	opts, err := NewServiceOptions(WithTestEnv())
 	if !assert2.Nil(err) {
 		return
@@ -20,12 +21,16 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
-
+	// }
+	// accountServiceSignIn() {
 	profile, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
 	if !assert2.Nil(err) {
 		return
 	}
+	// }
 
+	// accountService
+	// protectUnprotectProfile() {
 	securityCode := "1234"
 	protectedProfile, err := accountService.Protect(profile, securityCode)
 	if !assert2.Nil(err) {
@@ -35,6 +40,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	if !assert2.Nil(err) {
 		return
 	}
+	// }
 
 	t.Run("Protected profile should fail", func(t *testing.T) {
 		accountService.SetToken(protectedProfile)
@@ -49,7 +55,9 @@ func TestProtectUnprotectProfile(t *testing.T) {
 
 	t.Run("Unprotected profile should work", func(t *testing.T) {
 		accountService.SetToken(unprotectedProfile)
+		// getInfo() {
 		info2, err2 := accountService.GetInfo(context.Background())
+		// }
 		if !assert2.Nil(err2) {
 			t.FailNow()
 		}
