@@ -211,6 +211,15 @@ func TestTrustRegistryDemo(t *testing.T) {
 	didURI := "did:example:test"
 	typeURI := "https://schema.org/Card"
 	frameworkURI := "https://example.com"
+
+	// registerGovernanceFramework() {
+	err = service.RegisterGovernanceFramework(context.Background(), &sdk.AddFrameworkRequest{
+		GovernanceFramework: &sdk.GovernanceFramework{
+			GovernanceFrameworkUri: frameworkURI,
+		},
+	})
+	// }
+
 	// registerIssuer() {
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
@@ -265,6 +274,19 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 	assert2.NotNil(ecosystemList)
 	assert2.NotEmpty(ecosystemList)
+
+	// unregisterIssuer() {
+	err = service.UnregisterIssuer(context.Background(), &sdk.UnregisterIssuerRequest{
+		CredentialTypeUri:      typeURI,
+		GovernanceFrameworkUri: frameworkURI,
+	})
+	// }
+	// unregisterVerifier() {
+	err = service.UnregisterVerifier(context.Background(), &sdk.UnregisterVerifierRequest{
+		PresentationTypeUri:    typeURI,
+		GovernanceFrameworkUri: frameworkURI,
+	})
+	// }
 }
 
 func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {

@@ -78,6 +78,24 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(jsonDocument["id"])
 	assert2.NotNil(jsonDocument["credentialSubject"])
 
+	// getCredentialTemplate() {
+	getResponse, err := templateService.Get(context.Background(), &sdk.GetCredentialTemplateRequest{Id: template.Data.Id})
+	// }
+	if getResponse != nil {
+	}
+
+	// searchCredentialTemplate() {
+	searchResponse, err := templateService.Search(context.Background(), &sdk.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
+	// }
+	if searchResponse != nil {
+	}
+
+	// deleteCredentialTemplate() {
+	deleteResponse, err := templateService.Delete(context.Background(), &sdk.DeleteCredentialTemplateRequest{Id: template.Data.Id})
+	// }
+	if deleteResponse != nil {
+	}
+
 	// checkCredentialStatus() {
 	status, err := credentialService.CheckStatus(context.Background(), &sdk.CheckStatusRequest{CredentialStatusId: ""})
 	// }
