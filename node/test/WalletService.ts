@@ -61,13 +61,13 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     t.not(insertItemResponse.getItemId(), "");
 
     // Delay half a second for race condition fixes?
-    await new Promise(res => setTimeout(res, 500));
+    await new Promise(res => setTimeout(res, 1000));
 
     // searchWalletBasic() {
     let items = await walletService.search();
     // }
     t.not(items, null);
-    t.not(items.getItemsList().length, 0);
+    t.not(items.getItemsList().length,0);
     // searchWalletSQL() {
     let items2 = await walletService.search(new SearchRequest().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"));
     // }
