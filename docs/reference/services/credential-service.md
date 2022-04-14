@@ -12,6 +12,7 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     ```bash
     trinsic issuer issue --document <INPUT_JSONLD_FILE> --out <OUTPUT_FILE>
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -39,12 +40,14 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
     [VerifyProof](../../../go/services/services_test.go) inside_block:issueCredentialSample
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredentialSample
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -60,6 +63,7 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     ```bash
     
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -87,12 +91,14 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:issueFromTemplate
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:issueFromTemplate
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -106,10 +112,12 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     ```bash
     
     ```
+
 === "TypeScript"
     ```typescript
     
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
@@ -130,12 +138,14 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:checkCredentialStatus
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:checkCredentialStatus
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     
@@ -147,10 +157,12 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     ```bash
     
     ```
+
 === "TypeScript"
     ```typescript
     
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
@@ -171,12 +183,14 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:updateCredentialStatus
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateCredentialStatus
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     
@@ -223,12 +237,14 @@ The endpoint to create a proof requires two inputs:
     [CreateProof](../../../go/services/services_test.go) inside_block:createProof
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createProof
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -244,6 +260,7 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     ```bash
     trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -271,12 +288,14 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     [VerifyProof](../../../go/services/services_test.go) inside_block:verifyProof
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyProof
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -302,6 +321,7 @@ To send a document to another user, they must have created a wallet and [associa
     ```bash
     trinsic vc send --email <EMAIL_ADDRESS> --item <FILE>
     ```
+
 === "TypeScript"
 
     ```typescript
@@ -328,16 +348,19 @@ To send a document to another user, they must have created a wallet and [associa
     [Issue From Template](../../../go/services/services_test.go) inside_block:sendCredential
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     
     ```
+
 === "Swift"
     ```swift
     
