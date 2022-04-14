@@ -336,6 +336,11 @@ To send a document to another user, they must have created a wallet and [associa
     <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
+    ```python
+    [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:sendCredential
+    ```
+    <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
