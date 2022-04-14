@@ -64,7 +64,7 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 
-=== "TypeScript" 
+=== "TypeScript"
     <!--codeinclude-->
     ```typescript
     [Issue From Template](../../../node/test/CredentialTemplates.ts) inside_block:issueFromTemplate
