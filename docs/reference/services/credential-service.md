@@ -64,7 +64,7 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 
-=== "TypeScript"
+=== "TypeScript" 
     <!--codeinclude-->
     ```typescript
     [Issue From Template](../../../node/test/CredentialTemplates.ts) inside_block:issueFromTemplate
@@ -336,11 +336,6 @@ To send a document to another user, they must have created a wallet and [associa
     <!--/codeinclude-->
 
 === "Python"
-    <!--codeinclude-->
-    ```python
-    [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:sendCredential
-    ```
-    <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
