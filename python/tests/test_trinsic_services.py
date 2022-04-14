@@ -43,7 +43,6 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     def test_default_constructor(self):
         AccountService()
 
-    @unittest.skip("Ecosystem support not implemented")
     async def test_providerservice_demo(self):
         await provider_demo()
 
