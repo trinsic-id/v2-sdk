@@ -23,6 +23,11 @@ will find how to instantiate the Account Service with default settings, by simpl
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
     ```
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceConstructor
+    ```
     <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
@@ -79,9 +84,11 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
     ```
     <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
-    profile, _, err := accountService.SignIn(context.Background(), nil)
+    [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceSignIn
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
@@ -128,13 +135,15 @@ Calling this procedure, is as trivial as evidenced below. Keep it mind, however,
     ```
     <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
-    infoResponse, err := accountService.GetInfo(context.Background())
+    [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:getInfo
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
+    [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:getInfo
     ```
     <!--/codeinclude-->
 === "Ruby"
@@ -163,9 +172,11 @@ provide are evidenced in the code snippets below:
     ```
     <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
-    protectedProfile, err := accountService.Protect(accountProfile, "1234")
+    [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java
@@ -199,9 +210,11 @@ email or SMS as the `securityCode` argument.
     ```
     <!--/codeinclude-->
 === "Go"
+    <!--codeinclude-->
     ```golang
-    accountProfile, err := accountService.Unprotect(protectedProfile, "1234")
+    [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Java"
     <!--codeinclude-->
     ```java

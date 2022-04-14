@@ -61,7 +61,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [VerifyProof](../../../go/services/services_test.go) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 === "Java"
@@ -121,7 +121,7 @@ User invitation status can be checked with the provided `invitation id`. It retu
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [VerifyProof](../../../go/services/services_test.go) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 === "Java"

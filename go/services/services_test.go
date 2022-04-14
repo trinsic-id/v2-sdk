@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
@@ -128,6 +127,12 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	fmt.Printf("Credential:%s\n", credential)
 	// }
 
+	// sendCredential() {
+	err = credentialService.Send(context.Background(), &sdk.SendRequest{DocumentJson: credential.SignedDocumentJson,
+		DeliveryMethod: &sdk.SendRequest_Email{Email: "example@trinsic.id"}})
+	// }
+	// We ignore errors because we don't expect this email account to exist.
+
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
 	// storeCredential() {
@@ -141,11 +146,13 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// }
 
 	// searchWallet() {
-	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})	
+	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})
 	// }
 	// searchWalletSQL() {
-	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
+	items2, err := walletService.Search(context.Background(), &sdk.SearchRequest{Query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
 	// }
+	if items != nil && items2 != nil {
+	}
 
 	// SHARE CREDENTIAL
 	// Allison shares the credential with the venue.
@@ -204,6 +211,15 @@ func TestTrustRegistryDemo(t *testing.T) {
 	didURI := "did:example:test"
 	typeURI := "https://schema.org/Card"
 	frameworkURI := "https://example.com"
+
+	// registerGovernanceFramework() {
+	err = service.RegisterGovernanceFramework(context.Background(), &sdk.AddFrameworkRequest{
+		GovernanceFramework: &sdk.GovernanceFramework{
+			GovernanceFrameworkUri: frameworkURI,
+		},
+	})
+	// }
+
 	// registerIssuer() {
 	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
@@ -258,6 +274,19 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 	assert2.NotNil(ecosystemList)
 	assert2.NotEmpty(ecosystemList)
+
+	// unregisterIssuer() {
+	err = service.UnregisterIssuer(context.Background(), &sdk.UnregisterIssuerRequest{
+		CredentialTypeUri:      typeURI,
+		GovernanceFrameworkUri: frameworkURI,
+	})
+	// }
+	// unregisterVerifier() {
+	err = service.UnregisterVerifier(context.Background(), &sdk.UnregisterVerifierRequest{
+		PresentationTypeUri:    typeURI,
+		GovernanceFrameworkUri: frameworkURI,
+	})
+	// }
 }
 
 func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
@@ -323,15 +352,20 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.NotNil(actualCreate.Id)
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
-	// test list ecosystems
-	// listEcosystems() {
-	actualList, err := service.ListEcosystems(context.Background())
+	// inviteParticipant() {
+	inviteResponse, err := service.InviteParticipant(context.Background(),
+		&sdk.InviteRequest{Participant: sdk.ParticipantType_participant_type_individual,
+			Details: &sdk.AccountDetails{Email: "example@trinsic.id"}})
 	// }
-	if !assert2.Nil(err) {
-		return
+	if inviteResponse == nil {
+		inviteResponse = &sdk.InviteResponse{InvitationId: "NA"}
 	}
-	// assert2.NotNil(actualList)
-	// assert2.NotEmpty(actualList)
+	// invitationStatus() {
+	inviteStatus, err := service.InvitationStatus(context.Background(), &sdk.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
+	// }
+	if inviteStatus != nil {
+	}
+
 }
 
 // func TestCreateChannelUrlFromConfig(t *testing.T) {
