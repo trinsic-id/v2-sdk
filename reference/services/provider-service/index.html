@@ -1357,7 +1357,7 @@
 <p>Users can be onboarded as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in <a href="/reference/services/wallet-service/#create-wallet-with-provider-invitation">creating wallet with provider invitation</a></p>
 <p>In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invite --organization --method-email admin@faber.edu
@@ -1380,29 +1380,23 @@ trinsic provider invite --person --method-email alice@faber.edu
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Trinsic</span><span class="p">;</span><span class="w"></span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">();</span><span class="w"></span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">inviteRequest</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InviteRequest</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">ParticipantType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ParticipantType</span><span class="p">.</span><span class="n">Organization</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;admin@faber.edu&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="k">let</span><span class="w"> </span><span class="n">inviteResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">InviteParticipant</span><span class="p">(</span><span class="n">inviteRequest</span><span class="p">);</span><span class="w"></span>
-
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">inviteResponse</span><span class="p">.</span><span class="n">InvitationId</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">inviteResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">InviteParticipantAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Participant</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ParticipantType</span><span class="p">.</span><span class="n">Individual</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Doc sample&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Details</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trinsic.services</span> <span class="kn">import</span> <span class="n">ProviderService</span>
-
-<span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;admin@faber.edu&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;participant&quot;</span> <span class="p">:</span> <span class="n">provider_services</span><span class="o">.</span><span class="n">Organization</span>
-<span class="p">}</span> 
-<span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invite_participant</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">invite_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invite_participant</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">InviteRequest</span><span class="p">(</span>
+        <span class="n">participant</span><span class="o">=</span><span class="n">ParticipantType</span><span class="o">.</span><span class="n">participant_type_individual</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Doc sample&quot;</span><span class="p">,</span>
+        <span class="n">details</span><span class="o">=</span><span class="n">AccountDetails</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1410,22 +1404,15 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="w">    </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InviteRequest</span><span class="p">{</span><span class="nx">Participant</span><span class="p">:</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">ParticipantType_participant_type_individual</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nx">Details</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">AccountDetails</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">inviteResponse</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">inviteParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InviteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
         <span class="p">.</span><span class="na">setParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">ParticipantType</span><span class="p">.</span><span class="na">participant_type_individual</span><span class="p">)</span>
                 <span class="p">.</span><span class="na">setDetails</span><span class="p">(</span><span class="n">AccountOuterClass</span><span class="p">.</span><span class="na">AccountDetails</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
         <span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <p>The <code>invitationId</code> in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.</p>
@@ -1434,7 +1421,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 <p>User invitation status can be checked with the provided <code>invitation id</code>. It returns an <code>InvitationStatusResponse</code> object. </p>
 <p><a href="/reference/proto/#invitationstatusrequest">Invitation Status Request</a></p>
 <p><a href="/reference/proto/#invitationstatusresponset">Invitation Status Response</a></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invitation_status &lt;INVITATION_ID&gt;
@@ -1451,43 +1438,32 @@ trinsic provider invite --person --method-email alice@faber.edu
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">Trinsic</span><span class="p">;</span><span class="w"></span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">();</span><span class="w"></span>
-
-<span class="k">let</span><span class="w"> </span><span class="n">invitationStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">InvitationStatus</span><span class="p">(</span><span class="s">&quot;INVITATION ID&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">inviteStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">InvitationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">InvitationId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">invitationId</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">trinsic.services</span> <span class="kn">import</span> <span class="n">ProviderService</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invitation_status</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="s2">&quot;INVITATION ID&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">invite_status</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invitation_status</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">InvitationStatusRequest</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="n">invite_id</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">inviteStatus</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">InvitationStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">InvitationStatusRequest</span><span class="p">{</span><span class="nx">InvitationId</span><span class="p">:</span><span class="w"> </span><span class="nx">inviteResponse</span><span class="p">.</span><span class="nx">InvitationId</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">invitationStatus</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">invitationStatus</span><span class="p">(</span>
         <span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InvitationStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
                 <span class="p">.</span><span class="na">setInvitationId</span><span class="p">(</span><span class="n">inviteResponse</span><span class="p">.</span><span class="na">getInvitationId</span><span class="p">())</span>
                 <span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <p>The <code>invitationId</code> in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.</p>
 <h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1499,50 +1475,34 @@ trinsic provider invite --person --method-email alice@faber.edu
         <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Python</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <!--
@@ -1553,13 +1513,477 @@ trinsic provider invite --person --method-email alice@faber.edu
 </code></pre></div>
 === "TypeScript"
 === "C#"
-=== "Python"
+
+    <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Diagnostics.CodeAnalysis</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Text.Json</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Threading.Tasks</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">FluentAssertions</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Newtonsoft.Json</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Sdk.Options.V1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.Common.V1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.Provider.V1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.TrustRegistry.V1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Trinsic.Services.VerifiableCredentials.Templates.V1</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Xunit</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Xunit.Abstractions</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="nn">JsonSerializer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span><span class="p">.</span><span class="n">JsonSerializer</span><span class="p">;</span><span class="w"></span>
+
+<span class="cp">#pragma warning disable CS0618</span><span class="w"></span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">Tests</span><span class="p">;</span><span class="w"></span>
+
+<span class="na">[SuppressMessage(&quot;ReSharper&quot;, &quot;MethodHasAsyncOverload&quot;)]</span><span class="w"></span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Tests</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="cp">#if DEBUG</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">DefaultEndpoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DefaultPort</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">5000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">DefaultUseTls</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#else</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">DefaultEndpoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;staging-internal.trinsic.cloud&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DefaultPort</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="m">443</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">DefaultUseTls</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"></span>
+<span class="cp">#endif</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITestOutputHelper</span><span class="w"> </span><span class="n">_testOutputHelper</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ServiceOptions</span><span class="w"> </span><span class="n">_options</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Tests</span><span class="p">(</span><span class="n">ITestOutputHelper</span><span class="w"> </span><span class="n">testOutputHelper</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">testOutputHelper</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">_options</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ServerEndpoint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Environment</span><span class="p">.</span><span class="n">GetEnvironmentVariable</span><span class="p">(</span><span class="s">&quot;TEST_SERVER_ENDPOINT&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">??</span><span class="w"> </span><span class="n">DefaultEndpoint</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ServerPort</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetEnvironmentVariable</span><span class="p">(</span><span class="s">&quot;TEST_SERVER_PORT&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">port</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DefaultPort</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ServerUseTls</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kt">bool</span><span class="p">.</span><span class="n">TryParse</span><span class="p">(</span><span class="n">Environment</span><span class="p">.</span><span class="n">GetEnvironmentVariable</span><span class="p">(</span><span class="s">&quot;TEST_SERVER_USE_TLS&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">tls</span><span class="p">)</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="n">tls</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">DefaultUseTls</span><span class="w"></span>
+<span class="w">        </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Testing endpoint: {_options.FormatUrl()}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">VaccinationCertificateUnsigned</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TestData/vaccination-certificate-unsigned.jsonld&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">VaccinationCertificateFrame</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;TestData/vaccination-certificate-frame.jsonld&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(DisplayName = &quot;Demo: wallet and credential sample&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestWalletService</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// createAccountService() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">accountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">CreateEcosystem</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystem</span><span class="p">.</span><span class="n">Id</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// SETUP ACTORS</span>
+<span class="w">        </span><span class="c1">// Create 3 different profiles for each participant in the scenario</span>
+<span class="w">        </span><span class="c1">// setupActors() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">accountService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">clinic</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">info</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// createService() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WalletService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">allison</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialsService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CredentialsService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">clinic</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// ISSUE CREDENTIAL</span>
+<span class="w">        </span><span class="c1">// Sign a credential as the clinic and send it to Allison</span>
+<span class="w">        </span><span class="c1">// issueCredential() {</span>
+<span class="w">        </span><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span>
+<span class="w">        </span><span class="c1">// with the clinic&#39;s signing keys</span>
+<span class="w">        </span><span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">clinic</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Read the JSON credential data</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllTextAsync</span><span class="p">(</span><span class="n">VaccinationCertificateUnsigned</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Sign the credential using BBS+ signature scheme</span>
+<span class="w">        </span><span class="c1">// issueCredentialSample() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">IssueCredentialAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Credential:\n{credential.SignedDocumentJson}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// storeAndRecallProfile {</span>
+<span class="w">        </span><span class="c1">// Serialize auth token by exporting it to file</span>
+<span class="w">        </span><span class="n">File</span><span class="p">.</span><span class="n">WriteAllText</span><span class="p">(</span><span class="s">&quot;allison.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create auth token from existing data</span>
+<span class="w">        </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllText</span><span class="p">(</span><span class="s">&quot;allison.txt&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// sendCredential() {</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// We expect this to fail</span>
+
+<span class="w">        </span><span class="c1">// STORE CREDENTIAL</span>
+<span class="w">        </span><span class="c1">// Allison stores the credential in her cloud wallet.</span>
+<span class="w">        </span><span class="c1">// storeCredential() {</span>
+<span class="w">        </span><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span>
+<span class="w">        </span><span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ItemJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credential</span><span class="p">.</span><span class="n">SignedDocumentJson</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">itemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="p">.</span><span class="n">ItemId</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// searchWallet() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Last wallet item:\n{walletItems.Items.Last()}&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// searchWalletSQL() { </span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletItems2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// SHARE CREDENTIAL</span>
+<span class="w">        </span><span class="c1">// Allison shares the credential with the venue.</span>
+<span class="w">        </span><span class="c1">// The venue has communicated with Allison the details of the credential</span>
+<span class="w">        </span><span class="c1">// that they require expressed as a JSON-LD frame.</span>
+<span class="w">        </span><span class="c1">// shareCredential() {</span>
+<span class="w">        </span><span class="c1">// We&#39;ll read the request frame from a file and communicate this with Allison</span>
+<span class="w">        </span><span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">proofRequestJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="n">ReadAllTextAsync</span><span class="p">(</span><span class="n">VaccinationCertificateFrame</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Build a proof for the given request and the `itemId` we previously received</span>
+<span class="w">        </span><span class="c1">// which points to the stored credential</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ItemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">itemId</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proofRequestJson</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Proof:&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+
+<span class="w">        </span><span class="c1">// VERIFY CREDENTIAL</span>
+<span class="w">        </span><span class="c1">// verifyCredential() {</span>
+<span class="w">        </span><span class="c1">// The airline verifies the credential</span>
+<span class="w">        </span><span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">airline</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Check for valid signature</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialProof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Verification result: {valid.IsValid}&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">valid</span><span class="p">.</span><span class="n">IsValid</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(DisplayName = &quot;Demo: trust registries&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestTrustRegistry</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// setup</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrustRegistryService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">authToken</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// registerGovernanceFramework() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">RegisterGovernanceFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">GovernanceFramework</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Demo framework&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">TrustRegistryUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+
+<span class="w">        </span><span class="c1">// registerIssuer() {</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">RegisterIssuerAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">CredentialTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// registerVerifier() {</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">RegisterVerifierAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">PresentationTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// checkIssuerStatus() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CheckIssuerStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">CredentialTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">issuerStatus</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">issuerStatus</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">RegistrationStatus</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// checkVerifierStatus() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">verifierStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CheckVerifierStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">PresentationTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">verifierStatus</span><span class="p">.</span><span class="n">Status</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Be</span><span class="p">(</span><span class="n">RegistrationStatus</span><span class="p">.</span><span class="n">Current</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// searchTrustRegistry() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">SearchRegistryAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">searchResult</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">searchResult</span><span class="p">.</span><span class="n">ItemsJson</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">().</span><span class="n">And</span><span class="p">.</span><span class="n">NotBeEmpty</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// unregisterIssuer() {</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">UnregisterIssuerAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">CredentialTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// unregisterVerifier() {</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">UnregisterVerifierAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">PresentationTypeUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(DisplayName = &quot;Demo: ecosystem creation and listing&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">EcosystemTests</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// setup</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">accountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">account</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// test create ecosystem</span>
+<span class="w">        </span><span class="c1">// createEcosystem() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">actualCreate</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">actualCreate</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">actualCreate</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">StartWith</span><span class="p">(</span><span class="s">&quot;urn:trinsic:ecosystems:&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// inviteParticipant() {</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">inviteResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">InviteParticipantAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">Participant</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ParticipantType</span><span class="p">.</span><span class="n">Individual</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Doc sample&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">Details</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// This is expected as a doc sample</span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">invitationId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;N/A&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// invitationStatus() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">inviteStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">InvitationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">InvitationId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">invitationId</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="n">Exception</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// This is expected as a doc sample</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestProtectUnprotectProfile</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// testSignInAndGetInfo() {</span>
+<span class="w">        </span><span class="c1">// accountServiceConstructor() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myAccountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="c1">// accountServiceSignIn() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">myProfile</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// accountServiceGetInfo() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="n">output</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="c1">// protectUnprotectProfile() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">Assert</span><span class="p">.</span><span class="n">ThrowsAsync</span><span class="p">&lt;</span><span class="n">Exception</span><span class="p">&gt;(</span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfo</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestInvitationIdSet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">invitationResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">InviteParticipantAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">invitationResponse</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">invitationResponse</span><span class="p">.</span><span class="n">InvitationCode</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeEmpty</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">Assert</span><span class="p">.</span><span class="n">ThrowsAsync</span><span class="p">&lt;</span><span class="n">Exception</span><span class="p">&gt;(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">InvitationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(Skip = &quot;Ecosystem support not complete yet&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestInviteParticipant</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myAccountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myProviderService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">myProfile</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">invite</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InviteRequest</span><span class="w"> </span><span class="p">{</span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Test invitation&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myProviderService</span><span class="p">.</span><span class="n">InviteParticipantAsync</span><span class="p">(</span><span class="n">invite</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="n">response</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">statusResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myProviderService</span><span class="p">.</span><span class="n">InvitationStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">InvitationId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">InvitationId</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="n">statusResponse</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">TestGovernanceFrameworkUriParse</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myAccountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">myTrustRegistryService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrustRegistryService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">myProfile</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">Assert</span><span class="p">.</span><span class="n">ThrowsAsync</span><span class="p">&lt;</span><span class="n">Exception</span><span class="p">&gt;(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myTrustRegistryService</span><span class="p">.</span><span class="n">RegisterGovernanceFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">GovernanceFramework</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;invalid uri&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(DisplayName = &quot;Demo: template management and credential issuance from template&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="nf">DemoTemplatesWithIssuance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">_options</span><span class="p">.</span><span class="n">CloneWithAuthToken</span><span class="p">(</span><span class="n">authToken</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">templateService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemplateService</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CredentialsService</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WalletService</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// create example template</span>
+<span class="w">        </span><span class="c1">// createTemplate() {</span>
+<span class="w">        </span><span class="n">CreateCredentialTemplateRequest</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;An Example Credential&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">AllowAdditionalFields</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
+<span class="w">        </span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FieldType</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span><span class="w"> </span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">template</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">SchemaUri</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// issue credential from this template</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">firstName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">lastName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;42&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// issueFromTemplate() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">ValuesJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeNull</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">jsonDocument</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JsonDocument</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">).</span><span class="n">RootElement</span><span class="p">.</span><span class="n">EnumerateObject</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">jsonDocument</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Contain</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;id&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">jsonDocument</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">Contain</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="s">&quot;credentialSubject&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// insertItemWallet() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ItemJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">itemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="p">.</span><span class="n">ItemId</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JObject</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;@context&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JArray</span><span class="p">(</span><span class="s">&quot;VerifiableCredential&quot;</span><span class="p">)}</span><span class="w"></span>
+<span class="w">        </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Create proof from input document</span>
+<span class="w">        </span><span class="c1">// createProof() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">proof</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">.</span><span class="n">DocumentJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="c1">// verifyProof() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="n">valid</span><span class="p">.</span><span class="n">IsValid</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">BeTrue</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Create proof from item id</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">proof2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">ItemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">itemId</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="n">RevealDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frame</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="n">Formatting</span><span class="p">.</span><span class="n">None</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">});</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">valid2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proof2</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="p">});</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">valid2</span><span class="p">.</span><span class="n">IsValid</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">BeTrue</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// checkCredentialStatus() {</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// We expect this to fail</span>
+
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// updateCredentialStatus() {</span>
+<span class="w">            </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// We expect this to fail</span>
+
+<span class="w">        </span><span class="c1">// getCredentialTemplate() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">getTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="c1">// searchCredentialTemplate() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">searchTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="c1">// deleteCredentialTemplate() {</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">deleteTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">DeleteAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">[Fact(DisplayName = &quot;Decode base64 url encoded string&quot;)]</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">DecodeBase64UrlString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">encoded</span><span class="w"> </span><span class="p">=</span><span class="w"></span>
+<span class="w">            </span><span class="s">&quot;CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Base64Url</span><span class="p">.</span><span class="n">Decode</span><span class="p">(</span><span class="n">encoded</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">actual</span><span class="p">.</span><span class="n">Should</span><span class="p">().</span><span class="n">NotBeEmpty</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
+    === "Python"
 
     <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">uuid</span>
 
 <span class="kn">from</span> <span class="nn">trinsic.account_service</span> <span class="kn">import</span> <span class="n">AccountService</span>
-<span class="kn">from</span> <span class="nn">trinsic.proto.services.provider.v1</span> <span class="kn">import</span> <span class="n">CreateEcosystemRequest</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.account.v1</span> <span class="kn">import</span> <span class="n">AccountDetails</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.provider.v1</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CreateEcosystemRequest</span><span class="p">,</span>
+    <span class="n">InviteRequest</span><span class="p">,</span>
+    <span class="n">ParticipantType</span><span class="p">,</span>
+    <span class="n">InvitationStatusRequest</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="kn">from</span> <span class="nn">trinsic.provider_service</span> <span class="kn">import</span> <span class="n">ProviderService</span>
 <span class="kn">from</span> <span class="nn">trinsic.trinsic_util</span> <span class="kn">import</span> <span class="n">trinsic_config</span>
 
@@ -1582,6 +2006,29 @@ trinsic provider invite --person --method-email alice@faber.edu
 
     <span class="c1"># listEcosystems() {</span>
     <span class="c1"># }</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># inviteParticipant() {</span>
+        <span class="n">invite_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invite_participant</span><span class="p">(</span>
+            <span class="n">request</span><span class="o">=</span><span class="n">InviteRequest</span><span class="p">(</span>
+                <span class="n">participant</span><span class="o">=</span><span class="n">ParticipantType</span><span class="o">.</span><span class="n">participant_type_individual</span><span class="p">,</span>
+                <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Doc sample&quot;</span><span class="p">,</span>
+                <span class="n">details</span><span class="o">=</span><span class="n">AccountDetails</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># }</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">invite_id</span> <span class="o">=</span> <span class="s2">&quot;NA&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># invitationStatus() {</span>
+        <span class="n">invite_status</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">invitation_status</span><span class="p">(</span>
+            <span class="n">request</span><span class="o">=</span><span class="n">InvitationStatusRequest</span><span class="p">(</span><span class="n">invitation_id</span><span class="o">=</span><span class="n">invite_id</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># }</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

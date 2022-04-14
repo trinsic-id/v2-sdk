@@ -1786,11 +1786,13 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="n">check_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">check_status</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CheckStatusRequest</span><span class="p">(</span><span class="n">credential_status_id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1825,11 +1827,13 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="n">update_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">UpdateStatusRequest</span><span class="p">(</span><span class="n">credential_status_id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">revoked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1968,11 +1972,176 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">document</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;admin@example.com&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">abspath</span><span class="p">,</span> <span class="n">join</span><span class="p">,</span> <span class="n">dirname</span>
+
+<span class="kn">from</span> <span class="nn">trinsic.account_service</span> <span class="kn">import</span> <span class="n">AccountService</span>
+<span class="kn">from</span> <span class="nn">trinsic.credentials_service</span> <span class="kn">import</span> <span class="n">CredentialsService</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.account.v1</span> <span class="kn">import</span> <span class="n">SignInRequest</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.universalwallet.v1</span> <span class="kn">import</span> <span class="n">InsertItemRequest</span><span class="p">,</span> <span class="n">SearchRequest</span>
+<span class="kn">from</span> <span class="nn">trinsic.proto.services.verifiablecredentials.v1</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">IssueRequest</span><span class="p">,</span>
+    <span class="n">CreateProofRequest</span><span class="p">,</span>
+    <span class="n">VerifyProofRequest</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">trinsic.provider_service</span> <span class="kn">import</span> <span class="n">ProviderService</span>
+<span class="kn">from</span> <span class="nn">trinsic.trinsic_util</span> <span class="kn">import</span> <span class="n">trinsic_config</span>
+<span class="kn">from</span> <span class="nn">trinsic.wallet_service</span> <span class="kn">import</span> <span class="n">WalletService</span>
+
+
+<span class="c1"># pathData() {</span>
+<span class="k">def</span> <span class="nf">_base_data_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;devops&quot;</span><span class="p">,</span> <span class="s2">&quot;testdata&quot;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_vaccine_cert_unsigned_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">_base_data_path</span><span class="p">(),</span> <span class="s2">&quot;vaccination-certificate-unsigned.jsonld&quot;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_vaccine_cert_frame_path</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">abspath</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">_base_data_path</span><span class="p">(),</span> <span class="s2">&quot;vaccination-certificate-frame.jsonld&quot;</span><span class="p">))</span>
+
+
+<span class="c1"># }</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">vaccine_demo</span><span class="p">():</span>
+    <span class="c1"># createAccountService() {</span>
+    <span class="n">account_service</span> <span class="o">=</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
+    <span class="n">account</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># createProviderService() {</span>
+    <span class="n">provider_service</span> <span class="o">=</span> <span class="n">ProviderService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">(</span><span class="n">account</span><span class="p">))</span>
+    <span class="n">ecosystem</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">()</span>
+    <span class="n">ecosystem_id</span> <span class="o">=</span> <span class="n">ecosystem</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># setupActors() {</span>
+    <span class="c1"># Create 3 different profiles for each participant in the scenario</span>
+    <span class="n">allison</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">SignInRequest</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="o">=</span><span class="n">ecosystem_id</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">clinic</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">SignInRequest</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="o">=</span><span class="n">ecosystem_id</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">airline</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">SignInRequest</span><span class="p">(</span><span class="n">ecosystem_id</span><span class="o">=</span><span class="n">ecosystem_id</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+
+    <span class="n">account_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">clinic</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Account info=</span><span class="si">{</span><span class="n">info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># createService() {</span>
+    <span class="n">wallet_service</span> <span class="o">=</span> <span class="n">WalletService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">(</span><span class="n">allison</span><span class="p">))</span>
+    <span class="n">credentials_service</span> <span class="o">=</span> <span class="n">CredentialsService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">(</span><span class="n">clinic</span><span class="p">))</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># storeAndRecallProfile() {</span>
+    <span class="c1"># Store profile for later use</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;allison.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">allison</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Create profile from existing data</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;allison.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">allison</span> <span class="o">=</span> <span class="n">fid</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># Sign a credential as the clinic and send it to Allison</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_vaccine_cert_unsigned_path</span><span class="p">(),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">credential_json</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fid</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+
+    <span class="c1"># issueCredential() {</span>
+    <span class="n">issue_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">issue_credential</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">IssueRequest</span><span class="p">(</span><span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="n">credential</span> <span class="o">=</span> <span class="n">issue_response</span><span class="o">.</span><span class="n">signed_document_json</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Credential: </span><span class="si">{</span><span class="n">credential</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># checkCredentialStatus() {</span>
+    <span class="c1"># status_id = credential[&#39;id&#39;]</span>
+    <span class="c1"># credential_status = await credentials_service.check_status(credential_status_id=status_id)</span>
+    <span class="c1"># print(f&quot;Credential_status: {credential_status}&quot;)</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># storeCredential() {</span>
+    <span class="c1"># Alice stores the credential in her cloud wallet.</span>
+    <span class="n">wallet_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+    <span class="c1"># insertItemWallet() {</span>
+    <span class="n">insert_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">InsertItemRequest</span><span class="p">(</span><span class="n">item_json</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="n">item_id</span> <span class="o">=</span> <span class="n">insert_response</span><span class="o">.</span><span class="n">item_id</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;item id = </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># searchWallet() {</span>
+    <span class="n">wallet_items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+    <span class="c1"># }</span>
+    <span class="c1"># searchWalletSQL() {</span>
+    <span class="n">wallet_items2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">SearchRequest</span><span class="p">(</span>
+            <span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;last wallet item = </span><span class="si">{</span><span class="n">wallet_items</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># shareCredential() {</span>
+    <span class="c1"># Allison shares the credential with the venue.</span>
+    <span class="c1"># The venue has communicated with Allison the details of the credential</span>
+    <span class="c1"># that they require expressed as a JSON-LD frame.</span>
+    <span class="n">credentials_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+    <span class="n">wallet_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">_vaccine_cert_frame_path</span><span class="p">(),</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid2</span><span class="p">:</span>
+        <span class="n">proof_request_json</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fid2</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+
+    <span class="c1"># createProof() {</span>
+    <span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
+            <span class="n">reveal_document_json</span><span class="o">=</span><span class="n">proof_request_json</span><span class="p">,</span> <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="n">credential_proof</span> <span class="o">=</span> <span class="n">proof_response</span><span class="o">.</span><span class="n">proof_document_json</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proof: </span><span class="si">{</span><span class="n">credential_proof</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># verifyCredential() {</span>
+    <span class="c1"># The airline verifies the credential</span>
+    <span class="n">credentials_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
+    <span class="n">wallet_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
+    <span class="c1"># verifyProof() {</span>
+    <span class="n">verify_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">VerifyProofRequest</span><span class="p">(</span><span class="n">proof_document_json</span><span class="o">=</span><span class="n">credential_proof</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># }</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">verify_result</span><span class="o">.</span><span class="n">is_valid</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Verification result: </span><span class="si">{</span><span class="n">valid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">valid</span> <span class="ow">is</span> <span class="kc">True</span>
+    <span class="c1"># }</span>
+
+    <span class="c1"># revokeCredential() {</span>
+    <span class="c1"># update_status_response = await credentials_service.update_status(credential_status_id=status_id, revoked=True)</span>
+    <span class="c1"># print(f&quot;UpdateStatusResponse: {update_status_response}&quot;)</span>
+    <span class="c1"># credential_status = await credentials_service.check_status(credential_status_id=status_id)</span>
+    <span class="c1"># print(f&quot;Credential_status: {credential_status}&quot;)</span>
+    <span class="c1"># assert credential_status.revoked is True</span>
+    <span class="c1"># }</span>
+    <span class="n">credentials_service</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">wallet_service</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">account_service</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">provider_service</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">vaccine_demo</span><span class="p">())</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
