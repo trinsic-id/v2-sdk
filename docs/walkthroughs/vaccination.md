@@ -243,7 +243,7 @@ If you would like to save the profile for future use, you can simply export the 
 
 === "Python"
 
-=== "Java" -->
+=== "Java"
 
 ## Issue a Credential
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
