@@ -70,13 +70,13 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:getCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:getCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Go"
@@ -113,13 +113,13 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Go"
@@ -156,13 +156,13 @@ A template is a saved JSON-LD schema that is used to define/create credentials a
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:deleteCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:deleteCredentialTemplate
     ```
     <!--/codeinclude-->
 === "Go"

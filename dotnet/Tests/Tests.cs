@@ -411,6 +411,16 @@ public class Tests
             await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
             // }
         } catch { } // We expect this to fail
+        
+        // getCredentialTemplate() {
+        var getTemplateResponse = await templateService.GetAsync(new() {Id = template.Data.Id});
+        // }
+        // searchCredentialTemplate() {
+        var searchTemplateResponse = await templateService.SearchAsync(new() {Query = "SELECT * FROM c"});
+        // }
+        // deleteCredentialTemplate() {
+        var deleteTemplateResponse = await templateService.DeleteAsync(new() {Id = template.Data.Id});
+        // }
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]
