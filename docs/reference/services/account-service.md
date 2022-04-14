@@ -12,30 +12,35 @@ will find how to instantiate the Account Service with default settings, by simpl
     ```typescript
     const accountService = new AccountService();
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceConstructor
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceConstructor
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceConstructor
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_prod_server)
@@ -68,34 +73,40 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
     ```bash
     trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
     ```
+
 === "TypeScript"
     ```typescript
     const allison = (await accountService.signIn()).getProfile();
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceSignIn
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceSignIn
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     allison = account_service.sign_in(nil).profile
@@ -119,34 +130,40 @@ Calling this procedure, is as trivial as evidenced below. Keep it mind, however,
     ```bash
     trinsic account info
     ```
+
 === "TypeScript"
     ```typescript
     const info = await accountService.info();
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceGetInfo
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceGetInfo
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:getInfo
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:getInfo
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     info = account_service.get_info()
@@ -160,30 +177,35 @@ provide are evidenced in the code snippets below:
     ```typescript
     const protectedProfile = await accountService.protect(accountProfile, "1234");
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     protected_profile = account_service.protect(account_profile, '1234')
@@ -198,30 +220,35 @@ email or SMS as the `securityCode` argument.
     ```typescript
     const accountProfile = await accountService.unprotect(protectedProfile, "1234");
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:protectUnprotectProfile
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     ```ruby
     account_profile = account_service.unprotect(protected_profile, '1234')

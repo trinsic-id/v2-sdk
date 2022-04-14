@@ -16,36 +16,42 @@ This method allows inserting any JSON data in the wallet.
     ```bash
     trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
     [VerifyProof](../../../node/test/WalletService.ts) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -70,6 +76,7 @@ The default query used in the commands below returns a full wallet result set. T
     ```bash
     trinsic wallet search
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -90,18 +97,21 @@ The default query used in the commands below returns a full wallet result set. T
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -118,6 +128,7 @@ To pass custom query to the search function, use the query parameter or the avai
     trinsic wallet search \
         --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -138,18 +149,21 @@ To pass custom query to the search function, use the query parameter or the avai
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
