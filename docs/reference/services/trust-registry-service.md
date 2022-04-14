@@ -32,13 +32,13 @@ An ecosystem governance framework is useful because it provides a good basis for
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerGovernanceFramework
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerGovernanceFramework
     ```
     <!--/codeinclude-->
 === "Go"
@@ -79,13 +79,13 @@ Finally, each entity must be registered on a specific governance framework.
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerIssuer
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerIssuer
     ```
     <!--/codeinclude-->
 === "Go"
@@ -125,13 +125,13 @@ Finally, each entity must be registered on a specific governance framework.
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerVerifier
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerVerifier
     ```
     <!--/codeinclude-->
 === "Go"
@@ -172,13 +172,13 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:unregisterIssuer
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:unregisterIssuer
     ```
     <!--/codeinclude-->
 === "Go"
@@ -219,13 +219,13 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:unregisterVerifier
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:unregisterVerifier
     ```
     <!--/codeinclude-->
 === "Go"
@@ -266,13 +266,13 @@ Check the status of an issuer for a credential type within a given governance fr
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:checkIssuerStatus
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:checkIssuerStatus
     ```
     <!--/codeinclude-->
 === "Go"
@@ -313,13 +313,13 @@ Check the status of an issuer for a credential type within a given governance fr
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:checkVerifierStatus
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:checkVerifierStatus
     ```
     <!--/codeinclude-->
 === "Go"
@@ -357,13 +357,13 @@ Search the registry for authoritative issuer and verifiers using a custom query 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchTrustRegistry
     ```
     <!--/codeinclude-->
 === "Python"
     <!--codeinclude-->
     ```python
-    
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:searchTrustRegistry
     ```
     <!--/codeinclude-->
 === "Go"
@@ -384,45 +384,11 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     
     ```
     <!--/codeinclude-->
+
+    
 ### Cache Offline Registry File
 
 === "Trinsic CLI"
     ```bash
     trinsic trust-registry download 
     ```
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    
-    ```
-    <!--/codeinclude-->
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    
-    ```
-    <!--/codeinclude-->
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    
-    ```
-    <!--/codeinclude-->
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    
-    ```
-    <!--/codeinclude-->
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->

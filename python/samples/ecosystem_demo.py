@@ -2,7 +2,13 @@ import asyncio
 import uuid
 
 from trinsic.account_service import AccountService
-from trinsic.proto.services.provider.v1 import CreateEcosystemRequest
+from trinsic.proto.services.account.v1 import AccountDetails
+from trinsic.proto.services.provider.v1 import (
+    CreateEcosystemRequest,
+    InviteRequest,
+    ParticipantType,
+    InvitationStatusRequest,
+)
 from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
 
@@ -25,6 +31,29 @@ async def ecosystem_demo():
 
     # listEcosystems() {
     # }
+
+    try:
+        # inviteParticipant() {
+        invite_response = await provider_service.invite_participant(
+            request=InviteRequest(
+                participant=ParticipantType.participant_type_individual,
+                description="Doc sample",
+                details=AccountDetails(email="example@trinsic.id"),
+            )
+        )
+        # }
+    except:
+        pass
+
+    invite_id = "NA"
+    try:
+        # invitationStatus() {
+        invite_status = await provider_service.invitation_status(
+            request=InvitationStatusRequest(invitation_id=invite_id)
+        )
+        # }
+    except:
+        pass
 
 
 if __name__ == "__main__":

@@ -164,53 +164,73 @@ public class Tests
         var providerService = new ProviderService(_options.Clone());
         var (_, authToken) = await providerService.CreateEcosystemAsync(new());
         var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
+        
+        // registerGovernanceFramework() {
+        var registerFrameworkResponse = await service.RegisterGovernanceFrameworkAsync(new() { GovernanceFramework = new() {
+            Description = "Demo framework",
+            GovernanceFrameworkUri = "https://example.com",
+            TrustRegistryUri = "https://schema.org/Card"
+        }});
+        // }
+        
 
-        // register issuer
-        var register = service.RegisterIssuerAsync(new() {
+        // registerIssuer() {
+        await service.RegisterIssuerAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             CredentialTypeUri = "https://schema.org/Card"
         });
-        await register;
+        // }
 
-        register.Should().NotBeNull();
-        register.Status.Should().Be(TaskStatus.RanToCompletion);
-
-        // register verifier
-        register = service.RegisterVerifierAsync(new() {
+        // registerVerifier() {
+        await service.RegisterVerifierAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             PresentationTypeUri = "https://schema.org/Card"
         });
-        await register;
+        // }
 
-        register.Should().NotBeNull();
-        register.Status.Should().Be(TaskStatus.RanToCompletion);
-
-        // check issuer status
+        // checkIssuerStatus() {
         var issuerStatus = await service.CheckIssuerStatusAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             CredentialTypeUri = "https://schema.org/Card"
         });
-
+        // }
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
 
-        // check verifier status
+        // checkVerifierStatus() {
         var verifierStatus = await service.CheckVerifierStatusAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             PresentationTypeUri = "https://schema.org/Card"
         });
-
+        // }
         verifierStatus.Status.Should().Be(RegistrationStatus.Current);
 
-        // search registry
+        // searchTrustRegistry() {
         var searchResult = await service.SearchRegistryAsync(new());
+        // }
 
         searchResult.Should().NotBeNull();
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
+        
+        // unregisterIssuer() {
+        await service.UnregisterIssuerAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+        // }
+
+        // unregisterVerifier() {
+        await service.UnregisterVerifierAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+        // }
     }
 
     [Fact(DisplayName = "Demo: ecosystem creation and listing")]
@@ -231,6 +251,25 @@ public class Tests
         actualCreate.Should().NotBeNull();
         actualCreate.Id.Should().NotBeNull();
         actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
+
+        try {
+            // inviteParticipant() {
+            var inviteResponse = await service.InviteParticipantAsync(new() {
+                Participant = ParticipantType.Individual,
+                Description = "Doc sample",
+                Details = new() {
+                    Email = "example@trinsic.id"
+                }
+            });
+            // }
+        } catch(Exception) { } // This is expected as a doc sample
+
+        var invitationId = "N/A";
+        try {
+        // invitationStatus() {
+        var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
+        // }
+        } catch(Exception) { } // This is expected as a doc sample
     }
 
     [Fact]
@@ -392,6 +431,16 @@ public class Tests
             await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
             // }
         } catch { } // We expect this to fail
+        
+        // getCredentialTemplate() {
+        var getTemplateResponse = await templateService.GetAsync(new() {Id = template.Data.Id});
+        // }
+        // searchCredentialTemplate() {
+        var searchTemplateResponse = await templateService.SearchAsync(new() {Query = "SELECT * FROM c"});
+        // }
+        // deleteCredentialTemplate() {
+        var deleteTemplateResponse = await templateService.DeleteAsync(new() {Id = template.Data.Id});
+        // }
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]

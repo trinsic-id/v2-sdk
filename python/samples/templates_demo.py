@@ -9,6 +9,9 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
     FieldType,
     CreateCredentialTemplateRequest,
+    GetCredentialTemplateRequest,
+    DeleteCredentialTemplateRequest,
+    SearchCredentialTemplatesRequest,
 )
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
@@ -97,20 +100,37 @@ async def templates_demo():
 
     try:
         # checkCredentialStatus() {
-        checkResponse = await credential_service.check_status(
+        check_response = await credential_service.check_status(
             request=CheckStatusRequest(credential_status_id="")
         )
+        # }
     except:
-        pass # This is expected
-    # }
+        pass  # This is expected
+
     try:
         # updateCredentialStatus() {
-        updateResponse = await credential_service.update_status(
+        update_response = await credential_service.update_status(
             request=UpdateStatusRequest(credential_status_id="", revoked=True)
         )
         # }
     except:
-        pass # This is expected
+        pass  # This is expected
+
+    # getCredentialTemplate() {
+    get_template_response = await template_service.get(
+        request=GetCredentialTemplateRequest(id=template.data.id)
+    )
+    # }
+    # searchCredentialTemplate() {
+    search_template_response = await template_service.search(
+        request=SearchCredentialTemplatesRequest(query="SELECT * FROM c")
+    )
+    # }
+    # deleteCredentialTemplate() {
+    delete_template_response = await template_service.delete(
+        request=DeleteCredentialTemplateRequest(id=template.data.id)
+    )
+    # }
 
     account_service.close()
     template_service.close()
