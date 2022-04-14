@@ -60,7 +60,7 @@ func TestTemplatesDemo(t *testing.T) {
 		return
 	}
 
-	// issureFromTemplate() {
+	// issueFromTemplate() {
 	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
 		TemplateId: template.Data.Id,
 		ValuesJson: string(valuesString),

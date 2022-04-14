@@ -62,7 +62,7 @@ async function issueCredentialFromTemplate() {
   let templateResponse = await createCredentialTemplateTest();
 
   let service = new CredentialService(options);
-  // issueFromTemplate() {}
+  // issueFromTemplate() {
   let request = new IssueFromTemplateRequest()
     .setTemplateId(templateResponse?.getData()?.getId() ?? "")
     .setValuesJson(JSON.stringify({
