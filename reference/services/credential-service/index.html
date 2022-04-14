@@ -1126,6 +1126,25 @@
   
   
     <li class="md-nav__item">
+      <a href="../template-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Template Service
+  </span>
+
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../provider-service/" class="md-nav__link">
         
   
@@ -1429,7 +1448,7 @@
 <blockquote>
 <p>This endpoint requires that the user provide a valid JSON-LD document.</p>
 </blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic issuer issue --document &lt;INPUT_JSONLD_FILE&gt; --out &lt;OUTPUT_FILE&gt;
@@ -1456,24 +1475,17 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">credential</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueCredential</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent</span><span class="p">)})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">issueResult</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">issueCredential</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the <a href="#insert-record">insert record</a> separately if you'd like to store a copy of this document.</p>
 <h3 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1754,11 +1766,8 @@
 
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">valuesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span> <span class="s">&quot;Jane&quot;</span><span class="p">);</span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
@@ -1766,16 +1775,12 @@
 <span class="kd">var</span> <span class="n">valuesJson</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Gson</span><span class="p">().</span><span class="na">toJson</span><span class="p">(</span><span class="n">valuesMap</span><span class="p">);</span>
 <span class="kd">var</span> <span class="n">issueResponse</span> <span class="o">=</span> <span class="n">credentialService</span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">()).</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
 </div>
 </div>
-</div>
-</div>
-</div>
 <h3 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:5"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1798,25 +1803,19 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CheckStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CheckStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">checkStatusResponse</span> <span class="o">=</span> <span class="n">credentialService</span><span class="p">.</span><span class="na">checkStatus</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CheckStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h3 id="update-revocation-status">Update Revocation Status<a class="headerlink" href="#update-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label><label for="__tabbed_4_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
@@ -1839,18 +1838,12 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">updateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">UpdateStatus</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UpdateStatusRequest</span><span class="p">{</span><span class="nx">CredentialStatusId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Revoked</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">credentialService</span><span class="p">.</span><span class="na">updateStatus</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">UpdateStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 </div>
@@ -1863,7 +1856,7 @@
 <li>document in the wallet that is signed with the correct signature</li>
 <li>JSONLD frame that describes the data to be disclosed</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:5"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><input id="__tabbed_13_5" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Trinsic CLI</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">C#</label><label for="__tabbed_13_4">Python</label><label for="__tabbed_13_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:7"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><input id="__tabbed_5_7" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label><label for="__tabbed_5_5">Go</label><label for="__tabbed_5_6">Java</label><label for="__tabbed_5_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc create-proof --document-id &lt;STRING&gt; --out &lt;OUTPUT_FILE&gt; --reveal-document &lt;JSONLD_FRAME_FILE&gt;
@@ -1893,24 +1886,17 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">credentialProof</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">createProofResponse</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <h3 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h3>
 <p>This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:5"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><input id="__tabbed_16_4" name="__tabbed_16" type="radio" /><input id="__tabbed_16_5" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Trinsic CLI</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">C#</label><label for="__tabbed_16_4">Python</label><label for="__tabbed_16_5">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:7"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><input id="__tabbed_6_7" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label><label for="__tabbed_6_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
@@ -1934,19 +1920,12 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">valid</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">verifyProofResponse</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
 <div class="tabbed-block"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <h3 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h3>
@@ -1961,7 +1940,7 @@
 </blockquote>
 <h4 id="sending-documents-using-email-as-identifier">Sending documents using Email as identifier<a class="headerlink" href="#sending-documents-using-email-as-identifier" title="Permanent link">&para;</a></h4>
 <p>To send a document to another user, they must have created a wallet and <a href="#create-wallet-with-provider-invitation">associated their email address</a> with that wallet.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:6"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><input id="__tabbed_19_4" name="__tabbed_19" type="radio" /><input id="__tabbed_19_5" name="__tabbed_19" type="radio" /><input id="__tabbed_19_6" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Trinsic CLI</label><label for="__tabbed_19_2">TypeScript</label><label for="__tabbed_19_3">C#</label><label for="__tabbed_19_4">Python</label><label for="__tabbed_19_5">Go</label><label for="__tabbed_19_6">Swift</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:8"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><input id="__tabbed_7_6" name="__tabbed_7" type="radio" /><input id="__tabbed_7_7" name="__tabbed_7" type="radio" /><input id="__tabbed_7_8" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label><label for="__tabbed_7_6">Java</label><label for="__tabbed_7_7">Ruby</label><label for="__tabbed_7_8">Swift</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc send --email &lt;EMAIL_ADDRESS&gt; --item &lt;FILE&gt;
@@ -2148,18 +2127,12 @@
 <div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SendRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credential</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nx">DeliveryMethod</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SendRequest_Email</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">credentialsService</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">SendRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 </div>
@@ -2213,13 +2186,13 @@
       
       
         
-        <a href="../provider-service/" class="md-footer__link md-footer__link--next" aria-label="Next: Provider Service" rel="next">
+        <a href="../template-service/" class="md-footer__link md-footer__link--next" aria-label="Next: Template Service" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Provider Service
+              Template Service
             </div>
           </div>
           <div class="md-footer__button md-icon">

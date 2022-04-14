@@ -1019,6 +1019,25 @@
   
   
     <li class="md-nav__item">
+      <a href="../../reference/services/template-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Template Service
+  </span>
+
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/services/provider-service/" class="md-nav__link">
         
   
@@ -1254,38 +1273,39 @@
 }
 </code></pre></div>
 <p>This will create a Template that has the following structure:
-<code>TemplateData {
-        id: "urn:template:alices-local-guides:review",
-        name: "Review",
-        version: 1,
-        fields: {
-            "name": TemplateField {
-                description: "Name of the business",
-                optional: false,
-                r#type: String,
-            },
-            "rating": TemplateField {
-                description: "rating on scale of 1-10",
-                optional: false,
-                r#type: Number,
-            },
-            "details": TemplateField {
-                description: "An individual's last name",
-                optional: false,
-                r#type: String,
-            },
-            "website": TemplateField {
-                description: "More information about the business",
-                optional: false,
-                r#type: String,
-            },
+<div class="highlight"><pre><span></span><code>TemplateData {
+    id: &quot;urn:template:alices-local-guides:review&quot;,
+    name: &quot;Review&quot;,
+    version: 1,
+    fields: {
+        &quot;name&quot;: TemplateField {
+            description: &quot;Name of the business&quot;,
+            optional: false,
+            r#type: String,
         },
-        allow_additional_fields: true,
-        schema_uri: "https://staging-schema.trinsic.cloud/__default/review",
-        context_uri: "https://staging-schema.trinsic.cloud/__default/review/context",
-        ecosystem_id: "__default",
-        r#type: "VerifiableCredential",
-    }</code>
+        &quot;rating&quot;: TemplateField {
+            description: &quot;rating on scale of 1-10&quot;,
+            optional: false,
+            r#type: Number,
+        },
+        &quot;details&quot;: TemplateField {
+            description: &quot;An individual&#39;s last name&quot;,
+            optional: false,
+            r#type: String,
+        },
+        &quot;website&quot;: TemplateField {
+            description: &quot;More information about the business&quot;,
+            optional: false,
+            r#type: String,
+        },
+    },
+    allow_additional_fields: true,
+    schema_uri: &quot;https://staging-schema.trinsic.cloud/__default/review&quot;,
+    context_uri: &quot;https://staging-schema.trinsic.cloud/__default/review/context&quot;,
+    ecosystem_id: &quot;__default&quot;,
+    r#type: &quot;VerifiableCredential&quot;,
+}
+</code></pre></div>
 You can view the <code>schema_uri</code> and the <code>context_uri</code> in the browser as raw json</p>
 
 
