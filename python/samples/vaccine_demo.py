@@ -87,9 +87,12 @@ async def vaccine_demo():
     credential = issue_response.signed_document_json
     print(f"Credential: {credential}")
 
-    # sendCredential() {
-    send_response = await credentials_service.send(request=SendRequest(document_json=credential, email="example@trinsic.id"))
-    # }
+    try:
+        # sendCredential() {
+        send_response = await credentials_service.send(request=SendRequest(document_json=credential, email="example@trinsic.id"))
+        # }
+    except:
+        pass
 
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
