@@ -231,6 +231,25 @@ public class Tests
         actualCreate.Should().NotBeNull();
         actualCreate.Id.Should().NotBeNull();
         actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
+
+        try {
+            // inviteParticipant() {
+            var inviteResponse = await service.InviteParticipantAsync(new() {
+                Participant = ParticipantType.Individual,
+                Description = "Doc sample",
+                Details = new() {
+                    Email = "example@trinsic.id"
+                }
+            });
+            // }
+        } catch(Exception) { } // This is expected as a doc sample
+
+        var invitationId = "N/A";
+        try {
+        // invitationStatus() {
+        var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
+        // }
+        } catch(Exception) { } // This is expected as a doc sample
     }
 
     [Fact]

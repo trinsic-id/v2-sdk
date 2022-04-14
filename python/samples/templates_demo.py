@@ -101,7 +101,7 @@ async def templates_demo():
             request=CheckStatusRequest(credential_status_id="")
         )
     except:
-        pass # This is expected
+        pass  # This is expected
     # }
     try:
         # updateCredentialStatus() {
@@ -110,7 +110,7 @@ async def templates_demo():
         )
         # }
     except:
-        pass # This is expected
+        pass  # This is expected
 
     account_service.close()
     template_service.close()
