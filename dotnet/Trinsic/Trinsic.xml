@@ -122,12 +122,12 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="T:Trinsic.Base64UrlEncoder">
+        <member name="T:Trinsic.Base64Url">
             <summary>
             Encodes and Decodes strings as Base64Url encoding.
             </summary>
         </member>
-        <member name="M:Trinsic.Base64UrlEncoder.Encode(System.String)">
+        <member name="M:Trinsic.Base64Url.Encode(System.String)">
             <summary>
             The following functions perform base64url encoding which differs from regular base64 encoding as follows
             * padding is skipped so the pad character '=' doesn't have to be percent encoded
@@ -137,7 +137,7 @@
             <param name="arg">string to encode.</param>
             <returns>Base64Url encoding of the UTF8 bytes.</returns>
         </member>
-        <member name="M:Trinsic.Base64UrlEncoder.Encode(System.Byte[],System.Int32,System.Int32)">
+        <member name="M:Trinsic.Base64Url.Encode(System.Byte[],System.Int32,System.Int32)">
             <summary>
             Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64-url digits. Parameters specify
             the subset as an offset in the input array, and the number of elements in the array to convert.
@@ -149,7 +149,7 @@
             <exception cref="T:System.ArgumentNullException">'inArray' is null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">offset or length is negative OR offset plus length is greater than the length of inArray.</exception>
         </member>
-        <member name="M:Trinsic.Base64UrlEncoder.Encode(System.Byte[])">
+        <member name="M:Trinsic.Base64Url.Encode(System.Byte[])">
             <summary>
             Converts a subset of an array of 8-bit unsigned integers to its equivalent string representation that is encoded with base-64-url digits. Parameters specify
             the subset as an offset in the input array, and the number of elements in the array to convert.
@@ -159,13 +159,13 @@
             <exception cref="T:System.ArgumentNullException">'inArray' is null.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">offset or length is negative OR offset plus length is greater than the length of inArray.</exception>
         </member>
-        <member name="M:Trinsic.Base64UrlEncoder.DecodeBytes(System.String)">
+        <member name="M:Trinsic.Base64Url.DecodeBytes(System.String)">
             <summary>
              Converts the specified string, which encodes binary data as base-64-url digits, to an equivalent 8-bit unsigned integer array.</summary>
             <param name="str">base64Url encoded string.</param>
             <returns>UTF8 bytes.</returns>
         </member>
-        <member name="M:Trinsic.Base64UrlEncoder.Decode(System.String)">
+        <member name="M:Trinsic.Base64Url.Decode(System.String)">
             <summary>
             Decodes the string from Base64UrlEncoded to UTF8.
             </summary>

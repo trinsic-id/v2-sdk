@@ -111,14 +111,18 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    
+    [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:checkCredentialStatus
     ```
+    <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    
+    [Issue From Template](../../../python/samples/templates_demo.py) inside_block:checkCredentialStatus
     ```
+    <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
@@ -148,14 +152,18 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
     
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    
+    [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:updateCredentialStatus
     ```
+    <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    
+    [Issue From Template](../../../python/samples/templates_demo.py) inside_block:updateCredentialStatus
     ```
+    <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
@@ -301,16 +309,18 @@ To send a document to another user, they must have created a wallet and [associa
     ```
 
 === "C#"
-
+    <!--codeinclude-->
     ```csharp
-    await credentialService.Send(document, "admin@example.com");
+    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:sendCredential
     ```
+    <!--/codeinclude-->
 
 === "Python"
-
+    <!--codeinclude-->
     ```python
-    await credential_service.send(document, "admin@example.com");
+    [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:sendCredential
     ```
+    <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->

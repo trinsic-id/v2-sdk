@@ -78,10 +78,15 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
             )
 
     async def test_protect_unprotect_account(self):
+        # accountServiceConstructor() {
         account_service = AccountService(server_config=trinsic_config())
+        # }
+        # accountServiceSignIn() {
         my_profile = await account_service.sign_in()
+        # }
         await self.print_get_info(account_service, my_profile)
 
+        # protectUnprotectProfile() {
         code = b"1234"
         my_protected_profile = account_service.protect(
             profile=my_profile, security_code=code
@@ -92,13 +97,15 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         my_unprotected_profile = account_service.unprotect(
             profile=my_protected_profile, security_code=code
         )
-        # This hangs for unknown reasons.
+        # }
         await self.print_get_info(account_service, my_unprotected_profile)
 
     @staticmethod
     async def print_get_info(account_service: AccountService, my_profile):
         account_service.service_options.auth_token = my_profile
+        # accountServiceGetInfo() {
         info = await account_service.get_info()
+        # }
         assert info is not None
         print(f"profile={info}")
 

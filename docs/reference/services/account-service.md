@@ -13,12 +13,15 @@ will find how to instantiate the Account Service with default settings, by simpl
     const accountService = new AccountService();
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var accountService = new AccountService();
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceConstructor
     ```
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    account_service = AccountService()
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
     ```
 === "Go"
     <!--codeinclude-->
@@ -60,8 +63,6 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
 
 
 
-
-
 === "Trinsic CLI"
     ```bash
     trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
@@ -71,13 +72,17 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
     const allison = (await accountService.signIn()).getProfile();
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var allison = await accountService.SignInAsync();
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceSignIn
     ```
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    allison = await account_service.sign_in()
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
     ```
+    <!--/codeinclude-->
 === "Go"
     <!--codeinclude-->
     ```golang
@@ -118,13 +123,17 @@ Calling this procedure, is as trivial as evidenced below. Keep it mind, however,
     const info = await accountService.info();
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var info = await accountService.GetInfoAsync();
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceGetInfo
     ```
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    info = await account_service.get_info()
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceGetInfo
     ```
+    <!--/codeinclude-->
 === "Go"
     <!--codeinclude-->
     ```golang
@@ -151,13 +160,17 @@ provide are evidenced in the code snippets below:
     const protectedProfile = await accountService.protect(accountProfile, "1234");
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var protectedProfile = accountService.Protect(accountProfile, "1234");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    protected_profile = account_service.protect(account_profile, "1234".encode('utf-8'))
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Go"
     <!--codeinclude-->
     ```golang
@@ -185,13 +198,17 @@ email or SMS as the `securityCode` argument.
     const accountProfile = await accountService.unprotect(protectedProfile, "1234");
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    var accountProfile = accountService.Unprotect(protectedProfile, "1234");
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Python"
+    <!--codeinclude-->
     ```python
-    account_profile = account_service.unprotect(protected_profile, "1234".encode('utf-8'))
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:protectUnprotectProfile
     ```
+    <!--/codeinclude-->
 === "Go"
     <!--codeinclude-->
     ```golang

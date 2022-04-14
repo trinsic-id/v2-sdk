@@ -1,25 +1,20 @@
-using System.Diagnostics.CodeAnalysis;
-using Trinsic.Services.Provider.V1;
-using Trinsic.Services.TrustRegistry.V1;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using FluentAssertions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Trinsic;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.Provider.V1;
+using Trinsic.Services.TrustRegistry.V1;
+using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Xunit;
 using Xunit.Abstractions;
-using Trinsic;
-using FluentAssertions;
-using Google.Protobuf;
-using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.UniversalWallet.V1;
-using Trinsic.Services.VerifiableCredentials.Templates.V1;
-using Trinsic.Services.VerifiableCredentials.V1;
-using FieldType = Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 #pragma warning disable CS0618
@@ -30,9 +25,9 @@ namespace Tests;
 public class Tests
 {
 #if DEBUG
-    const string DefaultEndpoint = "localhost";
-    const int DefaultPort = 5000;
-    const bool DefaultUseTls = false;
+    private const string DefaultEndpoint = "localhost";
+    private const int DefaultPort = 5000;
+    private const bool DefaultUseTls = false;
 #else
     private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     private const int DefaultPort = 443;
@@ -104,6 +99,12 @@ public class Tests
         // Create auth token from existing data
         allison = File.ReadAllText("allison.txt");
         // }
+
+        try {
+            // sendCredential() {
+            await credentialsService.SendAsync(new() {Email = "example@trinsic.id"});
+            // }
+        } catch { } // We expect this to fail
 
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
@@ -235,21 +236,26 @@ public class Tests
     [Fact]
     public async Task TestProtectUnprotectProfile() {
         // testSignInAndGetInfo() {
+        // accountServiceConstructor() {
         var myAccountService = new AccountService(_options);
-
+        // }
+        // accountServiceSignIn() {
         var myProfile = await myAccountService.SignInAsync(new());
+        // }
         myAccountService.Options.AuthToken = myProfile;
+        // accountServiceGetInfo() {
         var output = await myAccountService.GetInfoAsync();
+        // }
         Assert.NotNull(output);
         // }
 
+        // protectUnprotectProfile() {
         var securityCode = "1234";
         var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
-
+        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
+        // }
         myAccountService.Options.AuthToken = myProtectedProfile;
         await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
-
-        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
         myAccountService.Options.AuthToken = myUnprotectedProfile;
         Assert.NotNull(await myAccountService.GetInfoAsync());
         Assert.NotNull(myAccountService.GetInfo());
@@ -286,7 +292,7 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new () {
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new() {
             GovernanceFramework = new() {
                 Description = "invalid uri",
                 GovernanceFrameworkUri = ""
@@ -374,11 +380,24 @@ public class Tests
         var valid2 = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
         valid2.IsValid.Should().BeTrue();
+
+        try {
+            // checkCredentialStatus() {
+            var checkResponse = await credentialService.CheckStatusAsync(new() {CredentialStatusId = ""});
+            // }
+        } catch { } // We expect this to fail
+
+        try {
+            // updateCredentialStatus() {
+            await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
+            // }
+        } catch { } // We expect this to fail
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]
     public void DecodeBase64UrlString() {
-        const string encoded = "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
+        const string encoded =
+            "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
 
         var actual = Base64Url.Decode(encoded);
 
