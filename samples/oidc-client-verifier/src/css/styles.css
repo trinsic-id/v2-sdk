@@ -12,7 +12,14 @@
   display: inline-block;
 }
 
+#header-text {
+  text-align: center;
+}
 
-.citizen-info-container {
+#vc-info-container.hide {
   display: none;
+} 
+
+#vc-info-container h4 {
+  text-align: center;
 }
