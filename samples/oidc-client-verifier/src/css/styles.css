@@ -1,0 +1,18 @@
+.page-header {
+    text-align: center;
+  }
+  
+.trinsic-logo {
+  width: 1em;
+  height: 1em;
+  color: #00f;
+  background-color: #00f;
+  border-radius: 100%;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+
+.citizen-info-container {
+  display: none;
+}

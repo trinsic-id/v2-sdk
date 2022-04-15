@@ -1,0 +1,18 @@
+{
+  "name": "trinsic-oidc-client-verifier",
+  "version": "1.0.0",
+  "description": "Trinsic Clientside Verifier Sample using OIDC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel './src/*.html'"
+  },
+  "author": "Trinsic",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.4.1"
+  },
+  "dependencies": {
+    "oidc-client-ts": "^2.0.3"
+  }
+}
