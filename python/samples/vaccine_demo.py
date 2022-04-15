@@ -8,7 +8,7 @@ from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchR
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
-    VerifyProofRequest,
+    VerifyProofRequest, SendRequest,
 )
 from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
@@ -87,11 +87,12 @@ async def vaccine_demo():
     credential = issue_response.signed_document_json
     print(f"Credential: {credential}")
 
-    # checkCredentialStatus() {
-    # status_id = credential['id']
-    # credential_status = await credentials_service.check_status(credential_status_id=status_id)
-    # print(f"Credential_status: {credential_status}")
-    # }
+    try:
+        # sendCredential() {
+        send_response = await credentials_service.send(request=SendRequest(document_json=credential, email="example@trinsic.id"))
+        # }
+    except:
+        pass
 
     # storeCredential() {
     # Alice stores the credential in her cloud wallet.
