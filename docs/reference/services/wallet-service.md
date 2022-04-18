@@ -5,17 +5,24 @@ The wallet service is the main interface for interacting with a cloud wallet. Th
 
 ## Create Wallet
 
-Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin.
+Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:
 
+- [Account Sign In](./account-service.md#sign-in)
 
 ## Insert Item
 
-This method allows inserting any JSON data in the wallet.
+Trinsic supports the ability to insert verifiable credentials in a wallet simply using JSON data. The method below illustrate how that can be achieved.
 
 === "Trinsic CLI"
     ```bash
     trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
+
+When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
+
+{{ include_section('reference/proto/', 'InsertItemRequest') }}
+
+Then you can supply it to the SDKs:
 
 === "TypeScript"
     <!--codeinclude-->
@@ -52,14 +59,9 @@ This method allows inserting any JSON data in the wallet.
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
 
-The output of this method will be a unique `itemId` that can be used as input where required.
+{{ include_section('reference/proto/', 'InsertItemResponse') }}
 
 ## Search / Query
 
