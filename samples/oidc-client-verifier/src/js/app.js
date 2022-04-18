@@ -1,10 +1,11 @@
 ﻿import {OidcClient} from "oidc-client-ts";
 
-//Ecosystem to fetch credentials from
+//Trinsic Ecosystem we are operating within
 const TRINSIC_ECOSYSTEM = "GeraldsGyms";
 
-//Schema URL(s) of credentials we would like to retrieve from the user
+//Schema URL(s) of credentials we would like to retrieve from the user.
 const TRINSIC_SCHEMAS = ["https://dev-schema.trinsic.cloud/GeraldsGyms/gym-membership"];
+
 
 let config = {
     authority: "https://localhost:7266/", //TODO: replace with live OIDC endpoint
@@ -23,5 +24,4 @@ let config = {
 };
 
 let client = new OidcClient(config);
-
 export {client};
