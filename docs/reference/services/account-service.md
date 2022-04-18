@@ -55,7 +55,7 @@ The exact structure of such object will depend on the language you are working w
 
 ### Sign In
 
-Create login credentials by signing into an existing account or creating a new one. As part of the this procedure, you must provide a 
+Create login credentials by signing into an existing account or creating a new one. As part of this procedure, you must provide a 
 [Sign In Request](../proto/index.md#signinrequest) object that contains account details information such as name (alias) of the account, email, 
 and an SMS phone number. You may also provide an invitation code and ecosystem ID if you have them. 
 
