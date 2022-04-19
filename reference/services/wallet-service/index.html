@@ -1426,15 +1426,50 @@
 <h1 id="wallet-service">Wallet Service<a class="headerlink" href="#wallet-service" title="Permanent link">&para;</a></h1>
 <p>The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the <a href="https://w3c-ccg.github.io/universal-wallet-interop-spec/" target="_blank">Universal Wallet 2020 <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> specification by W3C Community Credentials Group. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.</p>
 <h2 id="create-wallet">Create Wallet<a class="headerlink" href="#create-wallet" title="Permanent link">&para;</a></h2>
-<p>Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin.</p>
+<p>Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:</p>
+<ul>
+<li><a href="../account-service/#sign-in">Account Sign In</a></li>
+</ul>
 <h2 id="insert-item">Insert Item<a class="headerlink" href="#insert-item" title="Permanent link">&para;</a></h2>
-<p>This method allows inserting any JSON data in the wallet.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
+<p>Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic wallet insert-item --item &lt;INPUT_JSON_FILE&gt;
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using an SDK to perform this operation, you will need to supply an <a href="../proto/#insertitemrequest">Insert Item Request</a> object that follows the structure below:</p>
+<p>Insert item request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>the document to insert as stringified json</td>
+</tr>
+<tr>
+<td>item_type</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>optional item type ex. &#34;VerifiableCredential&#34;</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.universalwallet.v1.InsertItemResponse"></a></p>
+<p>Then you can supply it to the SDKs:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">insertItemResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="ow">new</span> <span class="nx">InsertItemRequest</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">setItemJson</span><span class="p">(</span><span class="nx">issueResponse</span><span class="p">.</span><span class="nx">getSignedDocumentJson</span><span class="p">()));</span>
@@ -1458,10 +1493,35 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">insertItemResponse</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 </div>
 </div>
-<p>The output of this method will be a unique <code>itemId</code> that can be used as input where required.</p>
+<p>The output of this method will be a unique <code>itemId</code> that can be used as input where required. The response model looks like this:</p>
+<p>Insert item response</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#services.common.v1.ResponseStatus">services.common.v1.ResponseStatus</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>The item identifier of the inserted record</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.universalwallet.v1.SearchRequest"></a></p>
 <h2 id="search-query">Search / Query<a class="headerlink" href="#search-query" title="Permanent link">&para;</a></h2>
 <p>Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
 This apporach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.</p>
@@ -1470,7 +1530,7 @@ This apporach allows us to give developers full control over how data is retriev
 </blockquote>
 <h3 id="basic-search">Basic Search<a class="headerlink" href="#basic-search" title="Permanent link">&para;</a></h3>
 <p>The default query used in the commands below returns a full wallet result set. The query is <code>SELECT * FROM c</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic wallet search
@@ -1525,7 +1585,7 @@ This apporach allows us to give developers full control over how data is retriev
 </div>
 <h3 id="sql-search">SQL Search<a class="headerlink" href="#sql-search" title="Permanent link">&para;</a></h3>
 <p>To pass custom query to the search function, use the query parameter or the available overload.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label><label for="__tabbed_4_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic wallet search <span class="se">\</span>
