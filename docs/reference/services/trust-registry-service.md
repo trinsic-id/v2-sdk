@@ -11,8 +11,8 @@ A trust registry is a list of authorized issuers and verifiers in the ecosystem 
 <diagram/>
 
 ## Specification
-The Trust over IP Foundation has a specification for a interoperable trust registry. 
-This defined an API interface so that trust registries can be queried in the same way. 
+The Trust over IP Foundation has a specification for an interoperable trust registry. 
+This defines an API interface so that trust registries can be queried in the same way.
 Our implementation is based off of this [trust registry spec](https://github.com/trustoverip/tswg-trust-registry-tf).
 
 ## API Reference

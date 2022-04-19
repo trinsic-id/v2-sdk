@@ -92,6 +92,7 @@ public class Tests
         var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
+        // }
 
         // storeAndRecallProfile {
         // Serialize auth token by exporting it to file
@@ -108,12 +109,14 @@ public class Tests
 
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
+        
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
+        // }
         // searchWallet() {
         var walletItems = await walletService.SearchAsync(new());
         // }
