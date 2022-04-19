@@ -28,7 +28,7 @@ async function vaccineDemo() {
     // }
 
     accountService.options.setAuthToken(clinic);
-    const info = await accountService.info(new InfoRequest());
+    const info = await accountService.info();
     console.log(`Account info=${info}`);
 
     // createService() {

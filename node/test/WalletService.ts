@@ -21,12 +21,15 @@ import {getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSO
 require("dotenv").config();
 
 const options = getTestServerOptions();
+const allison = getTestServerOptions();
+const clinic = getTestServerOptions();
+const airline = getTestServerOptions();
 
 test.before(async t => {
-    let service = new AccountService(options);
-    let authToken = await service.signIn(new SignInRequest());
-
-    options.setAuthToken(authToken);
+    let service = new AccountService(allison);
+    allison.setAuthToken(await service.signIn(new SignInRequest()));
+    clinic.setAuthToken(await service.signIn(new SignInRequest()));
+    airline.setAuthToken(await service.signIn(new SignInRequest()));
 });
 
 test("get account info", async (t) => {
@@ -46,8 +49,8 @@ test("create new account", async (t) => {
 });
 
 test("Demo: create wallet, set profile, search records, issue credential", async (t) => {
-    let credentialService = new CredentialService(options);
-    let walletService = new WalletService(options);
+    let credentialService = new CredentialService(clinic);
+    let walletService = new WalletService(allison);
 
     let issueResponse = await credentialService.issueCredential(new IssueRequest()
         .setDocumentJson(JSON.stringify(getVaccineCertUnsignedJSON())));
@@ -59,6 +62,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
 
     t.not(insertItemResponse, null);
     t.not(insertItemResponse.getItemId(), "");
+    console.log("Item id=", insertItemResponse.getItemId())
 
     // Delay half a second for race condition fixes?
     await new Promise(res => setTimeout(res, 1000));
@@ -66,18 +70,18 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     // searchWalletBasic() {
     let items = await walletService.search();
     // }
-    t.not(items, null);
-    t.not(items.getItemsList().length,0);
     // searchWalletSQL() {
     let items2 = await walletService.search(new SearchRequest().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"));
     // }
 
+    credentialService.options = allison;
     // createProof() {
     let proof = await credentialService.createProof(new CreateProofRequest()
         .setItemId(insertItemResponse.getItemId())
-        .setRevealDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
+        .setDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
     // }
 
+    credentialService.options = airline;
     // verifyProof() {
     let verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
         .setProofDocumentJson(proof.getProofDocumentJson()));
