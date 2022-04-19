@@ -1627,6 +1627,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">IssueCredentialAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">});</span><span class="w"></span>
 <span class="w">        </span><span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Credential:\n{credential.SignedDocumentJson}&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="w">        </span><span class="c1">// }</span>
+<span class="w">        </span><span class="c1">// }</span>
 
 <span class="w">        </span><span class="c1">// storeAndRecallProfile {</span>
 <span class="w">        </span><span class="c1">// Serialize auth token by exporting it to file</span>
@@ -1643,12 +1644,14 @@ trinsic provider invite --person --method-email alice@faber.edu
 
 <span class="w">        </span><span class="c1">// STORE CREDENTIAL</span>
 <span class="w">        </span><span class="c1">// Allison stores the credential in her cloud wallet.</span>
+
 <span class="w">        </span><span class="c1">// storeCredential() {</span>
 <span class="w">        </span><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span>
 <span class="w">        </span><span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
 
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ItemJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credential</span><span class="p">.</span><span class="n">SignedDocumentJson</span><span class="p">});</span><span class="w"></span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">itemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="p">.</span><span class="n">ItemId</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// }</span>
 <span class="w">        </span><span class="c1">// searchWallet() {</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 <span class="w">        </span><span class="c1">// }</span>
