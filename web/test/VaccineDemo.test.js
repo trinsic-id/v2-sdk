@@ -60,7 +60,7 @@ async function vaccineDemo() {
     const proofRequestFrame = require(vaccineCertFramePath);
     const proofResponse = await credentialService.createProof(new CreateProofRequest()
         .setItemId(insertResponse.getItemId())
-        .setDocumentJson(JSON.stringify(proofRequestFrame)));
+        .setRevealDocumentJson(JSON.stringify(proofRequestFrame)));
     // }
     console.log(`Proof=${proofResponse.getProofDocumentJson()}`);
 

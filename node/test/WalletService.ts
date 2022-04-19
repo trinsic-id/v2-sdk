@@ -26,21 +26,21 @@ const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 
 test.before(async t => {
-    let service = new AccountService(allison);
+    let service = new AccountService(options);
     allison.setAuthToken(await service.signIn(new SignInRequest()));
     clinic.setAuthToken(await service.signIn(new SignInRequest()));
     airline.setAuthToken(await service.signIn(new SignInRequest()));
 });
 
 test("get account info", async (t) => {
-    let service = new AccountService(options);
+    let service = new AccountService(clinic);
     let info = await service.info();
 
     t.not(info, null);
 });
 
 test("create new account", async (t) => {
-    let service = new AccountService(options);
+    let service = new AccountService(clinic);
     let response = await service.signIn(new SignInRequest());
 
     t.not(response, null);
@@ -78,7 +78,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     // createProof() {
     let proof = await credentialService.createProof(new CreateProofRequest()
         .setItemId(insertItemResponse.getItemId())
-        .setDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
+        .setRevealDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
     // }
 
     credentialService.options = airline;
