@@ -92,6 +92,7 @@ public class Tests
         var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
+        // }
 
         // storeAndRecallProfile {
         // Serialize auth token by exporting it to file
