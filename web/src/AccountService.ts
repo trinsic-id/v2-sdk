@@ -60,18 +60,49 @@ export class AccountService extends ServiceBase {
         });
     }
 
-    public async protect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
+    /**
+     * protect the given profile
+     * @param profile The profile to protect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async protect(profile: string | AccountProfile, securityCode: string | Uint8Array): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = profile.clone();
         const request = new BlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
         const result = await Oberon.blindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+        cloned = cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+        return Buffer.from(cloned.serializeBinary()).toString('base64url');
     }
 
-    public async unprotect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
+    /**
+     * unprotect the given profile
+     * @param profile The profile to unprotect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async unprotect(profile: string | AccountProfile, securityCode: string | Uint8Array): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = profile.clone();
         const request = new UnBlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
         const result = await Oberon.unblindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+        cloned = cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+        return Buffer.from(cloned.serializeBinary()).toString('base64url');
+    }
+
+    private static convertToProfile(profile: string | AccountProfile): AccountProfile {
+        if (typeof profile == 'string') {
+            return AccountProfile.deserializeBinary(Buffer.from(profile, 'base64url'));
+        }
+        return profile;
+    }
+
+    private static convertToUtf8(securityCode: string | Uint8Array): Uint8Array {
+        if (typeof securityCode == 'string') {
+            return new TextEncoder().encode(securityCode);
+        } else {
+            return securityCode;
+        }
     }
 
     public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
