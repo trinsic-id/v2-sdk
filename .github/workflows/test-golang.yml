@@ -31,7 +31,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2.14.0
         with:
           workflow: "build-libs.yml"
-          path: ./libs/C_header
+          path: ./samples/go
           repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: C_header
