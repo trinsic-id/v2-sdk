@@ -29,7 +29,7 @@ export default abstract class ServiceBase {
       throw new Error("auth token must be set");
     }
 
-    var profile = AccountProfile.deserializeBinary(Buffer.from(this.options.getAuthToken(), 'base64url'));
+    const profile = AccountProfile.deserializeBinary(Buffer.from(this.options.getAuthToken(), 'base64url'));
 
     if (profile.getProtection()?.getEnabled()) {
       throw new Error("profile is protected; you must use security code to remove the protection first");

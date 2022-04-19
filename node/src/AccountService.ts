@@ -14,7 +14,7 @@ import {
     RevokeDeviceResponse,
     ResponseStatus,
 } from "./proto";
-import { BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest } from "@trinsic/okapi";
+import {BlindOberonTokenRequest, Oberon, UnBlindOberonTokenRequest} from "@trinsic/okapi";
 
 export class AccountService extends ServiceBase {
     client: AccountClient;
@@ -33,9 +33,9 @@ export class AccountService extends ServiceBase {
                 if (error || response.getStatus() != ResponseStatus.SUCCESS) {
                     reject(error);
                 } else {
-                    var authToken = Buffer
+                    const authToken = Buffer
                         .from(response.getProfile()!.serializeBinary())
-                        .toString('base64');
+                        .toString('base64url');
 
                     // set the auth token as active for the current service instance
                     this.options.setAuthToken(authToken);
@@ -50,28 +50,64 @@ export class AccountService extends ServiceBase {
         const request = new InfoRequest();
 
         return new Promise(async (resolve, reject) => {
-            this.client.info(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(response);
-                }
-            });
+            try {
+                let metadata = await this.getMetadata(request)
+                this.client.info(request, metadata, (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
+                    }
+                });
+            } catch (e) {
+                reject(e);
+            }
         });
     }
 
-    public async protect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
+    /**
+     * protect the given profile
+     * @param profile The profile to protect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async protect(profile: string | AccountProfile, securityCode: string | Uint8Array): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = profile.clone();
         const request = new BlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
         const result = await Oberon.blindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+        cloned = cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(true).setMethod(ConfirmationMethod.OTHER));
+        return Buffer.from(cloned.serializeBinary()).toString('base64url');
     }
 
-    public async unprotect(profile: AccountProfile, securityCode: string): Promise<AccountProfile> {
-        const cloned = profile.clone();
+    /**
+     * unprotect the given profile
+     * @param profile The profile to unprotect with oberon blinding
+     * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
+     */
+    public static async unprotect(profile: string | AccountProfile, securityCode: string | Uint8Array): Promise<string> {
+        securityCode = AccountService.convertToUtf8(securityCode);
+        profile = AccountService.convertToProfile(profile);
+        let cloned = profile.clone();
         const request = new UnBlindOberonTokenRequest().setToken(cloned.getAuthToken()).setBlindingList([securityCode]);
         const result = await Oberon.unblindToken(request);
-        return cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+        cloned = cloned.setAuthToken(result.getToken()).setProtection(new TokenProtection().setEnabled(false).setMethod(ConfirmationMethod.NONE));
+        return Buffer.from(cloned.serializeBinary()).toString('base64url');
+    }
+
+    private static convertToProfile(profile: string | AccountProfile): AccountProfile {
+        if (typeof profile == 'string') {
+            return AccountProfile.deserializeBinary(Buffer.from(profile, 'base64url'));
+        }
+        return profile;
+    }
+
+    private static convertToUtf8(securityCode: string | Uint8Array): Uint8Array {
+        if (typeof securityCode == 'string') {
+            return new TextEncoder().encode(securityCode);
+        } else {
+            return securityCode;
+        }
     }
 
     public listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
