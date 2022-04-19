@@ -11,7 +11,7 @@ Wallets can be created directly by the user or through an invitation by the ecos
 
 ## Insert Item
 
-Trinsic supports the ability to insert verifiable credentials in a wallet simply using JSON data. The method below illustrate how that can be achieved.
+Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.
 
 === "Trinsic CLI"
     ```bash
