@@ -8,7 +8,7 @@ import os
 import sys
 from platform import system
 import urllib.request
-from os.path import abspath, join, dirname
+from os.path import abspath, relpath, join, dirname
 from typing import List, Dict, Union
 
 
@@ -26,6 +26,16 @@ def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
 def plugin_path() -> str:
     return abspath(join(dirname(__file__), 'protoc-plugins'))
 
+
+def md_template_path() -> str:
+    """
+    Returns the relative path (from the current working directory) to the markdown template file
+
+    We're forced to return the relative -- instead of absolute -- path, because 
+    passing in an absolute path on Windows causes `protoc-gen-markdown` to explode.
+    """
+
+    return relpath(abspath(join(dirname(__file__), 'resources/markdown.tmpl')))
 
 def java_plugin() -> str:
     return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
@@ -152,7 +162,9 @@ def update_java():
 def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
-    run_protoc({'doc_out': lang_proto_path}, {'doc_opt': 'markdown,index.md'}, get_proto_files())
+    template_path = md_template_path()
+    
+    run_protoc({'doc_out': lang_proto_path}, {'doc_opt': f"{template_path},index.md"}, get_proto_files())
 
 
 def update_python():
