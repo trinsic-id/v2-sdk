@@ -49,7 +49,7 @@ will find how to instantiate the Account Service with default settings, by simpl
 The constructor also accepts an `options` object as an argument. It follows the same structure of [ServiceOptions](../proto/index.md#serviceoptions), with the following
 properties:
 
-{{ include_section('reference/proto/', 'ServiceOptions') }}
+{{ proto_obj('ServiceOptions') }}
 
 The exact structure of such object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. 
 
@@ -61,11 +61,11 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 
 The sign in request should look like this:
 
-{{ include_section('reference/proto/', 'SignInRequest') }}
+{{ proto_obj('SignInRequest') }}
 
 And the [Account Details](../proto/#signinrequest) object should look like this:
 
-{{ include_section('reference/proto/', 'AccountDetails') }}
+{{ proto_obj('AccountDetails') }}
 
 
 
@@ -115,14 +115,14 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
 This operation produces a response that has the structure of a [Sign In Response](../proto/#signinresponse), indicating whether or not a confirmation code
 was sent to one of the users two-factor methods like email, SMS, etc. (as defined by the Sign In Request).
 
-{{ include_section('reference/proto/', 'SignInResponse') }}
+{{ proto_obj('SignInResponse') }}
 
 ### Get Account Info
 This will returns the account info of the current active profile in the SDK or CLI. This can only be called on a profile that has been 
 [unprotected](./account-service.md/#unprotect-account-profile) by providing a code that was sent through email or SMS when the account was 
 signed in. Its response is a [Info Response](../proto/index.md#inforesponse) object and has the following properties:
 
-{{ include_section('reference/proto/', 'InfoResponse') }}
+{{ proto_obj('InfoResponse') }}
 
 Calling this procedure, is as trivial as evidenced below. Keep it mind, however, that it assumes you have the correct profile active.
 
