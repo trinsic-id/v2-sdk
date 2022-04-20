@@ -1419,6 +1419,10 @@ will find how to instantiate the Account Service with default settings, by simpl
 </div>
 <p>The constructor also accepts an <code>options</code> object as an argument. It follows the same structure of <a href="../../proto/#serviceoptions">ServiceOptions</a>, with the following
 properties:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#serviceoptions">ServiceOptions</a></p>
+</div>
+<div class="proto-obj-contents">
 <p>service options</p>
 <table>
 <thead>
@@ -1464,13 +1468,18 @@ properties:</p>
 </table>
 <p><a name="services/account/v1/account.proto"></a></p>
 <p align="right"><a href="#top">Top</a></p>
-
+</div>
+</div>
 <p>The exact structure of such object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. </p>
 <h3 id="sign-in">Sign In<a class="headerlink" href="#sign-in" title="Permanent link">&para;</a></h3>
 <p>Create login credentials by signing into an existing account or creating a new one. As part of this procedure, you must provide a 
 <a href="../../proto/#signinrequest">Sign In Request</a> object that contains account details information such as name (alias) of the account, email, 
 and an SMS phone number. You may also provide an invitation code and ecosystem ID if you have them. </p>
 <p>The sign in request should look like this:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#signinrequest">SignInRequest</a></p>
+</div>
+<div class="proto-obj-contents">
 <p>Request for creating new account</p>
 <table>
 <thead>
@@ -1503,7 +1512,13 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 </tbody>
 </table>
 <p><a name="services.account.v1.SignInResponse"></a></p>
+</div>
+</div>
 <p>And the <a href="../proto/#signinrequest">Account Details</a> object should look like this:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#accountdetails">AccountDetails</a></p>
+</div>
+<div class="proto-obj-contents">
 <p>Account Registration Details</p>
 <table>
 <thead>
@@ -1536,6 +1551,8 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 </tbody>
 </table>
 <p><a name="services.account.v1.AccountEcosystem"></a></p>
+</div>
+</div>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1573,6 +1590,10 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 </div>
 <p>This operation produces a response that has the structure of a <a href="../proto/#signinresponse">Sign In Response</a>, indicating whether or not a confirmation code
 was sent to one of the users two-factor methods like email, SMS, etc. (as defined by the Sign In Request).</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#signinresponse">SignInResponse</a></p>
+</div>
+<div class="proto-obj-contents">
 <p>Response for creating new account
 This object will indicate if a confirmation code
 was sent to one of the users two-factor methods
@@ -1608,10 +1629,16 @@ like email, SMS, etc.</p>
 </tbody>
 </table>
 <p><a name="services.account.v1.TokenProtection"></a></p>
+</div>
+</div>
 <h3 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h3>
 <p>This will returns the account info of the current active profile in the SDK or CLI. This can only be called on a profile that has been 
 <a href="./account-service.md/#unprotect-account-profile">unprotected</a> by providing a code that was sent through email or SMS when the account was 
 signed in. Its response is a <a href="../../proto/#inforesponse">Info Response</a> object and has the following properties:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#inforesponse">InfoResponse</a></p>
+</div>
+<div class="proto-obj-contents">
 <table>
 <thead>
 <tr>
@@ -1637,6 +1664,8 @@ signed in. Its response is a <a href="../../proto/#inforesponse">Info Response</
 </tbody>
 </table>
 <p><a name="services.account.v1.ListDevicesRequest"></a></p>
+</div>
+</div>
 <p>Calling this procedure, is as trivial as evidenced below. Keep it mind, however, that it assumes you have the correct profile active.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
 <div class="tabbed-content">
