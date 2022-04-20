@@ -1,6 +1,30 @@
+body {
+  background-color: #bdc3c7;
+}
+
+.main {
+  margin-left: auto;
+  margin-right: auto;
+  
+  width: 50rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  background-color: #ecf0f1;
+  padding: 1rem 2rem;
+
+  width: 40rem;
+  border-radius: 1rem;
+}
+
 .page-header {
-    text-align: center;
-  }
+  text-align: center;
+  border-bottom: none;
+}
   
 .trinsic-logo {
   width: 1em;
@@ -10,6 +34,8 @@
   border-radius: 100%;
   margin-right: 10px;
   display: inline-block;
+
+  display: none !important;
 }
 
 #header-text {
