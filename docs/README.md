@@ -21,6 +21,34 @@ The docs are easy to edit. Find the `nav` tag in [./mkdocs.yml](.mkdocs.yml) fil
 
 Write markdown in the `docs` folder. You can use normal markdown, html, or any of our theme's features - [Reference](https://squidfunk.github.io/mkdocs-material-insiders/reference/abbreviations/)
 
+### Trinsic-specific Macros
+
+To make editing docs easier to work on (and more powerful), we make use of a few macros that we've developed -- the source for these lives in the `mkdocs_macros_main.py` file in the root of this repository.
+
+#### `include_section`
+
+This macro includes a section from another markdown file.
+
+Usage: `{{ include_section(file_name: str, section_name: str, include_heading: bool=False) }}`
+
+- `file_name` is the path, _relative to the docs root_, of the markdown file you wish to include a section from
+- `section_name` is the name of the section you wish to include
+- `include_heading` controls whether or not to include the heading itself
+
+#### `proto_obj`
+
+This macro allows you to inject the documentation for any protobuf message or service that is documented in `reference/proto/index.md`.
+
+Usage: `{{ proto_obj(obj: str, header_text: str=None) }}`
+
+- `obj` is the name of the protobuf message or service
+    - For example, `ServiceOptions`
+- `header_text`, if specified, overrides the text of the header with whatever you specify
+    - If unspecified, the name of the message is used (same as the value of `obj`)
+
+
+Example: `{{ proto_obj('SignInRequest') }}`
+
 ### Build and deploy
 
 When finished editing, just make a PR.
