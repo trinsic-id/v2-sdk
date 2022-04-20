@@ -1034,16 +1034,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sdk-calls" class="md-nav__link">
-    <span class="md-ellipsis">
-      SDK Calls
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SDK Calls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#issue-credential" class="md-nav__link">
     <span class="md-ellipsis">
       Issue Credential
@@ -1051,8 +1041,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#issue-credential-from-template" class="md-nav__link">
     <span class="md-ellipsis">
       Issue Credential from Template
@@ -1060,8 +1050,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#check-revocation-status" class="md-nav__link">
     <span class="md-ellipsis">
       Check Revocation Status
@@ -1069,8 +1059,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#update-revocation-status" class="md-nav__link">
     <span class="md-ellipsis">
       Update Revocation Status
@@ -1078,8 +1068,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#create-proof" class="md-nav__link">
     <span class="md-ellipsis">
       Create Proof
@@ -1087,8 +1077,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verify-proof" class="md-nav__link">
     <span class="md-ellipsis">
       Verify Proof
@@ -1096,11 +1086,21 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#exchange-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       Exchange Credentials
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exchange Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sending-documents-using-email-as-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending documents using Email as identifier
     </span>
   </a>
   
@@ -1345,16 +1345,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sdk-calls" class="md-nav__link">
-    <span class="md-ellipsis">
-      SDK Calls
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SDK Calls">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#issue-credential" class="md-nav__link">
     <span class="md-ellipsis">
       Issue Credential
@@ -1362,8 +1352,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#issue-credential-from-template" class="md-nav__link">
     <span class="md-ellipsis">
       Issue Credential from Template
@@ -1371,8 +1361,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#check-revocation-status" class="md-nav__link">
     <span class="md-ellipsis">
       Check Revocation Status
@@ -1380,8 +1370,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#update-revocation-status" class="md-nav__link">
     <span class="md-ellipsis">
       Update Revocation Status
@@ -1389,8 +1379,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#create-proof" class="md-nav__link">
     <span class="md-ellipsis">
       Create Proof
@@ -1398,8 +1388,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verify-proof" class="md-nav__link">
     <span class="md-ellipsis">
       Verify Proof
@@ -1407,11 +1397,21 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#exchange-credentials" class="md-nav__link">
     <span class="md-ellipsis">
       Exchange Credentials
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exchange Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sending-documents-using-email-as-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sending documents using Email as identifier
     </span>
   </a>
   
@@ -1442,18 +1442,50 @@
 
 
 <h1 id="credential-service">Credential Service<a class="headerlink" href="#credential-service" title="Permanent link">&para;</a></h1>
-<h2 id="sdk-calls">SDK Calls<a class="headerlink" href="#sdk-calls" title="Permanent link">&para;</a></h2>
-<h3 id="issue-credential">Issue Credential<a class="headerlink" href="#issue-credential" title="Permanent link">&para;</a></h3>
+<p>The Credentials Service gives you the ability to manage complex workflows related to DIDs (contacts/Connections) and VCs (credential issuance, Revocation, Verification, etc). This is probably the service you will most interact with because VC Issuance and verification are at the core of every SSI use case.</p>
 <p>The Credential service supports signing data using <a href="https://w3c-ccg.github.io/ldp-bbs2020/" target="_blank">BBS+ Signatures <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.</p>
-<blockquote>
-<p>This endpoint requires that the user provide a valid JSON-LD document.</p>
-</blockquote>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
+<h2 id="issue-credential">Issue Credential<a class="headerlink" href="#issue-credential" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/).
+
+**`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic issuer issue --document &lt;INPUT_JSONLD_FILE&gt; --out &lt;OUTPUT_FILE&gt;
+<div class="highlight"><pre><span></span><code>trinsic vc issue --document &lt;JSONLD_FILE&gt; --out &lt;OUTPUT_FILE&gt;
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#issuerequest">Issue Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#issuerequest">IssueRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.IssueResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Sign a credential as the clinic and send it to Allison</span>
 <span class="kd">const</span> <span class="nx">credentialJson</span> <span class="o">=</span> <span class="nx">getVaccineCertUnsignedJSON</span><span class="p">()</span>
@@ -1480,17 +1512,92 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">issueResult</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">issueCredential</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 </div>
 </div>
 <p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the <a href="#insert-record">insert record</a> separately if you'd like to store a copy of this document.</p>
-<h3 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
+<p>The response model is of type <a href="../../proto/#issueresponse">Issue Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#issueresponse">IssueResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signed_document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.SendRequest"></a></p>
+</div>
+</div>
+<h2 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h2>
+<p>Issues a credential from a previously defined template through <a href="../template-service/#create-credential-template">CreateCredential</a> call. The template is specified by passing a JSON document that matches the structure of the template. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;field1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;field2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>Do not confuse this operation with <a href="./#issue-credential">Issue Credential</a> where JSON-LD document is required..</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>trinsic vc issue-from-template <span class="o">[</span>OPTIONS<span class="o">]</span> --template-id &lt;ID&gt;
+
+<span class="c1"># OPTIONS</span>
+<span class="c1"># --out &lt;OUTPUT_FILE&gt;     (Optional) Output file to store the issued credential</span>
+<span class="c1"># --values-data &lt;JSON&gt;    The JSON values of the credential subject</span>
+<span class="c1"># --values-file &lt;FILE&gt;    The file with JSON values of the credential subject</span>
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#issuefromtemplaterequest">Issue From Template Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#issuefromtemplaterequest">IssueFromTemplateRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template_id</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>values_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.IssueFromTemplateResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">IssueFromTemplateRequest</span><span class="p">()</span>
   <span class="p">.</span><span class="nx">setTemplateId</span><span class="p">(</span><span class="nx">templateResponse</span><span class="o">?</span><span class="p">.</span><span class="nx">getData</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="nx">getId</span><span class="p">()</span> <span class="o">??</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -1536,20 +1643,75 @@
 <span class="kd">var</span> <span class="n">issueResponse</span> <span class="o">=</span> <span class="n">credentialService</span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">()).</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 </div>
 </div>
-<h3 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:7"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><input id="__tabbed_3_7" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Go</label><label for="__tabbed_3_6">Java</label><label for="__tabbed_3_7">Ruby</label></div>
+<p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the <a href="#insert-record">insert record</a> separately if you'd like to store a copy of this document.</p>
+<p>The response model is of type <a href="../../proto/#issuefromtemplateresponse">Issue From Template Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#issuefromtemplateresponse">IssueFromTemplateResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.IssueRequest"></a></p>
+</div>
+</div>
+<h2 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h2>
+<p>Get the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>trinsic vc get-status --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#checkstatusrequest">Check Status Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusrequest">CheckStatusRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<p>request object to update the status of the revocation entry</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_status_id</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>the credential status id</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.CheckStatusResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">C#</label><label for="__tabbed_6_2">Python</label><label for="__tabbed_6_3">Go</label><label for="__tabbed_6_4">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
@@ -1568,23 +1730,85 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">checkStatusResponse</span> <span class="o">=</span> <span class="n">credentialService</span><span class="p">.</span><span class="na">checkStatus</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CheckStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
 </div>
+<p>The response model is of type <a href="../../proto/#checkstatusresponse">Check Status Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusresponse">CheckStatusResponse</a></p>
 </div>
-<h3 id="update-revocation-status">Update Revocation Status<a class="headerlink" href="#update-revocation-status" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label><label for="__tabbed_4_7">Ruby</label></div>
+<div class="proto-obj-contents">
+<p>response object for update of status of revocation entry</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>revoked</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>indicates if the status is revoked</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.CreateProofRequest"></a></p>
+</div>
+</div>
+<h2 id="update-revocation-status">Update Revocation Status<a class="headerlink" href="#update-revocation-status" title="Permanent link">&para;</a></h2>
+<p>Update the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="c1"># Revoke a credential</span>
+trinsic vc update-status --revoked --credential-status-id &lt;ID&gt;
+
+<span class="c1"># Unrevoke a credential</span>
+trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#updatestatusrequest">Update Status Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#updatestatusrequest">UpdateStatusRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<p>request object to update the status of the revocation entry</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>credential_status_id</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>the credential status id</td>
+</tr>
+<tr>
+<td>revoked</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>indicates if the status is revoked</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.UpdateStatusResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:4"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label><label for="__tabbed_8_2">Python</label><label for="__tabbed_8_3">Go</label><label for="__tabbed_8_4">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
@@ -1603,25 +1827,92 @@
 <div class="highlight"><pre><span></span><code><span class="n">credentialService</span><span class="p">.</span><span class="na">updateStatus</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">UpdateStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
 </div>
+<p>The response model is of type <a href="../../proto/#updatestatusresponse">Update Status Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#updatestatusresponse">UpdateStatusResponse</a></p>
 </div>
-<h3 id="create-proof">Create Proof<a class="headerlink" href="#create-proof" title="Permanent link">&para;</a></h3>
+<div class="proto-obj-contents">
+<p>response object for update of status of revocation entry</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#services.common.v1.ResponseStatus">services.common.v1.ResponseStatus</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.VerifyProofRequest"></a></p>
+</div>
+</div>
+<h2 id="create-proof">Create Proof<a class="headerlink" href="#create-proof" title="Permanent link">&para;</a></h2>
 <p>Wallets allow data to be shared between parties in a secure manner, using a technique called <a href="/faq/#what-are-zero-knowledge-proofs">Zero Knowledge Proofs</a>. Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.</p>
 <p>The endpoint to create a proof requires two inputs:</p>
 <ul>
 <li>document in the wallet that is signed with the correct signature</li>
 <li>JSONLD frame that describes the data to be disclosed</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:7"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><input id="__tabbed_5_7" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label><label for="__tabbed_5_5">Go</label><label for="__tabbed_5_6">Java</label><label for="__tabbed_5_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc create-proof --document-id &lt;STRING&gt; --out &lt;OUTPUT_FILE&gt; --reveal-document &lt;JSONLD_FRAME_FILE&gt;
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#createproofrequest">Create Proof Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#createproofrequest">CreateProofRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<p>Create Proof</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reveal_document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>The item identifier that contains a record with a verifiable credential to be used for generating the proof.</td>
+</tr>
+<tr>
+<td>document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.CreateProofResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">TypeScript</label><label for="__tabbed_10_2">C#</label><label for="__tabbed_10_3">Python</label><label for="__tabbed_10_4">Go</label><label for="__tabbed_10_5">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">proof</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="ow">new</span> <span class="nx">CreateProofRequest</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">setItemId</span><span class="p">(</span><span class="nx">insertItemResponse</span><span class="p">.</span><span class="nx">getItemId</span><span class="p">())</span>
@@ -1651,17 +1942,75 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">createProofResponse</span> <span class="o">=</span> <span class="n">credentialsService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 </div>
 </div>
-<h3 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h3>
+<p>The response model is of type <a href="../../proto/#createproofresponse">Create Proof Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#createproofresponse">CreateProofResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>proof_document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.IssueFromTemplateRequest"></a></p>
+</div>
+</div>
+<h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
 <p>This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:7"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><input id="__tabbed_6_7" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label><label for="__tabbed_6_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
+<div class="highlight"><pre><span></span><code><span class="c1"># The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse</span>
+trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#verifyproofrequest">Verify Proof Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#verifyproofrequest">VerifyProofRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<p>Verify Proof</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>proof_document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.VerifyProofResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">TypeScript</label><label for="__tabbed_12_2">C#</label><label for="__tabbed_12_3">Python</label><label for="__tabbed_12_4">Go</label><label for="__tabbed_12_5">Java</label><label for="__tabbed_12_6">Ruby</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">verifyResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">verifyProof</span><span class="p">(</span><span class="ow">new</span> <span class="nx">VerifyProofRequest</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">setProofDocumentJson</span><span class="p">(</span><span class="nx">proof</span><span class="p">.</span><span class="nx">getProofDocumentJson</span><span class="p">()));</span>
@@ -1688,7 +2037,39 @@
 <div class="tabbed-block"></div>
 </div>
 </div>
-<h3 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h3>
+<p>The response model is of type <a href="../../proto/#verifyproofresponse">Verify Proof Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#verifyproofresponse">VerifyProofResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is_valid</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>Indicates if the proof is valid</td>
+</tr>
+<tr>
+<td>validation_messages</td>
+<td><a href="#string">string</a></td>
+<td>repeated</td>
+<td>Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.VerifiableCredential"></a></p>
+</div>
+</div>
+<h2 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h2>
 <p>Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.</p>
 <ul>
 <li><a href="https://identity.foundation/didcomm-messaging/spec/" target="_blank">DIDComm Messaging <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
@@ -1698,14 +2079,63 @@
 <blockquote>
 <p>During this beta period, we are only supporting exchanging data between users by using their email addresses. The messages are routed securely to the destination wallet without leaving the secure network of the ecosystem backend. Our goal is to provide basic ability to share data without affecting the user experience. As interoperable exchange methods become available, we will add this functionality in the SDK.</p>
 </blockquote>
-<h4 id="sending-documents-using-email-as-identifier">Sending documents using Email as identifier<a class="headerlink" href="#sending-documents-using-email-as-identifier" title="Permanent link">&para;</a></h4>
+<h3 id="sending-documents-using-email-as-identifier">Sending documents using Email as identifier<a class="headerlink" href="#sending-documents-using-email-as-identifier" title="Permanent link">&para;</a></h3>
 <p>To send a document to another user, they must have created a wallet and <a href="#create-wallet-with-provider-invitation">associated their email address</a> with that wallet.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:8"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><input id="__tabbed_7_6" name="__tabbed_7" type="radio" /><input id="__tabbed_7_7" name="__tabbed_7" type="radio" /><input id="__tabbed_7_8" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Go</label><label for="__tabbed_7_6">Java</label><label for="__tabbed_7_7">Ruby</label><label for="__tabbed_7_8">Swift</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic vc send --email &lt;EMAIL_ADDRESS&gt; --item &lt;FILE&gt;
 </code></pre></div>
 </div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply an <a href="../../proto/#sendrequest">Send Request</a> object. This object follows the model below:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#sendrequest">SendRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>didcomm_invitation_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>document_json</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.SendResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:5"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><input id="__tabbed_14_5" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">TypeScript</label><label for="__tabbed_14_2">C#</label><label for="__tabbed_14_3">Python</label><label for="__tabbed_14_4">Go</label><label for="__tabbed_14_5">Java</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">document</span><span class="p">,</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">);</span>
 </code></pre></div>
@@ -1727,14 +2157,32 @@
 <div class="highlight"><pre><span></span><code><span class="n">credentialsService</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">SendRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 </div>
+<p>The response model is of type <a href="../../proto/#sendresponse">Send Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#sendresponse">SendResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="#services.common.v1.ResponseStatus">services.common.v1.ResponseStatus</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services.verifiablecredentials.v1.UpdateStatusRequest"></a></p>
 </div>
 </div>
 
