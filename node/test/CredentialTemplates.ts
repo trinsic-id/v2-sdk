@@ -8,23 +8,23 @@ require("dotenv").config();
 const options = getTestServerOptions();
 
 // defineTemplate() {
-var credentialTemplateName = "My First Credential Template";
-var  nameField = new TemplateField();
+const credentialTemplateName = "My First Credential Template";
+const nameField = new TemplateField();
 nameField.setType(FieldType.STRING);
 nameField.setDescription("The name of the person");
 nameField.setOptional(false);
 
-var  numberOfBags = new TemplateField();
+const numberOfBags = new TemplateField();
 numberOfBags.setType(FieldType.NUMBER);
 numberOfBags.setDescription("The number of bags the person is taking on the trip");
 numberOfBags.setOptional(false);
 
-var  dateOfBirth = new TemplateField();
+const dateOfBirth = new TemplateField();
 dateOfBirth.setType(FieldType.DATETIME);
 dateOfBirth.setDescription("The date of birth of the person");
 dateOfBirth.setOptional(false);
 
-var  isVaccinated = new TemplateField();
+const isVaccinated = new TemplateField();
 isVaccinated.setType(FieldType.BOOL);
 isVaccinated.setDescription("Whether or not the person has been vaccinated");
 isVaccinated.setOptional(false);
