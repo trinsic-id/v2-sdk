@@ -26,6 +26,7 @@ export function getVaccineCertUnsignedJSON(): any {
 
 export function getTemplateCertFrameJSON(): any {
     const data = readFileSync(templateCertFramePath(), 'utf8');
+    return JSON.parse(data);
 }
 
 export function getTestServerOptions(): ServiceOptions {
