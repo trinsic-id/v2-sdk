@@ -18,12 +18,27 @@
         <div id="vc-info-container" class="hide">
             <div class="row">
                 <div class="col-lg-6">
-                    <h4>Raw OIDC Response</h4>
+                    <div class="doc-header">
+                        <h4>Raw OIDC Response</h4>
+                        <button class="btn btn-sm btn-primary copy" data-target="oidc-raw">Copy</button>
+                    </div>
+
                     <pre id="oidc-raw"></pre>
                 </div>
                 <div class="col-lg-6">
-                    <h4>Credential</h4>
+                    <div class="doc-header">
+                        <h4>Credential Subject</h4>
+                        <button class="btn btn-sm btn-primary copy" data-target="oidc-credential">Copy</button>
+                    </div>
+
                     <pre id="oidc-credential"></pre>
+
+                    <div class="doc-header">
+                        <h4>Verifiable Presentation</h4>
+                        <button class="btn btn-sm btn-primary copy" data-target="oidc-vp">Copy</button>
+                    </div>
+
+                    <pre id="oidc-vp"></pre>
                 </div>
             </div>
         </div>

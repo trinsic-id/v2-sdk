@@ -1,6 +1,6 @@
 body {
   background-color: #bdc3c7;
-}
+} 
 
 .main {
   margin-left: auto;
@@ -48,4 +48,18 @@ body {
 
 #vc-info-container h4 {
   text-align: center;
+}
+
+
+.doc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  position: relative;
+}
+
+.btn.copy {
+  position: absolute;
+  right: 0;
 }

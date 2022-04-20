@@ -23,7 +23,14 @@ function handleCallback() {
         setHeader("Welcome, Gym Member!");
 
         document.getElementById("oidc-raw").innerText = JSON.stringify(response, null, 2);
+        document.getElementById("oidc-vp").innerText = JSON.stringify(response.vp_token, null, 2);
         document.getElementById("oidc-credential").innerText = JSON.stringify(response.vp_token.credentialSubject, null, 2);
+
+        //Register click event handler for copy buttons
+        let copyButtons = document.getElementsByClassName("copy");
+        for(let i = 0; i < copyButtons.length; i++) {
+            copyButtons[i].addEventListener('click', copy.bind(copyButtons[i]));
+        }
 
         //Unhide the container for the VC data elements after they've been populated above
         document.getElementById("vc-info-container").classList.remove("hide");
@@ -31,4 +38,13 @@ function handleCallback() {
         console.log(err);
         setHeader("Error processing OIDC response");
     });
+}
+
+function copy(event) {
+    let targetID = this.getAttribute("data-target");
+    let target = document.getElementById(targetID);
+
+    if(target) {
+        navigator.clipboard.writeText(target.innerText);
+    }
 }
