@@ -52,7 +52,7 @@ func WithAuthToken(token string) Option {
 // WithGrpcDialOptions sets grpc dial options
 //
 // This function can be user for setting up client-side middlewares (i.e. monitoring, logging, tracing, retry)
-func WithGrpcDialOptions(grpcDialOptions []grpc.DialOption) Option {
+func WithGrpcDialOptions(grpcDialOptions ...grpc.DialOption) Option {
 	return func(s *Options) error {
 		s.GrpcDialOptions = make([]grpc.DialOption, len(grpcDialOptions))
 		copy(s.GrpcDialOptions, grpcDialOptions)
