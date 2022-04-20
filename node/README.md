@@ -24,3 +24,5 @@ grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./dist --grpc_out=g
 ```
 
 or just use the `make.ps1` 
+
+* We use [prettier](https://prettier.io/) for code formatting. To install: `npm install --global prettier` 

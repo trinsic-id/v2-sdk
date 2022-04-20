@@ -21,25 +21,35 @@ export class ProviderService extends ServiceBase {
 
     public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.invite(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(response);
-                }
-            });
+            try {
+                let metadata = await this.getMetadata(request)
+                this.client.invite(request, metadata, (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
+                    }
+                });
+            } catch (e) {
+                reject(e);
+            }
         });
     }
 
     public invitationStatus(request: InvitationStatusRequest): Promise<InvitationStatusResponse> {
         return new Promise(async (resolve, reject) => {
-            this.client.invitationStatus(request, await this.getMetadata(request), (error, response) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(response);
-                }
-            });
+            try {
+                let metadata = await this.getMetadata(request)
+                this.client.invitationStatus(request, metadata, (error, response) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        resolve(response);
+                    }
+                });
+            } catch (e) {
+                reject(e);
+            }
         });
     }
 
