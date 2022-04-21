@@ -97,7 +97,7 @@ async function verifyCredential() {
   const proofRequestJson = getTemplateCertFrameJSON();
   const proofRequest = new CreateProofRequest()
     .setItemId(insertItemResponse.getItemId())
-    .setDocumentJson(proofRequestJson);
+    .setRevealDocumentJson(proofRequestJson);
   const proof = await credentialService.createProof(proofRequest);
   
   credentialService.options.setAuthToken(airline);
