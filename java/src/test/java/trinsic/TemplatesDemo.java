@@ -68,18 +68,12 @@ public class TemplatesDemo {
         var deleteResponse = templateService.delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build()).get();
         // }
 
-        try {
-            // checkCredentialStatus() {
-            var checkStatusResponse = credentialService.checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build()).get();
-            // }
-        } catch (Exception e) {//This is okay as an example
-        }
+        // checkCredentialStatus() {
+        var checkStatusResponse = credentialService.checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build()).get();
+        // }
 
-        try {
-            // updateCredentialStatus() {
-            credentialService.updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
-            // }
-        } catch (Exception e) {//This is okay as an example
-        }
+        // updateCredentialStatus() {
+        credentialService.updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
+        // }
     }
 }

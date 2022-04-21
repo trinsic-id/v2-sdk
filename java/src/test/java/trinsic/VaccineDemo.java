@@ -93,7 +93,7 @@ public class VaccineDemo {
             // sendCredential() {
             credentialsService.send(VerifiableCredentials.SendRequest.newBuilder().setDocumentJson(credentialProof).setEmail("example@trinsic.id").build());
             // }
-        } catch (ExecutionException re) {
+        } catch (RuntimeException re) {
             // This is okay, we don't expect that account to exist.
         }
 

@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.v1.Options;
-import trinsic.services.common.v1.Common;
+import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
@@ -39,7 +39,7 @@ public class CredentialsService extends ServiceBase {
 
     public void updateStatus(VerifiableCredentials.UpdateStatusRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         var response = withMetadata(stub, request).updateStatus(request).get();
-        if (response.getStatus() != Common.ResponseStatus.SUCCESS)
+        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
             throw new RuntimeException("status not completely updated " + response.getStatus());
     }
 
@@ -53,7 +53,7 @@ public class CredentialsService extends ServiceBase {
 
     public void send(VerifiableCredentials.SendRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         var response = withMetadata(stub, request).send(request).get();
-        if (response.getStatus() != Common.ResponseStatus.SUCCESS)
+        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
             throw new RuntimeException("request not complete sent " + response.getStatus());
     }
 }

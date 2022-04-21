@@ -5,7 +5,7 @@ import io.grpc.Channel
 import trinsic.okapi.DidException
 import trinsic.sdk.v1.Options
 import trinsic.services.account.v1.AccountOuterClass
-import trinsic.services.common.v1.Common
+import trinsic.services.common.v1.CommonOuterClass
 import trinsic.services.common.v1.ProviderGrpcKt
 import trinsic.services.common.v1.ProviderOuterClass.*
 

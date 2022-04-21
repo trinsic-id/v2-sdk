@@ -32,22 +32,19 @@ public class EcosystemsDemo {
 //        Assertions.assertNotNull(actualList);
 //        Assertions.assertTrue(actualList.size() > 0);
 
-        ProviderOuterClass.InviteResponse inviteResponse = ProviderOuterClass.InviteResponse.newBuilder().setInvitationId("N/A").build();
-        try {
-            // inviteParticipant() {
-            inviteResponse = service.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual).setDetails(AccountOuterClass.AccountDetails.newBuilder().setEmail("example@trinsic.id").build()).build()).get();
-            // }
-        } catch (Exception e) {
-            // this is okay as an example
-        }
+        // inviteParticipant() {
+        var inviteResponse = service.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder()
+                .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
+                        .setDetails(AccountOuterClass.AccountDetails.newBuilder().setEmail("example@trinsic.id").build())
+                .build()).get();
+        // }
 
-        try {
-            // invitationStatus() {
-            var invitationStatus = service.invitationStatus(ProviderOuterClass.InvitationStatusRequest.newBuilder().setInvitationId(inviteResponse.getInvitationId()).build()).get();
-            // }
-        } catch (Exception e) {
-            // this is okay as an example
-        }
+        // invitationStatus() {
+        var invitationStatus = service.invitationStatus(
+                ProviderOuterClass.InvitationStatusRequest.newBuilder()
+                        .setInvitationId(inviteResponse.getInvitationId())
+                        .build()).get();
+        // }
 
         accountService.shutdown();
         service.shutdown();

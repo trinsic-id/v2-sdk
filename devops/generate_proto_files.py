@@ -106,9 +106,9 @@ def run_protoc(language_options: Dict[str, str] = None,
     # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
     command_args = [arg for arg in command_args if arg]
     logging.info(command_args)
-    sys_cmd = " ".join(command_args)
-    print(sys_cmd)
-    if os.system(sys_cmd) != 0:
+    # output = subprocess.run(command_args, capture_output=True)
+    # output.check_returncode()
+    if os.system(" ".join(command_args)) != 0:
         raise Exception("protoc failed")
 
 
@@ -132,11 +132,7 @@ def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
     # Clean selectively
-    services_dir = join(ruby_proto_path, 'services')
-    services_subfolders = [ f.path for f in os.scandir(services_dir) if f.is_dir() ]
-    for folder in services_subfolders:
-        clean_dir(folder)
-        
+    clean_dir(join(ruby_proto_path, 'services'))
     clean_dir(join(ruby_proto_path, 'sdk'))
     clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
@@ -189,8 +185,8 @@ def main():
     update_golang()
     update_ruby()
     update_markdown()
-    update_java()
     update_python()
+    update_java()
 
 
 if __name__ == "__main__":
