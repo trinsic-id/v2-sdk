@@ -2599,7 +2599,7 @@ public final class ProviderOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
 
     /**
      * <code>string invitation_id = 10;</code>
@@ -2746,10 +2746,10 @@ public final class ProviderOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     public static final int INVITATION_ID_FIELD_NUMBER = 10;
@@ -2852,7 +2852,7 @@ public final class ProviderOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(invitationId_)) {
@@ -2870,7 +2870,7 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -3197,17 +3197,17 @@ public final class ProviderOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -9661,7 +9661,7 @@ public final class ProviderOuterClass {
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
+          trinsic.services.common.v1.Common.getDescriptor(),
           trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
         });
     internal_static_services_provider_v1_Invite_descriptor =
@@ -9730,7 +9730,7 @@ public final class ProviderOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_GenerateTokenResponse_descriptor,
         new java.lang.String[] { "Profile", });
-    trinsic.services.common.v1.CommonOuterClass.getDescriptor();
+    trinsic.services.common.v1.Common.getDescriptor();
     trinsic.services.account.v1.AccountOuterClass.getDescriptor();
   }
 

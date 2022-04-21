@@ -13,7 +13,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.universalwallet.v1.SearchResponse" do
       repeated :items, :string, 1
       optional :has_more, :bool, 2
-      optional :count, :int32, 3
       optional :continuation_token, :string, 4
     end
     add_message "services.universalwallet.v1.GetItemRequest" do
