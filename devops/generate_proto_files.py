@@ -106,9 +106,9 @@ def run_protoc(language_options: Dict[str, str] = None,
     # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
     command_args = [arg for arg in command_args if arg]
     logging.info(command_args)
-    # output = subprocess.run(command_args, capture_output=True)
-    # output.check_returncode()
-    if os.system(" ".join(command_args)) != 0:
+    sys_cmd = " ".join(command_args)
+    print(sys_cmd)
+    if os.system(sys_cmd) != 0:
         raise Exception("protoc failed")
 
 
@@ -189,8 +189,8 @@ def main():
     update_golang()
     update_ruby()
     update_markdown()
-    update_python()
     update_java()
+    update_python()
 
 
 if __name__ == "__main__":
