@@ -4,20 +4,14 @@ pub struct AddFrameworkRequest {
     pub governance_framework: ::core::option::Option<GovernanceFramework>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct AddFrameworkResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct AddFrameworkResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RemoveFrameworkRequest {
     #[prost(message, optional, tag = "1")]
     pub governance_framework: ::core::option::Option<GovernanceFramework>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RemoveFrameworkResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct RemoveFrameworkResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRegistryRequest {
     /// SELECT c from c where c.type == 'GovernanceFramework'
@@ -70,10 +64,7 @@ pub mod register_issuer_request {
     }
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RegisterIssuerResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct RegisterIssuerResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RegisterVerifierRequest {
     #[prost(string, tag = "10")]
@@ -98,10 +89,7 @@ pub mod register_verifier_request {
     }
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RegisterVerifierResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct RegisterVerifierResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterIssuerRequest {
     #[prost(string, tag = "10")]
@@ -122,10 +110,7 @@ pub mod unregister_issuer_request {
     }
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct UnregisterIssuerResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct UnregisterIssuerResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UnregisterVerifierRequest {
     #[prost(string, tag = "10")]
@@ -146,10 +131,7 @@ pub mod unregister_verifier_request {
     }
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct UnregisterVerifierResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct UnregisterVerifierResponse {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckIssuerStatusRequest {
     #[prost(string, tag = "1")]
