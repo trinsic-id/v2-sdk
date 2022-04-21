@@ -53,7 +53,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     let walletService = new WalletService(allison);
 
     let issueResponse = await credentialService.issueCredential(new IssueRequest()
-        .setDocumentJson(JSON.stringify(getVaccineCertUnsignedJSON())));
+        .setDocumentJson(getVaccineCertUnsignedJSON()));
 
     // insertItemWallet() {
     let insertItemResponse = await walletService.insertItem(new InsertItemRequest()
@@ -78,7 +78,7 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     // createProof() {
     let proof = await credentialService.createProof(new CreateProofRequest()
         .setItemId(insertItemResponse.getItemId())
-        .setRevealDocumentJson(JSON.stringify(getVaccineCertFrameJSON())));
+        .setRevealDocumentJson(getVaccineCertFrameJSON()));
     // }
 
     credentialService.options = airline;
