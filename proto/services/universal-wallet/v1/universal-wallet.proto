@@ -19,7 +19,7 @@ message SearchRequest {
 message SearchResponse {
     repeated string items = 1;
     bool has_more = 2;
-    int32 count = 3;
+    // int32 count = 3;
     string continuation_token = 4;
 }
 

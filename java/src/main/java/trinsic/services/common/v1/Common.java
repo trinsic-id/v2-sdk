@@ -3,8 +3,8 @@
 
 package trinsic.services.common.v1;
 
-public final class CommonOuterClass {
-  private CommonOuterClass() {}
+public final class Common {
+  private Common() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -132,7 +132,7 @@ public final class CommonOuterClass {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return trinsic.services.common.v1.CommonOuterClass.getDescriptor().getEnumTypes().get(0);
+      return trinsic.services.common.v1.Common.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final ResponseStatus[] VALUES = values();
@@ -285,15 +285,15 @@ public final class CommonOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_ServerConfig_descriptor;
+      return trinsic.services.common.v1.Common.internal_static_services_common_v1_ServerConfig_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_ServerConfig_fieldAccessorTable
+      return trinsic.services.common.v1.Common.internal_static_services_common_v1_ServerConfig_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.CommonOuterClass.ServerConfig.class, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder.class);
+              trinsic.services.common.v1.Common.ServerConfig.class, trinsic.services.common.v1.Common.ServerConfig.Builder.class);
     }
 
     public static final int ENDPOINT_FIELD_NUMBER = 1;
@@ -425,10 +425,10 @@ public final class CommonOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.common.v1.CommonOuterClass.ServerConfig)) {
+      if (!(obj instanceof trinsic.services.common.v1.Common.ServerConfig)) {
         return super.equals(obj);
       }
-      trinsic.services.common.v1.CommonOuterClass.ServerConfig other = (trinsic.services.common.v1.CommonOuterClass.ServerConfig) obj;
+      trinsic.services.common.v1.Common.ServerConfig other = (trinsic.services.common.v1.Common.ServerConfig) obj;
 
       if (!getEndpoint()
           .equals(other.getEndpoint())) return false;
@@ -459,69 +459,69 @@ public final class CommonOuterClass {
       return hash;
     }
 
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(byte[] data)
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.Common.ServerConfig parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseDelimitedFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig parseFrom(
+    public static trinsic.services.common.v1.Common.ServerConfig parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -534,7 +534,7 @@ public final class CommonOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.common.v1.CommonOuterClass.ServerConfig prototype) {
+    public static Builder newBuilder(trinsic.services.common.v1.Common.ServerConfig prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -555,21 +555,21 @@ public final class CommonOuterClass {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.common.v1.ServerConfig)
-        trinsic.services.common.v1.CommonOuterClass.ServerConfigOrBuilder {
+        trinsic.services.common.v1.Common.ServerConfigOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_ServerConfig_descriptor;
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_ServerConfig_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_ServerConfig_fieldAccessorTable
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_ServerConfig_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.CommonOuterClass.ServerConfig.class, trinsic.services.common.v1.CommonOuterClass.ServerConfig.Builder.class);
+                trinsic.services.common.v1.Common.ServerConfig.class, trinsic.services.common.v1.Common.ServerConfig.Builder.class);
       }
 
-      // Construct using trinsic.services.common.v1.CommonOuterClass.ServerConfig.newBuilder()
+      // Construct using trinsic.services.common.v1.Common.ServerConfig.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -599,17 +599,17 @@ public final class CommonOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_ServerConfig_descriptor;
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_ServerConfig_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfig getDefaultInstanceForType() {
-        return trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance();
+      public trinsic.services.common.v1.Common.ServerConfig getDefaultInstanceForType() {
+        return trinsic.services.common.v1.Common.ServerConfig.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfig build() {
-        trinsic.services.common.v1.CommonOuterClass.ServerConfig result = buildPartial();
+      public trinsic.services.common.v1.Common.ServerConfig build() {
+        trinsic.services.common.v1.Common.ServerConfig result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -617,8 +617,8 @@ public final class CommonOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ServerConfig buildPartial() {
-        trinsic.services.common.v1.CommonOuterClass.ServerConfig result = new trinsic.services.common.v1.CommonOuterClass.ServerConfig(this);
+      public trinsic.services.common.v1.Common.ServerConfig buildPartial() {
+        trinsic.services.common.v1.Common.ServerConfig result = new trinsic.services.common.v1.Common.ServerConfig(this);
         result.endpoint_ = endpoint_;
         result.port_ = port_;
         result.useTls_ = useTls_;
@@ -660,16 +660,16 @@ public final class CommonOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.CommonOuterClass.ServerConfig) {
-          return mergeFrom((trinsic.services.common.v1.CommonOuterClass.ServerConfig)other);
+        if (other instanceof trinsic.services.common.v1.Common.ServerConfig) {
+          return mergeFrom((trinsic.services.common.v1.Common.ServerConfig)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.common.v1.CommonOuterClass.ServerConfig other) {
-        if (other == trinsic.services.common.v1.CommonOuterClass.ServerConfig.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.common.v1.Common.ServerConfig other) {
+        if (other == trinsic.services.common.v1.Common.ServerConfig.getDefaultInstance()) return this;
         if (!other.getEndpoint().isEmpty()) {
           endpoint_ = other.endpoint_;
           onChanged();
@@ -695,11 +695,11 @@ public final class CommonOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.common.v1.CommonOuterClass.ServerConfig parsedMessage = null;
+        trinsic.services.common.v1.Common.ServerConfig parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.CommonOuterClass.ServerConfig) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.common.v1.Common.ServerConfig) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -907,12 +907,12 @@ public final class CommonOuterClass {
     }
 
     // @@protoc_insertion_point(class_scope:services.common.v1.ServerConfig)
-    private static final trinsic.services.common.v1.CommonOuterClass.ServerConfig DEFAULT_INSTANCE;
+    private static final trinsic.services.common.v1.Common.ServerConfig DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.CommonOuterClass.ServerConfig();
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.Common.ServerConfig();
     }
 
-    public static trinsic.services.common.v1.CommonOuterClass.ServerConfig getDefaultInstance() {
+    public static trinsic.services.common.v1.Common.ServerConfig getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -937,7 +937,7 @@ public final class CommonOuterClass {
     }
 
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.ServerConfig getDefaultInstanceForType() {
+    public trinsic.services.common.v1.Common.ServerConfig getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1048,15 +1048,15 @@ public final class CommonOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_Nonce_descriptor;
+      return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_Nonce_fieldAccessorTable
+      return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.CommonOuterClass.Nonce.class, trinsic.services.common.v1.CommonOuterClass.Nonce.Builder.class);
+              trinsic.services.common.v1.Common.Nonce.class, trinsic.services.common.v1.Common.Nonce.Builder.class);
     }
 
     public static final int TIMESTAMP_FIELD_NUMBER = 1;
@@ -1136,10 +1136,10 @@ public final class CommonOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.common.v1.CommonOuterClass.Nonce)) {
+      if (!(obj instanceof trinsic.services.common.v1.Common.Nonce)) {
         return super.equals(obj);
       }
-      trinsic.services.common.v1.CommonOuterClass.Nonce other = (trinsic.services.common.v1.CommonOuterClass.Nonce) obj;
+      trinsic.services.common.v1.Common.Nonce other = (trinsic.services.common.v1.Common.Nonce) obj;
 
       if (getTimestamp()
           != other.getTimestamp()) return false;
@@ -1166,69 +1166,69 @@ public final class CommonOuterClass {
       return hash;
     }
 
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(byte[] data)
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.common.v1.Common.Nonce parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseDelimitedFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce parseFrom(
+    public static trinsic.services.common.v1.Common.Nonce parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1241,7 +1241,7 @@ public final class CommonOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.common.v1.CommonOuterClass.Nonce prototype) {
+    public static Builder newBuilder(trinsic.services.common.v1.Common.Nonce prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1266,21 +1266,21 @@ public final class CommonOuterClass {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.common.v1.Nonce)
-        trinsic.services.common.v1.CommonOuterClass.NonceOrBuilder {
+        trinsic.services.common.v1.Common.NonceOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_Nonce_descriptor;
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_Nonce_fieldAccessorTable
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.common.v1.CommonOuterClass.Nonce.class, trinsic.services.common.v1.CommonOuterClass.Nonce.Builder.class);
+                trinsic.services.common.v1.Common.Nonce.class, trinsic.services.common.v1.Common.Nonce.Builder.class);
       }
 
-      // Construct using trinsic.services.common.v1.CommonOuterClass.Nonce.newBuilder()
+      // Construct using trinsic.services.common.v1.Common.Nonce.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1308,17 +1308,17 @@ public final class CommonOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.common.v1.CommonOuterClass.internal_static_services_common_v1_Nonce_descriptor;
+        return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.Nonce getDefaultInstanceForType() {
-        return trinsic.services.common.v1.CommonOuterClass.Nonce.getDefaultInstance();
+      public trinsic.services.common.v1.Common.Nonce getDefaultInstanceForType() {
+        return trinsic.services.common.v1.Common.Nonce.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.Nonce build() {
-        trinsic.services.common.v1.CommonOuterClass.Nonce result = buildPartial();
+      public trinsic.services.common.v1.Common.Nonce build() {
+        trinsic.services.common.v1.Common.Nonce result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1326,8 +1326,8 @@ public final class CommonOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.Nonce buildPartial() {
-        trinsic.services.common.v1.CommonOuterClass.Nonce result = new trinsic.services.common.v1.CommonOuterClass.Nonce(this);
+      public trinsic.services.common.v1.Common.Nonce buildPartial() {
+        trinsic.services.common.v1.Common.Nonce result = new trinsic.services.common.v1.Common.Nonce(this);
         result.timestamp_ = timestamp_;
         result.requestHash_ = requestHash_;
         onBuilt();
@@ -1368,16 +1368,16 @@ public final class CommonOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.common.v1.CommonOuterClass.Nonce) {
-          return mergeFrom((trinsic.services.common.v1.CommonOuterClass.Nonce)other);
+        if (other instanceof trinsic.services.common.v1.Common.Nonce) {
+          return mergeFrom((trinsic.services.common.v1.Common.Nonce)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.common.v1.CommonOuterClass.Nonce other) {
-        if (other == trinsic.services.common.v1.CommonOuterClass.Nonce.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.common.v1.Common.Nonce other) {
+        if (other == trinsic.services.common.v1.Common.Nonce.getDefaultInstance()) return this;
         if (other.getTimestamp() != 0L) {
           setTimestamp(other.getTimestamp());
         }
@@ -1399,11 +1399,11 @@ public final class CommonOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.common.v1.CommonOuterClass.Nonce parsedMessage = null;
+        trinsic.services.common.v1.Common.Nonce parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.common.v1.CommonOuterClass.Nonce) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.common.v1.Common.Nonce) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1518,12 +1518,12 @@ public final class CommonOuterClass {
     }
 
     // @@protoc_insertion_point(class_scope:services.common.v1.Nonce)
-    private static final trinsic.services.common.v1.CommonOuterClass.Nonce DEFAULT_INSTANCE;
+    private static final trinsic.services.common.v1.Common.Nonce DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.common.v1.CommonOuterClass.Nonce();
+      DEFAULT_INSTANCE = new trinsic.services.common.v1.Common.Nonce();
     }
 
-    public static trinsic.services.common.v1.CommonOuterClass.Nonce getDefaultInstance() {
+    public static trinsic.services.common.v1.Common.Nonce getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1548,7 +1548,7 @@ public final class CommonOuterClass {
     }
 
     @java.lang.Override
-    public trinsic.services.common.v1.CommonOuterClass.Nonce getDefaultInstanceForType() {
+    public trinsic.services.common.v1.Common.Nonce getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1574,23 +1574,20 @@ public final class CommonOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\037services/common/v1/common.proto\022\022servi" +
-      "ces.common.v1\032\024pbmse/v1/pbmse.proto\"?\n\014S" +
-      "erverConfig\022\020\n\010endpoint\030\001 \001(\t\022\014\n\004port\030\002 " +
-      "\001(\005\022\017\n\007use_tls\030\003 \001(\010\"0\n\005Nonce\022\021\n\ttimesta" +
-      "mp\030\001 \001(\003\022\024\n\014request_hash\030\002 \001(\014*\213\001\n\016Respo" +
-      "nseStatus\022\013\n\007SUCCESS\020\000\022\030\n\024WALLET_ACCESS_" +
-      "DENIED\020\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_" +
-      "FOUND\020\024\022\030\n\023SERIALIZATION_ERROR\020\310\001\022\021\n\rUNK" +
-      "NOWN_ERROR\020d2K\n\006Common\022A\n\007Request\022\032.pbms" +
-      "e.v1.EncryptedMessage\032\032.pbmse.v1.Encrypt" +
-      "edMessageBT\n\032trinsic.services.common.v1Z" +
-      "\031github.com/trinsic-id/sdk\252\002\032Trinsic.Ser" +
-      "vices.Common.V1b\006proto3"
+      "ces.common.v1\"?\n\014ServerConfig\022\020\n\010endpoin" +
+      "t\030\001 \001(\t\022\014\n\004port\030\002 \001(\005\022\017\n\007use_tls\030\003 \001(\010\"0" +
+      "\n\005Nonce\022\021\n\ttimestamp\030\001 \001(\003\022\024\n\014request_ha" +
+      "sh\030\002 \001(\014*\213\001\n\016ResponseStatus\022\013\n\007SUCCESS\020\000" +
+      "\022\030\n\024WALLET_ACCESS_DENIED\020\n\022\021\n\rWALLET_EXI" +
+      "STS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024\022\030\n\023SERIALIZATI" +
+      "ON_ERROR\020\310\001\022\021\n\rUNKNOWN_ERROR\020dBT\n\032trinsi" +
+      "c.services.common.v1Z\031github.com/trinsic" +
+      "-id/sdk\252\002\032Trinsic.Services.Common.V1b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.okapi.pbmse.v1.Pbmse.getDescriptor(),
         });
     internal_static_services_common_v1_ServerConfig_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -1604,7 +1601,6 @@ public final class CommonOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_common_v1_Nonce_descriptor,
         new java.lang.String[] { "Timestamp", "RequestHash", });
-    trinsic.okapi.pbmse.v1.Pbmse.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

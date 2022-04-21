@@ -815,7 +815,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse}
@@ -914,10 +914,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -934,7 +934,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -946,7 +946,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -1245,17 +1245,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1961,7 +1961,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse}
@@ -2060,10 +2060,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2080,7 +2080,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -2092,7 +2092,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -2391,17 +2391,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -6292,7 +6292,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RegisterIssuerResponse}
@@ -6391,10 +6391,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6411,7 +6411,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -6423,7 +6423,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -6722,17 +6722,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -8142,7 +8142,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RegisterVerifierResponse}
@@ -8241,10 +8241,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8261,7 +8261,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -8273,7 +8273,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -8572,17 +8572,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -9850,7 +9850,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerResponse}
@@ -9949,10 +9949,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9969,7 +9969,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -9981,7 +9981,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -10280,17 +10280,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -11558,7 +11558,7 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
+    trinsic.services.common.v1.Common.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierResponse}
@@ -11657,10 +11657,10 @@ public final class TrustRegistryOuterClass {
      * <code>.services.common.v1.ResponseStatus status = 1;</code>
      * @return The status.
      */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -11677,7 +11677,7 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         output.writeEnum(1, status_);
       }
       unknownFields.writeTo(output);
@@ -11689,7 +11689,7 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
+      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, status_);
       }
@@ -11988,17 +11988,17 @@ public final class TrustRegistryOuterClass {
        * @return The status.
        */
       @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
+      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
         @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
+        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
+        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
       }
       /**
        * <code>.services.common.v1.ResponseStatus status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
+      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -17207,7 +17207,7 @@ public final class TrustRegistryOuterClass {
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
+          trinsic.services.common.v1.Common.getDescriptor(),
         });
     internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -17335,7 +17335,7 @@ public final class TrustRegistryOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,
         new java.lang.String[] { "ResponseJson", "HasMoreResults", "ContinuationToken", });
-    trinsic.services.common.v1.CommonOuterClass.getDescriptor();
+    trinsic.services.common.v1.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

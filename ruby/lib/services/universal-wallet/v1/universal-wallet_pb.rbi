@@ -109,14 +109,12 @@ class Services::Universalwallet::V1::SearchResponse
     params(
       items: T.nilable(T::Array[String]),
       has_more: T.nilable(T::Boolean),
-      count: T.nilable(Integer),
       continuation_token: T.nilable(String)
     ).void
   end
   def initialize(
     items: [],
     has_more: false,
-    count: 0,
     continuation_token: ""
   )
   end
@@ -143,18 +141,6 @@ class Services::Universalwallet::V1::SearchResponse
 
   sig { void }
   def clear_has_more
-  end
-
-  sig { returns(Integer) }
-  def count
-  end
-
-  sig { params(value: Integer).void }
-  def count=(value)
-  end
-
-  sig { void }
-  def clear_count
   end
 
   sig { returns(String) }

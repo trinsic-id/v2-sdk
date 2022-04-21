@@ -2,23 +2,11 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Dict,
-    Optional,
-)
+from typing import AsyncIterator, Dict
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-from ...common import v1 as __common_v1__
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 class RegistrationStatus(betterproto.Enum):
@@ -167,269 +155,401 @@ class FetchDataResponse(betterproto.Message):
 
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
-        self,
-        add_framework_request: "AddFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, *, governance_framework: "GovernanceFramework" = None
     ) -> "AddFrameworkResponse":
+
+        request = AddFrameworkRequest()
+        if governance_framework is not None:
+            request.governance_framework = governance_framework
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/AddFramework",
-            add_framework_request,
+            request,
             AddFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def remove_framework(
-        self,
-        remove_framework_request: "RemoveFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, *, governance_framework: "GovernanceFramework" = None
     ) -> "RemoveFrameworkResponse":
+
+        request = RemoveFrameworkRequest()
+        if governance_framework is not None:
+            request.governance_framework = governance_framework
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
-            remove_framework_request,
+            request,
             RemoveFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def search_registry(
-        self,
-        search_registry_request: "SearchRegistryRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, *, query: str = "", continuation_token: str = ""
     ) -> "SearchRegistryResponse":
+
+        request = SearchRegistryRequest()
+        request.query = query
+        request.continuation_token = continuation_token
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
-            search_registry_request,
+            request,
             SearchRegistryResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def register_issuer(
         self,
-        register_issuer_request: "RegisterIssuerRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        did_uri: str = "",
+        x509_cert: str = "",
+        credential_type_uri: str = "",
+        valid_from_utc: int = 0,
+        valid_until_utc: int = 0,
+        governance_framework_uri: str = ""
     ) -> "RegisterIssuerResponse":
+
+        request = RegisterIssuerRequest()
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.credential_type_uri = credential_type_uri
+        request.valid_from_utc = valid_from_utc
+        request.valid_until_utc = valid_until_utc
+        request.governance_framework_uri = governance_framework_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
-            register_issuer_request,
+            request,
             RegisterIssuerResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def register_verifier(
         self,
-        register_verifier_request: "RegisterVerifierRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        did_uri: str = "",
+        x509_cert: str = "",
+        presentation_type_uri: str = "",
+        valid_from_utc: int = 0,
+        valid_until_utc: int = 0,
+        governance_framework_uri: str = ""
     ) -> "RegisterVerifierResponse":
+
+        request = RegisterVerifierRequest()
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.presentation_type_uri = presentation_type_uri
+        request.valid_from_utc = valid_from_utc
+        request.valid_until_utc = valid_until_utc
+        request.governance_framework_uri = governance_framework_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
-            register_verifier_request,
+            request,
             RegisterVerifierResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def unregister_issuer(
         self,
-        unregister_issuer_request: "UnregisterIssuerRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        did_uri: str = "",
+        x509_cert: str = "",
+        credential_type_uri: str = "",
+        governance_framework_uri: str = ""
     ) -> "UnregisterIssuerResponse":
+
+        request = UnregisterIssuerRequest()
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.credential_type_uri = credential_type_uri
+        request.governance_framework_uri = governance_framework_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer",
-            unregister_issuer_request,
+            request,
             UnregisterIssuerResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def unregister_verifier(
         self,
-        unregister_verifier_request: "UnregisterVerifierRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        did_uri: str = "",
+        x509_cert: str = "",
+        presentation_type_uri: str = "",
+        governance_framework_uri: str = ""
     ) -> "UnregisterVerifierResponse":
+
+        request = UnregisterVerifierRequest()
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.presentation_type_uri = presentation_type_uri
+        request.governance_framework_uri = governance_framework_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier",
-            unregister_verifier_request,
+            request,
             UnregisterVerifierResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def check_issuer_status(
         self,
-        check_issuer_status_request: "CheckIssuerStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        governance_framework_uri: str = "",
+        did_uri: str = "",
+        x509_cert: str = "",
+        credential_type_uri: str = ""
     ) -> "CheckIssuerStatusResponse":
+
+        request = CheckIssuerStatusRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.credential_type_uri = credential_type_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus",
-            check_issuer_status_request,
+            request,
             CheckIssuerStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def check_verifier_status(
         self,
-        check_verifier_status_request: "CheckVerifierStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        *,
+        governance_framework_uri: str = "",
+        did_uri: str = "",
+        x509_cert: str = "",
+        presentation_type_uri: str = ""
     ) -> "CheckVerifierStatusResponse":
+
+        request = CheckVerifierStatusRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.presentation_type_uri = presentation_type_uri
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus",
-            check_verifier_status_request,
+            request,
             CheckVerifierStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def fetch_data(
-        self,
-        fetch_data_request: "FetchDataRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, *, governance_framework_uri: str = "", query: str = ""
     ) -> AsyncIterator["FetchDataResponse"]:
+
+        request = FetchDataRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.query = query
+
         async for response in self._unary_stream(
             "/services.trustregistry.v1.TrustRegistry/FetchData",
-            fetch_data_request,
+            request,
             FetchDataResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         ):
             yield response
 
 
 class TrustRegistryBase(ServiceBase):
     async def add_framework(
-        self, add_framework_request: "AddFrameworkRequest"
+        self, governance_framework: "GovernanceFramework"
     ) -> "AddFrameworkResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def remove_framework(
-        self, remove_framework_request: "RemoveFrameworkRequest"
+        self, governance_framework: "GovernanceFramework"
     ) -> "RemoveFrameworkResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def search_registry(
-        self, search_registry_request: "SearchRegistryRequest"
+        self, query: str, continuation_token: str
     ) -> "SearchRegistryResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def register_issuer(
-        self, register_issuer_request: "RegisterIssuerRequest"
+        self,
+        did_uri: str,
+        x509_cert: str,
+        credential_type_uri: str,
+        valid_from_utc: int,
+        valid_until_utc: int,
+        governance_framework_uri: str,
     ) -> "RegisterIssuerResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def register_verifier(
-        self, register_verifier_request: "RegisterVerifierRequest"
+        self,
+        did_uri: str,
+        x509_cert: str,
+        presentation_type_uri: str,
+        valid_from_utc: int,
+        valid_until_utc: int,
+        governance_framework_uri: str,
     ) -> "RegisterVerifierResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def unregister_issuer(
-        self, unregister_issuer_request: "UnregisterIssuerRequest"
+        self,
+        did_uri: str,
+        x509_cert: str,
+        credential_type_uri: str,
+        governance_framework_uri: str,
     ) -> "UnregisterIssuerResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def unregister_verifier(
-        self, unregister_verifier_request: "UnregisterVerifierRequest"
+        self,
+        did_uri: str,
+        x509_cert: str,
+        presentation_type_uri: str,
+        governance_framework_uri: str,
     ) -> "UnregisterVerifierResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def check_issuer_status(
-        self, check_issuer_status_request: "CheckIssuerStatusRequest"
+        self,
+        governance_framework_uri: str,
+        did_uri: str,
+        x509_cert: str,
+        credential_type_uri: str,
     ) -> "CheckIssuerStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def check_verifier_status(
-        self, check_verifier_status_request: "CheckVerifierStatusRequest"
+        self,
+        governance_framework_uri: str,
+        did_uri: str,
+        x509_cert: str,
+        presentation_type_uri: str,
     ) -> "CheckVerifierStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def fetch_data(
-        self, fetch_data_request: "FetchDataRequest"
+        self, governance_framework_uri: str, query: str
     ) -> AsyncIterator["FetchDataResponse"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.add_framework(request)
+
+        request_kwargs = {
+            "governance_framework": request.governance_framework,
+        }
+
+        response = await self.add_framework(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_remove_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.remove_framework(request)
+
+        request_kwargs = {
+            "governance_framework": request.governance_framework,
+        }
+
+        response = await self.remove_framework(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_search_registry(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.search_registry(request)
+
+        request_kwargs = {
+            "query": request.query,
+            "continuation_token": request.continuation_token,
+        }
+
+        response = await self.search_registry(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_register_issuer(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.register_issuer(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "credential_type_uri": request.credential_type_uri,
+            "valid_from_utc": request.valid_from_utc,
+            "valid_until_utc": request.valid_until_utc,
+            "governance_framework_uri": request.governance_framework_uri,
+        }
+
+        response = await self.register_issuer(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_register_verifier(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.register_verifier(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "presentation_type_uri": request.presentation_type_uri,
+            "valid_from_utc": request.valid_from_utc,
+            "valid_until_utc": request.valid_until_utc,
+            "governance_framework_uri": request.governance_framework_uri,
+        }
+
+        response = await self.register_verifier(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_unregister_issuer(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.unregister_issuer(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "credential_type_uri": request.credential_type_uri,
+            "governance_framework_uri": request.governance_framework_uri,
+        }
+
+        response = await self.unregister_issuer(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_unregister_verifier(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.unregister_verifier(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "presentation_type_uri": request.presentation_type_uri,
+            "governance_framework_uri": request.governance_framework_uri,
+        }
+
+        response = await self.unregister_verifier(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_check_issuer_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.check_issuer_status(request)
+
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "credential_type_uri": request.credential_type_uri,
+        }
+
+        response = await self.check_issuer_status(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_check_verifier_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.check_verifier_status(request)
+
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "presentation_type_uri": request.presentation_type_uri,
+        }
+
+        response = await self.check_verifier_status(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_fetch_data(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
+
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "query": request.query,
+        }
+
         await self._call_rpc_handler_server_stream(
             self.fetch_data,
             stream,
-            request,
+            request_kwargs,
         )
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -495,3 +615,6 @@ class TrustRegistryBase(ServiceBase):
                 FetchDataResponse,
             ),
         }
+
+
+from ...common import v1 as __common_v1__

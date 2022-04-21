@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'pbmse/v1/pbmse_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/common/v1/common.proto", :syntax => :proto3) do
     add_message "services.common.v1.ServerConfig" do
