@@ -7,11 +7,10 @@ import itertools
 import logging
 import os
 import sys
-from platform import system
 import urllib.request
 from os.path import abspath, relpath, join, dirname
+from platform import system
 from typing import List, Dict, Union
-
 
 from build_sdks import update_line, clean_dir, get_language_dir
 
@@ -37,6 +36,7 @@ def md_template_path() -> str:
     """
 
     return relpath(abspath(join(dirname(__file__), 'resources/markdown.tmpl')))
+
 
 def java_plugin() -> str:
     return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
@@ -99,10 +99,11 @@ def run_protoc(language_options: Dict[str, str] = None,
                protoc_executable: str = 'protoc') -> None:
     proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
     plugin_string = f'--plugin={plugin}' if plugin else ''
-    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options), join_args(custom_options)]
+    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options),
+                    join_args(custom_options)]
     command_args.extend(join_args(proto_files))
     # Regularize 2D array and flatten
-    command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args ]
+    command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args]
     command_args = list(itertools.chain(*command_args))
     # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
     command_args = [arg for arg in command_args if arg]
@@ -134,10 +135,10 @@ def update_ruby():
     ruby_proto_path = join(ruby_path, 'lib')
     # Clean selectively
     services_dir = join(ruby_proto_path, 'services')
-    services_subfolders = [ f.path for f in os.scandir(services_dir) if f.is_dir() ]
+    services_subfolders = [f.path for f in os.scandir(services_dir) if f.is_dir()]
     for folder in services_subfolders:
         clean_dir(folder)
-        
+
     clean_dir(join(ruby_proto_path, 'sdk'))
     clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
@@ -159,7 +160,8 @@ def update_java():
 
     run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files(),
                plugin=f"protoc-gen-grpc-java={java_plugin()}")
-    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(), plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}")
+    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(),
+               plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}")
     # remove okapi pbmse
     clean_dir(join(lang_proto_path, 'trinsic', 'okapi'))
 
@@ -168,7 +170,7 @@ def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
     template_path = md_template_path()
-    
+
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': f"{template_path},index.md"}, get_proto_files())
 
 
@@ -181,7 +183,9 @@ def update_python():
     python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
     clean_dir(python_proto_path)
     # Inject an empty python code file path to mimic the first argument.
-    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
+    plugin_file = r"C:\work\sdk\devops\venv\Scripts\protoc-gen-grpclib_python.exe"
+    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files(),
+               plugin=f"protoc-gen-python_betterproto={plugin_file}")
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Compile proto files for each SDK language and documentation')
