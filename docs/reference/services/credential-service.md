@@ -6,9 +6,9 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
 
 ## Issue Credential
 
-    Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
+Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
 
-    **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
+**`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
 
 === "Trinsic CLI"
     ```bash
