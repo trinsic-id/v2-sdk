@@ -6,7 +6,7 @@ This service helps ecosystem providers with data management and onboarding. This
 
 ### Invite Participant
 
-Users can be onboarded as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
+Users can be added as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in [creating wallet with provider invitation](/reference/services/wallet-service/#create-wallet-with-provider-invitation)
 
 In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.
@@ -17,6 +17,13 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 
     trinsic provider invite --person --method-email alice@faber.edu
     ```
+
+When using one of the SDKs, you must supply an [Invite Request](../proto/index.md#inviterequest) object. This object follows the model below:
+
+{{ proto_obj('InviteRequest') }}
+
+Then you can supply it to SDK:
+
 === "TypeScript"
     ```typescript
     import { ProviderService, ParticipantType } from "@trinsic/trinsic";
@@ -31,57 +38,56 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 
     console.log(inviteResponse.getInvitationId());
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:inviteParticipant
+    [InviteRequest](../../../dotnet/Tests/Tests.cs) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [VerifyProof](../../../python/samples/ecosystem_demo.py) inside_block:inviteParticipant
+    [InviteRequest](../../../python/samples/ecosystem_demo.py) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [VerifyProof](../../../go/services/services_test.go) inside_block:inviteParticipant
+    [InviteRequest](../../../go/services/services_test.go) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
+    [InviteRequest](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+The response model is of type [Invite Response](../proto/index.md#inviteresponse):
 
-The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
+{{ proto_obj('InviteResponse') }}
 
-[ParticipantType](/reference/proto/#participanttype)
+The `invitation_code` in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.
 
 ### Check Invitation Status
 
-User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object. 
-
-[Invitation Status Request](/reference/proto/#invitationstatusrequest)
-
-[Invitation Status Response](/reference/proto/#invitationstatusresponset)
+User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object.
 
 === "Trinsic CLI"
     ```bash
     trinsic provider invitation_status <INVITATION_ID>
     ```
+
+When using one of the SDKs, you must supply an [Invitation Status Request](../proto/index.md#invitationstatusrequest) object. This object follows the model below:
+
+{{ proto_obj('InvitationStatusRequest') }}
+
+Then you can supply it to SDK:
+
 === "TypeScript"
     ```typescript
     import { ProviderService, ParticipantType } from "@trinsic/trinsic";
@@ -92,49 +98,54 @@ User invitation status can be checked with the provided `invitation id`. It retu
 
     console.log(inviteResponse.getInvitationId());
     ```
+
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:invitationStatus
+    [InvitationStatus](../../../dotnet/Tests/Tests.cs) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [VerifyProof](../../../python/samples/ecosystem_demo.py) inside_block:invitationStatus
+    [InvitationStatus](../../../python/samples/ecosystem_demo.py) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [VerifyProof](../../../go/services/services_test.go) inside_block:invitationStatus
+    [InvitationStatus](../../../go/services/services_test.go) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
+    [InvitationStatus](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+The response model is of type [Invitation Status Response](../proto/index.md#invitationstatusresponse):
 
-The `invitationId` in the response contains the security code that users must supply when creating their wallet. If using email method in onboarding, they will receive this code in their email.
+{{ proto_obj('InvitationStatusResponse') }}
 
 ## Create Ecosystem
 
+Creates a new provider ecosystem
+
 === "Trinsic CLI"
     ```bash
-    
+    trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
     ```
+
+When using one of the SDKs, you must supply an [Create Ecosystem Request](../proto/index.md#createecosystemrequest) object. This object follows the model below:
+
+{{ proto_obj('CreateEcosystemRequest') }}
+
+Then you can supply it to SDK:
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -152,14 +163,14 @@ The `invitationId` in the response contains the security code that users must su
 === "Python"
     <!--codeinclude-->
     ```python
-    [CreateProof](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+    [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [CreateProof](../../../go/services/services_test.go) inside_block:createEcosystem
+    [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -170,56 +181,21 @@ The `invitationId` in the response contains the security code that users must su
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+The response model is of type [Create Ecosystem Response](../proto/index.md#createecosystemresponse):
 
-<!--
+{{ proto_obj('CreateEcosystemResponse') }}
+
+<!-- 
+// This call is not yet implemented
 ## List Ecosystems
 
-=== "Trinsic CLI"
-    ```bash
-    
-    ```
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:listEcosystems
-    ```
-    <!--/codeinclude-->
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateProof](../../../python/samples/ecosystem_demo.py) inside_block:listEcosystems
-    ```
-    <!--/codeinclude-->
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [CreateProof](../../../go/services/services_test.go) inside_block:listEcosystems
-    ```
-    <!--/codeinclude-->
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:listEcosystems
-    ```
-    <!--/codeinclude-->
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+Lists all available ecosystem for the current authentication context.
 
- ## Accept Invite
- -->
+When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
+
+{{ proto_obj('ListEcosystemRequest') }}
+
+The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
+
+{{ proto_obj('ListEcosystemResponse') }} 
+-->
