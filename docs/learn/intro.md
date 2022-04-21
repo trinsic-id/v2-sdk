@@ -10,7 +10,7 @@ You can use Trinsic's platform to invite end-users to create a cloud-hosted iden
 
 Once created, applications and organizations can issue data to the identity wallet. Other applications can request to verify information from the wallet. If the end-user accepts the request, a proof of the requested information will be created and sent to the requester. 
 
-Using identity wallets, you can build powerful products that preserve your end-user's privacy without compromising on convenience.
+Using identity wallets, you can build powerful products that preserve your end-users' privacy without compromising on convenience.
 
 [Wallet Service](../reference/services/wallet-service.md)
 ## Credentials & Proofs
@@ -20,9 +20,9 @@ To minimize the amount of information that is requested from identity wallets, a
 
 [Credential Service](../reference/services/credential-service.md)
 ## Templates
-Credential templates let you publish a credential format for other's to follow. There are often more than one issuer of the same type of credential, and this allows issuers to reuse the same credential format and share the same attribute types. 
+Credential templates let you publish a credential format for others to follow. There are often more than one issuer of the same type of credential, and this allows issuers to reuse the same credential format and share the same attribute types. 
 
-When data models can be reused, more interoperability can be achieved between different systems. This let's data that previously had to be manually entered via form or sent via custom API integration get automatically exchanged and verified without needing human interaction. 
+When data models can be reused, more interoperability can be achieved between different systems. This lets data that previously had to be manually entered via form or sent via custom API integration get automatically exchanged and verified without needing human interaction. 
 
 [Template Service](../reference/services/template-service.md)
 

@@ -26,3 +26,34 @@ h1, h2, h3 {
     width: auto;
     height: 1.8rem;
 }
+
+
+/***********************************************************
+ * Protobuf Object Inclusion Macro Styles  ( proto_obj() )
+ ***********************************************************/
+
+.proto-obj-container {
+    padding-left: 0.5rem;
+    border-left: 4px solid #3498db;
+}
+
+/* Name of protobuf object */
+.proto-obj-header {
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+}
+
+/* Remove dangling <p> block in proto-obj-header */
+.proto-obj-header p {
+    display: none;
+}
+
+/* Remove "Top" link that is erroneously included with some protobuf object injections */
+.proto-obj-contents a[href="#top"] {
+    display: none;
+}
+
+/* Prefix text before protobuf message table */
+.proto-obj-contents p {
+    font-size: 0.6rem;
+}

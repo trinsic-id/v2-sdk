@@ -28,7 +28,7 @@ public class TrustRegistryService extends ServiceBase {
 
     public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
         try {
-            var url = new URL(request.getGovernanceFramework().getGovernanceFrameworkUri());
+            new URL(request.getGovernanceFramework().getGovernanceFrameworkUri());
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("invalid uri string", e);
         }
@@ -50,7 +50,7 @@ public class TrustRegistryService extends ServiceBase {
     public void unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         var response = withMetadata(stub, request).unregisterIssuer(request).get();
         if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot unregister verifier: code " + response.getStatus());
+            throw new RuntimeException("cannot unregister issuer: code " + response.getStatus());
     }
 
     public void registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {

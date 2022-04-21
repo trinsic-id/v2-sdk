@@ -13,12 +13,28 @@ on:
 jobs:
   prod-test-golang:
     name: Golang - samples - prod test
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os-artifact[0] }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu] ] # , macos-latest ] disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
     steps:
       - uses: actions/checkout@v2
+      - name: Download ${{ matrix.os-artifact[0] }} binaries
+        uses: dawidd6/action-download-artifact@v2.17.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./samples/go
+          repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ matrix.os-artifact[1] }}
+      - name: Download C header
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          workflow: "build-libs.yml"
+          path: ./samples/go
+          repo: trinsic-id/okapi
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: C_header
       - name: Set up Go
         uses: actions/setup-go@v2
         with:

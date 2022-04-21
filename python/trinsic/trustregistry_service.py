@@ -21,7 +21,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     CheckVerifierStatusRequest,
     CheckVerifierStatusResponse,
     CheckIssuerStatusResponse,
-    CheckIssuerStatusRequest,
+    CheckIssuerStatusRequest, AddFrameworkResponse,
 )
 from trinsic.service_base import ServiceBase, ResponseStatusException
 from trinsic.trinsic_util import convert_to_epoch_seconds
@@ -41,23 +41,18 @@ class TrustRegistryService(ServiceBase):
 
     async def register_governance_framework(
         self, *, request: AddFrameworkRequest
-    ) -> None:
+    ) -> AddFrameworkResponse:
         """
         [Create a governance framework](/reference/services/trust-registry/#create-a-ecosystem-governance-framework)
         Args:
-            governance_framework:
-            description:
         """
         governance_url = urllib.parse.urlsplit(
             request.governance_framework.governance_framework_uri, allow_fragments=False
         )
         # Verify complete url
-        if governance_url.scheme and governance_url.netloc and governance_url.path:
+        if governance_url.scheme and governance_url.netloc:
             response = await self.client.add_framework(add_framework_request=request)
-            if response.status != response.status.SUCCESS:
-                raise RuntimeError(
-                    f"cannot register governance framework: code {response.status}"
-                )
+            return response
         else:
             raise ValueError(
                 f"Invalid URI string={request.governance_framework.governance_framework_uri}"

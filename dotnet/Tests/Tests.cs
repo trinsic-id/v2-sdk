@@ -1,25 +1,20 @@
-using System.Diagnostics.CodeAnalysis;
-using Trinsic.Services.Provider.V1;
-using Trinsic.Services.TrustRegistry.V1;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using FluentAssertions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Trinsic;
+using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Common.V1;
+using Trinsic.Services.Provider.V1;
+using Trinsic.Services.TrustRegistry.V1;
+using Trinsic.Services.VerifiableCredentials.Templates.V1;
 using Xunit;
 using Xunit.Abstractions;
-using Trinsic;
-using FluentAssertions;
-using Google.Protobuf;
-using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
-using Trinsic.Services.UniversalWallet.V1;
-using Trinsic.Services.VerifiableCredentials.Templates.V1;
-using Trinsic.Services.VerifiableCredentials.V1;
-using FieldType = Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 #pragma warning disable CS0618
@@ -30,9 +25,9 @@ namespace Tests;
 public class Tests
 {
 #if DEBUG
-    const string DefaultEndpoint = "localhost";
-    const int DefaultPort = 5000;
-    const bool DefaultUseTls = false;
+    private const string DefaultEndpoint = "localhost";
+    private const int DefaultPort = 5000;
+    private const bool DefaultUseTls = false;
 #else
     private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     private const int DefaultPort = 443;
@@ -97,6 +92,7 @@ public class Tests
         var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
+        // }
 
         // storeAndRecallProfile {
         // Serialize auth token by exporting it to file
@@ -105,14 +101,22 @@ public class Tests
         allison = File.ReadAllText("allison.txt");
         // }
 
+        try {
+            // sendCredential() {
+            await credentialsService.SendAsync(new() {Email = "example@trinsic.id"});
+            // }
+        } catch { } // We expect this to fail
+
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
+        
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
 
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
+        // }
         // searchWallet() {
         var walletItems = await walletService.SearchAsync(new());
         // }
@@ -163,53 +167,73 @@ public class Tests
         var providerService = new ProviderService(_options.Clone());
         var (_, authToken) = await providerService.CreateEcosystemAsync(new());
         var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
+        
+        // registerGovernanceFramework() {
+        var registerFrameworkResponse = await service.RegisterGovernanceFrameworkAsync(new() { GovernanceFramework = new() {
+            Description = "Demo framework",
+            GovernanceFrameworkUri = "https://example.com",
+            TrustRegistryUri = "https://schema.org/Card"
+        }});
+        // }
+        
 
-        // register issuer
-        var register = service.RegisterIssuerAsync(new() {
+        // registerIssuer() {
+        await service.RegisterIssuerAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             CredentialTypeUri = "https://schema.org/Card"
         });
-        await register;
+        // }
 
-        register.Should().NotBeNull();
-        register.Status.Should().Be(TaskStatus.RanToCompletion);
-
-        // register verifier
-        register = service.RegisterVerifierAsync(new() {
+        // registerVerifier() {
+        await service.RegisterVerifierAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             PresentationTypeUri = "https://schema.org/Card"
         });
-        await register;
+        // }
 
-        register.Should().NotBeNull();
-        register.Status.Should().Be(TaskStatus.RanToCompletion);
-
-        // check issuer status
+        // checkIssuerStatus() {
         var issuerStatus = await service.CheckIssuerStatusAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             CredentialTypeUri = "https://schema.org/Card"
         });
-
+        // }
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
 
-        // check verifier status
+        // checkVerifierStatus() {
         var verifierStatus = await service.CheckVerifierStatusAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
             PresentationTypeUri = "https://schema.org/Card"
         });
-
+        // }
         verifierStatus.Status.Should().Be(RegistrationStatus.Current);
 
-        // search registry
+        // searchTrustRegistry() {
         var searchResult = await service.SearchRegistryAsync(new());
+        // }
 
         searchResult.Should().NotBeNull();
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
+        
+        // unregisterIssuer() {
+        await service.UnregisterIssuerAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            CredentialTypeUri = "https://schema.org/Card"
+        });
+        // }
+
+        // unregisterVerifier() {
+        await service.UnregisterVerifierAsync(new() {
+            DidUri = "did:example:test",
+            GovernanceFrameworkUri = "https://example.com",
+            PresentationTypeUri = "https://schema.org/Card"
+        });
+        // }
     }
 
     [Fact(DisplayName = "Demo: ecosystem creation and listing")]
@@ -230,26 +254,50 @@ public class Tests
         actualCreate.Should().NotBeNull();
         actualCreate.Id.Should().NotBeNull();
         actualCreate.Id.Should().StartWith("urn:trinsic:ecosystems:");
+
+        try {
+            // inviteParticipant() {
+            var inviteResponse = await service.InviteParticipantAsync(new() {
+                Participant = ParticipantType.Individual,
+                Description = "Doc sample",
+                Details = new() {
+                    Email = "example@trinsic.id"
+                }
+            });
+            // }
+        } catch(Exception) { } // This is expected as a doc sample
+
+        var invitationId = "N/A";
+        try {
+        // invitationStatus() {
+        var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
+        // }
+        } catch(Exception) { } // This is expected as a doc sample
     }
 
     [Fact]
     public async Task TestProtectUnprotectProfile() {
         // testSignInAndGetInfo() {
+        // accountServiceConstructor() {
         var myAccountService = new AccountService(_options);
-
+        // }
+        // accountServiceSignIn() {
         var myProfile = await myAccountService.SignInAsync(new());
+        // }
         myAccountService.Options.AuthToken = myProfile;
+        // accountServiceGetInfo() {
         var output = await myAccountService.GetInfoAsync();
+        // }
         Assert.NotNull(output);
         // }
 
+        // protectUnprotectProfile() {
         var securityCode = "1234";
         var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
-
+        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
+        // }
         myAccountService.Options.AuthToken = myProtectedProfile;
         await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
-
-        var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
         myAccountService.Options.AuthToken = myUnprotectedProfile;
         Assert.NotNull(await myAccountService.GetInfoAsync());
         Assert.NotNull(myAccountService.GetInfo());
@@ -286,7 +334,7 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new () {
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new() {
             GovernanceFramework = new() {
                 Description = "invalid uri",
                 GovernanceFrameworkUri = ""
@@ -374,11 +422,34 @@ public class Tests
         var valid2 = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
         valid2.IsValid.Should().BeTrue();
+
+        try {
+            // checkCredentialStatus() {
+            var checkResponse = await credentialService.CheckStatusAsync(new() {CredentialStatusId = ""});
+            // }
+        } catch { } // We expect this to fail
+
+        try {
+            // updateCredentialStatus() {
+            await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
+            // }
+        } catch { } // We expect this to fail
+        
+        // getCredentialTemplate() {
+        var getTemplateResponse = await templateService.GetAsync(new() {Id = template.Data.Id});
+        // }
+        // searchCredentialTemplate() {
+        var searchTemplateResponse = await templateService.SearchAsync(new() {Query = "SELECT * FROM c"});
+        // }
+        // deleteCredentialTemplate() {
+        var deleteTemplateResponse = await templateService.DeleteAsync(new() {Id = template.Data.Id});
+        // }
     }
 
     [Fact(DisplayName = "Decode base64 url encoded string")]
     public void DecodeBase64UrlString() {
-        const string encoded = "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
+        const string encoded =
+            "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnIKKnVybjp0cmluc2ljOndhbGxldHM6Vzl1dG9pVmhDZHp2RXJZRGVyOGlrRxIkODBkMTVlYTYtMTIxOS00MGZmLWE4NTQtZGI1NmZhOTlmNjMwIh51cm46dHJpbnNpYzplY29zeXN0ZW1zOmRlZmF1bHQaMJRXhevRbornRpA-HJ86WaTLGmQlOuoXSnDT_W2O3u3bV5rS5nKpgrfGKFEbRtIgjyIA";
 
         var actual = Base64Url.Decode(encoded);
 

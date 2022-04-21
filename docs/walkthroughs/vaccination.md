@@ -243,7 +243,7 @@ If you would like to save the profile for future use, you can simply export the 
 
 === "Python"
 
-=== "Java" -->
+=== "Java"
 
 ## Issue a Credential
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
@@ -550,22 +550,14 @@ Watch for the result of `true` to know that the credential successfully passed a
     [browser](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.js)
     [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.ts)    
 
-
 === "C#"
     This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
-    
 
-    <!-- ??? 
-    
-        You can also run the code using Replit and inspect the results.
-
-        example "Run example in Replit"
-        <iframe frameborder="0" width="100%" height="650px" src="https://replit.com/@trinsic/VaccinationSample-dotnet?lite=true"></iframe> -->
+    <!-- TODO: include working replit embed -->
 
 
 === "Python"
     This sample is available as [`ecosystem_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/ecosystem_demo.py)
-   
 
 === "Java"
     This sample is available in the [Java](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java) directory.
@@ -585,12 +577,9 @@ We have language specific sample applications that you can run to understand how
 
 === "Typescript"
     This sample is available in our [node directory](https://github.com/trinsic-id/sdk-examples/tree/main/node/basic)  
-
 === "C#"
     This sample is available in our [dotnet directory](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs). 
-
 === "Python"
-   This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py).
-
+    This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py).
 === "Java"
     This sample is available in our Github repo in the [java directory](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java).

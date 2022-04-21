@@ -40,7 +40,7 @@ async function vaccineDemo() {
     // Sign a credential as the clinic and send it to Allison
     const credentialJson = getVaccineCertUnsignedJSON()
     const credential = await credentialService.issueCredential(new IssueRequest()
-        .setDocumentJson(JSON.stringify(credentialJson)));
+        .setDocumentJson(credentialJson));
     // }
 
     // storeCredential() {
@@ -58,7 +58,7 @@ async function vaccineDemo() {
     const proofRequestJson = getVaccineCertFrameJSON();
     const proof = await credentialService.createProof(new CreateProofRequest()
         .setItemId(itemId.getItemId())
-        .setRevealDocumentJson(JSON.stringify(proofRequestJson)));
+        .setRevealDocumentJson(proofRequestJson));
     // }
 
     // verifyCredential() {

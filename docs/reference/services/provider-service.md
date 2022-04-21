@@ -32,44 +32,33 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
     console.log(inviteResponse.getInvitationId());
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    using Trinsic;
-
-    var providerService = new ProviderService();
-
-    var inviteRequest = new InviteRequest
-    {
-        ParticipantType = ParticipantType.Organization,
-        Email = "admin@faber.edu"
-    }
-
-    let inviteResponse = await providerService.InviteParticipant(inviteRequest);
-
-    Console.WriteLine(inviteResponse.InvitationId);
+    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:inviteParticipant
     ```
+    <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    from trinsic.services import ProviderService
-  
-    request = {
-        "email" : "admin@faber.edu",
-        "participant" : provider_services.Organization
-    } 
-    response = await provider_service.invite_participant(request)
+    [VerifyProof](../../../python/samples/ecosystem_demo.py) inside_block:inviteParticipant
     ```
+    <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [VerifyProof](../../../go/services/services_test.go) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -104,32 +93,33 @@ User invitation status can be checked with the provided `invitation id`. It retu
     console.log(inviteResponse.getInvitationId());
     ```
 === "C#"
+    <!--codeinclude-->
     ```csharp
-    using Trinsic;
-
-    var providerService = new ProviderService();
-
-    let invitationStatus = await providerService.InvitationStatus("INVITATION ID");
+    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:invitationStatus
     ```
+    <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
     ```python
-    from trinsic.services import ProviderService
-  
-    response = await provider_service.invitation_status(invitation_id="INVITATION ID")
+    [VerifyProof](../../../python/samples/ecosystem_demo.py) inside_block:invitationStatus
     ```
+    <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
-    
+    [VerifyProof](../../../go/services/services_test.go) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
-    
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -151,30 +141,35 @@ The `invitationId` in the response contains the security code that users must su
     [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [CreateProof](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [CreateProof](../../../go/services/services_test.go) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -198,7 +193,7 @@ The `invitationId` in the response contains the security code that users must su
 === "C#"
     <!--codeinclude-->
     ```csharp
-    
+    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:listEcosystems
     ```
     <!--/codeinclude-->
 === "Python"

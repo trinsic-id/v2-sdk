@@ -12,12 +12,18 @@ class AccountServiceTest {
 
     @Test
     public void testProtectUnprotectAccount() throws ExecutionException, InterruptedException, InvalidProtocolBufferException, DidException {
+        // accountServiceConstructor() {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+        // }
+        // accountServiceSignIn() {
         var myProfile = accountService.signIn().get();
+        // }
 
+        // protectUnprotectProfile() {
         var code = "1234";
         var myProtectedProfile = AccountService.protect(myProfile, code);
         var myUnprotectedProfile = AccountService.unprotect(myProtectedProfile, code);
+        // }
 
         Assertions.assertThrows(Exception.class, () -> {
            accountService.setProfile(myProtectedProfile);
@@ -27,7 +33,9 @@ class AccountServiceTest {
 
         Assertions.assertDoesNotThrow(() -> {
             accountService.setProfile(myUnprotectedProfile);
-            accountService.getInfo().get();
+            // getInfo() {
+            var info = accountService.getInfo().get();
+            // }
         });
     }
 

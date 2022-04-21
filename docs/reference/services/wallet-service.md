@@ -5,55 +5,63 @@ The wallet service is the main interface for interacting with a cloud wallet. Th
 
 ## Create Wallet
 
-Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin.
+Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:
 
+- [Account Sign In](./account-service.md#sign-in)
 
 ## Insert Item
 
-This method allows inserting any JSON data in the wallet.
+Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.
 
 === "Trinsic CLI"
     ```bash
     trinsic wallet insert-item --item <INPUT_JSON_FILE>
     ```
+
+When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
+
+{{ include_section('reference/proto/', 'InsertItemRequest') }}
+
+Then you can supply it to the SDKs:
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
     [VerifyProof](../../../node/test/WalletService.ts) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "C#"
     <!--codeinclude-->
     ```csharp
     [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Python"
     <!--codeinclude-->
     ```python
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
 
-The output of this method will be a unique `itemId` that can be used as input where required.
+The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
+
+{{ include_section('reference/proto/', 'InsertItemResponse') }}
 
 ## Search / Query
 
@@ -70,6 +78,7 @@ The default query used in the commands below returns a full wallet result set. T
     ```bash
     trinsic wallet search
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -90,18 +99,21 @@ The default query used in the commands below returns a full wallet result set. T
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWallet
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
@@ -118,6 +130,7 @@ To pass custom query to the search function, use the query parameter or the avai
     trinsic wallet search \
         --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
     ```
+
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
@@ -138,18 +151,21 @@ To pass custom query to the search function, use the query parameter or the avai
     [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Go"
     <!--codeinclude-->
     ```golang
     [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Java"
     <!--codeinclude-->
     ```java
     [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
+
 === "Ruby"
     <!--codeinclude-->
     ```ruby
