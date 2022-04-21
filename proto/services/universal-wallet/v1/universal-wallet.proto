@@ -5,8 +5,6 @@ option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.universalwallet.v1";
 
-import "services/common/v1/common.proto";
-
 // Search
 
 // Search request object
@@ -19,7 +17,7 @@ message SearchRequest {
 message SearchResponse {
     repeated string items = 1;
     bool has_more = 2;
-    int32 count = 3;
+    // int32 count = 3;
     string continuation_token = 4;
 }
 
@@ -51,8 +49,6 @@ message UpdateItemRequest {
 
 // Update item response object
 message UpdateItemResponse {
-    // Response status
-    services.common.v1.ResponseStatus status = 1;
 }
 
 // InsertItem
@@ -67,7 +63,6 @@ message InsertItemRequest {
 
 // Insert item response
 message InsertItemResponse {
-    services.common.v1.ResponseStatus status = 1;
     // The item identifier of the inserted record
     string item_id = 2;
 }
@@ -80,7 +75,6 @@ message DeleteItemRequest {
 
 // Delete item response
 message DeleteItemResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 service UniversalWallet {

@@ -5,8 +5,6 @@ option csharp_namespace = "Trinsic.Services.Account.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
-import "services/common/v1/common.proto";
-
 // Request for creating new account
 message SignInRequest {
     // Account registration details
@@ -35,8 +33,6 @@ message AccountDetails
 // was sent to one of the users two-factor methods
 // like email, SMS, etc.
 message SignInResponse {
-    // The status of the response
-    services.common.v1.ResponseStatus status = 1;
     // Indicates if confirmation of account is required.
     // This settings is configured globally by the server administrator.
     ConfirmationMethod confirmation_method = 3;
@@ -94,7 +90,13 @@ message InfoResponse {
     // the calling request context
     AccountDetails details = 1;
     // any ecosystems the account has access to
-    repeated AccountEcosystem ecosystems = 2;
+    repeated AccountEcosystem ecosystems = 2 [deprecated = true];
+    // The wallet id associated with this account
+    string wallet_id = 3;
+    // The device id associated with this account
+    string device_id = 4;
+    // The ecosystem id associated with this account
+    string ecosystem_id = 5;
 }
 
 message ListDevicesRequest {}
