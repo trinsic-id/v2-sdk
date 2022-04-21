@@ -132,7 +132,11 @@ def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
     # Clean selectively
-    clean_dir(join(ruby_proto_path, 'services'))
+    services_dir = join(ruby_proto_path, 'services')
+    services_subfolders = [ f.path for f in os.scandir(services_dir) if f.is_dir() ]
+    for folder in services_subfolders:
+        clean_dir(folder)
+        
     clean_dir(join(ruby_proto_path, 'sdk'))
     clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
