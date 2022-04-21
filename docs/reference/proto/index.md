@@ -1,397 +1,242 @@
 # Protocol Documentation
 <a name="top"></a>
 
+This page documents the Protobuf Services and Messages which compose the Trinsic API.
+
 ## Table of Contents
 
-- [pbmse/v1/pbmse.proto](#pbmse/v1/pbmse.proto)
-    - [EncryptedMessage](#pbmse.v1.EncryptedMessage)
-    - [EncryptionHeader](#pbmse.v1.EncryptionHeader)
-    - [EncryptionRecipient](#pbmse.v1.EncryptionRecipient)
-    - [Signature](#pbmse.v1.Signature)
-    - [SignatureHeader](#pbmse.v1.SignatureHeader)
-    - [SignedMessage](#pbmse.v1.SignedMessage)
+- [sdk/options/v1/options.proto](#sdk_options_v1_options-proto)
+    - [ServiceOptions](#sdk-options-v1-ServiceOptions)
   
-    - [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm)
-    - [EncryptionMode](#pbmse.v1.EncryptionMode)
+- [services/account/v1/account.proto](#services_account_v1_account-proto)
+    - [AccountDetails](#services-account-v1-AccountDetails)
+    - [AccountEcosystem](#services-account-v1-AccountEcosystem)
+    - [AccountProfile](#services-account-v1-AccountProfile)
+    - [InfoRequest](#services-account-v1-InfoRequest)
+    - [InfoResponse](#services-account-v1-InfoResponse)
+    - [ListDevicesRequest](#services-account-v1-ListDevicesRequest)
+    - [ListDevicesResponse](#services-account-v1-ListDevicesResponse)
+    - [RevokeDeviceRequest](#services-account-v1-RevokeDeviceRequest)
+    - [RevokeDeviceResponse](#services-account-v1-RevokeDeviceResponse)
+    - [SignInRequest](#services-account-v1-SignInRequest)
+    - [SignInResponse](#services-account-v1-SignInResponse)
+    - [TokenProtection](#services-account-v1-TokenProtection)
   
-- [sdk/options/v1/options.proto](#sdk/options/v1/options.proto)
-    - [ServiceOptions](#sdk.options.v1.ServiceOptions)
+    - [ConfirmationMethod](#services-account-v1-ConfirmationMethod)
   
-- [services/account/v1/account.proto](#services/account/v1/account.proto)
-    - [AccountDetails](#services.account.v1.AccountDetails)
-    - [AccountEcosystem](#services.account.v1.AccountEcosystem)
-    - [AccountProfile](#services.account.v1.AccountProfile)
-    - [InfoRequest](#services.account.v1.InfoRequest)
-    - [InfoResponse](#services.account.v1.InfoResponse)
-    - [ListDevicesRequest](#services.account.v1.ListDevicesRequest)
-    - [ListDevicesResponse](#services.account.v1.ListDevicesResponse)
-    - [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest)
-    - [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse)
-    - [SignInRequest](#services.account.v1.SignInRequest)
-    - [SignInResponse](#services.account.v1.SignInResponse)
-    - [TokenProtection](#services.account.v1.TokenProtection)
+    - [Account](#services-account-v1-Account)
   
-    - [ConfirmationMethod](#services.account.v1.ConfirmationMethod)
+- [services/common/v1/common.proto](#services_common_v1_common-proto)
+    - [Nonce](#services-common-v1-Nonce)
+    - [ServerConfig](#services-common-v1-ServerConfig)
   
-    - [Account](#services.account.v1.Account)
+    - [ResponseStatus](#services-common-v1-ResponseStatus)
   
-- [services/common/v1/common.proto](#services/common/v1/common.proto)
-    - [Nonce](#services.common.v1.Nonce)
-    - [ServerConfig](#services.common.v1.ServerConfig)
+- [services/debug/v1/debug.proto](#services_debug_v1_debug-proto)
+    - [Debugging](#services-debug-v1-Debugging)
   
-    - [ResponseStatus](#services.common.v1.ResponseStatus)
+- [services/provider/v1/provider.proto](#services_provider_v1_provider-proto)
+    - [CreateEcosystemRequest](#services-provider-v1-CreateEcosystemRequest)
+    - [CreateEcosystemResponse](#services-provider-v1-CreateEcosystemResponse)
+    - [Ecosystem](#services-provider-v1-Ecosystem)
+    - [GenerateTokenRequest](#services-provider-v1-GenerateTokenRequest)
+    - [GenerateTokenResponse](#services-provider-v1-GenerateTokenResponse)
+    - [InvitationStatusRequest](#services-provider-v1-InvitationStatusRequest)
+    - [InvitationStatusResponse](#services-provider-v1-InvitationStatusResponse)
+    - [Invite](#services-provider-v1-Invite)
+    - [InviteRequest](#services-provider-v1-InviteRequest)
+    - [InviteRequest.DidCommInvitation](#services-provider-v1-InviteRequest-DidCommInvitation)
+    - [InviteResponse](#services-provider-v1-InviteResponse)
   
-    - [Common](#services.common.v1.Common)
+    - [InvitationStatusResponse.Status](#services-provider-v1-InvitationStatusResponse-Status)
+    - [ParticipantType](#services-provider-v1-ParticipantType)
   
-- [services/debug/v1/debug.proto](#services/debug/v1/debug.proto)
-    - [Debugging](#services.debug.v1.Debugging)
+    - [Provider](#services-provider-v1-Provider)
   
-- [services/provider/v1/provider.proto](#services/provider/v1/provider.proto)
-    - [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest)
-    - [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse)
-    - [Ecosystem](#services.provider.v1.Ecosystem)
-    - [GenerateTokenRequest](#services.provider.v1.GenerateTokenRequest)
-    - [GenerateTokenResponse](#services.provider.v1.GenerateTokenResponse)
-    - [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest)
-    - [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse)
-    - [Invite](#services.provider.v1.Invite)
-    - [InviteRequest](#services.provider.v1.InviteRequest)
-    - [InviteRequest.DidCommInvitation](#services.provider.v1.InviteRequest.DidCommInvitation)
-    - [InviteResponse](#services.provider.v1.InviteResponse)
+- [services/trust-registry/v1/trust-registry.proto](#services_trust-registry_v1_trust-registry-proto)
+    - [AddFrameworkRequest](#services-trustregistry-v1-AddFrameworkRequest)
+    - [AddFrameworkResponse](#services-trustregistry-v1-AddFrameworkResponse)
+    - [CheckIssuerStatusRequest](#services-trustregistry-v1-CheckIssuerStatusRequest)
+    - [CheckIssuerStatusResponse](#services-trustregistry-v1-CheckIssuerStatusResponse)
+    - [CheckVerifierStatusRequest](#services-trustregistry-v1-CheckVerifierStatusRequest)
+    - [CheckVerifierStatusResponse](#services-trustregistry-v1-CheckVerifierStatusResponse)
+    - [FetchDataRequest](#services-trustregistry-v1-FetchDataRequest)
+    - [FetchDataResponse](#services-trustregistry-v1-FetchDataResponse)
+    - [GovernanceFramework](#services-trustregistry-v1-GovernanceFramework)
+    - [RegisterIssuerRequest](#services-trustregistry-v1-RegisterIssuerRequest)
+    - [RegisterIssuerResponse](#services-trustregistry-v1-RegisterIssuerResponse)
+    - [RegisterVerifierRequest](#services-trustregistry-v1-RegisterVerifierRequest)
+    - [RegisterVerifierResponse](#services-trustregistry-v1-RegisterVerifierResponse)
+    - [RemoveFrameworkRequest](#services-trustregistry-v1-RemoveFrameworkRequest)
+    - [RemoveFrameworkResponse](#services-trustregistry-v1-RemoveFrameworkResponse)
+    - [SearchRegistryRequest](#services-trustregistry-v1-SearchRegistryRequest)
+    - [SearchRegistryResponse](#services-trustregistry-v1-SearchRegistryResponse)
+    - [UnregisterIssuerRequest](#services-trustregistry-v1-UnregisterIssuerRequest)
+    - [UnregisterIssuerResponse](#services-trustregistry-v1-UnregisterIssuerResponse)
+    - [UnregisterVerifierRequest](#services-trustregistry-v1-UnregisterVerifierRequest)
+    - [UnregisterVerifierResponse](#services-trustregistry-v1-UnregisterVerifierResponse)
   
-    - [InvitationStatusResponse.Status](#services.provider.v1.InvitationStatusResponse.Status)
-    - [ParticipantType](#services.provider.v1.ParticipantType)
+    - [RegistrationStatus](#services-trustregistry-v1-RegistrationStatus)
   
-    - [Provider](#services.provider.v1.Provider)
+    - [TrustRegistry](#services-trustregistry-v1-TrustRegistry)
   
-- [services/trust-registry/v1/trust-registry.proto](#services/trust-registry/v1/trust-registry.proto)
-    - [AddFrameworkRequest](#services.trustregistry.v1.AddFrameworkRequest)
-    - [AddFrameworkResponse](#services.trustregistry.v1.AddFrameworkResponse)
-    - [CheckIssuerStatusRequest](#services.trustregistry.v1.CheckIssuerStatusRequest)
-    - [CheckIssuerStatusResponse](#services.trustregistry.v1.CheckIssuerStatusResponse)
-    - [CheckVerifierStatusRequest](#services.trustregistry.v1.CheckVerifierStatusRequest)
-    - [CheckVerifierStatusResponse](#services.trustregistry.v1.CheckVerifierStatusResponse)
-    - [FetchDataRequest](#services.trustregistry.v1.FetchDataRequest)
-    - [FetchDataResponse](#services.trustregistry.v1.FetchDataResponse)
-    - [GovernanceFramework](#services.trustregistry.v1.GovernanceFramework)
-    - [RegisterIssuerRequest](#services.trustregistry.v1.RegisterIssuerRequest)
-    - [RegisterIssuerResponse](#services.trustregistry.v1.RegisterIssuerResponse)
-    - [RegisterVerifierRequest](#services.trustregistry.v1.RegisterVerifierRequest)
-    - [RegisterVerifierResponse](#services.trustregistry.v1.RegisterVerifierResponse)
-    - [RemoveFrameworkRequest](#services.trustregistry.v1.RemoveFrameworkRequest)
-    - [RemoveFrameworkResponse](#services.trustregistry.v1.RemoveFrameworkResponse)
-    - [SearchRegistryRequest](#services.trustregistry.v1.SearchRegistryRequest)
-    - [SearchRegistryResponse](#services.trustregistry.v1.SearchRegistryResponse)
-    - [UnregisterIssuerRequest](#services.trustregistry.v1.UnregisterIssuerRequest)
-    - [UnregisterIssuerResponse](#services.trustregistry.v1.UnregisterIssuerResponse)
-    - [UnregisterVerifierRequest](#services.trustregistry.v1.UnregisterVerifierRequest)
-    - [UnregisterVerifierResponse](#services.trustregistry.v1.UnregisterVerifierResponse)
+- [services/universal-wallet/v1/universal-wallet.proto](#services_universal-wallet_v1_universal-wallet-proto)
+    - [DeleteItemRequest](#services-universalwallet-v1-DeleteItemRequest)
+    - [DeleteItemResponse](#services-universalwallet-v1-DeleteItemResponse)
+    - [GetItemRequest](#services-universalwallet-v1-GetItemRequest)
+    - [GetItemResponse](#services-universalwallet-v1-GetItemResponse)
+    - [InsertItemRequest](#services-universalwallet-v1-InsertItemRequest)
+    - [InsertItemResponse](#services-universalwallet-v1-InsertItemResponse)
+    - [SearchRequest](#services-universalwallet-v1-SearchRequest)
+    - [SearchResponse](#services-universalwallet-v1-SearchResponse)
+    - [UpdateItemRequest](#services-universalwallet-v1-UpdateItemRequest)
+    - [UpdateItemResponse](#services-universalwallet-v1-UpdateItemResponse)
   
-    - [RegistrationStatus](#services.trustregistry.v1.RegistrationStatus)
+    - [UniversalWallet](#services-universalwallet-v1-UniversalWallet)
   
-    - [TrustRegistry](#services.trustregistry.v1.TrustRegistry)
+- [services/verifiable-credentials/templates/v1/templates.proto](#services_verifiable-credentials_templates_v1_templates-proto)
+    - [CreateCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest)
+    - [CreateCredentialTemplateRequest.FieldsEntry](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)
+    - [CreateCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse)
+    - [DeleteCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest)
+    - [DeleteCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse)
+    - [GetCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest)
+    - [GetCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse)
+    - [GetTemplateRequest](#services-verifiablecredentials-templates-v1-GetTemplateRequest)
+    - [GetTemplateResponse](#services-verifiablecredentials-templates-v1-GetTemplateResponse)
+    - [ListCredentialTemplatesRequest](#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest)
+    - [ListCredentialTemplatesResponse](#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse)
+    - [ListTemplatesRequest](#services-verifiablecredentials-templates-v1-ListTemplatesRequest)
+    - [ListTemplatesResponse](#services-verifiablecredentials-templates-v1-ListTemplatesResponse)
+    - [SearchCredentialTemplatesRequest](#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest)
+    - [SearchCredentialTemplatesResponse](#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse)
+    - [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData)
+    - [TemplateData.FieldsEntry](#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)
+    - [TemplateField](#services-verifiablecredentials-templates-v1-TemplateField)
   
-- [services/universal-wallet/v1/universal-wallet.proto](#services/universal-wallet/v1/universal-wallet.proto)
-    - [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest)
-    - [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse)
-    - [GetItemRequest](#services.universalwallet.v1.GetItemRequest)
-    - [GetItemResponse](#services.universalwallet.v1.GetItemResponse)
-    - [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest)
-    - [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse)
-    - [SearchRequest](#services.universalwallet.v1.SearchRequest)
-    - [SearchResponse](#services.universalwallet.v1.SearchResponse)
-    - [UpdateItemRequest](#services.universalwallet.v1.UpdateItemRequest)
-    - [UpdateItemResponse](#services.universalwallet.v1.UpdateItemResponse)
+    - [FieldType](#services-verifiablecredentials-templates-v1-FieldType)
   
-    - [UniversalWallet](#services.universalwallet.v1.UniversalWallet)
+    - [CredentialTemplates](#services-verifiablecredentials-templates-v1-CredentialTemplates)
   
-- [services/verifiable-credentials/templates/v1/templates.proto](#services/verifiable-credentials/templates/v1/templates.proto)
-    - [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
-    - [CreateCredentialTemplateRequest.FieldsEntry](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry)
-    - [CreateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
-    - [DeleteCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
-    - [DeleteCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
-    - [GetCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
-    - [GetCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
-    - [GetTemplateRequest](#services.verifiablecredentials.templates.v1.GetTemplateRequest)
-    - [GetTemplateResponse](#services.verifiablecredentials.templates.v1.GetTemplateResponse)
-    - [ListCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
-    - [ListCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
-    - [ListTemplatesRequest](#services.verifiablecredentials.templates.v1.ListTemplatesRequest)
-    - [ListTemplatesResponse](#services.verifiablecredentials.templates.v1.ListTemplatesResponse)
-    - [SearchCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
-    - [SearchCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
-    - [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData)
-    - [TemplateData.FieldsEntry](#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry)
-    - [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField)
+- [services/verifiable-credentials/v1/verifiable-credentials.proto](#services_verifiable-credentials_v1_verifiable-credentials-proto)
+    - [CheckStatusRequest](#services-verifiablecredentials-v1-CheckStatusRequest)
+    - [CheckStatusResponse](#services-verifiablecredentials-v1-CheckStatusResponse)
+    - [CreateProofRequest](#services-verifiablecredentials-v1-CreateProofRequest)
+    - [CreateProofResponse](#services-verifiablecredentials-v1-CreateProofResponse)
+    - [IssueFromTemplateRequest](#services-verifiablecredentials-v1-IssueFromTemplateRequest)
+    - [IssueFromTemplateResponse](#services-verifiablecredentials-v1-IssueFromTemplateResponse)
+    - [IssueRequest](#services-verifiablecredentials-v1-IssueRequest)
+    - [IssueResponse](#services-verifiablecredentials-v1-IssueResponse)
+    - [SendRequest](#services-verifiablecredentials-v1-SendRequest)
+    - [SendResponse](#services-verifiablecredentials-v1-SendResponse)
+    - [UpdateStatusRequest](#services-verifiablecredentials-v1-UpdateStatusRequest)
+    - [UpdateStatusResponse](#services-verifiablecredentials-v1-UpdateStatusResponse)
+    - [VerifyProofRequest](#services-verifiablecredentials-v1-VerifyProofRequest)
+    - [VerifyProofResponse](#services-verifiablecredentials-v1-VerifyProofResponse)
   
-    - [FieldType](#services.verifiablecredentials.templates.v1.FieldType)
-  
-    - [CredentialTemplates](#services.verifiablecredentials.templates.v1.CredentialTemplates)
-  
-- [services/verifiable-credentials/v1/verifiable-credentials.proto](#services/verifiable-credentials/v1/verifiable-credentials.proto)
-    - [CheckStatusRequest](#services.verifiablecredentials.v1.CheckStatusRequest)
-    - [CheckStatusResponse](#services.verifiablecredentials.v1.CheckStatusResponse)
-    - [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest)
-    - [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse)
-    - [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest)
-    - [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse)
-    - [IssueRequest](#services.verifiablecredentials.v1.IssueRequest)
-    - [IssueResponse](#services.verifiablecredentials.v1.IssueResponse)
-    - [SendRequest](#services.verifiablecredentials.v1.SendRequest)
-    - [SendResponse](#services.verifiablecredentials.v1.SendResponse)
-    - [UpdateStatusRequest](#services.verifiablecredentials.v1.UpdateStatusRequest)
-    - [UpdateStatusResponse](#services.verifiablecredentials.v1.UpdateStatusResponse)
-    - [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest)
-    - [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse)
-  
-    - [VerifiableCredential](#services.verifiablecredentials.v1.VerifiableCredential)
+    - [VerifiableCredential](#services-verifiablecredentials-v1-VerifiableCredential)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="pbmse/v1/pbmse.proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## pbmse/v1/pbmse.proto
-
-
-
-<a name="pbmse.v1.EncryptedMessage"></a>
-
-### EncryptedMessage
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| iv | [bytes](#bytes) |  |  |
-| aad | [bytes](#bytes) |  |  |
-| ciphertext | [bytes](#bytes) |  |  |
-| tag | [bytes](#bytes) |  |  |
-| recipients | [EncryptionRecipient](#pbmse.v1.EncryptionRecipient) | repeated |  |
-
-
-
-
-
-
-<a name="pbmse.v1.EncryptionHeader"></a>
-
-### EncryptionHeader
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| mode | [EncryptionMode](#pbmse.v1.EncryptionMode) |  |  |
-| algorithm | [EncryptionAlgorithm](#pbmse.v1.EncryptionAlgorithm) |  |  |
-| key_id | [string](#string) |  |  |
-| sender_key_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="pbmse.v1.EncryptionRecipient"></a>
-
-### EncryptionRecipient
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [EncryptionHeader](#pbmse.v1.EncryptionHeader) |  |  |
-| content_encryption_key | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="pbmse.v1.Signature"></a>
-
-### Signature
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| header | [bytes](#bytes) |  |  |
-| signature | [bytes](#bytes) |  |  |
-
-
-
-
-
-
-<a name="pbmse.v1.SignatureHeader"></a>
-
-### SignatureHeader
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| algorithm | [string](#string) |  |  |
-| key_id | [string](#string) |  |  |
-
-
-
-
-
-
-<a name="pbmse.v1.SignedMessage"></a>
-
-### SignedMessage
-JWS
-Protocol buffer message signing and encryption
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| payload | [bytes](#bytes) |  |  |
-| signatures | [Signature](#pbmse.v1.Signature) | repeated |  |
-
-
-
-
-
- 
-
-
-<a name="pbmse.v1.EncryptionAlgorithm"></a>
-
-### EncryptionAlgorithm
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_ALGORITHM_UNSPECIFIED | 0 |  |
-| ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 | 1 |  |
-| ENCRYPTION_ALGORITHM_AES_GCM | 2 |  |
-
-
-
-<a name="pbmse.v1.EncryptionMode"></a>
-
-### EncryptionMode
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_MODE_UNSPECIFIED | 0 |  |
-| ENCRYPTION_MODE_DIRECT | 1 |  |
-| ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
-
-
- 
-
- 
-
- 
-
-
-
-<a name="sdk/options/v1/options.proto"></a>
+<a name="sdk_options_v1_options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## sdk/options/v1/options.proto
 
 
 
-<a name="sdk.options.v1.ServiceOptions"></a>
+<a name="sdk-options-v1-ServiceOptions"></a>
 
 ### ServiceOptions
 service options
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| server_endpoint | [string](#string) |  | service endpoint |
-| server_port | [int32](#int32) |  | service port |
-| server_use_tls | [bool](#bool) |  | indicates if tls is used |
-| auth_token | [string](#string) |  | default auth token for oberon security scheme |
-| default_ecosystem | [string](#string) |  | ecosystem to use with endpoints that require it |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| server_endpoint | [string](#string) | service endpoint |
+| server_port | [int32](#int32) | service port |
+| server_use_tls | [bool](#bool) | indicates if tls is used |
+| auth_token | [string](#string) | default auth token for oberon security scheme |
+| default_ecosystem | [string](#string) | ecosystem to use with endpoints that require it |
 
 
 
 
 
- 
+ <!-- end messages -->
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/account/v1/account.proto"></a>
+<a name="services_account_v1_account-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/account/v1/account.proto
 
 
 
-<a name="services.account.v1.AccountDetails"></a>
+<a name="services-account-v1-AccountDetails"></a>
 
 ### AccountDetails
 Account Registration Details
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Account name (optional) |
-| email | [string](#string) |  | Email account (required) |
-| sms | [string](#string) |  | SMS number including country code (optional) |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](#string) | Account name (optional) |
+| email | [string](#string) | Email account (required) |
+| sms | [string](#string) | SMS number including country code (optional) |
 
 
 
 
 
 
-<a name="services.account.v1.AccountEcosystem"></a>
+<a name="services-account-v1-AccountEcosystem"></a>
 
 ### AccountEcosystem
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
+| name | [string](#string) |  |
+| description | [string](#string) |  |
+| uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.account.v1.AccountProfile"></a>
+<a name="services-account-v1-AccountProfile"></a>
 
 ### AccountProfile
 Device profile containing sensitive authentication data.
 This information should be stored securely
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| profile_type | [string](#string) |  | The type of profile, used to differentiate between protocol schemes or versions |
-| auth_data | [bytes](#bytes) |  | Auth data containg information about the current device access |
-| auth_token | [bytes](#bytes) |  | Secure token issued by server used to generate zero-knowledge proofs |
-| protection | [TokenProtection](#services.account.v1.TokenProtection) |  | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| profile_type | [string](#string) | The type of profile, used to differentiate between protocol schemes or versions |
+| auth_data | [bytes](#bytes) | Auth data containg information about the current device access |
+| auth_token | [bytes](#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
+| protection | [TokenProtection](#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
 
 
 
 
 
 
-<a name="services.account.v1.InfoRequest"></a>
+<a name="services-account-v1-InfoRequest"></a>
 
 ### InfoRequest
 
@@ -401,23 +246,23 @@ This information should be stored securely
 
 
 
-<a name="services.account.v1.InfoResponse"></a>
+<a name="services-account-v1-InfoResponse"></a>
 
 ### InfoResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| details | [AccountDetails](#services.account.v1.AccountDetails) |  | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](#services.account.v1.AccountEcosystem) | repeated | any ecosystems the account has access to |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| details | [AccountDetails](#services-account-v1-AccountDetails) | The account details associated with the calling request context |
+| ecosystems | [AccountEcosystem](#services-account-v1-AccountEcosystem)[] | any ecosystems the account has access to |
 
 
 
 
 
 
-<a name="services.account.v1.ListDevicesRequest"></a>
+<a name="services-account-v1-ListDevicesRequest"></a>
 
 ### ListDevicesRequest
 
@@ -427,7 +272,7 @@ This information should be stored securely
 
 
 
-<a name="services.account.v1.ListDevicesResponse"></a>
+<a name="services-account-v1-ListDevicesResponse"></a>
 
 ### ListDevicesResponse
 
@@ -437,7 +282,7 @@ This information should be stored securely
 
 
 
-<a name="services.account.v1.RevokeDeviceRequest"></a>
+<a name="services-account-v1-RevokeDeviceRequest"></a>
 
 ### RevokeDeviceRequest
 
@@ -447,7 +292,7 @@ This information should be stored securely
 
 
 
-<a name="services.account.v1.RevokeDeviceResponse"></a>
+<a name="services-account-v1-RevokeDeviceResponse"></a>
 
 ### RevokeDeviceResponse
 
@@ -457,24 +302,24 @@ This information should be stored securely
 
 
 
-<a name="services.account.v1.SignInRequest"></a>
+<a name="services-account-v1-SignInRequest"></a>
 
 ### SignInRequest
 Request for creating new account
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| details | [AccountDetails](#services.account.v1.AccountDetails) |  | Account registration details |
-| invitation_code | [string](#string) |  | Invitation code associated with this registration This field is optional. |
-| ecosystem_id | [string](#string) |  | EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| details | [AccountDetails](#services-account-v1-AccountDetails) | Account registration details |
+| invitation_code | [string](#string) | Invitation code associated with this registration This field is optional. |
+| ecosystem_id | [string](#string) | EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed |
 
 
 
 
 
 
-<a name="services.account.v1.SignInResponse"></a>
+<a name="services-account-v1-SignInResponse"></a>
 
 ### SignInResponse
 Response for creating new account
@@ -483,36 +328,36 @@ was sent to one of the users two-factor methods
 like email, SMS, etc.
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | The status of the response |
-| confirmation_method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
-| profile | [AccountProfile](#services.account.v1.AccountProfile) |  | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) | The status of the response |
+| confirmation_method | [ConfirmationMethod](#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
+| profile | [AccountProfile](#services-account-v1-AccountProfile) | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
 
 
 
 
 
 
-<a name="services.account.v1.TokenProtection"></a>
+<a name="services-account-v1-TokenProtection"></a>
 
 ### TokenProtection
 Token protection info
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| enabled | [bool](#bool) |  | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
-| method | [ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | The method used to protect the token |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| enabled | [bool](#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
+| method | [ConfirmationMethod](#services-account-v1-ConfirmationMethod) | The method used to protect the token |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
-<a name="services.account.v1.ConfirmationMethod"></a>
+<a name="services-account-v1-ConfirmationMethod"></a>
 
 ### ConfirmationMethod
 Confirmation method type for two-factor workflows
@@ -526,72 +371,72 @@ Confirmation method type for two-factor workflows
 | Other | 10 | Indicates third-party method of confirmation is required |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.account.v1.Account"></a>
+<a name="services-account-v1-Account"></a>
 
 ### Account
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [SignInRequest](#services.account.v1.SignInRequest) | [SignInResponse](#services.account.v1.SignInResponse) | Sign in to an already existing account
+| SignIn | [SignInRequest](#services-account-v1-SignInRequest) | [SignInResponse](#services-account-v1-SignInResponse) | Sign in to an already existing account
 
 rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
-| Info | [InfoRequest](#services.account.v1.InfoRequest) | [InfoResponse](#services.account.v1.InfoResponse) | Get account information |
-| ListDevices | [ListDevicesRequest](#services.account.v1.ListDevicesRequest) | [ListDevicesResponse](#services.account.v1.ListDevicesResponse) | List all connected devices |
-| RevokeDevice | [RevokeDeviceRequest](#services.account.v1.RevokeDeviceRequest) | [RevokeDeviceResponse](#services.account.v1.RevokeDeviceResponse) | Revoke device access to the account&#39;s cloud wallet |
+| Info | [InfoRequest](#services-account-v1-InfoRequest) | [InfoResponse](#services-account-v1-InfoResponse) | Get account information |
+| ListDevices | [ListDevicesRequest](#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](#services-account-v1-ListDevicesResponse) | List all connected devices |
+| RevokeDevice | [RevokeDeviceRequest](#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/common/v1/common.proto"></a>
+<a name="services_common_v1_common-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/common/v1/common.proto
 
 
 
-<a name="services.common.v1.Nonce"></a>
+<a name="services-common-v1-Nonce"></a>
 
 ### Nonce
 Nonce used to generate an oberon proof
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| timestamp | [int64](#int64) |  | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](#bytes) |  | blake3256 hash of the request body |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](#bytes) | blake3256 hash of the request body |
 
 
 
 
 
 
-<a name="services.common.v1.ServerConfig"></a>
+<a name="services-common-v1-ServerConfig"></a>
 
 ### ServerConfig
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| endpoint | [string](#string) |  | service endpoint |
-| port | [int32](#int32) |  | service port |
-| use_tls | [bool](#bool) |  | indicates if tls is used |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| endpoint | [string](#string) | service endpoint |
+| port | [int32](#int32) | service port |
+| use_tls | [bool](#bool) | indicates if tls is used |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
-<a name="services.common.v1.ResponseStatus"></a>
+<a name="services-common-v1-ResponseStatus"></a>
 
 ### ResponseStatus
 
@@ -606,142 +451,132 @@ Nonce used to generate an oberon proof
 | UNKNOWN_ERROR | 100 |  |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
-
-<a name="services.common.v1.Common"></a>
-
-### Common
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Request | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) | [.pbmse.v1.EncryptedMessage](#pbmse.v1.EncryptedMessage) |  |
-
- 
+ <!-- end services -->
 
 
 
-<a name="services/debug/v1/debug.proto"></a>
+<a name="services_debug_v1_debug-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/debug/v1/debug.proto
 
 
- 
+ <!-- end messages -->
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.debug.v1.Debugging"></a>
+<a name="services-debug-v1-Debugging"></a>
 
 ### Debugging
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CallEmpty | [.google.protobuf.Empty](#google.protobuf.Empty) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
-| CallEmptyAuth | [.google.protobuf.Empty](#google.protobuf.Empty) | [.google.protobuf.Empty](#google.protobuf.Empty) |  |
+| CallEmpty | [.google.protobuf.Empty](#google-protobuf-Empty) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
+| CallEmptyAuth | [.google.protobuf.Empty](#google-protobuf-Empty) | [.google.protobuf.Empty](#google-protobuf-Empty) |  |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/provider/v1/provider.proto"></a>
+<a name="services_provider_v1_provider-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/provider/v1/provider.proto
 
 
 
-<a name="services.provider.v1.CreateEcosystemRequest"></a>
+<a name="services-provider-v1-CreateEcosystemRequest"></a>
 
 ### CreateEcosystemRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  | Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. |
-| description | [string](#string) |  | Ecosystem description. This field is optional. |
-| uri | [string](#string) |  | External URL associated with your organization or ecosystem entity. This field is optional |
-| details | [services.account.v1.AccountDetails](#services.account.v1.AccountDetails) |  | The account details of the owner of the ecosystem |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. |
+| description | [string](#string) | Ecosystem description. This field is optional. |
+| uri | [string](#string) | External URL associated with your organization or ecosystem entity. This field is optional |
+| details | [services.account.v1.AccountDetails](#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
 
 
 
 
 
 
-<a name="services.provider.v1.CreateEcosystemResponse"></a>
+<a name="services-provider-v1-CreateEcosystemResponse"></a>
 
 ### CreateEcosystemResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| ecosystem | [Ecosystem](#services.provider.v1.Ecosystem) |  | Details of the created ecosystem |
-| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | Account profile for auth of the owner of the ecosystem |
-| confirmation_method | [services.account.v1.ConfirmationMethod](#services.account.v1.ConfirmationMethod) |  | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](#services-provider-v1-Ecosystem) | Details of the created ecosystem |
+| profile | [services.account.v1.AccountProfile](#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
+| confirmation_method | [services.account.v1.ConfirmationMethod](#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
 
 
 
 
 
 
-<a name="services.provider.v1.Ecosystem"></a>
+<a name="services-provider-v1-Ecosystem"></a>
 
 ### Ecosystem
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| description | [string](#string) |  |  |
-| uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
+| name | [string](#string) |  |
+| description | [string](#string) |  |
+| uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.provider.v1.GenerateTokenRequest"></a>
+<a name="services-provider-v1-GenerateTokenRequest"></a>
 
 ### GenerateTokenRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| description | [string](#string) |  | Optional description to identify this token |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| description | [string](#string) | Optional description to identify this token |
 
 
 
 
 
 
-<a name="services.provider.v1.GenerateTokenResponse"></a>
+<a name="services-provider-v1-GenerateTokenResponse"></a>
 
 ### GenerateTokenResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| profile | [services.account.v1.AccountProfile](#services.account.v1.AccountProfile) |  | Account authentication profile that contains unprotected token |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| profile | [services.account.v1.AccountProfile](#services-account-v1-AccountProfile) | Account authentication profile that contains unprotected token |
 
 
 
 
 
 
-<a name="services.provider.v1.InvitationStatusRequest"></a>
+<a name="services-provider-v1-InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
 Request details for the status of onboarding
@@ -750,68 +585,68 @@ The reference_id passed is the response from the
 `Onboard` method call
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| invitation_id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| invitation_id | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.provider.v1.InvitationStatusResponse"></a>
+<a name="services-provider-v1-InvitationStatusResponse"></a>
 
 ### InvitationStatusResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [InvitationStatusResponse.Status](#services.provider.v1.InvitationStatusResponse.Status) |  |  |
-| status_details | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [InvitationStatusResponse.Status](#services-provider-v1-InvitationStatusResponse-Status) |  |
+| status_details | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.provider.v1.Invite"></a>
+<a name="services-provider-v1-Invite"></a>
 
 ### Invite
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| code | [string](#string) |  |  |
-| created | [string](#string) |  |  |
-| accepted | [string](#string) |  |  |
-| expires | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
+| code | [string](#string) |  |
+| created | [string](#string) |  |
+| accepted | [string](#string) |  |
+| expires | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.provider.v1.InviteRequest"></a>
+<a name="services-provider-v1-InviteRequest"></a>
 
 ### InviteRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| participant | [ParticipantType](#services.provider.v1.ParticipantType) |  |  |
-| description | [string](#string) |  |  |
-| details | [services.account.v1.AccountDetails](#services.account.v1.AccountDetails) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| participant | [ParticipantType](#services-provider-v1-ParticipantType) |  |
+| description | [string](#string) |  |
+| details | [services.account.v1.AccountDetails](#services-account-v1-AccountDetails) |  |
 
 
 
 
 
 
-<a name="services.provider.v1.InviteRequest.DidCommInvitation"></a>
+<a name="services-provider-v1-InviteRequest-DidCommInvitation"></a>
 
 ### InviteRequest.DidCommInvitation
 
@@ -821,26 +656,26 @@ The reference_id passed is the response from the
 
 
 
-<a name="services.provider.v1.InviteResponse"></a>
+<a name="services-provider-v1-InviteResponse"></a>
 
 ### InviteResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| invitation_id | [string](#string) |  |  |
-| invitation_code | [string](#string) |  | Invitation Code that must be passed with the account &#39;SignIn&#39; request to correlate this user with the invitation sent. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
+| invitation_id | [string](#string) |  |
+| invitation_code | [string](#string) | Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
-<a name="services.provider.v1.InvitationStatusResponse.Status"></a>
+<a name="services-provider-v1-InvitationStatusResponse-Status"></a>
 
 ### InvitationStatusResponse.Status
 
@@ -854,7 +689,7 @@ The reference_id passed is the response from the
 
 
 
-<a name="services.provider.v1.ParticipantType"></a>
+<a name="services-provider-v1-ParticipantType"></a>
 
 ### ParticipantType
 
@@ -865,383 +700,383 @@ The reference_id passed is the response from the
 | participant_type_organization | 1 |  |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.provider.v1.Provider"></a>
+<a name="services-provider-v1-Provider"></a>
 
 ### Provider
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| CreateEcosystem | [CreateEcosystemRequest](#services.provider.v1.CreateEcosystemRequest) | [CreateEcosystemResponse](#services.provider.v1.CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
-| GenerateToken | [GenerateTokenRequest](#services.provider.v1.GenerateTokenRequest) | [GenerateTokenResponse](#services.provider.v1.GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
-| Invite | [InviteRequest](#services.provider.v1.InviteRequest) | [InviteResponse](#services.provider.v1.InviteResponse) | Invite a user to the ecosystem |
-| InvitationStatus | [InvitationStatusRequest](#services.provider.v1.InvitationStatusRequest) | [InvitationStatusResponse](#services.provider.v1.InvitationStatusResponse) | Check the invitation status |
+| CreateEcosystem | [CreateEcosystemRequest](#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| GenerateToken | [GenerateTokenRequest](#services-provider-v1-GenerateTokenRequest) | [GenerateTokenResponse](#services-provider-v1-GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
+| Invite | [InviteRequest](#services-provider-v1-InviteRequest) | [InviteResponse](#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
+| InvitationStatus | [InvitationStatusRequest](#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](#services-provider-v1-InvitationStatusResponse) | Check the invitation status |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/trust-registry/v1/trust-registry.proto"></a>
+<a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/trust-registry/v1/trust-registry.proto
 
 
 
-<a name="services.trustregistry.v1.AddFrameworkRequest"></a>
+<a name="services-trustregistry-v1-AddFrameworkRequest"></a>
 
 ### AddFrameworkRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework | [GovernanceFramework](#services.trustregistry.v1.GovernanceFramework) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework | [GovernanceFramework](#services-trustregistry-v1-GovernanceFramework) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.AddFrameworkResponse"></a>
+<a name="services-trustregistry-v1-AddFrameworkResponse"></a>
 
 ### AddFrameworkResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.CheckIssuerStatusRequest"></a>
+<a name="services-trustregistry-v1-CheckIssuerStatusRequest"></a>
 
 ### CheckIssuerStatusRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| credential_type_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](#string) |  |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| credential_type_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.CheckIssuerStatusResponse"></a>
+<a name="services-trustregistry-v1-CheckIssuerStatusResponse"></a>
 
 ### CheckIssuerStatusResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [RegistrationStatus](#services.trustregistry.v1.RegistrationStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [RegistrationStatus](#services-trustregistry-v1-RegistrationStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.CheckVerifierStatusRequest"></a>
+<a name="services-trustregistry-v1-CheckVerifierStatusRequest"></a>
 
 ### CheckVerifierStatusRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| presentation_type_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](#string) |  |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| presentation_type_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.CheckVerifierStatusResponse"></a>
+<a name="services-trustregistry-v1-CheckVerifierStatusResponse"></a>
 
 ### CheckVerifierStatusResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [RegistrationStatus](#services.trustregistry.v1.RegistrationStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [RegistrationStatus](#services-trustregistry-v1-RegistrationStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.FetchDataRequest"></a>
+<a name="services-trustregistry-v1-FetchDataRequest"></a>
 
 ### FetchDataRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
-| query | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](#string) |  |
+| query | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.FetchDataResponse"></a>
+<a name="services-trustregistry-v1-FetchDataResponse"></a>
 
 ### FetchDataResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| response_json | [string](#string) |  |  |
-| has_more_results | [bool](#bool) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| response_json | [string](#string) |  |
+| has_more_results | [bool](#bool) |  |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.GovernanceFramework"></a>
+<a name="services-trustregistry-v1-GovernanceFramework"></a>
 
 ### GovernanceFramework
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework_uri | [string](#string) |  |  |
-| trust_registry_uri | [string](#string) |  |  |
-| description | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework_uri | [string](#string) |  |
+| trust_registry_uri | [string](#string) |  |
+| description | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RegisterIssuerRequest"></a>
+<a name="services-trustregistry-v1-RegisterIssuerRequest"></a>
 
 ### RegisterIssuerRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| credential_type_uri | [string](#string) |  |  |
-| valid_from_utc | [uint64](#uint64) |  |  |
-| valid_until_utc | [uint64](#uint64) |  |  |
-| governance_framework_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| credential_type_uri | [string](#string) |  |
+| valid_from_utc | [uint64](#uint64) |  |
+| valid_until_utc | [uint64](#uint64) |  |
+| governance_framework_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RegisterIssuerResponse"></a>
+<a name="services-trustregistry-v1-RegisterIssuerResponse"></a>
 
 ### RegisterIssuerResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RegisterVerifierRequest"></a>
+<a name="services-trustregistry-v1-RegisterVerifierRequest"></a>
 
 ### RegisterVerifierRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| presentation_type_uri | [string](#string) |  |  |
-| valid_from_utc | [uint64](#uint64) |  |  |
-| valid_until_utc | [uint64](#uint64) |  |  |
-| governance_framework_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| presentation_type_uri | [string](#string) |  |
+| valid_from_utc | [uint64](#uint64) |  |
+| valid_until_utc | [uint64](#uint64) |  |
+| governance_framework_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RegisterVerifierResponse"></a>
+<a name="services-trustregistry-v1-RegisterVerifierResponse"></a>
 
 ### RegisterVerifierResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RemoveFrameworkRequest"></a>
+<a name="services-trustregistry-v1-RemoveFrameworkRequest"></a>
 
 ### RemoveFrameworkRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| governance_framework | [GovernanceFramework](#services.trustregistry.v1.GovernanceFramework) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| governance_framework | [GovernanceFramework](#services-trustregistry-v1-GovernanceFramework) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.RemoveFrameworkResponse"></a>
+<a name="services-trustregistry-v1-RemoveFrameworkResponse"></a>
 
 ### RemoveFrameworkResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.SearchRegistryRequest"></a>
+<a name="services-trustregistry-v1-SearchRegistryRequest"></a>
 
 ### SearchRegistryRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| query | [string](#string) |  | SELECT c from c where c.type == &#39;GovernanceFramework&#39; |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](#string) | SELECT c from c where c.type == 'GovernanceFramework' |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.SearchRegistryResponse"></a>
+<a name="services-trustregistry-v1-SearchRegistryResponse"></a>
 
 ### SearchRegistryResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| items_json | [string](#string) |  |  |
-| has_more | [bool](#bool) |  |  |
-| count | [int32](#int32) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items_json | [string](#string) |  |
+| has_more | [bool](#bool) |  |
+| count | [int32](#int32) |  |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.UnregisterIssuerRequest"></a>
+<a name="services-trustregistry-v1-UnregisterIssuerRequest"></a>
 
 ### UnregisterIssuerRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| credential_type_uri | [string](#string) |  |  |
-| governance_framework_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| credential_type_uri | [string](#string) |  |
+| governance_framework_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.UnregisterIssuerResponse"></a>
+<a name="services-trustregistry-v1-UnregisterIssuerResponse"></a>
 
 ### UnregisterIssuerResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.UnregisterVerifierRequest"></a>
+<a name="services-trustregistry-v1-UnregisterVerifierRequest"></a>
 
 ### UnregisterVerifierRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| did_uri | [string](#string) |  |  |
-| x509_cert | [string](#string) |  |  |
-| presentation_type_uri | [string](#string) |  |  |
-| governance_framework_uri | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did_uri | [string](#string) |  |
+| x509_cert | [string](#string) |  |
+| presentation_type_uri | [string](#string) |  |
+| governance_framework_uri | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.trustregistry.v1.UnregisterVerifierResponse"></a>
+<a name="services-trustregistry-v1-UnregisterVerifierResponse"></a>
 
 ### UnregisterVerifierResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
-<a name="services.trustregistry.v1.RegistrationStatus"></a>
+<a name="services-trustregistry-v1-RegistrationStatus"></a>
 
 ### RegistrationStatus
 
@@ -1255,292 +1090,291 @@ The reference_id passed is the response from the
 | NOT_FOUND | 10 |  |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.trustregistry.v1.TrustRegistry"></a>
+<a name="services-trustregistry-v1-TrustRegistry"></a>
 
 ### TrustRegistry
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| AddFramework | [AddFrameworkRequest](#services.trustregistry.v1.AddFrameworkRequest) | [AddFrameworkResponse](#services.trustregistry.v1.AddFrameworkResponse) | Adds a trust registry defintion to the ecosystem |
-| RemoveFramework | [RemoveFrameworkRequest](#services.trustregistry.v1.RemoveFrameworkRequest) | [RemoveFrameworkResponse](#services.trustregistry.v1.RemoveFrameworkResponse) |  |
-| SearchRegistry | [SearchRegistryRequest](#services.trustregistry.v1.SearchRegistryRequest) | [SearchRegistryResponse](#services.trustregistry.v1.SearchRegistryResponse) |  |
-| RegisterIssuer | [RegisterIssuerRequest](#services.trustregistry.v1.RegisterIssuerRequest) | [RegisterIssuerResponse](#services.trustregistry.v1.RegisterIssuerResponse) | Registers an authoritative issuer with a credential template |
-| RegisterVerifier | [RegisterVerifierRequest](#services.trustregistry.v1.RegisterVerifierRequest) | [RegisterVerifierResponse](#services.trustregistry.v1.RegisterVerifierResponse) | Registers an authoritative verifier with a credential template |
-| UnregisterIssuer | [UnregisterIssuerRequest](#services.trustregistry.v1.UnregisterIssuerRequest) | [UnregisterIssuerResponse](#services.trustregistry.v1.UnregisterIssuerResponse) | Removes an authoritative issuer with a credential template from the trust registry |
-| UnregisterVerifier | [UnregisterVerifierRequest](#services.trustregistry.v1.UnregisterVerifierRequest) | [UnregisterVerifierResponse](#services.trustregistry.v1.UnregisterVerifierResponse) | Removes an authoritative verifier with a presentation template from the trust registry |
-| CheckIssuerStatus | [CheckIssuerStatusRequest](#services.trustregistry.v1.CheckIssuerStatusRequest) | [CheckIssuerStatusResponse](#services.trustregistry.v1.CheckIssuerStatusResponse) |  |
-| CheckVerifierStatus | [CheckVerifierStatusRequest](#services.trustregistry.v1.CheckVerifierStatusRequest) | [CheckVerifierStatusResponse](#services.trustregistry.v1.CheckVerifierStatusResponse) |  |
-| FetchData | [FetchDataRequest](#services.trustregistry.v1.FetchDataRequest) | [FetchDataResponse](#services.trustregistry.v1.FetchDataResponse) stream |  |
+| AddFramework | [AddFrameworkRequest](#services-trustregistry-v1-AddFrameworkRequest) | [AddFrameworkResponse](#services-trustregistry-v1-AddFrameworkResponse) | Adds a trust registry defintion to the ecosystem |
+| RemoveFramework | [RemoveFrameworkRequest](#services-trustregistry-v1-RemoveFrameworkRequest) | [RemoveFrameworkResponse](#services-trustregistry-v1-RemoveFrameworkResponse) |  |
+| SearchRegistry | [SearchRegistryRequest](#services-trustregistry-v1-SearchRegistryRequest) | [SearchRegistryResponse](#services-trustregistry-v1-SearchRegistryResponse) |  |
+| RegisterIssuer | [RegisterIssuerRequest](#services-trustregistry-v1-RegisterIssuerRequest) | [RegisterIssuerResponse](#services-trustregistry-v1-RegisterIssuerResponse) | Registers an authoritative issuer with a credential template |
+| RegisterVerifier | [RegisterVerifierRequest](#services-trustregistry-v1-RegisterVerifierRequest) | [RegisterVerifierResponse](#services-trustregistry-v1-RegisterVerifierResponse) | Registers an authoritative verifier with a credential template |
+| UnregisterIssuer | [UnregisterIssuerRequest](#services-trustregistry-v1-UnregisterIssuerRequest) | [UnregisterIssuerResponse](#services-trustregistry-v1-UnregisterIssuerResponse) | Removes an authoritative issuer with a credential template from the trust registry |
+| UnregisterVerifier | [UnregisterVerifierRequest](#services-trustregistry-v1-UnregisterVerifierRequest) | [UnregisterVerifierResponse](#services-trustregistry-v1-UnregisterVerifierResponse) | Removes an authoritative verifier with a presentation template from the trust registry |
+| CheckIssuerStatus | [CheckIssuerStatusRequest](#services-trustregistry-v1-CheckIssuerStatusRequest) | [CheckIssuerStatusResponse](#services-trustregistry-v1-CheckIssuerStatusResponse) |  |
+| CheckVerifierStatus | [CheckVerifierStatusRequest](#services-trustregistry-v1-CheckVerifierStatusRequest) | [CheckVerifierStatusResponse](#services-trustregistry-v1-CheckVerifierStatusResponse) |  |
+| FetchData | [FetchDataRequest](#services-trustregistry-v1-FetchDataRequest) | [FetchDataResponse](#services-trustregistry-v1-FetchDataResponse) stream |  |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/universal-wallet/v1/universal-wallet.proto"></a>
+<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/universal-wallet/v1/universal-wallet.proto
 
 
 
-<a name="services.universalwallet.v1.DeleteItemRequest"></a>
+<a name="services-universalwallet-v1-DeleteItemRequest"></a>
 
 ### DeleteItemRequest
 Delete item request
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| item_id | [string](#string) |  | item identifier of the record to delete |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](#string) | item identifier of the record to delete |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.DeleteItemResponse"></a>
+<a name="services-universalwallet-v1-DeleteItemResponse"></a>
 
 ### DeleteItemResponse
 Delete item response
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.GetItemRequest"></a>
+<a name="services-universalwallet-v1-GetItemRequest"></a>
 
 ### GetItemRequest
 Get item request object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| item_id | [string](#string) |  | The item identifier |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](#string) | The item identifier |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.GetItemResponse"></a>
+<a name="services-universalwallet-v1-GetItemResponse"></a>
 
 ### GetItemResponse
 Get item response object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| item_json | [string](#string) |  | The item data represented as stringified JSON |
-| item_type | [string](#string) |  | User set item type that described the content of this item |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](#string) | The item data represented as stringified JSON |
+| item_type | [string](#string) | User set item type that described the content of this item |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.InsertItemRequest"></a>
+<a name="services-universalwallet-v1-InsertItemRequest"></a>
 
 ### InsertItemRequest
 Insert item request
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| item_json | [string](#string) |  | the document to insert as stringified json |
-| item_type | [string](#string) |  | optional item type ex. &#34;VerifiableCredential&#34; |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](#string) | the document to insert as stringified json |
+| item_type | [string](#string) | optional item type ex. "VerifiableCredential" |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.InsertItemResponse"></a>
+<a name="services-universalwallet-v1-InsertItemResponse"></a>
 
 ### InsertItemResponse
 Insert item response
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
-| item_id | [string](#string) |  | The item identifier of the inserted record |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
+| item_id | [string](#string) | The item identifier of the inserted record |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.SearchRequest"></a>
+<a name="services-universalwallet-v1-SearchRequest"></a>
 
 ### SearchRequest
 Search request object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| query | [string](#string) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](#string) |  |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.SearchResponse"></a>
+<a name="services-universalwallet-v1-SearchResponse"></a>
 
 ### SearchResponse
 Search response object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| items | [string](#string) | repeated |  |
-| has_more | [bool](#bool) |  |  |
-| count | [int32](#int32) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items | [string](#string)[] |  |
+| has_more | [bool](#bool) |  |
+| continuation_token | [string](#string) | int32 count = 3; |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.UpdateItemRequest"></a>
+<a name="services-universalwallet-v1-UpdateItemRequest"></a>
 
 ### UpdateItemRequest
 Update item request object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| item_id | [string](#string) |  | The item identifier |
-| item_type | [string](#string) |  | The item type that described the content of this item |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](#string) | The item identifier |
+| item_type | [string](#string) | The item type that described the content of this item |
 
 
 
 
 
 
-<a name="services.universalwallet.v1.UpdateItemResponse"></a>
+<a name="services-universalwallet-v1-UpdateItemResponse"></a>
 
 ### UpdateItemResponse
 Update item response object
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  | Response status |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) | Response status |
 
 
 
 
 
- 
+ <!-- end messages -->
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.universalwallet.v1.UniversalWallet"></a>
+<a name="services-universalwallet-v1-UniversalWallet"></a>
 
 ### UniversalWallet
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetItem | [GetItemRequest](#services.universalwallet.v1.GetItemRequest) | [GetItemResponse](#services.universalwallet.v1.GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
-| Search | [SearchRequest](#services.universalwallet.v1.SearchRequest) | [SearchResponse](#services.universalwallet.v1.SearchResponse) | Search the wallet using a SQL-like syntax |
-| InsertItem | [InsertItemRequest](#services.universalwallet.v1.InsertItemRequest) | [InsertItemResponse](#services.universalwallet.v1.InsertItemResponse) | Insert an item into the wallet |
-| UpdateItem | [UpdateItemRequest](#services.universalwallet.v1.UpdateItemRequest) | [UpdateItemResponse](#services.universalwallet.v1.UpdateItemResponse) | Insert an item into the wallet |
-| DeleteItem | [DeleteItemRequest](#services.universalwallet.v1.DeleteItemRequest) | [DeleteItemResponse](#services.universalwallet.v1.DeleteItemResponse) | Delete an item from the wallet permanently |
+| GetItem | [GetItemRequest](#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
+| Search | [SearchRequest](#services-universalwallet-v1-SearchRequest) | [SearchResponse](#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL-like syntax |
+| InsertItem | [InsertItemRequest](#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
+| UpdateItem | [UpdateItemRequest](#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](#services-universalwallet-v1-UpdateItemResponse) | Insert an item into the wallet |
+| DeleteItem | [DeleteItemRequest](#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/verifiable-credentials/templates/v1/templates.proto"></a>
+<a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/verifiable-credentials/templates/v1/templates.proto
 
 
 
-<a name="services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
 
 ### CreateCredentialTemplateRequest
 Request to create new template
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| name | [string](#string) |  |  |
-| fields | [CreateCredentialTemplateRequest.FieldsEntry](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry) | repeated |  |
-| allow_additional_fields | [bool](#bool) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](#string) |  |
+| fields | [CreateCredentialTemplateRequest.FieldsEntry](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] |  |
+| allow_additional_fields | [bool](#bool) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
 
 ### CreateCredentialTemplateRequest.FieldsEntry
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](#string) |  |
+| value | [TemplateField](#services-verifiablecredentials-templates-v1-TemplateField) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
 
 ### CreateCredentialTemplateResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
 
 ### DeleteCredentialTemplateRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
 
 ### DeleteCredentialTemplateResponse
 
@@ -1550,100 +1384,100 @@ Request to create new template
 
 
 
-<a name="services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
 
 ### GetCredentialTemplateRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
 
 ### GetCredentialTemplateResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| template | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template | [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.GetTemplateRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
 
 ### GetTemplateRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.GetTemplateResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
 
 ### GetTemplateResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| data | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
 
 ### ListCredentialTemplatesRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| query | [string](#string) |  | SELECT * FROM c WHERE c.name = &#39;Diploma&#39; |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](#string) | SELECT * FROM c WHERE c.name = 'Diploma' |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
 
 ### ListCredentialTemplatesResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| templates | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) | repeated |  |
-| has_more_results | [bool](#bool) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| templates | [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
+| has_more_results | [bool](#bool) |  |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.ListTemplatesRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
 
 ### ListTemplatesRequest
 
@@ -1653,114 +1487,114 @@ Request to create new template
 
 
 
-<a name="services.verifiablecredentials.templates.v1.ListTemplatesResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
 
 ### ListTemplatesResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| templates | [TemplateData](#services.verifiablecredentials.templates.v1.TemplateData) | repeated |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| templates | [TemplateData](#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest"></a>
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
 
 ### SearchCredentialTemplatesRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| query | [string](#string) |  | SELECT * FROM c WHERE c.name = &#39;Diploma&#39; |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](#string) | SELECT * FROM c WHERE c.name = 'Diploma' |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse"></a>
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
 
 ### SearchCredentialTemplatesResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| items_json | [string](#string) |  |  |
-| has_more | [bool](#bool) |  |  |
-| count | [int32](#int32) |  |  |
-| continuation_token | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items_json | [string](#string) |  |
+| has_more | [bool](#bool) |  |
+| count | [int32](#int32) |  |
+| continuation_token | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.TemplateData"></a>
+<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
 
 ### TemplateData
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [string](#string) |  |  |
-| name | [string](#string) |  |  |
-| version | [int32](#int32) |  |  |
-| fields | [TemplateData.FieldsEntry](#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry) | repeated |  |
-| allow_additional_fields | [bool](#bool) |  |  |
-| schema_uri | [string](#string) |  |  |
-| context_uri | [string](#string) |  |  |
-| ecosystem_id | [string](#string) |  |  |
-| type | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](#string) |  |
+| name | [string](#string) |  |
+| version | [int32](#int32) |  |
+| fields | [TemplateData.FieldsEntry](#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] |  |
+| allow_additional_fields | [bool](#bool) |  |
+| schema_uri | [string](#string) |  |
+| context_uri | [string](#string) |  |
+| ecosystem_id | [string](#string) |  |
+| type | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry"></a>
+<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
 
 ### TemplateData.FieldsEntry
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) |  |  |
-| value | [TemplateField](#services.verifiablecredentials.templates.v1.TemplateField) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](#string) |  |
+| value | [TemplateField](#services-verifiablecredentials-templates-v1-TemplateField) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.templates.v1.TemplateField"></a>
+<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
 
 ### TemplateField
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| description | [string](#string) |  |  |
-| optional | [bool](#bool) |  |  |
-| type | [FieldType](#services.verifiablecredentials.templates.v1.FieldType) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| description | [string](#string) |  |
+| optional | [bool](#bool) |  |
+| type | [FieldType](#services-verifiablecredentials-templates-v1-FieldType) |  |
 
 
 
 
 
- 
+ <!-- end messages -->
 
 
-<a name="services.verifiablecredentials.templates.v1.FieldType"></a>
+<a name="services-verifiablecredentials-templates-v1-FieldType"></a>
 
 ### FieldType
 
@@ -1773,275 +1607,275 @@ Request to create new template
 | DATETIME | 4 |  |
 
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.verifiablecredentials.templates.v1.CredentialTemplates"></a>
+<a name="services-verifiablecredentials-templates-v1-CredentialTemplates"></a>
 
 ### CredentialTemplates
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Create | [CreateCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse) |  |
-| Get | [GetCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse) |  |
-| List | [ListCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse) |  |
-| Search | [SearchCredentialTemplatesRequest](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse) |  |
-| Delete | [DeleteCredentialTemplateRequest](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse) |  |
+| Create | [CreateCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) |  |
+| Get | [GetCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) |  |
+| List | [ListCredentialTemplatesRequest](#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) |  |
+| Search | [SearchCredentialTemplatesRequest](#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) |  |
+| Delete | [DeleteCredentialTemplateRequest](#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) |  |
 
- 
+ <!-- end services -->
 
 
 
-<a name="services/verifiable-credentials/v1/verifiable-credentials.proto"></a>
+<a name="services_verifiable-credentials_v1_verifiable-credentials-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
 ## services/verifiable-credentials/v1/verifiable-credentials.proto
 
 
 
-<a name="services.verifiablecredentials.v1.CheckStatusRequest"></a>
+<a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
 
 ### CheckStatusRequest
 request object to update the status of the revocation entry
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| credential_status_id | [string](#string) |  | the credential status id |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_status_id | [string](#string) | the credential status id |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.CheckStatusResponse"></a>
+<a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
 
 ### CheckStatusResponse
 response object for update of status of revocation entry
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| revoked | [bool](#bool) |  | indicates if the status is revoked |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| revoked | [bool](#bool) | indicates if the status is revoked |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.CreateProofRequest"></a>
+<a name="services-verifiablecredentials-v1-CreateProofRequest"></a>
 
 ### CreateProofRequest
 Create Proof
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| reveal_document_json | [string](#string) |  | Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed |
-| item_id | [string](#string) |  | The item identifier that contains a record with a verifiable credential to be used for generating the proof. |
-| document_json | [string](#string) |  | A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| reveal_document_json | [string](#string) | Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed |
+| item_id | [string](#string) | The item identifier that contains a record with a verifiable credential to be used for generating the proof. |
+| document_json | [string](#string) | A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.CreateProofResponse"></a>
+<a name="services-verifiablecredentials-v1-CreateProofResponse"></a>
 
 ### CreateProofResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| proof_document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof_document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.IssueFromTemplateRequest"></a>
+<a name="services-verifiablecredentials-v1-IssueFromTemplateRequest"></a>
 
 ### IssueFromTemplateRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| template_id | [string](#string) |  |  |
-| values_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template_id | [string](#string) |  |
+| values_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.IssueFromTemplateResponse"></a>
+<a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a>
 
 ### IssueFromTemplateResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.IssueRequest"></a>
+<a name="services-verifiablecredentials-v1-IssueRequest"></a>
 
 ### IssueRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.IssueResponse"></a>
+<a name="services-verifiablecredentials-v1-IssueResponse"></a>
 
 ### IssueResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| signed_document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| signed_document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.SendRequest"></a>
+<a name="services-verifiablecredentials-v1-SendRequest"></a>
 
 ### SendRequest
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| email | [string](#string) |  |  |
-| did_uri | [string](#string) |  |  |
-| didcomm_invitation_json | [string](#string) |  |  |
-| document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](#string) |  |
+| did_uri | [string](#string) |  |
+| didcomm_invitation_json | [string](#string) |  |
+| document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.SendResponse"></a>
+<a name="services-verifiablecredentials-v1-SendResponse"></a>
 
 ### SendResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.UpdateStatusRequest"></a>
+<a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a>
 
 ### UpdateStatusRequest
 request object to update the status of the revocation entry
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| credential_status_id | [string](#string) |  | the credential status id |
-| revoked | [bool](#bool) |  | indicates if the status is revoked |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_status_id | [string](#string) | the credential status id |
+| revoked | [bool](#bool) | indicates if the status is revoked |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.UpdateStatusResponse"></a>
+<a name="services-verifiablecredentials-v1-UpdateStatusResponse"></a>
 
 ### UpdateStatusResponse
 response object for update of status of revocation entry
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| status | [services.common.v1.ResponseStatus](#services.common.v1.ResponseStatus) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| status | [services.common.v1.ResponseStatus](#services-common-v1-ResponseStatus) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.VerifyProofRequest"></a>
+<a name="services-verifiablecredentials-v1-VerifyProofRequest"></a>
 
 ### VerifyProofRequest
 Verify Proof
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| proof_document_json | [string](#string) |  |  |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof_document_json | [string](#string) |  |
 
 
 
 
 
 
-<a name="services.verifiablecredentials.v1.VerifyProofResponse"></a>
+<a name="services-verifiablecredentials-v1-VerifyProofResponse"></a>
 
 ### VerifyProofResponse
 
 
 
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| is_valid | [bool](#bool) |  | Indicates if the proof is valid |
-| validation_messages | [string](#string) | repeated | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](#bool) | Indicates if the proof is valid |
+| validation_messages | [string](#string)[] | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
 
 
 
 
 
- 
+ <!-- end messages -->
 
- 
+ <!-- end enums -->
 
- 
+ <!-- end HasExtensions -->
 
 
-<a name="services.verifiablecredentials.v1.VerifiableCredential"></a>
+<a name="services-verifiablecredentials-v1-VerifiableCredential"></a>
 
 ### VerifiableCredential
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Issue | [IssueRequest](#services.verifiablecredentials.v1.IssueRequest) | [IssueResponse](#services.verifiablecredentials.v1.IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
-| IssueFromTemplate | [IssueFromTemplateRequest](#services.verifiablecredentials.v1.IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services.verifiablecredentials.v1.IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
-| CheckStatus | [CheckStatusRequest](#services.verifiablecredentials.v1.CheckStatusRequest) | [CheckStatusResponse](#services.verifiablecredentials.v1.CheckStatusResponse) | Check credential status by setting the revocation value |
-| UpdateStatus | [UpdateStatusRequest](#services.verifiablecredentials.v1.UpdateStatusRequest) | [UpdateStatusResponse](#services.verifiablecredentials.v1.UpdateStatusResponse) | Update credential status by setting the revocation value |
-| CreateProof | [CreateProofRequest](#services.verifiablecredentials.v1.CreateProofRequest) | [CreateProofResponse](#services.verifiablecredentials.v1.CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
-| VerifyProof | [VerifyProofRequest](#services.verifiablecredentials.v1.VerifyProofRequest) | [VerifyProofResponse](#services.verifiablecredentials.v1.VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
-| Send | [SendRequest](#services.verifiablecredentials.v1.SendRequest) | [SendResponse](#services.verifiablecredentials.v1.SendResponse) | Sends a document directly to a user&#39;s email within the given ecosystem |
+| Issue | [IssueRequest](#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
+| IssueFromTemplate | [IssueFromTemplateRequest](#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
+| CheckStatus | [CheckStatusRequest](#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status by setting the revocation value |
+| UpdateStatus | [UpdateStatusRequest](#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
+| CreateProof | [CreateProofRequest](#services-verifiablecredentials-v1-CreateProofRequest) | [CreateProofResponse](#services-verifiablecredentials-v1-CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
+| VerifyProof | [VerifyProofRequest](#services-verifiablecredentials-v1-VerifyProofRequest) | [VerifyProofResponse](#services-verifiablecredentials-v1-VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
+| Send | [SendRequest](#services-verifiablecredentials-v1-SendRequest) | [SendResponse](#services-verifiablecredentials-v1-SendResponse) | Sends a document directly to a user's email within the given ecosystem |
 
- 
+ <!-- end services -->
 
 
 
@@ -2064,4 +1898,3 @@ Verify Proof
 | <a name="bool" /> bool |  | bool | boolean | boolean | bool | bool | boolean | TrueClass/FalseClass |
 | <a name="string" /> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode | string | string | string | String (UTF-8) |
 | <a name="bytes" /> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str | []byte | ByteString | string | String (ASCII-8BIT) |
-
