@@ -1370,23 +1370,23 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">credentialTemplateName</span> <span class="o">=</span> <span class="s2">&quot;My First Credential Template&quot;</span><span class="p">;</span>
-<span class="kd">var</span>  <span class="nx">nameField</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">credentialTemplateName</span> <span class="o">=</span> <span class="s2">&quot;My First Credential Template&quot;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">nameField</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
 <span class="nx">nameField</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">);</span>
 <span class="nx">nameField</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The name of the person&quot;</span><span class="p">);</span>
 <span class="nx">nameField</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
-<span class="kd">var</span>  <span class="nx">numberOfBags</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">numberOfBags</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
 <span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">NUMBER</span><span class="p">);</span>
 <span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The number of bags the person is taking on the trip&quot;</span><span class="p">);</span>
 <span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
-<span class="kd">var</span>  <span class="nx">dateOfBirth</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">dateOfBirth</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
 <span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">DATETIME</span><span class="p">);</span>
 <span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The date of birth of the person&quot;</span><span class="p">);</span>
 <span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 
-<span class="kd">var</span>  <span class="nx">isVaccinated</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">isVaccinated</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
 <span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">BOOL</span><span class="p">);</span>
 <span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Whether or not the person has been vaccinated&quot;</span><span class="p">);</span>
 <span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
