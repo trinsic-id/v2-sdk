@@ -16,20 +16,15 @@ This defines an API interface so that trust registries can be queried in the sam
 Our implementation is based off of this [trust registry spec](https://github.com/trustoverip/tswg-trust-registry-tf).
 
 ## API Reference
+
 ### Create a Ecosystem Governance Framework
+
 An ecosystem governance framework is useful because it provides a good basis for verifying issuers and verifiers. It's a json-ld document that lists the issuers and verifiers. These issuers and verifiers are identified by a decentralized identifier. The governance framework is signified by an identifier as well. This can be used to represent the governance framework outside in the credential that it comes in. 
 
 === "Trinsic CLI"
     ```bash
     trinsic trust-registry register-efg
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -59,12 +54,6 @@ An ecosystem governance framework is useful because it provides a good basis for
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
 
 ### Register Issuers
 Each entity on the governance framework, whether an issuer or a verifier, is represented by a decentralized identifier. These entities are registered to either issue or verify specific credential types. A credential type is represented as a fully qualified `type` URI, of the kind found in a JSON-LD Verifiable Credential.
@@ -77,13 +66,6 @@ Finally, each entity must be registered on a specific governance framework.
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -113,14 +95,6 @@ Finally, each entity must be registered on a specific governance framework.
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
-
 ### Register Verifiers
 
 === "Trinsic CLI"
@@ -130,13 +104,6 @@ Finally, each entity must be registered on a specific governance framework.
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -166,13 +133,6 @@ Finally, each entity must be registered on a specific governance framework.
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
 
 ### Unregister Issuers
 To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
@@ -184,13 +144,6 @@ To unregister an entity, include the credential type, the did, and the ecosystem
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -220,13 +173,6 @@ To unregister an entity, include the credential type, the did, and the ecosystem
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
 
 ### Unregister Verifiers
 To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
@@ -238,13 +184,6 @@ To unregister an entity, include the credential type, the did, and the ecosystem
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -274,13 +213,6 @@ To unregister an entity, include the credential type, the did, and the ecosystem
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
 
 ### Check Issuer Status
 Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.
@@ -292,13 +224,6 @@ Check the status of an issuer for a credential type within a given governance fr
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -328,14 +253,6 @@ Check the status of an issuer for a credential type within a given governance fr
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
-
 ### Check Verifier Status
 Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.
 
@@ -346,13 +263,6 @@ Check the status of an issuer for a credential type within a given governance fr
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -382,13 +292,6 @@ Check the status of an issuer for a credential type within a given governance fr
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
 
 ### Search
 Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
@@ -397,13 +300,6 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     ```bash
     trinsic trust-registry search --query <SQL query>
     ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    
-    ```
-    <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
@@ -433,15 +329,6 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
-
-    
 ### Cache Offline Registry File
 
 === "Trinsic CLI"
