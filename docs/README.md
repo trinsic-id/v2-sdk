@@ -32,6 +32,7 @@ This macro includes a section from another markdown file.
 Usage: `{{ include_section(file_name: str, section_name: str, include_heading: bool=False) }}`
 
 - `file_name` is the path, _relative to the docs root_, of the markdown file you wish to include a section from
+    - For example, to include a section from `sdk/docs/learn/intro.md`, you would use the path `learn/intro.md`
 - `section_name` is the name of the section you wish to include
 - `include_heading` controls whether or not to include the heading itself
 

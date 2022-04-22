@@ -33,11 +33,11 @@ nav:
   - SDK Reference:
     - Overview: reference/index.md
     - Account Service: reference/services/account-service.md
-    - Wallet Service: reference/services/wallet-service.md
     - Credential Service: reference/services/credential-service.md
-    - Template Service: reference/services/template-service.md
     - Provider Service: reference/services/provider-service.md
+    - Template Service: reference/services/template-service.md
     - Trust Registry Service: reference/services/trust-registry-service.md
+    - Wallet Service: reference/services/wallet-service.md
     - Protocol Buffers: reference/proto/index.md
   - Resources:
     - Roadmap: roadmap.md

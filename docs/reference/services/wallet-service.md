@@ -20,7 +20,7 @@ Trinsic supports the ability to insert verifiable credentials into a wallet simp
 
 When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
 
-{{ include_section('reference/proto/', 'InsertItemRequest') }}
+{{ proto_obj('InsertItemRequest') }}
 
 Then you can supply it to the SDKs:
 
@@ -61,12 +61,12 @@ Then you can supply it to the SDKs:
 
 The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
 
-{{ include_section('reference/proto/', 'InsertItemResponse') }}
+{{ proto_obj('InsertItemResponse') }}
 
 ## Search / Query
 
 Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This apporach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
+This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
 
 > This endpoint will support querying using [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
 
