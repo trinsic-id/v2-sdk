@@ -1,6 +1,75 @@
 # Provider Service
 
-This service helps ecosystem providers with data management and onboarding. This service requires a security profile with administrative authorization access. This can be obtained during the deployment of your ecosystem infrastructure.
+The Provider Service helps ecosystem providers with data management and onboarding. This service requires a security profile with administrative authorization access. This can be obtained during the deployment of your ecosystem infrastructure.
+
+## Create Ecosystem
+
+Creates a new provider ecosystem
+
+=== "Trinsic CLI"
+    ```bash
+    trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
+    ```
+
+When using one of the SDKs, you must supply a [Create Ecosystem Request](../proto/index.md#createecosystemrequest) object.
+
+{{ proto_obj('CreateEcosystemRequest') }}
+
+Then you can supply it to SDK:
+
+=== "TypeScript"
+    <!--codeinclude-->
+    ```typescript
+    [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```golang
+    [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+The response model is of type [Create Ecosystem Response](../proto/index.md#createecosystemresponse):
+
+{{ proto_obj('CreateEcosystemResponse') }}
+
+<!-- 
+// This call is not yet implemented
+## List Ecosystems
+
+Lists all available ecosystem for the current authentication context.
+
+When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
+
+{{ proto_obj('ListEcosystemRequest') }}
+
+The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
+
+{{ proto_obj('ListEcosystemResponse') }} 
+-->
 
 ## Onboarding
 
@@ -130,72 +199,3 @@ Then you can supply it to SDK:
 The response model is of type [Invitation Status Response](../proto/index.md#invitationstatusresponse):
 
 {{ proto_obj('InvitationStatusResponse') }}
-
-## Create Ecosystem
-
-Creates a new provider ecosystem
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
-    ```
-
-When using one of the SDKs, you must supply an [Create Ecosystem Request](../proto/index.md#createecosystemrequest) object. This object follows the model below:
-
-{{ proto_obj('CreateEcosystemRequest') }}
-
-Then you can supply it to SDK:
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Create Ecosystem Response](../proto/index.md#createecosystemresponse):
-
-{{ proto_obj('CreateEcosystemResponse') }}
-
-<!-- 
-// This call is not yet implemented
-## List Ecosystems
-
-Lists all available ecosystem for the current authentication context.
-
-When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
-
-{{ proto_obj('ListEcosystemRequest') }}
-
-The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
-
-{{ proto_obj('ListEcosystemResponse') }} 
--->
