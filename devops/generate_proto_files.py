@@ -213,10 +213,6 @@ def main():
 
     # Execute specified languages
     for lang in langs_to_build:
-        # Ignore empty strings
-        if not lang:
-            continue
-
         if not lang in lang_funcs:
             raise Exception(f"Language {lang} is not a valid compilation language.")
         
