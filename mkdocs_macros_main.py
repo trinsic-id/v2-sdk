@@ -3,19 +3,27 @@ Macros created by Trinsic for documentation site
 """
 
 from requests import head
+from os.path import abspath, relpath, join, dirname, exists
+from pathlib import Path
 
 
 def define_env(env):
-    chatter = env.start_chatting("Include Markdown Sections")
-    
     @env.macro
     def include_section(file_name: str, section_name: str, include_heading: bool=False):
         """
         Import a subsection of another markdown file
         """
-        pages = env.variables['navigation'].pages
-        reference_page = [page for page in pages if page.url == file_name][0]
-        markdown_lines = reference_page.markdown.split('\n')
+        chatter = env.start_chatting("Include Markdown Sections")
+
+        docs_path = join(dirname(__file__), "docs/")
+        file_path = Path(abspath(join(docs_path, file_name)))
+
+        # Ensure file exists
+        if not file_path.is_file():
+            return f"File {file_name} not found to inject from."
+
+        markdown_text = file_path.read_text()
+        markdown_lines = markdown_text.split('\n')
         header_indexes = [(index, line) for index, line in enumerate(markdown_lines) if line.strip().startswith("#")]
         # Append a section for the end
         header_indexes.append((len(markdown_lines),"<<INVALID>>"))
@@ -36,10 +44,13 @@ def define_env(env):
         Inject documentation for specified protobuf message
         """
 
+        chatter = env.start_chatting("Include Protobuf Object")
+        chatter(f"Including protobuf object {obj}")
+
         if header_text is None:
             header_text = obj
 
-        section_contents = include_section('reference/proto/', obj)
+        section_contents = include_section('reference/proto/index.md', obj)
 
         return (
             "<div class='proto-obj-container' markdown>"
