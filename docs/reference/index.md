@@ -13,8 +13,8 @@ See our [security](../learn/security.md) section for more information on how we 
 Our SDK is broken down into the following services:
 
 - [Account Service](./services/account-service.md)
-- [Wallet Service](./services/wallet-service.md)
 - [Credential Service](./services/credential-service.md)
-- [Trust Registry Service](./services/trust-registry-service.md)
-- [Template Service](./services/template-service.md)
 - [Provider Service](./services/provider-service.md)
+- [Template Service](./services/template-service.md)
+- [Trust Registry Service](./services/trust-registry-service.md)
+- [Wallet Service](./services/wallet-service.md)
