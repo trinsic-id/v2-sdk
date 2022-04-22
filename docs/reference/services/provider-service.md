@@ -6,7 +6,7 @@ This service helps ecosystem providers with data management and onboarding. This
 
 ### Invite Participant
 
-Users can be added as participants in the ecosystem by sending an invitation and a security code. This code can be sent directly through them using existing platforms or via email, SMS, etc.
+Users can be added as participants in an ecosystem by sending an invitation and a security code. This code can be sent directly to the invitee using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in [creating wallet with provider invitation](/reference/services/wallet-service/#create-wallet-with-provider-invitation)
 
 In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.
