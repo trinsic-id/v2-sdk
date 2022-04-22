@@ -1429,44 +1429,41 @@ properties:</p>
 <tr>
 <th>Field</th>
 <th>Type</th>
-<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>server_endpoint</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>service endpoint</td>
 </tr>
 <tr>
 <td>server_port</td>
-<td><a href="#int32">int32</a></td>
-<td></td>
+<td><a href="/reference/proto#int32">int32</a></td>
 <td>service port</td>
 </tr>
 <tr>
 <td>server_use_tls</td>
-<td><a href="#bool">bool</a></td>
-<td></td>
+<td><a href="/reference/proto#bool">bool</a></td>
 <td>indicates if tls is used</td>
 </tr>
 <tr>
 <td>auth_token</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>default auth token for oberon security scheme</td>
 </tr>
 <tr>
 <td>default_ecosystem</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>ecosystem to use with endpoints that require it</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services/account/v1/account.proto"></a></p>
+<!-- end messages -->
+<!-- end enums -->
+<!-- end HasExtensions -->
+<p><a name="services_account_v1_account-proto"></a></p>
 <p align="right"><a href="#top">Top</a></p>
 </div>
 </div>
@@ -1486,32 +1483,28 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 <tr>
 <th>Field</th>
 <th>Type</th>
-<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>details</td>
-<td><a href="#services.account.v1.AccountDetails">AccountDetails</a></td>
-<td></td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
 <td>Account registration details</td>
 </tr>
 <tr>
 <td>invitation_code</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>Invitation code associated with this registration This field is optional.</td>
 </tr>
 <tr>
 <td>ecosystem_id</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services.account.v1.SignInResponse"></a></p>
+<p><a name="services-account-v1-SignInResponse"></a></p>
 </div>
 </div>
 <p>And the <a href="../proto/#signinrequest">Account Details</a> object should look like this:</p>
@@ -1525,32 +1518,28 @@ and an SMS phone number. You may also provide an invitation code and ecosystem I
 <tr>
 <th>Field</th>
 <th>Type</th>
-<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>name</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>Account name (optional)</td>
 </tr>
 <tr>
 <td>email</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>Email account (required)</td>
 </tr>
 <tr>
 <td>sms</td>
-<td><a href="#string">string</a></td>
-<td></td>
+<td><a href="/reference/proto#string">string</a></td>
 <td>SMS number including country code (optional)</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services.account.v1.AccountEcosystem"></a></p>
+<p><a name="services-account-v1-AccountEcosystem"></a></p>
 </div>
 </div>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
@@ -1603,32 +1592,28 @@ like email, SMS, etc.</p>
 <tr>
 <th>Field</th>
 <th>Type</th>
-<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>status</td>
-<td><a href="#services.common.v1.ResponseStatus">services.common.v1.ResponseStatus</a></td>
-<td></td>
+<td><a href="/reference/proto#services-common-v1-ResponseStatus">services.common.v1.ResponseStatus</a></td>
 <td>The status of the response</td>
 </tr>
 <tr>
 <td>confirmation_method</td>
-<td><a href="#services.account.v1.ConfirmationMethod">ConfirmationMethod</a></td>
-<td></td>
+<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
 <td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
 </tr>
 <tr>
 <td>profile</td>
-<td><a href="#services.account.v1.AccountProfile">AccountProfile</a></td>
-<td></td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
 <td>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services.account.v1.TokenProtection"></a></p>
+<p><a name="services-account-v1-TokenProtection"></a></p>
 </div>
 </div>
 <h3 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h3>
@@ -1644,26 +1629,23 @@ signed in. Its response is a <a href="../../proto/#inforesponse">Info Response</
 <tr>
 <th>Field</th>
 <th>Type</th>
-<th>Label</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>details</td>
-<td><a href="#services.account.v1.AccountDetails">AccountDetails</a></td>
-<td></td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
 <td>The account details associated with the calling request context</td>
 </tr>
 <tr>
 <td>ecosystems</td>
-<td><a href="#services.account.v1.AccountEcosystem">AccountEcosystem</a></td>
-<td>repeated</td>
+<td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
 <td>any ecosystems the account has access to</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services.account.v1.ListDevicesRequest"></a></p>
+<p><a name="services-account-v1-ListDevicesRequest"></a></p>
 </div>
 </div>
 <p>Calling this procedure, is as trivial as evidenced below. Keep it mind, however, that it assumes you have the correct profile active.</p>
@@ -1813,7 +1795,7 @@ email or SMS as the <code>securityCode</code> argument.</p>
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a></span>
       </small>
     </div>
   
