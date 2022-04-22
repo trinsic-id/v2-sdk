@@ -20,7 +20,7 @@ Trinsic supports the ability to insert verifiable credentials into a wallet simp
 
 When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
 
-{{ include_section('reference/proto/', 'InsertItemRequest') }}
+{{ proto_obj('InsertItemRequest') }}
 
 Then you can supply it to the SDKs:
 
@@ -61,7 +61,7 @@ Then you can supply it to the SDKs:
 
 The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
 
-{{ include_section('reference/proto/', 'InsertItemResponse') }}
+{{ proto_obj('InsertItemResponse') }}
 
 ## Search / Query
 
