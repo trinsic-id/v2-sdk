@@ -1,6 +1,7 @@
 """
 Generate the language bindings from the proto files.
 """
+import argparse
 import glob
 import itertools
 import logging
@@ -178,16 +179,44 @@ def update_python():
     # Inject an empty python code file path to mimic the first argument.
     run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(description='Compile proto files for each SDK language and documentation')
+    parser.add_argument('--language', help='Comma-separated languages to build (all/golang/ruby/python/java/docs)', default='all')
+    return parser.parse_args()
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
     download_protoc_plugins()
-    update_golang()
-    update_ruby()
-    update_markdown()
-    update_python()
-    update_java()
 
+    # Get command line arguments
+    args = parse_arguments()
+    langs_to_build = [lang.lower() for lang in (args.language + ',').split(',')]
+
+    # Mapping of (language -> compilation function)
+    lang_funcs = {
+        "golang": update_golang,
+        "ruby": update_ruby,
+        "python": update_python,
+        "java": update_java,
+        "docs": update_markdown
+    }
+
+    # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.
+    if "all" in langs_to_build:
+        langs_to_build = list(lang_funcs.keys())
+
+    # Strip out empty elements
+    langs_to_build = [lang for lang in langs_to_build if lang]
+
+    if len(langs_to_build) == 0:
+        raise Exception("No languages specified")
+
+    # Execute specified languages
+    for lang in langs_to_build:
+        if not lang in lang_funcs:
+            raise Exception(f"Language {lang} is not a valid compilation language.")
+        
+        lang_funcs[lang]()
 
 if __name__ == "__main__":
     main()
