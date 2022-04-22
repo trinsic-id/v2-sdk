@@ -1445,10 +1445,8 @@
 <p>The Credentials Service gives you the ability to manage complex workflows related to DIDs (contacts/Connections) and VCs (credential issuance, Revocation, Verification, etc). This is probably the service you will most interact with because VC Issuance and verification are at the core of every SSI use case.</p>
 <p>The Credential service supports signing data using <a href="https://w3c-ccg.github.io/ldp-bbs2020/" target="_blank">BBS+ Signatures <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.</p>
 <h2 id="issue-credential">Issue Credential<a class="headerlink" href="#issue-credential" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/).
-
-**`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
-</code></pre></div>
+<p>Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: <a href="https://www.w3.org/TR/vc-data-model/">VC Data Model v1.1</a>. </p>
+<p><strong><code>IssueCredential</code> requires a valid JSON-LD document to be provided</strong>. Do not confuse this operation with <a href="./#issue-credential-from-template">Issue Credential From Template</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
