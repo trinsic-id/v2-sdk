@@ -42,14 +42,6 @@ message DeleteCredentialTemplateRequest {
 
 message DeleteCredentialTemplateResponse {}
 
-service CredentialTemplates {
-  rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
-  rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
-  rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
-  rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
-  rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
-}
-
 // Request to create new template
 message CreateCredentialTemplateRequest {
   string name = 1;
@@ -94,4 +86,13 @@ message TemplateData {
   string context_uri = 7;
   string ecosystem_id = 8 [json_name="ecosystemId"];
   string type = 9         [json_name="type"];
+  string created_by = 10  [json_name="createdBy"];
+}
+
+service CredentialTemplates {
+  rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
+  rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+  rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
+  rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
+  rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
 }

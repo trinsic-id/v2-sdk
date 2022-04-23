@@ -181,5 +181,6 @@ async fn verify_proof(args: &VerifyProofArgs, config: CliConfig) -> Result<Outpu
 
     let mut output = Output::default();
     output.insert("is valid".into(), response.is_valid.to_string());
+    output.insert("validation results".into(), serde_json::to_string_pretty(&response.validation_results)?);
     Ok(output)
 }

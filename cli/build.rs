@@ -26,7 +26,6 @@ fn main() {
         // )
         .compile(
             &[
-                "../proto/pbmse/v1/pbmse.proto",
                 "../proto/sdk/options/v1/options.proto",
                 "../proto/services/debug/v1/debug.proto",
                 "../proto/services/common/v1/common.proto",
@@ -45,7 +44,6 @@ fn main() {
         "./src/proto/google.protobuf.rs",
         "./src/proto/google/protobuf/mod.rs"
     );
-    move_file!("./src/proto/pbmse.v1.rs", "./src/proto/pbmse/v1/mod.rs");
     move_file!(
         "./src/proto/sdk.options.v1.rs",
         "./src/proto/sdk/options/v1/mod.rs"

@@ -27,8 +27,6 @@ pub mod invite_request {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
     #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
     /// Invitation Code that must be passed with the account 'SignIn' request
@@ -136,6 +134,16 @@ pub struct GenerateTokenResponse {
     /// Account authentication profile that contains unprotected token
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
+}
+/// request message for GetOberonKey
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetOberonKeyRequest {}
+/// response message for GetOberonKey
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetOberonKeyResponse {
+    /// Oberon Public Key as RAW base64 URL encoded string
+    #[prost(string, tag = "1")]
+    pub key: ::prost::alloc::string::String,
 }
 #[derive(
     ::serde::Serialize,
@@ -281,6 +289,22 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static(
                 "/services.provider.v1.Provider/InvitationStatus",
             );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Returns the public key being used to create/verify oberon tokens"]
+        pub async fn get_oberon_key(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetOberonKeyRequest>,
+        ) -> Result<tonic::Response<super::GetOberonKeyResponse>, tonic::Status> {
+            self.inner.ready().await.map_err(|e| {
+                tonic::Status::new(
+                    tonic::Code::Unknown,
+                    format!("Service was not ready: {}", e.into()),
+                )
+            })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

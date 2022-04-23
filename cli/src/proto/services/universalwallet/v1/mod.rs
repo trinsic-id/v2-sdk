@@ -15,8 +15,7 @@ pub struct SearchResponse {
     pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     #[prost(bool, tag = "2")]
     pub has_more: bool,
-    #[prost(int32, tag = "3")]
-    pub count: i32,
+    /// int32 count = 3;
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
@@ -53,11 +52,7 @@ pub struct UpdateItemRequest {
 }
 /// Update item response object
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct UpdateItemResponse {
-    /// Response status
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct UpdateItemResponse {}
 // InsertItem
 
 /// Insert item request
@@ -73,8 +68,6 @@ pub struct InsertItemRequest {
 /// Insert item response
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
     /// The item identifier of the inserted record
     #[prost(string, tag = "2")]
     pub item_id: ::prost::alloc::string::String,
@@ -88,10 +81,7 @@ pub struct DeleteItemRequest {
 }
 /// Delete item response
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct DeleteItemResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct DeleteItemResponse {}
 #[doc = r" Generated client implementations."]
 pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]

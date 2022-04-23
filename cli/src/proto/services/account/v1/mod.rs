@@ -32,9 +32,6 @@ pub struct AccountDetails {
 /// like email, SMS, etc.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInResponse {
-    /// The status of the response
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
     /// Indicates if confirmation of account is required.
     /// This settings is configured globally by the server administrator.
     #[prost(enumeration = "ConfirmationMethod", tag = "3")]
@@ -87,8 +84,18 @@ pub struct InfoResponse {
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
     /// any ecosystems the account has access to
+    #[deprecated]
     #[prost(message, repeated, tag = "2")]
     pub ecosystems: ::prost::alloc::vec::Vec<AccountEcosystem>,
+    /// The wallet id associated with this account
+    #[prost(string, tag = "3")]
+    pub wallet_id: ::prost::alloc::string::String,
+    /// The device id associated with this account
+    #[prost(string, tag = "4")]
+    pub device_id: ::prost::alloc::string::String,
+    /// The ecosystem id associated with this account
+    #[prost(string, tag = "5")]
+    pub ecosystem_id: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}

@@ -6,7 +6,6 @@ option csharp_namespace = "Trinsic.Services.Provider.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.common.v1";
 
-import "services/common/v1/common.proto";
 import "services/account/v1/account.proto";
 
 message Invite {
@@ -30,8 +29,6 @@ enum ParticipantType {
 }
 
 message InviteResponse {
-    services.common.v1.ResponseStatus status = 1;
-
     string invitation_id = 10;
         
     // Invitation Code that must be passed with the account 'SignIn' request
@@ -107,6 +104,17 @@ message GenerateTokenResponse {
     services.account.v1.AccountProfile profile = 1;
 }
 
+
+// request message for GetOberonKey
+message GetOberonKeyRequest {
+}
+
+// response message for GetOberonKey
+message GetOberonKeyResponse {
+    string key = 1; // Oberon Public Key as RAW base64 URL encoded string
+}
+
+
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
     rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
@@ -120,4 +128,7 @@ service Provider {
 
     // Check the invitation status
     rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
+
+    // Returns the public key being used to create/verify oberon tokens
+    rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse);
 }

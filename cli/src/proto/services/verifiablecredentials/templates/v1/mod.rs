@@ -112,6 +112,8 @@ pub struct TemplateData {
     pub ecosystem_id: ::prost::alloc::string::String,
     #[prost(string, tag = "9")]
     pub r#type: ::prost::alloc::string::String,
+    #[prost(string, tag = "10")]
+    pub created_by: ::prost::alloc::string::String,
 }
 #[derive(
     ::serde::Serialize,

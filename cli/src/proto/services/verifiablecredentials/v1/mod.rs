@@ -68,13 +68,27 @@ pub struct VerifyProofResponse {
     /// Indicates if the proof is valid
     #[prost(bool, tag = "1")]
     pub is_valid: bool,
+    #[deprecated]
+    #[prost(string, repeated, tag = "2")]
+    pub validation_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// Validation messages that describe invalid verifications
     /// based on different factors, such as schema validation,
     /// proof verification, revocation registry membership, etc.
     /// If the proof is not valid, this field will contain detailed
     /// results where this verification failed.
+    #[prost(map = "string, message", tag = "3")]
+    pub validation_results:
+        ::std::collections::HashMap<::prost::alloc::string::String, ValidationMessage>,
+}
+/// validation message that contains results and error messages
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct ValidationMessage {
+    /// the validation result
+    #[prost(bool, tag = "1")]
+    pub is_valid: bool,
+    /// set of messages that contain validation results
     #[prost(string, repeated, tag = "2")]
-    pub validation_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    pub messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
@@ -96,10 +110,7 @@ pub mod send_request {
     }
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct SendResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
+pub struct SendResponse {}
 /// request object to update the status of the revocation entry
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusRequest {
@@ -112,18 +123,15 @@ pub struct UpdateStatusRequest {
 }
 /// response object for update of status of revocation entry
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct UpdateStatusResponse {
-    #[prost(enumeration = "super::super::common::v1::ResponseStatus", tag = "1")]
-    pub status: i32,
-}
-/// request object to update the status of the revocation entry
+pub struct UpdateStatusResponse {}
+/// request object to check the status of the revocation entry
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusRequest {
     /// the credential status id
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
 }
-/// response object for update of status of revocation entry
+/// response object for checking the status of revocation entry
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusResponse {
     /// indicates if the status is revoked
@@ -227,7 +235,7 @@ pub mod verifiable_credential_client {
             );
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Check credential status by setting the revocation value"]
+        #[doc = " Check credential status in the revocation registry"]
         pub async fn check_status(
             &mut self,
             request: impl tonic::IntoRequest<super::CheckStatusRequest>,

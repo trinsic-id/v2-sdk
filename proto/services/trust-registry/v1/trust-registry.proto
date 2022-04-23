@@ -1,8 +1,6 @@
 syntax = "proto3";
 package services.trustregistry.v1;
 
-import "services/common/v1/common.proto";
-
 option csharp_namespace = "Trinsic.Services.TrustRegistry.V1";
 option java_package = "trinsic.services.trustregistry.v1";
 option go_package = "github.com/trinsic-id/sdk";
@@ -12,7 +10,6 @@ message AddFrameworkRequest {
 }
 
 message AddFrameworkResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message RemoveFrameworkRequest {
@@ -20,7 +17,6 @@ message RemoveFrameworkRequest {
 }
 
 message RemoveFrameworkResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message SearchRegistryRequest {
@@ -54,7 +50,6 @@ message RegisterIssuerRequest {
 }
 
 message RegisterIssuerResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message RegisterVerifierRequest {
@@ -70,7 +65,6 @@ message RegisterVerifierRequest {
 }
 
 message RegisterVerifierResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message UnregisterIssuerRequest {
@@ -84,7 +78,6 @@ message UnregisterIssuerRequest {
 }
 
 message UnregisterIssuerResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message UnregisterVerifierRequest {
@@ -98,7 +91,6 @@ message UnregisterVerifierRequest {
 }
 
 message UnregisterVerifierResponse {
-    services.common.v1.ResponseStatus status = 1;
 }
 
 message CheckIssuerStatusRequest {
