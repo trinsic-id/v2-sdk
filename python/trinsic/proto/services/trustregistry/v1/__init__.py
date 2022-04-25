@@ -2,23 +2,11 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Dict,
-    Optional,
-)
+from typing import AsyncIterator, Dict
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-from ...common import v1 as __common_v1__
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 class RegistrationStatus(betterproto.Enum):
@@ -36,7 +24,7 @@ class AddFrameworkRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -46,7 +34,7 @@ class RemoveFrameworkRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -82,7 +70,7 @@ class RegisterIssuerRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RegisterIssuerResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -97,7 +85,7 @@ class RegisterVerifierRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RegisterVerifierResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -110,7 +98,7 @@ class UnregisterIssuerRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class UnregisterIssuerResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -123,7 +111,7 @@ class UnregisterVerifierRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class UnregisterVerifierResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -167,163 +155,93 @@ class FetchDataResponse(betterproto.Message):
 
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
-        self,
-        add_framework_request: "AddFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, add_framework_request: "AddFrameworkRequest"
     ) -> "AddFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/AddFramework",
             add_framework_request,
             AddFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def remove_framework(
-        self,
-        remove_framework_request: "RemoveFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, remove_framework_request: "RemoveFrameworkRequest"
     ) -> "RemoveFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
             remove_framework_request,
             RemoveFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def search_registry(
-        self,
-        search_registry_request: "SearchRegistryRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, search_registry_request: "SearchRegistryRequest"
     ) -> "SearchRegistryResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
             search_registry_request,
             SearchRegistryResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def register_issuer(
-        self,
-        register_issuer_request: "RegisterIssuerRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, register_issuer_request: "RegisterIssuerRequest"
     ) -> "RegisterIssuerResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
             register_issuer_request,
             RegisterIssuerResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def register_verifier(
-        self,
-        register_verifier_request: "RegisterVerifierRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, register_verifier_request: "RegisterVerifierRequest"
     ) -> "RegisterVerifierResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
             register_verifier_request,
             RegisterVerifierResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def unregister_issuer(
-        self,
-        unregister_issuer_request: "UnregisterIssuerRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, unregister_issuer_request: "UnregisterIssuerRequest"
     ) -> "UnregisterIssuerResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer",
             unregister_issuer_request,
             UnregisterIssuerResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def unregister_verifier(
-        self,
-        unregister_verifier_request: "UnregisterVerifierRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, unregister_verifier_request: "UnregisterVerifierRequest"
     ) -> "UnregisterVerifierResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier",
             unregister_verifier_request,
             UnregisterVerifierResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def check_issuer_status(
-        self,
-        check_issuer_status_request: "CheckIssuerStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, check_issuer_status_request: "CheckIssuerStatusRequest"
     ) -> "CheckIssuerStatusResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus",
             check_issuer_status_request,
             CheckIssuerStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def check_verifier_status(
-        self,
-        check_verifier_status_request: "CheckVerifierStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, check_verifier_status_request: "CheckVerifierStatusRequest"
     ) -> "CheckVerifierStatusResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus",
             check_verifier_status_request,
             CheckVerifierStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def fetch_data(
-        self,
-        fetch_data_request: "FetchDataRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, fetch_data_request: "FetchDataRequest"
     ) -> AsyncIterator["FetchDataResponse"]:
         async for response in self._unary_stream(
             "/services.trustregistry.v1.TrustRegistry/FetchData",
             fetch_data_request,
             FetchDataResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         ):
             yield response
 

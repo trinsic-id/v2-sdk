@@ -7,7 +7,7 @@ import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.CommonOuterClass;
+import trinsic.services.common.v1.Common;
 
 import java.time.Instant;
 import java.util.Base64;
@@ -21,7 +21,7 @@ public class OberonSecurityProvider implements ISecurityProvider {
         // compute the hash of the request and return the result
         var messageHash = Hashing.blake3_hash(trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.newBuilder().setData(message.toByteString()).build()).getDigest();
 
-        var nonce = CommonOuterClass.Nonce.newBuilder()
+        var nonce = Common.Nonce.newBuilder()
                 .setTimestamp(Instant.now().toEpochMilli())
                 .setRequestHash(messageHash).build();
 

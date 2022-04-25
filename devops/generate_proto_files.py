@@ -6,12 +6,12 @@ import glob
 import itertools
 import logging
 import os
+import subprocess
 import sys
-from platform import system
 import urllib.request
 from os.path import abspath, relpath, join, dirname
+from platform import system
 from typing import List, Dict, Union
-
 
 from build_sdks import update_line, clean_dir, get_language_dir
 
@@ -37,6 +37,7 @@ def md_template_path() -> str:
     """
 
     return relpath(abspath(join(dirname(__file__), 'resources/markdown.tmpl')))
+
 
 def java_plugin() -> str:
     return abspath(join(plugin_path(), 'protoc-gen-grpc-java.exe'))
@@ -85,7 +86,7 @@ def get_matching_files(dir_name: str, extension: str) -> List[str]:
 
 def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
     if isinstance(args, dict):
-        return [f'--{key}="{value}"' for (key, value) in args.items()] if args else []
+        return [f'--{key}={value}' for (key, value) in args.items()] if args else []
     elif isinstance(args, list):
         return args
     else:
@@ -97,20 +98,22 @@ def run_protoc(language_options: Dict[str, str] = None,
                proto_files: Union[List[str], str] = None,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
-    proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
+    proto_path_string = ['-I', get_language_dir('proto')]  # f'--proto_path="{get_language_dir("proto")}"'
     plugin_string = f'--plugin={plugin}' if plugin else ''
-    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options), join_args(custom_options)]
+    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options),
+                    join_args(custom_options)]
     command_args.extend(join_args(proto_files))
     # Regularize 2D array and flatten
-    command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args ]
+    command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args]
     command_args = list(itertools.chain(*command_args))
-    # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
+    # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
     command_args = [arg for arg in command_args if arg]
-    logging.info(command_args)
-    # output = subprocess.run(command_args, capture_output=True)
-    # output.check_returncode()
-    if os.system(" ".join(command_args)) != 0:
-        raise Exception("protoc failed")
+    result = subprocess.run(command_args, capture_output=True, shell=True)
+    if result.stderr:
+        print(bytes(result.stderr).decode('utf-8'))
+    if result.stdout:
+        print(bytes(result.stdout).decode('utf-8'))
+    result.check_returncode()
 
 
 def update_golang():
@@ -133,7 +136,11 @@ def update_ruby():
     ruby_path = get_language_dir('ruby')
     ruby_proto_path = join(ruby_path, 'lib')
     # Clean selectively
-    clean_dir(join(ruby_proto_path, 'services'))
+    services_dir = join(ruby_proto_path, 'services')
+    services_subfolders = [f.path for f in os.scandir(services_dir) if f.is_dir()]
+    for folder in services_subfolders:
+        clean_dir(folder)
+
     clean_dir(join(ruby_proto_path, 'sdk'))
     clean_dir(join(ruby_proto_path, 'pbmse'))
     run_protoc({'ruby_out': ruby_proto_path, 'grpc_out': ruby_proto_path}, {}, get_proto_files(),
@@ -155,7 +162,8 @@ def update_java():
 
     run_protoc({'java_out': lang_proto_path, 'grpc-java_out': lang_proto_path}, {}, get_proto_files(),
                plugin=f"protoc-gen-grpc-java={java_plugin()}")
-    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(), plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}")
+    run_protoc({'grpc-kotlin_out': lang_proto_path}, {}, get_proto_files(),
+               plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}")
     # remove okapi pbmse
     clean_dir(join(lang_proto_path, 'trinsic', 'okapi'))
 
@@ -164,7 +172,7 @@ def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
     template_path = md_template_path()
-    
+
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': f"{template_path},index.md"}, get_proto_files())
 
 
@@ -177,12 +185,16 @@ def update_python():
     python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
     clean_dir(python_proto_path)
     # Inject an empty python code file path to mimic the first argument.
+    # plugin_file = r"C:\work\sdk\devops\venv\Lib\site-packages\betterproto\plugin\plugin.bat"
     run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
+
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Compile proto files for each SDK language and documentation')
-    parser.add_argument('--language', help='Comma-separated languages to build (all/golang/ruby/python/java/docs)', default='all')
+    parser.add_argument('--language', help='Comma-separated languages to build (all/golang/ruby/python/java/docs)',
+                        default='all')
     return parser.parse_args()
+
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
@@ -215,8 +227,9 @@ def main():
     for lang in langs_to_build:
         if not lang in lang_funcs:
             raise Exception(f"Language {lang} is not a valid compilation language.")
-        
+
         lang_funcs[lang]()
+
 
 if __name__ == "__main__":
     main()

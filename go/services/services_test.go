@@ -132,6 +132,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 		DeliveryMethod: &sdk.SendRequest_Email{Email: "example@trinsic.id"}})
 	// }
 	// We ignore errors because we don't expect this email account to exist.
+	err = nil
 
 	// STORE CREDENTIAL
 	// Alice stores the credential in her cloud wallet.
@@ -221,7 +222,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	// }
 
 	// registerIssuer() {
-	err = service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
+	registerIssuerResponse, err := service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
 		GovernanceFrameworkUri: frameworkURI,
@@ -232,7 +233,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// registerVerifier() {
-	err = service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
+	registerVerifierResponse, err := service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
 		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,
 		GovernanceFrameworkUri: frameworkURI,
@@ -276,17 +277,22 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 
 	// unregisterIssuer() {
-	err = service.UnregisterIssuer(context.Background(), &sdk.UnregisterIssuerRequest{
+	unregisterIssuerResponse, err := service.UnregisterIssuer(context.Background(), &sdk.UnregisterIssuerRequest{
 		CredentialTypeUri:      typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
 	// }
 	// unregisterVerifier() {
-	err = service.UnregisterVerifier(context.Background(), &sdk.UnregisterVerifierRequest{
+	unregisterVerifierResponse, err := service.UnregisterVerifier(context.Background(), &sdk.UnregisterVerifierRequest{
 		PresentationTypeUri:    typeURI,
 		GovernanceFrameworkUri: frameworkURI,
 	})
 	// }
+
+	// This is for the variables used for demos above so they appear "used".
+	if unregisterVerifierResponse == nil || unregisterIssuerResponse == nil || registerIssuerResponse == nil || registerVerifierResponse == nil {
+		// Do absolutely nothing
+	}
 }
 
 func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {

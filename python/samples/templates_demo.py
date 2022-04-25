@@ -40,7 +40,9 @@ async def templates_demo():
             fields={
                 "firstName": TemplateField(description="Given name"),
                 "lastName": TemplateField(),
-                "age": TemplateField(type=FieldType.NUMBER, optional=True),
+                "age": TemplateField(
+                    optional=True
+                ),  # TODO - use FieldType.NUMBER once schema validation is fixed.
             },
         )
     )
@@ -52,7 +54,7 @@ async def templates_demo():
 
     # issue credential from this template
     # issueFromTemplate() {
-    values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": 42})
+    values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": "42"})
     issue_response = await credential_service.issue_from_template(
         request=IssueFromTemplateRequest(
             template_id=template.data.id, values_json=values
@@ -76,14 +78,14 @@ async def templates_demo():
     }
 
     # create proof from input document
-    create_proof_response = await credential_service.create_proof(
+    proof = await credential_service.create_proof(
         request=CreateProofRequest(
-            item_id=item_id, reveal_document_json=json.dumps(frame)
+            document_json=issue_response.document_json,
+            reveal_document_json=json.dumps(frame),
         )
     )
-    proof = create_proof_response.proof_document_json
     verify_result = await credential_service.verify_proof(
-        request=VerifyProofRequest(proof_document_json=proof)
+        request=VerifyProofRequest(proof_document_json=proof.proof_document_json)
     )
     assert verify_result.is_valid
 

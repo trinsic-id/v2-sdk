@@ -27,6 +27,8 @@ type ProviderClient interface {
 	Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error)
 	// Check the invitation status
 	InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error)
+	// Returns the public key being used to create/verify oberon tokens
+	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
 }
 
 type providerClient struct {
@@ -73,6 +75,15 @@ func (c *providerClient) InvitationStatus(ctx context.Context, in *InvitationSta
 	return out, nil
 }
 
+func (c *providerClient) GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error) {
+	out := new(GetOberonKeyResponse)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/GetOberonKey", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServer is the server API for Provider service.
 // All implementations must embed UnimplementedProviderServer
 // for forward compatibility
@@ -86,6 +97,8 @@ type ProviderServer interface {
 	Invite(context.Context, *InviteRequest) (*InviteResponse, error)
 	// Check the invitation status
 	InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error)
+	// Returns the public key being used to create/verify oberon tokens
+	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)
 	mustEmbedUnimplementedProviderServer()
 }
 
@@ -104,6 +117,9 @@ func (UnimplementedProviderServer) Invite(context.Context, *InviteRequest) (*Inv
 }
 func (UnimplementedProviderServer) InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InvitationStatus not implemented")
+}
+func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetOberonKey not implemented")
 }
 func (UnimplementedProviderServer) mustEmbedUnimplementedProviderServer() {}
 
@@ -190,6 +206,24 @@ func _Provider_InvitationStatus_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Provider_GetOberonKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOberonKeyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServer).GetOberonKey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.provider.v1.Provider/GetOberonKey",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServer).GetOberonKey(ctx, req.(*GetOberonKeyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Provider_ServiceDesc is the grpc.ServiceDesc for Provider service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -212,6 +246,10 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InvitationStatus",
 			Handler:    _Provider_InvitationStatus_Handler,
+		},
+		{
+			MethodName: "GetOberonKey",
+			Handler:    _Provider_GetOberonKey_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

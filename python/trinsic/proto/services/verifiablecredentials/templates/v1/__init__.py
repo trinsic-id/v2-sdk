@@ -2,21 +2,11 @@
 # sources: services/verifiable-credentials/templates/v1/templates.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    List,
-    Optional,
-)
+from typing import Dict, List
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 class FieldType(betterproto.Enum):
@@ -129,87 +119,53 @@ class TemplateData(betterproto.Message):
     context_uri: str = betterproto.string_field(7)
     ecosystem_id: str = betterproto.string_field(8)
     type: str = betterproto.string_field(9)
+    created_by: str = betterproto.string_field(10)
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):
     async def create(
-        self,
-        create_credential_template_request: "CreateCredentialTemplateRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, create_credential_template_request: "CreateCredentialTemplateRequest"
     ) -> "CreateCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
             create_credential_template_request,
             CreateCredentialTemplateResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def get(
-        self,
-        get_credential_template_request: "GetCredentialTemplateRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, get_credential_template_request: "GetCredentialTemplateRequest"
     ) -> "GetCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
             get_credential_template_request,
             GetCredentialTemplateResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def list(
-        self,
-        list_credential_templates_request: "ListCredentialTemplatesRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, list_credential_templates_request: "ListCredentialTemplatesRequest"
     ) -> "ListCredentialTemplatesResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
             list_credential_templates_request,
             ListCredentialTemplatesResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def search(
-        self,
-        search_credential_templates_request: "SearchCredentialTemplatesRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, search_credential_templates_request: "SearchCredentialTemplatesRequest"
     ) -> "SearchCredentialTemplatesResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
             search_credential_templates_request,
             SearchCredentialTemplatesResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def delete(
-        self,
-        delete_credential_template_request: "DeleteCredentialTemplateRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, delete_credential_template_request: "DeleteCredentialTemplateRequest"
     ) -> "DeleteCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete",
             delete_credential_template_request,
             DeleteCredentialTemplateResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
 

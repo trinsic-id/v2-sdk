@@ -2,22 +2,9 @@
 # sources: services/common/v1/common.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    Optional,
-)
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-from ....pbmse import v1 as ___pbmse_v1__
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
 
 
 class ResponseStatus(betterproto.Enum):
@@ -31,14 +18,12 @@ class ResponseStatus(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class ServerConfig(betterproto.Message):
+    # service endpoint
     endpoint: str = betterproto.string_field(1)
-    """service endpoint"""
-
+    # service port
     port: int = betterproto.int32_field(2)
-    """service port"""
-
+    # indicates if tls is used
     use_tls: bool = betterproto.bool_field(3)
-    """indicates if tls is used"""
 
 
 @dataclass(eq=False, repr=False)
@@ -47,43 +32,3 @@ class Nonce(betterproto.Message):
 
     timestamp: int = betterproto.int64_field(1)
     request_hash: bytes = betterproto.bytes_field(2)
-
-
-class CommonStub(betterproto.ServiceStub):
-    async def request(
-        self,
-        pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "___pbmse_v1__.EncryptedMessage":
-        return await self._unary_unary(
-            "/services.common.v1.Common/Request",
-            pbmse_v1_encrypted_message,
-            ___pbmse_v1__.EncryptedMessage,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
-        )
-
-
-class CommonBase(ServiceBase):
-    async def request(
-        self, pbmse_v1_encrypted_message: "___pbmse_v1__.EncryptedMessage"
-    ) -> "___pbmse_v1__.EncryptedMessage":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def __rpc_request(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.request(request)
-        await stream.send_message(response)
-
-    def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
-        return {
-            "/services.common.v1.Common/Request": grpclib.const.Handler(
-                self.__rpc_request,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                ___pbmse_v1__.EncryptedMessage,
-                ___pbmse_v1__.EncryptedMessage,
-            ),
-        }

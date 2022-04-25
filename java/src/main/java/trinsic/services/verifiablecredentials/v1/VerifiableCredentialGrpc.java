@@ -305,7 +305,7 @@ public final class VerifiableCredentialGrpc {
 
     /**
      * <pre>
-     * Check credential status by setting the revocation value
+     * Check credential status in the revocation registry
      * </pre>
      */
     public void checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
@@ -451,7 +451,7 @@ public final class VerifiableCredentialGrpc {
 
     /**
      * <pre>
-     * Check credential status by setting the revocation value
+     * Check credential status in the revocation registry
      * </pre>
      */
     public void checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
@@ -546,7 +546,7 @@ public final class VerifiableCredentialGrpc {
 
     /**
      * <pre>
-     * Check credential status by setting the revocation value
+     * Check credential status in the revocation registry
      * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse checkStatus(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request) {
@@ -638,7 +638,7 @@ public final class VerifiableCredentialGrpc {
 
     /**
      * <pre>
-     * Check credential status by setting the revocation value
+     * Check credential status in the revocation registry
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse> checkStatus(

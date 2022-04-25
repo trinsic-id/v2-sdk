@@ -3,7 +3,7 @@ package trinsic.services
 import com.google.protobuf.InvalidProtocolBufferException
 import trinsic.okapi.DidException
 import trinsic.sdk.v1.Options
-import trinsic.services.common.v1.CommonOuterClass
+import trinsic.services.common.v1.Common
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
 import java.util.concurrent.ExecutionException
@@ -35,9 +35,8 @@ class CredentialsServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun updateStatus(request: UpdateStatusRequest) {
-        val response = withMetadata(stub, request).updateStatus(request)
-        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("status not completely updated " + response.status)
+    suspend fun updateStatus(request: UpdateStatusRequest): UpdateStatusResponse {
+        return withMetadata(stub, request).updateStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -56,8 +55,7 @@ class CredentialsServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun send(request: SendRequest) {
-        val response = withMetadata(stub, request).send(request)
-        if (response.status != CommonOuterClass.ResponseStatus.SUCCESS) throw RuntimeException("request not complete sent " + response.status)
+    suspend fun send(request: SendRequest): SendResponse {
+        return withMetadata(stub, request).send(request)
     }
 }

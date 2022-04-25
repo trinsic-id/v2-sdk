@@ -45,7 +45,7 @@ async function vaccineDemo() {
 
     // storeCredential() {
     // Alice stores the credential in her cloud wallet.
-    accountService.options.setAuthToken(allison);
+    walletService.options.setAuthToken(allison);
     const itemId = await walletService.insertItem(new InsertItemRequest()
         .setItemJson(credential.getSignedDocumentJson()));
     // }

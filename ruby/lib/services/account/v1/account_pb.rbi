@@ -209,28 +209,14 @@ class Services::Account::V1::SignInResponse
 
   sig do
     params(
-      status: T.nilable(T.any(Symbol, String, Integer)),
       confirmation_method: T.nilable(T.any(Symbol, String, Integer)),
       profile: T.nilable(Services::Account::V1::AccountProfile)
     ).void
   end
   def initialize(
-    status: :SUCCESS,
     confirmation_method: :None,
     profile: nil
   )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
   end
 
   sig { returns(Symbol) }
@@ -512,12 +498,18 @@ class Services::Account::V1::InfoResponse
   sig do
     params(
       details: T.nilable(Services::Account::V1::AccountDetails),
-      ecosystems: T.nilable(T::Array[T.nilable(Services::Account::V1::AccountEcosystem)])
+      ecosystems: T.nilable(T::Array[T.nilable(Services::Account::V1::AccountEcosystem)]),
+      wallet_id: T.nilable(String),
+      device_id: T.nilable(String),
+      ecosystem_id: T.nilable(String)
     ).void
   end
   def initialize(
     details: nil,
-    ecosystems: []
+    ecosystems: [],
+    wallet_id: "",
+    device_id: "",
+    ecosystem_id: ""
   )
   end
 
@@ -543,6 +535,42 @@ class Services::Account::V1::InfoResponse
 
   sig { void }
   def clear_ecosystems
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def device_id
+  end
+
+  sig { params(value: String).void }
+  def device_id=(value)
+  end
+
+  sig { void }
+  def clear_device_id
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
   end
 
   sig { params(field: String).returns(T.untyped) }

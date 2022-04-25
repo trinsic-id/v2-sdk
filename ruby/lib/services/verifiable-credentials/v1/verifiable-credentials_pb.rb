@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/verifiable-credentials/v1/verifiable-credentials.proto", :syntax => :proto3) do
     add_message "services.verifiablecredentials.v1.IssueRequest" do
@@ -35,6 +34,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.verifiablecredentials.v1.VerifyProofResponse" do
       optional :is_valid, :bool, 1
       repeated :validation_messages, :string, 2
+      map :validation_results, :string, :message, 3, "services.verifiablecredentials.v1.ValidationMessage"
+    end
+    add_message "services.verifiablecredentials.v1.ValidationMessage" do
+      optional :is_valid, :bool, 1
+      repeated :messages, :string, 2
     end
     add_message "services.verifiablecredentials.v1.SendRequest" do
       optional :document_json, :string, 100
@@ -45,14 +49,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.verifiablecredentials.v1.SendResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.verifiablecredentials.v1.UpdateStatusRequest" do
       optional :credential_status_id, :string, 1
       optional :revoked, :bool, 2
     end
     add_message "services.verifiablecredentials.v1.UpdateStatusResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.verifiablecredentials.v1.CheckStatusRequest" do
       optional :credential_status_id, :string, 1
@@ -74,6 +76,7 @@ module Services
       CreateProofResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.CreateProofResponse").msgclass
       VerifyProofRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.VerifyProofRequest").msgclass
       VerifyProofResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.VerifyProofResponse").msgclass
+      ValidationMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.ValidationMessage").msgclass
       SendRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.SendRequest").msgclass
       SendResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.SendResponse").msgclass
       UpdateStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.verifiablecredentials.v1.UpdateStatusRequest").msgclass

@@ -107,7 +107,7 @@ export class AccountService extends ServiceBase {
 
     return new Promise((resolve, reject) => {
       this.client.signIn(request, (error, response) => {
-        if (error || response.getStatus() != ResponseStatus.SUCCESS) {
+        if (error) {
           reject(error);
         } else {
           const authToken = Buffer.from(

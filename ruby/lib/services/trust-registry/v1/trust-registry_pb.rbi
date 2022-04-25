@@ -91,28 +91,6 @@ class Services::Trustregistry::V1::AddFrameworkResponse
   def self.descriptor
   end
 
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
-  end
-
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -209,28 +187,6 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
-  end
-
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -669,28 +625,6 @@ class Services::Trustregistry::V1::RegisterIssuerResponse
   def self.descriptor
   end
 
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
-  end
-
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -863,28 +797,6 @@ class Services::Trustregistry::V1::RegisterVerifierResponse
   def self.descriptor
   end
 
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
-  end
-
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -1029,28 +941,6 @@ class Services::Trustregistry::V1::UnregisterIssuerResponse
   def self.descriptor
   end
 
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
-  end
-
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -1193,28 +1083,6 @@ class Services::Trustregistry::V1::UnregisterVerifierResponse
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
-  end
-
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
   end
 
   sig { params(field: String).returns(T.untyped) }

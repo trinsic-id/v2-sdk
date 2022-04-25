@@ -3,20 +3,17 @@
 
 require 'google/protobuf'
 
-require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/trust-registry/v1/trust-registry.proto", :syntax => :proto3) do
     add_message "services.trustregistry.v1.AddFrameworkRequest" do
       optional :governance_framework, :message, 1, "services.trustregistry.v1.GovernanceFramework"
     end
     add_message "services.trustregistry.v1.AddFrameworkResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.RemoveFrameworkRequest" do
       optional :governance_framework, :message, 1, "services.trustregistry.v1.GovernanceFramework"
     end
     add_message "services.trustregistry.v1.RemoveFrameworkResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.SearchRegistryRequest" do
       optional :query, :string, 1
@@ -44,7 +41,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.RegisterIssuerResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.RegisterVerifierRequest" do
       optional :presentation_type_uri, :string, 10
@@ -57,7 +53,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.RegisterVerifierResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.UnregisterIssuerRequest" do
       optional :credential_type_uri, :string, 10
@@ -68,7 +63,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.UnregisterIssuerResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.UnregisterVerifierRequest" do
       optional :presentation_type_uri, :string, 10
@@ -79,7 +73,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       end
     end
     add_message "services.trustregistry.v1.UnregisterVerifierResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.trustregistry.v1.CheckIssuerStatusRequest" do
       optional :governance_framework_uri, :string, 1

@@ -8,150 +8,6 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
 
 
-<a name="pbmse_v1_pbmse-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## pbmse/v1/pbmse.proto
-
-
- <!-- end services -->
-
-
-<a name="pbmse-v1-EncryptedMessage"></a>
-
-### EncryptedMessage
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| iv | [bytes](/reference/proto#bytes) |  |
-| aad | [bytes](/reference/proto#bytes) |  |
-| ciphertext | [bytes](/reference/proto#bytes) |  |
-| tag | [bytes](/reference/proto#bytes) |  |
-| recipients | [EncryptionRecipient](/reference/proto#pbmse-v1-EncryptionRecipient)[] |  |
-
-
-
-
-
-
-<a name="pbmse-v1-EncryptionHeader"></a>
-
-### EncryptionHeader
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| mode | [EncryptionMode](/reference/proto#pbmse-v1-EncryptionMode) |  |
-| algorithm | [EncryptionAlgorithm](/reference/proto#pbmse-v1-EncryptionAlgorithm) |  |
-| key_id | [string](/reference/proto#string) |  |
-| sender_key_id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="pbmse-v1-EncryptionRecipient"></a>
-
-### EncryptionRecipient
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| header | [EncryptionHeader](/reference/proto#pbmse-v1-EncryptionHeader) |  |
-| content_encryption_key | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="pbmse-v1-Signature"></a>
-
-### Signature
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| header | [bytes](/reference/proto#bytes) |  |
-| signature | [bytes](/reference/proto#bytes) |  |
-
-
-
-
-
-
-<a name="pbmse-v1-SignatureHeader"></a>
-
-### SignatureHeader
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| algorithm | [string](/reference/proto#string) |  |
-| key_id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="pbmse-v1-SignedMessage"></a>
-
-### SignedMessage
-JWS
-Protocol buffer message signing and encryption
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| payload | [bytes](/reference/proto#bytes) |  |
-| signatures | [Signature](/reference/proto#pbmse-v1-Signature)[] |  |
-
-
-
-
-
- <!-- end messages -->
-
-
-<a name="pbmse-v1-EncryptionAlgorithm"></a>
-
-### EncryptionAlgorithm
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_ALGORITHM_UNSPECIFIED | 0 |  |
-| ENCRYPTION_ALGORITHM_XCHACHA20POLY1305 | 1 |  |
-| ENCRYPTION_ALGORITHM_AES_GCM | 2 |  |
-
-
-
-<a name="pbmse-v1-EncryptionMode"></a>
-
-### EncryptionMode
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| ENCRYPTION_MODE_UNSPECIFIED | 0 |  |
-| ENCRYPTION_MODE_DIRECT | 1 |  |
-| ENCRYPTION_MODE_CONTENT_ENCRYPTION_KEY | 2 |  |
-
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="sdk_options_v1_options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -284,7 +140,10 @@ This information should be stored securely
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | any ecosystems the account has access to |
+| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** any ecosystems the account has access to |
+| wallet_id | [string](/reference/proto#string) | The wallet id associated with this account |
+| device_id | [string](/reference/proto#string) | The device id associated with this account |
+| ecosystem_id | [string](/reference/proto#string) | The ecosystem id associated with this account |
 
 
 
@@ -359,7 +218,6 @@ like email, SMS, etc.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) | The status of the response |
 | confirmation_method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
 | profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
 
@@ -411,16 +269,6 @@ Confirmation method type for two-factor workflows
 
 ## services/common/v1/common.proto
 
-
-
-<a name="services-common-v1-Common"></a>
-
-### Service - Common
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Request | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) | [.pbmse.v1.EncryptedMessage](/reference/proto#pbmse-v1-EncryptedMessage) |  |
 
  <!-- end services -->
 
@@ -526,6 +374,7 @@ Nonce used to generate an oberon proof
 | GenerateToken | [GenerateTokenRequest](/reference/proto#services-provider-v1-GenerateTokenRequest) | [GenerateTokenResponse](/reference/proto#services-provider-v1-GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
 | Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the invitation status |
+| GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 
  <!-- end services -->
 
@@ -607,6 +456,31 @@ Nonce used to generate an oberon proof
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account authentication profile that contains unprotected token |
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyRequest"></a>
+
+### GetOberonKeyRequest
+request message for GetOberonKey
+
+
+
+
+
+
+<a name="services-provider-v1-GetOberonKeyResponse"></a>
+
+### GetOberonKeyResponse
+response message for GetOberonKey
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64 URL encoded string |
 
 
 
@@ -701,7 +575,6 @@ The reference_id passed is the response from the
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
 | invitation_id | [string](/reference/proto#string) |  |
 | invitation_code | [string](/reference/proto#string) | Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. |
 
@@ -790,11 +663,6 @@ The reference_id passed is the response from the
 
 ### AddFrameworkResponse
 
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
 
 
 
@@ -943,11 +811,6 @@ The reference_id passed is the response from the
 
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
-
-
 
 
 
@@ -978,11 +841,6 @@ The reference_id passed is the response from the
 
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
-
-
 
 
 
@@ -1006,11 +864,6 @@ The reference_id passed is the response from the
 
 ### RemoveFrameworkResponse
 
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
 
 
 
@@ -1075,11 +928,6 @@ The reference_id passed is the response from the
 
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
-
-
 
 
 
@@ -1106,11 +954,6 @@ The reference_id passed is the response from the
 
 ### UnregisterVerifierResponse
 
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
 
 
 
@@ -1183,11 +1026,6 @@ Delete item request
 Delete item response
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
-
-
 
 
 
@@ -1247,7 +1085,6 @@ Insert item response
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
 | item_id | [string](/reference/proto#string) | The item identifier of the inserted record |
 
 
@@ -1281,8 +1118,7 @@ Search response object
 | ----- | ---- | ----------- |
 | items | [string](/reference/proto#string)[] |  |
 | has_more | [bool](/reference/proto#bool) |  |
-| count | [int32](/reference/proto#int32) |  |
-| continuation_token | [string](/reference/proto#string) |  |
+| continuation_token | [string](/reference/proto#string) | int32 count = 3; |
 
 
 
@@ -1309,11 +1145,6 @@ Update item request object
 
 ### UpdateItemResponse
 Update item response object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) | Response status |
 
 
 
@@ -1592,6 +1423,7 @@ Request to create new template
 | context_uri | [string](/reference/proto#string) |  |
 | ecosystem_id | [string](/reference/proto#string) |  |
 | type | [string](/reference/proto#string) |  |
+| created_by | [string](/reference/proto#string) |  |
 
 
 
@@ -1668,7 +1500,7 @@ Request to create new template
 | ----------- | ------------ | ------------- | ------------|
 | Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
 | IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
-| CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status by setting the revocation value |
+| CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
 | UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
 | CreateProof | [CreateProofRequest](/reference/proto#services-verifiablecredentials-v1-CreateProofRequest) | [CreateProofResponse](/reference/proto#services-verifiablecredentials-v1-CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
 | VerifyProof | [VerifyProofRequest](/reference/proto#services-verifiablecredentials-v1-VerifyProofRequest) | [VerifyProofResponse](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
@@ -1680,7 +1512,7 @@ Request to create new template
 <a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
 
 ### CheckStatusRequest
-request object to update the status of the revocation entry
+request object to check the status of the revocation entry
 
 
 | Field | Type | Description |
@@ -1695,7 +1527,7 @@ request object to update the status of the revocation entry
 <a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
 
 ### CheckStatusResponse
-response object for update of status of revocation entry
+response object for checking the status of revocation entry
 
 
 | Field | Type | Description |
@@ -1824,11 +1656,6 @@ Create Proof
 
 
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
-
-
 
 
 
@@ -1855,9 +1682,20 @@ request object to update the status of the revocation entry
 response object for update of status of revocation entry
 
 
+
+
+
+
+<a name="services-verifiablecredentials-v1-ValidationMessage"></a>
+
+### ValidationMessage
+validation message that contains results and error messages
+
+
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| status | [services.common.v1.ResponseStatus](/reference/proto#services-common-v1-ResponseStatus) |  |
+| is_valid | [bool](/reference/proto#bool) | the validation result |
+| messages | [string](/reference/proto#string)[] | set of messages that contain validation results |
 
 
 
@@ -1888,7 +1726,24 @@ Verify Proof
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | is_valid | [bool](/reference/proto#bool) | Indicates if the proof is valid |
-| validation_messages | [string](/reference/proto#string)[] | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
+| validation_messages | [string](/reference/proto#string)[] | **Deprecated.**  |
+| validation_results | [VerifyProofResponse.ValidationResultsEntry](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry)[] | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a>
+
+### VerifyProofResponse.ValidationResultsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [ValidationMessage](/reference/proto#services-verifiablecredentials-v1-ValidationMessage) |  |
 
 
 

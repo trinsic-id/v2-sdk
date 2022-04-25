@@ -500,12 +500,14 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
   sig do
     params(
       is_valid: T.nilable(T::Boolean),
-      validation_messages: T.nilable(T::Array[String])
+      validation_messages: T.nilable(T::Array[String]),
+      validation_results: T.nilable(T::Hash[String, T.nilable(Services::Verifiablecredentials::V1::ValidationMessage)])
     ).void
   end
   def initialize(
     is_valid: false,
-    validation_messages: []
+    validation_messages: [],
+    validation_results: Google::Protobuf::Map.new(:string, :message, Services::Verifiablecredentials::V1::ValidationMessage)
   )
   end
 
@@ -531,6 +533,92 @@ class Services::Verifiablecredentials::V1::VerifyProofResponse
 
   sig { void }
   def clear_validation_messages
+  end
+
+  sig { returns(T::Hash[String, T.nilable(Services::Verifiablecredentials::V1::ValidationMessage)]) }
+  def validation_results
+  end
+
+  sig { params(value: Google::Protobuf::Map).void }
+  def validation_results=(value)
+  end
+
+  sig { void }
+  def clear_validation_results
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Verifiablecredentials::V1::ValidationMessage
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Verifiablecredentials::V1::ValidationMessage) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Verifiablecredentials::V1::ValidationMessage).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Verifiablecredentials::V1::ValidationMessage) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Verifiablecredentials::V1::ValidationMessage, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      is_valid: T.nilable(T::Boolean),
+      messages: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    is_valid: false,
+    messages: []
+  )
+  end
+
+  sig { returns(T::Boolean) }
+  def is_valid
+  end
+
+  sig { params(value: T::Boolean).void }
+  def is_valid=(value)
+  end
+
+  sig { void }
+  def clear_is_valid
+  end
+
+  sig { returns(T::Array[String]) }
+  def messages
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def messages=(value)
+  end
+
+  sig { void }
+  def clear_messages
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -677,28 +765,6 @@ class Services::Verifiablecredentials::V1::SendResponse
   def self.descriptor
   end
 
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
-  end
-
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -809,28 +875,6 @@ class Services::Verifiablecredentials::V1::UpdateStatusResponse
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
-  end
-
-  sig do
-    params(
-      status: T.nilable(T.any(Symbol, String, Integer))
-    ).void
-  end
-  def initialize(
-    status: :SUCCESS
-  )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
   end
 
   sig { params(field: String).returns(T.untyped) }

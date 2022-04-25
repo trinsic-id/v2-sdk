@@ -23,7 +23,7 @@ module Services
           # This process will also add schema validation and 
           # revocation registry entry in the credential.
           rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueFromTemplateResponse
-          # Check credential status by setting the revocation value
+          # Check credential status in the revocation registry
           rpc :CheckStatus, ::Services::Verifiablecredentials::V1::CheckStatusRequest, ::Services::Verifiablecredentials::V1::CheckStatusResponse
           # Update credential status by setting the revocation value
           rpc :UpdateStatus, ::Services::Verifiablecredentials::V1::UpdateStatusRequest, ::Services::Verifiablecredentials::V1::UpdateStatusResponse

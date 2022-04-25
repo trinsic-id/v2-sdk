@@ -25,7 +25,7 @@ type VerifiableCredentialClient interface {
 	// This process will also add schema validation and
 	// revocation registry entry in the credential.
 	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error)
-	// Check credential status by setting the revocation value
+	// Check credential status in the revocation registry
 	CheckStatus(ctx context.Context, in *CheckStatusRequest, opts ...grpc.CallOption) (*CheckStatusResponse, error)
 	// Update credential status by setting the revocation value
 	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error)
@@ -121,7 +121,7 @@ type VerifiableCredentialServer interface {
 	// This process will also add schema validation and
 	// revocation registry entry in the credential.
 	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error)
-	// Check credential status by setting the revocation value
+	// Check credential status in the revocation registry
 	CheckStatus(context.Context, *CheckStatusRequest) (*CheckStatusResponse, error)
 	// Update credential status by setting the revocation value
 	UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error)

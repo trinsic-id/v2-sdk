@@ -805,17 +805,6 @@ public final class TrustRegistryOuterClass {
   public interface AddFrameworkResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.AddFrameworkResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse}
@@ -830,7 +819,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private AddFrameworkResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -863,12 +851,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -901,25 +883,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -934,9 +897,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -946,10 +906,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -965,7 +921,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -977,8 +932,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1112,8 +1065,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -1140,7 +1091,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -1189,9 +1139,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1218,60 +1165,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -1951,17 +1844,6 @@ public final class TrustRegistryOuterClass {
   public interface RemoveFrameworkResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RemoveFrameworkResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse}
@@ -1976,7 +1858,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private RemoveFrameworkResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -2009,12 +1890,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2047,25 +1922,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2080,9 +1936,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -2092,10 +1945,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2111,7 +1960,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2123,8 +1971,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2258,8 +2104,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -2286,7 +2130,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -2335,9 +2178,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2364,60 +2204,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -6282,17 +6068,6 @@ public final class TrustRegistryOuterClass {
   public interface RegisterIssuerResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterIssuerResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RegisterIssuerResponse}
@@ -6307,7 +6082,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private RegisterIssuerResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -6340,12 +6114,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -6378,25 +6146,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6411,9 +6160,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -6423,10 +6169,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6442,7 +6184,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6454,8 +6195,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6589,8 +6328,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -6617,7 +6354,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -6666,9 +6402,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6695,60 +6428,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -8132,17 +7811,6 @@ public final class TrustRegistryOuterClass {
   public interface RegisterVerifierResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterVerifierResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RegisterVerifierResponse}
@@ -8157,7 +7825,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private RegisterVerifierResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -8190,12 +7857,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -8228,25 +7889,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8261,9 +7903,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -8273,10 +7912,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -8292,7 +7927,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -8304,8 +7938,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8439,8 +8071,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -8467,7 +8097,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -8516,9 +8145,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -8545,60 +8171,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -9840,17 +9412,6 @@ public final class TrustRegistryOuterClass {
   public interface UnregisterIssuerResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterIssuerResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerResponse}
@@ -9865,7 +9426,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private UnregisterIssuerResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -9898,12 +9458,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -9936,25 +9490,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9969,9 +9504,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -9981,10 +9513,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -10000,7 +9528,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10012,8 +9539,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10147,8 +9672,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -10175,7 +9698,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -10224,9 +9746,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -10253,60 +9772,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -11548,17 +11013,6 @@ public final class TrustRegistryOuterClass {
   public interface UnregisterVerifierResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterVerifierResponse)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierResponse}
@@ -11573,7 +11027,6 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private UnregisterVerifierResponse() {
-      status_ = 0;
     }
 
     @java.lang.Override
@@ -11606,12 +11059,6 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -11644,25 +11091,6 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.Builder.class);
     }
 
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -11677,9 +11105,6 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -11689,10 +11114,6 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.CommonOuterClass.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -11708,7 +11129,6 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -11720,8 +11140,6 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11855,8 +11273,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         return this;
       }
 
@@ -11883,7 +11299,6 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse(this);
-        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -11932,9 +11347,6 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11961,60 +11373,6 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.CommonOuterClass.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.CommonOuterClass.ResponseStatus result = trinsic.services.common.v1.CommonOuterClass.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.CommonOuterClass.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.CommonOuterClass.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
       @java.lang.Override
@@ -17108,106 +16466,97 @@ public final class TrustRegistryOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n/services/trust-registry/v1/trust-regis" +
-      "try.proto\022\031services.trustregistry.v1\032\037se" +
-      "rvices/common/v1/common.proto\"c\n\023AddFram" +
-      "eworkRequest\022L\n\024governance_framework\030\001 \001" +
-      "(\0132..services.trustregistry.v1.Governanc" +
-      "eFramework\"J\n\024AddFrameworkResponse\0222\n\006st" +
-      "atus\030\001 \001(\0162\".services.common.v1.Response" +
-      "Status\"f\n\026RemoveFrameworkRequest\022L\n\024gove" +
-      "rnance_framework\030\001 \001(\0132..services.trustr" +
-      "egistry.v1.GovernanceFramework\"M\n\027Remove" +
-      "FrameworkResponse\0222\n\006status\030\001 \001(\0162\".serv" +
-      "ices.common.v1.ResponseStatus\"B\n\025SearchR" +
-      "egistryRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continu" +
-      "ation_token\030\002 \001(\t\"i\n\026SearchRegistryRespo" +
-      "nse\022\022\n\nitems_json\030\001 \001(\t\022\020\n\010has_more\030\002 \001(" +
-      "\010\022\r\n\005count\030\003 \001(\005\022\032\n\022continuation_token\030\004" +
-      " \001(\t\"h\n\023GovernanceFramework\022 \n\030governanc" +
-      "e_framework_uri\030\001 \001(\t\022\032\n\022trust_registry_" +
-      "uri\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\"\274\001\n\025Regis" +
-      "terIssuerRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx" +
-      "509_cert\030\002 \001(\tH\000\022\033\n\023credential_type_uri\030" +
-      "\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017valid_u" +
-      "ntil_utc\030\014 \001(\004\022 \n\030governance_framework_u" +
-      "ri\030\024 \001(\tB\013\n\tauthority\"L\n\026RegisterIssuerR" +
-      "esponse\0222\n\006status\030\001 \001(\0162\".services.commo" +
-      "n.v1.ResponseStatus\"\300\001\n\027RegisterVerifier" +
-      "Request\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030" +
-      "\002 \001(\tH\000\022\035\n\025presentation_type_uri\030\n \001(\t\022\026" +
-      "\n\016valid_from_utc\030\013 \001(\004\022\027\n\017valid_until_ut" +
-      "c\030\014 \001(\004\022 \n\030governance_framework_uri\030\024 \001(" +
-      "\tB\013\n\tauthority\"N\n\030RegisterVerifierRespon" +
-      "se\0222\n\006status\030\001 \001(\0162\".services.common.v1." +
-      "ResponseStatus\"\215\001\n\027UnregisterIssuerReque" +
-      "st\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\t" +
-      "H\000\022\033\n\023credential_type_uri\030\n \001(\t\022 \n\030gover" +
-      "nance_framework_uri\030\024 \001(\tB\013\n\tauthority\"N" +
-      "\n\030UnregisterIssuerResponse\0222\n\006status\030\001 \001" +
-      "(\0162\".services.common.v1.ResponseStatus\"\221" +
-      "\001\n\031UnregisterVerifierRequest\022\021\n\007did_uri\030" +
-      "\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH\000\022\035\n\025presenta" +
-      "tion_type_uri\030\n \001(\t\022 \n\030governance_framew" +
-      "ork_uri\030\024 \001(\tB\013\n\tauthority\"P\n\032Unregister" +
-      "VerifierResponse\0222\n\006status\030\001 \001(\0162\".servi" +
-      "ces.common.v1.ResponseStatus\"\213\001\n\030CheckIs" +
-      "suerStatusRequest\022 \n\030governance_framewor" +
-      "k_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH\000\022\023\n\tx509_c" +
-      "ert\030\003 \001(\tH\000\022\033\n\023credential_type_uri\030\004 \001(\t" +
-      "B\010\n\006member\"Z\n\031CheckIssuerStatusResponse\022" +
-      "=\n\006status\030\001 \001(\0162-.services.trustregistry" +
-      ".v1.RegistrationStatus\"\217\001\n\032CheckVerifier" +
-      "StatusRequest\022 \n\030governance_framework_ur" +
-      "i\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH\000\022\023\n\tx509_cert\030" +
-      "\003 \001(\tH\000\022\035\n\025presentation_type_uri\030\004 \001(\tB\010" +
-      "\n\006member\"\\\n\033CheckVerifierStatusResponse\022" +
-      "=\n\006status\030\001 \001(\0162-.services.trustregistry" +
-      ".v1.RegistrationStatus\"C\n\020FetchDataReque" +
-      "st\022 \n\030governance_framework_uri\030\001 \001(\t\022\r\n\005" +
-      "query\030\002 \001(\t\"`\n\021FetchDataResponse\022\025\n\rresp" +
-      "onse_json\030\001 \001(\t\022\030\n\020has_more_results\030\002 \001(" +
-      "\010\022\032\n\022continuation_token\030\003 \001(\t*Z\n\022Registr" +
-      "ationStatus\022\013\n\007CURRENT\020\000\022\013\n\007EXPIRED\020\001\022\016\n" +
-      "\nTERMINATED\020\002\022\013\n\007REVOKED\020\003\022\r\n\tNOT_FOUND\020" +
-      "\n2\327\t\n\rTrustRegistry\022o\n\014AddFramework\022..se" +
-      "rvices.trustregistry.v1.AddFrameworkRequ" +
-      "est\032/.services.trustregistry.v1.AddFrame" +
-      "workResponse\022x\n\017RemoveFramework\0221.servic" +
-      "es.trustregistry.v1.RemoveFrameworkReque" +
-      "st\0322.services.trustregistry.v1.RemoveFra" +
-      "meworkResponse\022u\n\016SearchRegistry\0220.servi" +
-      "ces.trustregistry.v1.SearchRegistryReque" +
-      "st\0321.services.trustregistry.v1.SearchReg" +
-      "istryResponse\022u\n\016RegisterIssuer\0220.servic" +
-      "es.trustregistry.v1.RegisterIssuerReques" +
-      "t\0321.services.trustregistry.v1.RegisterIs" +
-      "suerResponse\022{\n\020RegisterVerifier\0222.servi" +
-      "ces.trustregistry.v1.RegisterVerifierReq" +
-      "uest\0323.services.trustregistry.v1.Registe" +
-      "rVerifierResponse\022{\n\020UnregisterIssuer\0222." +
-      "services.trustregistry.v1.UnregisterIssu" +
-      "erRequest\0323.services.trustregistry.v1.Un" +
-      "registerIssuerResponse\022\201\001\n\022UnregisterVer" +
-      "ifier\0224.services.trustregistry.v1.Unregi" +
-      "sterVerifierRequest\0325.services.trustregi" +
-      "stry.v1.UnregisterVerifierResponse\022~\n\021Ch" +
-      "eckIssuerStatus\0223.services.trustregistry" +
-      ".v1.CheckIssuerStatusRequest\0324.services." +
-      "trustregistry.v1.CheckIssuerStatusRespon" +
-      "se\022\204\001\n\023CheckVerifierStatus\0225.services.tr" +
-      "ustregistry.v1.CheckVerifierStatusReques" +
-      "t\0326.services.trustregistry.v1.CheckVerif" +
-      "ierStatusResponse\022h\n\tFetchData\022+.service" +
-      "s.trustregistry.v1.FetchDataRequest\032,.se" +
-      "rvices.trustregistry.v1.FetchDataRespons" +
-      "e0\001Bb\n!trinsic.services.trustregistry.v1" +
-      "Z\031github.com/trinsic-id/sdk\252\002!Trinsic.Se" +
-      "rvices.TrustRegistry.V1b\006proto3"
+      "try.proto\022\031services.trustregistry.v1\"c\n\023" +
+      "AddFrameworkRequest\022L\n\024governance_framew" +
+      "ork\030\001 \001(\0132..services.trustregistry.v1.Go" +
+      "vernanceFramework\"\026\n\024AddFrameworkRespons" +
+      "e\"f\n\026RemoveFrameworkRequest\022L\n\024governanc" +
+      "e_framework\030\001 \001(\0132..services.trustregist" +
+      "ry.v1.GovernanceFramework\"\031\n\027RemoveFrame" +
+      "workResponse\"B\n\025SearchRegistryRequest\022\r\n" +
+      "\005query\030\001 \001(\t\022\032\n\022continuation_token\030\002 \001(\t" +
+      "\"i\n\026SearchRegistryResponse\022\022\n\nitems_json" +
+      "\030\001 \001(\t\022\020\n\010has_more\030\002 \001(\010\022\r\n\005count\030\003 \001(\005\022" +
+      "\032\n\022continuation_token\030\004 \001(\t\"h\n\023Governanc" +
+      "eFramework\022 \n\030governance_framework_uri\030\001" +
+      " \001(\t\022\032\n\022trust_registry_uri\030\002 \001(\t\022\023\n\013desc" +
+      "ription\030\003 \001(\t\"\274\001\n\025RegisterIssuerRequest\022" +
+      "\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH\000\022" +
+      "\033\n\023credential_type_uri\030\n \001(\t\022\026\n\016valid_fr" +
+      "om_utc\030\013 \001(\004\022\027\n\017valid_until_utc\030\014 \001(\004\022 \n" +
+      "\030governance_framework_uri\030\024 \001(\tB\013\n\tautho" +
+      "rity\"\030\n\026RegisterIssuerResponse\"\300\001\n\027Regis" +
+      "terVerifierRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n" +
+      "\tx509_cert\030\002 \001(\tH\000\022\035\n\025presentation_type_" +
+      "uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017val" +
+      "id_until_utc\030\014 \001(\004\022 \n\030governance_framewo" +
+      "rk_uri\030\024 \001(\tB\013\n\tauthority\"\032\n\030RegisterVer" +
+      "ifierResponse\"\215\001\n\027UnregisterIssuerReques" +
+      "t\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH" +
+      "\000\022\033\n\023credential_type_uri\030\n \001(\t\022 \n\030govern" +
+      "ance_framework_uri\030\024 \001(\tB\013\n\tauthority\"\032\n" +
+      "\030UnregisterIssuerResponse\"\221\001\n\031Unregister" +
+      "VerifierRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx5" +
+      "09_cert\030\002 \001(\tH\000\022\035\n\025presentation_type_uri" +
+      "\030\n \001(\t\022 \n\030governance_framework_uri\030\024 \001(\t" +
+      "B\013\n\tauthority\"\034\n\032UnregisterVerifierRespo" +
+      "nse\"\213\001\n\030CheckIssuerStatusRequest\022 \n\030gove" +
+      "rnance_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 " +
+      "\001(\tH\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\033\n\023credential" +
+      "_type_uri\030\004 \001(\tB\010\n\006member\"Z\n\031CheckIssuer" +
+      "StatusResponse\022=\n\006status\030\001 \001(\0162-.service" +
+      "s.trustregistry.v1.RegistrationStatus\"\217\001" +
+      "\n\032CheckVerifierStatusRequest\022 \n\030governan" +
+      "ce_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH" +
+      "\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\035\n\025presentation_t" +
+      "ype_uri\030\004 \001(\tB\010\n\006member\"\\\n\033CheckVerifier" +
+      "StatusResponse\022=\n\006status\030\001 \001(\0162-.service" +
+      "s.trustregistry.v1.RegistrationStatus\"C\n" +
+      "\020FetchDataRequest\022 \n\030governance_framewor" +
+      "k_uri\030\001 \001(\t\022\r\n\005query\030\002 \001(\t\"`\n\021FetchDataR" +
+      "esponse\022\025\n\rresponse_json\030\001 \001(\t\022\030\n\020has_mo" +
+      "re_results\030\002 \001(\010\022\032\n\022continuation_token\030\003" +
+      " \001(\t*Z\n\022RegistrationStatus\022\013\n\007CURRENT\020\000\022" +
+      "\013\n\007EXPIRED\020\001\022\016\n\nTERMINATED\020\002\022\013\n\007REVOKED\020" +
+      "\003\022\r\n\tNOT_FOUND\020\n2\327\t\n\rTrustRegistry\022o\n\014Ad" +
+      "dFramework\022..services.trustregistry.v1.A" +
+      "ddFrameworkRequest\032/.services.trustregis" +
+      "try.v1.AddFrameworkResponse\022x\n\017RemoveFra" +
+      "mework\0221.services.trustregistry.v1.Remov" +
+      "eFrameworkRequest\0322.services.trustregist" +
+      "ry.v1.RemoveFrameworkResponse\022u\n\016SearchR" +
+      "egistry\0220.services.trustregistry.v1.Sear" +
+      "chRegistryRequest\0321.services.trustregist" +
+      "ry.v1.SearchRegistryResponse\022u\n\016Register" +
+      "Issuer\0220.services.trustregistry.v1.Regis" +
+      "terIssuerRequest\0321.services.trustregistr" +
+      "y.v1.RegisterIssuerResponse\022{\n\020RegisterV" +
+      "erifier\0222.services.trustregistry.v1.Regi" +
+      "sterVerifierRequest\0323.services.trustregi" +
+      "stry.v1.RegisterVerifierResponse\022{\n\020Unre" +
+      "gisterIssuer\0222.services.trustregistry.v1" +
+      ".UnregisterIssuerRequest\0323.services.trus" +
+      "tregistry.v1.UnregisterIssuerResponse\022\201\001" +
+      "\n\022UnregisterVerifier\0224.services.trustreg" +
+      "istry.v1.UnregisterVerifierRequest\0325.ser" +
+      "vices.trustregistry.v1.UnregisterVerifie" +
+      "rResponse\022~\n\021CheckIssuerStatus\0223.service" +
+      "s.trustregistry.v1.CheckIssuerStatusRequ" +
+      "est\0324.services.trustregistry.v1.CheckIss" +
+      "uerStatusResponse\022\204\001\n\023CheckVerifierStatu" +
+      "s\0225.services.trustregistry.v1.CheckVerif" +
+      "ierStatusRequest\0326.services.trustregistr" +
+      "y.v1.CheckVerifierStatusResponse\022h\n\tFetc" +
+      "hData\022+.services.trustregistry.v1.FetchD" +
+      "ataRequest\032,.services.trustregistry.v1.F" +
+      "etchDataResponse0\001Bb\n!trinsic.services.t" +
+      "rustregistry.v1Z\031github.com/trinsic-id/s" +
+      "dk\252\002!Trinsic.Services.TrustRegistry.V1b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.common.v1.CommonOuterClass.getDescriptor(),
         });
     internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -17220,7 +16569,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_AddFrameworkResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_services_trustregistry_v1_RemoveFrameworkRequest_fieldAccessorTable = new
@@ -17232,7 +16581,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_RemoveFrameworkResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable = new
@@ -17262,7 +16611,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_RegisterIssuerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_services_trustregistry_v1_RegisterVerifierRequest_fieldAccessorTable = new
@@ -17274,7 +16623,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_RegisterVerifierResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_services_trustregistry_v1_UnregisterIssuerRequest_fieldAccessorTable = new
@@ -17286,7 +16635,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_UnregisterIssuerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_services_trustregistry_v1_UnregisterVerifierRequest_fieldAccessorTable = new
@@ -17298,7 +16647,7 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_UnregisterVerifierResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_fieldAccessorTable = new
@@ -17335,7 +16684,6 @@ public final class TrustRegistryOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,
         new java.lang.String[] { "ResponseJson", "HasMoreResults", "ContinuationToken", });
-    trinsic.services.common.v1.CommonOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

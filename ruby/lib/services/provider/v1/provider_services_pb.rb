@@ -25,6 +25,8 @@ module Services
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
           # Check the invitation status
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
+          # Returns the public key being used to create/verify oberon tokens
+          rpc :GetOberonKey, ::Services::Provider::V1::GetOberonKeyRequest, ::Services::Provider::V1::GetOberonKeyResponse
         end
 
         Stub = Service.rpc_stub_class

@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.v1.Options;
-import trinsic.services.common.v1.CommonOuterClass;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
@@ -35,34 +34,24 @@ public class TrustRegistryService extends ServiceBase {
         return withMetadata(stub, request).addFramework(request);
     }
 
-    public void removeGovernanceFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        var response = withMetadata(stub, request).removeFramework(request).get();
-        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot remove governance framework: code " + response.getStatus());
+    public TrustRegistryOuterClass.RemoveFrameworkResponse removeGovernanceFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).removeFramework(request).get();
     }
 
-    public void registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        var response = withMetadata(stub, request).registerIssuer(request).get();
-        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot register issuer: code " + response.getStatus());
+    public TrustRegistryOuterClass.RegisterIssuerResponse registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).registerIssuer(request).get();
     }
 
-    public void unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        var response = withMetadata(stub, request).unregisterIssuer(request).get();
-        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot unregister issuer: code " + response.getStatus());
+    public TrustRegistryOuterClass.UnregisterIssuerResponse unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).unregisterIssuer(request).get();
     }
 
-    public void registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        var response = withMetadata(stub, request).registerVerifier(request).get();
-        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot register verifier: code " + response.getStatus());
+    public TrustRegistryOuterClass.RegisterVerifierResponse registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).registerVerifier(request).get();
     }
 
-    public void unregisterVerifier(TrustRegistryOuterClass.UnregisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        var response = withMetadata(stub, request).unregisterVerifier(request).get();
-        if (response.getStatus() != CommonOuterClass.ResponseStatus.SUCCESS)
-            throw new RuntimeException("cannot unregister verifier: code " + response.getStatus());
+    public TrustRegistryOuterClass.UnregisterVerifierResponse unregisterVerifier(TrustRegistryOuterClass.UnregisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).unregisterVerifier(request).get();
     }
 
     public ListenableFuture<TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest request) throws InvalidProtocolBufferException, DidException {

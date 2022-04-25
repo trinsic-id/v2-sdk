@@ -26,23 +26,19 @@ module Trinsic
     end
 
     def register_issuer(request)
-      response = @client.register_issuer(request, metadata: metadata(request))
-      raise("cannot register issuer: code #{response.status}") unless response.status == :SUCCESS
+      @client.register_issuer(request, metadata: metadata(request))
     end
 
     def register_verifier(request)
-      response = @client.register_verifier(request, metadata: metadata(request))
-      raise("cannot register verifier: code #{response.status}") unless response.status == :SUCCESS
+      @client.register_verifier(request, metadata: metadata(request))
     end
 
     def unregister_issuer(request)
-      response = @client.unregister_issuer(request, metadata: metadata(request))
-      raise("cannot unregister issuer: code #{response.status}") unless response.status == :SUCCESS
+      @client.unregister_issuer(request, metadata: metadata(request))
     end
 
     def unregister_verifier(request)
-      response = @client.unregister_verifier(request, metadata: metadata(request))
-      raise("cannot unregister verifier: code #{response.status}") unless response.status == :SUCCESS
+      @client.unregister_verifier(request, metadata: metadata(request))
     end
 
     def check_issuer_status(request)

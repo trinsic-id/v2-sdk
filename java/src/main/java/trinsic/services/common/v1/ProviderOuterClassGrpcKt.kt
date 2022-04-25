@@ -55,6 +55,11 @@ object ProviderGrpcKt {
     @JvmStatic
     get() = ProviderGrpc.getInvitationStatusMethod()
 
+  val getOberonKeyMethod: MethodDescriptor<ProviderOuterClass.GetOberonKeyRequest,
+      ProviderOuterClass.GetOberonKeyResponse>
+    @JvmStatic
+    get() = ProviderGrpc.getGetOberonKeyMethod()
+
   /**
    * A stub for issuing RPCs to a(n) services.provider.v1.Provider service as suspending coroutines.
    */
@@ -145,6 +150,26 @@ object ProviderGrpcKt {
       request,
       callOptions,
       headers
+    )
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes
+     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
+     * with the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getOberonKey(request: ProviderOuterClass.GetOberonKeyRequest, headers: Metadata =
+        Metadata()): ProviderOuterClass.GetOberonKeyResponse = unaryRpc(
+      channel,
+      ProviderGrpc.getGetOberonKeyMethod(),
+      request,
+      callOptions,
+      headers
     )}
 
   /**
@@ -214,6 +239,21 @@ object ProviderGrpcKt {
         ProviderOuterClass.InvitationStatusResponse = throw
         StatusException(UNIMPLEMENTED.withDescription("Method services.provider.v1.Provider.InvitationStatus is unimplemented"))
 
+    /**
+     * Returns the response to an RPC for services.provider.v1.Provider.GetOberonKey.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getOberonKey(request: ProviderOuterClass.GetOberonKeyRequest):
+        ProviderOuterClass.GetOberonKeyResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.provider.v1.Provider.GetOberonKey is unimplemented"))
+
     final override fun bindService(): ServerServiceDefinition = builder(getServiceDescriptor())
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
@@ -234,6 +274,11 @@ object ProviderGrpcKt {
       context = this.context,
       descriptor = ProviderGrpc.getInvitationStatusMethod(),
       implementation = ::invitationStatus
+    ))
+      .addMethod(unaryServerMethodDefinition(
+      context = this.context,
+      descriptor = ProviderGrpc.getGetOberonKeyMethod(),
+      implementation = ::getOberonKey
     )).build()
   }
 }

@@ -2,23 +2,11 @@
 # sources: services/universal-wallet/v1/universal-wallet.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    List,
-    Optional,
-)
+from typing import Dict, List
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-from ...common import v1 as __common_v1__
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 @dataclass(eq=False, repr=False)
@@ -35,7 +23,7 @@ class SearchResponse(betterproto.Message):
 
     items: List[str] = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
-    count: int = betterproto.int32_field(3)
+    # int32 count = 3;
     continuation_token: str = betterproto.string_field(4)
 
 
@@ -43,154 +31,110 @@ class SearchResponse(betterproto.Message):
 class GetItemRequest(betterproto.Message):
     """Get item request object"""
 
+    # The item identifier
     item_id: str = betterproto.string_field(1)
-    """The item identifier"""
 
 
 @dataclass(eq=False, repr=False)
 class GetItemResponse(betterproto.Message):
     """Get item response object"""
 
+    # The item data represented as stringified JSON
     item_json: str = betterproto.string_field(1)
-    """The item data represented as stringified JSON"""
-
+    # User set item type that described the content of this item
     item_type: str = betterproto.string_field(2)
-    """User set item type that described the content of this item"""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateItemRequest(betterproto.Message):
     """Update item request object"""
 
+    # The item identifier
     item_id: str = betterproto.string_field(1)
-    """The item identifier"""
-
+    # The item type that described the content of this item
     item_type: str = betterproto.string_field(2)
-    """The item type that described the content of this item"""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateItemResponse(betterproto.Message):
     """Update item response object"""
 
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
-    """Response status"""
+    pass
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemRequest(betterproto.Message):
     """Insert item request"""
 
+    # the document to insert as stringified json
     item_json: str = betterproto.string_field(1)
-    """the document to insert as stringified json"""
-
+    # optional item type ex. "VerifiableCredential"
     item_type: str = betterproto.string_field(2)
-    """optional item type ex. "VerifiableCredential"""
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemResponse(betterproto.Message):
     """Insert item response"""
 
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    # The item identifier of the inserted record
     item_id: str = betterproto.string_field(2)
-    """The item identifier of the inserted record"""
 
 
 @dataclass(eq=False, repr=False)
 class DeleteItemRequest(betterproto.Message):
     """Delete item request"""
 
+    # item identifier of the record to delete
     item_id: str = betterproto.string_field(1)
-    """item identifier of the record to delete"""
 
 
 @dataclass(eq=False, repr=False)
 class DeleteItemResponse(betterproto.Message):
     """Delete item response"""
 
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 class UniversalWalletStub(betterproto.ServiceStub):
-    async def get_item(
-        self,
-        get_item_request: "GetItemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "GetItemResponse":
+    async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/GetItem",
             get_item_request,
             GetItemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
-    async def search(
-        self,
-        search_request: "SearchRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "SearchResponse":
+    async def search(self, search_request: "SearchRequest") -> "SearchResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/Search",
             search_request,
             SearchResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def insert_item(
-        self,
-        insert_item_request: "InsertItemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, insert_item_request: "InsertItemRequest"
     ) -> "InsertItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/InsertItem",
             insert_item_request,
             InsertItemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def update_item(
-        self,
-        update_item_request: "UpdateItemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, update_item_request: "UpdateItemRequest"
     ) -> "UpdateItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/UpdateItem",
             update_item_request,
             UpdateItemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def delete_item(
-        self,
-        delete_item_request: "DeleteItemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, delete_item_request: "DeleteItemRequest"
     ) -> "DeleteItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/DeleteItem",
             delete_item_request,
             DeleteItemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
 
