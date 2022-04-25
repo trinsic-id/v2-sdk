@@ -2,7 +2,6 @@ package services
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -31,13 +30,13 @@ type TrustRegistryService interface {
 	// RemoveGovernanceFramework from the ecosystem
 	RemoveGovernanceFramework(userContext context.Context, request *sdk.RemoveFrameworkRequest) (*sdk.RemoveFrameworkResponse, error)
 	// RegisterIssuer to issue the given credentials within the governance framework
-	RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) error
+	RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) (*sdk.RegisterIssuerResponse, error)
 	// UnregisterIssuer from issuing given credentials within the governance framework
-	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error
+	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) (*sdk.UnregisterIssuerResponse, error)
 	// RegisterVerifier in the given governance framework
-	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error
+	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) (*sdk.RegisterVerifierResponse, error)
 	// UnregisterVerifier in the given governance framework
-	UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error
+	UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) (*sdk.UnregisterVerifierResponse, error)
 	// CheckIssuerStatus indicates whether the given issuer is authorized to issue credentials
 	// within the given framework
 	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error)
@@ -75,76 +74,44 @@ func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Cont
 	return nil
 }
 
-func (t *trustRegistryBase) RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) error {
+func (t *trustRegistryBase) RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) (*sdk.RegisterIssuerResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	response, err := t.client.RegisterIssuer(md, request)
-	if err != nil {
-		return err
-	}
-
-	if response.Status != sdk.ResponseStatus_SUCCESS {
-		return fmt.Errorf("cannot register issuer: code %s", response.Status)
-	}
-
-	return nil
+	return response, err
 }
 
-func (t *trustRegistryBase) UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) error {
+func (t *trustRegistryBase) UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) (*sdk.UnregisterIssuerResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	response, err := t.client.UnregisterIssuer(md, request)
-	if err != nil {
-		return err
-	}
-
-	if response.Status != sdk.ResponseStatus_SUCCESS {
-		return fmt.Errorf("cannot unregister issuer: code %s", response.Status)
-	}
-
-	return nil
+	return response, err
 }
 
-func (t *trustRegistryBase) RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) error {
+func (t *trustRegistryBase) RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) (*sdk.RegisterVerifierResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	response, err := t.client.RegisterVerifier(md, request)
-	if err != nil {
-		return err
-	}
-
-	if response.Status != sdk.ResponseStatus_SUCCESS {
-		return fmt.Errorf("cannot register verifier: code %s", response.Status)
-	}
-
-	return nil
+	return response, err
 }
 
-func (t *trustRegistryBase) UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) error {
+func (t *trustRegistryBase) UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) (*sdk.UnregisterVerifierResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	response, err := t.client.UnregisterVerifier(md, request)
-	if err != nil {
-		return err
-	}
-
-	if response.Status != sdk.ResponseStatus_SUCCESS {
-		return fmt.Errorf("cannot unregister verifier: code %s", response.Status)
-	}
-
-	return nil
+	return response, err
 }
 
 func (t *trustRegistryBase) CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error) {

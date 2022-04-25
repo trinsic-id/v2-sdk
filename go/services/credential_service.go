@@ -2,8 +2,6 @@ package services
 
 import (
 	"context"
-	"fmt"
-
 	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
@@ -123,10 +121,7 @@ func (c *credentialBase) UpdateStatus(userContext context.Context, request *sdk.
 	if err != nil {
 		return nil, err
 	}
-	if response.Status == sdk.ResponseStatus_SUCCESS {
-		return response, nil
-	}
-	return response, fmt.Errorf("error - did not run to completion %s", response.Status)
+	return response, err
 }
 
 func (c *credentialBase) Send(userContext context.Context, request *sdk.SendRequest) error {
