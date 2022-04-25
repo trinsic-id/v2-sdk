@@ -42,11 +42,9 @@ test("Demo: Trust Registry", async (t) => {
 
     let response = await trustRegistryService.registerIssuer(new RegisterIssuerRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card"));
     t.not(response, null);
-    t.is(response.getStatus(), ResponseStatus.SUCCESS)
 
     let response2 = await trustRegistryService.registerVerifier(new RegisterVerifierRequest().setDidUri("did:example:test").setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card"));
     t.not(response, null);
-    t.is(response.getStatus(), ResponseStatus.SUCCESS)
 
     let issuerStatus = await trustRegistryService.checkIssuerStatus(
         new CheckIssuerStatusRequest()

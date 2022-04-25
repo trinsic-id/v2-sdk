@@ -108,10 +108,10 @@ export class AccountService extends ServiceBase {
 
     return new Promise((resolve, reject) => {
       this.client.signIn(request, null, (error, response) => {
-        if (error || response.getStatus() != ResponseStatus.SUCCESS) {
+        if (error) {
           reject(error);
         } else {
-          var authToken = fromUint8Array(
+          const authToken = fromUint8Array(
             response.getProfile()!.serializeBinary(),
             true
           );
