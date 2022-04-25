@@ -6,6 +6,7 @@ import glob
 import itertools
 import logging
 import os
+import subprocess
 import sys
 import urllib.request
 from os.path import abspath, relpath, join, dirname
@@ -85,7 +86,7 @@ def get_matching_files(dir_name: str, extension: str) -> List[str]:
 
 def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
     if isinstance(args, dict):
-        return [f'--{key}="{value}"' for (key, value) in args.items()] if args else []
+        return [f'--{key}={value}' for (key, value) in args.items()] if args else []
     elif isinstance(args, list):
         return args
     else:
@@ -97,7 +98,7 @@ def run_protoc(language_options: Dict[str, str] = None,
                proto_files: Union[List[str], str] = None,
                plugin: str = None,
                protoc_executable: str = 'protoc') -> None:
-    proto_path_string = f'--proto_path="{get_language_dir("proto")}"'
+    proto_path_string = ['-I', get_language_dir('proto')]  # f'--proto_path="{get_language_dir("proto")}"'
     plugin_string = f'--plugin={plugin}' if plugin else ''
     command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options),
                     join_args(custom_options)]
@@ -105,13 +106,14 @@ def run_protoc(language_options: Dict[str, str] = None,
     # Regularize 2D array and flatten
     command_args = [arg_list if isinstance(arg_list, list) else [arg_list] for arg_list in command_args]
     command_args = list(itertools.chain(*command_args))
-    # Strip blank arguments because protoc WILL DIE, and do so passive aggresive
+    # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
     command_args = [arg for arg in command_args if arg]
-    logging.info(command_args)
-    sys_cmd = " ".join(command_args)
-    print(sys_cmd)
-    if os.system(sys_cmd) != 0:
-        raise Exception("protoc failed")
+    result = subprocess.run(command_args, capture_output=True, shell=True)
+    if result.stderr:
+        print(bytes(result.stderr).decode('utf-8'))
+    if result.stdout:
+        print(bytes(result.stdout).decode('utf-8'))
+    result.check_returncode()
 
 
 def update_golang():
@@ -183,9 +185,8 @@ def update_python():
     python_proto_path = join(get_language_dir('python'), "trinsic", "proto")
     clean_dir(python_proto_path)
     # Inject an empty python code file path to mimic the first argument.
-    plugin_file = r"C:\work\sdk\devops\venv\Scripts\protoc-gen-grpclib_python.exe"
-    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files(),
-               plugin=f"protoc-gen-python_betterproto={plugin_file}")
+    # plugin_file = r"C:\work\sdk\devops\venv\Lib\site-packages\betterproto\plugin\plugin.bat"
+    run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Compile proto files for each SDK language and documentation')
