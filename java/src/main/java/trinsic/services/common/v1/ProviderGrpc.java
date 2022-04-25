@@ -139,6 +139,37 @@ public final class ProviderGrpc {
     return getInvitationStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest,
+      trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> getGetOberonKeyMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetOberonKey",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest,
+      trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> getGetOberonKeyMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest, trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> getGetOberonKeyMethod;
+    if ((getGetOberonKeyMethod = ProviderGrpc.getGetOberonKeyMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getGetOberonKeyMethod = ProviderGrpc.getGetOberonKeyMethod) == null) {
+          ProviderGrpc.getGetOberonKeyMethod = getGetOberonKeyMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest, trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetOberonKey"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("GetOberonKey"))
+              .build();
+        }
+      }
+    }
+    return getGetOberonKeyMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -228,6 +259,16 @@ public final class ProviderGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInvitationStatusMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * Returns the public key being used to create/verify oberon tokens
+     * </pre>
+     */
+    public void getOberonKey(trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetOberonKeyMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -258,6 +299,13 @@ public final class ProviderGrpc {
                 trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest,
                 trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse>(
                   this, METHODID_INVITATION_STATUS)))
+          .addMethod(
+            getGetOberonKeyMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest,
+                trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse>(
+                  this, METHODID_GET_OBERON_KEY)))
           .build();
     }
   }
@@ -320,6 +368,17 @@ public final class ProviderGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInvitationStatusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Returns the public key being used to create/verify oberon tokens
+     * </pre>
+     */
+    public void getOberonKey(trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetOberonKeyMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -375,6 +434,16 @@ public final class ProviderGrpc {
     public trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse invitationStatus(trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInvitationStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Returns the public key being used to create/verify oberon tokens
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse getOberonKey(trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetOberonKeyMethod(), getCallOptions(), request);
     }
   }
 
@@ -436,12 +505,24 @@ public final class ProviderGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInvitationStatusMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Returns the public key being used to create/verify oberon tokens
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
+        trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetOberonKeyMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_ECOSYSTEM = 0;
   private static final int METHODID_GENERATE_TOKEN = 1;
   private static final int METHODID_INVITE = 2;
   private static final int METHODID_INVITATION_STATUS = 3;
+  private static final int METHODID_GET_OBERON_KEY = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -475,6 +556,10 @@ public final class ProviderGrpc {
         case METHODID_INVITATION_STATUS:
           serviceImpl.invitationStatus((trinsic.services.common.v1.ProviderOuterClass.InvitationStatusRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse>) responseObserver);
+          break;
+        case METHODID_GET_OBERON_KEY:
+          serviceImpl.getOberonKey((trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.common.v1.ProviderOuterClass.GetOberonKeyResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -541,6 +626,7 @@ public final class ProviderGrpc {
               .addMethod(getGenerateTokenMethod())
               .addMethod(getInviteMethod())
               .addMethod(getInvitationStatusMethod())
+              .addMethod(getGetOberonKeyMethod())
               .build();
         }
       }

@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'services/common/v1/common_pb'
 require 'services/account/v1/account_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/provider.proto", :syntax => :proto3) do
@@ -22,7 +21,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.InviteRequest.DidCommInvitation" do
     end
     add_message "services.provider.v1.InviteResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
       optional :invitation_id, :string, 10
       optional :invitation_code, :string, 11
     end
@@ -62,6 +60,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.GenerateTokenResponse" do
       optional :profile, :message, 1, "services.account.v1.AccountProfile"
     end
+    add_message "services.provider.v1.GetOberonKeyRequest" do
+    end
+    add_message "services.provider.v1.GetOberonKeyResponse" do
+      optional :key, :string, 1
+    end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
       value :participant_type_organization, 1
@@ -84,6 +87,8 @@ module Services
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
       GenerateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenRequest").msgclass
       GenerateTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenResponse").msgclass
+      GetOberonKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyRequest").msgclass
+      GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end

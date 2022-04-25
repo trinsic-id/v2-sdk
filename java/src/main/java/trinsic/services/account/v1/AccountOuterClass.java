@@ -2262,25 +2262,6 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * The status of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <pre>
-     * The status of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.common.v1.Common.ResponseStatus getStatus();
-
-    /**
-     * <pre>
      * Indicates if confirmation of account is required.
      * This settings is configured globally by the server administrator.
      * </pre>
@@ -2359,7 +2340,6 @@ public final class AccountOuterClass {
       super(builder);
     }
     private SignInResponse() {
-      status_ = 0;
       confirmationMethod_ = 0;
     }
 
@@ -2393,12 +2373,6 @@ public final class AccountOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
             case 24: {
               int rawValue = input.readEnum();
 
@@ -2448,33 +2422,6 @@ public final class AccountOuterClass {
       return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_SignInResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               trinsic.services.account.v1.AccountOuterClass.SignInResponse.class, trinsic.services.account.v1.AccountOuterClass.SignInResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <pre>
-     * The status of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <pre>
-     * The status of the response
-     * </pre>
-     *
-     * <code>.services.common.v1.ResponseStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
-      return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
     }
 
     public static final int CONFIRMATION_METHOD_FIELD_NUMBER = 3;
@@ -2570,9 +2517,6 @@ public final class AccountOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
-        output.writeEnum(1, status_);
-      }
       if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         output.writeEnum(3, confirmationMethod_);
       }
@@ -2588,10 +2532,6 @@ public final class AccountOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (status_ != trinsic.services.common.v1.Common.ResponseStatus.SUCCESS.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
       if (confirmationMethod_ != trinsic.services.account.v1.AccountOuterClass.ConfirmationMethod.None.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, confirmationMethod_);
@@ -2615,7 +2555,6 @@ public final class AccountOuterClass {
       }
       trinsic.services.account.v1.AccountOuterClass.SignInResponse other = (trinsic.services.account.v1.AccountOuterClass.SignInResponse) obj;
 
-      if (status_ != other.status_) return false;
       if (confirmationMethod_ != other.confirmationMethod_) return false;
       if (hasProfile() != other.hasProfile()) return false;
       if (hasProfile()) {
@@ -2633,8 +2572,6 @@ public final class AccountOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
       hash = (37 * hash) + CONFIRMATION_METHOD_FIELD_NUMBER;
       hash = (53 * hash) + confirmationMethod_;
       if (hasProfile()) {
@@ -2781,8 +2718,6 @@ public final class AccountOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
-
         confirmationMethod_ = 0;
 
         if (profileBuilder_ == null) {
@@ -2817,7 +2752,6 @@ public final class AccountOuterClass {
       @java.lang.Override
       public trinsic.services.account.v1.AccountOuterClass.SignInResponse buildPartial() {
         trinsic.services.account.v1.AccountOuterClass.SignInResponse result = new trinsic.services.account.v1.AccountOuterClass.SignInResponse(this);
-        result.status_ = status_;
         result.confirmationMethod_ = confirmationMethod_;
         if (profileBuilder_ == null) {
           result.profile_ = profile_;
@@ -2872,9 +2806,6 @@ public final class AccountOuterClass {
 
       public Builder mergeFrom(trinsic.services.account.v1.AccountOuterClass.SignInResponse other) {
         if (other == trinsic.services.account.v1.AccountOuterClass.SignInResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
         if (other.confirmationMethod_ != 0) {
           setConfirmationMethodValue(other.getConfirmationMethodValue());
         }
@@ -2907,80 +2838,6 @@ public final class AccountOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <pre>
-       * The status of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <pre>
-       * The status of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * The status of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.common.v1.Common.ResponseStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.common.v1.Common.ResponseStatus result = trinsic.services.common.v1.Common.ResponseStatus.valueOf(status_);
-        return result == null ? trinsic.services.common.v1.Common.ResponseStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <pre>
-       * The status of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.common.v1.Common.ResponseStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * The status of the response
-       * </pre>
-       *
-       * <code>.services.common.v1.ResponseStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
         return this;
       }
 
@@ -5532,44 +5389,104 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
-    java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> 
+    @java.lang.Deprecated java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> 
         getEcosystemsList();
     /**
      * <pre>
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
-    trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index);
+    @java.lang.Deprecated trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index);
     /**
      * <pre>
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
-    int getEcosystemsCount();
+    @java.lang.Deprecated int getEcosystemsCount();
     /**
      * <pre>
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
-    java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
+    @java.lang.Deprecated java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
         getEcosystemsOrBuilderList();
     /**
      * <pre>
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
-    trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
+    @java.lang.Deprecated trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     * The wallet id associated with this account
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
+     */
+    java.lang.String getWalletId();
+    /**
+     * <pre>
+     * The wallet id associated with this account
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
+     */
+    com.google.protobuf.ByteString
+        getWalletIdBytes();
+
+    /**
+     * <pre>
+     * The device id associated with this account
+     * </pre>
+     *
+     * <code>string device_id = 4;</code>
+     * @return The deviceId.
+     */
+    java.lang.String getDeviceId();
+    /**
+     * <pre>
+     * The device id associated with this account
+     * </pre>
+     *
+     * <code>string device_id = 4;</code>
+     * @return The bytes for deviceId.
+     */
+    com.google.protobuf.ByteString
+        getDeviceIdBytes();
+
+    /**
+     * <pre>
+     * The ecosystem id associated with this account
+     * </pre>
+     *
+     * <code>string ecosystem_id = 5;</code>
+     * @return The ecosystemId.
+     */
+    java.lang.String getEcosystemId();
+    /**
+     * <pre>
+     * The ecosystem id associated with this account
+     * </pre>
+     *
+     * <code>string ecosystem_id = 5;</code>
+     * @return The bytes for ecosystemId.
+     */
+    com.google.protobuf.ByteString
+        getEcosystemIdBytes();
   }
   /**
    * Protobuf type {@code services.account.v1.InfoResponse}
@@ -5585,6 +5502,9 @@ public final class AccountOuterClass {
     }
     private InfoResponse() {
       ecosystems_ = java.util.Collections.emptyList();
+      walletId_ = "";
+      deviceId_ = "";
+      ecosystemId_ = "";
     }
 
     @java.lang.Override
@@ -5638,6 +5558,24 @@ public final class AccountOuterClass {
               }
               ecosystems_.add(
                   input.readMessage(trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              walletId_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deviceId_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ecosystemId_ = s;
               break;
             }
             default: {
@@ -5723,10 +5661,10 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
     @java.lang.Override
-    public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList() {
+    @java.lang.Deprecated public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList() {
       return ecosystems_;
     }
     /**
@@ -5734,10 +5672,10 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
     @java.lang.Override
-    public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
+    @java.lang.Deprecated public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
         getEcosystemsOrBuilderList() {
       return ecosystems_;
     }
@@ -5746,10 +5684,10 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
     @java.lang.Override
-    public int getEcosystemsCount() {
+    @java.lang.Deprecated public int getEcosystemsCount() {
       return ecosystems_.size();
     }
     /**
@@ -5757,10 +5695,10 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index) {
+    @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index) {
       return ecosystems_.get(index);
     }
     /**
@@ -5768,12 +5706,150 @@ public final class AccountOuterClass {
      * any ecosystems the account has access to
      * </pre>
      *
-     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+     * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
      */
     @java.lang.Override
-    public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
+    @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
         int index) {
       return ecosystems_.get(index);
+    }
+
+    public static final int WALLET_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object walletId_;
+    /**
+     * <pre>
+     * The wallet id associated with this account
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
+     */
+    @java.lang.Override
+    public java.lang.String getWalletId() {
+      java.lang.Object ref = walletId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        walletId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The wallet id associated with this account
+     * </pre>
+     *
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getWalletIdBytes() {
+      java.lang.Object ref = walletId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        walletId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DEVICE_ID_FIELD_NUMBER = 4;
+    private volatile java.lang.Object deviceId_;
+    /**
+     * <pre>
+     * The device id associated with this account
+     * </pre>
+     *
+     * <code>string device_id = 4;</code>
+     * @return The deviceId.
+     */
+    @java.lang.Override
+    public java.lang.String getDeviceId() {
+      java.lang.Object ref = deviceId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deviceId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The device id associated with this account
+     * </pre>
+     *
+     * <code>string device_id = 4;</code>
+     * @return The bytes for deviceId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDeviceIdBytes() {
+      java.lang.Object ref = deviceId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deviceId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ECOSYSTEM_ID_FIELD_NUMBER = 5;
+    private volatile java.lang.Object ecosystemId_;
+    /**
+     * <pre>
+     * The ecosystem id associated with this account
+     * </pre>
+     *
+     * <code>string ecosystem_id = 5;</code>
+     * @return The ecosystemId.
+     */
+    @java.lang.Override
+    public java.lang.String getEcosystemId() {
+      java.lang.Object ref = ecosystemId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ecosystemId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The ecosystem id associated with this account
+     * </pre>
+     *
+     * <code>string ecosystem_id = 5;</code>
+     * @return The bytes for ecosystemId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEcosystemIdBytes() {
+      java.lang.Object ref = ecosystemId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ecosystemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5796,6 +5872,15 @@ public final class AccountOuterClass {
       for (int i = 0; i < ecosystems_.size(); i++) {
         output.writeMessage(2, ecosystems_.get(i));
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, walletId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(deviceId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, deviceId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ecosystemId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5812,6 +5897,15 @@ public final class AccountOuterClass {
       for (int i = 0; i < ecosystems_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, ecosystems_.get(i));
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(walletId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, walletId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(deviceId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, deviceId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ecosystemId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5835,6 +5929,12 @@ public final class AccountOuterClass {
       }
       if (!getEcosystemsList()
           .equals(other.getEcosystemsList())) return false;
+      if (!getWalletId()
+          .equals(other.getWalletId())) return false;
+      if (!getDeviceId()
+          .equals(other.getDeviceId())) return false;
+      if (!getEcosystemId()
+          .equals(other.getEcosystemId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5854,6 +5954,12 @@ public final class AccountOuterClass {
         hash = (37 * hash) + ECOSYSTEMS_FIELD_NUMBER;
         hash = (53 * hash) + getEcosystemsList().hashCode();
       }
+      hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getWalletId().hashCode();
+      hash = (37 * hash) + DEVICE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getDeviceId().hashCode();
+      hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6000,6 +6106,12 @@ public final class AccountOuterClass {
         } else {
           ecosystemsBuilder_.clear();
         }
+        walletId_ = "";
+
+        deviceId_ = "";
+
+        ecosystemId_ = "";
+
         return this;
       }
 
@@ -6041,6 +6153,9 @@ public final class AccountOuterClass {
         } else {
           result.ecosystems_ = ecosystemsBuilder_.build();
         }
+        result.walletId_ = walletId_;
+        result.deviceId_ = deviceId_;
+        result.ecosystemId_ = ecosystemId_;
         onBuilt();
         return result;
       }
@@ -6117,6 +6232,18 @@ public final class AccountOuterClass {
               ecosystemsBuilder_.addAllMessages(other.ecosystems_);
             }
           }
+        }
+        if (!other.getWalletId().isEmpty()) {
+          walletId_ = other.walletId_;
+          onChanged();
+        }
+        if (!other.getDeviceId().isEmpty()) {
+          deviceId_ = other.deviceId_;
+          onChanged();
+        }
+        if (!other.getEcosystemId().isEmpty()) {
+          ecosystemId_ = other.ecosystemId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6329,9 +6456,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList() {
+      @java.lang.Deprecated public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> getEcosystemsList() {
         if (ecosystemsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(ecosystems_);
         } else {
@@ -6343,9 +6470,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public int getEcosystemsCount() {
+      @java.lang.Deprecated public int getEcosystemsCount() {
         if (ecosystemsBuilder_ == null) {
           return ecosystems_.size();
         } else {
@@ -6357,9 +6484,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index) {
+      @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index) {
         if (ecosystemsBuilder_ == null) {
           return ecosystems_.get(index);
         } else {
@@ -6371,9 +6498,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder setEcosystems(
+      @java.lang.Deprecated public Builder setEcosystems(
           int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value) {
         if (ecosystemsBuilder_ == null) {
           if (value == null) {
@@ -6392,9 +6519,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder setEcosystems(
+      @java.lang.Deprecated public Builder setEcosystems(
           int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue) {
         if (ecosystemsBuilder_ == null) {
           ensureEcosystemsIsMutable();
@@ -6410,9 +6537,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder addEcosystems(trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value) {
+      @java.lang.Deprecated public Builder addEcosystems(trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value) {
         if (ecosystemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6430,9 +6557,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder addEcosystems(
+      @java.lang.Deprecated public Builder addEcosystems(
           int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem value) {
         if (ecosystemsBuilder_ == null) {
           if (value == null) {
@@ -6451,9 +6578,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder addEcosystems(
+      @java.lang.Deprecated public Builder addEcosystems(
           trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue) {
         if (ecosystemsBuilder_ == null) {
           ensureEcosystemsIsMutable();
@@ -6469,9 +6596,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder addEcosystems(
+      @java.lang.Deprecated public Builder addEcosystems(
           int index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder builderForValue) {
         if (ecosystemsBuilder_ == null) {
           ensureEcosystemsIsMutable();
@@ -6487,9 +6614,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder addAllEcosystems(
+      @java.lang.Deprecated public Builder addAllEcosystems(
           java.lang.Iterable<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> values) {
         if (ecosystemsBuilder_ == null) {
           ensureEcosystemsIsMutable();
@@ -6506,9 +6633,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder clearEcosystems() {
+      @java.lang.Deprecated public Builder clearEcosystems() {
         if (ecosystemsBuilder_ == null) {
           ecosystems_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
@@ -6523,9 +6650,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public Builder removeEcosystems(int index) {
+      @java.lang.Deprecated public Builder removeEcosystems(int index) {
         if (ecosystemsBuilder_ == null) {
           ensureEcosystemsIsMutable();
           ecosystems_.remove(index);
@@ -6540,9 +6667,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder getEcosystemsBuilder(
+      @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder getEcosystemsBuilder(
           int index) {
         return getEcosystemsFieldBuilder().getBuilder(index);
       }
@@ -6551,9 +6678,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
+      @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
           int index) {
         if (ecosystemsBuilder_ == null) {
           return ecosystems_.get(index);  } else {
@@ -6565,9 +6692,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
+      @java.lang.Deprecated public java.util.List<? extends trinsic.services.account.v1.AccountOuterClass.AccountEcosystemOrBuilder> 
            getEcosystemsOrBuilderList() {
         if (ecosystemsBuilder_ != null) {
           return ecosystemsBuilder_.getMessageOrBuilderList();
@@ -6580,9 +6707,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder() {
+      @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder() {
         return getEcosystemsFieldBuilder().addBuilder(
             trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.getDefaultInstance());
       }
@@ -6591,9 +6718,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder(
+      @java.lang.Deprecated public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder addEcosystemsBuilder(
           int index) {
         return getEcosystemsFieldBuilder().addBuilder(
             index, trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.getDefaultInstance());
@@ -6603,9 +6730,9 @@ public final class AccountOuterClass {
        * any ecosystems the account has access to
        * </pre>
        *
-       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2;</code>
+       * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
        */
-      public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder> 
+      @java.lang.Deprecated public java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem.Builder> 
            getEcosystemsBuilderList() {
         return getEcosystemsFieldBuilder().getBuilderList();
       }
@@ -6622,6 +6749,294 @@ public final class AccountOuterClass {
           ecosystems_ = null;
         }
         return ecosystemsBuilder_;
+      }
+
+      private java.lang.Object walletId_ = "";
+      /**
+       * <pre>
+       * The wallet id associated with this account
+       * </pre>
+       *
+       * <code>string wallet_id = 3;</code>
+       * @return The walletId.
+       */
+      public java.lang.String getWalletId() {
+        java.lang.Object ref = walletId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          walletId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The wallet id associated with this account
+       * </pre>
+       *
+       * <code>string wallet_id = 3;</code>
+       * @return The bytes for walletId.
+       */
+      public com.google.protobuf.ByteString
+          getWalletIdBytes() {
+        java.lang.Object ref = walletId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          walletId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The wallet id associated with this account
+       * </pre>
+       *
+       * <code>string wallet_id = 3;</code>
+       * @param value The walletId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWalletId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        walletId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The wallet id associated with this account
+       * </pre>
+       *
+       * <code>string wallet_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWalletId() {
+        
+        walletId_ = getDefaultInstance().getWalletId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The wallet id associated with this account
+       * </pre>
+       *
+       * <code>string wallet_id = 3;</code>
+       * @param value The bytes for walletId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWalletIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        walletId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object deviceId_ = "";
+      /**
+       * <pre>
+       * The device id associated with this account
+       * </pre>
+       *
+       * <code>string device_id = 4;</code>
+       * @return The deviceId.
+       */
+      public java.lang.String getDeviceId() {
+        java.lang.Object ref = deviceId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deviceId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The device id associated with this account
+       * </pre>
+       *
+       * <code>string device_id = 4;</code>
+       * @return The bytes for deviceId.
+       */
+      public com.google.protobuf.ByteString
+          getDeviceIdBytes() {
+        java.lang.Object ref = deviceId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deviceId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The device id associated with this account
+       * </pre>
+       *
+       * <code>string device_id = 4;</code>
+       * @param value The deviceId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deviceId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The device id associated with this account
+       * </pre>
+       *
+       * <code>string device_id = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeviceId() {
+        
+        deviceId_ = getDefaultInstance().getDeviceId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The device id associated with this account
+       * </pre>
+       *
+       * <code>string device_id = 4;</code>
+       * @param value The bytes for deviceId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeviceIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deviceId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object ecosystemId_ = "";
+      /**
+       * <pre>
+       * The ecosystem id associated with this account
+       * </pre>
+       *
+       * <code>string ecosystem_id = 5;</code>
+       * @return The ecosystemId.
+       */
+      public java.lang.String getEcosystemId() {
+        java.lang.Object ref = ecosystemId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ecosystemId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ecosystem id associated with this account
+       * </pre>
+       *
+       * <code>string ecosystem_id = 5;</code>
+       * @return The bytes for ecosystemId.
+       */
+      public com.google.protobuf.ByteString
+          getEcosystemIdBytes() {
+        java.lang.Object ref = ecosystemId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ecosystemId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The ecosystem id associated with this account
+       * </pre>
+       *
+       * <code>string ecosystem_id = 5;</code>
+       * @param value The ecosystemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEcosystemId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        ecosystemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ecosystem id associated with this account
+       * </pre>
+       *
+       * <code>string ecosystem_id = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEcosystemId() {
+        
+        ecosystemId_ = getDefaultInstance().getEcosystemId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The ecosystem id associated with this account
+       * </pre>
+       *
+       * <code>string ecosystem_id = 5;</code>
+       * @param value The bytes for ecosystemId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEcosystemIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ecosystemId_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9436,49 +9851,48 @@ public final class AccountOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n!services/account/v1/account.proto\022\023ser" +
-      "vices.account.v1\032\037services/common/v1/com" +
-      "mon.proto\"t\n\rSignInRequest\0224\n\007details\030\001 " +
-      "\001(\0132#.services.account.v1.AccountDetails" +
-      "\022\027\n\017invitation_code\030\002 \001(\t\022\024\n\014ecosystem_i" +
-      "d\030\003 \001(\t\":\n\016AccountDetails\022\014\n\004name\030\001 \001(\t\022" +
-      "\r\n\005email\030\002 \001(\t\022\013\n\003sms\030\003 \001(\t\"\300\001\n\016SignInRe" +
-      "sponse\0222\n\006status\030\001 \001(\0162\".services.common" +
-      ".v1.ResponseStatus\022D\n\023confirmation_metho" +
-      "d\030\003 \001(\0162\'.services.account.v1.Confirmati" +
-      "onMethod\0224\n\007profile\030\004 \001(\0132#.services.acc" +
-      "ount.v1.AccountProfile\"\207\001\n\016AccountProfil" +
-      "e\022\024\n\014profile_type\030\001 \001(\t\022\021\n\tauth_data\030\002 \001" +
-      "(\014\022\022\n\nauth_token\030\003 \001(\014\0228\n\nprotection\030\004 \001" +
-      "(\0132$.services.account.v1.TokenProtection" +
-      "\"[\n\017TokenProtection\022\017\n\007enabled\030\001 \001(\010\0227\n\006" +
-      "method\030\002 \001(\0162\'.services.account.v1.Confi" +
-      "rmationMethod\"\r\n\013InfoRequest\"\177\n\014InfoResp" +
-      "onse\0224\n\007details\030\001 \001(\0132#.services.account" +
-      ".v1.AccountDetails\0229\n\necosystems\030\002 \003(\0132%" +
-      ".services.account.v1.AccountEcosystem\"\024\n" +
-      "\022ListDevicesRequest\"\025\n\023ListDevicesRespon" +
-      "se\"\025\n\023RevokeDeviceRequest\"\026\n\024RevokeDevic" +
-      "eResponse\"N\n\020AccountEcosystem\022\n\n\002id\030\001 \001(" +
-      "\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\013\n\003" +
-      "uri\030\004 \001(\t*R\n\022ConfirmationMethod\022\010\n\004None\020" +
-      "\000\022\t\n\005Email\020\001\022\007\n\003Sms\020\002\022\023\n\017ConnectedDevice" +
-      "\020\003\022\t\n\005Other\020\n2\360\002\n\007Account\022Q\n\006SignIn\022\".se" +
-      "rvices.account.v1.SignInRequest\032#.servic" +
-      "es.account.v1.SignInResponse\022K\n\004Info\022 .s" +
-      "ervices.account.v1.InfoRequest\032!.service" +
-      "s.account.v1.InfoResponse\022`\n\013ListDevices" +
-      "\022\'.services.account.v1.ListDevicesReques" +
-      "t\032(.services.account.v1.ListDevicesRespo" +
-      "nse\022c\n\014RevokeDevice\022(.services.account.v" +
-      "1.RevokeDeviceRequest\032).services.account" +
-      ".v1.RevokeDeviceResponseBV\n\033trinsic.serv" +
-      "ices.account.v1Z\031github.com/trinsic-id/s" +
-      "dk\252\002\033Trinsic.Services.Account.V1b\006proto3"
+      "vices.account.v1\"t\n\rSignInRequest\0224\n\007det" +
+      "ails\030\001 \001(\0132#.services.account.v1.Account" +
+      "Details\022\027\n\017invitation_code\030\002 \001(\t\022\024\n\014ecos" +
+      "ystem_id\030\003 \001(\t\":\n\016AccountDetails\022\014\n\004name" +
+      "\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\013\n\003sms\030\003 \001(\t\"\214\001\n\016S" +
+      "ignInResponse\022D\n\023confirmation_method\030\003 \001" +
+      "(\0162\'.services.account.v1.ConfirmationMet" +
+      "hod\0224\n\007profile\030\004 \001(\0132#.services.account." +
+      "v1.AccountProfile\"\207\001\n\016AccountProfile\022\024\n\014" +
+      "profile_type\030\001 \001(\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n" +
+      "\nauth_token\030\003 \001(\014\0228\n\nprotection\030\004 \001(\0132$." +
+      "services.account.v1.TokenProtection\"[\n\017T" +
+      "okenProtection\022\017\n\007enabled\030\001 \001(\010\0227\n\006metho" +
+      "d\030\002 \001(\0162\'.services.account.v1.Confirmati" +
+      "onMethod\"\r\n\013InfoRequest\"\277\001\n\014InfoResponse" +
+      "\0224\n\007details\030\001 \001(\0132#.services.account.v1." +
+      "AccountDetails\022=\n\necosystems\030\002 \003(\0132%.ser" +
+      "vices.account.v1.AccountEcosystemB\002\030\001\022\021\n" +
+      "\twallet_id\030\003 \001(\t\022\021\n\tdevice_id\030\004 \001(\t\022\024\n\014e" +
+      "cosystem_id\030\005 \001(\t\"\024\n\022ListDevicesRequest\"" +
+      "\025\n\023ListDevicesResponse\"\025\n\023RevokeDeviceRe" +
+      "quest\"\026\n\024RevokeDeviceResponse\"N\n\020Account" +
+      "Ecosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013d" +
+      "escription\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t*R\n\022Confirm" +
+      "ationMethod\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003Sms\020" +
+      "\002\022\023\n\017ConnectedDevice\020\003\022\t\n\005Other\020\n2\360\002\n\007Ac" +
+      "count\022Q\n\006SignIn\022\".services.account.v1.Si" +
+      "gnInRequest\032#.services.account.v1.SignIn" +
+      "Response\022K\n\004Info\022 .services.account.v1.I" +
+      "nfoRequest\032!.services.account.v1.InfoRes" +
+      "ponse\022`\n\013ListDevices\022\'.services.account." +
+      "v1.ListDevicesRequest\032(.services.account" +
+      ".v1.ListDevicesResponse\022c\n\014RevokeDevice\022" +
+      "(.services.account.v1.RevokeDeviceReques" +
+      "t\032).services.account.v1.RevokeDeviceResp" +
+      "onseBV\n\033trinsic.services.account.v1Z\031git" +
+      "hub.com/trinsic-id/sdk\252\002\033Trinsic.Service" +
+      "s.Account.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.common.v1.Common.getDescriptor(),
         });
     internal_static_services_account_v1_SignInRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -9497,7 +9911,7 @@ public final class AccountOuterClass {
     internal_static_services_account_v1_SignInResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_SignInResponse_descriptor,
-        new java.lang.String[] { "Status", "ConfirmationMethod", "Profile", });
+        new java.lang.String[] { "ConfirmationMethod", "Profile", });
     internal_static_services_account_v1_AccountProfile_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_services_account_v1_AccountProfile_fieldAccessorTable = new
@@ -9521,7 +9935,7 @@ public final class AccountOuterClass {
     internal_static_services_account_v1_InfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_InfoResponse_descriptor,
-        new java.lang.String[] { "Details", "Ecosystems", });
+        new java.lang.String[] { "Details", "Ecosystems", "WalletId", "DeviceId", "EcosystemId", });
     internal_static_services_account_v1_ListDevicesRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable = new
@@ -9552,7 +9966,6 @@ public final class AccountOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_AccountEcosystem_descriptor,
         new java.lang.String[] { "Id", "Name", "Description", "Uri", });
-    trinsic.services.common.v1.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

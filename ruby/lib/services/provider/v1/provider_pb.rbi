@@ -237,28 +237,14 @@ class Services::Provider::V1::InviteResponse
 
   sig do
     params(
-      status: T.nilable(T.any(Symbol, String, Integer)),
       invitation_id: T.nilable(String),
       invitation_code: T.nilable(String)
     ).void
   end
   def initialize(
-    status: :SUCCESS,
     invitation_id: "",
     invitation_code: ""
   )
-  end
-
-  sig { returns(Symbol) }
-  def status
-  end
-
-  sig { params(value: T.any(Symbol, String, Integer)).void }
-  def status=(value)
-  end
-
-  sig { void }
-  def clear_status
   end
 
   sig { returns(String) }
@@ -829,6 +815,104 @@ class Services::Provider::V1::GenerateTokenResponse
 
   sig { void }
   def clear_profile
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetOberonKeyRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetOberonKeyRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetOberonKeyRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetOberonKeyRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetOberonKeyRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetOberonKeyResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetOberonKeyResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetOberonKeyResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetOberonKeyResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetOberonKeyResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      key: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    key: ""
+  )
+  end
+
+  sig { returns(String) }
+  def key
+  end
+
+  sig { params(value: String).void }
+  def key=(value)
+  end
+
+  sig { void }
+  def clear_key
   end
 
   sig { params(field: String).returns(T.untyped) }

@@ -44,7 +44,6 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InviteResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
     invitation_id: str = betterproto.string_field(10)
     # Invitation Code that must be passed with the account 'SignIn' request to
     # correlate this user with the invitation sent.
@@ -113,6 +112,20 @@ class GenerateTokenResponse(betterproto.Message):
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(1)
 
 
+@dataclass(eq=False, repr=False)
+class GetOberonKeyRequest(betterproto.Message):
+    """request message for GetOberonKey"""
+
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class GetOberonKeyResponse(betterproto.Message):
+    """response message for GetOberonKey"""
+
+    key: str = betterproto.string_field(1)
+
+
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self, create_ecosystem_request: "CreateEcosystemRequest"
@@ -146,6 +159,15 @@ class ProviderStub(betterproto.ServiceStub):
             InvitationStatusResponse,
         )
 
+    async def get_oberon_key(
+        self, get_oberon_key_request: "GetOberonKeyRequest"
+    ) -> "GetOberonKeyResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/GetOberonKey",
+            get_oberon_key_request,
+            GetOberonKeyResponse,
+        )
+
 
 class ProviderBase(ServiceBase):
     async def create_ecosystem(
@@ -166,6 +188,11 @@ class ProviderBase(ServiceBase):
     ) -> "InvitationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def get_oberon_key(
+        self, get_oberon_key_request: "GetOberonKeyRequest"
+    ) -> "GetOberonKeyResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create_ecosystem(request)
@@ -184,6 +211,11 @@ class ProviderBase(ServiceBase):
     async def __rpc_invitation_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.invitation_status(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_oberon_key(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_oberon_key(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -212,8 +244,13 @@ class ProviderBase(ServiceBase):
                 InvitationStatusRequest,
                 InvitationStatusResponse,
             ),
+            "/services.provider.v1.Provider/GetOberonKey": grpclib.const.Handler(
+                self.__rpc_get_oberon_key,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetOberonKeyRequest,
+                GetOberonKeyResponse,
+            ),
         }
 
 
 from ...account import v1 as __account_v1__
-from ...common import v1 as __common_v1__

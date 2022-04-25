@@ -59,8 +59,7 @@ class UpdateItemRequest(betterproto.Message):
 class UpdateItemResponse(betterproto.Message):
     """Update item response object"""
 
-    # Response status
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -77,7 +76,6 @@ class InsertItemRequest(betterproto.Message):
 class InsertItemResponse(betterproto.Message):
     """Insert item response"""
 
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
     # The item identifier of the inserted record
     item_id: str = betterproto.string_field(2)
 
@@ -94,7 +92,7 @@ class DeleteItemRequest(betterproto.Message):
 class DeleteItemResponse(betterproto.Message):
     """Delete item response"""
 
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 class UniversalWalletStub(betterproto.ServiceStub):
@@ -220,6 +218,3 @@ class UniversalWalletBase(ServiceBase):
                 DeleteItemResponse,
             ),
         }
-
-
-from ...common import v1 as __common_v1__

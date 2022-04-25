@@ -10554,6 +10554,18 @@ public final class Templates {
      */
     com.google.protobuf.ByteString
         getTypeBytes();
+
+    /**
+     * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     * @return The createdBy.
+     */
+    java.lang.String getCreatedBy();
+    /**
+     * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     * @return The bytes for createdBy.
+     */
+    com.google.protobuf.ByteString
+        getCreatedByBytes();
   }
   /**
    * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateData}
@@ -10574,6 +10586,7 @@ public final class Templates {
       contextUri_ = "";
       ecosystemId_ = "";
       type_ = "";
+      createdBy_ = "";
     }
 
     @java.lang.Override
@@ -10664,6 +10677,12 @@ public final class Templates {
               java.lang.String s = input.readStringRequireUtf8();
 
               type_ = s;
+              break;
+            }
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              createdBy_ = s;
               break;
             }
             default: {
@@ -11041,6 +11060,44 @@ public final class Templates {
       }
     }
 
+    public static final int CREATED_BY_FIELD_NUMBER = 10;
+    private volatile java.lang.Object createdBy_;
+    /**
+     * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     * @return The createdBy.
+     */
+    @java.lang.Override
+    public java.lang.String getCreatedBy() {
+      java.lang.Object ref = createdBy_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        createdBy_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     * @return The bytes for createdBy.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCreatedByBytes() {
+      java.lang.Object ref = createdBy_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        createdBy_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -11084,6 +11141,9 @@ public final class Templates {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, type_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, createdBy_);
       }
       unknownFields.writeTo(output);
     }
@@ -11130,6 +11190,9 @@ public final class Templates {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, type_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, createdBy_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -11163,6 +11226,8 @@ public final class Templates {
           .equals(other.getEcosystemId())) return false;
       if (!getType()
           .equals(other.getType())) return false;
+      if (!getCreatedBy()
+          .equals(other.getCreatedBy())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -11195,6 +11260,8 @@ public final class Templates {
       hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getType().hashCode();
+      hash = (37 * hash) + CREATED_BY_FIELD_NUMBER;
+      hash = (53 * hash) + getCreatedBy().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11367,6 +11434,8 @@ public final class Templates {
 
         type_ = "";
 
+        createdBy_ = "";
+
         return this;
       }
 
@@ -11404,6 +11473,7 @@ public final class Templates {
         result.contextUri_ = contextUri_;
         result.ecosystemId_ = ecosystemId_;
         result.type_ = type_;
+        result.createdBy_ = createdBy_;
         onBuilt();
         return result;
       }
@@ -11482,6 +11552,10 @@ public final class Templates {
         }
         if (!other.getType().isEmpty()) {
           type_ = other.type_;
+          onChanged();
+        }
+        if (!other.getCreatedBy().isEmpty()) {
+          createdBy_ = other.createdBy_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -12162,6 +12236,82 @@ public final class Templates {
         onChanged();
         return this;
       }
+
+      private java.lang.Object createdBy_ = "";
+      /**
+       * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       * @return The createdBy.
+       */
+      public java.lang.String getCreatedBy() {
+        java.lang.Object ref = createdBy_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          createdBy_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       * @return The bytes for createdBy.
+       */
+      public com.google.protobuf.ByteString
+          getCreatedByBytes() {
+        java.lang.Object ref = createdBy_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          createdBy_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       * @param value The createdBy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreatedBy(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        createdBy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCreatedBy() {
+        
+        createdBy_ = getDefaultInstance().getCreatedBy();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       * @param value The bytes for createdBy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCreatedByBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        createdBy_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -12353,43 +12503,44 @@ public final class Templates {
       "ateData\"\026\n\024ListTemplatesRequest\"e\n\025ListT" +
       "emplatesResponse\022L\n\ttemplates\030\001 \003(\01329.se" +
       "rvices.verifiablecredentials.templates.v" +
-      "1.TemplateData\"\200\003\n\014TemplateData\022\016\n\002id\030\001 " +
+      "1.TemplateData\"\237\003\n\014TemplateData\022\016\n\002id\030\001 " +
       "\001(\tR\002id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U" +
       "\n\006fields\030\004 \003(\0132E.services.verifiablecred" +
       "entials.templates.v1.TemplateData.Fields" +
       "Entry\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022" +
       "\n\nschema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022" +
       "!\n\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004ty" +
-      "pe\030\t \001(\tR\004type\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022I\n\005value\030\002 \001(\0132:.services.verifiablec" +
-      "redentials.templates.v1.TemplateField:\0028" +
-      "\001*;\n\tFieldType\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010" +
-      "\n\004BOOL\020\002\022\014\n\010DATETIME\020\0042\322\006\n\023CredentialTem" +
-      "plates\022\245\001\n\006Create\022L.services.verifiablec" +
-      "redentials.templates.v1.CreateCredential" +
-      "TemplateRequest\032M.services.verifiablecre" +
-      "dentials.templates.v1.CreateCredentialTe" +
-      "mplateResponse\022\234\001\n\003Get\022I.services.verifi" +
-      "ablecredentials.templates.v1.GetCredenti" +
-      "alTemplateRequest\032J.services.verifiablec" +
-      "redentials.templates.v1.GetCredentialTem" +
-      "plateResponse\022\241\001\n\004List\022K.services.verifi" +
-      "ablecredentials.templates.v1.ListCredent" +
-      "ialTemplatesRequest\032L.services.verifiabl" +
-      "ecredentials.templates.v1.ListCredential" +
-      "TemplatesResponse\022\247\001\n\006Search\022M.services." +
-      "verifiablecredentials.templates.v1.Searc" +
-      "hCredentialTemplatesRequest\032N.services.v" +
-      "erifiablecredentials.templates.v1.Search" +
-      "CredentialTemplatesResponse\022\245\001\n\006Delete\022L" +
-      ".services.verifiablecredentials.template" +
-      "s.v1.DeleteCredentialTemplateRequest\032M.s" +
+      "pe\030\t \001(\tR\004type\022\035\n\ncreated_by\030\n \001(\tR\tcrea" +
+      "tedBy\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005val" +
+      "ue\030\002 \001(\0132:.services.verifiablecredential" +
+      "s.templates.v1.TemplateField:\0028\001*;\n\tFiel" +
+      "dType\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022" +
+      "\014\n\010DATETIME\020\0042\322\006\n\023CredentialTemplates\022\245\001" +
+      "\n\006Create\022L.services.verifiablecredential" +
+      "s.templates.v1.CreateCredentialTemplateR" +
+      "equest\032M.services.verifiablecredentials." +
+      "templates.v1.CreateCredentialTemplateRes" +
+      "ponse\022\234\001\n\003Get\022I.services.verifiablecrede" +
+      "ntials.templates.v1.GetCredentialTemplat" +
+      "eRequest\032J.services.verifiablecredential" +
+      "s.templates.v1.GetCredentialTemplateResp" +
+      "onse\022\241\001\n\004List\022K.services.verifiablecrede" +
+      "ntials.templates.v1.ListCredentialTempla" +
+      "tesRequest\032L.services.verifiablecredenti" +
+      "als.templates.v1.ListCredentialTemplates" +
+      "Response\022\247\001\n\006Search\022M.services.verifiabl" +
+      "ecredentials.templates.v1.SearchCredenti" +
+      "alTemplatesRequest\032N.services.verifiable" +
+      "credentials.templates.v1.SearchCredentia" +
+      "lTemplatesResponse\022\245\001\n\006Delete\022L.services" +
+      ".verifiablecredentials.templates.v1.Dele" +
+      "teCredentialTemplateRequest\032M.services.v" +
+      "erifiablecredentials.templates.v1.Delete" +
+      "CredentialTemplateResponseB\206\001\n3trinsic.s" +
       "ervices.verifiablecredentials.templates." +
-      "v1.DeleteCredentialTemplateResponseB\206\001\n3" +
-      "trinsic.services.verifiablecredentials.t" +
-      "emplates.v1Z\031github.com/trinsic-id/sdk\252\002" +
-      "3Trinsic.Services.VerifiableCredentials." +
-      "Templates.V1b\006proto3"
+      "v1Z\031github.com/trinsic-id/sdk\252\0023Trinsic." +
+      "Services.VerifiableCredentials.Templates" +
+      ".V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12496,7 +12647,7 @@ public final class Templates {
     internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor,
-        new java.lang.String[] { "Id", "Name", "Version", "Fields", "AllowAdditionalFields", "SchemaUri", "ContextUri", "EcosystemId", "Type", });
+        new java.lang.String[] { "Id", "Name", "Version", "Fields", "AllowAdditionalFields", "SchemaUri", "ContextUri", "EcosystemId", "Type", "CreatedBy", });
     internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor =
       internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor.getNestedTypes().get(0);
     internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_fieldAccessorTable = new

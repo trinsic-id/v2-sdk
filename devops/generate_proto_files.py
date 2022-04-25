@@ -188,10 +188,13 @@ def update_python():
     # plugin_file = r"C:\work\sdk\devops\venv\Lib\site-packages\betterproto\plugin\plugin.bat"
     run_protoc({'python_betterproto_out': python_proto_path}, {}, proto_files=get_proto_files())
 
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Compile proto files for each SDK language and documentation')
-    parser.add_argument('--language', help='Comma-separated languages to build (all/golang/ruby/python/java/docs)', default='all')
+    parser.add_argument('--language', help='Comma-separated languages to build (all/golang/ruby/python/java/docs)',
+                        default='all')
     return parser.parse_args()
+
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
@@ -224,8 +227,9 @@ def main():
     for lang in langs_to_build:
         if not lang in lang_funcs:
             raise Exception(f"Language {lang} is not a valid compilation language.")
-        
+
         lang_funcs[lang]()
+
 
 if __name__ == "__main__":
     main()

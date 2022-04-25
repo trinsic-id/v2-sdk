@@ -119,6 +119,7 @@ class TemplateData(betterproto.Message):
     context_uri: str = betterproto.string_field(7)
     ecosystem_id: str = betterproto.string_field(8)
     type: str = betterproto.string_field(9)
+    created_by: str = betterproto.string_field(10)
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):

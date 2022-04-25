@@ -49,5 +49,13 @@ module Services::Provider::V1::Provider
     end
     def invitation_status(request)
     end
+
+    sig do
+      params(
+        request: Services::Provider::V1::GetOberonKeyRequest
+      ).returns(Services::Provider::V1::GetOberonKeyResponse)
+    end
+    def get_oberon_key(request)
+    end
   end
 end

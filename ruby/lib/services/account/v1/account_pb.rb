@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/account/v1/account.proto", :syntax => :proto3) do
     add_message "services.account.v1.SignInRequest" do
@@ -17,7 +16,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sms, :string, 3
     end
     add_message "services.account.v1.SignInResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
       optional :confirmation_method, :enum, 3, "services.account.v1.ConfirmationMethod"
       optional :profile, :message, 4, "services.account.v1.AccountProfile"
     end
@@ -36,6 +34,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.account.v1.InfoResponse" do
       optional :details, :message, 1, "services.account.v1.AccountDetails"
       repeated :ecosystems, :message, 2, "services.account.v1.AccountEcosystem"
+      optional :wallet_id, :string, 3
+      optional :device_id, :string, 4
+      optional :ecosystem_id, :string, 5
     end
     add_message "services.account.v1.ListDevicesRequest" do
     end

@@ -24,7 +24,7 @@ class AddFrameworkRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -34,7 +34,7 @@ class RemoveFrameworkRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -70,7 +70,7 @@ class RegisterIssuerRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RegisterIssuerResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -85,7 +85,7 @@ class RegisterVerifierRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class RegisterVerifierResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -98,7 +98,7 @@ class UnregisterIssuerRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class UnregisterIssuerResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -111,7 +111,7 @@ class UnregisterVerifierRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class UnregisterVerifierResponse(betterproto.Message):
-    status: "__common_v1__.ResponseStatus" = betterproto.enum_field(1)
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -413,6 +413,3 @@ class TrustRegistryBase(ServiceBase):
                 FetchDataResponse,
             ),
         }
-
-
-from ...common import v1 as __common_v1__

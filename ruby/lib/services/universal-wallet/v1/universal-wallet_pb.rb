@@ -3,7 +3,6 @@
 
 require 'google/protobuf'
 
-require 'services/common/v1/common_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/universal-wallet/v1/universal-wallet.proto", :syntax => :proto3) do
     add_message "services.universalwallet.v1.SearchRequest" do
@@ -27,21 +26,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :item_type, :string, 2
     end
     add_message "services.universalwallet.v1.UpdateItemResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
     add_message "services.universalwallet.v1.InsertItemRequest" do
       optional :item_json, :string, 1
       optional :item_type, :string, 2
     end
     add_message "services.universalwallet.v1.InsertItemResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
       optional :item_id, :string, 2
     end
     add_message "services.universalwallet.v1.DeleteItemRequest" do
       optional :item_id, :string, 1
     end
     add_message "services.universalwallet.v1.DeleteItemResponse" do
-      optional :status, :enum, 1, "services.common.v1.ResponseStatus"
     end
   end
 end
