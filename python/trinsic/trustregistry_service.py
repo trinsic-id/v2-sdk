@@ -1,13 +1,10 @@
-import datetime
 import urllib.parse
 from typing import AsyncIterator
 
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.trustregistry.v1 import (
     TrustRegistryStub,
-    GovernanceFramework,
     RemoveFrameworkResponse,
-    RegistrationStatus,
     SearchRegistryResponse,
     FetchDataResponse,
     AddFrameworkRequest,
@@ -21,10 +18,14 @@ from trinsic.proto.services.trustregistry.v1 import (
     CheckVerifierStatusRequest,
     CheckVerifierStatusResponse,
     CheckIssuerStatusResponse,
-    CheckIssuerStatusRequest, AddFrameworkResponse,
+    CheckIssuerStatusRequest,
+    AddFrameworkResponse,
+    UnregisterIssuerResponse,
+    RegisterIssuerResponse,
+    RegisterVerifierResponse,
+    UnregisterVerifierResponse,
 )
-from trinsic.service_base import ServiceBase, ResponseStatusException
-from trinsic.trinsic_util import convert_to_epoch_seconds
+from trinsic.service_base import ServiceBase
 
 
 class TrustRegistryService(ServiceBase):
@@ -51,8 +52,7 @@ class TrustRegistryService(ServiceBase):
         )
         # Verify complete url
         if governance_url.scheme and governance_url.netloc:
-            response = await self.client.add_framework(add_framework_request=request)
-            return response
+            return await self.client.add_framework(add_framework_request=request)
         else:
             raise ValueError(
                 f"Invalid URI string={request.governance_framework.governance_framework_uri}"
@@ -63,76 +63,48 @@ class TrustRegistryService(ServiceBase):
     ) -> RemoveFrameworkResponse:
         return await self.client.remove_framework(remove_framework_request=request)
 
-    async def register_issuer(self, *, request: RegisterIssuerRequest) -> None:
+    async def register_issuer(
+        self, *, request: RegisterIssuerRequest
+    ) -> RegisterIssuerResponse:
         """
         [Register the issuer](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
-            issuer_did:
-            credential_type:
-            governance_framework:
-            valid_from:
-            valid_until:
         Raises:
             ValueError: if date ranges are not provided
         """
-        response = await self.client.register_issuer(register_issuer_request=request)
-        ResponseStatusException.assert_success(
-            response.status, "cannot register issuer"
-        )
+        return await self.client.register_issuer(register_issuer_request=request)
 
-    async def unregister_issuer(self, *, request: UnregisterIssuerRequest) -> None:
+    async def unregister_issuer(
+        self, *, request: UnregisterIssuerRequest
+    ) -> UnregisterIssuerResponse:
         """
         [Unregister the issuer](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
         Args:
-            issuer_did:
-            credential_type:
-            governance_framework:
-            valid_from:
-            valid_until:
         Raises:
             NotImplementedError: Unsupported call
         """
-        response = await self.client.unregister_issuer(
-            unregister_issuer_request=request
-        )
-        ResponseStatusException.assert_success(
-            response.status, "cannot unregister issuer"
-        )
+        return await self.client.unregister_issuer(unregister_issuer_request=request)
 
-    async def register_verifier(self, *, request: RegisterVerifierRequest) -> None:
+    async def register_verifier(
+        self, *, request: RegisterVerifierRequest
+    ) -> RegisterVerifierResponse:
         """
         [Register the verifier](/reference/services/trust-registry/#register-issuers-and-verifiers)
         Args:
-            verifier_did:
-            presentation_type:
-            governance_framework:
-            valid_from:
-            valid_until:
         """
-        response = await self.client.register_verifier(
-            register_verifier_request=request
-        )
-        ResponseStatusException.assert_success(
-            response.status, "cannot register verifier"
-        )
+        return await self.client.register_verifier(register_verifier_request=request)
 
-    async def unregister_verifier(self, *, request: UnregisterVerifierRequest) -> None:
+    async def unregister_verifier(
+        self, *, request: UnregisterVerifierRequest
+    ) -> UnregisterVerifierResponse:
         """
         [Unregister the verifier](/reference/services/trust-registry/#unregister-issuers-and-verifiers)
         Args:
-            verifier_did:
-            presentation_type:
-            governance_framework:
-            valid_from:
-            valid_until:
         Raises:
             NotImplementedError: Unsupported call
         """
-        response = await self.client.unregister_verifier(
+        return await self.client.unregister_verifier(
             unregister_verifier_request=request
-        )
-        ResponseStatusException.assert_success(
-            response.status, "cannot unregister verifier"
         )
 
     async def check_issuer_status(
@@ -141,9 +113,6 @@ class TrustRegistryService(ServiceBase):
         """
         [Check for authoritative status](/reference/services/trust-registry/#check-authoritative-status)
         Args:
-            issuer_did:
-            credential_type:
-            governance_framework:
         Returns:
             [RegistrationStatus](/reference/proto/#checkissuerstatusresponse)
         """
@@ -175,7 +144,6 @@ class TrustRegistryService(ServiceBase):
         """
         [Search the registry](/reference/services/trust-registry/#search)
         Args:
-            query: Search query
         Returns:
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """

@@ -8,7 +8,8 @@ from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchR
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueRequest,
     CreateProofRequest,
-    VerifyProofRequest, SendRequest,
+    VerifyProofRequest,
+    SendRequest,
 )
 from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
@@ -89,7 +90,9 @@ async def vaccine_demo():
 
     try:
         # sendCredential() {
-        send_response = await credentials_service.send(request=SendRequest(document_json=credential, email="example@trinsic.id"))
+        send_response = await credentials_service.send(
+            request=SendRequest(document_json=credential, email="example@trinsic.id")
+        )
         # }
     except:
         pass
