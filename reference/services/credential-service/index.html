@@ -1611,7 +1611,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">values</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Jane&quot;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Doe&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="s2">&quot;42&quot;</span><span class="p">})</span>
 <span class="n">issue_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">IssueFromTemplateRequest</span><span class="p">(</span>
         <span class="n">template_id</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values_json</span><span class="o">=</span><span class="n">values</span>
@@ -1677,7 +1677,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusrequest">CheckStatusRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>request object to update the status of the revocation entry</p>
+<p>request object to check the status of the revocation entry</p>
 <table>
 <thead>
 <tr>
@@ -1725,7 +1725,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusresponse">CheckStatusResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>response object for update of status of revocation entry</p>
+<p>response object for checking the status of revocation entry</p>
 <table>
 <thead>
 <tr>
@@ -1818,23 +1818,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </div>
 <div class="proto-obj-contents">
 <p>response object for update of status of revocation entry</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="/reference/proto#services-common-v1-ResponseStatus">services.common.v1.ResponseStatus</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-v1-VerifyProofRequest"></a></p>
+<p><a name="services-verifiablecredentials-v1-ValidationMessage"></a></p>
 </div>
 </div>
 <h2 id="create-proof">Create Proof<a class="headerlink" href="#create-proof" title="Permanent link">&para;</a></h2>
@@ -2032,13 +2016,16 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <tr>
 <td>validation_messages</td>
 <td><a href="/reference/proto#string">string</a>[]</td>
+<td><strong>Deprecated.</strong></td>
+</tr>
+<tr>
+<td>validation_results</td>
+<td><a href="/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry">VerifyProofResponse.ValidationResultsEntry</a>[]</td>
 <td>Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed.</td>
 </tr>
 </tbody>
 </table>
-<!-- end messages -->
-<!-- end enums -->
-<!-- end HasExtensions -->
+<p><a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a></p>
 </div>
 </div>
 <h2 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h2>
@@ -2112,7 +2099,9 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">send_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">SendRequest</span><span class="p">(</span><span class="n">document_json</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">send_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">SendRequest</span><span class="p">(</span><span class="n">document_json</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2131,22 +2120,6 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#sendresponse">SendResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="/reference/proto#services-common-v1-ResponseStatus">services.common.v1.ResponseStatus</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a></p>
 </div>
 </div>

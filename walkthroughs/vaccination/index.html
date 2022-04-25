@@ -1781,7 +1781,7 @@ trinsic account login --description <span class="s2">&quot;Vaccination Clinic&qu
 <span class="p">};</span><span class="w"></span>
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">});</span><span class="w"></span>
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">());</span><span class="w"></span>
-<span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Type</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">FieldType</span><span class="p">.</span><span class="n">Number</span><span class="p">,</span><span class="w"> </span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
+<span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w">  </span><span class="c1">// TODO - use FieldType.NUMBER once schema validation is fixed.</span>
 
 <span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -1794,7 +1794,9 @@ trinsic account login --description <span class="s2">&quot;Vaccination Clinic&qu
         <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
             <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Given name&quot;</span><span class="p">),</span>
             <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(),</span>
-            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span> <span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+                <span class="n">optional</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">),</span>  <span class="c1"># TODO - use FieldType.NUMBER once schema validation is fixed.</span>
         <span class="p">},</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -1992,7 +1994,7 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Alice stores the credential in her cloud wallet.</span>
-<span class="nx">accountService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">setAuthToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">);</span>
+<span class="nx">walletService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">setAuthToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">itemId</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="ow">new</span> <span class="nx">InsertItemRequest</span><span class="p">()</span>
     <span class="p">.</span><span class="nx">setItemJson</span><span class="p">(</span><span class="nx">credential</span><span class="p">.</span><span class="nx">getSignedDocumentJson</span><span class="p">()));</span>
 </code></pre></div>

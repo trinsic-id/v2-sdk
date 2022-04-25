@@ -1598,7 +1598,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">registerIssuerResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterIssuerRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
@@ -1606,10 +1606,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 
 <span class="w"> </span><span class="err">⋯</span><span class="w"></span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">unregisterIssuerResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Do absolutely nothing</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1670,7 +1674,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">registerVerifierResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">RegisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">Authority</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">RegisterVerifierRequest_DidUri</span><span class="p">{</span><span class="nx">DidUri</span><span class="p">:</span><span class="w"> </span><span class="nx">didURI</span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
@@ -1678,10 +1682,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 
 <span class="w"> </span><span class="err">⋯</span><span class="w"></span>
 
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">unregisterVerifierResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Do absolutely nothing</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1724,10 +1732,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">unregisterIssuerResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterIssuer</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterIssuerRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">CredentialTypeUri</span><span class="p">:</span><span class="w">      </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Do absolutely nothing</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1766,10 +1778,14 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nx">unregisterVerifierResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">UnregisterVerifier</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">UnregisterVerifierRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">PresentationTypeUri</span><span class="p">:</span><span class="w">    </span><span class="nx">typeURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">GovernanceFrameworkUri</span><span class="p">:</span><span class="w"> </span><span class="nx">frameworkURI</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+
+<span class="w"> </span><span class="err">⋯</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Do absolutely nothing</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

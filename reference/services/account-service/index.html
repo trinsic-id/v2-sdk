@@ -1490,11 +1490,6 @@ like email, SMS, etc.</p>
 </thead>
 <tbody>
 <tr>
-<td>status</td>
-<td><a href="/reference/proto#services-common-v1-ResponseStatus">services.common.v1.ResponseStatus</a></td>
-<td>The status of the response</td>
-</tr>
-<tr>
 <td>confirmation_method</td>
 <td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
 <td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
@@ -1534,7 +1529,22 @@ signed in. Its response is a <a href="../../proto/#inforesponse">Info Response</
 <tr>
 <td>ecosystems</td>
 <td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
-<td>any ecosystems the account has access to</td>
+<td><strong>Deprecated.</strong> any ecosystems the account has access to</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The wallet id associated with this account</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The device id associated with this account</td>
+</tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ecosystem id associated with this account</td>
 </tr>
 </tbody>
 </table>
