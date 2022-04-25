@@ -99,7 +99,7 @@ Finally, each entity must be registered on a specific governance framework.
 
 === "Trinsic CLI"
     ```bash
-    trinsic trust-registry register-issuer \
+    trinsic trust-registry register-verifier \
         --egf http://hl7.org/fhir \
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
@@ -135,7 +135,7 @@ Finally, each entity must be registered on a specific governance framework.
 
 
 ### Unregister Issuers
-To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
+To unregister an issuer, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
 
 === "Trinsic CLI"
     ```bash
@@ -175,11 +175,11 @@ To unregister an entity, include the credential type, the did, and the ecosystem
 
 
 ### Unregister Verifiers
-To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
+To unregister a verifier, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that verifier.
 
 === "Trinsic CLI"
     ```bash
-    trinsic trust-registry unregister-issuer \
+    trinsic trust-registry unregister-verifier \
         --egf http://hl7.org/fhir \
         --credential-type https://w3id.org/vaccination#VaccinationCertificate \
         --did did:example:fabre
