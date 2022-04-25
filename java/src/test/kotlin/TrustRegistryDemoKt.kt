@@ -8,7 +8,7 @@ import java.io.IOException
 import java.util.concurrent.ExecutionException
 
 @Throws(IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
-suspend fun main(args: Array<String>) {
+suspend fun main() {
     // Make sure you set the TEST_SERVER_ENDPOINT environment variable
     runTrustRegistryDemo()
 }

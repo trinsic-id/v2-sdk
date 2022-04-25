@@ -39,8 +39,6 @@ public class CredentialsService extends ServiceBase {
 
     public void updateStatus(VerifiableCredentials.UpdateStatusRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         var response = withMetadata(stub, request).updateStatus(request).get();
-        if (response.getStatus() != Common.ResponseStatus.SUCCESS)
-            throw new RuntimeException("status not completely updated " + response.getStatus());
     }
 
     public ListenableFuture<VerifiableCredentials.CreateProofResponse> createProof(VerifiableCredentials.CreateProofRequest request) throws InvalidProtocolBufferException, DidException {
@@ -53,7 +51,5 @@ public class CredentialsService extends ServiceBase {
 
     public void send(VerifiableCredentials.SendRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         var response = withMetadata(stub, request).send(request).get();
-        if (response.getStatus() != Common.ResponseStatus.SUCCESS)
-            throw new RuntimeException("request not complete sent " + response.getStatus());
     }
 }

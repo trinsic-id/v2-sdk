@@ -11,7 +11,7 @@ import java.io.IOException
 import java.nio.file.Path
 import java.util.concurrent.ExecutionException
 
-suspend fun main(args: Array<String>) {
+suspend fun main() {
     runVaccineDemo()
 }
 

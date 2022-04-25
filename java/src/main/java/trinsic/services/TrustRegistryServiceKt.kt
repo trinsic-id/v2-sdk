@@ -4,7 +4,6 @@ import com.google.protobuf.InvalidProtocolBufferException
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
 import trinsic.sdk.v1.Options
-import trinsic.services.common.v1.Common
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 import java.net.MalformedURLException
@@ -32,9 +31,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest) {
-        val response = withMetadata(stub, request).removeFramework(request)
-        if (response.status != Common.ResponseStatus.SUCCESS) throw RuntimeException("cannot remove governance framework: code " + response.status)
+    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
+        return withMetadata(stub, request).removeFramework(request)
     }
 
     @Throws(
@@ -43,9 +41,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun registerIssuer(request: RegisterIssuerRequest) {
-        val response = withMetadata(stub, request).registerIssuer(request)
-        if (response.status != Common.ResponseStatus.SUCCESS) throw RuntimeException("cannot register issuer: code " + response.status)
+    suspend fun registerIssuer(request: RegisterIssuerRequest): RegisterIssuerResponse {
+        return withMetadata(stub, request).registerIssuer(request)
     }
 
     @Throws(
@@ -54,9 +51,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun unregisterIssuer(request: UnregisterIssuerRequest) {
-        val response = withMetadata(stub, request).unregisterIssuer(request)
-        if (response.status != Common.ResponseStatus.SUCCESS) throw RuntimeException("cannot unregister verifier: code " + response.status)
+    suspend fun unregisterIssuer(request: UnregisterIssuerRequest): UnregisterIssuerResponse {
+        return withMetadata(stub, request).unregisterIssuer(request)
     }
 
     @Throws(
@@ -65,9 +61,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun registerVerifier(request: RegisterVerifierRequest) {
-        val response = withMetadata(stub, request).registerVerifier(request)
-        if (response.status != Common.ResponseStatus.SUCCESS) throw RuntimeException("cannot register verifier: code " + response.status)
+    suspend fun registerVerifier(request: RegisterVerifierRequest): RegisterVerifierResponse {
+        return withMetadata(stub, request).registerVerifier(request)
     }
 
     @Throws(
@@ -76,9 +71,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun unregisterVerifier(request: UnregisterVerifierRequest) {
-        val response = withMetadata(stub, request).unregisterVerifier(request)
-        if (response.status != Common.ResponseStatus.SUCCESS) throw RuntimeException("cannot unregister verifier: code " + response.status)
+    suspend fun unregisterVerifier(request: UnregisterVerifierRequest): UnregisterVerifierResponse {
+        return withMetadata(stub, request).unregisterVerifier(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
