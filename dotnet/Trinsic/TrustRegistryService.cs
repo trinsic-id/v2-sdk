@@ -61,14 +61,12 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="request">The request object</param>
     /// <returns></returns>
-    public async Task RegisterIssuerAsync(RegisterIssuerRequest request) {
-        var response = await Client.RegisterIssuerAsync(request, await BuildMetadataAsync(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot register issuer: code {response.Status}");
+    public async Task<RegisterIssuerResponse> RegisterIssuerAsync(RegisterIssuerRequest request) {
+        return await Client.RegisterIssuerAsync(request, await BuildMetadataAsync(request));
     }
 
-    public void RegisterIssuer(RegisterIssuerRequest request) {
-        var response = Client.RegisterIssuer(request, BuildMetadata(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot register issuer: code {response.Status}");
+    public RegisterIssuerResponse RegisterIssuer(RegisterIssuerRequest request) {
+        return Client.RegisterIssuer(request, BuildMetadata(request));
     }
 
     public async Task<UnregisterIssuerResponse> UnregisterIssuerAsync(UnregisterIssuerRequest request) {
@@ -84,24 +82,20 @@ public class TrustRegistryService : ServiceBase
     /// </summary>
     /// <param name="request">The request object</param>
     /// <returns></returns>
-    public async Task RegisterVerifierAsync(RegisterVerifierRequest request) {
-        var response = await Client.RegisterVerifierAsync(request, await BuildMetadataAsync(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot register verifier: code {response.Status}");
+    public async Task<RegisterVerifierResponse> RegisterVerifierAsync(RegisterVerifierRequest request) {
+        return await Client.RegisterVerifierAsync(request, await BuildMetadataAsync(request));
     }
 
-    public void RegisterVerifier(RegisterVerifierRequest request) {
-        var response = Client.RegisterVerifier(request, BuildMetadata(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot register verifier: code {response.Status}");
+    public RegisterVerifierResponse RegisterVerifier(RegisterVerifierRequest request) {
+        return Client.RegisterVerifier(request, BuildMetadata(request));
     }
 
-    public async Task UnregisterVerifierAsync(UnregisterVerifierRequest request) {
-        var response = await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot unregister verifier: code {response.Status}");
+    public async Task<UnregisterVerifierResponse> UnregisterVerifierAsync(UnregisterVerifierRequest request) {
+        return await Client.UnregisterVerifierAsync(request, await BuildMetadataAsync(request));
     }
 
     public void UnregisterVerifier(UnregisterVerifierRequest request) {
         var response= Client.UnregisterVerifier(request, BuildMetadata(request));
-        if (response.Status != ResponseStatus.Success) throw new($"cannot unregister verifier: code {response.Status}");
     }
 
     /// <summary>
