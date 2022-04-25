@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9+insiders-4.12.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11+insiders-4.13.1">
     
     
       
@@ -22,13 +22,14 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.837fa486.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8b1d949c.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
         
       
       
+
     
     
     
@@ -1626,7 +1627,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">C#</label><label for="__tabbed_3_3">Python</label><label for="__tabbed_3_4">Go</label><label for="__tabbed_3_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic trust-registry register-issuer <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>trinsic trust-registry register-verifier <span class="se">\</span>
     --egf http://hl7.org/fhir <span class="se">\</span>
     --credential-type https://w3id.org/vaccination#VaccinationCertificate <span class="se">\</span>
     --did did:example:fabre
@@ -1694,7 +1695,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 </div>
 <h3 id="unregister-issuers">Unregister Issuers<a class="headerlink" href="#unregister-issuers" title="Permanent link">&para;</a></h3>
-<p>To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
+<p>To unregister an issuer, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1736,11 +1737,11 @@ Finally, each entity must be registered on a specific governance framework. </p>
 </div>
 </div>
 <h3 id="unregister-verifiers">Unregister Verifiers<a class="headerlink" href="#unregister-verifiers" title="Permanent link">&para;</a></h3>
-<p>To unregister an entity, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.</p>
+<p>To unregister a verifier, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that verifier.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">C#</label><label for="__tabbed_5_3">Python</label><label for="__tabbed_5_4">Go</label><label for="__tabbed_5_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic trust-registry unregister-issuer <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>trinsic trust-registry unregister-verifier <span class="se">\</span>
     --egf http://hl7.org/fhir <span class="se">\</span>
     --credential-type https://w3id.org/vaccination#VaccinationCertificate <span class="se">\</span>
     --did did:example:fabre
@@ -1977,7 +1978,7 @@ Finally, each entity must be registered on a specific governance framework. </p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.ec8bae80.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c07a5e79.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88faac82.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       

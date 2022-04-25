@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9+insiders-4.12.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11+insiders-4.13.1">
     
     
       
@@ -22,13 +22,14 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.837fa486.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8b1d949c.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
         
       
       
+
     
     
     
@@ -1034,6 +1035,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#onboarding" class="md-nav__link">
     <span class="md-ellipsis">
       Onboarding
@@ -1063,15 +1073,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Ecosystem
-    </span>
-  </a>
   
 </li>
       
@@ -1309,6 +1310,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#onboarding" class="md-nav__link">
     <span class="md-ellipsis">
       Onboarding
@@ -1341,15 +1351,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#create-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Ecosystem
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1370,13 +1371,149 @@
 
 
 <h1 id="provider-service">Provider Service<a class="headerlink" href="#provider-service" title="Permanent link">&para;</a></h1>
-<p>This service helps ecosystem providers with data management and onboarding. This service requires a security profile with administrative authorization access. This can be obtained during the deployment of your ecosystem infrastructure.</p>
+<p>The Provider Service helps ecosystem providers with data management and onboarding. This service requires a security profile with administrative authorization access. This can be obtained during the deployment of your ecosystem infrastructure.</p>
+<h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
+<p>Creates a new provider ecosystem</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic provider create-ecosystem --name &lt;ECOSYSTEM_NAME&gt; --email &lt;OWNER_EMAIL&gt;
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>When using one of the SDKs, you must supply a <a href="../../proto/#createecosystemrequest">Create Ecosystem Request</a> object.</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#createecosystemrequest">CreateEcosystemRequest</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Ecosystem description. This field is optional.</td>
+</tr>
+<tr>
+<td>uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>External URL associated with your organization or ecosystem entity. This field is optional</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
+<td>The account details of the owner of the ecosystem</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-CreateEcosystemResponse"></a></p>
+</div>
+</div>
+<p>Then you can supply it to SDK:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">actualCreate</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span>
+    <span class="ow">new</span> <span class="nx">CreateEcosystemRequest</span><span class="p">()</span>
+        <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The response model is of type <a href="../../proto/#createecosystemresponse">Create Ecosystem Response</a>:</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#createecosystemresponse">CreateEcosystemResponse</a></p>
+</div>
+<div class="proto-obj-contents">
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Details of the created ecosystem</td>
+</tr>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
+<td>Account profile for auth of the owner of the ecosystem</td>
+</tr>
+<tr>
+<td>confirmation_method</td>
+<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">services.account.v1.ConfirmationMethod</a></td>
+<td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-Ecosystem"></a></p>
+</div>
+</div>
+<!-- 
+// This call is not yet implemented
+## List Ecosystems
+
+Lists all available ecosystem for the current authentication context.
+
+When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
+
+<div class='proto-obj-container' markdown><div class='proto-obj-header' markdown>[ListEcosystemRequest](/reference/proto#listecosystemrequest)</div><div class='proto-obj-contents' markdown>TODO: Include reference/proto/index.md#ListEcosystemRequest without heading</div></div>
+
+The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
+
+<div class='proto-obj-container' markdown><div class='proto-obj-header' markdown>[ListEcosystemResponse](/reference/proto#listecosystemresponse)</div><div class='proto-obj-contents' markdown>TODO: Include reference/proto/index.md#ListEcosystemResponse without heading</div></div> 
+-->
+
 <h2 id="onboarding">Onboarding<a class="headerlink" href="#onboarding" title="Permanent link">&para;</a></h2>
 <h3 id="invite-participant">Invite Participant<a class="headerlink" href="#invite-participant" title="Permanent link">&para;</a></h3>
 <p>Users can be added as participants in an ecosystem by sending an invitation and a security code. This code can be sent directly to the invitee using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in <a href="/reference/services/wallet-service/#create-wallet-with-provider-invitation">creating wallet with provider invitation</a></p>
 <p>In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invite --organization --method-email admin@faber.edu
@@ -1421,7 +1558,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 </div>
 </div>
 <p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ProviderService</span><span class="p">,</span> <span class="nx">ParticipantType</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">;</span>
@@ -1510,7 +1647,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 <p>The <code>invitation_code</code> in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.</p>
 <h3 id="check-invitation-status">Check Invitation Status<a class="headerlink" href="#check-invitation-status" title="Permanent link">&para;</a></h3>
 <p>User invitation status can be checked with the provided <code>invitation id</code>. It returns an <code>InvitationStatusResponse</code> object.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider invitation_status &lt;INVITATION_ID&gt;
@@ -1547,7 +1684,7 @@ The reference_id passed is the response from the
 </div>
 </div>
 <p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ProviderService</span><span class="p">,</span> <span class="nx">ParticipantType</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@trinsic/trinsic&quot;</span><span class="p">;</span>
@@ -1611,141 +1748,6 @@ The reference_id passed is the response from the
 <p><a name="services-provider-v1-Invite"></a></p>
 </div>
 </div>
-<h2 id="create-ecosystem">Create Ecosystem<a class="headerlink" href="#create-ecosystem" title="Permanent link">&para;</a></h2>
-<p>Creates a new provider ecosystem</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic provider create-ecosystem --name &lt;ECOSYSTEM_NAME&gt; --email &lt;OWNER_EMAIL&gt;
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>When using one of the SDKs, you must supply an <a href="../../proto/#createecosystemrequest">Create Ecosystem Request</a> object. This object follows the model below:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#createecosystemrequest">CreateEcosystemRequest</a></p>
-</div>
-<div class="proto-obj-contents">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Ecosystem description. This field is optional.</td>
-</tr>
-<tr>
-<td>uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with your organization or ecosystem entity. This field is optional</td>
-</tr>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
-<td>The account details of the owner of the ecosystem</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-CreateEcosystemResponse"></a></p>
-</div>
-</div>
-<p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">actualCreate</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span>
-    <span class="ow">new</span> <span class="nx">CreateEcosystemRequest</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">actual_create</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">CreateEcosystemRequest</span><span class="p">(</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My ecosystem&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>The response model is of type <a href="../../proto/#createecosystemresponse">Create Ecosystem Response</a>:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#createecosystemresponse">CreateEcosystemResponse</a></p>
-</div>
-<div class="proto-obj-contents">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Details of the created ecosystem</td>
-</tr>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
-<td>Account profile for auth of the owner of the ecosystem</td>
-</tr>
-<tr>
-<td>confirmation_method</td>
-<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">services.account.v1.ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-Ecosystem"></a></p>
-</div>
-</div>
-<!-- 
-// This call is not yet implemented
-## List Ecosystems
-
-Lists all available ecosystem for the current authentication context.
-
-When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
-
-<div class='proto-obj-container' markdown><div class='proto-obj-header' markdown>[ListEcosystemRequest](/reference/proto#listecosystemrequest)</div><div class='proto-obj-contents' markdown>TODO: Include reference/proto/index.md#ListEcosystemRequest without heading</div></div>
-
-The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
-
-<div class='proto-obj-container' markdown><div class='proto-obj-header' markdown>[ListEcosystemResponse](/reference/proto#listecosystemresponse)</div><div class='proto-obj-contents' markdown>TODO: Include reference/proto/index.md#ListEcosystemResponse without heading</div></div> 
--->
 
 
 
@@ -1755,7 +1757,7 @@ The response model is of type [List Ecosystem Response](../proto/index.md#listec
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a></span>
       </small>
     </div>
   
@@ -1825,7 +1827,7 @@ The response model is of type [List Ecosystem Response](../proto/index.md#listec
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.ec8bae80.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c07a5e79.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88faac82.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       

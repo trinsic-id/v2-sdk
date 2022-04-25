@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9+insiders-4.12.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11+insiders-4.13.1">
     
     
       
@@ -22,13 +22,14 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.837fa486.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b1d949c.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
         
       
       
+
     
     
     
@@ -992,6 +993,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SDK Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-sdk-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using an SDK Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1300,6 +1316,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="SDK Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-an-sdk-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using an SDK Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1338,6 +1369,94 @@
 <li><a href="services/trust-registry-service/">Trust Registry Service</a></li>
 <li><a href="services/wallet-service/">Wallet Service</a></li>
 </ul>
+<h3 id="using-an-sdk-service">Using an SDK Service<a class="headerlink" href="#using-an-sdk-service" title="Permanent link">&para;</a></h3>
+<p>If you are using one of the Trinsic SDKs, you will need to create an instance of a service in order to use it.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">C#</label><label for="__tabbed_1_3">Python</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Ruby</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">accountService</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">AccountService</span><span class="p">();</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myAccountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">account_service</span> <span class="o">=</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nx">accountService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewAccountService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">accountService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">());</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">account_service</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">AccountService</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="no">Trinsic</span><span class="o">::</span><span class="n">trinsic_prod_server</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>All service constructors also accept a <a href="../proto/index.md#serviceoptions">ServiceOptions</a> object as an argument, allowing you to specify a default ecosystem and other configuration properties.</p>
+<div class="proto-obj-container">
+<p><div class='proto-obj-header' markdown><a href="/reference/proto#serviceoptions">ServiceOptions</a></p>
+</div>
+<div class="proto-obj-contents">
+<p>service options</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>server_endpoint</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>service endpoint</td>
+</tr>
+<tr>
+<td>server_port</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>service port</td>
+</tr>
+<tr>
+<td>server_use_tls</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>indicates if tls is used</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>default auth token for oberon security scheme</td>
+</tr>
+<tr>
+<td>default_ecosystem</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ecosystem to use with endpoints that require it</td>
+</tr>
+</tbody>
+</table>
+<!-- end messages -->
+<!-- end enums -->
+<!-- end HasExtensions -->
+<p><a name="services_account_v1_account-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+</div>
+</div>
+<p>The exact structure of this object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. </p>
 
 
 
@@ -1417,7 +1536,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss"], "search": "../assets/javascripts/workers/search.ec8bae80.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c07a5e79.min.js"></script>
+      <script src="../assets/javascripts/bundle.88faac82.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
