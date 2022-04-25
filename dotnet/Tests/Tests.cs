@@ -360,7 +360,7 @@ public class Tests
         };
         templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new() {Type = FieldType.Number, Optional = true});
+        templateRequest.Fields.Add("age", new() {Optional = true});  // TODO - use FieldType.NUMBER once schema validation is fixed.
 
         var template = await templateService.CreateAsync(templateRequest);
         // }
