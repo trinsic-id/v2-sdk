@@ -21,6 +21,10 @@
     {
       "name": "Tomislav Markovski",
       "email": "tmarkovski@gmail.com"
+    },
+    {
+      "name": "Scott Phillips",
+      "email": "polygonguru@gmail.com"
     }
   ],
   "license": "ISC",
@@ -29,6 +33,7 @@
     "@trinsic/okapi": "^1.4.0",
     "base64url": "^3.0.1",
     "google-protobuf": "^3.19.4",
+    "long": "^5.2.0",
     "nice-grpc": "^1.1.1"
   },
   "devDependencies": {
@@ -37,8 +42,6 @@
     "ava": "^4.0.1",
     "copyfiles": "^2.4.1",
     "dotenv": "^14.2.0",
-    "grpc_tools_node_protoc_ts": "^5.3.2",
-    "grpc-tools": "^1.11.2",
     "jest": "^27.4.7",
     "ts-node": "^10.4.0",
     "ts-proto": "^1.110.4",

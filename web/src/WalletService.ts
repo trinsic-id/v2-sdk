@@ -9,89 +9,55 @@ import {
   SearchRequest,
   SearchResponse,
   ServiceOptions,
-  UniversalWalletClient,
+  UniversalWalletDefinition,
 } from "./proto";
+import { Client, createChannel, createClient } from "nice-grpc-web";
 
 export class WalletService extends ServiceBase {
-  walletClient: UniversalWalletClient;
+  client: Client<typeof UniversalWalletDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.walletClient = new UniversalWalletClient(this.address);
+    this.client = createClient(
+      UniversalWalletDefinition,
+      createChannel(this.address)
+    );
   }
 
-  public search(
-    request: SearchRequest = new SearchRequest()
+  public async search(
+    request: SearchRequest = SearchRequest.fromPartial({
+      query: "SELECT * FROM c",
+    })
   ): Promise<SearchResponse> {
-    return new Promise(async (resolve, reject) => {
-      if (!request.getQuery())
-        request = request.setQuery("SELECT c.id, c.type, c.data FROM c");
-      try {
-        let metadata = await this.getMetadata(request);
-        this.walletClient.search(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.search(request, {
+      metadata: await this.getMetadata(SearchRequest.encode(request).finish()),
     });
   }
 
   public async insertItem(
     request: InsertItemRequest
   ): Promise<InsertItemResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.walletClient.insertItem(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.insertItem(request, {
+      metadata: await this.getMetadata(
+        InsertItemRequest.encode(request).finish()
+      ),
     });
   }
 
   public async getItem(request: GetItemRequest): Promise<GetItemResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.walletClient.getItem(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.getItem(request, {
+      metadata: await this.getMetadata(GetItemRequest.encode(request).finish()),
     });
   }
 
-  public deleteItem(request: DeleteItemRequest): Promise<DeleteItemResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.walletClient.deleteItem(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+  public async deleteItem(
+    request: DeleteItemRequest
+  ): Promise<DeleteItemResponse> {
+    return this.client.deleteItem(request, {
+      metadata: await this.getMetadata(
+        DeleteItemRequest.encode(request).finish()
+      ),
     });
   }
 }

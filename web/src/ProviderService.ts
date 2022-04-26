@@ -1,80 +1,50 @@
 import ServiceBase from "./ServiceBase";
 import {
   CreateEcosystemRequest,
-  Ecosystem,
+  CreateEcosystemResponse,
   InvitationStatusRequest,
   InvitationStatusResponse,
   InviteRequest,
   InviteResponse,
-  ProviderClient,
+  ProviderDefinition,
   ServiceOptions,
 } from "./proto";
-import { fromUint8Array } from "js-base64";
+import { Client, createChannel, createClient } from "nice-grpc-web";
 
 export class ProviderService extends ServiceBase {
-  client: ProviderClient;
+  client: Client<typeof ProviderDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = new ProviderClient(this.address);
+    this.client = createClient(ProviderDefinition, createChannel(this.address));
   }
 
-  public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.invite(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+  public async inviteParticipant(
+    request: InviteRequest
+  ): Promise<InviteResponse> {
+    return this.client.invite(request, {
+      metadata: await this.getMetadata(InviteRequest.encode(request).finish()),
     });
   }
 
-  public invitationStatus(
+  public async invitationStatus(
     request: InvitationStatusRequest
   ): Promise<InvitationStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.invitationStatus(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.invitationStatus(request, {
+      metadata: await this.getMetadata(
+        InvitationStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public createEcosystem(
+  public async createEcosystem(
     request: CreateEcosystemRequest
-  ): Promise<[Ecosystem, string]> {
-    return new Promise(async (resolve, reject) => {
-      this.client.createEcosystem(request, null, (error, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          var authToken = fromUint8Array(
-            response.getProfile()!.serializeBinary(),
-            true
-          );
-          if (!response.getProfile()?.getProtection()?.getEnabled() || true) {
-            // set the auth token as active for the current service instance
-            this.options.setAuthToken(authToken);
-          }
-          resolve([response.getEcosystem()!, authToken]);
-        }
-      });
+  ): Promise<CreateEcosystemResponse> {
+    return this.client.createEcosystem(request, {
+      metadata: await this.getMetadata(
+        CreateEcosystemRequest.encode(request).finish()
+      ),
     });
   }
 }
