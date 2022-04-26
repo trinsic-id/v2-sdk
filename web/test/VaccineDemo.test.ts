@@ -6,7 +6,7 @@ import {
   IssueRequest,
   VerifyProofRequest,
   WalletService,
-} from "../lib";
+} from "../src";
 import { options } from "./env";
 import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
 import vaccineCertFramePath from "./data/vaccination-certificate-frame.json";
@@ -34,9 +34,8 @@ async function vaccineDemo() {
 
   // issueCredential() {
   // Sign a credential as the clinic and send it to Allison
-  const unsignedDocument = require(vaccineCertUnsignedPath);
   const issueResponse = await credentialService.issueCredential(
-    IssueRequest.fromPartial({ documentJson: unsignedDocument })
+    IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsignedPath) })
   );
   // }
   console.log(`Credential=${issueResponse}`);
@@ -57,11 +56,10 @@ async function vaccineDemo() {
   // The venue has communicated with Allison the details of the credential
   // that they require expressed as a JSON-LD frame.
   credentialService.options.authToken = allison;
-  const proofRequestFrame = require(vaccineCertFramePath);
   const proofResponse = await credentialService.createProof(
     CreateProofRequest.fromPartial({
       itemId: insertResponse.itemId,
-      revealDocumentJson: proofRequestFrame,
+      revealDocumentJson: JSON.stringify(vaccineCertFramePath),
     })
   );
   // }
@@ -77,6 +75,7 @@ async function vaccineDemo() {
   );
   // }
   console.log(`Verification result=${verifyResponse.isValid}`);
+
   if (!verifyResponse.isValid) throw new Error("Verification should be true!");
 }
 

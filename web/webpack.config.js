@@ -4,9 +4,9 @@ const webpack = require("webpack");
 module.exports = {
   mode: "development",
   entry: {
-    wallet: "./test/WalletService.test.js",
-    vaccine: "./test/VaccineDemo.test.js",
-    templates: "./test/CredentialTemplates.test.js"
+    wallet: "./test/WalletService.test.ts",
+    vaccine: "./test/VaccineDemo.test.ts",
+    templates: "./test/CredentialTemplates.test.ts"
   },
   output: {
     path: path.resolve(__dirname, "./test/build"),

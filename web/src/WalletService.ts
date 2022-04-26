@@ -12,6 +12,7 @@ import {
   UniversalWalletDefinition,
 } from "./proto";
 import { Client, createChannel, createClient } from "nice-grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export class WalletService extends ServiceBase {
   client: Client<typeof UniversalWalletDefinition>;
@@ -21,7 +22,7 @@ export class WalletService extends ServiceBase {
 
     this.client = createClient(
       UniversalWalletDefinition,
-      createChannel(this.address)
+      createChannel(this.address, NodeHttpTransport())
     );
   }
 

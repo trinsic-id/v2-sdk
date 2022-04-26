@@ -18,6 +18,7 @@ import {
   VerifiableCredentialDefinition,
 } from "./proto";
 import { Client, createChannel, createClient } from "nice-grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export class CredentialService extends ServiceBase {
   client: Client<typeof VerifiableCredentialDefinition>;
@@ -27,7 +28,7 @@ export class CredentialService extends ServiceBase {
 
     this.client = createClient(
       VerifiableCredentialDefinition,
-      createChannel(this.address)
+      createChannel(this.address, NodeHttpTransport())
     );
   }
 

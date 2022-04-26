@@ -20,6 +20,7 @@ import {
   UnBlindOberonTokenRequest,
 } from "@trinsic/okapi";
 import base64url from "base64url";
+import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport';
 
 export class AccountService extends ServiceBase {
   client: Client<typeof AccountDefinition>;
@@ -27,7 +28,7 @@ export class AccountService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(AccountDefinition, createChannel(this.address));
+    this.client = createClient(AccountDefinition, createChannel(this.address, NodeHttpTransport()));
   }
 
   /**

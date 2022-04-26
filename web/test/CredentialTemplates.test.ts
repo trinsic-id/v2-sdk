@@ -10,8 +10,8 @@ import {
   InsertItemRequest,
   CreateProofRequest,
   VerifyProofRequest,
-} from "../lib";
-import templateCertFramePath from "./data/credential-template-frame.json";
+} from "../src";
+import templateCertFrame from "./data/credential-template-frame.json";
 import { options } from "./env";
 
 const credentialTemplateName = "My First Credential Template";
@@ -50,10 +50,10 @@ describe("Demo: Credential Templates", () => {
     expect(response.data?.name).toBe(credentialTemplateName);
 
     const fieldsMap = response.data?.fields;
-    expect(fieldsMap["name"]).toBe(nameField);
-    expect(fieldsMap["numberOfBags"]).toBe(numberOfBags);
-    expect(fieldsMap["dateOfBirth"]).toBe(dateOfBirth);
-    expect(fieldsMap["vaccinated"]).toBe(isVaccinated);
+    expect(fieldsMap!["name"]).toStrictEqual(nameField);
+    expect(fieldsMap!["numberOfBags"]).toStrictEqual(numberOfBags);
+    expect(fieldsMap!["dateOfBirth"]).toStrictEqual(dateOfBirth);
+    expect(fieldsMap!["vaccinated"]).toStrictEqual(isVaccinated);
   });
 
   it("Issue Credential From Template", async () => {
@@ -70,12 +70,11 @@ describe("Demo: Credential Templates", () => {
     ).toBe(new Date("1/1/2000").toISOString());
     expect(response?.credentialSubject?.vaccinated).toBe(true);
 
-    t.pass();
   });
 
   it("Verify Credential Issued from Template", async () => {
     let response = await verifyCredential();
-    expect(response).toBeTrue();
+    expect(response).toBeTruthy();
   });
 });
 
@@ -132,10 +131,9 @@ async function verifyCredential() {
   );
 
   credentialService.options.authToken = allison;
-  const proofRequestJson = require(templateCertFramePath);
   const proofRequest = CreateProofRequest.fromPartial({
     itemId: insertItemResponse.itemId,
-    revealDocumentJson: proofRequestJson,
+    revealDocumentJson: JSON.stringify(templateCertFrame),
   });
   const proof = await credentialService.createProof(proofRequest);
 

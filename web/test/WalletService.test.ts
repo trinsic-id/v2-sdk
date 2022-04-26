@@ -11,29 +11,14 @@ import {
   TemplateField,
   TemplateService,
   WalletService,
-} from "../lib";
-import { options } from "./env";
+} from "../src";
+import {options} from "./env";
 
-/**
- * @type {ProviderService} Provider Service
- */
-let providerService;
-/**
- * @type {AccountService} Account Service
- */
-let accountService;
-/**
- * @type {WalletService} Wallet Service
- */
-let walletService;
-/**
- * @type {CredentialService} Credential Service
- */
-let credentialService;
-/**
- * @type {TemplateService} Template Service
- */
-let templateService;
+let providerService: ProviderService;
+let accountService: AccountService;
+let walletService: WalletService;
+let credentialService: CredentialService;
+let templateService: TemplateService;
 describe("wallet service tests", () => {
   beforeAll(async () => {
     accountService = new AccountService(options);
@@ -96,7 +81,7 @@ describe("wallet service tests", () => {
       proofDocumentJson: proof.proofDocumentJson,
     });
     expect(verifyResponse).not.toBeNull();
-    expect(verifyResponse.isValid).toBeTrue();
+    expect(verifyResponse.isValid).toBeTruthy();
   }, 20000);
 
   it("Demo: template management and credential issuance from template", async () => {
@@ -119,9 +104,9 @@ describe("wallet service tests", () => {
     );
 
     expect(template).not.toBeNull();
-    expect(template.data).not.toBeNull();
-    expect(template.data.id).not.toBeNull();
-    expect(template.data.schemaUri).not.toBeNull();
+    expect(template!.data).not.toBeNull();
+    expect(template!.data!.id).not.toBeNull();
+    expect(template!.data!.schemaUri).not.toBeNull();
 
     // issue credential from this template
     let values = JSON.stringify({
@@ -132,14 +117,14 @@ describe("wallet service tests", () => {
 
     let issueResponse = await credentialService.issueFromTemplate(
       IssueFromTemplateRequest.fromPartial({
-        templateId: template.data.id,
+        templateId: template!.data!.id,
         valuesJson: values,
       })
     );
     let jsonDocument = JSON.parse(issueResponse.documentJson);
 
     expect(issueResponse).not.toBeNull();
-    expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
-    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
+    expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
+    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
   }, 20000);
 });
