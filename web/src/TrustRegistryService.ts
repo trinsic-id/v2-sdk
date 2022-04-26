@@ -7,6 +7,7 @@ import {
   CheckVerifierStatusRequest,
   CheckVerifierStatusResponse,
   FetchDataRequest,
+  FetchDataResponse,
   RegisterIssuerRequest,
   RegisterIssuerResponse,
   RegisterVerifierRequest,
@@ -16,220 +17,125 @@ import {
   SearchRegistryRequest,
   SearchRegistryResponse,
   ServiceOptions,
-  TrustRegistryClient,
+  TrustRegistryDefinition,
   UnregisterIssuerRequest,
   UnregisterIssuerResponse,
   UnregisterVerifierRequest,
   UnregisterVerifierResponse,
 } from "./proto";
-import { ClientReadableStream } from "grpc-web";
+import { Client, createChannel, createClient } from "nice-grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
-  client: TrustRegistryClient;
+  client: Client<typeof TrustRegistryDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = new TrustRegistryClient(this.address);
+    this.client = createClient(
+      TrustRegistryDefinition,
+      createChannel(this.address)
+    );
   }
 
-  public registerIssuer(
+  public async registerIssuer(
     request: RegisterIssuerRequest
   ): Promise<RegisterIssuerResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.registerIssuer(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.registerIssuer(request, {
+      metadata: await this.getMetadata(
+        RegisterIssuerRequest.encode(request).finish()
+      ),
     });
   }
 
-  public registerVerifier(
+  public async registerVerifier(
     request: RegisterVerifierRequest
   ): Promise<RegisterVerifierResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.registerVerifier(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.registerVerifier(request, {
+      metadata: await this.getMetadata(
+        RegisterVerifierRequest.encode(request).finish()
+      ),
     });
   }
 
-  public unregisterIssuer(
+  public async unregisterIssuer(
     request: UnregisterIssuerRequest
   ): Promise<UnregisterIssuerResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.unregisterIssuer(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.unregisterIssuer(request, {
+      metadata: await this.getMetadata(
+        UnregisterIssuerRequest.encode(request).finish()
+      ),
     });
   }
 
-  public unregisterVerifier(
+  public async unregisterVerifier(
     request: UnregisterVerifierRequest
   ): Promise<UnregisterVerifierResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.unregisterVerifier(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.unregisterVerifier(request, {
+      metadata: await this.getMetadata(
+        UnregisterVerifierRequest.encode(request).finish()
+      ),
     });
   }
 
-  public checkIssuerStatus(
+  public async checkIssuerStatus(
     request: CheckIssuerStatusRequest
   ): Promise<CheckIssuerStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.checkIssuerStatus(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.checkIssuerStatus(request, {
+      metadata: await this.getMetadata(
+        CheckIssuerStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public checkVerifierStatus(
+  public async checkVerifierStatus(
     request: CheckVerifierStatusRequest
   ): Promise<CheckVerifierStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.checkVerifierStatus(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.checkVerifierStatus(request, {
+      metadata: await this.getMetadata(
+        CheckVerifierStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public searchRegistry(
-    request: SearchRegistryRequest = new SearchRegistryRequest()
+  public async searchRegistry(
+    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({
+      query: "SELECT * FROM c",
+    })
   ): Promise<SearchRegistryResponse> {
-    return new Promise(async (resolve, reject) => {
-      if (!request.getQuery()) request = request.setQuery("SELECT * FROM c");
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.searchRegistry(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.searchRegistry(request, {
+      metadata: await this.getMetadata(
+        SearchRegistryRequest.encode(request).finish()
+      ),
     });
   }
 
-  public addGovernanceFramework(
+  public async addGovernanceFramework(
     request: AddFrameworkRequest
   ): Promise<AddFrameworkResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const uriString = request
-          .getGovernanceFramework()
-          ?.getGovernanceFrameworkUri();
-        new URL(uriString!);
-      } catch (e) {
-        reject(e);
-        return;
-      }
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.addFramework(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.addFramework(request, {
+      metadata: await this.getMetadata(
+        AddFrameworkRequest.encode(request).finish()
+      ),
     });
   }
 
-  public removeGovernanceFramework(
+  public async removeGovernanceFramework(
     request: RemoveFrameworkRequest
   ): Promise<RemoveFrameworkResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.removeFramework(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.removeFramework(request, {
+      metadata: await this.getMetadata(
+        RemoveFrameworkRequest.encode(request).finish()
+      ),
     });
   }
 
-  public fetchData(
+  public async fetchData(
     request: FetchDataRequest
-  ): Promise<ClientReadableStream<unknown>> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        return resolve(
-          this.client.fetchData(request, await this.getMetadata(request))
-        );
-      } catch (e) {
-        reject(e);
-      }
+  ): Promise<AsyncIterable<FetchDataResponse>> {
+    return this.client.fetchData(request, {
+      metadata: await this.getMetadata(
+        FetchDataRequest.encode(request).finish()
+      ),
     });
   }
 }

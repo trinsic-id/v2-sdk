@@ -1,7 +1,6 @@
 import test from "ava";
 
 import {
-  AccountProfile,
   AccountService,
   CreateCredentialTemplateRequest,
   CreateProofRequest,
@@ -9,8 +8,6 @@ import {
   FieldType,
   InsertItemRequest,
   IssueFromTemplateRequest,
-  ServiceOptions,
-  SignInRequest,
   TemplateField,
   TemplateService,
   VerifyProofRequest,
