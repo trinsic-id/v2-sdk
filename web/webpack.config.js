@@ -5,7 +5,8 @@ module.exports = {
   mode: "development",
   entry: {
     wallet: "./test/WalletService.test.js",
-    vaccine: "./test/VaccineDemo.test.js"
+    vaccine: "./test/VaccineDemo.test.js",
+    templates: "./test/CredentialTemplates.test.js"
   },
   output: {
     path: path.resolve(__dirname, "./test/build"),

@@ -62,7 +62,7 @@ describe("wallet service tests", () => {
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
     let unsignedDocument = {
       "@context": "https://w3id.org/security/v3-unstable",
-      "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
+      id: "https://issuer.oidp.uscis.gov/credentials/83627465",
     };
 
     let issueResponse = await credentialService.issueCredential({

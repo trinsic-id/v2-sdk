@@ -45,7 +45,9 @@ async function vaccineDemo() {
   // Alice stores the credential in her cloud wallet.
   walletService.options.authToken = allison;
   const insertResponse = await walletService.insertItem(
-    InsertItemRequest.fromPartial({ itemJson: issueResponse.signedDocumentJson })
+    InsertItemRequest.fromPartial({
+      itemJson: issueResponse.signedDocumentJson,
+    })
   );
   // }
   console.log(`Item id=${insertResponse.itemId}`);
@@ -57,10 +59,10 @@ async function vaccineDemo() {
   credentialService.options.authToken = allison;
   const proofRequestFrame = require(vaccineCertFramePath);
   const proofResponse = await credentialService.createProof(
-      CreateProofRequest.fromPartial({
-        itemId: insertResponse.itemId,
-        revealDocumentJson: proofRequestFrame,
-      })
+    CreateProofRequest.fromPartial({
+      itemId: insertResponse.itemId,
+      revealDocumentJson: proofRequestFrame,
+    })
   );
   // }
   console.log(`Proof=${proofResponse.proofDocumentJson}`);
@@ -69,14 +71,13 @@ async function vaccineDemo() {
   // The airline verifies the credential
   credentialService.options.authToken = airline;
   const verifyResponse = await credentialService.verifyProof(
-      VerifyProofRequest.fromPartial({
-        proofDocumentJson: proofResponse.proofDocumentJson,
-      })
+    VerifyProofRequest.fromPartial({
+      proofDocumentJson: proofResponse.proofDocumentJson,
+    })
   );
   // }
   console.log(`Verification result=${verifyResponse.isValid}`);
-  if (!verifyResponse.isValid)
-    throw new Error("Verification should be true!");
+  if (!verifyResponse.isValid) throw new Error("Verification should be true!");
 }
 
 describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
