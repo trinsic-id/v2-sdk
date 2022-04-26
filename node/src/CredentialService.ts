@@ -13,169 +13,83 @@ import {
   ServiceOptions,
   UpdateStatusRequest,
   UpdateStatusResponse,
+  VerifiableCredentialDefinition,
   VerifyProofRequest,
   VerifyProofResponse,
 } from "./proto";
-import { VerifiableCredentialClient } from "./proto/services/verifiable-credentials/v1/verifiable-credentials_grpc_pb";
+import { Client, createChannel, createClient } from "nice-grpc";
 
 export class CredentialService extends ServiceBase {
-  credentialClient: VerifiableCredentialClient;
+  client: Client<typeof VerifiableCredentialDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.credentialClient = new VerifiableCredentialClient(
-      this.address,
-      this.channelCredentials
+    this.client = createClient(
+      VerifiableCredentialDefinition,
+      createChannel(this.address, this.channelCredentials)
     );
   }
 
-  public issueCredential(request: IssueRequest): Promise<IssueResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.issue(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+  public async issueCredential(request: IssueRequest): Promise<IssueResponse> {
+    return this.client.issue(request, {
+      metadata: await this.getMetadata(IssueRequest.encode(request).finish()),
     });
   }
 
-  public issueFromTemplate(
+  public async issueFromTemplate(
     request: IssueFromTemplateRequest
   ): Promise<IssueFromTemplateResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.issueFromTemplate(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.issueFromTemplate(request, {
+      metadata: await this.getMetadata(
+        IssueFromTemplateRequest.encode(request).finish()
+      ),
     });
   }
 
-  public createProof(
+  public async createProof(
     request: CreateProofRequest
   ): Promise<CreateProofResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.createProof(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.createProof(request, {
+      metadata: await this.getMetadata(
+        CreateProofRequest.encode(request).finish()
+      ),
     });
   }
 
-  public verifyProof(
+  public async verifyProof(
     request: VerifyProofRequest
   ): Promise<VerifyProofResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.verifyProof(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.verifyProof(request, {
+      metadata: await this.getMetadata(
+        VerifyProofRequest.encode(request).finish()
+      ),
     });
   }
 
-  public checkStatus(
+  public async checkStatus(
     request: CheckStatusRequest
   ): Promise<CheckStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.checkStatus(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.checkStatus(request, {
+      metadata: await this.getMetadata(
+        CheckStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public updateStatus(
+  public async updateStatus(
     request: UpdateStatusRequest
   ): Promise<UpdateStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.updateStatus(
-          request,
-          metadata,
-          (error, response) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(response);
-            }
-          }
-        );
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.updateStatus(request, {
+      metadata: await this.getMetadata(
+        UpdateStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public send(request: SendRequest): Promise<SendResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.credentialClient.send(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+  public async send(request: SendRequest): Promise<SendResponse> {
+    return this.client.send(request, {
+      metadata: await this.getMetadata(SendRequest.encode(request).finish()),
     });
   }
 }
