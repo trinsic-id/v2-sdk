@@ -42,6 +42,7 @@ describe("wallet service tests", () => {
     walletService = new WalletService(options);
     credentialService = new CredentialService(options);
     templateService = new TemplateService(options);
+    providerService = new ProviderService(options);
   });
 
   it("can retrieve account info", async () => {
@@ -50,18 +51,18 @@ describe("wallet service tests", () => {
   });
 
   it("can create new ecosystem", async () => {
-    const [ecosystem, authToken] = await providerService.createEcosystem(
+    const response = await providerService.createEcosystem(
       CreateEcosystemRequest.fromPartial({})
     );
 
-    expect(ecosystem).not.toBeNull();
-    expect(authToken).not.toBeEmpty();
+    expect(response.ecosystem).not.toBeNull();
+    expect(response.profile).not.toBeNull();
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
     let unsignedDocument = {
       "@context": "https://w3id.org/security/v3-unstable",
-      id: "https://issuer.oidp.uscis.gov/credentials/83627465",
+      "id": "https://issuer.oidp.uscis.gov/credentials/83627465",
     };
 
     let issueResponse = await credentialService.issueCredential({
@@ -77,9 +78,9 @@ describe("wallet service tests", () => {
     expect(insertResponse).not.toBeNull();
     expect(insertResponse.itemId).not.toBe("");
 
-    let items = await walletService.search();
-    expect(items).not.toBeNull();
-    expect(items.items.length).toBeGreaterThan(0);
+    let searchResponse = await walletService.search();
+    expect(searchResponse).not.toBeNull();
+    expect(searchResponse.items.length).toBeGreaterThan(0);
 
     let proof = await credentialService.createProof(
       CreateProofRequest.fromPartial({
@@ -95,7 +96,7 @@ describe("wallet service tests", () => {
       proofDocumentJson: proof.proofDocumentJson,
     });
     expect(verifyResponse).not.toBeNull();
-    expect(verifyResponse.isValid).toBe(true);
+    expect(verifyResponse.isValid).toBeTrue();
   }, 20000);
 
   it("Demo: template management and credential issuance from template", async () => {

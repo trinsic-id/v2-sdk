@@ -58,7 +58,7 @@ async function vaccineDemo() {
   const proofRequestFrame = require(vaccineCertFramePath);
   const proofResponse = await credentialService.createProof(
       CreateProofRequest.fromPartial({
-        itemId: itemId.itemId,
+        itemId: insertResponse.itemId,
         revealDocumentJson: proofRequestFrame,
       })
   );
