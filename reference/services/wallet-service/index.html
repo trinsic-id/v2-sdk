@@ -1426,6 +1426,11 @@
 
 <h1 id="wallet-service">Wallet Service<a class="headerlink" href="#wallet-service" title="Permanent link">&para;</a></h1>
 <p>The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the <a href="https://w3c-ccg.github.io/universal-wallet-interop-spec/" target="_blank">Universal Wallet 2020 <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> specification by W3C Community Credentials Group. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.</p>
+<div class="admonition question">
+<p class="admonition-title">Wallets vs Accounts</p>
+<p>Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.</p>
+<p>Every account has exactly one wallet. </p>
+</div>
 <h2 id="create-wallet">Create Wallet<a class="headerlink" href="#create-wallet" title="Permanent link">&para;</a></h2>
 <p>Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:</p>
 <ul>
