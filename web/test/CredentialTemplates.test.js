@@ -1,7 +1,6 @@
 import {AccountService, CredentialService, WalletService, TemplateService, CreateCredentialTemplateRequest, TemplateField, FieldType, AccountProfile, IssueFromTemplateRequest, SignInRequest, InsertItemRequest, CreateProofRequest, VerifyProofRequest} from "../src";
 import templateCertFramePath from './data/credential-template-frame.json'
 import { options } from "./env";
-import exp from "constants";
 
 const credentialTemplateName = "My First Credential Template";
 const nameField = TemplateField.fromPartial({
