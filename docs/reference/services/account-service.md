@@ -1,23 +1,27 @@
 # Account Service
 
-When you need to manage trinsic account, you will most definitely interface with the Account Service. Below you will find information on how to work with
-the different procedures pertinent to the account service.
+The Account Service allows you to create and sign in to accounts.
+
+!!! question "Wallets vs Accounts"
+    Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
+
+    Every account has exactly one wallet. 
+
+!!! info "Authentication Tokens"
+    When you create or sign in to an account, the response is an authentication token string.
+
+    This string is an encoded form of your account profile, as well as an access key to perform calls using the account.
+
+    These are effectively API keys; they should be kept safe and never published.
 
 ### Sign In
 
-Create login credentials by signing into an existing account or creating a new one. As part of this procedure, you must provide a 
-[Sign In Request](../proto/index.md#signinrequest) object that contains account details information such as name (alias) of the account, email, 
-and an SMS phone number. You may also provide an invitation code and ecosystem ID if you have them. 
+Sign in to an existing account, or create a new one.
 
-The sign in request should look like this:
+If no account details are passed to this method, an anonymous account will be created.
 
 {{ proto_obj('SignInRequest') }}
-
-And the [Account Details](../proto/#signinrequest) object should look like this:
-
 {{ proto_obj('AccountDetails') }}
-
-
 
 === "Trinsic CLI"
     ```bash
@@ -39,7 +43,7 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
+    [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceSignIn
     ```
     <!--/codeinclude-->
 
@@ -62,19 +66,25 @@ And the [Account Details](../proto/#signinrequest) object should look like this:
     allison = account_service.sign_in(nil).profile
     ```
 
-This operation produces a response that has the structure of a [Sign In Response](../proto/#signinresponse), indicating whether or not a confirmation code
-was sent to one of the users two-factor methods like email, SMS, etc. (as defined by the Sign In Request).
+This operation, if successful, returns an authentication token string.
 
-{{ proto_obj('SignInResponse') }}
+!!! warning "Protected Authentication Tokens"
+    If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be _protected_, and cannot be used until it has been unprotected.
+
+    Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the [Unprotect](#unprotect-account-profile) call to receive a usable authentication token.
+
+    In the future, we will provide an SDK call to determine if an authentication token is protected.
 
 ### Get Account Info
-This will returns the account info of the current active profile in the SDK or CLI. This can only be called on a profile that has been 
-[unprotected](./account-service.md/#unprotect-account-profile) by providing a code that was sent through email or SMS when the account was 
-signed in. Its response is a [Info Response](../proto/index.md#inforesponse) object and has the following properties:
 
-{{ proto_obj('InfoResponse') }}
+Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.
 
-Calling this procedure, is as trivial as evidenced below. Keep it mind, however, that it assumes you have the correct profile active.
+!!! note
+    This call returns the information associated with the authentication token used to create the request; therefore, it is not possible to pass a different authentication token to this call. Otherwise, Trinsic's [zero-knowledge proof](/learn/security) authentication scheme would be violated.
+
+    When using the CLI, this will return information for the account most recently logged in to.
+
+    When using the SDK, this will return information for the authentication token stored in the `AccountService` instance's `ServiceOptions.AuthToken` field, which will be the account most recently logged in to, unless you have manually set this value yourself.
 
 === "Trinsic CLI"
     ```bash
@@ -119,9 +129,19 @@ Calling this procedure, is as trivial as evidenced below. Keep it mind, however,
     info = account_service.get_info()
     ```
 
+{{ proto_obj('InfoResponse') }}
+
 ### Protect Account Profile
-Protects the specified account profile blinding its token using oberon. It is not possible to execute this call using the CLI, and the parameters that you must 
-provide are evidenced in the code snippets below:
+Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
+
+!!! info
+    In this context, "protection" refers to a cryptographic operation on the authorization token for an account.
+
+    _Protecting_ an account profile with code `c` returns a new access token which is unusable until it is _unprotected_ with the same code `c`. It is not possible to reverse the protection process without the original protection code.
+
+    You will receive a protected account profile from Trinsic if you attempt to sign in to an account via email, SMS, or any other method which requires authentication. Trinsic will send a security code to the email or phone number associated with the account, which can be used to unprotect the account profile.
+
+    Specifically, Trinsic is using Oberon to handle access tokens; protection and unprotection is handled using the blinding/unblinding features of Oberon.
 
 === "TypeScript"
     ```typescript
@@ -162,9 +182,11 @@ provide are evidenced in the code snippets below:
     ```
 
 ### Unprotect Account Profile
-Unprotects the specified account profile unblinding its token using oberon. It is not possible to execute this call using the CLI, and the parameters that you must 
-provide are evidenced in the code snippets below. Keep in mind, that if this account was signed in using protection, you must provide the code you received in the
-email or SMS as the `securityCode` argument.
+Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.
+
+The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the [Protect](#protect-account-profile) method.
+
+Most commonly, this method is used on a protected profile received from the [Sign In](#sign-in) method. The code to unprotect it will have been sent to the account owner via email or SMS.
 
 === "TypeScript"
     ```typescript
