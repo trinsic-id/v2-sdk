@@ -65,7 +65,7 @@ describe("wallet service tests", () => {
     };
 
     let issueResponse = await credentialService.issueCredential({
-      documentJson: unsignedDocument,
+      documentJson: JSON.stringify(unsignedDocument),
     });
     expect(issueResponse).not.toBeNull();
 
@@ -85,7 +85,7 @@ describe("wallet service tests", () => {
       CreateProofRequest.fromPartial({
         itemId: insertResponse.itemId,
         revealDocumentJson: JSON.stringify({
-          "@context": "http://w3id.org/security/v3-unstable",
+          "@context": "https://w3id.org/security/v3-unstable",
         }),
       })
     );

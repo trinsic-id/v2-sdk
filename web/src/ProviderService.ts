@@ -41,10 +41,6 @@ export class ProviderService extends ServiceBase {
   public async createEcosystem(
     request: CreateEcosystemRequest
   ): Promise<CreateEcosystemResponse> {
-    return this.client.createEcosystem(request, {
-      metadata: await this.getMetadata(
-        CreateEcosystemRequest.encode(request).finish()
-      ),
-    });
+    return this.client.createEcosystem(request);
   }
 }
