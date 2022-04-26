@@ -6,11 +6,13 @@ import (
 	"strings"
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
+	"google.golang.org/grpc"
 )
 
 //Options for configuring the sdk
 type Options struct {
-	ServiceOptions *sdk.ServiceOptions
+	ServiceOptions  *sdk.ServiceOptions
+	GrpcDialOptions []grpc.DialOption
 }
 
 // NewServiceOptions returns a service options configuration with the provided options set
@@ -42,6 +44,18 @@ type Option func(*Options) error
 func WithAuthToken(token string) Option {
 	return func(s *Options) error {
 		s.ServiceOptions.AuthToken = token
+
+		return nil
+	}
+}
+
+// WithGrpcDialOptions sets grpc dial options
+//
+// This function can be user for setting up client-side middlewares (i.e. monitoring, logging, tracing, retry)
+func WithGrpcDialOptions(grpcDialOptions ...grpc.DialOption) Option {
+	return func(s *Options) error {
+		s.GrpcDialOptions = make([]grpc.DialOption, len(grpcDialOptions))
+		copy(s.GrpcDialOptions, grpcDialOptions)
 
 		return nil
 	}

@@ -17,7 +17,7 @@ import (
 // NewServiceBase returns a base service which is the foundation
 // for all the other services
 func NewServiceBase(options *Options) (Service, error) {
-	conn, err := NewServiceConnection(options.ServiceOptions)
+	conn, err := NewServiceConnection(options.ServiceOptions, options.GrpcDialOptions...)
 	if err != nil {
 		return nil, err
 	}
@@ -121,7 +121,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 
 // NewServiceConnection returns a grpc client connection to the target
 // provided in the options (ServerEndpoint, ServerPort, and ServerUseTLS)
-func NewServiceConnection(options *sdk.ServiceOptions) (*grpc.ClientConn, error) {
+func NewServiceConnection(options *sdk.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
 	var dialOptions []grpc.DialOption
 
 	if !options.ServerUseTls {
@@ -139,6 +139,10 @@ func NewServiceConnection(options *sdk.ServiceOptions) (*grpc.ClientConn, error)
 		}
 		creds := credentials.NewClientTLSFromCert(rootCAs, "")
 		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
+	}
+
+	for _, dialOption := range grpcDialOptions {
+		dialOptions = append(dialOptions, dialOption)
 	}
 
 	return grpc.Dial(fmt.Sprintf("%s:%d", options.ServerEndpoint, options.ServerPort), dialOptions...)
