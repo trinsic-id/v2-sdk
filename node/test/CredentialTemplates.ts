@@ -1,7 +1,22 @@
 import test from "ava";
 
-import {AccountService, CredentialService, WalletService, TemplateService, CreateCredentialTemplateRequest, TemplateField, FieldType, AccountProfile, IssueFromTemplateRequest, SignInRequest, InsertItemRequest, CreateProofRequest, VerifyProofRequest} from "../src";
-import {getTemplateCertFrameJSON, getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
+import {
+  AccountProfile,
+  AccountService,
+  CreateCredentialTemplateRequest,
+  CreateProofRequest,
+  CredentialService,
+  FieldType,
+  InsertItemRequest,
+  IssueFromTemplateRequest,
+  ServiceOptions,
+  SignInRequest,
+  TemplateField,
+  TemplateService,
+  VerifyProofRequest,
+  WalletService,
+} from "../src";
+import { getTemplateCertFrameJSON, getTestServerOptions } from "./TestData";
 
 require("dotenv").config();
 
@@ -9,52 +24,53 @@ const options = getTestServerOptions();
 
 // defineTemplate() {
 const credentialTemplateName = "My First Credential Template";
-const nameField = new TemplateField();
-nameField.setType(FieldType.STRING);
-nameField.setDescription("The name of the person");
-nameField.setOptional(false);
+const nameField = TemplateField.fromPartial({
+  description: "The name of the person",
+  type: FieldType.STRING,
+  optional: false,
+});
 
-const numberOfBags = new TemplateField();
-numberOfBags.setType(FieldType.NUMBER);
-numberOfBags.setDescription("The number of bags the person is taking on the trip");
-numberOfBags.setOptional(false);
+const numberOfBags = TemplateField.fromPartial({
+  type: FieldType.NUMBER,
+  description: "The number of bags the person is taking on the trip",
+  optional: false,
+});
 
-const dateOfBirth = new TemplateField();
-dateOfBirth.setType(FieldType.DATETIME);
-dateOfBirth.setDescription("The date of birth of the person");
-dateOfBirth.setOptional(false);
+const dateOfBirth = TemplateField.fromPartial({
+  type: FieldType.DATETIME,
+  description: "The date of birth of the person",
+  optional: false,
+});
 
-const isVaccinated = new TemplateField();
-isVaccinated.setType(FieldType.BOOL);
-isVaccinated.setDescription("Whether or not the person has been vaccinated");
-isVaccinated.setOptional(false);
+const isVaccinated = TemplateField.fromPartial({
+  type: FieldType.BOOL,
+  description: "Whether or not the person has been vaccinated",
+  optional: false,
+});
 // }
 
-let issuer = new AccountProfile();
-
-test.before(async t => {
+test.before(async (t) => {
   let service = new AccountService(options);
-  let response = await service.signIn(new SignInRequest());
-
-  issuer.setAuthToken(response);
+  options.authToken = await service.signIn();
 });
 
 async function createCredentialTemplateTest() {
   // createTemplate() {
   const templateService = new TemplateService(options);
-  
-  let request = new CreateCredentialTemplateRequest();
-  request.setName(credentialTemplateName); 
-  
-  request.getFieldsMap()
-  .set("name", nameField)
-  .set("numberOfBags", numberOfBags)
-  .set("dateOfBirth", dateOfBirth)
-  .set("vaccinated", isVaccinated);
-  
+
+  let request = CreateCredentialTemplateRequest.fromPartial({
+    name: credentialTemplateName,
+    fields: {
+      name: nameField,
+      numberOfBags: numberOfBags,
+      dateOfBirth: dateOfBirth,
+      vaccinated: isVaccinated,
+    },
+  });
+
   let response = await templateService.createCredentialTemplate(request);
   // }
-  
+
   return response;
 }
 
@@ -63,14 +79,15 @@ async function issueCredentialFromTemplate() {
 
   let service = new CredentialService(options);
   // issueFromTemplate() {
-  let request = new IssueFromTemplateRequest()
-    .setTemplateId(templateResponse?.getData()?.getId() ?? "")
-    .setValuesJson(JSON.stringify({
-      "name": "Alice",
-      "numberOfBags": 2,
-      "dateOfBirth": new Date("1/1/2000").toISOString(),
-      "vaccinated": true
-    }));
+  let request = IssueFromTemplateRequest.fromPartial({
+    templateId: templateResponse?.data?.id ?? "",
+    valuesJson: JSON.stringify({
+      name: "Alice",
+      numberOfBags: 2,
+      dateOfBirth: new Date("1/1/2000").toISOString(),
+      vaccinated: true,
+    }),
+  });
 
   let response = await service.issueFromTemplate(request);
   // }
@@ -83,56 +100,64 @@ async function verifyCredential() {
   const accountService = new AccountService(options);
   const walletService = new WalletService(options);
 
-  const allison = await accountService.signIn(new SignInRequest());
-  const airline = await accountService.signIn(new SignInRequest());
-  
+  const allison = await accountService.signIn();
+  const airline = await accountService.signIn();
+
   const credential = await issueCredentialFromTemplate();
-  
-  walletService.options.setAuthToken(allison);
-  const insertItemResponse = await walletService.insertItem(new InsertItemRequest()
-    .setItemJson(credential.getDocumentJson()));
 
+  walletService.options.authToken = allison;
+  const insertItemResponse = await walletService.insertItem(
+    InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
+  );
 
-  credentialService.options.setAuthToken(allison);
+  credentialService.options.authToken = allison;
   const proofRequestJson = getTemplateCertFrameJSON();
-  const proofRequest = new CreateProofRequest()
-    .setItemId(insertItemResponse.getItemId())
-    .setRevealDocumentJson(proofRequestJson);
+  const proofRequest = CreateProofRequest.fromPartial({
+    itemId: insertItemResponse.itemId,
+    revealDocumentJson: proofRequestJson,
+  });
   const proof = await credentialService.createProof(proofRequest);
-  
-  credentialService.options.setAuthToken(airline);
-  const verifyProofRequest = new VerifyProofRequest().setProofDocumentJson(proof.getProofDocumentJson())
-  const verifyProofResponse = await credentialService.verifyProof(verifyProofRequest);
 
-  return verifyProofResponse.getIsValid();
+  credentialService.options.authToken = airline;
+  const verifyProofRequest = VerifyProofRequest.fromPartial({
+    proofDocumentJson: proof.proofDocumentJson,
+  });
+  const verifyProofResponse = await credentialService.verifyProof(
+    verifyProofRequest
+  );
+
+  return verifyProofResponse.isValid;
 }
 
 test("Create Credential Template", async (t) => {
   let response = await createCredentialTemplateTest();
 
-  t.is(response.getData()?.getName(), credentialTemplateName);
+  t.is(response.data?.name, credentialTemplateName);
 
-  const fieldsMap = response.getData()?.getFieldsMap();
-  t.deepEqual(fieldsMap?.get("name")?.toObject(), nameField.toObject());
-  t.deepEqual(fieldsMap?.get("numberOfBags")?.toObject(), numberOfBags.toObject());
-  t.deepEqual(fieldsMap?.get("dateOfBirth")?.toObject(), dateOfBirth.toObject());
-  t.deepEqual(fieldsMap?.get("vaccinated")?.toObject(), isVaccinated.toObject());
+  const fieldsMap = response.data?.fields!;
+  t.deepEqual(fieldsMap["name"], nameField);
+  t.deepEqual(fieldsMap["numberOfBags"], numberOfBags);
+  t.deepEqual(fieldsMap["dateOfBirth"], dateOfBirth);
+  t.deepEqual(fieldsMap["vaccinated"], isVaccinated);
 
   t.pass();
 });
 
 test("Issue Credential From Template", async (t) => {
-  let response = JSON.parse((await issueCredentialFromTemplate()).getDocumentJson());
+  let response = JSON.parse((await issueCredentialFromTemplate()).documentJson);
 
   t.assert(response?.issuer !== null);
   t.assert(response?.id !== null);
   t.is(response?.credentialSubject?.name, "Alice");
   t.is(response?.credentialSubject?.numberOfBags, 2);
-  t.is(new Date(response?.credentialSubject?.dateOfBirth).toISOString(), new Date("1/1/2000").toISOString());
+  t.is(
+    new Date(response?.credentialSubject?.dateOfBirth).toISOString(),
+    new Date("1/1/2000").toISOString()
+  );
   t.is(response?.credentialSubject?.vaccinated, true);
 
   t.pass();
-})
+});
 
 test("Verify Credential Issued from Template", async (t) => {
   let response = await verifyCredential();
@@ -140,4 +165,4 @@ test("Verify Credential Issued from Template", async (t) => {
   t.assert(response);
 
   t.pass();
-})
+});

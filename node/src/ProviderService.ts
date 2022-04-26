@@ -6,66 +6,48 @@ import {
   InvitationStatusResponse,
   InviteRequest,
   InviteResponse,
-  ProviderClient,
+  ProviderDefinition,
   ServiceOptions,
 } from "./proto";
+import { Client, createChannel, createClient } from "nice-grpc";
 
 export class ProviderService extends ServiceBase {
-  client: ProviderClient;
+  client: Client<typeof ProviderDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = new ProviderClient(this.address, this.channelCredentials);
+    this.client = createClient(
+      ProviderDefinition,
+      createChannel(this.address, this.channelCredentials)
+    );
   }
 
-  public inviteParticipant(request: InviteRequest): Promise<InviteResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.invite(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+  public async inviteParticipant(
+    request: InviteRequest
+  ): Promise<InviteResponse> {
+    return this.client.invite(request, {
+      metadata: await this.getMetadata(InviteRequest.encode(request).finish()),
     });
   }
 
-  public invitationStatus(
+  public async invitationStatus(
     request: InvitationStatusRequest
   ): Promise<InvitationStatusResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.invitationStatus(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.invitationStatus(request, {
+      metadata: await this.getMetadata(
+        InvitationStatusRequest.encode(request).finish()
+      ),
     });
   }
 
-  public createEcosystem(
+  public async createEcosystem(
     request: CreateEcosystemRequest
   ): Promise<CreateEcosystemResponse> {
-    return new Promise(async (resolve, reject) => {
-      this.client.createEcosystem(request, (error, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(response);
-        }
-      });
+    return this.client.createEcosystem(request, {
+      metadata: await this.getMetadata(
+        CreateEcosystemRequest.encode(request).finish()
+      ),
     });
   }
 }

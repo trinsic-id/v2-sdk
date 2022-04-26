@@ -5,8 +5,6 @@ option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.universalwallet.v1";
 
-// Search
-
 // Search request object
 message SearchRequest {
     string query = 1;

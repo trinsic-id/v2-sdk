@@ -1,21 +1,22 @@
 import test from "ava";
 import {
-    AccountService,
-    CreateCredentialTemplateRequest,
-    CreateProofRequest,
-    CredentialService,
-    FieldType,
-    InsertItemRequest,
-    IssueFromTemplateRequest,
-    IssueRequest,
-    SearchRequest,
-    SignInRequest,
-    TemplateField,
-    TemplateService,
-    VerifyProofRequest,
-    WalletService
+  AccountService,
+  CreateCredentialTemplateRequest,
+  CreateProofRequest,
+  CredentialService,
+  FieldType,
+  InsertItemRequest,
+  IssueFromTemplateRequest,
+  SearchRequest,
+  TemplateField,
+  TemplateService,
+  WalletService,
 } from "../src";
-import {getTestServerOptions, getVaccineCertFrameJSON, getVaccineCertUnsignedJSON} from "./TestData";
+import {
+  getTestServerOptions,
+  getVaccineCertFrameJSON,
+  getVaccineCertUnsignedJSON,
+} from "./TestData";
 
 
 require("dotenv").config();
@@ -27,9 +28,9 @@ const airline = getTestServerOptions();
 
 test.before(async t => {
     let service = new AccountService(options);
-    allison.setAuthToken(await service.signIn(new SignInRequest()));
-    clinic.setAuthToken(await service.signIn(new SignInRequest()));
-    airline.setAuthToken(await service.signIn(new SignInRequest()));
+    allison.authToken = (await service.signIn());
+    clinic.authToken = (await service.signIn());
+    airline.authToken = (await service.signIn());
 });
 
 test("get account info", async (t) => {
@@ -41,7 +42,7 @@ test("get account info", async (t) => {
 
 test("create new account", async (t) => {
     let service = new AccountService(clinic);
-    let response = await service.signIn(new SignInRequest());
+    let response = await service.signIn();
 
     t.not(response, null);
     t.not(response, "");
@@ -52,17 +53,15 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     let credentialService = new CredentialService(clinic);
     let walletService = new WalletService(allison);
 
-    let issueResponse = await credentialService.issueCredential(new IssueRequest()
-        .setDocumentJson(getVaccineCertUnsignedJSON()));
+    let issueResponse = await credentialService.issueCredential({documentJson: getVaccineCertUnsignedJSON()})
 
     // insertItemWallet() {
-    let insertItemResponse = await walletService.insertItem(new InsertItemRequest()
-        .setItemJson(issueResponse.getSignedDocumentJson()));
+    let insertItemResponse = await walletService.insertItem(InsertItemRequest.fromPartial({itemJson: issueResponse.signedDocumentJson}));
     // }
 
     t.not(insertItemResponse, null);
-    t.not(insertItemResponse.getItemId(), "");
-    console.log("Item id=", insertItemResponse.getItemId())
+    t.not(insertItemResponse.itemId, "");
+    console.log("Item id=", insertItemResponse.itemId)
 
     // Delay half a second for race condition fixes?
     await new Promise(res => setTimeout(res, 1000));
@@ -71,23 +70,21 @@ test("Demo: create wallet, set profile, search records, issue credential", async
     let items = await walletService.search();
     // }
     // searchWalletSQL() {
-    let items2 = await walletService.search(new SearchRequest().setQuery("SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"));
+    let items2 = await walletService.search(SearchRequest.fromPartial({query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"}));
     // }
 
     credentialService.options = allison;
     // createProof() {
-    let proof = await credentialService.createProof(new CreateProofRequest()
-        .setItemId(insertItemResponse.getItemId())
-        .setRevealDocumentJson(getVaccineCertFrameJSON()));
+    let proof = await credentialService.createProof(CreateProofRequest.fromPartial({itemId: insertItemResponse.itemId,
+    revealDocumentJson: getVaccineCertFrameJSON()}))
     // }
 
     credentialService.options = airline;
     // verifyProof() {
-    let verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
-        .setProofDocumentJson(proof.getProofDocumentJson()));
+    let verifyResponse = await credentialService.verifyProof({proofDocumentJson: proof.proofDocumentJson})
     // }
 
-    t.true(verifyResponse.getIsValid());
+    t.true(verifyResponse.isValid);
     t.pass();
 });
 
@@ -96,19 +93,20 @@ test("Demo: template management and credential issuance from template", async (t
     let templateService = new TemplateService(options);
 
     // create example template
-    let templateRequest = new CreateCredentialTemplateRequest()
-        .setName("My Example Credential")
-        .setAllowAdditionalFields(false);
-    templateRequest.getFieldsMap().set("firstName", new TemplateField().setDescription("Given name"));
-    templateRequest.getFieldsMap().set("lastName", new TemplateField());
-    templateRequest.getFieldsMap().set("age", new TemplateField().setType(FieldType.NUMBER).setOptional(true));
+    let templateRequest = CreateCredentialTemplateRequest.fromPartial({name: "My Example Credential",
+    allowAdditionalFields: false,
+    fields: {
+        "firstName": TemplateField.fromPartial({description: "Given name"}),
+        "lastName": TemplateField.fromPartial({}),
+        "age": TemplateField.fromPartial({type: FieldType.NUMBER, optional: true})
+    }})
 
     let template = await templateService.createCredentialTemplate(templateRequest);
 
     t.not(template, null);
-    t.not(template.getData(), null);
-    t.not(template.getData()!.getId(), null);
-    t.not(template.getData()!.getSchemaUri(), null);
+    t.not(template.data, null);
+    t.not(template.data!.id, null);
+    t.not(template.data!.schemaUri, null);
 
     // issue credential from this template
     let values = JSON.stringify({
@@ -117,9 +115,8 @@ test("Demo: template management and credential issuance from template", async (t
         age: 42
     });
 
-    let issueResponse = await credentialService.issueFromTemplate(new IssueFromTemplateRequest()
-        .setTemplateId(template.getData()!.getId()).setValuesJson(values));
-    let jsonDocument = JSON.parse(issueResponse.getDocumentJson());
+    let issueResponse = await credentialService.issueFromTemplate(IssueFromTemplateRequest.fromPartial({templateId: template.data!.id, valuesJson: values}))
+    let jsonDocument = JSON.parse(issueResponse.documentJson);
 
     t.not(jsonDocument, null);
     t.true(jsonDocument.hasOwnProperty("id"));
