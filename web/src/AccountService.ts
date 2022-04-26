@@ -98,7 +98,6 @@ export class AccountService extends ServiceBase {
   public async signIn(
     request: SignInRequest = SignInRequest.fromPartial({})
   ): Promise<string> {
-    console.log("ecosystemid=", request.ecosystemId, this.options.defaultEcosystem)
     request.ecosystemId = request.ecosystemId || this.options.defaultEcosystem;
 
     let response = await this.client.signIn(request);
