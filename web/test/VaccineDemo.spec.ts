@@ -8,6 +8,7 @@ import {
   WalletService,
 } from "../src";
 import { options } from "./env";
+import "jasmine"
 // @ts-ignore
 import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
 // @ts-ignore

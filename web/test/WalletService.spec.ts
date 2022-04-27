@@ -13,6 +13,7 @@ import {
   WalletService,
 } from "../src";
 import {options} from "./env";
+import "jasmine"
 
 let providerService: ProviderService;
 let accountService: AccountService;
