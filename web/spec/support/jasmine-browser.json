@@ -1,15 +1,20 @@
 {
-  "srcDir": "test",
+  "srcDir": "src",
   "srcFiles": [
-    "/build/**/*.js"
+    "**/*.ts"
   ],
   "specDir": "test",
   "specFiles": [
-    "build/**/*bundle.js"
+    "**/*.spec.ts"
   ],
-  "helpers": [
-    "helpers/*.js"
+  "reporters": [
+    {
+      "name": "jasmine-spec-reporter#SpecReporter",
+      "options": {
+        "displayStacktrace": "all"
+      }
+    }
   ],
   "random": true,
-  "browser": "headlessChrome"
+  "browser": "chrome"
 }

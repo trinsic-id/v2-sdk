@@ -8,7 +8,9 @@ import {
   WalletService,
 } from "../src";
 import { options } from "./env";
+// @ts-ignore
 import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
+// @ts-ignore
 import vaccineCertFramePath from "./data/vaccination-certificate-frame.json";
 
 async function vaccineDemo() {

@@ -11,8 +11,10 @@ import {
   CreateProofRequest,
   VerifyProofRequest,
 } from "../src";
+// @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { options } from "./env";
+import "jasmine"
 
 const credentialTemplateName = "My First Credential Template";
 const nameField = TemplateField.fromPartial({
@@ -50,10 +52,10 @@ describe("Demo: Credential Templates", () => {
     expect(response.data?.name).toBe(credentialTemplateName);
 
     const fieldsMap = response.data?.fields;
-    expect(fieldsMap!["name"]).toStrictEqual(nameField);
-    expect(fieldsMap!["numberOfBags"]).toStrictEqual(numberOfBags);
-    expect(fieldsMap!["dateOfBirth"]).toStrictEqual(dateOfBirth);
-    expect(fieldsMap!["vaccinated"]).toStrictEqual(isVaccinated);
+    expect(fieldsMap!["name"]).toEqual(nameField);
+    expect(fieldsMap!["numberOfBags"]).toEqual(numberOfBags);
+    expect(fieldsMap!["dateOfBirth"]).toEqual(dateOfBirth);
+    expect(fieldsMap!["vaccinated"]).toEqual(isVaccinated);
   });
 
   it("Issue Credential From Template", async () => {
