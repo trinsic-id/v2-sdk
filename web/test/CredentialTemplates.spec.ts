@@ -14,7 +14,7 @@ import {
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { options } from "./env";
-import "jasmine"
+
 
 const credentialTemplateName = "My First Credential Template";
 const nameField = TemplateField.fromPartial({

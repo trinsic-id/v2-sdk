@@ -22,7 +22,7 @@ export class WalletService extends ServiceBase {
 
     this.client = createClient(
       UniversalWalletDefinition,
-      createChannel(this.address, NodeHttpTransport())
+      createChannel(this.address)
     );
   }
 

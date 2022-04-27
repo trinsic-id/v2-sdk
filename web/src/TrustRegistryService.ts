@@ -34,7 +34,7 @@ export class TrustRegistryService extends ServiceBase {
 
     this.client = createClient(
       TrustRegistryDefinition,
-      createChannel(this.address, NodeHttpTransport())
+      createChannel(this.address)
     );
   }
 

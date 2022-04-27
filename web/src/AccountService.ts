@@ -28,7 +28,7 @@ export class AccountService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(AccountDefinition, createChannel(this.address, NodeHttpTransport()));
+    this.client = createClient(AccountDefinition, createChannel(this.address));
   }
 
   /**

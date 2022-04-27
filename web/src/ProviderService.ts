@@ -18,7 +18,7 @@ export class ProviderService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(ProviderDefinition, createChannel(this.address, NodeHttpTransport()));
+    this.client = createClient(ProviderDefinition, createChannel(this.address));
   }
 
   public async inviteParticipant(

@@ -28,7 +28,7 @@ export class CredentialService extends ServiceBase {
 
     this.client = createClient(
       VerifiableCredentialDefinition,
-      createChannel(this.address, NodeHttpTransport())
+      createChannel(this.address)
     );
   }
 
