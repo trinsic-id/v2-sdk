@@ -53,7 +53,7 @@ export class AccountService extends ServiceBase {
           .setEnabled(true)
           .setMethod(ConfirmationMethod.OTHER)
       );
-    return Buffer.from(cloned.serializeBinary()).toString("base64url");
+    return Buffer.from(cloned.serializeBinary()).toString("base64");
   }
 
   /**
@@ -79,7 +79,7 @@ export class AccountService extends ServiceBase {
           .setEnabled(false)
           .setMethod(ConfirmationMethod.NONE)
       );
-    return Buffer.from(cloned.serializeBinary()).toString("base64url");
+    return Buffer.from(cloned.serializeBinary()).toString("base64");
   }
 
   private static convertToProfile(
@@ -87,7 +87,7 @@ export class AccountService extends ServiceBase {
   ): AccountProfile {
     if (typeof profile == "string") {
       return AccountProfile.deserializeBinary(
-        Buffer.from(profile, "base64url")
+        Buffer.from(profile, "base64")
       );
     }
     return profile;
