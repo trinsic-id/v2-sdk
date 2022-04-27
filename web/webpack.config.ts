@@ -1,5 +1,5 @@
-import { resolve, join } from "path";
-import { Configuration } from "webpack";
+import { resolve } from "path";
+import { Configuration, ProvidePlugin, SourceMapDevToolPlugin } from "webpack";
 
 const config: Configuration = {
   mode: "development",
@@ -21,15 +21,25 @@ const config: Configuration = {
   resolve: {
     extensions: [".ts", ".js"],
     fallback: {
+      buffer: require.resolve("buffer"),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
-      url: require.resolve("url/")
     },
   },
   output: {
     path: resolve(__dirname, "./test/build"),
     filename: "[name].bundle.js",
   },
+  plugins: [
+    new SourceMapDevToolPlugin({
+      filename: null,
+      test: /\.(ts|js)($|\?)/i,
+    }),
+    new ProvidePlugin({
+      process: "process/browser",
+      Buffer: ["buffer", "Buffer"],
+    }),
+  ],
   // devServer: {
   //   static: join(__dirname, "dist"),
   //   compress: true,

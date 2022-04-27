@@ -24,7 +24,7 @@ export class TemplateService extends ServiceBase {
 
     this.client = createClient(
       CredentialTemplatesDefinition,
-      createChannel(this.address)
+      createChannel(this.address, this.transportFactory())
     );
   }
 

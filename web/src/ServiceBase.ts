@@ -7,12 +7,14 @@ import {
 import { Metadata } from "nice-grpc-web";
 import { Nonce, AccountProfile, ServiceOptions } from "./proto";
 import { fromUint8Array, toUint8Array } from "js-base64";
+import { grpc } from "@improbable-eng/grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
   address: string;
 
-  constructor(options: ServiceOptions = ServiceOptions.fromPartial({})) {
+  protected constructor(options: ServiceOptions = ServiceOptions.fromPartial({})) {
     options.serverEndpoint = options.serverEndpoint || "prod.trinsic.cloud";
     options.serverPort = options.serverPort || 443;
     options.serverUseTls =
@@ -64,5 +66,15 @@ export default abstract class ServiceBase {
     );
 
     return metadata;
+  }
+
+  protected transportFactory(): grpc.TransportFactory | undefined {
+    // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
+    try {
+      if ((typeof process !== 'undefined') && (process.release.name === 'node')) {
+        return NodeHttpTransport();
+      }
+    } catch {}
+    return undefined;
   }
 }
