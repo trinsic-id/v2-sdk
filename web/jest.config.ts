@@ -5,7 +5,7 @@ const config: InitialOptionsTsJest = {
   transform: {
     ...tsjPreset.transform
   },
-  testMatch: ["**/test/*.test.ts"],
+  testMatch: ["**/test/*.test.ts", "**/test/*.spec.ts"],
   preset: "ts-jest"
 }
 
