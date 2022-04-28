@@ -13,6 +13,8 @@ export default (config: Config): void => {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "./",
 
+    singleRun: true,  // run and exit for CI pipelines, lol
+
     client: {
       clearContext: false, // will show the results in browser once all the testcases are loaded
     },
@@ -25,7 +27,7 @@ export default (config: Config): void => {
 
     // list of files / patterns to load in the browser
     // Here I'm including all the Jest tests which are all under the __tests__ directory.
-    // You may need to tweak this patter to find your test files/
+    // You may need to tweak this pattern to find your test files/
     files: [
       { pattern: "test/**/*.ts", watched: false, included: true, served: true },
     ],
