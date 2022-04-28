@@ -14,6 +14,7 @@ import {
   ServiceOptions,
 } from "./proto";
 import { Client, createChannel, createClient } from "nice-grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export class TemplateService extends ServiceBase {
   client: Client<typeof CredentialTemplatesDefinition>;
@@ -23,7 +24,7 @@ export class TemplateService extends ServiceBase {
 
     this.client = createClient(
       CredentialTemplatesDefinition,
-      createChannel(this.address)
+      createChannel(this.address, this.transportFactory())
     );
   }
 

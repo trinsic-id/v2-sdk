@@ -24,6 +24,7 @@ import {
   UnregisterVerifierResponse,
 } from "./proto";
 import { Client, createChannel, createClient } from "nice-grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export class TrustRegistryService extends ServiceBase {
   client: Client<typeof TrustRegistryDefinition>;
@@ -33,7 +34,7 @@ export class TrustRegistryService extends ServiceBase {
 
     this.client = createClient(
       TrustRegistryDefinition,
-      createChannel(this.address)
+      createChannel(this.address, this.transportFactory())
     );
   }
 

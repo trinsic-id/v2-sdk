@@ -21,7 +21,7 @@ export class WalletService extends ServiceBase {
 
     this.client = createClient(
       UniversalWalletDefinition,
-      createChannel(this.address)
+      createChannel(this.address, this.transportFactory())
     );
   }
 
