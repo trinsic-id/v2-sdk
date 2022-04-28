@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8b1d949c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d47c313d.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
@@ -1426,9 +1426,11 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">actualCreate</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span>
-    <span class="ow">new</span> <span class="nx">CreateEcosystemRequest</span><span class="p">()</span>
-        <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">setUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">));</span>
+  <span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+    <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;Test ecosystem from Node&quot;</span><span class="p">,</span>
+    <span class="nx">uri</span><span class="o">:</span> <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+  <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">

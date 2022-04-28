@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8b1d949c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d47c313d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
@@ -1622,9 +1622,9 @@ trinsic account login --description <span class="s2">&quot;Vaccination Clinic&qu
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Create 3 different profiles for each participant in the scenario</span>
-<span class="kd">const</span> <span class="nx">allison</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">(</span><span class="ow">new</span> <span class="nx">SignInRequest</span><span class="p">());</span>
-<span class="kd">const</span> <span class="nx">clinic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">(</span><span class="ow">new</span> <span class="nx">SignInRequest</span><span class="p">());</span>
-<span class="kd">const</span> <span class="nx">airline</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">(</span><span class="ow">new</span> <span class="nx">SignInRequest</span><span class="p">());</span>
+<span class="kd">const</span> <span class="nx">allison</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">clinic</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">airline</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1740,36 +1740,41 @@ trinsic account login --description <span class="s2">&quot;Vaccination Clinic&qu
 <div class="tabbed-block"></div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">credentialTemplateName</span> <span class="o">=</span> <span class="s2">&quot;My First Credential Template&quot;</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">nameField</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
-<span class="nx">nameField</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">);</span>
-<span class="nx">nameField</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The name of the person&quot;</span><span class="p">);</span>
-<span class="nx">nameField</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">nameField</span> <span class="o">=</span> <span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;The name of the person&quot;</span><span class="p">,</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span>
+  <span class="nx">optional</span>: <span class="kt">false</span><span class="p">,</span>
+<span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">numberOfBags</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
-<span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">NUMBER</span><span class="p">);</span>
-<span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The number of bags the person is taking on the trip&quot;</span><span class="p">);</span>
-<span class="nx">numberOfBags</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">numberOfBags</span> <span class="o">=</span> <span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="nx">FieldType</span><span class="p">.</span><span class="nx">NUMBER</span><span class="p">,</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;The number of bags the person is taking on the trip&quot;</span><span class="p">,</span>
+  <span class="nx">optional</span>: <span class="kt">false</span><span class="p">,</span>
+<span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">dateOfBirth</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
-<span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">DATETIME</span><span class="p">);</span>
-<span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;The date of birth of the person&quot;</span><span class="p">);</span>
-<span class="nx">dateOfBirth</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">dateOfBirth</span> <span class="o">=</span> <span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="nx">FieldType</span><span class="p">.</span><span class="nx">DATETIME</span><span class="p">,</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;The date of birth of the person&quot;</span><span class="p">,</span>
+  <span class="nx">optional</span>: <span class="kt">false</span><span class="p">,</span>
+<span class="p">});</span>
 
-<span class="kd">const</span> <span class="nx">isVaccinated</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateField</span><span class="p">();</span>
-<span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setType</span><span class="p">(</span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">BOOL</span><span class="p">);</span>
-<span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="s2">&quot;Whether or not the person has been vaccinated&quot;</span><span class="p">);</span>
-<span class="nx">isVaccinated</span><span class="p">.</span><span class="nx">setOptional</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">isVaccinated</span> <span class="o">=</span> <span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+  <span class="kr">type</span><span class="o">:</span> <span class="nx">FieldType</span><span class="p">.</span><span class="nx">BOOL</span><span class="p">,</span>
+  <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;Whether or not the person has been vaccinated&quot;</span><span class="p">,</span>
+  <span class="nx">optional</span>: <span class="kt">false</span><span class="p">,</span>
+<span class="p">});</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">templateService</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">TemplateService</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">CreateCredentialTemplateRequest</span><span class="p">();</span>
-<span class="nx">request</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="nx">credentialTemplateName</span><span class="p">);</span> 
-
-<span class="nx">request</span><span class="p">.</span><span class="nx">getFieldsMap</span><span class="p">()</span>
-<span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nx">nameField</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;numberOfBags&quot;</span><span class="p">,</span> <span class="nx">numberOfBags</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;dateOfBirth&quot;</span><span class="p">,</span> <span class="nx">dateOfBirth</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;vaccinated&quot;</span><span class="p">,</span> <span class="nx">isVaccinated</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">CreateCredentialTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+  <span class="nx">name</span>: <span class="kt">credentialTemplateName</span><span class="p">,</span>
+  <span class="nx">fields</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span>: <span class="kt">nameField</span><span class="p">,</span>
+    <span class="nx">numberOfBags</span>: <span class="kt">numberOfBags</span><span class="p">,</span>
+    <span class="nx">dateOfBirth</span>: <span class="kt">dateOfBirth</span><span class="p">,</span>
+    <span class="nx">vaccinated</span>: <span class="kt">isVaccinated</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
 
 <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">templateService</span><span class="p">.</span><span class="nx">createCredentialTemplate</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
 </code></pre></div>
@@ -1875,9 +1880,10 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Sign a credential as the clinic and send it to Allison</span>
-<span class="kd">const</span> <span class="nx">credentialJson</span> <span class="o">=</span> <span class="nx">getVaccineCertUnsignedJSON</span><span class="p">()</span>
-<span class="kd">const</span> <span class="nx">credential</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span><span class="ow">new</span> <span class="nx">IssueRequest</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">setDocumentJson</span><span class="p">(</span><span class="nx">credentialJson</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">credentialJson</span> <span class="o">=</span> <span class="nx">getVaccineCertUnsignedJSON</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">credential</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span>
+  <span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span> <span class="nx">documentJson</span>: <span class="kt">credentialJson</span> <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1994,9 +2000,10 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Alice stores the credential in her cloud wallet.</span>
-<span class="nx">walletService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">setAuthToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">itemId</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="ow">new</span> <span class="nx">InsertItemRequest</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">setItemJson</span><span class="p">(</span><span class="nx">credential</span><span class="p">.</span><span class="nx">getSignedDocumentJson</span><span class="p">()));</span>
+<span class="nx">walletService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span> <span class="o">=</span> <span class="nx">allison</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">itemId</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span>
+  <span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span> <span class="nx">itemJson</span>: <span class="kt">credential.signedDocumentJson</span> <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2088,11 +2095,14 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <div class="highlight"><pre><span></span><code><span class="c1">// Allison shares the credential with the venue.</span>
 <span class="c1">// The venue has communicated with Allison the details of the credential</span>
 <span class="c1">// that they require expressed as a JSON-LD frame.</span>
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">setAuthToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">);</span>
+<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span> <span class="o">=</span> <span class="nx">allison</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">proofRequestJson</span> <span class="o">=</span> <span class="nx">getVaccineCertFrameJSON</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">proof</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="ow">new</span> <span class="nx">CreateProofRequest</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">setItemId</span><span class="p">(</span><span class="nx">itemId</span><span class="p">.</span><span class="nx">getItemId</span><span class="p">())</span>
-    <span class="p">.</span><span class="nx">setRevealDocumentJson</span><span class="p">(</span><span class="nx">proofRequestJson</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">proof</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span>
+  <span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+    <span class="nx">itemId</span>: <span class="kt">itemId.itemId</span><span class="p">,</span>
+    <span class="nx">revealDocumentJson</span>: <span class="kt">proofRequestJson</span><span class="p">,</span>
+  <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2183,9 +2193,12 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// The airline verifies the credential</span>
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">setAuthToken</span><span class="p">(</span><span class="nx">airline</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">verifyResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">verifyProof</span><span class="p">(</span><span class="ow">new</span> <span class="nx">VerifyProofRequest</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">setProofDocumentJson</span><span class="p">(</span><span class="nx">proof</span><span class="p">.</span><span class="nx">getProofDocumentJson</span><span class="p">()));</span>
+<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span> <span class="o">=</span> <span class="nx">airline</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">verifyResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">credentialService</span><span class="p">.</span><span class="nx">verifyProof</span><span class="p">(</span>
+  <span class="nx">VerifyProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
+    <span class="nx">proofDocumentJson</span>: <span class="kt">proof.proofDocumentJson</span><span class="p">,</span>
+  <span class="p">})</span>
+<span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
