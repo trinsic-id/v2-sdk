@@ -13,7 +13,7 @@
     "build:typescript": "tsc",
     "test:typescript": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
     "test:browser": "karma start",
-    "test:build": "npm webpack build",
+    "test:build": "npx webpack build",
     "test": "npm run test:build && npm run test:typescript && npm run test:browser",
     "build-and-test": "npm run build && npm run test"
   },
