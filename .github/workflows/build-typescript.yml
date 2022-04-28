@@ -28,12 +28,17 @@ jobs:
       fail-fast: false
       matrix:
         target: [ "node", "web" ]
+        node-version: [ 12, 14, 16 ]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
     steps:
       - uses: actions/checkout@v1
       - uses: arduino/setup-protoc@v1
+      - uses: actions/setup-node@v3
+        name: Setup Node v${{ matrix.node-version }}
+        with:
+          node-version: ${{ matrix.node-version }}
       - run: |
           npm install
           npm run build
