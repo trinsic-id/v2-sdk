@@ -11,18 +11,18 @@ import {
   ServiceOptions,
   UniversalWalletDefinition,
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
+
+import type {Client as ServerClient} from "nice-grpc";
+import type {Client as BrowserClient} from "nice-grpc-web";
+
 
 export class WalletService extends ServiceBase {
-  client: Client<typeof UniversalWalletDefinition>;
+  client: ServerClient<typeof UniversalWalletDefinition> | BrowserClient<typeof UniversalWalletDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(
-      UniversalWalletDefinition,
-      createChannel(this.address, this.transportFactory())
-    );
+    this.client = this.createClient(UniversalWalletDefinition);
   }
 
   public async search(

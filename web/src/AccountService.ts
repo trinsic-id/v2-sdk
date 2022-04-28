@@ -13,7 +13,6 @@ import {
   SignInRequest,
   TokenProtection,
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
 import {
   BlindOberonTokenRequest,
   Oberon,
@@ -21,13 +20,18 @@ import {
 } from "@trinsic/okapi";
 import base64url from "base64url";
 
+import type {Client as ServerClient} from "nice-grpc";
+import type {Client as BrowserClient} from "nice-grpc-web";
+
 export class AccountService extends ServiceBase {
-  client: Client<typeof AccountDefinition>;
+  client: ServerClient<typeof AccountDefinition> | BrowserClient<typeof AccountDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(AccountDefinition, createChannel(this.address, this.transportFactory()));
+    this.client = this.createClient(
+      AccountDefinition
+    );
   }
 
   /**

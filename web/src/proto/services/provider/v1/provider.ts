@@ -5,12 +5,40 @@ import {
   ConfirmationMethod,
   AccountDetails,
   AccountProfile,
+  confirmationMethodFromJSON,
+  confirmationMethodToJSON,
 } from "../../../services/account/v1/account";
 
 export enum ParticipantType {
   participant_type_individual = 0,
   participant_type_organization = 1,
   UNRECOGNIZED = -1,
+}
+
+export function participantTypeFromJSON(object: any): ParticipantType {
+  switch (object) {
+    case 0:
+    case "participant_type_individual":
+      return ParticipantType.participant_type_individual;
+    case 1:
+    case "participant_type_organization":
+      return ParticipantType.participant_type_organization;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return ParticipantType.UNRECOGNIZED;
+  }
+}
+
+export function participantTypeToJSON(object: ParticipantType): string {
+  switch (object) {
+    case ParticipantType.participant_type_individual:
+      return "participant_type_individual";
+    case ParticipantType.participant_type_organization:
+      return "participant_type_organization";
+    default:
+      return "UNKNOWN";
+  }
 }
 
 export interface Invite {
@@ -63,6 +91,46 @@ export enum InvitationStatusResponse_Status {
   /** Expired - The invite has expired */
   Expired = 3,
   UNRECOGNIZED = -1,
+}
+
+export function invitationStatusResponse_StatusFromJSON(
+  object: any
+): InvitationStatusResponse_Status {
+  switch (object) {
+    case 0:
+    case "Error":
+      return InvitationStatusResponse_Status.Error;
+    case 1:
+    case "InvitationSent":
+      return InvitationStatusResponse_Status.InvitationSent;
+    case 2:
+    case "Completed":
+      return InvitationStatusResponse_Status.Completed;
+    case 3:
+    case "Expired":
+      return InvitationStatusResponse_Status.Expired;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return InvitationStatusResponse_Status.UNRECOGNIZED;
+  }
+}
+
+export function invitationStatusResponse_StatusToJSON(
+  object: InvitationStatusResponse_Status
+): string {
+  switch (object) {
+    case InvitationStatusResponse_Status.Error:
+      return "Error";
+    case InvitationStatusResponse_Status.InvitationSent:
+      return "InvitationSent";
+    case InvitationStatusResponse_Status.Completed:
+      return "Completed";
+    case InvitationStatusResponse_Status.Expired:
+      return "Expired";
+    default:
+      return "UNKNOWN";
+  }
 }
 
 export interface Ecosystem {
@@ -181,6 +249,26 @@ export const Invite = {
     return message;
   },
 
+  fromJSON(object: any): Invite {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      code: isSet(object.code) ? String(object.code) : "",
+      created: isSet(object.created) ? String(object.created) : "",
+      accepted: isSet(object.accepted) ? String(object.accepted) : "",
+      expires: isSet(object.expires) ? String(object.expires) : "",
+    };
+  },
+
+  toJSON(message: Invite): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.code !== undefined && (obj.code = message.code);
+    message.created !== undefined && (obj.created = message.created);
+    message.accepted !== undefined && (obj.accepted = message.accepted);
+    message.expires !== undefined && (obj.expires = message.expires);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<Invite>): Invite {
     const message = createBaseInvite();
     message.id = object.id ?? "";
@@ -237,6 +325,31 @@ export const InviteRequest = {
     return message;
   },
 
+  fromJSON(object: any): InviteRequest {
+    return {
+      participant: isSet(object.participant)
+        ? participantTypeFromJSON(object.participant)
+        : 0,
+      description: isSet(object.description) ? String(object.description) : "",
+      details: isSet(object.details)
+        ? AccountDetails.fromJSON(object.details)
+        : undefined,
+    };
+  },
+
+  toJSON(message: InviteRequest): unknown {
+    const obj: any = {};
+    message.participant !== undefined &&
+      (obj.participant = participantTypeToJSON(message.participant));
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.details !== undefined &&
+      (obj.details = message.details
+        ? AccountDetails.toJSON(message.details)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<InviteRequest>): InviteRequest {
     const message = createBaseInviteRequest();
     message.participant = object.participant ?? 0;
@@ -277,6 +390,15 @@ export const InviteRequest_DidCommInvitation = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): InviteRequest_DidCommInvitation {
+    return {};
+  },
+
+  toJSON(_: InviteRequest_DidCommInvitation): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -326,6 +448,26 @@ export const InviteResponse = {
     return message;
   },
 
+  fromJSON(object: any): InviteResponse {
+    return {
+      invitationId: isSet(object.invitationId)
+        ? String(object.invitationId)
+        : "",
+      invitationCode: isSet(object.invitationCode)
+        ? String(object.invitationCode)
+        : "",
+    };
+  },
+
+  toJSON(message: InviteResponse): unknown {
+    const obj: any = {};
+    message.invitationId !== undefined &&
+      (obj.invitationId = message.invitationId);
+    message.invitationCode !== undefined &&
+      (obj.invitationCode = message.invitationCode);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<InviteResponse>): InviteResponse {
     const message = createBaseInviteResponse();
     message.invitationId = object.invitationId ?? "";
@@ -368,6 +510,21 @@ export const InvitationStatusRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): InvitationStatusRequest {
+    return {
+      invitationId: isSet(object.invitationId)
+        ? String(object.invitationId)
+        : "",
+    };
+  },
+
+  toJSON(message: InvitationStatusRequest): unknown {
+    const obj: any = {};
+    message.invitationId !== undefined &&
+      (obj.invitationId = message.invitationId);
+    return obj;
   },
 
   fromPartial(
@@ -419,6 +576,26 @@ export const InvitationStatusResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): InvitationStatusResponse {
+    return {
+      status: isSet(object.status)
+        ? invitationStatusResponse_StatusFromJSON(object.status)
+        : 0,
+      statusDetails: isSet(object.statusDetails)
+        ? String(object.statusDetails)
+        : "",
+    };
+  },
+
+  toJSON(message: InvitationStatusResponse): unknown {
+    const obj: any = {};
+    message.status !== undefined &&
+      (obj.status = invitationStatusResponse_StatusToJSON(message.status));
+    message.statusDetails !== undefined &&
+      (obj.statusDetails = message.statusDetails);
+    return obj;
   },
 
   fromPartial(
@@ -480,6 +657,25 @@ export const Ecosystem = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): Ecosystem {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+    };
+  },
+
+  toJSON(message: Ecosystem): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.uri !== undefined && (obj.uri = message.uri);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<Ecosystem>): Ecosystem {
@@ -546,6 +742,30 @@ export const CreateEcosystemRequest = {
     return message;
   },
 
+  fromJSON(object: any): CreateEcosystemRequest {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+      details: isSet(object.details)
+        ? AccountDetails.fromJSON(object.details)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CreateEcosystemRequest): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.uri !== undefined && (obj.uri = message.uri);
+    message.details !== undefined &&
+      (obj.details = message.details
+        ? AccountDetails.toJSON(message.details)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CreateEcosystemRequest>
   ): CreateEcosystemRequest {
@@ -609,6 +829,37 @@ export const CreateEcosystemResponse = {
     return message;
   },
 
+  fromJSON(object: any): CreateEcosystemResponse {
+    return {
+      ecosystem: isSet(object.ecosystem)
+        ? Ecosystem.fromJSON(object.ecosystem)
+        : undefined,
+      profile: isSet(object.profile)
+        ? AccountProfile.fromJSON(object.profile)
+        : undefined,
+      confirmationMethod: isSet(object.confirmationMethod)
+        ? confirmationMethodFromJSON(object.confirmationMethod)
+        : 0,
+    };
+  },
+
+  toJSON(message: CreateEcosystemResponse): unknown {
+    const obj: any = {};
+    message.ecosystem !== undefined &&
+      (obj.ecosystem = message.ecosystem
+        ? Ecosystem.toJSON(message.ecosystem)
+        : undefined);
+    message.profile !== undefined &&
+      (obj.profile = message.profile
+        ? AccountProfile.toJSON(message.profile)
+        : undefined);
+    message.confirmationMethod !== undefined &&
+      (obj.confirmationMethod = confirmationMethodToJSON(
+        message.confirmationMethod
+      ));
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CreateEcosystemResponse>
   ): CreateEcosystemResponse {
@@ -662,6 +913,19 @@ export const GenerateTokenRequest = {
     return message;
   },
 
+  fromJSON(object: any): GenerateTokenRequest {
+    return {
+      description: isSet(object.description) ? String(object.description) : "",
+    };
+  },
+
+  toJSON(message: GenerateTokenRequest): unknown {
+    const obj: any = {};
+    message.description !== undefined &&
+      (obj.description = message.description);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<GenerateTokenRequest>): GenerateTokenRequest {
     const message = createBaseGenerateTokenRequest();
     message.description = object.description ?? "";
@@ -705,6 +969,23 @@ export const GenerateTokenResponse = {
     return message;
   },
 
+  fromJSON(object: any): GenerateTokenResponse {
+    return {
+      profile: isSet(object.profile)
+        ? AccountProfile.fromJSON(object.profile)
+        : undefined,
+    };
+  },
+
+  toJSON(message: GenerateTokenResponse): unknown {
+    const obj: any = {};
+    message.profile !== undefined &&
+      (obj.profile = message.profile
+        ? AccountProfile.toJSON(message.profile)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<GenerateTokenResponse>
   ): GenerateTokenResponse {
@@ -742,6 +1023,15 @@ export const GetOberonKeyRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): GetOberonKeyRequest {
+    return {};
+  },
+
+  toJSON(_: GetOberonKeyRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<GetOberonKeyRequest>): GetOberonKeyRequest {
@@ -784,6 +1074,18 @@ export const GetOberonKeyResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GetOberonKeyResponse {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+    };
+  },
+
+  toJSON(message: GetOberonKeyResponse): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<GetOberonKeyResponse>): GetOberonKeyResponse {
@@ -870,4 +1172,8 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

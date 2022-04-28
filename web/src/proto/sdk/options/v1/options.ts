@@ -79,6 +79,36 @@ export const ServiceOptions = {
     return message;
   },
 
+  fromJSON(object: any): ServiceOptions {
+    return {
+      serverEndpoint: isSet(object.serverEndpoint)
+        ? String(object.serverEndpoint)
+        : "",
+      serverPort: isSet(object.serverPort) ? Number(object.serverPort) : 0,
+      serverUseTls: isSet(object.serverUseTls)
+        ? Boolean(object.serverUseTls)
+        : false,
+      authToken: isSet(object.authToken) ? String(object.authToken) : "",
+      defaultEcosystem: isSet(object.defaultEcosystem)
+        ? String(object.defaultEcosystem)
+        : "",
+    };
+  },
+
+  toJSON(message: ServiceOptions): unknown {
+    const obj: any = {};
+    message.serverEndpoint !== undefined &&
+      (obj.serverEndpoint = message.serverEndpoint);
+    message.serverPort !== undefined &&
+      (obj.serverPort = Math.round(message.serverPort));
+    message.serverUseTls !== undefined &&
+      (obj.serverUseTls = message.serverUseTls);
+    message.authToken !== undefined && (obj.authToken = message.authToken);
+    message.defaultEcosystem !== undefined &&
+      (obj.defaultEcosystem = message.defaultEcosystem);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<ServiceOptions>): ServiceOptions {
     const message = createBaseServiceOptions();
     message.serverEndpoint = object.serverEndpoint ?? "";
@@ -112,4 +142,8 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

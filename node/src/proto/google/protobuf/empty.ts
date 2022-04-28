@@ -39,15 +39,6 @@ export const Empty = {
     return message;
   },
 
-  fromJSON(_: any): Empty {
-    return {};
-  },
-
-  toJSON(_: Empty): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
   fromPartial(_: DeepPartial<Empty>): Empty {
     const message = createBaseEmpty();
     return message;

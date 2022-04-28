@@ -7,14 +7,16 @@ import {
   VerifyProofRequest,
   WalletService,
 } from "../src";
-import { getTestServerOptions } from "./env";
+import {
+  getVaccineCertFrameJSON,
+  getVaccineCertUnsignedJSON,
+} from "./TestData";
+import "jasmine";
+import {getTestServerOptions} from "./env";
 
-// @ts-ignore
-import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
-// @ts-ignore
-import vaccineCertFramePath from "./data/vaccination-certificate-frame.json";
+// require("dotenv").config();
 
-let options = getTestServerOptions()
+const options = getTestServerOptions();
 
 async function vaccineDemo() {
   // createAccountService() {
@@ -30,7 +32,6 @@ async function vaccineDemo() {
 
   accountService.options.authToken = clinic;
   const info = await accountService.info();
-  console.log(`Account info=${info}`);
 
   // createService() {
   const walletService = new WalletService(options);
@@ -39,55 +40,50 @@ async function vaccineDemo() {
 
   // issueCredential() {
   // Sign a credential as the clinic and send it to Allison
-  const issueResponse = await credentialService.issueCredential(
-    IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsignedPath) })
+  const credentialJson = getVaccineCertUnsignedJSON();
+  const credential = await credentialService.issueCredential(
+    IssueRequest.fromPartial({ documentJson: credentialJson })
   );
   // }
-  console.log(`Credential=${issueResponse}`);
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
   walletService.options.authToken = allison;
-  const insertResponse = await walletService.insertItem(
-    InsertItemRequest.fromPartial({
-      itemJson: issueResponse.signedDocumentJson,
-    })
+  const itemId = await walletService.insertItem(
+    InsertItemRequest.fromPartial({ itemJson: credential.signedDocumentJson })
   );
   // }
-  console.log(`Item id=${insertResponse.itemId}`);
 
   // shareCredential() {
   // Allison shares the credential with the venue.
   // The venue has communicated with Allison the details of the credential
   // that they require expressed as a JSON-LD frame.
   credentialService.options.authToken = allison;
-  const proofResponse = await credentialService.createProof(
+  const proofRequestJson = getVaccineCertFrameJSON();
+  const proof = await credentialService.createProof(
     CreateProofRequest.fromPartial({
-      itemId: insertResponse.itemId,
-      revealDocumentJson: JSON.stringify(vaccineCertFramePath),
+      itemId: itemId.itemId,
+      revealDocumentJson: proofRequestJson,
     })
   );
   // }
-  console.log(`Proof=${proofResponse.proofDocumentJson}`);
 
   // verifyCredential() {
   // The airline verifies the credential
   credentialService.options.authToken = airline;
   const verifyResponse = await credentialService.verifyProof(
     VerifyProofRequest.fromPartial({
-      proofDocumentJson: proofResponse.proofDocumentJson,
+      proofDocumentJson: proof.proofDocumentJson,
     })
   );
   // }
-  console.log(`Verification result=${verifyResponse.isValid}`);
 
-  if (!verifyResponse.isValid) throw new Error("Verification should be true!");
+  return verifyResponse;
 }
 
 describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
-  it("should run the demo without raising exceptions", async () => {
-    expect(async () => {
-      await vaccineDemo();
-    }).not.toThrow();
+  it("Runs", async () => {
+    let response = await vaccineDemo();
+    expect(response.isValid).toBeTrue();
   });
 });

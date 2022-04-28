@@ -23,18 +23,18 @@ import {
   UnregisterVerifierRequest,
   UnregisterVerifierResponse,
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
-import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
+
+import type {Client as ServerClient} from "nice-grpc";
+import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
-  client: Client<typeof TrustRegistryDefinition>;
+  client: ServerClient<typeof TrustRegistryDefinition> | BrowserClient<typeof TrustRegistryDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(
-      TrustRegistryDefinition,
-      createChannel(this.address, this.transportFactory())
+    this.client = this.createClient(
+      TrustRegistryDefinition
     );
   }
 
@@ -99,9 +99,7 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public async searchRegistry(
-    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({
-      query: "SELECT * FROM c",
-    })
+    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({query: "SELECT * FROM c"})
   ): Promise<SearchRegistryResponse> {
     return this.client.searchRegistry(request, {
       metadata: await this.getMetadata(

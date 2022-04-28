@@ -2,6 +2,9 @@ lib/
 
 src/proto/**/*.js
 src/proto/**/*.d.ts
+src/proto/**/*ServiceClientPb.ts
 !src/proto/index.d.ts
 
 protoc-gen-grpc-web
+test/build/*.bundle.js
+test/build/*.wasm

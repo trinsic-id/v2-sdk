@@ -13,19 +13,17 @@ import {
   SearchCredentialTemplatesResponse,
   ServiceOptions,
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
-import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
+
+import type {Client as ServerClient} from "nice-grpc";
+import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class TemplateService extends ServiceBase {
-  client: Client<typeof CredentialTemplatesDefinition>;
+  client: ServerClient<typeof CredentialTemplatesDefinition> | BrowserClient<typeof CredentialTemplatesDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(
-      CredentialTemplatesDefinition,
-      createChannel(this.address, this.transportFactory())
-    );
+    this.client = this.createClient(CredentialTemplatesDefinition)
   }
 
   public async createCredentialTemplate(

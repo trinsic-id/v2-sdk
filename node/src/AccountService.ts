@@ -19,6 +19,7 @@ import {
   Oberon,
   UnBlindOberonTokenRequest,
 } from "@trinsic/okapi";
+import base64url from "base64url";
 
 export class AccountService extends ServiceBase {
   client: Client<typeof AccountDefinition>;
@@ -53,9 +54,7 @@ export class AccountService extends ServiceBase {
       enabled: true,
       method: ConfirmationMethod.Other,
     });
-    return Buffer.from(AccountProfile.encode(cloned).finish()).toString(
-      "base64url"
-    );
+    return base64url(Buffer.from(AccountProfile.encode(cloned).finish()));
   }
 
   /**
@@ -79,16 +78,14 @@ export class AccountService extends ServiceBase {
       enabled: false,
       method: ConfirmationMethod.None,
     });
-    return Buffer.from(AccountProfile.encode(cloned).finish()).toString(
-      "base64url"
-    );
+    return base64url(Buffer.from(AccountProfile.encode(cloned).finish()));
   }
 
   private static convertToProfile(
     profile: string | AccountProfile
   ): AccountProfile {
     if (typeof profile == "string") {
-      return AccountProfile.decode(Buffer.from(profile, "base64url"));
+      return AccountProfile.decode(base64url.toBuffer(profile));
     }
     return profile;
   }
@@ -107,9 +104,9 @@ export class AccountService extends ServiceBase {
     request.ecosystemId = request.ecosystemId || this.options.defaultEcosystem;
 
     let response = await this.client.signIn(request);
-    const authToken = Buffer.from(
-      AccountProfile.encode(response.profile!).finish()
-    ).toString("base64url");
+    const authToken = base64url(
+      Buffer.from(AccountProfile.encode(response.profile!).finish())
+    );
 
     // set the auth token as active for the current service instance
     this.options.authToken = authToken;

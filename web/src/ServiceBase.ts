@@ -1,24 +1,30 @@
+import { AccountProfile, Nonce, ServiceOptions } from "./proto/";
 import {
   Blake3HashRequest,
   CreateOberonProofRequest,
   Hashing,
   Oberon,
 } from "@trinsic/okapi";
-import { Metadata } from "nice-grpc-web";
-import { Nonce, AccountProfile, ServiceOptions } from "./proto";
+import { Metadata } from "nice-grpc-common";
 import { fromUint8Array, toUint8Array } from "js-base64";
 import { grpc } from "@improbable-eng/grpc-web";
-import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
+import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
+import type { CompatServiceDefinition as ServerServiceDefinition } from "nice-grpc/lib/service-definitions";
+import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
+import type { Client as ServerClient } from "nice-grpc";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
   address: string;
 
-  protected constructor(options: ServiceOptions = ServiceOptions.fromPartial({})) {
+  protected constructor(
+    options: ServiceOptions = ServiceOptions.fromPartial({})
+  ) {
     options.serverEndpoint = options.serverEndpoint || "prod.trinsic.cloud";
     options.serverPort = options.serverPort || 443;
     options.serverUseTls =
-      options.serverPort == 443 ? true : options.serverUseTls;
+      options.serverPort == 443 ? true : options.serverUseTls || false;
     options.defaultEcosystem = options.defaultEcosystem || "default";
 
     this.options = options;
@@ -34,6 +40,11 @@ export default abstract class ServiceBase {
     }
 
     const profile = AccountProfile.decode(toUint8Array(this.options.authToken));
+    if (profile.protection?.enabled) {
+      throw new Error(
+        "profile is protected; you must use security code to remove the protection first"
+      );
+    }
 
     const requestData = request;
     let requestHash = new Uint8Array();
@@ -68,13 +79,44 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
+  public static isNode(): boolean {
+    return (
+      typeof process !== "undefined" &&
+      typeof process.release !== "undefined" &&
+      process.release.name === "node"
+    );
+  }
+
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
     try {
-      if ((typeof process !== 'undefined') && (process.release.name === 'node')) {
+      if (ServiceBase.isNode()) {
         return NodeHttpTransport();
       }
     } catch {}
     return undefined;
+  }
+
+  protected createClient<
+    ServerService extends ServerServiceDefinition,
+    ClientService extends ClientServiceDefinition
+  >(
+    definition: ServerService | ClientService
+  ): ServerClient<ServerService> | BrowserClient<ClientService> {
+    // TODO - Support selecting the alternative?
+    // TODO - Allow NodeHttpTransport if needed
+    if (!ServiceBase.isNode()) {
+      let clientMod = require("nice-grpc-web");
+      return clientMod.createClient(
+        definition as ClientService,
+        clientMod.createChannel(this.address, this.transportFactory())
+      );
+    } else {
+      let serverMod = require("nice-grpc");
+      return serverMod.createClient(
+        definition as ServerService,
+        serverMod.createChannel(this.address)
+      );
+    }
   }
 }

@@ -1,21 +1,26 @@
 import {
   AccountService,
-  CredentialService,
-  WalletService,
-  TemplateService,
   CreateCredentialTemplateRequest,
-  TemplateField,
-  FieldType,
-  IssueFromTemplateRequest,
-  InsertItemRequest,
   CreateProofRequest,
+  CredentialService,
+  FieldType,
+  InsertItemRequest,
+  IssueFromTemplateRequest,
+  TemplateField,
+  TemplateService,
   VerifyProofRequest,
+  WalletService,
 } from "../src";
-// @ts-ignore
-import templateCertFrame from "./data/credential-template-frame.json";
-import { getTestServerOptions } from "./env";
+import { getTemplateCertFrameJSON } from "./TestData";
 import "jasmine";
 
+import {getTestServerOptions} from "./env";
+
+// require("dotenv").config();
+
+const options = getTestServerOptions();
+
+// defineTemplate() {
 const credentialTemplateName = "My First Credential Template";
 const nameField = TemplateField.fromPartial({
   description: "The name of the person",
@@ -40,24 +45,24 @@ const isVaccinated = TemplateField.fromPartial({
   description: "Whether or not the person has been vaccinated",
   optional: false,
 });
+// }
 
-let options = getTestServerOptions()
-
-describe("Demo: Credential Templates", () => {
+describe("CredentialTemplatesService Unit Tests", () => {
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
   });
-  it("should run create credential templates", async () => {
+
+  it("Create Credential Template", async () => {
     let response = await createCredentialTemplateTest();
 
     expect(response.data?.name).toBe(credentialTemplateName);
 
-    const fieldsMap = response.data?.fields;
-    expect(fieldsMap!["name"]).toEqual(nameField);
-    expect(fieldsMap!["numberOfBags"]).toEqual(numberOfBags);
-    expect(fieldsMap!["dateOfBirth"]).toEqual(dateOfBirth);
-    expect(fieldsMap!["vaccinated"]).toEqual(isVaccinated);
+    const fieldsMap = response.data?.fields!;
+    expect(fieldsMap["name"]).toEqual(nameField);
+    expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);
+    expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
+    expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
   });
 
   it("Issue Credential From Template", async () => {
@@ -65,8 +70,8 @@ describe("Demo: Credential Templates", () => {
       (await issueCredentialFromTemplate()).documentJson
     );
 
-    expect(response?.issuer).not.toBeNull();
-    expect(response?.id).not.toBeNull();
+    expect(response?.issuer !== null);
+    expect(response?.id !== null);
     expect(response?.credentialSubject?.name).toBe("Alice");
     expect(response?.credentialSubject?.numberOfBags).toBe(2);
     expect(
@@ -77,11 +82,12 @@ describe("Demo: Credential Templates", () => {
 
   it("Verify Credential Issued from Template", async () => {
     let response = await verifyCredential();
-    expect(response).toBeTruthy();
+    expect(response).not.toBeNull();
   });
 });
 
 async function createCredentialTemplateTest() {
+  // createTemplate() {
   const templateService = new TemplateService(options);
 
   let request = CreateCredentialTemplateRequest.fromPartial({
@@ -95,6 +101,7 @@ async function createCredentialTemplateTest() {
   });
 
   let response = await templateService.createCredentialTemplate(request);
+  // }
 
   return response;
 }
@@ -103,6 +110,7 @@ async function issueCredentialFromTemplate() {
   let templateResponse = await createCredentialTemplateTest();
 
   let service = new CredentialService(options);
+  // issueFromTemplate() {
   let request = IssueFromTemplateRequest.fromPartial({
     templateId: templateResponse?.data?.id ?? "",
     valuesJson: JSON.stringify({
@@ -114,6 +122,7 @@ async function issueCredentialFromTemplate() {
   });
 
   let response = await service.issueFromTemplate(request);
+  // }
 
   return response;
 }
@@ -134,9 +143,10 @@ async function verifyCredential() {
   );
 
   credentialService.options.authToken = allison;
+  const proofRequestJson = getTemplateCertFrameJSON();
   const proofRequest = CreateProofRequest.fromPartial({
     itemId: insertItemResponse.itemId,
-    revealDocumentJson: JSON.stringify(templateCertFrame),
+    revealDocumentJson: proofRequestJson,
   });
   const proof = await credentialService.createProof(proofRequest);
 

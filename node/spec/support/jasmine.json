@@ -1,7 +1,8 @@
 {
   "spec_dir": "./test",
-  "spec_files": ["**/*.test.ts", "**/*.spec.ts"],
-  "helpers": ["./test/helpers/jasmine-helper.ts"],
+  "spec_files": [
+    "**/*.spec.ts"
+  ],
   "env": {
     "stopSpecOnExpectationFailure": false,
     "random": true

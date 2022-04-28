@@ -1,5 +1,4 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto/";
-import base64url from "base64url";
 import {
   Blake3HashRequest,
   CreateOberonProofRequest,
@@ -7,11 +6,9 @@ import {
   Oberon,
 } from "@trinsic/okapi";
 import { ChannelCredentials, Metadata } from "nice-grpc";
-import * as _m0 from "protobufjs/minimal";
-
-type MessageLike = {
-  encode(_: MessageLike, writer: _m0.Writer): _m0.Writer;
-};
+import { fromUint8Array, toUint8Array } from "js-base64";
+import { grpc } from "@improbable-eng/grpc-web";
+import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
@@ -24,47 +21,41 @@ export default abstract class ServiceBase {
     options.serverEndpoint = options.serverEndpoint || "prod.trinsic.cloud";
     options.serverPort = options.serverPort || 443;
     options.serverUseTls =
-      options.serverPort == 443 ? true : options.serverUseTls || false;
+    options.serverPort == 443 ? true : options.serverUseTls || false;
     options.defaultEcosystem = options.defaultEcosystem || "default";
 
     this.options = options;
 
-    this.address = `${this.options.serverEndpoint}:${this.options.serverPort}`;
+    this.address = `${this.options.serverUseTls ? "https" : "http"}://${this.options.serverEndpoint}:${this.options.serverPort}`;
     this.channelCredentials = this.options.serverUseTls
       ? ChannelCredentials.createSsl()
       : ChannelCredentials.createInsecure();
   }
 
-  async getMetadata(requestData: Uint8Array): Promise<Metadata> {
+  async getMetadata(request: Uint8Array): Promise<Metadata> {
     if (!this.options.authToken) {
       throw new Error("auth token must be set");
     }
 
-    const profile = AccountProfile.decode(
-      Buffer.from(this.options.authToken, "base64url")
-    );
-
+    const profile = AccountProfile.decode(toUint8Array(this.options.authToken));
     if (profile.protection?.enabled) {
       throw new Error(
         "profile is protected; you must use security code to remove the protection first"
       );
     }
 
-    // @ts-ignore
-    let requestHash: Buffer | string = Buffer.from("");
+    const requestData = request;
+    let requestHash = new Uint8Array();
 
     if (requestData.length > 0) {
       let hashResponse = await Hashing.blake3Hash(
         new Blake3HashRequest().setData(requestData)
       );
-      requestHash = Buffer.from(hashResponse.getDigest_asU8());
+      requestHash = hashResponse.getDigest_asU8();
     }
     const timestamp = Date.now();
 
-    let nonce = Nonce.fromPartial({
-      requestHash: requestHash,
-      timestamp: timestamp,
-    });
+    let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
     let proof = await Oberon.createProof(
       new CreateOberonProofRequest()
@@ -78,11 +69,21 @@ export default abstract class ServiceBase {
       "authorization",
       `Oberon ` +
         `ver=1,` +
-        `proof=${base64url.encode(Buffer.from(proof.getProof_asU8()))},` +
-        `data=${base64url.encode(Buffer.from(profile.authData))},` +
-        `nonce=${base64url.encode(Buffer.from(Nonce.encode(nonce).finish()))}`
+        `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
+        `data=${fromUint8Array(profile.authData, true)},` +
+        `nonce=${fromUint8Array(Nonce.encode(nonce).finish(), true)}`
     );
 
     return metadata;
+  }
+
+  protected transportFactory(): grpc.TransportFactory | undefined {
+    // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
+    try {
+      if ((typeof process !== 'undefined') && (process.release.name === 'node')) {
+        return NodeHttpTransport();
+      }
+    } catch {}
+    return undefined;
   }
 }

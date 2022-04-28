@@ -13,8 +13,8 @@ import {
 } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import { getTestServerOptions } from "./env";
-import "jasmine";
+import { options } from "./env";
+
 
 const credentialTemplateName = "My First Credential Template";
 const nameField = TemplateField.fromPartial({
@@ -40,8 +40,6 @@ const isVaccinated = TemplateField.fromPartial({
   description: "Whether or not the person has been vaccinated",
   optional: false,
 });
-
-let options = getTestServerOptions()
 
 describe("Demo: Credential Templates", () => {
   beforeAll(async () => {
@@ -73,6 +71,7 @@ describe("Demo: Credential Templates", () => {
       new Date(response?.credentialSubject?.dateOfBirth).toISOString()
     ).toBe(new Date("1/1/2000").toISOString());
     expect(response?.credentialSubject?.vaccinated).toBe(true);
+
   });
 
   it("Verify Credential Issued from Template", async () => {

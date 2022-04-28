@@ -1,8 +1,8 @@
-# Trinsic SDK for Browsers
+# Trinsic SDK for Browsers and Node
 
 ## Installation
 ```bash
-npm install @trinsic/trinsic-web
+npm install @trinsic/trinsic
 ```
 
 ## Documentation

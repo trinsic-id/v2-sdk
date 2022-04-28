@@ -24,11 +24,6 @@ const config: Configuration = {
       buffer: require.resolve("buffer"),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
-      http2: require.resolve("http2-client"),
-      path: require.resolve("path-browserify"),
-      stream: require.resolve("stream-browserify"),
-      os: require.resolve("os-browserify/browser"),
-      zlib: require.resolve("browserify-zlib"),
     },
   },
   output: {

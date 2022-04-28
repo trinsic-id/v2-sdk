@@ -10,6 +10,42 @@ export enum FieldType {
   UNRECOGNIZED = -1,
 }
 
+export function fieldTypeFromJSON(object: any): FieldType {
+  switch (object) {
+    case 0:
+    case "STRING":
+      return FieldType.STRING;
+    case 1:
+    case "NUMBER":
+      return FieldType.NUMBER;
+    case 2:
+    case "BOOL":
+      return FieldType.BOOL;
+    case 4:
+    case "DATETIME":
+      return FieldType.DATETIME;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return FieldType.UNRECOGNIZED;
+  }
+}
+
+export function fieldTypeToJSON(object: FieldType): string {
+  switch (object) {
+    case FieldType.STRING:
+      return "STRING";
+    case FieldType.NUMBER:
+      return "NUMBER";
+    case FieldType.BOOL:
+      return "BOOL";
+    case FieldType.DATETIME:
+      return "DATETIME";
+    default:
+      return "UNKNOWN";
+  }
+}
+
 export interface GetCredentialTemplateRequest {
   id: string;
 }
@@ -139,6 +175,18 @@ export const GetCredentialTemplateRequest = {
     return message;
   },
 
+  fromJSON(object: any): GetCredentialTemplateRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+    };
+  },
+
+  toJSON(message: GetCredentialTemplateRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<GetCredentialTemplateRequest>
   ): GetCredentialTemplateRequest {
@@ -182,6 +230,23 @@ export const GetCredentialTemplateResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GetCredentialTemplateResponse {
+    return {
+      template: isSet(object.template)
+        ? TemplateData.fromJSON(object.template)
+        : undefined,
+    };
+  },
+
+  toJSON(message: GetCredentialTemplateResponse): unknown {
+    const obj: any = {};
+    message.template !== undefined &&
+      (obj.template = message.template
+        ? TemplateData.toJSON(message.template)
+        : undefined);
+    return obj;
   },
 
   fromPartial(
@@ -236,6 +301,23 @@ export const SearchCredentialTemplatesRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): SearchCredentialTemplatesRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchCredentialTemplatesRequest): unknown {
+    const obj: any = {};
+    message.query !== undefined && (obj.query = message.query);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
   },
 
   fromPartial(
@@ -302,6 +384,27 @@ export const SearchCredentialTemplatesResponse = {
     return message;
   },
 
+  fromJSON(object: any): SearchCredentialTemplatesResponse {
+    return {
+      itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
+      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      count: isSet(object.count) ? Number(object.count) : 0,
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchCredentialTemplatesResponse): unknown {
+    const obj: any = {};
+    message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
+    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<SearchCredentialTemplatesResponse>
   ): SearchCredentialTemplatesResponse {
@@ -354,6 +457,23 @@ export const ListCredentialTemplatesRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): ListCredentialTemplatesRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: ListCredentialTemplatesRequest): unknown {
+    const obj: any = {};
+    message.query !== undefined && (obj.query = message.query);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
   },
 
   fromPartial(
@@ -414,6 +534,36 @@ export const ListCredentialTemplatesResponse = {
     return message;
   },
 
+  fromJSON(object: any): ListCredentialTemplatesResponse {
+    return {
+      templates: Array.isArray(object?.templates)
+        ? object.templates.map((e: any) => TemplateData.fromJSON(e))
+        : [],
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: ListCredentialTemplatesResponse): unknown {
+    const obj: any = {};
+    if (message.templates) {
+      obj.templates = message.templates.map((e) =>
+        e ? TemplateData.toJSON(e) : undefined
+      );
+    } else {
+      obj.templates = [];
+    }
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<ListCredentialTemplatesResponse>
   ): ListCredentialTemplatesResponse {
@@ -462,6 +612,18 @@ export const DeleteCredentialTemplateRequest = {
     return message;
   },
 
+  fromJSON(object: any): DeleteCredentialTemplateRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+    };
+  },
+
+  toJSON(message: DeleteCredentialTemplateRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<DeleteCredentialTemplateRequest>
   ): DeleteCredentialTemplateRequest {
@@ -499,6 +661,15 @@ export const DeleteCredentialTemplateResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): DeleteCredentialTemplateResponse {
+    return {};
+  },
+
+  toJSON(_: DeleteCredentialTemplateResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -566,6 +737,37 @@ export const CreateCredentialTemplateRequest = {
     return message;
   },
 
+  fromJSON(object: any): CreateCredentialTemplateRequest {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{
+            [key: string]: TemplateField;
+          }>((acc, [key, value]) => {
+            acc[key] = TemplateField.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+      allowAdditionalFields: isSet(object.allowAdditionalFields)
+        ? Boolean(object.allowAdditionalFields)
+        : false,
+    };
+  },
+
+  toJSON(message: CreateCredentialTemplateRequest): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    obj.fields = {};
+    if (message.fields) {
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = TemplateField.toJSON(v);
+      });
+    }
+    message.allowAdditionalFields !== undefined &&
+      (obj.allowAdditionalFields = message.allowAdditionalFields);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CreateCredentialTemplateRequest>
   ): CreateCredentialTemplateRequest {
@@ -626,6 +828,25 @@ export const CreateCredentialTemplateRequest_FieldsEntry = {
     return message;
   },
 
+  fromJSON(object: any): CreateCredentialTemplateRequest_FieldsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? TemplateField.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CreateCredentialTemplateRequest_FieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? TemplateField.toJSON(message.value)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CreateCredentialTemplateRequest_FieldsEntry>
   ): CreateCredentialTemplateRequest_FieldsEntry {
@@ -673,6 +894,19 @@ export const CreateCredentialTemplateResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): CreateCredentialTemplateResponse {
+    return {
+      data: isSet(object.data) ? TemplateData.fromJSON(object.data) : undefined,
+    };
+  },
+
+  toJSON(message: CreateCredentialTemplateResponse): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = message.data ? TemplateData.toJSON(message.data) : undefined);
+    return obj;
   },
 
   fromPartial(
@@ -732,6 +966,23 @@ export const TemplateField = {
     return message;
   },
 
+  fromJSON(object: any): TemplateField {
+    return {
+      description: isSet(object.description) ? String(object.description) : "",
+      optional: isSet(object.optional) ? Boolean(object.optional) : false,
+      type: isSet(object.type) ? fieldTypeFromJSON(object.type) : 0,
+    };
+  },
+
+  toJSON(message: TemplateField): unknown {
+    const obj: any = {};
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.optional !== undefined && (obj.optional = message.optional);
+    message.type !== undefined && (obj.type = fieldTypeToJSON(message.type));
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<TemplateField>): TemplateField {
     const message = createBaseTemplateField();
     message.description = object.description ?? "";
@@ -774,6 +1025,18 @@ export const GetTemplateRequest = {
     return message;
   },
 
+  fromJSON(object: any): GetTemplateRequest {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+    };
+  },
+
+  toJSON(message: GetTemplateRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<GetTemplateRequest>): GetTemplateRequest {
     const message = createBaseGetTemplateRequest();
     message.id = object.id ?? "";
@@ -812,6 +1075,19 @@ export const GetTemplateResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GetTemplateResponse {
+    return {
+      data: isSet(object.data) ? TemplateData.fromJSON(object.data) : undefined,
+    };
+  },
+
+  toJSON(message: GetTemplateResponse): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = message.data ? TemplateData.toJSON(message.data) : undefined);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<GetTemplateResponse>): GetTemplateResponse {
@@ -854,6 +1130,15 @@ export const ListTemplatesRequest = {
     return message;
   },
 
+  fromJSON(_: any): ListTemplatesRequest {
+    return {};
+  },
+
+  toJSON(_: ListTemplatesRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
   fromPartial(_: DeepPartial<ListTemplatesRequest>): ListTemplatesRequest {
     const message = createBaseListTemplatesRequest();
     return message;
@@ -894,6 +1179,26 @@ export const ListTemplatesResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): ListTemplatesResponse {
+    return {
+      templates: Array.isArray(object?.templates)
+        ? object.templates.map((e: any) => TemplateData.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: ListTemplatesResponse): unknown {
+    const obj: any = {};
+    if (message.templates) {
+      obj.templates = message.templates.map((e) =>
+        e ? TemplateData.toJSON(e) : undefined
+      );
+    } else {
+      obj.templates = [];
+    }
+    return obj;
   },
 
   fromPartial(
@@ -1013,6 +1318,53 @@ export const TemplateData = {
     return message;
   },
 
+  fromJSON(object: any): TemplateData {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      version: isSet(object.version) ? Number(object.version) : 0,
+      fields: isObject(object.fields)
+        ? Object.entries(object.fields).reduce<{
+            [key: string]: TemplateField;
+          }>((acc, [key, value]) => {
+            acc[key] = TemplateField.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+      allowAdditionalFields: isSet(object.allowAdditionalFields)
+        ? Boolean(object.allowAdditionalFields)
+        : false,
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
+      contextUri: isSet(object.contextUri) ? String(object.contextUri) : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      type: isSet(object.type) ? String(object.type) : "",
+      createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
+    };
+  },
+
+  toJSON(message: TemplateData): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.name !== undefined && (obj.name = message.name);
+    message.version !== undefined &&
+      (obj.version = Math.round(message.version));
+    obj.fields = {};
+    if (message.fields) {
+      Object.entries(message.fields).forEach(([k, v]) => {
+        obj.fields[k] = TemplateField.toJSON(v);
+      });
+    }
+    message.allowAdditionalFields !== undefined &&
+      (obj.allowAdditionalFields = message.allowAdditionalFields);
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    message.contextUri !== undefined && (obj.contextUri = message.contextUri);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    message.type !== undefined && (obj.type = message.type);
+    message.createdBy !== undefined && (obj.createdBy = message.createdBy);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<TemplateData>): TemplateData {
     const message = createBaseTemplateData();
     message.id = object.id ?? "";
@@ -1076,6 +1428,25 @@ export const TemplateData_FieldsEntry = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): TemplateData_FieldsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? TemplateField.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: TemplateData_FieldsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? TemplateField.toJSON(message.value)
+        : undefined);
+    return obj;
   },
 
   fromPartial(
@@ -1160,4 +1531,12 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isObject(value: any): boolean {
+  return typeof value === "object" && value !== null;
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }
