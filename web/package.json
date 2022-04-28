@@ -8,7 +8,7 @@
     "lib/*"
   ],
   "scripts": {
-    "build": "npm run build:proto && npm run build:typescript && npm run build:copy",
+    "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "tsc",
     "test:typescript": "ts-node ./node_modules/jasmine/bin/jasmine --config=./spec/support/jasmine.json",
