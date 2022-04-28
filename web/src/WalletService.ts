@@ -12,12 +12,11 @@ import {
   UniversalWalletDefinition,
 } from "./proto";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 
 export class WalletService extends ServiceBase {
-  client: ServerClient<typeof UniversalWalletDefinition> | BrowserClient<typeof UniversalWalletDefinition>;
+  client: BrowserClient<typeof UniversalWalletDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);

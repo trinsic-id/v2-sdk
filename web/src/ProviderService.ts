@@ -10,11 +10,10 @@ import {
   ServiceOptions
 } from "./proto";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class ProviderService extends ServiceBase {
-  client: ServerClient<typeof ProviderDefinition> | BrowserClient<typeof ProviderDefinition>;
+  client: BrowserClient<typeof ProviderDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);

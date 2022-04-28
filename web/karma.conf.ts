@@ -39,7 +39,7 @@ export default (config: Config): void => {
       "test/**/*.spec.ts": ["webpack"],
     },
     // "Chrome", "ChromeHeadless"
-    browsers: ["ChromeHeadless"],
+    browsers: ["Chrome"],
 
     webpackMiddleware: {
       stats: "errors-only",

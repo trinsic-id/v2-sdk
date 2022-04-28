@@ -19,11 +19,10 @@ import {
   VerifyProofResponse,
 } from "./proto";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class CredentialService extends ServiceBase {
-  client: ServerClient<typeof VerifiableCredentialDefinition> | BrowserClient<typeof VerifiableCredentialDefinition>;
+  client: BrowserClient<typeof VerifiableCredentialDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);

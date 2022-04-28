@@ -29,6 +29,7 @@ const config: Configuration = {
       stream: require.resolve("stream-browserify"),
       os: require.resolve("os-browserify/browser"),
       zlib: require.resolve("browserify-zlib"),
+      fs: require.resolve("browserify-fs")
     },
   },
   output: {

@@ -14,11 +14,10 @@ import {
   ServiceOptions,
 } from "./proto";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class TemplateService extends ServiceBase {
-  client: ServerClient<typeof CredentialTemplatesDefinition> | BrowserClient<typeof CredentialTemplatesDefinition>;
+  client: BrowserClient<typeof CredentialTemplatesDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);

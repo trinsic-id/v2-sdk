@@ -20,11 +20,10 @@ import {
 } from "@trinsic/okapi";
 import base64url from "base64url";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class AccountService extends ServiceBase {
-  client: ServerClient<typeof AccountDefinition> | BrowserClient<typeof AccountDefinition>;
+  client: BrowserClient<typeof AccountDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);

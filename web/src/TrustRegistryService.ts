@@ -24,11 +24,10 @@ import {
   UnregisterVerifierResponse,
 } from "./proto";
 
-import type {Client as ServerClient} from "nice-grpc";
 import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
-  client: ServerClient<typeof TrustRegistryDefinition> | BrowserClient<typeof TrustRegistryDefinition>;
+  client: BrowserClient<typeof TrustRegistryDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
