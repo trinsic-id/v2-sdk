@@ -1,28 +1,34 @@
-import test from "ava"
-import {AccountService, CreateEcosystemRequest, ProviderService, SignInRequest} from "../src";
-import {getTestServerOptions} from "./TestData";
+import test from "ava";
+import {
+  AccountService,
+  CreateEcosystemRequest,
+  ProviderService,
+} from "../src";
+import { getTestServerOptions } from "./TestData";
 
 require("dotenv").config();
 
 const options = getTestServerOptions();
 
-test.before(async t => {
-    let service = new AccountService(options);
-    let authToken = await service.signIn(new SignInRequest());
+test.before(async (t) => {
+  let service = new AccountService(options);
+  let authToken = await service.signIn();
 
-    options.setAuthToken(authToken);
+  options.authToken = authToken;
 });
 
 test("Demo: Ecosystem Tests", async (t) => {
-    let providerService = new ProviderService(options);
-    // createEcosystem() {
-    let actualCreate = await providerService.createEcosystem(
-        new CreateEcosystemRequest()
-            .setDescription("Test ecosystem from Node")
-            .setUri("https://example.com"));
-    // }
+  let providerService = new ProviderService(options);
+  // createEcosystem() {
+  let actualCreate = await providerService.createEcosystem(
+    CreateEcosystemRequest.fromPartial({
+      description: "Test ecosystem from Node",
+      uri: "https://example.com",
+    })
+  );
+  // }
 
-    t.not(actualCreate, null);
-    t.not(actualCreate.getEcosystem(), null);
-    t.true(actualCreate.getEcosystem()!.getId().startsWith("urn:trinsic:ecosystems:"));
+  t.not(actualCreate, null);
+  t.not(actualCreate.ecosystem, null);
+  t.true(actualCreate.ecosystem!.id.startsWith("urn:trinsic:ecosystems:"));
 });

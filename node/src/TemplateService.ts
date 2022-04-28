@@ -1,8 +1,9 @@
 import ServiceBase from "./ServiceBase";
 import {
+  AccountDefinition,
   CreateCredentialTemplateRequest,
   CreateCredentialTemplateResponse,
-  CredentialTemplatesClient,
+  CredentialTemplatesDefinition,
   DeleteCredentialTemplateRequest,
   DeleteCredentialTemplateResponse,
   GetCredentialTemplateRequest,
@@ -13,111 +14,67 @@ import {
   SearchCredentialTemplatesResponse,
   ServiceOptions,
 } from "./proto";
+import { Client, createChannel, createClient } from "nice-grpc";
 
 export class TemplateService extends ServiceBase {
-  client: CredentialTemplatesClient;
+  client: Client<typeof CredentialTemplatesDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = new CredentialTemplatesClient(
-      this.address,
-      this.channelCredentials
+    this.client = createClient(
+      CredentialTemplatesDefinition,
+      createChannel(this.address, this.channelCredentials)
     );
   }
 
-  public createCredentialTemplate(
+  public async createCredentialTemplate(
     request: CreateCredentialTemplateRequest
   ): Promise<CreateCredentialTemplateResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.create(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.create(request, {
+      metadata: await this.getMetadata(
+        CreateCredentialTemplateRequest.encode(request).finish()
+      ),
     });
   }
 
-  public getCredentialTemplate(
+  public async getCredentialTemplate(
     request: GetCredentialTemplateRequest
   ): Promise<GetCredentialTemplateResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.get(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.get(request, {
+      metadata: await this.getMetadata(
+        GetCredentialTemplateRequest.encode(request).finish()
+      ),
     });
   }
 
-  public searchCredentialTemplate(
+  public async searchCredentialTemplate(
     request: SearchCredentialTemplatesRequest
   ): Promise<SearchCredentialTemplatesResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.search(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.search(request, {
+      metadata: await this.getMetadata(
+        SearchCredentialTemplatesRequest.encode(request).finish()
+      ),
     });
   }
 
-  public listCredentialTemplate(
+  public async listCredentialTemplate(
     request: ListCredentialTemplatesRequest
   ): Promise<ListCredentialTemplatesResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.list(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.list(request, {
+      metadata: await this.getMetadata(
+        ListCredentialTemplatesRequest.encode(request).finish()
+      ),
     });
   }
 
-  public deleteCredentialTemplate(
+  public async deleteCredentialTemplate(
     request: DeleteCredentialTemplateRequest
   ): Promise<DeleteCredentialTemplateResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.delete(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.delete(request, {
+      metadata: await this.getMetadata(
+        DeleteCredentialTemplateRequest.encode(request).finish()
+      ),
     });
   }
 }

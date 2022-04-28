@@ -1,19 +1,19 @@
 import ServiceBase from "./ServiceBase";
 import {
-  AccountClient,
+  AccountDefinition,
   AccountProfile,
   ConfirmationMethod,
   InfoRequest,
   InfoResponse,
   ListDevicesRequest,
   ListDevicesResponse,
-  ResponseStatus,
   RevokeDeviceRequest,
   RevokeDeviceResponse,
   ServiceOptions,
   SignInRequest,
   TokenProtection,
 } from "./proto";
+import { Client, createChannel, createClient } from "nice-grpc";
 import {
   BlindOberonTokenRequest,
   Oberon,
@@ -21,12 +21,15 @@ import {
 } from "@trinsic/okapi";
 
 export class AccountService extends ServiceBase {
-  client: AccountClient;
+  client: Client<typeof AccountDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = new AccountClient(this.address, this.channelCredentials);
+    this.client = createClient(
+      AccountDefinition,
+      createChannel(this.address, this.channelCredentials)
+    );
   }
 
   /**
@@ -40,19 +43,19 @@ export class AccountService extends ServiceBase {
   ): Promise<string> {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
-    let cloned = profile.clone();
+    let cloned = AccountProfile.fromPartial(profile);
     const request = new BlindOberonTokenRequest()
-      .setToken(cloned.getAuthToken())
+      .setToken(cloned.authToken)
       .setBlindingList([securityCode]);
     const result = await Oberon.blindToken(request);
-    cloned = cloned
-      .setAuthToken(result.getToken())
-      .setProtection(
-        new TokenProtection()
-          .setEnabled(true)
-          .setMethod(ConfirmationMethod.OTHER)
-      );
-    return Buffer.from(cloned.serializeBinary()).toString("base64url");
+    cloned.authToken = result.getToken_asU8();
+    cloned.protection = TokenProtection.fromPartial({
+      enabled: true,
+      method: ConfirmationMethod.Other,
+    });
+    return Buffer.from(AccountProfile.encode(cloned).finish()).toString(
+      "base64url"
+    );
   }
 
   /**
@@ -66,28 +69,26 @@ export class AccountService extends ServiceBase {
   ): Promise<string> {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
-    let cloned = profile.clone();
+    let cloned = AccountProfile.fromPartial(profile);
     const request = new UnBlindOberonTokenRequest()
-      .setToken(cloned.getAuthToken())
+      .setToken(cloned.authToken)
       .setBlindingList([securityCode]);
     const result = await Oberon.unblindToken(request);
-    cloned = cloned
-      .setAuthToken(result.getToken())
-      .setProtection(
-        new TokenProtection()
-          .setEnabled(false)
-          .setMethod(ConfirmationMethod.NONE)
-      );
-    return Buffer.from(cloned.serializeBinary()).toString("base64url");
+    cloned.authToken = result.getToken_asU8();
+    cloned.protection = TokenProtection.fromPartial({
+      enabled: false,
+      method: ConfirmationMethod.None,
+    });
+    return Buffer.from(AccountProfile.encode(cloned).finish()).toString(
+      "base64url"
+    );
   }
 
   private static convertToProfile(
     profile: string | AccountProfile
   ): AccountProfile {
     if (typeof profile == "string") {
-      return AccountProfile.deserializeBinary(
-        Buffer.from(profile, "base64url")
-      );
+      return AccountProfile.decode(Buffer.from(profile, "base64url"));
     }
     return profile;
   }
@@ -100,83 +101,46 @@ export class AccountService extends ServiceBase {
     }
   }
 
-  public signIn(request: SignInRequest): Promise<string> {
-    request.setEcosystemId(
-      request.getEcosystemId() || this.options.getDefaultEcosystem()
-    );
+  public async signIn(
+    request: SignInRequest = SignInRequest.fromPartial({})
+  ): Promise<string> {
+    request.ecosystemId = request.ecosystemId || this.options.defaultEcosystem;
 
-    return new Promise((resolve, reject) => {
-      this.client.signIn(request, (error, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          const authToken = Buffer.from(
-            response.getProfile()!.serializeBinary()
-          ).toString("base64url");
+    let response = await this.client.signIn(request);
+    const authToken = Buffer.from(
+      AccountProfile.encode(response.profile!).finish()
+    ).toString("base64url");
 
-          // set the auth token as active for the current service instance
-          this.options.setAuthToken(authToken);
+    // set the auth token as active for the current service instance
+    this.options.authToken = authToken;
+    return authToken;
+  }
 
-          resolve(authToken);
-        }
-      });
+  public async info(): Promise<InfoResponse> {
+    const request = InfoRequest.fromPartial({});
+
+    return this.client.info(request, {
+      metadata: await this.getMetadata(InfoRequest.encode(request).finish()),
     });
   }
 
-  public info(): Promise<InfoResponse> {
-    const request = new InfoRequest();
-
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.info(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
-    });
-  }
-
-  public listDevices(
+  public async listDevices(
     request: ListDevicesRequest
   ): Promise<ListDevicesResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.listDevices(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.listDevices(request, {
+      metadata: await this.getMetadata(
+        ListDevicesRequest.encode(request).finish()
+      ),
     });
   }
 
-  public revokeDevice(
+  public async revokeDevice(
     request: RevokeDeviceRequest
   ): Promise<RevokeDeviceResponse> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let metadata = await this.getMetadata(request);
-        this.client.revokeDevice(request, metadata, (error, response) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(response);
-          }
-        });
-      } catch (e) {
-        reject(e);
-      }
+    return this.client.revokeDevice(request, {
+      metadata: await this.getMetadata(
+        RevokeDeviceRequest.encode(request).finish()
+      ),
     });
   }
 }
