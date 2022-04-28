@@ -50,11 +50,8 @@ export function getTemplateCertFrameJSON(): string {
 export function getTestServerOptions(): ServiceOptions {
   const endpoint =
     process.env.TEST_SERVER_ENDPOINT || "staging-internal.trinsic.cloud";
-  const port = process.env.TEST_SERVER_PORT || "443";
+  const port: number = +(process.env.TEST_SERVER_PORT || "443")
   const useTls = (process.env.TEST_SERVER_USE_TLS || "true") != "false";
 
-  return new ServiceOptions()
-    .setServerEndpoint(endpoint)
-    .setServerPort(Number(port))
-    .setServerUseTls(useTls);
+  return ServiceOptions.fromPartial({serverEndpoint: endpoint, serverPort: port, serverUseTls: useTls})
 }

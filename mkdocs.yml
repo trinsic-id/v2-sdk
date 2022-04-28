@@ -55,6 +55,7 @@ theme:
     - navigation.instant
     - navigation.tracking
     - announce.dismiss
+    - navigation.tabs
     # - navigation.expand
     # - navigation.sections
   icon:
