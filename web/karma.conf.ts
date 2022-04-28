@@ -13,7 +13,7 @@ export default (config: Config): void => {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "./",
 
-    singleRun: true,  // run and exit for CI pipelines, lol
+    singleRun: false,  // run and exit for CI pipelines, lol
 
     client: {
       clearContext: false, // will show the results in browser once all the testcases are loaded

@@ -2,7 +2,7 @@ import { ServiceOptions } from "../src";
 
 function isNode(): boolean {
   let node = (typeof process !== 'undefined') && (typeof process.release !== 'undefined') && (process.release.name === 'node')
-  console.log("node running=",node)
+  // console.log("node running=",node)
   return node
 }
 
