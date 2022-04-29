@@ -12,7 +12,10 @@ import {
   TemplateService,
   WalletService,
 } from "../src";
-import {options} from "./env";
+import {getTestServerOptions} from "./env";
+
+
+let options = getTestServerOptions()
 
 
 let providerService: ProviderService;
@@ -20,6 +23,7 @@ let accountService: AccountService;
 let walletService: WalletService;
 let credentialService: CredentialService;
 let templateService: TemplateService;
+
 describe("wallet service tests", () => {
   beforeAll(async () => {
     accountService = new AccountService(options);
@@ -83,7 +87,7 @@ describe("wallet service tests", () => {
     });
     expect(verifyResponse).not.toBeNull();
     expect(verifyResponse.isValid).toBeTruthy();
-  }, 20000);
+  });
 
   it("Demo: template management and credential issuance from template", async () => {
     // create example template
@@ -127,5 +131,5 @@ describe("wallet service tests", () => {
     expect(issueResponse).not.toBeNull();
     expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
     expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
-  }, 20000);
+  });
 });

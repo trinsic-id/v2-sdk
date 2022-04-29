@@ -15,20 +15,19 @@ const config: Configuration = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
-      },
+      }
     ],
   },
   resolve: {
     extensions: [".ts", ".js"],
     fallback: {
-      buffer: require.resolve("buffer"),
-      http: require.resolve("stream-http"),
-      https: require.resolve("https-browserify"),
+      buffer: require.resolve("buffer")
     },
   },
   output: {
     path: resolve(__dirname, "./test/build"),
     filename: "[name].bundle.js",
+    libraryExport: 'default'
   },
   plugins: [
     new SourceMapDevToolPlugin({
@@ -40,11 +39,6 @@ const config: Configuration = {
       Buffer: ["buffer", "Buffer"],
     }),
   ],
-  // devServer: {
-  //   static: join(__dirname, "dist"),
-  //   compress: true,
-  //   port: 4000,
-  // },
   experiments: {
     asyncWebAssembly: true,
   },

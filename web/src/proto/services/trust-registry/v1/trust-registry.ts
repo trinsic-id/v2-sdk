@@ -15,6 +15,47 @@ export enum RegistrationStatus {
   UNRECOGNIZED = -1,
 }
 
+export function registrationStatusFromJSON(object: any): RegistrationStatus {
+  switch (object) {
+    case 0:
+    case "CURRENT":
+      return RegistrationStatus.CURRENT;
+    case 1:
+    case "EXPIRED":
+      return RegistrationStatus.EXPIRED;
+    case 2:
+    case "TERMINATED":
+      return RegistrationStatus.TERMINATED;
+    case 3:
+    case "REVOKED":
+      return RegistrationStatus.REVOKED;
+    case 10:
+    case "NOT_FOUND":
+      return RegistrationStatus.NOT_FOUND;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return RegistrationStatus.UNRECOGNIZED;
+  }
+}
+
+export function registrationStatusToJSON(object: RegistrationStatus): string {
+  switch (object) {
+    case RegistrationStatus.CURRENT:
+      return "CURRENT";
+    case RegistrationStatus.EXPIRED:
+      return "EXPIRED";
+    case RegistrationStatus.TERMINATED:
+      return "TERMINATED";
+    case RegistrationStatus.REVOKED:
+      return "REVOKED";
+    case RegistrationStatus.NOT_FOUND:
+      return "NOT_FOUND";
+    default:
+      return "UNKNOWN";
+  }
+}
+
 export interface AddFrameworkRequest {
   governanceFramework: GovernanceFramework | undefined;
 }
@@ -158,6 +199,23 @@ export const AddFrameworkRequest = {
     return message;
   },
 
+  fromJSON(object: any): AddFrameworkRequest {
+    return {
+      governanceFramework: isSet(object.governanceFramework)
+        ? GovernanceFramework.fromJSON(object.governanceFramework)
+        : undefined,
+    };
+  },
+
+  toJSON(message: AddFrameworkRequest): unknown {
+    const obj: any = {};
+    message.governanceFramework !== undefined &&
+      (obj.governanceFramework = message.governanceFramework
+        ? GovernanceFramework.toJSON(message.governanceFramework)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<AddFrameworkRequest>): AddFrameworkRequest {
     const message = createBaseAddFrameworkRequest();
     message.governanceFramework =
@@ -197,6 +255,15 @@ export const AddFrameworkResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): AddFrameworkResponse {
+    return {};
+  },
+
+  toJSON(_: AddFrameworkResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<AddFrameworkResponse>): AddFrameworkResponse {
@@ -247,6 +314,23 @@ export const RemoveFrameworkRequest = {
     return message;
   },
 
+  fromJSON(object: any): RemoveFrameworkRequest {
+    return {
+      governanceFramework: isSet(object.governanceFramework)
+        ? GovernanceFramework.fromJSON(object.governanceFramework)
+        : undefined,
+    };
+  },
+
+  toJSON(message: RemoveFrameworkRequest): unknown {
+    const obj: any = {};
+    message.governanceFramework !== undefined &&
+      (obj.governanceFramework = message.governanceFramework
+        ? GovernanceFramework.toJSON(message.governanceFramework)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<RemoveFrameworkRequest>
   ): RemoveFrameworkRequest {
@@ -288,6 +372,15 @@ export const RemoveFrameworkResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): RemoveFrameworkResponse {
+    return {};
+  },
+
+  toJSON(_: RemoveFrameworkResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -338,6 +431,23 @@ export const SearchRegistryRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): SearchRegistryRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchRegistryRequest): unknown {
+    const obj: any = {};
+    message.query !== undefined && (obj.query = message.query);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
   },
 
   fromPartial(
@@ -404,6 +514,27 @@ export const SearchRegistryResponse = {
     return message;
   },
 
+  fromJSON(object: any): SearchRegistryResponse {
+    return {
+      itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
+      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      count: isSet(object.count) ? Number(object.count) : 0,
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchRegistryResponse): unknown {
+    const obj: any = {};
+    message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
+    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<SearchRegistryResponse>
   ): SearchRegistryResponse {
@@ -459,6 +590,29 @@ export const GovernanceFramework = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GovernanceFramework {
+    return {
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+      trustRegistryUri: isSet(object.trustRegistryUri)
+        ? String(object.trustRegistryUri)
+        : "",
+      description: isSet(object.description) ? String(object.description) : "",
+    };
+  },
+
+  toJSON(message: GovernanceFramework): unknown {
+    const obj: any = {};
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.trustRegistryUri !== undefined &&
+      (obj.trustRegistryUri = message.trustRegistryUri);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<GovernanceFramework>): GovernanceFramework {
@@ -543,6 +697,40 @@ export const RegisterIssuerRequest = {
     return message;
   },
 
+  fromJSON(object: any): RegisterIssuerRequest {
+    return {
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      credentialTypeUri: isSet(object.credentialTypeUri)
+        ? String(object.credentialTypeUri)
+        : "",
+      validFromUtc: isSet(object.validFromUtc)
+        ? Number(object.validFromUtc)
+        : 0,
+      validUntilUtc: isSet(object.validUntilUtc)
+        ? Number(object.validUntilUtc)
+        : 0,
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+    };
+  },
+
+  toJSON(message: RegisterIssuerRequest): unknown {
+    const obj: any = {};
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.credentialTypeUri !== undefined &&
+      (obj.credentialTypeUri = message.credentialTypeUri);
+    message.validFromUtc !== undefined &&
+      (obj.validFromUtc = Math.round(message.validFromUtc));
+    message.validUntilUtc !== undefined &&
+      (obj.validUntilUtc = Math.round(message.validUntilUtc));
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<RegisterIssuerRequest>
   ): RegisterIssuerRequest {
@@ -585,6 +773,15 @@ export const RegisterIssuerResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): RegisterIssuerResponse {
+    return {};
+  },
+
+  toJSON(_: RegisterIssuerResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<RegisterIssuerResponse>): RegisterIssuerResponse {
@@ -666,6 +863,40 @@ export const RegisterVerifierRequest = {
     return message;
   },
 
+  fromJSON(object: any): RegisterVerifierRequest {
+    return {
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      presentationTypeUri: isSet(object.presentationTypeUri)
+        ? String(object.presentationTypeUri)
+        : "",
+      validFromUtc: isSet(object.validFromUtc)
+        ? Number(object.validFromUtc)
+        : 0,
+      validUntilUtc: isSet(object.validUntilUtc)
+        ? Number(object.validUntilUtc)
+        : 0,
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+    };
+  },
+
+  toJSON(message: RegisterVerifierRequest): unknown {
+    const obj: any = {};
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.presentationTypeUri !== undefined &&
+      (obj.presentationTypeUri = message.presentationTypeUri);
+    message.validFromUtc !== undefined &&
+      (obj.validFromUtc = Math.round(message.validFromUtc));
+    message.validUntilUtc !== undefined &&
+      (obj.validUntilUtc = Math.round(message.validUntilUtc));
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<RegisterVerifierRequest>
   ): RegisterVerifierRequest {
@@ -708,6 +939,15 @@ export const RegisterVerifierResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): RegisterVerifierResponse {
+    return {};
+  },
+
+  toJSON(_: RegisterVerifierResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -777,6 +1017,30 @@ export const UnregisterIssuerRequest = {
     return message;
   },
 
+  fromJSON(object: any): UnregisterIssuerRequest {
+    return {
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      credentialTypeUri: isSet(object.credentialTypeUri)
+        ? String(object.credentialTypeUri)
+        : "",
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+    };
+  },
+
+  toJSON(message: UnregisterIssuerRequest): unknown {
+    const obj: any = {};
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.credentialTypeUri !== undefined &&
+      (obj.credentialTypeUri = message.credentialTypeUri);
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<UnregisterIssuerRequest>
   ): UnregisterIssuerRequest {
@@ -817,6 +1081,15 @@ export const UnregisterIssuerResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): UnregisterIssuerResponse {
+    return {};
+  },
+
+  toJSON(_: UnregisterIssuerResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -886,6 +1159,30 @@ export const UnregisterVerifierRequest = {
     return message;
   },
 
+  fromJSON(object: any): UnregisterVerifierRequest {
+    return {
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      presentationTypeUri: isSet(object.presentationTypeUri)
+        ? String(object.presentationTypeUri)
+        : "",
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+    };
+  },
+
+  toJSON(message: UnregisterVerifierRequest): unknown {
+    const obj: any = {};
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.presentationTypeUri !== undefined &&
+      (obj.presentationTypeUri = message.presentationTypeUri);
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<UnregisterVerifierRequest>
   ): UnregisterVerifierRequest {
@@ -926,6 +1223,15 @@ export const UnregisterVerifierResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): UnregisterVerifierResponse {
+    return {};
+  },
+
+  toJSON(_: UnregisterVerifierResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(
@@ -995,6 +1301,30 @@ export const CheckIssuerStatusRequest = {
     return message;
   },
 
+  fromJSON(object: any): CheckIssuerStatusRequest {
+    return {
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      credentialTypeUri: isSet(object.credentialTypeUri)
+        ? String(object.credentialTypeUri)
+        : "",
+    };
+  },
+
+  toJSON(message: CheckIssuerStatusRequest): unknown {
+    const obj: any = {};
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.credentialTypeUri !== undefined &&
+      (obj.credentialTypeUri = message.credentialTypeUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CheckIssuerStatusRequest>
   ): CheckIssuerStatusRequest {
@@ -1041,6 +1371,21 @@ export const CheckIssuerStatusResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): CheckIssuerStatusResponse {
+    return {
+      status: isSet(object.status)
+        ? registrationStatusFromJSON(object.status)
+        : 0,
+    };
+  },
+
+  toJSON(message: CheckIssuerStatusResponse): unknown {
+    const obj: any = {};
+    message.status !== undefined &&
+      (obj.status = registrationStatusToJSON(message.status));
+    return obj;
   },
 
   fromPartial(
@@ -1111,6 +1456,30 @@ export const CheckVerifierStatusRequest = {
     return message;
   },
 
+  fromJSON(object: any): CheckVerifierStatusRequest {
+    return {
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
+      presentationTypeUri: isSet(object.presentationTypeUri)
+        ? String(object.presentationTypeUri)
+        : "",
+    };
+  },
+
+  toJSON(message: CheckVerifierStatusRequest): unknown {
+    const obj: any = {};
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
+    message.presentationTypeUri !== undefined &&
+      (obj.presentationTypeUri = message.presentationTypeUri);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CheckVerifierStatusRequest>
   ): CheckVerifierStatusRequest {
@@ -1159,6 +1528,21 @@ export const CheckVerifierStatusResponse = {
     return message;
   },
 
+  fromJSON(object: any): CheckVerifierStatusResponse {
+    return {
+      status: isSet(object.status)
+        ? registrationStatusFromJSON(object.status)
+        : 0,
+    };
+  },
+
+  toJSON(message: CheckVerifierStatusResponse): unknown {
+    const obj: any = {};
+    message.status !== undefined &&
+      (obj.status = registrationStatusToJSON(message.status));
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<CheckVerifierStatusResponse>
   ): CheckVerifierStatusResponse {
@@ -1205,6 +1589,23 @@ export const FetchDataRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): FetchDataRequest {
+    return {
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+      query: isSet(object.query) ? String(object.query) : "",
+    };
+  },
+
+  toJSON(message: FetchDataRequest): unknown {
+    const obj: any = {};
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.query !== undefined && (obj.query = message.query);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<FetchDataRequest>): FetchDataRequest {
@@ -1258,6 +1659,31 @@ export const FetchDataResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): FetchDataResponse {
+    return {
+      responseJson: isSet(object.responseJson)
+        ? String(object.responseJson)
+        : "",
+      hasMoreResults: isSet(object.hasMoreResults)
+        ? Boolean(object.hasMoreResults)
+        : false,
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: FetchDataResponse): unknown {
+    const obj: any = {};
+    message.responseJson !== undefined &&
+      (obj.responseJson = message.responseJson);
+    message.hasMoreResults !== undefined &&
+      (obj.hasMoreResults = message.hasMoreResults);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<FetchDataResponse>): FetchDataResponse {
@@ -1401,4 +1827,8 @@ function longToNumber(long: Long): number {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

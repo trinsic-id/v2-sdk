@@ -32,7 +32,7 @@ Then you can supply it to the SDKs:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [VerifyProof](../../../node/test/WalletService.ts) inside_block:insertItemWallet
+    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
 
@@ -87,7 +87,7 @@ The default query used in the commands below returns a full wallet result set. T
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [SearchWallet](../../../node/test/WalletService.ts) inside_block:searchWallet
+    [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWallet
     ```
     <!--/codeinclude-->
 
@@ -139,7 +139,7 @@ To pass custom query to the search function, use the query parameter or the avai
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [VerifyProof](../../../node/test/WalletService.ts) inside_block:searchWalletSQL
+    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 

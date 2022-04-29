@@ -29,14 +29,15 @@ export default (config: Config): void => {
     // Here I'm including all the Jest tests which are all under the __tests__ directory.
     // You may need to tweak this pattern to find your test files/
     files: [
-      { pattern: "test/**/*.ts", watched: false, included: true, served: true },
+      { pattern: "test/**/*.spec.ts", watched: false, included: true, served: true },
+      { pattern: "**/*.wasm", watched: false, included: false, served: true },
     ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       // Use webpack to bundle our tests files
-      "test/**/*.ts": ["webpack"],
+      "test/**/*.spec.ts": ["webpack"],
     },
     // "Chrome", "ChromeHeadless"
     browsers: ["ChromeHeadless"],
@@ -45,6 +46,13 @@ export default (config: Config): void => {
       stats: "errors-only",
       bail: true,
     },
+
+    port: 9876,
+
+    colors: true,
+
+    // autoWatch: false,
+    logLevel: config.LOG_INFO,
 
     webpack: webpackConfig,
   } as ConfigOptions);

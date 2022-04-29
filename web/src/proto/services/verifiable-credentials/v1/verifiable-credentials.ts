@@ -144,6 +144,21 @@ export const IssueRequest = {
     return message;
   },
 
+  fromJSON(object: any): IssueRequest {
+    return {
+      documentJson: isSet(object.documentJson)
+        ? String(object.documentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: IssueRequest): unknown {
+    const obj: any = {};
+    message.documentJson !== undefined &&
+      (obj.documentJson = message.documentJson);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<IssueRequest>): IssueRequest {
     const message = createBaseIssueRequest();
     message.documentJson = object.documentJson ?? "";
@@ -182,6 +197,21 @@ export const IssueResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): IssueResponse {
+    return {
+      signedDocumentJson: isSet(object.signedDocumentJson)
+        ? String(object.signedDocumentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: IssueResponse): unknown {
+    const obj: any = {};
+    message.signedDocumentJson !== undefined &&
+      (obj.signedDocumentJson = message.signedDocumentJson);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<IssueResponse>): IssueResponse {
@@ -233,6 +263,20 @@ export const IssueFromTemplateRequest = {
     return message;
   },
 
+  fromJSON(object: any): IssueFromTemplateRequest {
+    return {
+      templateId: isSet(object.templateId) ? String(object.templateId) : "",
+      valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
+    };
+  },
+
+  toJSON(message: IssueFromTemplateRequest): unknown {
+    const obj: any = {};
+    message.templateId !== undefined && (obj.templateId = message.templateId);
+    message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<IssueFromTemplateRequest>
   ): IssueFromTemplateRequest {
@@ -277,6 +321,21 @@ export const IssueFromTemplateResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): IssueFromTemplateResponse {
+    return {
+      documentJson: isSet(object.documentJson)
+        ? String(object.documentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: IssueFromTemplateResponse): unknown {
+    const obj: any = {};
+    message.documentJson !== undefined &&
+      (obj.documentJson = message.documentJson);
+    return obj;
   },
 
   fromPartial(
@@ -333,6 +392,28 @@ export const CreateProofRequest = {
     return message;
   },
 
+  fromJSON(object: any): CreateProofRequest {
+    return {
+      revealDocumentJson: isSet(object.revealDocumentJson)
+        ? String(object.revealDocumentJson)
+        : "",
+      itemId: isSet(object.itemId) ? String(object.itemId) : undefined,
+      documentJson: isSet(object.documentJson)
+        ? String(object.documentJson)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CreateProofRequest): unknown {
+    const obj: any = {};
+    message.revealDocumentJson !== undefined &&
+      (obj.revealDocumentJson = message.revealDocumentJson);
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.documentJson !== undefined &&
+      (obj.documentJson = message.documentJson);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<CreateProofRequest>): CreateProofRequest {
     const message = createBaseCreateProofRequest();
     message.revealDocumentJson = object.revealDocumentJson ?? "";
@@ -375,6 +456,21 @@ export const CreateProofResponse = {
     return message;
   },
 
+  fromJSON(object: any): CreateProofResponse {
+    return {
+      proofDocumentJson: isSet(object.proofDocumentJson)
+        ? String(object.proofDocumentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: CreateProofResponse): unknown {
+    const obj: any = {};
+    message.proofDocumentJson !== undefined &&
+      (obj.proofDocumentJson = message.proofDocumentJson);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<CreateProofResponse>): CreateProofResponse {
     const message = createBaseCreateProofResponse();
     message.proofDocumentJson = object.proofDocumentJson ?? "";
@@ -413,6 +509,21 @@ export const VerifyProofRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): VerifyProofRequest {
+    return {
+      proofDocumentJson: isSet(object.proofDocumentJson)
+        ? String(object.proofDocumentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: VerifyProofRequest): unknown {
+    const obj: any = {};
+    message.proofDocumentJson !== undefined &&
+      (obj.proofDocumentJson = message.proofDocumentJson);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<VerifyProofRequest>): VerifyProofRequest {
@@ -476,6 +587,40 @@ export const VerifyProofResponse = {
     return message;
   },
 
+  fromJSON(object: any): VerifyProofResponse {
+    return {
+      isValid: isSet(object.isValid) ? Boolean(object.isValid) : false,
+      validationMessages: Array.isArray(object?.validationMessages)
+        ? object.validationMessages.map((e: any) => String(e))
+        : [],
+      validationResults: isObject(object.validationResults)
+        ? Object.entries(object.validationResults).reduce<{
+            [key: string]: ValidationMessage;
+          }>((acc, [key, value]) => {
+            acc[key] = ValidationMessage.fromJSON(value);
+            return acc;
+          }, {})
+        : {},
+    };
+  },
+
+  toJSON(message: VerifyProofResponse): unknown {
+    const obj: any = {};
+    message.isValid !== undefined && (obj.isValid = message.isValid);
+    if (message.validationMessages) {
+      obj.validationMessages = message.validationMessages.map((e) => e);
+    } else {
+      obj.validationMessages = [];
+    }
+    obj.validationResults = {};
+    if (message.validationResults) {
+      Object.entries(message.validationResults).forEach(([k, v]) => {
+        obj.validationResults[k] = ValidationMessage.toJSON(v);
+      });
+    }
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<VerifyProofResponse>): VerifyProofResponse {
     const message = createBaseVerifyProofResponse();
     message.isValid = object.isValid ?? false;
@@ -537,6 +682,25 @@ export const VerifyProofResponse_ValidationResultsEntry = {
     return message;
   },
 
+  fromJSON(object: any): VerifyProofResponse_ValidationResultsEntry {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      value: isSet(object.value)
+        ? ValidationMessage.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: VerifyProofResponse_ValidationResultsEntry): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined &&
+      (obj.value = message.value
+        ? ValidationMessage.toJSON(message.value)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(
     object: DeepPartial<VerifyProofResponse_ValidationResultsEntry>
   ): VerifyProofResponse_ValidationResultsEntry {
@@ -587,6 +751,26 @@ export const ValidationMessage = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): ValidationMessage {
+    return {
+      isValid: isSet(object.isValid) ? Boolean(object.isValid) : false,
+      messages: Array.isArray(object?.messages)
+        ? object.messages.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: ValidationMessage): unknown {
+    const obj: any = {};
+    message.isValid !== undefined && (obj.isValid = message.isValid);
+    if (message.messages) {
+      obj.messages = message.messages.map((e) => e);
+    } else {
+      obj.messages = [];
+    }
+    return obj;
   },
 
   fromPartial(object: DeepPartial<ValidationMessage>): ValidationMessage {
@@ -653,6 +837,30 @@ export const SendRequest = {
     return message;
   },
 
+  fromJSON(object: any): SendRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : undefined,
+      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
+      didcommInvitationJson: isSet(object.didcommInvitationJson)
+        ? String(object.didcommInvitationJson)
+        : undefined,
+      documentJson: isSet(object.documentJson)
+        ? String(object.documentJson)
+        : "",
+    };
+  },
+
+  toJSON(message: SendRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.didUri !== undefined && (obj.didUri = message.didUri);
+    message.didcommInvitationJson !== undefined &&
+      (obj.didcommInvitationJson = message.didcommInvitationJson);
+    message.documentJson !== undefined &&
+      (obj.documentJson = message.documentJson);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<SendRequest>): SendRequest {
     const message = createBaseSendRequest();
     message.email = object.email ?? undefined;
@@ -688,6 +896,15 @@ export const SendResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): SendResponse {
+    return {};
+  },
+
+  toJSON(_: SendResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<SendResponse>): SendResponse {
@@ -735,6 +952,23 @@ export const UpdateStatusRequest = {
     return message;
   },
 
+  fromJSON(object: any): UpdateStatusRequest {
+    return {
+      credentialStatusId: isSet(object.credentialStatusId)
+        ? String(object.credentialStatusId)
+        : "",
+      revoked: isSet(object.revoked) ? Boolean(object.revoked) : false,
+    };
+  },
+
+  toJSON(message: UpdateStatusRequest): unknown {
+    const obj: any = {};
+    message.credentialStatusId !== undefined &&
+      (obj.credentialStatusId = message.credentialStatusId);
+    message.revoked !== undefined && (obj.revoked = message.revoked);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<UpdateStatusRequest>): UpdateStatusRequest {
     const message = createBaseUpdateStatusRequest();
     message.credentialStatusId = object.credentialStatusId ?? "";
@@ -771,6 +1005,15 @@ export const UpdateStatusResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): UpdateStatusResponse {
+    return {};
+  },
+
+  toJSON(_: UpdateStatusResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<UpdateStatusResponse>): UpdateStatusResponse {
@@ -812,6 +1055,21 @@ export const CheckStatusRequest = {
     return message;
   },
 
+  fromJSON(object: any): CheckStatusRequest {
+    return {
+      credentialStatusId: isSet(object.credentialStatusId)
+        ? String(object.credentialStatusId)
+        : "",
+    };
+  },
+
+  toJSON(message: CheckStatusRequest): unknown {
+    const obj: any = {};
+    message.credentialStatusId !== undefined &&
+      (obj.credentialStatusId = message.credentialStatusId);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<CheckStatusRequest>): CheckStatusRequest {
     const message = createBaseCheckStatusRequest();
     message.credentialStatusId = object.credentialStatusId ?? "";
@@ -850,6 +1108,18 @@ export const CheckStatusResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): CheckStatusResponse {
+    return {
+      revoked: isSet(object.revoked) ? Boolean(object.revoked) : false,
+    };
+  },
+
+  toJSON(message: CheckStatusResponse): unknown {
+    const obj: any = {};
+    message.revoked !== undefined && (obj.revoked = message.revoked);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<CheckStatusResponse>): CheckStatusResponse {
@@ -964,4 +1234,12 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isObject(value: any): boolean {
+  return typeof value === "object" && value !== null;
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

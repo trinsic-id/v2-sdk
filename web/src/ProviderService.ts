@@ -7,18 +7,20 @@ import {
   InviteRequest,
   InviteResponse,
   ProviderDefinition,
-  ServiceOptions,
+  ServiceOptions
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
-import {NodeHttpTransport} from "@improbable-eng/grpc-web-node-http-transport";
+
+import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class ProviderService extends ServiceBase {
-  client: Client<typeof ProviderDefinition>;
+  client: BrowserClient<typeof ProviderDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(ProviderDefinition, createChannel(this.address, this.transportFactory()));
+    this.client = this.createClient(
+      ProviderDefinition
+    );
   }
 
   public async inviteParticipant(

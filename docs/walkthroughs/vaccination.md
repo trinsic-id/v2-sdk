@@ -53,9 +53,7 @@ We've set up some environments to use on Repl.it. If your language of choice isn
    
 
 === "TypeScript"
-    
-    - <a href="/node/" target="_blank">Installation instructions</a> for the Node SDK.
-    - <a href="/web/" target="_blank">Installation instructions</a> for the Browser SDk.
+    <a href="/web/" target="_blank">Installation instructions</a> for the Node/Browser SDk.
 
 === "C#"
     Let's create a new .NET console app that we will use to add our sample code
@@ -106,7 +104,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:setupActors
+    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -147,7 +145,7 @@ If you would like to save the profile for future use, you can simply export the 
 <!-- === "Typescript" 
     
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:storeAndRecallProfile
+    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:storeAndRecallProfile
     ```
      
 -->
@@ -199,8 +197,8 @@ If you would like to save the profile for future use, you can simply export the 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Define Template](../../node/test/CredentialTemplates.ts) inside_block:defineTemplate
-    [Create Template](../../node/test/CredentialTemplates.ts) inside_block:createTemplate
+    [Define Template](../../web/test/CredentialTemplates.test.ts) inside_block:defineTemplate
+    [Create Template](../../web/test/CredentialTemplates.test.ts) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
@@ -268,7 +266,7 @@ To issue this credential we'll specify links to the json files, set the active p
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../node/test/VaccineDemo.ts) inside_block:issueCredential
+    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -359,7 +357,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Store Credential](../../node/test/VaccineDemo.ts) inside_block:storeCredential
+    [Store Credential](../../web/test/VaccineDemo.test.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -430,7 +428,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Share Credential](../../node/test/VaccineDemo.ts) inside_block:shareCredential
+    [Share Credential](../../web/test/VaccineDemo.test.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -483,7 +481,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Verify Credential](../../node/test/VaccineDemo.ts) inside_block:verifyCredential
+    [Verify Credential](../../web/test/VaccineDemo.test.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -547,8 +545,7 @@ Watch for the result of `true` to know that the credential successfully passed a
 ## Full Source Code
 
 === "Typescript"
-    [browser](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.js)
-    [node](https://github.com/trinsic-id/sdk/tree/main/node/test/VaccineDemo.ts)    
+    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.ts)    
 
 === "C#"
     This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
@@ -576,7 +573,7 @@ Congratulations! If you've completed all the steps of this walkthrough, you've j
 We have language specific sample applications that you can run to understand how the Trinsic SDK works in a development environment. 
 
 === "Typescript"
-    This sample is available in our [node directory](https://github.com/trinsic-id/sdk-examples/tree/main/node/basic)  
+    This sample is available in our [node directory](https://github.com/trinsic-id/sdk-examples/tree/main/web/basic)  
 === "C#"
     This sample is available in our [dotnet directory](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs). 
 === "Python"

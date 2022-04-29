@@ -17,6 +17,47 @@ export enum ConfirmationMethod {
   UNRECOGNIZED = -1,
 }
 
+export function confirmationMethodFromJSON(object: any): ConfirmationMethod {
+  switch (object) {
+    case 0:
+    case "None":
+      return ConfirmationMethod.None;
+    case 1:
+    case "Email":
+      return ConfirmationMethod.Email;
+    case 2:
+    case "Sms":
+      return ConfirmationMethod.Sms;
+    case 3:
+    case "ConnectedDevice":
+      return ConfirmationMethod.ConnectedDevice;
+    case 10:
+    case "Other":
+      return ConfirmationMethod.Other;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return ConfirmationMethod.UNRECOGNIZED;
+  }
+}
+
+export function confirmationMethodToJSON(object: ConfirmationMethod): string {
+  switch (object) {
+    case ConfirmationMethod.None:
+      return "None";
+    case ConfirmationMethod.Email:
+      return "Email";
+    case ConfirmationMethod.Sms:
+      return "Sms";
+    case ConfirmationMethod.ConnectedDevice:
+      return "ConnectedDevice";
+    case ConfirmationMethod.Other:
+      return "Other";
+    default:
+      return "UNKNOWN";
+  }
+}
+
 /** Request for creating new account */
 export interface SignInRequest {
   /** Account registration details */
@@ -180,6 +221,31 @@ export const SignInRequest = {
     return message;
   },
 
+  fromJSON(object: any): SignInRequest {
+    return {
+      details: isSet(object.details)
+        ? AccountDetails.fromJSON(object.details)
+        : undefined,
+      invitationCode: isSet(object.invitationCode)
+        ? String(object.invitationCode)
+        : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+    };
+  },
+
+  toJSON(message: SignInRequest): unknown {
+    const obj: any = {};
+    message.details !== undefined &&
+      (obj.details = message.details
+        ? AccountDetails.toJSON(message.details)
+        : undefined);
+    message.invitationCode !== undefined &&
+      (obj.invitationCode = message.invitationCode);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<SignInRequest>): SignInRequest {
     const message = createBaseSignInRequest();
     message.details =
@@ -237,6 +303,22 @@ export const AccountDetails = {
     return message;
   },
 
+  fromJSON(object: any): AccountDetails {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      email: isSet(object.email) ? String(object.email) : "",
+      sms: isSet(object.sms) ? String(object.sms) : "",
+    };
+  },
+
+  toJSON(message: AccountDetails): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.email !== undefined && (obj.email = message.email);
+    message.sms !== undefined && (obj.sms = message.sms);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<AccountDetails>): AccountDetails {
     const message = createBaseAccountDetails();
     message.name = object.name ?? "";
@@ -283,6 +365,30 @@ export const SignInResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): SignInResponse {
+    return {
+      confirmationMethod: isSet(object.confirmationMethod)
+        ? confirmationMethodFromJSON(object.confirmationMethod)
+        : 0,
+      profile: isSet(object.profile)
+        ? AccountProfile.fromJSON(object.profile)
+        : undefined,
+    };
+  },
+
+  toJSON(message: SignInResponse): unknown {
+    const obj: any = {};
+    message.confirmationMethod !== undefined &&
+      (obj.confirmationMethod = confirmationMethodToJSON(
+        message.confirmationMethod
+      ));
+    message.profile !== undefined &&
+      (obj.profile = message.profile
+        ? AccountProfile.toJSON(message.profile)
+        : undefined);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<SignInResponse>): SignInResponse {
@@ -355,6 +461,40 @@ export const AccountProfile = {
     return message;
   },
 
+  fromJSON(object: any): AccountProfile {
+    return {
+      profileType: isSet(object.profileType) ? String(object.profileType) : "",
+      authData: isSet(object.authData)
+        ? bytesFromBase64(object.authData)
+        : new Uint8Array(),
+      authToken: isSet(object.authToken)
+        ? bytesFromBase64(object.authToken)
+        : new Uint8Array(),
+      protection: isSet(object.protection)
+        ? TokenProtection.fromJSON(object.protection)
+        : undefined,
+    };
+  },
+
+  toJSON(message: AccountProfile): unknown {
+    const obj: any = {};
+    message.profileType !== undefined &&
+      (obj.profileType = message.profileType);
+    message.authData !== undefined &&
+      (obj.authData = base64FromBytes(
+        message.authData !== undefined ? message.authData : new Uint8Array()
+      ));
+    message.authToken !== undefined &&
+      (obj.authToken = base64FromBytes(
+        message.authToken !== undefined ? message.authToken : new Uint8Array()
+      ));
+    message.protection !== undefined &&
+      (obj.protection = message.protection
+        ? TokenProtection.toJSON(message.protection)
+        : undefined);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<AccountProfile>): AccountProfile {
     const message = createBaseAccountProfile();
     message.profileType = object.profileType ?? "";
@@ -407,6 +547,23 @@ export const TokenProtection = {
     return message;
   },
 
+  fromJSON(object: any): TokenProtection {
+    return {
+      enabled: isSet(object.enabled) ? Boolean(object.enabled) : false,
+      method: isSet(object.method)
+        ? confirmationMethodFromJSON(object.method)
+        : 0,
+    };
+  },
+
+  toJSON(message: TokenProtection): unknown {
+    const obj: any = {};
+    message.enabled !== undefined && (obj.enabled = message.enabled);
+    message.method !== undefined &&
+      (obj.method = confirmationMethodToJSON(message.method));
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<TokenProtection>): TokenProtection {
     const message = createBaseTokenProtection();
     message.enabled = object.enabled ?? false;
@@ -437,6 +594,15 @@ export const InfoRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): InfoRequest {
+    return {};
+  },
+
+  toJSON(_: InfoRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<InfoRequest>): InfoRequest {
@@ -510,6 +676,40 @@ export const InfoResponse = {
     return message;
   },
 
+  fromJSON(object: any): InfoResponse {
+    return {
+      details: isSet(object.details)
+        ? AccountDetails.fromJSON(object.details)
+        : undefined,
+      ecosystems: Array.isArray(object?.ecosystems)
+        ? object.ecosystems.map((e: any) => AccountEcosystem.fromJSON(e))
+        : [],
+      walletId: isSet(object.walletId) ? String(object.walletId) : "",
+      deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+    };
+  },
+
+  toJSON(message: InfoResponse): unknown {
+    const obj: any = {};
+    message.details !== undefined &&
+      (obj.details = message.details
+        ? AccountDetails.toJSON(message.details)
+        : undefined);
+    if (message.ecosystems) {
+      obj.ecosystems = message.ecosystems.map((e) =>
+        e ? AccountEcosystem.toJSON(e) : undefined
+      );
+    } else {
+      obj.ecosystems = [];
+    }
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.deviceId !== undefined && (obj.deviceId = message.deviceId);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<InfoResponse>): InfoResponse {
     const message = createBaseInfoResponse();
     message.details =
@@ -552,6 +752,15 @@ export const ListDevicesRequest = {
     return message;
   },
 
+  fromJSON(_: any): ListDevicesRequest {
+    return {};
+  },
+
+  toJSON(_: ListDevicesRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
   fromPartial(_: DeepPartial<ListDevicesRequest>): ListDevicesRequest {
     const message = createBaseListDevicesRequest();
     return message;
@@ -585,6 +794,15 @@ export const ListDevicesResponse = {
     return message;
   },
 
+  fromJSON(_: any): ListDevicesResponse {
+    return {};
+  },
+
+  toJSON(_: ListDevicesResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
   fromPartial(_: DeepPartial<ListDevicesResponse>): ListDevicesResponse {
     const message = createBaseListDevicesResponse();
     return message;
@@ -616,6 +834,15 @@ export const RevokeDeviceRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): RevokeDeviceRequest {
+    return {};
+  },
+
+  toJSON(_: RevokeDeviceRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<RevokeDeviceRequest>): RevokeDeviceRequest {
@@ -652,6 +879,15 @@ export const RevokeDeviceResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): RevokeDeviceResponse {
+    return {};
+  },
+
+  toJSON(_: RevokeDeviceResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<RevokeDeviceResponse>): RevokeDeviceResponse {
@@ -711,6 +947,25 @@ export const AccountEcosystem = {
     return message;
   },
 
+  fromJSON(object: any): AccountEcosystem {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      uri: isSet(object.uri) ? String(object.uri) : "",
+    };
+  },
+
+  toJSON(message: AccountEcosystem): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined &&
+      (obj.description = message.description);
+    message.uri !== undefined && (obj.uri = message.uri);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<AccountEcosystem>): AccountEcosystem {
     const message = createBaseAccountEcosystem();
     message.id = object.id ?? "";
@@ -764,6 +1019,40 @@ export const AccountDefinition = {
   },
 } as const;
 
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var globalThis: any = (() => {
+  if (typeof globalThis !== "undefined") return globalThis;
+  if (typeof self !== "undefined") return self;
+  if (typeof window !== "undefined") return window;
+  if (typeof global !== "undefined") return global;
+  throw "Unable to locate global object";
+})();
+
+const atob: (b64: string) => string =
+  globalThis.atob ||
+  ((b64) => globalThis.Buffer.from(b64, "base64").toString("binary"));
+function bytesFromBase64(b64: string): Uint8Array {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; ++i) {
+    arr[i] = bin.charCodeAt(i);
+  }
+  return arr;
+}
+
+const btoa: (bin: string) => string =
+  globalThis.btoa ||
+  ((bin) => globalThis.Buffer.from(bin, "binary").toString("base64"));
+function base64FromBytes(arr: Uint8Array): string {
+  const bin: string[] = [];
+  arr.forEach((byte) => {
+    bin.push(String.fromCharCode(byte));
+  });
+  return btoa(bin.join(""));
+}
+
 type Builtin =
   | Date
   | Function
@@ -786,4 +1075,8 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

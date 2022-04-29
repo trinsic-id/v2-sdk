@@ -12,6 +12,52 @@ export enum ResponseStatus {
   UNRECOGNIZED = -1,
 }
 
+export function responseStatusFromJSON(object: any): ResponseStatus {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return ResponseStatus.SUCCESS;
+    case 10:
+    case "WALLET_ACCESS_DENIED":
+      return ResponseStatus.WALLET_ACCESS_DENIED;
+    case 11:
+    case "WALLET_EXISTS":
+      return ResponseStatus.WALLET_EXISTS;
+    case 20:
+    case "ITEM_NOT_FOUND":
+      return ResponseStatus.ITEM_NOT_FOUND;
+    case 200:
+    case "SERIALIZATION_ERROR":
+      return ResponseStatus.SERIALIZATION_ERROR;
+    case 100:
+    case "UNKNOWN_ERROR":
+      return ResponseStatus.UNKNOWN_ERROR;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return ResponseStatus.UNRECOGNIZED;
+  }
+}
+
+export function responseStatusToJSON(object: ResponseStatus): string {
+  switch (object) {
+    case ResponseStatus.SUCCESS:
+      return "SUCCESS";
+    case ResponseStatus.WALLET_ACCESS_DENIED:
+      return "WALLET_ACCESS_DENIED";
+    case ResponseStatus.WALLET_EXISTS:
+      return "WALLET_EXISTS";
+    case ResponseStatus.ITEM_NOT_FOUND:
+      return "ITEM_NOT_FOUND";
+    case ResponseStatus.SERIALIZATION_ERROR:
+      return "SERIALIZATION_ERROR";
+    case ResponseStatus.UNKNOWN_ERROR:
+      return "UNKNOWN_ERROR";
+    default:
+      return "UNKNOWN";
+  }
+}
+
 export interface ServerConfig {
   /** service endpoint */
   endpoint: string;
@@ -74,6 +120,22 @@ export const ServerConfig = {
     return message;
   },
 
+  fromJSON(object: any): ServerConfig {
+    return {
+      endpoint: isSet(object.endpoint) ? String(object.endpoint) : "",
+      port: isSet(object.port) ? Number(object.port) : 0,
+      useTls: isSet(object.useTls) ? Boolean(object.useTls) : false,
+    };
+  },
+
+  toJSON(message: ServerConfig): unknown {
+    const obj: any = {};
+    message.endpoint !== undefined && (obj.endpoint = message.endpoint);
+    message.port !== undefined && (obj.port = Math.round(message.port));
+    message.useTls !== undefined && (obj.useTls = message.useTls);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<ServerConfig>): ServerConfig {
     const message = createBaseServerConfig();
     message.endpoint = object.endpoint ?? "";
@@ -119,6 +181,28 @@ export const Nonce = {
     return message;
   },
 
+  fromJSON(object: any): Nonce {
+    return {
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      requestHash: isSet(object.requestHash)
+        ? bytesFromBase64(object.requestHash)
+        : new Uint8Array(),
+    };
+  },
+
+  toJSON(message: Nonce): unknown {
+    const obj: any = {};
+    message.timestamp !== undefined &&
+      (obj.timestamp = Math.round(message.timestamp));
+    message.requestHash !== undefined &&
+      (obj.requestHash = base64FromBytes(
+        message.requestHash !== undefined
+          ? message.requestHash
+          : new Uint8Array()
+      ));
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<Nonce>): Nonce {
     const message = createBaseNonce();
     message.timestamp = object.timestamp ?? 0;
@@ -137,6 +221,29 @@ var globalThis: any = (() => {
   if (typeof global !== "undefined") return global;
   throw "Unable to locate global object";
 })();
+
+const atob: (b64: string) => string =
+  globalThis.atob ||
+  ((b64) => globalThis.Buffer.from(b64, "base64").toString("binary"));
+function bytesFromBase64(b64: string): Uint8Array {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; ++i) {
+    arr[i] = bin.charCodeAt(i);
+  }
+  return arr;
+}
+
+const btoa: (bin: string) => string =
+  globalThis.btoa ||
+  ((bin) => globalThis.Buffer.from(bin, "binary").toString("base64"));
+function base64FromBytes(arr: Uint8Array): string {
+  const bin: string[] = [];
+  arr.forEach((byte) => {
+    bin.push(String.fromCharCode(byte));
+  });
+  return btoa(bin.join(""));
+}
 
 type Builtin =
   | Date
@@ -167,4 +274,8 @@ function longToNumber(long: Long): number {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

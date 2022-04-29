@@ -1,5 +1,3 @@
-import test from "ava";
-
 import {
   AccountService,
   CreateCredentialTemplateRequest,
@@ -13,9 +11,12 @@ import {
   VerifyProofRequest,
   WalletService,
 } from "../src";
-import { getTemplateCertFrameJSON, getTestServerOptions } from "./TestData";
+import { getTemplateCertFrameJSON } from "./TestData";
 
-require("dotenv").config();
+
+import {getTestServerOptions} from "./env";
+
+
 
 const options = getTestServerOptions();
 
@@ -46,9 +47,43 @@ const isVaccinated = TemplateField.fromPartial({
 });
 // }
 
-test.before(async (t) => {
-  let service = new AccountService(options);
-  options.authToken = await service.signIn();
+describe("CredentialTemplatesService Unit Tests", () => {
+  beforeAll(async () => {
+    let service = new AccountService(options);
+    options.authToken = await service.signIn();
+  });
+
+  it("Create Credential Template", async () => {
+    let response = await createCredentialTemplateTest();
+
+    expect(response.data?.name).toBe(credentialTemplateName);
+
+    const fieldsMap = response.data?.fields!;
+    expect(fieldsMap["name"]).toEqual(nameField);
+    expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);
+    expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
+    expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
+  });
+
+  it("Issue Credential From Template", async () => {
+    let response = JSON.parse(
+      (await issueCredentialFromTemplate()).documentJson
+    );
+
+    expect(response?.issuer !== null);
+    expect(response?.id !== null);
+    expect(response?.credentialSubject?.name).toBe("Alice");
+    expect(response?.credentialSubject?.numberOfBags).toBe(2);
+    expect(
+      new Date(response?.credentialSubject?.dateOfBirth).toISOString()
+    ).toBe(new Date("1/1/2000").toISOString());
+    expect(response?.credentialSubject?.vaccinated).toBe(true);
+  });
+
+  it("Verify Credential Issued from Template", async () => {
+    let response = await verifyCredential();
+    expect(response).not.toBeNull();
+  });
 });
 
 async function createCredentialTemplateTest() {
@@ -125,41 +160,3 @@ async function verifyCredential() {
 
   return verifyProofResponse.isValid;
 }
-
-test("Create Credential Template", async (t) => {
-  let response = await createCredentialTemplateTest();
-
-  t.is(response.data?.name, credentialTemplateName);
-
-  const fieldsMap = response.data?.fields!;
-  t.deepEqual(fieldsMap["name"], nameField);
-  t.deepEqual(fieldsMap["numberOfBags"], numberOfBags);
-  t.deepEqual(fieldsMap["dateOfBirth"], dateOfBirth);
-  t.deepEqual(fieldsMap["vaccinated"], isVaccinated);
-
-  t.pass();
-});
-
-test("Issue Credential From Template", async (t) => {
-  let response = JSON.parse((await issueCredentialFromTemplate()).documentJson);
-
-  t.assert(response?.issuer !== null);
-  t.assert(response?.id !== null);
-  t.is(response?.credentialSubject?.name, "Alice");
-  t.is(response?.credentialSubject?.numberOfBags, 2);
-  t.is(
-    new Date(response?.credentialSubject?.dateOfBirth).toISOString(),
-    new Date("1/1/2000").toISOString()
-  );
-  t.is(response?.credentialSubject?.vaccinated, true);
-
-  t.pass();
-});
-
-test("Verify Credential Issued from Template", async (t) => {
-  let response = await verifyCredential();
-
-  t.assert(response);
-
-  t.pass();
-});

@@ -103,6 +103,23 @@ export const SearchRequest = {
     return message;
   },
 
+  fromJSON(object: any): SearchRequest {
+    return {
+      query: isSet(object.query) ? String(object.query) : "",
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchRequest): unknown {
+    const obj: any = {};
+    message.query !== undefined && (obj.query = message.query);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<SearchRequest>): SearchRequest {
     const message = createBaseSearchRequest();
     message.query = object.query ?? "";
@@ -156,6 +173,31 @@ export const SearchResponse = {
     return message;
   },
 
+  fromJSON(object: any): SearchResponse {
+    return {
+      items: Array.isArray(object?.items)
+        ? object.items.map((e: any) => String(e))
+        : [],
+      hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+      continuationToken: isSet(object.continuationToken)
+        ? String(object.continuationToken)
+        : "",
+    };
+  },
+
+  toJSON(message: SearchResponse): unknown {
+    const obj: any = {};
+    if (message.items) {
+      obj.items = message.items.map((e) => e);
+    } else {
+      obj.items = [];
+    }
+    message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+    message.continuationToken !== undefined &&
+      (obj.continuationToken = message.continuationToken);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<SearchResponse>): SearchResponse {
     const message = createBaseSearchResponse();
     message.items = object.items?.map((e) => e) || [];
@@ -196,6 +238,18 @@ export const GetItemRequest = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GetItemRequest {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "",
+    };
+  },
+
+  toJSON(message: GetItemRequest): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<GetItemRequest>): GetItemRequest {
@@ -242,6 +296,20 @@ export const GetItemResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): GetItemResponse {
+    return {
+      itemJson: isSet(object.itemJson) ? String(object.itemJson) : "",
+      itemType: isSet(object.itemType) ? String(object.itemType) : "",
+    };
+  },
+
+  toJSON(message: GetItemResponse): unknown {
+    const obj: any = {};
+    message.itemJson !== undefined && (obj.itemJson = message.itemJson);
+    message.itemType !== undefined && (obj.itemType = message.itemType);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<GetItemResponse>): GetItemResponse {
@@ -291,6 +359,20 @@ export const UpdateItemRequest = {
     return message;
   },
 
+  fromJSON(object: any): UpdateItemRequest {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "",
+      itemType: isSet(object.itemType) ? String(object.itemType) : "",
+    };
+  },
+
+  toJSON(message: UpdateItemRequest): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.itemType !== undefined && (obj.itemType = message.itemType);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<UpdateItemRequest>): UpdateItemRequest {
     const message = createBaseUpdateItemRequest();
     message.itemId = object.itemId ?? "";
@@ -324,6 +406,15 @@ export const UpdateItemResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): UpdateItemResponse {
+    return {};
+  },
+
+  toJSON(_: UpdateItemResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<UpdateItemResponse>): UpdateItemResponse {
@@ -371,6 +462,20 @@ export const InsertItemRequest = {
     return message;
   },
 
+  fromJSON(object: any): InsertItemRequest {
+    return {
+      itemJson: isSet(object.itemJson) ? String(object.itemJson) : "",
+      itemType: isSet(object.itemType) ? String(object.itemType) : "",
+    };
+  },
+
+  toJSON(message: InsertItemRequest): unknown {
+    const obj: any = {};
+    message.itemJson !== undefined && (obj.itemJson = message.itemJson);
+    message.itemType !== undefined && (obj.itemType = message.itemType);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<InsertItemRequest>): InsertItemRequest {
     const message = createBaseInsertItemRequest();
     message.itemJson = object.itemJson ?? "";
@@ -410,6 +515,18 @@ export const InsertItemResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(object: any): InsertItemResponse {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "",
+    };
+  },
+
+  toJSON(message: InsertItemResponse): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
   },
 
   fromPartial(object: DeepPartial<InsertItemResponse>): InsertItemResponse {
@@ -452,6 +569,18 @@ export const DeleteItemRequest = {
     return message;
   },
 
+  fromJSON(object: any): DeleteItemRequest {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "",
+    };
+  },
+
+  toJSON(message: DeleteItemRequest): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
+  },
+
   fromPartial(object: DeepPartial<DeleteItemRequest>): DeleteItemRequest {
     const message = createBaseDeleteItemRequest();
     message.itemId = object.itemId ?? "";
@@ -484,6 +613,15 @@ export const DeleteItemResponse = {
       }
     }
     return message;
+  },
+
+  fromJSON(_: any): DeleteItemResponse {
+    return {};
+  },
+
+  toJSON(_: DeleteItemResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 
   fromPartial(_: DeepPartial<DeleteItemResponse>): DeleteItemResponse {
@@ -566,4 +704,8 @@ type DeepPartial<T> = T extends Builtin
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

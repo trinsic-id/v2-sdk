@@ -7,12 +7,15 @@ import {
   VerifyProofRequest,
   WalletService,
 } from "../src";
-import { options } from "./env";
+import { getTestServerOptions } from "./env";
+
 
 // @ts-ignore
 import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
 // @ts-ignore
 import vaccineCertFramePath from "./data/vaccination-certificate-frame.json";
+
+let options = getTestServerOptions()
 
 async function vaccineDemo() {
   // createAccountService() {

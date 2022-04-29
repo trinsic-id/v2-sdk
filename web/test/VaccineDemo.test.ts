@@ -1,5 +1,3 @@
-import test from "ava";
-
 import {
   AccountService,
   CreateProofRequest,
@@ -10,12 +8,11 @@ import {
   WalletService,
 } from "../src";
 import {
-  getTestServerOptions,
   getVaccineCertFrameJSON,
   getVaccineCertUnsignedJSON,
 } from "./TestData";
 
-require("dotenv").config();
+import { getTestServerOptions } from "./env";
 
 const options = getTestServerOptions();
 
@@ -82,8 +79,9 @@ async function vaccineDemo() {
   return verifyResponse;
 }
 
-test("Demo: vaccination demo - credential issuance, storing, and verification", async (t) => {
-  let response = await vaccineDemo();
-  t.true(response.isValid);
-  t.pass();
+describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
+  it("Runs", async () => {
+    let response = await vaccineDemo();
+    expect(response.isValid).toBeTrue();
+  });
 });

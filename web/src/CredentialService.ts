@@ -1,33 +1,34 @@
 import ServiceBase from "./ServiceBase";
 import {
-  ServiceOptions,
-  CreateProofRequest,
-  IssueFromTemplateRequest,
-  IssueRequest,
-  SendRequest,
-  SendResponse,
-  UpdateStatusRequest,
-  UpdateStatusResponse,
-  VerifyProofRequest,
+  AccountDefinition,
   CheckStatusRequest,
   CheckStatusResponse,
+  CreateProofRequest,
   CreateProofResponse,
+  IssueFromTemplateRequest,
   IssueFromTemplateResponse,
-  VerifyProofResponse,
+  IssueRequest,
   IssueResponse,
+  SendRequest,
+  SendResponse,
+  ServiceOptions,
+  UpdateStatusRequest,
+  UpdateStatusResponse,
   VerifiableCredentialDefinition,
+  VerifyProofRequest,
+  VerifyProofResponse,
 } from "./proto";
-import { Client, createChannel, createClient } from "nice-grpc-web";
+
+import type {Client as BrowserClient} from "nice-grpc-web";
 
 export class CredentialService extends ServiceBase {
-  client: Client<typeof VerifiableCredentialDefinition>;
+  client: BrowserClient<typeof VerifiableCredentialDefinition>;
 
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = createClient(
-      VerifiableCredentialDefinition,
-      createChannel(this.address, this.transportFactory())
+    this.client = this.createClient(
+      VerifiableCredentialDefinition
     );
   }
 
