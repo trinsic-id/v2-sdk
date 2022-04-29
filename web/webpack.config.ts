@@ -6,8 +6,8 @@ const config: Configuration = {
   devtool: "inline-source-map",
   entry: {
     wallet: "./test/WalletService.spec.ts",
-    // vaccine: "./test/VaccineDemo.spec.ts",
-    // templates: "./test/CredentialTemplates.spec.ts",
+    vaccine: "./test/VaccineDemo.spec.ts",
+    templates: "./test/CredentialTemplates.spec.ts",
   },
   module: {
     rules: [
@@ -21,15 +21,7 @@ const config: Configuration = {
   resolve: {
     extensions: [".ts", ".js"],
     fallback: {
-      buffer: require.resolve("buffer"),
-      // http: require.resolve("stream-http"),
-      // https: require.resolve("https-browserify"),
-      // http2: require.resolve("http2-client"),
-      // path: require.resolve("path-browserify"),
-      // stream: require.resolve("stream-browserify"),
-      // os: require.resolve("os-browserify/browser"),
-      // zlib: require.resolve("browserify-zlib"),
-      // fs: require.resolve("browserify-fs")
+      buffer: require.resolve("buffer")
     },
   },
   output: {
