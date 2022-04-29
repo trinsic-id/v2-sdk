@@ -29,6 +29,7 @@ jobs:
       matrix:
         target: [ "web" ]
         node-version: [ 14, 16 ]
+        node-http-protocol: ["true", "false"]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
@@ -43,8 +44,10 @@ jobs:
           npm install
           npm run build
           npm run test
+        name: "Build and Test Package: Node v${{ matrix.node-version }} with HTTP1 protocol=${{ matrix.node-http-protocol }}"
         env:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
+          TEST_SERVER_NODE_PROTOCOL: ${{ matrix.node-http-protocol }}
         shell: pwsh

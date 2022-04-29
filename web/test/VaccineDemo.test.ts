@@ -5,7 +5,6 @@ import {
   InsertItemRequest,
   IssueRequest,
   VerifyProofRequest,
-  ServiceBase,
   WalletService,
 } from "../src";
 import {
@@ -18,8 +17,6 @@ import { getTestServerOptions } from "./env";
 const options = getTestServerOptions();
 
 async function vaccineDemo() {
-  // Use grpc-web with node for this one.
-  ServiceBase.useNodeHttpTransport = true;
   // createAccountService() {
   const accountService = new AccountService(options);
   // }
