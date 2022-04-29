@@ -24,7 +24,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [Issue Credential](../../../node/test/VaccineDemo.ts) inside_block:issueCredential
+    [Issue Credential](../../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -95,7 +95,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [Issue From Template](../../../node/test/CredentialTemplates.ts) inside_block:issueFromTemplate
+    [Issue From Template](../../../web/test/CredentialTemplates.test.ts) inside_block:issueFromTemplate
     ```
     <!--/codeinclude-->
 
@@ -253,7 +253,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [CreateProof](../../../node/test/WalletService.ts) inside_block:createProof
+    [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
     ```
     <!--/codeinclude-->
 
@@ -308,7 +308,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [VerifyProof](../../../node/test/WalletService.ts) inside_block:verifyProof
+    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:verifyProof
     ```
     <!--/codeinclude-->
 

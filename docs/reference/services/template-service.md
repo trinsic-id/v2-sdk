@@ -25,7 +25,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [CreateTemplate](../../../node/test/CredentialTemplates.ts) inside_block:defineTemplate
+    [CreateTemplate](../../../web/test/CredentialTemplates.test.ts) inside_block:defineTemplate
     ```
     <!--/codeinclude-->
 

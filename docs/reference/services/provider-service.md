@@ -20,7 +20,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [CreateEcosystem](../../../node/test/ProviderService.ts) inside_block:createEcosystem
+    [CreateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
