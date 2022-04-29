@@ -8,15 +8,20 @@ import {
 import { Metadata } from "nice-grpc-common";
 import { fromUint8Array, toUint8Array } from "js-base64";
 import { grpc } from "@improbable-eng/grpc-web";
+// These imports are used by require directives below, but commented out to prevent webpack from complaining as much.
+// Ideally, we can configure webpack to ignore these packages?
 // import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
 // import type { CompatServiceDefinition as ServerServiceDefinition } from "nice-grpc/lib/service-definitions";
-import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
 // import type { Client as ServerClient } from "nice-grpc";
+import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
 import type { Client as BrowserClient } from "nice-grpc-web";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
   address: string;
+
+  // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
+  public static useNodeHttpTransport: boolean = false;
 
   protected constructor(
     options: ServiceOptions = ServiceOptions.fromPartial({})
@@ -89,12 +94,13 @@ export default abstract class ServiceBase {
 
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
-    // try {
-    //   if (ServiceBase.isNode()) {
-    //     let nodeHttpTransport = require('@improbable-eng/grpc-web-node-http-transport')
-    //     return nodeHttpTransport();
-    //   }
-    // } catch {}
+    try {
+      if (ServiceBase.isNode()) {
+        console.log("Node using http transport")
+        let impEng = require('@improbable-eng/grpc-web-node-http-transport')
+        return impEng.NodeHttpTransport();
+      }
+    } catch {}
     return undefined;
   }
 
@@ -102,22 +108,22 @@ export default abstract class ServiceBase {
     ClientService extends ClientServiceDefinition
   >(
     definition: ClientService
-  ):  BrowserClient<ClientService> {``
+  ):  BrowserClient<ClientService> {
     // ServerClient<ServerService> | BrowserClient<ClientService>
-    // TODO - Support selecting the alternative?
-    // TODO - Allow NodeHttpTransport if needed
-    // if (!ServiceBase.isNode()) {
+    if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
+      console.log('Running grpc-web...')
       let clientMod = require("nice-grpc-web");
       return clientMod.createClient(
         definition as ClientService,
         clientMod.createChannel(this.address, this.transportFactory())
       );
-    // } else {
-    //   let serverMod = require("nice-grpc");
-    //   return serverMod.createClient(
-    //     definition,
-    //     serverMod.createChannel(this.address)
-    //   );
-    // }
+    } else {
+      console.log('Running node grpc-js...')
+      let serverMod = require("nice-grpc");
+      return serverMod.createClient(
+        definition,
+        serverMod.createChannel(this.address)
+      );
+    }
   }
 }
