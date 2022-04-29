@@ -12,11 +12,11 @@ import {
   WalletService,
 } from "../src";
 import { getTemplateCertFrameJSON } from "./TestData";
-import "jasmine";
+
 
 import {getTestServerOptions} from "./env";
 
-// require("dotenv").config();
+
 
 const options = getTestServerOptions();
 

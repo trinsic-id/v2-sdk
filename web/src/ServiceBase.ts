@@ -8,7 +8,7 @@ import {
 import { Metadata } from "nice-grpc-common";
 import { fromUint8Array, toUint8Array } from "js-base64";
 import { grpc } from "@improbable-eng/grpc-web";
-import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
+// import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
 // import type { CompatServiceDefinition as ServerServiceDefinition } from "nice-grpc/lib/service-definitions";
 import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
 // import type { Client as ServerClient } from "nice-grpc";
@@ -89,11 +89,12 @@ export default abstract class ServiceBase {
 
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
-    try {
-      if (ServiceBase.isNode()) {
-        return NodeHttpTransport();
-      }
-    } catch {}
+    // try {
+    //   if (ServiceBase.isNode()) {
+    //     let nodeHttpTransport = require('@improbable-eng/grpc-web-node-http-transport')
+    //     return nodeHttpTransport();
+    //   }
+    // } catch {}
     return undefined;
   }
 

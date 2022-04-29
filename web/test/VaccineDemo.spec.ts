@@ -9,6 +9,7 @@ import {
 } from "../src";
 import { getTestServerOptions } from "./env";
 
+
 // @ts-ignore
 import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.json";
 // @ts-ignore

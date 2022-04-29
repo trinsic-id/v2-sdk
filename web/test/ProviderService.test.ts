@@ -6,7 +6,7 @@ import {
 
 import {getTestServerOptions} from "./env";
 
-// require("dotenv").config();
+
 
 const options = getTestServerOptions();
 

@@ -1,21 +1,19 @@
 import {
   AccountService,
-  AddFrameworkRequest,
   CheckIssuerStatusRequest,
   CheckVerifierStatusRequest,
   GovernanceFramework,
   RegisterIssuerRequest,
   RegisterVerifierRequest,
   RegistrationStatus,
-  ResponseStatus,
   SignInRequest,
   TrustRegistryService,
 } from "../src";
 import { v4 as uuid } from "uuid";
-
 import {getTestServerOptions} from "./env";
 
-// require("dotenv").config();
+
+
 
 const options = getTestServerOptions();
 

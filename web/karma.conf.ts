@@ -30,6 +30,7 @@ export default (config: Config): void => {
     // You may need to tweak this pattern to find your test files/
     files: [
       { pattern: "test/**/*.spec.ts", watched: false, included: true, served: true },
+      { pattern: "**/*.wasm", watched: false, included: false, served: true },
     ],
 
     // preprocess matching files before serving them to the browser
@@ -45,6 +46,13 @@ export default (config: Config): void => {
       stats: "errors-only",
       bail: true,
     },
+
+    port: 9876,
+
+    colors: true,
+
+    // autoWatch: false,
+    logLevel: config.LOG_INFO,
 
     webpack: webpackConfig,
   } as ConfigOptions);

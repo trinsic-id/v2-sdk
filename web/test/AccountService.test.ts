@@ -1,8 +1,6 @@
 import { AccountService } from "../src";
-import "jasmine";
-import {getTestServerOptions} from "./env";
 
-// require("dotenv").config();
+import {getTestServerOptions} from "./env";
 
 const options = getTestServerOptions();
 

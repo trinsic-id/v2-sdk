@@ -15,11 +15,11 @@ import {
   getVaccineCertFrameJSON,
   getVaccineCertUnsignedJSON,
 } from "./TestData";
-import "jasmine";
+
 
 import {getTestServerOptions} from "./env";
 
-// require("dotenv").config();
+
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
