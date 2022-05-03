@@ -4,17 +4,13 @@
 
 ```bash
 pip install trinsic-sdk
+python -m trinsic-sdk
 ```
+
+Installs and verifies the installation. You should receive a console
+message: `Package successfully installed. Sample profile below` and a long base64 string output. This base64 string is
+the encoded `AccountProfile`. For more information, see the documentation link below
 
 ## Documentation
 
 See [documentation here](https://docs-v2.trinsic.id/)
-
-## Known Issues
-* Python `asyncio` event loop closed bug: https://bugs.python.org/issue36709 emits output like this:
-```diff
-- RuntimeError: Event loop is closed
-- Fatal error on SSL transport
-- protocol: <asyncio.sslproto.SSLProtocol object at 0x0000018C2D5ACA30>
-- transport: <_ProactorSocketTransport fd=-1 read=<_OverlappedFuture cancelled>>
-```

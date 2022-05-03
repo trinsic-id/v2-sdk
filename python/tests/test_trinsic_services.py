@@ -24,6 +24,12 @@ from trinsic.trustregistry_service import TrustRegistryService
 
 
 class TestServices(unittest.IsolatedAsyncioTestCase):
+    def __init__(self, method_name='runTest'):
+        super().__init__(methodName=method_name)
+        # https://stackoverflow.com/questions/45600579/asyncio-event-loop-is-closed-when-getting-loop
+        if platform.system() == 'Windows':
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+
     def test_python_platform(self):
         print(f"Running on: {platform.platform()}")
 
