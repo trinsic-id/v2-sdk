@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11+insiders-4.13.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13+insiders-4.13.2">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.d47c313d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0ee8897a.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
       
@@ -1510,24 +1510,24 @@
 <p class="admonition-title">Note</p>
 <p>If you want to included the two required Trinsic <code>.jar</code> files in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle <code>implementation</code> target as shown below:</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="kt">def</span> <span class="n">urlFile</span> <span class="o">=</span> <span class="o">{</span> <span class="n">url</span><span class="o">,</span> <span class="n">name</span> <span class="o">-&gt;</span>
-    <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s2">&quot;$buildDir/download/${name}.jar&quot;</span><span class="o">)</span>
-    <span class="n">file</span><span class="o">.</span><span class="na">parentFile</span><span class="o">.</span><span class="na">mkdirs</span><span class="o">()</span>
-    <span class="k">if</span> <span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
-        <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="n">url</span><span class="o">).</span><span class="na">withInputStream</span> <span class="o">{</span> <span class="n">downloadStream</span> <span class="o">-&gt;</span>
-            <span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span> <span class="o">{</span> <span class="n">fileOut</span> <span class="o">-&gt;</span>
-                <span class="n">fileOut</span> <span class="o">&lt;&lt;</span> <span class="n">downloadStream</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="n">files</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">absolutePath</span><span class="o">)</span>
-<span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="kt">def</span><span class="w"> </span><span class="n">urlFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">url</span><span class="o">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="n">File</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="o">(</span><span class="s2">&quot;$buildDir/download/${name}.jar&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">file</span><span class="o">.</span><span class="na">parentFile</span><span class="o">.</span><span class="na">mkdirs</span><span class="o">()</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">(!</span><span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="o">(</span><span class="n">url</span><span class="o">).</span><span class="na">withInputStream</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">downloadStream</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="w">            </span><span class="n">file</span><span class="o">.</span><span class="na">withOutputStream</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">fileOut</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="w">                </span><span class="n">fileOut</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">downloadStream</span><span class="w"></span>
+<span class="w">            </span><span class="o">}</span><span class="w"></span>
+<span class="w">        </span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">files</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">absolutePath</span><span class="o">)</span><span class="w"></span>
+<span class="o">}</span><span class="w"></span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">dependencies</span> <span class="p">{</span>
-    <span class="c1">// other dependencies</span>
-    <span class="n">implementation</span> <span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/okapi/releases/download/v1.4.0/trinsic-okapi-1.4.0.jar&#39;, &#39;trinsic-okapi-1.4.0&#39;)</span>
-    <span class="n">implementation</span> <span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/sdk/releases/download/v1.4.0/trinsic-services-1.4.1.jar&#39;, &#39;trinsic-services-1.4.1&#39;)</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// other dependencies</span><span class="w"></span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/okapi/releases/download/v1.4.0/trinsic-okapi-1.4.0.jar&#39;, &#39;trinsic-okapi-1.4.0&#39;)</span><span class="w"></span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nf">urlFile</span><span class="p">(</span><span class="err">&#39;</span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/trinsic-id/sdk/releases/download/v1.4.0/trinsic-services-1.4.1.jar&#39;, &#39;trinsic-services-1.4.1&#39;)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the SDK is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
@@ -1611,7 +1611,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs"], "search": "../assets/javascripts/workers/search.ec8bae80.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.88faac82.min.js"></script>
+      <script src="../assets/javascripts/bundle.283c1e5e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       

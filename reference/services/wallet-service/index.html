@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11+insiders-4.13.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.13+insiders-4.13.2">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d47c313d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0ee8897a.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
       
@@ -1631,11 +1631,11 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">insertItemResponse</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span>
-  <span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-    <span class="nx">itemJson</span>: <span class="kt">issueResponse.signedDocumentJson</span><span class="p">,</span>
-  <span class="p">})</span>
-<span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">issueResponse.signedDocumentJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1653,7 +1653,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">insertItemResponse</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1698,16 +1698,16 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">items</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">();</span><span class="w"></span>
 
-<span class="err">⋯</span>
+<span class="err">⋯</span><span class="w"></span>
 
-<span class="kd">let</span> <span class="nx">items2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span>
-  <span class="nx">SearchRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-    <span class="nx">query</span><span class="o">:</span>
-      <span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">,</span>
-  <span class="p">})</span>
-<span class="p">);</span>
+<span class="kd">let</span><span class="w"> </span><span class="nx">items2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">SearchRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1739,11 +1739,11 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">searchResponse</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>  
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w">  </span>
 
-<span class="err">⋯</span>
+<span class="err">⋯</span><span class="w"></span>
 
-<span class="kd">var</span> <span class="n">searchResponse2</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<span class="kd">var</span><span class="w"> </span><span class="n">searchResponse2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block"></div>
@@ -1759,12 +1759,12 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nx">items2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span>
-  <span class="nx">SearchRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span>
-    <span class="nx">query</span><span class="o">:</span>
-      <span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">,</span>
-  <span class="p">})</span>
-<span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">items2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">SearchRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">query</span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1784,7 +1784,7 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">searchResponse2</span> <span class="o">=</span> <span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block"></div>
@@ -1887,7 +1887,7 @@ Examples and detailed description on working with grouped results <a href="https
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs"], "search": "../../../assets/javascripts/workers/search.ec8bae80.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.88faac82.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.283c1e5e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
