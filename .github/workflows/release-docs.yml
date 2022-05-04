@@ -19,5 +19,6 @@ jobs:
           pip install -r ./docs/requirements.txt
           pip install -r ./python/requirements.txt
           pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
+      - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
       - run: mkdocs gh-deploy --remote-branch gh-pages --site-dir ./docs-html --force
 
