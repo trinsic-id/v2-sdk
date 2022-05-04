@@ -6,17 +6,17 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.sdk.v1";
 option csharp_namespace = "Trinsic.Sdk.Options.V1";
 
-// service options
+// Configuration for Trinsic SDK Services
 message ServiceOptions {
-    // service endpoint
+    // Trinsic API endpoint; defaults to `prod.trinsic.cloud`
     string server_endpoint = 1;
-    // service port
+    // Trinsic API port; defaults to `443`
     int32 server_port = 2;
-    // indicates if tls is used
+    // Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
     bool server_use_tls = 3;
-    // default auth token for oberon security scheme
+    // Authentication token for SDK calls; defaults to empty string (unauthenticated)
     string auth_token = 4;
-    // ecosystem to use with endpoints that require it
+    // Default ecosystem ID to use for various SDK calls; defaults to `default`
     string default_ecosystem = 5;
 }
 
