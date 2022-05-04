@@ -1797,7 +1797,7 @@ This approach allows us to give developers full control over how data is retriev
 </blockquote>
 <p>Template searching works very similarly to Wallet searching. Please refer to <a href="../wallet-service/#search--query">Wallet Service &gt; Search / Query</a> for more information.</p>
 <h3 id="basic-search">Basic Search<a class="headerlink" href="#basic-search" title="Permanent link">&para;</a></h3>
-<p>The default query used in the commands below returns a full wallet result set. The query is <code>SELECT * FROM c</code>.</p>
+<p>The default query used in the commands below returns the first 100 items in the template result set. The query is <code>SELECT * FROM c OFFSET 0 LIMIT 100</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
