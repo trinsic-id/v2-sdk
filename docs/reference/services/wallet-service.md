@@ -87,35 +87,35 @@ The default query used in the commands below returns the first 100 items in the 
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWallet
+    [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWallet
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
+    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWallet
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWallet
+    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 

@@ -70,28 +70,28 @@ Finally, each entity must be registered on a specific governance framework.
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerIssuer
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerIssuerSample
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerIssuer
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerIssuerSample
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerIssuer
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerIssuerSample
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerIssuer
+    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerIssuerSample
     ```
     <!--/codeinclude-->
 
@@ -108,28 +108,28 @@ Finally, each entity must be registered on a specific governance framework.
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerVerifier
+    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:registerVerifierSample
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerVerifier
+    [Insert Item Wallet](../../../python/samples/trustregistry_demo.py) inside_block:registerVerifierSample
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerVerifier
+    [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerVerifierSample
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerVerifier
+    [RegisterIssuer](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerVerifierSample
     ```
     <!--/codeinclude-->
 

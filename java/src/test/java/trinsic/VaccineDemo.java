@@ -69,7 +69,7 @@ public class VaccineDemo {
         System.out.println("item id = " + itemId);
         // }
 
-        // searchWallet() {
+        // searchWalletBasic() {
         var searchResponse = walletService.search(UniversalWalletOuterClass.SearchRequest.getDefaultInstance()).get();	
         // }
         // searchWalletSQL() {

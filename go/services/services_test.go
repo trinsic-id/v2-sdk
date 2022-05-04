@@ -146,7 +146,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	fmt.Println("item id", itemID)
 	// }
 
-	// searchWallet() {
+	// searchWalletBasic() {
 	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})
 	// }
 	// searchWalletSQL() {
@@ -221,7 +221,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	})
 	// }
 
-	// registerIssuer() {
+	// registerIssuerSample() {
 	registerIssuerResponse, err := service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
 		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
 		CredentialTypeUri:      typeURI,
@@ -232,7 +232,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 		return
 	}
 
-	// registerVerifier() {
+	// registerVerifierSample() {
 	registerVerifierResponse, err := service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
 		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
 		PresentationTypeUri:    typeURI,

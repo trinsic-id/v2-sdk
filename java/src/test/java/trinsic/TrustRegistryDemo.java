@@ -27,11 +27,11 @@ public class TrustRegistryDemo {
         var frameworkResponse = service.registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest.newBuilder().setGovernanceFramework(TrustRegistryOuterClass.GovernanceFramework.newBuilder().setGovernanceFrameworkUri(frameworkUri).build()).build()).get();
         // }
 
-        // registerIssuer() {
+        // registerIssuerSample() {
         service.registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
                 .setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setCredentialTypeUri(typeUri).build());
         // }
-        // registerVerifier() {
+        // registerVerifierSample() {
         service.registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri).setPresentationTypeUri(typeUri).build());
         // }
         // checkIssuerStatus() {
