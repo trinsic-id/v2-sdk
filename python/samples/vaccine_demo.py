@@ -108,7 +108,7 @@ async def vaccine_demo():
     item_id = insert_response.item_id
     # }
     print(f"item id = {item_id}")
-    # searchWallet() {
+    # searchWalletBasic() {
     wallet_items = await wallet_service.search()
     # }
     # searchWalletSQL() {

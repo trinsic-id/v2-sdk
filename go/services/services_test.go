@@ -146,7 +146,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	fmt.Println("item id", itemID)
 	// }
 
-	// searchWallet() {
+	// searchWalletBasic() {
 	items, err := walletService.Search(context.Background(), &sdk.SearchRequest{})
 	// }
 	// searchWalletSQL() {

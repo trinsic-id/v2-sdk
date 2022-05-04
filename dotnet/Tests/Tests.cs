@@ -117,7 +117,7 @@ public class Tests
         var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
         // }
-        // searchWallet() {
+        // searchWalletBasic() {
         var walletItems = await walletService.SearchAsync(new());
         // }
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
