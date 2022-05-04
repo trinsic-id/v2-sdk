@@ -18,8 +18,17 @@ jobs:
       - run: |
           pip install -r ./docs/requirements.txt
           pip install -r ./python/requirements.txt
-          pip install -r ./devops/requirements.txt
           pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ^1.16
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+      - name: Install protoc-gen-doc
+        run: |
+          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
+          pip install -r ./devops/requirements.txt
       - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
       - run: mkdocs gh-deploy --remote-branch gh-pages --site-dir ./docs-html --force
 
