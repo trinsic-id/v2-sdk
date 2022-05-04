@@ -20,16 +20,16 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 <a name="sdk-options-v1-ServiceOptions"></a>
 
 ### ServiceOptions
-service options
+Configuration for Trinsic SDK Services
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | service endpoint |
-| server_port | [int32](/reference/proto#int32) | service port |
-| server_use_tls | [bool](/reference/proto#bool) | indicates if tls is used |
-| auth_token | [string](/reference/proto#string) | default auth token for oberon security scheme |
-| default_ecosystem | [string](/reference/proto#string) | ecosystem to use with endpoints that require it |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint; defaults to `prod.trinsic.cloud` |
+| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
+| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
+| default_ecosystem | [string](/reference/proto#string) | Default ecosystem ID to use for various SDK calls; defaults to `default` |
 
 
 
@@ -1398,8 +1398,7 @@ Request to create new template
 | ----- | ---- | ----------- |
 | items_json | [string](/reference/proto#string) |  |
 | has_more | [bool](/reference/proto#bool) |  |
-| count | [int32](/reference/proto#int32) |  |
-| continuation_token | [string](/reference/proto#string) |  |
+| continuation_token | [string](/reference/proto#string) | int32 count = 3; - not populated nor valid |
 
 
 

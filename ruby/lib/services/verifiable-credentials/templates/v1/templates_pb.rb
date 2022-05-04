@@ -18,7 +18,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse" do
       optional :items_json, :string, 1
       optional :has_more, :bool, 2
-      optional :count, :int32, 3
       optional :continuation_token, :string, 4
     end
     add_message "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest" do
