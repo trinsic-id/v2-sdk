@@ -29,6 +29,7 @@ jobs:
         run: |
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           pip install -r ./devops/requirements.txt
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
       - run: mkdocs gh-deploy --remote-branch gh-pages --site-dir ./docs-html --force
 
