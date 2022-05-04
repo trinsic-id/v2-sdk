@@ -40,7 +40,7 @@ func (w *walletBase) Search(userContext context.Context, request *sdk.SearchRequ
 	}
 
 	if len(request.Query) == 0 {
-		request.Query = "SELECT c.id, c.type, c.data FROM c LIMIT 100"
+		request.Query = "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100"
 	}
 
 	md, err := w.GetMetadataContext(userContext, request)

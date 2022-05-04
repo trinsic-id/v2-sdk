@@ -94,7 +94,7 @@ class TrustRegistryServiceKt(
     suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse {
         var request = request
         if (request.query.isBlank()) request =
-            SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c LIMIT 100").build()
+            SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c OFFSET 0 LIMIT 100").build()
         return withMetadata(stub, request).searchRegistry(request)
     }
 

@@ -77,7 +77,7 @@ This approach allows us to give developers full control over how data is retriev
 
 ### Basic Search
 
-The default query used in the commands below returns the first 100 items in the wallet result set. The query is `SELECT * FROM c LIMIT 100`.
+The default query used in the commands below returns the first 100 items in the wallet result set. The query is `SELECT * FROM c OFFSET 0 LIMIT 100`.
 
 === "Trinsic CLI"
     ```bash

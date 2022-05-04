@@ -129,7 +129,7 @@ public class TrustRegistryService : ServiceBase
     /// <returns></returns>
     public async Task<SearchRegistryResponse> SearchRegistryAsync(SearchRegistryRequest request) {
         if (String.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c LIMIT 100";
+            request.Query = "SELECT * FROM c OFFSET 0 LIMIT 100";
         
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
         return response;
@@ -137,7 +137,7 @@ public class TrustRegistryService : ServiceBase
 
     public SearchRegistryResponse SearchRegistry(SearchRegistryRequest request) {
         if (String.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c LIMIT 100";
+            request.Query = "SELECT * FROM c OFFSET 0 LIMIT 100";
         
         return Client.SearchRegistry(request, BuildMetadata(request));
     }

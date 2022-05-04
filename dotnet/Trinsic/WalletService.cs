@@ -36,7 +36,7 @@ public class WalletService : ServiceBase
     /// <returns></returns>
     public async Task<SearchResponse> SearchAsync(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT c.id, c.type, c.data FROM c LIMIT 100";
+            request.Query = "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100";
 
         var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
         return response;
@@ -51,7 +51,7 @@ public class WalletService : ServiceBase
     /// <returns></returns>
     public SearchResponse Search(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT c.id, c.type, c.data FROM c LIMIT 100";
+            request.Query = "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100";
 
         var response = Client.Search(request, BuildMetadata(request));
         return response;

@@ -33,7 +33,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     let query = args
         .query
-        .map_or("SELECT c.data, c.id, c.type FROM c LIMIT 100".to_string(), |q| {
+        .map_or("SELECT c.data, c.id, c.type FROM c OFFSET 0 LIMIT 100".to_string(), |q| {
             q.to_string()
         });
 

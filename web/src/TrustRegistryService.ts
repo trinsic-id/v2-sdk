@@ -98,7 +98,7 @@ export class TrustRegistryService extends ServiceBase {
   }
 
   public async searchRegistry(
-    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({query: "SELECT * FROM c LIMIT 100"})
+    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({query: "SELECT * FROM c OFFSET 0 LIMIT 100"})
   ): Promise<SearchRegistryResponse> {
     return this.client.searchRegistry(request, {
       metadata: await this.getMetadata(
