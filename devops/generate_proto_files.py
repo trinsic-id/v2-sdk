@@ -108,6 +108,8 @@ def run_protoc(language_options: Dict[str, str] = None,
     command_args = list(itertools.chain(*command_args))
     # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
     command_args = [arg for arg in command_args if arg]
+    print(os.getcwd())
+    print(command_args)
     result = subprocess.run(command_args, capture_output=True, shell=True)
     if result.stderr:
         print(bytes(result.stderr).decode('utf-8'))
