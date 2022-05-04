@@ -67,7 +67,7 @@ public class TrustRegistryService extends ServiceBase {
     }
 
     public ListenableFuture<TrustRegistryOuterClass.SearchRegistryResponse> searchRegistry(TrustRegistryOuterClass.SearchRegistryRequest request) throws InvalidProtocolBufferException, DidException {
-        if (request.getQuery().isBlank()) request = TrustRegistryOuterClass.SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c").build();
+        if (request.getQuery().isBlank()) request = TrustRegistryOuterClass.SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c LIMIT 100").build();
         return withMetadata(stub, request).searchRegistry(request);
     }
 

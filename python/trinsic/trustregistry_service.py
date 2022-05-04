@@ -148,7 +148,7 @@ class TrustRegistryService(ServiceBase):
             [SearchRegistryResponse](/reference/proto/#searchregistryresponse)
         """
         request = request or SearchRegistryRequest()
-        request.query = request.query or "SELECT * FROM c"
+        request.query = request.query or "SELECT * FROM c LIMIT 100"
         return await self.client.search_registry(search_registry_request=request)
 
     async def fetch_data(

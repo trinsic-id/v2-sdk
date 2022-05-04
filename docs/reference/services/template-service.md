@@ -119,7 +119,7 @@ Template searching works very similarly to Wallet searching. Please refer to [Wa
 
 ### Basic Search
 
-The default query used in the commands below returns a full wallet result set. The query is `SELECT * FROM c`.
+The default query used in the commands below returns a first-100 wallet result set. The query is `SELECT * FROM c LIMIT 100`.
 
 === "Trinsic CLI"
     ```bash

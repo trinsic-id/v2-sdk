@@ -27,7 +27,7 @@ async fn search(args: &SearchArgs, config: &CliConfig) -> Result<Output, Error> 
     let query = args
         .query
         .as_ref()
-        .map_or("SELECT * FROM c".to_string(), |q| q.to_owned());
+        .map_or("SELECT * FROM c LIMIT 100".to_string(), |q| q.to_owned());
 
     let mut client = grpc_client_with_auth!(TrustRegistryClient<Channel>, config.to_owned());
 
