@@ -177,7 +177,7 @@ public class Tests
         // }
         
 
-        // registerIssuer() {
+        // registerIssuerSample() {
         await service.RegisterIssuerAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",
@@ -185,7 +185,7 @@ public class Tests
         });
         // }
 
-        // registerVerifier() {
+        // registerVerifierSample() {
         await service.RegisterVerifierAsync(new() {
             DidUri = "did:example:test",
             GovernanceFrameworkUri = "https://example.com",

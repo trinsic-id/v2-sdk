@@ -39,7 +39,7 @@ async def trustregistry_demo():
     )
     # }
 
-    # registerIssuer() {
+    # registerIssuerSample() {
     await service.register_issuer(
         request=RegisterIssuerRequest(
             did_uri=did_example_test,
@@ -49,7 +49,7 @@ async def trustregistry_demo():
     )
     # }
 
-    # registerVerifier() {
+    # registerVerifierSample() {
     await service.register_verifier(
         request=RegisterVerifierRequest(
             did_uri=did_example_test,
