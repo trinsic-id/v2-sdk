@@ -156,7 +156,7 @@ fn list(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     Ok(TemplateCommand::List(ListTemplatesArgs {
         query: args
             .value_of("query")
-            .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
+            .map_or("SELECT * FROM c OFFSET 0 LIMIT 100".to_string(), |x| x.to_string()),
         continuation_token: args
             .value_of("continuation-token")
             .map_or(String::default(), |x| x.to_string()),
@@ -167,7 +167,7 @@ fn search(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     Ok(TemplateCommand::Search(SearchTemplatesArgs {
         query: args
             .value_of("query")
-            .map_or("SELECT * FROM c".to_string(), |x| x.to_string()),
+            .map_or("SELECT * FROM c OFFSET 0 LIMIT 100".to_string(), |x| x.to_string()),
         continuation_token: args
             .value_of("continuation-token")
             .map_or(String::default(), |x| x.to_string()),

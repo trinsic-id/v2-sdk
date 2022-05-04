@@ -18,7 +18,7 @@ public class WalletService extends ServiceBase {
     }
 
     public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search(UniversalWalletOuterClass.SearchRequest request) throws InvalidProtocolBufferException, DidException {
-        if (request.getQuery().isBlank()) request = UniversalWalletOuterClass.SearchRequest.newBuilder(request).setQuery("SELECT c.id, c.type, c.data FROM c").build();
+        if (request.getQuery().isBlank()) request = UniversalWalletOuterClass.SearchRequest.newBuilder(request).setQuery("SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100").build();
 
         return withMetadata(stub, request).search(request);
     }

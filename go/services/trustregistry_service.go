@@ -148,7 +148,7 @@ func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request 
 	}
 
 	if request.Query == "" {
-		request.Query = "SELECT * FROM c"
+		request.Query = "SELECT * FROM c OFFSET 0 LIMIT 100"
 	}
 
 	md, err := t.GetMetadataContext(userContext, request)

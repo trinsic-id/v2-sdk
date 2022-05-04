@@ -16,7 +16,7 @@ module Trinsic
     def search(request = nil)
       # request = Wallet_V1::SearchRequest.new(query: query)
       request = request || Wallet_V1::SearchRequest.new
-      request.query = request.query.empty? ? "SELECT c.id, c.type, c.data FROM c" : request.query
+      request.query = request.query.empty? ? "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100" : request.query
       @client.search(request, metadata: metadata(request))
     end
 

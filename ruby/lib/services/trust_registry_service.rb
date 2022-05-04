@@ -54,7 +54,7 @@ module Trinsic
     def search_registry(request = nil)
       # request = TrustRegistry_V1::SearchRegistryRequest.new(query: query)
       request ||= TrustRegistry_V1::SearchRegistryRequest.new
-      request.query = request.query.empty? ? "SELECT * FROM c" : request.query
+      request.query = request.query.empty? ? "SELECT * FROM c OFFSET 0 LIMIT 100" : request.query
       @client.search_registry(request, metadata: metadata(request))
       # JSON.parse(response.items_json)
     end

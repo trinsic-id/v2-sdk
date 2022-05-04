@@ -95,7 +95,7 @@ subcommands:
                   value_name: SQL_QUERY
                   help: >-
                     (Optional) Search query to execute (Default is "SELECT *
-                    FROM c"). To see all available query options, please check
+                    FROM c OFFSET 0 LIMIT 100"). To see all available query options, please check
                     https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
                   takes_value: true
         - insert-item:
@@ -305,7 +305,7 @@ subcommands:
                   value_name: SQL query
                   help: |
                     The SQL query to search the registry.
-                    Default value is "SELECT c.data, c.id, c.type FROM c".
+                    Default value is "SELECT c.data, c.id, c.type FROM c OFFSET 0 LIMIT 100".
                   takes_value: true
                   required: true
         - check-issuer:
