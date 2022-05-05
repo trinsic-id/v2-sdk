@@ -1563,7 +1563,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#serviceoptions">ServiceOptions</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>service options</p>
+<p>Configuration for Trinsic SDK Services</p>
 <table>
 <thead>
 <tr>
@@ -1576,27 +1576,27 @@
 <tr>
 <td>server_endpoint</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>service endpoint</td>
+<td>Trinsic API endpoint; defaults to <code>prod.trinsic.cloud</code></td>
 </tr>
 <tr>
 <td>server_port</td>
 <td><a href="/reference/proto#int32">int32</a></td>
-<td>service port</td>
+<td>Trinsic API port; defaults to <code>443</code></td>
 </tr>
 <tr>
 <td>server_use_tls</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>indicates if tls is used</td>
+<td>Whether TLS is enabled between SDK and Trinsic API; defaults to <code>true</code></td>
 </tr>
 <tr>
 <td>auth_token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>default auth token for oberon security scheme</td>
+<td>Authentication token for SDK calls; defaults to empty string (unauthenticated)</td>
 </tr>
 <tr>
 <td>default_ecosystem</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>ecosystem to use with endpoints that require it</td>
+<td>Default ecosystem ID to use for various SDK calls; defaults to <code>default</code></td>
 </tr>
 </tbody>
 </table>
