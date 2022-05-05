@@ -21,7 +21,7 @@ message SearchCredentialTemplatesRequest {
 message SearchCredentialTemplatesResponse {
   string items_json = 1;
   bool has_more = 2;
-  int32 count = 3;
+  // int32 count = 3; - not populated nor valid
   string continuation_token = 4;
 }
 

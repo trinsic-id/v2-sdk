@@ -20,7 +20,7 @@ public final class Options {
 
     /**
      * <pre>
-     * service endpoint
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -29,7 +29,7 @@ public final class Options {
     java.lang.String getServerEndpoint();
     /**
      * <pre>
-     * service endpoint
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -40,7 +40,7 @@ public final class Options {
 
     /**
      * <pre>
-     * service port
+     * Trinsic API port; defaults to `443`
      * </pre>
      *
      * <code>int32 server_port = 2;</code>
@@ -50,7 +50,7 @@ public final class Options {
 
     /**
      * <pre>
-     * indicates if tls is used
+     * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
      * </pre>
      *
      * <code>bool server_use_tls = 3;</code>
@@ -60,7 +60,7 @@ public final class Options {
 
     /**
      * <pre>
-     * default auth token for oberon security scheme
+     * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
@@ -69,7 +69,7 @@ public final class Options {
     java.lang.String getAuthToken();
     /**
      * <pre>
-     * default auth token for oberon security scheme
+     * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
@@ -80,7 +80,7 @@ public final class Options {
 
     /**
      * <pre>
-     * ecosystem to use with endpoints that require it
+     * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
@@ -89,7 +89,7 @@ public final class Options {
     java.lang.String getDefaultEcosystem();
     /**
      * <pre>
-     * ecosystem to use with endpoints that require it
+     * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
@@ -100,7 +100,7 @@ public final class Options {
   }
   /**
    * <pre>
-   * service options
+   * Configuration for Trinsic SDK Services
    * </pre>
    *
    * Protobuf type {@code sdk.options.v1.ServiceOptions}
@@ -214,7 +214,7 @@ public final class Options {
     private volatile java.lang.Object serverEndpoint_;
     /**
      * <pre>
-     * service endpoint
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -235,7 +235,7 @@ public final class Options {
     }
     /**
      * <pre>
-     * service endpoint
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -260,7 +260,7 @@ public final class Options {
     private int serverPort_;
     /**
      * <pre>
-     * service port
+     * Trinsic API port; defaults to `443`
      * </pre>
      *
      * <code>int32 server_port = 2;</code>
@@ -275,7 +275,7 @@ public final class Options {
     private boolean serverUseTls_;
     /**
      * <pre>
-     * indicates if tls is used
+     * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
      * </pre>
      *
      * <code>bool server_use_tls = 3;</code>
@@ -290,7 +290,7 @@ public final class Options {
     private volatile java.lang.Object authToken_;
     /**
      * <pre>
-     * default auth token for oberon security scheme
+     * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
@@ -311,7 +311,7 @@ public final class Options {
     }
     /**
      * <pre>
-     * default auth token for oberon security scheme
+     * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
@@ -336,7 +336,7 @@ public final class Options {
     private volatile java.lang.Object defaultEcosystem_;
     /**
      * <pre>
-     * ecosystem to use with endpoints that require it
+     * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
@@ -357,7 +357,7 @@ public final class Options {
     }
     /**
      * <pre>
-     * ecosystem to use with endpoints that require it
+     * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
@@ -577,7 +577,7 @@ public final class Options {
     }
     /**
      * <pre>
-     * service options
+     * Configuration for Trinsic SDK Services
      * </pre>
      *
      * Protobuf type {@code sdk.options.v1.ServiceOptions}
@@ -756,7 +756,7 @@ public final class Options {
       private java.lang.Object serverEndpoint_ = "";
       /**
        * <pre>
-       * service endpoint
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -776,7 +776,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service endpoint
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -797,7 +797,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service endpoint
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -816,7 +816,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service endpoint
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -830,7 +830,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service endpoint
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -852,7 +852,7 @@ public final class Options {
       private int serverPort_ ;
       /**
        * <pre>
-       * service port
+       * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
@@ -864,7 +864,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service port
+       * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
@@ -879,7 +879,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * service port
+       * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
@@ -895,7 +895,7 @@ public final class Options {
       private boolean serverUseTls_ ;
       /**
        * <pre>
-       * indicates if tls is used
+       * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
@@ -907,7 +907,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * indicates if tls is used
+       * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
@@ -922,7 +922,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * indicates if tls is used
+       * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
@@ -938,7 +938,7 @@ public final class Options {
       private java.lang.Object authToken_ = "";
       /**
        * <pre>
-       * default auth token for oberon security scheme
+       * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
@@ -958,7 +958,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * default auth token for oberon security scheme
+       * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
@@ -979,7 +979,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * default auth token for oberon security scheme
+       * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
@@ -998,7 +998,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * default auth token for oberon security scheme
+       * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
@@ -1012,7 +1012,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * default auth token for oberon security scheme
+       * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
@@ -1034,7 +1034,7 @@ public final class Options {
       private java.lang.Object defaultEcosystem_ = "";
       /**
        * <pre>
-       * ecosystem to use with endpoints that require it
+       * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
@@ -1054,7 +1054,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * ecosystem to use with endpoints that require it
+       * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
@@ -1075,7 +1075,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * ecosystem to use with endpoints that require it
+       * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
@@ -1094,7 +1094,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * ecosystem to use with endpoints that require it
+       * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
@@ -1108,7 +1108,7 @@ public final class Options {
       }
       /**
        * <pre>
-       * ecosystem to use with endpoints that require it
+       * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>

@@ -2106,17 +2106,19 @@ public final class Templates {
     boolean getHasMore();
 
     /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    int getCount();
-
-    /**
+     * <pre>
+     * int32 count = 3; - not populated nor valid
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     * <pre>
+     * int32 count = 3; - not populated nor valid
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      * @return The bytes for continuationToken.
      */
@@ -2179,11 +2181,6 @@ public final class Templates {
             case 16: {
 
               hasMore_ = input.readBool();
-              break;
-            }
-            case 24: {
-
-              count_ = input.readInt32();
               break;
             }
             case 34: {
@@ -2273,20 +2270,13 @@ public final class Templates {
       return hasMore_;
     }
 
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_;
-    /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    @java.lang.Override
-    public int getCount() {
-      return count_;
-    }
-
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object continuationToken_;
     /**
+     * <pre>
+     * int32 count = 3; - not populated nor valid
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      * @return The continuationToken.
      */
@@ -2304,6 +2294,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * int32 count = 3; - not populated nor valid
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      * @return The bytes for continuationToken.
      */
@@ -2342,9 +2336,6 @@ public final class Templates {
       if (hasMore_ != false) {
         output.writeBool(2, hasMore_);
       }
-      if (count_ != 0) {
-        output.writeInt32(3, count_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
       }
@@ -2363,10 +2354,6 @@ public final class Templates {
       if (hasMore_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, hasMore_);
-      }
-      if (count_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
@@ -2390,8 +2377,6 @@ public final class Templates {
           .equals(other.getItemsJson())) return false;
       if (getHasMore()
           != other.getHasMore()) return false;
-      if (getCount()
-          != other.getCount()) return false;
       if (!getContinuationToken()
           .equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -2410,8 +2395,6 @@ public final class Templates {
       hash = (37 * hash) + HAS_MORE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getHasMore());
-      hash = (37 * hash) + COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getCount();
       hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getContinuationToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2551,8 +2534,6 @@ public final class Templates {
 
         hasMore_ = false;
 
-        count_ = 0;
-
         continuationToken_ = "";
 
         return this;
@@ -2583,7 +2564,6 @@ public final class Templates {
         trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse(this);
         result.itemsJson_ = itemsJson_;
         result.hasMore_ = hasMore_;
-        result.count_ = count_;
         result.continuationToken_ = continuationToken_;
         onBuilt();
         return result;
@@ -2639,9 +2619,6 @@ public final class Templates {
         }
         if (other.getHasMore() != false) {
           setHasMore(other.getHasMore());
-        }
-        if (other.getCount() != 0) {
-          setCount(other.getCount());
         }
         if (!other.getContinuationToken().isEmpty()) {
           continuationToken_ = other.continuationToken_;
@@ -2783,39 +2760,12 @@ public final class Templates {
         return this;
       }
 
-      private int count_ ;
-      /**
-       * <code>int32 count = 3;</code>
-       * @return The count.
-       */
-      @java.lang.Override
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @param value The count to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCount(int value) {
-        
-        count_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCount() {
-        
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object continuationToken_ = "";
       /**
+       * <pre>
+       * int32 count = 3; - not populated nor valid
+       * </pre>
+       *
        * <code>string continuation_token = 4;</code>
        * @return The continuationToken.
        */
@@ -2832,6 +2782,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * int32 count = 3; - not populated nor valid
+       * </pre>
+       *
        * <code>string continuation_token = 4;</code>
        * @return The bytes for continuationToken.
        */
@@ -2849,6 +2803,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * int32 count = 3; - not populated nor valid
+       * </pre>
+       *
        * <code>string continuation_token = 4;</code>
        * @param value The continuationToken to set.
        * @return This builder for chaining.
@@ -2864,6 +2822,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * int32 count = 3; - not populated nor valid
+       * </pre>
+       *
        * <code>string continuation_token = 4;</code>
        * @return This builder for chaining.
        */
@@ -2874,6 +2836,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * int32 count = 3; - not populated nor valid
+       * </pre>
+       *
        * <code>string continuation_token = 4;</code>
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
@@ -12472,75 +12438,74 @@ public final class Templates {
       "(\01329.services.verifiablecredentials.temp" +
       "lates.v1.TemplateData\"M\n SearchCredentia" +
       "lTemplatesRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022cont" +
-      "inuation_token\030\002 \001(\t\"t\n!SearchCredential" +
+      "inuation_token\030\002 \001(\t\"e\n!SearchCredential" +
       "TemplatesResponse\022\022\n\nitems_json\030\001 \001(\t\022\020\n" +
-      "\010has_more\030\002 \001(\010\022\r\n\005count\030\003 \001(\005\022\032\n\022contin" +
-      "uation_token\030\004 \001(\t\"K\n\036ListCredentialTemp" +
-      "latesRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022continuat" +
-      "ion_token\030\002 \001(\t\"\245\001\n\037ListCredentialTempla" +
-      "tesResponse\022L\n\ttemplates\030\001 \003(\01329.service" +
-      "s.verifiablecredentials.templates.v1.Tem" +
-      "plateData\022\030\n\020has_more_results\030\002 \001(\010\022\032\n\022c" +
-      "ontinuation_token\030\003 \001(\t\"-\n\037DeleteCredent" +
-      "ialTemplateRequest\022\n\n\002id\030\001 \001(\t\"\"\n Delete" +
-      "CredentialTemplateResponse\"\245\002\n\037CreateCre" +
-      "dentialTemplateRequest\022\014\n\004name\030\001 \001(\t\022h\n\006" +
-      "fields\030\002 \003(\0132X.services.verifiablecreden" +
-      "tials.templates.v1.CreateCredentialTempl" +
-      "ateRequest.FieldsEntry\022\037\n\027allow_addition" +
-      "al_fields\030\003 \001(\010\032i\n\013FieldsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022I\n\005value\030\002 \001(\0132:.services.verifiable" +
-      "credentials.templates.v1.TemplateField:\002" +
-      "8\001\"k\n CreateCredentialTemplateResponse\022G" +
-      "\n\004data\030\001 \001(\01329.services.verifiablecreden" +
-      "tials.templates.v1.TemplateData\"|\n\rTempl" +
-      "ateField\022\023\n\013description\030\002 \001(\t\022\020\n\010optiona" +
-      "l\030\003 \001(\010\022D\n\004type\030\004 \001(\01626.services.verifia" +
-      "blecredentials.templates.v1.FieldType\" \n" +
-      "\022GetTemplateRequest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTe" +
-      "mplateResponse\022G\n\004data\030\001 \001(\01329.services." +
-      "verifiablecredentials.templates.v1.Templ" +
-      "ateData\"\026\n\024ListTemplatesRequest\"e\n\025ListT" +
-      "emplatesResponse\022L\n\ttemplates\030\001 \003(\01329.se" +
+      "\010has_more\030\002 \001(\010\022\032\n\022continuation_token\030\004 " +
+      "\001(\t\"K\n\036ListCredentialTemplatesRequest\022\r\n" +
+      "\005query\030\001 \001(\t\022\032\n\022continuation_token\030\002 \001(\t" +
+      "\"\245\001\n\037ListCredentialTemplatesResponse\022L\n\t" +
+      "templates\030\001 \003(\01329.services.verifiablecre" +
+      "dentials.templates.v1.TemplateData\022\030\n\020ha" +
+      "s_more_results\030\002 \001(\010\022\032\n\022continuation_tok" +
+      "en\030\003 \001(\t\"-\n\037DeleteCredentialTemplateRequ" +
+      "est\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCredentialTempl" +
+      "ateResponse\"\245\002\n\037CreateCredentialTemplate" +
+      "Request\022\014\n\004name\030\001 \001(\t\022h\n\006fields\030\002 \003(\0132X." +
+      "services.verifiablecredentials.templates" +
+      ".v1.CreateCredentialTemplateRequest.Fiel" +
+      "dsEntry\022\037\n\027allow_additional_fields\030\003 \001(\010" +
+      "\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 " +
+      "\001(\0132:.services.verifiablecredentials.tem" +
+      "plates.v1.TemplateField:\0028\001\"k\n CreateCre" +
+      "dentialTemplateResponse\022G\n\004data\030\001 \001(\01329." +
+      "services.verifiablecredentials.templates" +
+      ".v1.TemplateData\"|\n\rTemplateField\022\023\n\013des" +
+      "cription\030\002 \001(\t\022\020\n\010optional\030\003 \001(\010\022D\n\004type" +
+      "\030\004 \001(\01626.services.verifiablecredentials." +
+      "templates.v1.FieldType\" \n\022GetTemplateReq" +
+      "uest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplateResponse\022" +
+      "G\n\004data\030\001 \001(\01329.services.verifiablecrede" +
+      "ntials.templates.v1.TemplateData\"\026\n\024List" +
+      "TemplatesRequest\"e\n\025ListTemplatesRespons" +
+      "e\022L\n\ttemplates\030\001 \003(\01329.services.verifiab" +
+      "lecredentials.templates.v1.TemplateData\"" +
+      "\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002id\022\014\n\004name" +
+      "\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fields\030\004 \003(\0132" +
+      "E.services.verifiablecredentials.templat" +
+      "es.v1.TemplateData.FieldsEntry\022\037\n\027allow_" +
+      "additional_fields\030\005 \001(\010\022\022\n\nschema_uri\030\006 " +
+      "\001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ecosystem_id" +
+      "\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t \001(\tR\004type\022" +
+      "\035\n\ncreated_by\030\n \001(\tR\tcreatedBy\032i\n\013Fields" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 \001(\0132:.serv" +
+      "ices.verifiablecredentials.templates.v1." +
+      "TemplateField:\0028\001*;\n\tFieldType\022\n\n\006STRING" +
+      "\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DATETIME\020\0042\322" +
+      "\006\n\023CredentialTemplates\022\245\001\n\006Create\022L.serv" +
+      "ices.verifiablecredentials.templates.v1." +
+      "CreateCredentialTemplateRequest\032M.servic" +
+      "es.verifiablecredentials.templates.v1.Cr" +
+      "eateCredentialTemplateResponse\022\234\001\n\003Get\022I" +
+      ".services.verifiablecredentials.template" +
+      "s.v1.GetCredentialTemplateRequest\032J.serv" +
+      "ices.verifiablecredentials.templates.v1." +
+      "GetCredentialTemplateResponse\022\241\001\n\004List\022K" +
+      ".services.verifiablecredentials.template" +
+      "s.v1.ListCredentialTemplatesRequest\032L.se" +
       "rvices.verifiablecredentials.templates.v" +
-      "1.TemplateData\"\237\003\n\014TemplateData\022\016\n\002id\030\001 " +
-      "\001(\tR\002id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U" +
-      "\n\006fields\030\004 \003(\0132E.services.verifiablecred" +
-      "entials.templates.v1.TemplateData.Fields" +
-      "Entry\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022" +
-      "\n\nschema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022" +
-      "!\n\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004ty" +
-      "pe\030\t \001(\tR\004type\022\035\n\ncreated_by\030\n \001(\tR\tcrea" +
-      "tedBy\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005val" +
-      "ue\030\002 \001(\0132:.services.verifiablecredential" +
-      "s.templates.v1.TemplateField:\0028\001*;\n\tFiel" +
-      "dType\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022" +
-      "\014\n\010DATETIME\020\0042\322\006\n\023CredentialTemplates\022\245\001" +
-      "\n\006Create\022L.services.verifiablecredential" +
-      "s.templates.v1.CreateCredentialTemplateR" +
-      "equest\032M.services.verifiablecredentials." +
-      "templates.v1.CreateCredentialTemplateRes" +
-      "ponse\022\234\001\n\003Get\022I.services.verifiablecrede" +
-      "ntials.templates.v1.GetCredentialTemplat" +
-      "eRequest\032J.services.verifiablecredential" +
-      "s.templates.v1.GetCredentialTemplateResp" +
-      "onse\022\241\001\n\004List\022K.services.verifiablecrede" +
-      "ntials.templates.v1.ListCredentialTempla" +
-      "tesRequest\032L.services.verifiablecredenti" +
-      "als.templates.v1.ListCredentialTemplates" +
-      "Response\022\247\001\n\006Search\022M.services.verifiabl" +
-      "ecredentials.templates.v1.SearchCredenti" +
-      "alTemplatesRequest\032N.services.verifiable" +
-      "credentials.templates.v1.SearchCredentia" +
-      "lTemplatesResponse\022\245\001\n\006Delete\022L.services" +
-      ".verifiablecredentials.templates.v1.Dele" +
-      "teCredentialTemplateRequest\032M.services.v" +
-      "erifiablecredentials.templates.v1.Delete" +
-      "CredentialTemplateResponseB\206\001\n3trinsic.s" +
-      "ervices.verifiablecredentials.templates." +
-      "v1Z\031github.com/trinsic-id/sdk\252\0023Trinsic." +
-      "Services.VerifiableCredentials.Templates" +
-      ".V1b\006proto3"
+      "1.ListCredentialTemplatesResponse\022\247\001\n\006Se" +
+      "arch\022M.services.verifiablecredentials.te" +
+      "mplates.v1.SearchCredentialTemplatesRequ" +
+      "est\032N.services.verifiablecredentials.tem" +
+      "plates.v1.SearchCredentialTemplatesRespo" +
+      "nse\022\245\001\n\006Delete\022L.services.verifiablecred" +
+      "entials.templates.v1.DeleteCredentialTem" +
+      "plateRequest\032M.services.verifiablecreden" +
+      "tials.templates.v1.DeleteCredentialTempl" +
+      "ateResponseB\206\001\n3trinsic.services.verifia" +
+      "blecredentials.templates.v1Z\031github.com/" +
+      "trinsic-id/sdk\252\0023Trinsic.Services.Verifi" +
+      "ableCredentials.Templates.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12569,7 +12534,7 @@ public final class Templates {
     internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor,
-        new java.lang.String[] { "ItemsJson", "HasMore", "Count", "ContinuationToken", });
+        new java.lang.String[] { "ItemsJson", "HasMore", "ContinuationToken", });
     internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable = new

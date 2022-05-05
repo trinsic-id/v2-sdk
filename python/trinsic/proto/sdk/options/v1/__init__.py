@@ -9,15 +9,16 @@ from betterproto.grpc.grpclib_server import ServiceBase
 
 @dataclass(eq=False, repr=False)
 class ServiceOptions(betterproto.Message):
-    """service options"""
+    """Configuration for Trinsic SDK Services"""
 
-    # service endpoint
+    # Trinsic API endpoint; defaults to `prod.trinsic.cloud`
     server_endpoint: str = betterproto.string_field(1)
-    # service port
+    # Trinsic API port; defaults to `443`
     server_port: int = betterproto.int32_field(2)
-    # indicates if tls is used
+    # Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
     server_use_tls: bool = betterproto.bool_field(3)
-    # default auth token for oberon security scheme
+    # Authentication token for SDK calls; defaults to empty string
+    # (unauthenticated)
     auth_token: str = betterproto.string_field(4)
-    # ecosystem to use with endpoints that require it
+    # Default ecosystem ID to use for various SDK calls; defaults to `default`
     default_ecosystem: str = betterproto.string_field(5)

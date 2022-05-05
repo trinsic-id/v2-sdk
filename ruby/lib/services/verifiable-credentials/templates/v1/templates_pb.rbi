@@ -230,14 +230,12 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
     params(
       items_json: T.nilable(String),
       has_more: T.nilable(T::Boolean),
-      count: T.nilable(Integer),
       continuation_token: T.nilable(String)
     ).void
   end
   def initialize(
     items_json: "",
     has_more: false,
-    count: 0,
     continuation_token: ""
   )
   end
@@ -264,18 +262,6 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   sig { void }
   def clear_has_more
-  end
-
-  sig { returns(Integer) }
-  def count
-  end
-
-  sig { params(value: Integer).void }
-  def count=(value)
-  end
-
-  sig { void }
-  def clear_count
   end
 
   sig { returns(String) }

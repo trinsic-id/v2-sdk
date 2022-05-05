@@ -20,21 +20,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// service options
+// Configuration for Trinsic SDK Services
 type ServiceOptions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// service endpoint
+	// Trinsic API endpoint; defaults to `prod.trinsic.cloud`
 	ServerEndpoint string `protobuf:"bytes,1,opt,name=server_endpoint,json=serverEndpoint,proto3" json:"server_endpoint,omitempty"`
-	// service port
+	// Trinsic API port; defaults to `443`
 	ServerPort int32 `protobuf:"varint,2,opt,name=server_port,json=serverPort,proto3" json:"server_port,omitempty"`
-	// indicates if tls is used
+	// Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
 	ServerUseTls bool `protobuf:"varint,3,opt,name=server_use_tls,json=serverUseTls,proto3" json:"server_use_tls,omitempty"`
-	// default auth token for oberon security scheme
+	// Authentication token for SDK calls; defaults to empty string (unauthenticated)
 	AuthToken string `protobuf:"bytes,4,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"`
-	// ecosystem to use with endpoints that require it
+	// Default ecosystem ID to use for various SDK calls; defaults to `default`
 	DefaultEcosystem string `protobuf:"bytes,5,opt,name=default_ecosystem,json=defaultEcosystem,proto3" json:"default_ecosystem,omitempty"`
 }
 

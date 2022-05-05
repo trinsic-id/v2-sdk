@@ -36,7 +36,7 @@ class SearchCredentialTemplatesRequest(betterproto.Message):
 class SearchCredentialTemplatesResponse(betterproto.Message):
     items_json: str = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
-    count: int = betterproto.int32_field(3)
+    # int32 count = 3; - not populated nor valid
     continuation_token: str = betterproto.string_field(4)
 
 
