@@ -1,5 +1,5 @@
 import { ServiceOptions } from "../src";
-import ServiceBase from "../lib/ServiceBase";
+import ServiceBase from "../src/ServiceBase";
 
 function isNode(): boolean {
   // TODO - Refactor this into one location, utility class?

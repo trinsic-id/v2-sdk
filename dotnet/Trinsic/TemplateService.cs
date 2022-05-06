@@ -68,10 +68,12 @@ public class TemplateService : ServiceBase
     /// <returns>
     /// The search response and continuation token, if available
     /// </returns>
+    [Experimental]
     public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
         return await Client.ListAsync(request, await BuildMetadataAsync(request));
     }
 
+    [Experimental]
     public ListCredentialTemplatesResponse List(ListCredentialTemplatesRequest request) {
         return Client.List(request, BuildMetadata(request));
     }
