@@ -20,7 +20,6 @@ nav:
       - Standards: learn/standards.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
-      - Verify a Credential with OpenID: walthroughs/oidc.md
   - Services:
     - Overview: reference/index.md
     - SDK Services:
@@ -31,8 +30,6 @@ nav:
       - Trust Registry Service: reference/services/trust-registry-service.md
       - Wallet Service: reference/services/wallet-service.md
       - Protocol Buffers Reference: reference/proto/index.md
-    - Other Services:
-      - OpenID Connect for Verification: reference/proto/index.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
