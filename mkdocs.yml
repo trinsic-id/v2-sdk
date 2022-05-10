@@ -5,19 +5,32 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://docs-v2.trinsic.id
 nav:
-  - Home: index.md
-  - Getting Started: 
-    - What is Trinsic?: learn/intro.md
-    - Before You Start: early-adopter.md
-    - Try the Walkthrough: walkthroughs/vaccination.md
-  - Key Concepts:
-    - Security Overview: learn/security.md
-    - Identity Ecosystems: learn/ecosystems.md
-    - Wallets: learn/wallets.md
-    - Templates: learn/templates.md
-    - Credentials: learn/credentials.md
-    - Standards: learn/standards.md
-  - Developer Tools:
+  - Home:
+    - Introduction: index.md
+    - Join the Beta: early-adopter.md
+  - Learn: 
+    - Overview: learn/index.md
+    - Key Concepts:
+      - What is Trinsic?: learn/intro.md
+      - Security Overview: learn/security.md
+      - Identity Ecosystems: learn/ecosystems.md
+      - Wallets: learn/wallets.md
+      - Templates: learn/templates.md
+      - Credentials: learn/credentials.md
+      - Standards: learn/standards.md
+    - Tutorials:
+      - Build a Vaccine Card: walkthroughs/vaccination.md
+  - Services:
+    - Overview: reference/index.md
+    - SDK Services:
+      - Account Service: reference/services/account-service.md
+      - Credential Service: reference/services/credential-service.md
+      - Provider Service: reference/services/provider-service.md
+      - Template Service: reference/services/template-service.md
+      - Trust Registry Service: reference/services/trust-registry-service.md
+      - Wallet Service: reference/services/wallet-service.md
+      - Protocol Buffers Reference: reference/proto/index.md
+  - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
       - Browser: web/index.md
@@ -30,15 +43,6 @@ nav:
       - Ruby: ruby/index.md
       - Go: go/index.md
       - Java: java/index.md
-  - SDK Reference:
-    - Overview: reference/index.md
-    - Account Service: reference/services/account-service.md
-    - Credential Service: reference/services/credential-service.md
-    - Provider Service: reference/services/provider-service.md
-    - Template Service: reference/services/template-service.md
-    - Trust Registry Service: reference/services/trust-registry-service.md
-    - Wallet Service: reference/services/wallet-service.md
-    - Protocol Buffers: reference/proto/index.md
   - Resources:
     - Roadmap: roadmap.md
     - Ask a Question: support.md
