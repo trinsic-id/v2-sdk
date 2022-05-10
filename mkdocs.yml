@@ -7,11 +7,11 @@ site_url: https://docs-v2.trinsic.id
 nav:
   - Home:
     - Introduction: index.md
-    - What is Trinsic?: learn/intro.md
     - Join the Beta: early-adopter.md
   - Learn: 
     - Overview: learn/index.md
     - Key Concepts:
+      - What is Trinsic?: learn/intro.md
       - Security Overview: learn/security.md
       - Identity Ecosystems: learn/ecosystems.md
       - Wallets: learn/wallets.md
