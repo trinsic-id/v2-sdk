@@ -1,28 +1,27 @@
-/// Request for creating new account
+/// Request for creating or signing into an account
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInRequest {
     /// Account registration details
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
     /// Invitation code associated with this registration
-    /// This field is optional.
     #[prost(string, tag = "2")]
     pub invitation_code: ::prost::alloc::string::String,
-    /// EcosystemId to sign in. This field is optional
-    /// and will be ignored if invitation_code is passed
+    /// ID of Ecosystem to sign into.
+    /// Ignored if `invitation_code` is passed
     #[prost(string, tag = "3")]
     pub ecosystem_id: ::prost::alloc::string::String,
 }
-/// Account Registration Details
+/// Account registration details
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountDetails {
-    /// Account name (optional)
+    /// Account name
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    /// Email account (required)
+    /// Email account
     #[prost(string, tag = "2")]
     pub email: ::prost::alloc::string::String,
-    /// SMS number including country code (optional)
+    /// SMS number including country code
     #[prost(string, tag = "3")]
     pub sms: ::prost::alloc::string::String,
 }
@@ -75,27 +74,33 @@ pub struct TokenProtection {
     #[prost(enumeration = "ConfirmationMethod", tag = "2")]
     pub method: i32,
 }
+/// Request for information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoRequest {}
+/// Information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoResponse {
     /// The account details associated with
     /// the calling request context
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
-    /// any ecosystems the account has access to
+    /// Use `ecosystem_id` instead
     #[deprecated]
     #[prost(message, repeated, tag = "2")]
     pub ecosystems: ::prost::alloc::vec::Vec<AccountEcosystem>,
-    /// The wallet id associated with this account
+    /// The wallet ID associated with this account
     #[prost(string, tag = "3")]
     pub wallet_id: ::prost::alloc::string::String,
-    /// The device id associated with this account
+    /// The device ID associated with this account session
     #[prost(string, tag = "4")]
     pub device_id: ::prost::alloc::string::String,
-    /// The ecosystem id associated with this account
+    /// The ecosystem ID within which this account resides
     #[prost(string, tag = "5")]
     pub ecosystem_id: ::prost::alloc::string::String,
+    /// The public DID associated with this account.
+    /// This DID is used as "issuer" when signing verifiable credentials
+    #[prost(string, tag = "6")]
+    pub public_did: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}

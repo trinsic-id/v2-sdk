@@ -13,10 +13,13 @@ pub struct Invite {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
+    /// Type of participant being invited (individual/organization)
     #[prost(enumeration = "ParticipantType", tag = "1")]
     pub participant: i32,
+    /// Description of invitation
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
+    /// Account details of invitee
     #[prost(message, optional, tag = "3")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
@@ -27,6 +30,7 @@ pub mod invite_request {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
+    /// ID of created invitation
     #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
     /// Invitation Code that must be passed with the account 'SignIn' request
@@ -40,13 +44,16 @@ pub struct InviteResponse {
 /// `Onboard` method call
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusRequest {
+    /// ID of invitation
     #[prost(string, tag = "1")]
     pub invitation_id: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusResponse {
+    /// Status of invitation
     #[prost(enumeration = "invitation_status_response::Status", tag = "1")]
     pub status: i32,
+    /// Human-readable string with details about invitation status
     #[prost(string, tag = "2")]
     pub status_details: ::prost::alloc::string::String,
 }
@@ -95,12 +102,10 @@ pub struct CreateEcosystemRequest {
     /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    /// Ecosystem description.
-    /// This field is optional.
+    /// Ecosystem description
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    /// External URL associated with your organization or ecosystem entity.
-    /// This field is optional
+    /// External URL associated with your organization or ecosystem entity
     #[prost(string, tag = "3")]
     pub uri: ::prost::alloc::string::String,
     /// The account details of the owner of the ecosystem
@@ -116,7 +121,7 @@ pub struct CreateEcosystemResponse {
     #[prost(message, optional, tag = "2")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
     /// Indicates if confirmation of account is required.
-    /// This settings is configured globally by the server administrator.
+    /// This setting is configured globally by the server administrator.
     #[prost(
         enumeration = "super::super::account::v1::ConfirmationMethod",
         tag = "3"
@@ -125,7 +130,7 @@ pub struct CreateEcosystemResponse {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenRequest {
-    /// Optional description to identify this token
+    /// Description to identify this token
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
 }

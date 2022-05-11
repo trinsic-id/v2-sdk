@@ -1,33 +1,50 @@
+/// Request to sign a JSON-LD Credential using public key tied to caller
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueRequest {
+    /// Valid JSON-LD Credential document to be signed, in string form
     #[prost(string, tag = "1")]
     pub document_json: ::prost::alloc::string::String,
 }
+/// Response to `IssueRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueResponse {
+    /// Verifiable Credential document, signed with public key
+    /// tied to caller of `IssueRequest`
     #[prost(string, tag = "1")]
     pub signed_document_json: ::prost::alloc::string::String,
 }
+/// Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueFromTemplateRequest {
+    /// ID of template to use
     #[prost(string, tag = "1")]
     pub template_id: ::prost::alloc::string::String,
+    /// JSON document string with keys corresponding to the fields of
+    /// the template referenced by `template_id`
     #[prost(string, tag = "2")]
     pub values_json: ::prost::alloc::string::String,
+    /// Governance framework ID to use with issuance of this credential.
+    /// If specified, the issued credential will contain extended issuer
+    /// metadata with membership info for the given ecosystem governance framework (EGF)
+    #[prost(string, tag = "3")]
+    pub framework_id: ::prost::alloc::string::String,
 }
+/// Response to `IssueFromTemplateRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct IssueFromTemplateResponse {
+    /// Verifiable Credential document, in JSON-LD form,
+    /// constructed from the specified template and values; signed
+    /// with public key tied to caller of `IssueFromTemplateRequest`
     #[prost(string, tag = "1")]
     pub document_json: ::prost::alloc::string::String,
 }
-/// Create Proof
+/// Request to create a proof for a Verifiable Credential using public key tied to caller.
+/// Either `item_id` or `document_json` may be provided, not both.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofRequest {
-    /// Optional document that describes which fields should be
-    /// revealed in the generated proof. If specified, this document must be
-    /// a valid JSON-LD frame.
-    /// If this field is not specified, a default reveal document will be
-    /// used and all fields in the signed document will be revealed
+    /// A valid JSON-LD frame describing which fields should be
+    /// revealed in the generated proof.
+    /// If unspecified, all fields in the document will be revealed
     #[prost(string, tag = "1")]
     pub reveal_document_json: ::prost::alloc::string::String,
     /// Specify the input to be used to derive this proof.
@@ -41,57 +58,61 @@ pub mod create_proof_request {
     /// Input can be an existing item in the wallet or an input document
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Proof {
-        /// The item identifier that contains a record with a verifiable
-        /// credential to be used for generating the proof.
+        /// ID of wallet item stored in a Trinsic cloud wallet
         #[prost(string, tag = "2")]
         ItemId(::prost::alloc::string::String),
-        /// A document that contains a valid verifiable credential with an
-        /// unbound signature. The proof will be derived from this document
-        /// directly. The document will not be stored in the wallet.
+        /// A valid JSON-LD Verifiable Credential document string
+        /// with an unbound signature. The proof will be derived from this
+        /// document directly. The document will not be stored in the wallet.
         #[prost(string, tag = "3")]
         DocumentJson(::prost::alloc::string::String),
     }
 }
+/// Response to `CreateProofRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateProofResponse {
+    /// Valid JSON-LD proof for the specified credential
     #[prost(string, tag = "1")]
     pub proof_document_json: ::prost::alloc::string::String,
 }
-/// Verify Proof
+/// Request to verify a proof
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofRequest {
+    /// JSON-LD proof document string to verify
     #[prost(string, tag = "1")]
     pub proof_document_json: ::prost::alloc::string::String,
 }
+/// Response to `VerifyProofRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
-    /// Indicates if the proof is valid
+    /// Whether or not all validations in `validation_results` passed
     #[prost(bool, tag = "1")]
     pub is_valid: bool,
+    /// Use `validation_results` instead
     #[deprecated]
     #[prost(string, repeated, tag = "2")]
     pub validation_messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// Validation messages that describe invalid verifications
-    /// based on different factors, such as schema validation,
-    /// proof verification, revocation registry membership, etc.
-    /// If the proof is not valid, this field will contain detailed
-    /// results where this verification failed.
+    /// Results of each validation check performed,
+    /// such as schema conformance, revocation status, signature, etc.
+    /// Detailed results are provided for failed validations.
     #[prost(map = "string, message", tag = "3")]
     pub validation_results:
         ::std::collections::HashMap<::prost::alloc::string::String, ValidationMessage>,
 }
-/// validation message that contains results and error messages
+/// Result of a validation check on a proof
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ValidationMessage {
-    /// the validation result
+    /// Whether or not this validation check passed
     #[prost(bool, tag = "1")]
     pub is_valid: bool,
-    /// set of messages that contain validation results
+    /// If validation failed, contains messages explaining why
     #[prost(string, repeated, tag = "2")]
     pub messages: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
+/// Request to send a document to another user's wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
+    /// JSON document to send to recipient
     #[prost(string, tag = "100")]
     pub document_json: ::prost::alloc::string::String,
     #[prost(oneof = "send_request::DeliveryMethod", tags = "1, 2, 3")]
@@ -101,40 +122,44 @@ pub struct SendRequest {
 pub mod send_request {
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum DeliveryMethod {
+        /// Email address of user to send item to
         #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
+        /// DID of recipient (presently unsupported)
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
+        /// DIDComm out-of-band invitation JSON (presently unsupported)
         #[prost(string, tag = "3")]
         DidcommInvitationJson(::prost::alloc::string::String),
     }
 }
+/// Response to `SendRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendResponse {}
-/// request object to update the status of the revocation entry
+/// Request to update a credential's revocation status
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusRequest {
-    /// the credential status id
+    /// Credential Status ID to update
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
-    /// indicates if the status is revoked
+    /// New revocation status of credential
     #[prost(bool, tag = "2")]
     pub revoked: bool,
 }
-/// response object for update of status of revocation entry
+/// Response to `UpdateStatusRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusResponse {}
-/// request object to check the status of the revocation entry
+/// Request to check a credential's revocation status
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusRequest {
-    /// the credential status id
+    /// Credential Status ID to check
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
 }
-/// response object for checking the status of revocation entry
+/// Response to `CheckStatusRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusResponse {
-    /// indicates if the status is revoked
+    /// The credential's revocation status
     #[prost(bool, tag = "1")]
     pub revoked: bool,
 }

@@ -16,6 +16,10 @@ fn main() {
             ".services",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
+        .type_attribute(
+            ".google.protobuf.UninterpretedOption",
+            "#[derive(::serde::Serialize, ::serde::Deserialize)]",
+        )
         // .field_attribute(
         //     "ServiceOptions.auth_token",
         //     "#[serde(skip_serializing_if = \"String::is_empty\")]",
@@ -43,6 +47,10 @@ fn main() {
     move_file!(
         "./src/proto/google.protobuf.rs",
         "./src/proto/google/protobuf/mod.rs"
+    );
+    move_file!(
+        "./src/proto/services.options.rs",
+        "./src/proto/services/options.rs"
     );
     move_file!(
         "./src/proto/sdk.options.v1.rs",

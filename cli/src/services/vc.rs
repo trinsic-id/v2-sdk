@@ -76,6 +76,7 @@ async fn issue_from_template(
     let request = tonic::Request::new(IssueFromTemplateRequest {
         template_id: args.template_id.clone(),
         values_json: values,
+        ..Default::default()
     });
 
     let response = client.issue_from_template(request).await?.into_inner();
