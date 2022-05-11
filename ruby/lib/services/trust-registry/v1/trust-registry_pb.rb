@@ -6,12 +6,17 @@ require 'google/protobuf'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/trust-registry/v1/trust-registry.proto", :syntax => :proto3) do
     add_message "services.trustregistry.v1.AddFrameworkRequest" do
-      optional :governance_framework, :message, 1, "services.trustregistry.v1.GovernanceFramework"
+      optional :governance_framework_uri, :string, 1
+      optional :name, :string, 2
+      optional :description, :string, 3
     end
     add_message "services.trustregistry.v1.AddFrameworkResponse" do
+      optional :id, :string, 1
+      optional :governing_authority, :string, 2
+      optional :trust_registry, :string, 3
     end
     add_message "services.trustregistry.v1.RemoveFrameworkRequest" do
-      optional :governance_framework, :message, 1, "services.trustregistry.v1.GovernanceFramework"
+      optional :id, :string, 1
     end
     add_message "services.trustregistry.v1.RemoveFrameworkResponse" do
     end
@@ -22,7 +27,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.trustregistry.v1.SearchRegistryResponse" do
       optional :items_json, :string, 1
       optional :has_more, :bool, 2
-      optional :count, :int32, 3
       optional :continuation_token, :string, 4
     end
     add_message "services.trustregistry.v1.GovernanceFramework" do
@@ -30,70 +34,39 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :trust_registry_uri, :string, 2
       optional :description, :string, 3
     end
-    add_message "services.trustregistry.v1.RegisterIssuerRequest" do
-      optional :credential_type_uri, :string, 10
+    add_message "services.trustregistry.v1.RegisterMemberRequest" do
+      optional :schema_uri, :string, 10
       optional :valid_from_utc, :uint64, 11
       optional :valid_until_utc, :uint64, 12
-      optional :governance_framework_uri, :string, 20
-      oneof :authority do
+      optional :framework_id, :string, 30
+      oneof :member do
         optional :did_uri, :string, 1
-        optional :x509_cert, :string, 2
+        optional :wallet_id, :string, 3
+        optional :email, :string, 4
       end
     end
-    add_message "services.trustregistry.v1.RegisterIssuerResponse" do
+    add_message "services.trustregistry.v1.RegisterMemberResponse" do
     end
-    add_message "services.trustregistry.v1.RegisterVerifierRequest" do
-      optional :presentation_type_uri, :string, 10
-      optional :valid_from_utc, :uint64, 11
-      optional :valid_until_utc, :uint64, 12
-      optional :governance_framework_uri, :string, 20
-      oneof :authority do
+    add_message "services.trustregistry.v1.UnregisterMemberRequest" do
+      optional :schema_uri, :string, 10
+      optional :framework_id, :string, 20
+      oneof :member do
         optional :did_uri, :string, 1
-        optional :x509_cert, :string, 2
+        optional :wallet_id, :string, 3
+        optional :email, :string, 4
       end
     end
-    add_message "services.trustregistry.v1.RegisterVerifierResponse" do
+    add_message "services.trustregistry.v1.UnregisterMemberResponse" do
     end
-    add_message "services.trustregistry.v1.UnregisterIssuerRequest" do
-      optional :credential_type_uri, :string, 10
-      optional :governance_framework_uri, :string, 20
-      oneof :authority do
-        optional :did_uri, :string, 1
-        optional :x509_cert, :string, 2
-      end
-    end
-    add_message "services.trustregistry.v1.UnregisterIssuerResponse" do
-    end
-    add_message "services.trustregistry.v1.UnregisterVerifierRequest" do
-      optional :presentation_type_uri, :string, 10
-      optional :governance_framework_uri, :string, 20
-      oneof :authority do
-        optional :did_uri, :string, 1
-        optional :x509_cert, :string, 2
-      end
-    end
-    add_message "services.trustregistry.v1.UnregisterVerifierResponse" do
-    end
-    add_message "services.trustregistry.v1.CheckIssuerStatusRequest" do
+    add_message "services.trustregistry.v1.GetMembershipStatusRequest" do
       optional :governance_framework_uri, :string, 1
-      optional :credential_type_uri, :string, 4
+      optional :schema_uri, :string, 4
       oneof :member do
         optional :did_uri, :string, 2
         optional :x509_cert, :string, 3
       end
     end
-    add_message "services.trustregistry.v1.CheckIssuerStatusResponse" do
-      optional :status, :enum, 1, "services.trustregistry.v1.RegistrationStatus"
-    end
-    add_message "services.trustregistry.v1.CheckVerifierStatusRequest" do
-      optional :governance_framework_uri, :string, 1
-      optional :presentation_type_uri, :string, 4
-      oneof :member do
-        optional :did_uri, :string, 2
-        optional :x509_cert, :string, 3
-      end
-    end
-    add_message "services.trustregistry.v1.CheckVerifierStatusResponse" do
+    add_message "services.trustregistry.v1.GetMembershipStatusResponse" do
       optional :status, :enum, 1, "services.trustregistry.v1.RegistrationStatus"
     end
     add_message "services.trustregistry.v1.FetchDataRequest" do
@@ -125,18 +98,12 @@ module Services
       SearchRegistryRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.SearchRegistryRequest").msgclass
       SearchRegistryResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.SearchRegistryResponse").msgclass
       GovernanceFramework = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.GovernanceFramework").msgclass
-      RegisterIssuerRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterIssuerRequest").msgclass
-      RegisterIssuerResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterIssuerResponse").msgclass
-      RegisterVerifierRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterVerifierRequest").msgclass
-      RegisterVerifierResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterVerifierResponse").msgclass
-      UnregisterIssuerRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterIssuerRequest").msgclass
-      UnregisterIssuerResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterIssuerResponse").msgclass
-      UnregisterVerifierRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterVerifierRequest").msgclass
-      UnregisterVerifierResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterVerifierResponse").msgclass
-      CheckIssuerStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.CheckIssuerStatusRequest").msgclass
-      CheckIssuerStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.CheckIssuerStatusResponse").msgclass
-      CheckVerifierStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.CheckVerifierStatusRequest").msgclass
-      CheckVerifierStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.CheckVerifierStatusResponse").msgclass
+      RegisterMemberRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterMemberRequest").msgclass
+      RegisterMemberResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegisterMemberResponse").msgclass
+      UnregisterMemberRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterMemberRequest").msgclass
+      UnregisterMemberResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.UnregisterMemberResponse").msgclass
+      GetMembershipStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.GetMembershipStatusRequest").msgclass
+      GetMembershipStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.GetMembershipStatusResponse").msgclass
       FetchDataRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.FetchDataRequest").msgclass
       FetchDataResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.FetchDataResponse").msgclass
       RegistrationStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.trustregistry.v1.RegistrationStatus").enummodule

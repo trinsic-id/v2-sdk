@@ -19,11 +19,19 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Valid JSON-LD Credential document to be signed, in string form
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The documentJson.
      */
     java.lang.String getDocumentJson();
     /**
+     * <pre>
+     * Valid JSON-LD Credential document to be signed, in string form
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The bytes for documentJson.
      */
@@ -31,6 +39,10 @@ public final class VerifiableCredentials {
         getDocumentJsonBytes();
   }
   /**
+   * <pre>
+   * Request to sign a JSON-LD Credential using public key tied to caller
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
    */
   public static final class IssueRequest extends
@@ -93,6 +105,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -117,6 +131,10 @@ public final class VerifiableCredentials {
     public static final int DOCUMENT_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object documentJson_;
     /**
+     * <pre>
+     * Valid JSON-LD Credential document to be signed, in string form
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The documentJson.
      */
@@ -134,6 +152,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * Valid JSON-LD Credential document to be signed, in string form
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The bytes for documentJson.
      */
@@ -307,6 +329,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Request to sign a JSON-LD Credential using public key tied to caller
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.IssueRequest}
      */
     public static final class Builder extends
@@ -456,6 +482,10 @@ public final class VerifiableCredentials {
 
       private java.lang.Object documentJson_ = "";
       /**
+       * <pre>
+       * Valid JSON-LD Credential document to be signed, in string form
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return The documentJson.
        */
@@ -472,6 +502,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Valid JSON-LD Credential document to be signed, in string form
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return The bytes for documentJson.
        */
@@ -489,6 +523,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Valid JSON-LD Credential document to be signed, in string form
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @param value The documentJson to set.
        * @return This builder for chaining.
@@ -504,6 +542,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Valid JSON-LD Credential document to be signed, in string form
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -514,6 +556,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Valid JSON-LD Credential document to be signed, in string form
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @param value The bytes for documentJson to set.
        * @return This builder for chaining.
@@ -587,11 +633,21 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Verifiable Credential document, signed with public key
+     * tied to caller of `IssueRequest`
+     * </pre>
+     *
      * <code>string signed_document_json = 1;</code>
      * @return The signedDocumentJson.
      */
     java.lang.String getSignedDocumentJson();
     /**
+     * <pre>
+     * Verifiable Credential document, signed with public key
+     * tied to caller of `IssueRequest`
+     * </pre>
+     *
      * <code>string signed_document_json = 1;</code>
      * @return The bytes for signedDocumentJson.
      */
@@ -599,6 +655,10 @@ public final class VerifiableCredentials {
         getSignedDocumentJsonBytes();
   }
   /**
+   * <pre>
+   * Response to `IssueRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
    */
   public static final class IssueResponse extends
@@ -661,6 +721,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -685,6 +747,11 @@ public final class VerifiableCredentials {
     public static final int SIGNED_DOCUMENT_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object signedDocumentJson_;
     /**
+     * <pre>
+     * Verifiable Credential document, signed with public key
+     * tied to caller of `IssueRequest`
+     * </pre>
+     *
      * <code>string signed_document_json = 1;</code>
      * @return The signedDocumentJson.
      */
@@ -702,6 +769,11 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * Verifiable Credential document, signed with public key
+     * tied to caller of `IssueRequest`
+     * </pre>
+     *
      * <code>string signed_document_json = 1;</code>
      * @return The bytes for signedDocumentJson.
      */
@@ -875,6 +947,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `IssueRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
      */
     public static final class Builder extends
@@ -1024,6 +1100,11 @@ public final class VerifiableCredentials {
 
       private java.lang.Object signedDocumentJson_ = "";
       /**
+       * <pre>
+       * Verifiable Credential document, signed with public key
+       * tied to caller of `IssueRequest`
+       * </pre>
+       *
        * <code>string signed_document_json = 1;</code>
        * @return The signedDocumentJson.
        */
@@ -1040,6 +1121,11 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Verifiable Credential document, signed with public key
+       * tied to caller of `IssueRequest`
+       * </pre>
+       *
        * <code>string signed_document_json = 1;</code>
        * @return The bytes for signedDocumentJson.
        */
@@ -1057,6 +1143,11 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Verifiable Credential document, signed with public key
+       * tied to caller of `IssueRequest`
+       * </pre>
+       *
        * <code>string signed_document_json = 1;</code>
        * @param value The signedDocumentJson to set.
        * @return This builder for chaining.
@@ -1072,6 +1163,11 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Verifiable Credential document, signed with public key
+       * tied to caller of `IssueRequest`
+       * </pre>
+       *
        * <code>string signed_document_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -1082,6 +1178,11 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Verifiable Credential document, signed with public key
+       * tied to caller of `IssueRequest`
+       * </pre>
+       *
        * <code>string signed_document_json = 1;</code>
        * @param value The bytes for signedDocumentJson to set.
        * @return This builder for chaining.
@@ -1155,11 +1256,19 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * ID of template to use
+     * </pre>
+     *
      * <code>string template_id = 1;</code>
      * @return The templateId.
      */
     java.lang.String getTemplateId();
     /**
+     * <pre>
+     * ID of template to use
+     * </pre>
+     *
      * <code>string template_id = 1;</code>
      * @return The bytes for templateId.
      */
@@ -1167,18 +1276,56 @@ public final class VerifiableCredentials {
         getTemplateIdBytes();
 
     /**
+     * <pre>
+     * JSON document string with keys corresponding to the fields of
+     * the template referenced by `template_id`
+     * </pre>
+     *
      * <code>string values_json = 2;</code>
      * @return The valuesJson.
      */
     java.lang.String getValuesJson();
     /**
+     * <pre>
+     * JSON document string with keys corresponding to the fields of
+     * the template referenced by `template_id`
+     * </pre>
+     *
      * <code>string values_json = 2;</code>
      * @return The bytes for valuesJson.
      */
     com.google.protobuf.ByteString
         getValuesJsonBytes();
+
+    /**
+     * <pre>
+     * Governance framework ID to use with issuance of this credential.
+     * If specified, the issued credential will contain extended issuer
+     * metadata with membership info for the given ecosystem governance framework (EGF)
+     * </pre>
+     *
+     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+     * @return The frameworkId.
+     */
+    java.lang.String getFrameworkId();
+    /**
+     * <pre>
+     * Governance framework ID to use with issuance of this credential.
+     * If specified, the issued credential will contain extended issuer
+     * metadata with membership info for the given ecosystem governance framework (EGF)
+     * </pre>
+     *
+     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+     * @return The bytes for frameworkId.
+     */
+    com.google.protobuf.ByteString
+        getFrameworkIdBytes();
   }
   /**
+   * <pre>
+   * Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateRequest}
    */
   public static final class IssueFromTemplateRequest extends
@@ -1193,6 +1340,7 @@ public final class VerifiableCredentials {
     private IssueFromTemplateRequest() {
       templateId_ = "";
       valuesJson_ = "";
+      frameworkId_ = "";
     }
 
     @java.lang.Override
@@ -1237,6 +1385,12 @@ public final class VerifiableCredentials {
               valuesJson_ = s;
               break;
             }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              frameworkId_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1248,6 +1402,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1272,6 +1428,10 @@ public final class VerifiableCredentials {
     public static final int TEMPLATE_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object templateId_;
     /**
+     * <pre>
+     * ID of template to use
+     * </pre>
+     *
      * <code>string template_id = 1;</code>
      * @return The templateId.
      */
@@ -1289,6 +1449,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * ID of template to use
+     * </pre>
+     *
      * <code>string template_id = 1;</code>
      * @return The bytes for templateId.
      */
@@ -1310,6 +1474,11 @@ public final class VerifiableCredentials {
     public static final int VALUES_JSON_FIELD_NUMBER = 2;
     private volatile java.lang.Object valuesJson_;
     /**
+     * <pre>
+     * JSON document string with keys corresponding to the fields of
+     * the template referenced by `template_id`
+     * </pre>
+     *
      * <code>string values_json = 2;</code>
      * @return The valuesJson.
      */
@@ -1327,6 +1496,11 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * JSON document string with keys corresponding to the fields of
+     * the template referenced by `template_id`
+     * </pre>
+     *
      * <code>string values_json = 2;</code>
      * @return The bytes for valuesJson.
      */
@@ -1339,6 +1513,56 @@ public final class VerifiableCredentials {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         valuesJson_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FRAMEWORK_ID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object frameworkId_;
+    /**
+     * <pre>
+     * Governance framework ID to use with issuance of this credential.
+     * If specified, the issued credential will contain extended issuer
+     * metadata with membership info for the given ecosystem governance framework (EGF)
+     * </pre>
+     *
+     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+     * @return The frameworkId.
+     */
+    @java.lang.Override
+    public java.lang.String getFrameworkId() {
+      java.lang.Object ref = frameworkId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        frameworkId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Governance framework ID to use with issuance of this credential.
+     * If specified, the issued credential will contain extended issuer
+     * metadata with membership info for the given ecosystem governance framework (EGF)
+     * </pre>
+     *
+     * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+     * @return The bytes for frameworkId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFrameworkIdBytes() {
+      java.lang.Object ref = frameworkId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        frameworkId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1365,6 +1589,9 @@ public final class VerifiableCredentials {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(valuesJson_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, valuesJson_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, frameworkId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1379,6 +1606,9 @@ public final class VerifiableCredentials {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(valuesJson_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, valuesJson_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, frameworkId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1399,6 +1629,8 @@ public final class VerifiableCredentials {
           .equals(other.getTemplateId())) return false;
       if (!getValuesJson()
           .equals(other.getValuesJson())) return false;
+      if (!getFrameworkId()
+          .equals(other.getFrameworkId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1414,6 +1646,8 @@ public final class VerifiableCredentials {
       hash = (53 * hash) + getTemplateId().hashCode();
       hash = (37 * hash) + VALUES_JSON_FIELD_NUMBER;
       hash = (53 * hash) + getValuesJson().hashCode();
+      hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getFrameworkId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1510,6 +1744,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateRequest}
      */
     public static final class Builder extends
@@ -1551,6 +1789,8 @@ public final class VerifiableCredentials {
 
         valuesJson_ = "";
 
+        frameworkId_ = "";
+
         return this;
       }
 
@@ -1579,6 +1819,7 @@ public final class VerifiableCredentials {
         trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest result = new trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest(this);
         result.templateId_ = templateId_;
         result.valuesJson_ = valuesJson_;
+        result.frameworkId_ = frameworkId_;
         onBuilt();
         return result;
       }
@@ -1635,6 +1876,10 @@ public final class VerifiableCredentials {
           valuesJson_ = other.valuesJson_;
           onChanged();
         }
+        if (!other.getFrameworkId().isEmpty()) {
+          frameworkId_ = other.frameworkId_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1666,6 +1911,10 @@ public final class VerifiableCredentials {
 
       private java.lang.Object templateId_ = "";
       /**
+       * <pre>
+       * ID of template to use
+       * </pre>
+       *
        * <code>string template_id = 1;</code>
        * @return The templateId.
        */
@@ -1682,6 +1931,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * ID of template to use
+       * </pre>
+       *
        * <code>string template_id = 1;</code>
        * @return The bytes for templateId.
        */
@@ -1699,6 +1952,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * ID of template to use
+       * </pre>
+       *
        * <code>string template_id = 1;</code>
        * @param value The templateId to set.
        * @return This builder for chaining.
@@ -1714,6 +1971,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to use
+       * </pre>
+       *
        * <code>string template_id = 1;</code>
        * @return This builder for chaining.
        */
@@ -1724,6 +1985,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to use
+       * </pre>
+       *
        * <code>string template_id = 1;</code>
        * @param value The bytes for templateId to set.
        * @return This builder for chaining.
@@ -1742,6 +2007,11 @@ public final class VerifiableCredentials {
 
       private java.lang.Object valuesJson_ = "";
       /**
+       * <pre>
+       * JSON document string with keys corresponding to the fields of
+       * the template referenced by `template_id`
+       * </pre>
+       *
        * <code>string values_json = 2;</code>
        * @return The valuesJson.
        */
@@ -1758,6 +2028,11 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON document string with keys corresponding to the fields of
+       * the template referenced by `template_id`
+       * </pre>
+       *
        * <code>string values_json = 2;</code>
        * @return The bytes for valuesJson.
        */
@@ -1775,6 +2050,11 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON document string with keys corresponding to the fields of
+       * the template referenced by `template_id`
+       * </pre>
+       *
        * <code>string values_json = 2;</code>
        * @param value The valuesJson to set.
        * @return This builder for chaining.
@@ -1790,6 +2070,11 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON document string with keys corresponding to the fields of
+       * the template referenced by `template_id`
+       * </pre>
+       *
        * <code>string values_json = 2;</code>
        * @return This builder for chaining.
        */
@@ -1800,6 +2085,11 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON document string with keys corresponding to the fields of
+       * the template referenced by `template_id`
+       * </pre>
+       *
        * <code>string values_json = 2;</code>
        * @param value The bytes for valuesJson to set.
        * @return This builder for chaining.
@@ -1812,6 +2102,112 @@ public final class VerifiableCredentials {
   checkByteStringIsUtf8(value);
         
         valuesJson_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object frameworkId_ = "";
+      /**
+       * <pre>
+       * Governance framework ID to use with issuance of this credential.
+       * If specified, the issued credential will contain extended issuer
+       * metadata with membership info for the given ecosystem governance framework (EGF)
+       * </pre>
+       *
+       * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+       * @return The frameworkId.
+       */
+      public java.lang.String getFrameworkId() {
+        java.lang.Object ref = frameworkId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          frameworkId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Governance framework ID to use with issuance of this credential.
+       * If specified, the issued credential will contain extended issuer
+       * metadata with membership info for the given ecosystem governance framework (EGF)
+       * </pre>
+       *
+       * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+       * @return The bytes for frameworkId.
+       */
+      public com.google.protobuf.ByteString
+          getFrameworkIdBytes() {
+        java.lang.Object ref = frameworkId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          frameworkId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Governance framework ID to use with issuance of this credential.
+       * If specified, the issued credential will contain extended issuer
+       * metadata with membership info for the given ecosystem governance framework (EGF)
+       * </pre>
+       *
+       * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+       * @param value The frameworkId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFrameworkId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        frameworkId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Governance framework ID to use with issuance of this credential.
+       * If specified, the issued credential will contain extended issuer
+       * metadata with membership info for the given ecosystem governance framework (EGF)
+       * </pre>
+       *
+       * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFrameworkId() {
+        
+        frameworkId_ = getDefaultInstance().getFrameworkId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Governance framework ID to use with issuance of this credential.
+       * If specified, the issued credential will contain extended issuer
+       * metadata with membership info for the given ecosystem governance framework (EGF)
+       * </pre>
+       *
+       * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
+       * @param value The bytes for frameworkId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFrameworkIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        frameworkId_ = value;
         onChanged();
         return this;
       }
@@ -1873,11 +2269,23 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Verifiable Credential document, in JSON-LD form,
+     * constructed from the specified template and values; signed
+     * with public key tied to caller of `IssueFromTemplateRequest`
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The documentJson.
      */
     java.lang.String getDocumentJson();
     /**
+     * <pre>
+     * Verifiable Credential document, in JSON-LD form,
+     * constructed from the specified template and values; signed
+     * with public key tied to caller of `IssueFromTemplateRequest`
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The bytes for documentJson.
      */
@@ -1885,6 +2293,10 @@ public final class VerifiableCredentials {
         getDocumentJsonBytes();
   }
   /**
+   * <pre>
+   * Response to `IssueFromTemplateRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateResponse}
    */
   public static final class IssueFromTemplateResponse extends
@@ -1947,6 +2359,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1971,6 +2385,12 @@ public final class VerifiableCredentials {
     public static final int DOCUMENT_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object documentJson_;
     /**
+     * <pre>
+     * Verifiable Credential document, in JSON-LD form,
+     * constructed from the specified template and values; signed
+     * with public key tied to caller of `IssueFromTemplateRequest`
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The documentJson.
      */
@@ -1988,6 +2408,12 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * Verifiable Credential document, in JSON-LD form,
+     * constructed from the specified template and values; signed
+     * with public key tied to caller of `IssueFromTemplateRequest`
+     * </pre>
+     *
      * <code>string document_json = 1;</code>
      * @return The bytes for documentJson.
      */
@@ -2161,6 +2587,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `IssueFromTemplateRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateResponse}
      */
     public static final class Builder extends
@@ -2310,6 +2740,12 @@ public final class VerifiableCredentials {
 
       private java.lang.Object documentJson_ = "";
       /**
+       * <pre>
+       * Verifiable Credential document, in JSON-LD form,
+       * constructed from the specified template and values; signed
+       * with public key tied to caller of `IssueFromTemplateRequest`
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return The documentJson.
        */
@@ -2326,6 +2762,12 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Verifiable Credential document, in JSON-LD form,
+       * constructed from the specified template and values; signed
+       * with public key tied to caller of `IssueFromTemplateRequest`
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return The bytes for documentJson.
        */
@@ -2343,6 +2785,12 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Verifiable Credential document, in JSON-LD form,
+       * constructed from the specified template and values; signed
+       * with public key tied to caller of `IssueFromTemplateRequest`
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @param value The documentJson to set.
        * @return This builder for chaining.
@@ -2358,6 +2806,12 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Verifiable Credential document, in JSON-LD form,
+       * constructed from the specified template and values; signed
+       * with public key tied to caller of `IssueFromTemplateRequest`
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -2368,6 +2822,12 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Verifiable Credential document, in JSON-LD form,
+       * constructed from the specified template and values; signed
+       * with public key tied to caller of `IssueFromTemplateRequest`
+       * </pre>
+       *
        * <code>string document_json = 1;</code>
        * @param value The bytes for documentJson to set.
        * @return This builder for chaining.
@@ -2442,11 +2902,9 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * Optional document that describes which fields should be
-     * revealed in the generated proof. If specified, this document must be
-     * a valid JSON-LD frame.
-     * If this field is not specified, a default reveal document will be
-     * used and all fields in the signed document will be revealed
+     * A valid JSON-LD frame describing which fields should be
+     * revealed in the generated proof. 
+     * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
@@ -2455,11 +2913,9 @@ public final class VerifiableCredentials {
     java.lang.String getRevealDocumentJson();
     /**
      * <pre>
-     * Optional document that describes which fields should be
-     * revealed in the generated proof. If specified, this document must be
-     * a valid JSON-LD frame.
-     * If this field is not specified, a default reveal document will be
-     * used and all fields in the signed document will be revealed
+     * A valid JSON-LD frame describing which fields should be
+     * revealed in the generated proof. 
+     * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
@@ -2470,8 +2926,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2480,8 +2935,7 @@ public final class VerifiableCredentials {
     boolean hasItemId();
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2490,8 +2944,7 @@ public final class VerifiableCredentials {
     java.lang.String getItemId();
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2502,9 +2955,9 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -2513,9 +2966,9 @@ public final class VerifiableCredentials {
     boolean hasDocumentJson();
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -2524,9 +2977,9 @@ public final class VerifiableCredentials {
     java.lang.String getDocumentJson();
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -2539,7 +2992,8 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * Create Proof
+   * Request to create a proof for a Verifiable Credential using public key tied to caller.
+   * Either `item_id` or `document_json` may be provided, not both.
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
@@ -2616,6 +3070,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -2682,11 +3138,9 @@ public final class VerifiableCredentials {
     private volatile java.lang.Object revealDocumentJson_;
     /**
      * <pre>
-     * Optional document that describes which fields should be
-     * revealed in the generated proof. If specified, this document must be
-     * a valid JSON-LD frame.
-     * If this field is not specified, a default reveal document will be
-     * used and all fields in the signed document will be revealed
+     * A valid JSON-LD frame describing which fields should be
+     * revealed in the generated proof. 
+     * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
@@ -2707,11 +3161,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Optional document that describes which fields should be
-     * revealed in the generated proof. If specified, this document must be
-     * a valid JSON-LD frame.
-     * If this field is not specified, a default reveal document will be
-     * used and all fields in the signed document will be revealed
+     * A valid JSON-LD frame describing which fields should be
+     * revealed in the generated proof. 
+     * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
@@ -2735,8 +3187,7 @@ public final class VerifiableCredentials {
     public static final int ITEM_ID_FIELD_NUMBER = 2;
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2747,8 +3198,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2773,8 +3223,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * The item identifier that contains a record with a verifiable
-     * credential to be used for generating the proof.
+     * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -2802,9 +3251,9 @@ public final class VerifiableCredentials {
     public static final int DOCUMENT_JSON_FIELD_NUMBER = 3;
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -2815,9 +3264,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -2842,9 +3291,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * A document that contains a valid verifiable credential with an
-     * unbound signature. The proof will be derived from this document
-     * directly. The document will not be stored in the wallet.
+     * A valid JSON-LD Verifiable Credential document string 
+     * with an unbound signature. The proof will be derived from this
+     * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
@@ -3062,7 +3511,8 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Create Proof
+     * Request to create a proof for a Verifiable Credential using public key tied to caller.
+     * Either `item_id` or `document_json` may be provided, not both.
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
@@ -3256,11 +3706,9 @@ public final class VerifiableCredentials {
       private java.lang.Object revealDocumentJson_ = "";
       /**
        * <pre>
-       * Optional document that describes which fields should be
-       * revealed in the generated proof. If specified, this document must be
-       * a valid JSON-LD frame.
-       * If this field is not specified, a default reveal document will be
-       * used and all fields in the signed document will be revealed
+       * A valid JSON-LD frame describing which fields should be
+       * revealed in the generated proof. 
+       * If unspecified, all fields in the document will be revealed
        * </pre>
        *
        * <code>string reveal_document_json = 1;</code>
@@ -3280,11 +3728,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Optional document that describes which fields should be
-       * revealed in the generated proof. If specified, this document must be
-       * a valid JSON-LD frame.
-       * If this field is not specified, a default reveal document will be
-       * used and all fields in the signed document will be revealed
+       * A valid JSON-LD frame describing which fields should be
+       * revealed in the generated proof. 
+       * If unspecified, all fields in the document will be revealed
        * </pre>
        *
        * <code>string reveal_document_json = 1;</code>
@@ -3305,11 +3751,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Optional document that describes which fields should be
-       * revealed in the generated proof. If specified, this document must be
-       * a valid JSON-LD frame.
-       * If this field is not specified, a default reveal document will be
-       * used and all fields in the signed document will be revealed
+       * A valid JSON-LD frame describing which fields should be
+       * revealed in the generated proof. 
+       * If unspecified, all fields in the document will be revealed
        * </pre>
        *
        * <code>string reveal_document_json = 1;</code>
@@ -3328,11 +3772,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Optional document that describes which fields should be
-       * revealed in the generated proof. If specified, this document must be
-       * a valid JSON-LD frame.
-       * If this field is not specified, a default reveal document will be
-       * used and all fields in the signed document will be revealed
+       * A valid JSON-LD frame describing which fields should be
+       * revealed in the generated proof. 
+       * If unspecified, all fields in the document will be revealed
        * </pre>
        *
        * <code>string reveal_document_json = 1;</code>
@@ -3346,11 +3788,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Optional document that describes which fields should be
-       * revealed in the generated proof. If specified, this document must be
-       * a valid JSON-LD frame.
-       * If this field is not specified, a default reveal document will be
-       * used and all fields in the signed document will be revealed
+       * A valid JSON-LD frame describing which fields should be
+       * revealed in the generated proof. 
+       * If unspecified, all fields in the document will be revealed
        * </pre>
        *
        * <code>string reveal_document_json = 1;</code>
@@ -3371,8 +3811,7 @@ public final class VerifiableCredentials {
 
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3384,8 +3823,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3411,8 +3849,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3439,8 +3876,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3459,8 +3895,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3476,8 +3911,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * The item identifier that contains a record with a verifiable
-       * credential to be used for generating the proof.
+       * ID of wallet item stored in a Trinsic cloud wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -3498,9 +3932,9 @@ public final class VerifiableCredentials {
 
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3512,9 +3946,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3540,9 +3974,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3569,9 +4003,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3590,9 +4024,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3608,9 +4042,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * A document that contains a valid verifiable credential with an
-       * unbound signature. The proof will be derived from this document
-       * directly. The document will not be stored in the wallet.
+       * A valid JSON-LD Verifiable Credential document string 
+       * with an unbound signature. The proof will be derived from this
+       * document directly. The document will not be stored in the wallet.
        * </pre>
        *
        * <code>string document_json = 3;</code>
@@ -3686,11 +4120,19 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Valid JSON-LD proof for the specified credential
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The proofDocumentJson.
      */
     java.lang.String getProofDocumentJson();
     /**
+     * <pre>
+     * Valid JSON-LD proof for the specified credential
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The bytes for proofDocumentJson.
      */
@@ -3698,6 +4140,10 @@ public final class VerifiableCredentials {
         getProofDocumentJsonBytes();
   }
   /**
+   * <pre>
+   * Response to `CreateProofRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
    */
   public static final class CreateProofResponse extends
@@ -3760,6 +4206,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3784,6 +4232,10 @@ public final class VerifiableCredentials {
     public static final int PROOF_DOCUMENT_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object proofDocumentJson_;
     /**
+     * <pre>
+     * Valid JSON-LD proof for the specified credential
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The proofDocumentJson.
      */
@@ -3801,6 +4253,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * Valid JSON-LD proof for the specified credential
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The bytes for proofDocumentJson.
      */
@@ -3974,6 +4430,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `CreateProofRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.CreateProofResponse}
      */
     public static final class Builder extends
@@ -4123,6 +4583,10 @@ public final class VerifiableCredentials {
 
       private java.lang.Object proofDocumentJson_ = "";
       /**
+       * <pre>
+       * Valid JSON-LD proof for the specified credential
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return The proofDocumentJson.
        */
@@ -4139,6 +4603,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Valid JSON-LD proof for the specified credential
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return The bytes for proofDocumentJson.
        */
@@ -4156,6 +4624,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Valid JSON-LD proof for the specified credential
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @param value The proofDocumentJson to set.
        * @return This builder for chaining.
@@ -4171,6 +4643,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Valid JSON-LD proof for the specified credential
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -4181,6 +4657,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Valid JSON-LD proof for the specified credential
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @param value The bytes for proofDocumentJson to set.
        * @return This builder for chaining.
@@ -4254,11 +4734,19 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * JSON-LD proof document string to verify
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The proofDocumentJson.
      */
     java.lang.String getProofDocumentJson();
     /**
+     * <pre>
+     * JSON-LD proof document string to verify
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The bytes for proofDocumentJson.
      */
@@ -4267,7 +4755,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * Verify Proof
+   * Request to verify a proof
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofRequest}
@@ -4332,6 +4820,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4356,6 +4846,10 @@ public final class VerifiableCredentials {
     public static final int PROOF_DOCUMENT_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object proofDocumentJson_;
     /**
+     * <pre>
+     * JSON-LD proof document string to verify
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The proofDocumentJson.
      */
@@ -4373,6 +4867,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * JSON-LD proof document string to verify
+     * </pre>
+     *
      * <code>string proof_document_json = 1;</code>
      * @return The bytes for proofDocumentJson.
      */
@@ -4547,7 +5045,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Verify Proof
+     * Request to verify a proof
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofRequest}
@@ -4699,6 +5197,10 @@ public final class VerifiableCredentials {
 
       private java.lang.Object proofDocumentJson_ = "";
       /**
+       * <pre>
+       * JSON-LD proof document string to verify
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return The proofDocumentJson.
        */
@@ -4715,6 +5217,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON-LD proof document string to verify
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return The bytes for proofDocumentJson.
        */
@@ -4732,6 +5238,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON-LD proof document string to verify
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @param value The proofDocumentJson to set.
        * @return This builder for chaining.
@@ -4747,6 +5257,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON-LD proof document string to verify
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -4757,6 +5271,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON-LD proof document string to verify
+       * </pre>
+       *
        * <code>string proof_document_json = 1;</code>
        * @param value The bytes for proofDocumentJson to set.
        * @return This builder for chaining.
@@ -4831,7 +5349,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * Indicates if the proof is valid
+     * Whether or not all validations in `validation_results` passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
@@ -4840,28 +5358,48 @@ public final class VerifiableCredentials {
     boolean getIsValid();
 
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @return A list containing the validationMessages.
      */
     @java.lang.Deprecated java.util.List<java.lang.String>
         getValidationMessagesList();
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @return The count of validationMessages.
      */
     @java.lang.Deprecated int getValidationMessagesCount();
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @param index The index of the element to return.
      * @return The validationMessages at the given index.
      */
     @java.lang.Deprecated java.lang.String getValidationMessages(int index);
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @param index The index of the value to return.
      * @return The bytes of the validationMessages at the given index.
      */
@@ -4870,11 +5408,9 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -4882,11 +5418,9 @@ public final class VerifiableCredentials {
     int getValidationResultsCount();
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -4901,11 +5435,9 @@ public final class VerifiableCredentials {
     getValidationResults();
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -4914,26 +5446,24 @@ public final class VerifiableCredentials {
     getValidationResultsMap();
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
 
-    trinsic.services.verifiablecredentials.v1.VerifiableCredentials.ValidationMessage getValidationResultsOrDefault(
+    /* nullable */
+trinsic.services.verifiablecredentials.v1.VerifiableCredentials.ValidationMessage getValidationResultsOrDefault(
         java.lang.String key,
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.ValidationMessage defaultValue);
+        /* nullable */
+trinsic.services.verifiablecredentials.v1.VerifiableCredentials.ValidationMessage defaultValue);
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -4943,6 +5473,10 @@ public final class VerifiableCredentials {
         java.lang.String key);
   }
   /**
+   * <pre>
+   * Response to `VerifyProofRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
    */
   public static final class VerifyProofResponse extends
@@ -5027,6 +5561,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5067,7 +5603,7 @@ public final class VerifiableCredentials {
     private boolean isValid_;
     /**
      * <pre>
-     * Indicates if the proof is valid
+     * Whether or not all validations in `validation_results` passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
@@ -5081,8 +5617,13 @@ public final class VerifiableCredentials {
     public static final int VALIDATION_MESSAGES_FIELD_NUMBER = 2;
     private com.google.protobuf.LazyStringList validationMessages_;
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @return A list containing the validationMessages.
      */
     @java.lang.Deprecated public com.google.protobuf.ProtocolStringList
@@ -5090,16 +5631,26 @@ public final class VerifiableCredentials {
       return validationMessages_;
     }
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @return The count of validationMessages.
      */
     @java.lang.Deprecated public int getValidationMessagesCount() {
       return validationMessages_.size();
     }
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @param index The index of the element to return.
      * @return The validationMessages at the given index.
      */
@@ -5107,8 +5658,13 @@ public final class VerifiableCredentials {
       return validationMessages_.get(index);
     }
     /**
+     * <pre>
+     * Use `validation_results` instead
+     * </pre>
+     *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     * @deprecated
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
      * @param index The index of the value to return.
      * @return The bytes of the validationMessages at the given index.
      */
@@ -5145,11 +5701,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5171,11 +5725,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5187,11 +5739,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5208,11 +5758,9 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * Validation messages that describe invalid verifications
-     * based on different factors, such as schema validation,
-     * proof verification, revocation registry membership, etc.
-     * If the proof is not valid, this field will contain detailed
-     * results where this verification failed.
+     * Results of each validation check performed, 
+     * such as schema conformance, revocation status, signature, etc.
+     * Detailed results are provided for failed validations.
      * </pre>
      *
      * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5426,6 +5974,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `VerifyProofRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
      */
     public static final class Builder extends
@@ -5621,7 +6173,7 @@ public final class VerifiableCredentials {
       private boolean isValid_ ;
       /**
        * <pre>
-       * Indicates if the proof is valid
+       * Whether or not all validations in `validation_results` passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -5633,7 +6185,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Indicates if the proof is valid
+       * Whether or not all validations in `validation_results` passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -5648,7 +6200,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Indicates if the proof is valid
+       * Whether or not all validations in `validation_results` passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -5669,8 +6221,13 @@ public final class VerifiableCredentials {
          }
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @return A list containing the validationMessages.
        */
       @java.lang.Deprecated public com.google.protobuf.ProtocolStringList
@@ -5678,16 +6235,26 @@ public final class VerifiableCredentials {
         return validationMessages_.getUnmodifiableView();
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @return The count of validationMessages.
        */
       @java.lang.Deprecated public int getValidationMessagesCount() {
         return validationMessages_.size();
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param index The index of the element to return.
        * @return The validationMessages at the given index.
        */
@@ -5695,8 +6262,13 @@ public final class VerifiableCredentials {
         return validationMessages_.get(index);
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param index The index of the value to return.
        * @return The bytes of the validationMessages at the given index.
        */
@@ -5705,8 +6277,13 @@ public final class VerifiableCredentials {
         return validationMessages_.getByteString(index);
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param index The index to set the value at.
        * @param value The validationMessages to set.
        * @return This builder for chaining.
@@ -5722,8 +6299,13 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param value The validationMessages to add.
        * @return This builder for chaining.
        */
@@ -5738,8 +6320,13 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param values The validationMessages to add.
        * @return This builder for chaining.
        */
@@ -5752,8 +6339,13 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearValidationMessages() {
@@ -5763,8 +6355,13 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Use `validation_results` instead
+       * </pre>
+       *
        * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-       * @deprecated
+       * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+       *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=82
        * @param value The bytes of the validationMessages to add.
        * @return This builder for chaining.
        */
@@ -5808,11 +6405,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5834,11 +6429,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5850,11 +6443,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5871,11 +6462,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5900,11 +6489,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5927,11 +6514,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -5950,11 +6535,9 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * Validation messages that describe invalid verifications
-       * based on different factors, such as schema validation,
-       * proof verification, revocation registry membership, etc.
-       * If the proof is not valid, this field will contain detailed
-       * results where this verification failed.
+       * Results of each validation check performed, 
+       * such as schema conformance, revocation status, signature, etc.
+       * Detailed results are provided for failed validations.
        * </pre>
        *
        * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
@@ -6025,7 +6608,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * the validation result
+     * Whether or not this validation check passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
@@ -6035,7 +6618,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6045,7 +6628,7 @@ public final class VerifiableCredentials {
         getMessagesList();
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6054,7 +6637,7 @@ public final class VerifiableCredentials {
     int getMessagesCount();
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6064,7 +6647,7 @@ public final class VerifiableCredentials {
     java.lang.String getMessages(int index);
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6076,7 +6659,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * validation message that contains results and error messages
+   * Result of a validation check on a proof
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.ValidationMessage}
@@ -6150,6 +6733,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -6178,7 +6763,7 @@ public final class VerifiableCredentials {
     private boolean isValid_;
     /**
      * <pre>
-     * the validation result
+     * Whether or not this validation check passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
@@ -6193,7 +6778,7 @@ public final class VerifiableCredentials {
     private com.google.protobuf.LazyStringList messages_;
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6205,7 +6790,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6216,7 +6801,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6228,7 +6813,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * set of messages that contain validation results
+     * If validation failed, contains messages explaining why
      * </pre>
      *
      * <code>repeated string messages = 2;</code>
@@ -6415,7 +7000,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * validation message that contains results and error messages
+     * Result of a validation check on a proof
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.ValidationMessage}
@@ -6586,7 +7171,7 @@ public final class VerifiableCredentials {
       private boolean isValid_ ;
       /**
        * <pre>
-       * the validation result
+       * Whether or not this validation check passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -6598,7 +7183,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the validation result
+       * Whether or not this validation check passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -6613,7 +7198,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the validation result
+       * Whether or not this validation check passed
        * </pre>
        *
        * <code>bool is_valid = 1;</code>
@@ -6635,7 +7220,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6647,7 +7232,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6658,7 +7243,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6670,7 +7255,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6683,7 +7268,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6703,7 +7288,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6722,7 +7307,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6739,7 +7324,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6753,7 +7338,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * set of messages that contain validation results
+       * If validation failed, contains messages explaining why
        * </pre>
        *
        * <code>repeated string messages = 2;</code>
@@ -6829,16 +7414,28 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return Whether the email field is set.
      */
     boolean hasEmail();
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return The email.
      */
     java.lang.String getEmail();
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return The bytes for email.
      */
@@ -6846,16 +7443,28 @@ public final class VerifiableCredentials {
         getEmailBytes();
 
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return Whether the didUri field is set.
      */
     boolean hasDidUri();
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return The didUri.
      */
     java.lang.String getDidUri();
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return The bytes for didUri.
      */
@@ -6863,16 +7472,28 @@ public final class VerifiableCredentials {
         getDidUriBytes();
 
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return Whether the didcommInvitationJson field is set.
      */
     boolean hasDidcommInvitationJson();
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return The didcommInvitationJson.
      */
     java.lang.String getDidcommInvitationJson();
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return The bytes for didcommInvitationJson.
      */
@@ -6880,11 +7501,19 @@ public final class VerifiableCredentials {
         getDidcommInvitationJsonBytes();
 
     /**
+     * <pre>
+     * JSON document to send to recipient
+     * </pre>
+     *
      * <code>string document_json = 100;</code>
      * @return The documentJson.
      */
     java.lang.String getDocumentJson();
     /**
+     * <pre>
+     * JSON document to send to recipient
+     * </pre>
+     *
      * <code>string document_json = 100;</code>
      * @return The bytes for documentJson.
      */
@@ -6894,6 +7523,10 @@ public final class VerifiableCredentials {
     public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest.DeliveryMethodCase getDeliveryMethodCase();
   }
   /**
+   * <pre>
+   * Request to send a document to another user's wallet
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
    */
   public static final class SendRequest extends
@@ -6974,6 +7607,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -7040,6 +7675,10 @@ public final class VerifiableCredentials {
 
     public static final int EMAIL_FIELD_NUMBER = 1;
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return Whether the email field is set.
      */
@@ -7047,6 +7686,10 @@ public final class VerifiableCredentials {
       return deliveryMethodCase_ == 1;
     }
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return The email.
      */
@@ -7068,6 +7711,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * Email address of user to send item to
+     * </pre>
+     *
      * <code>string email = 1;</code>
      * @return The bytes for email.
      */
@@ -7092,6 +7739,10 @@ public final class VerifiableCredentials {
 
     public static final int DID_URI_FIELD_NUMBER = 2;
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return Whether the didUri field is set.
      */
@@ -7099,6 +7750,10 @@ public final class VerifiableCredentials {
       return deliveryMethodCase_ == 2;
     }
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return The didUri.
      */
@@ -7120,6 +7775,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * DID of recipient (presently unsupported)
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      * @return The bytes for didUri.
      */
@@ -7144,6 +7803,10 @@ public final class VerifiableCredentials {
 
     public static final int DIDCOMM_INVITATION_JSON_FIELD_NUMBER = 3;
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return Whether the didcommInvitationJson field is set.
      */
@@ -7151,6 +7814,10 @@ public final class VerifiableCredentials {
       return deliveryMethodCase_ == 3;
     }
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return The didcommInvitationJson.
      */
@@ -7172,6 +7839,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * DIDComm out-of-band invitation JSON (presently unsupported)
+     * </pre>
+     *
      * <code>string didcomm_invitation_json = 3;</code>
      * @return The bytes for didcommInvitationJson.
      */
@@ -7197,6 +7868,10 @@ public final class VerifiableCredentials {
     public static final int DOCUMENT_JSON_FIELD_NUMBER = 100;
     private volatile java.lang.Object documentJson_;
     /**
+     * <pre>
+     * JSON document to send to recipient
+     * </pre>
+     *
      * <code>string document_json = 100;</code>
      * @return The documentJson.
      */
@@ -7214,6 +7889,10 @@ public final class VerifiableCredentials {
       }
     }
     /**
+     * <pre>
+     * JSON document to send to recipient
+     * </pre>
+     *
      * <code>string document_json = 100;</code>
      * @return The bytes for documentJson.
      */
@@ -7438,6 +8117,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Request to send a document to another user's wallet
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
      */
     public static final class Builder extends
@@ -7636,6 +8319,10 @@ public final class VerifiableCredentials {
 
 
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @return Whether the email field is set.
        */
@@ -7644,6 +8331,10 @@ public final class VerifiableCredentials {
         return deliveryMethodCase_ == 1;
       }
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @return The email.
        */
@@ -7666,6 +8357,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @return The bytes for email.
        */
@@ -7689,6 +8384,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @param value The email to set.
        * @return This builder for chaining.
@@ -7704,6 +8403,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @return This builder for chaining.
        */
@@ -7716,6 +8419,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * Email address of user to send item to
+       * </pre>
+       *
        * <code>string email = 1;</code>
        * @param value The bytes for email to set.
        * @return This builder for chaining.
@@ -7733,6 +8440,10 @@ public final class VerifiableCredentials {
       }
 
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @return Whether the didUri field is set.
        */
@@ -7741,6 +8452,10 @@ public final class VerifiableCredentials {
         return deliveryMethodCase_ == 2;
       }
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @return The didUri.
        */
@@ -7763,6 +8478,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @return The bytes for didUri.
        */
@@ -7786,6 +8505,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @param value The didUri to set.
        * @return This builder for chaining.
@@ -7801,6 +8524,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @return This builder for chaining.
        */
@@ -7813,6 +8540,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * DID of recipient (presently unsupported)
+       * </pre>
+       *
        * <code>string did_uri = 2;</code>
        * @param value The bytes for didUri to set.
        * @return This builder for chaining.
@@ -7830,6 +8561,10 @@ public final class VerifiableCredentials {
       }
 
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @return Whether the didcommInvitationJson field is set.
        */
@@ -7838,6 +8573,10 @@ public final class VerifiableCredentials {
         return deliveryMethodCase_ == 3;
       }
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @return The didcommInvitationJson.
        */
@@ -7860,6 +8599,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @return The bytes for didcommInvitationJson.
        */
@@ -7883,6 +8626,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @param value The didcommInvitationJson to set.
        * @return This builder for chaining.
@@ -7898,6 +8645,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @return This builder for chaining.
        */
@@ -7910,6 +8661,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * DIDComm out-of-band invitation JSON (presently unsupported)
+       * </pre>
+       *
        * <code>string didcomm_invitation_json = 3;</code>
        * @param value The bytes for didcommInvitationJson to set.
        * @return This builder for chaining.
@@ -7928,6 +8683,10 @@ public final class VerifiableCredentials {
 
       private java.lang.Object documentJson_ = "";
       /**
+       * <pre>
+       * JSON document to send to recipient
+       * </pre>
+       *
        * <code>string document_json = 100;</code>
        * @return The documentJson.
        */
@@ -7944,6 +8703,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON document to send to recipient
+       * </pre>
+       *
        * <code>string document_json = 100;</code>
        * @return The bytes for documentJson.
        */
@@ -7961,6 +8724,10 @@ public final class VerifiableCredentials {
         }
       }
       /**
+       * <pre>
+       * JSON document to send to recipient
+       * </pre>
+       *
        * <code>string document_json = 100;</code>
        * @param value The documentJson to set.
        * @return This builder for chaining.
@@ -7976,6 +8743,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON document to send to recipient
+       * </pre>
+       *
        * <code>string document_json = 100;</code>
        * @return This builder for chaining.
        */
@@ -7986,6 +8757,10 @@ public final class VerifiableCredentials {
         return this;
       }
       /**
+       * <pre>
+       * JSON document to send to recipient
+       * </pre>
+       *
        * <code>string document_json = 100;</code>
        * @param value The bytes for documentJson to set.
        * @return This builder for chaining.
@@ -8059,6 +8834,10 @@ public final class VerifiableCredentials {
       com.google.protobuf.MessageOrBuilder {
   }
   /**
+   * <pre>
+   * Response to `SendRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.v1.SendResponse}
    */
   public static final class SendResponse extends
@@ -8114,6 +8893,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8280,6 +9061,10 @@ public final class VerifiableCredentials {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `SendRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.v1.SendResponse}
      */
     public static final class Builder extends
@@ -8478,7 +9263,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to update
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -8487,7 +9272,7 @@ public final class VerifiableCredentials {
     java.lang.String getCredentialStatusId();
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to update
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -8498,7 +9283,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * indicates if the status is revoked
+     * New revocation status of credential
      * </pre>
      *
      * <code>bool revoked = 2;</code>
@@ -8508,7 +9293,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * request object to update the status of the revocation entry
+   * Request to update a credential's revocation status
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusRequest}
@@ -8578,6 +9363,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8603,7 +9390,7 @@ public final class VerifiableCredentials {
     private volatile java.lang.Object credentialStatusId_;
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to update
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -8624,7 +9411,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to update
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -8649,7 +9436,7 @@ public final class VerifiableCredentials {
     private boolean revoked_;
     /**
      * <pre>
-     * indicates if the status is revoked
+     * New revocation status of credential
      * </pre>
      *
      * <code>bool revoked = 2;</code>
@@ -8828,7 +9615,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * request object to update the status of the revocation entry
+     * Request to update a credential's revocation status
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusRequest}
@@ -8987,7 +9774,7 @@ public final class VerifiableCredentials {
       private java.lang.Object credentialStatusId_ = "";
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to update
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -9007,7 +9794,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to update
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -9028,7 +9815,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to update
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -9047,7 +9834,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to update
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -9061,7 +9848,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to update
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -9083,7 +9870,7 @@ public final class VerifiableCredentials {
       private boolean revoked_ ;
       /**
        * <pre>
-       * indicates if the status is revoked
+       * New revocation status of credential
        * </pre>
        *
        * <code>bool revoked = 2;</code>
@@ -9095,7 +9882,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * indicates if the status is revoked
+       * New revocation status of credential
        * </pre>
        *
        * <code>bool revoked = 2;</code>
@@ -9110,7 +9897,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * indicates if the status is revoked
+       * New revocation status of credential
        * </pre>
        *
        * <code>bool revoked = 2;</code>
@@ -9181,7 +9968,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * response object for update of status of revocation entry
+   * Response to `UpdateStatusRequest`
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusResponse}
@@ -9239,6 +10026,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9406,7 +10195,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * response object for update of status of revocation entry
+     * Response to `UpdateStatusRequest`
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusResponse}
@@ -9607,7 +10396,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to check
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -9616,7 +10405,7 @@ public final class VerifiableCredentials {
     java.lang.String getCredentialStatusId();
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to check
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -9627,7 +10416,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * request object to check the status of the revocation entry
+   * Request to check a credential's revocation status
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.CheckStatusRequest}
@@ -9692,6 +10481,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9717,7 +10508,7 @@ public final class VerifiableCredentials {
     private volatile java.lang.Object credentialStatusId_;
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to check
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -9738,7 +10529,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * the credential status id
+     * Credential Status ID to check
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -9915,7 +10706,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * request object to check the status of the revocation entry
+     * Request to check a credential's revocation status
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.CheckStatusRequest}
@@ -10068,7 +10859,7 @@ public final class VerifiableCredentials {
       private java.lang.Object credentialStatusId_ = "";
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to check
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -10088,7 +10879,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to check
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -10109,7 +10900,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to check
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -10128,7 +10919,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to check
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -10142,7 +10933,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * the credential status id
+       * Credential Status ID to check
        * </pre>
        *
        * <code>string credential_status_id = 1;</code>
@@ -10219,7 +11010,7 @@ public final class VerifiableCredentials {
 
     /**
      * <pre>
-     * indicates if the status is revoked
+     * The credential's revocation status
      * </pre>
      *
      * <code>bool revoked = 1;</code>
@@ -10229,7 +11020,7 @@ public final class VerifiableCredentials {
   }
   /**
    * <pre>
-   * response object for checking the status of revocation entry
+   * Response to `CheckStatusRequest`
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.CheckStatusResponse}
@@ -10292,6 +11083,8 @@ public final class VerifiableCredentials {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -10317,7 +11110,7 @@ public final class VerifiableCredentials {
     private boolean revoked_;
     /**
      * <pre>
-     * indicates if the status is revoked
+     * The credential's revocation status
      * </pre>
      *
      * <code>bool revoked = 1;</code>
@@ -10486,7 +11279,7 @@ public final class VerifiableCredentials {
     }
     /**
      * <pre>
-     * response object for checking the status of revocation entry
+     * Response to `CheckStatusRequest`
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.v1.CheckStatusResponse}
@@ -10638,7 +11431,7 @@ public final class VerifiableCredentials {
       private boolean revoked_ ;
       /**
        * <pre>
-       * indicates if the status is revoked
+       * The credential's revocation status
        * </pre>
        *
        * <code>bool revoked = 1;</code>
@@ -10650,7 +11443,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * indicates if the status is revoked
+       * The credential's revocation status
        * </pre>
        *
        * <code>bool revoked = 1;</code>
@@ -10665,7 +11458,7 @@ public final class VerifiableCredentials {
       }
       /**
        * <pre>
-       * indicates if the status is revoked
+       * The credential's revocation status
        * </pre>
        *
        * <code>bool revoked = 1;</code>
@@ -10821,64 +11614,67 @@ public final class VerifiableCredentials {
     java.lang.String[] descriptorData = {
       "\n?services/verifiable-credentials/v1/ver" +
       "ifiable-credentials.proto\022!services.veri" +
-      "fiablecredentials.v1\"%\n\014IssueRequest\022\025\n\r" +
-      "document_json\030\001 \001(\t\"-\n\rIssueResponse\022\034\n\024" +
-      "signed_document_json\030\001 \001(\t\"D\n\030IssueFromT" +
-      "emplateRequest\022\023\n\013template_id\030\001 \001(\t\022\023\n\013v" +
-      "alues_json\030\002 \001(\t\"2\n\031IssueFromTemplateRes" +
-      "ponse\022\025\n\rdocument_json\030\001 \001(\t\"g\n\022CreatePr" +
-      "oofRequest\022\034\n\024reveal_document_json\030\001 \001(\t" +
-      "\022\021\n\007item_id\030\002 \001(\tH\000\022\027\n\rdocument_json\030\003 \001" +
-      "(\tH\000B\007\n\005proof\"2\n\023CreateProofResponse\022\033\n\023" +
-      "proof_document_json\030\001 \001(\t\"1\n\022VerifyProof" +
-      "Request\022\033\n\023proof_document_json\030\001 \001(\t\"\243\002\n" +
-      "\023VerifyProofResponse\022\020\n\010is_valid\030\001 \001(\010\022\037" +
-      "\n\023validation_messages\030\002 \003(\tB\002\030\001\022i\n\022valid" +
-      "ation_results\030\003 \003(\0132M.services.verifiabl" +
-      "ecredentials.v1.VerifyProofResponse.Vali" +
-      "dationResultsEntry\032n\n\026ValidationResultsE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022C\n\005value\030\002 \001(\01324.servi" +
-      "ces.verifiablecredentials.v1.ValidationM" +
-      "essage:\0028\001\"7\n\021ValidationMessage\022\020\n\010is_va" +
-      "lid\030\001 \001(\010\022\020\n\010messages\030\002 \003(\t\"~\n\013SendReque" +
-      "st\022\017\n\005email\030\001 \001(\tH\000\022\021\n\007did_uri\030\002 \001(\tH\000\022!" +
-      "\n\027didcomm_invitation_json\030\003 \001(\tH\000\022\025\n\rdoc" +
-      "ument_json\030d \001(\tB\021\n\017delivery_method\"\016\n\014S" +
-      "endResponse\"D\n\023UpdateStatusRequest\022\034\n\024cr" +
-      "edential_status_id\030\001 \001(\t\022\017\n\007revoked\030\002 \001(" +
-      "\010\"\026\n\024UpdateStatusResponse\"2\n\022CheckStatus" +
-      "Request\022\034\n\024credential_status_id\030\001 \001(\t\"&\n" +
-      "\023CheckStatusResponse\022\017\n\007revoked\030\001 \001(\0102\367\006" +
-      "\n\024VerifiableCredential\022j\n\005Issue\022/.servic" +
-      "es.verifiablecredentials.v1.IssueRequest" +
-      "\0320.services.verifiablecredentials.v1.Iss" +
-      "ueResponse\022\216\001\n\021IssueFromTemplate\022;.servi" +
-      "ces.verifiablecredentials.v1.IssueFromTe" +
-      "mplateRequest\032<.services.verifiablecrede" +
-      "ntials.v1.IssueFromTemplateResponse\022|\n\013C" +
-      "heckStatus\0225.services.verifiablecredenti" +
-      "als.v1.CheckStatusRequest\0326.services.ver" +
-      "ifiablecredentials.v1.CheckStatusRespons" +
-      "e\022\177\n\014UpdateStatus\0226.services.verifiablec" +
-      "redentials.v1.UpdateStatusRequest\0327.serv" +
-      "ices.verifiablecredentials.v1.UpdateStat" +
-      "usResponse\022|\n\013CreateProof\0225.services.ver" +
-      "ifiablecredentials.v1.CreateProofRequest" +
-      "\0326.services.verifiablecredentials.v1.Cre" +
-      "ateProofResponse\022|\n\013VerifyProof\0225.servic" +
-      "es.verifiablecredentials.v1.VerifyProofR" +
-      "equest\0326.services.verifiablecredentials." +
-      "v1.VerifyProofResponse\022g\n\004Send\022..service" +
-      "s.verifiablecredentials.v1.SendRequest\032/" +
-      ".services.verifiablecredentials.v1.SendR" +
-      "esponseB\204\001\n)trinsic.services.verifiablec" +
-      "redentials.v1Z\031github.com/trinsic-id/sdk" +
-      "\242\002\017TrinsicServices\252\002)Trinsic.Services.Ve" +
-      "rifiableCredentials.V1b\006proto3"
+      "fiablecredentials.v1\032\036services/options/o" +
+      "ptions.proto\"%\n\014IssueRequest\022\025\n\rdocument" +
+      "_json\030\001 \001(\t\"-\n\rIssueResponse\022\034\n\024signed_d" +
+      "ocument_json\030\001 \001(\t\"`\n\030IssueFromTemplateR" +
+      "equest\022\023\n\013template_id\030\001 \001(\t\022\023\n\013values_js" +
+      "on\030\002 \001(\t\022\032\n\014framework_id\030\003 \001(\tB\004\200\246\035\001\"2\n\031" +
+      "IssueFromTemplateResponse\022\025\n\rdocument_js" +
+      "on\030\001 \001(\t\"g\n\022CreateProofRequest\022\034\n\024reveal" +
+      "_document_json\030\001 \001(\t\022\021\n\007item_id\030\002 \001(\tH\000\022" +
+      "\027\n\rdocument_json\030\003 \001(\tH\000B\007\n\005proof\"2\n\023Cre" +
+      "ateProofResponse\022\033\n\023proof_document_json\030" +
+      "\001 \001(\t\"1\n\022VerifyProofRequest\022\033\n\023proof_doc" +
+      "ument_json\030\001 \001(\t\"\243\002\n\023VerifyProofResponse" +
+      "\022\020\n\010is_valid\030\001 \001(\010\022\037\n\023validation_message" +
+      "s\030\002 \003(\tB\002\030\001\022i\n\022validation_results\030\003 \003(\0132" +
+      "M.services.verifiablecredentials.v1.Veri" +
+      "fyProofResponse.ValidationResultsEntry\032n" +
+      "\n\026ValidationResultsEntry\022\013\n\003key\030\001 \001(\t\022C\n" +
+      "\005value\030\002 \001(\01324.services.verifiablecreden" +
+      "tials.v1.ValidationMessage:\0028\001\"7\n\021Valida" +
+      "tionMessage\022\020\n\010is_valid\030\001 \001(\010\022\020\n\010message" +
+      "s\030\002 \003(\t\"~\n\013SendRequest\022\017\n\005email\030\001 \001(\tH\000\022" +
+      "\021\n\007did_uri\030\002 \001(\tH\000\022!\n\027didcomm_invitation" +
+      "_json\030\003 \001(\tH\000\022\025\n\rdocument_json\030d \001(\tB\021\n\017" +
+      "delivery_method\"\016\n\014SendResponse\"D\n\023Updat" +
+      "eStatusRequest\022\034\n\024credential_status_id\030\001" +
+      " \001(\t\022\017\n\007revoked\030\002 \001(\010\"\026\n\024UpdateStatusRes" +
+      "ponse\"2\n\022CheckStatusRequest\022\034\n\024credentia" +
+      "l_status_id\030\001 \001(\t\"&\n\023CheckStatusResponse" +
+      "\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCredenti" +
+      "al\022j\n\005Issue\022/.services.verifiablecredent" +
+      "ials.v1.IssueRequest\0320.services.verifiab" +
+      "lecredentials.v1.IssueResponse\022\216\001\n\021Issue" +
+      "FromTemplate\022;.services.verifiablecreden" +
+      "tials.v1.IssueFromTemplateRequest\032<.serv" +
+      "ices.verifiablecredentials.v1.IssueFromT" +
+      "emplateResponse\022|\n\013CheckStatus\0225.service" +
+      "s.verifiablecredentials.v1.CheckStatusRe" +
+      "quest\0326.services.verifiablecredentials.v" +
+      "1.CheckStatusResponse\022\177\n\014UpdateStatus\0226." +
+      "services.verifiablecredentials.v1.Update" +
+      "StatusRequest\0327.services.verifiablecrede" +
+      "ntials.v1.UpdateStatusResponse\022|\n\013Create" +
+      "Proof\0225.services.verifiablecredentials.v" +
+      "1.CreateProofRequest\0326.services.verifiab" +
+      "lecredentials.v1.CreateProofResponse\022|\n\013" +
+      "VerifyProof\0225.services.verifiablecredent" +
+      "ials.v1.VerifyProofRequest\0326.services.ve" +
+      "rifiablecredentials.v1.VerifyProofRespon" +
+      "se\022g\n\004Send\022..services.verifiablecredenti" +
+      "als.v1.SendRequest\032/.services.verifiable" +
+      "credentials.v1.SendResponseB\204\001\n)trinsic." +
+      "services.verifiablecredentials.v1Z\031githu" +
+      "b.com/trinsic-id/sdk\242\002\017TrinsicServices\252\002" +
+      ")Trinsic.Services.VerifiableCredentials." +
+      "V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          trinsic.services.protobuf.options.Options.getDescriptor(),
         });
     internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -10897,7 +11693,7 @@ public final class VerifiableCredentials {
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor,
-        new java.lang.String[] { "TemplateId", "ValuesJson", });
+        new java.lang.String[] { "TemplateId", "ValuesJson", "FrameworkId", });
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_fieldAccessorTable = new
@@ -10976,6 +11772,12 @@ public final class VerifiableCredentials {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor,
         new java.lang.String[] { "Revoked", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.Options.optional);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    trinsic.services.protobuf.options.Options.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -186,21 +186,46 @@ public final class TrustRegistryOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return Whether the governanceFramework field is set.
+     * <code>string governance_framework_uri = 1;</code>
+     * @return The governanceFrameworkUri.
      */
-    boolean hasGovernanceFramework();
+    java.lang.String getGovernanceFrameworkUri();
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return The governanceFramework.
+     * <code>string governance_framework_uri = 1;</code>
+     * @return The bytes for governanceFrameworkUri.
      */
-    trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework();
+    com.google.protobuf.ByteString
+        getGovernanceFrameworkUriBytes();
+
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+     * <code>string name = 2;</code>
+     * @return The name.
      */
-    trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder();
+    java.lang.String getName();
+    /**
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
+   * <pre>
+   * Register new ecosystem governance framework
+   * </pre>
+   *
    * Protobuf type {@code services.trustregistry.v1.AddFrameworkRequest}
    */
   public static final class AddFrameworkRequest extends
@@ -213,6 +238,9 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private AddFrameworkRequest() {
+      governanceFrameworkUri_ = "";
+      name_ = "";
+      description_ = "";
     }
 
     @java.lang.Override
@@ -246,16 +274,21 @@ public final class TrustRegistryOuterClass {
               done = true;
               break;
             case 10: {
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder subBuilder = null;
-              if (governanceFramework_ != null) {
-                subBuilder = governanceFramework_.toBuilder();
-              }
-              governanceFramework_ = input.readMessage(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(governanceFramework_);
-                governanceFramework_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              governanceFrameworkUri_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              description_ = s;
               break;
             }
             default: {
@@ -269,6 +302,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -290,30 +325,118 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest.Builder.class);
     }
 
-    public static final int GOVERNANCE_FRAMEWORK_FIELD_NUMBER = 1;
-    private trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework governanceFramework_;
+    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
+    private volatile java.lang.Object governanceFrameworkUri_;
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return Whether the governanceFramework field is set.
+     * <code>string governance_framework_uri = 1;</code>
+     * @return The governanceFrameworkUri.
      */
     @java.lang.Override
-    public boolean hasGovernanceFramework() {
-      return governanceFramework_ != null;
+    public java.lang.String getGovernanceFrameworkUri() {
+      java.lang.Object ref = governanceFrameworkUri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        governanceFrameworkUri_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return The governanceFramework.
+     * <code>string governance_framework_uri = 1;</code>
+     * @return The bytes for governanceFrameworkUri.
      */
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework() {
-      return governanceFramework_ == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
+    public com.google.protobuf.ByteString
+        getGovernanceFrameworkUriBytes() {
+      java.lang.Object ref = governanceFrameworkUri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        governanceFrameworkUri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 2;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder() {
-      return getGovernanceFramework();
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DESCRIPTION_FIELD_NUMBER = 3;
+    private volatile java.lang.Object description_;
+    /**
+     * <code>string description = 3;</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string description = 3;</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -330,8 +453,14 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (governanceFramework_ != null) {
-        output.writeMessage(1, getGovernanceFramework());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
       }
       unknownFields.writeTo(output);
     }
@@ -342,9 +471,14 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (governanceFramework_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGovernanceFramework());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -361,11 +495,12 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest) obj;
 
-      if (hasGovernanceFramework() != other.hasGovernanceFramework()) return false;
-      if (hasGovernanceFramework()) {
-        if (!getGovernanceFramework()
-            .equals(other.getGovernanceFramework())) return false;
-      }
+      if (!getGovernanceFrameworkUri()
+          .equals(other.getGovernanceFrameworkUri())) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -377,10 +512,12 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasGovernanceFramework()) {
-        hash = (37 * hash) + GOVERNANCE_FRAMEWORK_FIELD_NUMBER;
-        hash = (53 * hash) + getGovernanceFramework().hashCode();
-      }
+      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
+      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -477,6 +614,10 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
+     * <pre>
+     * Register new ecosystem governance framework
+     * </pre>
+     *
      * Protobuf type {@code services.trustregistry.v1.AddFrameworkRequest}
      */
     public static final class Builder extends
@@ -514,12 +655,12 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = null;
-        } else {
-          governanceFramework_ = null;
-          governanceFrameworkBuilder_ = null;
-        }
+        governanceFrameworkUri_ = "";
+
+        name_ = "";
+
+        description_ = "";
+
         return this;
       }
 
@@ -546,11 +687,9 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest(this);
-        if (governanceFrameworkBuilder_ == null) {
-          result.governanceFramework_ = governanceFramework_;
-        } else {
-          result.governanceFramework_ = governanceFrameworkBuilder_.build();
-        }
+        result.governanceFrameworkUri_ = governanceFrameworkUri_;
+        result.name_ = name_;
+        result.description_ = description_;
         onBuilt();
         return result;
       }
@@ -599,8 +738,17 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest.getDefaultInstance()) return this;
-        if (other.hasGovernanceFramework()) {
-          mergeGovernanceFramework(other.getGovernanceFramework());
+        if (!other.getGovernanceFrameworkUri().isEmpty()) {
+          governanceFrameworkUri_ = other.governanceFrameworkUri_;
+          onChanged();
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -631,123 +779,232 @@ public final class TrustRegistryOuterClass {
         return this;
       }
 
-      private trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework governanceFramework_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder> governanceFrameworkBuilder_;
+      private java.lang.Object governanceFrameworkUri_ = "";
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       * @return Whether the governanceFramework field is set.
+       * <code>string governance_framework_uri = 1;</code>
+       * @return The governanceFrameworkUri.
        */
-      public boolean hasGovernanceFramework() {
-        return governanceFrameworkBuilder_ != null || governanceFramework_ != null;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       * @return The governanceFramework.
-       */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework() {
-        if (governanceFrameworkBuilder_ == null) {
-          return governanceFramework_ == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
+      public java.lang.String getGovernanceFrameworkUri() {
+        java.lang.Object ref = governanceFrameworkUri_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          governanceFrameworkUri_ = s;
+          return s;
         } else {
-          return governanceFrameworkBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string governance_framework_uri = 1;</code>
+       * @return The bytes for governanceFrameworkUri.
        */
-      public Builder setGovernanceFramework(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework value) {
-        if (governanceFrameworkBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          governanceFramework_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getGovernanceFrameworkUriBytes() {
+        java.lang.Object ref = governanceFrameworkUri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          governanceFrameworkUri_ = b;
+          return b;
         } else {
-          governanceFrameworkBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string governance_framework_uri = 1;</code>
+       * @param value The governanceFrameworkUri to set.
+       * @return This builder for chaining.
        */
-      public Builder setGovernanceFramework(
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder builderForValue) {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = builderForValue.build();
-          onChanged();
-        } else {
-          governanceFrameworkBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public Builder mergeGovernanceFramework(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework value) {
-        if (governanceFrameworkBuilder_ == null) {
-          if (governanceFramework_ != null) {
-            governanceFramework_ =
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.newBuilder(governanceFramework_).mergeFrom(value).buildPartial();
-          } else {
-            governanceFramework_ = value;
-          }
-          onChanged();
-        } else {
-          governanceFrameworkBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public Builder clearGovernanceFramework() {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = null;
-          onChanged();
-        } else {
-          governanceFramework_ = null;
-          governanceFrameworkBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder getGovernanceFrameworkBuilder() {
-        
+      public Builder setGovernanceFrameworkUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        governanceFrameworkUri_ = value;
         onChanged();
-        return getGovernanceFrameworkFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string governance_framework_uri = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder() {
-        if (governanceFrameworkBuilder_ != null) {
-          return governanceFrameworkBuilder_.getMessageOrBuilder();
+      public Builder clearGovernanceFrameworkUri() {
+        
+        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string governance_framework_uri = 1;</code>
+       * @param value The bytes for governanceFrameworkUri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGovernanceFrameworkUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        governanceFrameworkUri_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 2;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
         } else {
-          return governanceFramework_ == null ?
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string name = 2;</code>
+       * @return The bytes for name.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder> 
-          getGovernanceFrameworkFieldBuilder() {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFrameworkBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder>(
-                  getGovernanceFramework(),
-                  getParentForChildren(),
-                  isClean());
-          governanceFramework_ = null;
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
-        return governanceFrameworkBuilder_;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 2;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <code>string description = 3;</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string description = 3;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -805,6 +1062,50 @@ public final class TrustRegistryOuterClass {
   public interface AddFrameworkResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.AddFrameworkResponse)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Unique framework identifier
+     * </pre>
+     *
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <pre>
+     * Unique framework identifier
+     * </pre>
+     *
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <code>string governing_authority = 2;</code>
+     * @return The governingAuthority.
+     */
+    java.lang.String getGoverningAuthority();
+    /**
+     * <code>string governing_authority = 2;</code>
+     * @return The bytes for governingAuthority.
+     */
+    com.google.protobuf.ByteString
+        getGoverningAuthorityBytes();
+
+    /**
+     * <code>string trust_registry = 3;</code>
+     * @return The trustRegistry.
+     */
+    java.lang.String getTrustRegistry();
+    /**
+     * <code>string trust_registry = 3;</code>
+     * @return The bytes for trustRegistry.
+     */
+    com.google.protobuf.ByteString
+        getTrustRegistryBytes();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse}
@@ -819,6 +1120,9 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private AddFrameworkResponse() {
+      id_ = "";
+      governingAuthority_ = "";
+      trustRegistry_ = "";
     }
 
     @java.lang.Override
@@ -851,6 +1155,24 @@ public final class TrustRegistryOuterClass {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              id_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              governingAuthority_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              trustRegistry_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -862,6 +1184,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -883,6 +1207,128 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.Builder.class);
     }
 
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
+    /**
+     * <pre>
+     * Unique framework identifier
+     * </pre>
+     *
+     * <code>string id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Unique framework identifier
+     * </pre>
+     *
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int GOVERNING_AUTHORITY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object governingAuthority_;
+    /**
+     * <code>string governing_authority = 2;</code>
+     * @return The governingAuthority.
+     */
+    @java.lang.Override
+    public java.lang.String getGoverningAuthority() {
+      java.lang.Object ref = governingAuthority_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        governingAuthority_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string governing_authority = 2;</code>
+     * @return The bytes for governingAuthority.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getGoverningAuthorityBytes() {
+      java.lang.Object ref = governingAuthority_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        governingAuthority_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TRUST_REGISTRY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object trustRegistry_;
+    /**
+     * <code>string trust_registry = 3;</code>
+     * @return The trustRegistry.
+     */
+    @java.lang.Override
+    public java.lang.String getTrustRegistry() {
+      java.lang.Object ref = trustRegistry_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        trustRegistry_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string trust_registry = 3;</code>
+     * @return The bytes for trustRegistry.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTrustRegistryBytes() {
+      java.lang.Object ref = trustRegistry_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        trustRegistry_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -897,6 +1343,15 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governingAuthority_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, governingAuthority_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trustRegistry_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, trustRegistry_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -906,6 +1361,15 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governingAuthority_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, governingAuthority_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trustRegistry_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, trustRegistry_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -921,6 +1385,12 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse) obj;
 
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getGoverningAuthority()
+          .equals(other.getGoverningAuthority())) return false;
+      if (!getTrustRegistry()
+          .equals(other.getTrustRegistry())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -932,6 +1402,12 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + GOVERNING_AUTHORITY_FIELD_NUMBER;
+      hash = (53 * hash) + getGoverningAuthority().hashCode();
+      hash = (37 * hash) + TRUST_REGISTRY_FIELD_NUMBER;
+      hash = (53 * hash) + getTrustRegistry().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1065,6 +1541,12 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = "";
+
+        governingAuthority_ = "";
+
+        trustRegistry_ = "";
+
         return this;
       }
 
@@ -1091,6 +1573,9 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse(this);
+        result.id_ = id_;
+        result.governingAuthority_ = governingAuthority_;
+        result.trustRegistry_ = trustRegistry_;
         onBuilt();
         return result;
       }
@@ -1139,6 +1624,18 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
+        }
+        if (!other.getGoverningAuthority().isEmpty()) {
+          governingAuthority_ = other.governingAuthority_;
+          onChanged();
+        }
+        if (!other.getTrustRegistry().isEmpty()) {
+          trustRegistry_ = other.trustRegistry_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1165,6 +1662,254 @@ public final class TrustRegistryOuterClass {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object id_ = "";
+      /**
+       * <pre>
+       * Unique framework identifier
+       * </pre>
+       *
+       * <code>string id = 1;</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Unique framework identifier
+       * </pre>
+       *
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Unique framework identifier
+       * </pre>
+       *
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unique framework identifier
+       * </pre>
+       *
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unique framework identifier
+       * </pre>
+       *
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object governingAuthority_ = "";
+      /**
+       * <code>string governing_authority = 2;</code>
+       * @return The governingAuthority.
+       */
+      public java.lang.String getGoverningAuthority() {
+        java.lang.Object ref = governingAuthority_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          governingAuthority_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string governing_authority = 2;</code>
+       * @return The bytes for governingAuthority.
+       */
+      public com.google.protobuf.ByteString
+          getGoverningAuthorityBytes() {
+        java.lang.Object ref = governingAuthority_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          governingAuthority_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string governing_authority = 2;</code>
+       * @param value The governingAuthority to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGoverningAuthority(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        governingAuthority_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string governing_authority = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGoverningAuthority() {
+        
+        governingAuthority_ = getDefaultInstance().getGoverningAuthority();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string governing_authority = 2;</code>
+       * @param value The bytes for governingAuthority to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGoverningAuthorityBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        governingAuthority_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object trustRegistry_ = "";
+      /**
+       * <code>string trust_registry = 3;</code>
+       * @return The trustRegistry.
+       */
+      public java.lang.String getTrustRegistry() {
+        java.lang.Object ref = trustRegistry_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          trustRegistry_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string trust_registry = 3;</code>
+       * @return The bytes for trustRegistry.
+       */
+      public com.google.protobuf.ByteString
+          getTrustRegistryBytes() {
+        java.lang.Object ref = trustRegistry_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          trustRegistry_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string trust_registry = 3;</code>
+       * @param value The trustRegistry to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTrustRegistry(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        trustRegistry_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string trust_registry = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTrustRegistry() {
+        
+        trustRegistry_ = getDefaultInstance().getTrustRegistry();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string trust_registry = 3;</code>
+       * @param value The bytes for trustRegistry to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTrustRegistryBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        trustRegistry_ = value;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -1225,19 +1970,16 @@ public final class TrustRegistryOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return Whether the governanceFramework field is set.
+     * <code>string id = 1;</code>
+     * @return The id.
      */
-    boolean hasGovernanceFramework();
+    java.lang.String getId();
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return The governanceFramework.
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
-    trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework();
-    /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     */
-    trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder();
+    com.google.protobuf.ByteString
+        getIdBytes();
   }
   /**
    * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkRequest}
@@ -1252,6 +1994,7 @@ public final class TrustRegistryOuterClass {
       super(builder);
     }
     private RemoveFrameworkRequest() {
+      id_ = "";
     }
 
     @java.lang.Override
@@ -1285,16 +2028,9 @@ public final class TrustRegistryOuterClass {
               done = true;
               break;
             case 10: {
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder subBuilder = null;
-              if (governanceFramework_ != null) {
-                subBuilder = governanceFramework_.toBuilder();
-              }
-              governanceFramework_ = input.readMessage(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(governanceFramework_);
-                governanceFramework_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              id_ = s;
               break;
             }
             default: {
@@ -1308,6 +2044,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1329,30 +2067,42 @@ public final class TrustRegistryOuterClass {
               trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest.Builder.class);
     }
 
-    public static final int GOVERNANCE_FRAMEWORK_FIELD_NUMBER = 1;
-    private trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework governanceFramework_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object id_;
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return Whether the governanceFramework field is set.
+     * <code>string id = 1;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public boolean hasGovernanceFramework() {
-      return governanceFramework_ != null;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     * @return The governanceFramework.
+     * <code>string id = 1;</code>
+     * @return The bytes for id.
      */
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework() {
-      return governanceFramework_ == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
-    }
-    /**
-     * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-     */
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder() {
-      return getGovernanceFramework();
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1369,8 +2119,8 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (governanceFramework_ != null) {
-        output.writeMessage(1, getGovernanceFramework());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
       unknownFields.writeTo(output);
     }
@@ -1381,9 +2131,8 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (governanceFramework_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getGovernanceFramework());
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1400,11 +2149,8 @@ public final class TrustRegistryOuterClass {
       }
       trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest) obj;
 
-      if (hasGovernanceFramework() != other.hasGovernanceFramework()) return false;
-      if (hasGovernanceFramework()) {
-        if (!getGovernanceFramework()
-            .equals(other.getGovernanceFramework())) return false;
-      }
+      if (!getId()
+          .equals(other.getId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1416,10 +2162,8 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasGovernanceFramework()) {
-        hash = (37 * hash) + GOVERNANCE_FRAMEWORK_FIELD_NUMBER;
-        hash = (53 * hash) + getGovernanceFramework().hashCode();
-      }
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1553,12 +2297,8 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = null;
-        } else {
-          governanceFramework_ = null;
-          governanceFrameworkBuilder_ = null;
-        }
+        id_ = "";
+
         return this;
       }
 
@@ -1585,11 +2325,7 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest buildPartial() {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest(this);
-        if (governanceFrameworkBuilder_ == null) {
-          result.governanceFramework_ = governanceFramework_;
-        } else {
-          result.governanceFramework_ = governanceFrameworkBuilder_.build();
-        }
+        result.id_ = id_;
         onBuilt();
         return result;
       }
@@ -1638,8 +2374,9 @@ public final class TrustRegistryOuterClass {
 
       public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest other) {
         if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest.getDefaultInstance()) return this;
-        if (other.hasGovernanceFramework()) {
-          mergeGovernanceFramework(other.getGovernanceFramework());
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1670,123 +2407,80 @@ public final class TrustRegistryOuterClass {
         return this;
       }
 
-      private trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework governanceFramework_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder> governanceFrameworkBuilder_;
+      private java.lang.Object id_ = "";
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       * @return Whether the governanceFramework field is set.
+       * <code>string id = 1;</code>
+       * @return The id.
        */
-      public boolean hasGovernanceFramework() {
-        return governanceFrameworkBuilder_ != null || governanceFramework_ != null;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       * @return The governanceFramework.
-       */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework getGovernanceFramework() {
-        if (governanceFrameworkBuilder_ == null) {
-          return governanceFramework_ == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
         } else {
-          return governanceFrameworkBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string id = 1;</code>
+       * @return The bytes for id.
        */
-      public Builder setGovernanceFramework(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework value) {
-        if (governanceFrameworkBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          governanceFramework_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
         } else {
-          governanceFrameworkBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
        */
-      public Builder setGovernanceFramework(
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder builderForValue) {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = builderForValue.build();
-          onChanged();
-        } else {
-          governanceFrameworkBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public Builder mergeGovernanceFramework(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework value) {
-        if (governanceFrameworkBuilder_ == null) {
-          if (governanceFramework_ != null) {
-            governanceFramework_ =
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.newBuilder(governanceFramework_).mergeFrom(value).buildPartial();
-          } else {
-            governanceFramework_ = value;
-          }
-          onChanged();
-        } else {
-          governanceFrameworkBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public Builder clearGovernanceFramework() {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFramework_ = null;
-          onChanged();
-        } else {
-          governanceFramework_ = null;
-          governanceFrameworkBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
-       */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder getGovernanceFrameworkBuilder() {
-        
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        id_ = value;
         onChanged();
-        return getGovernanceFrameworkFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string id = 1;</code>
+       * @return This builder for chaining.
        */
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder getGovernanceFrameworkOrBuilder() {
-        if (governanceFrameworkBuilder_ != null) {
-          return governanceFrameworkBuilder_.getMessageOrBuilder();
-        } else {
-          return governanceFramework_ == null ?
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.getDefaultInstance() : governanceFramework_;
-        }
+      public Builder clearId() {
+        
+        id_ = getDefaultInstance().getId();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.services.trustregistry.v1.GovernanceFramework governance_framework = 1;</code>
+       * <code>string id = 1;</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder> 
-          getGovernanceFrameworkFieldBuilder() {
-        if (governanceFrameworkBuilder_ == null) {
-          governanceFrameworkBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFramework.Builder, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GovernanceFrameworkOrBuilder>(
-                  getGovernanceFramework(),
-                  getParentForChildren(),
-                  isClean());
-          governanceFramework_ = null;
-        }
-        return governanceFrameworkBuilder_;
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        id_ = value;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1901,6 +2595,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -2365,6 +3061,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3036,12 +3734,6 @@ public final class TrustRegistryOuterClass {
     boolean getHasMore();
 
     /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    int getCount();
-
-    /**
      * <code>string continuation_token = 4;</code>
      * @return The continuationToken.
      */
@@ -3111,11 +3803,6 @@ public final class TrustRegistryOuterClass {
               hasMore_ = input.readBool();
               break;
             }
-            case 24: {
-
-              count_ = input.readInt32();
-              break;
-            }
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -3133,6 +3820,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3203,17 +3892,6 @@ public final class TrustRegistryOuterClass {
       return hasMore_;
     }
 
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_;
-    /**
-     * <code>int32 count = 3;</code>
-     * @return The count.
-     */
-    @java.lang.Override
-    public int getCount() {
-      return count_;
-    }
-
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object continuationToken_;
     /**
@@ -3272,9 +3950,6 @@ public final class TrustRegistryOuterClass {
       if (hasMore_ != false) {
         output.writeBool(2, hasMore_);
       }
-      if (count_ != 0) {
-        output.writeInt32(3, count_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, continuationToken_);
       }
@@ -3293,10 +3968,6 @@ public final class TrustRegistryOuterClass {
       if (hasMore_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, hasMore_);
-      }
-      if (count_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
@@ -3320,8 +3991,6 @@ public final class TrustRegistryOuterClass {
           .equals(other.getItemsJson())) return false;
       if (getHasMore()
           != other.getHasMore()) return false;
-      if (getCount()
-          != other.getCount()) return false;
       if (!getContinuationToken()
           .equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -3340,8 +4009,6 @@ public final class TrustRegistryOuterClass {
       hash = (37 * hash) + HAS_MORE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getHasMore());
-      hash = (37 * hash) + COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getCount();
       hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getContinuationToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3481,8 +4148,6 @@ public final class TrustRegistryOuterClass {
 
         hasMore_ = false;
 
-        count_ = 0;
-
         continuationToken_ = "";
 
         return this;
@@ -3513,7 +4178,6 @@ public final class TrustRegistryOuterClass {
         trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse(this);
         result.itemsJson_ = itemsJson_;
         result.hasMore_ = hasMore_;
-        result.count_ = count_;
         result.continuationToken_ = continuationToken_;
         onBuilt();
         return result;
@@ -3569,9 +4233,6 @@ public final class TrustRegistryOuterClass {
         }
         if (other.getHasMore() != false) {
           setHasMore(other.getHasMore());
-        }
-        if (other.getCount() != 0) {
-          setCount(other.getCount());
         }
         if (!other.getContinuationToken().isEmpty()) {
           continuationToken_ = other.continuationToken_;
@@ -3709,37 +4370,6 @@ public final class TrustRegistryOuterClass {
       public Builder clearHasMore() {
         
         hasMore_ = false;
-        onChanged();
-        return this;
-      }
-
-      private int count_ ;
-      /**
-       * <code>int32 count = 3;</code>
-       * @return The count.
-       */
-      @java.lang.Override
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @param value The count to set.
-       * @return This builder for chaining.
-       */
-      public Builder setCount(int value) {
-        
-        count_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 count = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearCount() {
-        
-        count_ = 0;
         onChanged();
         return this;
       }
@@ -3989,6 +4619,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4740,8 +5372,8 @@ public final class TrustRegistryOuterClass {
 
   }
 
-  public interface RegisterIssuerRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterIssuerRequest)
+  public interface RegisterMemberRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterMemberRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4762,33 +5394,50 @@ public final class TrustRegistryOuterClass {
         getDidUriBytes();
 
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
+     * <code>string wallet_id = 3;</code>
+     * @return Whether the walletId field is set.
      */
-    boolean hasX509Cert();
+    boolean hasWalletId();
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
      */
-    java.lang.String getX509Cert();
+    java.lang.String getWalletId();
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
      */
     com.google.protobuf.ByteString
-        getX509CertBytes();
+        getWalletIdBytes();
 
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return Whether the email field is set.
      */
-    java.lang.String getCredentialTypeUri();
+    boolean hasEmail();
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
     com.google.protobuf.ByteString
-        getCredentialTypeUriBytes();
+        getEmailBytes();
+
+    /**
+     * <code>string schema_uri = 10;</code>
+     * @return The schemaUri.
+     */
+    java.lang.String getSchemaUri();
+    /**
+     * <code>string schema_uri = 10;</code>
+     * @return The bytes for schemaUri.
+     */
+    com.google.protobuf.ByteString
+        getSchemaUriBytes();
 
     /**
      * <code>uint64 valid_from_utc = 11;</code>
@@ -4803,41 +5452,49 @@ public final class TrustRegistryOuterClass {
     long getValidUntilUtc();
 
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
+     * <pre>
+     * the id of the governance framework
+     * </pre>
+     *
+     * <code>string framework_id = 30;</code>
+     * @return The frameworkId.
      */
-    java.lang.String getGovernanceFrameworkUri();
+    java.lang.String getFrameworkId();
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
+     * <pre>
+     * the id of the governance framework
+     * </pre>
+     *
+     * <code>string framework_id = 30;</code>
+     * @return The bytes for frameworkId.
      */
     com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes();
+        getFrameworkIdBytes();
 
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.AuthorityCase getAuthorityCase();
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.MemberCase getMemberCase();
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.RegisterIssuerRequest}
+   * Protobuf type {@code services.trustregistry.v1.RegisterMemberRequest}
    */
-  public static final class RegisterIssuerRequest extends
+  public static final class RegisterMemberRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterIssuerRequest)
-      RegisterIssuerRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterMemberRequest)
+      RegisterMemberRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use RegisterIssuerRequest.newBuilder() to construct.
-    private RegisterIssuerRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use RegisterMemberRequest.newBuilder() to construct.
+    private RegisterMemberRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private RegisterIssuerRequest() {
-      credentialTypeUri_ = "";
-      governanceFrameworkUri_ = "";
+    private RegisterMemberRequest() {
+      schemaUri_ = "";
+      frameworkId_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new RegisterIssuerRequest();
+      return new RegisterMemberRequest();
     }
 
     @java.lang.Override
@@ -4845,7 +5502,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private RegisterIssuerRequest(
+    private RegisterMemberRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4865,20 +5522,26 @@ public final class TrustRegistryOuterClass {
               break;
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 1;
-              authority_ = s;
+              memberCase_ = 1;
+              member_ = s;
               break;
             }
-            case 18: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 2;
-              authority_ = s;
+              memberCase_ = 3;
+              member_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              memberCase_ = 4;
+              member_ = s;
               break;
             }
             case 82: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              credentialTypeUri_ = s;
+              schemaUri_ = s;
               break;
             }
             case 88: {
@@ -4891,10 +5554,10 @@ public final class TrustRegistryOuterClass {
               validUntilUtc_ = input.readUInt64();
               break;
             }
-            case 162: {
+            case 242: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              governanceFrameworkUri_ = s;
+              frameworkId_ = s;
               break;
             }
             default: {
@@ -4908,6 +5571,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4918,27 +5583,28 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.Builder.class);
     }
 
-    private int authorityCase_ = 0;
-    private java.lang.Object authority_;
-    public enum AuthorityCase
+    private int memberCase_ = 0;
+    private java.lang.Object member_;
+    public enum MemberCase
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       DID_URI(1),
-      X509_CERT(2),
-      AUTHORITY_NOT_SET(0);
+      WALLET_ID(3),
+      EMAIL(4),
+      MEMBER_NOT_SET(0);
       private final int value;
-      private AuthorityCase(int value) {
+      private MemberCase(int value) {
         this.value = value;
       }
       /**
@@ -4947,15 +5613,16 @@ public final class TrustRegistryOuterClass {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static AuthorityCase valueOf(int value) {
+      public static MemberCase valueOf(int value) {
         return forNumber(value);
       }
 
-      public static AuthorityCase forNumber(int value) {
+      public static MemberCase forNumber(int value) {
         switch (value) {
           case 1: return DID_URI;
-          case 2: return X509_CERT;
-          case 0: return AUTHORITY_NOT_SET;
+          case 3: return WALLET_ID;
+          case 4: return EMAIL;
+          case 0: return MEMBER_NOT_SET;
           default: return null;
         }
       }
@@ -4964,10 +5631,10 @@ public final class TrustRegistryOuterClass {
       }
     };
 
-    public AuthorityCase
-    getAuthorityCase() {
-      return AuthorityCase.forNumber(
-          authorityCase_);
+    public MemberCase
+    getMemberCase() {
+      return MemberCase.forNumber(
+          memberCase_);
     }
 
     public static final int DID_URI_FIELD_NUMBER = 1;
@@ -4976,7 +5643,7 @@ public final class TrustRegistryOuterClass {
      * @return Whether the didUri field is set.
      */
     public boolean hasDidUri() {
-      return authorityCase_ == 1;
+      return memberCase_ == 1;
     }
     /**
      * <code>string did_uri = 1;</code>
@@ -4984,8 +5651,8 @@ public final class TrustRegistryOuterClass {
      */
     public java.lang.String getDidUri() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
+      if (memberCase_ == 1) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
@@ -4993,8 +5660,8 @@ public final class TrustRegistryOuterClass {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 1) {
-          authority_ = s;
+        if (memberCase_ == 1) {
+          member_ = s;
         }
         return s;
       }
@@ -5006,15 +5673,15 @@ public final class TrustRegistryOuterClass {
     public com.google.protobuf.ByteString
         getDidUriBytes() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
+      if (memberCase_ == 1) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (authorityCase_ == 1) {
-          authority_ = b;
+        if (memberCase_ == 1) {
+          member_ = b;
         }
         return b;
       } else {
@@ -5022,22 +5689,22 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int X509_CERT_FIELD_NUMBER = 2;
+    public static final int WALLET_ID_FIELD_NUMBER = 3;
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
+     * <code>string wallet_id = 3;</code>
+     * @return Whether the walletId field is set.
      */
-    public boolean hasX509Cert() {
-      return authorityCase_ == 2;
+    public boolean hasWalletId() {
+      return memberCase_ == 3;
     }
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
      */
-    public java.lang.String getX509Cert() {
+    public java.lang.String getWalletId() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
+      if (memberCase_ == 3) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
@@ -5045,28 +5712,28 @@ public final class TrustRegistryOuterClass {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 2) {
-          authority_ = s;
+        if (memberCase_ == 3) {
+          member_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
      */
     public com.google.protobuf.ByteString
-        getX509CertBytes() {
+        getWalletIdBytes() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
+      if (memberCase_ == 3) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (authorityCase_ == 2) {
-          authority_ = b;
+        if (memberCase_ == 3) {
+          member_ = b;
         }
         return b;
       } else {
@@ -5074,38 +5741,90 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int CREDENTIAL_TYPE_URI_FIELD_NUMBER = 10;
-    private volatile java.lang.Object credentialTypeUri_;
+    public static final int EMAIL_FIELD_NUMBER = 4;
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return Whether the email field is set.
      */
-    @java.lang.Override
-    public java.lang.String getCredentialTypeUri() {
-      java.lang.Object ref = credentialTypeUri_;
+    public boolean hasEmail() {
+      return memberCase_ == 4;
+    }
+    /**
+     * <code>string email = 4;</code>
+     * @return The email.
+     */
+    public java.lang.String getEmail() {
+      java.lang.Object ref = "";
+      if (memberCase_ == 4) {
+        ref = member_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        credentialTypeUri_ = s;
+        if (memberCase_ == 4) {
+          member_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
-        getCredentialTypeUriBytes() {
-      java.lang.Object ref = credentialTypeUri_;
+        getEmailBytes() {
+      java.lang.Object ref = "";
+      if (memberCase_ == 4) {
+        ref = member_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        credentialTypeUri_ = b;
+        if (memberCase_ == 4) {
+          member_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SCHEMA_URI_FIELD_NUMBER = 10;
+    private volatile java.lang.Object schemaUri_;
+    /**
+     * <code>string schema_uri = 10;</code>
+     * @return The schemaUri.
+     */
+    @java.lang.Override
+    public java.lang.String getSchemaUri() {
+      java.lang.Object ref = schemaUri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        schemaUri_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string schema_uri = 10;</code>
+     * @return The bytes for schemaUri.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSchemaUriBytes() {
+      java.lang.Object ref = schemaUri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        schemaUri_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -5134,38 +5853,46 @@ public final class TrustRegistryOuterClass {
       return validUntilUtc_;
     }
 
-    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 20;
-    private volatile java.lang.Object governanceFrameworkUri_;
+    public static final int FRAMEWORK_ID_FIELD_NUMBER = 30;
+    private volatile java.lang.Object frameworkId_;
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
+     * <pre>
+     * the id of the governance framework
+     * </pre>
+     *
+     * <code>string framework_id = 30;</code>
+     * @return The frameworkId.
      */
     @java.lang.Override
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
+    public java.lang.String getFrameworkId() {
+      java.lang.Object ref = frameworkId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
+        frameworkId_ = s;
         return s;
       }
     }
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
+     * <pre>
+     * the id of the governance framework
+     * </pre>
+     *
+     * <code>string framework_id = 30;</code>
+     * @return The bytes for frameworkId.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
+        getFrameworkIdBytes() {
+      java.lang.Object ref = frameworkId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        governanceFrameworkUri_ = b;
+        frameworkId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -5186,14 +5913,17 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (authorityCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, authority_);
+      if (memberCase_ == 1) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, member_);
       }
-      if (authorityCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
+      if (memberCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, credentialTypeUri_);
+      if (memberCase_ == 4) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, member_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, schemaUri_);
       }
       if (validFromUtc_ != 0L) {
         output.writeUInt64(11, validFromUtc_);
@@ -5201,8 +5931,8 @@ public final class TrustRegistryOuterClass {
       if (validUntilUtc_ != 0L) {
         output.writeUInt64(12, validUntilUtc_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 30, frameworkId_);
       }
       unknownFields.writeTo(output);
     }
@@ -5213,14 +5943,17 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (authorityCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, authority_);
+      if (memberCase_ == 1) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, member_);
       }
-      if (authorityCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
+      if (memberCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, credentialTypeUri_);
+      if (memberCase_ == 4) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, member_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, schemaUri_);
       }
       if (validFromUtc_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -5230,8 +5963,8 @@ public final class TrustRegistryOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(12, validUntilUtc_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, frameworkId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5243,28 +5976,32 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest) obj;
 
-      if (!getCredentialTypeUri()
-          .equals(other.getCredentialTypeUri())) return false;
+      if (!getSchemaUri()
+          .equals(other.getSchemaUri())) return false;
       if (getValidFromUtc()
           != other.getValidFromUtc()) return false;
       if (getValidUntilUtc()
           != other.getValidUntilUtc()) return false;
-      if (!getGovernanceFrameworkUri()
-          .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getAuthorityCase().equals(other.getAuthorityCase())) return false;
-      switch (authorityCase_) {
+      if (!getFrameworkId()
+          .equals(other.getFrameworkId())) return false;
+      if (!getMemberCase().equals(other.getMemberCase())) return false;
+      switch (memberCase_) {
         case 1:
           if (!getDidUri()
               .equals(other.getDidUri())) return false;
           break;
-        case 2:
-          if (!getX509Cert()
-              .equals(other.getX509Cert())) return false;
+        case 3:
+          if (!getWalletId()
+              .equals(other.getWalletId())) return false;
+          break;
+        case 4:
+          if (!getEmail()
+              .equals(other.getEmail())) return false;
           break;
         case 0:
         default:
@@ -5280,24 +6017,28 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CREDENTIAL_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getCredentialTypeUri().hashCode();
+      hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
+      hash = (53 * hash) + getSchemaUri().hashCode();
       hash = (37 * hash) + VALID_FROM_UTC_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getValidFromUtc());
       hash = (37 * hash) + VALID_UNTIL_UTC_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getValidUntilUtc());
-      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      switch (authorityCase_) {
+      hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getFrameworkId().hashCode();
+      switch (memberCase_) {
         case 1:
           hash = (37 * hash) + DID_URI_FIELD_NUMBER;
           hash = (53 * hash) + getDidUri().hashCode();
           break;
-        case 2:
-          hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-          hash = (53 * hash) + getX509Cert().hashCode();
+        case 3:
+          hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getWalletId().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+          hash = (53 * hash) + getEmail().hashCode();
           break;
         case 0:
         default:
@@ -5307,69 +6048,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5382,7 +6123,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5398,26 +6139,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.RegisterIssuerRequest}
+     * Protobuf type {@code services.trustregistry.v1.RegisterMemberRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterIssuerRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterMemberRequest)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerRequest_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5435,33 +6176,33 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        credentialTypeUri_ = "";
+        schemaUri_ = "";
 
         validFromUtc_ = 0L;
 
         validUntilUtc_ = 0L;
 
-        governanceFrameworkUri_ = "";
+        frameworkId_ = "";
 
-        authorityCase_ = 0;
-        authority_ = null;
+        memberCase_ = 0;
+        member_ = null;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5469,19 +6210,22 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest(this);
-        if (authorityCase_ == 1) {
-          result.authority_ = authority_;
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest(this);
+        if (memberCase_ == 1) {
+          result.member_ = member_;
         }
-        if (authorityCase_ == 2) {
-          result.authority_ = authority_;
+        if (memberCase_ == 3) {
+          result.member_ = member_;
         }
-        result.credentialTypeUri_ = credentialTypeUri_;
+        if (memberCase_ == 4) {
+          result.member_ = member_;
+        }
+        result.schemaUri_ = schemaUri_;
         result.validFromUtc_ = validFromUtc_;
         result.validUntilUtc_ = validUntilUtc_;
-        result.governanceFrameworkUri_ = governanceFrameworkUri_;
-        result.authorityCase_ = authorityCase_;
+        result.frameworkId_ = frameworkId_;
+        result.memberCase_ = memberCase_;
         onBuilt();
         return result;
       }
@@ -5520,18 +6264,18 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.getDefaultInstance()) return this;
-        if (!other.getCredentialTypeUri().isEmpty()) {
-          credentialTypeUri_ = other.credentialTypeUri_;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.getDefaultInstance()) return this;
+        if (!other.getSchemaUri().isEmpty()) {
+          schemaUri_ = other.schemaUri_;
           onChanged();
         }
         if (other.getValidFromUtc() != 0L) {
@@ -5540,24 +6284,30 @@ public final class TrustRegistryOuterClass {
         if (other.getValidUntilUtc() != 0L) {
           setValidUntilUtc(other.getValidUntilUtc());
         }
-        if (!other.getGovernanceFrameworkUri().isEmpty()) {
-          governanceFrameworkUri_ = other.governanceFrameworkUri_;
+        if (!other.getFrameworkId().isEmpty()) {
+          frameworkId_ = other.frameworkId_;
           onChanged();
         }
-        switch (other.getAuthorityCase()) {
+        switch (other.getMemberCase()) {
           case DID_URI: {
-            authorityCase_ = 1;
-            authority_ = other.authority_;
+            memberCase_ = 1;
+            member_ = other.member_;
             onChanged();
             break;
           }
-          case X509_CERT: {
-            authorityCase_ = 2;
-            authority_ = other.authority_;
+          case WALLET_ID: {
+            memberCase_ = 3;
+            member_ = other.member_;
             onChanged();
             break;
           }
-          case AUTHORITY_NOT_SET: {
+          case EMAIL: {
+            memberCase_ = 4;
+            member_ = other.member_;
+            onChanged();
+            break;
+          }
+          case MEMBER_NOT_SET: {
             break;
           }
         }
@@ -5576,11 +6326,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5589,17 +6339,17 @@ public final class TrustRegistryOuterClass {
         }
         return this;
       }
-      private int authorityCase_ = 0;
-      private java.lang.Object authority_;
-      public AuthorityCase
-          getAuthorityCase() {
-        return AuthorityCase.forNumber(
-            authorityCase_);
+      private int memberCase_ = 0;
+      private java.lang.Object member_;
+      public MemberCase
+          getMemberCase() {
+        return MemberCase.forNumber(
+            memberCase_);
       }
 
-      public Builder clearAuthority() {
-        authorityCase_ = 0;
-        authority_ = null;
+      public Builder clearMember() {
+        memberCase_ = 0;
+        member_ = null;
         onChanged();
         return this;
       }
@@ -5611,7 +6361,7 @@ public final class TrustRegistryOuterClass {
        */
       @java.lang.Override
       public boolean hasDidUri() {
-        return authorityCase_ == 1;
+        return memberCase_ == 1;
       }
       /**
        * <code>string did_uri = 1;</code>
@@ -5620,15 +6370,15 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public java.lang.String getDidUri() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
+        if (memberCase_ == 1) {
+          ref = member_;
         }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 1) {
-            authority_ = s;
+          if (memberCase_ == 1) {
+            member_ = s;
           }
           return s;
         } else {
@@ -5643,15 +6393,15 @@ public final class TrustRegistryOuterClass {
       public com.google.protobuf.ByteString
           getDidUriBytes() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
+        if (memberCase_ == 1) {
+          ref = member_;
         }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (authorityCase_ == 1) {
-            authority_ = b;
+          if (memberCase_ == 1) {
+            member_ = b;
           }
           return b;
         } else {
@@ -5668,8 +6418,8 @@ public final class TrustRegistryOuterClass {
         if (value == null) {
     throw new NullPointerException();
   }
-  authorityCase_ = 1;
-        authority_ = value;
+  memberCase_ = 1;
+        member_ = value;
         onChanged();
         return this;
       }
@@ -5678,9 +6428,9 @@ public final class TrustRegistryOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearDidUri() {
-        if (authorityCase_ == 1) {
-          authorityCase_ = 0;
-          authority_ = null;
+        if (memberCase_ == 1) {
+          memberCase_ = 0;
+          member_ = null;
           onChanged();
         }
         return this;
@@ -5696,36 +6446,36 @@ public final class TrustRegistryOuterClass {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        authorityCase_ = 1;
-        authority_ = value;
+        memberCase_ = 1;
+        member_ = value;
         onChanged();
         return this;
       }
 
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return Whether the x509Cert field is set.
+       * <code>string wallet_id = 3;</code>
+       * @return Whether the walletId field is set.
        */
       @java.lang.Override
-      public boolean hasX509Cert() {
-        return authorityCase_ == 2;
+      public boolean hasWalletId() {
+        return memberCase_ == 3;
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return The x509Cert.
+       * <code>string wallet_id = 3;</code>
+       * @return The walletId.
        */
       @java.lang.Override
-      public java.lang.String getX509Cert() {
+      public java.lang.String getWalletId() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
+        if (memberCase_ == 3) {
+          ref = member_;
         }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 2) {
-            authority_ = s;
+          if (memberCase_ == 3) {
+            member_ = s;
           }
           return s;
         } else {
@@ -5733,22 +6483,22 @@ public final class TrustRegistryOuterClass {
         }
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return The bytes for x509Cert.
+       * <code>string wallet_id = 3;</code>
+       * @return The bytes for walletId.
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getX509CertBytes() {
+          getWalletIdBytes() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
+        if (memberCase_ == 3) {
+          ref = member_;
         }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (authorityCase_ == 2) {
-            authority_ = b;
+          if (memberCase_ == 3) {
+            member_ = b;
           }
           return b;
         } else {
@@ -5756,121 +6506,218 @@ public final class TrustRegistryOuterClass {
         }
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The x509Cert to set.
+       * <code>string wallet_id = 3;</code>
+       * @param value The walletId to set.
        * @return This builder for chaining.
        */
-      public Builder setX509Cert(
+      public Builder setWalletId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  authorityCase_ = 2;
-        authority_ = value;
+  memberCase_ = 3;
+        member_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string x509_cert = 2;</code>
+       * <code>string wallet_id = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearX509Cert() {
-        if (authorityCase_ == 2) {
-          authorityCase_ = 0;
-          authority_ = null;
+      public Builder clearWalletId() {
+        if (memberCase_ == 3) {
+          memberCase_ = 0;
+          member_ = null;
           onChanged();
         }
         return this;
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The bytes for x509Cert to set.
+       * <code>string wallet_id = 3;</code>
+       * @param value The bytes for walletId to set.
        * @return This builder for chaining.
        */
-      public Builder setX509CertBytes(
+      public Builder setWalletIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        authorityCase_ = 2;
-        authority_ = value;
+        memberCase_ = 3;
+        member_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object credentialTypeUri_ = "";
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @return The credentialTypeUri.
+       * <code>string email = 4;</code>
+       * @return Whether the email field is set.
        */
-      public java.lang.String getCredentialTypeUri() {
-        java.lang.Object ref = credentialTypeUri_;
+      @java.lang.Override
+      public boolean hasEmail() {
+        return memberCase_ == 4;
+      }
+      /**
+       * <code>string email = 4;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        java.lang.Object ref = "";
+        if (memberCase_ == 4) {
+          ref = member_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          credentialTypeUri_ = s;
+          if (memberCase_ == 4) {
+            member_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @return The bytes for credentialTypeUri.
+       * <code>string email = 4;</code>
+       * @return The bytes for email.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
-          getCredentialTypeUriBytes() {
-        java.lang.Object ref = credentialTypeUri_;
+          getEmailBytes() {
+        java.lang.Object ref = "";
+        if (memberCase_ == 4) {
+          ref = member_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          credentialTypeUri_ = b;
+          if (memberCase_ == 4) {
+            member_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @param value The credentialTypeUri to set.
+       * <code>string email = 4;</code>
+       * @param value The email to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUri(
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  memberCase_ = 4;
+        member_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string email = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmail() {
+        if (memberCase_ == 4) {
+          memberCase_ = 0;
+          member_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string email = 4;</code>
+       * @param value The bytes for email to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        memberCase_ = 4;
+        member_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object schemaUri_ = "";
+      /**
+       * <code>string schema_uri = 10;</code>
+       * @return The schemaUri.
+       */
+      public java.lang.String getSchemaUri() {
+        java.lang.Object ref = schemaUri_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          schemaUri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string schema_uri = 10;</code>
+       * @return The bytes for schemaUri.
+       */
+      public com.google.protobuf.ByteString
+          getSchemaUriBytes() {
+        java.lang.Object ref = schemaUri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          schemaUri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string schema_uri = 10;</code>
+       * @param value The schemaUri to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSchemaUri(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        credentialTypeUri_ = value;
+        schemaUri_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
+       * <code>string schema_uri = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCredentialTypeUri() {
+      public Builder clearSchemaUri() {
         
-        credentialTypeUri_ = getDefaultInstance().getCredentialTypeUri();
+        schemaUri_ = getDefaultInstance().getSchemaUri();
         onChanged();
         return this;
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @param value The bytes for credentialTypeUri to set.
+       * <code>string schema_uri = 10;</code>
+       * @param value The bytes for schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUriBytes(
+      public Builder setSchemaUriBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        credentialTypeUri_ = value;
+        schemaUri_ = value;
         onChanged();
         return this;
       }
@@ -5937,78 +6784,98 @@ public final class TrustRegistryOuterClass {
         return this;
       }
 
-      private java.lang.Object governanceFrameworkUri_ = "";
+      private java.lang.Object frameworkId_ = "";
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The governanceFrameworkUri.
+       * <pre>
+       * the id of the governance framework
+       * </pre>
+       *
+       * <code>string framework_id = 30;</code>
+       * @return The frameworkId.
        */
-      public java.lang.String getGovernanceFrameworkUri() {
-        java.lang.Object ref = governanceFrameworkUri_;
+      public java.lang.String getFrameworkId() {
+        java.lang.Object ref = frameworkId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          governanceFrameworkUri_ = s;
+          frameworkId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The bytes for governanceFrameworkUri.
+       * <pre>
+       * the id of the governance framework
+       * </pre>
+       *
+       * <code>string framework_id = 30;</code>
+       * @return The bytes for frameworkId.
        */
       public com.google.protobuf.ByteString
-          getGovernanceFrameworkUriBytes() {
-        java.lang.Object ref = governanceFrameworkUri_;
+          getFrameworkIdBytes() {
+        java.lang.Object ref = frameworkId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          governanceFrameworkUri_ = b;
+          frameworkId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The governanceFrameworkUri to set.
+       * <pre>
+       * the id of the governance framework
+       * </pre>
+       *
+       * <code>string framework_id = 30;</code>
+       * @param value The frameworkId to set.
        * @return This builder for chaining.
        */
-      public Builder setGovernanceFrameworkUri(
+      public Builder setFrameworkId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        governanceFrameworkUri_ = value;
+        frameworkId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
+       * <pre>
+       * the id of the governance framework
+       * </pre>
+       *
+       * <code>string framework_id = 30;</code>
        * @return This builder for chaining.
        */
-      public Builder clearGovernanceFrameworkUri() {
+      public Builder clearFrameworkId() {
         
-        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
+        frameworkId_ = getDefaultInstance().getFrameworkId();
         onChanged();
         return this;
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The bytes for governanceFrameworkUri to set.
+       * <pre>
+       * the id of the governance framework
+       * </pre>
+       *
+       * <code>string framework_id = 30;</code>
+       * @param value The bytes for frameworkId to set.
        * @return This builder for chaining.
        */
-      public Builder setGovernanceFrameworkUriBytes(
+      public Builder setFrameworkIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        governanceFrameworkUri_ = value;
+        frameworkId_ = value;
         onChanged();
         return this;
       }
@@ -6025,70 +6892,70 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterIssuerRequest)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterMemberRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterIssuerRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterMemberRequest)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<RegisterIssuerRequest>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterIssuerRequest>() {
+    private static final com.google.protobuf.Parser<RegisterMemberRequest>
+        PARSER = new com.google.protobuf.AbstractParser<RegisterMemberRequest>() {
       @java.lang.Override
-      public RegisterIssuerRequest parsePartialFrom(
+      public RegisterMemberRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterIssuerRequest(input, extensionRegistry);
+        return new RegisterMemberRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<RegisterIssuerRequest> parser() {
+    public static com.google.protobuf.Parser<RegisterMemberRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<RegisterIssuerRequest> getParserForType() {
+    public com.google.protobuf.Parser<RegisterMemberRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface RegisterIssuerResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterIssuerResponse)
+  public interface RegisterMemberResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterMemberResponse)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.RegisterIssuerResponse}
+   * Protobuf type {@code services.trustregistry.v1.RegisterMemberResponse}
    */
-  public static final class RegisterIssuerResponse extends
+  public static final class RegisterMemberResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterIssuerResponse)
-      RegisterIssuerResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterMemberResponse)
+      RegisterMemberResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use RegisterIssuerResponse.newBuilder() to construct.
-    private RegisterIssuerResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use RegisterMemberResponse.newBuilder() to construct.
+    private RegisterMemberResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private RegisterIssuerResponse() {
+    private RegisterMemberResponse() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new RegisterIssuerResponse();
+      return new RegisterMemberResponse();
     }
 
     @java.lang.Override
@@ -6096,7 +6963,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private RegisterIssuerResponse(
+    private RegisterMemberResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6125,6 +6992,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -6135,15 +7004,15 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerResponse_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6179,10 +7048,10 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -6200,69 +7069,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6275,7 +7144,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6291,26 +7160,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.RegisterIssuerResponse}
+     * Protobuf type {@code services.trustregistry.v1.RegisterMemberResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterIssuerResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterMemberResponse)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerResponse_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6334,17 +7203,17 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6352,8 +7221,8 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse(this);
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse(this);
         onBuilt();
         return result;
       }
@@ -6392,16 +7261,16 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6417,11 +7286,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6443,1791 +7312,48 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterIssuerResponse)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterMemberResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterIssuerResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterMemberResponse)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<RegisterIssuerResponse>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterIssuerResponse>() {
+    private static final com.google.protobuf.Parser<RegisterMemberResponse>
+        PARSER = new com.google.protobuf.AbstractParser<RegisterMemberResponse>() {
       @java.lang.Override
-      public RegisterIssuerResponse parsePartialFrom(
+      public RegisterMemberResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterIssuerResponse(input, extensionRegistry);
+        return new RegisterMemberResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<RegisterIssuerResponse> parser() {
+    public static com.google.protobuf.Parser<RegisterMemberResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<RegisterIssuerResponse> getParserForType() {
+    public com.google.protobuf.Parser<RegisterMemberResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface RegisterVerifierRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterVerifierRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return Whether the didUri field is set.
-     */
-    boolean hasDidUri();
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The didUri.
-     */
-    java.lang.String getDidUri();
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The bytes for didUri.
-     */
-    com.google.protobuf.ByteString
-        getDidUriBytes();
-
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    boolean hasX509Cert();
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
-     */
-    java.lang.String getX509Cert();
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
-     */
-    com.google.protobuf.ByteString
-        getX509CertBytes();
-
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The presentationTypeUri.
-     */
-    java.lang.String getPresentationTypeUri();
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    com.google.protobuf.ByteString
-        getPresentationTypeUriBytes();
-
-    /**
-     * <code>uint64 valid_from_utc = 11;</code>
-     * @return The validFromUtc.
-     */
-    long getValidFromUtc();
-
-    /**
-     * <code>uint64 valid_until_utc = 12;</code>
-     * @return The validUntilUtc.
-     */
-    long getValidUntilUtc();
-
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
-     */
-    java.lang.String getGovernanceFrameworkUri();
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes();
-
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.AuthorityCase getAuthorityCase();
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.RegisterVerifierRequest}
-   */
-  public static final class RegisterVerifierRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterVerifierRequest)
-      RegisterVerifierRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use RegisterVerifierRequest.newBuilder() to construct.
-    private RegisterVerifierRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private RegisterVerifierRequest() {
-      presentationTypeUri_ = "";
-      governanceFrameworkUri_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new RegisterVerifierRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RegisterVerifierRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 1;
-              authority_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 2;
-              authority_ = s;
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              presentationTypeUri_ = s;
-              break;
-            }
-            case 88: {
-
-              validFromUtc_ = input.readUInt64();
-              break;
-            }
-            case 96: {
-
-              validUntilUtc_ = input.readUInt64();
-              break;
-            }
-            case 162: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              governanceFrameworkUri_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.Builder.class);
-    }
-
-    private int authorityCase_ = 0;
-    private java.lang.Object authority_;
-    public enum AuthorityCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      DID_URI(1),
-      X509_CERT(2),
-      AUTHORITY_NOT_SET(0);
-      private final int value;
-      private AuthorityCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static AuthorityCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static AuthorityCase forNumber(int value) {
-        switch (value) {
-          case 1: return DID_URI;
-          case 2: return X509_CERT;
-          case 0: return AUTHORITY_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public AuthorityCase
-    getAuthorityCase() {
-      return AuthorityCase.forNumber(
-          authorityCase_);
-    }
-
-    public static final int DID_URI_FIELD_NUMBER = 1;
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return Whether the didUri field is set.
-     */
-    public boolean hasDidUri() {
-      return authorityCase_ == 1;
-    }
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The didUri.
-     */
-    public java.lang.String getDidUri() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 1) {
-          authority_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The bytes for didUri.
-     */
-    public com.google.protobuf.ByteString
-        getDidUriBytes() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (authorityCase_ == 1) {
-          authority_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int X509_CERT_FIELD_NUMBER = 2;
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    public boolean hasX509Cert() {
-      return authorityCase_ == 2;
-    }
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
-     */
-    public java.lang.String getX509Cert() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 2) {
-          authority_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
-     */
-    public com.google.protobuf.ByteString
-        getX509CertBytes() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (authorityCase_ == 2) {
-          authority_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRESENTATION_TYPE_URI_FIELD_NUMBER = 10;
-    private volatile java.lang.Object presentationTypeUri_;
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The presentationTypeUri.
-     */
-    @java.lang.Override
-    public java.lang.String getPresentationTypeUri() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        presentationTypeUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPresentationTypeUriBytes() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        presentationTypeUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int VALID_FROM_UTC_FIELD_NUMBER = 11;
-    private long validFromUtc_;
-    /**
-     * <code>uint64 valid_from_utc = 11;</code>
-     * @return The validFromUtc.
-     */
-    @java.lang.Override
-    public long getValidFromUtc() {
-      return validFromUtc_;
-    }
-
-    public static final int VALID_UNTIL_UTC_FIELD_NUMBER = 12;
-    private long validUntilUtc_;
-    /**
-     * <code>uint64 valid_until_utc = 12;</code>
-     * @return The validUntilUtc.
-     */
-    @java.lang.Override
-    public long getValidUntilUtc() {
-      return validUntilUtc_;
-    }
-
-    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 20;
-    private volatile java.lang.Object governanceFrameworkUri_;
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        governanceFrameworkUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (authorityCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, authority_);
-      }
-      if (authorityCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, presentationTypeUri_);
-      }
-      if (validFromUtc_ != 0L) {
-        output.writeUInt64(11, validFromUtc_);
-      }
-      if (validUntilUtc_ != 0L) {
-        output.writeUInt64(12, validUntilUtc_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (authorityCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, authority_);
-      }
-      if (authorityCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, presentationTypeUri_);
-      }
-      if (validFromUtc_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(11, validFromUtc_);
-      }
-      if (validUntilUtc_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(12, validUntilUtc_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest) obj;
-
-      if (!getPresentationTypeUri()
-          .equals(other.getPresentationTypeUri())) return false;
-      if (getValidFromUtc()
-          != other.getValidFromUtc()) return false;
-      if (getValidUntilUtc()
-          != other.getValidUntilUtc()) return false;
-      if (!getGovernanceFrameworkUri()
-          .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getAuthorityCase().equals(other.getAuthorityCase())) return false;
-      switch (authorityCase_) {
-        case 1:
-          if (!getDidUri()
-              .equals(other.getDidUri())) return false;
-          break;
-        case 2:
-          if (!getX509Cert()
-              .equals(other.getX509Cert())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRESENTATION_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getPresentationTypeUri().hashCode();
-      hash = (37 * hash) + VALID_FROM_UTC_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getValidFromUtc());
-      hash = (37 * hash) + VALID_UNTIL_UTC_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getValidUntilUtc());
-      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      switch (authorityCase_) {
-        case 1:
-          hash = (37 * hash) + DID_URI_FIELD_NUMBER;
-          hash = (53 * hash) + getDidUri().hashCode();
-          break;
-        case 2:
-          hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-          hash = (53 * hash) + getX509Cert().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.RegisterVerifierRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterVerifierRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        presentationTypeUri_ = "";
-
-        validFromUtc_ = 0L;
-
-        validUntilUtc_ = 0L;
-
-        governanceFrameworkUri_ = "";
-
-        authorityCase_ = 0;
-        authority_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest(this);
-        if (authorityCase_ == 1) {
-          result.authority_ = authority_;
-        }
-        if (authorityCase_ == 2) {
-          result.authority_ = authority_;
-        }
-        result.presentationTypeUri_ = presentationTypeUri_;
-        result.validFromUtc_ = validFromUtc_;
-        result.validUntilUtc_ = validUntilUtc_;
-        result.governanceFrameworkUri_ = governanceFrameworkUri_;
-        result.authorityCase_ = authorityCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.getDefaultInstance()) return this;
-        if (!other.getPresentationTypeUri().isEmpty()) {
-          presentationTypeUri_ = other.presentationTypeUri_;
-          onChanged();
-        }
-        if (other.getValidFromUtc() != 0L) {
-          setValidFromUtc(other.getValidFromUtc());
-        }
-        if (other.getValidUntilUtc() != 0L) {
-          setValidUntilUtc(other.getValidUntilUtc());
-        }
-        if (!other.getGovernanceFrameworkUri().isEmpty()) {
-          governanceFrameworkUri_ = other.governanceFrameworkUri_;
-          onChanged();
-        }
-        switch (other.getAuthorityCase()) {
-          case DID_URI: {
-            authorityCase_ = 1;
-            authority_ = other.authority_;
-            onChanged();
-            break;
-          }
-          case X509_CERT: {
-            authorityCase_ = 2;
-            authority_ = other.authority_;
-            onChanged();
-            break;
-          }
-          case AUTHORITY_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int authorityCase_ = 0;
-      private java.lang.Object authority_;
-      public AuthorityCase
-          getAuthorityCase() {
-        return AuthorityCase.forNumber(
-            authorityCase_);
-      }
-
-      public Builder clearAuthority() {
-        authorityCase_ = 0;
-        authority_ = null;
-        onChanged();
-        return this;
-      }
-
-
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return Whether the didUri field is set.
-       */
-      @java.lang.Override
-      public boolean hasDidUri() {
-        return authorityCase_ == 1;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return The didUri.
-       */
-      @java.lang.Override
-      public java.lang.String getDidUri() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 1) {
-            authority_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return The bytes for didUri.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getDidUriBytes() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (authorityCase_ == 1) {
-            authority_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @param value The didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  authorityCase_ = 1;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDidUri() {
-        if (authorityCase_ == 1) {
-          authorityCase_ = 0;
-          authority_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @param value The bytes for didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        authorityCase_ = 1;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return Whether the x509Cert field is set.
-       */
-      @java.lang.Override
-      public boolean hasX509Cert() {
-        return authorityCase_ == 2;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return The x509Cert.
-       */
-      @java.lang.Override
-      public java.lang.String getX509Cert() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 2) {
-            authority_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return The bytes for x509Cert.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getX509CertBytes() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (authorityCase_ == 2) {
-            authority_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509Cert(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  authorityCase_ = 2;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX509Cert() {
-        if (authorityCase_ == 2) {
-          authorityCase_ = 0;
-          authority_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The bytes for x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509CertBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        authorityCase_ = 2;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object presentationTypeUri_ = "";
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return The presentationTypeUri.
-       */
-      public java.lang.String getPresentationTypeUri() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          presentationTypeUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return The bytes for presentationTypeUri.
-       */
-      public com.google.protobuf.ByteString
-          getPresentationTypeUriBytes() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          presentationTypeUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @param value The presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPresentationTypeUri() {
-        
-        presentationTypeUri_ = getDefaultInstance().getPresentationTypeUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @param value The bytes for presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-
-      private long validFromUtc_ ;
-      /**
-       * <code>uint64 valid_from_utc = 11;</code>
-       * @return The validFromUtc.
-       */
-      @java.lang.Override
-      public long getValidFromUtc() {
-        return validFromUtc_;
-      }
-      /**
-       * <code>uint64 valid_from_utc = 11;</code>
-       * @param value The validFromUtc to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValidFromUtc(long value) {
-        
-        validFromUtc_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 valid_from_utc = 11;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearValidFromUtc() {
-        
-        validFromUtc_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long validUntilUtc_ ;
-      /**
-       * <code>uint64 valid_until_utc = 12;</code>
-       * @return The validUntilUtc.
-       */
-      @java.lang.Override
-      public long getValidUntilUtc() {
-        return validUntilUtc_;
-      }
-      /**
-       * <code>uint64 valid_until_utc = 12;</code>
-       * @param value The validUntilUtc to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValidUntilUtc(long value) {
-        
-        validUntilUtc_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>uint64 valid_until_utc = 12;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearValidUntilUtc() {
-        
-        validUntilUtc_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object governanceFrameworkUri_ = "";
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The governanceFrameworkUri.
-       */
-      public java.lang.String getGovernanceFrameworkUri() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          governanceFrameworkUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The bytes for governanceFrameworkUri.
-       */
-      public com.google.protobuf.ByteString
-          getGovernanceFrameworkUriBytes() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          governanceFrameworkUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearGovernanceFrameworkUri() {
-        
-        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The bytes for governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterVerifierRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterVerifierRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RegisterVerifierRequest>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterVerifierRequest>() {
-      @java.lang.Override
-      public RegisterVerifierRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterVerifierRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<RegisterVerifierRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterVerifierRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface RegisterVerifierResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RegisterVerifierResponse)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.RegisterVerifierResponse}
-   */
-  public static final class RegisterVerifierResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterVerifierResponse)
-      RegisterVerifierResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use RegisterVerifierResponse.newBuilder() to construct.
-    private RegisterVerifierResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private RegisterVerifierResponse() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new RegisterVerifierResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RegisterVerifierResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.RegisterVerifierResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterVerifierResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterVerifierResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterVerifierResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<RegisterVerifierResponse>
-        PARSER = new com.google.protobuf.AbstractParser<RegisterVerifierResponse>() {
-      @java.lang.Override
-      public RegisterVerifierResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterVerifierResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<RegisterVerifierResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterVerifierResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface UnregisterIssuerRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterIssuerRequest)
+  public interface UnregisterMemberRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterMemberRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -8248,70 +7374,87 @@ public final class TrustRegistryOuterClass {
         getDidUriBytes();
 
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
+     * <code>string wallet_id = 3;</code>
+     * @return Whether the walletId field is set.
      */
-    boolean hasX509Cert();
+    boolean hasWalletId();
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
      */
-    java.lang.String getX509Cert();
+    java.lang.String getWalletId();
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
      */
     com.google.protobuf.ByteString
-        getX509CertBytes();
+        getWalletIdBytes();
 
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return Whether the email field is set.
      */
-    java.lang.String getCredentialTypeUri();
+    boolean hasEmail();
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return The email.
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
     com.google.protobuf.ByteString
-        getCredentialTypeUriBytes();
+        getEmailBytes();
 
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
+     * <code>string schema_uri = 10;</code>
+     * @return The schemaUri.
      */
-    java.lang.String getGovernanceFrameworkUri();
+    java.lang.String getSchemaUri();
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
+     * <code>string schema_uri = 10;</code>
+     * @return The bytes for schemaUri.
      */
     com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes();
+        getSchemaUriBytes();
 
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.AuthorityCase getAuthorityCase();
+    /**
+     * <code>string framework_id = 20;</code>
+     * @return The frameworkId.
+     */
+    java.lang.String getFrameworkId();
+    /**
+     * <code>string framework_id = 20;</code>
+     * @return The bytes for frameworkId.
+     */
+    com.google.protobuf.ByteString
+        getFrameworkIdBytes();
+
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.MemberCase getMemberCase();
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerRequest}
+   * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
    */
-  public static final class UnregisterIssuerRequest extends
+  public static final class UnregisterMemberRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterIssuerRequest)
-      UnregisterIssuerRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterMemberRequest)
+      UnregisterMemberRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UnregisterIssuerRequest.newBuilder() to construct.
-    private UnregisterIssuerRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use UnregisterMemberRequest.newBuilder() to construct.
+    private UnregisterMemberRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UnregisterIssuerRequest() {
-      credentialTypeUri_ = "";
-      governanceFrameworkUri_ = "";
+    private UnregisterMemberRequest() {
+      schemaUri_ = "";
+      frameworkId_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UnregisterIssuerRequest();
+      return new UnregisterMemberRequest();
     }
 
     @java.lang.Override
@@ -8319,7 +7462,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UnregisterIssuerRequest(
+    private UnregisterMemberRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8339,26 +7482,32 @@ public final class TrustRegistryOuterClass {
               break;
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 1;
-              authority_ = s;
+              memberCase_ = 1;
+              member_ = s;
               break;
             }
-            case 18: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 2;
-              authority_ = s;
+              memberCase_ = 3;
+              member_ = s;
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              memberCase_ = 4;
+              member_ = s;
               break;
             }
             case 82: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              credentialTypeUri_ = s;
+              schemaUri_ = s;
               break;
             }
             case 162: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              governanceFrameworkUri_ = s;
+              frameworkId_ = s;
               break;
             }
             default: {
@@ -8372,6 +7521,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8382,27 +7533,28 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.Builder.class);
     }
 
-    private int authorityCase_ = 0;
-    private java.lang.Object authority_;
-    public enum AuthorityCase
+    private int memberCase_ = 0;
+    private java.lang.Object member_;
+    public enum MemberCase
         implements com.google.protobuf.Internal.EnumLite,
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       DID_URI(1),
-      X509_CERT(2),
-      AUTHORITY_NOT_SET(0);
+      WALLET_ID(3),
+      EMAIL(4),
+      MEMBER_NOT_SET(0);
       private final int value;
-      private AuthorityCase(int value) {
+      private MemberCase(int value) {
         this.value = value;
       }
       /**
@@ -8411,15 +7563,16 @@ public final class TrustRegistryOuterClass {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static AuthorityCase valueOf(int value) {
+      public static MemberCase valueOf(int value) {
         return forNumber(value);
       }
 
-      public static AuthorityCase forNumber(int value) {
+      public static MemberCase forNumber(int value) {
         switch (value) {
           case 1: return DID_URI;
-          case 2: return X509_CERT;
-          case 0: return AUTHORITY_NOT_SET;
+          case 3: return WALLET_ID;
+          case 4: return EMAIL;
+          case 0: return MEMBER_NOT_SET;
           default: return null;
         }
       }
@@ -8428,10 +7581,10 @@ public final class TrustRegistryOuterClass {
       }
     };
 
-    public AuthorityCase
-    getAuthorityCase() {
-      return AuthorityCase.forNumber(
-          authorityCase_);
+    public MemberCase
+    getMemberCase() {
+      return MemberCase.forNumber(
+          memberCase_);
     }
 
     public static final int DID_URI_FIELD_NUMBER = 1;
@@ -8440,7 +7593,7 @@ public final class TrustRegistryOuterClass {
      * @return Whether the didUri field is set.
      */
     public boolean hasDidUri() {
-      return authorityCase_ == 1;
+      return memberCase_ == 1;
     }
     /**
      * <code>string did_uri = 1;</code>
@@ -8448,8 +7601,8 @@ public final class TrustRegistryOuterClass {
      */
     public java.lang.String getDidUri() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
+      if (memberCase_ == 1) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
@@ -8457,8 +7610,8 @@ public final class TrustRegistryOuterClass {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 1) {
-          authority_ = s;
+        if (memberCase_ == 1) {
+          member_ = s;
         }
         return s;
       }
@@ -8470,15 +7623,15 @@ public final class TrustRegistryOuterClass {
     public com.google.protobuf.ByteString
         getDidUriBytes() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
+      if (memberCase_ == 1) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (authorityCase_ == 1) {
-          authority_ = b;
+        if (memberCase_ == 1) {
+          member_ = b;
         }
         return b;
       } else {
@@ -8486,22 +7639,22 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int X509_CERT_FIELD_NUMBER = 2;
+    public static final int WALLET_ID_FIELD_NUMBER = 3;
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
+     * <code>string wallet_id = 3;</code>
+     * @return Whether the walletId field is set.
      */
-    public boolean hasX509Cert() {
-      return authorityCase_ == 2;
+    public boolean hasWalletId() {
+      return memberCase_ == 3;
     }
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The walletId.
      */
-    public java.lang.String getX509Cert() {
+    public java.lang.String getWalletId() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
+      if (memberCase_ == 3) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
@@ -8509,28 +7662,28 @@ public final class TrustRegistryOuterClass {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 2) {
-          authority_ = s;
+        if (memberCase_ == 3) {
+          member_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
+     * <code>string wallet_id = 3;</code>
+     * @return The bytes for walletId.
      */
     public com.google.protobuf.ByteString
-        getX509CertBytes() {
+        getWalletIdBytes() {
       java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
+      if (memberCase_ == 3) {
+        ref = member_;
       }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        if (authorityCase_ == 2) {
-          authority_ = b;
+        if (memberCase_ == 3) {
+          member_ = b;
         }
         return b;
       } else {
@@ -8538,76 +7691,128 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int CREDENTIAL_TYPE_URI_FIELD_NUMBER = 10;
-    private volatile java.lang.Object credentialTypeUri_;
+    public static final int EMAIL_FIELD_NUMBER = 4;
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return Whether the email field is set.
      */
-    @java.lang.Override
-    public java.lang.String getCredentialTypeUri() {
-      java.lang.Object ref = credentialTypeUri_;
+    public boolean hasEmail() {
+      return memberCase_ == 4;
+    }
+    /**
+     * <code>string email = 4;</code>
+     * @return The email.
+     */
+    public java.lang.String getEmail() {
+      java.lang.Object ref = "";
+      if (memberCase_ == 4) {
+        ref = member_;
+      }
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        credentialTypeUri_ = s;
+        if (memberCase_ == 4) {
+          member_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string credential_type_uri = 10;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string email = 4;</code>
+     * @return The bytes for email.
      */
-    @java.lang.Override
     public com.google.protobuf.ByteString
-        getCredentialTypeUriBytes() {
-      java.lang.Object ref = credentialTypeUri_;
+        getEmailBytes() {
+      java.lang.Object ref = "";
+      if (memberCase_ == 4) {
+        ref = member_;
+      }
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        credentialTypeUri_ = b;
+        if (memberCase_ == 4) {
+          member_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 20;
-    private volatile java.lang.Object governanceFrameworkUri_;
+    public static final int SCHEMA_URI_FIELD_NUMBER = 10;
+    private volatile java.lang.Object schemaUri_;
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
+     * <code>string schema_uri = 10;</code>
+     * @return The schemaUri.
      */
     @java.lang.Override
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
+    public java.lang.String getSchemaUri() {
+      java.lang.Object ref = schemaUri_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
+        schemaUri_ = s;
         return s;
       }
     }
     /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
+     * <code>string schema_uri = 10;</code>
+     * @return The bytes for schemaUri.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
+        getSchemaUriBytes() {
+      java.lang.Object ref = schemaUri_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        governanceFrameworkUri_ = b;
+        schemaUri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FRAMEWORK_ID_FIELD_NUMBER = 20;
+    private volatile java.lang.Object frameworkId_;
+    /**
+     * <code>string framework_id = 20;</code>
+     * @return The frameworkId.
+     */
+    @java.lang.Override
+    public java.lang.String getFrameworkId() {
+      java.lang.Object ref = frameworkId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        frameworkId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string framework_id = 20;</code>
+     * @return The bytes for frameworkId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFrameworkIdBytes() {
+      java.lang.Object ref = frameworkId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        frameworkId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -8628,17 +7833,20 @@ public final class TrustRegistryOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (authorityCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, authority_);
+      if (memberCase_ == 1) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, member_);
       }
-      if (authorityCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
+      if (memberCase_ == 3) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, credentialTypeUri_);
+      if (memberCase_ == 4) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, schemaUri_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, frameworkId_);
       }
       unknownFields.writeTo(output);
     }
@@ -8649,17 +7857,20 @@ public final class TrustRegistryOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (authorityCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, authority_);
+      if (memberCase_ == 1) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, member_);
       }
-      if (authorityCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
+      if (memberCase_ == 3) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, credentialTypeUri_);
+      if (memberCase_ == 4) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, schemaUri_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, frameworkId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8671,24 +7882,28 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest) obj;
 
-      if (!getCredentialTypeUri()
-          .equals(other.getCredentialTypeUri())) return false;
-      if (!getGovernanceFrameworkUri()
-          .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getAuthorityCase().equals(other.getAuthorityCase())) return false;
-      switch (authorityCase_) {
+      if (!getSchemaUri()
+          .equals(other.getSchemaUri())) return false;
+      if (!getFrameworkId()
+          .equals(other.getFrameworkId())) return false;
+      if (!getMemberCase().equals(other.getMemberCase())) return false;
+      switch (memberCase_) {
         case 1:
           if (!getDidUri()
               .equals(other.getDidUri())) return false;
           break;
-        case 2:
-          if (!getX509Cert()
-              .equals(other.getX509Cert())) return false;
+        case 3:
+          if (!getWalletId()
+              .equals(other.getWalletId())) return false;
+          break;
+        case 4:
+          if (!getEmail()
+              .equals(other.getEmail())) return false;
           break;
         case 0:
         default:
@@ -8704,18 +7919,22 @@ public final class TrustRegistryOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CREDENTIAL_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getCredentialTypeUri().hashCode();
-      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      switch (authorityCase_) {
+      hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
+      hash = (53 * hash) + getSchemaUri().hashCode();
+      hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getFrameworkId().hashCode();
+      switch (memberCase_) {
         case 1:
           hash = (37 * hash) + DID_URI_FIELD_NUMBER;
           hash = (53 * hash) + getDidUri().hashCode();
           break;
-        case 2:
-          hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-          hash = (53 * hash) + getX509Cert().hashCode();
+        case 3:
+          hash = (37 * hash) + WALLET_ID_FIELD_NUMBER;
+          hash = (53 * hash) + getWalletId().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+          hash = (53 * hash) + getEmail().hashCode();
           break;
         case 0:
         default:
@@ -8725,69 +7944,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8800,7 +8019,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8816,26 +8035,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerRequest}
+     * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterIssuerRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterMemberRequest)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerRequest_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8853,29 +8072,29 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        credentialTypeUri_ = "";
+        schemaUri_ = "";
 
-        governanceFrameworkUri_ = "";
+        frameworkId_ = "";
 
-        authorityCase_ = 0;
-        authority_ = null;
+        memberCase_ = 0;
+        member_ = null;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8883,17 +8102,20 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest(this);
-        if (authorityCase_ == 1) {
-          result.authority_ = authority_;
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest(this);
+        if (memberCase_ == 1) {
+          result.member_ = member_;
         }
-        if (authorityCase_ == 2) {
-          result.authority_ = authority_;
+        if (memberCase_ == 3) {
+          result.member_ = member_;
         }
-        result.credentialTypeUri_ = credentialTypeUri_;
-        result.governanceFrameworkUri_ = governanceFrameworkUri_;
-        result.authorityCase_ = authorityCase_;
+        if (memberCase_ == 4) {
+          result.member_ = member_;
+        }
+        result.schemaUri_ = schemaUri_;
+        result.frameworkId_ = frameworkId_;
+        result.memberCase_ = memberCase_;
         onBuilt();
         return result;
       }
@@ -8932,38 +8154,44 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.getDefaultInstance()) return this;
-        if (!other.getCredentialTypeUri().isEmpty()) {
-          credentialTypeUri_ = other.credentialTypeUri_;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.getDefaultInstance()) return this;
+        if (!other.getSchemaUri().isEmpty()) {
+          schemaUri_ = other.schemaUri_;
           onChanged();
         }
-        if (!other.getGovernanceFrameworkUri().isEmpty()) {
-          governanceFrameworkUri_ = other.governanceFrameworkUri_;
+        if (!other.getFrameworkId().isEmpty()) {
+          frameworkId_ = other.frameworkId_;
           onChanged();
         }
-        switch (other.getAuthorityCase()) {
+        switch (other.getMemberCase()) {
           case DID_URI: {
-            authorityCase_ = 1;
-            authority_ = other.authority_;
+            memberCase_ = 1;
+            member_ = other.member_;
             onChanged();
             break;
           }
-          case X509_CERT: {
-            authorityCase_ = 2;
-            authority_ = other.authority_;
+          case WALLET_ID: {
+            memberCase_ = 3;
+            member_ = other.member_;
             onChanged();
             break;
           }
-          case AUTHORITY_NOT_SET: {
+          case EMAIL: {
+            memberCase_ = 4;
+            member_ = other.member_;
+            onChanged();
+            break;
+          }
+          case MEMBER_NOT_SET: {
             break;
           }
         }
@@ -8982,11 +8210,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8995,17 +8223,17 @@ public final class TrustRegistryOuterClass {
         }
         return this;
       }
-      private int authorityCase_ = 0;
-      private java.lang.Object authority_;
-      public AuthorityCase
-          getAuthorityCase() {
-        return AuthorityCase.forNumber(
-            authorityCase_);
+      private int memberCase_ = 0;
+      private java.lang.Object member_;
+      public MemberCase
+          getMemberCase() {
+        return MemberCase.forNumber(
+            memberCase_);
       }
 
-      public Builder clearAuthority() {
-        authorityCase_ = 0;
-        authority_ = null;
+      public Builder clearMember() {
+        memberCase_ = 0;
+        member_ = null;
         onChanged();
         return this;
       }
@@ -9017,7 +8245,7 @@ public final class TrustRegistryOuterClass {
        */
       @java.lang.Override
       public boolean hasDidUri() {
-        return authorityCase_ == 1;
+        return memberCase_ == 1;
       }
       /**
        * <code>string did_uri = 1;</code>
@@ -9026,15 +8254,15 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public java.lang.String getDidUri() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
+        if (memberCase_ == 1) {
+          ref = member_;
         }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 1) {
-            authority_ = s;
+          if (memberCase_ == 1) {
+            member_ = s;
           }
           return s;
         } else {
@@ -9049,15 +8277,15 @@ public final class TrustRegistryOuterClass {
       public com.google.protobuf.ByteString
           getDidUriBytes() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
+        if (memberCase_ == 1) {
+          ref = member_;
         }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (authorityCase_ == 1) {
-            authority_ = b;
+          if (memberCase_ == 1) {
+            member_ = b;
           }
           return b;
         } else {
@@ -9074,8 +8302,8 @@ public final class TrustRegistryOuterClass {
         if (value == null) {
     throw new NullPointerException();
   }
-  authorityCase_ = 1;
-        authority_ = value;
+  memberCase_ = 1;
+        member_ = value;
         onChanged();
         return this;
       }
@@ -9084,9 +8312,9 @@ public final class TrustRegistryOuterClass {
        * @return This builder for chaining.
        */
       public Builder clearDidUri() {
-        if (authorityCase_ == 1) {
-          authorityCase_ = 0;
-          authority_ = null;
+        if (memberCase_ == 1) {
+          memberCase_ = 0;
+          member_ = null;
           onChanged();
         }
         return this;
@@ -9102,36 +8330,36 @@ public final class TrustRegistryOuterClass {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        authorityCase_ = 1;
-        authority_ = value;
+        memberCase_ = 1;
+        member_ = value;
         onChanged();
         return this;
       }
 
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return Whether the x509Cert field is set.
+       * <code>string wallet_id = 3;</code>
+       * @return Whether the walletId field is set.
        */
       @java.lang.Override
-      public boolean hasX509Cert() {
-        return authorityCase_ == 2;
+      public boolean hasWalletId() {
+        return memberCase_ == 3;
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return The x509Cert.
+       * <code>string wallet_id = 3;</code>
+       * @return The walletId.
        */
       @java.lang.Override
-      public java.lang.String getX509Cert() {
+      public java.lang.String getWalletId() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
+        if (memberCase_ == 3) {
+          ref = member_;
         }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 2) {
-            authority_ = s;
+          if (memberCase_ == 3) {
+            member_ = s;
           }
           return s;
         } else {
@@ -9139,22 +8367,22 @@ public final class TrustRegistryOuterClass {
         }
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @return The bytes for x509Cert.
+       * <code>string wallet_id = 3;</code>
+       * @return The bytes for walletId.
        */
       @java.lang.Override
       public com.google.protobuf.ByteString
-          getX509CertBytes() {
+          getWalletIdBytes() {
         java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
+        if (memberCase_ == 3) {
+          ref = member_;
         }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          if (authorityCase_ == 2) {
-            authority_ = b;
+          if (memberCase_ == 3) {
+            member_ = b;
           }
           return b;
         } else {
@@ -9162,197 +8390,294 @@ public final class TrustRegistryOuterClass {
         }
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The x509Cert to set.
+       * <code>string wallet_id = 3;</code>
+       * @param value The walletId to set.
        * @return This builder for chaining.
        */
-      public Builder setX509Cert(
+      public Builder setWalletId(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  authorityCase_ = 2;
-        authority_ = value;
+  memberCase_ = 3;
+        member_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string x509_cert = 2;</code>
+       * <code>string wallet_id = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearX509Cert() {
-        if (authorityCase_ == 2) {
-          authorityCase_ = 0;
-          authority_ = null;
+      public Builder clearWalletId() {
+        if (memberCase_ == 3) {
+          memberCase_ = 0;
+          member_ = null;
           onChanged();
         }
         return this;
       }
       /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The bytes for x509Cert to set.
+       * <code>string wallet_id = 3;</code>
+       * @param value The bytes for walletId to set.
        * @return This builder for chaining.
        */
-      public Builder setX509CertBytes(
+      public Builder setWalletIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        authorityCase_ = 2;
-        authority_ = value;
+        memberCase_ = 3;
+        member_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object credentialTypeUri_ = "";
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @return The credentialTypeUri.
+       * <code>string email = 4;</code>
+       * @return Whether the email field is set.
        */
-      public java.lang.String getCredentialTypeUri() {
-        java.lang.Object ref = credentialTypeUri_;
+      @java.lang.Override
+      public boolean hasEmail() {
+        return memberCase_ == 4;
+      }
+      /**
+       * <code>string email = 4;</code>
+       * @return The email.
+       */
+      @java.lang.Override
+      public java.lang.String getEmail() {
+        java.lang.Object ref = "";
+        if (memberCase_ == 4) {
+          ref = member_;
+        }
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          credentialTypeUri_ = s;
+          if (memberCase_ == 4) {
+            member_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @return The bytes for credentialTypeUri.
+       * <code>string email = 4;</code>
+       * @return The bytes for email.
        */
+      @java.lang.Override
       public com.google.protobuf.ByteString
-          getCredentialTypeUriBytes() {
-        java.lang.Object ref = credentialTypeUri_;
+          getEmailBytes() {
+        java.lang.Object ref = "";
+        if (memberCase_ == 4) {
+          ref = member_;
+        }
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          credentialTypeUri_ = b;
+          if (memberCase_ == 4) {
+            member_ = b;
+          }
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @param value The credentialTypeUri to set.
+       * <code>string email = 4;</code>
+       * @param value The email to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUri(
+      public Builder setEmail(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        credentialTypeUri_ = value;
+  memberCase_ = 4;
+        member_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
+       * <code>string email = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCredentialTypeUri() {
-        
-        credentialTypeUri_ = getDefaultInstance().getCredentialTypeUri();
-        onChanged();
+      public Builder clearEmail() {
+        if (memberCase_ == 4) {
+          memberCase_ = 0;
+          member_ = null;
+          onChanged();
+        }
         return this;
       }
       /**
-       * <code>string credential_type_uri = 10;</code>
-       * @param value The bytes for credentialTypeUri to set.
+       * <code>string email = 4;</code>
+       * @param value The bytes for email to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUriBytes(
+      public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        credentialTypeUri_ = value;
+        memberCase_ = 4;
+        member_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object governanceFrameworkUri_ = "";
+      private java.lang.Object schemaUri_ = "";
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The governanceFrameworkUri.
+       * <code>string schema_uri = 10;</code>
+       * @return The schemaUri.
        */
-      public java.lang.String getGovernanceFrameworkUri() {
-        java.lang.Object ref = governanceFrameworkUri_;
+      public java.lang.String getSchemaUri() {
+        java.lang.Object ref = schemaUri_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          governanceFrameworkUri_ = s;
+          schemaUri_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The bytes for governanceFrameworkUri.
+       * <code>string schema_uri = 10;</code>
+       * @return The bytes for schemaUri.
        */
       public com.google.protobuf.ByteString
-          getGovernanceFrameworkUriBytes() {
-        java.lang.Object ref = governanceFrameworkUri_;
+          getSchemaUriBytes() {
+        java.lang.Object ref = schemaUri_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          governanceFrameworkUri_ = b;
+          schemaUri_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The governanceFrameworkUri to set.
+       * <code>string schema_uri = 10;</code>
+       * @param value The schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setGovernanceFrameworkUri(
+      public Builder setSchemaUri(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        governanceFrameworkUri_ = value;
+        schemaUri_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
+       * <code>string schema_uri = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearGovernanceFrameworkUri() {
+      public Builder clearSchemaUri() {
         
-        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
+        schemaUri_ = getDefaultInstance().getSchemaUri();
         onChanged();
         return this;
       }
       /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The bytes for governanceFrameworkUri to set.
+       * <code>string schema_uri = 10;</code>
+       * @param value The bytes for schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setGovernanceFrameworkUriBytes(
+      public Builder setSchemaUriBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        governanceFrameworkUri_ = value;
+        schemaUri_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object frameworkId_ = "";
+      /**
+       * <code>string framework_id = 20;</code>
+       * @return The frameworkId.
+       */
+      public java.lang.String getFrameworkId() {
+        java.lang.Object ref = frameworkId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          frameworkId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string framework_id = 20;</code>
+       * @return The bytes for frameworkId.
+       */
+      public com.google.protobuf.ByteString
+          getFrameworkIdBytes() {
+        java.lang.Object ref = frameworkId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          frameworkId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string framework_id = 20;</code>
+       * @param value The frameworkId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFrameworkId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        frameworkId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string framework_id = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFrameworkId() {
+        
+        frameworkId_ = getDefaultInstance().getFrameworkId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string framework_id = 20;</code>
+       * @param value The bytes for frameworkId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFrameworkIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        frameworkId_ = value;
         onChanged();
         return this;
       }
@@ -9369,70 +8694,70 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterIssuerRequest)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterMemberRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterIssuerRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterMemberRequest)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnregisterIssuerRequest>
-        PARSER = new com.google.protobuf.AbstractParser<UnregisterIssuerRequest>() {
+    private static final com.google.protobuf.Parser<UnregisterMemberRequest>
+        PARSER = new com.google.protobuf.AbstractParser<UnregisterMemberRequest>() {
       @java.lang.Override
-      public UnregisterIssuerRequest parsePartialFrom(
+      public UnregisterMemberRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnregisterIssuerRequest(input, extensionRegistry);
+        return new UnregisterMemberRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UnregisterIssuerRequest> parser() {
+    public static com.google.protobuf.Parser<UnregisterMemberRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UnregisterIssuerRequest> getParserForType() {
+    public com.google.protobuf.Parser<UnregisterMemberRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UnregisterIssuerResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterIssuerResponse)
+  public interface UnregisterMemberResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterMemberResponse)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerResponse}
+   * Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse}
    */
-  public static final class UnregisterIssuerResponse extends
+  public static final class UnregisterMemberResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterIssuerResponse)
-      UnregisterIssuerResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterMemberResponse)
+      UnregisterMemberResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UnregisterIssuerResponse.newBuilder() to construct.
-    private UnregisterIssuerResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use UnregisterMemberResponse.newBuilder() to construct.
+    private UnregisterMemberResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UnregisterIssuerResponse() {
+    private UnregisterMemberResponse() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UnregisterIssuerResponse();
+      return new UnregisterMemberResponse();
     }
 
     @java.lang.Override
@@ -9440,7 +8765,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UnregisterIssuerResponse(
+    private UnregisterMemberResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9469,6 +8794,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9479,15 +8806,15 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerResponse_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9523,10 +8850,10 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9544,69 +8871,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9619,7 +8946,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9635,26 +8962,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.UnregisterIssuerResponse}
+     * Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterIssuerResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterMemberResponse)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerResponse_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9678,17 +9005,17 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9696,8 +9023,8 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse(this);
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse(this);
         onBuilt();
         return result;
       }
@@ -9736,16 +9063,16 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -9761,11 +9088,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9787,1649 +9114,48 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterIssuerResponse)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterMemberResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterIssuerResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterMemberResponse)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UnregisterIssuerResponse>
-        PARSER = new com.google.protobuf.AbstractParser<UnregisterIssuerResponse>() {
+    private static final com.google.protobuf.Parser<UnregisterMemberResponse>
+        PARSER = new com.google.protobuf.AbstractParser<UnregisterMemberResponse>() {
       @java.lang.Override
-      public UnregisterIssuerResponse parsePartialFrom(
+      public UnregisterMemberResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnregisterIssuerResponse(input, extensionRegistry);
+        return new UnregisterMemberResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UnregisterIssuerResponse> parser() {
+    public static com.google.protobuf.Parser<UnregisterMemberResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UnregisterIssuerResponse> getParserForType() {
+    public com.google.protobuf.Parser<UnregisterMemberResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UnregisterVerifierRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterVerifierRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return Whether the didUri field is set.
-     */
-    boolean hasDidUri();
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The didUri.
-     */
-    java.lang.String getDidUri();
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The bytes for didUri.
-     */
-    com.google.protobuf.ByteString
-        getDidUriBytes();
-
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    boolean hasX509Cert();
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
-     */
-    java.lang.String getX509Cert();
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
-     */
-    com.google.protobuf.ByteString
-        getX509CertBytes();
-
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The presentationTypeUri.
-     */
-    java.lang.String getPresentationTypeUri();
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    com.google.protobuf.ByteString
-        getPresentationTypeUriBytes();
-
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
-     */
-    java.lang.String getGovernanceFrameworkUri();
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes();
-
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.AuthorityCase getAuthorityCase();
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierRequest}
-   */
-  public static final class UnregisterVerifierRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterVerifierRequest)
-      UnregisterVerifierRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use UnregisterVerifierRequest.newBuilder() to construct.
-    private UnregisterVerifierRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private UnregisterVerifierRequest() {
-      presentationTypeUri_ = "";
-      governanceFrameworkUri_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new UnregisterVerifierRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UnregisterVerifierRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 1;
-              authority_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-              authorityCase_ = 2;
-              authority_ = s;
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              presentationTypeUri_ = s;
-              break;
-            }
-            case 162: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              governanceFrameworkUri_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.Builder.class);
-    }
-
-    private int authorityCase_ = 0;
-    private java.lang.Object authority_;
-    public enum AuthorityCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      DID_URI(1),
-      X509_CERT(2),
-      AUTHORITY_NOT_SET(0);
-      private final int value;
-      private AuthorityCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static AuthorityCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static AuthorityCase forNumber(int value) {
-        switch (value) {
-          case 1: return DID_URI;
-          case 2: return X509_CERT;
-          case 0: return AUTHORITY_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public AuthorityCase
-    getAuthorityCase() {
-      return AuthorityCase.forNumber(
-          authorityCase_);
-    }
-
-    public static final int DID_URI_FIELD_NUMBER = 1;
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return Whether the didUri field is set.
-     */
-    public boolean hasDidUri() {
-      return authorityCase_ == 1;
-    }
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The didUri.
-     */
-    public java.lang.String getDidUri() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 1) {
-          authority_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string did_uri = 1;</code>
-     * @return The bytes for didUri.
-     */
-    public com.google.protobuf.ByteString
-        getDidUriBytes() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 1) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (authorityCase_ == 1) {
-          authority_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int X509_CERT_FIELD_NUMBER = 2;
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    public boolean hasX509Cert() {
-      return authorityCase_ == 2;
-    }
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The x509Cert.
-     */
-    public java.lang.String getX509Cert() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (authorityCase_ == 2) {
-          authority_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string x509_cert = 2;</code>
-     * @return The bytes for x509Cert.
-     */
-    public com.google.protobuf.ByteString
-        getX509CertBytes() {
-      java.lang.Object ref = "";
-      if (authorityCase_ == 2) {
-        ref = authority_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (authorityCase_ == 2) {
-          authority_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRESENTATION_TYPE_URI_FIELD_NUMBER = 10;
-    private volatile java.lang.Object presentationTypeUri_;
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The presentationTypeUri.
-     */
-    @java.lang.Override
-    public java.lang.String getPresentationTypeUri() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        presentationTypeUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string presentation_type_uri = 10;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPresentationTypeUriBytes() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        presentationTypeUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 20;
-    private volatile java.lang.Object governanceFrameworkUri_;
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string governance_framework_uri = 20;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        governanceFrameworkUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (authorityCase_ == 1) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, authority_);
-      }
-      if (authorityCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, authority_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, presentationTypeUri_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 20, governanceFrameworkUri_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (authorityCase_ == 1) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, authority_);
-      }
-      if (authorityCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, authority_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, presentationTypeUri_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, governanceFrameworkUri_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest) obj;
-
-      if (!getPresentationTypeUri()
-          .equals(other.getPresentationTypeUri())) return false;
-      if (!getGovernanceFrameworkUri()
-          .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getAuthorityCase().equals(other.getAuthorityCase())) return false;
-      switch (authorityCase_) {
-        case 1:
-          if (!getDidUri()
-              .equals(other.getDidUri())) return false;
-          break;
-        case 2:
-          if (!getX509Cert()
-              .equals(other.getX509Cert())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRESENTATION_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getPresentationTypeUri().hashCode();
-      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      switch (authorityCase_) {
-        case 1:
-          hash = (37 * hash) + DID_URI_FIELD_NUMBER;
-          hash = (53 * hash) + getDidUri().hashCode();
-          break;
-        case 2:
-          hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-          hash = (53 * hash) + getX509Cert().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterVerifierRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        presentationTypeUri_ = "";
-
-        governanceFrameworkUri_ = "";
-
-        authorityCase_ = 0;
-        authority_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest(this);
-        if (authorityCase_ == 1) {
-          result.authority_ = authority_;
-        }
-        if (authorityCase_ == 2) {
-          result.authority_ = authority_;
-        }
-        result.presentationTypeUri_ = presentationTypeUri_;
-        result.governanceFrameworkUri_ = governanceFrameworkUri_;
-        result.authorityCase_ = authorityCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.getDefaultInstance()) return this;
-        if (!other.getPresentationTypeUri().isEmpty()) {
-          presentationTypeUri_ = other.presentationTypeUri_;
-          onChanged();
-        }
-        if (!other.getGovernanceFrameworkUri().isEmpty()) {
-          governanceFrameworkUri_ = other.governanceFrameworkUri_;
-          onChanged();
-        }
-        switch (other.getAuthorityCase()) {
-          case DID_URI: {
-            authorityCase_ = 1;
-            authority_ = other.authority_;
-            onChanged();
-            break;
-          }
-          case X509_CERT: {
-            authorityCase_ = 2;
-            authority_ = other.authority_;
-            onChanged();
-            break;
-          }
-          case AUTHORITY_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int authorityCase_ = 0;
-      private java.lang.Object authority_;
-      public AuthorityCase
-          getAuthorityCase() {
-        return AuthorityCase.forNumber(
-            authorityCase_);
-      }
-
-      public Builder clearAuthority() {
-        authorityCase_ = 0;
-        authority_ = null;
-        onChanged();
-        return this;
-      }
-
-
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return Whether the didUri field is set.
-       */
-      @java.lang.Override
-      public boolean hasDidUri() {
-        return authorityCase_ == 1;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return The didUri.
-       */
-      @java.lang.Override
-      public java.lang.String getDidUri() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 1) {
-            authority_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return The bytes for didUri.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getDidUriBytes() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 1) {
-          ref = authority_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (authorityCase_ == 1) {
-            authority_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @param value The didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  authorityCase_ = 1;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDidUri() {
-        if (authorityCase_ == 1) {
-          authorityCase_ = 0;
-          authority_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string did_uri = 1;</code>
-       * @param value The bytes for didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        authorityCase_ = 1;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return Whether the x509Cert field is set.
-       */
-      @java.lang.Override
-      public boolean hasX509Cert() {
-        return authorityCase_ == 2;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return The x509Cert.
-       */
-      @java.lang.Override
-      public java.lang.String getX509Cert() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (authorityCase_ == 2) {
-            authority_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return The bytes for x509Cert.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getX509CertBytes() {
-        java.lang.Object ref = "";
-        if (authorityCase_ == 2) {
-          ref = authority_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (authorityCase_ == 2) {
-            authority_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509Cert(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  authorityCase_ = 2;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX509Cert() {
-        if (authorityCase_ == 2) {
-          authorityCase_ = 0;
-          authority_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 2;</code>
-       * @param value The bytes for x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509CertBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        authorityCase_ = 2;
-        authority_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object presentationTypeUri_ = "";
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return The presentationTypeUri.
-       */
-      public java.lang.String getPresentationTypeUri() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          presentationTypeUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return The bytes for presentationTypeUri.
-       */
-      public com.google.protobuf.ByteString
-          getPresentationTypeUriBytes() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          presentationTypeUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @param value The presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPresentationTypeUri() {
-        
-        presentationTypeUri_ = getDefaultInstance().getPresentationTypeUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 10;</code>
-       * @param value The bytes for presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object governanceFrameworkUri_ = "";
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The governanceFrameworkUri.
-       */
-      public java.lang.String getGovernanceFrameworkUri() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          governanceFrameworkUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return The bytes for governanceFrameworkUri.
-       */
-      public com.google.protobuf.ByteString
-          getGovernanceFrameworkUriBytes() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          governanceFrameworkUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearGovernanceFrameworkUri() {
-        
-        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 20;</code>
-       * @param value The bytes for governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterVerifierRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterVerifierRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<UnregisterVerifierRequest>
-        PARSER = new com.google.protobuf.AbstractParser<UnregisterVerifierRequest>() {
-      @java.lang.Override
-      public UnregisterVerifierRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnregisterVerifierRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<UnregisterVerifierRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UnregisterVerifierRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface UnregisterVerifierResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterVerifierResponse)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierResponse}
-   */
-  public static final class UnregisterVerifierResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterVerifierResponse)
-      UnregisterVerifierResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use UnregisterVerifierResponse.newBuilder() to construct.
-    private UnregisterVerifierResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private UnregisterVerifierResponse() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new UnregisterVerifierResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UnregisterVerifierResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.UnregisterVerifierResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterVerifierResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.UnregisterVerifierResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.UnregisterVerifierResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<UnregisterVerifierResponse>
-        PARSER = new com.google.protobuf.AbstractParser<UnregisterVerifierResponse>() {
-      @java.lang.Override
-      public UnregisterVerifierResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnregisterVerifierResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<UnregisterVerifierResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UnregisterVerifierResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface CheckIssuerStatusRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.CheckIssuerStatusRequest)
+  public interface GetMembershipStatusRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMembershipStatusRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -11479,41 +9205,41 @@ public final class TrustRegistryOuterClass {
         getX509CertBytes();
 
     /**
-     * <code>string credential_type_uri = 4;</code>
-     * @return The credentialTypeUri.
+     * <code>string schema_uri = 4;</code>
+     * @return The schemaUri.
      */
-    java.lang.String getCredentialTypeUri();
+    java.lang.String getSchemaUri();
     /**
-     * <code>string credential_type_uri = 4;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string schema_uri = 4;</code>
+     * @return The bytes for schemaUri.
      */
     com.google.protobuf.ByteString
-        getCredentialTypeUriBytes();
+        getSchemaUriBytes();
 
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.MemberCase getMemberCase();
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.MemberCase getMemberCase();
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.CheckIssuerStatusRequest}
+   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
    */
-  public static final class CheckIssuerStatusRequest extends
+  public static final class GetMembershipStatusRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.CheckIssuerStatusRequest)
-      CheckIssuerStatusRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusRequest)
+      GetMembershipStatusRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CheckIssuerStatusRequest.newBuilder() to construct.
-    private CheckIssuerStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GetMembershipStatusRequest.newBuilder() to construct.
+    private GetMembershipStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CheckIssuerStatusRequest() {
+    private GetMembershipStatusRequest() {
       governanceFrameworkUri_ = "";
-      credentialTypeUri_ = "";
+      schemaUri_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CheckIssuerStatusRequest();
+      return new GetMembershipStatusRequest();
     }
 
     @java.lang.Override
@@ -11521,7 +9247,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CheckIssuerStatusRequest(
+    private GetMembershipStatusRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -11560,7 +9286,7 @@ public final class TrustRegistryOuterClass {
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              credentialTypeUri_ = s;
+              schemaUri_ = s;
               break;
             }
             default: {
@@ -11574,6 +9300,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -11584,15 +9312,15 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.Builder.class);
     }
 
     private int memberCase_ = 0;
@@ -11778,38 +9506,38 @@ public final class TrustRegistryOuterClass {
       }
     }
 
-    public static final int CREDENTIAL_TYPE_URI_FIELD_NUMBER = 4;
-    private volatile java.lang.Object credentialTypeUri_;
+    public static final int SCHEMA_URI_FIELD_NUMBER = 4;
+    private volatile java.lang.Object schemaUri_;
     /**
-     * <code>string credential_type_uri = 4;</code>
-     * @return The credentialTypeUri.
+     * <code>string schema_uri = 4;</code>
+     * @return The schemaUri.
      */
     @java.lang.Override
-    public java.lang.String getCredentialTypeUri() {
-      java.lang.Object ref = credentialTypeUri_;
+    public java.lang.String getSchemaUri() {
+      java.lang.Object ref = schemaUri_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        credentialTypeUri_ = s;
+        schemaUri_ = s;
         return s;
       }
     }
     /**
-     * <code>string credential_type_uri = 4;</code>
-     * @return The bytes for credentialTypeUri.
+     * <code>string schema_uri = 4;</code>
+     * @return The bytes for schemaUri.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getCredentialTypeUriBytes() {
-      java.lang.Object ref = credentialTypeUri_;
+        getSchemaUriBytes() {
+      java.lang.Object ref = schemaUri_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        credentialTypeUri_ = b;
+        schemaUri_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -11839,8 +9567,8 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, credentialTypeUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, schemaUri_);
       }
       unknownFields.writeTo(output);
     }
@@ -11860,8 +9588,8 @@ public final class TrustRegistryOuterClass {
       if (memberCase_ == 3) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, credentialTypeUri_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, schemaUri_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11873,15 +9601,15 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest) obj;
 
       if (!getGovernanceFrameworkUri()
           .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getCredentialTypeUri()
-          .equals(other.getCredentialTypeUri())) return false;
+      if (!getSchemaUri()
+          .equals(other.getSchemaUri())) return false;
       if (!getMemberCase().equals(other.getMemberCase())) return false;
       switch (memberCase_) {
         case 2:
@@ -11908,8 +9636,8 @@ public final class TrustRegistryOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
       hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      hash = (37 * hash) + CREDENTIAL_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getCredentialTypeUri().hashCode();
+      hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
+      hash = (53 * hash) + getSchemaUri().hashCode();
       switch (memberCase_) {
         case 2:
           hash = (37 * hash) + DID_URI_FIELD_NUMBER;
@@ -11927,69 +9655,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12002,7 +9730,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12018,26 +9746,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.CheckIssuerStatusRequest}
+     * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.CheckIssuerStatusRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusRequest)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12057,7 +9785,7 @@ public final class TrustRegistryOuterClass {
         super.clear();
         governanceFrameworkUri_ = "";
 
-        credentialTypeUri_ = "";
+        schemaUri_ = "";
 
         memberCase_ = 0;
         member_ = null;
@@ -12067,17 +9795,17 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12085,8 +9813,8 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest(this);
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest(this);
         result.governanceFrameworkUri_ = governanceFrameworkUri_;
         if (memberCase_ == 2) {
           result.member_ = member_;
@@ -12094,7 +9822,7 @@ public final class TrustRegistryOuterClass {
         if (memberCase_ == 3) {
           result.member_ = member_;
         }
-        result.credentialTypeUri_ = credentialTypeUri_;
+        result.schemaUri_ = schemaUri_;
         result.memberCase_ = memberCase_;
         onBuilt();
         return result;
@@ -12134,22 +9862,22 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.getDefaultInstance()) return this;
         if (!other.getGovernanceFrameworkUri().isEmpty()) {
           governanceFrameworkUri_ = other.governanceFrameworkUri_;
           onChanged();
         }
-        if (!other.getCredentialTypeUri().isEmpty()) {
-          credentialTypeUri_ = other.credentialTypeUri_;
+        if (!other.getSchemaUri().isEmpty()) {
+          schemaUri_ = other.schemaUri_;
           onChanged();
         }
         switch (other.getMemberCase()) {
@@ -12184,11 +9912,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -12483,78 +10211,78 @@ public final class TrustRegistryOuterClass {
         return this;
       }
 
-      private java.lang.Object credentialTypeUri_ = "";
+      private java.lang.Object schemaUri_ = "";
       /**
-       * <code>string credential_type_uri = 4;</code>
-       * @return The credentialTypeUri.
+       * <code>string schema_uri = 4;</code>
+       * @return The schemaUri.
        */
-      public java.lang.String getCredentialTypeUri() {
-        java.lang.Object ref = credentialTypeUri_;
+      public java.lang.String getSchemaUri() {
+        java.lang.Object ref = schemaUri_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          credentialTypeUri_ = s;
+          schemaUri_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 4;</code>
-       * @return The bytes for credentialTypeUri.
+       * <code>string schema_uri = 4;</code>
+       * @return The bytes for schemaUri.
        */
       public com.google.protobuf.ByteString
-          getCredentialTypeUriBytes() {
-        java.lang.Object ref = credentialTypeUri_;
+          getSchemaUriBytes() {
+        java.lang.Object ref = schemaUri_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          credentialTypeUri_ = b;
+          schemaUri_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string credential_type_uri = 4;</code>
-       * @param value The credentialTypeUri to set.
+       * <code>string schema_uri = 4;</code>
+       * @param value The schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUri(
+      public Builder setSchemaUri(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        credentialTypeUri_ = value;
+        schemaUri_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string credential_type_uri = 4;</code>
+       * <code>string schema_uri = 4;</code>
        * @return This builder for chaining.
        */
-      public Builder clearCredentialTypeUri() {
+      public Builder clearSchemaUri() {
         
-        credentialTypeUri_ = getDefaultInstance().getCredentialTypeUri();
+        schemaUri_ = getDefaultInstance().getSchemaUri();
         onChanged();
         return this;
       }
       /**
-       * <code>string credential_type_uri = 4;</code>
-       * @param value The bytes for credentialTypeUri to set.
+       * <code>string schema_uri = 4;</code>
+       * @param value The bytes for schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setCredentialTypeUriBytes(
+      public Builder setSchemaUriBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        credentialTypeUri_ = value;
+        schemaUri_ = value;
         onChanged();
         return this;
       }
@@ -12571,48 +10299,48 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.CheckIssuerStatusRequest)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMembershipStatusRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.CheckIssuerStatusRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMembershipStatusRequest)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CheckIssuerStatusRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CheckIssuerStatusRequest>() {
+    private static final com.google.protobuf.Parser<GetMembershipStatusRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetMembershipStatusRequest>() {
       @java.lang.Override
-      public CheckIssuerStatusRequest parsePartialFrom(
+      public GetMembershipStatusRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CheckIssuerStatusRequest(input, extensionRegistry);
+        return new GetMembershipStatusRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CheckIssuerStatusRequest> parser() {
+    public static com.google.protobuf.Parser<GetMembershipStatusRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CheckIssuerStatusRequest> getParserForType() {
+    public com.google.protobuf.Parser<GetMembershipStatusRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CheckIssuerStatusResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.CheckIssuerStatusResponse)
+  public interface GetMembershipStatusResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMembershipStatusResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -12627,18 +10355,18 @@ public final class TrustRegistryOuterClass {
     trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus getStatus();
   }
   /**
-   * Protobuf type {@code services.trustregistry.v1.CheckIssuerStatusResponse}
+   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
    */
-  public static final class CheckIssuerStatusResponse extends
+  public static final class GetMembershipStatusResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.CheckIssuerStatusResponse)
-      CheckIssuerStatusResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusResponse)
+      GetMembershipStatusResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CheckIssuerStatusResponse.newBuilder() to construct.
-    private CheckIssuerStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use GetMembershipStatusResponse.newBuilder() to construct.
+    private GetMembershipStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CheckIssuerStatusResponse() {
+    private GetMembershipStatusResponse() {
       status_ = 0;
     }
 
@@ -12646,7 +10374,7 @@ public final class TrustRegistryOuterClass {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new CheckIssuerStatusResponse();
+      return new GetMembershipStatusResponse();
     }
 
     @java.lang.Override
@@ -12654,7 +10382,7 @@ public final class TrustRegistryOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CheckIssuerStatusResponse(
+    private GetMembershipStatusResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -12689,6 +10417,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -12699,15 +10429,15 @@ public final class TrustRegistryOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor;
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.Builder.class);
+              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.Builder.class);
     }
 
     public static final int STATUS_FIELD_NUMBER = 1;
@@ -12769,10 +10499,10 @@ public final class TrustRegistryOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse)) {
+      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse) obj;
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse) obj;
 
       if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -12793,69 +10523,69 @@ public final class TrustRegistryOuterClass {
       return hash;
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(byte[] data)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseDelimitedFrom(java.io.InputStream input)
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseDelimitedFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parseFrom(
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12868,7 +10598,7 @@ public final class TrustRegistryOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse prototype) {
+    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12884,26 +10614,26 @@ public final class TrustRegistryOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code services.trustregistry.v1.CheckIssuerStatusResponse}
+     * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.CheckIssuerStatusResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusResponse)
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_fieldAccessorTable
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.Builder.class);
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.newBuilder()
+      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12929,17 +10659,17 @@ public final class TrustRegistryOuterClass {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor;
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.getDefaultInstance();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse getDefaultInstanceForType() {
+        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse result = buildPartial();
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse build() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12947,8 +10677,8 @@ public final class TrustRegistryOuterClass {
       }
 
       @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse(this);
+      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse buildPartial() {
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse(this);
         result.status_ = status_;
         onBuilt();
         return result;
@@ -12988,16 +10718,16 @@ public final class TrustRegistryOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse)other);
+        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse) {
+          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse other) {
+        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.getDefaultInstance()) return this;
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
         }
@@ -13016,11 +10746,11 @@ public final class TrustRegistryOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse parsedMessage = null;
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse) e.getUnfinishedMessage();
+          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -13096,1749 +10826,41 @@ public final class TrustRegistryOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.CheckIssuerStatusResponse)
+      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.GetMembershipStatusResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.CheckIssuerStatusResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.GetMembershipStatusResponse)
+    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse();
+      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse();
     }
 
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse getDefaultInstance() {
+    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CheckIssuerStatusResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CheckIssuerStatusResponse>() {
+    private static final com.google.protobuf.Parser<GetMembershipStatusResponse>
+        PARSER = new com.google.protobuf.AbstractParser<GetMembershipStatusResponse>() {
       @java.lang.Override
-      public CheckIssuerStatusResponse parsePartialFrom(
+      public GetMembershipStatusResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CheckIssuerStatusResponse(input, extensionRegistry);
+        return new GetMembershipStatusResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CheckIssuerStatusResponse> parser() {
+    public static com.google.protobuf.Parser<GetMembershipStatusResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CheckIssuerStatusResponse> getParserForType() {
+    public com.google.protobuf.Parser<GetMembershipStatusResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface CheckVerifierStatusRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.CheckVerifierStatusRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string governance_framework_uri = 1;</code>
-     * @return The governanceFrameworkUri.
-     */
-    java.lang.String getGovernanceFrameworkUri();
-    /**
-     * <code>string governance_framework_uri = 1;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes();
-
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return Whether the didUri field is set.
-     */
-    boolean hasDidUri();
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return The didUri.
-     */
-    java.lang.String getDidUri();
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return The bytes for didUri.
-     */
-    com.google.protobuf.ByteString
-        getDidUriBytes();
-
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    boolean hasX509Cert();
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return The x509Cert.
-     */
-    java.lang.String getX509Cert();
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return The bytes for x509Cert.
-     */
-    com.google.protobuf.ByteString
-        getX509CertBytes();
-
-    /**
-     * <code>string presentation_type_uri = 4;</code>
-     * @return The presentationTypeUri.
-     */
-    java.lang.String getPresentationTypeUri();
-    /**
-     * <code>string presentation_type_uri = 4;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    com.google.protobuf.ByteString
-        getPresentationTypeUriBytes();
-
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.MemberCase getMemberCase();
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.CheckVerifierStatusRequest}
-   */
-  public static final class CheckVerifierStatusRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.CheckVerifierStatusRequest)
-      CheckVerifierStatusRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use CheckVerifierStatusRequest.newBuilder() to construct.
-    private CheckVerifierStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private CheckVerifierStatusRequest() {
-      governanceFrameworkUri_ = "";
-      presentationTypeUri_ = "";
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new CheckVerifierStatusRequest();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CheckVerifierStatusRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              governanceFrameworkUri_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-              memberCase_ = 2;
-              member_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-              memberCase_ = 3;
-              member_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              presentationTypeUri_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.Builder.class);
-    }
-
-    private int memberCase_ = 0;
-    private java.lang.Object member_;
-    public enum MemberCase
-        implements com.google.protobuf.Internal.EnumLite,
-            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
-      DID_URI(2),
-      X509_CERT(3),
-      MEMBER_NOT_SET(0);
-      private final int value;
-      private MemberCase(int value) {
-        this.value = value;
-      }
-      /**
-       * @param value The number of the enum to look for.
-       * @return The enum associated with the given number.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static MemberCase valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static MemberCase forNumber(int value) {
-        switch (value) {
-          case 2: return DID_URI;
-          case 3: return X509_CERT;
-          case 0: return MEMBER_NOT_SET;
-          default: return null;
-        }
-      }
-      public int getNumber() {
-        return this.value;
-      }
-    };
-
-    public MemberCase
-    getMemberCase() {
-      return MemberCase.forNumber(
-          memberCase_);
-    }
-
-    public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
-    private volatile java.lang.Object governanceFrameworkUri_;
-    /**
-     * <code>string governance_framework_uri = 1;</code>
-     * @return The governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public java.lang.String getGovernanceFrameworkUri() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        governanceFrameworkUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string governance_framework_uri = 1;</code>
-     * @return The bytes for governanceFrameworkUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getGovernanceFrameworkUriBytes() {
-      java.lang.Object ref = governanceFrameworkUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        governanceFrameworkUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DID_URI_FIELD_NUMBER = 2;
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return Whether the didUri field is set.
-     */
-    public boolean hasDidUri() {
-      return memberCase_ == 2;
-    }
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return The didUri.
-     */
-    public java.lang.String getDidUri() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 2) {
-        ref = member_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (memberCase_ == 2) {
-          member_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string did_uri = 2;</code>
-     * @return The bytes for didUri.
-     */
-    public com.google.protobuf.ByteString
-        getDidUriBytes() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 2) {
-        ref = member_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (memberCase_ == 2) {
-          member_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int X509_CERT_FIELD_NUMBER = 3;
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return Whether the x509Cert field is set.
-     */
-    public boolean hasX509Cert() {
-      return memberCase_ == 3;
-    }
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return The x509Cert.
-     */
-    public java.lang.String getX509Cert() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 3) {
-        ref = member_;
-      }
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (memberCase_ == 3) {
-          member_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>string x509_cert = 3;</code>
-     * @return The bytes for x509Cert.
-     */
-    public com.google.protobuf.ByteString
-        getX509CertBytes() {
-      java.lang.Object ref = "";
-      if (memberCase_ == 3) {
-        ref = member_;
-      }
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        if (memberCase_ == 3) {
-          member_ = b;
-        }
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRESENTATION_TYPE_URI_FIELD_NUMBER = 4;
-    private volatile java.lang.Object presentationTypeUri_;
-    /**
-     * <code>string presentation_type_uri = 4;</code>
-     * @return The presentationTypeUri.
-     */
-    @java.lang.Override
-    public java.lang.String getPresentationTypeUri() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        presentationTypeUri_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string presentation_type_uri = 4;</code>
-     * @return The bytes for presentationTypeUri.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPresentationTypeUriBytes() {
-      java.lang.Object ref = presentationTypeUri_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        presentationTypeUri_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
-      }
-      if (memberCase_ == 2) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, member_);
-      }
-      if (memberCase_ == 3) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, member_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, presentationTypeUri_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, governanceFrameworkUri_);
-      }
-      if (memberCase_ == 2) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, member_);
-      }
-      if (memberCase_ == 3) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, member_);
-      }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(presentationTypeUri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, presentationTypeUri_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest) obj;
-
-      if (!getGovernanceFrameworkUri()
-          .equals(other.getGovernanceFrameworkUri())) return false;
-      if (!getPresentationTypeUri()
-          .equals(other.getPresentationTypeUri())) return false;
-      if (!getMemberCase().equals(other.getMemberCase())) return false;
-      switch (memberCase_) {
-        case 2:
-          if (!getDidUri()
-              .equals(other.getDidUri())) return false;
-          break;
-        case 3:
-          if (!getX509Cert()
-              .equals(other.getX509Cert())) return false;
-          break;
-        case 0:
-        default:
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getGovernanceFrameworkUri().hashCode();
-      hash = (37 * hash) + PRESENTATION_TYPE_URI_FIELD_NUMBER;
-      hash = (53 * hash) + getPresentationTypeUri().hashCode();
-      switch (memberCase_) {
-        case 2:
-          hash = (37 * hash) + DID_URI_FIELD_NUMBER;
-          hash = (53 * hash) + getDidUri().hashCode();
-          break;
-        case 3:
-          hash = (37 * hash) + X509_CERT_FIELD_NUMBER;
-          hash = (53 * hash) + getX509Cert().hashCode();
-          break;
-        case 0:
-        default:
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.CheckVerifierStatusRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.CheckVerifierStatusRequest)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        governanceFrameworkUri_ = "";
-
-        presentationTypeUri_ = "";
-
-        memberCase_ = 0;
-        member_ = null;
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest(this);
-        result.governanceFrameworkUri_ = governanceFrameworkUri_;
-        if (memberCase_ == 2) {
-          result.member_ = member_;
-        }
-        if (memberCase_ == 3) {
-          result.member_ = member_;
-        }
-        result.presentationTypeUri_ = presentationTypeUri_;
-        result.memberCase_ = memberCase_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.getDefaultInstance()) return this;
-        if (!other.getGovernanceFrameworkUri().isEmpty()) {
-          governanceFrameworkUri_ = other.governanceFrameworkUri_;
-          onChanged();
-        }
-        if (!other.getPresentationTypeUri().isEmpty()) {
-          presentationTypeUri_ = other.presentationTypeUri_;
-          onChanged();
-        }
-        switch (other.getMemberCase()) {
-          case DID_URI: {
-            memberCase_ = 2;
-            member_ = other.member_;
-            onChanged();
-            break;
-          }
-          case X509_CERT: {
-            memberCase_ = 3;
-            member_ = other.member_;
-            onChanged();
-            break;
-          }
-          case MEMBER_NOT_SET: {
-            break;
-          }
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int memberCase_ = 0;
-      private java.lang.Object member_;
-      public MemberCase
-          getMemberCase() {
-        return MemberCase.forNumber(
-            memberCase_);
-      }
-
-      public Builder clearMember() {
-        memberCase_ = 0;
-        member_ = null;
-        onChanged();
-        return this;
-      }
-
-
-      private java.lang.Object governanceFrameworkUri_ = "";
-      /**
-       * <code>string governance_framework_uri = 1;</code>
-       * @return The governanceFrameworkUri.
-       */
-      public java.lang.String getGovernanceFrameworkUri() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          governanceFrameworkUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 1;</code>
-       * @return The bytes for governanceFrameworkUri.
-       */
-      public com.google.protobuf.ByteString
-          getGovernanceFrameworkUriBytes() {
-        java.lang.Object ref = governanceFrameworkUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          governanceFrameworkUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string governance_framework_uri = 1;</code>
-       * @param value The governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearGovernanceFrameworkUri() {
-        
-        governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string governance_framework_uri = 1;</code>
-       * @param value The bytes for governanceFrameworkUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setGovernanceFrameworkUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        governanceFrameworkUri_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string did_uri = 2;</code>
-       * @return Whether the didUri field is set.
-       */
-      @java.lang.Override
-      public boolean hasDidUri() {
-        return memberCase_ == 2;
-      }
-      /**
-       * <code>string did_uri = 2;</code>
-       * @return The didUri.
-       */
-      @java.lang.Override
-      public java.lang.String getDidUri() {
-        java.lang.Object ref = "";
-        if (memberCase_ == 2) {
-          ref = member_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (memberCase_ == 2) {
-            member_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 2;</code>
-       * @return The bytes for didUri.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getDidUriBytes() {
-        java.lang.Object ref = "";
-        if (memberCase_ == 2) {
-          ref = member_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (memberCase_ == 2) {
-            member_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string did_uri = 2;</code>
-       * @param value The didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  memberCase_ = 2;
-        member_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string did_uri = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearDidUri() {
-        if (memberCase_ == 2) {
-          memberCase_ = 0;
-          member_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string did_uri = 2;</code>
-       * @param value The bytes for didUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDidUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        memberCase_ = 2;
-        member_ = value;
-        onChanged();
-        return this;
-      }
-
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @return Whether the x509Cert field is set.
-       */
-      @java.lang.Override
-      public boolean hasX509Cert() {
-        return memberCase_ == 3;
-      }
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @return The x509Cert.
-       */
-      @java.lang.Override
-      public java.lang.String getX509Cert() {
-        java.lang.Object ref = "";
-        if (memberCase_ == 3) {
-          ref = member_;
-        }
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (memberCase_ == 3) {
-            member_ = s;
-          }
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @return The bytes for x509Cert.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getX509CertBytes() {
-        java.lang.Object ref = "";
-        if (memberCase_ == 3) {
-          ref = member_;
-        }
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          if (memberCase_ == 3) {
-            member_ = b;
-          }
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @param value The x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509Cert(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  memberCase_ = 3;
-        member_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearX509Cert() {
-        if (memberCase_ == 3) {
-          memberCase_ = 0;
-          member_ = null;
-          onChanged();
-        }
-        return this;
-      }
-      /**
-       * <code>string x509_cert = 3;</code>
-       * @param value The bytes for x509Cert to set.
-       * @return This builder for chaining.
-       */
-      public Builder setX509CertBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        memberCase_ = 3;
-        member_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object presentationTypeUri_ = "";
-      /**
-       * <code>string presentation_type_uri = 4;</code>
-       * @return The presentationTypeUri.
-       */
-      public java.lang.String getPresentationTypeUri() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          presentationTypeUri_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 4;</code>
-       * @return The bytes for presentationTypeUri.
-       */
-      public com.google.protobuf.ByteString
-          getPresentationTypeUriBytes() {
-        java.lang.Object ref = presentationTypeUri_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          presentationTypeUri_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string presentation_type_uri = 4;</code>
-       * @param value The presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUri(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPresentationTypeUri() {
-        
-        presentationTypeUri_ = getDefaultInstance().getPresentationTypeUri();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string presentation_type_uri = 4;</code>
-       * @param value The bytes for presentationTypeUri to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPresentationTypeUriBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        presentationTypeUri_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.CheckVerifierStatusRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.CheckVerifierStatusRequest)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<CheckVerifierStatusRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CheckVerifierStatusRequest>() {
-      @java.lang.Override
-      public CheckVerifierStatusRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CheckVerifierStatusRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<CheckVerifierStatusRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CheckVerifierStatusRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface CheckVerifierStatusResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.CheckVerifierStatusResponse)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    int getStatusValue();
-    /**
-     * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-     * @return The status.
-     */
-    trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus getStatus();
-  }
-  /**
-   * Protobuf type {@code services.trustregistry.v1.CheckVerifierStatusResponse}
-   */
-  public static final class CheckVerifierStatusResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:services.trustregistry.v1.CheckVerifierStatusResponse)
-      CheckVerifierStatusResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use CheckVerifierStatusResponse.newBuilder() to construct.
-    private CheckVerifierStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private CheckVerifierStatusResponse() {
-      status_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new CheckVerifierStatusResponse();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CheckVerifierStatusResponse(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              status_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.Builder.class);
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
-    /**
-     * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-     * @return The status.
-     */
-    @java.lang.Override public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus result = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.valueOf(status_);
-      return result == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.UNRECOGNIZED : result;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
-        output.writeEnum(1, status_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (status_ != trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.CURRENT.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse)) {
-        return super.equals(obj);
-      }
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse other = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse) obj;
-
-      if (status_ != other.status_) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + status_;
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code services.trustregistry.v1.CheckVerifierStatusResponse}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.CheckVerifierStatusResponse)
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.class, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.Builder.class);
-      }
-
-      // Construct using trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        status_ = 0;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse getDefaultInstanceForType() {
-        return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse build() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse buildPartial() {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse result = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse(this);
-        result.status_ = status_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse) {
-          return mergeFrom((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse other) {
-        if (other == trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.getDefaultInstance()) return this;
-        if (other.status_ != 0) {
-          setStatusValue(other.getStatusValue());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int status_ = 0;
-      /**
-       * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-       * @return The enum numeric value on the wire for status.
-       */
-      @java.lang.Override public int getStatusValue() {
-        return status_;
-      }
-      /**
-       * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-       * @param value The enum numeric value on the wire for status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatusValue(int value) {
-        
-        status_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-       * @return The status.
-       */
-      @java.lang.Override
-      public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus getStatus() {
-        @SuppressWarnings("deprecation")
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus result = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.valueOf(status_);
-        return result == null ? trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-       * @param value The status to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegistrationStatus value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        status_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStatus() {
-        
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.CheckVerifierStatusResponse)
-    }
-
-    // @@protoc_insertion_point(class_scope:services.trustregistry.v1.CheckVerifierStatusResponse)
-    private static final trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse();
-    }
-
-    public static trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<CheckVerifierStatusResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CheckVerifierStatusResponse>() {
-      @java.lang.Override
-      public CheckVerifierStatusResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CheckVerifierStatusResponse(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<CheckVerifierStatusResponse> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CheckVerifierStatusResponse> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse getDefaultInstanceForType() {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -14942,6 +10964,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -15671,6 +11695,8 @@ public final class TrustRegistryOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -16387,65 +12413,35 @@ public final class TrustRegistryOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GovernanceFramework_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor;
+    internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_RegisterIssuerRequest_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor;
+    internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_RegisterIssuerResponse_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor;
+    internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_RegisterVerifierRequest_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor;
+    internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_RegisterVerifierResponse_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor;
+    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_UnregisterIssuerRequest_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor;
+    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_UnregisterIssuerResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_UnregisterVerifierRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_UnregisterVerifierResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_fieldAccessorTable;
+      internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
   private static final 
@@ -16466,93 +12462,66 @@ public final class TrustRegistryOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n/services/trust-registry/v1/trust-regis" +
-      "try.proto\022\031services.trustregistry.v1\"c\n\023" +
-      "AddFrameworkRequest\022L\n\024governance_framew" +
-      "ork\030\001 \001(\0132..services.trustregistry.v1.Go" +
-      "vernanceFramework\"\026\n\024AddFrameworkRespons" +
-      "e\"f\n\026RemoveFrameworkRequest\022L\n\024governanc" +
-      "e_framework\030\001 \001(\0132..services.trustregist" +
-      "ry.v1.GovernanceFramework\"\031\n\027RemoveFrame" +
-      "workResponse\"B\n\025SearchRegistryRequest\022\r\n" +
-      "\005query\030\001 \001(\t\022\032\n\022continuation_token\030\002 \001(\t" +
-      "\"i\n\026SearchRegistryResponse\022\022\n\nitems_json" +
-      "\030\001 \001(\t\022\020\n\010has_more\030\002 \001(\010\022\r\n\005count\030\003 \001(\005\022" +
-      "\032\n\022continuation_token\030\004 \001(\t\"h\n\023Governanc" +
-      "eFramework\022 \n\030governance_framework_uri\030\001" +
-      " \001(\t\022\032\n\022trust_registry_uri\030\002 \001(\t\022\023\n\013desc" +
-      "ription\030\003 \001(\t\"\274\001\n\025RegisterIssuerRequest\022" +
-      "\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH\000\022" +
-      "\033\n\023credential_type_uri\030\n \001(\t\022\026\n\016valid_fr" +
-      "om_utc\030\013 \001(\004\022\027\n\017valid_until_utc\030\014 \001(\004\022 \n" +
-      "\030governance_framework_uri\030\024 \001(\tB\013\n\tautho" +
-      "rity\"\030\n\026RegisterIssuerResponse\"\300\001\n\027Regis" +
-      "terVerifierRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n" +
-      "\tx509_cert\030\002 \001(\tH\000\022\035\n\025presentation_type_" +
-      "uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017val" +
-      "id_until_utc\030\014 \001(\004\022 \n\030governance_framewo" +
-      "rk_uri\030\024 \001(\tB\013\n\tauthority\"\032\n\030RegisterVer" +
-      "ifierResponse\"\215\001\n\027UnregisterIssuerReques" +
-      "t\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx509_cert\030\002 \001(\tH" +
-      "\000\022\033\n\023credential_type_uri\030\n \001(\t\022 \n\030govern" +
-      "ance_framework_uri\030\024 \001(\tB\013\n\tauthority\"\032\n" +
-      "\030UnregisterIssuerResponse\"\221\001\n\031Unregister" +
-      "VerifierRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\tx5" +
-      "09_cert\030\002 \001(\tH\000\022\035\n\025presentation_type_uri" +
-      "\030\n \001(\t\022 \n\030governance_framework_uri\030\024 \001(\t" +
-      "B\013\n\tauthority\"\034\n\032UnregisterVerifierRespo" +
-      "nse\"\213\001\n\030CheckIssuerStatusRequest\022 \n\030gove" +
-      "rnance_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 " +
-      "\001(\tH\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\033\n\023credential" +
-      "_type_uri\030\004 \001(\tB\010\n\006member\"Z\n\031CheckIssuer" +
-      "StatusResponse\022=\n\006status\030\001 \001(\0162-.service" +
-      "s.trustregistry.v1.RegistrationStatus\"\217\001" +
-      "\n\032CheckVerifierStatusRequest\022 \n\030governan" +
-      "ce_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030\002 \001(\tH" +
-      "\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\035\n\025presentation_t" +
-      "ype_uri\030\004 \001(\tB\010\n\006member\"\\\n\033CheckVerifier" +
-      "StatusResponse\022=\n\006status\030\001 \001(\0162-.service" +
-      "s.trustregistry.v1.RegistrationStatus\"C\n" +
-      "\020FetchDataRequest\022 \n\030governance_framewor" +
-      "k_uri\030\001 \001(\t\022\r\n\005query\030\002 \001(\t\"`\n\021FetchDataR" +
-      "esponse\022\025\n\rresponse_json\030\001 \001(\t\022\030\n\020has_mo" +
-      "re_results\030\002 \001(\010\022\032\n\022continuation_token\030\003" +
-      " \001(\t*Z\n\022RegistrationStatus\022\013\n\007CURRENT\020\000\022" +
-      "\013\n\007EXPIRED\020\001\022\016\n\nTERMINATED\020\002\022\013\n\007REVOKED\020" +
-      "\003\022\r\n\tNOT_FOUND\020\n2\327\t\n\rTrustRegistry\022o\n\014Ad" +
-      "dFramework\022..services.trustregistry.v1.A" +
-      "ddFrameworkRequest\032/.services.trustregis" +
-      "try.v1.AddFrameworkResponse\022x\n\017RemoveFra" +
-      "mework\0221.services.trustregistry.v1.Remov" +
-      "eFrameworkRequest\0322.services.trustregist" +
-      "ry.v1.RemoveFrameworkResponse\022u\n\016SearchR" +
-      "egistry\0220.services.trustregistry.v1.Sear" +
-      "chRegistryRequest\0321.services.trustregist" +
-      "ry.v1.SearchRegistryResponse\022u\n\016Register" +
-      "Issuer\0220.services.trustregistry.v1.Regis" +
-      "terIssuerRequest\0321.services.trustregistr" +
-      "y.v1.RegisterIssuerResponse\022{\n\020RegisterV" +
-      "erifier\0222.services.trustregistry.v1.Regi" +
-      "sterVerifierRequest\0323.services.trustregi" +
-      "stry.v1.RegisterVerifierResponse\022{\n\020Unre" +
-      "gisterIssuer\0222.services.trustregistry.v1" +
-      ".UnregisterIssuerRequest\0323.services.trus" +
-      "tregistry.v1.UnregisterIssuerResponse\022\201\001" +
-      "\n\022UnregisterVerifier\0224.services.trustreg" +
-      "istry.v1.UnregisterVerifierRequest\0325.ser" +
-      "vices.trustregistry.v1.UnregisterVerifie" +
-      "rResponse\022~\n\021CheckIssuerStatus\0223.service" +
-      "s.trustregistry.v1.CheckIssuerStatusRequ" +
-      "est\0324.services.trustregistry.v1.CheckIss" +
-      "uerStatusResponse\022\204\001\n\023CheckVerifierStatu" +
-      "s\0225.services.trustregistry.v1.CheckVerif" +
-      "ierStatusRequest\0326.services.trustregistr" +
-      "y.v1.CheckVerifierStatusResponse\022h\n\tFetc" +
-      "hData\022+.services.trustregistry.v1.FetchD" +
-      "ataRequest\032,.services.trustregistry.v1.F" +
-      "etchDataResponse0\001Bb\n!trinsic.services.t" +
-      "rustregistry.v1Z\031github.com/trinsic-id/s" +
-      "dk\252\002!Trinsic.Services.TrustRegistry.V1b\006" +
-      "proto3"
+      "try.proto\022\031services.trustregistry.v1\"Z\n\023" +
+      "AddFrameworkRequest\022 \n\030governance_framew" +
+      "ork_uri\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descripti" +
+      "on\030\003 \001(\t\"W\n\024AddFrameworkResponse\022\n\n\002id\030\001" +
+      " \001(\t\022\033\n\023governing_authority\030\002 \001(\t\022\026\n\016tru" +
+      "st_registry\030\003 \001(\t\"$\n\026RemoveFrameworkRequ" +
+      "est\022\n\n\002id\030\001 \001(\t\"\031\n\027RemoveFrameworkRespon" +
+      "se\"B\n\025SearchRegistryRequest\022\r\n\005query\030\001 \001" +
+      "(\t\022\032\n\022continuation_token\030\002 \001(\t\"Z\n\026Search" +
+      "RegistryResponse\022\022\n\nitems_json\030\001 \001(\t\022\020\n\010" +
+      "has_more\030\002 \001(\010\022\032\n\022continuation_token\030\004 \001" +
+      "(\t\"h\n\023GovernanceFramework\022 \n\030governance_" +
+      "framework_uri\030\001 \001(\t\022\032\n\022trust_registry_ur" +
+      "i\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\"\265\001\n\025Registe" +
+      "rMemberRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n\twal" +
+      "let_id\030\003 \001(\tH\000\022\017\n\005email\030\004 \001(\tH\000\022\022\n\nschem" +
+      "a_uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022\027\n\017v" +
+      "alid_until_utc\030\014 \001(\004\022\024\n\014framework_id\030\036 \001" +
+      "(\tB\010\n\006member\"\030\n\026RegisterMemberResponse\"\206" +
+      "\001\n\027UnregisterMemberRequest\022\021\n\007did_uri\030\001 " +
+      "\001(\tH\000\022\023\n\twallet_id\030\003 \001(\tH\000\022\017\n\005email\030\004 \001(" +
+      "\tH\000\022\022\n\nschema_uri\030\n \001(\t\022\024\n\014framework_id\030" +
+      "\024 \001(\tB\010\n\006member\"\032\n\030UnregisterMemberRespo" +
+      "nse\"\204\001\n\032GetMembershipStatusRequest\022 \n\030go" +
+      "vernance_framework_uri\030\001 \001(\t\022\021\n\007did_uri\030" +
+      "\002 \001(\tH\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\022\n\nschema_u" +
+      "ri\030\004 \001(\tB\010\n\006member\"\\\n\033GetMembershipStatu" +
+      "sResponse\022=\n\006status\030\001 \001(\0162-.services.tru" +
+      "stregistry.v1.RegistrationStatus\"C\n\020Fetc" +
+      "hDataRequest\022 \n\030governance_framework_uri" +
+      "\030\001 \001(\t\022\r\n\005query\030\002 \001(\t\"`\n\021FetchDataRespon" +
+      "se\022\025\n\rresponse_json\030\001 \001(\t\022\030\n\020has_more_re" +
+      "sults\030\002 \001(\010\022\032\n\022continuation_token\030\003 \001(\t*" +
+      "Z\n\022RegistrationStatus\022\013\n\007CURRENT\020\000\022\013\n\007EX" +
+      "PIRED\020\001\022\016\n\nTERMINATED\020\002\022\013\n\007REVOKED\020\003\022\r\n\t" +
+      "NOT_FOUND\020\n2\326\006\n\rTrustRegistry\022o\n\014AddFram" +
+      "ework\022..services.trustregistry.v1.AddFra" +
+      "meworkRequest\032/.services.trustregistry.v" +
+      "1.AddFrameworkResponse\022x\n\017RemoveFramewor" +
+      "k\0221.services.trustregistry.v1.RemoveFram" +
+      "eworkRequest\0322.services.trustregistry.v1" +
+      ".RemoveFrameworkResponse\022u\n\016SearchRegist" +
+      "ry\0220.services.trustregistry.v1.SearchReg" +
+      "istryRequest\0321.services.trustregistry.v1" +
+      ".SearchRegistryResponse\022u\n\016RegisterMembe" +
+      "r\0220.services.trustregistry.v1.RegisterMe" +
+      "mberRequest\0321.services.trustregistry.v1." +
+      "RegisterMemberResponse\022{\n\020UnregisterMemb" +
+      "er\0222.services.trustregistry.v1.Unregiste" +
+      "rMemberRequest\0323.services.trustregistry." +
+      "v1.UnregisterMemberResponse\022\204\001\n\023GetMembe" +
+      "rshipStatus\0225.services.trustregistry.v1." +
+      "GetMembershipStatusRequest\0326.services.tr" +
+      "ustregistry.v1.GetMembershipStatusRespon" +
+      "se\022h\n\tFetchData\022+.services.trustregistry" +
+      ".v1.FetchDataRequest\032,.services.trustreg" +
+      "istry.v1.FetchDataResponse0\001Bb\n!trinsic." +
+      "services.trustregistry.v1Z\031github.com/tr" +
+      "insic-id/sdk\252\002!Trinsic.Services.TrustReg" +
+      "istry.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -16563,19 +12532,19 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor,
-        new java.lang.String[] { "GovernanceFramework", });
+        new java.lang.String[] { "GovernanceFrameworkUri", "Name", "Description", });
     internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_services_trustregistry_v1_AddFrameworkResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Id", "GoverningAuthority", "TrustRegistry", });
     internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_services_trustregistry_v1_RemoveFrameworkRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor,
-        new java.lang.String[] { "GovernanceFramework", });
+        new java.lang.String[] { "Id", });
     internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_services_trustregistry_v1_RemoveFrameworkResponse_fieldAccessorTable = new
@@ -16593,93 +12562,57 @@ public final class TrustRegistryOuterClass {
     internal_static_services_trustregistry_v1_SearchRegistryResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor,
-        new java.lang.String[] { "ItemsJson", "HasMore", "Count", "ContinuationToken", });
+        new java.lang.String[] { "ItemsJson", "HasMore", "ContinuationToken", });
     internal_static_services_trustregistry_v1_GovernanceFramework_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_services_trustregistry_v1_GovernanceFramework_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_GovernanceFramework_descriptor,
         new java.lang.String[] { "GovernanceFrameworkUri", "TrustRegistryUri", "Description", });
-    internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor =
+    internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_services_trustregistry_v1_RegisterIssuerRequest_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_RegisterIssuerRequest_descriptor,
-        new java.lang.String[] { "DidUri", "X509Cert", "CredentialTypeUri", "ValidFromUtc", "ValidUntilUtc", "GovernanceFrameworkUri", "Authority", });
-    internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor =
+        internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor,
+        new java.lang.String[] { "DidUri", "WalletId", "Email", "SchemaUri", "ValidFromUtc", "ValidUntilUtc", "FrameworkId", "Member", });
+    internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_services_trustregistry_v1_RegisterIssuerResponse_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_RegisterIssuerResponse_descriptor,
+        internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor,
         new java.lang.String[] { });
-    internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor =
+    internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_services_trustregistry_v1_RegisterVerifierRequest_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_RegisterVerifierRequest_descriptor,
-        new java.lang.String[] { "DidUri", "X509Cert", "PresentationTypeUri", "ValidFromUtc", "ValidUntilUtc", "GovernanceFrameworkUri", "Authority", });
-    internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor =
+        internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor,
+        new java.lang.String[] { "DidUri", "WalletId", "Email", "SchemaUri", "FrameworkId", "Member", });
+    internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_services_trustregistry_v1_RegisterVerifierResponse_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_RegisterVerifierResponse_descriptor,
+        internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor,
         new java.lang.String[] { });
-    internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor =
+    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_services_trustregistry_v1_UnregisterIssuerRequest_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_UnregisterIssuerRequest_descriptor,
-        new java.lang.String[] { "DidUri", "X509Cert", "CredentialTypeUri", "GovernanceFrameworkUri", "Authority", });
-    internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor =
+        internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor,
+        new java.lang.String[] { "GovernanceFrameworkUri", "DidUri", "X509Cert", "SchemaUri", "Member", });
+    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_services_trustregistry_v1_UnregisterIssuerResponse_fieldAccessorTable = new
+    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_UnregisterIssuerResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_services_trustregistry_v1_UnregisterVerifierRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_UnregisterVerifierRequest_descriptor,
-        new java.lang.String[] { "DidUri", "X509Cert", "PresentationTypeUri", "GovernanceFrameworkUri", "Authority", });
-    internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_services_trustregistry_v1_UnregisterVerifierResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_UnregisterVerifierResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_CheckIssuerStatusRequest_descriptor,
-        new java.lang.String[] { "GovernanceFrameworkUri", "DidUri", "X509Cert", "CredentialTypeUri", "Member", });
-    internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_CheckIssuerStatusResponse_descriptor,
-        new java.lang.String[] { "Status", });
-    internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_CheckVerifierStatusRequest_descriptor,
-        new java.lang.String[] { "GovernanceFrameworkUri", "DidUri", "X509Cert", "PresentationTypeUri", "Member", });
-    internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_trustregistry_v1_CheckVerifierStatusResponse_descriptor,
+        internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_services_trustregistry_v1_FetchDataRequest_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_FetchDataRequest_descriptor,
         new java.lang.String[] { "GovernanceFrameworkUri", "Query", });
     internal_static_services_trustregistry_v1_FetchDataResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,

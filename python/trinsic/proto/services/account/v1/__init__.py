@@ -27,26 +27,25 @@ class ConfirmationMethod(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class SignInRequest(betterproto.Message):
-    """Request for creating new account"""
+    """Request for creating or signing into an account"""
 
     # Account registration details
     details: "AccountDetails" = betterproto.message_field(1)
-    # Invitation code associated with this registration This field is optional.
+    # Invitation code associated with this registration
     invitation_code: str = betterproto.string_field(2)
-    # EcosystemId to sign in. This field is optional and will be ignored if
-    # invitation_code is passed
+    # ID of Ecosystem to sign into.  Ignored if `invitation_code` is passed
     ecosystem_id: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class AccountDetails(betterproto.Message):
-    """Account Registration Details"""
+    """Account registration details"""
 
-    # Account name (optional)
+    # Account name
     name: str = betterproto.string_field(1)
-    # Email account (required)
+    # Email account
     email: str = betterproto.string_field(2)
-    # SMS number including country code (optional)
+    # SMS number including country code
     sms: str = betterproto.string_field(3)
 
 
@@ -101,21 +100,28 @@ class TokenProtection(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InfoRequest(betterproto.Message):
+    """Request for information about the account used to make the request"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class InfoResponse(betterproto.Message):
+    """Information about the account used to make the request"""
+
     # The account details associated with the calling request context
     details: "AccountDetails" = betterproto.message_field(1)
-    # any ecosystems the account has access to
+    # Use `ecosystem_id` instead
     ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
-    # The wallet id associated with this account
+    # The wallet ID associated with this account
     wallet_id: str = betterproto.string_field(3)
-    # The device id associated with this account
+    # The device ID associated with this account session
     device_id: str = betterproto.string_field(4)
-    # The ecosystem id associated with this account
+    # The ecosystem ID within which this account resides
     ecosystem_id: str = betterproto.string_field(5)
+    # The public DID associated with this account. This DID is used as "issuer"
+    # when signing verifiable credentials
+    public_did: str = betterproto.string_field(6)
 
     def __post_init__(self) -> None:
         super().__post_init__()
@@ -152,70 +158,98 @@ class AccountEcosystem(betterproto.Message):
 
 
 class AccountStub(betterproto.ServiceStub):
-    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
+    async def sign_in(
+        self,
+        *,
+        details: "AccountDetails" = None,
+        invitation_code: str = "",
+        ecosystem_id: str = ""
+    ) -> "SignInResponse":
+
+        request = SignInRequest()
+        if details is not None:
+            request.details = details
+        request.invitation_code = invitation_code
+        request.ecosystem_id = ecosystem_id
+
         return await self._unary_unary(
-            "/services.account.v1.Account/SignIn", sign_in_request, SignInResponse
+            "/services.account.v1.Account/SignIn", request, SignInResponse
         )
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def info(self) -> "InfoResponse":
+
+        request = InfoRequest()
+
         return await self._unary_unary(
-            "/services.account.v1.Account/Info", info_request, InfoResponse
+            "/services.account.v1.Account/Info", request, InfoResponse
         )
 
-    async def list_devices(
-        self, list_devices_request: "ListDevicesRequest"
-    ) -> "ListDevicesResponse":
+    async def list_devices(self) -> "ListDevicesResponse":
+
+        request = ListDevicesRequest()
+
         return await self._unary_unary(
-            "/services.account.v1.Account/ListDevices",
-            list_devices_request,
-            ListDevicesResponse,
+            "/services.account.v1.Account/ListDevices", request, ListDevicesResponse
         )
 
-    async def revoke_device(
-        self, revoke_device_request: "RevokeDeviceRequest"
-    ) -> "RevokeDeviceResponse":
+    async def revoke_device(self) -> "RevokeDeviceResponse":
+
+        request = RevokeDeviceRequest()
+
         return await self._unary_unary(
-            "/services.account.v1.Account/RevokeDevice",
-            revoke_device_request,
-            RevokeDeviceResponse,
+            "/services.account.v1.Account/RevokeDevice", request, RevokeDeviceResponse
         )
 
 
 class AccountBase(ServiceBase):
-    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
+    async def sign_in(
+        self, details: "AccountDetails", invitation_code: str, ecosystem_id: str
+    ) -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def info(self) -> "InfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def list_devices(
-        self, list_devices_request: "ListDevicesRequest"
-    ) -> "ListDevicesResponse":
+    async def list_devices(self) -> "ListDevicesResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def revoke_device(
-        self, revoke_device_request: "RevokeDeviceRequest"
-    ) -> "RevokeDeviceResponse":
+    async def revoke_device(self) -> "RevokeDeviceResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.sign_in(request)
+
+        request_kwargs = {
+            "details": request.details,
+            "invitation_code": request.invitation_code,
+            "ecosystem_id": request.ecosystem_id,
+        }
+
+        response = await self.sign_in(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.info(request)
+
+        request_kwargs = {}
+
+        response = await self.info(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_list_devices(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.list_devices(request)
+
+        request_kwargs = {}
+
+        response = await self.list_devices(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.revoke_device(request)
+
+        request_kwargs = {}
+
+        response = await self.revoke_device(**request_kwargs)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:

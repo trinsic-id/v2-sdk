@@ -19,17 +19,24 @@ class RegistrationStatus(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkRequest(betterproto.Message):
-    governance_framework: "GovernanceFramework" = betterproto.message_field(1)
+    """Register new ecosystem governance framework"""
+
+    governance_framework_uri: str = betterproto.string_field(1)
+    name: str = betterproto.string_field(2)
+    description: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
-    pass
+    # Unique framework identifier
+    id: str = betterproto.string_field(1)
+    governing_authority: str = betterproto.string_field(2)
+    trust_registry: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkRequest(betterproto.Message):
-    governance_framework: "GovernanceFramework" = betterproto.message_field(1)
+    id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
@@ -47,7 +54,6 @@ class SearchRegistryRequest(betterproto.Message):
 class SearchRegistryResponse(betterproto.Message):
     items_json: str = betterproto.string_field(1)
     has_more: bool = betterproto.bool_field(2)
-    count: int = betterproto.int32_field(3)
     continuation_token: str = betterproto.string_field(4)
 
 
@@ -59,84 +65,46 @@ class GovernanceFramework(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class RegisterIssuerRequest(betterproto.Message):
-    did_uri: str = betterproto.string_field(1, group="authority")
-    x509_cert: str = betterproto.string_field(2, group="authority")
-    credential_type_uri: str = betterproto.string_field(10)
+class RegisterMemberRequest(betterproto.Message):
+    did_uri: str = betterproto.string_field(1, group="member")
+    wallet_id: str = betterproto.string_field(3, group="member")
+    email: str = betterproto.string_field(4, group="member")
+    schema_uri: str = betterproto.string_field(10)
     valid_from_utc: int = betterproto.uint64_field(11)
     valid_until_utc: int = betterproto.uint64_field(12)
-    governance_framework_uri: str = betterproto.string_field(20)
+    # the id of the governance framework
+    framework_id: str = betterproto.string_field(30)
 
 
 @dataclass(eq=False, repr=False)
-class RegisterIssuerResponse(betterproto.Message):
+class RegisterMemberResponse(betterproto.Message):
     pass
 
 
 @dataclass(eq=False, repr=False)
-class RegisterVerifierRequest(betterproto.Message):
-    did_uri: str = betterproto.string_field(1, group="authority")
-    x509_cert: str = betterproto.string_field(2, group="authority")
-    presentation_type_uri: str = betterproto.string_field(10)
-    valid_from_utc: int = betterproto.uint64_field(11)
-    valid_until_utc: int = betterproto.uint64_field(12)
-    governance_framework_uri: str = betterproto.string_field(20)
+class UnregisterMemberRequest(betterproto.Message):
+    did_uri: str = betterproto.string_field(1, group="member")
+    wallet_id: str = betterproto.string_field(3, group="member")
+    email: str = betterproto.string_field(4, group="member")
+    schema_uri: str = betterproto.string_field(10)
+    framework_id: str = betterproto.string_field(20)
 
 
 @dataclass(eq=False, repr=False)
-class RegisterVerifierResponse(betterproto.Message):
+class UnregisterMemberResponse(betterproto.Message):
     pass
 
 
 @dataclass(eq=False, repr=False)
-class UnregisterIssuerRequest(betterproto.Message):
-    did_uri: str = betterproto.string_field(1, group="authority")
-    x509_cert: str = betterproto.string_field(2, group="authority")
-    credential_type_uri: str = betterproto.string_field(10)
-    governance_framework_uri: str = betterproto.string_field(20)
-
-
-@dataclass(eq=False, repr=False)
-class UnregisterIssuerResponse(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class UnregisterVerifierRequest(betterproto.Message):
-    did_uri: str = betterproto.string_field(1, group="authority")
-    x509_cert: str = betterproto.string_field(2, group="authority")
-    presentation_type_uri: str = betterproto.string_field(10)
-    governance_framework_uri: str = betterproto.string_field(20)
-
-
-@dataclass(eq=False, repr=False)
-class UnregisterVerifierResponse(betterproto.Message):
-    pass
-
-
-@dataclass(eq=False, repr=False)
-class CheckIssuerStatusRequest(betterproto.Message):
+class GetMembershipStatusRequest(betterproto.Message):
     governance_framework_uri: str = betterproto.string_field(1)
     did_uri: str = betterproto.string_field(2, group="member")
     x509_cert: str = betterproto.string_field(3, group="member")
-    credential_type_uri: str = betterproto.string_field(4)
+    schema_uri: str = betterproto.string_field(4)
 
 
 @dataclass(eq=False, repr=False)
-class CheckIssuerStatusResponse(betterproto.Message):
-    status: "RegistrationStatus" = betterproto.enum_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class CheckVerifierStatusRequest(betterproto.Message):
-    governance_framework_uri: str = betterproto.string_field(1)
-    did_uri: str = betterproto.string_field(2, group="member")
-    x509_cert: str = betterproto.string_field(3, group="member")
-    presentation_type_uri: str = betterproto.string_field(4)
-
-
-@dataclass(eq=False, repr=False)
-class CheckVerifierStatusResponse(betterproto.Message):
+class GetMembershipStatusResponse(betterproto.Message):
     status: "RegistrationStatus" = betterproto.enum_field(1)
 
 
@@ -155,92 +123,131 @@ class FetchDataResponse(betterproto.Message):
 
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
-        self, add_framework_request: "AddFrameworkRequest"
+        self,
+        *,
+        governance_framework_uri: str = "",
+        name: str = "",
+        description: str = ""
     ) -> "AddFrameworkResponse":
+
+        request = AddFrameworkRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.name = name
+        request.description = description
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/AddFramework",
-            add_framework_request,
+            request,
             AddFrameworkResponse,
         )
 
-    async def remove_framework(
-        self, remove_framework_request: "RemoveFrameworkRequest"
-    ) -> "RemoveFrameworkResponse":
+    async def remove_framework(self, *, id: str = "") -> "RemoveFrameworkResponse":
+
+        request = RemoveFrameworkRequest()
+        request.id = id
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
-            remove_framework_request,
+            request,
             RemoveFrameworkResponse,
         )
 
     async def search_registry(
-        self, search_registry_request: "SearchRegistryRequest"
+        self, *, query: str = "", continuation_token: str = ""
     ) -> "SearchRegistryResponse":
+
+        request = SearchRegistryRequest()
+        request.query = query
+        request.continuation_token = continuation_token
+
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
-            search_registry_request,
+            request,
             SearchRegistryResponse,
         )
 
-    async def register_issuer(
-        self, register_issuer_request: "RegisterIssuerRequest"
-    ) -> "RegisterIssuerResponse":
+    async def register_member(
+        self,
+        *,
+        did_uri: str = "",
+        wallet_id: str = "",
+        email: str = "",
+        schema_uri: str = "",
+        valid_from_utc: int = 0,
+        valid_until_utc: int = 0,
+        framework_id: str = ""
+    ) -> "RegisterMemberResponse":
+
+        request = RegisterMemberRequest()
+        request.did_uri = did_uri
+        request.wallet_id = wallet_id
+        request.email = email
+        request.schema_uri = schema_uri
+        request.valid_from_utc = valid_from_utc
+        request.valid_until_utc = valid_until_utc
+        request.framework_id = framework_id
+
         return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
-            register_issuer_request,
-            RegisterIssuerResponse,
+            "/services.trustregistry.v1.TrustRegistry/RegisterMember",
+            request,
+            RegisterMemberResponse,
         )
 
-    async def register_verifier(
-        self, register_verifier_request: "RegisterVerifierRequest"
-    ) -> "RegisterVerifierResponse":
+    async def unregister_member(
+        self,
+        *,
+        did_uri: str = "",
+        wallet_id: str = "",
+        email: str = "",
+        schema_uri: str = "",
+        framework_id: str = ""
+    ) -> "UnregisterMemberResponse":
+
+        request = UnregisterMemberRequest()
+        request.did_uri = did_uri
+        request.wallet_id = wallet_id
+        request.email = email
+        request.schema_uri = schema_uri
+        request.framework_id = framework_id
+
         return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
-            register_verifier_request,
-            RegisterVerifierResponse,
+            "/services.trustregistry.v1.TrustRegistry/UnregisterMember",
+            request,
+            UnregisterMemberResponse,
         )
 
-    async def unregister_issuer(
-        self, unregister_issuer_request: "UnregisterIssuerRequest"
-    ) -> "UnregisterIssuerResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer",
-            unregister_issuer_request,
-            UnregisterIssuerResponse,
-        )
+    async def get_membership_status(
+        self,
+        *,
+        governance_framework_uri: str = "",
+        did_uri: str = "",
+        x509_cert: str = "",
+        schema_uri: str = ""
+    ) -> "GetMembershipStatusResponse":
 
-    async def unregister_verifier(
-        self, unregister_verifier_request: "UnregisterVerifierRequest"
-    ) -> "UnregisterVerifierResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier",
-            unregister_verifier_request,
-            UnregisterVerifierResponse,
-        )
+        request = GetMembershipStatusRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.did_uri = did_uri
+        request.x509_cert = x509_cert
+        request.schema_uri = schema_uri
 
-    async def check_issuer_status(
-        self, check_issuer_status_request: "CheckIssuerStatusRequest"
-    ) -> "CheckIssuerStatusResponse":
         return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus",
-            check_issuer_status_request,
-            CheckIssuerStatusResponse,
-        )
-
-    async def check_verifier_status(
-        self, check_verifier_status_request: "CheckVerifierStatusRequest"
-    ) -> "CheckVerifierStatusResponse":
-        return await self._unary_unary(
-            "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus",
-            check_verifier_status_request,
-            CheckVerifierStatusResponse,
+            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
+            request,
+            GetMembershipStatusResponse,
         )
 
     async def fetch_data(
-        self, fetch_data_request: "FetchDataRequest"
+        self, *, governance_framework_uri: str = "", query: str = ""
     ) -> AsyncIterator["FetchDataResponse"]:
+
+        request = FetchDataRequest()
+        request.governance_framework_uri = governance_framework_uri
+        request.query = query
+
         async for response in self._unary_stream(
             "/services.trustregistry.v1.TrustRegistry/FetchData",
-            fetch_data_request,
+            request,
             FetchDataResponse,
         ):
             yield response
@@ -248,106 +255,142 @@ class TrustRegistryStub(betterproto.ServiceStub):
 
 class TrustRegistryBase(ServiceBase):
     async def add_framework(
-        self, add_framework_request: "AddFrameworkRequest"
+        self, governance_framework_uri: str, name: str, description: str
     ) -> "AddFrameworkResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def remove_framework(
-        self, remove_framework_request: "RemoveFrameworkRequest"
-    ) -> "RemoveFrameworkResponse":
+    async def remove_framework(self, id: str) -> "RemoveFrameworkResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def search_registry(
-        self, search_registry_request: "SearchRegistryRequest"
+        self, query: str, continuation_token: str
     ) -> "SearchRegistryResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def register_issuer(
-        self, register_issuer_request: "RegisterIssuerRequest"
-    ) -> "RegisterIssuerResponse":
+    async def register_member(
+        self,
+        did_uri: str,
+        wallet_id: str,
+        email: str,
+        schema_uri: str,
+        valid_from_utc: int,
+        valid_until_utc: int,
+        framework_id: str,
+    ) -> "RegisterMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def register_verifier(
-        self, register_verifier_request: "RegisterVerifierRequest"
-    ) -> "RegisterVerifierResponse":
+    async def unregister_member(
+        self,
+        did_uri: str,
+        wallet_id: str,
+        email: str,
+        schema_uri: str,
+        framework_id: str,
+    ) -> "UnregisterMemberResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def unregister_issuer(
-        self, unregister_issuer_request: "UnregisterIssuerRequest"
-    ) -> "UnregisterIssuerResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def unregister_verifier(
-        self, unregister_verifier_request: "UnregisterVerifierRequest"
-    ) -> "UnregisterVerifierResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def check_issuer_status(
-        self, check_issuer_status_request: "CheckIssuerStatusRequest"
-    ) -> "CheckIssuerStatusResponse":
-        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
-
-    async def check_verifier_status(
-        self, check_verifier_status_request: "CheckVerifierStatusRequest"
-    ) -> "CheckVerifierStatusResponse":
+    async def get_membership_status(
+        self,
+        governance_framework_uri: str,
+        did_uri: str,
+        x509_cert: str,
+        schema_uri: str,
+    ) -> "GetMembershipStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def fetch_data(
-        self, fetch_data_request: "FetchDataRequest"
+        self, governance_framework_uri: str, query: str
     ) -> AsyncIterator["FetchDataResponse"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_add_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.add_framework(request)
+
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "name": request.name,
+            "description": request.description,
+        }
+
+        response = await self.add_framework(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_remove_framework(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.remove_framework(request)
+
+        request_kwargs = {
+            "id": request.id,
+        }
+
+        response = await self.remove_framework(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_search_registry(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.search_registry(request)
+
+        request_kwargs = {
+            "query": request.query,
+            "continuation_token": request.continuation_token,
+        }
+
+        response = await self.search_registry(**request_kwargs)
         await stream.send_message(response)
 
-    async def __rpc_register_issuer(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_register_member(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.register_issuer(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "wallet_id": request.wallet_id,
+            "email": request.email,
+            "schema_uri": request.schema_uri,
+            "valid_from_utc": request.valid_from_utc,
+            "valid_until_utc": request.valid_until_utc,
+            "framework_id": request.framework_id,
+        }
+
+        response = await self.register_member(**request_kwargs)
         await stream.send_message(response)
 
-    async def __rpc_register_verifier(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_unregister_member(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.register_verifier(request)
+
+        request_kwargs = {
+            "did_uri": request.did_uri,
+            "wallet_id": request.wallet_id,
+            "email": request.email,
+            "schema_uri": request.schema_uri,
+            "framework_id": request.framework_id,
+        }
+
+        response = await self.unregister_member(**request_kwargs)
         await stream.send_message(response)
 
-    async def __rpc_unregister_issuer(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_get_membership_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.unregister_issuer(request)
-        await stream.send_message(response)
 
-    async def __rpc_unregister_verifier(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.unregister_verifier(request)
-        await stream.send_message(response)
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "did_uri": request.did_uri,
+            "x509_cert": request.x509_cert,
+            "schema_uri": request.schema_uri,
+        }
 
-    async def __rpc_check_issuer_status(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.check_issuer_status(request)
-        await stream.send_message(response)
-
-    async def __rpc_check_verifier_status(self, stream: grpclib.server.Stream) -> None:
-        request = await stream.recv_message()
-        response = await self.check_verifier_status(request)
+        response = await self.get_membership_status(**request_kwargs)
         await stream.send_message(response)
 
     async def __rpc_fetch_data(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
+
+        request_kwargs = {
+            "governance_framework_uri": request.governance_framework_uri,
+            "query": request.query,
+        }
+
         await self._call_rpc_handler_server_stream(
             self.fetch_data,
             stream,
-            request,
+            request_kwargs,
         )
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -370,41 +413,23 @@ class TrustRegistryBase(ServiceBase):
                 SearchRegistryRequest,
                 SearchRegistryResponse,
             ),
-            "/services.trustregistry.v1.TrustRegistry/RegisterIssuer": grpclib.const.Handler(
-                self.__rpc_register_issuer,
+            "/services.trustregistry.v1.TrustRegistry/RegisterMember": grpclib.const.Handler(
+                self.__rpc_register_member,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                RegisterIssuerRequest,
-                RegisterIssuerResponse,
+                RegisterMemberRequest,
+                RegisterMemberResponse,
             ),
-            "/services.trustregistry.v1.TrustRegistry/RegisterVerifier": grpclib.const.Handler(
-                self.__rpc_register_verifier,
+            "/services.trustregistry.v1.TrustRegistry/UnregisterMember": grpclib.const.Handler(
+                self.__rpc_unregister_member,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                RegisterVerifierRequest,
-                RegisterVerifierResponse,
+                UnregisterMemberRequest,
+                UnregisterMemberResponse,
             ),
-            "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer": grpclib.const.Handler(
-                self.__rpc_unregister_issuer,
+            "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus": grpclib.const.Handler(
+                self.__rpc_get_membership_status,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                UnregisterIssuerRequest,
-                UnregisterIssuerResponse,
-            ),
-            "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier": grpclib.const.Handler(
-                self.__rpc_unregister_verifier,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                UnregisterVerifierRequest,
-                UnregisterVerifierResponse,
-            ),
-            "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus": grpclib.const.Handler(
-                self.__rpc_check_issuer_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CheckIssuerStatusRequest,
-                CheckIssuerStatusResponse,
-            ),
-            "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus": grpclib.const.Handler(
-                self.__rpc_check_verifier_status,
-                grpclib.const.Cardinality.UNARY_UNARY,
-                CheckVerifierStatusRequest,
-                CheckVerifierStatusResponse,
+                GetMembershipStatusRequest,
+                GetMembershipStatusResponse,
             ),
             "/services.trustregistry.v1.TrustRegistry/FetchData": grpclib.const.Handler(
                 self.__rpc_fetch_data,

@@ -23,15 +23,10 @@ type TrustRegistryClient interface {
 	RemoveFramework(ctx context.Context, in *RemoveFrameworkRequest, opts ...grpc.CallOption) (*RemoveFrameworkResponse, error)
 	SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error)
 	// Registers an authoritative issuer with a credential template
-	RegisterIssuer(ctx context.Context, in *RegisterIssuerRequest, opts ...grpc.CallOption) (*RegisterIssuerResponse, error)
-	// Registers an authoritative verifier with a credential template
-	RegisterVerifier(ctx context.Context, in *RegisterVerifierRequest, opts ...grpc.CallOption) (*RegisterVerifierResponse, error)
+	RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer with a credential template from the trust registry
-	UnregisterIssuer(ctx context.Context, in *UnregisterIssuerRequest, opts ...grpc.CallOption) (*UnregisterIssuerResponse, error)
-	// Removes an authoritative verifier with a presentation template from the trust registry
-	UnregisterVerifier(ctx context.Context, in *UnregisterVerifierRequest, opts ...grpc.CallOption) (*UnregisterVerifierResponse, error)
-	CheckIssuerStatus(ctx context.Context, in *CheckIssuerStatusRequest, opts ...grpc.CallOption) (*CheckIssuerStatusResponse, error)
-	CheckVerifierStatus(ctx context.Context, in *CheckVerifierStatusRequest, opts ...grpc.CallOption) (*CheckVerifierStatusResponse, error)
+	UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error)
+	GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error)
 	FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error)
 }
 
@@ -70,54 +65,27 @@ func (c *trustRegistryClient) SearchRegistry(ctx context.Context, in *SearchRegi
 	return out, nil
 }
 
-func (c *trustRegistryClient) RegisterIssuer(ctx context.Context, in *RegisterIssuerRequest, opts ...grpc.CallOption) (*RegisterIssuerResponse, error) {
-	out := new(RegisterIssuerResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RegisterIssuer", in, out, opts...)
+func (c *trustRegistryClient) RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error) {
+	out := new(RegisterMemberResponse)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RegisterMember", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trustRegistryClient) RegisterVerifier(ctx context.Context, in *RegisterVerifierRequest, opts ...grpc.CallOption) (*RegisterVerifierResponse, error) {
-	out := new(RegisterVerifierResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/RegisterVerifier", in, out, opts...)
+func (c *trustRegistryClient) UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error) {
+	out := new(UnregisterMemberResponse)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/UnregisterMember", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *trustRegistryClient) UnregisterIssuer(ctx context.Context, in *UnregisterIssuerRequest, opts ...grpc.CallOption) (*UnregisterIssuerResponse, error) {
-	out := new(UnregisterIssuerResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *trustRegistryClient) UnregisterVerifier(ctx context.Context, in *UnregisterVerifierRequest, opts ...grpc.CallOption) (*UnregisterVerifierResponse, error) {
-	out := new(UnregisterVerifierResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *trustRegistryClient) CheckIssuerStatus(ctx context.Context, in *CheckIssuerStatusRequest, opts ...grpc.CallOption) (*CheckIssuerStatusResponse, error) {
-	out := new(CheckIssuerStatusResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *trustRegistryClient) CheckVerifierStatus(ctx context.Context, in *CheckVerifierStatusRequest, opts ...grpc.CallOption) (*CheckVerifierStatusResponse, error) {
-	out := new(CheckVerifierStatusResponse)
-	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus", in, out, opts...)
+func (c *trustRegistryClient) GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error) {
+	out := new(GetMembershipStatusResponse)
+	err := c.cc.Invoke(ctx, "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -165,15 +133,10 @@ type TrustRegistryServer interface {
 	RemoveFramework(context.Context, *RemoveFrameworkRequest) (*RemoveFrameworkResponse, error)
 	SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error)
 	// Registers an authoritative issuer with a credential template
-	RegisterIssuer(context.Context, *RegisterIssuerRequest) (*RegisterIssuerResponse, error)
-	// Registers an authoritative verifier with a credential template
-	RegisterVerifier(context.Context, *RegisterVerifierRequest) (*RegisterVerifierResponse, error)
+	RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error)
 	// Removes an authoritative issuer with a credential template from the trust registry
-	UnregisterIssuer(context.Context, *UnregisterIssuerRequest) (*UnregisterIssuerResponse, error)
-	// Removes an authoritative verifier with a presentation template from the trust registry
-	UnregisterVerifier(context.Context, *UnregisterVerifierRequest) (*UnregisterVerifierResponse, error)
-	CheckIssuerStatus(context.Context, *CheckIssuerStatusRequest) (*CheckIssuerStatusResponse, error)
-	CheckVerifierStatus(context.Context, *CheckVerifierStatusRequest) (*CheckVerifierStatusResponse, error)
+	UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error)
+	GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error)
 	FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error
 	mustEmbedUnimplementedTrustRegistryServer()
 }
@@ -191,23 +154,14 @@ func (UnimplementedTrustRegistryServer) RemoveFramework(context.Context, *Remove
 func (UnimplementedTrustRegistryServer) SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchRegistry not implemented")
 }
-func (UnimplementedTrustRegistryServer) RegisterIssuer(context.Context, *RegisterIssuerRequest) (*RegisterIssuerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterIssuer not implemented")
+func (UnimplementedTrustRegistryServer) RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterMember not implemented")
 }
-func (UnimplementedTrustRegistryServer) RegisterVerifier(context.Context, *RegisterVerifierRequest) (*RegisterVerifierResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterVerifier not implemented")
+func (UnimplementedTrustRegistryServer) UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnregisterMember not implemented")
 }
-func (UnimplementedTrustRegistryServer) UnregisterIssuer(context.Context, *UnregisterIssuerRequest) (*UnregisterIssuerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterIssuer not implemented")
-}
-func (UnimplementedTrustRegistryServer) UnregisterVerifier(context.Context, *UnregisterVerifierRequest) (*UnregisterVerifierResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterVerifier not implemented")
-}
-func (UnimplementedTrustRegistryServer) CheckIssuerStatus(context.Context, *CheckIssuerStatusRequest) (*CheckIssuerStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckIssuerStatus not implemented")
-}
-func (UnimplementedTrustRegistryServer) CheckVerifierStatus(context.Context, *CheckVerifierStatusRequest) (*CheckVerifierStatusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckVerifierStatus not implemented")
+func (UnimplementedTrustRegistryServer) GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMembershipStatus not implemented")
 }
 func (UnimplementedTrustRegistryServer) FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error {
 	return status.Errorf(codes.Unimplemented, "method FetchData not implemented")
@@ -279,110 +233,56 @@ func _TrustRegistry_SearchRegistry_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_RegisterIssuer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterIssuerRequest)
+func _TrustRegistry_RegisterMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterMemberRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrustRegistryServer).RegisterIssuer(ctx, in)
+		return srv.(TrustRegistryServer).RegisterMember(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/RegisterIssuer",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/RegisterMember",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).RegisterIssuer(ctx, req.(*RegisterIssuerRequest))
+		return srv.(TrustRegistryServer).RegisterMember(ctx, req.(*RegisterMemberRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_RegisterVerifier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterVerifierRequest)
+func _TrustRegistry_UnregisterMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnregisterMemberRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrustRegistryServer).RegisterVerifier(ctx, in)
+		return srv.(TrustRegistryServer).UnregisterMember(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/RegisterVerifier",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/UnregisterMember",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).RegisterVerifier(ctx, req.(*RegisterVerifierRequest))
+		return srv.(TrustRegistryServer).UnregisterMember(ctx, req.(*UnregisterMemberRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TrustRegistry_UnregisterIssuer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterIssuerRequest)
+func _TrustRegistry_GetMembershipStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMembershipStatusRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TrustRegistryServer).UnregisterIssuer(ctx, in)
+		return srv.(TrustRegistryServer).GetMembershipStatus(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/UnregisterIssuer",
+		FullMethod: "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).UnregisterIssuer(ctx, req.(*UnregisterIssuerRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TrustRegistry_UnregisterVerifier_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterVerifierRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrustRegistryServer).UnregisterVerifier(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/UnregisterVerifier",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).UnregisterVerifier(ctx, req.(*UnregisterVerifierRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TrustRegistry_CheckIssuerStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckIssuerStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrustRegistryServer).CheckIssuerStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/CheckIssuerStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).CheckIssuerStatus(ctx, req.(*CheckIssuerStatusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TrustRegistry_CheckVerifierStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckVerifierStatusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TrustRegistryServer).CheckVerifierStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/services.trustregistry.v1.TrustRegistry/CheckVerifierStatus",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TrustRegistryServer).CheckVerifierStatus(ctx, req.(*CheckVerifierStatusRequest))
+		return srv.(TrustRegistryServer).GetMembershipStatus(ctx, req.(*GetMembershipStatusRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -428,28 +328,16 @@ var TrustRegistry_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TrustRegistry_SearchRegistry_Handler,
 		},
 		{
-			MethodName: "RegisterIssuer",
-			Handler:    _TrustRegistry_RegisterIssuer_Handler,
+			MethodName: "RegisterMember",
+			Handler:    _TrustRegistry_RegisterMember_Handler,
 		},
 		{
-			MethodName: "RegisterVerifier",
-			Handler:    _TrustRegistry_RegisterVerifier_Handler,
+			MethodName: "UnregisterMember",
+			Handler:    _TrustRegistry_UnregisterMember_Handler,
 		},
 		{
-			MethodName: "UnregisterIssuer",
-			Handler:    _TrustRegistry_UnregisterIssuer_Handler,
-		},
-		{
-			MethodName: "UnregisterVerifier",
-			Handler:    _TrustRegistry_UnregisterVerifier_Handler,
-		},
-		{
-			MethodName: "CheckIssuerStatus",
-			Handler:    _TrustRegistry_CheckIssuerStatus_Handler,
-		},
-		{
-			MethodName: "CheckVerifierStatus",
-			Handler:    _TrustRegistry_CheckVerifierStatus_Handler,
+			MethodName: "GetMembershipStatus",
+			Handler:    _TrustRegistry_GetMembershipStatus_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

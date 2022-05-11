@@ -3,6 +3,7 @@
 
 require 'google/protobuf'
 
+require 'services/options/options_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/account/v1/account.proto", :syntax => :proto3) do
     add_message "services.account.v1.SignInRequest" do
@@ -37,6 +38,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :wallet_id, :string, 3
       optional :device_id, :string, 4
       optional :ecosystem_id, :string, 5
+      optional :public_did, :string, 6
     end
     add_message "services.account.v1.ListDevicesRequest" do
     end

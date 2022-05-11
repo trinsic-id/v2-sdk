@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'services/account/v1/account_pb'
+require 'services/options/options_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/provider.proto", :syntax => :proto3) do
     add_message "services.provider.v1.Invite" do
