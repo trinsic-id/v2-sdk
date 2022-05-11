@@ -35,8 +35,8 @@ fn main() {
         )
         .unwrap();
 
+    _ = remove_file("./src/proto/services.options.rs");
     move_file!("./src/proto/google.protobuf.rs", "./src/proto/google/protobuf/mod.rs");
-    move_file!("./src/proto/services.options.rs", "./src/proto/services/options.rs");
     move_file!("./src/proto/sdk.options.v1.rs", "./src/proto/sdk/options/v1/mod.rs");
     move_file!("./src/proto/services.common.v1.rs", "./src/proto/services/common/v1/mod.rs");
     move_file!("./src/proto/services.debug.v1.rs", "./src/proto/services/debug/v1/mod.rs");
