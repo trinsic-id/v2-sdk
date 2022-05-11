@@ -357,10 +357,10 @@ Nonce used to generate an oberon proof
 
 
 
-<a name="services_options_options-proto"></a>
+<a name="services_options_field-options-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/options/options.proto
+## services/options/field-options.proto
 
 
  <!-- end services -->
@@ -370,7 +370,7 @@ Nonce used to generate an oberon proof
  <!-- end enums -->
 
 
-<a name="services_options_options-proto-extensions"></a>
+<a name="services_options_field-options-proto-extensions"></a>
 
 ### File-level Extensions
 | Extension | Type | Base | Number | Description |

@@ -6975,41 +6975,41 @@ public final class UniversalWalletOuterClass {
     java.lang.String[] descriptorData = {
       "\n3services/universal-wallet/v1/universal" +
       "-wallet.proto\022\033services.universalwallet." +
-      "v1\032\036services/options/options.proto\"@\n\rSe" +
-      "archRequest\022\r\n\005query\030\001 \001(\t\022 \n\022continuati" +
-      "on_token\030\002 \001(\tB\004\200\246\035\001\"M\n\016SearchResponse\022\r" +
-      "\n\005items\030\001 \003(\t\022\020\n\010has_more\030\002 \001(\010\022\032\n\022conti" +
-      "nuation_token\030\004 \001(\t\"!\n\016GetItemRequest\022\017\n" +
-      "\007item_id\030\001 \001(\t\"7\n\017GetItemResponse\022\021\n\tite" +
-      "m_json\030\001 \001(\t\022\021\n\titem_type\030\002 \001(\t\"=\n\021Updat" +
-      "eItemRequest\022\017\n\007item_id\030\001 \001(\t\022\027\n\titem_ty" +
-      "pe\030\002 \001(\tB\004\200\246\035\001\"\024\n\022UpdateItemResponse\"?\n\021" +
-      "InsertItemRequest\022\021\n\titem_json\030\001 \001(\t\022\027\n\t" +
-      "item_type\030\002 \001(\tB\004\200\246\035\001\"%\n\022InsertItemRespo" +
-      "nse\022\017\n\007item_id\030\002 \001(\t\"$\n\021DeleteItemReques" +
-      "t\022\017\n\007item_id\030\001 \001(\t\"\024\n\022DeleteItemResponse" +
-      "2\247\004\n\017UniversalWallet\022d\n\007GetItem\022+.servic" +
-      "es.universalwallet.v1.GetItemRequest\032,.s" +
-      "ervices.universalwallet.v1.GetItemRespon" +
-      "se\022a\n\006Search\022*.services.universalwallet." +
-      "v1.SearchRequest\032+.services.universalwal" +
-      "let.v1.SearchResponse\022m\n\nInsertItem\022..se" +
-      "rvices.universalwallet.v1.InsertItemRequ" +
-      "est\032/.services.universalwallet.v1.Insert" +
-      "ItemResponse\022m\n\nUpdateItem\022..services.un" +
-      "iversalwallet.v1.UpdateItemRequest\032/.ser" +
-      "vices.universalwallet.v1.UpdateItemRespo" +
-      "nse\022m\n\nDeleteItem\022..services.universalwa" +
-      "llet.v1.DeleteItemRequest\032/.services.uni" +
-      "versalwallet.v1.DeleteItemResponseBf\n#tr" +
-      "insic.services.universalwallet.v1Z\031githu" +
-      "b.com/trinsic-id/sdk\252\002#Trinsic.Services." +
-      "UniversalWallet.V1b\006proto3"
+      "v1\032$services/options/field-options.proto" +
+      "\"@\n\rSearchRequest\022\r\n\005query\030\001 \001(\t\022 \n\022cont" +
+      "inuation_token\030\002 \001(\tB\004\200\246\035\001\"M\n\016SearchResp" +
+      "onse\022\r\n\005items\030\001 \003(\t\022\020\n\010has_more\030\002 \001(\010\022\032\n" +
+      "\022continuation_token\030\004 \001(\t\"!\n\016GetItemRequ" +
+      "est\022\017\n\007item_id\030\001 \001(\t\"7\n\017GetItemResponse\022" +
+      "\021\n\titem_json\030\001 \001(\t\022\021\n\titem_type\030\002 \001(\t\"=\n" +
+      "\021UpdateItemRequest\022\017\n\007item_id\030\001 \001(\t\022\027\n\ti" +
+      "tem_type\030\002 \001(\tB\004\200\246\035\001\"\024\n\022UpdateItemRespon" +
+      "se\"?\n\021InsertItemRequest\022\021\n\titem_json\030\001 \001" +
+      "(\t\022\027\n\titem_type\030\002 \001(\tB\004\200\246\035\001\"%\n\022InsertIte" +
+      "mResponse\022\017\n\007item_id\030\002 \001(\t\"$\n\021DeleteItem" +
+      "Request\022\017\n\007item_id\030\001 \001(\t\"\024\n\022DeleteItemRe" +
+      "sponse2\247\004\n\017UniversalWallet\022d\n\007GetItem\022+." +
+      "services.universalwallet.v1.GetItemReque" +
+      "st\032,.services.universalwallet.v1.GetItem" +
+      "Response\022a\n\006Search\022*.services.universalw" +
+      "allet.v1.SearchRequest\032+.services.univer" +
+      "salwallet.v1.SearchResponse\022m\n\nInsertIte" +
+      "m\022..services.universalwallet.v1.InsertIt" +
+      "emRequest\032/.services.universalwallet.v1." +
+      "InsertItemResponse\022m\n\nUpdateItem\022..servi" +
+      "ces.universalwallet.v1.UpdateItemRequest" +
+      "\032/.services.universalwallet.v1.UpdateIte" +
+      "mResponse\022m\n\nDeleteItem\022..services.unive" +
+      "rsalwallet.v1.DeleteItemRequest\032/.servic" +
+      "es.universalwallet.v1.DeleteItemResponse" +
+      "Bf\n#trinsic.services.universalwallet.v1Z" +
+      "\031github.com/trinsic-id/sdk\252\002#Trinsic.Ser" +
+      "vices.UniversalWallet.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.protobuf.options.Options.getDescriptor(),
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_universalwallet_v1_SearchRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -7073,10 +7073,10 @@ public final class UniversalWalletOuterClass {
         new java.lang.String[] { });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(trinsic.services.protobuf.options.Options.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
-    trinsic.services.protobuf.options.Options.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

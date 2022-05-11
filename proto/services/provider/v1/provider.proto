@@ -7,7 +7,7 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.common.v1";
 
 import "services/account/v1/account.proto";
-import "services/options/options.proto";
+import "services/options/field-options.proto";
 
 message Invite {
     string id = 1;

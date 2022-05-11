@@ -13694,86 +13694,87 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     java.lang.String[] descriptorData = {
       "\n<services/verifiable-credentials/templa" +
       "tes/v1/templates.proto\022+services.verifia" +
-      "blecredentials.templates.v1\032\036services/op" +
-      "tions/options.proto\"*\n\034GetCredentialTemp" +
-      "lateRequest\022\n\n\002id\030\001 \001(\t\"l\n\035GetCredential" +
-      "TemplateResponse\022K\n\010template\030\001 \001(\01329.ser" +
-      "vices.verifiablecredentials.templates.v1" +
-      ".TemplateData\"S\n SearchCredentialTemplat" +
-      "esRequest\022\r\n\005query\030\001 \001(\t\022 \n\022continuation" +
-      "_token\030\002 \001(\tB\004\200\246\035\001\"e\n!SearchCredentialTe" +
-      "mplatesResponse\022\022\n\nitems_json\030\001 \001(\t\022\020\n\010h" +
-      "as_more\030\002 \001(\010\022\032\n\022continuation_token\030\004 \001(" +
-      "\t\"Q\n\036ListCredentialTemplatesRequest\022\r\n\005q" +
-      "uery\030\001 \001(\t\022 \n\022continuation_token\030\002 \001(\tB\004" +
-      "\200\246\035\001\"\245\001\n\037ListCredentialTemplatesResponse" +
-      "\022L\n\ttemplates\030\001 \003(\01329.services.verifiabl" +
-      "ecredentials.templates.v1.TemplateData\022\030" +
-      "\n\020has_more_results\030\002 \001(\010\022\032\n\022continuation" +
-      "_token\030\003 \001(\t\"-\n\037DeleteCredentialTemplate" +
-      "Request\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCredentialT" +
-      "emplateResponse\"\245\002\n\037CreateCredentialTemp" +
-      "lateRequest\022\014\n\004name\030\001 \001(\t\022h\n\006fields\030\002 \003(" +
-      "\0132X.services.verifiablecredentials.templ" +
-      "ates.v1.CreateCredentialTemplateRequest." +
-      "FieldsEntry\022\037\n\027allow_additional_fields\030\003" +
-      " \001(\010\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005valu" +
-      "e\030\002 \001(\0132:.services.verifiablecredentials" +
-      ".templates.v1.TemplateField:\0028\001\"k\n Creat" +
-      "eCredentialTemplateResponse\022G\n\004data\030\001 \001(" +
-      "\01329.services.verifiablecredentials.templ" +
-      "ates.v1.TemplateData\"|\n\rTemplateField\022\023\n" +
-      "\013description\030\002 \001(\t\022\020\n\010optional\030\003 \001(\010\022D\n\004" +
-      "type\030\004 \001(\01626.services.verifiablecredenti" +
-      "als.templates.v1.FieldType\" \n\022GetTemplat" +
-      "eRequest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplateRespo" +
-      "nse\022G\n\004data\030\001 \001(\01329.services.verifiablec" +
-      "redentials.templates.v1.TemplateData\"\026\n\024" +
-      "ListTemplatesRequest\"e\n\025ListTemplatesRes" +
-      "ponse\022L\n\ttemplates\030\001 \003(\01329.services.veri" +
-      "fiablecredentials.templates.v1.TemplateD" +
-      "ata\"\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002id\022\014\n\004" +
-      "name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fields\030\004 " +
-      "\003(\0132E.services.verifiablecredentials.tem" +
-      "plates.v1.TemplateData.FieldsEntry\022\037\n\027al" +
-      "low_additional_fields\030\005 \001(\010\022\022\n\nschema_ur" +
-      "i\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ecosyste" +
-      "m_id\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t \001(\tR\004t" +
-      "ype\022\035\n\ncreated_by\030\n \001(\tR\tcreatedBy\032i\n\013Fi" +
-      "eldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 \001(\0132:." +
-      "services.verifiablecredentials.templates" +
-      ".v1.TemplateField:\0028\001*;\n\tFieldType\022\n\n\006ST" +
-      "RING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DATETIME" +
-      "\020\0042\322\006\n\023CredentialTemplates\022\245\001\n\006Create\022L." +
-      "services.verifiablecredentials.templates" +
-      ".v1.CreateCredentialTemplateRequest\032M.se" +
-      "rvices.verifiablecredentials.templates.v" +
-      "1.CreateCredentialTemplateResponse\022\234\001\n\003G" +
-      "et\022I.services.verifiablecredentials.temp" +
-      "lates.v1.GetCredentialTemplateRequest\032J." +
-      "services.verifiablecredentials.templates" +
-      ".v1.GetCredentialTemplateResponse\022\241\001\n\004Li" +
-      "st\022K.services.verifiablecredentials.temp" +
-      "lates.v1.ListCredentialTemplatesRequest\032" +
-      "L.services.verifiablecredentials.templat" +
-      "es.v1.ListCredentialTemplatesResponse\022\247\001" +
-      "\n\006Search\022M.services.verifiablecredential" +
-      "s.templates.v1.SearchCredentialTemplates" +
-      "Request\032N.services.verifiablecredentials" +
-      ".templates.v1.SearchCredentialTemplatesR" +
-      "esponse\022\245\001\n\006Delete\022L.services.verifiable" +
-      "credentials.templates.v1.DeleteCredentia" +
-      "lTemplateRequest\032M.services.verifiablecr" +
-      "edentials.templates.v1.DeleteCredentialT" +
-      "emplateResponseB\206\001\n3trinsic.services.ver" +
-      "ifiablecredentials.templates.v1Z\031github." +
-      "com/trinsic-id/sdk\252\0023Trinsic.Services.Ve" +
-      "rifiableCredentials.Templates.V1b\006proto3"
+      "blecredentials.templates.v1\032$services/op" +
+      "tions/field-options.proto\"*\n\034GetCredenti" +
+      "alTemplateRequest\022\n\n\002id\030\001 \001(\t\"l\n\035GetCred" +
+      "entialTemplateResponse\022K\n\010template\030\001 \001(\013" +
+      "29.services.verifiablecredentials.templa" +
+      "tes.v1.TemplateData\"S\n SearchCredentialT" +
+      "emplatesRequest\022\r\n\005query\030\001 \001(\t\022 \n\022contin" +
+      "uation_token\030\002 \001(\tB\004\200\246\035\001\"e\n!SearchCreden" +
+      "tialTemplatesResponse\022\022\n\nitems_json\030\001 \001(" +
+      "\t\022\020\n\010has_more\030\002 \001(\010\022\032\n\022continuation_toke" +
+      "n\030\004 \001(\t\"Q\n\036ListCredentialTemplatesReques" +
+      "t\022\r\n\005query\030\001 \001(\t\022 \n\022continuation_token\030\002" +
+      " \001(\tB\004\200\246\035\001\"\245\001\n\037ListCredentialTemplatesRe" +
+      "sponse\022L\n\ttemplates\030\001 \003(\01329.services.ver" +
+      "ifiablecredentials.templates.v1.Template" +
+      "Data\022\030\n\020has_more_results\030\002 \001(\010\022\032\n\022contin" +
+      "uation_token\030\003 \001(\t\"-\n\037DeleteCredentialTe" +
+      "mplateRequest\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCrede" +
+      "ntialTemplateResponse\"\245\002\n\037CreateCredenti" +
+      "alTemplateRequest\022\014\n\004name\030\001 \001(\t\022h\n\006field" +
+      "s\030\002 \003(\0132X.services.verifiablecredentials" +
+      ".templates.v1.CreateCredentialTemplateRe" +
+      "quest.FieldsEntry\022\037\n\027allow_additional_fi" +
+      "elds\030\003 \001(\010\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I" +
+      "\n\005value\030\002 \001(\0132:.services.verifiablecrede" +
+      "ntials.templates.v1.TemplateField:\0028\001\"k\n" +
+      " CreateCredentialTemplateResponse\022G\n\004dat" +
+      "a\030\001 \001(\01329.services.verifiablecredentials" +
+      ".templates.v1.TemplateData\"|\n\rTemplateFi" +
+      "eld\022\023\n\013description\030\002 \001(\t\022\020\n\010optional\030\003 \001" +
+      "(\010\022D\n\004type\030\004 \001(\01626.services.verifiablecr" +
+      "edentials.templates.v1.FieldType\" \n\022GetT" +
+      "emplateRequest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplat" +
+      "eResponse\022G\n\004data\030\001 \001(\01329.services.verif" +
+      "iablecredentials.templates.v1.TemplateDa" +
+      "ta\"\026\n\024ListTemplatesRequest\"e\n\025ListTempla" +
+      "tesResponse\022L\n\ttemplates\030\001 \003(\01329.service" +
+      "s.verifiablecredentials.templates.v1.Tem" +
+      "plateData\"\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002" +
+      "id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fie" +
+      "lds\030\004 \003(\0132E.services.verifiablecredentia" +
+      "ls.templates.v1.TemplateData.FieldsEntry" +
+      "\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022\n\nsch" +
+      "ema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ec" +
+      "osystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t " +
+      "\001(\tR\004type\022\035\n\ncreated_by\030\n \001(\tR\tcreatedBy" +
+      "\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 " +
+      "\001(\0132:.services.verifiablecredentials.tem" +
+      "plates.v1.TemplateField:\0028\001*;\n\tFieldType" +
+      "\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DA" +
+      "TETIME\020\0042\322\006\n\023CredentialTemplates\022\245\001\n\006Cre" +
+      "ate\022L.services.verifiablecredentials.tem" +
+      "plates.v1.CreateCredentialTemplateReques" +
+      "t\032M.services.verifiablecredentials.templ" +
+      "ates.v1.CreateCredentialTemplateResponse" +
+      "\022\234\001\n\003Get\022I.services.verifiablecredential" +
+      "s.templates.v1.GetCredentialTemplateRequ" +
+      "est\032J.services.verifiablecredentials.tem" +
+      "plates.v1.GetCredentialTemplateResponse\022" +
+      "\241\001\n\004List\022K.services.verifiablecredential" +
+      "s.templates.v1.ListCredentialTemplatesRe" +
+      "quest\032L.services.verifiablecredentials.t" +
+      "emplates.v1.ListCredentialTemplatesRespo" +
+      "nse\022\247\001\n\006Search\022M.services.verifiablecred" +
+      "entials.templates.v1.SearchCredentialTem" +
+      "platesRequest\032N.services.verifiablecrede" +
+      "ntials.templates.v1.SearchCredentialTemp" +
+      "latesResponse\022\245\001\n\006Delete\022L.services.veri" +
+      "fiablecredentials.templates.v1.DeleteCre" +
+      "dentialTemplateRequest\032M.services.verifi" +
+      "ablecredentials.templates.v1.DeleteCrede" +
+      "ntialTemplateResponseB\206\001\n3trinsic.servic" +
+      "es.verifiablecredentials.templates.v1Z\031g" +
+      "ithub.com/trinsic-id/sdk\252\0023Trinsic.Servi" +
+      "ces.VerifiableCredentials.Templates.V1b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.protobuf.options.Options.getDescriptor(),
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -13885,10 +13886,10 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         new java.lang.String[] { "Key", "Value", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(trinsic.services.protobuf.options.Options.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
-    trinsic.services.protobuf.options.Options.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -5,7 +5,7 @@ option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.universalwallet.v1";
 
-import "services/options/options.proto";
+import "services/options/field-options.proto";
 
 // Search
 

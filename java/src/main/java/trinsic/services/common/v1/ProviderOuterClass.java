@@ -10836,61 +10836,61 @@ public final class ProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n#services/provider/v1/provider.proto\022\024s" +
       "ervices.provider.v1\032!services/account/v1" +
-      "/account.proto\032\036services/options/options" +
-      ".proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004code\030\002 \001" +
-      "(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 \001(\t\022\017\n" +
-      "\007expires\030\005 \001(\t\"\267\001\n\rInviteRequest\022:\n\013part" +
-      "icipant\030\001 \001(\0162%.services.provider.v1.Par" +
-      "ticipantType\022\031\n\013description\030\002 \001(\tB\004\200\246\035\001\022" +
-      ":\n\007details\030\003 \001(\0132#.services.account.v1.A" +
-      "ccountDetailsB\004\200\246\035\001\032\023\n\021DidCommInvitation" +
-      "\"@\n\016InviteResponse\022\025\n\rinvitation_id\030\n \001(" +
-      "\t\022\027\n\017invitation_code\030\013 \001(\t\"0\n\027Invitation" +
-      "StatusRequest\022\025\n\rinvitation_id\030\001 \001(\t\"\276\001\n" +
-      "\030InvitationStatusResponse\022E\n\006status\030\001 \001(" +
-      "\01625.services.provider.v1.InvitationStatu" +
-      "sResponse.Status\022\026\n\016status_details\030\002 \001(\t" +
-      "\"C\n\006Status\022\t\n\005Error\020\000\022\022\n\016InvitationSent\020" +
-      "\001\022\r\n\tCompleted\020\002\022\013\n\007Expired\020\003\"G\n\tEcosyst" +
-      "em\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013descript" +
-      "ion\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t\"\212\001\n\026CreateEcosyst" +
-      "emRequest\022\014\n\004name\030\001 \001(\t\022\031\n\013description\030\002" +
-      " \001(\tB\004\200\246\035\001\022\021\n\003uri\030\003 \001(\tB\004\200\246\035\001\0224\n\007details" +
-      "\030\004 \001(\0132#.services.account.v1.AccountDeta" +
-      "ils\"\311\001\n\027CreateEcosystemResponse\0222\n\tecosy" +
-      "stem\030\001 \001(\0132\037.services.provider.v1.Ecosys" +
-      "tem\0224\n\007profile\030\002 \001(\0132#.services.account." +
-      "v1.AccountProfile\022D\n\023confirmation_method" +
-      "\030\003 \001(\0162\'.services.account.v1.Confirmatio" +
-      "nMethod\"1\n\024GenerateTokenRequest\022\031\n\013descr" +
-      "iption\030\001 \001(\tB\004\200\246\035\001\"M\n\025GenerateTokenRespo" +
-      "nse\0224\n\007profile\030\001 \001(\0132#.services.account." +
-      "v1.AccountProfile\"\025\n\023GetOberonKeyRequest" +
-      "\"#\n\024GetOberonKeyResponse\022\013\n\003key\030\001 \001(\t*U\n" +
-      "\017ParticipantType\022\037\n\033participant_type_ind" +
-      "ividual\020\000\022!\n\035participant_type_organizati" +
-      "on\020\0012\223\004\n\010Provider\022n\n\017CreateEcosystem\022,.s" +
-      "ervices.provider.v1.CreateEcosystemReque" +
-      "st\032-.services.provider.v1.CreateEcosyste" +
-      "mResponse\022h\n\rGenerateToken\022*.services.pr" +
-      "ovider.v1.GenerateTokenRequest\032+.service" +
-      "s.provider.v1.GenerateTokenResponse\022S\n\006I" +
-      "nvite\022#.services.provider.v1.InviteReque" +
-      "st\032$.services.provider.v1.InviteResponse" +
-      "\022q\n\020InvitationStatus\022-.services.provider" +
-      ".v1.InvitationStatusRequest\032..services.p" +
-      "rovider.v1.InvitationStatusResponse\022e\n\014G" +
-      "etOberonKey\022).services.provider.v1.GetOb" +
-      "eronKeyRequest\032*.services.provider.v1.Ge" +
-      "tOberonKeyResponseBV\n\032trinsic.services.c" +
-      "ommon.v1Z\031github.com/trinsic-id/sdk\252\002\034Tr" +
-      "insic.Services.Provider.V1b\006proto3"
+      "/account.proto\032$services/options/field-o" +
+      "ptions.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004co" +
+      "de\030\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 " +
+      "\001(\t\022\017\n\007expires\030\005 \001(\t\"\267\001\n\rInviteRequest\022:" +
+      "\n\013participant\030\001 \001(\0162%.services.provider." +
+      "v1.ParticipantType\022\031\n\013description\030\002 \001(\tB" +
+      "\004\200\246\035\001\022:\n\007details\030\003 \001(\0132#.services.accoun" +
+      "t.v1.AccountDetailsB\004\200\246\035\001\032\023\n\021DidCommInvi" +
+      "tation\"@\n\016InviteResponse\022\025\n\rinvitation_i" +
+      "d\030\n \001(\t\022\027\n\017invitation_code\030\013 \001(\t\"0\n\027Invi" +
+      "tationStatusRequest\022\025\n\rinvitation_id\030\001 \001" +
+      "(\t\"\276\001\n\030InvitationStatusResponse\022E\n\006statu" +
+      "s\030\001 \001(\01625.services.provider.v1.Invitatio" +
+      "nStatusResponse.Status\022\026\n\016status_details" +
+      "\030\002 \001(\t\"C\n\006Status\022\t\n\005Error\020\000\022\022\n\016Invitatio" +
+      "nSent\020\001\022\r\n\tCompleted\020\002\022\013\n\007Expired\020\003\"G\n\tE" +
+      "cosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013de" +
+      "scription\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t\"\212\001\n\026CreateE" +
+      "cosystemRequest\022\014\n\004name\030\001 \001(\t\022\031\n\013descrip" +
+      "tion\030\002 \001(\tB\004\200\246\035\001\022\021\n\003uri\030\003 \001(\tB\004\200\246\035\001\0224\n\007d" +
+      "etails\030\004 \001(\0132#.services.account.v1.Accou" +
+      "ntDetails\"\311\001\n\027CreateEcosystemResponse\0222\n" +
+      "\tecosystem\030\001 \001(\0132\037.services.provider.v1." +
+      "Ecosystem\0224\n\007profile\030\002 \001(\0132#.services.ac" +
+      "count.v1.AccountProfile\022D\n\023confirmation_" +
+      "method\030\003 \001(\0162\'.services.account.v1.Confi" +
+      "rmationMethod\"1\n\024GenerateTokenRequest\022\031\n" +
+      "\013description\030\001 \001(\tB\004\200\246\035\001\"M\n\025GenerateToke" +
+      "nResponse\0224\n\007profile\030\001 \001(\0132#.services.ac" +
+      "count.v1.AccountProfile\"\025\n\023GetOberonKeyR" +
+      "equest\"#\n\024GetOberonKeyResponse\022\013\n\003key\030\001 " +
+      "\001(\t*U\n\017ParticipantType\022\037\n\033participant_ty" +
+      "pe_individual\020\000\022!\n\035participant_type_orga" +
+      "nization\020\0012\223\004\n\010Provider\022n\n\017CreateEcosyst" +
+      "em\022,.services.provider.v1.CreateEcosyste" +
+      "mRequest\032-.services.provider.v1.CreateEc" +
+      "osystemResponse\022h\n\rGenerateToken\022*.servi" +
+      "ces.provider.v1.GenerateTokenRequest\032+.s" +
+      "ervices.provider.v1.GenerateTokenRespons" +
+      "e\022S\n\006Invite\022#.services.provider.v1.Invit" +
+      "eRequest\032$.services.provider.v1.InviteRe" +
+      "sponse\022q\n\020InvitationStatus\022-.services.pr" +
+      "ovider.v1.InvitationStatusRequest\032..serv" +
+      "ices.provider.v1.InvitationStatusRespons" +
+      "e\022e\n\014GetOberonKey\022).services.provider.v1" +
+      ".GetOberonKeyRequest\032*.services.provider" +
+      ".v1.GetOberonKeyResponseBV\n\032trinsic.serv" +
+      "ices.common.v1Z\031github.com/trinsic-id/sd" +
+      "k\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
-          trinsic.services.protobuf.options.Options.getDescriptor(),
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_provider_v1_Invite_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -10972,11 +10972,11 @@ public final class ProviderOuterClass {
         new java.lang.String[] { "Key", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(trinsic.services.protobuf.options.Options.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
     trinsic.services.account.v1.AccountOuterClass.getDescriptor();
-    trinsic.services.protobuf.options.Options.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

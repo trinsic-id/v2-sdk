@@ -10077,51 +10077,51 @@ public final class AccountOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n!services/account/v1/account.proto\022\023ser" +
-      "vices.account.v1\032\036services/options/optio" +
-      "ns.proto\"\200\001\n\rSignInRequest\0224\n\007details\030\001 " +
-      "\001(\0132#.services.account.v1.AccountDetails" +
-      "\022\035\n\017invitation_code\030\002 \001(\tB\004\200\246\035\001\022\032\n\014ecosy" +
-      "stem_id\030\003 \001(\tB\004\200\246\035\001\"F\n\016AccountDetails\022\022\n" +
-      "\004name\030\001 \001(\tB\004\200\246\035\001\022\r\n\005email\030\002 \001(\t\022\021\n\003sms\030" +
-      "\003 \001(\tB\004\200\246\035\001\"\214\001\n\016SignInResponse\022D\n\023confir" +
-      "mation_method\030\003 \001(\0162\'.services.account.v" +
-      "1.ConfirmationMethod\0224\n\007profile\030\004 \001(\0132#." +
-      "services.account.v1.AccountProfile\"\207\001\n\016A" +
-      "ccountProfile\022\024\n\014profile_type\030\001 \001(\t\022\021\n\ta" +
-      "uth_data\030\002 \001(\014\022\022\n\nauth_token\030\003 \001(\014\0228\n\npr" +
-      "otection\030\004 \001(\0132$.services.account.v1.Tok" +
-      "enProtection\"[\n\017TokenProtection\022\017\n\007enabl" +
-      "ed\030\001 \001(\010\0227\n\006method\030\002 \001(\0162\'.services.acco" +
-      "unt.v1.ConfirmationMethod\"\r\n\013InfoRequest" +
-      "\"\323\001\n\014InfoResponse\0224\n\007details\030\001 \001(\0132#.ser" +
-      "vices.account.v1.AccountDetails\022=\n\necosy" +
-      "stems\030\002 \003(\0132%.services.account.v1.Accoun" +
-      "tEcosystemB\002\030\001\022\021\n\twallet_id\030\003 \001(\t\022\021\n\tdev" +
-      "ice_id\030\004 \001(\t\022\024\n\014ecosystem_id\030\005 \001(\t\022\022\n\npu" +
-      "blic_did\030\006 \001(\t\"\024\n\022ListDevicesRequest\"\025\n\023" +
-      "ListDevicesResponse\"\025\n\023RevokeDeviceReque" +
-      "st\"\026\n\024RevokeDeviceResponse\"N\n\020AccountEco" +
-      "system\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013desc" +
-      "ription\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t*R\n\022Confirmati" +
-      "onMethod\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003Sms\020\002\022\023" +
-      "\n\017ConnectedDevice\020\003\022\t\n\005Other\020\n2\360\002\n\007Accou" +
-      "nt\022Q\n\006SignIn\022\".services.account.v1.SignI" +
-      "nRequest\032#.services.account.v1.SignInRes" +
-      "ponse\022K\n\004Info\022 .services.account.v1.Info" +
-      "Request\032!.services.account.v1.InfoRespon" +
-      "se\022`\n\013ListDevices\022\'.services.account.v1." +
-      "ListDevicesRequest\032(.services.account.v1" +
-      ".ListDevicesResponse\022c\n\014RevokeDevice\022(.s" +
-      "ervices.account.v1.RevokeDeviceRequest\032)" +
-      ".services.account.v1.RevokeDeviceRespons" +
-      "eBV\n\033trinsic.services.account.v1Z\031github" +
-      ".com/trinsic-id/sdk\252\002\033Trinsic.Services.A" +
-      "ccount.V1b\006proto3"
+      "vices.account.v1\032$services/options/field" +
+      "-options.proto\"\200\001\n\rSignInRequest\0224\n\007deta" +
+      "ils\030\001 \001(\0132#.services.account.v1.AccountD" +
+      "etails\022\035\n\017invitation_code\030\002 \001(\tB\004\200\246\035\001\022\032\n" +
+      "\014ecosystem_id\030\003 \001(\tB\004\200\246\035\001\"F\n\016AccountDeta" +
+      "ils\022\022\n\004name\030\001 \001(\tB\004\200\246\035\001\022\r\n\005email\030\002 \001(\t\022\021" +
+      "\n\003sms\030\003 \001(\tB\004\200\246\035\001\"\214\001\n\016SignInResponse\022D\n\023" +
+      "confirmation_method\030\003 \001(\0162\'.services.acc" +
+      "ount.v1.ConfirmationMethod\0224\n\007profile\030\004 " +
+      "\001(\0132#.services.account.v1.AccountProfile" +
+      "\"\207\001\n\016AccountProfile\022\024\n\014profile_type\030\001 \001(" +
+      "\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030\003 \001(\014" +
+      "\0228\n\nprotection\030\004 \001(\0132$.services.account." +
+      "v1.TokenProtection\"[\n\017TokenProtection\022\017\n" +
+      "\007enabled\030\001 \001(\010\0227\n\006method\030\002 \001(\0162\'.service" +
+      "s.account.v1.ConfirmationMethod\"\r\n\013InfoR" +
+      "equest\"\323\001\n\014InfoResponse\0224\n\007details\030\001 \001(\013" +
+      "2#.services.account.v1.AccountDetails\022=\n" +
+      "\necosystems\030\002 \003(\0132%.services.account.v1." +
+      "AccountEcosystemB\002\030\001\022\021\n\twallet_id\030\003 \001(\t\022" +
+      "\021\n\tdevice_id\030\004 \001(\t\022\024\n\014ecosystem_id\030\005 \001(\t" +
+      "\022\022\n\npublic_did\030\006 \001(\t\"\024\n\022ListDevicesReque" +
+      "st\"\025\n\023ListDevicesResponse\"\025\n\023RevokeDevic" +
+      "eRequest\"\026\n\024RevokeDeviceResponse\"N\n\020Acco" +
+      "untEcosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023" +
+      "\n\013description\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t*R\n\022Conf" +
+      "irmationMethod\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003S" +
+      "ms\020\002\022\023\n\017ConnectedDevice\020\003\022\t\n\005Other\020\n2\360\002\n" +
+      "\007Account\022Q\n\006SignIn\022\".services.account.v1" +
+      ".SignInRequest\032#.services.account.v1.Sig" +
+      "nInResponse\022K\n\004Info\022 .services.account.v" +
+      "1.InfoRequest\032!.services.account.v1.Info" +
+      "Response\022`\n\013ListDevices\022\'.services.accou" +
+      "nt.v1.ListDevicesRequest\032(.services.acco" +
+      "unt.v1.ListDevicesResponse\022c\n\014RevokeDevi" +
+      "ce\022(.services.account.v1.RevokeDeviceReq" +
+      "uest\032).services.account.v1.RevokeDeviceR" +
+      "esponseBV\n\033trinsic.services.account.v1Z\031" +
+      "github.com/trinsic-id/sdk\252\002\033Trinsic.Serv" +
+      "ices.Account.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.protobuf.options.Options.getDescriptor(),
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_account_v1_SignInRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -10197,10 +10197,10 @@ public final class AccountOuterClass {
         new java.lang.String[] { "Id", "Name", "Description", "Uri", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(trinsic.services.protobuf.options.Options.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     com.google.protobuf.Descriptors.FileDescriptor
         .internalUpdateFileDescriptor(descriptor, registry);
-    trinsic.services.protobuf.options.Options.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

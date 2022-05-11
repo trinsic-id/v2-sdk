@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'services/options/options_pb'
+require 'services/options/field-options_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/account/v1/account.proto", :syntax => :proto3) do
     add_message "services.account.v1.SignInRequest" do
