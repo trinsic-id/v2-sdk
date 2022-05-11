@@ -111,14 +111,14 @@ export default abstract class ServiceBase {
   ):  BrowserClient<ClientService> {
     // ServerClient<ServerService> | BrowserClient<ClientService>
     if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
-      console.log('Running grpc-web...')
+      // console.log('Running grpc-web...')
       let clientMod = require("nice-grpc-web");
       return clientMod.createClient(
         definition as ClientService,
         clientMod.createChannel(this.address, this.transportFactory())
       );
     } else {
-      console.log('Running node grpc-js...')
+      // console.log('Running node grpc-js...')
       let serverMod = require("nice-grpc");
       return serverMod.createClient(
         definition,
