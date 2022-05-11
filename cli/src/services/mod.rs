@@ -31,7 +31,7 @@ pub(crate) enum Service<'a> {
     Provider(crate::parser::provider::Command<'a>),
     Config(crate::parser::config::ConfigCommand),
     Account(crate::parser::account::Command<'a>),
-    TrustRegistry(crate::parser::trustregistry::Command),
+    TrustRegistry(crate::parser::trustregistry::TrustRegistryCommand),
     Template(crate::parser::template::TemplateCommand),
     Unknown,
 }

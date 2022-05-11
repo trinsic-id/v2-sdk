@@ -11,7 +11,7 @@ extern crate clap;
 use crate::error::Error;
 use clap::{App, AppSettings};
 use colored::Colorize;
-use parser::template;
+use parser::{template, trustregistry};
 use prost::{DecodeError, Message};
 use serde::Serialize;
 use services::config::CliConfig;
@@ -54,7 +54,8 @@ fn main() {
     let yaml = load_yaml!("cli.yaml");
     let app = App::from_yaml(yaml)
         .setting(AppSettings::SubcommandRequiredElseHelp)
-        .subcommand(template::subcommand());
+        .subcommand(template::subcommand())
+        .subcommand(trustregistry::subcommand());
     let matches = app.get_matches();
 
     let config = CliConfig::from(&matches);
