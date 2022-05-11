@@ -34,7 +34,7 @@ pub struct UnregisterMemberArgs {
     pub schema_uri: String,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum MemberId {
     Email(String),
     WalletId(String),
