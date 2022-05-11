@@ -61,7 +61,7 @@ async fn search(args: &SearchArgs, config: &CliConfig) -> Result<Output, Error> 
 
     let request = tonic::Request::new(SearchRegistryRequest {
         query: args.query.clone(),
-        ..Default::default()
+        continuation_token: args.continuation_token.clone().unwrap_or_default(),
     });
 
     let response = client.search_registry(request).await?.into_inner();

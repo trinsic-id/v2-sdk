@@ -16,6 +16,7 @@ pub enum TrustRegistryCommand {
 #[derive(Debug, PartialEq, Clone)]
 pub struct SearchArgs {
     pub query: String,
+    pub continuation_token: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Default)]
@@ -83,8 +84,8 @@ pub(crate) fn parse(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
         register_member(&args.subcommand_matches("register-member").expect("Error parsing request"))
     } else if args.is_present("unregister-member") {
         unregister_member(&args.subcommand_matches("unregister-member").expect("Error parsing request"))
-    } else if args.is_present("get-status") {
-        get_status(&args.subcommand_matches("get-status").expect("Error parsing request"))
+    } else if args.is_present("get-membership-status") {
+        get_status(&args.subcommand_matches("get-membership-status").expect("Error parsing request"))
     } else if args.is_present("add-framework") {
         add_framework(&args.subcommand_matches("add-framework").expect("Error parsing request"))
     } else if args.is_present("remove-framework") {
@@ -98,7 +99,8 @@ fn search(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
     Ok(TrustRegistryCommand::Search(SearchArgs {
         query: args
             .value_of("query")
-            .map_or("SELECT * FROM _ WHERE _.type = 'FrameworkDefinition'".to_string(), |q| q.into()),
+            .map_or("SELECT * FROM _ WHERE _.type = 'FrameworkDefinition'".to_string(), |q| q.to_string()),
+        continuation_token: args.value_of("continuation-token").map(|x| x.to_string()),
     }))
 }
 
@@ -148,8 +150,8 @@ fn unregister_member(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
 fn get_status(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
     Ok(TrustRegistryCommand::GetMembershipStatus(GetMembershipStatusArgs {
         did_uri: args.value_of("did").map(|q| q.into()).ok_or(Error::MissingArguments)?,
-        schema_uri: args.value_of("credential-type").map(|q| q.into()).ok_or(Error::MissingArguments)?,
-        governance_framework_uri: args.value_of("egf").map(|q| q.into()).ok_or(Error::MissingArguments)?,
+        schema_uri: args.value_of("schema").map(|q| q.into()).ok_or(Error::MissingArguments)?,
+        governance_framework_uri: args.value_of("framework").map(|q| q.into()).ok_or(Error::MissingArguments)?,
     }))
 }
 
@@ -208,5 +210,19 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
             .arg(Arg::from_usage("-e --email <EMAIL> 'Sets the member using their email'").required(false))
             .arg(Arg::from_usage("-w --wallet <WALLET_ID> 'Sets the member using their wallet ID'").required(false))
             .arg(Arg::from_usage("-d --did <EMAIL> 'Sets the member using their public DID'").required(false)),
+        )
+        .subcommand(
+            SubCommand::with_name("search")
+                .about("Search trust registry")
+                .arg(Arg::from_usage("-q --query <SQL> 'Sets custom query to use'").required(false))
+                .arg(Arg::from_usage("-t --continuation-token <TOKEN> 'Sets the continuation token of a previous result set'").required(false)),
+        )
+        .subcommand(
+            SubCommand::with_name("get-membership-status")
+            .setting(AppSettings::ArgRequiredElseHelp)
+            .about("Get the membership status of a given DID in a given EGF")
+            .arg(Arg::from_usage("-d --did <DID> 'The DID of the member'"))
+            .arg(Arg::from_usage("-s --schema <SCHEMA_URI> 'The schema URI'"))
+            .arg(Arg::from_usage("-f --framework <EGF_URI> 'The EGF URI'"))
         )
 }
