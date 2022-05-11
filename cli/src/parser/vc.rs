@@ -3,41 +3,17 @@ use clap::ArgMatches;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("issue") {
-        issue(
-            &args
-                .subcommand_matches("issue")
-                .expect("Error parsing request"),
-        )
+        issue(&args.subcommand_matches("issue").expect("Error parsing request"))
     } else if args.is_present("issue-from-template") {
-        issue_from_template(
-            &args
-                .subcommand_matches("issue-from-template")
-                .expect("Error parsing request"),
-        )
+        issue_from_template(&args.subcommand_matches("issue-from-template").expect("Error parsing request"))
     } else if args.is_present("get-status") {
-        get_status(
-            &args
-                .subcommand_matches("get-status")
-                .expect("Error parsing request"),
-        )
+        get_status(&args.subcommand_matches("get-status").expect("Error parsing request"))
     } else if args.is_present("update-status") {
-        update_status(
-            &args
-                .subcommand_matches("update-status")
-                .expect("Error parsing request"),
-        )
+        update_status(&args.subcommand_matches("update-status").expect("Error parsing request"))
     } else if args.is_present("create-proof") {
-        create_proof(
-            &args
-                .subcommand_matches("create-proof")
-                .expect("Error parsing request"),
-        )
+        create_proof(&args.subcommand_matches("create-proof").expect("Error parsing request"))
     } else if args.is_present("verify-proof") {
-        verify_proof(
-            &args
-                .subcommand_matches("verify-proof")
-                .expect("Error parsing request"),
-        )
+        verify_proof(&args.subcommand_matches("verify-proof").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)
     }
@@ -52,9 +28,7 @@ fn issue<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
 
 fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::IssueFromTemplate(IssueFromTemplateArgs {
-        template_id: args
-            .value_of("template-id")
-            .map_or(String::default(), |x| x.to_string()),
+        template_id: args.value_of("template-id").map_or(String::default(), |x| x.to_string()),
         values_json: args.value_of("values-data").map(|x| x.to_string()),
         values_file: args.value_of("values-file").map(|x| x.to_string()),
         output_file: args.value_of("out").map(|x| x.to_string()),
@@ -63,17 +37,13 @@ fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Erro
 
 fn get_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::GetStatus(GetStatusArgs {
-        credential_status_id: args
-            .value_of("credential-status-id")
-            .map_or(String::default(), |x| x.to_string()),
+        credential_status_id: args.value_of("credential-status-id").map_or(String::default(), |x| x.to_string()),
     }))
 }
 
 fn update_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::UpdateStatus(UpdateStatusArgs {
-        credential_status_id: args
-            .value_of("credential-status-id")
-            .map_or(String::default(), |x| x.to_string()),
+        credential_status_id: args.value_of("credential-status-id").map_or(String::default(), |x| x.to_string()),
         revoked: args.is_present("revoked"),
     }))
 }

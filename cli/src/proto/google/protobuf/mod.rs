@@ -381,12 +381,7 @@ pub struct FileOptions {
     /// This option has no effect on when used with the lite runtime.
     #[prost(bool, optional, tag = "27", default = "false")]
     pub java_string_check_utf8: ::core::option::Option<bool>,
-    #[prost(
-        enumeration = "file_options::OptimizeMode",
-        optional,
-        tag = "9",
-        default = "Speed"
-    )]
+    #[prost(enumeration = "file_options::OptimizeMode", optional, tag = "9", default = "Speed")]
     pub optimize_for: ::core::option::Option<i32>,
     /// Sets the Go package where structs generated from this .proto will be
     /// placed. If omitted, the Go package will be derived from the following:
@@ -542,12 +537,7 @@ pub struct FieldOptions {
     /// representation of the field than it normally would.  See the specific
     /// options below.  This option is not yet implemented in the open source
     /// release -- sorry, we'll try to include it in a future version!
-    #[prost(
-        enumeration = "field_options::CType",
-        optional,
-        tag = "1",
-        default = "String"
-    )]
+    #[prost(enumeration = "field_options::CType", optional, tag = "1", default = "String")]
     pub ctype: ::core::option::Option<i32>,
     /// The packed option can be enabled for repeated primitive fields to enable
     /// a more efficient representation on the wire. Rather than repeatedly
@@ -567,12 +557,7 @@ pub struct FieldOptions {
     ///
     /// This option is an enum to permit additional types to be added, e.g.
     /// goog.math.Integer.
-    #[prost(
-        enumeration = "field_options::JsType",
-        optional,
-        tag = "6",
-        default = "JsNormal"
-    )]
+    #[prost(enumeration = "field_options::JsType", optional, tag = "6", default = "JsNormal")]
     pub jstype: ::core::option::Option<i32>,
     /// Should this field be parsed lazily?  Lazy applies only to message-type
     /// fields.  It means that when the outer message is initially parsed, the
@@ -700,12 +685,7 @@ pub struct MethodOptions {
     /// this is a formalization for deprecating methods.
     #[prost(bool, optional, tag = "33", default = "false")]
     pub deprecated: ::core::option::Option<bool>,
-    #[prost(
-        enumeration = "method_options::IdempotencyLevel",
-        optional,
-        tag = "34",
-        default = "IdempotencyUnknown"
-    )]
+    #[prost(enumeration = "method_options::IdempotencyLevel", optional, tag = "34", default = "IdempotencyUnknown")]
     pub idempotency_level: ::core::option::Option<i32>,
     /// The parser stores options it doesn't recognize here. See above.
     #[prost(message, repeated, tag = "999")]

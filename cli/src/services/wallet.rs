@@ -3,14 +3,8 @@ use crate::{
     error::Error,
     grpc_channel, grpc_client_with_auth,
     proto::services::{
-        universalwallet::v1::{
-            universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest,
-            SearchRequest,
-        },
-        verifiablecredentials::v1::{
-            send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient,
-            SendRequest,
-        },
+        universalwallet::v1::{universal_wallet_client::UniversalWalletClient, DeleteItemRequest, InsertItemRequest, SearchRequest},
+        verifiablecredentials::v1::{send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient, SendRequest},
     },
     services::config::*,
     utils::{prettify_json, read_file},
@@ -33,9 +27,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     let query = args
         .query
-        .map_or("SELECT c.data, c.id, c.type FROM c OFFSET 0 LIMIT 100".to_string(), |q| {
-            q.to_string()
-        });
+        .map_or("SELECT c.data, c.id, c.type FROM c OFFSET 0 LIMIT 100".to_string(), |q| q.to_string());
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let request = tonic::Request::new(SearchRequest {
@@ -62,9 +54,7 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
 
 #[tokio::main]
 async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output, Error> {
-    let item_json = read_file(args.item.ok_or(Error::InvalidArgument(
-        "input document must be specified".to_string(),
-    ))?)?;
+    let item_json = read_file(args.item.ok_or(Error::InvalidArgument("input document must be specified".to_string()))?)?;
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let response = client
@@ -96,16 +86,12 @@ async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<Output,
 
 #[tokio::main]
 async fn send(args: &SendArgs, config: CliConfig) -> Result<Output, Error> {
-    let item = read_file(args.item.ok_or(Error::InvalidArgument(
-        "input document must be specified".to_string(),
-    ))?)?;
+    let item = read_file(args.item.ok_or(Error::InvalidArgument("input document must be specified".to_string()))?)?;
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
     let _response = client
         .send(SendRequest {
-            delivery_method: Some(DeliveryMethod::Email(
-                args.email.expect("Email must be specified").to_string(),
-            )),
+            delivery_method: Some(DeliveryMethod::Email(args.email.expect("Email must be specified").to_string())),
             document_json: item,
         })
         .await?

@@ -118,20 +118,14 @@ pub mod universal_wallet_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> UniversalWalletClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> UniversalWalletClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             UniversalWalletClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -153,16 +147,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetItemRequest>,
         ) -> Result<tonic::Response<super::GetItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/GetItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/GetItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Search the wallet using a SQL-like syntax"]
@@ -170,16 +160,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::SearchRequest>,
         ) -> Result<tonic::Response<super::SearchResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/Search",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Insert an item into the wallet"]
@@ -187,16 +173,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InsertItemRequest>,
         ) -> Result<tonic::Response<super::InsertItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/InsertItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/InsertItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Update an item in the wallet"]
@@ -204,16 +186,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateItemRequest>,
         ) -> Result<tonic::Response<super::UpdateItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/UpdateItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/UpdateItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Delete an item from the wallet permanently"]
@@ -221,16 +199,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteItemRequest>,
         ) -> Result<tonic::Response<super::DeleteItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/DeleteItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/DeleteItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

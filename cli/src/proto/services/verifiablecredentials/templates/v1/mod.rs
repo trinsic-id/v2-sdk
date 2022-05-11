@@ -163,19 +163,7 @@ pub struct TemplateData {
     pub created_by: ::prost::alloc::string::String,
 }
 /// Valid types for credential fields
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum FieldType {
     String = 0,
@@ -213,20 +201,14 @@ pub mod credential_templates_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> CredentialTemplatesClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> CredentialTemplatesClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             CredentialTemplatesClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -246,85 +228,61 @@ pub mod credential_templates_client {
         pub async fn create(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::CreateCredentialTemplateResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::CreateCredentialTemplateResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Create");
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn get(
             &mut self,
             request: impl tonic::IntoRequest<super::GetCredentialTemplateRequest>,
         ) -> Result<tonic::Response<super::GetCredentialTemplateResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Get");
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn list(
             &mut self,
             request: impl tonic::IntoRequest<super::ListCredentialTemplatesRequest>,
-        ) -> Result<tonic::Response<super::ListCredentialTemplatesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::ListCredentialTemplatesResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/List");
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchCredentialTemplatesRequest>,
-        ) -> Result<tonic::Response<super::SearchCredentialTemplatesResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::SearchCredentialTemplatesResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteCredentialTemplateRequest>,
-        ) -> Result<tonic::Response<super::DeleteCredentialTemplateResponse>, tonic::Status>
-        {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::DeleteCredentialTemplateResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
