@@ -27,7 +27,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     let query = args
         .query
-        .map_or("SELECT c.data, c.id, c.type FROM c OFFSET 0 LIMIT 100".to_string(), |q| q.to_string());
+        .map_or("SELECT _.data, _.id, _.type FROM _ OFFSET 0 LIMIT 100".to_string(), |q| q.to_string());
 
     let mut client = grpc_client_with_auth!(UniversalWalletClient<Channel>, config.to_owned());
     let request = tonic::Request::new(SearchRequest {
