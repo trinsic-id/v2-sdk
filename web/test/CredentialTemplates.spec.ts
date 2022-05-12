@@ -20,6 +20,7 @@ const {
 let options: ServiceOptions = getTestServerOptions();
 
 describe("Demo: Credential Templates", () => {
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
