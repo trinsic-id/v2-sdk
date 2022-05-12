@@ -134,156 +134,94 @@ class GetOberonKeyResponse(betterproto.Message):
 
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
-        self,
-        *,
-        name: str = "",
-        description: str = "",
-        uri: str = "",
-        details: "__account_v1__.AccountDetails" = None
+        self, create_ecosystem_request: "CreateEcosystemRequest"
     ) -> "CreateEcosystemResponse":
-
-        request = CreateEcosystemRequest()
-        request.name = name
-        request.description = description
-        request.uri = uri
-        if details is not None:
-            request.details = details
-
         return await self._unary_unary(
             "/services.provider.v1.Provider/CreateEcosystem",
-            request,
+            create_ecosystem_request,
             CreateEcosystemResponse,
         )
 
-    async def generate_token(self, *, description: str = "") -> "GenerateTokenResponse":
-
-        request = GenerateTokenRequest()
-        request.description = description
-
+    async def generate_token(
+        self, generate_token_request: "GenerateTokenRequest"
+    ) -> "GenerateTokenResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GenerateToken",
-            request,
+            generate_token_request,
             GenerateTokenResponse,
         )
 
-    async def invite(
-        self,
-        *,
-        participant: "ParticipantType" = 0,
-        description: str = "",
-        details: "__account_v1__.AccountDetails" = None
-    ) -> "InviteResponse":
-
-        request = InviteRequest()
-        request.participant = participant
-        request.description = description
-        if details is not None:
-            request.details = details
-
+    async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/Invite", request, InviteResponse
+            "/services.provider.v1.Provider/Invite", invite_request, InviteResponse
         )
 
     async def invitation_status(
-        self, *, invitation_id: str = ""
+        self, invitation_status_request: "InvitationStatusRequest"
     ) -> "InvitationStatusResponse":
-
-        request = InvitationStatusRequest()
-        request.invitation_id = invitation_id
-
         return await self._unary_unary(
             "/services.provider.v1.Provider/InvitationStatus",
-            request,
+            invitation_status_request,
             InvitationStatusResponse,
         )
 
-    async def get_oberon_key(self) -> "GetOberonKeyResponse":
-
-        request = GetOberonKeyRequest()
-
+    async def get_oberon_key(
+        self, get_oberon_key_request: "GetOberonKeyRequest"
+    ) -> "GetOberonKeyResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/GetOberonKey", request, GetOberonKeyResponse
+            "/services.provider.v1.Provider/GetOberonKey",
+            get_oberon_key_request,
+            GetOberonKeyResponse,
         )
 
 
 class ProviderBase(ServiceBase):
     async def create_ecosystem(
-        self,
-        name: str,
-        description: str,
-        uri: str,
-        details: "__account_v1__.AccountDetails",
+        self, create_ecosystem_request: "CreateEcosystemRequest"
     ) -> "CreateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def generate_token(self, description: str) -> "GenerateTokenResponse":
+    async def generate_token(
+        self, generate_token_request: "GenerateTokenRequest"
+    ) -> "GenerateTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def invite(
-        self,
-        participant: "ParticipantType",
-        description: str,
-        details: "__account_v1__.AccountDetails",
-    ) -> "InviteResponse":
+    async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def invitation_status(self, invitation_id: str) -> "InvitationStatusResponse":
+    async def invitation_status(
+        self, invitation_status_request: "InvitationStatusRequest"
+    ) -> "InvitationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def get_oberon_key(self) -> "GetOberonKeyResponse":
+    async def get_oberon_key(
+        self, get_oberon_key_request: "GetOberonKeyRequest"
+    ) -> "GetOberonKeyResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "name": request.name,
-            "description": request.description,
-            "uri": request.uri,
-            "details": request.details,
-        }
-
-        response = await self.create_ecosystem(**request_kwargs)
+        response = await self.create_ecosystem(request)
         await stream.send_message(response)
 
     async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "description": request.description,
-        }
-
-        response = await self.generate_token(**request_kwargs)
+        response = await self.generate_token(request)
         await stream.send_message(response)
 
     async def __rpc_invite(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "participant": request.participant,
-            "description": request.description,
-            "details": request.details,
-        }
-
-        response = await self.invite(**request_kwargs)
+        response = await self.invite(request)
         await stream.send_message(response)
 
     async def __rpc_invitation_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "invitation_id": request.invitation_id,
-        }
-
-        response = await self.invitation_status(**request_kwargs)
+        response = await self.invitation_status(request)
         await stream.send_message(response)
 
     async def __rpc_get_oberon_key(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.get_oberon_key(**request_kwargs)
+        response = await self.get_oberon_key(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:

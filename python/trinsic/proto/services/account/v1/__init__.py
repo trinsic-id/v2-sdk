@@ -158,98 +158,70 @@ class AccountEcosystem(betterproto.Message):
 
 
 class AccountStub(betterproto.ServiceStub):
-    async def sign_in(
-        self,
-        *,
-        details: "AccountDetails" = None,
-        invitation_code: str = "",
-        ecosystem_id: str = ""
-    ) -> "SignInResponse":
-
-        request = SignInRequest()
-        if details is not None:
-            request.details = details
-        request.invitation_code = invitation_code
-        request.ecosystem_id = ecosystem_id
-
+    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/SignIn", request, SignInResponse
+            "/services.account.v1.Account/SignIn", sign_in_request, SignInResponse
         )
 
-    async def info(self) -> "InfoResponse":
-
-        request = InfoRequest()
-
+    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/Info", request, InfoResponse
+            "/services.account.v1.Account/Info", info_request, InfoResponse
         )
 
-    async def list_devices(self) -> "ListDevicesResponse":
-
-        request = ListDevicesRequest()
-
+    async def list_devices(
+        self, list_devices_request: "ListDevicesRequest"
+    ) -> "ListDevicesResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/ListDevices", request, ListDevicesResponse
+            "/services.account.v1.Account/ListDevices",
+            list_devices_request,
+            ListDevicesResponse,
         )
 
-    async def revoke_device(self) -> "RevokeDeviceResponse":
-
-        request = RevokeDeviceRequest()
-
+    async def revoke_device(
+        self, revoke_device_request: "RevokeDeviceRequest"
+    ) -> "RevokeDeviceResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/RevokeDevice", request, RevokeDeviceResponse
+            "/services.account.v1.Account/RevokeDevice",
+            revoke_device_request,
+            RevokeDeviceResponse,
         )
 
 
 class AccountBase(ServiceBase):
-    async def sign_in(
-        self, details: "AccountDetails", invitation_code: str, ecosystem_id: str
-    ) -> "SignInResponse":
+    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(self) -> "InfoResponse":
+    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def list_devices(self) -> "ListDevicesResponse":
+    async def list_devices(
+        self, list_devices_request: "ListDevicesRequest"
+    ) -> "ListDevicesResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def revoke_device(self) -> "RevokeDeviceResponse":
+    async def revoke_device(
+        self, revoke_device_request: "RevokeDeviceRequest"
+    ) -> "RevokeDeviceResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "details": request.details,
-            "invitation_code": request.invitation_code,
-            "ecosystem_id": request.ecosystem_id,
-        }
-
-        response = await self.sign_in(**request_kwargs)
+        response = await self.sign_in(request)
         await stream.send_message(response)
 
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.info(**request_kwargs)
+        response = await self.info(request)
         await stream.send_message(response)
 
     async def __rpc_list_devices(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.list_devices(**request_kwargs)
+        response = await self.list_devices(request)
         await stream.send_message(response)
 
     async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {}
-
-        response = await self.revoke_device(**request_kwargs)
+        response = await self.revoke_device(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:

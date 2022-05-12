@@ -179,219 +179,131 @@ class CheckStatusResponse(betterproto.Message):
 
 
 class VerifiableCredentialStub(betterproto.ServiceStub):
-    async def issue(self, *, document_json: str = "") -> "IssueResponse":
-
-        request = IssueRequest()
-        request.document_json = document_json
-
+    async def issue(self, issue_request: "IssueRequest") -> "IssueResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
-            request,
+            issue_request,
             IssueResponse,
         )
 
     async def issue_from_template(
-        self, *, template_id: str = "", values_json: str = "", framework_id: str = ""
+        self, issue_from_template_request: "IssueFromTemplateRequest"
     ) -> "IssueFromTemplateResponse":
-
-        request = IssueFromTemplateRequest()
-        request.template_id = template_id
-        request.values_json = values_json
-        request.framework_id = framework_id
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
-            request,
+            issue_from_template_request,
             IssueFromTemplateResponse,
         )
 
     async def check_status(
-        self, *, credential_status_id: str = ""
+        self, check_status_request: "CheckStatusRequest"
     ) -> "CheckStatusResponse":
-
-        request = CheckStatusRequest()
-        request.credential_status_id = credential_status_id
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
-            request,
+            check_status_request,
             CheckStatusResponse,
         )
 
     async def update_status(
-        self, *, credential_status_id: str = "", revoked: bool = False
+        self, update_status_request: "UpdateStatusRequest"
     ) -> "UpdateStatusResponse":
-
-        request = UpdateStatusRequest()
-        request.credential_status_id = credential_status_id
-        request.revoked = revoked
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
-            request,
+            update_status_request,
             UpdateStatusResponse,
         )
 
     async def create_proof(
-        self,
-        *,
-        reveal_document_json: str = "",
-        item_id: str = "",
-        document_json: str = ""
+        self, create_proof_request: "CreateProofRequest"
     ) -> "CreateProofResponse":
-
-        request = CreateProofRequest()
-        request.reveal_document_json = reveal_document_json
-        request.item_id = item_id
-        request.document_json = document_json
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
-            request,
+            create_proof_request,
             CreateProofResponse,
         )
 
     async def verify_proof(
-        self, *, proof_document_json: str = ""
+        self, verify_proof_request: "VerifyProofRequest"
     ) -> "VerifyProofResponse":
-
-        request = VerifyProofRequest()
-        request.proof_document_json = proof_document_json
-
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
-            request,
+            verify_proof_request,
             VerifyProofResponse,
         )
 
-    async def send(
-        self,
-        *,
-        email: str = "",
-        did_uri: str = "",
-        didcomm_invitation_json: str = "",
-        document_json: str = ""
-    ) -> "SendResponse":
-
-        request = SendRequest()
-        request.email = email
-        request.did_uri = did_uri
-        request.didcomm_invitation_json = didcomm_invitation_json
-        request.document_json = document_json
-
+    async def send(self, send_request: "SendRequest") -> "SendResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Send",
-            request,
+            send_request,
             SendResponse,
         )
 
 
 class VerifiableCredentialBase(ServiceBase):
-    async def issue(self, document_json: str) -> "IssueResponse":
+    async def issue(self, issue_request: "IssueRequest") -> "IssueResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def issue_from_template(
-        self, template_id: str, values_json: str, framework_id: str
+        self, issue_from_template_request: "IssueFromTemplateRequest"
     ) -> "IssueFromTemplateResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def check_status(self, credential_status_id: str) -> "CheckStatusResponse":
+    async def check_status(
+        self, check_status_request: "CheckStatusRequest"
+    ) -> "CheckStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def update_status(
-        self, credential_status_id: str, revoked: bool
+        self, update_status_request: "UpdateStatusRequest"
     ) -> "UpdateStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def create_proof(
-        self, reveal_document_json: str, item_id: str, document_json: str
+        self, create_proof_request: "CreateProofRequest"
     ) -> "CreateProofResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def verify_proof(self, proof_document_json: str) -> "VerifyProofResponse":
+    async def verify_proof(
+        self, verify_proof_request: "VerifyProofRequest"
+    ) -> "VerifyProofResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def send(
-        self, email: str, did_uri: str, didcomm_invitation_json: str, document_json: str
-    ) -> "SendResponse":
+    async def send(self, send_request: "SendRequest") -> "SendResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_issue(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "document_json": request.document_json,
-        }
-
-        response = await self.issue(**request_kwargs)
+        response = await self.issue(request)
         await stream.send_message(response)
 
     async def __rpc_issue_from_template(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "template_id": request.template_id,
-            "values_json": request.values_json,
-            "framework_id": request.framework_id,
-        }
-
-        response = await self.issue_from_template(**request_kwargs)
+        response = await self.issue_from_template(request)
         await stream.send_message(response)
 
     async def __rpc_check_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "credential_status_id": request.credential_status_id,
-        }
-
-        response = await self.check_status(**request_kwargs)
+        response = await self.check_status(request)
         await stream.send_message(response)
 
     async def __rpc_update_status(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "credential_status_id": request.credential_status_id,
-            "revoked": request.revoked,
-        }
-
-        response = await self.update_status(**request_kwargs)
+        response = await self.update_status(request)
         await stream.send_message(response)
 
     async def __rpc_create_proof(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "reveal_document_json": request.reveal_document_json,
-            "item_id": request.item_id,
-            "document_json": request.document_json,
-        }
-
-        response = await self.create_proof(**request_kwargs)
+        response = await self.create_proof(request)
         await stream.send_message(response)
 
     async def __rpc_verify_proof(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "proof_document_json": request.proof_document_json,
-        }
-
-        response = await self.verify_proof(**request_kwargs)
+        response = await self.verify_proof(request)
         await stream.send_message(response)
 
     async def __rpc_send(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-
-        request_kwargs = {
-            "email": request.email,
-            "did_uri": request.did_uri,
-            "didcomm_invitation_json": request.didcomm_invitation_json,
-            "document_json": request.document_json,
-        }
-
-        response = await self.send(**request_kwargs)
+        response = await self.send(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
