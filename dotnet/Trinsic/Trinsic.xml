@@ -223,43 +223,6 @@
             blake3256 hash of the request body
             </summary>
         </member>
-        <member name="P:Trinsic.Services.Common.V1.Common.Descriptor">
-            <summary>Service descriptor</summary>
-        </member>
-        <member name="T:Trinsic.Services.Common.V1.Common.CommonBase">
-            <summary>Base class for server-side implementations of Common</summary>
-        </member>
-        <member name="T:Trinsic.Services.Common.V1.Common.CommonClient">
-            <summary>Client for Common</summary>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ChannelBase)">
-            <summary>Creates a new client for Common</summary>
-            <param name="channel">The channel to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.CallInvoker)">
-            <summary>Creates a new client for Common that uses a custom <c>CallInvoker</c>.</summary>
-            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor">
-            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Protected constructor to allow creation of configured clients.</summary>
-            <param name="configuration">The client configuration.</param>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Trinsic.Services.Common.V1.Common.CommonBase)">
-            <summary>Creates service definition that can be registered with a server</summary>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
-        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Common.V1.Common.CommonBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
-            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
-            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">
             <summary>Holder for reflection information generated from services/account/v1/account.proto</summary>
         </member>
@@ -298,7 +261,7 @@
         </member>
         <member name="T:Trinsic.Services.Account.V1.SignInRequest">
             <summary>
-            Request for creating new account
+            Request for creating or signing into an account
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.SignInRequest.DetailsFieldNumber">
@@ -315,7 +278,6 @@
         <member name="P:Trinsic.Services.Account.V1.SignInRequest.InvitationCode">
             <summary>
             Invitation code associated with this registration
-            This field is optional.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.SignInRequest.EcosystemIdFieldNumber">
@@ -323,13 +285,13 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.SignInRequest.EcosystemId">
             <summary>
-            EcosystemId to sign in. This field is optional
-            and will be ignored if invitation_code is passed
+            ID of Ecosystem to sign into. 
+            Ignored if `invitation_code` is passed
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountDetails">
             <summary>
-            Account Registration Details
+            Account registration details
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountDetails.NameFieldNumber">
@@ -337,7 +299,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.AccountDetails.Name">
             <summary>
-            Account name (optional)
+            Account name
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountDetails.EmailFieldNumber">
@@ -345,7 +307,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.AccountDetails.Email">
             <summary>
-            Email account (required)
+            Email account
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountDetails.SmsFieldNumber">
@@ -353,7 +315,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.AccountDetails.Sms">
             <summary>
-            SMS number including country code (optional)
+            SMS number including country code
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.SignInResponse">
@@ -448,6 +410,16 @@
             The method used to protect the token
             </summary>
         </member>
+        <member name="T:Trinsic.Services.Account.V1.InfoRequest">
+            <summary>
+            Request for information about the account used to make the request
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Account.V1.InfoResponse">
+            <summary>
+            Information about the account used to make the request
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Account.V1.InfoResponse.DetailsFieldNumber">
             <summary>Field number for the "details" field.</summary>
         </member>
@@ -462,7 +434,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.InfoResponse.Ecosystems">
             <summary>
-            any ecosystems the account has access to
+            Use `ecosystem_id` instead
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.InfoResponse.WalletIdFieldNumber">
@@ -470,7 +442,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.InfoResponse.WalletId">
             <summary>
-            The wallet id associated with this account
+            The wallet ID associated with this account
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.InfoResponse.DeviceIdFieldNumber">
@@ -478,7 +450,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.InfoResponse.DeviceId">
             <summary>
-            The device id associated with this account
+            The device ID associated with this account session
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.InfoResponse.EcosystemIdFieldNumber">
@@ -486,7 +458,16 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.InfoResponse.EcosystemId">
             <summary>
-            The ecosystem id associated with this account
+            The ecosystem ID within which this account resides
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.InfoResponse.PublicDidFieldNumber">
+            <summary>Field number for the "public_did" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.InfoResponse.PublicDid">
+            <summary>
+            The public DID associated with this account.
+            This DID is used as "issuer" when signing verifiable credentials
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.IdFieldNumber">
@@ -669,6 +650,22 @@
         <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
             <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
         </member>
+        <member name="T:Trinsic.Services.Protobuf.Options.OptionsReflection">
+            <summary>Holder for reflection information generated from services/options/options.proto</summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.OptionsReflection.Descriptor">
+            <summary>File descriptor for services/options/options.proto</summary>
+        </member>
+        <member name="T:Trinsic.Services.Protobuf.Options.OptionsExtensions">
+            <summary>Holder for extension identifiers generated from the top level of services/options/options.proto</summary>
+        </member>
+        <member name="F:Trinsic.Services.Protobuf.Options.OptionsExtensions.Optional">
+            <summary>
+            Whether field is optional in Trinsic's backend.
+            This is not the same as an `optional` protobuf label;
+            it only impacts documentation generation for the field.
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UniversalWalletReflection">
             <summary>Holder for reflection information generated from services/universal-wallet/v1/universal-wallet.proto</summary>
         </member>
@@ -677,37 +674,58 @@
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.SearchRequest">
             <summary>
-            Search request object
+            Request to search items in wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchRequest.QueryFieldNumber">
             <summary>Field number for the "query" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchRequest.Query">
+            <summary>
+            SQL Query to execute against items in wallet
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchRequest.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `SearchResponse`
+            if more data is available for query
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.SearchResponse">
             <summary>
-            Search response object
+            Response to `SearchRequest`
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.ItemsFieldNumber">
             <summary>Field number for the "items" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchResponse.Items">
+            <summary>
+            Array of query results, as JSON strings
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMoreFieldNumber">
             <summary>Field number for the "has_more" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.UniversalWallet.V1.SearchResponse.HasMore">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.SearchResponse.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.SearchResponse.ContinuationToken">
             <summary>
-            int32 count = 3;
+            Token to fetch next set of results via `SearchRequest`
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.GetItemRequest">
             <summary>
-            Get item request object
+            Request to fetch an item from wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemRequest.ItemIdFieldNumber">
@@ -715,12 +733,12 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemRequest.ItemId">
             <summary>
-            The item identifier
+            ID of item in wallet
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.GetItemResponse">
             <summary>
-            Get item response object
+            Response to `GetItemRequest`
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemJsonFieldNumber">
@@ -728,7 +746,7 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemJson">
             <summary>
-            The item data represented as stringified JSON
+            Item data as a JSON string
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemTypeFieldNumber">
@@ -736,12 +754,12 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.GetItemResponse.ItemType">
             <summary>
-            User set item type that described the content of this item
+            Type of item specified when item was inserted into wallet
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest">
             <summary>
-            Update item request object
+            Request to update item in wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemIdFieldNumber">
@@ -749,7 +767,7 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemId">
             <summary>
-            The item identifier
+            ID of item in wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemTypeFieldNumber">
@@ -757,17 +775,17 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UpdateItemRequest.ItemType">
             <summary>
-            The item type that described the content of this item
+            Item type (ex. "VerifiableCredential")
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.UpdateItemResponse">
             <summary>
-            Update item response object
+            Response to `UpdateItemRequest`
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.InsertItemRequest">
             <summary>
-            Insert item request
+            Request to insert a JSON document into a wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemJsonFieldNumber">
@@ -775,7 +793,7 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemJson">
             <summary>
-            the document to insert as stringified json
+            Document to insert; must be stringified JSON
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemTypeFieldNumber">
@@ -783,12 +801,12 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.InsertItemRequest.ItemType">
             <summary>
-            optional item type ex. "VerifiableCredential"
+            Item type (ex. "VerifiableCredential")
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.InsertItemResponse">
             <summary>
-            Insert item response
+            Response to `InsertItemRequest`
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.InsertItemResponse.ItemIdFieldNumber">
@@ -796,12 +814,12 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.InsertItemResponse.ItemId">
             <summary>
-            The item identifier of the inserted record
+            ID of item inserted into wallet
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteItemRequest">
             <summary>
-            Delete item request
+            Request to delete an item in a wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.UniversalWallet.V1.DeleteItemRequest.ItemIdFieldNumber">
@@ -809,12 +827,12 @@
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.DeleteItemRequest.ItemId">
             <summary>
-            item identifier of the record to delete
+            ID of item to delete
             </summary>
         </member>
         <member name="T:Trinsic.Services.UniversalWallet.V1.DeleteItemResponse">
             <summary>
-            Delete item response
+            Response to `DeleteItemRequest`
             </summary>
         </member>
         <member name="P:Trinsic.Services.UniversalWallet.V1.UniversalWallet.Descriptor">
@@ -849,7 +867,7 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.ServerCallContext)">
             <summary>
-            Insert an item into the wallet
+            Update an item in the wallet
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -991,7 +1009,7 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Insert an item into the wallet
+            Update an item in the wallet
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1001,7 +1019,7 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItem(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.CallOptions)">
             <summary>
-            Insert an item into the wallet
+            Update an item in the wallet
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1009,7 +1027,7 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItemAsync(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Insert an item into the wallet
+            Update an item in the wallet
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -1019,7 +1037,7 @@
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletClient.UpdateItemAsync(Trinsic.Services.UniversalWallet.V1.UpdateItemRequest,Grpc.Core.CallOptions)">
             <summary>
-            Insert an item into the wallet
+            Update an item in the wallet
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1069,7 +1087,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1080,24 +1098,84 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredentialsReflection.Descriptor">
             <summary>File descriptor for services/verifiable-credentials/v1/verifiable-credentials.proto</summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueRequest">
+            <summary>
+            Request to sign a JSON-LD Credential using public key tied to caller
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentJsonFieldNumber">
             <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueRequest.DocumentJson">
+            <summary>
+            Valid JSON-LD Credential document to be signed, in string form
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueResponse">
+            <summary>
+            Response to `IssueRequest`
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.SignedDocumentJsonFieldNumber">
             <summary>Field number for the "signed_document_json" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueResponse.SignedDocumentJson">
+            <summary>
+            Verifiable Credential document, signed with public key
+            tied to caller of `IssueRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest">
+            <summary>
+            Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.TemplateIdFieldNumber">
             <summary>Field number for the "template_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.TemplateId">
+            <summary>
+            ID of template to use
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.ValuesJsonFieldNumber">
             <summary>Field number for the "values_json" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.ValuesJson">
+            <summary>
+            JSON document string with keys corresponding to the fields of
+            the template referenced by `template_id`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.FrameworkIdFieldNumber">
+            <summary>Field number for the "framework_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest.FrameworkId">
+            <summary>
+            Governance framework ID to use with issuance of this credential.
+            If specified, the issued credential will contain extended issuer
+            metadata with membership info for the given ecosystem governance framework (EGF)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse">
+            <summary>
+            Response to `IssueFromTemplateRequest`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse.DocumentJsonFieldNumber">
             <summary>Field number for the "document_json" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateResponse.DocumentJson">
+            <summary>
+            Verifiable Credential document, in JSON-LD form,
+            constructed from the specified template and values; signed
+            with public key tied to caller of `IssueFromTemplateRequest`
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest">
             <summary>
-            Create Proof
+            Request to create a proof for a Verifiable Credential using public key tied to caller.
+            Either `item_id` or `document_json` may be provided, not both.
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJsonFieldNumber">
@@ -1105,11 +1183,9 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJson">
             <summary>
-            Optional document that describes which fields should be
-            revealed in the generated proof. If specified, this document must be
-            a valid JSON-LD frame.
-            If this field is not specified, a default reveal document will be
-            used and all fields in the signed document will be revealed
+            A valid JSON-LD frame describing which fields should be
+            revealed in the generated proof. 
+            If unspecified, all fields in the document will be revealed
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemIdFieldNumber">
@@ -1117,8 +1193,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ItemId">
             <summary>
-            The item identifier that contains a record with a verifiable
-            credential to be used for generating the proof.
+            ID of wallet item stored in a Trinsic cloud wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJsonFieldNumber">
@@ -1126,51 +1201,74 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJson">
             <summary>
-            A document that contains a valid verifiable credential with an
-            unbound signature. The proof will be derived from this document
-            directly. The document will not be stored in the wallet.
+            A valid JSON-LD Verifiable Credential document string 
+            with an unbound signature. The proof will be derived from this
+            document directly. The document will not be stored in the wallet.
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ProofOneofCase">
             <summary>Enum of possible cases for the "proof" oneof.</summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse">
+            <summary>
+            Response to `CreateProofRequest`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentJsonFieldNumber">
             <summary>Field number for the "proof_document_json" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofResponse.ProofDocumentJson">
+            <summary>
+            Valid JSON-LD proof for the specified credential
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest">
             <summary>
-            Verify Proof
+            Request to verify a proof
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest.ProofDocumentJsonFieldNumber">
             <summary>Field number for the "proof_document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofRequest.ProofDocumentJson">
+            <summary>
+            JSON-LD proof document string to verify
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse">
+            <summary>
+            Response to `VerifyProofRequest`
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.IsValidFieldNumber">
             <summary>Field number for the "is_valid" field.</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.IsValid">
             <summary>
-            Indicates if the proof is valid
+            Whether or not all validations in `validation_results` passed
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationMessagesFieldNumber">
             <summary>Field number for the "validation_messages" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationMessages">
+            <summary>
+            Use `validation_results` instead
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationResultsFieldNumber">
             <summary>Field number for the "validation_results" field.</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationResults">
             <summary>
-            Validation messages that describe invalid verifications
-            based on different factors, such as schema validation,
-            proof verification, revocation registry membership, etc.
-            If the proof is not valid, this field will contain detailed
-            results where this verification failed.
+            Results of each validation check performed, 
+            such as schema conformance, revocation status, signature, etc.
+            Detailed results are provided for failed validations.
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage">
             <summary>
-            validation message that contains results and error messages
+            Result of a validation check on a proof
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.IsValidFieldNumber">
@@ -1178,7 +1276,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.IsValid">
             <summary>
-            the validation result
+            Whether or not this validation check passed
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.MessagesFieldNumber">
@@ -1186,27 +1284,57 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.Messages">
             <summary>
-            set of messages that contain validation results
+            If validation failed, contains messages explaining why
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.SendRequest">
+            <summary>
+            Request to send a document to another user's wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.EmailFieldNumber">
             <summary>Field number for the "email" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.Email">
+            <summary>
+            Email address of user to send item to
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUriFieldNumber">
             <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidUri">
+            <summary>
+            DID of recipient (presently unsupported)
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJsonFieldNumber">
             <summary>Field number for the "didcomm_invitation_json" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJson">
+            <summary>
+            DIDComm out-of-band invitation JSON (presently unsupported)
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DocumentJsonFieldNumber">
             <summary>Field number for the "document_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DocumentJson">
+            <summary>
+            JSON document to send to recipient
+            </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DeliveryMethodOneofCase">
             <summary>Enum of possible cases for the "delivery_method" oneof.</summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.V1.SendResponse">
+            <summary>
+            Response to `SendRequest`
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest">
             <summary>
-            request object to update the status of the revocation entry
+            Request to update a credential's revocation status
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest.CredentialStatusIdFieldNumber">
@@ -1214,7 +1342,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest.CredentialStatusId">
             <summary>
-            the credential status id
+            Credential Status ID to update
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest.RevokedFieldNumber">
@@ -1222,17 +1350,17 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusRequest.Revoked">
             <summary>
-            indicates if the status is revoked
+            New revocation status of credential
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.UpdateStatusResponse">
             <summary>
-            response object for update of status of revocation entry
+            Response to `UpdateStatusRequest`
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest">
             <summary>
-            request object to check the status of the revocation entry
+            Request to check a credential's revocation status
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest.CredentialStatusIdFieldNumber">
@@ -1240,12 +1368,12 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest.CredentialStatusId">
             <summary>
-            the credential status id
+            Credential Status ID to check
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse">
             <summary>
-            response object for checking the status of revocation entry
+            Response to `CheckStatusRequest`
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse.RevokedFieldNumber">
@@ -1253,7 +1381,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CheckStatusResponse.Revoked">
             <summary>
-            indicates if the status is revoked
+            The credential's revocation status
             </summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.Descriptor">
@@ -1621,7 +1749,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1632,122 +1760,345 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplatesReflection.Descriptor">
             <summary>File descriptor for services/verifiable-credentials/templates/v1/templates.proto</summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.FieldType">
+            <summary>
+            Valid types for credential fields
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest">
+            <summary>
+            Request to fetch a template by ID
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest.Id">
+            <summary>
+            ID of template to fetch
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateResponse">
+            <summary>
+            Response to `GetCredentialTemplateRequest`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateResponse.TemplateFieldNumber">
             <summary>Field number for the "template" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateResponse.Template">
+            <summary>
+            Template fetched by ID
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest">
+            <summary>
+            Request to search templates using a SQL query
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.QueryFieldNumber">
             <summary>Field number for the "query" field.</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.Query">
             <summary>
-            SELECT * FROM c WHERE c.name = 'Diploma'
+            SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `SearchCredentialTemplatesResponse`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse">
+            <summary>
+            Response to `SearchCredentialTemplatesRequest`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.ItemsJsonFieldNumber">
             <summary>Field number for the "items_json" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.ItemsJson">
+            <summary>
+            Raw JSON data returned from query
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMoreFieldNumber">
             <summary>Field number for the "has_more" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.CountFieldNumber">
-            <summary>Field number for the "count" field.</summary>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.HasMore">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesResponse.ContinuationToken">
+            <summary>
+            Count of items in `items_json`
+            int32 count = 3; unpopulated and unused
+            Token to fetch next set of results via `SearchCredentialTemplatesRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest">
+            <summary>
+            Request to list templates using a SQL query
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest.QueryFieldNumber">
             <summary>Field number for the "query" field.</summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest.Query">
             <summary>
-            SELECT * FROM c WHERE c.name = 'Diploma'
+            SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `ListCredentialTemplatesResponse`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse">
+            <summary>
+            Response to `ListCredentialTemplatesRequest` 
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.TemplatesFieldNumber">
             <summary>Field number for the "templates" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.Templates">
+            <summary>
+            Templates found by query
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.HasMoreResultsFieldNumber">
             <summary>Field number for the "has_more_results" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.HasMoreResults">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest">
+            <summary>
+            Request to delete a template by ID
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest.Id">
+            <summary>
+            ID of template to delete
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateResponse">
+            <summary>
+            Response to `DeleteCredentialTemplateRequest`
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest">
             <summary>
-            Request to create new template
+            Request to create a new template
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.Name">
+            <summary>
+            Name of new template
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.FieldsFieldNumber">
             <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.Fields">
+            <summary>
+            Fields which compose the template
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.AllowAdditionalFieldsFieldNumber">
             <summary>Field number for the "allow_additional_fields" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest.AllowAdditionalFields">
+            <summary>
+            Whether credentials may be issued against this template which have fields
+            not specified in `fields`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateResponse">
+            <summary>
+            Response to `CreateCredentialTemplateRequest`
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateResponse.DataFieldNumber">
             <summary>Field number for the "data" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateResponse.Data">
+            <summary>
+            Created template
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField">
+            <summary>
+            A field defined in a template
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Description">
+            <summary>
+            Human-readable description of the field
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.OptionalFieldNumber">
             <summary>Field number for the "optional" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Optional">
+            <summary>
+            Whether this field may be omitted when a credential is issued against the template
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.TypeFieldNumber">
             <summary>Field number for the "type" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateField.Type">
+            <summary>
+            The type of the field
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateRequest">
+            <summary>
+            Unused
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateRequest.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateResponse">
+            <summary>
+            Unused
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.GetTemplateResponse.DataFieldNumber">
             <summary>Field number for the "data" field.</summary>
         </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesRequest">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesResponse">
+            <summary>
+            Unused
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListTemplatesResponse.TemplatesFieldNumber">
             <summary>Field number for the "templates" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData">
+            <summary>
+            Credential Template
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Id">
+            <summary>
+            Template ID
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.NameFieldNumber">
             <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Name">
+            <summary>
+            Template name
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.VersionFieldNumber">
             <summary>Field number for the "version" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Version">
+            <summary>
+            Template version number
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.FieldsFieldNumber">
             <summary>Field number for the "fields" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Fields">
+            <summary>
+            Fields defined for the template
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.AllowAdditionalFieldsFieldNumber">
             <summary>Field number for the "allow_additional_fields" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.AllowAdditionalFields">
+            <summary>
+            Whether credentials issued against this template may 
+            contain fields not defined by template
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.SchemaUriFieldNumber">
             <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.SchemaUri">
+            <summary>
+            URI pointing to template JSON schema document
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.ContextUriFieldNumber">
             <summary>Field number for the "context_uri" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.ContextUri">
+            <summary>
+            URI pointing to template JSON-LD context document
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.EcosystemIdFieldNumber">
             <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.EcosystemId">
+            <summary>
+            ID of ecosystem in which template resides
+            </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.TypeFieldNumber">
             <summary>Field number for the "type" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.Type">
+            <summary>
+            Template type (`VerifiableCredential`)
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.CreatedByFieldNumber">
             <summary>Field number for the "created_by" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.CreatedBy">
+            <summary>
+            ID of template creator
+            </summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.Descriptor">
             <summary>Service descriptor</summary>
@@ -1781,7 +2132,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1810,17 +2161,37 @@
         <member name="F:Trinsic.Services.Provider.V1.InviteRequest.ParticipantFieldNumber">
             <summary>Field number for the "participant" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.InviteRequest.Participant">
+            <summary>
+            Type of participant being invited (individual/organization)
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.InviteRequest.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.InviteRequest.Description">
+            <summary>
+            Description of invitation
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.InviteRequest.DetailsFieldNumber">
             <summary>Field number for the "details" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.InviteRequest.Details">
+            <summary>
+            Account details of invitee
+            </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.InviteRequest.Types">
             <summary>Container for nested types declared in the InviteRequest message type.</summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.InviteResponse.InvitationIdFieldNumber">
             <summary>Field number for the "invitation_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.InviteResponse.InvitationId">
+            <summary>
+            ID of created invitation
+            </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.InviteResponse.InvitationCodeFieldNumber">
             <summary>Field number for the "invitation_code" field.</summary>
@@ -1842,11 +2213,26 @@
         <member name="F:Trinsic.Services.Provider.V1.InvitationStatusRequest.InvitationIdFieldNumber">
             <summary>Field number for the "invitation_id" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.InvitationStatusRequest.InvitationId">
+            <summary>
+            ID of invitation
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.InvitationStatusResponse.StatusFieldNumber">
             <summary>Field number for the "status" field.</summary>
         </member>
+        <member name="P:Trinsic.Services.Provider.V1.InvitationStatusResponse.Status">
+            <summary>
+            Status of invitation
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Provider.V1.InvitationStatusResponse.StatusDetailsFieldNumber">
             <summary>Field number for the "status_details" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.InvitationStatusResponse.StatusDetails">
+            <summary>
+            Human-readable string with details about invitation status
+            </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.InvitationStatusResponse.Types">
             <summary>Container for nested types declared in the InvitationStatusResponse message type.</summary>
@@ -1898,8 +2284,7 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Description">
             <summary>
-            Ecosystem description.
-            This field is optional.
+            Ecosystem description
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.UriFieldNumber">
@@ -1907,8 +2292,7 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemRequest.Uri">
             <summary>
-            External URL associated with your organization or ecosystem entity.
-            This field is optional
+            External URL associated with your organization or ecosystem entity
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.DetailsFieldNumber">
@@ -1941,7 +2325,7 @@
         <member name="P:Trinsic.Services.Provider.V1.CreateEcosystemResponse.ConfirmationMethod">
             <summary>
             Indicates if confirmation of account is required.
-            This settings is configured globally by the server administrator.
+            This setting is configured globally by the server administrator.
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.GenerateTokenRequest.DescriptionFieldNumber">
@@ -1949,7 +2333,7 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.GenerateTokenRequest.Description">
             <summary>
-            Optional description to identify this token
+            Description to identify this token
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.GenerateTokenResponse.ProfileFieldNumber">
@@ -2235,7 +2619,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Provider.V1.Provider.ProviderBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -2266,11 +2650,36 @@
             - entity authority under specific EGF was terminated by the governing authority.
             </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest.GovernanceFrameworkFieldNumber">
-            <summary>Field number for the "governance_framework" field.</summary>
+        <member name="T:Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest">
+            <summary>
+            Register new ecosystem governance framework
+            </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest.GovernanceFrameworkFieldNumber">
-            <summary>Field number for the "governance_framework" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest.GovernanceFrameworkUriFieldNumber">
+            <summary>Field number for the "governance_framework_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse.Id">
+            <summary>
+            Unique framework identifier
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse.GoverningAuthorityFieldNumber">
+            <summary>Field number for the "governing_authority" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.AddFrameworkResponse.TrustRegistryFieldNumber">
+            <summary>Field number for the "trust_registry" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest.QueryFieldNumber">
             <summary>Field number for the "query" field.</summary>
@@ -2289,9 +2698,6 @@
         <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.HasMoreFieldNumber">
             <summary>Field number for the "has_more" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.CountFieldNumber">
-            <summary>Field number for the "count" field.</summary>
-        </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.SearchRegistryResponse.ContinuationTokenFieldNumber">
             <summary>Field number for the "continuation_token" field.</summary>
         </member>
@@ -2304,112 +2710,69 @@
         <member name="F:Trinsic.Services.TrustRegistry.V1.GovernanceFramework.DescriptionFieldNumber">
             <summary>Field number for the "description" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.DidUriFieldNumber">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.DidUriFieldNumber">
             <summary>Field number for the "did_uri" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.CredentialTypeUriFieldNumber">
-            <summary>Field number for the "credential_type_uri" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.ValidFromUtcFieldNumber">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.ValidFromUtcFieldNumber">
             <summary>Field number for the "valid_from_utc" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.ValidUntilUtcFieldNumber">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.ValidUntilUtcFieldNumber">
             <summary>Field number for the "valid_until_utc" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.FrameworkIdFieldNumber">
+            <summary>Field number for the "framework_id" field.</summary>
         </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest.AuthorityOneofCase">
-            <summary>Enum of possible cases for the "authority" oneof.</summary>
+        <member name="P:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.FrameworkId">
+            <summary>
+            the id of the governance framework
+            </summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.DidUriFieldNumber">
-            <summary>Field number for the "did_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.PresentationTypeUriFieldNumber">
-            <summary>Field number for the "presentation_type_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.ValidFromUtcFieldNumber">
-            <summary>Field number for the "valid_from_utc" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.ValidUntilUtcFieldNumber">
-            <summary>Field number for the "valid_until_utc" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest.AuthorityOneofCase">
-            <summary>Enum of possible cases for the "authority" oneof.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest.DidUriFieldNumber">
-            <summary>Field number for the "did_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest.CredentialTypeUriFieldNumber">
-            <summary>Field number for the "credential_type_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest.AuthorityOneofCase">
-            <summary>Enum of possible cases for the "authority" oneof.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest.DidUriFieldNumber">
-            <summary>Field number for the "did_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest.PresentationTypeUriFieldNumber">
-            <summary>Field number for the "presentation_type_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest.AuthorityOneofCase">
-            <summary>Enum of possible cases for the "authority" oneof.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest.DidUriFieldNumber">
-            <summary>Field number for the "did_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest.CredentialTypeUriFieldNumber">
-            <summary>Field number for the "credential_type_uri" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest.MemberOneofCase">
+        <member name="T:Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest.MemberOneofCase">
             <summary>Enum of possible cases for the "member" oneof.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusResponse.StatusFieldNumber">
-            <summary>Field number for the "status" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest.GovernanceFrameworkUriFieldNumber">
-            <summary>Field number for the "governance_framework_uri" field.</summary>
-        </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest.DidUriFieldNumber">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.DidUriFieldNumber">
             <summary>Field number for the "did_uri" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest.X509CertFieldNumber">
-            <summary>Field number for the "x509_cert" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest.PresentationTypeUriFieldNumber">
-            <summary>Field number for the "presentation_type_uri" field.</summary>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
         </member>
-        <member name="T:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest.MemberOneofCase">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.FrameworkIdFieldNumber">
+            <summary>Field number for the "framework_id" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest.MemberOneofCase">
             <summary>Enum of possible cases for the "member" oneof.</summary>
         </member>
-        <member name="F:Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusResponse.StatusFieldNumber">
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.GovernanceFrameworkUriFieldNumber">
+            <summary>Field number for the "governance_framework_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.DidUriFieldNumber">
+            <summary>Field number for the "did_uri" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.X509CertFieldNumber">
+            <summary>Field number for the "x509_cert" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.SchemaUriFieldNumber">
+            <summary>Field number for the "schema_uri" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest.MemberOneofCase">
+            <summary>Enum of possible cases for the "member" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.TrustRegistry.V1.GetMembershipStatusResponse.StatusFieldNumber">
             <summary>Field number for the "status" field.</summary>
         </member>
         <member name="F:Trinsic.Services.TrustRegistry.V1.FetchDataRequest.GovernanceFrameworkUriFieldNumber">
@@ -2441,7 +2804,7 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.RegisterIssuer(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.RegisterMember(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Registers an authoritative issuer with a credential template
             </summary>
@@ -2449,25 +2812,9 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.RegisterVerifier(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Registers an authoritative verifier with a credential template
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.UnregisterIssuer(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.UnregisterMember(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Removes an authoritative issuer with a credential template from the trust registry
-            </summary>
-            <param name="request">The request received from the client.</param>
-            <param name="context">The context of the server-side call handler being invoked.</param>
-            <returns>The response to send back to the client (wrapped by a task).</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase.UnregisterVerifier(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest,Grpc.Core.ServerCallContext)">
-            <summary>
-            Removes an authoritative verifier with a presentation template from the trust registry
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -2527,7 +2874,7 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterIssuer(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterMember(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Registers an authoritative issuer with a credential template
             </summary>
@@ -2537,7 +2884,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterIssuer(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterMember(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest,Grpc.Core.CallOptions)">
             <summary>
             Registers an authoritative issuer with a credential template
             </summary>
@@ -2545,7 +2892,7 @@
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterMemberAsync(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Registers an authoritative issuer with a credential template
             </summary>
@@ -2555,7 +2902,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterMemberAsync(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest,Grpc.Core.CallOptions)">
             <summary>
             Registers an authoritative issuer with a credential template
             </summary>
@@ -2563,43 +2910,7 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterVerifier(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Registers an authoritative verifier with a credential template
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterVerifier(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Registers an authoritative verifier with a credential template
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Registers an authoritative verifier with a credential template
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.RegisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Registers an authoritative verifier with a credential template
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterIssuer(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterMember(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Removes an authoritative issuer with a credential template from the trust registry
             </summary>
@@ -2609,7 +2920,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterIssuer(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterMember(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest,Grpc.Core.CallOptions)">
             <summary>
             Removes an authoritative issuer with a credential template from the trust registry
             </summary>
@@ -2617,7 +2928,7 @@
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterMemberAsync(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Removes an authoritative issuer with a credential template from the trust registry
             </summary>
@@ -2627,45 +2938,9 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.UnregisterIssuerRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterMemberAsync(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest,Grpc.Core.CallOptions)">
             <summary>
             Removes an authoritative issuer with a credential template from the trust registry
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterVerifier(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Removes an authoritative verifier with a presentation template from the trust registry
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterVerifier(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Removes an authoritative verifier with a presentation template from the trust registry
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="options">The options for the call.</param>
-            <returns>The response received from the server.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
-            <summary>
-            Removes an authoritative verifier with a presentation template from the trust registry
-            </summary>
-            <param name="request">The request to send to the server.</param>
-            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-            <param name="cancellationToken">An optional token for canceling the call.</param>
-            <returns>The call object.</returns>
-        </member>
-        <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryClient.UnregisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.UnregisterVerifierRequest,Grpc.Core.CallOptions)">
-            <summary>
-            Removes an authoritative verifier with a presentation template from the trust registry
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2679,7 +2954,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -2815,7 +3090,7 @@
             The search response and continuation token, if available
             </returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.RegisterGovernanceFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
+        <member name="M:Trinsic.TrustRegistryService.AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
             Register a Governance Framework with the Trust Registry.
             </summary>
@@ -2824,32 +3099,18 @@
             </remarks>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.RegisterIssuerAsync(Trinsic.Services.TrustRegistry.V1.RegisterIssuerRequest)">
+        <member name="M:Trinsic.TrustRegistryService.RegisterMemberAsync(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest)">
             <summary>
-            Register a DID as authoritative issuer with the configured governance framework.
+            Register a DID as authoritative member with the configured governance framework.
             </summary>
             <param name="request">The request object</param>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.RegisterVerifierAsync(Trinsic.Services.TrustRegistry.V1.RegisterVerifierRequest)">
-            <summary>
-            Register a DID as authoritative verifier with the configured governance framework.
-            </summary>
-            <param name="request">The request object</param>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.TrustRegistryService.CheckIssuerStatusAsync(Trinsic.Services.TrustRegistry.V1.CheckIssuerStatusRequest)">
+        <member name="M:Trinsic.TrustRegistryService.GetMembershipStatusAsync(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest)">
             <summary>
             Checks the status of the issuer for a given credential type in the given governance framework
             </summary>
             <param name="request">The request object</param>
-        </member>
-        <member name="M:Trinsic.TrustRegistryService.CheckVerifierStatusAsync(Trinsic.Services.TrustRegistry.V1.CheckVerifierStatusRequest)">
-            <summary>
-            Checks the status of the verifier for a given presentation type in the given governance framework
-            </summary>
-            <param name="request">The request object</param>
-            <returns>The status of the registration</returns>
         </member>
         <member name="M:Trinsic.TrustRegistryService.SearchRegistryAsync(Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest)">
             <summary>
@@ -2897,7 +3158,7 @@
         </member>
         <member name="T:Trinsic.Sdk.Options.V1.ServiceOptions">
             <summary>
-            service options
+            Configuration for Trinsic SDK Services
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpointFieldNumber">
@@ -2905,7 +3166,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpoint">
             <summary>
-            service endpoint
+            Trinsic API endpoint; defaults to `prod.trinsic.cloud`
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPortFieldNumber">
@@ -2913,7 +3174,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPort">
             <summary>
-            service port
+            Trinsic API port; defaults to `443`
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTlsFieldNumber">
@@ -2921,7 +3182,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerUseTls">
             <summary>
-            indicates if tls is used
+            Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.AuthTokenFieldNumber">
@@ -2929,7 +3190,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.AuthToken">
             <summary>
-            default auth token for oberon security scheme
+            Authentication token for SDK calls; defaults to empty string (unauthenticated)
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystemFieldNumber">
@@ -2937,7 +3198,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystem">
             <summary>
-            ecosystem to use with endpoints that require it
+            Default ecosystem ID to use for various SDK calls; defaults to `default`
             </summary>
         </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">

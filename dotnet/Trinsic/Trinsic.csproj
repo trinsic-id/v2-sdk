@@ -32,13 +32,13 @@
         </ItemGroup>
     </Target>
     <ItemGroup>
-        <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.45.0" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Grpc.Tools" Version="2.42.0" PrivateAssets="All" />
+        <PackageReference Include="Grpc.Tools" Version="2.46.1" PrivateAssets="All" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-        <PackageReference Include="Okapi.Net" Version="1.4.1">
+        <PackageReference Include="Okapi.Net" Version="1.4.2">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
     </ItemGroup>
@@ -56,6 +56,7 @@
         <!-- <Protobuf Include="..\..\proto\pbmse\v1\pbmse.proto" Link="Proto/pbmse.proto" /> -->
         <Protobuf Include="..\..\proto\services\common\v1\common.proto" Link="Proto/common.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\account\v1\account.proto" Link="Proto/account.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
+        <Protobuf Include="..\..\proto\services\options\options.proto" Link="Proto/options.proto" GrpcServices="Client" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\universal-wallet\v1\universal-wallet.proto" Link="Proto/universal-wallet.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\verifiable-credentials\v1\verifiable-credentials.proto" Link="Proto/verifiable-credentials.proto" ProtoRoot="..\..\proto" />
         <Protobuf Include="..\..\proto\services\verifiable-credentials\templates\v1\templates.proto" Link="Proto/templates.proto" ProtoRoot="..\..\proto" />

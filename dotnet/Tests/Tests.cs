@@ -163,54 +163,39 @@ public class Tests
 
     [Fact(DisplayName = "Demo: trust registries")]
     public async Task TestTrustRegistry() {
+        var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
+
         // setup
         var providerService = new ProviderService(_options.Clone());
         var (_, authToken) = await providerService.CreateEcosystemAsync(new());
         var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
         
         // registerGovernanceFramework() {
-        var registerFrameworkResponse = await service.RegisterGovernanceFrameworkAsync(new() { GovernanceFramework = new() {
+        var framework = await service.AddFrameworkAsync(new() {
+            Name = "Demo framework",
             Description = "Demo framework",
-            GovernanceFrameworkUri = "https://example.com",
-            TrustRegistryUri = "https://schema.org/Card"
-        }});
+            GovernanceFrameworkUri = governanceUri,
+        });
         // }
         
 
         // registerIssuerSample() {
-        await service.RegisterIssuerAsync(new() {
+        await service.RegisterMemberAsync(new() {
             DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
-        });
-        // }
-
-        // registerVerifierSample() {
-        await service.RegisterVerifierAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
+            FrameworkId = framework.Id,
+            SchemaUri = "https://schema.org/Card"
         });
         // }
 
         // checkIssuerStatus() {
-        var issuerStatus = await service.CheckIssuerStatusAsync(new() {
+        var issuerStatus = await service.GetMembershipStatusAsync(new() {
             DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
+            GovernanceFrameworkUri = governanceUri,
+            SchemaUri = "https://schema.org/Card"
         });
         // }
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
-
-        // checkVerifierStatus() {
-        var verifierStatus = await service.CheckVerifierStatusAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
-        });
-        // }
-        verifierStatus.Status.Should().Be(RegistrationStatus.Current);
 
         // searchTrustRegistry() {
         var searchResult = await service.SearchRegistryAsync(new());
@@ -220,18 +205,10 @@ public class Tests
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
         
         // unregisterIssuer() {
-        await service.UnregisterIssuerAsync(new() {
+        await service.UnregisterMemberAsync(new() {
             DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
-        });
-        // }
-
-        // unregisterVerifier() {
-        await service.UnregisterVerifierAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
+            FrameworkId = framework.Id,
+            SchemaUri = "https://schema.org/Card"
         });
         // }
     }
@@ -334,12 +311,11 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new() {
-            GovernanceFramework = new() {
-                Description = "invalid uri",
-                GovernanceFrameworkUri = ""
-            }
-        }));
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.AddFrameworkAsync(new() {
+            Description = "invalid uri",
+            GovernanceFrameworkUri = ""
+        }
+        ));
     }
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]
