@@ -28,37 +28,25 @@ pub fn read_line(out: Option<&str>) -> String {
         Some(msg) => {
             print!("{}: ", msg);
             stdout().flush().expect("Unable to flush stdout");
-            stdin()
-                .lock()
-                .read_line(&mut message)
-                .expect("Unable to read from stdin");
+            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
             message
         }
         None => {
-            stdin()
-                .lock()
-                .read_line(&mut message)
-                .expect("Unable to read from stdin");
+            stdin().lock().read_line(&mut message).expect("Unable to read from stdin");
             message
         }
     }
 }
 
 pub(crate) fn prettify_json(json: &String) -> Result<String, Error> {
-    Ok(serde_json::to_string_pretty(
-        &serde_json::from_str::<Value>(json)?,
-    )?)
+    Ok(serde_json::to_string_pretty(&serde_json::from_str::<Value>(json)?)?)
 }
 
 pub(crate) fn write_file<P: AsRef<Path>>(path: P, data: &[u8]) -> Result<(), Error> {
     let parent = path.as_ref().parent().ok_or(Error::IOError)?;
     create_dir_all(parent)?;
 
-    let mut file = OpenOptions::new()
-        .write(true)
-        .create(true)
-        .truncate(true)
-        .open(path)?;
+    let mut file = OpenOptions::new().write(true).create(true).truncate(true).open(path)?;
     file.write_all(&data)?;
 
     Ok(())
@@ -73,5 +61,6 @@ pub fn get_capability_document(wallet_id: &str) -> String {
             "created" : DateTime::<Utc>::from_utc(Local::now().naive_utc(), Utc).format("%Y-%m-%dT%H:%M:%S").to_string(),
             "capability" : wallet_id
         }
-    }).to_string()
+    })
+    .to_string()
 }

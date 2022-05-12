@@ -25,9 +25,7 @@ pub enum ConfigCommand {
 }
 
 pub fn parse<'a>(args: &'a ArgMatches<'_>) -> ConfigCommand {
-    let mut config_args = ConfigArgs {
-        ..Default::default()
-    };
+    let mut config_args = ConfigArgs { ..Default::default() };
 
     if args.is_present("server-endpoint") {
         config_args.options.endpoint = args.value_of("server-endpoint").map(|x| x.into());
@@ -42,8 +40,7 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> ConfigCommand {
         config_args.options.auth_token = args.value_of("auth-token").map(|x| x.into());
     }
     if args.is_present("default-ecosystem") {
-        config_args.options.default_ecosystem =
-            args.value_of("default-ecosystem").map(|x| x.into());
+        config_args.options.default_ecosystem = args.value_of("default-ecosystem").map(|x| x.into());
     }
 
     if config_args == ConfigArgs::default() {

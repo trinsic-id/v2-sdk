@@ -6,8 +6,7 @@ use crate::{
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
-        account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod,
-        InfoRequest, SignInRequest, TokenProtection,
+        account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection,
     },
 };
 use base64::URL_SAFE_NO_PAD;
@@ -31,10 +30,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
         Some(desc) => desc.to_string(),
         None => "New Wallet (from CLI)".to_string(),
     };
-    let ecosystem = args
-        .ecosystem
-        .as_ref()
-        .map_or(config.options.default_ecosystem.clone(), |x| x.to_owned());
+    let ecosystem = args.ecosystem.as_ref().map_or(config.options.default_ecosystem.clone(), |x| x.to_owned());
 
     let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
 
@@ -45,9 +41,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
             sms: args.sms.map_or(String::default(), |x| x.to_string()),
         }),
         ecosystem_id: ecosystem,
-        invitation_code: args
-            .invitation_code
-            .map_or(String::default(), |x| x.to_string()),
+        invitation_code: args.invitation_code.map_or(String::default(), |x| x.to_string()),
     });
 
     let response = client.sign_in(request).await?.into_inner();
@@ -58,10 +52,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
         ConfirmationMethod::None => acc_profile,
         ConfirmationMethod::Email => {
-            println!(
-                "{}",
-                "Confirmation required. Check your email for security code.".blue()
-            );
+            println!("{}", "Confirmation required. Check your email for security code.".blue());
             println!("{}", "Enter Code:".bold());
             let mut buffer = String::new();
             io::stdin().read_line(&mut buffer)?;

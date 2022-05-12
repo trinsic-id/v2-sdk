@@ -4,17 +4,9 @@ use crate::error::Error;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("login") {
-        sign_in(
-            &args
-                .subcommand_matches("login")
-                .expect("Error parsing request"),
-        )
+        sign_in(&args.subcommand_matches("login").expect("Error parsing request"))
     } else if args.is_present("info") {
-        info(
-            &args
-                .subcommand_matches("info")
-                .expect("Error parsing request"),
-        )
+        info(&args.subcommand_matches("info").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)
     }
