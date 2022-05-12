@@ -33,19 +33,11 @@ async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<Output, Error> 
 
     let request = tonic::Request::new(InviteRequest {
         participant: match args.participant_type {
-            parser::provider::ParticipantType::Individual => {
-                crate::proto::services::provider::v1::ParticipantType::Individual as i32
-            }
-            parser::provider::ParticipantType::Organization => {
-                crate::proto::services::provider::v1::ParticipantType::Organization as i32
-            }
+            parser::provider::ParticipantType::Individual => crate::proto::services::provider::v1::ParticipantType::Individual as i32,
+            parser::provider::ParticipantType::Organization => crate::proto::services::provider::v1::ParticipantType::Organization as i32,
         },
-        description: args
-            .description
-            .map_or(String::default(), |x| x.to_string()),
-        details: Some(AccountDetails {
-            ..Default::default()
-        }),
+        description: args.description.map_or(String::default(), |x| x.to_string()),
+        details: Some(AccountDetails { ..Default::default() }),
     });
 
     let response = client.invite(request).await?.into_inner();
@@ -61,15 +53,9 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
     let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
 
     let req = CreateEcosystemRequest {
-        name: args
-            .name
-            .as_ref()
-            .map_or(String::default(), |x| x.to_owned()),
+        name: args.name.as_ref().map_or(String::default(), |x| x.to_owned()),
         details: Some(AccountDetails {
-            email: args
-                .email
-                .as_ref()
-                .map_or(String::default(), |x| x.to_owned()),
+            email: args.email.as_ref().map_or(String::default(), |x| x.to_owned()),
             ..Default::default()
         }),
         ..Default::default()
@@ -84,10 +70,7 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
     let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
         ConfirmationMethod::None => acc_profile,
         ConfirmationMethod::Email => {
-            println!(
-                "{}",
-                "Confirmation required. Check your email for security code.".blue()
-            );
+            println!("{}", "Confirmation required. Check your email for security code.".blue());
             println!("{}", "Enter Code:".bold());
             let mut buffer = String::new();
             io::stdin().read_line(&mut buffer)?;

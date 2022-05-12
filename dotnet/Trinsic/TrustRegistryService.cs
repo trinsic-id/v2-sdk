@@ -36,28 +36,28 @@ public class TrustRegistryService : ServiceBase
     /// Calling this multiple times with the same URI will update the previously registered framework.
     /// </remarks>
     /// <returns></returns>
-    public async Task<AddFrameworkResponse> RegisterGovernanceFrameworkAsync(AddFrameworkRequest request) {
+    public async Task<AddFrameworkResponse> AddFrameworkAsync(AddFrameworkRequest request) {
         if (!Uri.TryCreate(request.GovernanceFrameworkUri, UriKind.Absolute, out _)) throw new("Invalid URI string");
 
         return await Client.AddFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
-    public void RegisterGovernanceFramework(AddFrameworkRequest request) {
+    public void AddFramework(AddFrameworkRequest request) {
         if (!Uri.TryCreate(request.GovernanceFrameworkUri, UriKind.Absolute, out _)) throw new("Invalid URI string");
         
         Client.AddFramework(request, BuildMetadata(request));
     }
 
-    public async Task<RemoveFrameworkResponse> RemoveGovernanceFrameworkAsync(RemoveFrameworkRequest request) {
+    public async Task<RemoveFrameworkResponse> RemoveFrameworkAsync(RemoveFrameworkRequest request) {
         return await Client.RemoveFrameworkAsync(request, await BuildMetadataAsync(request));
     }
 
-    public RemoveFrameworkResponse RemoveGovernanceFramework(RemoveFrameworkRequest request) {
+    public RemoveFrameworkResponse RemoveFramework(RemoveFrameworkRequest request) {
         return Client.RemoveFramework(request, BuildMetadata(request));
     }
 
     /// <summary>
-    /// Register a DID as authoritative issuer with the configured governance framework.
+    /// Register a DID as authoritative member with the configured governance framework.
     /// </summary>
     /// <param name="request">The request object</param>
     /// <returns></returns>
@@ -95,7 +95,7 @@ public class TrustRegistryService : ServiceBase
     /// <returns></returns>
     public async Task<SearchRegistryResponse> SearchRegistryAsync(SearchRegistryRequest request) {
         if (String.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c OFFSET 0 LIMIT 100";
+            request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
         
         var response = await Client.SearchRegistryAsync(request, await BuildMetadataAsync(request));
         return response;
@@ -103,7 +103,7 @@ public class TrustRegistryService : ServiceBase
 
     public SearchRegistryResponse SearchRegistry(SearchRegistryRequest request) {
         if (String.IsNullOrWhiteSpace(request.Query))
-            request.Query = "SELECT * FROM c OFFSET 0 LIMIT 100";
+            request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
         
         return Client.SearchRegistry(request, BuildMetadata(request));
     }

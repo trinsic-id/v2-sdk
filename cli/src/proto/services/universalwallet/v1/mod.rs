@@ -1,85 +1,91 @@
 // Search
 
-/// Search request object
+/// Request to search items in wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchRequest {
+    /// SQL Query to execute against items in wallet
     #[prost(string, tag = "1")]
     pub query: ::prost::alloc::string::String,
+    /// Token provided by previous `SearchResponse`
+    /// if more data is available for query
     #[prost(string, tag = "2")]
     pub continuation_token: ::prost::alloc::string::String,
 }
-/// Search response object
+/// Response to `SearchRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SearchResponse {
+    /// Array of query results, as JSON strings
     #[prost(string, repeated, tag = "1")]
     pub items: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// Whether more results are available for this query via `continuation_token`
     #[prost(bool, tag = "2")]
     pub has_more: bool,
-    /// int32 count = 3;
+    // int32 count = 3;
+    /// Token to fetch next set of results via `SearchRequest`
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
 }
 // Get Item
 
-/// Get item request object
+/// Request to fetch an item from wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetItemRequest {
-    /// The item identifier
+    /// ID of item in wallet
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
 }
-/// Get item response object
+/// Response to `GetItemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetItemResponse {
-    /// The item data represented as stringified JSON
+    /// Item data as a JSON string
     #[prost(string, tag = "1")]
     pub item_json: ::prost::alloc::string::String,
-    /// User set item type that described the content of this item
+    /// Type of item specified when item was inserted into wallet
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
 // Update Item
 
-/// Update item request object
+/// Request to update item in wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateItemRequest {
-    /// The item identifier
+    /// ID of item in wallet
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
-    /// The item type that described the content of this item
+    /// Item type (ex. "VerifiableCredential")
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
-/// Update item response object
+/// Response to `UpdateItemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateItemResponse {}
 // InsertItem
 
-/// Insert item request
+/// Request to insert a JSON document into a wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemRequest {
-    /// the document to insert as stringified json
+    /// Document to insert; must be stringified JSON
     #[prost(string, tag = "1")]
     pub item_json: ::prost::alloc::string::String,
-    /// optional item type ex. "VerifiableCredential"
+    /// Item type (ex. "VerifiableCredential")
     #[prost(string, tag = "2")]
     pub item_type: ::prost::alloc::string::String,
 }
-/// Insert item response
+/// Response to `InsertItemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InsertItemResponse {
-    /// The item identifier of the inserted record
+    /// ID of item inserted into wallet
     #[prost(string, tag = "2")]
     pub item_id: ::prost::alloc::string::String,
 }
-/// Delete item request
+/// Request to delete an item in a wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemRequest {
-    /// item identifier of the record to delete
+    /// ID of item to delete
     #[prost(string, tag = "1")]
     pub item_id: ::prost::alloc::string::String,
 }
-/// Delete item response
+/// Response to `DeleteItemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {}
 #[doc = r" Generated client implementations."]
@@ -112,20 +118,14 @@ pub mod universal_wallet_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> UniversalWalletClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> UniversalWalletClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             UniversalWalletClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -147,16 +147,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetItemRequest>,
         ) -> Result<tonic::Response<super::GetItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/GetItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/GetItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Search the wallet using a SQL-like syntax"]
@@ -164,16 +160,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::SearchRequest>,
         ) -> Result<tonic::Response<super::SearchResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/Search",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Insert an item into the wallet"]
@@ -181,33 +173,25 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InsertItemRequest>,
         ) -> Result<tonic::Response<super::InsertItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/InsertItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/InsertItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Insert an item into the wallet"]
+        #[doc = " Update an item in the wallet"]
         pub async fn update_item(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateItemRequest>,
         ) -> Result<tonic::Response<super::UpdateItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/UpdateItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/UpdateItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Delete an item from the wallet permanently"]
@@ -215,16 +199,12 @@ pub mod universal_wallet_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteItemRequest>,
         ) -> Result<tonic::Response<super::DeleteItemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.universalwallet.v1.UniversalWallet/DeleteItem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/DeleteItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

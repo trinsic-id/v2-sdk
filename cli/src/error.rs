@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use tonic::Status;
 
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
-pub(crate) enum Error {
+pub enum Error {
     IOError,
     SerializationError,
     APIError { code: String, message: String },

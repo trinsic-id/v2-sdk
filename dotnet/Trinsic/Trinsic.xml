@@ -690,7 +690,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.Account.V1.Account.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Account.V1.Account.AccountBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -733,7 +733,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.Debug.V1.Debugging.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Debug.V1.Debugging.DebuggingBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1236,7 +1236,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Provider.V1.Provider.ProviderBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1571,7 +1571,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.TrustRegistry.V1.TrustRegistry.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.TrustRegistry.V1.TrustRegistry.TrustRegistryBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -1997,7 +1997,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.UniversalWallet.V1.UniversalWallet.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.UniversalWallet.V1.UniversalWallet.UniversalWalletBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -2380,7 +2380,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.CredentialTemplatesBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -3042,7 +3042,7 @@
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
             Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
@@ -3178,7 +3178,7 @@
             The search response and continuation token, if available
             </returns>
         </member>
-        <member name="M:Trinsic.TrustRegistryService.RegisterGovernanceFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
+        <member name="M:Trinsic.TrustRegistryService.AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
             Register a Governance Framework with the Trust Registry.
             </summary>
@@ -3189,7 +3189,7 @@
         </member>
         <member name="M:Trinsic.TrustRegistryService.RegisterMemberAsync(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest)">
             <summary>
-            Register a DID as authoritative issuer with the configured governance framework.
+            Register a DID as authoritative member with the configured governance framework.
             </summary>
             <param name="request">The request object</param>
             <returns></returns>

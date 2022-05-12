@@ -163,6 +163,8 @@ public class Tests
 
     [Fact(DisplayName = "Demo: trust registries")]
     public async Task TestTrustRegistry() {
+        var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
+
         // setup
         var providerService = new ProviderService(_options.Clone());
         var (_, authToken) = await providerService.CreateEcosystemAsync(new());
@@ -171,7 +173,7 @@ public class Tests
         // registerGovernanceFramework() {
         var schemaUri = "https://schema.org/Card";
         var frameworkUri = "https://example.com";
-        var registerFrameworkResponse = await service.RegisterGovernanceFrameworkAsync(new() {
+        var registerFrameworkResponse = await service.AddFrameworkAsync(new() {
             Name = $"Demo framework-{Guid.NewGuid()}",
             GovernanceFrameworkUri = frameworkUri,
             Description = schemaUri
@@ -312,7 +314,7 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new() {
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.AddFrameworkAsync(new() {
             Description = "invalid uri",
             GovernanceFrameworkUri = ""
         }));

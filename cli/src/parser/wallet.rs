@@ -3,29 +3,13 @@ use clap::ArgMatches;
 
 pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     if args.is_present("search") {
-        return search(
-            &args
-                .subcommand_matches("search")
-                .expect("Error parsing request"),
-        );
+        return search(&args.subcommand_matches("search").expect("Error parsing request"));
     } else if args.is_present("insert-item") {
-        return insert_item(
-            &args
-                .subcommand_matches("insert-item")
-                .expect("Error parsing request"),
-        );
+        return insert_item(&args.subcommand_matches("insert-item").expect("Error parsing request"));
     } else if args.is_present("delete-item") {
-        return delete_item(
-            &args
-                .subcommand_matches("delete-item")
-                .expect("Error parsing request"),
-        );
+        return delete_item(&args.subcommand_matches("delete-item").expect("Error parsing request"));
     } else if args.is_present("send") {
-        return send(
-            &args
-                .subcommand_matches("send")
-                .expect("Error parsing request"),
-        );
+        return send(&args.subcommand_matches("send").expect("Error parsing request"));
     } else {
         Err(Error::MissingArguments)
     }
