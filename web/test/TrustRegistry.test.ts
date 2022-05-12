@@ -1,85 +1,100 @@
 import {
-    AccountService,
-    AddFrameworkRequest,
-    RegisterMemberRequest,
-    RegistrationStatus,
-    SignInRequest,
-    TrustRegistryService,
+  AccountService,
+  AddFrameworkRequest,
+  RegisterMemberRequest,
+  RegistrationStatus,
+  SignInRequest,
+  TrustRegistryService,
 } from "../src";
-import {v4 as uuid} from "uuid";
-import {getTestServerOptions} from "./env";
-import {GetMembershipStatusRequest} from "../lib";
-
+import { v4 as uuid } from "uuid";
+import { getTestServerOptions } from "./env";
+import { GetMembershipStatusRequest } from "../lib";
 
 const options = getTestServerOptions();
 
 describe("TrustRegistryService Unit Tests", () => {
-    beforeAll(async () => {
-        let service = new AccountService(options);
-        await service.signIn(SignInRequest.fromPartial({}));
-    });
+  beforeAll(async () => {
+    let service = new AccountService(options);
+    await service.signIn(SignInRequest.fromPartial({}));
+  });
 
-    it("add governance framework", async () => {
-        let trustRegistryService = new TrustRegistryService(options);
+  it("add governance framework", async () => {
+    let trustRegistryService = new TrustRegistryService(options);
 
-        let response = await trustRegistryService.addGovernanceFramework(AddFrameworkRequest.fromPartial({
-            governanceFrameworkUri: `urn:egf:${uuid()}`
-        }));
-        expect(response).not.toBeNull();
-    });
+    let response = await trustRegistryService.addGovernanceFramework(
+      AddFrameworkRequest.fromPartial({
+        governanceFrameworkUri: `urn:egf:${uuid()}`,
+        name: `Test Governance Framework - ${uuid()}`,
+      })
+    );
+    expect(response).not.toBeNull();
+  });
 
-    it("add governance framework - invalid uri", async () => {
-        let trustRegistryService = new TrustRegistryService(options);
+  it("add governance framework - invalid uri", async () => {
+    let trustRegistryService = new TrustRegistryService(options);
 
-        await expectAsync(
-            trustRegistryService.addGovernanceFramework(AddFrameworkRequest.fromPartial({}))
-        ).toBeRejected();
-    });
+    await expectAsync(
+      trustRegistryService.addGovernanceFramework(
+        AddFrameworkRequest.fromPartial({})
+      )
+    ).toBeRejected();
+  });
 
-    it("Demo: Trust Registry", async () => {
-        let trustRegistryService = new TrustRegistryService(options);
+  it("Demo: Trust Registry", async () => {
+    let trustRegistryService = new TrustRegistryService(options);
 
-        let response = await trustRegistryService.registerMember(
-            RegisterMemberRequest.fromPartial({
-                didUri: "did:example:test",
-                frameworkId: "https://example.com",
-                schemaUri: "https://schema.org/Card",
-            })
-        );
-        expect(response).not.toBeNull();
+    const didUri = "did:example:test";
+    const frameworkUri = `urn:egf:${uuid()}`;
+    const schemaUri = "https://schema.org/Card";
 
-        let response2 = await trustRegistryService.registerMember(
-            RegisterMemberRequest.fromPartial({
-                didUri: "did:example:test",
-                frameworkId: "https://example.com",
-                schemaUri: "https://schema.org/Card",
-            })
-        );
-        expect(response2).not.toBeNull();
+    let frameworkResponse = await trustRegistryService.addGovernanceFramework(
+      AddFrameworkRequest.fromPartial({
+        governanceFrameworkUri: frameworkUri,
+        name: `Test Governance Framework - ${uuid()}`,
+      })
+    );
 
-        let issuerStatus = await trustRegistryService.getMembershipStatus(
-            GetMembershipStatusRequest.fromPartial({
-                didUri: "did:example:test",
-                governanceFrameworkUri: "https://example.com",
-                schemaUri: "https://schema.org/Card",
-            })
-        );
-        expect(issuerStatus).not.toBeNull();
-        expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
+    let response = await trustRegistryService.registerMember(
+      RegisterMemberRequest.fromPartial({
+        didUri: didUri,
+        frameworkId: frameworkResponse.id,
+        schemaUri: schemaUri,
+      })
+    );
+    expect(response).not.toBeNull();
 
-        let verifierStatus = await trustRegistryService.getMembershipStatus(
-            GetMembershipStatusRequest.fromPartial({
-                didUri: "did:example:test",
-                governanceFrameworkUri: "https://example.com",
-                schemaUri: "https://schema.org/Card",
-            })
-        );
-        expect(verifierStatus).not.toBeNull();
-        expect(verifierStatus.status).toBe(RegistrationStatus.CURRENT);
+    let response2 = await trustRegistryService.registerMember(
+      RegisterMemberRequest.fromPartial({
+        didUri: didUri,
+        frameworkId: frameworkResponse.id,
+        schemaUri: schemaUri,
+      })
+    );
+    expect(response2).not.toBeNull();
 
-        let searchResult = await trustRegistryService.searchRegistry();
-        expect(searchResult).not.toBeNull();
-        expect(searchResult.itemsJson).not.toBeNull();
-        expect(searchResult.itemsJson.length > 0).toBeTrue();
-    });
+    let issuerStatus = await trustRegistryService.getMembershipStatus(
+      GetMembershipStatusRequest.fromPartial({
+        didUri: didUri,
+        governanceFrameworkUri: frameworkUri,
+        schemaUri: schemaUri,
+      })
+    );
+    expect(issuerStatus).not.toBeNull();
+    expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
+
+    let verifierStatus = await trustRegistryService.getMembershipStatus(
+      GetMembershipStatusRequest.fromPartial({
+        didUri: didUri,
+        governanceFrameworkUri: frameworkUri,
+        schemaUri: schemaUri,
+      })
+    );
+    expect(verifierStatus).not.toBeNull();
+    expect(verifierStatus.status).toBe(RegistrationStatus.CURRENT);
+
+    let searchResult = await trustRegistryService.searchRegistry();
+    expect(searchResult).not.toBeNull();
+    expect(searchResult.itemsJson).not.toBeNull();
+    expect(searchResult.itemsJson.length > 0).toBeTrue();
+  });
 });

@@ -26,23 +26,15 @@ func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 type TrustRegistryService interface {
 	Service
 	// RegisterGovernanceFramework in the ecosystem
-	RegisterGovernanceFramework(userContext context.Context, request *sdk.AddFrameworkRequest) error
+	RegisterGovernanceFramework(userContext context.Context, request *sdk.AddFrameworkRequest) (*sdk.AddFrameworkResponse, error)
 	// RemoveGovernanceFramework from the ecosystem
 	RemoveGovernanceFramework(userContext context.Context, request *sdk.RemoveFrameworkRequest) (*sdk.RemoveFrameworkResponse, error)
-	// RegisterIssuer to issue the given credentials within the governance framework
-	RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) (*sdk.RegisterIssuerResponse, error)
-	// UnregisterIssuer from issuing given credentials within the governance framework
-	UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) (*sdk.UnregisterIssuerResponse, error)
-	// RegisterVerifier in the given governance framework
-	RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) (*sdk.RegisterVerifierResponse, error)
-	// UnregisterVerifier in the given governance framework
-	UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) (*sdk.UnregisterVerifierResponse, error)
-	// CheckIssuerStatus indicates whether the given issuer is authorized to issue credentials
-	// within the given framework
-	CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error)
-	// CheckVerifierStatus indicates whether the given verifier is authorized to verify credentials
-	// within the given framework
-	CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) (sdk.RegistrationStatus, error)
+	// RegisterMember to issue the given credentials within the governance framework
+	RegisterMember(userContext context.Context, request *sdk.RegisterMemberRequest) (*sdk.RegisterMemberResponse, error)
+	// UnregisterMember in the given governance framework
+	UnregisterMember(userContext context.Context, request *sdk.UnregisterMemberRequest) (*sdk.UnregisterMemberResponse, error)
+	// GetMembershipStatus indicates whether the given member has a status within the given framework
+	GetMembershipStatus(userContext context.Context, request *sdk.GetMembershipStatusRequest) (*sdk.GetMembershipStatusResponse, error)
 	// SearchRegistry for frameworks, issues, and verifiers
 	SearchRegistry(userContext context.Context, request *sdk.SearchRegistryRequest) (*sdk.SearchRegistryResponse, error)
 	// FetchData from the provided governance framework
@@ -54,92 +46,58 @@ type trustRegistryBase struct {
 	client sdk.TrustRegistryClient
 }
 
-func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Context, request *sdk.AddFrameworkRequest) error {
+func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Context, request *sdk.AddFrameworkRequest) (*sdk.AddFrameworkResponse, error) {
 	// Verify that it is a valid uri
-	_, err := url.Parse(request.GovernanceFramework.TrustRegistryUri)
+	_, err := url.Parse(request.GovernanceFrameworkUri)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	md, err := t.GetMetadataContext(userContext, request)
-	if err != nil {
-		return err
-	}
-
-	_, err = t.client.AddFramework(md, request)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (t *trustRegistryBase) RegisterIssuer(userContext context.Context, request *sdk.RegisterIssuerRequest) (*sdk.RegisterIssuerResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
 
-	response, err := t.client.RegisterIssuer(md, request)
-	return response, err
+	response, err := t.client.AddFramework(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
 }
 
-func (t *trustRegistryBase) UnregisterIssuer(userContext context.Context, request *sdk.UnregisterIssuerRequest) (*sdk.UnregisterIssuerResponse, error) {
+func (t *trustRegistryBase) RegisterMember(userContext context.Context, request *sdk.RegisterMemberRequest) (*sdk.RegisterMemberResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
 
-	response, err := t.client.UnregisterIssuer(md, request)
+	response, err := t.client.RegisterMember(md, request)
 	return response, err
 }
 
-func (t *trustRegistryBase) RegisterVerifier(userContext context.Context, request *sdk.RegisterVerifierRequest) (*sdk.RegisterVerifierResponse, error) {
+func (t *trustRegistryBase) UnregisterMember(userContext context.Context, request *sdk.UnregisterMemberRequest) (*sdk.UnregisterMemberResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
 
-	response, err := t.client.RegisterVerifier(md, request)
+	response, err := t.client.UnregisterMember(md, request)
 	return response, err
 }
 
-func (t *trustRegistryBase) UnregisterVerifier(userContext context.Context, request *sdk.UnregisterVerifierRequest) (*sdk.UnregisterVerifierResponse, error) {
+func (t *trustRegistryBase) GetMembershipStatus(userContext context.Context, request *sdk.GetMembershipStatusRequest) (*sdk.GetMembershipStatusResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
 	}
 
-	response, err := t.client.UnregisterVerifier(md, request)
-	return response, err
-}
-
-func (t *trustRegistryBase) CheckIssuerStatus(userContext context.Context, request *sdk.CheckIssuerStatusRequest) (sdk.RegistrationStatus, error) {
-	md, err := t.GetMetadataContext(userContext, request)
+	response, err := t.client.GetMembershipStatus(md, request)
 	if err != nil {
-		return sdk.RegistrationStatus_NOT_FOUND, err
+		return nil, err
 	}
 
-	response, err := t.client.CheckIssuerStatus(md, request)
-	if err != nil {
-		return sdk.RegistrationStatus_NOT_FOUND, err
-	}
-
-	return response.Status, nil
-}
-
-func (t *trustRegistryBase) CheckVerifierStatus(userContext context.Context, request *sdk.CheckVerifierStatusRequest) (sdk.RegistrationStatus, error) {
-	md, err := t.GetMetadataContext(userContext, request)
-	if err != nil {
-		return sdk.RegistrationStatus_NOT_FOUND, err
-	}
-
-	response, err := t.client.CheckVerifierStatus(md, request)
-	if err != nil {
-		return sdk.RegistrationStatus_NOT_FOUND, err
-	}
-
-	return response.Status, nil
+	return response, nil
 }
 
 func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request *sdk.SearchRegistryRequest) (*sdk.SearchRegistryResponse, error) {

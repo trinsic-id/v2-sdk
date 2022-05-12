@@ -12,11 +12,10 @@ import {
   TemplateService,
   WalletService,
 } from "../src";
-import {getTestServerOptions} from "./env";
+import { getTestServerOptions } from "./env";
+import { v4 as uuid } from "uuid";
 
-
-let options = getTestServerOptions()
-
+let options = getTestServerOptions();
 
 let providerService: ProviderService;
 let accountService: AccountService;
@@ -92,7 +91,7 @@ describe("wallet service tests", () => {
   it("Demo: template management and credential issuance from template", async () => {
     // create example template
     let templateRequest = CreateCredentialTemplateRequest.fromPartial({
-      name: "My Example Credential",
+      name: `My Example Credential-${uuid()}`,
       allowAdditionalFields: false,
       fields: {
         firstName: TemplateField.fromPartial({ description: "Given name" }),
