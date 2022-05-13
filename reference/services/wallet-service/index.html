@@ -1781,7 +1781,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#insertitemrequest">InsertItemRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Insert item request</p>
+<p>Request to insert a JSON document into a wallet</p>
 <table>
 <thead>
 <tr>
@@ -1794,12 +1794,12 @@
 <tr>
 <td>item_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>the document to insert as stringified json</td>
+<td>Document to insert; must be stringified JSON</td>
 </tr>
 <tr>
 <td>item_type</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>optional item type ex. "VerifiableCredential"</td>
+<td>Item type (ex. "VerifiableCredential")</td>
 </tr>
 </tbody>
 </table>
@@ -1842,7 +1842,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#insertitemresponse">InsertItemResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Insert item response</p>
+<p>Response to <code>InsertItemRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1855,7 +1855,7 @@
 <tr>
 <td>item_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The item identifier of the inserted record</td>
+<td>ID of item inserted into wallet</td>
 </tr>
 </tbody>
 </table>

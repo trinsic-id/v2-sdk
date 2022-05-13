@@ -1708,7 +1708,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#signinrequest">SignInRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Request for creating new account</p>
+<p>Request for creating or signing into an account</p>
 <table>
 <thead>
 <tr>
@@ -1726,12 +1726,12 @@
 <tr>
 <td>invitation_code</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Invitation code associated with this registration This field is optional.</td>
+<td>Invitation code associated with this registration</td>
 </tr>
 <tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed</td>
+<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</td>
 </tr>
 </tbody>
 </table>
@@ -1742,7 +1742,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#accountdetails">AccountDetails</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Account Registration Details</p>
+<p>Account registration details</p>
 <table>
 <thead>
 <tr>
@@ -1755,17 +1755,17 @@
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Account name (optional)</td>
+<td>Account name</td>
 </tr>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email account (required)</td>
+<td>Email account</td>
 </tr>
 <tr>
 <td>sms</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>SMS number including country code (optional)</td>
+<td>SMS number including country code</td>
 </tr>
 </tbody>
 </table>
@@ -1858,6 +1858,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#inforesponse">InfoResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Information about the account used to make the request</p>
 <table>
 <thead>
 <tr>
@@ -1875,22 +1876,27 @@
 <tr>
 <td>ecosystems</td>
 <td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
-<td><strong>Deprecated.</strong> any ecosystems the account has access to</td>
+<td><strong>Deprecated.</strong> Use <code>ecosystem_id</code> instead</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The wallet id associated with this account</td>
+<td>The wallet ID associated with this account</td>
 </tr>
 <tr>
 <td>device_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The device id associated with this account</td>
+<td>The device ID associated with this account session</td>
 </tr>
 <tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The ecosystem id associated with this account</td>
+<td>The ecosystem ID within which this account resides</td>
+</tr>
+<tr>
+<td>public_did</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
 </tr>
 </tbody>
 </table>

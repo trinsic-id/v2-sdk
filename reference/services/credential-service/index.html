@@ -1791,6 +1791,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#issuerequest">IssueRequest</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Request to sign a JSON-LD Credential using public key tied to caller</p>
 <table>
 <thead>
 <tr>
@@ -1803,7 +1804,7 @@
 <tr>
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Valid JSON-LD Credential document to be signed, in string form</td>
 </tr>
 </tbody>
 </table>
@@ -1848,6 +1849,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#issueresponse">IssueResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>IssueRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1860,7 +1862,7 @@
 <tr>
 <td>signed_document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Verifiable Credential document, signed with public key tied to caller of <code>IssueRequest</code></td>
 </tr>
 </tbody>
 </table>
@@ -1894,6 +1896,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#issuefromtemplaterequest">IssueFromTemplateRequest</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller</p>
 <table>
 <thead>
 <tr>
@@ -1906,12 +1909,17 @@
 <tr>
 <td>template_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>ID of template to use</td>
 </tr>
 <tr>
 <td>values_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>JSON document string with keys corresponding to the fields of the template referenced by <code>template_id</code></td>
+</tr>
+<tr>
+<td>framework_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF)</td>
 </tr>
 </tbody>
 </table>
@@ -1975,6 +1983,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#issuefromtemplateresponse">IssueFromTemplateResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>IssueFromTemplateRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1987,7 +1996,7 @@
 <tr>
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of <code>IssueFromTemplateRequest</code></td>
 </tr>
 </tbody>
 </table>
@@ -2009,7 +2018,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusrequest">CheckStatusRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>request object to check the status of the revocation entry</p>
+<p>Request to check a credential's revocation status</p>
 <table>
 <thead>
 <tr>
@@ -2022,7 +2031,7 @@
 <tr>
 <td>credential_status_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>the credential status id</td>
+<td>Credential Status ID to check</td>
 </tr>
 </tbody>
 </table>
@@ -2037,9 +2046,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">check_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">check_status</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">CheckStatusRequest</span><span class="p">(</span><span class="n">credential_status_id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#     check_response = await credential_service.check_status(</span>
+<span class="c1">#         request=CheckStatusRequest(credential_status_id=&quot;&quot;)</span>
+<span class="c1">#     )</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2057,7 +2066,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#checkstatusresponse">CheckStatusResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>response object for checking the status of revocation entry</p>
+<p>Response to <code>CheckStatusRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -2070,7 +2079,7 @@
 <tr>
 <td>revoked</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>indicates if the status is revoked</td>
+<td>The credential's revocation status</td>
 </tr>
 </tbody>
 </table>
@@ -2096,7 +2105,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#updatestatusrequest">UpdateStatusRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>request object to update the status of the revocation entry</p>
+<p>Request to update a credential's revocation status</p>
 <table>
 <thead>
 <tr>
@@ -2109,12 +2118,12 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <tr>
 <td>credential_status_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>the credential status id</td>
+<td>Credential Status ID to update</td>
 </tr>
 <tr>
 <td>revoked</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>indicates if the status is revoked</td>
+<td>New revocation status of credential</td>
 </tr>
 </tbody>
 </table>
@@ -2129,9 +2138,9 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">update_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">update_status</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">UpdateStatusRequest</span><span class="p">(</span><span class="n">credential_status_id</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">revoked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#     update_response = await credential_service.update_status(</span>
+<span class="c1">#         request=UpdateStatusRequest(credential_status_id=&quot;&quot;, revoked=True)</span>
+<span class="c1">#     )</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2149,7 +2158,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#updatestatusresponse">UpdateStatusResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>response object for update of status of revocation entry</p>
+<p>Response to <code>UpdateStatusRequest</code></p>
 <p><a name="services-verifiablecredentials-v1-ValidationMessage"></a></p>
 </div>
 </div>
@@ -2173,7 +2182,8 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#createproofrequest">CreateProofRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Create Proof</p>
+<p>Request to create a proof for a Verifiable Credential using public key tied to caller.
+Either <code>item_id</code> or <code>document_json</code> may be provided, not both.</p>
 <table>
 <thead>
 <tr>
@@ -2186,17 +2196,17 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <tr>
 <td>reveal_document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed</td>
+<td>A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed</td>
 </tr>
 <tr>
 <td>item_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The item identifier that contains a record with a verifiable credential to be used for generating the proof.</td>
+<td>ID of wallet item stored in a Trinsic cloud wallet</td>
 </tr>
 <tr>
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</td>
+<td>A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</td>
 </tr>
 </tbody>
 </table>
@@ -2245,6 +2255,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#createproofresponse">CreateProofResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>CreateProofRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -2257,7 +2268,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <tr>
 <td>proof_document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Valid JSON-LD proof for the specified credential</td>
 </tr>
 </tbody>
 </table>
@@ -2280,7 +2291,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#verifyproofrequest">VerifyProofRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Verify Proof</p>
+<p>Request to verify a proof</p>
 <table>
 <thead>
 <tr>
@@ -2293,7 +2304,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <tr>
 <td>proof_document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>JSON-LD proof document string to verify</td>
 </tr>
 </tbody>
 </table>
@@ -2335,6 +2346,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#verifyproofresponse">VerifyProofResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>VerifyProofRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -2347,17 +2359,17 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <tr>
 <td>is_valid</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Indicates if the proof is valid</td>
+<td>Whether or not all validations in <code>validation_results</code> passed</td>
 </tr>
 <tr>
 <td>validation_messages</td>
 <td><a href="/reference/proto#string">string</a>[]</td>
-<td><strong>Deprecated.</strong></td>
+<td><strong>Deprecated.</strong> Use <code>validation_results</code> instead</td>
 </tr>
 <tr>
 <td>validation_results</td>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry">VerifyProofResponse.ValidationResultsEntry</a>[]</td>
-<td>Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed.</td>
+<td>Results of each validation check performed, such as schema conformance, revocation status, signature, etc. Detailed results are provided for failed validations.</td>
 </tr>
 </tbody>
 </table>
@@ -2389,6 +2401,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#sendrequest">SendRequest</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Request to send a document to another user's wallet</p>
 <table>
 <thead>
 <tr>
@@ -2401,22 +2414,22 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Email address of user to send item to</td>
 </tr>
 <tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DID of recipient (presently unsupported)</td>
 </tr>
 <tr>
 <td>didcomm_invitation_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DIDComm out-of-band invitation JSON (presently unsupported)</td>
 </tr>
 <tr>
 <td>document_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>JSON document to send to recipient</td>
 </tr>
 </tbody>
 </table>
@@ -2456,6 +2469,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#sendresponse">SendResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>SendRequest</code></p>
 <p><a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a></p>
 </div>
 </div>

@@ -1755,7 +1755,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#createcredentialtemplaterequest">CreateCredentialTemplateRequest</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Request to create new template</p>
+<p>Request to create a new template</p>
 <table>
 <thead>
 <tr>
@@ -1768,17 +1768,17 @@
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Name of new template</td>
 </tr>
 <tr>
 <td>fields</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry">CreateCredentialTemplateRequest.FieldsEntry</a>[]</td>
-<td></td>
+<td>Fields which compose the template</td>
 </tr>
 <tr>
 <td>allow_additional_fields</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td></td>
+<td>Whether credentials may be issued against this template which have fields not specified in <code>fields</code></td>
 </tr>
 </tbody>
 </table>
@@ -1789,7 +1789,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">credentialTemplateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;My First Credential Template&quot;</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">credentialTemplateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`My First Credential Template-</span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">nameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The name of the person&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span><span class="w"></span>
@@ -1822,7 +1822,7 @@
 <span class="p">};</span><span class="w"></span>
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">});</span><span class="w"></span>
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">());</span><span class="w"></span>
-<span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w">  </span><span class="c1">// TODO - use FieldType.NUMBER once schema validation is fixed.</span>
+<span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"> </span><span class="c1">// TODO - use FieldType.NUMBER once schema validation is fixed.</span>
 
 <span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -1830,21 +1830,19 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">template</span> <span class="o">=</span> <span class="k">await</span> <span class="n">template_service</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateCredentialTemplateRequest</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;An Example Credential&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;An Example Credential: </span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
         <span class="n">allow_additional_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
             <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Given name&quot;</span><span class="p">),</span>
             <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(),</span>
-            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
-                <span class="n">optional</span><span class="o">=</span><span class="kc">True</span>
-            <span class="p">),</span>  <span class="c1"># TODO - use FieldType.NUMBER once schema validation is fixed.</span>
+            <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">optional</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">),</span>
         <span class="p">},</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">templateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My Example Credential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">AllowAdditionalFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">Fields</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">)}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">templateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">CreateCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Example Template - %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span><span class="w"> </span><span class="nx">AllowAdditionalFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">Fields</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">)}</span><span class="w"></span>
 <span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;firstName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">}</span><span class="w"></span>
 <span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{}</span><span class="w"></span>
 <span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">sdk</span><span class="p">.</span><span class="nx">FieldType_NUMBER</span><span class="p">,</span><span class="w"> </span><span class="nx">Optional</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
@@ -1857,7 +1855,7 @@
 <span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Given name&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
 <span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
 <span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setType</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">FieldType</span><span class="p">.</span><span class="na">NUMBER</span><span class="p">).</span><span class="na">setOptional</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">CreateCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;My Example Credential&quot;</span><span class="p">).</span><span class="na">setAllowAdditionalFields</span><span class="p">(</span><span class="kc">false</span><span class="p">).</span><span class="na">putAllFields</span><span class="p">(</span><span class="n">fields</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">CreateCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;My Example Credential-&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">()).</span><span class="na">setAllowAdditionalFields</span><span class="p">(</span><span class="kc">false</span><span class="p">).</span><span class="na">putAllFields</span><span class="p">(</span><span class="n">fields</span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1868,6 +1866,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#createcredentialtemplateresponse">CreateCredentialTemplateResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>CreateCredentialTemplateRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1880,7 +1879,7 @@
 <tr>
 <td>data</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></td>
-<td></td>
+<td>Created template</td>
 </tr>
 </tbody>
 </table>
@@ -1902,6 +1901,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#getcredentialtemplaterequest">GetCredentialTemplateRequest</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Request to fetch a template by ID</p>
 <table>
 <thead>
 <tr>
@@ -1914,7 +1914,7 @@
 <tr>
 <td>id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>ID of template to fetch</td>
 </tr>
 </tbody>
 </table>
@@ -1949,6 +1949,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#getcredentialtemplateresponse">GetCredentialTemplateResponse</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Response to <code>GetCredentialTemplateRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1961,7 +1962,7 @@
 <tr>
 <td>template</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></td>
-<td></td>
+<td>Template fetched by ID</td>
 </tr>
 </tbody>
 </table>
@@ -2029,6 +2030,7 @@ This approach allows us to give developers full control over how data is retriev
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#deletecredentialtemplaterequest">DeleteCredentialTemplateRequest</a></p>
 </div>
 <div class="proto-obj-contents">
+<p>Request to delete a template by ID</p>
 <table>
 <thead>
 <tr>
@@ -2041,7 +2043,7 @@ This approach allows us to give developers full control over how data is retriev
 <tr>
 <td>id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>ID of template to delete</td>
 </tr>
 </tbody>
 </table>
