@@ -24,7 +24,7 @@ type UniversalWalletClient interface {
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
-	// Insert an item into the wallet
+	// Update an item in the wallet
 	UpdateItem(ctx context.Context, in *UpdateItemRequest, opts ...grpc.CallOption) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(ctx context.Context, in *DeleteItemRequest, opts ...grpc.CallOption) (*DeleteItemResponse, error)
@@ -93,7 +93,7 @@ type UniversalWalletServer interface {
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)
-	// Insert an item into the wallet
+	// Update an item in the wallet
 	UpdateItem(context.Context, *UpdateItemRequest) (*UpdateItemResponse, error)
 	// Delete an item from the wallet permanently
 	DeleteItem(context.Context, *DeleteItemRequest) (*DeleteItemResponse, error)

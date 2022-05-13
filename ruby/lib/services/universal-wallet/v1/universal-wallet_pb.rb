@@ -3,6 +3,7 @@
 
 require 'google/protobuf'
 
+require 'services/options/field-options_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/universal-wallet/v1/universal-wallet.proto", :syntax => :proto3) do
     add_message "services.universalwallet.v1.SearchRequest" do

@@ -7,7 +7,7 @@ const options = getTestServerOptions();
 async function printGetInfo(service: AccountService, profile: string) {
   service.options.authToken = profile;
   const info = await service.info();
-  console.log("account info=", info);
+  // console.log("account info=", info);
 }
 
 describe("AccountService Unit Tests", () => {

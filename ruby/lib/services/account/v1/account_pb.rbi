@@ -501,7 +501,8 @@ class Services::Account::V1::InfoResponse
       ecosystems: T.nilable(T::Array[T.nilable(Services::Account::V1::AccountEcosystem)]),
       wallet_id: T.nilable(String),
       device_id: T.nilable(String),
-      ecosystem_id: T.nilable(String)
+      ecosystem_id: T.nilable(String),
+      public_did: T.nilable(String)
     ).void
   end
   def initialize(
@@ -509,7 +510,8 @@ class Services::Account::V1::InfoResponse
     ecosystems: [],
     wallet_id: "",
     device_id: "",
-    ecosystem_id: ""
+    ecosystem_id: "",
+    public_did: ""
   )
   end
 
@@ -571,6 +573,18 @@ class Services::Account::V1::InfoResponse
 
   sig { void }
   def clear_ecosystem_id
+  end
+
+  sig { returns(String) }
+  def public_did
+  end
+
+  sig { params(value: String).void }
+  def public_did=(value)
+  end
+
+  sig { void }
+  def clear_public_did
   end
 
   sig { params(field: String).returns(T.untyped) }

@@ -5,27 +5,30 @@ option csharp_namespace = "Trinsic.Services.Account.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
-// Request for creating new account
+import "services/options/field-options.proto";
+
+// Request for creating or signing into an account
 message SignInRequest {
     // Account registration details
     AccountDetails details = 1;
+
     // Invitation code associated with this registration
-    // This field is optional.
-    string invitation_code = 2;
-    // EcosystemId to sign in. This field is optional
-    // and will be ignored if invitation_code is passed
-    string ecosystem_id = 3;
+    string invitation_code = 2 [(options.optional)=true];
+
+    // ID of Ecosystem to sign into. 
+    // Ignored if `invitation_code` is passed
+    string ecosystem_id = 3 [(options.optional)=true];
 }
 
-// Account Registration Details
+// Account registration details
 message AccountDetails
 {
-    // Account name (optional)
-    string name = 1;
-    // Email account (required)
+    // Account name
+    string name = 1 [(options.optional)=true];
+    // Email account
     string email = 2;
-    // SMS number including country code (optional)
-    string sms = 3;
+    // SMS number including country code
+    string sms = 3 [(options.optional)=true];
 }
 
 // Response for creating new account
@@ -84,19 +87,25 @@ message TokenProtection {
     ConfirmationMethod method = 2;
 }
 
+// Request for information about the account used to make the request
 message InfoRequest {}
+
+// Information about the account used to make the request
 message InfoResponse {
     // The account details associated with
     // the calling request context
     AccountDetails details = 1;
-    // any ecosystems the account has access to
+    // Use `ecosystem_id` instead
     repeated AccountEcosystem ecosystems = 2 [deprecated = true];
-    // The wallet id associated with this account
+    // The wallet ID associated with this account
     string wallet_id = 3;
-    // The device id associated with this account
+    // The device ID associated with this account session
     string device_id = 4;
-    // The ecosystem id associated with this account
+    // The ecosystem ID within which this account resides
     string ecosystem_id = 5;
+    // The public DID associated with this account.
+    // This DID is used as "issuer" when signing verifiable credentials
+    string public_did = 6;
 }
 
 message ListDevicesRequest {}

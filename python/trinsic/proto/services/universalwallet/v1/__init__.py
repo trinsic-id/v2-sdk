@@ -11,86 +11,91 @@ import grpclib
 
 @dataclass(eq=False, repr=False)
 class SearchRequest(betterproto.Message):
-    """Search request object"""
+    """Request to search items in wallet"""
 
+    # SQL Query to execute against items in wallet
     query: str = betterproto.string_field(1)
+    # Token provided by previous `SearchResponse` if more data is available for
+    # query
     continuation_token: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class SearchResponse(betterproto.Message):
-    """Search response object"""
+    """Response to `SearchRequest`"""
 
+    # Array of query results, as JSON strings
     items: List[str] = betterproto.string_field(1)
+    # Whether more results are available for this query via `continuation_token`
     has_more: bool = betterproto.bool_field(2)
-    # int32 count = 3;
+    # Token to fetch next set of results via `SearchRequest`
     continuation_token: str = betterproto.string_field(4)
 
 
 @dataclass(eq=False, repr=False)
 class GetItemRequest(betterproto.Message):
-    """Get item request object"""
+    """Request to fetch an item from wallet"""
 
-    # The item identifier
+    # ID of item in wallet
     item_id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class GetItemResponse(betterproto.Message):
-    """Get item response object"""
+    """Response to `GetItemRequest`"""
 
-    # The item data represented as stringified JSON
+    # Item data as a JSON string
     item_json: str = betterproto.string_field(1)
-    # User set item type that described the content of this item
+    # Type of item specified when item was inserted into wallet
     item_type: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class UpdateItemRequest(betterproto.Message):
-    """Update item request object"""
+    """Request to update item in wallet"""
 
-    # The item identifier
+    # ID of item in wallet
     item_id: str = betterproto.string_field(1)
-    # The item type that described the content of this item
+    # Item type (ex. "VerifiableCredential")
     item_type: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class UpdateItemResponse(betterproto.Message):
-    """Update item response object"""
+    """Response to `UpdateItemRequest`"""
 
     pass
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemRequest(betterproto.Message):
-    """Insert item request"""
+    """Request to insert a JSON document into a wallet"""
 
-    # the document to insert as stringified json
+    # Document to insert; must be stringified JSON
     item_json: str = betterproto.string_field(1)
-    # optional item type ex. "VerifiableCredential"
+    # Item type (ex. "VerifiableCredential")
     item_type: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemResponse(betterproto.Message):
-    """Insert item response"""
+    """Response to `InsertItemRequest`"""
 
-    # The item identifier of the inserted record
+    # ID of item inserted into wallet
     item_id: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class DeleteItemRequest(betterproto.Message):
-    """Delete item request"""
+    """Request to delete an item in a wallet"""
 
-    # item identifier of the record to delete
+    # ID of item to delete
     item_id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class DeleteItemResponse(betterproto.Message):
-    """Delete item response"""
+    """Response to `DeleteItemRequest`"""
 
     pass
 

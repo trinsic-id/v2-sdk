@@ -28,20 +28,14 @@ pub mod debugging_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> DebuggingClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> DebuggingClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             DebuggingClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -61,37 +55,25 @@ pub mod debugging_client {
         pub async fn call_empty(
             &mut self,
             request: impl tonic::IntoRequest<super::super::super::super::google::protobuf::Empty>,
-        ) -> Result<
-            tonic::Response<super::super::super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::super::super::super::google::protobuf::Empty>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.debug.v1.Debugging/CallEmpty");
+            let path = http::uri::PathAndQuery::from_static("/services.debug.v1.Debugging/CallEmpty");
             self.inner.unary(request.into_request(), path, codec).await
         }
         pub async fn call_empty_auth(
             &mut self,
             request: impl tonic::IntoRequest<super::super::super::super::google::protobuf::Empty>,
-        ) -> Result<
-            tonic::Response<super::super::super::super::google::protobuf::Empty>,
-            tonic::Status,
-        > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+        ) -> Result<tonic::Response<super::super::super::super::google::protobuf::Empty>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.debug.v1.Debugging/CallEmptyAuth");
+            let path = http::uri::PathAndQuery::from_static("/services.debug.v1.Debugging/CallEmptyAuth");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
