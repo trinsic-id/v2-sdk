@@ -3,15 +3,16 @@ require 'services/account_service'
 require 'services/credential_service'
 require 'services/credential_template_service'
 require 'json'
+require 'securerandom'
 
 def credential_template_demo_run
   account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
-  account = account_service.sign_in()
+  account = account_service.sign_in
   credential_service = Trinsic::CredentialService.new(Trinsic::trinsic_server(account))
   template_service = Trinsic::CredentialTemplateService.new(Trinsic::trinsic_server(account))
 
   # create example template
-  template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(:name => "My Example Credential", :allow_additional_fields => false)
+  template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(:name => "My Example Credential: #{SecureRandom.uuid}", :allow_additional_fields => false)
   template_request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(:description => "Given name")
   template_request.fields['lastName'] = Trinsic::Template_V1::TemplateField.new
   template_request.fields['age'] = Trinsic::Template_V1::TemplateField.new(:type => Trinsic::Template_V1::FieldType::NUMBER, :optional => true)
