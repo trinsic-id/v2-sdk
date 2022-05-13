@@ -96,7 +96,7 @@ You will receive a JSON object of the following form:
 
 `vp_token` is a Verifiable Proof; before making use of its data, you must verify it. 
 
-This is as simple as [passing the proof to the Verify Proof call](../../services/credential-service/#verify-proof).
+This proof can be verified with any library that supports VC verifications for BBS+ signatures. It can also be verified using Transit's SDK; this is as simple as [passing the proof to the Verify Proof call](../../services/credential-service/#verify-proof).
 
 
 !!! warning "Always Verify"
