@@ -29,6 +29,7 @@ fn issue<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
 fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     Ok(Command::IssueFromTemplate(IssueFromTemplateArgs {
         template_id: args.value_of("template-id").map_or(String::default(), |x| x.to_string()),
+        framework_id: args.value_of("framework-id").map(|x| x.to_string()),
         values_json: args.value_of("values-data").map(|x| x.to_string()),
         values_file: args.value_of("values-file").map(|x| x.to_string()),
         output_file: args.value_of("out").map(|x| x.to_string()),
@@ -83,6 +84,7 @@ pub struct IssueArgs {
 pub struct IssueFromTemplateArgs {
     pub template_id: String,
     pub values_json: Option<String>,
+    pub framework_id: Option<String>,
     pub values_file: Option<String>,
     pub output_file: Option<String>,
 }

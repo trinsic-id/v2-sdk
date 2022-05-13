@@ -162,6 +162,12 @@ subcommands:
                   help: The template id to use for issuance
                   takes_value: true
                   required: true
+              - framework-id:
+                  long: framework-id
+                  value_name: FRAMEWORK_ID
+                  help: The ID of the governance framework to include in the VC issuer membership
+                  takes_value: true
+                  required: false
               - values-data:
                   long: values-data
                   value_name: JSON

@@ -65,6 +65,7 @@ async fn issue_from_template(args: &IssueFromTemplateArgs, config: CliConfig) ->
     let request = tonic::Request::new(IssueFromTemplateRequest {
         template_id: args.template_id.clone(),
         values_json: values,
+        framework_id: args.framework_id.clone().unwrap_or_default(),
         ..Default::default()
     });
 
