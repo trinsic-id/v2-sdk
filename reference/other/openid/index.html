@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs-v2.trinsic.id/reference/services/account-service/">
+        <link rel="canonical" href="https://docs-v2.trinsic.id/reference/other/openid/">
       
       
         
@@ -18,7 +18,7 @@
     
     
       
-        <title>Account Service - Documentation</title>
+        <title>OpenID Credential Exchange - Documentation</title>
       
     
     
@@ -147,7 +147,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#account-service" class="md-skip">
+        <a href="#openid-credential-exchange-service" class="md-skip">
           Skip to content
         </a>
       
@@ -195,7 +195,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Account Service
+              OpenID Credential Exchange
             
           </span>
         </div>
@@ -878,14 +878,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
       
       
       
@@ -911,28 +909,9 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Account Service
-  </span>
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../services/account-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -940,62 +919,6 @@
   </span>
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sign-in" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sign In
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-account-info" class="md-nav__link">
-    <span class="md-ellipsis">
-      Get Account Info
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protect-account-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Protect Account Profile
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unprotect-account-profile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unprotect Account Profile
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1007,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../credential-service/" class="md-nav__link">
+      <a href="../../services/credential-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1026,7 +949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../provider-service/" class="md-nav__link">
+      <a href="../../services/provider-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../template-service/" class="md-nav__link">
+      <a href="../../services/template-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../trust-registry-service/" class="md-nav__link">
+      <a href="../../services/trust-registry-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1083,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../wallet-service/" class="md-nav__link">
+      <a href="../../services/wallet-service/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1126,12 +1049,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -1157,9 +1082,28 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../other/openid/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    OpenID Credential Exchange
+  </span>
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1167,6 +1111,95 @@
   </span>
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openid-connect-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenID Connect Protocol
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-received-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify the Received Proof
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1634,36 +1667,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sign-in" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Sign In
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-account-info" class="md-nav__link">
+  <a href="#integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Get Account Info
+      Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openid-connect-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenID Connect Protocol
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#protect-account-profile" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Protect Account Profile
+      Configuration
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#response-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-the-received-proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify the Received Proof
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#unprotect-account-profile" class="md-nav__link">
+  <a href="#sample" class="md-nav__link">
     <span class="md-ellipsis">
-      Unprotect Account Profile
+      Sample
     </span>
   </a>
   
@@ -1682,332 +1748,119 @@
               
   
                 
-  <a href="https://github.com/trinsic-id/sdk/edit/main/docs/reference/services/account-service.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/trinsic-id/sdk/edit/main/docs/reference/other/openid.md" title="Edit this page" class="md-content__button md-icon">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
 
-<h1 id="account-service">Account Service<a class="headerlink" href="#account-service" title="Permanent link">&para;</a></h1>
-<p>The Account Service allows you to create and sign in to accounts.</p>
-<div class="admonition question">
-<p class="admonition-title">Wallets vs Accounts</p>
-<p>Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.</p>
-<p>Every account has exactly one wallet. </p>
-</div>
+<h1 id="openid-credential-exchange-service">OpenID Credential Exchange Service<a class="headerlink" href="#openid-credential-exchange-service" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Trinsic provides an <a href="https://openid.net/connect/" target="_blank">OpenID Connect <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a> ("OIDC") service which enables verifiers to request credentials from a user's cloud wallet in a simple and secure way.</p>
+<p>This service does not require the use of Trinsic's SDKs in the user's browser, and is therefore lightweight and easy to integrate.</p>
 <div class="admonition info">
-<p class="admonition-title">Authentication Tokens</p>
-<p>When you create or sign in to an account, the response is an authentication token string.</p>
-<p>This string is an encoded form of your account profile, as well as an access key to perform calls using the account.</p>
-<p>These are effectively API keys; they should be kept safe and never published.</p>
+<p class="admonition-title">Credential Issuance</p>
+<p>Currently, Trinsic's OpenID Connect service only enables the sharing of a credential between holder and verifier. We plan to support issuance through this service at a later date.</p>
+<p>In the meantime, use the <a href="../../services/wallet-service/#insert-item">InsertItem</a> SDK call to store credentials in a holder's wallet.</p>
 </div>
-<h3 id="sign-in">Sign In<a class="headerlink" href="#sign-in" title="Permanent link">&para;</a></h3>
-<p>Sign in to an existing account, or create a new one.</p>
-<p>If no account details are passed to this method, an anonymous account will be created.</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#signinrequest">SignInRequest</a></p>
-</div>
-<div class="proto-obj-contents">
-<p>Request for creating new account</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>Account registration details</td>
-</tr>
-<tr>
-<td>invitation_code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Invitation code associated with this registration This field is optional.</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-SignInResponse"></a></p>
-</div>
-</div>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#accountdetails">AccountDetails</a></p>
-</div>
-<div class="proto-obj-contents">
-<p>Account Registration Details</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Account name (optional)</td>
-</tr>
-<tr>
-<td>email</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Email account (required)</td>
-</tr>
-<tr>
-<td>sms</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>SMS number including country code (optional)</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AccountEcosystem"></a></p>
-</div>
-</div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label><label for="__tabbed_1_7">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account login --email &lt;PROFILE_EMAIL&gt; --name &lt;PROFILE_NAME&gt;
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">()).</span><span class="nx">getProfile</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">my_profile</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">sdk</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">allison</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="o">.</span><span class="n">profile</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>This operation, if successful, returns an authentication token string.</p>
-<div class="admonition warning">
-<p class="admonition-title">Protected Authentication Tokens</p>
-<p>If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be <em>protected</em>, and cannot be used until it has been unprotected.</p>
-<p>Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the <a href="#unprotect-account-profile">Unprotect</a> call to receive a usable authentication token.</p>
-<p>In the future, we will provide an SDK call to determine if an authentication token is protected.</p>
-</div>
-<h3 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h3>
-<p>Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.</p>
+<h2 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h2>
+<h3 id="openid-connect-protocol">OpenID Connect Protocol<a class="headerlink" href="#openid-connect-protocol" title="Permanent link">&para;</a></h3>
+<p>Because this is an OpenID Connect service, any compliant library may be used -- as long as it enables you to specify additional custom query parameters on the initial outbound URL.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This call returns the information associated with the authentication token used to create the request; therefore, it is not possible to pass a different authentication token to this call. Otherwise, Trinsic's <a href="/learn/security">zero-knowledge proof</a> authentication scheme would be violated.</p>
-<p>When using the CLI, this will return information for the account most recently logged in to.</p>
-<p>When using the SDK, this will return information for the authentication token stored in the <code>AccountService</code> instance's <code>ServiceOptions.AuthToken</code> field, which will be the account most recently logged in to, unless you have manually set this value yourself.</p>
+<p class="admonition-title">OIDC Flow Implementation</p>
+<p>The specifics of the OpenID Connect protocol -- and how to implement it -- are out of scope for this documentation.</p>
+<p>If you would like to see an example implementation of a verification flow against this service, see the <a href="#sample">sample</a> below.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account info
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>Configure your OIDC library with the following parameters:</p>
+<ul>
+<li><code>authority</code><ul>
+<li>Must be <code>https://connect.trinsic.cloud/</code></li>
+</ul>
+</li>
+<li><code>response_type</code><ul>
+<li>Must be <code>code</code></li>
+</ul>
+</li>
+<li><code>scope</code><ul>
+<li>Must be <code>openid</code></li>
+</ul>
+</li>
+<li><code>client_id</code><ul>
+<li>Any string which uniquely represents your client application</li>
+<li>In future, we may require registration of client IDs with Trinsic</li>
+</ul>
+</li>
+<li><code>redirect_uri</code><ul>
+<li>The URI your user should be redirected to once they have completed (or canceled) the flow</li>
+</ul>
+</li>
+<li><strong>Additional Query Parameters</strong><ul>
+<li><code>trinsic:ecosystem</code><ul>
+<li>Name of Ecosystem to fetch credentials from</li>
+<li>Only credentials which were issued within this Ecosystem may be returned</li>
+</ul>
+</li>
+<li><code>trinsic:schema</code><ul>
+<li>Comma-separated list of Schema URLs</li>
+<li>Only credentials which match one of these schemas may be returned</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="response-data">Response Data<a class="headerlink" href="#response-data" title="Permanent link">&para;</a></h3>
+<p>Once the user has returned to your redirect URL, exchange the authorization code (added to your redirect URI as a query parameter named <code>code</code>) for an identity token using your OIDC library.</p>
+<p>You will receive a JSON object of the following form:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{JWT containing same data as vp_token}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;@context&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;https://www.w3.org/2018/credentials/v1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;https://w3id.org/bbs/v1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;{UUID of Holder Wallet}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;VerifiableCredential&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;credentialSchema&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;credentialStatus&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;credentialSubject&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;issuanceDate&quot;</span><span class="p">:</span><span class="s2">&quot;{Issue date of credential}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="s2">&quot;{DID of Issuer}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;proof&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">info</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">info2</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#inforesponse">InfoResponse</a></p>
-</div>
-<div class="proto-obj-contents">
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>The account details associated with the calling request context</td>
-</tr>
-<tr>
-<td>ecosystems</td>
-<td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
-<td><strong>Deprecated.</strong> any ecosystems the account has access to</td>
-</tr>
-<tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The wallet id associated with this account</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The device id associated with this account</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The ecosystem id associated with this account</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-ListDevicesRequest"></a></p>
-</div>
-</div>
-<h3 id="protect-account-profile">Protect Account Profile<a class="headerlink" href="#protect-account-profile" title="Permanent link">&para;</a></h3>
-<p>Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.</p>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>In this context, "protection" refers to a cryptographic operation on the authorization token for an account.</p>
-<p><em>Protecting</em> an account profile with code <code>c</code> returns a new access token which is unusable until it is <em>unprotected</em> with the same code <code>c</code>. It is not possible to reverse the protection process without the original protection code.</p>
-<p>You will receive a protected account profile from Trinsic if you attempt to sign in to an account via email, SMS, or any other method which requires authentication. Trinsic will send a security code to the email or phone number associated with the account, which can be used to unprotect the account profile.</p>
-<p>Specifically, Trinsic is using Oberon to handle access tokens; protection and unprotection is handled using the blinding/unblinding features of Oberon.</p>
+<p class="admonition-title">Credential Format</p>
+<p>Note that the above data has been modified for brevity. </p>
+<p>The <code>@context</code> and <code>type</code> arrays will contain additional entries which are specific to the credential.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">TypeScript</label><label for="__tabbed_3_2">C#</label><label for="__tabbed_3_3">Python</label><label for="__tabbed_3_4">Go</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">protectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">accountProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<h3 id="verify-the-received-proof">Verify the Received Proof<a class="headerlink" href="#verify-the-received-proof" title="Permanent link">&para;</a></h3>
+<p><code>vp_token</code> is a Verifiable Proof; before making use of its data, you must verify it. </p>
+<p>This proof can be verified with any library that supports VC verifications for BBS+ signatures. It can also be verified using Transit's SDK; this is as simple as <a href="../../services/credential-service/#verify-proof">passing the proof to the Verify Proof call</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Always Verify</p>
+<p>It may be tempting to simply take the data in <code>vp_token</code> and act upon it without first verifying the proof.</p>
+<p><strong>Always verify the proof</strong> before making use of its data. </p>
+<p>Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">code</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;1234&quot;</span>
-<span class="n">my_protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span>
-    <span class="n">profile</span><span class="o">=</span><span class="n">my_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
-<span class="p">)</span>
-<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_get_info</span><span class="p">(</span><span class="n">account_service</span><span class="p">,</span> <span class="n">my_protected_profile</span><span class="p">)</span>
-
-<span class="n">my_unprotected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span>
-    <span class="n">profile</span><span class="o">=</span><span class="n">my_protected_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span><span class="n">account_profile</span><span class="p">,</span> <span class="s1">&#39;1234&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="unprotect-account-profile">Unprotect Account Profile<a class="headerlink" href="#unprotect-account-profile" title="Permanent link">&para;</a></h3>
-<p>Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.</p>
-<p>The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the <a href="#protect-account-profile">Protect</a> method.</p>
-<p>Most commonly, this method is used on a protected profile received from the <a href="#sign-in">Sign In</a> method. The code to unprotect it will have been sent to the account owner via email or SMS.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">code</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;1234&quot;</span>
-<span class="n">my_protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span>
-    <span class="n">profile</span><span class="o">=</span><span class="n">my_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
-<span class="p">)</span>
-<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_get_info</span><span class="p">(</span><span class="n">account_service</span><span class="p">,</span> <span class="n">my_protected_profile</span><span class="p">)</span>
-
-<span class="n">my_unprotected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span>
-    <span class="n">profile</span><span class="o">=</span><span class="n">my_protected_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">account_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span><span class="n">protected_profile</span><span class="p">,</span> <span class="s1">&#39;1234&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+<h2 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
+<p>If you'd like to see how to implement a basic OIDC flow against this service, or just want to see it in action, check out our <a href="https://replit.com/@trinsic/oidc-sample" target="_blank">client-side verification flow example <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>.</p>
+<p>You'll need to fork the repl and follow the instructions in <code>README.md</code>.</p>
 
 
 
@@ -2017,7 +1870,7 @@
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a></span>
       </small>
     </div>
   
@@ -2036,7 +1889,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <a href="../../proto/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Protocol Buffers Reference" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2045,20 +1898,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Overview
+              Protocol Buffers Reference
             </div>
           </div>
         </a>
       
       
         
-        <a href="../credential-service/" class="md-footer__link md-footer__link--next" aria-label="Next: Credential Service" rel="next">
+        <a href="../../../cli/" class="md-footer__link md-footer__link--next" aria-label="Next: Trinsic CLI" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Credential Service
+              Trinsic CLI
             </div>
           </div>
           <div class="md-footer__button md-icon">
