@@ -95,7 +95,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [Issue From Template](../../../web/test/CredentialTemplates.test.ts) inside_block:issueFromTemplate
+    [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
     ```
     <!--/codeinclude-->
 
