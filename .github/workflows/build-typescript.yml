@@ -37,6 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         name: Setup Node v${{ matrix.node-version }}
         with:
