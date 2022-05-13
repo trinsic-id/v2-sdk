@@ -22,7 +22,7 @@ module Services
           rpc :Search, ::Services::Universalwallet::V1::SearchRequest, ::Services::Universalwallet::V1::SearchResponse
           # Insert an item into the wallet
           rpc :InsertItem, ::Services::Universalwallet::V1::InsertItemRequest, ::Services::Universalwallet::V1::InsertItemResponse
-          # Insert an item into the wallet
+          # Update an item in the wallet
           rpc :UpdateItem, ::Services::Universalwallet::V1::UpdateItemRequest, ::Services::Universalwallet::V1::UpdateItemResponse
           # Delete an item from the wallet permanently
           rpc :DeleteItem, ::Services::Universalwallet::V1::DeleteItemRequest, ::Services::Universalwallet::V1::DeleteItemResponse

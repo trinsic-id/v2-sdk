@@ -58,29 +58,26 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
   }
 }
 
-/** Request for creating new account */
+/** Request for creating or signing into an account */
 export interface SignInRequest {
   /** Account registration details */
   details: AccountDetails | undefined;
-  /**
-   * Invitation code associated with this registration
-   * This field is optional.
-   */
+  /** Invitation code associated with this registration */
   invitationCode: string;
   /**
-   * EcosystemId to sign in. This field is optional
-   * and will be ignored if invitation_code is passed
+   * ID of Ecosystem to sign into.
+   * Ignored if `invitation_code` is passed
    */
   ecosystemId: string;
 }
 
-/** Account Registration Details */
+/** Account registration details */
 export interface AccountDetails {
-  /** Account name (optional) */
+  /** Account name */
   name: string;
-  /** Email account (required) */
+  /** Email account */
   email: string;
-  /** SMS number including country code (optional) */
+  /** SMS number including country code */
   sms: string;
 }
 
@@ -139,8 +136,10 @@ export interface TokenProtection {
   method: ConfirmationMethod;
 }
 
+/** Request for information about the account used to make the request */
 export interface InfoRequest {}
 
+/** Information about the account used to make the request */
 export interface InfoResponse {
   /**
    * The account details associated with
@@ -148,17 +147,22 @@ export interface InfoResponse {
    */
   details: AccountDetails | undefined;
   /**
-   * any ecosystems the account has access to
+   * Use `ecosystem_id` instead
    *
    * @deprecated
    */
   ecosystems: AccountEcosystem[];
-  /** The wallet id associated with this account */
+  /** The wallet ID associated with this account */
   walletId: string;
-  /** The device id associated with this account */
+  /** The device ID associated with this account session */
   deviceId: string;
-  /** The ecosystem id associated with this account */
+  /** The ecosystem ID within which this account resides */
   ecosystemId: string;
+  /**
+   * The public DID associated with this account.
+   * This DID is used as "issuer" when signing verifiable credentials
+   */
+  publicDid: string;
 }
 
 export interface ListDevicesRequest {}
@@ -618,6 +622,7 @@ function createBaseInfoResponse(): InfoResponse {
     walletId: "",
     deviceId: "",
     ecosystemId: "",
+    publicDid: "",
   };
 }
 
@@ -640,6 +645,9 @@ export const InfoResponse = {
     }
     if (message.ecosystemId !== "") {
       writer.uint32(42).string(message.ecosystemId);
+    }
+    if (message.publicDid !== "") {
+      writer.uint32(50).string(message.publicDid);
     }
     return writer;
   },
@@ -668,6 +676,9 @@ export const InfoResponse = {
         case 5:
           message.ecosystemId = reader.string();
           break;
+        case 6:
+          message.publicDid = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -687,6 +698,7 @@ export const InfoResponse = {
       walletId: isSet(object.walletId) ? String(object.walletId) : "",
       deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
     };
   },
 
@@ -707,6 +719,7 @@ export const InfoResponse = {
     message.deviceId !== undefined && (obj.deviceId = message.deviceId);
     message.ecosystemId !== undefined &&
       (obj.ecosystemId = message.ecosystemId);
+    message.publicDid !== undefined && (obj.publicDid = message.publicDid);
     return obj;
   },
 
@@ -721,6 +734,7 @@ export const InfoResponse = {
     message.walletId = object.walletId ?? "";
     message.deviceId = object.deviceId ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
+    message.publicDid = object.publicDid ?? "";
     return message;
   },
 };

@@ -54,36 +54,21 @@ object TrustRegistryGrpcKt {
     @JvmStatic
     get() = TrustRegistryGrpc.getSearchRegistryMethod()
 
-  val registerIssuerMethod: MethodDescriptor<TrustRegistryOuterClass.RegisterIssuerRequest,
-      TrustRegistryOuterClass.RegisterIssuerResponse>
+  val registerMemberMethod: MethodDescriptor<TrustRegistryOuterClass.RegisterMemberRequest,
+      TrustRegistryOuterClass.RegisterMemberResponse>
     @JvmStatic
-    get() = TrustRegistryGrpc.getRegisterIssuerMethod()
+    get() = TrustRegistryGrpc.getRegisterMemberMethod()
 
-  val registerVerifierMethod: MethodDescriptor<TrustRegistryOuterClass.RegisterVerifierRequest,
-      TrustRegistryOuterClass.RegisterVerifierResponse>
+  val unregisterMemberMethod: MethodDescriptor<TrustRegistryOuterClass.UnregisterMemberRequest,
+      TrustRegistryOuterClass.UnregisterMemberResponse>
     @JvmStatic
-    get() = TrustRegistryGrpc.getRegisterVerifierMethod()
+    get() = TrustRegistryGrpc.getUnregisterMemberMethod()
 
-  val unregisterIssuerMethod: MethodDescriptor<TrustRegistryOuterClass.UnregisterIssuerRequest,
-      TrustRegistryOuterClass.UnregisterIssuerResponse>
+  val getMembershipStatusMethod:
+      MethodDescriptor<TrustRegistryOuterClass.GetMembershipStatusRequest,
+      TrustRegistryOuterClass.GetMembershipStatusResponse>
     @JvmStatic
-    get() = TrustRegistryGrpc.getUnregisterIssuerMethod()
-
-  val unregisterVerifierMethod: MethodDescriptor<TrustRegistryOuterClass.UnregisterVerifierRequest,
-      TrustRegistryOuterClass.UnregisterVerifierResponse>
-    @JvmStatic
-    get() = TrustRegistryGrpc.getUnregisterVerifierMethod()
-
-  val checkIssuerStatusMethod: MethodDescriptor<TrustRegistryOuterClass.CheckIssuerStatusRequest,
-      TrustRegistryOuterClass.CheckIssuerStatusResponse>
-    @JvmStatic
-    get() = TrustRegistryGrpc.getCheckIssuerStatusMethod()
-
-  val checkVerifierStatusMethod:
-      MethodDescriptor<TrustRegistryOuterClass.CheckVerifierStatusRequest,
-      TrustRegistryOuterClass.CheckVerifierStatusResponse>
-    @JvmStatic
-    get() = TrustRegistryGrpc.getCheckVerifierStatusMethod()
+    get() = TrustRegistryGrpc.getGetMembershipStatusMethod()
 
   val fetchDataMethod: MethodDescriptor<TrustRegistryOuterClass.FetchDataRequest,
       TrustRegistryOuterClass.FetchDataResponse>
@@ -174,10 +159,10 @@ object TrustRegistryGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun registerIssuer(request: TrustRegistryOuterClass.RegisterIssuerRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.RegisterIssuerResponse = unaryRpc(
+    suspend fun registerMember(request: TrustRegistryOuterClass.RegisterMemberRequest,
+        headers: Metadata = Metadata()): TrustRegistryOuterClass.RegisterMemberResponse = unaryRpc(
       channel,
-      TrustRegistryGrpc.getRegisterIssuerMethod(),
+      TrustRegistryGrpc.getRegisterMemberMethod(),
       request,
       callOptions,
       headers
@@ -194,11 +179,11 @@ object TrustRegistryGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun registerVerifier(request: TrustRegistryOuterClass.RegisterVerifierRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.RegisterVerifierResponse =
+    suspend fun unregisterMember(request: TrustRegistryOuterClass.UnregisterMemberRequest,
+        headers: Metadata = Metadata()): TrustRegistryOuterClass.UnregisterMemberResponse =
         unaryRpc(
       channel,
-      TrustRegistryGrpc.getRegisterVerifierMethod(),
+      TrustRegistryGrpc.getUnregisterMemberMethod(),
       request,
       callOptions,
       headers
@@ -215,74 +200,11 @@ object TrustRegistryGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun unregisterIssuer(request: TrustRegistryOuterClass.UnregisterIssuerRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.UnregisterIssuerResponse =
+    suspend fun getMembershipStatus(request: TrustRegistryOuterClass.GetMembershipStatusRequest,
+        headers: Metadata = Metadata()): TrustRegistryOuterClass.GetMembershipStatusResponse =
         unaryRpc(
       channel,
-      TrustRegistryGrpc.getUnregisterIssuerMethod(),
-      request,
-      callOptions,
-      headers
-    )
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes
-     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
-     * with the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request.  Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun unregisterVerifier(request: TrustRegistryOuterClass.UnregisterVerifierRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.UnregisterVerifierResponse =
-        unaryRpc(
-      channel,
-      TrustRegistryGrpc.getUnregisterVerifierMethod(),
-      request,
-      callOptions,
-      headers
-    )
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes
-     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
-     * with the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request.  Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun checkIssuerStatus(request: TrustRegistryOuterClass.CheckIssuerStatusRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.CheckIssuerStatusResponse =
-        unaryRpc(
-      channel,
-      TrustRegistryGrpc.getCheckIssuerStatusMethod(),
-      request,
-      callOptions,
-      headers
-    )
-    /**
-     * Executes this RPC and returns the response message, suspending until the RPC completes
-     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
-     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
-     * with the corresponding exception as a cause.
-     *
-     * @param request The request message to send to the server.
-     *
-     * @param headers Metadata to attach to the request.  Most users will not need this.
-     *
-     * @return The single response from the server.
-     */
-    suspend fun checkVerifierStatus(request: TrustRegistryOuterClass.CheckVerifierStatusRequest,
-        headers: Metadata = Metadata()): TrustRegistryOuterClass.CheckVerifierStatusResponse =
-        unaryRpc(
-      channel,
-      TrustRegistryGrpc.getCheckVerifierStatusMethod(),
+      TrustRegistryGrpc.getGetMembershipStatusMethod(),
       request,
       callOptions,
       headers
@@ -362,7 +284,7 @@ object TrustRegistryGrpcKt {
         StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.SearchRegistry is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.RegisterIssuer.
+     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.RegisterMember.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -372,12 +294,12 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun registerIssuer(request: TrustRegistryOuterClass.RegisterIssuerRequest):
-        TrustRegistryOuterClass.RegisterIssuerResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.RegisterIssuer is unimplemented"))
+    open suspend fun registerMember(request: TrustRegistryOuterClass.RegisterMemberRequest):
+        TrustRegistryOuterClass.RegisterMemberResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.RegisterMember is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.RegisterVerifier.
+     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.UnregisterMember.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -387,59 +309,13 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun registerVerifier(request: TrustRegistryOuterClass.RegisterVerifierRequest):
-        TrustRegistryOuterClass.RegisterVerifierResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.RegisterVerifier is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.UnregisterIssuer.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail
-     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
-     * fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun unregisterIssuer(request: TrustRegistryOuterClass.UnregisterIssuerRequest):
-        TrustRegistryOuterClass.UnregisterIssuerResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.UnregisterIssuer is unimplemented"))
+    open suspend fun unregisterMember(request: TrustRegistryOuterClass.UnregisterMemberRequest):
+        TrustRegistryOuterClass.UnregisterMemberResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.UnregisterMember is unimplemented"))
 
     /**
      * Returns the response to an RPC for
-     * services.trustregistry.v1.TrustRegistry.UnregisterVerifier.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail
-     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
-     * fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun unregisterVerifier(request: TrustRegistryOuterClass.UnregisterVerifierRequest):
-        TrustRegistryOuterClass.UnregisterVerifierResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.UnregisterVerifier is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for services.trustregistry.v1.TrustRegistry.CheckIssuerStatus.
-     *
-     * If this method fails with a [StatusException], the RPC will fail with the corresponding
-     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
-     * will fail
-     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
-     * fail with `Status.UNKNOWN` with the exception as a cause.
-     *
-     * @param request The request from the client.
-     */
-    open suspend fun checkIssuerStatus(request: TrustRegistryOuterClass.CheckIssuerStatusRequest):
-        TrustRegistryOuterClass.CheckIssuerStatusResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.CheckIssuerStatus is unimplemented"))
-
-    /**
-     * Returns the response to an RPC for
-     * services.trustregistry.v1.TrustRegistry.CheckVerifierStatus.
+     * services.trustregistry.v1.TrustRegistry.GetMembershipStatus.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -450,9 +326,9 @@ object TrustRegistryGrpcKt {
      * @param request The request from the client.
      */
     open suspend
-        fun checkVerifierStatus(request: TrustRegistryOuterClass.CheckVerifierStatusRequest):
-        TrustRegistryOuterClass.CheckVerifierStatusResponse = throw
-        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.CheckVerifierStatus is unimplemented"))
+        fun getMembershipStatus(request: TrustRegistryOuterClass.GetMembershipStatusRequest):
+        TrustRegistryOuterClass.GetMembershipStatusResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.trustregistry.v1.TrustRegistry.GetMembershipStatus is unimplemented"))
 
     /**
      * Returns a [Flow] of responses to an RPC for
@@ -489,33 +365,18 @@ object TrustRegistryGrpcKt {
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = TrustRegistryGrpc.getRegisterIssuerMethod(),
-      implementation = ::registerIssuer
+      descriptor = TrustRegistryGrpc.getRegisterMemberMethod(),
+      implementation = ::registerMember
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = TrustRegistryGrpc.getRegisterVerifierMethod(),
-      implementation = ::registerVerifier
+      descriptor = TrustRegistryGrpc.getUnregisterMemberMethod(),
+      implementation = ::unregisterMember
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,
-      descriptor = TrustRegistryGrpc.getUnregisterIssuerMethod(),
-      implementation = ::unregisterIssuer
-    ))
-      .addMethod(unaryServerMethodDefinition(
-      context = this.context,
-      descriptor = TrustRegistryGrpc.getUnregisterVerifierMethod(),
-      implementation = ::unregisterVerifier
-    ))
-      .addMethod(unaryServerMethodDefinition(
-      context = this.context,
-      descriptor = TrustRegistryGrpc.getCheckIssuerStatusMethod(),
-      implementation = ::checkIssuerStatus
-    ))
-      .addMethod(unaryServerMethodDefinition(
-      context = this.context,
-      descriptor = TrustRegistryGrpc.getCheckVerifierStatusMethod(),
-      implementation = ::checkVerifierStatus
+      descriptor = TrustRegistryGrpc.getGetMembershipStatusMethod(),
+      implementation = ::getMembershipStatus
     ))
       .addMethod(serverStreamingServerMethodDefinition(
       context = this.context,

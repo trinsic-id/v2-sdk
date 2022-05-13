@@ -108,190 +108,97 @@ public final class TrustRegistryGrpc {
     return getSearchRegistryMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> getRegisterIssuerMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> getRegisterMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RegisterIssuer",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "RegisterMember",
+      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.class,
+      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> getRegisterIssuerMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> getRegisterIssuerMethod;
-    if ((getRegisterIssuerMethod = TrustRegistryGrpc.getRegisterIssuerMethod) == null) {
+  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> getRegisterMemberMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> getRegisterMemberMethod;
+    if ((getRegisterMemberMethod = TrustRegistryGrpc.getRegisterMemberMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
-        if ((getRegisterIssuerMethod = TrustRegistryGrpc.getRegisterIssuerMethod) == null) {
-          TrustRegistryGrpc.getRegisterIssuerMethod = getRegisterIssuerMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse>newBuilder()
+        if ((getRegisterMemberMethod = TrustRegistryGrpc.getRegisterMemberMethod) == null) {
+          TrustRegistryGrpc.getRegisterMemberMethod = getRegisterMemberMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterIssuer"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterMember"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest.getDefaultInstance()))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("RegisterIssuer"))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("RegisterMember"))
               .build();
         }
       }
     }
-    return getRegisterIssuerMethod;
+    return getRegisterMemberMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> getRegisterVerifierMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> getUnregisterMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RegisterVerifier",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "UnregisterMember",
+      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.class,
+      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> getRegisterVerifierMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> getRegisterVerifierMethod;
-    if ((getRegisterVerifierMethod = TrustRegistryGrpc.getRegisterVerifierMethod) == null) {
+  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> getUnregisterMemberMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> getUnregisterMemberMethod;
+    if ((getUnregisterMemberMethod = TrustRegistryGrpc.getUnregisterMemberMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
-        if ((getRegisterVerifierMethod = TrustRegistryGrpc.getRegisterVerifierMethod) == null) {
-          TrustRegistryGrpc.getRegisterVerifierMethod = getRegisterVerifierMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse>newBuilder()
+        if ((getUnregisterMemberMethod = TrustRegistryGrpc.getUnregisterMemberMethod) == null) {
+          TrustRegistryGrpc.getUnregisterMemberMethod = getUnregisterMemberMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterVerifier"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnregisterMember"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest.getDefaultInstance()))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("RegisterVerifier"))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("UnregisterMember"))
               .build();
         }
       }
     }
-    return getRegisterVerifierMethod;
+    return getUnregisterMemberMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> getUnregisterIssuerMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> getGetMembershipStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "UnregisterIssuer",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetMembershipStatus",
+      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.class,
+      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> getUnregisterIssuerMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> getUnregisterIssuerMethod;
-    if ((getUnregisterIssuerMethod = TrustRegistryGrpc.getUnregisterIssuerMethod) == null) {
+  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
+      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> getGetMembershipStatusMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> getGetMembershipStatusMethod;
+    if ((getGetMembershipStatusMethod = TrustRegistryGrpc.getGetMembershipStatusMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
-        if ((getUnregisterIssuerMethod = TrustRegistryGrpc.getUnregisterIssuerMethod) == null) {
-          TrustRegistryGrpc.getUnregisterIssuerMethod = getUnregisterIssuerMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse>newBuilder()
+        if ((getGetMembershipStatusMethod = TrustRegistryGrpc.getGetMembershipStatusMethod) == null) {
+          TrustRegistryGrpc.getGetMembershipStatusMethod = getGetMembershipStatusMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnregisterIssuer"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMembershipStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest.getDefaultInstance()))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("UnregisterIssuer"))
+                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("GetMembershipStatus"))
               .build();
         }
       }
     }
-    return getUnregisterIssuerMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> getUnregisterVerifierMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "UnregisterVerifier",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> getUnregisterVerifierMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> getUnregisterVerifierMethod;
-    if ((getUnregisterVerifierMethod = TrustRegistryGrpc.getUnregisterVerifierMethod) == null) {
-      synchronized (TrustRegistryGrpc.class) {
-        if ((getUnregisterVerifierMethod = TrustRegistryGrpc.getUnregisterVerifierMethod) == null) {
-          TrustRegistryGrpc.getUnregisterVerifierMethod = getUnregisterVerifierMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnregisterVerifier"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("UnregisterVerifier"))
-              .build();
-        }
-      }
-    }
-    return getUnregisterVerifierMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> getCheckIssuerStatusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CheckIssuerStatus",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> getCheckIssuerStatusMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> getCheckIssuerStatusMethod;
-    if ((getCheckIssuerStatusMethod = TrustRegistryGrpc.getCheckIssuerStatusMethod) == null) {
-      synchronized (TrustRegistryGrpc.class) {
-        if ((getCheckIssuerStatusMethod = TrustRegistryGrpc.getCheckIssuerStatusMethod) == null) {
-          TrustRegistryGrpc.getCheckIssuerStatusMethod = getCheckIssuerStatusMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckIssuerStatus"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("CheckIssuerStatus"))
-              .build();
-        }
-      }
-    }
-    return getCheckIssuerStatusMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> getCheckVerifierStatusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CheckVerifierStatus",
-      requestType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.class,
-      responseType = trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest,
-      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> getCheckVerifierStatusMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> getCheckVerifierStatusMethod;
-    if ((getCheckVerifierStatusMethod = TrustRegistryGrpc.getCheckVerifierStatusMethod) == null) {
-      synchronized (TrustRegistryGrpc.class) {
-        if ((getCheckVerifierStatusMethod = TrustRegistryGrpc.getCheckVerifierStatusMethod) == null) {
-          TrustRegistryGrpc.getCheckVerifierStatusMethod = getCheckVerifierStatusMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest, trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckVerifierStatus"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("CheckVerifierStatus"))
-              .build();
-        }
-      }
-    }
-    return getCheckVerifierStatusMethod;
+    return getGetMembershipStatusMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
@@ -402,19 +309,9 @@ public final class TrustRegistryGrpc {
      * Registers an authoritative issuer with a credential template
      * </pre>
      */
-    public void registerIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterIssuerMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Registers an authoritative verifier with a credential template
-     * </pre>
-     */
-    public void registerVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterVerifierMethod(), responseObserver);
+    public void registerMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterMemberMethod(), responseObserver);
     }
 
     /**
@@ -422,33 +319,16 @@ public final class TrustRegistryGrpc {
      * Removes an authoritative issuer with a credential template from the trust registry
      * </pre>
      */
-    public void unregisterIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUnregisterIssuerMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Removes an authoritative verifier with a presentation template from the trust registry
-     * </pre>
-     */
-    public void unregisterVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUnregisterVerifierMethod(), responseObserver);
+    public void unregisterMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUnregisterMemberMethod(), responseObserver);
     }
 
     /**
      */
-    public void checkIssuerStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckIssuerStatusMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void checkVerifierStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckVerifierStatusMethod(), responseObserver);
+    public void getMembershipStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMembershipStatusMethod(), responseObserver);
     }
 
     /**
@@ -482,47 +362,26 @@ public final class TrustRegistryGrpc {
                 trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>(
                   this, METHODID_SEARCH_REGISTRY)))
           .addMethod(
-            getRegisterIssuerMethod(),
+            getRegisterMemberMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse>(
-                  this, METHODID_REGISTER_ISSUER)))
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>(
+                  this, METHODID_REGISTER_MEMBER)))
           .addMethod(
-            getRegisterVerifierMethod(),
+            getUnregisterMemberMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse>(
-                  this, METHODID_REGISTER_VERIFIER)))
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>(
+                  this, METHODID_UNREGISTER_MEMBER)))
           .addMethod(
-            getUnregisterIssuerMethod(),
+            getGetMembershipStatusMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse>(
-                  this, METHODID_UNREGISTER_ISSUER)))
-          .addMethod(
-            getUnregisterVerifierMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse>(
-                  this, METHODID_UNREGISTER_VERIFIER)))
-          .addMethod(
-            getCheckIssuerStatusMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse>(
-                  this, METHODID_CHECK_ISSUER_STATUS)))
-          .addMethod(
-            getCheckVerifierStatusMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest,
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse>(
-                  this, METHODID_CHECK_VERIFIER_STATUS)))
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
+                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>(
+                  this, METHODID_GET_MEMBERSHIP_STATUS)))
           .addMethod(
             getFetchDataMethod(),
             io.grpc.stub.ServerCalls.asyncServerStreamingCall(
@@ -580,21 +439,10 @@ public final class TrustRegistryGrpc {
      * Registers an authoritative issuer with a credential template
      * </pre>
      */
-    public void registerIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> responseObserver) {
+    public void registerMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRegisterIssuerMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Registers an authoritative verifier with a credential template
-     * </pre>
-     */
-    public void registerVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRegisterVerifierMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getRegisterMemberMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -602,37 +450,18 @@ public final class TrustRegistryGrpc {
      * Removes an authoritative issuer with a credential template from the trust registry
      * </pre>
      */
-    public void unregisterIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> responseObserver) {
+    public void unregisterMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getUnregisterIssuerMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Removes an authoritative verifier with a presentation template from the trust registry
-     * </pre>
-     */
-    public void unregisterVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getUnregisterVerifierMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getUnregisterMemberMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void checkIssuerStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> responseObserver) {
+    public void getMembershipStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCheckIssuerStatusMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void checkVerifierStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCheckVerifierStatusMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -687,19 +516,9 @@ public final class TrustRegistryGrpc {
      * Registers an authoritative issuer with a credential template
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse registerIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest request) {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse registerMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRegisterIssuerMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Registers an authoritative verifier with a credential template
-     * </pre>
-     */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse registerVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRegisterVerifierMethod(), getCallOptions(), request);
+          getChannel(), getRegisterMemberMethod(), getCallOptions(), request);
     }
 
     /**
@@ -707,33 +526,16 @@ public final class TrustRegistryGrpc {
      * Removes an authoritative issuer with a credential template from the trust registry
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse unregisterIssuer(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest request) {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse unregisterMember(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUnregisterIssuerMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Removes an authoritative verifier with a presentation template from the trust registry
-     * </pre>
-     */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse unregisterVerifier(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUnregisterVerifierMethod(), getCallOptions(), request);
+          getChannel(), getUnregisterMemberMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse checkIssuerStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest request) {
+    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse getMembershipStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCheckIssuerStatusMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse checkVerifierStatus(trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCheckVerifierStatusMethod(), getCallOptions(), request);
+          getChannel(), getGetMembershipStatusMethod(), getCallOptions(), request);
     }
 
     /**
@@ -791,21 +593,10 @@ public final class TrustRegistryGrpc {
      * Registers an authoritative issuer with a credential template
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse> registerIssuer(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse> registerMember(
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRegisterIssuerMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * Registers an authoritative verifier with a credential template
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse> registerVerifier(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRegisterVerifierMethod(), getCallOptions()), request);
+          getChannel().newCall(getRegisterMemberMethod(), getCallOptions()), request);
     }
 
     /**
@@ -813,50 +604,28 @@ public final class TrustRegistryGrpc {
      * Removes an authoritative issuer with a credential template from the trust registry
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse> unregisterIssuer(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse> unregisterMember(
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getUnregisterIssuerMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * Removes an authoritative verifier with a presentation template from the trust registry
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse> unregisterVerifier(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getUnregisterVerifierMethod(), getCallOptions()), request);
+          getChannel().newCall(getUnregisterMemberMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse> getMembershipStatus(
+        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCheckIssuerStatusMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse> checkVerifierStatus(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCheckVerifierStatusMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_ADD_FRAMEWORK = 0;
   private static final int METHODID_REMOVE_FRAMEWORK = 1;
   private static final int METHODID_SEARCH_REGISTRY = 2;
-  private static final int METHODID_REGISTER_ISSUER = 3;
-  private static final int METHODID_REGISTER_VERIFIER = 4;
-  private static final int METHODID_UNREGISTER_ISSUER = 5;
-  private static final int METHODID_UNREGISTER_VERIFIER = 6;
-  private static final int METHODID_CHECK_ISSUER_STATUS = 7;
-  private static final int METHODID_CHECK_VERIFIER_STATUS = 8;
-  private static final int METHODID_FETCH_DATA = 9;
+  private static final int METHODID_REGISTER_MEMBER = 3;
+  private static final int METHODID_UNREGISTER_MEMBER = 4;
+  private static final int METHODID_GET_MEMBERSHIP_STATUS = 5;
+  private static final int METHODID_FETCH_DATA = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -887,29 +656,17 @@ public final class TrustRegistryGrpc {
           serviceImpl.searchRegistry((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>) responseObserver);
           break;
-        case METHODID_REGISTER_ISSUER:
-          serviceImpl.registerIssuer((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterIssuerResponse>) responseObserver);
+        case METHODID_REGISTER_MEMBER:
+          serviceImpl.registerMember((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>) responseObserver);
           break;
-        case METHODID_REGISTER_VERIFIER:
-          serviceImpl.registerVerifier((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterVerifierResponse>) responseObserver);
+        case METHODID_UNREGISTER_MEMBER:
+          serviceImpl.unregisterMember((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>) responseObserver);
           break;
-        case METHODID_UNREGISTER_ISSUER:
-          serviceImpl.unregisterIssuer((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterIssuerResponse>) responseObserver);
-          break;
-        case METHODID_UNREGISTER_VERIFIER:
-          serviceImpl.unregisterVerifier((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterVerifierResponse>) responseObserver);
-          break;
-        case METHODID_CHECK_ISSUER_STATUS:
-          serviceImpl.checkIssuerStatus((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckIssuerStatusResponse>) responseObserver);
-          break;
-        case METHODID_CHECK_VERIFIER_STATUS:
-          serviceImpl.checkVerifierStatus((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.CheckVerifierStatusResponse>) responseObserver);
+        case METHODID_GET_MEMBERSHIP_STATUS:
+          serviceImpl.getMembershipStatus((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>) responseObserver);
           break;
         case METHODID_FETCH_DATA:
           serviceImpl.fetchData((trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest) request,
@@ -979,12 +736,9 @@ public final class TrustRegistryGrpc {
               .addMethod(getAddFrameworkMethod())
               .addMethod(getRemoveFrameworkMethod())
               .addMethod(getSearchRegistryMethod())
-              .addMethod(getRegisterIssuerMethod())
-              .addMethod(getRegisterVerifierMethod())
-              .addMethod(getUnregisterIssuerMethod())
-              .addMethod(getUnregisterVerifierMethod())
-              .addMethod(getCheckIssuerStatusMethod())
-              .addMethod(getCheckVerifierStatusMethod())
+              .addMethod(getRegisterMemberMethod())
+              .addMethod(getUnregisterMemberMethod())
+              .addMethod(getGetMembershipStatusMethod())
               .addMethod(getFetchDataMethod())
               .build();
         }

@@ -31,7 +31,7 @@ async function vaccineDemo() {
 
   accountService.options.authToken = clinic;
   const info = await accountService.info();
-  console.log(`Account info=${info}`);
+  // console.log(`Account info=${info}`);
 
   // createService() {
   const walletService = new WalletService(options);
@@ -44,7 +44,7 @@ async function vaccineDemo() {
     IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsignedPath) })
   );
   // }
-  console.log(`Credential=${issueResponse}`);
+  // console.log(`Credential=${issueResponse}`);
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
@@ -55,7 +55,7 @@ async function vaccineDemo() {
     })
   );
   // }
-  console.log(`Item id=${insertResponse.itemId}`);
+  // console.log(`Item id=${insertResponse.itemId}`);
 
   // shareCredential() {
   // Allison shares the credential with the venue.
@@ -69,7 +69,7 @@ async function vaccineDemo() {
     })
   );
   // }
-  console.log(`Proof=${proofResponse.proofDocumentJson}`);
+  // console.log(`Proof=${proofResponse.proofDocumentJson}`);
 
   // verifyCredential() {
   // The airline verifies the credential
@@ -80,7 +80,7 @@ async function vaccineDemo() {
     })
   );
   // }
-  console.log(`Verification result=${verifyResponse.isValid}`);
+  // console.log(`Verification result=${verifyResponse.isValid}`);
 
   if (!verifyResponse.isValid) throw new Error("Verification should be true!");
 }

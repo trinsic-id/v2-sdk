@@ -3,6 +3,8 @@ package services
 import (
 	"context"
 	"encoding/json"
+	"fmt"
+	"github.com/google/uuid"
 	"testing"
 
 	sdk "github.com/trinsic-id/sdk/go/proto"
@@ -31,7 +33,7 @@ func TestTemplatesDemo(t *testing.T) {
 
 	// create example template
 	// createTemplate() {
-	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: "My Example Credential", AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
+	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
 	templateRequest.Fields["firstName"] = &sdk.TemplateField{Description: "Given name"}
 	templateRequest.Fields["lastName"] = &sdk.TemplateField{}
 	templateRequest.Fields["age"] = &sdk.TemplateField{Type: sdk.FieldType_NUMBER, Optional: true}

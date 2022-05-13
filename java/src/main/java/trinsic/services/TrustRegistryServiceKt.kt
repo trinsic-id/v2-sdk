@@ -18,7 +18,7 @@ class TrustRegistryServiceKt(
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {
         try {
-            val url = URL(request.governanceFramework.governanceFrameworkUri)
+            URL(request.governanceFrameworkUri)
         } catch (e: MalformedURLException) {
             throw IllegalArgumentException("invalid uri string", e)
         }
@@ -41,8 +41,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun registerIssuer(request: RegisterIssuerRequest): RegisterIssuerResponse {
-        return withMetadata(stub, request).registerIssuer(request)
+    suspend fun registerMember(request: RegisterMemberRequest): RegisterMemberResponse {
+        return withMetadata(stub, request).registerMember(request)
     }
 
     @Throws(
@@ -51,38 +51,13 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun unregisterIssuer(request: UnregisterIssuerRequest): UnregisterIssuerResponse {
-        return withMetadata(stub, request).unregisterIssuer(request)
-    }
-
-    @Throws(
-        InvalidProtocolBufferException::class,
-        DidException::class,
-        ExecutionException::class,
-        InterruptedException::class
-    )
-    suspend fun registerVerifier(request: RegisterVerifierRequest): RegisterVerifierResponse {
-        return withMetadata(stub, request).registerVerifier(request)
-    }
-
-    @Throws(
-        InvalidProtocolBufferException::class,
-        DidException::class,
-        ExecutionException::class,
-        InterruptedException::class
-    )
-    suspend fun unregisterVerifier(request: UnregisterVerifierRequest): UnregisterVerifierResponse {
-        return withMetadata(stub, request).unregisterVerifier(request)
+    suspend fun unregisterMember(request: UnregisterMemberRequest): UnregisterMemberResponse {
+        return withMetadata(stub, request).unregisterMember(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkIssuerStatus(request: CheckIssuerStatusRequest): CheckIssuerStatusResponse {
-        return withMetadata(stub, request).checkIssuerStatus(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkVerifierStatus(request: CheckVerifierStatusRequest): CheckVerifierStatusResponse {
-        return withMetadata(stub, request).checkVerifierStatus(request)
+    suspend fun getMembershipStatus(request: GetMembershipStatusRequest): GetMembershipStatusResponse {
+        return withMetadata(stub, request).getMembershipStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

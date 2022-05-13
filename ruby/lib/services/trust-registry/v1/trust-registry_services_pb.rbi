@@ -44,50 +44,26 @@ module Services::Trustregistry::V1::TrustRegistry
 
     sig do
       params(
-        request: Services::Trustregistry::V1::RegisterIssuerRequest
-      ).returns(Services::Trustregistry::V1::RegisterIssuerResponse)
+        request: Services::Trustregistry::V1::RegisterMemberRequest
+      ).returns(Services::Trustregistry::V1::RegisterMemberResponse)
     end
-    def register_issuer(request)
-    end
-
-    sig do
-      params(
-        request: Services::Trustregistry::V1::RegisterVerifierRequest
-      ).returns(Services::Trustregistry::V1::RegisterVerifierResponse)
-    end
-    def register_verifier(request)
+    def register_member(request)
     end
 
     sig do
       params(
-        request: Services::Trustregistry::V1::UnregisterIssuerRequest
-      ).returns(Services::Trustregistry::V1::UnregisterIssuerResponse)
+        request: Services::Trustregistry::V1::UnregisterMemberRequest
+      ).returns(Services::Trustregistry::V1::UnregisterMemberResponse)
     end
-    def unregister_issuer(request)
-    end
-
-    sig do
-      params(
-        request: Services::Trustregistry::V1::UnregisterVerifierRequest
-      ).returns(Services::Trustregistry::V1::UnregisterVerifierResponse)
-    end
-    def unregister_verifier(request)
+    def unregister_member(request)
     end
 
     sig do
       params(
-        request: Services::Trustregistry::V1::CheckIssuerStatusRequest
-      ).returns(Services::Trustregistry::V1::CheckIssuerStatusResponse)
+        request: Services::Trustregistry::V1::GetMembershipStatusRequest
+      ).returns(Services::Trustregistry::V1::GetMembershipStatusResponse)
     end
-    def check_issuer_status(request)
-    end
-
-    sig do
-      params(
-        request: Services::Trustregistry::V1::CheckVerifierStatusRequest
-      ).returns(Services::Trustregistry::V1::CheckVerifierStatusResponse)
-    end
-    def check_verifier_status(request)
+    def get_membership_status(request)
     end
 
     sig do

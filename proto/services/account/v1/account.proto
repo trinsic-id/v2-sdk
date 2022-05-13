@@ -5,7 +5,7 @@ option csharp_namespace = "Trinsic.Services.Account.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
-import "services/options/options.proto";
+import "services/options/field-options.proto";
 
 // Request for creating or signing into an account
 message SignInRequest {

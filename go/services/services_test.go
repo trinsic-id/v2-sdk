@@ -210,62 +210,41 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 	// register issuer
 	didURI := "did:example:test"
-	typeURI := "https://schema.org/Card"
-	frameworkURI := "https://example.com"
+	schemaUri := "https://schema.org/Card"
+	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
-	err = service.RegisterGovernanceFramework(context.Background(), &sdk.AddFrameworkRequest{
-		GovernanceFramework: &sdk.GovernanceFramework{
-			GovernanceFrameworkUri: frameworkURI,
-		},
-	})
-	// }
-
-	// registerIssuerSample() {
-	registerIssuerResponse, err := service.RegisterIssuer(context.Background(), &sdk.RegisterIssuerRequest{
-		Authority:              &sdk.RegisterIssuerRequest_DidUri{DidUri: didURI},
-		CredentialTypeUri:      typeURI,
+	newFramework, err := service.RegisterGovernanceFramework(context.Background(), &sdk.AddFrameworkRequest{
 		GovernanceFrameworkUri: frameworkURI,
+		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
 	})
 	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
-	// registerVerifierSample() {
-	registerVerifierResponse, err := service.RegisterVerifier(context.Background(), &sdk.RegisterVerifierRequest{
-		Authority:              &sdk.RegisterVerifierRequest_DidUri{DidUri: didURI},
-		PresentationTypeUri:    typeURI,
-		GovernanceFrameworkUri: frameworkURI,
+	// registerMemberSample() {
+	registerMemberResponse, err := service.RegisterMember(context.Background(), &sdk.RegisterMemberRequest{
+		FrameworkId: newFramework.Id,
+		SchemaUri:   schemaUri,
+		Member:      &sdk.RegisterMemberRequest_DidUri{DidUri: didURI},
 	})
 	// }
 	if !assert2.Nil(err) {
 		return
 	}
 
-	// checkIssuerStatus() {
-	issuerStatus, err := service.CheckIssuerStatus(context.Background(), &sdk.CheckIssuerStatusRequest{
+	// getMembershipStatus() {
+	getMembershipStatusResponse, err := service.GetMembershipStatus(context.Background(), &sdk.GetMembershipStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
-		Member:                 &sdk.CheckIssuerStatusRequest_DidUri{DidUri: didURI},
-		CredentialTypeUri:      typeURI,
+		Member:                 &sdk.GetMembershipStatusRequest_DidUri{DidUri: didURI},
+		SchemaUri:              schemaUri,
 	})
 	// }
 	if !assert2.Nil(err) {
 		return
 	}
-	assert2.Equal(sdk.RegistrationStatus_CURRENT, issuerStatus, "Issuer status should be current")
-
-	// checkVerifierStatus() {
-	verifierStatus, err := service.CheckVerifierStatus(context.Background(), &sdk.CheckVerifierStatusRequest{
-		GovernanceFrameworkUri: frameworkURI,
-		Member:                 &sdk.CheckVerifierStatusRequest_DidUri{DidUri: didURI},
-		PresentationTypeUri:    typeURI,
-	})
-	// }
-	if !assert2.Nil(err) {
-		return
-	}
-	assert2.Equal(sdk.RegistrationStatus_CURRENT, verifierStatus, "verifier status should be current")
+	assert2.Equal(sdk.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
 	// searchTrustRegistry() {
 	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
@@ -277,20 +256,14 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 
 	// unregisterIssuer() {
-	unregisterIssuerResponse, err := service.UnregisterIssuer(context.Background(), &sdk.UnregisterIssuerRequest{
-		CredentialTypeUri:      typeURI,
-		GovernanceFrameworkUri: frameworkURI,
-	})
-	// }
-	// unregisterVerifier() {
-	unregisterVerifierResponse, err := service.UnregisterVerifier(context.Background(), &sdk.UnregisterVerifierRequest{
-		PresentationTypeUri:    typeURI,
-		GovernanceFrameworkUri: frameworkURI,
+	unregisterMemberResponse, err := service.UnregisterMember(context.Background(), &sdk.UnregisterMemberRequest{
+		SchemaUri:   schemaUri,
+		FrameworkId: newFramework.Id,
 	})
 	// }
 
-	// This is for the variables used for demos above so they appear "used".
-	if unregisterVerifierResponse == nil || unregisterIssuerResponse == nil || registerIssuerResponse == nil || registerVerifierResponse == nil {
+	// This is for the variables used for demos above, so they appear "used".
+	if unregisterMemberResponse == nil || registerMemberResponse == nil || getMembershipStatusResponse == nil {
 		// Do absolutely nothing
 	}
 }

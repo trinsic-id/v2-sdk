@@ -56,14 +56,22 @@ export function registrationStatusToJSON(object: RegistrationStatus): string {
   }
 }
 
+/** Register new ecosystem governance framework */
 export interface AddFrameworkRequest {
-  governanceFramework: GovernanceFramework | undefined;
+  governanceFrameworkUri: string;
+  name: string;
+  description: string;
 }
 
-export interface AddFrameworkResponse {}
+export interface AddFrameworkResponse {
+  /** Unique framework identifier */
+  id: string;
+  governingAuthority: string;
+  trustRegistry: string;
+}
 
 export interface RemoveFrameworkRequest {
-  governanceFramework: GovernanceFramework | undefined;
+  id: string;
 }
 
 export interface RemoveFrameworkResponse {}
@@ -77,7 +85,6 @@ export interface SearchRegistryRequest {
 export interface SearchRegistryResponse {
   itemsJson: string;
   hasMore: boolean;
-  count: number;
   continuationToken: string;
 }
 
@@ -87,65 +94,37 @@ export interface GovernanceFramework {
   description: string;
 }
 
-export interface RegisterIssuerRequest {
+export interface RegisterMemberRequest {
   didUri: string | undefined;
-  x509Cert: string | undefined;
-  credentialTypeUri: string;
+  walletId: string | undefined;
+  email: string | undefined;
+  schemaUri: string;
   validFromUtc: number;
   validUntilUtc: number;
-  governanceFrameworkUri: string;
+  /** the id of the governance framework */
+  frameworkId: string;
 }
 
-export interface RegisterIssuerResponse {}
+export interface RegisterMemberResponse {}
 
-export interface RegisterVerifierRequest {
+export interface UnregisterMemberRequest {
   didUri: string | undefined;
-  x509Cert: string | undefined;
-  presentationTypeUri: string;
-  validFromUtc: number;
-  validUntilUtc: number;
-  governanceFrameworkUri: string;
+  walletId: string | undefined;
+  email: string | undefined;
+  schemaUri: string;
+  frameworkId: string;
 }
 
-export interface RegisterVerifierResponse {}
+export interface UnregisterMemberResponse {}
 
-export interface UnregisterIssuerRequest {
-  didUri: string | undefined;
-  x509Cert: string | undefined;
-  credentialTypeUri: string;
-  governanceFrameworkUri: string;
-}
-
-export interface UnregisterIssuerResponse {}
-
-export interface UnregisterVerifierRequest {
-  didUri: string | undefined;
-  x509Cert: string | undefined;
-  presentationTypeUri: string;
-  governanceFrameworkUri: string;
-}
-
-export interface UnregisterVerifierResponse {}
-
-export interface CheckIssuerStatusRequest {
+export interface GetMembershipStatusRequest {
   governanceFrameworkUri: string;
   didUri: string | undefined;
   x509Cert: string | undefined;
-  credentialTypeUri: string;
+  schemaUri: string;
 }
 
-export interface CheckIssuerStatusResponse {
-  status: RegistrationStatus;
-}
-
-export interface CheckVerifierStatusRequest {
-  governanceFrameworkUri: string;
-  didUri: string | undefined;
-  x509Cert: string | undefined;
-  presentationTypeUri: string;
-}
-
-export interface CheckVerifierStatusResponse {
+export interface GetMembershipStatusResponse {
   status: RegistrationStatus;
 }
 
@@ -161,7 +140,7 @@ export interface FetchDataResponse {
 }
 
 function createBaseAddFrameworkRequest(): AddFrameworkRequest {
-  return { governanceFramework: undefined };
+  return { governanceFrameworkUri: "", name: "", description: "" };
 }
 
 export const AddFrameworkRequest = {
@@ -169,11 +148,14 @@ export const AddFrameworkRequest = {
     message: AddFrameworkRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.governanceFramework !== undefined) {
-      GovernanceFramework.encode(
-        message.governanceFramework,
-        writer.uint32(10).fork()
-      ).ldelim();
+    if (message.governanceFrameworkUri !== "") {
+      writer.uint32(10).string(message.governanceFrameworkUri);
+    }
+    if (message.name !== "") {
+      writer.uint32(18).string(message.name);
+    }
+    if (message.description !== "") {
+      writer.uint32(26).string(message.description);
     }
     return writer;
   },
@@ -186,10 +168,13 @@ export const AddFrameworkRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.governanceFramework = GovernanceFramework.decode(
-            reader,
-            reader.uint32()
-          );
+          message.governanceFrameworkUri = reader.string();
+          break;
+        case 2:
+          message.name = reader.string();
+          break;
+        case 3:
+          message.description = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -201,41 +186,51 @@ export const AddFrameworkRequest = {
 
   fromJSON(object: any): AddFrameworkRequest {
     return {
-      governanceFramework: isSet(object.governanceFramework)
-        ? GovernanceFramework.fromJSON(object.governanceFramework)
-        : undefined,
+      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
+        ? String(object.governanceFrameworkUri)
+        : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      description: isSet(object.description) ? String(object.description) : "",
     };
   },
 
   toJSON(message: AddFrameworkRequest): unknown {
     const obj: any = {};
-    message.governanceFramework !== undefined &&
-      (obj.governanceFramework = message.governanceFramework
-        ? GovernanceFramework.toJSON(message.governanceFramework)
-        : undefined);
+    message.governanceFrameworkUri !== undefined &&
+      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.name !== undefined && (obj.name = message.name);
+    message.description !== undefined &&
+      (obj.description = message.description);
     return obj;
   },
 
   fromPartial(object: DeepPartial<AddFrameworkRequest>): AddFrameworkRequest {
     const message = createBaseAddFrameworkRequest();
-    message.governanceFramework =
-      object.governanceFramework !== undefined &&
-      object.governanceFramework !== null
-        ? GovernanceFramework.fromPartial(object.governanceFramework)
-        : undefined;
+    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
+    message.name = object.name ?? "";
+    message.description = object.description ?? "";
     return message;
   },
 };
 
 function createBaseAddFrameworkResponse(): AddFrameworkResponse {
-  return {};
+  return { id: "", governingAuthority: "", trustRegistry: "" };
 }
 
 export const AddFrameworkResponse = {
   encode(
-    _: AddFrameworkResponse,
+    message: AddFrameworkResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.governingAuthority !== "") {
+      writer.uint32(18).string(message.governingAuthority);
+    }
+    if (message.trustRegistry !== "") {
+      writer.uint32(26).string(message.trustRegistry);
+    }
     return writer;
   },
 
@@ -249,6 +244,15 @@ export const AddFrameworkResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.governingAuthority = reader.string();
+          break;
+        case 3:
+          message.trustRegistry = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -257,23 +261,39 @@ export const AddFrameworkResponse = {
     return message;
   },
 
-  fromJSON(_: any): AddFrameworkResponse {
-    return {};
+  fromJSON(object: any): AddFrameworkResponse {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      governingAuthority: isSet(object.governingAuthority)
+        ? String(object.governingAuthority)
+        : "",
+      trustRegistry: isSet(object.trustRegistry)
+        ? String(object.trustRegistry)
+        : "",
+    };
   },
 
-  toJSON(_: AddFrameworkResponse): unknown {
+  toJSON(message: AddFrameworkResponse): unknown {
     const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.governingAuthority !== undefined &&
+      (obj.governingAuthority = message.governingAuthority);
+    message.trustRegistry !== undefined &&
+      (obj.trustRegistry = message.trustRegistry);
     return obj;
   },
 
-  fromPartial(_: DeepPartial<AddFrameworkResponse>): AddFrameworkResponse {
+  fromPartial(object: DeepPartial<AddFrameworkResponse>): AddFrameworkResponse {
     const message = createBaseAddFrameworkResponse();
+    message.id = object.id ?? "";
+    message.governingAuthority = object.governingAuthority ?? "";
+    message.trustRegistry = object.trustRegistry ?? "";
     return message;
   },
 };
 
 function createBaseRemoveFrameworkRequest(): RemoveFrameworkRequest {
-  return { governanceFramework: undefined };
+  return { id: "" };
 }
 
 export const RemoveFrameworkRequest = {
@@ -281,11 +301,8 @@ export const RemoveFrameworkRequest = {
     message: RemoveFrameworkRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.governanceFramework !== undefined) {
-      GovernanceFramework.encode(
-        message.governanceFramework,
-        writer.uint32(10).fork()
-      ).ldelim();
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
     }
     return writer;
   },
@@ -301,10 +318,7 @@ export const RemoveFrameworkRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.governanceFramework = GovernanceFramework.decode(
-            reader,
-            reader.uint32()
-          );
+          message.id = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -316,18 +330,13 @@ export const RemoveFrameworkRequest = {
 
   fromJSON(object: any): RemoveFrameworkRequest {
     return {
-      governanceFramework: isSet(object.governanceFramework)
-        ? GovernanceFramework.fromJSON(object.governanceFramework)
-        : undefined,
+      id: isSet(object.id) ? String(object.id) : "",
     };
   },
 
   toJSON(message: RemoveFrameworkRequest): unknown {
     const obj: any = {};
-    message.governanceFramework !== undefined &&
-      (obj.governanceFramework = message.governanceFramework
-        ? GovernanceFramework.toJSON(message.governanceFramework)
-        : undefined);
+    message.id !== undefined && (obj.id = message.id);
     return obj;
   },
 
@@ -335,11 +344,7 @@ export const RemoveFrameworkRequest = {
     object: DeepPartial<RemoveFrameworkRequest>
   ): RemoveFrameworkRequest {
     const message = createBaseRemoveFrameworkRequest();
-    message.governanceFramework =
-      object.governanceFramework !== undefined &&
-      object.governanceFramework !== null
-        ? GovernanceFramework.fromPartial(object.governanceFramework)
-        : undefined;
+    message.id = object.id ?? "";
     return message;
   },
 };
@@ -461,7 +466,7 @@ export const SearchRegistryRequest = {
 };
 
 function createBaseSearchRegistryResponse(): SearchRegistryResponse {
-  return { itemsJson: "", hasMore: false, count: 0, continuationToken: "" };
+  return { itemsJson: "", hasMore: false, continuationToken: "" };
 }
 
 export const SearchRegistryResponse = {
@@ -474,9 +479,6 @@ export const SearchRegistryResponse = {
     }
     if (message.hasMore === true) {
       writer.uint32(16).bool(message.hasMore);
-    }
-    if (message.count !== 0) {
-      writer.uint32(24).int32(message.count);
     }
     if (message.continuationToken !== "") {
       writer.uint32(34).string(message.continuationToken);
@@ -500,9 +502,6 @@ export const SearchRegistryResponse = {
         case 2:
           message.hasMore = reader.bool();
           break;
-        case 3:
-          message.count = reader.int32();
-          break;
         case 4:
           message.continuationToken = reader.string();
           break;
@@ -518,7 +517,6 @@ export const SearchRegistryResponse = {
     return {
       itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
       hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
-      count: isSet(object.count) ? Number(object.count) : 0,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -529,7 +527,6 @@ export const SearchRegistryResponse = {
     const obj: any = {};
     message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
     message.hasMore !== undefined && (obj.hasMore = message.hasMore);
-    message.count !== undefined && (obj.count = Math.round(message.count));
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -541,7 +538,6 @@ export const SearchRegistryResponse = {
     const message = createBaseSearchRegistryResponse();
     message.itemsJson = object.itemsJson ?? "";
     message.hasMore = object.hasMore ?? false;
-    message.count = object.count ?? 0;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },
@@ -624,30 +620,34 @@ export const GovernanceFramework = {
   },
 };
 
-function createBaseRegisterIssuerRequest(): RegisterIssuerRequest {
+function createBaseRegisterMemberRequest(): RegisterMemberRequest {
   return {
     didUri: undefined,
-    x509Cert: undefined,
-    credentialTypeUri: "",
+    walletId: undefined,
+    email: undefined,
+    schemaUri: "",
     validFromUtc: 0,
     validUntilUtc: 0,
-    governanceFrameworkUri: "",
+    frameworkId: "",
   };
 }
 
-export const RegisterIssuerRequest = {
+export const RegisterMemberRequest = {
   encode(
-    message: RegisterIssuerRequest,
+    message: RegisterMemberRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.didUri !== undefined) {
       writer.uint32(10).string(message.didUri);
     }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(18).string(message.x509Cert);
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
     }
-    if (message.credentialTypeUri !== "") {
-      writer.uint32(82).string(message.credentialTypeUri);
+    if (message.email !== undefined) {
+      writer.uint32(34).string(message.email);
+    }
+    if (message.schemaUri !== "") {
+      writer.uint32(82).string(message.schemaUri);
     }
     if (message.validFromUtc !== 0) {
       writer.uint32(88).uint64(message.validFromUtc);
@@ -655,8 +655,8 @@ export const RegisterIssuerRequest = {
     if (message.validUntilUtc !== 0) {
       writer.uint32(96).uint64(message.validUntilUtc);
     }
-    if (message.governanceFrameworkUri !== "") {
-      writer.uint32(162).string(message.governanceFrameworkUri);
+    if (message.frameworkId !== "") {
+      writer.uint32(242).string(message.frameworkId);
     }
     return writer;
   },
@@ -664,21 +664,24 @@ export const RegisterIssuerRequest = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RegisterIssuerRequest {
+  ): RegisterMemberRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRegisterIssuerRequest();
+    const message = createBaseRegisterMemberRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
           message.didUri = reader.string();
           break;
-        case 2:
-          message.x509Cert = reader.string();
+        case 3:
+          message.walletId = reader.string();
+          break;
+        case 4:
+          message.email = reader.string();
           break;
         case 10:
-          message.credentialTypeUri = reader.string();
+          message.schemaUri = reader.string();
           break;
         case 11:
           message.validFromUtc = longToNumber(reader.uint64() as Long);
@@ -686,8 +689,8 @@ export const RegisterIssuerRequest = {
         case 12:
           message.validUntilUtc = longToNumber(reader.uint64() as Long);
           break;
-        case 20:
-          message.governanceFrameworkUri = reader.string();
+        case 30:
+          message.frameworkId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -697,61 +700,59 @@ export const RegisterIssuerRequest = {
     return message;
   },
 
-  fromJSON(object: any): RegisterIssuerRequest {
+  fromJSON(object: any): RegisterMemberRequest {
     return {
       didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      credentialTypeUri: isSet(object.credentialTypeUri)
-        ? String(object.credentialTypeUri)
-        : "",
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      email: isSet(object.email) ? String(object.email) : undefined,
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
       validFromUtc: isSet(object.validFromUtc)
         ? Number(object.validFromUtc)
         : 0,
       validUntilUtc: isSet(object.validUntilUtc)
         ? Number(object.validUntilUtc)
         : 0,
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
     };
   },
 
-  toJSON(message: RegisterIssuerRequest): unknown {
+  toJSON(message: RegisterMemberRequest): unknown {
     const obj: any = {};
     message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.credentialTypeUri !== undefined &&
-      (obj.credentialTypeUri = message.credentialTypeUri);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.email !== undefined && (obj.email = message.email);
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
     message.validFromUtc !== undefined &&
       (obj.validFromUtc = Math.round(message.validFromUtc));
     message.validUntilUtc !== undefined &&
       (obj.validUntilUtc = Math.round(message.validUntilUtc));
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.frameworkId !== undefined &&
+      (obj.frameworkId = message.frameworkId);
     return obj;
   },
 
   fromPartial(
-    object: DeepPartial<RegisterIssuerRequest>
-  ): RegisterIssuerRequest {
-    const message = createBaseRegisterIssuerRequest();
+    object: DeepPartial<RegisterMemberRequest>
+  ): RegisterMemberRequest {
+    const message = createBaseRegisterMemberRequest();
     message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
-    message.credentialTypeUri = object.credentialTypeUri ?? "";
+    message.walletId = object.walletId ?? undefined;
+    message.email = object.email ?? undefined;
+    message.schemaUri = object.schemaUri ?? "";
     message.validFromUtc = object.validFromUtc ?? 0;
     message.validUntilUtc = object.validUntilUtc ?? 0;
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
+    message.frameworkId = object.frameworkId ?? "";
     return message;
   },
 };
 
-function createBaseRegisterIssuerResponse(): RegisterIssuerResponse {
+function createBaseRegisterMemberResponse(): RegisterMemberResponse {
   return {};
 }
 
-export const RegisterIssuerResponse = {
+export const RegisterMemberResponse = {
   encode(
-    _: RegisterIssuerResponse,
+    _: RegisterMemberResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     return writer;
@@ -760,10 +761,10 @@ export const RegisterIssuerResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RegisterIssuerResponse {
+  ): RegisterMemberResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRegisterIssuerResponse();
+    const message = createBaseRegisterMemberResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -775,54 +776,50 @@ export const RegisterIssuerResponse = {
     return message;
   },
 
-  fromJSON(_: any): RegisterIssuerResponse {
+  fromJSON(_: any): RegisterMemberResponse {
     return {};
   },
 
-  toJSON(_: RegisterIssuerResponse): unknown {
+  toJSON(_: RegisterMemberResponse): unknown {
     const obj: any = {};
     return obj;
   },
 
-  fromPartial(_: DeepPartial<RegisterIssuerResponse>): RegisterIssuerResponse {
-    const message = createBaseRegisterIssuerResponse();
+  fromPartial(_: DeepPartial<RegisterMemberResponse>): RegisterMemberResponse {
+    const message = createBaseRegisterMemberResponse();
     return message;
   },
 };
 
-function createBaseRegisterVerifierRequest(): RegisterVerifierRequest {
+function createBaseUnregisterMemberRequest(): UnregisterMemberRequest {
   return {
     didUri: undefined,
-    x509Cert: undefined,
-    presentationTypeUri: "",
-    validFromUtc: 0,
-    validUntilUtc: 0,
-    governanceFrameworkUri: "",
+    walletId: undefined,
+    email: undefined,
+    schemaUri: "",
+    frameworkId: "",
   };
 }
 
-export const RegisterVerifierRequest = {
+export const UnregisterMemberRequest = {
   encode(
-    message: RegisterVerifierRequest,
+    message: UnregisterMemberRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.didUri !== undefined) {
       writer.uint32(10).string(message.didUri);
     }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(18).string(message.x509Cert);
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
     }
-    if (message.presentationTypeUri !== "") {
-      writer.uint32(82).string(message.presentationTypeUri);
+    if (message.email !== undefined) {
+      writer.uint32(34).string(message.email);
     }
-    if (message.validFromUtc !== 0) {
-      writer.uint32(88).uint64(message.validFromUtc);
+    if (message.schemaUri !== "") {
+      writer.uint32(82).string(message.schemaUri);
     }
-    if (message.validUntilUtc !== 0) {
-      writer.uint32(96).uint64(message.validUntilUtc);
-    }
-    if (message.governanceFrameworkUri !== "") {
-      writer.uint32(162).string(message.governanceFrameworkUri);
+    if (message.frameworkId !== "") {
+      writer.uint32(162).string(message.frameworkId);
     }
     return writer;
   },
@@ -830,30 +827,27 @@ export const RegisterVerifierRequest = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RegisterVerifierRequest {
+  ): UnregisterMemberRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRegisterVerifierRequest();
+    const message = createBaseUnregisterMemberRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
           message.didUri = reader.string();
           break;
-        case 2:
-          message.x509Cert = reader.string();
+        case 3:
+          message.walletId = reader.string();
+          break;
+        case 4:
+          message.email = reader.string();
           break;
         case 10:
-          message.presentationTypeUri = reader.string();
-          break;
-        case 11:
-          message.validFromUtc = longToNumber(reader.uint64() as Long);
-          break;
-        case 12:
-          message.validUntilUtc = longToNumber(reader.uint64() as Long);
+          message.schemaUri = reader.string();
           break;
         case 20:
-          message.governanceFrameworkUri = reader.string();
+          message.frameworkId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -863,61 +857,47 @@ export const RegisterVerifierRequest = {
     return message;
   },
 
-  fromJSON(object: any): RegisterVerifierRequest {
+  fromJSON(object: any): UnregisterMemberRequest {
     return {
       didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      presentationTypeUri: isSet(object.presentationTypeUri)
-        ? String(object.presentationTypeUri)
-        : "",
-      validFromUtc: isSet(object.validFromUtc)
-        ? Number(object.validFromUtc)
-        : 0,
-      validUntilUtc: isSet(object.validUntilUtc)
-        ? Number(object.validUntilUtc)
-        : 0,
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      email: isSet(object.email) ? String(object.email) : undefined,
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
     };
   },
 
-  toJSON(message: RegisterVerifierRequest): unknown {
+  toJSON(message: UnregisterMemberRequest): unknown {
     const obj: any = {};
     message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.presentationTypeUri !== undefined &&
-      (obj.presentationTypeUri = message.presentationTypeUri);
-    message.validFromUtc !== undefined &&
-      (obj.validFromUtc = Math.round(message.validFromUtc));
-    message.validUntilUtc !== undefined &&
-      (obj.validUntilUtc = Math.round(message.validUntilUtc));
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.email !== undefined && (obj.email = message.email);
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
+    message.frameworkId !== undefined &&
+      (obj.frameworkId = message.frameworkId);
     return obj;
   },
 
   fromPartial(
-    object: DeepPartial<RegisterVerifierRequest>
-  ): RegisterVerifierRequest {
-    const message = createBaseRegisterVerifierRequest();
+    object: DeepPartial<UnregisterMemberRequest>
+  ): UnregisterMemberRequest {
+    const message = createBaseUnregisterMemberRequest();
     message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
-    message.presentationTypeUri = object.presentationTypeUri ?? "";
-    message.validFromUtc = object.validFromUtc ?? 0;
-    message.validUntilUtc = object.validUntilUtc ?? 0;
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
+    message.walletId = object.walletId ?? undefined;
+    message.email = object.email ?? undefined;
+    message.schemaUri = object.schemaUri ?? "";
+    message.frameworkId = object.frameworkId ?? "";
     return message;
   },
 };
 
-function createBaseRegisterVerifierResponse(): RegisterVerifierResponse {
+function createBaseUnregisterMemberResponse(): UnregisterMemberResponse {
   return {};
 }
 
-export const RegisterVerifierResponse = {
+export const UnregisterMemberResponse = {
   encode(
-    _: RegisterVerifierResponse,
+    _: UnregisterMemberResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     return writer;
@@ -926,10 +906,10 @@ export const RegisterVerifierResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RegisterVerifierResponse {
+  ): UnregisterMemberResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRegisterVerifierResponse();
+    const message = createBaseUnregisterMemberResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -941,319 +921,35 @@ export const RegisterVerifierResponse = {
     return message;
   },
 
-  fromJSON(_: any): RegisterVerifierResponse {
+  fromJSON(_: any): UnregisterMemberResponse {
     return {};
   },
 
-  toJSON(_: RegisterVerifierResponse): unknown {
+  toJSON(_: UnregisterMemberResponse): unknown {
     const obj: any = {};
     return obj;
   },
 
   fromPartial(
-    _: DeepPartial<RegisterVerifierResponse>
-  ): RegisterVerifierResponse {
-    const message = createBaseRegisterVerifierResponse();
+    _: DeepPartial<UnregisterMemberResponse>
+  ): UnregisterMemberResponse {
+    const message = createBaseUnregisterMemberResponse();
     return message;
   },
 };
 
-function createBaseUnregisterIssuerRequest(): UnregisterIssuerRequest {
-  return {
-    didUri: undefined,
-    x509Cert: undefined,
-    credentialTypeUri: "",
-    governanceFrameworkUri: "",
-  };
-}
-
-export const UnregisterIssuerRequest = {
-  encode(
-    message: UnregisterIssuerRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.didUri !== undefined) {
-      writer.uint32(10).string(message.didUri);
-    }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(18).string(message.x509Cert);
-    }
-    if (message.credentialTypeUri !== "") {
-      writer.uint32(82).string(message.credentialTypeUri);
-    }
-    if (message.governanceFrameworkUri !== "") {
-      writer.uint32(162).string(message.governanceFrameworkUri);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnregisterIssuerRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUnregisterIssuerRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.didUri = reader.string();
-          break;
-        case 2:
-          message.x509Cert = reader.string();
-          break;
-        case 10:
-          message.credentialTypeUri = reader.string();
-          break;
-        case 20:
-          message.governanceFrameworkUri = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UnregisterIssuerRequest {
-    return {
-      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      credentialTypeUri: isSet(object.credentialTypeUri)
-        ? String(object.credentialTypeUri)
-        : "",
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
-    };
-  },
-
-  toJSON(message: UnregisterIssuerRequest): unknown {
-    const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.credentialTypeUri !== undefined &&
-      (obj.credentialTypeUri = message.credentialTypeUri);
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<UnregisterIssuerRequest>
-  ): UnregisterIssuerRequest {
-    const message = createBaseUnregisterIssuerRequest();
-    message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
-    message.credentialTypeUri = object.credentialTypeUri ?? "";
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
-    return message;
-  },
-};
-
-function createBaseUnregisterIssuerResponse(): UnregisterIssuerResponse {
-  return {};
-}
-
-export const UnregisterIssuerResponse = {
-  encode(
-    _: UnregisterIssuerResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnregisterIssuerResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUnregisterIssuerResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(_: any): UnregisterIssuerResponse {
-    return {};
-  },
-
-  toJSON(_: UnregisterIssuerResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(
-    _: DeepPartial<UnregisterIssuerResponse>
-  ): UnregisterIssuerResponse {
-    const message = createBaseUnregisterIssuerResponse();
-    return message;
-  },
-};
-
-function createBaseUnregisterVerifierRequest(): UnregisterVerifierRequest {
-  return {
-    didUri: undefined,
-    x509Cert: undefined,
-    presentationTypeUri: "",
-    governanceFrameworkUri: "",
-  };
-}
-
-export const UnregisterVerifierRequest = {
-  encode(
-    message: UnregisterVerifierRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.didUri !== undefined) {
-      writer.uint32(10).string(message.didUri);
-    }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(18).string(message.x509Cert);
-    }
-    if (message.presentationTypeUri !== "") {
-      writer.uint32(82).string(message.presentationTypeUri);
-    }
-    if (message.governanceFrameworkUri !== "") {
-      writer.uint32(162).string(message.governanceFrameworkUri);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnregisterVerifierRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUnregisterVerifierRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.didUri = reader.string();
-          break;
-        case 2:
-          message.x509Cert = reader.string();
-          break;
-        case 10:
-          message.presentationTypeUri = reader.string();
-          break;
-        case 20:
-          message.governanceFrameworkUri = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UnregisterVerifierRequest {
-    return {
-      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      presentationTypeUri: isSet(object.presentationTypeUri)
-        ? String(object.presentationTypeUri)
-        : "",
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
-    };
-  },
-
-  toJSON(message: UnregisterVerifierRequest): unknown {
-    const obj: any = {};
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.presentationTypeUri !== undefined &&
-      (obj.presentationTypeUri = message.presentationTypeUri);
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<UnregisterVerifierRequest>
-  ): UnregisterVerifierRequest {
-    const message = createBaseUnregisterVerifierRequest();
-    message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
-    message.presentationTypeUri = object.presentationTypeUri ?? "";
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
-    return message;
-  },
-};
-
-function createBaseUnregisterVerifierResponse(): UnregisterVerifierResponse {
-  return {};
-}
-
-export const UnregisterVerifierResponse = {
-  encode(
-    _: UnregisterVerifierResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UnregisterVerifierResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUnregisterVerifierResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(_: any): UnregisterVerifierResponse {
-    return {};
-  },
-
-  toJSON(_: UnregisterVerifierResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(
-    _: DeepPartial<UnregisterVerifierResponse>
-  ): UnregisterVerifierResponse {
-    const message = createBaseUnregisterVerifierResponse();
-    return message;
-  },
-};
-
-function createBaseCheckIssuerStatusRequest(): CheckIssuerStatusRequest {
+function createBaseGetMembershipStatusRequest(): GetMembershipStatusRequest {
   return {
     governanceFrameworkUri: "",
     didUri: undefined,
     x509Cert: undefined,
-    credentialTypeUri: "",
+    schemaUri: "",
   };
 }
 
-export const CheckIssuerStatusRequest = {
+export const GetMembershipStatusRequest = {
   encode(
-    message: CheckIssuerStatusRequest,
+    message: GetMembershipStatusRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.governanceFrameworkUri !== "") {
@@ -1265,8 +961,8 @@ export const CheckIssuerStatusRequest = {
     if (message.x509Cert !== undefined) {
       writer.uint32(26).string(message.x509Cert);
     }
-    if (message.credentialTypeUri !== "") {
-      writer.uint32(34).string(message.credentialTypeUri);
+    if (message.schemaUri !== "") {
+      writer.uint32(34).string(message.schemaUri);
     }
     return writer;
   },
@@ -1274,10 +970,10 @@ export const CheckIssuerStatusRequest = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): CheckIssuerStatusRequest {
+  ): GetMembershipStatusRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCheckIssuerStatusRequest();
+    const message = createBaseGetMembershipStatusRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1291,7 +987,7 @@ export const CheckIssuerStatusRequest = {
           message.x509Cert = reader.string();
           break;
         case 4:
-          message.credentialTypeUri = reader.string();
+          message.schemaUri = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1301,49 +997,46 @@ export const CheckIssuerStatusRequest = {
     return message;
   },
 
-  fromJSON(object: any): CheckIssuerStatusRequest {
+  fromJSON(object: any): GetMembershipStatusRequest {
     return {
       governanceFrameworkUri: isSet(object.governanceFrameworkUri)
         ? String(object.governanceFrameworkUri)
         : "",
       didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
       x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      credentialTypeUri: isSet(object.credentialTypeUri)
-        ? String(object.credentialTypeUri)
-        : "",
+      schemaUri: isSet(object.schemaUri) ? String(object.schemaUri) : "",
     };
   },
 
-  toJSON(message: CheckIssuerStatusRequest): unknown {
+  toJSON(message: GetMembershipStatusRequest): unknown {
     const obj: any = {};
     message.governanceFrameworkUri !== undefined &&
       (obj.governanceFrameworkUri = message.governanceFrameworkUri);
     message.didUri !== undefined && (obj.didUri = message.didUri);
     message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.credentialTypeUri !== undefined &&
-      (obj.credentialTypeUri = message.credentialTypeUri);
+    message.schemaUri !== undefined && (obj.schemaUri = message.schemaUri);
     return obj;
   },
 
   fromPartial(
-    object: DeepPartial<CheckIssuerStatusRequest>
-  ): CheckIssuerStatusRequest {
-    const message = createBaseCheckIssuerStatusRequest();
+    object: DeepPartial<GetMembershipStatusRequest>
+  ): GetMembershipStatusRequest {
+    const message = createBaseGetMembershipStatusRequest();
     message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
     message.didUri = object.didUri ?? undefined;
     message.x509Cert = object.x509Cert ?? undefined;
-    message.credentialTypeUri = object.credentialTypeUri ?? "";
+    message.schemaUri = object.schemaUri ?? "";
     return message;
   },
 };
 
-function createBaseCheckIssuerStatusResponse(): CheckIssuerStatusResponse {
+function createBaseGetMembershipStatusResponse(): GetMembershipStatusResponse {
   return { status: 0 };
 }
 
-export const CheckIssuerStatusResponse = {
+export const GetMembershipStatusResponse = {
   encode(
-    message: CheckIssuerStatusResponse,
+    message: GetMembershipStatusResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.status !== 0) {
@@ -1355,10 +1048,10 @@ export const CheckIssuerStatusResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): CheckIssuerStatusResponse {
+  ): GetMembershipStatusResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCheckIssuerStatusResponse();
+    const message = createBaseGetMembershipStatusResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -1373,7 +1066,7 @@ export const CheckIssuerStatusResponse = {
     return message;
   },
 
-  fromJSON(object: any): CheckIssuerStatusResponse {
+  fromJSON(object: any): GetMembershipStatusResponse {
     return {
       status: isSet(object.status)
         ? registrationStatusFromJSON(object.status)
@@ -1381,7 +1074,7 @@ export const CheckIssuerStatusResponse = {
     };
   },
 
-  toJSON(message: CheckIssuerStatusResponse): unknown {
+  toJSON(message: GetMembershipStatusResponse): unknown {
     const obj: any = {};
     message.status !== undefined &&
       (obj.status = registrationStatusToJSON(message.status));
@@ -1389,164 +1082,9 @@ export const CheckIssuerStatusResponse = {
   },
 
   fromPartial(
-    object: DeepPartial<CheckIssuerStatusResponse>
-  ): CheckIssuerStatusResponse {
-    const message = createBaseCheckIssuerStatusResponse();
-    message.status = object.status ?? 0;
-    return message;
-  },
-};
-
-function createBaseCheckVerifierStatusRequest(): CheckVerifierStatusRequest {
-  return {
-    governanceFrameworkUri: "",
-    didUri: undefined,
-    x509Cert: undefined,
-    presentationTypeUri: "",
-  };
-}
-
-export const CheckVerifierStatusRequest = {
-  encode(
-    message: CheckVerifierStatusRequest,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.governanceFrameworkUri !== "") {
-      writer.uint32(10).string(message.governanceFrameworkUri);
-    }
-    if (message.didUri !== undefined) {
-      writer.uint32(18).string(message.didUri);
-    }
-    if (message.x509Cert !== undefined) {
-      writer.uint32(26).string(message.x509Cert);
-    }
-    if (message.presentationTypeUri !== "") {
-      writer.uint32(34).string(message.presentationTypeUri);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CheckVerifierStatusRequest {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCheckVerifierStatusRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.governanceFrameworkUri = reader.string();
-          break;
-        case 2:
-          message.didUri = reader.string();
-          break;
-        case 3:
-          message.x509Cert = reader.string();
-          break;
-        case 4:
-          message.presentationTypeUri = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CheckVerifierStatusRequest {
-    return {
-      governanceFrameworkUri: isSet(object.governanceFrameworkUri)
-        ? String(object.governanceFrameworkUri)
-        : "",
-      didUri: isSet(object.didUri) ? String(object.didUri) : undefined,
-      x509Cert: isSet(object.x509Cert) ? String(object.x509Cert) : undefined,
-      presentationTypeUri: isSet(object.presentationTypeUri)
-        ? String(object.presentationTypeUri)
-        : "",
-    };
-  },
-
-  toJSON(message: CheckVerifierStatusRequest): unknown {
-    const obj: any = {};
-    message.governanceFrameworkUri !== undefined &&
-      (obj.governanceFrameworkUri = message.governanceFrameworkUri);
-    message.didUri !== undefined && (obj.didUri = message.didUri);
-    message.x509Cert !== undefined && (obj.x509Cert = message.x509Cert);
-    message.presentationTypeUri !== undefined &&
-      (obj.presentationTypeUri = message.presentationTypeUri);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<CheckVerifierStatusRequest>
-  ): CheckVerifierStatusRequest {
-    const message = createBaseCheckVerifierStatusRequest();
-    message.governanceFrameworkUri = object.governanceFrameworkUri ?? "";
-    message.didUri = object.didUri ?? undefined;
-    message.x509Cert = object.x509Cert ?? undefined;
-    message.presentationTypeUri = object.presentationTypeUri ?? "";
-    return message;
-  },
-};
-
-function createBaseCheckVerifierStatusResponse(): CheckVerifierStatusResponse {
-  return { status: 0 };
-}
-
-export const CheckVerifierStatusResponse = {
-  encode(
-    message: CheckVerifierStatusResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.status !== 0) {
-      writer.uint32(8).int32(message.status);
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): CheckVerifierStatusResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCheckVerifierStatusResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.status = reader.int32() as any;
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CheckVerifierStatusResponse {
-    return {
-      status: isSet(object.status)
-        ? registrationStatusFromJSON(object.status)
-        : 0,
-    };
-  },
-
-  toJSON(message: CheckVerifierStatusResponse): unknown {
-    const obj: any = {};
-    message.status !== undefined &&
-      (obj.status = registrationStatusToJSON(message.status));
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<CheckVerifierStatusResponse>
-  ): CheckVerifierStatusResponse {
-    const message = createBaseCheckVerifierStatusResponse();
+    object: DeepPartial<GetMembershipStatusResponse>
+  ): GetMembershipStatusResponse {
+    const message = createBaseGetMembershipStatusResponse();
     message.status = object.status ?? 0;
     return message;
   },
@@ -1725,54 +1263,28 @@ export const TrustRegistryDefinition = {
       options: {},
     },
     /** Registers an authoritative issuer with a credential template */
-    registerIssuer: {
-      name: "RegisterIssuer",
-      requestType: RegisterIssuerRequest,
+    registerMember: {
+      name: "RegisterMember",
+      requestType: RegisterMemberRequest,
       requestStream: false,
-      responseType: RegisterIssuerResponse,
-      responseStream: false,
-      options: {},
-    },
-    /** Registers an authoritative verifier with a credential template */
-    registerVerifier: {
-      name: "RegisterVerifier",
-      requestType: RegisterVerifierRequest,
-      requestStream: false,
-      responseType: RegisterVerifierResponse,
+      responseType: RegisterMemberResponse,
       responseStream: false,
       options: {},
     },
     /** Removes an authoritative issuer with a credential template from the trust registry */
-    unregisterIssuer: {
-      name: "UnregisterIssuer",
-      requestType: UnregisterIssuerRequest,
+    unregisterMember: {
+      name: "UnregisterMember",
+      requestType: UnregisterMemberRequest,
       requestStream: false,
-      responseType: UnregisterIssuerResponse,
+      responseType: UnregisterMemberResponse,
       responseStream: false,
       options: {},
     },
-    /** Removes an authoritative verifier with a presentation template from the trust registry */
-    unregisterVerifier: {
-      name: "UnregisterVerifier",
-      requestType: UnregisterVerifierRequest,
+    getMembershipStatus: {
+      name: "GetMembershipStatus",
+      requestType: GetMembershipStatusRequest,
       requestStream: false,
-      responseType: UnregisterVerifierResponse,
-      responseStream: false,
-      options: {},
-    },
-    checkIssuerStatus: {
-      name: "CheckIssuerStatus",
-      requestType: CheckIssuerStatusRequest,
-      requestStream: false,
-      responseType: CheckIssuerStatusResponse,
-      responseStream: false,
-      options: {},
-    },
-    checkVerifierStatus: {
-      name: "CheckVerifierStatus",
-      requestType: CheckVerifierStatusRequest,
-      requestStream: false,
-      responseType: CheckVerifierStatusResponse,
+      responseType: GetMembershipStatusResponse,
       responseStream: false,
       options: {},
     },

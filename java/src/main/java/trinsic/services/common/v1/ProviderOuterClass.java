@@ -277,6 +277,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1295,40 +1297,68 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Type of participant being invited (individual/organization)
+     * </pre>
+     *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
      * @return The enum numeric value on the wire for participant.
      */
     int getParticipantValue();
     /**
+     * <pre>
+     * Type of participant being invited (individual/organization)
+     * </pre>
+     *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
      * @return The participant.
      */
     trinsic.services.common.v1.ProviderOuterClass.ParticipantType getParticipant();
 
     /**
-     * <code>string description = 2;</code>
+     * <pre>
+     * Description of invitation
+     * </pre>
+     *
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
-     * <code>string description = 2;</code>
+     * <pre>
+     * Description of invitation
+     * </pre>
+     *
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     com.google.protobuf.ByteString
         getDescriptionBytes();
 
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return Whether the details field is set.
      */
     boolean hasDetails();
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return The details.
      */
     trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails();
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder();
   }
@@ -1415,6 +1445,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1496,6 +1528,8 @@ public final class ProviderOuterClass {
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(this);
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
@@ -1857,6 +1891,10 @@ public final class ProviderOuterClass {
     public static final int PARTICIPANT_FIELD_NUMBER = 1;
     private int participant_;
     /**
+     * <pre>
+     * Type of participant being invited (individual/organization)
+     * </pre>
+     *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
      * @return The enum numeric value on the wire for participant.
      */
@@ -1864,6 +1902,10 @@ public final class ProviderOuterClass {
       return participant_;
     }
     /**
+     * <pre>
+     * Type of participant being invited (individual/organization)
+     * </pre>
+     *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
      * @return The participant.
      */
@@ -1876,7 +1918,11 @@ public final class ProviderOuterClass {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
-     * <code>string description = 2;</code>
+     * <pre>
+     * Description of invitation
+     * </pre>
+     *
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     @java.lang.Override
@@ -1893,7 +1939,11 @@ public final class ProviderOuterClass {
       }
     }
     /**
-     * <code>string description = 2;</code>
+     * <pre>
+     * Description of invitation
+     * </pre>
+     *
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     @java.lang.Override
@@ -1914,7 +1964,11 @@ public final class ProviderOuterClass {
     public static final int DETAILS_FIELD_NUMBER = 3;
     private trinsic.services.account.v1.AccountOuterClass.AccountDetails details_;
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return Whether the details field is set.
      */
     @java.lang.Override
@@ -1922,7 +1976,11 @@ public final class ProviderOuterClass {
       return details_ != null;
     }
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return The details.
      */
     @java.lang.Override
@@ -1930,7 +1988,11 @@ public final class ProviderOuterClass {
       return details_ == null ? trinsic.services.account.v1.AccountOuterClass.AccountDetails.getDefaultInstance() : details_;
     }
     /**
-     * <code>.services.account.v1.AccountDetails details = 3;</code>
+     * <pre>
+     * Account details of invitee
+     * </pre>
+     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     @java.lang.Override
     public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
@@ -2287,6 +2349,10 @@ public final class ProviderOuterClass {
 
       private int participant_ = 0;
       /**
+       * <pre>
+       * Type of participant being invited (individual/organization)
+       * </pre>
+       *
        * <code>.services.provider.v1.ParticipantType participant = 1;</code>
        * @return The enum numeric value on the wire for participant.
        */
@@ -2294,6 +2360,10 @@ public final class ProviderOuterClass {
         return participant_;
       }
       /**
+       * <pre>
+       * Type of participant being invited (individual/organization)
+       * </pre>
+       *
        * <code>.services.provider.v1.ParticipantType participant = 1;</code>
        * @param value The enum numeric value on the wire for participant to set.
        * @return This builder for chaining.
@@ -2305,6 +2375,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Type of participant being invited (individual/organization)
+       * </pre>
+       *
        * <code>.services.provider.v1.ParticipantType participant = 1;</code>
        * @return The participant.
        */
@@ -2315,6 +2389,10 @@ public final class ProviderOuterClass {
         return result == null ? trinsic.services.common.v1.ProviderOuterClass.ParticipantType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Type of participant being invited (individual/organization)
+       * </pre>
+       *
        * <code>.services.provider.v1.ParticipantType participant = 1;</code>
        * @param value The participant to set.
        * @return This builder for chaining.
@@ -2329,6 +2407,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Type of participant being invited (individual/organization)
+       * </pre>
+       *
        * <code>.services.provider.v1.ParticipantType participant = 1;</code>
        * @return This builder for chaining.
        */
@@ -2341,7 +2423,11 @@ public final class ProviderOuterClass {
 
       private java.lang.Object description_ = "";
       /**
-       * <code>string description = 2;</code>
+       * <pre>
+       * Description of invitation
+       * </pre>
+       *
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return The description.
        */
       public java.lang.String getDescription() {
@@ -2357,7 +2443,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
-       * <code>string description = 2;</code>
+       * <pre>
+       * Description of invitation
+       * </pre>
+       *
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for description.
        */
       public com.google.protobuf.ByteString
@@ -2374,7 +2464,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
-       * <code>string description = 2;</code>
+       * <pre>
+       * Description of invitation
+       * </pre>
+       *
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @param value The description to set.
        * @return This builder for chaining.
        */
@@ -2389,7 +2483,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>string description = 2;</code>
+       * <pre>
+       * Description of invitation
+       * </pre>
+       *
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearDescription() {
@@ -2399,7 +2497,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>string description = 2;</code>
+       * <pre>
+       * Description of invitation
+       * </pre>
+       *
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
        */
@@ -2419,14 +2521,22 @@ public final class ProviderOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> detailsBuilder_;
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        * @return Whether the details field is set.
        */
       public boolean hasDetails() {
         return detailsBuilder_ != null || details_ != null;
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        * @return The details.
        */
       public trinsic.services.account.v1.AccountOuterClass.AccountDetails getDetails() {
@@ -2437,7 +2547,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public Builder setDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
@@ -2453,7 +2567,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public Builder setDetails(
           trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder builderForValue) {
@@ -2467,7 +2585,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public Builder mergeDetails(trinsic.services.account.v1.AccountOuterClass.AccountDetails value) {
         if (detailsBuilder_ == null) {
@@ -2485,7 +2607,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public Builder clearDetails() {
         if (detailsBuilder_ == null) {
@@ -2499,7 +2625,11 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder getDetailsBuilder() {
         
@@ -2507,7 +2637,11 @@ public final class ProviderOuterClass {
         return getDetailsFieldBuilder().getBuilder();
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       public trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder getDetailsOrBuilder() {
         if (detailsBuilder_ != null) {
@@ -2518,7 +2652,11 @@ public final class ProviderOuterClass {
         }
       }
       /**
-       * <code>.services.account.v1.AccountDetails details = 3;</code>
+       * <pre>
+       * Account details of invitee
+       * </pre>
+       *
+       * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           trinsic.services.account.v1.AccountOuterClass.AccountDetails, trinsic.services.account.v1.AccountOuterClass.AccountDetails.Builder, trinsic.services.account.v1.AccountOuterClass.AccountDetailsOrBuilder> 
@@ -2591,11 +2729,19 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * ID of created invitation
+     * </pre>
+     *
      * <code>string invitation_id = 10;</code>
      * @return The invitationId.
      */
     java.lang.String getInvitationId();
     /**
+     * <pre>
+     * ID of created invitation
+     * </pre>
+     *
      * <code>string invitation_id = 10;</code>
      * @return The bytes for invitationId.
      */
@@ -2694,6 +2840,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -2718,6 +2866,10 @@ public final class ProviderOuterClass {
     public static final int INVITATION_ID_FIELD_NUMBER = 10;
     private volatile java.lang.Object invitationId_;
     /**
+     * <pre>
+     * ID of created invitation
+     * </pre>
+     *
      * <code>string invitation_id = 10;</code>
      * @return The invitationId.
      */
@@ -2735,6 +2887,10 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * ID of created invitation
+     * </pre>
+     *
      * <code>string invitation_id = 10;</code>
      * @return The bytes for invitationId.
      */
@@ -3122,6 +3278,10 @@ public final class ProviderOuterClass {
 
       private java.lang.Object invitationId_ = "";
       /**
+       * <pre>
+       * ID of created invitation
+       * </pre>
+       *
        * <code>string invitation_id = 10;</code>
        * @return The invitationId.
        */
@@ -3138,6 +3298,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * ID of created invitation
+       * </pre>
+       *
        * <code>string invitation_id = 10;</code>
        * @return The bytes for invitationId.
        */
@@ -3155,6 +3319,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * ID of created invitation
+       * </pre>
+       *
        * <code>string invitation_id = 10;</code>
        * @param value The invitationId to set.
        * @return This builder for chaining.
@@ -3170,6 +3338,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * ID of created invitation
+       * </pre>
+       *
        * <code>string invitation_id = 10;</code>
        * @return This builder for chaining.
        */
@@ -3180,6 +3352,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * ID of created invitation
+       * </pre>
+       *
        * <code>string invitation_id = 10;</code>
        * @param value The bytes for invitationId to set.
        * @return This builder for chaining.
@@ -3354,11 +3530,19 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * ID of invitation
+     * </pre>
+     *
      * <code>string invitation_id = 1;</code>
      * @return The invitationId.
      */
     java.lang.String getInvitationId();
     /**
+     * <pre>
+     * ID of invitation
+     * </pre>
+     *
      * <code>string invitation_id = 1;</code>
      * @return The bytes for invitationId.
      */
@@ -3435,6 +3619,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3459,6 +3645,10 @@ public final class ProviderOuterClass {
     public static final int INVITATION_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object invitationId_;
     /**
+     * <pre>
+     * ID of invitation
+     * </pre>
+     *
      * <code>string invitation_id = 1;</code>
      * @return The invitationId.
      */
@@ -3476,6 +3666,10 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * ID of invitation
+     * </pre>
+     *
      * <code>string invitation_id = 1;</code>
      * @return The bytes for invitationId.
      */
@@ -3805,6 +3999,10 @@ public final class ProviderOuterClass {
 
       private java.lang.Object invitationId_ = "";
       /**
+       * <pre>
+       * ID of invitation
+       * </pre>
+       *
        * <code>string invitation_id = 1;</code>
        * @return The invitationId.
        */
@@ -3821,6 +4019,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * ID of invitation
+       * </pre>
+       *
        * <code>string invitation_id = 1;</code>
        * @return The bytes for invitationId.
        */
@@ -3838,6 +4040,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * ID of invitation
+       * </pre>
+       *
        * <code>string invitation_id = 1;</code>
        * @param value The invitationId to set.
        * @return This builder for chaining.
@@ -3853,6 +4059,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * ID of invitation
+       * </pre>
+       *
        * <code>string invitation_id = 1;</code>
        * @return This builder for chaining.
        */
@@ -3863,6 +4073,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * ID of invitation
+       * </pre>
+       *
        * <code>string invitation_id = 1;</code>
        * @param value The bytes for invitationId to set.
        * @return This builder for chaining.
@@ -3936,22 +4150,38 @@ public final class ProviderOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Status of invitation
+     * </pre>
+     *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
+     * <pre>
+     * Status of invitation
+     * </pre>
+     *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
      * @return The status.
      */
     trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse.Status getStatus();
 
     /**
+     * <pre>
+     * Human-readable string with details about invitation status
+     * </pre>
+     *
      * <code>string status_details = 2;</code>
      * @return The statusDetails.
      */
     java.lang.String getStatusDetails();
     /**
+     * <pre>
+     * Human-readable string with details about invitation status
+     * </pre>
+     *
      * <code>string status_details = 2;</code>
      * @return The bytes for statusDetails.
      */
@@ -4028,6 +4258,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4210,6 +4442,10 @@ public final class ProviderOuterClass {
     public static final int STATUS_FIELD_NUMBER = 1;
     private int status_;
     /**
+     * <pre>
+     * Status of invitation
+     * </pre>
+     *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
      * @return The enum numeric value on the wire for status.
      */
@@ -4217,6 +4453,10 @@ public final class ProviderOuterClass {
       return status_;
     }
     /**
+     * <pre>
+     * Status of invitation
+     * </pre>
+     *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
      * @return The status.
      */
@@ -4229,6 +4469,10 @@ public final class ProviderOuterClass {
     public static final int STATUS_DETAILS_FIELD_NUMBER = 2;
     private volatile java.lang.Object statusDetails_;
     /**
+     * <pre>
+     * Human-readable string with details about invitation status
+     * </pre>
+     *
      * <code>string status_details = 2;</code>
      * @return The statusDetails.
      */
@@ -4246,6 +4490,10 @@ public final class ProviderOuterClass {
       }
     }
     /**
+     * <pre>
+     * Human-readable string with details about invitation status
+     * </pre>
+     *
      * <code>string status_details = 2;</code>
      * @return The bytes for statusDetails.
      */
@@ -4584,6 +4832,10 @@ public final class ProviderOuterClass {
 
       private int status_ = 0;
       /**
+       * <pre>
+       * Status of invitation
+       * </pre>
+       *
        * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
        * @return The enum numeric value on the wire for status.
        */
@@ -4591,6 +4843,10 @@ public final class ProviderOuterClass {
         return status_;
       }
       /**
+       * <pre>
+       * Status of invitation
+       * </pre>
+       *
        * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
@@ -4602,6 +4858,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Status of invitation
+       * </pre>
+       *
        * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
        * @return The status.
        */
@@ -4612,6 +4872,10 @@ public final class ProviderOuterClass {
         return result == null ? trinsic.services.common.v1.ProviderOuterClass.InvitationStatusResponse.Status.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * Status of invitation
+       * </pre>
+       *
        * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
        * @param value The status to set.
        * @return This builder for chaining.
@@ -4626,6 +4890,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Status of invitation
+       * </pre>
+       *
        * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
        * @return This builder for chaining.
        */
@@ -4638,6 +4906,10 @@ public final class ProviderOuterClass {
 
       private java.lang.Object statusDetails_ = "";
       /**
+       * <pre>
+       * Human-readable string with details about invitation status
+       * </pre>
+       *
        * <code>string status_details = 2;</code>
        * @return The statusDetails.
        */
@@ -4654,6 +4926,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Human-readable string with details about invitation status
+       * </pre>
+       *
        * <code>string status_details = 2;</code>
        * @return The bytes for statusDetails.
        */
@@ -4671,6 +4947,10 @@ public final class ProviderOuterClass {
         }
       }
       /**
+       * <pre>
+       * Human-readable string with details about invitation status
+       * </pre>
+       *
        * <code>string status_details = 2;</code>
        * @param value The statusDetails to set.
        * @return This builder for chaining.
@@ -4686,6 +4966,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Human-readable string with details about invitation status
+       * </pre>
+       *
        * <code>string status_details = 2;</code>
        * @return This builder for chaining.
        */
@@ -4696,6 +4980,10 @@ public final class ProviderOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Human-readable string with details about invitation status
+       * </pre>
+       *
        * <code>string status_details = 2;</code>
        * @param value The bytes for statusDetails to set.
        * @return This builder for chaining.
@@ -4900,6 +5188,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5812,21 +6102,19 @@ public final class ProviderOuterClass {
 
     /**
      * <pre>
-     * Ecosystem description.
-     * This field is optional.
+     * Ecosystem description
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
      * <pre>
-     * Ecosystem description.
-     * This field is optional.
+     * Ecosystem description
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     com.google.protobuf.ByteString
@@ -5834,21 +6122,19 @@ public final class ProviderOuterClass {
 
     /**
      * <pre>
-     * External URL associated with your organization or ecosystem entity.
-     * This field is optional
+     * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 3 [(.services.options.optional) = true];</code>
      * @return The uri.
      */
     java.lang.String getUri();
     /**
      * <pre>
-     * External URL associated with your organization or ecosystem entity.
-     * This field is optional
+     * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for uri.
      */
     com.google.protobuf.ByteString
@@ -5971,6 +6257,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -6046,11 +6334,10 @@ public final class ProviderOuterClass {
     private volatile java.lang.Object description_;
     /**
      * <pre>
-     * Ecosystem description.
-     * This field is optional.
+     * Ecosystem description
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     @java.lang.Override
@@ -6068,11 +6355,10 @@ public final class ProviderOuterClass {
     }
     /**
      * <pre>
-     * Ecosystem description.
-     * This field is optional.
+     * Ecosystem description
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     @java.lang.Override
@@ -6094,11 +6380,10 @@ public final class ProviderOuterClass {
     private volatile java.lang.Object uri_;
     /**
      * <pre>
-     * External URL associated with your organization or ecosystem entity.
-     * This field is optional
+     * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 3 [(.services.options.optional) = true];</code>
      * @return The uri.
      */
     @java.lang.Override
@@ -6116,11 +6401,10 @@ public final class ProviderOuterClass {
     }
     /**
      * <pre>
-     * External URL associated with your organization or ecosystem entity.
-     * This field is optional
+     * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for uri.
      */
     @java.lang.Override
@@ -6651,11 +6935,10 @@ public final class ProviderOuterClass {
       private java.lang.Object description_ = "";
       /**
        * <pre>
-       * Ecosystem description.
-       * This field is optional.
+       * Ecosystem description
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return The description.
        */
       public java.lang.String getDescription() {
@@ -6672,11 +6955,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Ecosystem description.
-       * This field is optional.
+       * Ecosystem description
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for description.
        */
       public com.google.protobuf.ByteString
@@ -6694,11 +6976,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Ecosystem description.
-       * This field is optional.
+       * Ecosystem description
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @param value The description to set.
        * @return This builder for chaining.
        */
@@ -6714,11 +6995,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Ecosystem description.
-       * This field is optional.
+       * Ecosystem description
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearDescription() {
@@ -6729,11 +7009,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Ecosystem description.
-       * This field is optional.
+       * Ecosystem description
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
        */
@@ -6752,11 +7031,10 @@ public final class ProviderOuterClass {
       private java.lang.Object uri_ = "";
       /**
        * <pre>
-       * External URL associated with your organization or ecosystem entity.
-       * This field is optional
+       * External URL associated with your organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 3 [(.services.options.optional) = true];</code>
        * @return The uri.
        */
       public java.lang.String getUri() {
@@ -6773,11 +7051,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * External URL associated with your organization or ecosystem entity.
-       * This field is optional
+       * External URL associated with your organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 3 [(.services.options.optional) = true];</code>
        * @return The bytes for uri.
        */
       public com.google.protobuf.ByteString
@@ -6795,11 +7072,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * External URL associated with your organization or ecosystem entity.
-       * This field is optional
+       * External URL associated with your organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 3 [(.services.options.optional) = true];</code>
        * @param value The uri to set.
        * @return This builder for chaining.
        */
@@ -6815,11 +7091,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * External URL associated with your organization or ecosystem entity.
-       * This field is optional
+       * External URL associated with your organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 3 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearUri() {
@@ -6830,11 +7105,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * External URL associated with your organization or ecosystem entity.
-       * This field is optional
+       * External URL associated with your organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 3 [(.services.options.optional) = true];</code>
        * @param value The bytes for uri to set.
        * @return This builder for chaining.
        */
@@ -7118,7 +7392,7 @@ public final class ProviderOuterClass {
     /**
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
+     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -7128,7 +7402,7 @@ public final class ProviderOuterClass {
     /**
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
+     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -7225,6 +7499,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -7327,7 +7603,7 @@ public final class ProviderOuterClass {
     /**
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
+     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -7339,7 +7615,7 @@ public final class ProviderOuterClass {
     /**
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
+     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8026,7 +8302,7 @@ public final class ProviderOuterClass {
       /**
        * <pre>
        * Indicates if confirmation of account is required.
-       * This settings is configured globally by the server administrator.
+       * This setting is configured globally by the server administrator.
        * </pre>
        *
        * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8038,7 +8314,7 @@ public final class ProviderOuterClass {
       /**
        * <pre>
        * Indicates if confirmation of account is required.
-       * This settings is configured globally by the server administrator.
+       * This setting is configured globally by the server administrator.
        * </pre>
        *
        * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8054,7 +8330,7 @@ public final class ProviderOuterClass {
       /**
        * <pre>
        * Indicates if confirmation of account is required.
-       * This settings is configured globally by the server administrator.
+       * This setting is configured globally by the server administrator.
        * </pre>
        *
        * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8069,7 +8345,7 @@ public final class ProviderOuterClass {
       /**
        * <pre>
        * Indicates if confirmation of account is required.
-       * This settings is configured globally by the server administrator.
+       * This setting is configured globally by the server administrator.
        * </pre>
        *
        * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8088,7 +8364,7 @@ public final class ProviderOuterClass {
       /**
        * <pre>
        * Indicates if confirmation of account is required.
-       * This settings is configured globally by the server administrator.
+       * This setting is configured globally by the server administrator.
        * </pre>
        *
        * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -8159,19 +8435,19 @@ public final class ProviderOuterClass {
 
     /**
      * <pre>
-     * Optional description to identify this token
+     * Description to identify this token
      * </pre>
      *
-     * <code>string description = 1;</code>
+     * <code>string description = 1 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
      * <pre>
-     * Optional description to identify this token
+     * Description to identify this token
      * </pre>
      *
-     * <code>string description = 1;</code>
+     * <code>string description = 1 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     com.google.protobuf.ByteString
@@ -8240,6 +8516,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8265,10 +8543,10 @@ public final class ProviderOuterClass {
     private volatile java.lang.Object description_;
     /**
      * <pre>
-     * Optional description to identify this token
+     * Description to identify this token
      * </pre>
      *
-     * <code>string description = 1;</code>
+     * <code>string description = 1 [(.services.options.optional) = true];</code>
      * @return The description.
      */
     @java.lang.Override
@@ -8286,10 +8564,10 @@ public final class ProviderOuterClass {
     }
     /**
      * <pre>
-     * Optional description to identify this token
+     * Description to identify this token
      * </pre>
      *
-     * <code>string description = 1;</code>
+     * <code>string description = 1 [(.services.options.optional) = true];</code>
      * @return The bytes for description.
      */
     @java.lang.Override
@@ -8612,10 +8890,10 @@ public final class ProviderOuterClass {
       private java.lang.Object description_ = "";
       /**
        * <pre>
-       * Optional description to identify this token
+       * Description to identify this token
        * </pre>
        *
-       * <code>string description = 1;</code>
+       * <code>string description = 1 [(.services.options.optional) = true];</code>
        * @return The description.
        */
       public java.lang.String getDescription() {
@@ -8632,10 +8910,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Optional description to identify this token
+       * Description to identify this token
        * </pre>
        *
-       * <code>string description = 1;</code>
+       * <code>string description = 1 [(.services.options.optional) = true];</code>
        * @return The bytes for description.
        */
       public com.google.protobuf.ByteString
@@ -8653,10 +8931,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Optional description to identify this token
+       * Description to identify this token
        * </pre>
        *
-       * <code>string description = 1;</code>
+       * <code>string description = 1 [(.services.options.optional) = true];</code>
        * @param value The description to set.
        * @return This builder for chaining.
        */
@@ -8672,10 +8950,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Optional description to identify this token
+       * Description to identify this token
        * </pre>
        *
-       * <code>string description = 1;</code>
+       * <code>string description = 1 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearDescription() {
@@ -8686,10 +8964,10 @@ public final class ProviderOuterClass {
       }
       /**
        * <pre>
-       * Optional description to identify this token
+       * Description to identify this token
        * </pre>
        *
-       * <code>string description = 1;</code>
+       * <code>string description = 1 [(.services.options.optional) = true];</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
        */
@@ -8857,6 +9135,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9502,6 +9782,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9955,6 +10237,8 @@ public final class ProviderOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -10552,59 +10836,61 @@ public final class ProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n#services/provider/v1/provider.proto\022\024s" +
       "ervices.provider.v1\032!services/account/v1" +
-      "/account.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004" +
-      "code\030\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030" +
-      "\004 \001(\t\022\017\n\007expires\030\005 \001(\t\"\253\001\n\rInviteRequest" +
-      "\022:\n\013participant\030\001 \001(\0162%.services.provide" +
-      "r.v1.ParticipantType\022\023\n\013description\030\002 \001(" +
-      "\t\0224\n\007details\030\003 \001(\0132#.services.account.v1" +
-      ".AccountDetails\032\023\n\021DidCommInvitation\"@\n\016" +
-      "InviteResponse\022\025\n\rinvitation_id\030\n \001(\t\022\027\n" +
-      "\017invitation_code\030\013 \001(\t\"0\n\027InvitationStat" +
-      "usRequest\022\025\n\rinvitation_id\030\001 \001(\t\"\276\001\n\030Inv" +
-      "itationStatusResponse\022E\n\006status\030\001 \001(\01625." +
-      "services.provider.v1.InvitationStatusRes" +
-      "ponse.Status\022\026\n\016status_details\030\002 \001(\t\"C\n\006" +
-      "Status\022\t\n\005Error\020\000\022\022\n\016InvitationSent\020\001\022\r\n" +
-      "\tCompleted\020\002\022\013\n\007Expired\020\003\"G\n\tEcosystem\022\n" +
-      "\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030" +
-      "\003 \001(\t\022\013\n\003uri\030\004 \001(\t\"~\n\026CreateEcosystemReq" +
-      "uest\022\014\n\004name\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022" +
-      "\013\n\003uri\030\003 \001(\t\0224\n\007details\030\004 \001(\0132#.services" +
-      ".account.v1.AccountDetails\"\311\001\n\027CreateEco" +
-      "systemResponse\0222\n\tecosystem\030\001 \001(\0132\037.serv" +
-      "ices.provider.v1.Ecosystem\0224\n\007profile\030\002 " +
-      "\001(\0132#.services.account.v1.AccountProfile" +
-      "\022D\n\023confirmation_method\030\003 \001(\0162\'.services" +
-      ".account.v1.ConfirmationMethod\"+\n\024Genera" +
-      "teTokenRequest\022\023\n\013description\030\001 \001(\t\"M\n\025G" +
-      "enerateTokenResponse\0224\n\007profile\030\001 \001(\0132#." +
-      "services.account.v1.AccountProfile\"\025\n\023Ge" +
-      "tOberonKeyRequest\"#\n\024GetOberonKeyRespons" +
-      "e\022\013\n\003key\030\001 \001(\t*U\n\017ParticipantType\022\037\n\033par" +
-      "ticipant_type_individual\020\000\022!\n\035participan" +
-      "t_type_organization\020\0012\223\004\n\010Provider\022n\n\017Cr" +
-      "eateEcosystem\022,.services.provider.v1.Cre" +
-      "ateEcosystemRequest\032-.services.provider." +
-      "v1.CreateEcosystemResponse\022h\n\rGenerateTo" +
-      "ken\022*.services.provider.v1.GenerateToken" +
-      "Request\032+.services.provider.v1.GenerateT" +
-      "okenResponse\022S\n\006Invite\022#.services.provid" +
-      "er.v1.InviteRequest\032$.services.provider." +
-      "v1.InviteResponse\022q\n\020InvitationStatus\022-." +
-      "services.provider.v1.InvitationStatusReq" +
-      "uest\032..services.provider.v1.InvitationSt" +
-      "atusResponse\022e\n\014GetOberonKey\022).services." +
-      "provider.v1.GetOberonKeyRequest\032*.servic" +
-      "es.provider.v1.GetOberonKeyResponseBV\n\032t" +
-      "rinsic.services.common.v1Z\031github.com/tr" +
-      "insic-id/sdk\252\002\034Trinsic.Services.Provider" +
-      ".V1b\006proto3"
+      "/account.proto\032$services/options/field-o" +
+      "ptions.proto\"V\n\006Invite\022\n\n\002id\030\001 \001(\t\022\014\n\004co" +
+      "de\030\002 \001(\t\022\017\n\007created\030\003 \001(\t\022\020\n\010accepted\030\004 " +
+      "\001(\t\022\017\n\007expires\030\005 \001(\t\"\267\001\n\rInviteRequest\022:" +
+      "\n\013participant\030\001 \001(\0162%.services.provider." +
+      "v1.ParticipantType\022\031\n\013description\030\002 \001(\tB" +
+      "\004\200\246\035\001\022:\n\007details\030\003 \001(\0132#.services.accoun" +
+      "t.v1.AccountDetailsB\004\200\246\035\001\032\023\n\021DidCommInvi" +
+      "tation\"@\n\016InviteResponse\022\025\n\rinvitation_i" +
+      "d\030\n \001(\t\022\027\n\017invitation_code\030\013 \001(\t\"0\n\027Invi" +
+      "tationStatusRequest\022\025\n\rinvitation_id\030\001 \001" +
+      "(\t\"\276\001\n\030InvitationStatusResponse\022E\n\006statu" +
+      "s\030\001 \001(\01625.services.provider.v1.Invitatio" +
+      "nStatusResponse.Status\022\026\n\016status_details" +
+      "\030\002 \001(\t\"C\n\006Status\022\t\n\005Error\020\000\022\022\n\016Invitatio" +
+      "nSent\020\001\022\r\n\tCompleted\020\002\022\013\n\007Expired\020\003\"G\n\tE" +
+      "cosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013de" +
+      "scription\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t\"\212\001\n\026CreateE" +
+      "cosystemRequest\022\014\n\004name\030\001 \001(\t\022\031\n\013descrip" +
+      "tion\030\002 \001(\tB\004\200\246\035\001\022\021\n\003uri\030\003 \001(\tB\004\200\246\035\001\0224\n\007d" +
+      "etails\030\004 \001(\0132#.services.account.v1.Accou" +
+      "ntDetails\"\311\001\n\027CreateEcosystemResponse\0222\n" +
+      "\tecosystem\030\001 \001(\0132\037.services.provider.v1." +
+      "Ecosystem\0224\n\007profile\030\002 \001(\0132#.services.ac" +
+      "count.v1.AccountProfile\022D\n\023confirmation_" +
+      "method\030\003 \001(\0162\'.services.account.v1.Confi" +
+      "rmationMethod\"1\n\024GenerateTokenRequest\022\031\n" +
+      "\013description\030\001 \001(\tB\004\200\246\035\001\"M\n\025GenerateToke" +
+      "nResponse\0224\n\007profile\030\001 \001(\0132#.services.ac" +
+      "count.v1.AccountProfile\"\025\n\023GetOberonKeyR" +
+      "equest\"#\n\024GetOberonKeyResponse\022\013\n\003key\030\001 " +
+      "\001(\t*U\n\017ParticipantType\022\037\n\033participant_ty" +
+      "pe_individual\020\000\022!\n\035participant_type_orga" +
+      "nization\020\0012\223\004\n\010Provider\022n\n\017CreateEcosyst" +
+      "em\022,.services.provider.v1.CreateEcosyste" +
+      "mRequest\032-.services.provider.v1.CreateEc" +
+      "osystemResponse\022h\n\rGenerateToken\022*.servi" +
+      "ces.provider.v1.GenerateTokenRequest\032+.s" +
+      "ervices.provider.v1.GenerateTokenRespons" +
+      "e\022S\n\006Invite\022#.services.provider.v1.Invit" +
+      "eRequest\032$.services.provider.v1.InviteRe" +
+      "sponse\022q\n\020InvitationStatus\022-.services.pr" +
+      "ovider.v1.InvitationStatusRequest\032..serv" +
+      "ices.provider.v1.InvitationStatusRespons" +
+      "e\022e\n\014GetOberonKey\022).services.provider.v1" +
+      ".GetOberonKeyRequest\032*.services.provider" +
+      ".v1.GetOberonKeyResponseBV\n\032trinsic.serv" +
+      "ices.common.v1Z\031github.com/trinsic-id/sd" +
+      "k\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_provider_v1_Invite_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -10684,7 +10970,13 @@ public final class ProviderOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_provider_v1_GetOberonKeyResponse_descriptor,
         new java.lang.String[] { "Key", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
     trinsic.services.account.v1.AccountOuterClass.getDescriptor();
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

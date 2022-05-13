@@ -32,8 +32,11 @@ class Invite(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InviteRequest(betterproto.Message):
+    # Type of participant being invited (individual/organization)
     participant: "ParticipantType" = betterproto.enum_field(1)
+    # Description of invitation
     description: str = betterproto.string_field(2)
+    # Account details of invitee
     details: "__account_v1__.AccountDetails" = betterproto.message_field(3)
 
 
@@ -44,6 +47,7 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InviteResponse(betterproto.Message):
+    # ID of created invitation
     invitation_id: str = betterproto.string_field(10)
     # Invitation Code that must be passed with the account 'SignIn' request to
     # correlate this user with the invitation sent.
@@ -57,12 +61,15 @@ class InvitationStatusRequest(betterproto.Message):
     The reference_id passed is the response from the `Onboard` method call
     """
 
+    # ID of invitation
     invitation_id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusResponse(betterproto.Message):
+    # Status of invitation
     status: "InvitationStatusResponseStatus" = betterproto.enum_field(1)
+    # Human-readable string with details about invitation status
     status_details: str = betterproto.string_field(2)
 
 
@@ -80,10 +87,9 @@ class CreateEcosystemRequest(betterproto.Message):
     # ecosystem specific URLs and namespaces. Allowed characters are lowercase
     # letters, numbers, underscore and hyphen.
     name: str = betterproto.string_field(1)
-    # Ecosystem description. This field is optional.
+    # Ecosystem description
     description: str = betterproto.string_field(2)
-    # External URL associated with your organization or ecosystem entity. This
-    # field is optional
+    # External URL associated with your organization or ecosystem entity
     uri: str = betterproto.string_field(3)
     # The account details of the owner of the ecosystem
     details: "__account_v1__.AccountDetails" = betterproto.message_field(4)
@@ -95,14 +101,14 @@ class CreateEcosystemResponse(betterproto.Message):
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     # Account profile for auth of the owner of the ecosystem
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(2)
-    # Indicates if confirmation of account is required. This settings is
+    # Indicates if confirmation of account is required. This setting is
     # configured globally by the server administrator.
     confirmation_method: "__account_v1__.ConfirmationMethod" = betterproto.enum_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
-    # Optional description to identify this token
+    # Description to identify this token
     description: str = betterproto.string_field(1)
 
 
