@@ -30,6 +30,8 @@ nav:
       - Trust Registry Service: reference/services/trust-registry-service.md
       - Wallet Service: reference/services/wallet-service.md
       - Protocol Buffers Reference: reference/proto/index.md
+    - Other Services:
+      - OpenID Credential Exchange: reference/other/openid.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
